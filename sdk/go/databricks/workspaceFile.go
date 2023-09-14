@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -144,6 +145,12 @@ func (i *WorkspaceFile) ToWorkspaceFileOutputWithContext(ctx context.Context) Wo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceFileOutput)
 }
 
+func (i *WorkspaceFile) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceFile] {
+	return pulumix.Output[*WorkspaceFile]{
+		OutputState: i.ToWorkspaceFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkspaceFileArrayInput is an input type that accepts WorkspaceFileArray and WorkspaceFileArrayOutput values.
 // You can construct a concrete instance of `WorkspaceFileArrayInput` via:
 //
@@ -167,6 +174,12 @@ func (i WorkspaceFileArray) ToWorkspaceFileArrayOutput() WorkspaceFileArrayOutpu
 
 func (i WorkspaceFileArray) ToWorkspaceFileArrayOutputWithContext(ctx context.Context) WorkspaceFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceFileArrayOutput)
+}
+
+func (i WorkspaceFileArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkspaceFile] {
+	return pulumix.Output[[]*WorkspaceFile]{
+		OutputState: i.ToWorkspaceFileArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkspaceFileMapInput is an input type that accepts WorkspaceFileMap and WorkspaceFileMapOutput values.
@@ -194,6 +207,12 @@ func (i WorkspaceFileMap) ToWorkspaceFileMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceFileMapOutput)
 }
 
+func (i WorkspaceFileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkspaceFile] {
+	return pulumix.Output[map[string]*WorkspaceFile]{
+		OutputState: i.ToWorkspaceFileMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkspaceFileOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceFileOutput) ElementType() reflect.Type {
@@ -206,6 +225,12 @@ func (o WorkspaceFileOutput) ToWorkspaceFileOutput() WorkspaceFileOutput {
 
 func (o WorkspaceFileOutput) ToWorkspaceFileOutputWithContext(ctx context.Context) WorkspaceFileOutput {
 	return o
+}
+
+func (o WorkspaceFileOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceFile] {
+	return pulumix.Output[*WorkspaceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceFileOutput) ContentBase64() pulumi.StringPtrOutput {
@@ -250,6 +275,12 @@ func (o WorkspaceFileArrayOutput) ToWorkspaceFileArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o WorkspaceFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkspaceFile] {
+	return pulumix.Output[[]*WorkspaceFile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkspaceFileArrayOutput) Index(i pulumi.IntInput) WorkspaceFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkspaceFile {
 		return vs[0].([]*WorkspaceFile)[vs[1].(int)]
@@ -268,6 +299,12 @@ func (o WorkspaceFileMapOutput) ToWorkspaceFileMapOutput() WorkspaceFileMapOutpu
 
 func (o WorkspaceFileMapOutput) ToWorkspaceFileMapOutputWithContext(ctx context.Context) WorkspaceFileMapOutput {
 	return o
+}
+
+func (o WorkspaceFileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkspaceFile] {
+	return pulumix.Output[map[string]*WorkspaceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkspaceFileMapOutput) MapIndex(k pulumi.StringInput) WorkspaceFileOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -218,6 +219,12 @@ func (i *MwsCredentials) ToMwsCredentialsOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCredentialsOutput)
 }
 
+func (i *MwsCredentials) ToOutput(ctx context.Context) pulumix.Output[*MwsCredentials] {
+	return pulumix.Output[*MwsCredentials]{
+		OutputState: i.ToMwsCredentialsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsCredentialsArrayInput is an input type that accepts MwsCredentialsArray and MwsCredentialsArrayOutput values.
 // You can construct a concrete instance of `MwsCredentialsArrayInput` via:
 //
@@ -241,6 +248,12 @@ func (i MwsCredentialsArray) ToMwsCredentialsArrayOutput() MwsCredentialsArrayOu
 
 func (i MwsCredentialsArray) ToMwsCredentialsArrayOutputWithContext(ctx context.Context) MwsCredentialsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCredentialsArrayOutput)
+}
+
+func (i MwsCredentialsArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsCredentials] {
+	return pulumix.Output[[]*MwsCredentials]{
+		OutputState: i.ToMwsCredentialsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsCredentialsMapInput is an input type that accepts MwsCredentialsMap and MwsCredentialsMapOutput values.
@@ -268,6 +281,12 @@ func (i MwsCredentialsMap) ToMwsCredentialsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCredentialsMapOutput)
 }
 
+func (i MwsCredentialsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsCredentials] {
+	return pulumix.Output[map[string]*MwsCredentials]{
+		OutputState: i.ToMwsCredentialsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsCredentialsOutput struct{ *pulumi.OutputState }
 
 func (MwsCredentialsOutput) ElementType() reflect.Type {
@@ -280,6 +299,12 @@ func (o MwsCredentialsOutput) ToMwsCredentialsOutput() MwsCredentialsOutput {
 
 func (o MwsCredentialsOutput) ToMwsCredentialsOutputWithContext(ctx context.Context) MwsCredentialsOutput {
 	return o
+}
+
+func (o MwsCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsCredentials] {
+	return pulumix.Output[*MwsCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -325,6 +350,12 @@ func (o MwsCredentialsArrayOutput) ToMwsCredentialsArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MwsCredentialsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsCredentials] {
+	return pulumix.Output[[]*MwsCredentials]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsCredentialsArrayOutput) Index(i pulumi.IntInput) MwsCredentialsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsCredentials {
 		return vs[0].([]*MwsCredentials)[vs[1].(int)]
@@ -343,6 +374,12 @@ func (o MwsCredentialsMapOutput) ToMwsCredentialsMapOutput() MwsCredentialsMapOu
 
 func (o MwsCredentialsMapOutput) ToMwsCredentialsMapOutputWithContext(ctx context.Context) MwsCredentialsMapOutput {
 	return o
+}
+
+func (o MwsCredentialsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsCredentials] {
+	return pulumix.Output[map[string]*MwsCredentials]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsCredentialsMapOutput) MapIndex(k pulumi.StringInput) MwsCredentialsOutput {

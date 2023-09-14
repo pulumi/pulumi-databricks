@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to attach `users`, `service principals`, and `groups` as group members.
@@ -133,6 +134,12 @@ func (i *GroupMember) ToGroupMemberOutputWithContext(ctx context.Context) GroupM
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberOutput)
 }
 
+func (i *GroupMember) ToOutput(ctx context.Context) pulumix.Output[*GroupMember] {
+	return pulumix.Output[*GroupMember]{
+		OutputState: i.ToGroupMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupMemberArrayInput is an input type that accepts GroupMemberArray and GroupMemberArrayOutput values.
 // You can construct a concrete instance of `GroupMemberArrayInput` via:
 //
@@ -156,6 +163,12 @@ func (i GroupMemberArray) ToGroupMemberArrayOutput() GroupMemberArrayOutput {
 
 func (i GroupMemberArray) ToGroupMemberArrayOutputWithContext(ctx context.Context) GroupMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberArrayOutput)
+}
+
+func (i GroupMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMember] {
+	return pulumix.Output[[]*GroupMember]{
+		OutputState: i.ToGroupMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupMemberMapInput is an input type that accepts GroupMemberMap and GroupMemberMapOutput values.
@@ -183,6 +196,12 @@ func (i GroupMemberMap) ToGroupMemberMapOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberMapOutput)
 }
 
+func (i GroupMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMember] {
+	return pulumix.Output[map[string]*GroupMember]{
+		OutputState: i.ToGroupMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupMemberOutput struct{ *pulumi.OutputState }
 
 func (GroupMemberOutput) ElementType() reflect.Type {
@@ -195,6 +214,12 @@ func (o GroupMemberOutput) ToGroupMemberOutput() GroupMemberOutput {
 
 func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput {
 	return o
+}
+
+func (o GroupMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupMember] {
+	return pulumix.Output[*GroupMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This is the id of the `group` resource.
@@ -221,6 +246,12 @@ func (o GroupMemberArrayOutput) ToGroupMemberArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o GroupMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupMember] {
+	return pulumix.Output[[]*GroupMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupMemberArrayOutput) Index(i pulumi.IntInput) GroupMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupMember {
 		return vs[0].([]*GroupMember)[vs[1].(int)]
@@ -239,6 +270,12 @@ func (o GroupMemberMapOutput) ToGroupMemberMapOutput() GroupMemberMapOutput {
 
 func (o GroupMemberMapOutput) ToGroupMemberMapOutputWithContext(ctx context.Context) GroupMemberMapOutput {
 	return o
+}
+
+func (o GroupMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupMember] {
+	return pulumix.Output[map[string]*GroupMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupMemberMapOutput) MapIndex(k pulumi.StringInput) GroupMemberOutput {

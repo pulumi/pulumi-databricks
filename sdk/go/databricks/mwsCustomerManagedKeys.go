@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -496,6 +497,12 @@ func (i *MwsCustomerManagedKeys) ToMwsCustomerManagedKeysOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysOutput)
 }
 
+func (i *MwsCustomerManagedKeys) ToOutput(ctx context.Context) pulumix.Output[*MwsCustomerManagedKeys] {
+	return pulumix.Output[*MwsCustomerManagedKeys]{
+		OutputState: i.ToMwsCustomerManagedKeysOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsCustomerManagedKeysArrayInput is an input type that accepts MwsCustomerManagedKeysArray and MwsCustomerManagedKeysArrayOutput values.
 // You can construct a concrete instance of `MwsCustomerManagedKeysArrayInput` via:
 //
@@ -519,6 +526,12 @@ func (i MwsCustomerManagedKeysArray) ToMwsCustomerManagedKeysArrayOutput() MwsCu
 
 func (i MwsCustomerManagedKeysArray) ToMwsCustomerManagedKeysArrayOutputWithContext(ctx context.Context) MwsCustomerManagedKeysArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysArrayOutput)
+}
+
+func (i MwsCustomerManagedKeysArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsCustomerManagedKeys] {
+	return pulumix.Output[[]*MwsCustomerManagedKeys]{
+		OutputState: i.ToMwsCustomerManagedKeysArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsCustomerManagedKeysMapInput is an input type that accepts MwsCustomerManagedKeysMap and MwsCustomerManagedKeysMapOutput values.
@@ -546,6 +559,12 @@ func (i MwsCustomerManagedKeysMap) ToMwsCustomerManagedKeysMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(MwsCustomerManagedKeysMapOutput)
 }
 
+func (i MwsCustomerManagedKeysMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsCustomerManagedKeys] {
+	return pulumix.Output[map[string]*MwsCustomerManagedKeys]{
+		OutputState: i.ToMwsCustomerManagedKeysMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsCustomerManagedKeysOutput struct{ *pulumi.OutputState }
 
 func (MwsCustomerManagedKeysOutput) ElementType() reflect.Type {
@@ -558,6 +577,12 @@ func (o MwsCustomerManagedKeysOutput) ToMwsCustomerManagedKeysOutput() MwsCustom
 
 func (o MwsCustomerManagedKeysOutput) ToMwsCustomerManagedKeysOutputWithContext(ctx context.Context) MwsCustomerManagedKeysOutput {
 	return o
+}
+
+func (o MwsCustomerManagedKeysOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsCustomerManagedKeys] {
+	return pulumix.Output[*MwsCustomerManagedKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -604,6 +629,12 @@ func (o MwsCustomerManagedKeysArrayOutput) ToMwsCustomerManagedKeysArrayOutputWi
 	return o
 }
 
+func (o MwsCustomerManagedKeysArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsCustomerManagedKeys] {
+	return pulumix.Output[[]*MwsCustomerManagedKeys]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsCustomerManagedKeysArrayOutput) Index(i pulumi.IntInput) MwsCustomerManagedKeysOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsCustomerManagedKeys {
 		return vs[0].([]*MwsCustomerManagedKeys)[vs[1].(int)]
@@ -622,6 +653,12 @@ func (o MwsCustomerManagedKeysMapOutput) ToMwsCustomerManagedKeysMapOutput() Mws
 
 func (o MwsCustomerManagedKeysMapOutput) ToMwsCustomerManagedKeysMapOutputWithContext(ctx context.Context) MwsCustomerManagedKeysMapOutput {
 	return o
+}
+
+func (o MwsCustomerManagedKeysMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsCustomerManagedKeys] {
+	return pulumix.Output[map[string]*MwsCustomerManagedKeys]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsCustomerManagedKeysMapOutput) MapIndex(k pulumi.StringInput) MwsCustomerManagedKeysOutput {

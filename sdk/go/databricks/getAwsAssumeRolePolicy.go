@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source constructs necessary AWS STS assume role policy for you.
@@ -154,6 +155,12 @@ func (o GetAwsAssumeRolePolicyResultOutput) ToGetAwsAssumeRolePolicyResultOutput
 
 func (o GetAwsAssumeRolePolicyResultOutput) ToGetAwsAssumeRolePolicyResultOutputWithContext(ctx context.Context) GetAwsAssumeRolePolicyResultOutput {
 	return o
+}
+
+func (o GetAwsAssumeRolePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAwsAssumeRolePolicyResult] {
+	return pulumix.Output[GetAwsAssumeRolePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAwsAssumeRolePolicyResultOutput) DatabricksAccountId() pulumi.StringPtrOutput {

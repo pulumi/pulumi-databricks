@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
@@ -328,6 +329,12 @@ func (i *SqlEndpoint) ToSqlEndpointOutputWithContext(ctx context.Context) SqlEnd
 	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointOutput)
 }
 
+func (i *SqlEndpoint) ToOutput(ctx context.Context) pulumix.Output[*SqlEndpoint] {
+	return pulumix.Output[*SqlEndpoint]{
+		OutputState: i.ToSqlEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SqlEndpointArrayInput is an input type that accepts SqlEndpointArray and SqlEndpointArrayOutput values.
 // You can construct a concrete instance of `SqlEndpointArrayInput` via:
 //
@@ -351,6 +358,12 @@ func (i SqlEndpointArray) ToSqlEndpointArrayOutput() SqlEndpointArrayOutput {
 
 func (i SqlEndpointArray) ToSqlEndpointArrayOutputWithContext(ctx context.Context) SqlEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointArrayOutput)
+}
+
+func (i SqlEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlEndpoint] {
+	return pulumix.Output[[]*SqlEndpoint]{
+		OutputState: i.ToSqlEndpointArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SqlEndpointMapInput is an input type that accepts SqlEndpointMap and SqlEndpointMapOutput values.
@@ -378,6 +391,12 @@ func (i SqlEndpointMap) ToSqlEndpointMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointMapOutput)
 }
 
+func (i SqlEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlEndpoint] {
+	return pulumix.Output[map[string]*SqlEndpoint]{
+		OutputState: i.ToSqlEndpointMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlEndpointOutput struct{ *pulumi.OutputState }
 
 func (SqlEndpointOutput) ElementType() reflect.Type {
@@ -390,6 +409,12 @@ func (o SqlEndpointOutput) ToSqlEndpointOutput() SqlEndpointOutput {
 
 func (o SqlEndpointOutput) ToSqlEndpointOutputWithContext(ctx context.Context) SqlEndpointOutput {
 	return o
+}
+
+func (o SqlEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlEndpoint] {
+	return pulumix.Output[*SqlEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
@@ -492,6 +517,12 @@ func (o SqlEndpointArrayOutput) ToSqlEndpointArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SqlEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlEndpoint] {
+	return pulumix.Output[[]*SqlEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlEndpointArrayOutput) Index(i pulumi.IntInput) SqlEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlEndpoint {
 		return vs[0].([]*SqlEndpoint)[vs[1].(int)]
@@ -510,6 +541,12 @@ func (o SqlEndpointMapOutput) ToSqlEndpointMapOutput() SqlEndpointMapOutput {
 
 func (o SqlEndpointMapOutput) ToSqlEndpointMapOutputWithContext(ctx context.Context) SqlEndpointMapOutput {
 	return o
+}
+
+func (o SqlEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlEndpoint] {
+	return pulumix.Output[map[string]*SqlEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlEndpointMapOutput) MapIndex(k pulumi.StringInput) SqlEndpointOutput {

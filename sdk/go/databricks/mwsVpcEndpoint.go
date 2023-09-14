@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -182,6 +183,12 @@ func (i *MwsVpcEndpoint) ToMwsVpcEndpointOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointOutput)
 }
 
+func (i *MwsVpcEndpoint) ToOutput(ctx context.Context) pulumix.Output[*MwsVpcEndpoint] {
+	return pulumix.Output[*MwsVpcEndpoint]{
+		OutputState: i.ToMwsVpcEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsVpcEndpointArrayInput is an input type that accepts MwsVpcEndpointArray and MwsVpcEndpointArrayOutput values.
 // You can construct a concrete instance of `MwsVpcEndpointArrayInput` via:
 //
@@ -205,6 +212,12 @@ func (i MwsVpcEndpointArray) ToMwsVpcEndpointArrayOutput() MwsVpcEndpointArrayOu
 
 func (i MwsVpcEndpointArray) ToMwsVpcEndpointArrayOutputWithContext(ctx context.Context) MwsVpcEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointArrayOutput)
+}
+
+func (i MwsVpcEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsVpcEndpoint] {
+	return pulumix.Output[[]*MwsVpcEndpoint]{
+		OutputState: i.ToMwsVpcEndpointArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsVpcEndpointMapInput is an input type that accepts MwsVpcEndpointMap and MwsVpcEndpointMapOutput values.
@@ -232,6 +245,12 @@ func (i MwsVpcEndpointMap) ToMwsVpcEndpointMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MwsVpcEndpointMapOutput)
 }
 
+func (i MwsVpcEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsVpcEndpoint] {
+	return pulumix.Output[map[string]*MwsVpcEndpoint]{
+		OutputState: i.ToMwsVpcEndpointMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsVpcEndpointOutput struct{ *pulumi.OutputState }
 
 func (MwsVpcEndpointOutput) ElementType() reflect.Type {
@@ -244,6 +263,12 @@ func (o MwsVpcEndpointOutput) ToMwsVpcEndpointOutput() MwsVpcEndpointOutput {
 
 func (o MwsVpcEndpointOutput) ToMwsVpcEndpointOutputWithContext(ctx context.Context) MwsVpcEndpointOutput {
 	return o
+}
+
+func (o MwsVpcEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsVpcEndpoint] {
+	return pulumix.Output[*MwsVpcEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
@@ -308,6 +333,12 @@ func (o MwsVpcEndpointArrayOutput) ToMwsVpcEndpointArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o MwsVpcEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsVpcEndpoint] {
+	return pulumix.Output[[]*MwsVpcEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsVpcEndpointArrayOutput) Index(i pulumi.IntInput) MwsVpcEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsVpcEndpoint {
 		return vs[0].([]*MwsVpcEndpoint)[vs[1].(int)]
@@ -326,6 +357,12 @@ func (o MwsVpcEndpointMapOutput) ToMwsVpcEndpointMapOutput() MwsVpcEndpointMapOu
 
 func (o MwsVpcEndpointMapOutput) ToMwsVpcEndpointMapOutputWithContext(ctx context.Context) MwsVpcEndpointMapOutput {
 	return o
+}
+
+func (o MwsVpcEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsVpcEndpoint] {
+	return pulumix.Output[map[string]*MwsVpcEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsVpcEndpointMapOutput) MapIndex(k pulumi.StringInput) MwsVpcEndpointOutput {

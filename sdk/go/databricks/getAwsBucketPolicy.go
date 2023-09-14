@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
@@ -95,6 +96,12 @@ func (o GetAwsBucketPolicyResultOutput) ToGetAwsBucketPolicyResultOutput() GetAw
 
 func (o GetAwsBucketPolicyResultOutput) ToGetAwsBucketPolicyResultOutputWithContext(ctx context.Context) GetAwsBucketPolicyResultOutput {
 	return o
+}
+
+func (o GetAwsBucketPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAwsBucketPolicyResult] {
+	return pulumix.Output[GetAwsBucketPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAwsBucketPolicyResultOutput) Bucket() pulumi.StringOutput {

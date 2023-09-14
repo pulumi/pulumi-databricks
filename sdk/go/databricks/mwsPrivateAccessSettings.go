@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws` for all `databricks_mws_*` resources.
@@ -300,6 +301,12 @@ func (i *MwsPrivateAccessSettings) ToMwsPrivateAccessSettingsOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPrivateAccessSettingsOutput)
 }
 
+func (i *MwsPrivateAccessSettings) ToOutput(ctx context.Context) pulumix.Output[*MwsPrivateAccessSettings] {
+	return pulumix.Output[*MwsPrivateAccessSettings]{
+		OutputState: i.ToMwsPrivateAccessSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsPrivateAccessSettingsArrayInput is an input type that accepts MwsPrivateAccessSettingsArray and MwsPrivateAccessSettingsArrayOutput values.
 // You can construct a concrete instance of `MwsPrivateAccessSettingsArrayInput` via:
 //
@@ -323,6 +330,12 @@ func (i MwsPrivateAccessSettingsArray) ToMwsPrivateAccessSettingsArrayOutput() M
 
 func (i MwsPrivateAccessSettingsArray) ToMwsPrivateAccessSettingsArrayOutputWithContext(ctx context.Context) MwsPrivateAccessSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPrivateAccessSettingsArrayOutput)
+}
+
+func (i MwsPrivateAccessSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsPrivateAccessSettings] {
+	return pulumix.Output[[]*MwsPrivateAccessSettings]{
+		OutputState: i.ToMwsPrivateAccessSettingsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsPrivateAccessSettingsMapInput is an input type that accepts MwsPrivateAccessSettingsMap and MwsPrivateAccessSettingsMapOutput values.
@@ -350,6 +363,12 @@ func (i MwsPrivateAccessSettingsMap) ToMwsPrivateAccessSettingsMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPrivateAccessSettingsMapOutput)
 }
 
+func (i MwsPrivateAccessSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsPrivateAccessSettings] {
+	return pulumix.Output[map[string]*MwsPrivateAccessSettings]{
+		OutputState: i.ToMwsPrivateAccessSettingsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsPrivateAccessSettingsOutput struct{ *pulumi.OutputState }
 
 func (MwsPrivateAccessSettingsOutput) ElementType() reflect.Type {
@@ -362,6 +381,12 @@ func (o MwsPrivateAccessSettingsOutput) ToMwsPrivateAccessSettingsOutput() MwsPr
 
 func (o MwsPrivateAccessSettingsOutput) ToMwsPrivateAccessSettingsOutputWithContext(ctx context.Context) MwsPrivateAccessSettingsOutput {
 	return o
+}
+
+func (o MwsPrivateAccessSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsPrivateAccessSettings] {
+	return pulumix.Output[*MwsPrivateAccessSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
@@ -418,6 +443,12 @@ func (o MwsPrivateAccessSettingsArrayOutput) ToMwsPrivateAccessSettingsArrayOutp
 	return o
 }
 
+func (o MwsPrivateAccessSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsPrivateAccessSettings] {
+	return pulumix.Output[[]*MwsPrivateAccessSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsPrivateAccessSettingsArrayOutput) Index(i pulumi.IntInput) MwsPrivateAccessSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsPrivateAccessSettings {
 		return vs[0].([]*MwsPrivateAccessSettings)[vs[1].(int)]
@@ -436,6 +467,12 @@ func (o MwsPrivateAccessSettingsMapOutput) ToMwsPrivateAccessSettingsMapOutput()
 
 func (o MwsPrivateAccessSettingsMapOutput) ToMwsPrivateAccessSettingsMapOutputWithContext(ctx context.Context) MwsPrivateAccessSettingsMapOutput {
 	return o
+}
+
+func (o MwsPrivateAccessSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsPrivateAccessSettings] {
+	return pulumix.Output[map[string]*MwsPrivateAccessSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsPrivateAccessSettingsMapOutput) MapIndex(k pulumi.StringInput) MwsPrivateAccessSettingsOutput {

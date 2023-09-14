@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
@@ -220,6 +221,12 @@ func (i *SqlTable) ToSqlTableOutputWithContext(ctx context.Context) SqlTableOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SqlTableOutput)
 }
 
+func (i *SqlTable) ToOutput(ctx context.Context) pulumix.Output[*SqlTable] {
+	return pulumix.Output[*SqlTable]{
+		OutputState: i.ToSqlTableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SqlTableArrayInput is an input type that accepts SqlTableArray and SqlTableArrayOutput values.
 // You can construct a concrete instance of `SqlTableArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i SqlTableArray) ToSqlTableArrayOutput() SqlTableArrayOutput {
 
 func (i SqlTableArray) ToSqlTableArrayOutputWithContext(ctx context.Context) SqlTableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlTableArrayOutput)
+}
+
+func (i SqlTableArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlTable] {
+	return pulumix.Output[[]*SqlTable]{
+		OutputState: i.ToSqlTableArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SqlTableMapInput is an input type that accepts SqlTableMap and SqlTableMapOutput values.
@@ -270,6 +283,12 @@ func (i SqlTableMap) ToSqlTableMapOutputWithContext(ctx context.Context) SqlTabl
 	return pulumi.ToOutputWithContext(ctx, i).(SqlTableMapOutput)
 }
 
+func (i SqlTableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlTable] {
+	return pulumix.Output[map[string]*SqlTable]{
+		OutputState: i.ToSqlTableMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SqlTableOutput struct{ *pulumi.OutputState }
 
 func (SqlTableOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o SqlTableOutput) ToSqlTableOutput() SqlTableOutput {
 
 func (o SqlTableOutput) ToSqlTableOutputWithContext(ctx context.Context) SqlTableOutput {
 	return o
+}
+
+func (o SqlTableOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlTable] {
+	return pulumix.Output[*SqlTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of parent catalog
@@ -356,6 +381,12 @@ func (o SqlTableArrayOutput) ToSqlTableArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SqlTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlTable] {
+	return pulumix.Output[[]*SqlTable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SqlTableArrayOutput) Index(i pulumi.IntInput) SqlTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlTable {
 		return vs[0].([]*SqlTable)[vs[1].(int)]
@@ -374,6 +405,12 @@ func (o SqlTableMapOutput) ToSqlTableMapOutput() SqlTableMapOutput {
 
 func (o SqlTableMapOutput) ToSqlTableMapOutputWithContext(ctx context.Context) SqlTableMapOutput {
 	return o
+}
+
+func (o SqlTableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlTable] {
+	return pulumix.Output[map[string]*SqlTable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SqlTableMapOutput) MapIndex(k pulumi.StringInput) SqlTableOutput {

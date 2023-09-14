@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
@@ -195,6 +196,12 @@ func (i *ClusterPolicy) ToClusterPolicyOutputWithContext(ctx context.Context) Cl
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyOutput)
 }
 
+func (i *ClusterPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClusterPolicy] {
+	return pulumix.Output[*ClusterPolicy]{
+		OutputState: i.ToClusterPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterPolicyArrayInput is an input type that accepts ClusterPolicyArray and ClusterPolicyArrayOutput values.
 // You can construct a concrete instance of `ClusterPolicyArrayInput` via:
 //
@@ -218,6 +225,12 @@ func (i ClusterPolicyArray) ToClusterPolicyArrayOutput() ClusterPolicyArrayOutpu
 
 func (i ClusterPolicyArray) ToClusterPolicyArrayOutputWithContext(ctx context.Context) ClusterPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyArrayOutput)
+}
+
+func (i ClusterPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterPolicy] {
+	return pulumix.Output[[]*ClusterPolicy]{
+		OutputState: i.ToClusterPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterPolicyMapInput is an input type that accepts ClusterPolicyMap and ClusterPolicyMapOutput values.
@@ -245,6 +258,12 @@ func (i ClusterPolicyMap) ToClusterPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyMapOutput)
 }
 
+func (i ClusterPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterPolicy] {
+	return pulumix.Output[map[string]*ClusterPolicy]{
+		OutputState: i.ToClusterPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterPolicyOutput) ElementType() reflect.Type {
@@ -257,6 +276,12 @@ func (o ClusterPolicyOutput) ToClusterPolicyOutput() ClusterPolicyOutput {
 
 func (o ClusterPolicyOutput) ToClusterPolicyOutputWithContext(ctx context.Context) ClusterPolicyOutput {
 	return o
+}
+
+func (o ClusterPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPolicy] {
+	return pulumix.Output[*ClusterPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
@@ -308,6 +333,12 @@ func (o ClusterPolicyArrayOutput) ToClusterPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ClusterPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterPolicy] {
+	return pulumix.Output[[]*ClusterPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterPolicyArrayOutput) Index(i pulumi.IntInput) ClusterPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterPolicy {
 		return vs[0].([]*ClusterPolicy)[vs[1].(int)]
@@ -326,6 +357,12 @@ func (o ClusterPolicyMapOutput) ToClusterPolicyMapOutput() ClusterPolicyMapOutpu
 
 func (o ClusterPolicyMapOutput) ToClusterPolicyMapOutputWithContext(ctx context.Context) ClusterPolicyMapOutput {
 	return o
+}
+
+func (o ClusterPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterPolicy] {
+	return pulumix.Output[map[string]*ClusterPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterPolicyOutput {

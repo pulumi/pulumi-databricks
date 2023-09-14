@@ -37,6 +37,33 @@ namespace Pulumi.Databricks
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+        /// 
+        /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = Databricks.GetZones.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

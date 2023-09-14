@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -204,6 +205,12 @@ func (i *MwsStorageConfigurations) ToMwsStorageConfigurationsOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MwsStorageConfigurationsOutput)
 }
 
+func (i *MwsStorageConfigurations) ToOutput(ctx context.Context) pulumix.Output[*MwsStorageConfigurations] {
+	return pulumix.Output[*MwsStorageConfigurations]{
+		OutputState: i.ToMwsStorageConfigurationsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MwsStorageConfigurationsArrayInput is an input type that accepts MwsStorageConfigurationsArray and MwsStorageConfigurationsArrayOutput values.
 // You can construct a concrete instance of `MwsStorageConfigurationsArrayInput` via:
 //
@@ -227,6 +234,12 @@ func (i MwsStorageConfigurationsArray) ToMwsStorageConfigurationsArrayOutput() M
 
 func (i MwsStorageConfigurationsArray) ToMwsStorageConfigurationsArrayOutputWithContext(ctx context.Context) MwsStorageConfigurationsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsStorageConfigurationsArrayOutput)
+}
+
+func (i MwsStorageConfigurationsArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsStorageConfigurations] {
+	return pulumix.Output[[]*MwsStorageConfigurations]{
+		OutputState: i.ToMwsStorageConfigurationsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MwsStorageConfigurationsMapInput is an input type that accepts MwsStorageConfigurationsMap and MwsStorageConfigurationsMapOutput values.
@@ -254,6 +267,12 @@ func (i MwsStorageConfigurationsMap) ToMwsStorageConfigurationsMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MwsStorageConfigurationsMapOutput)
 }
 
+func (i MwsStorageConfigurationsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsStorageConfigurations] {
+	return pulumix.Output[map[string]*MwsStorageConfigurations]{
+		OutputState: i.ToMwsStorageConfigurationsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MwsStorageConfigurationsOutput struct{ *pulumi.OutputState }
 
 func (MwsStorageConfigurationsOutput) ElementType() reflect.Type {
@@ -266,6 +285,12 @@ func (o MwsStorageConfigurationsOutput) ToMwsStorageConfigurationsOutput() MwsSt
 
 func (o MwsStorageConfigurationsOutput) ToMwsStorageConfigurationsOutputWithContext(ctx context.Context) MwsStorageConfigurationsOutput {
 	return o
+}
+
+func (o MwsStorageConfigurationsOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsStorageConfigurations] {
+	return pulumix.Output[*MwsStorageConfigurations]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
@@ -306,6 +331,12 @@ func (o MwsStorageConfigurationsArrayOutput) ToMwsStorageConfigurationsArrayOutp
 	return o
 }
 
+func (o MwsStorageConfigurationsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsStorageConfigurations] {
+	return pulumix.Output[[]*MwsStorageConfigurations]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MwsStorageConfigurationsArrayOutput) Index(i pulumi.IntInput) MwsStorageConfigurationsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsStorageConfigurations {
 		return vs[0].([]*MwsStorageConfigurations)[vs[1].(int)]
@@ -324,6 +355,12 @@ func (o MwsStorageConfigurationsMapOutput) ToMwsStorageConfigurationsMapOutput()
 
 func (o MwsStorageConfigurationsMapOutput) ToMwsStorageConfigurationsMapOutputWithContext(ctx context.Context) MwsStorageConfigurationsMapOutput {
 	return o
+}
+
+func (o MwsStorageConfigurationsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsStorageConfigurations] {
+	return pulumix.Output[map[string]*MwsStorageConfigurations]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MwsStorageConfigurationsMapOutput) MapIndex(k pulumi.StringInput) MwsStorageConfigurationsOutput {

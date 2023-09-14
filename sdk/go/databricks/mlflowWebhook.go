@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create [MLflow Model Registry Webhooks](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) in Databricks.  Webhooks enable you to listen for Model Registry events so your integrations can automatically trigger actions. You can use webhooks to automate and integrate your machine learning pipeline with existing CI/CD tools and workflows. Webhooks allow trigger execution of a Databricks job or call a web service on specific event(s) that is generated in the MLflow Registry - stage transitioning, creation of registered model, creation of transition request, etc.
@@ -202,6 +203,12 @@ func (i *MlflowWebhook) ToMlflowWebhookOutputWithContext(ctx context.Context) Ml
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookOutput)
 }
 
+func (i *MlflowWebhook) ToOutput(ctx context.Context) pulumix.Output[*MlflowWebhook] {
+	return pulumix.Output[*MlflowWebhook]{
+		OutputState: i.ToMlflowWebhookOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MlflowWebhookArrayInput is an input type that accepts MlflowWebhookArray and MlflowWebhookArrayOutput values.
 // You can construct a concrete instance of `MlflowWebhookArrayInput` via:
 //
@@ -225,6 +232,12 @@ func (i MlflowWebhookArray) ToMlflowWebhookArrayOutput() MlflowWebhookArrayOutpu
 
 func (i MlflowWebhookArray) ToMlflowWebhookArrayOutputWithContext(ctx context.Context) MlflowWebhookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookArrayOutput)
+}
+
+func (i MlflowWebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowWebhook] {
+	return pulumix.Output[[]*MlflowWebhook]{
+		OutputState: i.ToMlflowWebhookArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MlflowWebhookMapInput is an input type that accepts MlflowWebhookMap and MlflowWebhookMapOutput values.
@@ -252,6 +265,12 @@ func (i MlflowWebhookMap) ToMlflowWebhookMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowWebhookMapOutput)
 }
 
+func (i MlflowWebhookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowWebhook] {
+	return pulumix.Output[map[string]*MlflowWebhook]{
+		OutputState: i.ToMlflowWebhookMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MlflowWebhookOutput struct{ *pulumi.OutputState }
 
 func (MlflowWebhookOutput) ElementType() reflect.Type {
@@ -264,6 +283,12 @@ func (o MlflowWebhookOutput) ToMlflowWebhookOutput() MlflowWebhookOutput {
 
 func (o MlflowWebhookOutput) ToMlflowWebhookOutputWithContext(ctx context.Context) MlflowWebhookOutput {
 	return o
+}
+
+func (o MlflowWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[*MlflowWebhook] {
+	return pulumix.Output[*MlflowWebhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional description of the MLflow webhook.
@@ -310,6 +335,12 @@ func (o MlflowWebhookArrayOutput) ToMlflowWebhookArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o MlflowWebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowWebhook] {
+	return pulumix.Output[[]*MlflowWebhook]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MlflowWebhookArrayOutput) Index(i pulumi.IntInput) MlflowWebhookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MlflowWebhook {
 		return vs[0].([]*MlflowWebhook)[vs[1].(int)]
@@ -328,6 +359,12 @@ func (o MlflowWebhookMapOutput) ToMlflowWebhookMapOutput() MlflowWebhookMapOutpu
 
 func (o MlflowWebhookMapOutput) ToMlflowWebhookMapOutputWithContext(ctx context.Context) MlflowWebhookMapOutput {
 	return o
+}
+
+func (o MlflowWebhookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowWebhook] {
+	return pulumix.Output[map[string]*MlflowWebhook]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MlflowWebhookMapOutput) MapIndex(k pulumi.StringInput) MlflowWebhookOutput {
