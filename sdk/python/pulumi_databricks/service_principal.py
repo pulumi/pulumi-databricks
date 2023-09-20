@@ -573,8 +573,8 @@ class ServicePrincipal(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
@@ -688,8 +688,8 @@ class ServicePrincipal(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```

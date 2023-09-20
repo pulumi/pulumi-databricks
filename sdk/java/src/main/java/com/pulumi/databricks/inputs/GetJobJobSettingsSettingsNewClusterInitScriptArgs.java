@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScrip
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,6 +56,13 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs> volumes;
+
+    public Optional<Output<GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs> workspace;
 
@@ -70,6 +78,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -134,6 +143,15 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptArgs extends com
 
         public Builder s3(GetJobJobSettingsSettingsNewClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public Builder workspace(@Nullable Output<GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs> workspace) {

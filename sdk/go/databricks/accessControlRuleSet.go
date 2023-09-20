@@ -264,8 +264,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_ := "00000000-0000-0000-0000-000000000000"
-//			_, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			marketplaceAdmins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Marketplace Admins",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -286,9 +292,15 @@ import (
 //					},
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							data.Databricks_user.Ds.Acl_principal_id,
+//							*pulumi.String(ds.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/servicePrincipal.manager"),
+//					},
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							*pulumi.String(marketplaceAdmins.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/marketplace.admin"),
 //					},
 //				},
 //			})

@@ -28,6 +28,7 @@ __all__ = [
     'ClusterInitScriptFileArgs',
     'ClusterInitScriptGcsArgs',
     'ClusterInitScriptS3Args',
+    'ClusterInitScriptVolumesArgs',
     'ClusterInitScriptWorkspaceArgs',
     'ClusterLibraryArgs',
     'ClusterLibraryCranArgs',
@@ -77,6 +78,7 @@ __all__ = [
     'JobJobClusterNewClusterInitScriptFileArgs',
     'JobJobClusterNewClusterInitScriptGcsArgs',
     'JobJobClusterNewClusterInitScriptS3Args',
+    'JobJobClusterNewClusterInitScriptVolumesArgs',
     'JobJobClusterNewClusterInitScriptWorkspaceArgs',
     'JobJobClusterNewClusterWorkloadTypeArgs',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
@@ -102,6 +104,7 @@ __all__ = [
     'JobNewClusterInitScriptFileArgs',
     'JobNewClusterInitScriptGcsArgs',
     'JobNewClusterInitScriptS3Args',
+    'JobNewClusterInitScriptVolumesArgs',
     'JobNewClusterInitScriptWorkspaceArgs',
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeClientsArgs',
@@ -146,6 +149,7 @@ __all__ = [
     'JobTaskNewClusterInitScriptFileArgs',
     'JobTaskNewClusterInitScriptGcsArgs',
     'JobTaskNewClusterInitScriptS3Args',
+    'JobTaskNewClusterInitScriptVolumesArgs',
     'JobTaskNewClusterInitScriptWorkspaceArgs',
     'JobTaskNewClusterWorkloadTypeArgs',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
@@ -218,6 +222,7 @@ __all__ = [
     'PipelineClusterInitScriptFileArgs',
     'PipelineClusterInitScriptGcsArgs',
     'PipelineClusterInitScriptS3Args',
+    'PipelineClusterInitScriptVolumesArgs',
     'PipelineClusterInitScriptWorkspaceArgs',
     'PipelineFiltersArgs',
     'PipelineLibraryArgs',
@@ -288,6 +293,7 @@ __all__ = [
     'GetClusterClusterInfoInitScriptFileArgs',
     'GetClusterClusterInfoInitScriptGcsArgs',
     'GetClusterClusterInfoInitScriptS3Args',
+    'GetClusterClusterInfoInitScriptVolumesArgs',
     'GetClusterClusterInfoInitScriptWorkspaceArgs',
     'GetClusterClusterInfoTerminationReasonArgs',
     'GetInstancePoolPoolInfoArgs',
@@ -333,6 +339,7 @@ __all__ = [
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs',
@@ -358,6 +365,7 @@ __all__ = [
     'GetJobJobSettingsSettingsNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs',
     'GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs',
@@ -402,6 +410,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args',
+    'GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs',
     'GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs',
     'GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs',
@@ -443,10 +452,11 @@ class AccessControlRuleSetGrantRuleArgs:
                  role: pulumi.Input[str],
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
+        :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
                * `roles/group.manager` - Manager of a group.
+               * `roles/marketplace.admin` - Admin of marketplace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: a list of principals who are granted a role. The following format is supported:
                * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
                * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
@@ -460,10 +470,11 @@ class AccessControlRuleSetGrantRuleArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
+        Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
         * `roles/group.manager` - Manager of a group.
+        * `roles/marketplace.admin` - Admin of marketplace.
         """
         return pulumi.get(self, "role")
 
@@ -1004,9 +1015,13 @@ class ClusterInitScriptArgs:
                  file: Optional[pulumi.Input['ClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['ClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['ClusterInitScriptS3Args']] = None,
+                 volumes: Optional[pulumi.Input['ClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['ClusterInitScriptWorkspaceArgs']] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
+        if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -1015,6 +1030,8 @@ class ClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -1030,6 +1047,9 @@ class ClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['ClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -1062,6 +1082,15 @@ class ClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['ClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['ClusterInitScriptVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['ClusterInitScriptVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -1226,6 +1255,23 @@ class ClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class ClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -3339,6 +3385,7 @@ class JobJobClusterNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobJobClusterNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
@@ -3389,6 +3436,9 @@ class JobJobClusterNewClusterInitScriptArgs:
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+        if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
@@ -3396,6 +3446,8 @@ class JobJobClusterNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -3411,6 +3463,9 @@ class JobJobClusterNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['JobJobClusterNewClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -3489,6 +3544,15 @@ class JobJobClusterNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobJobClusterNewClusterInitScriptVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobJobClusterNewClusterInitScriptVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -3653,6 +3717,23 @@ class JobJobClusterNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobJobClusterNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -4771,6 +4852,7 @@ class JobNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobNewClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['JobNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
@@ -4821,6 +4903,9 @@ class JobNewClusterInitScriptArgs:
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+        if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
@@ -4828,6 +4913,8 @@ class JobNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -4843,6 +4930,9 @@ class JobNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['JobNewClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -4921,6 +5011,15 @@ class JobNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobNewClusterInitScriptVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobNewClusterInitScriptVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -5085,6 +5184,23 @@ class JobNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -7474,6 +7590,7 @@ class JobTaskNewClusterInitScriptArgs:
                  file: Optional[pulumi.Input['JobTaskNewClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['JobTaskNewClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']] = None,
+                 volumes: Optional[pulumi.Input['JobTaskNewClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['JobTaskNewClusterInitScriptWorkspaceArgs']] = None):
         """
         :param pulumi.Input['JobTaskNewClusterInitScriptFileArgs'] file: block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
@@ -7524,6 +7641,9 @@ class JobTaskNewClusterInitScriptArgs:
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+        if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
             pulumi.set(__self__, "file", file)
@@ -7531,6 +7651,8 @@ class JobTaskNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -7546,6 +7668,9 @@ class JobTaskNewClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['JobTaskNewClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -7624,6 +7749,15 @@ class JobTaskNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['JobTaskNewClusterInitScriptVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['JobTaskNewClusterInitScriptVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -7788,6 +7922,23 @@ class JobTaskNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class JobTaskNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -9062,27 +9213,55 @@ class MetastoreDataAccessAwsIamRoleArgs:
 @pulumi.input_type
 class MetastoreDataAccessAzureManagedIdentityArgs:
     def __init__(__self__, *,
-                 access_connector_id: pulumi.Input[str]):
+                 access_connector_id: pulumi.Input[str],
+                 credential_id: Optional[pulumi.Input[str]] = None,
+                 managed_identity_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        :param pulumi.Input[str] managed_identity_id: The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
                
                `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
+        if managed_identity_id is not None:
+            pulumi.set(__self__, "managed_identity_id", managed_identity_id)
 
     @property
     @pulumi.getter(name="accessConnectorId")
     def access_connector_id(self) -> pulumi.Input[str]:
         """
-        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
         """
         return pulumi.get(self, "access_connector_id")
 
     @access_connector_id.setter
     def access_connector_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_connector_id", value)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential_id")
+
+    @credential_id.setter
+    def credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_id", value)
+
+    @property
+    @pulumi.getter(name="managedIdentityId")
+    def managed_identity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
+        """
+        return pulumi.get(self, "managed_identity_id")
+
+    @managed_identity_id.setter
+    def managed_identity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_identity_id", value)
 
 
 @pulumi.input_type
@@ -11103,9 +11282,13 @@ class PipelineClusterInitScriptArgs:
                  file: Optional[pulumi.Input['PipelineClusterInitScriptFileArgs']] = None,
                  gcs: Optional[pulumi.Input['PipelineClusterInitScriptGcsArgs']] = None,
                  s3: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']] = None,
+                 volumes: Optional[pulumi.Input['PipelineClusterInitScriptVolumesArgs']] = None,
                  workspace: Optional[pulumi.Input['PipelineClusterInitScriptWorkspaceArgs']] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
+        if dbfs is not None:
+            warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+            pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
         if dbfs is not None:
             pulumi.set(__self__, "dbfs", dbfs)
         if file is not None:
@@ -11114,6 +11297,8 @@ class PipelineClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -11129,6 +11314,9 @@ class PipelineClusterInitScriptArgs:
     @property
     @pulumi.getter
     def dbfs(self) -> Optional[pulumi.Input['PipelineClusterInitScriptDbfsArgs']]:
+        warnings.warn("""For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""", DeprecationWarning)
+        pulumi.log.warn("""dbfs is deprecated: For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.""")
+
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
@@ -11161,6 +11349,15 @@ class PipelineClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional[pulumi.Input['PipelineClusterInitScriptS3Args']]):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['PipelineClusterInitScriptVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['PipelineClusterInitScriptVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -11325,6 +11522,23 @@ class PipelineClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class PipelineClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -11587,6 +11801,15 @@ class RecipientTokenArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[int]] = None,
                  updated_by: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] activation_url: Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+        :param pulumi.Input[int] created_at: Time at which this recipient Token was created, in epoch milliseconds.
+        :param pulumi.Input[str] created_by: Username of recipient token creator.
+        :param pulumi.Input[int] expiration_time: Expiration timestamp of the token in epoch milliseconds.
+        :param pulumi.Input[str] id: ID of this recipient - same as the `name`.
+        :param pulumi.Input[int] updated_at: Time at which this recipient Token was updated, in epoch milliseconds.
+        :param pulumi.Input[str] updated_by: Username of recipient Token updater.
+        """
         if activation_url is not None:
             pulumi.set(__self__, "activation_url", activation_url)
         if created_at is not None:
@@ -11605,6 +11828,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="activationUrl")
     def activation_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+        """
         return pulumi.get(self, "activation_url")
 
     @activation_url.setter
@@ -11614,6 +11840,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which this recipient Token was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -11623,6 +11852,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of recipient token creator.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -11632,6 +11864,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Expiration timestamp of the token in epoch milliseconds.
+        """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
@@ -11641,6 +11876,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of this recipient - same as the `name`.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -11650,6 +11888,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at which this recipient Token was updated, in epoch milliseconds.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -11659,6 +11900,9 @@ class RecipientTokenArgs:
     @property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of recipient Token updater.
+        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
@@ -13207,27 +13451,55 @@ class StorageCredentialAwsIamRoleArgs:
 @pulumi.input_type
 class StorageCredentialAzureManagedIdentityArgs:
     def __init__(__self__, *,
-                 access_connector_id: pulumi.Input[str]):
+                 access_connector_id: pulumi.Input[str],
+                 credential_id: Optional[pulumi.Input[str]] = None,
+                 managed_identity_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+        :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+        :param pulumi.Input[str] managed_identity_id: The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
                
                `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
         """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
+        if managed_identity_id is not None:
+            pulumi.set(__self__, "managed_identity_id", managed_identity_id)
 
     @property
     @pulumi.getter(name="accessConnectorId")
     def access_connector_id(self) -> pulumi.Input[str]:
         """
-        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
         """
         return pulumi.get(self, "access_connector_id")
 
     @access_connector_id.setter
     def access_connector_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_connector_id", value)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential_id")
+
+    @credential_id.setter
+    def credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_id", value)
+
+    @property
+    @pulumi.getter(name="managedIdentityId")
+    def managed_identity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        """
+        return pulumi.get(self, "managed_identity_id")
+
+    @managed_identity_id.setter
+    def managed_identity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_identity_id", value)
 
 
 @pulumi.input_type
@@ -14762,6 +15034,7 @@ class GetClusterClusterInfoInitScriptArgs:
                  file: Optional['GetClusterClusterInfoInitScriptFileArgs'] = None,
                  gcs: Optional['GetClusterClusterInfoInitScriptGcsArgs'] = None,
                  s3: Optional['GetClusterClusterInfoInitScriptS3Args'] = None,
+                 volumes: Optional['GetClusterClusterInfoInitScriptVolumesArgs'] = None,
                  workspace: Optional['GetClusterClusterInfoInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -14773,6 +15046,8 @@ class GetClusterClusterInfoInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -14820,6 +15095,15 @@ class GetClusterClusterInfoInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetClusterClusterInfoInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetClusterClusterInfoInitScriptVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetClusterClusterInfoInitScriptVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -14984,6 +15268,23 @@ class GetClusterClusterInfoInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetClusterClusterInfoInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -16179,16 +16480,17 @@ class GetJobJobSettingsSettingsComputeSpecArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsContinuousArgs:
     def __init__(__self__, *,
-                 pause_status: str):
-        pulumi.set(__self__, "pause_status", pause_status)
+                 pause_status: Optional[str] = None):
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
 
     @property
     @pulumi.getter(name="pauseStatus")
-    def pause_status(self) -> str:
+    def pause_status(self) -> Optional[str]:
         return pulumi.get(self, "pause_status")
 
     @pause_status.setter
-    def pause_status(self, value: str):
+    def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
 
 
@@ -17415,6 +17717,7 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
                  file: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs'] = None,
                  s3: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args'] = None,
+                 volumes: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs'] = None,
                  workspace: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -17426,6 +17729,8 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -17473,6 +17778,15 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -17637,6 +17951,23 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -18743,6 +19074,7 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
                  file: Optional['GetJobJobSettingsSettingsNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs'] = None,
                  s3: Optional['GetJobJobSettingsSettingsNewClusterInitScriptS3Args'] = None,
+                 volumes: Optional['GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs'] = None,
                  workspace: Optional['GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -18754,6 +19086,8 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -18801,6 +19135,15 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -18965,6 +19308,23 @@ class GetJobJobSettingsSettingsNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -19280,21 +19640,13 @@ class GetJobJobSettingsSettingsRunJobTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsScheduleArgs:
     def __init__(__self__, *,
-                 pause_status: str,
                  quartz_cron_expression: str,
-                 timezone_id: str):
-        pulumi.set(__self__, "pause_status", pause_status)
+                 timezone_id: str,
+                 pause_status: Optional[str] = None):
         pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
         pulumi.set(__self__, "timezone_id", timezone_id)
-
-    @property
-    @pulumi.getter(name="pauseStatus")
-    def pause_status(self) -> str:
-        return pulumi.get(self, "pause_status")
-
-    @pause_status.setter
-    def pause_status(self, value: str):
-        pulumi.set(self, "pause_status", value)
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
 
     @property
     @pulumi.getter(name="quartzCronExpression")
@@ -19313,6 +19665,15 @@ class GetJobJobSettingsSettingsScheduleArgs:
     @timezone_id.setter
     def timezone_id(self, value: str):
         pulumi.set(self, "timezone_id", value)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[str]:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[str]):
+        pulumi.set(self, "pause_status", value)
 
 
 @pulumi.input_type
@@ -21050,6 +21411,7 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
                  file: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs'] = None,
                  gcs: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs'] = None,
                  s3: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args'] = None,
+                 volumes: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs'] = None,
                  workspace: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs'] = None):
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
@@ -21061,6 +21423,8 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
             pulumi.set(__self__, "gcs", gcs)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
         if workspace is not None:
             pulumi.set(__self__, "workspace", workspace)
 
@@ -21108,6 +21472,15 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
     @s3.setter
     def s3(self, value: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args']):
         pulumi.set(self, "s3", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs']:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional['GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs']):
+        pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter
@@ -21272,6 +21645,23 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args:
     @region.setter
     def region(self, value: Optional[str]):
         pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs:
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
@@ -21886,9 +22276,10 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryArgs:
 class GetJobJobSettingsSettingsTriggerArgs:
     def __init__(__self__, *,
                  file_arrival: 'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
-                 pause_status: str):
+                 pause_status: Optional[str] = None):
         pulumi.set(__self__, "file_arrival", file_arrival)
-        pulumi.set(__self__, "pause_status", pause_status)
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
 
     @property
     @pulumi.getter(name="fileArrival")
@@ -21901,11 +22292,11 @@ class GetJobJobSettingsSettingsTriggerArgs:
 
     @property
     @pulumi.getter(name="pauseStatus")
-    def pause_status(self) -> str:
+    def pause_status(self) -> Optional[str]:
         return pulumi.get(self, "pause_status")
 
     @pause_status.setter
-    def pause_status(self, value: str):
+    def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
 
 

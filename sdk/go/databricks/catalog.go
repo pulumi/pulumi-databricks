@@ -72,6 +72,8 @@ type Catalog struct {
 	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+	Options pulumi.MapOutput `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Catalog properties.
@@ -125,6 +127,8 @@ type catalogState struct {
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
+	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+	Options map[string]interface{} `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
@@ -149,6 +153,8 @@ type CatalogState struct {
 	MetastoreId   pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
+	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+	Options pulumi.MapInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
@@ -177,6 +183,8 @@ type catalogArgs struct {
 	MetastoreId   *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
+	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+	Options map[string]interface{} `pulumi:"options"`
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner *string `pulumi:"owner"`
 	// Extensible Catalog properties.
@@ -202,6 +210,8 @@ type CatalogArgs struct {
 	MetastoreId   pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
+	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+	Options pulumi.MapInput
 	// Username/groupname/sp applicationId of the catalog owner.
 	Owner pulumi.StringPtrInput
 	// Extensible Catalog properties.
@@ -352,6 +362,11 @@ func (o CatalogOutput) MetastoreId() pulumi.StringOutput {
 // Name of Catalog relative to parent metastore.
 func (o CatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+func (o CatalogOutput) Options() pulumi.MapOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.MapOutput { return v.Options }).(pulumi.MapOutput)
 }
 
 // Username/groupname/sp applicationId of the catalog owner.

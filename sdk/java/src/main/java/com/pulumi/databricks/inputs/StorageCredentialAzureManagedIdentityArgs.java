@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,28 +16,52 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
     public static final StorageCredentialAzureManagedIdentityArgs Empty = new StorageCredentialAzureManagedIdentityArgs();
 
     /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
      * 
      */
     @Import(name="accessConnectorId", required=true)
     private Output<String> accessConnectorId;
 
     /**
-     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
      * 
      */
     public Output<String> accessConnectorId() {
         return this.accessConnectorId;
     }
 
+    @Import(name="credentialId")
+    private @Nullable Output<String> credentialId;
+
+    public Optional<Output<String>> credentialId() {
+        return Optional.ofNullable(this.credentialId);
+    }
+
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * 
+     */
+    @Import(name="managedIdentityId")
+    private @Nullable Output<String> managedIdentityId;
+
+    /**
+     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * 
+     */
+    public Optional<Output<String>> managedIdentityId() {
+        return Optional.ofNullable(this.managedIdentityId);
+    }
+
     private StorageCredentialAzureManagedIdentityArgs() {}
 
     private StorageCredentialAzureManagedIdentityArgs(StorageCredentialAzureManagedIdentityArgs $) {
         this.accessConnectorId = $.accessConnectorId;
+        this.credentialId = $.credentialId;
+        this.managedIdentityId = $.managedIdentityId;
     }
 
     public static Builder builder() {
@@ -57,9 +83,7 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
         }
 
         /**
-         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-         * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
          * 
          * @return builder
          * 
@@ -70,15 +94,47 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
         }
 
         /**
-         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-         * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * @param accessConnectorId The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
          * 
          * @return builder
          * 
          */
         public Builder accessConnectorId(String accessConnectorId) {
             return accessConnectorId(Output.of(accessConnectorId));
+        }
+
+        public Builder credentialId(@Nullable Output<String> credentialId) {
+            $.credentialId = credentialId;
+            return this;
+        }
+
+        public Builder credentialId(String credentialId) {
+            return credentialId(Output.of(credentialId));
+        }
+
+        /**
+         * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+         * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedIdentityId(@Nullable Output<String> managedIdentityId) {
+            $.managedIdentityId = managedIdentityId;
+            return this;
+        }
+
+        /**
+         * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+         * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedIdentityId(String managedIdentityId) {
+            return managedIdentityId(Output.of(managedIdentityId));
         }
 
         public StorageCredentialAzureManagedIdentityArgs build() {

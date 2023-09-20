@@ -16,14 +16,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     public static final VolumeState Empty = new VolumeState();
 
     /**
-     * Name of parent Catalog
+     * Name of parent Catalog. Change forces creation of a new resource.
      * 
      */
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
     /**
-     * @return Name of parent Catalog
+     * @return Name of parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> catalogName() {
@@ -76,14 +76,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog
+     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> schemaName() {
@@ -151,7 +151,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent Catalog
+         * @param catalogName Name of parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent Catalog
+         * @param catalogName Name of parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 

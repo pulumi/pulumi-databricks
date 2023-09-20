@@ -145,6 +145,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     * 
+     */
+    @Export(name="options", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> options;
+
+    /**
+     * @return For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> options() {
+        return Codegen.optional(this.options);
+    }
+    /**
      * Username/groupname/sp application_id of the catalog owner.
      * 
      */

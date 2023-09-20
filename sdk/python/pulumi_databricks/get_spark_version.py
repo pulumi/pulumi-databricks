@@ -74,6 +74,9 @@ class GetSparkVersionResult:
     @property
     @pulumi.getter
     def graviton(self) -> Optional[bool]:
+        warnings.warn("""Not required anymore - it's automatically enabled on the Graviton-based node types""", DeprecationWarning)
+        pulumi.log.warn("""graviton is deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types""")
+
         return pulumi.get(self, "graviton")
 
     @property
@@ -102,6 +105,9 @@ class GetSparkVersionResult:
     @property
     @pulumi.getter
     def photon(self) -> Optional[bool]:
+        warnings.warn("""Specify runtime_engine=\"PHOTON\" in the cluster configuration""", DeprecationWarning)
+        pulumi.log.warn("""photon is deprecated: Specify runtime_engine=\"PHOTON\" in the cluster configuration""")
+
         return pulumi.get(self, "photon")
 
     @property
@@ -188,11 +194,11 @@ def get_spark_version(beta: Optional[bool] = None,
     :param bool beta: if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
     :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
     :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
-    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
     :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
     :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.
-    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`.
+    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
     :param str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
     :param str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
@@ -279,11 +285,11 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[bool]]] = None
     :param bool beta: if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
     :param bool genomics: if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
     :param bool gpu: if we should limit the search only to runtimes that support GPUs. Default to `false`.
-    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+    :param bool graviton: if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
     :param bool latest: if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
     :param bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param bool ml: if we should limit the search only to ML runtimes. Default to `false`.
-    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`.
+    :param bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
     :param str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
     :param str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """

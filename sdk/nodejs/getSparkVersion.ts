@@ -83,7 +83,9 @@ export interface GetSparkVersionArgs {
      */
     gpu?: boolean;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     *
+     * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: boolean;
     /**
@@ -99,7 +101,9 @@ export interface GetSparkVersionArgs {
      */
     ml?: boolean;
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`.
+     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+     *
+     * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     photon?: boolean;
     /**
@@ -119,6 +123,9 @@ export interface GetSparkVersionResult {
     readonly beta?: boolean;
     readonly genomics?: boolean;
     readonly gpu?: boolean;
+    /**
+     * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
+     */
     readonly graviton?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -127,6 +134,9 @@ export interface GetSparkVersionResult {
     readonly latest?: boolean;
     readonly longTermSupport?: boolean;
     readonly ml?: boolean;
+    /**
+     * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
+     */
     readonly photon?: boolean;
     readonly scala?: string;
     readonly sparkVersion?: string;
@@ -196,7 +206,9 @@ export interface GetSparkVersionOutputArgs {
      */
     gpu?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     *
+     * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: pulumi.Input<boolean>;
     /**
@@ -212,7 +224,9 @@ export interface GetSparkVersionOutputArgs {
      */
     ml?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`.
+     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+     *
+     * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     photon?: pulumi.Input<boolean>;
     /**

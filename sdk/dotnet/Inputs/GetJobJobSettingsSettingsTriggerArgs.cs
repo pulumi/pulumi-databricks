@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("fileArrival", required: true)]
         public Input<Inputs.GetJobJobSettingsSettingsTriggerFileArrivalInputArgs> FileArrival { get; set; } = null!;
 
-        [Input("pauseStatus", required: true)]
-        public Input<string> PauseStatus { get; set; } = null!;
+        [Input("pauseStatus")]
+        public Input<string>? PauseStatus { get; set; }
 
         public GetJobJobSettingsSettingsTriggerInputArgs()
         {

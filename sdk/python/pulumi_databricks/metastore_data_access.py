@@ -288,7 +288,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        This resource can be imported by combination of metastore id and the data access name. bash
+
+        ```sh
+         $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -308,7 +312,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        This resource can be imported by combination of metastore id and the data access name. bash
+
+        ```sh
+         $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param MetastoreDataAccessArgs args: The arguments to use to populate this resource's properties.

@@ -234,6 +234,11 @@ namespace Pulumi.Databricks
     ///         DisplayName = "Data Science",
     ///     });
     /// 
+    ///     var marketplaceAdmins = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Marketplace Admins",
+    ///     });
+    /// 
     ///     var john = Databricks.GetUser.Invoke(new()
     ///     {
     ///         UserName = "john.doe@example.com",
@@ -255,9 +260,17 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Principals = new[]
     ///                 {
-    ///                     data.Databricks_user.Ds.Acl_principal_id,
+    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
     ///                 },
     ///                 Role = "roles/servicePrincipal.manager",
+    ///             },
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     marketplaceAdmins.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/marketplace.admin",
     ///             },
     ///         },
     ///     });

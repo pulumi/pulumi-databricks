@@ -128,10 +128,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
-//				Host:      pulumi.String("https://accounts.cloud.databricks.com"),
-//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				Username:  pulumi.Any(_var.Databricks_account_username),
-//				Password:  pulumi.Any(_var.Databricks_account_password),
+//				Host:         pulumi.String("https://accounts.cloud.databricks.com"),
+//				AccountId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				ClientId:     pulumi.Any(_var.Client_id),
+//				ClientSecret: pulumi.Any(_var.Client_secret),
 //			})
 //			if err != nil {
 //				return err

@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         public Output<string?> SharingCode { get; private set; } = null!;
 
         /// <summary>
-        /// List of Recipient Tokens.
+        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         [Output("tokens")]
         public Output<ImmutableArray<Outputs.RecipientToken>> Tokens { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.RecipientTokenArgs>? _tokens;
 
         /// <summary>
-        /// List of Recipient Tokens.
+        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         public InputList<Inputs.RecipientTokenArgs> Tokens
         {
@@ -269,7 +269,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.RecipientTokenGetArgs>? _tokens;
 
         /// <summary>
-        /// List of Recipient Tokens.
+        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         public InputList<Inputs.RecipientTokenGetArgs> Tokens
         {

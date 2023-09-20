@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by `full_name` which is the 3-level Volume identifier`&lt;catalog&gt;.&lt;schema&gt;.&lt;volume&gt;` bash
+    /// This resource can be imported by `full_name` which is the 3-level Volume identifier`&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;` bash
     /// 
     /// ```sh
     ///  $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
     public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of parent Catalog
+        /// Name of parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Databricks
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent Catalog
+        /// Name of parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.Databricks
     public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent Catalog
+        /// Name of parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }

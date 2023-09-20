@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsContinuousResult
     {
-        public readonly string PauseStatus;
+        public readonly string? PauseStatus;
 
         [OutputConstructor]
-        private GetJobJobSettingsSettingsContinuousResult(string pauseStatus)
+        private GetJobJobSettingsSettingsContinuousResult(string? pauseStatus)
         {
             PauseStatus = pauseStatus;
         }

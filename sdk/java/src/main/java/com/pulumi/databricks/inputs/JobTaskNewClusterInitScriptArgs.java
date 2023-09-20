@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptVolumesArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,9 +28,21 @@ public final class JobTaskNewClusterInitScriptArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.abfss);
     }
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     @Import(name="dbfs")
     private @Nullable Output<JobTaskNewClusterInitScriptDbfsArgs> dbfs;
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<Output<JobTaskNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -199,6 +212,13 @@ public final class JobTaskNewClusterInitScriptArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<JobTaskNewClusterInitScriptVolumesArgs> volumes;
+
+    public Optional<Output<JobTaskNewClusterInitScriptVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable Output<JobTaskNewClusterInitScriptWorkspaceArgs> workspace;
 
@@ -214,6 +234,7 @@ public final class JobTaskNewClusterInitScriptArgs extends com.pulumi.resources.
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -244,11 +265,27 @@ public final class JobTaskNewClusterInitScriptArgs extends com.pulumi.resources.
             return abfss(Output.of(abfss));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(@Nullable Output<JobTaskNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(JobTaskNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }
@@ -426,6 +463,15 @@ public final class JobTaskNewClusterInitScriptArgs extends com.pulumi.resources.
 
         public Builder s3(JobTaskNewClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<JobTaskNewClusterInitScriptVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(JobTaskNewClusterInitScriptVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public Builder workspace(@Nullable Output<JobTaskNewClusterInitScriptWorkspaceArgs> workspace) {

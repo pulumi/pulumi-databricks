@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptFileArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptS3Args;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptVolumesArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,6 +56,13 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<GetClusterClusterInfoInitScriptVolumesArgs> volumes;
+
+    public Optional<Output<GetClusterClusterInfoInitScriptVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable Output<GetClusterClusterInfoInitScriptWorkspaceArgs> workspace;
 
@@ -70,6 +78,7 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -134,6 +143,15 @@ public final class GetClusterClusterInfoInitScriptArgs extends com.pulumi.resour
 
         public Builder s3(GetClusterClusterInfoInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<GetClusterClusterInfoInitScriptVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(GetClusterClusterInfoInitScriptVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public Builder workspace(@Nullable Output<GetClusterClusterInfoInitScriptWorkspaceArgs> workspace) {

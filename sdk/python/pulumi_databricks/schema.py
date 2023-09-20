@@ -24,7 +24,7 @@ class SchemaArgs:
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Schema resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -52,7 +52,7 @@ class SchemaArgs:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -155,7 +155,7 @@ class _SchemaState:
                  storage_root: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -184,7 +184,7 @@ class _SchemaState:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -330,7 +330,7 @@ class Schema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -451,7 +451,7 @@ class Schema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
@@ -477,7 +477,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 

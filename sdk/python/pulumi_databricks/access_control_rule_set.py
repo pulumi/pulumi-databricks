@@ -234,6 +234,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         ds = databricks.get_group(display_name="Data Science")
+        marketplace_admins = databricks.get_group(display_name="Marketplace Admins")
         john = databricks.get_user(user_name="john.doe@example.com")
         account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
             databricks.AccessControlRuleSetGrantRuleArgs(
@@ -241,8 +242,12 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/group.manager",
             ),
             databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[data["databricks_user"]["ds"]["acl_principal_id"]],
+                principals=[ds.acl_principal_id],
                 role="roles/servicePrincipal.manager",
+            ),
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[marketplace_admins.acl_principal_id],
+                role="roles/marketplace.admin",
             ),
         ])
         ```
@@ -372,6 +377,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         ds = databricks.get_group(display_name="Data Science")
+        marketplace_admins = databricks.get_group(display_name="Marketplace Admins")
         john = databricks.get_user(user_name="john.doe@example.com")
         account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
             databricks.AccessControlRuleSetGrantRuleArgs(
@@ -379,8 +385,12 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/group.manager",
             ),
             databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[data["databricks_user"]["ds"]["acl_principal_id"]],
+                principals=[ds.acl_principal_id],
                 role="roles/servicePrincipal.manager",
+            ),
+            databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[marketplace_admins.acl_principal_id],
+                role="roles/marketplace.admin",
             ),
         ])
         ```

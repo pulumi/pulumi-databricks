@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitS
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,6 +56,13 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs extends
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs> volumes;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable Output<GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs> workspace;
 
@@ -70,6 +78,7 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs extends
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -134,6 +143,15 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs extends
 
         public Builder s3(GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public Builder workspace(@Nullable Output<GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs> workspace) {

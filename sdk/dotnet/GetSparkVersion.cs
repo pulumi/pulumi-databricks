@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
         public bool? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.Databricks
         public bool? Ml { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Photon runtimes. Default to `false`.
+        /// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
         /// </summary>
         [Input("photon")]
         public bool? Photon { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Ml { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Photon runtimes. Default to `false`.
+        /// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }

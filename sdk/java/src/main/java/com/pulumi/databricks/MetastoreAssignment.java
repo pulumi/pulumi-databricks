@@ -58,6 +58,14 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * This resource can be imported by combination of workspace id and metastore idbash
+ * 
+ * ```sh
+ *  $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#39;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="databricks:index/metastoreAssignment:MetastoreAssignment")
 public class MetastoreAssignment extends com.pulumi.resources.CustomResource {

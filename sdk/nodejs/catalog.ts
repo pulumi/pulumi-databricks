@@ -85,6 +85,10 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     */
+    public readonly options!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
     public readonly owner!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["providerName"] = state ? state.providerName : undefined;
@@ -137,6 +142,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["providerName"] = args ? args.providerName : undefined;
@@ -173,6 +179,10 @@ export interface CatalogState {
      * Name of Catalog relative to parent metastore.
      */
     name?: pulumi.Input<string>;
+    /**
+     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     */
+    options?: pulumi.Input<{[key: string]: any}>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
@@ -220,6 +230,10 @@ export interface CatalogArgs {
      * Name of Catalog relative to parent metastore.
      */
     name?: pulumi.Input<string>;
+    /**
+     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     */
+    options?: pulumi.Input<{[key: string]: any}>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */

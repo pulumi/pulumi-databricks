@@ -555,6 +555,7 @@ class User(pulumi.CustomResource):
         ```
 
         Creating user in AWS Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -563,8 +564,8 @@ class User(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         account_user = databricks.User("accountUser",
             user_name="me@example.com",
             display_name="Example user",
@@ -572,6 +573,7 @@ class User(pulumi.CustomResource):
         ```
 
         Creating user in Azure Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -672,6 +674,7 @@ class User(pulumi.CustomResource):
         ```
 
         Creating user in AWS Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -680,8 +683,8 @@ class User(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         account_user = databricks.User("accountUser",
             user_name="me@example.com",
             display_name="Example user",
@@ -689,6 +692,7 @@ class User(pulumi.CustomResource):
         ```
 
         Creating user in Azure Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks

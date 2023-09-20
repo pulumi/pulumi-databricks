@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsContinuousArgs : global::Pulumi.InvokeArgs
     {
-        [Input("pauseStatus", required: true)]
-        public string PauseStatus { get; set; } = null!;
+        [Input("pauseStatus")]
+        public string? PauseStatus { get; set; }
 
         public GetJobJobSettingsSettingsContinuousArgs()
         {

@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsContinuousArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsContinuousArgs Empty = new GetJobJobSettingsSettingsContinuousArgs();
 
-    @Import(name="pauseStatus", required=true)
-    private Output<String> pauseStatus;
+    @Import(name="pauseStatus")
+    private @Nullable Output<String> pauseStatus;
 
-    public Output<String> pauseStatus() {
-        return this.pauseStatus;
+    public Optional<Output<String>> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     private GetJobJobSettingsSettingsContinuousArgs() {}
@@ -44,7 +46,7 @@ public final class GetJobJobSettingsSettingsContinuousArgs extends com.pulumi.re
             $ = new GetJobJobSettingsSettingsContinuousArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder pauseStatus(Output<String> pauseStatus) {
+        public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
@@ -54,7 +56,6 @@ public final class GetJobJobSettingsSettingsContinuousArgs extends com.pulumi.re
         }
 
         public GetJobJobSettingsSettingsContinuousArgs build() {
-            $.pauseStatus = Objects.requireNonNull($.pauseStatus, "expected parameter 'pauseStatus' to be non-null");
             return $;
         }
     }

@@ -292,6 +292,10 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Data Science&#34;)
  *             .build());
  * 
+ *         final var marketplaceAdmins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName(&#34;Marketplace Admins&#34;)
+ *             .build());
+ * 
  *         final var john = DatabricksFunctions.getUser(GetUserArgs.builder()
  *             .userName(&#34;john.doe@example.com&#34;)
  *             .build());
@@ -303,8 +307,12 @@ import javax.annotation.Nullable;
  *                     .role(&#34;roles/group.manager&#34;)
  *                     .build(),
  *                 AccessControlRuleSetGrantRuleArgs.builder()
- *                     .principals(data.databricks_user().ds().acl_principal_id())
+ *                     .principals(ds.applyValue(getGroupResult -&gt; getGroupResult.aclPrincipalId()))
  *                     .role(&#34;roles/servicePrincipal.manager&#34;)
+ *                     .build(),
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(marketplaceAdmins.applyValue(getGroupResult -&gt; getGroupResult.aclPrincipalId()))
+ *                     .role(&#34;roles/marketplace.admin&#34;)
  *                     .build())
  *             .build());
  * 

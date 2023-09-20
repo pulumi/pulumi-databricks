@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by namebash
+ * This resource can be imported by `name`bash
  *
  * ```sh
  *  $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>

@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewCluste
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,6 +55,13 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript exten
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes volumes;
+
+    public Optional<GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace workspace;
 
@@ -69,6 +77,7 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript exten
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -112,6 +121,11 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript exten
 
         public Builder s3(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 s3) {
             $.s3 = s3;
+            return this;
+        }
+
+        public Builder volumes(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes volumes) {
+            $.volumes = volumes;
             return this;
         }
 

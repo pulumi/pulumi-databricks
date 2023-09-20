@@ -25,7 +25,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * This resource can be imported by combination of metastore id and the data access name. bash
+ * 
+ * ```sh
+ *  $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/metastoreDataAccess:MetastoreDataAccess")

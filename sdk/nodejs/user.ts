@@ -52,6 +52,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * Creating user in AWS Databricks account:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -60,8 +61,8 @@ import * as utilities from "./utilities";
  * const mws = new databricks.Provider("mws", {
  *     host: "https://accounts.cloud.databricks.com",
  *     accountId: "00000000-0000-0000-0000-000000000000",
- *     username: _var.databricks_account_username,
- *     password: _var.databricks_account_password,
+ *     clientId: _var.client_id,
+ *     clientSecret: _var.client_secret,
  * });
  * const accountUser = new databricks.User("accountUser", {
  *     userName: "me@example.com",
@@ -72,6 +73,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * Creating user in Azure Databricks account:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";

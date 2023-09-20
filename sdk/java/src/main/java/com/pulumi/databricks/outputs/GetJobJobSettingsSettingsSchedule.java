@@ -6,16 +6,18 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsSchedule {
-    private String pauseStatus;
+    private @Nullable String pauseStatus;
     private String quartzCronExpression;
     private String timezoneId;
 
     private GetJobJobSettingsSettingsSchedule() {}
-    public String pauseStatus() {
-        return this.pauseStatus;
+    public Optional<String> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
     public String quartzCronExpression() {
         return this.quartzCronExpression;
@@ -33,7 +35,7 @@ public final class GetJobJobSettingsSettingsSchedule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String pauseStatus;
+        private @Nullable String pauseStatus;
         private String quartzCronExpression;
         private String timezoneId;
         public Builder() {}
@@ -45,8 +47,8 @@ public final class GetJobJobSettingsSettingsSchedule {
         }
 
         @CustomType.Setter
-        public Builder pauseStatus(String pauseStatus) {
-            this.pauseStatus = Objects.requireNonNull(pauseStatus);
+        public Builder pauseStatus(@Nullable String pauseStatus) {
+            this.pauseStatus = pauseStatus;
             return this;
         }
         @CustomType.Setter

@@ -7,18 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTriggerFileArrival;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTrigger {
     private GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
-    private String pauseStatus;
+    private @Nullable String pauseStatus;
 
     private GetJobJobSettingsSettingsTrigger() {}
     public GetJobJobSettingsSettingsTriggerFileArrival fileArrival() {
         return this.fileArrival;
     }
-    public String pauseStatus() {
-        return this.pauseStatus;
+    public Optional<String> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     public static Builder builder() {
@@ -31,7 +33,7 @@ public final class GetJobJobSettingsSettingsTrigger {
     @CustomType.Builder
     public static final class Builder {
         private GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
-        private String pauseStatus;
+        private @Nullable String pauseStatus;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTrigger defaults) {
     	      Objects.requireNonNull(defaults);
@@ -45,8 +47,8 @@ public final class GetJobJobSettingsSettingsTrigger {
             return this;
         }
         @CustomType.Setter
-        public Builder pauseStatus(String pauseStatus) {
-            this.pauseStatus = Objects.requireNonNull(pauseStatus);
+        public Builder pauseStatus(@Nullable String pauseStatus) {
+            this.pauseStatus = pauseStatus;
             return this;
         }
         public GetJobJobSettingsSettingsTrigger build() {

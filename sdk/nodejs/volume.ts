@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<volume>` bash
+ * This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
  *
  * ```sh
  *  $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
@@ -100,7 +100,7 @@ export class Volume extends pulumi.CustomResource {
     }
 
     /**
-     * Name of parent Catalog
+     * Name of parent Catalog. Change forces creation of a new resource.
      */
     public readonly catalogName!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
     public readonly schemaName!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export class Volume extends pulumi.CustomResource {
  */
 export interface VolumeState {
     /**
-     * Name of parent Catalog
+     * Name of parent Catalog. Change forces creation of a new resource.
      */
     catalogName?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface VolumeState {
      */
     owner?: pulumi.Input<string>;
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
     schemaName?: pulumi.Input<string>;
     /**
@@ -211,7 +211,7 @@ export interface VolumeState {
  */
 export interface VolumeArgs {
     /**
-     * Name of parent Catalog
+     * Name of parent Catalog. Change forces creation of a new resource.
      */
     catalogName: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface VolumeArgs {
      */
     owner?: pulumi.Input<string>;
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
     schemaName: pulumi.Input<string>;
     /**

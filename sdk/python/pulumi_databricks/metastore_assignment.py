@@ -149,6 +149,14 @@ class MetastoreAssignment(pulumi.CustomResource):
             workspace_id=local["workspace_id"])
         ```
 
+        ## Import
+
+        This resource can be imported by combination of workspace id and metastore idbash
+
+        ```sh
+         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
@@ -178,6 +186,14 @@ class MetastoreAssignment(pulumi.CustomResource):
         this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
             metastore_id=this_metastore.id,
             workspace_id=local["workspace_id"])
+        ```
+
+        ## Import
+
+        This resource can be imported by combination of workspace id and metastore idbash
+
+        ```sh
+         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
         ```
 
         :param str resource_name: The name of the resource.

@@ -14,7 +14,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// This resource can be imported by combination of metastore id and the data access name. bash
+    /// 
+    /// ```sh
+    ///  $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '&lt;metastore_id&gt;|&lt;name&gt;'
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastoreDataAccess:MetastoreDataAccess")]
     public partial class MetastoreDataAccess : global::Pulumi.CustomResource

@@ -101,6 +101,21 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     * 
+     */
+    @Import(name="options")
+    private @Nullable Output<Map<String,Object>> options;
+
+    /**
+     * @return For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> options() {
+        return Optional.ofNullable(this.options);
+    }
+
+    /**
      * Username/groupname/sp application_id of the catalog owner.
      * 
      */
@@ -184,6 +199,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
+        this.options = $.options;
         this.owner = $.owner;
         this.properties = $.properties;
         this.providerName = $.providerName;
@@ -321,6 +337,27 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param options For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(@Nullable Output<Map<String,Object>> options) {
+            $.options = options;
+            return this;
+        }
+
+        /**
+         * @param options For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(Map<String,Object> options) {
+            return options(Output.of(options));
         }
 
         /**

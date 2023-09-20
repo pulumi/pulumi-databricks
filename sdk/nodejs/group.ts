@@ -49,6 +49,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * Creating group in AWS Databricks account:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -57,8 +58,8 @@ import * as utilities from "./utilities";
  * const mws = new databricks.Provider("mws", {
  *     host: "https://accounts.cloud.databricks.com",
  *     accountId: "00000000-0000-0000-0000-000000000000",
- *     username: _var.databricks_account_username,
- *     password: _var.databricks_account_password,
+ *     clientId: _var.client_id,
+ *     clientSecret: _var.client_secret,
  * });
  * const _this = new databricks.Group("this", {}, {
  *     provider: databricks.mws,
@@ -66,6 +67,7 @@ import * as utilities from "./utilities";
  * ```
  *
  * Creating group in Azure Databricks account:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";

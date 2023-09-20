@@ -12,24 +12,45 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class RecipientTokenArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+        /// </summary>
         [Input("activationUrl")]
         public Input<string>? ActivationUrl { get; set; }
 
+        /// <summary>
+        /// Time at which this recipient Token was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of recipient token creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Expiration timestamp of the token in epoch milliseconds.
+        /// </summary>
         [Input("expirationTime")]
         public Input<int>? ExpirationTime { get; set; }
 
+        /// <summary>
+        /// ID of this recipient - same as the `name`.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Time at which this recipient Token was updated, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of recipient Token updater.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

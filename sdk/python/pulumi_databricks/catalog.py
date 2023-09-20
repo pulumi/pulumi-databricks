@@ -20,6 +20,7 @@ class CatalogArgs:
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class CatalogArgs:
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
+        :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -50,6 +52,8 @@ class CatalogArgs:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
@@ -129,6 +133,18 @@ class CatalogArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
@@ -200,6 +216,7 @@ class _CatalogState:
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
@@ -212,6 +229,7 @@ class _CatalogState:
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
+        :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -230,6 +248,8 @@ class _CatalogState:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
         if properties is not None:
@@ -309,6 +329,18 @@ class _CatalogState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "options", value)
 
     @property
     @pulumi.getter
@@ -382,6 +414,7 @@ class Catalog(pulumi.CustomResource):
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
@@ -425,6 +458,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
+        :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -488,6 +522,7 @@ class Catalog(pulumi.CustomResource):
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
@@ -508,6 +543,7 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["options"] = options
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
             __props__.__dict__["provider_name"] = provider_name
@@ -529,6 +565,7 @@ class Catalog(pulumi.CustomResource):
             isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             provider_name: Optional[pulumi.Input[str]] = None,
@@ -546,6 +583,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
+        :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Catalog properties.
         :param pulumi.Input[str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
@@ -562,6 +600,7 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["options"] = options
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
         __props__.__dict__["provider_name"] = provider_name
@@ -613,6 +652,14 @@ class Catalog(pulumi.CustomResource):
         Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        """
+        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter

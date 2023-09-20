@@ -86,6 +86,7 @@ namespace Pulumi.Databricks
     /// ```
     /// 
     /// Creating user in AWS Databricks account:
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,8 +100,8 @@ namespace Pulumi.Databricks
     ///     {
     ///         Host = "https://accounts.cloud.databricks.com",
     ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         Username = @var.Databricks_account_username,
-    ///         Password = @var.Databricks_account_password,
+    ///         ClientId = @var.Client_id,
+    ///         ClientSecret = @var.Client_secret,
     ///     });
     /// 
     ///     var accountUser = new Databricks.User("accountUser", new()
@@ -116,6 +117,7 @@ namespace Pulumi.Databricks
     /// ```
     /// 
     /// Creating user in Azure Databricks account:
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

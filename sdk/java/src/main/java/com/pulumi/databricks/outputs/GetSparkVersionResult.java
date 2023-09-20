@@ -15,6 +15,12 @@ public final class GetSparkVersionResult {
     private @Nullable Boolean beta;
     private @Nullable Boolean genomics;
     private @Nullable Boolean gpu;
+    /**
+     * @deprecated
+     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
+     * 
+     */
+    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
     private @Nullable Boolean graviton;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +30,12 @@ public final class GetSparkVersionResult {
     private @Nullable Boolean latest;
     private @Nullable Boolean longTermSupport;
     private @Nullable Boolean ml;
+    /**
+     * @deprecated
+     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
+     * 
+     */
+    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     private @Nullable Boolean photon;
     private @Nullable String scala;
     private @Nullable String sparkVersion;
@@ -38,6 +50,12 @@ public final class GetSparkVersionResult {
     public Optional<Boolean> gpu() {
         return Optional.ofNullable(this.gpu);
     }
+    /**
+     * @deprecated
+     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
+     * 
+     */
+    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -57,6 +75,12 @@ public final class GetSparkVersionResult {
     public Optional<Boolean> ml() {
         return Optional.ofNullable(this.ml);
     }
+    /**
+     * @deprecated
+     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
+     * 
+     */
+    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     public Optional<Boolean> photon() {
         return Optional.ofNullable(this.photon);
     }

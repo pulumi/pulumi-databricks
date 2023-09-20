@@ -13,12 +13,21 @@ namespace Pulumi.Databricks.Inputs
     public sealed class StorageCredentialAzureManagedIdentityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-        /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        /// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
         /// </summary>
         [Input("accessConnectorId", required: true)]
         public Input<string> AccessConnectorId { get; set; } = null!;
+
+        [Input("credentialId")]
+        public Input<string>? CredentialId { get; set; }
+
+        /// <summary>
+        /// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        /// </summary>
+        [Input("managedIdentityId")]
+        public Input<string>? ManagedIdentityId { get; set; }
 
         public StorageCredentialAzureManagedIdentityGetArgs()
         {

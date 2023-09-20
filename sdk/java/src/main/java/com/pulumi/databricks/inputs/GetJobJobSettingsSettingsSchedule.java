@@ -6,17 +6,19 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsSchedule extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsSchedule Empty = new GetJobJobSettingsSettingsSchedule();
 
-    @Import(name="pauseStatus", required=true)
-    private String pauseStatus;
+    @Import(name="pauseStatus")
+    private @Nullable String pauseStatus;
 
-    public String pauseStatus() {
-        return this.pauseStatus;
+    public Optional<String> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     @Import(name="quartzCronExpression", required=true)
@@ -59,7 +61,7 @@ public final class GetJobJobSettingsSettingsSchedule extends com.pulumi.resource
             $ = new GetJobJobSettingsSettingsSchedule(Objects.requireNonNull(defaults));
         }
 
-        public Builder pauseStatus(String pauseStatus) {
+        public Builder pauseStatus(@Nullable String pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
@@ -75,7 +77,6 @@ public final class GetJobJobSettingsSettingsSchedule extends com.pulumi.resource
         }
 
         public GetJobJobSettingsSettingsSchedule build() {
-            $.pauseStatus = Objects.requireNonNull($.pauseStatus, "expected parameter 'pauseStatus' to be non-null");
             $.quartzCronExpression = Objects.requireNonNull($.quartzCronExpression, "expected parameter 'quartzCronExpression' to be non-null");
             $.timezoneId = Objects.requireNonNull($.timezoneId, "expected parameter 'timezoneId' to be non-null");
             return $;

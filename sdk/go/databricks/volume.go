@@ -104,7 +104,7 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<volume>` bash
+// This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
 //
 // ```sh
 //
@@ -114,7 +114,7 @@ import (
 type Volume struct {
 	pulumi.CustomResourceState
 
-	// Name of parent Catalog
+	// Name of parent Catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// Free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -122,7 +122,7 @@ type Volume struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the volume owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Name of parent Schema relative to parent Catalog
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
@@ -169,7 +169,7 @@ func GetVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Volume resources.
 type volumeState struct {
-	// Name of parent Catalog
+	// Name of parent Catalog. Change forces creation of a new resource.
 	CatalogName *string `pulumi:"catalogName"`
 	// Free-form text.
 	Comment *string `pulumi:"comment"`
@@ -177,7 +177,7 @@ type volumeState struct {
 	Name *string `pulumi:"name"`
 	// Name of the volume owner.
 	Owner *string `pulumi:"owner"`
-	// Name of parent Schema relative to parent Catalog
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes.
 	StorageLocation *string `pulumi:"storageLocation"`
@@ -186,7 +186,7 @@ type volumeState struct {
 }
 
 type VolumeState struct {
-	// Name of parent Catalog
+	// Name of parent Catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringPtrInput
 	// Free-form text.
 	Comment pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type VolumeState struct {
 	Name pulumi.StringPtrInput
 	// Name of the volume owner.
 	Owner pulumi.StringPtrInput
-	// Name of parent Schema relative to parent Catalog
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringPtrInput
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes.
 	StorageLocation pulumi.StringPtrInput
@@ -207,7 +207,7 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
-	// Name of parent Catalog
+	// Name of parent Catalog. Change forces creation of a new resource.
 	CatalogName string `pulumi:"catalogName"`
 	// Free-form text.
 	Comment *string `pulumi:"comment"`
@@ -215,7 +215,7 @@ type volumeArgs struct {
 	Name *string `pulumi:"name"`
 	// Name of the volume owner.
 	Owner *string `pulumi:"owner"`
-	// Name of parent Schema relative to parent Catalog
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes.
 	StorageLocation *string `pulumi:"storageLocation"`
@@ -225,7 +225,7 @@ type volumeArgs struct {
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
-	// Name of parent Catalog
+	// Name of parent Catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringInput
 	// Free-form text.
 	Comment pulumi.StringPtrInput
@@ -233,7 +233,7 @@ type VolumeArgs struct {
 	Name pulumi.StringPtrInput
 	// Name of the volume owner.
 	Owner pulumi.StringPtrInput
-	// Name of parent Schema relative to parent Catalog
+	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringInput
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes.
 	StorageLocation pulumi.StringPtrInput
@@ -352,7 +352,7 @@ func (o VolumeOutput) ToOutput(ctx context.Context) pulumix.Output[*Volume] {
 	}
 }
 
-// Name of parent Catalog
+// Name of parent Catalog. Change forces creation of a new resource.
 func (o VolumeOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
@@ -372,7 +372,7 @@ func (o VolumeOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Name of parent Schema relative to parent Catalog
+// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 func (o VolumeOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }

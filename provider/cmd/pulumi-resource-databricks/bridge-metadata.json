@@ -93,6 +93,9 @@
                                 "s3": {
                                     "maxItemsOne": true
                                 },
+                                "volumes": {
+                                    "maxItemsOne": true
+                                },
                                 "workspace": {
                                     "maxItemsOne": true
                                 }
@@ -418,6 +421,9 @@
                                                         "s3": {
                                                             "maxItemsOne": true
                                                         },
+                                                        "volumes": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "workspace": {
                                                             "maxItemsOne": true
                                                         }
@@ -532,6 +538,9 @@
                                                 "maxItemsOne": true
                                             },
                                             "s3": {
+                                                "maxItemsOne": true
+                                            },
+                                            "volumes": {
                                                 "maxItemsOne": true
                                             },
                                             "workspace": {
@@ -758,6 +767,9 @@
                                                             "maxItemsOne": true
                                                         },
                                                         "s3": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "volumes": {
                                                             "maxItemsOne": true
                                                         },
                                                         "workspace": {
@@ -1221,6 +1233,9 @@
                                                 "maxItemsOne": true
                                             },
                                             "s3": {
+                                                "maxItemsOne": true
+                                            },
+                                            "volumes": {
                                                 "maxItemsOne": true
                                             },
                                             "workspace": {
@@ -1750,6 +1765,9 @@
                                             "s3": {
                                                 "maxItemsOne": true
                                             },
+                                            "volumes": {
+                                                "maxItemsOne": true
+                                            },
                                             "workspace": {
                                                 "maxItemsOne": true
                                             }
@@ -2035,6 +2053,9 @@
                                                                                 "s3": {
                                                                                     "maxItemsOne": true
                                                                                 },
+                                                                                "volumes": {
+                                                                                    "maxItemsOne": true
+                                                                                },
                                                                                 "workspace": {
                                                                                     "maxItemsOne": true
                                                                                 }
@@ -2149,6 +2170,9 @@
                                                                         "maxItemsOne": true
                                                                     },
                                                                     "s3": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "volumes": {
                                                                         "maxItemsOne": true
                                                                     },
                                                                     "workspace": {
@@ -2375,6 +2399,9 @@
                                                                                     "maxItemsOne": true
                                                                                 },
                                                                                 "s3": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "volumes": {
                                                                                     "maxItemsOne": true
                                                                                 },
                                                                                 "workspace": {
@@ -3322,7 +3349,9 @@
                 "roleArn": "role_arn"
             },
             "databricks:index/MetastoreDataAccessAzureManagedIdentity:MetastoreDataAccessAzureManagedIdentity": {
-                "accessConnectorId": "access_connector_id"
+                "accessConnectorId": "access_connector_id",
+                "credentialId": "credential_id",
+                "managedIdentityId": "managed_identity_id"
             },
             "databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal": {
                 "applicationId": "application_id",
@@ -3583,7 +3612,9 @@
                 "roleArn": "role_arn"
             },
             "databricks:index/StorageCredentialAzureManagedIdentity:StorageCredentialAzureManagedIdentity": {
-                "accessConnectorId": "access_connector_id"
+                "accessConnectorId": "access_connector_id",
+                "credentialId": "credential_id",
+                "managedIdentityId": "managed_identity_id"
             },
             "databricks:index/StorageCredentialAzureServicePrincipal:StorageCredentialAzureServicePrincipal": {
                 "applicationId": "application_id",

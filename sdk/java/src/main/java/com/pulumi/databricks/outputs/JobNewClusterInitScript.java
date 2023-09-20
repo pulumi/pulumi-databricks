@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.JobNewClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptS3;
+import com.pulumi.databricks.outputs.JobNewClusterInitScriptVolumes;
 import com.pulumi.databricks.outputs.JobNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobNewClusterInitScript {
     private @Nullable JobNewClusterInitScriptAbfss abfss;
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable JobNewClusterInitScriptDbfs dbfs;
     /**
      * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
@@ -93,12 +100,19 @@ public final class JobNewClusterInitScript {
     private @Nullable JobNewClusterInitScriptFile file;
     private @Nullable JobNewClusterInitScriptGcs gcs;
     private @Nullable JobNewClusterInitScriptS3 s3;
+    private @Nullable JobNewClusterInitScriptVolumes volumes;
     private @Nullable JobNewClusterInitScriptWorkspace workspace;
 
     private JobNewClusterInitScript() {}
     public Optional<JobNewClusterInitScriptAbfss> abfss() {
         return Optional.ofNullable(this.abfss);
     }
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<JobNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -183,6 +197,9 @@ public final class JobNewClusterInitScript {
     public Optional<JobNewClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<JobNewClusterInitScriptVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
     public Optional<JobNewClusterInitScriptWorkspace> workspace() {
         return Optional.ofNullable(this.workspace);
     }
@@ -201,6 +218,7 @@ public final class JobNewClusterInitScript {
         private @Nullable JobNewClusterInitScriptFile file;
         private @Nullable JobNewClusterInitScriptGcs gcs;
         private @Nullable JobNewClusterInitScriptS3 s3;
+        private @Nullable JobNewClusterInitScriptVolumes volumes;
         private @Nullable JobNewClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(JobNewClusterInitScript defaults) {
@@ -210,6 +228,7 @@ public final class JobNewClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
     	      this.workspace = defaults.workspace;
         }
 
@@ -239,6 +258,11 @@ public final class JobNewClusterInitScript {
             return this;
         }
         @CustomType.Setter
+        public Builder volumes(@Nullable JobNewClusterInitScriptVolumes volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspace(@Nullable JobNewClusterInitScriptWorkspace workspace) {
             this.workspace = workspace;
             return this;
@@ -250,6 +274,7 @@ public final class JobNewClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.volumes = volumes;
             o.workspace = workspace;
             return o;
         }

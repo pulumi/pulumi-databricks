@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineClusterInitScriptFile? File;
         public readonly Outputs.PipelineClusterInitScriptGcs? Gcs;
         public readonly Outputs.PipelineClusterInitScriptS3? S3;
+        public readonly Outputs.PipelineClusterInitScriptVolumes? Volumes;
         public readonly Outputs.PipelineClusterInitScriptWorkspace? Workspace;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineClusterInitScriptS3? s3,
 
+            Outputs.PipelineClusterInitScriptVolumes? volumes,
+
             Outputs.PipelineClusterInitScriptWorkspace? workspace)
         {
             Abfss = abfss;
@@ -39,6 +42,7 @@ namespace Pulumi.Databricks.Outputs
             File = file;
             Gcs = gcs;
             S3 = s3;
+            Volumes = volumes;
             Workspace = workspace;
         }
     }
