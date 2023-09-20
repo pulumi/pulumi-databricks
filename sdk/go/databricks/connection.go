@@ -58,11 +58,11 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by `name` bash
+// # This resource can be imported by `id`bash
 //
 // ```sh
 //
-//	$ pulumi import databricks:index/connection:Connection this <connection_name>
+//	$ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
 //
 // ```
 type Connection struct {

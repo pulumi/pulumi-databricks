@@ -93,7 +93,9 @@ type GetSparkVersionArgs struct {
 	Genomics *bool `pulumi:"genomics"`
 	// if we should limit the search only to runtimes that support GPUs. Default to `false`.
 	Gpu *bool `pulumi:"gpu"`
-	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+	//
+	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton *bool `pulumi:"graviton"`
 	// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
 	Latest *bool `pulumi:"latest"`
@@ -101,7 +103,9 @@ type GetSparkVersionArgs struct {
 	LongTermSupport *bool `pulumi:"longTermSupport"`
 	// if we should limit the search only to ML runtimes. Default to `false`.
 	Ml *bool `pulumi:"ml"`
-	// if we should limit the search only to Photon runtimes. Default to `false`.
+	// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+	//
+	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 	Photon *bool `pulumi:"photon"`
 	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
 	Scala *string `pulumi:"scala"`
@@ -114,15 +118,17 @@ type GetSparkVersionResult struct {
 	Beta     *bool `pulumi:"beta"`
 	Genomics *bool `pulumi:"genomics"`
 	Gpu      *bool `pulumi:"gpu"`
+	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton *bool `pulumi:"graviton"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string  `pulumi:"id"`
-	Latest          *bool   `pulumi:"latest"`
-	LongTermSupport *bool   `pulumi:"longTermSupport"`
-	Ml              *bool   `pulumi:"ml"`
-	Photon          *bool   `pulumi:"photon"`
-	Scala           *string `pulumi:"scala"`
-	SparkVersion    *string `pulumi:"sparkVersion"`
+	Id              string `pulumi:"id"`
+	Latest          *bool  `pulumi:"latest"`
+	LongTermSupport *bool  `pulumi:"longTermSupport"`
+	Ml              *bool  `pulumi:"ml"`
+	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
+	Photon       *bool   `pulumi:"photon"`
+	Scala        *string `pulumi:"scala"`
+	SparkVersion *string `pulumi:"sparkVersion"`
 }
 
 func GetSparkVersionOutput(ctx *pulumi.Context, args GetSparkVersionOutputArgs, opts ...pulumi.InvokeOption) GetSparkVersionResultOutput {
@@ -146,7 +152,9 @@ type GetSparkVersionOutputArgs struct {
 	Genomics pulumi.BoolPtrInput `pulumi:"genomics"`
 	// if we should limit the search only to runtimes that support GPUs. Default to `false`.
 	Gpu pulumi.BoolPtrInput `pulumi:"gpu"`
-	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+	// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+	//
+	// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
 	// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
@@ -154,7 +162,9 @@ type GetSparkVersionOutputArgs struct {
 	LongTermSupport pulumi.BoolPtrInput `pulumi:"longTermSupport"`
 	// if we should limit the search only to ML runtimes. Default to `false`.
 	Ml pulumi.BoolPtrInput `pulumi:"ml"`
-	// if we should limit the search only to Photon runtimes. Default to `false`.
+	// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+	//
+	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 	Photon pulumi.BoolPtrInput `pulumi:"photon"`
 	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
 	Scala pulumi.StringPtrInput `pulumi:"scala"`
@@ -199,6 +209,7 @@ func (o GetSparkVersionResultOutput) Gpu() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Not required anymore - it's automatically enabled on the Graviton-based node types
 func (o GetSparkVersionResultOutput) Graviton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Graviton }).(pulumi.BoolPtrOutput)
 }
@@ -220,6 +231,7 @@ func (o GetSparkVersionResultOutput) Ml() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Ml }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 func (o GetSparkVersionResultOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Photon }).(pulumi.BoolPtrOutput)
 }

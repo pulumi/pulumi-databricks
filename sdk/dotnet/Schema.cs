@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
     public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Databricks
     public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Databricks
     public sealed class SchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }

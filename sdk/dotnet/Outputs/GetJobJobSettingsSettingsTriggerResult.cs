@@ -14,13 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTriggerResult
     {
         public readonly Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult FileArrival;
-        public readonly string PauseStatus;
+        public readonly string? PauseStatus;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTriggerResult(
             Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult fileArrival,
 
-            string pauseStatus)
+            string? pauseStatus)
         {
             FileArrival = fileArrival;
             PauseStatus = pauseStatus;

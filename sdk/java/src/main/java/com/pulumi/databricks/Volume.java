@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by `full_name` which is the 3-level Volume identifier`&lt;catalog&gt;.&lt;schema&gt;.&lt;volume&gt;` bash
+ * This resource can be imported by `full_name` which is the 3-level Volume identifier`&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;` bash
  * 
  * ```sh
  *  $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
@@ -115,14 +115,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {
     /**
-     * Name of parent Catalog
+     * Name of parent Catalog. Change forces creation of a new resource.
      * 
      */
     @Export(name="catalogName", type=String.class, parameters={})
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent Catalog
+     * @return Name of parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> catalogName() {
@@ -171,14 +171,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     @Export(name="schemaName", type=String.class, parameters={})
     private Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog
+     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> schemaName() {

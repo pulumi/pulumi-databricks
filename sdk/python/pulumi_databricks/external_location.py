@@ -429,7 +429,7 @@ class ExternalLocation(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by `name`bash
 
         ```sh
          $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
@@ -463,7 +463,7 @@ class ExternalLocation(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by `name`bash
 
         ```sh
          $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>

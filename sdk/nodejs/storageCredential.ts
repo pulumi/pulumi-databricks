@@ -115,6 +115,9 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
+    /**
+     * Unique identifier of the parent Metastore
+     */
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -185,6 +188,9 @@ export interface StorageCredentialState {
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
+    /**
+     * Unique identifier of the parent Metastore
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
@@ -213,6 +219,9 @@ export interface StorageCredentialArgs {
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
+    /**
+     * Unique identifier of the parent Metastore
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.

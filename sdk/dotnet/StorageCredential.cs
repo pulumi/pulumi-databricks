@@ -159,6 +159,9 @@ namespace Pulumi.Databricks
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -249,6 +252,9 @@ namespace Pulumi.Databricks
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -301,6 +307,9 @@ namespace Pulumi.Databricks
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the parent Metastore
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 

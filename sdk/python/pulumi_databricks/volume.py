@@ -23,8 +23,8 @@ class VolumeArgs:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Volume resource.
-        :param pulumi.Input[str] catalog_name: Name of parent Catalog
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Volume
@@ -47,7 +47,7 @@ class VolumeArgs:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
         """
-        Name of parent Catalog
+        Name of parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -59,7 +59,7 @@ class VolumeArgs:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -140,11 +140,11 @@ class _VolumeState:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
-        :param pulumi.Input[str] catalog_name: Name of parent Catalog
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
         """
@@ -167,7 +167,7 @@ class _VolumeState:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent Catalog
+        Name of parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -215,7 +215,7 @@ class _VolumeState:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -318,7 +318,7 @@ class Volume(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<volume>` bash
+        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
 
         ```sh
          $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
@@ -326,11 +326,11 @@ class Volume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent Catalog
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
         """
@@ -397,7 +397,7 @@ class Volume(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<volume>` bash
+        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
 
         ```sh
          $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
@@ -471,11 +471,11 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent Catalog
+        :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
         """
@@ -496,7 +496,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
         """
-        Name of parent Catalog
+        Name of parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -528,7 +528,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 

@@ -61,16 +61,24 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * 
+     * @deprecated
+     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
      */
+    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
     @Import(name="graviton")
     private @Nullable Boolean graviton;
 
     /**
-     * @return if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+     * @return if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * 
+     * @deprecated
+     * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
      * 
      */
+    @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -121,16 +129,24 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`.
+     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * 
+     * @deprecated
+     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
      */
+    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     @Import(name="photon")
     private @Nullable Boolean photon;
 
     /**
-     * @return if we should limit the search only to Photon runtimes. Default to `false`.
+     * @return if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * 
+     * @deprecated
+     * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
      * 
      */
+    @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     public Optional<Boolean> photon() {
         return Optional.ofNullable(this.photon);
     }
@@ -232,11 +248,15 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`.
+         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
+         * 
          */
+        @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
         public Builder graviton(@Nullable Boolean graviton) {
             $.graviton = graviton;
             return this;
@@ -276,11 +296,15 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param photon if we should limit the search only to Photon runtimes. Default to `false`.
+         * @param photon if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
+         * 
          */
+        @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
         public Builder photon(@Nullable Boolean photon) {
             $.photon = photon;
             return this;

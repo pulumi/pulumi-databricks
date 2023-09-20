@@ -14,10 +14,11 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
      * * `roles/group.manager` - Manager of a group.
+     * * `roles/marketplace.admin` - Admin of marketplace.
      */
     role: pulumi.Input<string>;
 }
@@ -98,10 +99,14 @@ export interface ClusterGcpAttributes {
 
 export interface ClusterInitScript {
     abfss?: pulumi.Input<inputs.ClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.ClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.ClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.ClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.ClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.ClusterInitScriptVolumes>;
     workspace?: pulumi.Input<inputs.ClusterInitScriptWorkspace>;
 }
 
@@ -129,6 +134,10 @@ export interface ClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface ClusterInitScriptVolumes {
+    destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptWorkspace {
@@ -570,6 +579,7 @@ export interface GetClusterClusterInfoInitScript {
     file?: inputs.GetClusterClusterInfoInitScriptFile;
     gcs?: inputs.GetClusterClusterInfoInitScriptGcs;
     s3?: inputs.GetClusterClusterInfoInitScriptS3;
+    volumes?: inputs.GetClusterClusterInfoInitScriptVolumes;
     workspace?: inputs.GetClusterClusterInfoInitScriptWorkspace;
 }
 
@@ -579,6 +589,7 @@ export interface GetClusterClusterInfoInitScriptArgs {
     file?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptVolumesArgs>;
     workspace?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptWorkspaceArgs>;
 }
 
@@ -632,6 +643,14 @@ export interface GetClusterClusterInfoInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoInitScriptVolumes {
+    destination?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptVolumesArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
@@ -1256,6 +1275,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+    volumes?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes;
     workspace?: inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace;
 }
 
@@ -1265,6 +1285,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs>;
     workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs>;
 }
 
@@ -1318,6 +1339,14 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
@@ -1610,6 +1639,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+    volumes?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumes;
     workspace?: inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 }
 
@@ -1619,6 +1649,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs>;
     workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs>;
 }
 
@@ -1672,6 +1703,14 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
@@ -2232,6 +2271,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
     file?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
     s3?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+    volumes?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes;
     workspace?: inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace;
 }
 
@@ -2241,6 +2281,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
     file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs>;
     gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs>;
     s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs>;
     workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs>;
 }
 
@@ -2294,6 +2335,14 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
+    destination?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs {
+    destination?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
@@ -3124,6 +3173,9 @@ export interface JobJobClusterNewClusterGcpAttributes {
 
 export interface JobJobClusterNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -3174,6 +3226,7 @@ export interface JobJobClusterNewClusterInitScript {
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptVolumes>;
     workspace?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptWorkspace>;
 }
 
@@ -3201,6 +3254,10 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterInitScriptVolumes {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
@@ -3350,6 +3407,9 @@ export interface JobNewClusterGcpAttributes {
 
 export interface JobNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobNewClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -3400,6 +3460,7 @@ export interface JobNewClusterInitScript {
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.JobNewClusterInitScriptVolumes>;
     workspace?: pulumi.Input<inputs.JobNewClusterInitScriptWorkspace>;
 }
 
@@ -3427,6 +3488,10 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterInitScriptVolumes {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptWorkspace {
@@ -3894,6 +3959,9 @@ export interface JobTaskNewClusterGcpAttributes {
 
 export interface JobTaskNewClusterInitScript {
     abfss?: pulumi.Input<inputs.JobTaskNewClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -3944,6 +4012,7 @@ export interface JobTaskNewClusterInitScript {
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.JobTaskNewClusterInitScriptVolumes>;
     workspace?: pulumi.Input<inputs.JobTaskNewClusterInitScriptWorkspace>;
 }
 
@@ -3971,6 +4040,10 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterInitScriptVolumes {
+    destination?: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
@@ -4337,11 +4410,16 @@ export interface MetastoreDataAccessAwsIamRole {
 
 export interface MetastoreDataAccessAzureManagedIdentity {
     /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
-    accessConnectorId: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string>;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
@@ -4741,10 +4819,14 @@ export interface PipelineClusterGcpAttributes {
 
 export interface PipelineClusterInitScript {
     abfss?: pulumi.Input<inputs.PipelineClusterInitScriptAbfss>;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs>;
     file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
     s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.PipelineClusterInitScriptVolumes>;
     workspace?: pulumi.Input<inputs.PipelineClusterInitScriptWorkspace>;
 }
 
@@ -4772,6 +4854,10 @@ export interface PipelineClusterInitScriptS3 {
     endpoint?: pulumi.Input<string>;
     kmsKey?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+}
+
+export interface PipelineClusterInitScriptVolumes {
+    destination?: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptWorkspace {
@@ -4828,12 +4914,33 @@ export interface RecipientIpAccessList {
 }
 
 export interface RecipientToken {
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     */
     activationUrl?: pulumi.Input<string>;
+    /**
+     * Time at which this recipient Token was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Username of recipient token creator.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     */
     expirationTime?: pulumi.Input<number>;
+    /**
+     * ID of this recipient - same as the `name`.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * Time at which this recipient Token was updated, in epoch milliseconds.
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of recipient Token updater.
+     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -5135,11 +5242,16 @@ export interface StorageCredentialAwsIamRole {
 
 export interface StorageCredentialAzureManagedIdentity {
     /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
      */
-    accessConnectorId: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string>;
 }
 
 export interface StorageCredentialAzureServicePrincipal {

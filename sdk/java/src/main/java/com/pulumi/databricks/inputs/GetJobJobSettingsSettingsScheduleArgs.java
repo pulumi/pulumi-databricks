@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsScheduleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsScheduleArgs Empty = new GetJobJobSettingsSettingsScheduleArgs();
 
-    @Import(name="pauseStatus", required=true)
-    private Output<String> pauseStatus;
+    @Import(name="pauseStatus")
+    private @Nullable Output<String> pauseStatus;
 
-    public Output<String> pauseStatus() {
-        return this.pauseStatus;
+    public Optional<Output<String>> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     @Import(name="quartzCronExpression", required=true)
@@ -60,7 +62,7 @@ public final class GetJobJobSettingsSettingsScheduleArgs extends com.pulumi.reso
             $ = new GetJobJobSettingsSettingsScheduleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder pauseStatus(Output<String> pauseStatus) {
+        public Builder pauseStatus(@Nullable Output<String> pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
@@ -88,7 +90,6 @@ public final class GetJobJobSettingsSettingsScheduleArgs extends com.pulumi.reso
         }
 
         public GetJobJobSettingsSettingsScheduleArgs build() {
-            $.pauseStatus = Objects.requireNonNull($.pauseStatus, "expected parameter 'pauseStatus' to be non-null");
             $.quartzCronExpression = Objects.requireNonNull($.quartzCronExpression, "expected parameter 'quartzCronExpression' to be non-null");
             $.timezoneId = Objects.requireNonNull($.timezoneId, "expected parameter 'timezoneId' to be non-null");
             return $;

@@ -75,7 +75,7 @@ export class Schema extends pulumi.CustomResource {
     }
 
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      */
     public readonly catalogName!: pulumi.Output<string>;
     /**
@@ -149,7 +149,7 @@ export class Schema extends pulumi.CustomResource {
  */
 export interface SchemaState {
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      */
     catalogName?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface SchemaState {
  */
 export interface SchemaArgs {
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      */
     catalogName: pulumi.Input<string>;
     /**

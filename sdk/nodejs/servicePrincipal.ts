@@ -61,8 +61,8 @@ import * as utilities from "./utilities";
  * const mws = new databricks.Provider("mws", {
  *     host: "https://accounts.cloud.databricks.com",
  *     accountId: "00000000-0000-0000-0000-000000000000",
- *     username: _var.databricks_account_username,
- *     password: _var.databricks_account_password,
+ *     clientId: _var.client_id,
+ *     clientSecret: _var.client_secret,
  * });
  * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"}, {
  *     provider: databricks.mws,

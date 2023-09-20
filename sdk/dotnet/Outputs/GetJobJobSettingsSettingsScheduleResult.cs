@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsScheduleResult
     {
-        public readonly string PauseStatus;
+        public readonly string? PauseStatus;
         public readonly string QuartzCronExpression;
         public readonly string TimezoneId;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsScheduleResult(
-            string pauseStatus,
+            string? pauseStatus,
 
             string quartzCronExpression,
 

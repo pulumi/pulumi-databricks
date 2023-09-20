@@ -70,9 +70,17 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.gcpServiceAccountKey);
     }
 
+    /**
+     * Unique identifier of the parent Metastore
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of the parent Metastore
+     * 
+     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
@@ -223,11 +231,23 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
             return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
         }
 
+        /**
+         * @param metastoreId Unique identifier of the parent Metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreId Unique identifier of the parent Metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }

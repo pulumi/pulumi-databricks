@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptDbfsArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptFileArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptGcsArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptS3Args;
+import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptVolumesArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterInitScriptWorkspaceArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,9 +28,21 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
         return Optional.ofNullable(this.abfss);
     }
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     @Import(name="dbfs")
     private @Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs;
 
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<Output<JobJobClusterNewClusterInitScriptDbfsArgs>> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -199,6 +212,13 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
         return Optional.ofNullable(this.s3);
     }
 
+    @Import(name="volumes")
+    private @Nullable Output<JobJobClusterNewClusterInitScriptVolumesArgs> volumes;
+
+    public Optional<Output<JobJobClusterNewClusterInitScriptVolumesArgs>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     @Import(name="workspace")
     private @Nullable Output<JobJobClusterNewClusterInitScriptWorkspaceArgs> workspace;
 
@@ -214,6 +234,7 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
         this.file = $.file;
         this.gcs = $.gcs;
         this.s3 = $.s3;
+        this.volumes = $.volumes;
         this.workspace = $.workspace;
     }
 
@@ -244,11 +265,27 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
             return abfss(Output.of(abfss));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(@Nullable Output<JobJobClusterNewClusterInitScriptDbfsArgs> dbfs) {
             $.dbfs = dbfs;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+         * 
+         */
+        @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
         public Builder dbfs(JobJobClusterNewClusterInitScriptDbfsArgs dbfs) {
             return dbfs(Output.of(dbfs));
         }
@@ -426,6 +463,15 @@ public final class JobJobClusterNewClusterInitScriptArgs extends com.pulumi.reso
 
         public Builder s3(JobJobClusterNewClusterInitScriptS3Args s3) {
             return s3(Output.of(s3));
+        }
+
+        public Builder volumes(@Nullable Output<JobJobClusterNewClusterInitScriptVolumesArgs> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        public Builder volumes(JobJobClusterNewClusterInitScriptVolumesArgs volumes) {
+            return volumes(Output.of(volumes));
         }
 
         public Builder workspace(@Nullable Output<JobJobClusterNewClusterInitScriptWorkspaceArgs> workspace) {

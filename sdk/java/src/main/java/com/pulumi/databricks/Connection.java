@@ -66,10 +66,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by `name` bash
+ * This resource can be imported by `id`bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/connection:Connection this &lt;connection_name&gt;
+ *  $ pulumi import databricks:index/connection:Connection this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;
  * ```
  * 
  */

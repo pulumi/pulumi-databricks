@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptS3;
+import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptVolumes;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskNewClusterInitScript {
     private @Nullable JobTaskNewClusterInitScriptAbfss abfss;
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable JobTaskNewClusterInitScriptDbfs dbfs;
     /**
      * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
@@ -93,12 +100,19 @@ public final class JobTaskNewClusterInitScript {
     private @Nullable JobTaskNewClusterInitScriptFile file;
     private @Nullable JobTaskNewClusterInitScriptGcs gcs;
     private @Nullable JobTaskNewClusterInitScriptS3 s3;
+    private @Nullable JobTaskNewClusterInitScriptVolumes volumes;
     private @Nullable JobTaskNewClusterInitScriptWorkspace workspace;
 
     private JobTaskNewClusterInitScript() {}
     public Optional<JobTaskNewClusterInitScriptAbfss> abfss() {
         return Optional.ofNullable(this.abfss);
     }
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<JobTaskNewClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -183,6 +197,9 @@ public final class JobTaskNewClusterInitScript {
     public Optional<JobTaskNewClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
     }
+    public Optional<JobTaskNewClusterInitScriptVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
     public Optional<JobTaskNewClusterInitScriptWorkspace> workspace() {
         return Optional.ofNullable(this.workspace);
     }
@@ -201,6 +218,7 @@ public final class JobTaskNewClusterInitScript {
         private @Nullable JobTaskNewClusterInitScriptFile file;
         private @Nullable JobTaskNewClusterInitScriptGcs gcs;
         private @Nullable JobTaskNewClusterInitScriptS3 s3;
+        private @Nullable JobTaskNewClusterInitScriptVolumes volumes;
         private @Nullable JobTaskNewClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(JobTaskNewClusterInitScript defaults) {
@@ -210,6 +228,7 @@ public final class JobTaskNewClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
     	      this.workspace = defaults.workspace;
         }
 
@@ -239,6 +258,11 @@ public final class JobTaskNewClusterInitScript {
             return this;
         }
         @CustomType.Setter
+        public Builder volumes(@Nullable JobTaskNewClusterInitScriptVolumes volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspace(@Nullable JobTaskNewClusterInitScriptWorkspace workspace) {
             this.workspace = workspace;
             return this;
@@ -250,6 +274,7 @@ public final class JobTaskNewClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.volumes = volumes;
             o.workspace = workspace;
             return o;
         }

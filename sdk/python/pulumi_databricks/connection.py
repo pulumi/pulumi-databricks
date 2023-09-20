@@ -309,10 +309,10 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `name` bash
+        This resource can be imported by `id`bash
 
         ```sh
-         $ pulumi import databricks:index/connection:Connection this <connection_name>
+         $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -360,10 +360,10 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `name` bash
+        This resource can be imported by `id`bash
 
         ```sh
-         $ pulumi import databricks:index/connection:Connection this <connection_name>
+         $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
         ```
 
         :param str resource_name: The name of the resource.

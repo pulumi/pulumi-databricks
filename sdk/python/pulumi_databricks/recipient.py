@@ -31,7 +31,7 @@ class RecipientArgs:
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens.
+        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         pulumi.set(__self__, "authentication_type", authentication_type)
         if comment is not None:
@@ -123,7 +123,7 @@ class RecipientArgs:
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
         """
-        List of Recipient Tokens.
+        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         return pulumi.get(self, "tokens")
 
@@ -150,7 +150,7 @@ class _RecipientState:
         :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens.
+        :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         if authentication_type is not None:
             pulumi.set(__self__, "authentication_type", authentication_type)
@@ -243,7 +243,7 @@ class _RecipientState:
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
         """
-        List of Recipient Tokens.
+        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         return pulumi.get(self, "tokens")
 
@@ -309,7 +309,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         ...
     @overload
@@ -425,7 +425,7 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -492,7 +492,7 @@ class Recipient(pulumi.CustomResource):
     @pulumi.getter
     def tokens(self) -> pulumi.Output[Sequence['outputs.RecipientToken']]:
         """
-        List of Recipient Tokens.
+        List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         return pulumi.get(self, "tokens")
 

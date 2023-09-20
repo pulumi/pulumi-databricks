@@ -24,6 +24,14 @@ import * as utilities from "./utilities";
  *     workspaceId: local.workspace_id,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported by combination of workspace id and metastore idbash
+ *
+ * ```sh
+ *  $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+ * ```
  */
 export class MetastoreAssignment extends pulumi.CustomResource {
     /**

@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScri
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumes;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
     private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptFile file;
     private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptGcs gcs;
     private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptS3 s3;
+    private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptVolumes volumes;
     private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptWorkspace workspace;
 
     private GetJobJobSettingsSettingsNewClusterInitScript() {}
@@ -38,6 +40,9 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
     }
     public Optional<GetJobJobSettingsSettingsNewClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<GetJobJobSettingsSettingsNewClusterInitScriptVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
     public Optional<GetJobJobSettingsSettingsNewClusterInitScriptWorkspace> workspace() {
         return Optional.ofNullable(this.workspace);
@@ -57,6 +62,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
         private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptFile file;
         private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptGcs gcs;
         private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptS3 s3;
+        private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptVolumes volumes;
         private @Nullable GetJobJobSettingsSettingsNewClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsNewClusterInitScript defaults) {
@@ -66,6 +72,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
     	      this.workspace = defaults.workspace;
         }
 
@@ -95,6 +102,11 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
             return this;
         }
         @CustomType.Setter
+        public Builder volumes(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptVolumes volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspace(@Nullable GetJobJobSettingsSettingsNewClusterInitScriptWorkspace workspace) {
             this.workspace = workspace;
             return this;
@@ -106,6 +118,7 @@ public final class GetJobJobSettingsSettingsNewClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.volumes = volumes;
             o.workspace = workspace;
             return o;
         }

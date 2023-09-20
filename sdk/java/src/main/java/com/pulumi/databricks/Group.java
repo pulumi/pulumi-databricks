@@ -133,8 +133,8 @@ import javax.annotation.Nullable;
  *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
  *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
  *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .username(var_.databricks_account_username())
- *             .password(var_.databricks_account_password())
+ *             .clientId(var_.client_id())
+ *             .clientSecret(var_.client_secret())
  *             .build());
  * 
  *         var this_ = new Group(&#34;this&#34;, GroupArgs.Empty, CustomResourceOptions.builder()

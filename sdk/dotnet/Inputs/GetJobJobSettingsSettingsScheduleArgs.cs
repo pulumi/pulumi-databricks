@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsScheduleInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("pauseStatus", required: true)]
-        public Input<string> PauseStatus { get; set; } = null!;
+        [Input("pauseStatus")]
+        public Input<string>? PauseStatus { get; set; }
 
         [Input("quartzCronExpression", required: true)]
         public Input<string> QuartzCronExpression { get; set; } = null!;

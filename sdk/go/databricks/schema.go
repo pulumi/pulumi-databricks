@@ -76,7 +76,7 @@ import (
 type Schema struct {
 	pulumi.CustomResourceState
 
-	// Name of parent catalog
+	// Name of parent catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -126,7 +126,7 @@ func GetSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schema resources.
 type schemaState struct {
-	// Name of parent catalog
+	// Name of parent catalog. Change forces creation of a new resource.
 	CatalogName *string `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
@@ -144,7 +144,7 @@ type schemaState struct {
 }
 
 type SchemaState struct {
-	// Name of parent catalog
+	// Name of parent catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
@@ -166,7 +166,7 @@ func (SchemaState) ElementType() reflect.Type {
 }
 
 type schemaArgs struct {
-	// Name of parent catalog
+	// Name of parent catalog. Change forces creation of a new resource.
 	CatalogName string `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
@@ -185,7 +185,7 @@ type schemaArgs struct {
 
 // The set of arguments for constructing a Schema resource.
 type SchemaArgs struct {
-	// Name of parent catalog
+	// Name of parent catalog. Change forces creation of a new resource.
 	CatalogName pulumi.StringInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
@@ -313,7 +313,7 @@ func (o SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
 	}
 }
 
-// Name of parent catalog
+// Name of parent catalog. Change forces creation of a new resource.
 func (o SchemaOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }

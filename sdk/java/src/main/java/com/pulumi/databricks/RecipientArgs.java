@@ -109,14 +109,14 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Recipient Tokens.
+     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
      * 
      */
     @Import(name="tokens")
     private @Nullable Output<List<RecipientTokenArgs>> tokens;
 
     /**
-     * @return List of Recipient Tokens.
+     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
      * 
      */
     public Optional<Output<List<RecipientTokenArgs>>> tokens() {
@@ -280,7 +280,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens.
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens.
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens.
+         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 

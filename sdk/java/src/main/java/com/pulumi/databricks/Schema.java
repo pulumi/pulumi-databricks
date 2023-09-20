@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/schema:Schema")
 public class Schema extends com.pulumi.resources.CustomResource {
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     @Export(name="catalogName", type=String.class, parameters={})
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog
+     * @return Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> catalogName() {

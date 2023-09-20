@@ -85,6 +85,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        /// </summary>
+        [Output("options")]
+        public Output<ImmutableDictionary<string, object>?> Options { get; private set; } = null!;
+
+        /// <summary>
         /// Username/groupname/sp application_id of the catalog owner.
         /// </summary>
         [Output("owner")]
@@ -193,6 +199,18 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("options")]
+        private InputMap<object>? _options;
+
+        /// <summary>
+        /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        /// </summary>
+        public InputMap<object> Options
+        {
+            get => _options ?? (_options = new InputMap<object>());
+            set => _options = value;
+        }
+
         /// <summary>
         /// Username/groupname/sp application_id of the catalog owner.
         /// </summary>
@@ -269,6 +287,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("options")]
+        private InputMap<object>? _options;
+
+        /// <summary>
+        /// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
+        /// </summary>
+        public InputMap<object> Options
+        {
+            get => _options ?? (_options = new InputMap<object>());
+            set => _options = value;
+        }
 
         /// <summary>
         /// Username/groupname/sp application_id of the catalog owner.

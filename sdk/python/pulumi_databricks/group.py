@@ -356,6 +356,7 @@ class Group(pulumi.CustomResource):
         ```
 
         Creating group in AWS Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -364,12 +365,13 @@ class Group(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
 
         Creating group in Azure Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -448,6 +450,7 @@ class Group(pulumi.CustomResource):
         ```
 
         Creating group in AWS Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -456,12 +459,13 @@ class Group(pulumi.CustomResource):
         mws = databricks.Provider("mws",
             host="https://accounts.cloud.databricks.com",
             account_id="00000000-0000-0000-0000-000000000000",
-            username=var["databricks_account_username"],
-            password=var["databricks_account_password"])
+            client_id=var["client_id"],
+            client_secret=var["client_secret"])
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
 
         Creating group in Azure Databricks account:
+
         ```python
         import pulumi
         import pulumi_databricks as databricks

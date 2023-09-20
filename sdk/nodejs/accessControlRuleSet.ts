@@ -116,6 +116,9 @@ import * as utilities from "./utilities";
  * const ds = databricks.getGroup({
  *     displayName: "Data Science",
  * });
+ * const marketplaceAdmins = databricks.getGroup({
+ *     displayName: "Marketplace Admins",
+ * });
  * const john = databricks.getUser({
  *     userName: "john.doe@example.com",
  * });
@@ -125,8 +128,12 @@ import * as utilities from "./utilities";
  *         role: "roles/group.manager",
  *     },
  *     {
- *         principals: [data.databricks_user.ds.acl_principal_id],
+ *         principals: [ds.then(ds => ds.aclPrincipalId)],
  *         role: "roles/servicePrincipal.manager",
+ *     },
+ *     {
+ *         principals: [marketplaceAdmins.then(marketplaceAdmins => marketplaceAdmins.aclPrincipalId)],
+ *         role: "roles/marketplace.admin",
  *     },
  * ]});
  * ```

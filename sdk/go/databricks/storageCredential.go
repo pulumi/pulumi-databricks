@@ -164,7 +164,8 @@ type StorageCredential struct {
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                pulumi.BoolPtrOutput                               `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
-	MetastoreId                 pulumi.StringOutput                                `pulumi:"metastoreId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
@@ -212,7 +213,8 @@ type storageCredentialState struct {
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	MetastoreId                 *string                                       `pulumi:"metastoreId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
@@ -231,7 +233,8 @@ type StorageCredentialState struct {
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
-	MetastoreId                 pulumi.StringPtrInput
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
@@ -254,7 +257,8 @@ type storageCredentialArgs struct {
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
 	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	MetastoreId                 *string                                       `pulumi:"metastoreId"`
+	// Unique identifier of the parent Metastore
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
@@ -274,7 +278,8 @@ type StorageCredentialArgs struct {
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
 	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
-	MetastoreId                 pulumi.StringPtrInput
+	// Unique identifier of the parent Metastore
+	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
@@ -432,6 +437,7 @@ func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServ
 	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
 }
 
+// Unique identifier of the parent Metastore
 func (o StorageCredentialOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

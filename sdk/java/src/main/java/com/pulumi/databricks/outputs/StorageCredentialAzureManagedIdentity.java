@@ -6,26 +6,44 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class StorageCredentialAzureManagedIdentity {
     /**
-     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     * 
+     */
+    private String accessConnectorId;
+    private @Nullable String credentialId;
+    /**
+     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      * 
      * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
      * 
      */
-    private String accessConnectorId;
+    private @Nullable String managedIdentityId;
 
     private StorageCredentialAzureManagedIdentity() {}
     /**
-     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * @return The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
      * 
      */
     public String accessConnectorId() {
         return this.accessConnectorId;
+    }
+    public Optional<String> credentialId() {
+        return Optional.ofNullable(this.credentialId);
+    }
+    /**
+     * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * 
+     */
+    public Optional<String> managedIdentityId() {
+        return Optional.ofNullable(this.managedIdentityId);
     }
 
     public static Builder builder() {
@@ -38,10 +56,14 @@ public final class StorageCredentialAzureManagedIdentity {
     @CustomType.Builder
     public static final class Builder {
         private String accessConnectorId;
+        private @Nullable String credentialId;
+        private @Nullable String managedIdentityId;
         public Builder() {}
         public Builder(StorageCredentialAzureManagedIdentity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConnectorId = defaults.accessConnectorId;
+    	      this.credentialId = defaults.credentialId;
+    	      this.managedIdentityId = defaults.managedIdentityId;
         }
 
         @CustomType.Setter
@@ -49,9 +71,21 @@ public final class StorageCredentialAzureManagedIdentity {
             this.accessConnectorId = Objects.requireNonNull(accessConnectorId);
             return this;
         }
+        @CustomType.Setter
+        public Builder credentialId(@Nullable String credentialId) {
+            this.credentialId = credentialId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder managedIdentityId(@Nullable String managedIdentityId) {
+            this.managedIdentityId = managedIdentityId;
+            return this;
+        }
         public StorageCredentialAzureManagedIdentity build() {
             final var o = new StorageCredentialAzureManagedIdentity();
             o.accessConnectorId = accessConnectorId;
+            o.credentialId = credentialId;
+            o.managedIdentityId = managedIdentityId;
             return o;
         }
     }

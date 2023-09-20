@@ -14,10 +14,11 @@ export interface AccessControlRuleSetGrantRule {
      */
     principals?: string[];
     /**
-     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles) or [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page).
+     * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
      * * `roles/group.manager` - Manager of a group.
+     * * `roles/marketplace.admin` - Admin of marketplace.
      */
     role: string;
 }
@@ -98,10 +99,14 @@ export interface ClusterGcpAttributes {
 
 export interface ClusterInitScript {
     abfss?: outputs.ClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.ClusterInitScriptDbfs;
     file?: outputs.ClusterInitScriptFile;
     gcs?: outputs.ClusterInitScriptGcs;
     s3?: outputs.ClusterInitScriptS3;
+    volumes?: outputs.ClusterInitScriptVolumes;
     workspace?: outputs.ClusterInitScriptWorkspace;
 }
 
@@ -129,6 +134,10 @@ export interface ClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface ClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface ClusterInitScriptWorkspace {
@@ -377,6 +386,7 @@ export interface GetClusterClusterInfoInitScript {
     file?: outputs.GetClusterClusterInfoInitScriptFile;
     gcs?: outputs.GetClusterClusterInfoInitScriptGcs;
     s3?: outputs.GetClusterClusterInfoInitScriptS3;
+    volumes?: outputs.GetClusterClusterInfoInitScriptVolumes;
     workspace?: outputs.GetClusterClusterInfoInitScriptWorkspace;
 }
 
@@ -404,6 +414,10 @@ export interface GetClusterClusterInfoInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetClusterClusterInfoInitScriptVolumes {
+    destination?: string;
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
@@ -567,7 +581,7 @@ export interface GetJobJobSettingsSettingsComputeSpec {
 }
 
 export interface GetJobJobSettingsSettingsContinuous {
-    pauseStatus: string;
+    pauseStatus?: string;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -728,6 +742,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3;
+    volumes?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes;
     workspace?: outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace;
 }
 
@@ -755,6 +770,10 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
@@ -905,6 +924,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3;
+    volumes?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumes;
     workspace?: outputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspace;
 }
 
@@ -932,6 +952,10 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
@@ -992,7 +1016,7 @@ export interface GetJobJobSettingsSettingsRunJobTask {
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
-    pauseStatus: string;
+    pauseStatus?: string;
     quartzCronExpression: string;
     timezoneId: string;
 }
@@ -1216,6 +1240,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
     file?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFile;
     gcs?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs;
     s3?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3;
+    volumes?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes;
     workspace?: outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace;
 }
 
@@ -1243,6 +1268,10 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
@@ -1345,7 +1374,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
 
 export interface GetJobJobSettingsSettingsTrigger {
     fileArrival: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
-    pauseStatus: string;
+    pauseStatus?: string;
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
@@ -1603,7 +1632,7 @@ export interface JobContinuous {
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus: string;
+    pauseStatus?: string;
 }
 
 export interface JobDbtTask {
@@ -1834,6 +1863,9 @@ export interface JobJobClusterNewClusterGcpAttributes {
 
 export interface JobJobClusterNewClusterInitScript {
     abfss?: outputs.JobJobClusterNewClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -1884,6 +1916,7 @@ export interface JobJobClusterNewClusterInitScript {
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
+    volumes?: outputs.JobJobClusterNewClusterInitScriptVolumes;
     workspace?: outputs.JobJobClusterNewClusterInitScriptWorkspace;
 }
 
@@ -1911,6 +1944,10 @@ export interface JobJobClusterNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobJobClusterNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
@@ -2060,6 +2097,9 @@ export interface JobNewClusterGcpAttributes {
 
 export interface JobNewClusterInitScript {
     abfss?: outputs.JobNewClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -2110,6 +2150,7 @@ export interface JobNewClusterInitScript {
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
+    volumes?: outputs.JobNewClusterInitScriptVolumes;
     workspace?: outputs.JobNewClusterInitScriptWorkspace;
 }
 
@@ -2137,6 +2178,10 @@ export interface JobNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface JobNewClusterInitScriptWorkspace {
@@ -2261,7 +2306,7 @@ export interface JobSchedule {
     /**
      * Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus: string;
+    pauseStatus?: string;
     /**
      * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
      */
@@ -2604,6 +2649,9 @@ export interface JobTaskNewClusterGcpAttributes {
 
 export interface JobTaskNewClusterInitScript {
     abfss?: outputs.JobTaskNewClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
     /**
      * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
@@ -2654,6 +2702,7 @@ export interface JobTaskNewClusterInitScript {
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
+    volumes?: outputs.JobTaskNewClusterInitScriptVolumes;
     workspace?: outputs.JobTaskNewClusterInitScriptWorkspace;
 }
 
@@ -2681,6 +2730,10 @@ export interface JobTaskNewClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface JobTaskNewClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
@@ -2939,7 +2992,7 @@ export interface JobTrigger {
     /**
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus: string;
+    pauseStatus?: string;
 }
 
 export interface JobTriggerFileArrival {
@@ -3047,11 +3100,16 @@ export interface MetastoreDataAccessAwsIamRole {
 
 export interface MetastoreDataAccessAzureManagedIdentity {
     /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: string;
+    credentialId: string;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
-    accessConnectorId: string;
+    managedIdentityId?: string;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
@@ -3451,10 +3509,14 @@ export interface PipelineClusterGcpAttributes {
 
 export interface PipelineClusterInitScript {
     abfss?: outputs.PipelineClusterInitScriptAbfss;
+    /**
+     * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
+     */
     dbfs?: outputs.PipelineClusterInitScriptDbfs;
     file?: outputs.PipelineClusterInitScriptFile;
     gcs?: outputs.PipelineClusterInitScriptGcs;
     s3?: outputs.PipelineClusterInitScriptS3;
+    volumes?: outputs.PipelineClusterInitScriptVolumes;
     workspace?: outputs.PipelineClusterInitScriptWorkspace;
 }
 
@@ -3482,6 +3544,10 @@ export interface PipelineClusterInitScriptS3 {
     endpoint?: string;
     kmsKey?: string;
     region?: string;
+}
+
+export interface PipelineClusterInitScriptVolumes {
+    destination?: string;
 }
 
 export interface PipelineClusterInitScriptWorkspace {
@@ -3538,12 +3604,33 @@ export interface RecipientIpAccessList {
 }
 
 export interface RecipientToken {
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     */
     activationUrl: string;
+    /**
+     * Time at which this recipient Token was created, in epoch milliseconds.
+     */
     createdAt: number;
+    /**
+     * Username of recipient token creator.
+     */
     createdBy: string;
+    /**
+     * Expiration timestamp of the token in epoch milliseconds.
+     */
     expirationTime: number;
+    /**
+     * ID of this recipient - same as the `name`.
+     */
     id: string;
+    /**
+     * Time at which this recipient Token was updated, in epoch milliseconds.
+     */
     updatedAt: number;
+    /**
+     * Username of recipient Token updater.
+     */
     updatedBy: string;
 }
 
@@ -3845,11 +3932,16 @@ export interface StorageCredentialAwsIamRole {
 
 export interface StorageCredentialAzureManagedIdentity {
     /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: string;
+    credentialId: string;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
      */
-    accessConnectorId: string;
+    managedIdentityId?: string;
 }
 
 export interface StorageCredentialAzureServicePrincipal {

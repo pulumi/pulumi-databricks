@@ -19,14 +19,14 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
     public static final SchemaArgs Empty = new SchemaArgs();
 
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog
+     * @return Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> catalogName() {
@@ -162,7 +162,7 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog
+         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog
+         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 

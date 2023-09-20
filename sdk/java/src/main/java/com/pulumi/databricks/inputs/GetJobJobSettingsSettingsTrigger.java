@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerFileArrival;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources.InvokeArgs {
@@ -20,11 +22,11 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
         return this.fileArrival;
     }
 
-    @Import(name="pauseStatus", required=true)
-    private String pauseStatus;
+    @Import(name="pauseStatus")
+    private @Nullable String pauseStatus;
 
-    public String pauseStatus() {
-        return this.pauseStatus;
+    public Optional<String> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     private GetJobJobSettingsSettingsTrigger() {}
@@ -57,14 +59,13 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
             return this;
         }
 
-        public Builder pauseStatus(String pauseStatus) {
+        public Builder pauseStatus(@Nullable String pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
         public GetJobJobSettingsSettingsTrigger build() {
             $.fileArrival = Objects.requireNonNull($.fileArrival, "expected parameter 'fileArrival' to be non-null");
-            $.pauseStatus = Objects.requireNonNull($.pauseStatus, "expected parameter 'pauseStatus' to be non-null");
             return $;
         }
     }

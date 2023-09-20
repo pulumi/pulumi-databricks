@@ -213,9 +213,17 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<StorageCredentialGcpServiceAccountKey>> gcpServiceAccountKey() {
         return Codegen.optional(this.gcpServiceAccountKey);
     }
+    /**
+     * Unique identifier of the parent Metastore
+     * 
+     */
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of the parent Metastore
+     * 
+     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }

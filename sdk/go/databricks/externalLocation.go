@@ -20,7 +20,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by namebash
+// # This resource can be imported by `name`bash
 //
 // ```sh
 //

@@ -9,6 +9,7 @@ import com.pulumi.databricks.outputs.ClusterInitScriptDbfs;
 import com.pulumi.databricks.outputs.ClusterInitScriptFile;
 import com.pulumi.databricks.outputs.ClusterInitScriptGcs;
 import com.pulumi.databricks.outputs.ClusterInitScriptS3;
+import com.pulumi.databricks.outputs.ClusterInitScriptVolumes;
 import com.pulumi.databricks.outputs.ClusterInitScriptWorkspace;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,16 +18,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterInitScript {
     private @Nullable ClusterInitScriptAbfss abfss;
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     private @Nullable ClusterInitScriptDbfs dbfs;
     private @Nullable ClusterInitScriptFile file;
     private @Nullable ClusterInitScriptGcs gcs;
     private @Nullable ClusterInitScriptS3 s3;
+    private @Nullable ClusterInitScriptVolumes volumes;
     private @Nullable ClusterInitScriptWorkspace workspace;
 
     private ClusterInitScript() {}
     public Optional<ClusterInitScriptAbfss> abfss() {
         return Optional.ofNullable(this.abfss);
     }
+    /**
+     * @deprecated
+     * For init scripts use &#39;volumes&#39;, &#39;workspace&#39; or cloud storage location instead of &#39;dbfs&#39;.
+     * 
+     */
+    @Deprecated /* For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'. */
     public Optional<ClusterInitScriptDbfs> dbfs() {
         return Optional.ofNullable(this.dbfs);
     }
@@ -38,6 +52,9 @@ public final class ClusterInitScript {
     }
     public Optional<ClusterInitScriptS3> s3() {
         return Optional.ofNullable(this.s3);
+    }
+    public Optional<ClusterInitScriptVolumes> volumes() {
+        return Optional.ofNullable(this.volumes);
     }
     public Optional<ClusterInitScriptWorkspace> workspace() {
         return Optional.ofNullable(this.workspace);
@@ -57,6 +74,7 @@ public final class ClusterInitScript {
         private @Nullable ClusterInitScriptFile file;
         private @Nullable ClusterInitScriptGcs gcs;
         private @Nullable ClusterInitScriptS3 s3;
+        private @Nullable ClusterInitScriptVolumes volumes;
         private @Nullable ClusterInitScriptWorkspace workspace;
         public Builder() {}
         public Builder(ClusterInitScript defaults) {
@@ -66,6 +84,7 @@ public final class ClusterInitScript {
     	      this.file = defaults.file;
     	      this.gcs = defaults.gcs;
     	      this.s3 = defaults.s3;
+    	      this.volumes = defaults.volumes;
     	      this.workspace = defaults.workspace;
         }
 
@@ -95,6 +114,11 @@ public final class ClusterInitScript {
             return this;
         }
         @CustomType.Setter
+        public Builder volumes(@Nullable ClusterInitScriptVolumes volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspace(@Nullable ClusterInitScriptWorkspace workspace) {
             this.workspace = workspace;
             return this;
@@ -106,6 +130,7 @@ public final class ClusterInitScript {
             o.file = file;
             o.gcs = gcs;
             o.s3 = s3;
+            o.volumes = volumes;
             o.workspace = workspace;
             return o;
         }

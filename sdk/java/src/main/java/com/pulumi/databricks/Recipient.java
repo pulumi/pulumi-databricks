@@ -167,14 +167,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sharingCode);
     }
     /**
-     * List of Recipient Tokens.
+     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
      * 
      */
     @Export(name="tokens", type=List.class, parameters={RecipientToken.class})
     private Output<List<RecipientToken>> tokens;
 
     /**
-     * @return List of Recipient Tokens.
+     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
      * 
      */
     public Output<List<RecipientToken>> tokens() {

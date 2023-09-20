@@ -6,17 +6,19 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsContinuous extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsContinuous Empty = new GetJobJobSettingsSettingsContinuous();
 
-    @Import(name="pauseStatus", required=true)
-    private String pauseStatus;
+    @Import(name="pauseStatus")
+    private @Nullable String pauseStatus;
 
-    public String pauseStatus() {
-        return this.pauseStatus;
+    public Optional<String> pauseStatus() {
+        return Optional.ofNullable(this.pauseStatus);
     }
 
     private GetJobJobSettingsSettingsContinuous() {}
@@ -43,13 +45,12 @@ public final class GetJobJobSettingsSettingsContinuous extends com.pulumi.resour
             $ = new GetJobJobSettingsSettingsContinuous(Objects.requireNonNull(defaults));
         }
 
-        public Builder pauseStatus(String pauseStatus) {
+        public Builder pauseStatus(@Nullable String pauseStatus) {
             $.pauseStatus = pauseStatus;
             return this;
         }
 
         public GetJobJobSettingsSettingsContinuous build() {
-            $.pauseStatus = Objects.requireNonNull($.pauseStatus, "expected parameter 'pauseStatus' to be non-null");
             return $;
         }
     }

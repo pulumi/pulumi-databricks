@@ -52,6 +52,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// # This resource can be imported by combination of workspace id and metastore idbash
+//
+// ```sh
+//
+//	$ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+//
+// ```
 type MetastoreAssignment struct {
 	pulumi.CustomResourceState
 

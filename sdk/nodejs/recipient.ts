@@ -97,7 +97,7 @@ export class Recipient extends pulumi.CustomResource {
      */
     public readonly sharingCode!: pulumi.Output<string | undefined>;
     /**
-     * List of Recipient Tokens.
+     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
     public readonly tokens!: pulumi.Output<outputs.RecipientToken[]>;
 
@@ -170,7 +170,7 @@ export interface RecipientState {
      */
     sharingCode?: pulumi.Input<string>;
     /**
-     * List of Recipient Tokens.
+     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
 }
@@ -204,7 +204,7 @@ export interface RecipientArgs {
      */
     sharingCode?: pulumi.Input<string>;
     /**
-     * List of Recipient Tokens.
+     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
     tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
 }

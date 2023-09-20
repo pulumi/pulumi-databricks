@@ -85,7 +85,7 @@ type Recipient struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrOutput `pulumi:"sharingCode"`
-	// List of Recipient Tokens.
+	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 	Tokens RecipientTokenArrayOutput `pulumi:"tokens"`
 }
 
@@ -141,7 +141,7 @@ type recipientState struct {
 	Name *string `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
-	// List of Recipient Tokens.
+	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 	Tokens []RecipientToken `pulumi:"tokens"`
 }
 
@@ -158,7 +158,7 @@ type RecipientState struct {
 	Name pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
-	// List of Recipient Tokens.
+	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 	Tokens RecipientTokenArrayInput
 }
 
@@ -179,7 +179,7 @@ type recipientArgs struct {
 	Name *string `pulumi:"name"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
-	// List of Recipient Tokens.
+	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 	Tokens []RecipientToken `pulumi:"tokens"`
 }
 
@@ -197,7 +197,7 @@ type RecipientArgs struct {
 	Name pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
-	// List of Recipient Tokens.
+	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 	Tokens RecipientTokenArrayInput
 }
 
@@ -342,7 +342,7 @@ func (o RecipientOutput) SharingCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.SharingCode }).(pulumi.StringPtrOutput)
 }
 
-// List of Recipient Tokens.
+// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
 func (o RecipientOutput) Tokens() RecipientTokenArrayOutput {
 	return o.ApplyT(func(v *Recipient) RecipientTokenArrayOutput { return v.Tokens }).(RecipientTokenArrayOutput)
 }
