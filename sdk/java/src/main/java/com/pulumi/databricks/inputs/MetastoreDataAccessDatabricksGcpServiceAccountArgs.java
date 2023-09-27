@@ -15,6 +15,13 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccountArgs extends co
 
     public static final MetastoreDataAccessDatabricksGcpServiceAccountArgs Empty = new MetastoreDataAccessDatabricksGcpServiceAccountArgs();
 
+    @Import(name="credentialId")
+    private @Nullable Output<String> credentialId;
+
+    public Optional<Output<String>> credentialId() {
+        return Optional.ofNullable(this.credentialId);
+    }
+
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      * 
@@ -37,6 +44,7 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccountArgs extends co
     private MetastoreDataAccessDatabricksGcpServiceAccountArgs() {}
 
     private MetastoreDataAccessDatabricksGcpServiceAccountArgs(MetastoreDataAccessDatabricksGcpServiceAccountArgs $) {
+        this.credentialId = $.credentialId;
         this.email = $.email;
     }
 
@@ -56,6 +64,15 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccountArgs extends co
 
         public Builder(MetastoreDataAccessDatabricksGcpServiceAccountArgs defaults) {
             $ = new MetastoreDataAccessDatabricksGcpServiceAccountArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder credentialId(@Nullable Output<String> credentialId) {
+            $.credentialId = credentialId;
+            return this;
+        }
+
+        public Builder credentialId(String credentialId) {
+            return credentialId(Output.of(credentialId));
         }
 
         /**

@@ -201,9 +201,21 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return this.databricksGcpServiceAccount;
     }
+    /**
+     * Delete storage credential regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Export(name="forceDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceDestroy;
 
+    /**
+     * @return Delete storage credential regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
@@ -244,16 +256,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * Username/groupname/sp application_id of the storage credential owner.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
      * @return Username/groupname/sp application_id of the storage credential owner.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> owner() {
@@ -262,12 +270,16 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether the storage credential is only usable for read operations.
      * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * 
      */
     @Export(name="readOnly", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> readOnly;
 
     /**
      * @return Indicates whether the storage credential is only usable for read operations.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public Output<Optional<Boolean>> readOnly() {

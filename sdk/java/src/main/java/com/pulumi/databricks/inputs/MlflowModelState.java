@@ -62,6 +62,13 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="registeredModelId")
+    private @Nullable Output<String> registeredModelId;
+
+    public Optional<Output<String>> registeredModelId() {
+        return Optional.ofNullable(this.registeredModelId);
+    }
+
     /**
      * Tags for the MLflow model.
      * 
@@ -91,6 +98,7 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
         this.name = $.name;
+        this.registeredModelId = $.registeredModelId;
         this.tags = $.tags;
         this.userId = $.userId;
     }
@@ -171,6 +179,15 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder registeredModelId(@Nullable Output<String> registeredModelId) {
+            $.registeredModelId = registeredModelId;
+            return this;
+        }
+
+        public Builder registeredModelId(String registeredModelId) {
+            return registeredModelId(Output.of(registeredModelId));
         }
 
         /**

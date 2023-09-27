@@ -91,6 +91,7 @@ export class MlflowModel extends pulumi.CustomResource {
      * Name of MLflow model. Change of name triggers new resource.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly registeredModelId!: pulumi.Output<string>;
     /**
      * Tags for the MLflow model.
      */
@@ -114,6 +115,7 @@ export class MlflowModel extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -124,6 +126,7 @@ export class MlflowModel extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["registeredModelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MlflowModel.__pulumiType, name, resourceInputs, opts);
@@ -144,6 +147,7 @@ export interface MlflowModelState {
      * Name of MLflow model. Change of name triggers new resource.
      */
     name?: pulumi.Input<string>;
+    registeredModelId?: pulumi.Input<string>;
     /**
      * Tags for the MLflow model.
      */

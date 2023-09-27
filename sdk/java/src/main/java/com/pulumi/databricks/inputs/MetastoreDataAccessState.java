@@ -42,11 +42,11 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.azureServicePrincipal);
     }
 
-    @Import(name="configurationType")
-    private @Nullable Output<String> configurationType;
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
 
-    public Optional<Output<String>> configurationType() {
-        return Optional.ofNullable(this.configurationType);
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
     }
 
     @Import(name="databricksGcpServiceAccount")
@@ -54,6 +54,25 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
     public Optional<Output<MetastoreDataAccessDatabricksGcpServiceAccountArgs>> databricksGcpServiceAccount() {
         return Optional.ofNullable(this.databricksGcpServiceAccount);
+    }
+
+    /**
+     * Delete the data access configuration regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return Delete the data access configuration regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
     }
 
     @Import(name="gcpServiceAccountKey")
@@ -73,16 +92,12 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
     /**
      * Unique identifier of the parent Metastore
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
      * @return Unique identifier of the parent Metastore
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -104,18 +119,43 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Username/groupname/sp application_id of the data access configuration owner.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the data access configuration owner.
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+
     private MetastoreDataAccessState() {}
 
     private MetastoreDataAccessState(MetastoreDataAccessState $) {
         this.awsIamRole = $.awsIamRole;
         this.azureManagedIdentity = $.azureManagedIdentity;
         this.azureServicePrincipal = $.azureServicePrincipal;
-        this.configurationType = $.configurationType;
+        this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
+        this.forceDestroy = $.forceDestroy;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.isDefault = $.isDefault;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
+        this.owner = $.owner;
+        this.readOnly = $.readOnly;
     }
 
     public static Builder builder() {
@@ -163,13 +203,13 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
             return azureServicePrincipal(Output.of(azureServicePrincipal));
         }
 
-        public Builder configurationType(@Nullable Output<String> configurationType) {
-            $.configurationType = configurationType;
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
             return this;
         }
 
-        public Builder configurationType(String configurationType) {
-            return configurationType(Output.of(configurationType));
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
         }
 
         public Builder databricksGcpServiceAccount(@Nullable Output<MetastoreDataAccessDatabricksGcpServiceAccountArgs> databricksGcpServiceAccount) {
@@ -179,6 +219,31 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
         public Builder databricksGcpServiceAccount(MetastoreDataAccessDatabricksGcpServiceAccountArgs databricksGcpServiceAccount) {
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
+        }
+
+        /**
+         * @param forceDestroy Delete the data access configuration regardless of its dependencies.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy Delete the data access configuration regardless of its dependencies.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey) {
@@ -202,8 +267,6 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         /**
          * @param metastoreId Unique identifier of the parent Metastore
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -214,8 +277,6 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
         /**
          * @param metastoreId Unique identifier of the parent Metastore
-         * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
@@ -243,6 +304,36 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the data access configuration owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the data access configuration owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
+        }
+
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
         }
 
         public MetastoreDataAccessState build() {

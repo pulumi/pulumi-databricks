@@ -190,6 +190,7 @@ __all__ = [
     'ModelServingConfigServedModelArgs',
     'ModelServingConfigTrafficConfigArgs',
     'ModelServingConfigTrafficConfigRouteArgs',
+    'ModelServingTagArgs',
     'MountAbfsArgs',
     'MountAdlArgs',
     'MountGsArgs',
@@ -9319,14 +9320,26 @@ class MetastoreDataAccessAzureServicePrincipalArgs:
 @pulumi.input_type
 class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
+                 credential_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
                
                `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
         if email is not None:
             pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential_id")
+
+    @credential_id.setter
+    def credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_id", value)
 
     @property
     @pulumi.getter
@@ -9755,6 +9768,34 @@ class ModelServingConfigTrafficConfigRouteArgs:
     @traffic_percentage.setter
     def traffic_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "traffic_percentage", value)
+
+
+@pulumi.input_type
+class ModelServingTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -13458,7 +13499,7 @@ class StorageCredentialAzureManagedIdentityArgs:
         :param pulumi.Input[str] access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
         :param pulumi.Input[str] managed_identity_id: The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
                
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
         if credential_id is not None:
@@ -13493,7 +13534,7 @@ class StorageCredentialAzureManagedIdentityArgs:
         """
         The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "managed_identity_id")
 
@@ -13511,8 +13552,6 @@ class StorageCredentialAzureServicePrincipalArgs:
         """
         :param pulumi.Input[str] application_id: The application ID of the application registration within the referenced AAD tenant
         :param pulumi.Input[str] client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
-               
-               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         :param pulumi.Input[str] directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -13536,8 +13575,6 @@ class StorageCredentialAzureServicePrincipalArgs:
     def client_secret(self) -> pulumi.Input[str]:
         """
         The client secret generated for the above app ID in AAD. **This field is redacted on output**
-
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         """
         return pulumi.get(self, "client_secret")
 
@@ -13561,12 +13598,24 @@ class StorageCredentialAzureServicePrincipalArgs:
 @pulumi.input_type
 class StorageCredentialDatabricksGcpServiceAccountArgs:
     def __init__(__self__, *,
+                 credential_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
         """
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
         if email is not None:
             pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "credential_id")
+
+    @credential_id.setter
+    def credential_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_id", value)
 
     @property
     @pulumi.getter

@@ -15,6 +15,13 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
 
     public static final StorageCredentialDatabricksGcpServiceAccountArgs Empty = new StorageCredentialDatabricksGcpServiceAccountArgs();
 
+    @Import(name="credentialId")
+    private @Nullable Output<String> credentialId;
+
+    public Optional<Output<String>> credentialId() {
+        return Optional.ofNullable(this.credentialId);
+    }
+
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      * 
@@ -33,6 +40,7 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
     private StorageCredentialDatabricksGcpServiceAccountArgs() {}
 
     private StorageCredentialDatabricksGcpServiceAccountArgs(StorageCredentialDatabricksGcpServiceAccountArgs $) {
+        this.credentialId = $.credentialId;
         this.email = $.email;
     }
 
@@ -52,6 +60,15 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
 
         public Builder(StorageCredentialDatabricksGcpServiceAccountArgs defaults) {
             $ = new StorageCredentialDatabricksGcpServiceAccountArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder credentialId(@Nullable Output<String> credentialId) {
+            $.credentialId = credentialId;
+            return this;
+        }
+
+        public Builder credentialId(String credentialId) {
+            return credentialId(Output.of(credentialId));
         }
 
         /**

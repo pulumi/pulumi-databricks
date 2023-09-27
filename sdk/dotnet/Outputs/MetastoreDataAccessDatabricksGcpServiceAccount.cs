@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MetastoreDataAccessDatabricksGcpServiceAccount
     {
+        public readonly string? CredentialId;
         /// <summary>
         /// The email of the GCP service account created, to be granted access to relevant buckets.
         /// 
@@ -21,8 +22,12 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Email;
 
         [OutputConstructor]
-        private MetastoreDataAccessDatabricksGcpServiceAccount(string? email)
+        private MetastoreDataAccessDatabricksGcpServiceAccount(
+            string? credentialId,
+
+            string? email)
         {
+            CredentialId = credentialId;
             Email = email;
         }
     }

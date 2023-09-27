@@ -87,6 +87,9 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("registeredModelId")]
+        public Output<string> RegisteredModelId { get; private set; } = null!;
+
         /// <summary>
         /// Tags for the MLflow model.
         /// </summary>
@@ -200,6 +203,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("registeredModelId")]
+        public Input<string>? RegisteredModelId { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.MlflowModelTagGetArgs>? _tags;

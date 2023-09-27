@@ -126,6 +126,12 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="registeredModelId", type=String.class, parameters={})
+    private Output<String> registeredModelId;
+
+    public Output<String> registeredModelId() {
+        return this.registeredModelId;
+    }
     /**
      * Tags for the MLflow model.
      * 

@@ -27,19 +27,24 @@ import (
 type MetastoreDataAccess struct {
 	pulumi.CustomResourceState
 
-	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrOutput                  `pulumi:"awsIamRole"`
-	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrOutput        `pulumi:"azureManagedIdentity"`
-	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrOutput       `pulumi:"azureServicePrincipal"`
-	ConfigurationType           pulumi.StringOutput                                     `pulumi:"configurationType"`
-	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput `pulumi:"databricksGcpServiceAccount"`
-	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput        `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   pulumi.BoolPtrOutput                                    `pulumi:"isDefault"`
-	// Unique identifier of the parent Metastore
+	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
+	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
+	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
+	Comment                     pulumi.StringPtrOutput                               `pulumi:"comment"`
+	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
+	// Delete the data access configuration regardless of its dependencies.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrOutput                             `pulumi:"forceDestroy"`
+	GcpServiceAccountKey MetastoreDataAccessGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
+	IsDefault            pulumi.BoolPtrOutput                             `pulumi:"isDefault"`
+	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the data access configuration owner.
+	Owner    pulumi.StringOutput  `pulumi:"owner"`
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 }
 
 // NewMetastoreDataAccess registers a new resource with the given unique name, arguments, and options.
@@ -78,32 +83,42 @@ type metastoreDataAccessState struct {
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
-	ConfigurationType           *string                                         `pulumi:"configurationType"`
+	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   *bool                                           `pulumi:"isDefault"`
-	// Unique identifier of the parent Metastore
+	// Delete the data access configuration regardless of its dependencies.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         *bool                                    `pulumi:"forceDestroy"`
+	GcpServiceAccountKey *MetastoreDataAccessGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
+	IsDefault            *bool                                    `pulumi:"isDefault"`
+	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the data access configuration owner.
+	Owner    *string `pulumi:"owner"`
+	ReadOnly *bool   `pulumi:"readOnly"`
 }
 
 type MetastoreDataAccessState struct {
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
-	ConfigurationType           pulumi.StringPtrInput
+	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
-	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault                   pulumi.BoolPtrInput
-	// Unique identifier of the parent Metastore
+	// Delete the data access configuration regardless of its dependencies.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrInput
+	GcpServiceAccountKey MetastoreDataAccessGcpServiceAccountKeyPtrInput
+	IsDefault            pulumi.BoolPtrInput
+	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the data access configuration owner.
+	Owner    pulumi.StringPtrInput
+	ReadOnly pulumi.BoolPtrInput
 }
 
 func (MetastoreDataAccessState) ElementType() reflect.Type {
@@ -114,16 +129,21 @@ type metastoreDataAccessArgs struct {
 	AwsIamRole                  *MetastoreDataAccessAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *MetastoreDataAccessAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *MetastoreDataAccessAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
-	ConfigurationType           *string                                         `pulumi:"configurationType"`
+	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
-	IsDefault                   *bool                                           `pulumi:"isDefault"`
-	// Unique identifier of the parent Metastore
+	// Delete the data access configuration regardless of its dependencies.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         *bool                                    `pulumi:"forceDestroy"`
+	GcpServiceAccountKey *MetastoreDataAccessGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
+	IsDefault            *bool                                    `pulumi:"isDefault"`
+	// Unique identifier of the parent Metastore
 	MetastoreId string `pulumi:"metastoreId"`
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the data access configuration owner.
+	Owner    *string `pulumi:"owner"`
+	ReadOnly *bool   `pulumi:"readOnly"`
 }
 
 // The set of arguments for constructing a MetastoreDataAccess resource.
@@ -131,16 +151,21 @@ type MetastoreDataAccessArgs struct {
 	AwsIamRole                  MetastoreDataAccessAwsIamRolePtrInput
 	AzureManagedIdentity        MetastoreDataAccessAzureManagedIdentityPtrInput
 	AzureServicePrincipal       MetastoreDataAccessAzureServicePrincipalPtrInput
-	ConfigurationType           pulumi.StringPtrInput
+	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
-	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
-	IsDefault                   pulumi.BoolPtrInput
-	// Unique identifier of the parent Metastore
+	// Delete the data access configuration regardless of its dependencies.
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrInput
+	GcpServiceAccountKey MetastoreDataAccessGcpServiceAccountKeyPtrInput
+	IsDefault            pulumi.BoolPtrInput
+	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringInput
 	// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the data access configuration owner.
+	Owner    pulumi.StringPtrInput
+	ReadOnly pulumi.BoolPtrInput
 }
 
 func (MetastoreDataAccessArgs) ElementType() reflect.Type {
@@ -270,14 +295,21 @@ func (o MetastoreDataAccessOutput) AzureServicePrincipal() MetastoreDataAccessAz
 	}).(MetastoreDataAccessAzureServicePrincipalPtrOutput)
 }
 
-func (o MetastoreDataAccessOutput) ConfigurationType() pulumi.StringOutput {
-	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.ConfigurationType }).(pulumi.StringOutput)
+func (o MetastoreDataAccessOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-func (o MetastoreDataAccessOutput) DatabricksGcpServiceAccount() MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
-	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput {
+func (o MetastoreDataAccessOutput) DatabricksGcpServiceAccount() MetastoreDataAccessDatabricksGcpServiceAccountOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessDatabricksGcpServiceAccountOutput {
 		return v.DatabricksGcpServiceAccount
-	}).(MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput)
+	}).(MetastoreDataAccessDatabricksGcpServiceAccountOutput)
+}
+
+// Delete the data access configuration regardless of its dependencies.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
+func (o MetastoreDataAccessOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcpServiceAccountKeyPtrOutput {
@@ -291,8 +323,6 @@ func (o MetastoreDataAccessOutput) IsDefault() pulumi.BoolPtrOutput {
 }
 
 // Unique identifier of the parent Metastore
-//
-// `awsIamRole` optional configuration block for credential details for AWS:
 func (o MetastoreDataAccessOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -300,6 +330,15 @@ func (o MetastoreDataAccessOutput) MetastoreId() pulumi.StringOutput {
 // Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 func (o MetastoreDataAccessOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Username/groupname/sp applicationId of the data access configuration owner.
+func (o MetastoreDataAccessOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDataAccessOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 type MetastoreDataAccessArrayOutput struct{ *pulumi.OutputState }

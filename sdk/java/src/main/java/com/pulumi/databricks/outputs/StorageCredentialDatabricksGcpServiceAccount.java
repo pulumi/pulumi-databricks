@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StorageCredentialDatabricksGcpServiceAccount {
+    private @Nullable String credentialId;
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
      * 
@@ -18,6 +19,9 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
     private @Nullable String email;
 
     private StorageCredentialDatabricksGcpServiceAccount() {}
+    public Optional<String> credentialId() {
+        return Optional.ofNullable(this.credentialId);
+    }
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
      * 
@@ -35,13 +39,20 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String credentialId;
         private @Nullable String email;
         public Builder() {}
         public Builder(StorageCredentialDatabricksGcpServiceAccount defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.credentialId = defaults.credentialId;
     	      this.email = defaults.email;
         }
 
+        @CustomType.Setter
+        public Builder credentialId(@Nullable String credentialId) {
+            this.credentialId = credentialId;
+            return this;
+        }
         @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
@@ -49,6 +60,7 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
         }
         public StorageCredentialDatabricksGcpServiceAccount build() {
             final var o = new StorageCredentialDatabricksGcpServiceAccount();
+            o.credentialId = credentialId;
             o.email = email;
             return o;
         }

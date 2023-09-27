@@ -95,9 +95,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterLogConf);
     }
 
+    /**
+     * @deprecated
+     * cluster_mount_info block is deprecated due the Clusters API changes.
+     * 
+     */
+    @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
     @Import(name="clusterMountInfos")
     private @Nullable Output<List<ClusterClusterMountInfoArgs>> clusterMountInfos;
 
+    /**
+     * @deprecated
+     * cluster_mount_info block is deprecated due the Clusters API changes.
+     * 
+     */
+    @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
     public Optional<Output<List<ClusterClusterMountInfoArgs>>> clusterMountInfos() {
         return Optional.ofNullable(this.clusterMountInfos);
     }
@@ -704,15 +716,39 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return clusterLogConf(Output.of(clusterLogConf));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * cluster_mount_info block is deprecated due the Clusters API changes.
+         * 
+         */
+        @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
         public Builder clusterMountInfos(@Nullable Output<List<ClusterClusterMountInfoArgs>> clusterMountInfos) {
             $.clusterMountInfos = clusterMountInfos;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * cluster_mount_info block is deprecated due the Clusters API changes.
+         * 
+         */
+        @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
         public Builder clusterMountInfos(List<ClusterClusterMountInfoArgs> clusterMountInfos) {
             return clusterMountInfos(Output.of(clusterMountInfos));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * cluster_mount_info block is deprecated due the Clusters API changes.
+         * 
+         */
+        @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
         public Builder clusterMountInfos(ClusterClusterMountInfoArgs... clusterMountInfos) {
             return clusterMountInfos(List.of(clusterMountInfos));
         }

@@ -32375,6 +32375,7 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) DirectoryId() pulumi.
 }
 
 type MetastoreDataAccessDatabricksGcpServiceAccount struct {
+	CredentialId *string `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
 	//
 	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
@@ -32393,6 +32394,7 @@ type MetastoreDataAccessDatabricksGcpServiceAccountInput interface {
 }
 
 type MetastoreDataAccessDatabricksGcpServiceAccountArgs struct {
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
 	//
 	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
@@ -32494,6 +32496,10 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) ToOutput(ctx conte
 	}
 }
 
+func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDataAccessDatabricksGcpServiceAccount) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
 // The email of the GCP service account created, to be granted access to relevant buckets.
 //
 // `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
@@ -32529,6 +32535,15 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Elem() Metastor
 		var ret MetastoreDataAccessDatabricksGcpServiceAccount
 		return ret
 	}).(MetastoreDataAccessDatabricksGcpServiceAccountOutput)
+}
+
+func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
@@ -33927,6 +33942,130 @@ func (o ModelServingConfigTrafficConfigRouteArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigTrafficConfigRoute {
 		return vs[0].([]ModelServingConfigTrafficConfigRoute)[vs[1].(int)]
 	}).(ModelServingConfigTrafficConfigRouteOutput)
+}
+
+type ModelServingTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// ModelServingTagInput is an input type that accepts ModelServingTagArgs and ModelServingTagOutput values.
+// You can construct a concrete instance of `ModelServingTagInput` via:
+//
+//	ModelServingTagArgs{...}
+type ModelServingTagInput interface {
+	pulumi.Input
+
+	ToModelServingTagOutput() ModelServingTagOutput
+	ToModelServingTagOutputWithContext(context.Context) ModelServingTagOutput
+}
+
+type ModelServingTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ModelServingTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
+}
+
+func (i ModelServingTagArgs) ToModelServingTagOutput() ModelServingTagOutput {
+	return i.ToModelServingTagOutputWithContext(context.Background())
+}
+
+func (i ModelServingTagArgs) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagOutput)
+}
+
+func (i ModelServingTagArgs) ToOutput(ctx context.Context) pulumix.Output[ModelServingTag] {
+	return pulumix.Output[ModelServingTag]{
+		OutputState: i.ToModelServingTagOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ModelServingTagArrayInput is an input type that accepts ModelServingTagArray and ModelServingTagArrayOutput values.
+// You can construct a concrete instance of `ModelServingTagArrayInput` via:
+//
+//	ModelServingTagArray{ ModelServingTagArgs{...} }
+type ModelServingTagArrayInput interface {
+	pulumi.Input
+
+	ToModelServingTagArrayOutput() ModelServingTagArrayOutput
+	ToModelServingTagArrayOutputWithContext(context.Context) ModelServingTagArrayOutput
+}
+
+type ModelServingTagArray []ModelServingTagInput
+
+func (ModelServingTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
+}
+
+func (i ModelServingTagArray) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
+	return i.ToModelServingTagArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingTagArray) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingTagArrayOutput)
+}
+
+func (i ModelServingTagArray) ToOutput(ctx context.Context) pulumix.Output[[]ModelServingTag] {
+	return pulumix.Output[[]ModelServingTag]{
+		OutputState: i.ToModelServingTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ModelServingTagOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingTag)(nil)).Elem()
+}
+
+func (o ModelServingTagOutput) ToModelServingTagOutput() ModelServingTagOutput {
+	return o
+}
+
+func (o ModelServingTagOutput) ToModelServingTagOutputWithContext(ctx context.Context) ModelServingTagOutput {
+	return o
+}
+
+func (o ModelServingTagOutput) ToOutput(ctx context.Context) pulumix.Output[ModelServingTag] {
+	return pulumix.Output[ModelServingTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ModelServingTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o ModelServingTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingTag)(nil)).Elem()
+}
+
+func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutput() ModelServingTagArrayOutput {
+	return o
+}
+
+func (o ModelServingTagArrayOutput) ToModelServingTagArrayOutputWithContext(ctx context.Context) ModelServingTagArrayOutput {
+	return o
+}
+
+func (o ModelServingTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ModelServingTag] {
+	return pulumix.Output[[]ModelServingTag]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ModelServingTagArrayOutput) Index(i pulumi.IntInput) ModelServingTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingTag {
+		return vs[0].([]ModelServingTag)[vs[1].(int)]
+	}).(ModelServingTagOutput)
 }
 
 type MountAbfs struct {
@@ -47747,7 +47886,7 @@ type StorageCredentialAzureManagedIdentity struct {
 	CredentialId      *string `pulumi:"credentialId"`
 	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ManagedIdentityId *string `pulumi:"managedIdentityId"`
 }
 
@@ -47768,7 +47907,7 @@ type StorageCredentialAzureManagedIdentityArgs struct {
 	CredentialId      pulumi.StringPtrInput `pulumi:"credentialId"`
 	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
+	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ManagedIdentityId pulumi.StringPtrInput `pulumi:"managedIdentityId"`
 }
 
@@ -47878,7 +48017,7 @@ func (o StorageCredentialAzureManagedIdentityOutput) CredentialId() pulumi.Strin
 
 // The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 //
-// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureManagedIdentityOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageCredentialAzureManagedIdentity) *string { return v.ManagedIdentityId }).(pulumi.StringPtrOutput)
 }
@@ -47934,7 +48073,7 @@ func (o StorageCredentialAzureManagedIdentityPtrOutput) CredentialId() pulumi.St
 
 // The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
 //
-// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
+// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureManagedIdentityPtrOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAzureManagedIdentity) *string {
 		if v == nil {
@@ -47948,8 +48087,6 @@ type StorageCredentialAzureServicePrincipal struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret string `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId string `pulumi:"directoryId"`
@@ -47970,8 +48107,6 @@ type StorageCredentialAzureServicePrincipalArgs struct {
 	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -48078,8 +48213,6 @@ func (o StorageCredentialAzureServicePrincipalOutput) ApplicationId() pulumi.Str
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -48130,8 +48263,6 @@ func (o StorageCredentialAzureServicePrincipalPtrOutput) ApplicationId() pulumi.
 }
 
 // The client secret generated for the above app ID in AAD. **This field is redacted on output**
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o StorageCredentialAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAzureServicePrincipal) *string {
 		if v == nil {
@@ -48152,6 +48283,7 @@ func (o StorageCredentialAzureServicePrincipalPtrOutput) DirectoryId() pulumi.St
 }
 
 type StorageCredentialDatabricksGcpServiceAccount struct {
+	CredentialId *string `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email *string `pulumi:"email"`
 }
@@ -48168,6 +48300,7 @@ type StorageCredentialDatabricksGcpServiceAccountInput interface {
 }
 
 type StorageCredentialDatabricksGcpServiceAccountArgs struct {
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
 	Email pulumi.StringPtrInput `pulumi:"email"`
 }
@@ -48267,6 +48400,10 @@ func (o StorageCredentialDatabricksGcpServiceAccountOutput) ToOutput(ctx context
 	}
 }
 
+func (o StorageCredentialDatabricksGcpServiceAccountOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
 // The email of the GCP service account created, to be granted access to relevant buckets.
 func (o StorageCredentialDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -48300,6 +48437,15 @@ func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Elem() StorageCre
 		var ret StorageCredentialDatabricksGcpServiceAccount
 		return ret
 	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
+}
+
+func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
@@ -82241,6 +82387,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigPtrInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteArrayInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagInput)(nil)).Elem(), ModelServingTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagArrayInput)(nil)).Elem(), ModelServingTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsInput)(nil)).Elem(), MountAbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsPtrInput)(nil)).Elem(), MountAbfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAdlInput)(nil)).Elem(), MountAdlArgs{})
@@ -83106,6 +83254,8 @@ func init() {
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingTagOutput{})
+	pulumi.RegisterOutputType(ModelServingTagArrayOutput{})
 	pulumi.RegisterOutputType(MountAbfsOutput{})
 	pulumi.RegisterOutputType(MountAbfsPtrOutput{})
 	pulumi.RegisterOutputType(MountAdlOutput{})

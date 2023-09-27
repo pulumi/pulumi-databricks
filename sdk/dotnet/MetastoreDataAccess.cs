@@ -32,11 +32,19 @@ namespace Pulumi.Databricks
         [Output("azureServicePrincipal")]
         public Output<Outputs.MetastoreDataAccessAzureServicePrincipal?> AzureServicePrincipal { get; private set; } = null!;
 
-        [Output("configurationType")]
-        public Output<string> ConfigurationType { get; private set; } = null!;
+        [Output("comment")]
+        public Output<string?> Comment { get; private set; } = null!;
 
         [Output("databricksGcpServiceAccount")]
-        public Output<Outputs.MetastoreDataAccessDatabricksGcpServiceAccount?> DatabricksGcpServiceAccount { get; private set; } = null!;
+        public Output<Outputs.MetastoreDataAccessDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Delete the data access configuration regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.MetastoreDataAccessGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
@@ -46,8 +54,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -57,6 +63,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the data access configuration owner.
+        /// </summary>
+        [Output("owner")]
+        public Output<string> Owner { get; private set; } = null!;
+
+        [Output("readOnly")]
+        public Output<bool?> ReadOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,11 +128,19 @@ namespace Pulumi.Databricks
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalArgs>? AzureServicePrincipal { get; set; }
 
-        [Input("configurationType")]
-        public Input<string>? ConfigurationType { get; set; }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.MetastoreDataAccessDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
+
+        /// <summary>
+        /// Delete the data access configuration regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
@@ -127,8 +150,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("metastoreId", required: true)]
         public Input<string> MetastoreId { get; set; } = null!;
@@ -138,6 +159,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the data access configuration owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         public MetastoreDataAccessArgs()
         {
@@ -156,11 +186,19 @@ namespace Pulumi.Databricks
         [Input("azureServicePrincipal")]
         public Input<Inputs.MetastoreDataAccessAzureServicePrincipalGetArgs>? AzureServicePrincipal { get; set; }
 
-        [Input("configurationType")]
-        public Input<string>? ConfigurationType { get; set; }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.MetastoreDataAccessDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
+
+        /// <summary>
+        /// Delete the data access configuration regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
@@ -170,8 +208,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of the parent Metastore
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -181,6 +217,15 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the data access configuration owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         public MetastoreDataAccessState()
         {

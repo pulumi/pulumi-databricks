@@ -20,17 +20,22 @@ class MetastoreDataAccessArgs:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
-                 configuration_type: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[bool] force_destroy: Delete the data access configuration regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the data access configuration owner.
         """
         pulumi.set(__self__, "metastore_id", metastore_id)
         if aws_iam_role is not None:
@@ -39,24 +44,28 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
-        if configuration_type is not None:
-            pulumi.set(__self__, "configuration_type", configuration_type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Input[str]:
         """
         Unique identifier of the parent Metastore
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 
@@ -92,13 +101,13 @@ class MetastoreDataAccessArgs:
         pulumi.set(self, "azure_service_principal", value)
 
     @property
-    @pulumi.getter(name="configurationType")
-    def configuration_type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "configuration_type")
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
 
-    @configuration_type.setter
-    def configuration_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "configuration_type", value)
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter(name="databricksGcpServiceAccount")
@@ -108,6 +117,20 @@ class MetastoreDataAccessArgs:
     @databricks_gcp_service_account.setter
     def databricks_gcp_service_account(self, value: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete the data access configuration regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -139,6 +162,27 @@ class MetastoreDataAccessArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the data access configuration owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
 
 @pulumi.input_type
 class _MetastoreDataAccessState:
@@ -146,18 +190,23 @@ class _MetastoreDataAccessState:
                  aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
                  azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
                  azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
-                 configuration_type: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[bool] force_destroy: Delete the data access configuration regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the data access configuration owner.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -165,10 +214,12 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
             pulumi.set(__self__, "azure_service_principal", azure_service_principal)
-        if configuration_type is not None:
-            pulumi.set(__self__, "configuration_type", configuration_type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if databricks_gcp_service_account is not None:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
@@ -177,6 +228,10 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -206,13 +261,13 @@ class _MetastoreDataAccessState:
         pulumi.set(self, "azure_service_principal", value)
 
     @property
-    @pulumi.getter(name="configurationType")
-    def configuration_type(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "configuration_type")
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
 
-    @configuration_type.setter
-    def configuration_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "configuration_type", value)
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
 
     @property
     @pulumi.getter(name="databricksGcpServiceAccount")
@@ -222,6 +277,20 @@ class _MetastoreDataAccessState:
     @databricks_gcp_service_account.setter
     def databricks_gcp_service_account(self, value: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete the data access configuration regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -246,8 +315,6 @@ class _MetastoreDataAccessState:
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier of the parent Metastore
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 
@@ -267,6 +334,27 @@ class _MetastoreDataAccessState:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the data access configuration owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
 
 class MetastoreDataAccess(pulumi.CustomResource):
     @overload
@@ -276,12 +364,15 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
-                 configuration_type: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Each Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `MetastoreDataAccess` defines this
@@ -296,10 +387,12 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[bool] force_destroy: Delete the data access configuration regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the data access configuration owner.
         """
         ...
     @overload
@@ -336,12 +429,15 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
                  azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
                  azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
-                 configuration_type: Optional[pulumi.Input[str]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,14 +450,17 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["aws_iam_role"] = aws_iam_role
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
             __props__.__dict__["azure_service_principal"] = azure_service_principal
-            __props__.__dict__["configuration_type"] = configuration_type
+            __props__.__dict__["comment"] = comment
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["is_default"] = is_default
             if metastore_id is None and not opts.urn:
                 raise TypeError("Missing required property 'metastore_id'")
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["owner"] = owner
+            __props__.__dict__["read_only"] = read_only
         super(MetastoreDataAccess, __self__).__init__(
             'databricks:index/metastoreDataAccess:MetastoreDataAccess',
             resource_name,
@@ -375,12 +474,15 @@ class MetastoreDataAccess(pulumi.CustomResource):
             aws_iam_role: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAwsIamRoleArgs']]] = None,
             azure_managed_identity: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureManagedIdentityArgs']]] = None,
             azure_service_principal: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessAzureServicePrincipalArgs']]] = None,
-            configuration_type: Optional[pulumi.Input[str]] = None,
+            comment: Optional[pulumi.Input[str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'MetastoreDataAccess':
+            name: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[str]] = None,
+            read_only: Optional[pulumi.Input[bool]] = None) -> 'MetastoreDataAccess':
         """
         Get an existing MetastoreDataAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -388,10 +490,12 @@ class MetastoreDataAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[bool] force_destroy: Delete the data access configuration regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the data access configuration owner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -400,12 +504,15 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["aws_iam_role"] = aws_iam_role
         __props__.__dict__["azure_managed_identity"] = azure_managed_identity
         __props__.__dict__["azure_service_principal"] = azure_service_principal
-        __props__.__dict__["configuration_type"] = configuration_type
+        __props__.__dict__["comment"] = comment
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["owner"] = owner
+        __props__.__dict__["read_only"] = read_only
         return MetastoreDataAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -424,14 +531,24 @@ class MetastoreDataAccess(pulumi.CustomResource):
         return pulumi.get(self, "azure_service_principal")
 
     @property
-    @pulumi.getter(name="configurationType")
-    def configuration_type(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "configuration_type")
+    @pulumi.getter
+    def comment(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter(name="databricksGcpServiceAccount")
-    def databricks_gcp_service_account(self) -> pulumi.Output[Optional['outputs.MetastoreDataAccessDatabricksGcpServiceAccount']]:
+    def databricks_gcp_service_account(self) -> pulumi.Output['outputs.MetastoreDataAccessDatabricksGcpServiceAccount']:
         return pulumi.get(self, "databricks_gcp_service_account")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete the data access configuration regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -448,8 +565,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
     def metastore_id(self) -> pulumi.Output[str]:
         """
         Unique identifier of the parent Metastore
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "metastore_id")
 
@@ -460,4 +575,17 @@ class MetastoreDataAccess(pulumi.CustomResource):
         Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[str]:
+        """
+        Username/groupname/sp application_id of the data access configuration owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "read_only")
 

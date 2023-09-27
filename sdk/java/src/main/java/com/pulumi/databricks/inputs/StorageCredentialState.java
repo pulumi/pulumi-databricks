@@ -56,9 +56,21 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
+    /**
+     * Delete storage credential regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
+    /**
+     * @return Delete storage credential regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -103,16 +115,12 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Username/groupname/sp application_id of the storage credential owner.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
      * @return Username/groupname/sp application_id of the storage credential owner.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<String>> owner() {
@@ -122,12 +130,16 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Indicates whether the storage credential is only usable for read operations.
      * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
      * @return Indicates whether the storage credential is only usable for read operations.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -213,11 +225,27 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
+        /**
+         * @param forceDestroy Delete storage credential regardless of its dependencies.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
+        /**
+         * @param forceDestroy Delete storage credential regardless of its dependencies.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
@@ -276,8 +304,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param owner Username/groupname/sp application_id of the storage credential owner.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -289,8 +315,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param owner Username/groupname/sp application_id of the storage credential owner.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -300,6 +324,8 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         /**
          * @param readOnly Indicates whether the storage credential is only usable for read operations.
+         * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 
@@ -311,6 +337,8 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         /**
          * @param readOnly Indicates whether the storage credential is only usable for read operations.
+         * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 

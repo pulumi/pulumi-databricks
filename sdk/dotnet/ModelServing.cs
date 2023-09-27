@@ -110,6 +110,9 @@ namespace Pulumi.Databricks
         [Output("servingEndpointId")]
         public Output<string> ServingEndpointId { get; private set; } = null!;
 
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.ModelServingTag>> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ModelServing resource with the given unique name, arguments, and options.
@@ -168,6 +171,14 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("tags")]
+        private InputList<Inputs.ModelServingTagArgs>? _tags;
+        public InputList<Inputs.ModelServingTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ModelServingTagArgs>());
+            set => _tags = value;
+        }
+
         public ModelServingArgs()
         {
         }
@@ -193,6 +204,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("servingEndpointId")]
         public Input<string>? ServingEndpointId { get; set; }
+
+        [Input("tags")]
+        private InputList<Inputs.ModelServingTagGetArgs>? _tags;
+        public InputList<Inputs.ModelServingTagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ModelServingTagGetArgs>());
+            set => _tags = value;
+        }
 
         public ModelServingState()
         {

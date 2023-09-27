@@ -113,6 +113,11 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly azureServicePrincipal!: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete storage credential regardless of its dependencies.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     /**
@@ -125,12 +130,12 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     public readonly owner!: pulumi.Output<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
 
@@ -186,6 +191,11 @@ export interface StorageCredentialState {
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete storage credential regardless of its dependencies.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**
@@ -198,12 +208,12 @@ export interface StorageCredentialState {
     name?: pulumi.Input<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     readOnly?: pulumi.Input<boolean>;
 }
@@ -217,6 +227,11 @@ export interface StorageCredentialArgs {
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
+    /**
+     * Delete storage credential regardless of its dependencies.
+     *
+     * `awsIamRole` optional configuration block for credential details for AWS:
+     */
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**
@@ -229,12 +244,12 @@ export interface StorageCredentialArgs {
     name?: pulumi.Input<string>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
      */
     owner?: pulumi.Input<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     readOnly?: pulumi.Input<boolean>;
 }

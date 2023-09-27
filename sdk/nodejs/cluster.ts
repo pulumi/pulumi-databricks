@@ -56,6 +56,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly azureAttributes!: pulumi.Output<outputs.ClusterAzureAttributes | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
     public readonly clusterLogConf!: pulumi.Output<outputs.ClusterClusterLogConf | undefined>;
+    /**
+     * @deprecated cluster_mount_info block is deprecated due the Clusters API changes.
+     */
     public readonly clusterMountInfos!: pulumi.Output<outputs.ClusterClusterMountInfo[] | undefined>;
     /**
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -285,6 +288,9 @@ export interface ClusterState {
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf>;
+    /**
+     * @deprecated cluster_mount_info block is deprecated due the Clusters API changes.
+     */
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[]>;
     /**
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -421,6 +427,9 @@ export interface ClusterArgs {
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf>;
+    /**
+     * @deprecated cluster_mount_info block is deprecated due the Clusters API changes.
+     */
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[]>;
     /**
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.

@@ -3128,12 +3128,13 @@ export interface MetastoreDataAccessAzureServicePrincipal {
 }
 
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
+    credentialId?: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
      * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
-    email: string;
+    email?: string;
 }
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
@@ -3244,6 +3245,11 @@ export interface ModelServingConfigTrafficConfigRoute {
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
     trafficPercentage: number;
+}
+
+export interface ModelServingTag {
+    key: string;
+    value?: string;
 }
 
 export interface MountAbfs {
@@ -3939,7 +3945,7 @@ export interface StorageCredentialAzureManagedIdentity {
     /**
      * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure:
+     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     managedIdentityId?: string;
 }
@@ -3951,8 +3957,6 @@ export interface StorageCredentialAzureServicePrincipal {
     applicationId: string;
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
     clientSecret: string;
     /**
@@ -3962,10 +3966,11 @@ export interface StorageCredentialAzureServicePrincipal {
 }
 
 export interface StorageCredentialDatabricksGcpServiceAccount {
+    credentialId?: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      */
-    email: string;
+    email?: string;
 }
 
 export interface StorageCredentialGcpServiceAccountKey {

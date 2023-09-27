@@ -52,17 +52,35 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<Optional<MetastoreDataAccessAzureServicePrincipal>> azureServicePrincipal() {
         return Codegen.optional(this.azureServicePrincipal);
     }
-    @Export(name="configurationType", type=String.class, parameters={})
-    private Output<String> configurationType;
+    @Export(name="comment", type=String.class, parameters={})
+    private Output</* @Nullable */ String> comment;
 
-    public Output<String> configurationType() {
-        return this.configurationType;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     @Export(name="databricksGcpServiceAccount", type=MetastoreDataAccessDatabricksGcpServiceAccount.class, parameters={})
-    private Output</* @Nullable */ MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount;
+    private Output<MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount;
 
-    public Output<Optional<MetastoreDataAccessDatabricksGcpServiceAccount>> databricksGcpServiceAccount() {
-        return Codegen.optional(this.databricksGcpServiceAccount);
+    public Output<MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
+        return this.databricksGcpServiceAccount;
+    }
+    /**
+     * Delete the data access configuration regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return Delete the data access configuration regardless of its dependencies.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     @Export(name="gcpServiceAccountKey", type=MetastoreDataAccessGcpServiceAccountKey.class, parameters={})
     private Output</* @Nullable */ MetastoreDataAccessGcpServiceAccountKey> gcpServiceAccountKey;
@@ -79,16 +97,12 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     /**
      * Unique identifier of the parent Metastore
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Export(name="metastoreId", type=String.class, parameters={})
     private Output<String> metastoreId;
 
     /**
      * @return Unique identifier of the parent Metastore
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> metastoreId() {
@@ -107,6 +121,26 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Username/groupname/sp application_id of the data access configuration owner.
+     * 
+     */
+    @Export(name="owner", type=String.class, parameters={})
+    private Output<String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the data access configuration owner.
+     * 
+     */
+    public Output<String> owner() {
+        return this.owner;
+    }
+    @Export(name="readOnly", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> readOnly;
+
+    public Output<Optional<Boolean>> readOnly() {
+        return Codegen.optional(this.readOnly);
     }
 
     /**
