@@ -1015,6 +1015,9 @@
                                 }
                             }
                         }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3358,6 +3361,9 @@
                 "clientSecret": "client_secret",
                 "directoryId": "directory_id"
             },
+            "databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount": {
+                "credentialId": "credential_id"
+            },
             "databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey": {
                 "privateKey": "private_key",
                 "privateKeyId": "private_key_id"
@@ -3620,6 +3626,9 @@
                 "applicationId": "application_id",
                 "clientSecret": "client_secret",
                 "directoryId": "directory_id"
+            },
+            "databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount": {
+                "credentialId": "credential_id"
             },
             "databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey": {
                 "privateKey": "private_key",
@@ -4645,11 +4654,12 @@
                 "awsIamRole": "aws_iam_role",
                 "azureManagedIdentity": "azure_managed_identity",
                 "azureServicePrincipal": "azure_service_principal",
-                "configurationType": "configuration_type",
                 "databricksGcpServiceAccount": "databricks_gcp_service_account",
+                "forceDestroy": "force_destroy",
                 "gcpServiceAccountKey": "gcp_service_account_key",
                 "isDefault": "is_default",
-                "metastoreId": "metastore_id"
+                "metastoreId": "metastore_id",
+                "readOnly": "read_only"
             },
             "databricks:index/metastoreProvider:MetastoreProvider": {
                 "authenticationType": "authentication_type",
@@ -4665,6 +4675,7 @@
             "databricks:index/mlflowModel:MlflowModel": {
                 "creationTimestamp": "creation_timestamp",
                 "lastUpdatedTimestamp": "last_updated_timestamp",
+                "registeredModelId": "registered_model_id",
                 "userId": "user_id"
             },
             "databricks:index/mlflowWebhook:MlflowWebhook": {
