@@ -162,17 +162,20 @@ type StorageCredential struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
 	Comment                     pulumi.StringPtrOutput                             `pulumi:"comment"`
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                pulumi.BoolPtrOutput                               `pulumi:"forceDestroy"`
-	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
+	// Delete storage credential regardless of its dependencies.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrOutput                           `pulumi:"forceDestroy"`
+	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 }
 
@@ -211,17 +214,20 @@ type storageCredentialState struct {
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
-	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
+	// Delete storage credential regardless of its dependencies.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
+	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -231,17 +237,20 @@ type StorageCredentialState struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
-	ForceDestroy                pulumi.BoolPtrInput
-	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
+	// Delete storage credential regardless of its dependencies.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrInput
+	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrInput
 }
 
@@ -255,17 +264,20 @@ type storageCredentialArgs struct {
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
 	Comment                     *string                                       `pulumi:"comment"`
 	DatabricksGcpServiceAccount *StorageCredentialDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
-	ForceDestroy                *bool                                         `pulumi:"forceDestroy"`
-	GcpServiceAccountKey        *StorageCredentialGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
+	// Delete storage credential regardless of its dependencies.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
+	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the storage credential owner.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -276,17 +288,20 @@ type StorageCredentialArgs struct {
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount StorageCredentialDatabricksGcpServiceAccountPtrInput
-	ForceDestroy                pulumi.BoolPtrInput
-	GcpServiceAccountKey        StorageCredentialGcpServiceAccountKeyPtrInput
+	// Delete storage credential regardless of its dependencies.
+	//
+	// `awsIamRole` optional configuration block for credential details for AWS:
+	ForceDestroy         pulumi.BoolPtrInput
+	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the storage credential owner.
-	//
-	// `awsIamRole` optional configuration block for credential details for AWS:
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrInput
 }
 
@@ -427,6 +442,9 @@ func (o StorageCredentialOutput) DatabricksGcpServiceAccount() StorageCredential
 	}).(StorageCredentialDatabricksGcpServiceAccountOutput)
 }
 
+// Delete storage credential regardless of its dependencies.
+//
+// `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
@@ -448,13 +466,13 @@ func (o StorageCredentialOutput) Name() pulumi.StringOutput {
 }
 
 // Username/groupname/sp applicationId of the storage credential owner.
-//
-// `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
 // Indicates whether the storage credential is only usable for read operations.
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }

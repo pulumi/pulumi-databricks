@@ -112,6 +112,7 @@ class _MlflowModelState:
                  description: Optional[pulumi.Input[str]] = None,
                  last_updated_timestamp: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 registered_model_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None):
         """
@@ -128,6 +129,8 @@ class _MlflowModelState:
             pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if registered_model_id is not None:
+            pulumi.set(__self__, "registered_model_id", registered_model_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_id is not None:
@@ -174,6 +177,15 @@ class _MlflowModelState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="registeredModelId")
+    def registered_model_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "registered_model_id")
+
+    @registered_model_id.setter
+    def registered_model_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registered_model_id", value)
 
     @property
     @pulumi.getter
@@ -349,6 +361,7 @@ class MlflowModel(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["registered_model_id"] = None
         super(MlflowModel, __self__).__init__(
             'databricks:index/mlflowModel:MlflowModel',
             resource_name,
@@ -363,6 +376,7 @@ class MlflowModel(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            registered_model_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MlflowModelTagArgs']]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'MlflowModel':
         """
@@ -384,6 +398,7 @@ class MlflowModel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["last_updated_timestamp"] = last_updated_timestamp
         __props__.__dict__["name"] = name
+        __props__.__dict__["registered_model_id"] = registered_model_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_id"] = user_id
         return MlflowModel(resource_name, opts=opts, __props__=__props__)
@@ -413,6 +428,11 @@ class MlflowModel(pulumi.CustomResource):
         Name of MLflow model. Change of name triggers new resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="registeredModelId")
+    def registered_model_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "registered_model_id")
 
     @property
     @pulumi.getter

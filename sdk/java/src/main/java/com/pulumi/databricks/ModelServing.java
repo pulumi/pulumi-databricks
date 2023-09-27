@@ -11,7 +11,10 @@ import com.pulumi.databricks.ModelServingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ModelServingState;
 import com.pulumi.databricks.outputs.ModelServingConfig;
+import com.pulumi.databricks.outputs.ModelServingTag;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -142,6 +145,12 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<String> servingEndpointId() {
         return this.servingEndpointId;
+    }
+    @Export(name="tags", type=List.class, parameters={ModelServingTag.class})
+    private Output</* @Nullable */ List<ModelServingTag>> tags;
+
+    public Output<Optional<List<ModelServingTag>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

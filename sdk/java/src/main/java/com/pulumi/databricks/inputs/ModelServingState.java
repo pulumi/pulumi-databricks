@@ -6,7 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingTagArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -61,12 +63,20 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.servingEndpointId);
     }
 
+    @Import(name="tags")
+    private @Nullable Output<List<ModelServingTagArgs>> tags;
+
+    public Optional<Output<List<ModelServingTagArgs>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ModelServingState() {}
 
     private ModelServingState(ModelServingState $) {
         this.config = $.config;
         this.name = $.name;
         this.servingEndpointId = $.servingEndpointId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -148,6 +158,19 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder servingEndpointId(String servingEndpointId) {
             return servingEndpointId(Output.of(servingEndpointId));
+        }
+
+        public Builder tags(@Nullable Output<List<ModelServingTagArgs>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<ModelServingTagArgs> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(ModelServingTagArgs... tags) {
+            return tags(List.of(tags));
         }
 
         public ModelServingState build() {

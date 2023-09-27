@@ -3450,19 +3450,15 @@
         },
         "databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount": {
             "properties": {
+                "credentialId": {
+                    "type": "string"
+                },
                 "email": {
                     "type": "string",
                     "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n\n`azure_service_principal` optional configuration block for credential details for Azure (Legacy):\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "email"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey": {
             "properties": {
@@ -3649,6 +3645,20 @@
             "required": [
                 "servedModelName",
                 "trafficPercentage"
+            ]
+        },
+        "databricks:index/ModelServingTag:ModelServingTag": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
             ]
         },
         "databricks:index/MountAbfs:MountAbfs": {
@@ -5297,7 +5307,7 @@
                 },
                 "managedIdentityId": {
                     "type": "string",
-                    "description": "The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.\n\n`azure_service_principal` optional configuration block to use service principal as credential details for Azure:\n"
+                    "description": "The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.\n\n`databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:\n"
                 }
             },
             "type": "object",
@@ -5321,7 +5331,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "The client secret generated for the above app ID in AAD. **This field is redacted on output**\n\n`databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:\n"
+                    "description": "The client secret generated for the above app ID in AAD. **This field is redacted on output**\n"
                 },
                 "directoryId": {
                     "type": "string",
@@ -5337,19 +5347,15 @@
         },
         "databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount": {
             "properties": {
+                "credentialId": {
+                    "type": "string"
+                },
                 "email": {
                     "type": "string",
                     "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "email"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey": {
             "properties": {
@@ -9568,7 +9574,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ClusterClusterMountInfo:ClusterClusterMountInfo"
-                    }
+                    },
+                    "deprecationMessage": "cluster_mount_info block is deprecated due the Clusters API changes."
                 },
                 "clusterName": {
                     "type": "string",
@@ -9733,7 +9740,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ClusterClusterMountInfo:ClusterClusterMountInfo"
-                    }
+                    },
+                    "deprecationMessage": "cluster_mount_info block is deprecated due the Clusters API changes."
                 },
                 "clusterName": {
                     "type": "string",
@@ -9878,7 +9886,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/databricks:index/ClusterClusterMountInfo:ClusterClusterMountInfo"
-                        }
+                        },
+                        "deprecationMessage": "cluster_mount_info block is deprecated due the Clusters API changes."
                     },
                     "clusterName": {
                         "type": "string",
@@ -12458,11 +12467,15 @@
                 "azureServicePrincipal": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal"
                 },
-                "configurationType": {
+                "comment": {
                     "type": "string"
                 },
                 "databricksGcpServiceAccount": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete the data access configuration regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey"
@@ -12472,17 +12485,25 @@
                 },
                 "metastoreId": {
                     "type": "string",
-                    "description": "Unique identifier of the parent Metastore\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Unique identifier of the parent Metastore\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.\n"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the data access configuration owner.\n"
+                },
+                "readOnly": {
+                    "type": "boolean"
                 }
             },
             "required": [
-                "configurationType",
+                "databricksGcpServiceAccount",
                 "metastoreId",
-                "name"
+                "name",
+                "owner"
             ],
             "inputProperties": {
                 "awsIamRole": {
@@ -12497,11 +12518,16 @@
                     "$ref": "#/types/databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal",
                     "willReplaceOnChanges": true
                 },
-                "configurationType": {
-                    "type": "string"
+                "comment": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 },
                 "databricksGcpServiceAccount": {
-                    "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount",
+                    "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete the data access configuration regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n",
                     "willReplaceOnChanges": true
                 },
                 "gcpServiceAccountKey": {
@@ -12514,12 +12540,20 @@
                 },
                 "metastoreId": {
                     "type": "string",
-                    "description": "Unique identifier of the parent Metastore\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n",
+                    "description": "Unique identifier of the parent Metastore\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
                     "description": "Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "Username/groupname/sp application_id of the data access configuration owner.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
                     "willReplaceOnChanges": true
                 }
             },
@@ -12541,11 +12575,16 @@
                         "$ref": "#/types/databricks:index/MetastoreDataAccessAzureServicePrincipal:MetastoreDataAccessAzureServicePrincipal",
                         "willReplaceOnChanges": true
                     },
-                    "configurationType": {
-                        "type": "string"
+                    "comment": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
                     },
                     "databricksGcpServiceAccount": {
-                        "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount",
+                        "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Delete the data access configuration regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n",
                         "willReplaceOnChanges": true
                     },
                     "gcpServiceAccountKey": {
@@ -12558,12 +12597,20 @@
                     },
                     "metastoreId": {
                         "type": "string",
-                        "description": "Unique identifier of the parent Metastore\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n",
+                        "description": "Unique identifier of the parent Metastore\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
                         "description": "Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "Username/groupname/sp application_id of the data access configuration owner.\n"
+                    },
+                    "readOnly": {
+                        "type": "boolean",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -12756,6 +12803,9 @@
                     "type": "string",
                     "description": "Name of MLflow model. Change of name triggers new resource.\n"
                 },
+                "registeredModelId": {
+                    "type": "string"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -12768,7 +12818,8 @@
                 }
             },
             "required": [
-                "name"
+                "name",
+                "registeredModelId"
             ],
             "inputProperties": {
                 "creationTimestamp": {
@@ -12814,6 +12865,9 @@
                         "type": "string",
                         "description": "Name of MLflow model. Change of name triggers new resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "registeredModelId": {
+                        "type": "string"
                     },
                     "tags": {
                         "type": "array",
@@ -12937,6 +12991,12 @@
                 "servingEndpointId": {
                     "type": "string",
                     "description": "Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ModelServingTag:ModelServingTag"
+                    }
                 }
             },
             "required": [
@@ -12953,6 +13013,12 @@
                     "type": "string",
                     "description": "The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.\n",
                     "willReplaceOnChanges": true
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/databricks:index/ModelServingTag:ModelServingTag"
+                    }
                 }
             },
             "requiredInputs": [
@@ -12973,6 +13039,12 @@
                     "servingEndpointId": {
                         "type": "string",
                         "description": "Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/databricks:index/ModelServingTag:ModelServingTag"
+                        }
                     }
                 },
                 "type": "object"
@@ -17489,7 +17561,8 @@
                     "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -17504,11 +17577,11 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id of the storage credential owner.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                 },
                 "readOnly": {
                     "type": "boolean",
-                    "description": "Indicates whether the storage credential is only usable for read operations.\n"
+                    "description": "Indicates whether the storage credential is only usable for read operations.\n\n`azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):\n"
                 }
             },
             "required": [
@@ -17534,7 +17607,8 @@
                     "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -17550,11 +17624,11 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Username/groupname/sp application_id of the storage credential owner.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                 },
                 "readOnly": {
                     "type": "boolean",
-                    "description": "Indicates whether the storage credential is only usable for read operations.\n"
+                    "description": "Indicates whether the storage credential is only usable for read operations.\n\n`azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):\n"
                 }
             },
             "stateInputs": {
@@ -17576,7 +17650,8 @@
                         "$ref": "#/types/databricks:index/StorageCredentialDatabricksGcpServiceAccount:StorageCredentialDatabricksGcpServiceAccount"
                     },
                     "forceDestroy": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -17592,11 +17667,11 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Username/groupname/sp application_id of the storage credential owner.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                        "description": "Username/groupname/sp application_id of the storage credential owner.\n"
                     },
                     "readOnly": {
                         "type": "boolean",
-                        "description": "Indicates whether the storage credential is only usable for read operations.\n"
+                        "description": "Indicates whether the storage credential is only usable for read operations.\n\n`azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):\n"
                     }
                 },
                 "type": "object"

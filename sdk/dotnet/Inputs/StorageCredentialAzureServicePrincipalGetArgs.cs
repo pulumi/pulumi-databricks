@@ -20,8 +20,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-        /// 
-        /// `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;

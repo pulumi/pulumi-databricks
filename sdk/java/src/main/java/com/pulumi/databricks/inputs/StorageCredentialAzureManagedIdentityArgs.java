@@ -40,7 +40,7 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
     /**
      * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     @Import(name="managedIdentityId")
@@ -49,7 +49,7 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
     /**
      * @return The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     public Optional<Output<String>> managedIdentityId() {
@@ -115,7 +115,7 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
         /**
          * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
          * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class StorageCredentialAzureManagedIdentityArgs extends com.pulumi.
         /**
          * @param managedIdentityId The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
          * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 

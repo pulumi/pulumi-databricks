@@ -17,8 +17,6 @@ public final class StorageCredentialAzureServicePrincipal {
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-     * 
      */
     private String clientSecret;
     /**
@@ -37,8 +35,6 @@ public final class StorageCredentialAzureServicePrincipal {
     }
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     public String clientSecret() {

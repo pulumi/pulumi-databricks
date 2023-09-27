@@ -21,7 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
         /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure:
+        /// `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
         /// </summary>
         public readonly string? ManagedIdentityId;
 

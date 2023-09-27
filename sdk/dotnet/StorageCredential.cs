@@ -153,6 +153,11 @@ namespace Pulumi.Databricks
         [Output("databricksGcpServiceAccount")]
         public Output<Outputs.StorageCredentialDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
 
+        /// <summary>
+        /// Delete storage credential regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
@@ -173,14 +178,14 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
@@ -246,6 +251,11 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Delete storage credential regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -266,14 +276,14 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -301,6 +311,11 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.StorageCredentialDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
 
+        /// <summary>
+        /// Delete storage credential regardless of its dependencies.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -321,14 +336,14 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Username/groupname/sp application_id of the storage credential owner.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
+        /// 
+        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

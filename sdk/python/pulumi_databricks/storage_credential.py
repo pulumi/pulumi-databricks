@@ -29,12 +29,15 @@ class StorageCredentialArgs:
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
+        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -107,6 +110,11 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete storage credential regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -151,8 +159,6 @@ class StorageCredentialArgs:
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 
@@ -165,6 +171,8 @@ class StorageCredentialArgs:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 
@@ -189,12 +197,15 @@ class _StorageCredentialState:
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
+        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -267,6 +278,11 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Delete storage credential regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -311,8 +327,6 @@ class _StorageCredentialState:
     def owner(self) -> Optional[pulumi.Input[str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 
@@ -325,6 +339,8 @@ class _StorageCredentialState:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 
@@ -421,12 +437,15 @@ class StorageCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         ...
     @overload
@@ -577,12 +596,15 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+               
+               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
-               
-               `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -629,6 +651,11 @@ class StorageCredential(pulumi.CustomResource):
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Delete storage credential regardless of its dependencies.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_destroy")
 
     @property
@@ -657,8 +684,6 @@ class StorageCredential(pulumi.CustomResource):
     def owner(self) -> pulumi.Output[str]:
         """
         Username/groupname/sp application_id of the storage credential owner.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "owner")
 
@@ -667,6 +692,8 @@ class StorageCredential(pulumi.CustomResource):
     def read_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 

@@ -17,7 +17,8 @@ __all__ = ['ModelServingArgs', 'ModelServing']
 class ModelServingArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['ModelServingConfigArgs'],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServing resource.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
@@ -26,6 +27,8 @@ class ModelServingArgs:
         pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -51,13 +54,23 @@ class ModelServingArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ModelServingState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 serving_endpoint_id: Optional[pulumi.Input[str]] = None):
+                 serving_endpoint_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering ModelServing resources.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
@@ -70,6 +83,8 @@ class _ModelServingState:
             pulumi.set(__self__, "name", name)
         if serving_endpoint_id is not None:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -107,6 +122,15 @@ class _ModelServingState:
     def serving_endpoint_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "serving_endpoint_id", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
 
 class ModelServing(pulumi.CustomResource):
     @overload
@@ -115,6 +139,7 @@ class ModelServing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -270,6 +295,7 @@ class ModelServing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,6 +309,7 @@ class ModelServing(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
             'databricks:index/modelServing:ModelServing',
@@ -296,7 +323,8 @@ class ModelServing(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            serving_endpoint_id: Optional[pulumi.Input[str]] = None) -> 'ModelServing':
+            serving_endpoint_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None) -> 'ModelServing':
         """
         Get an existing ModelServing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -315,6 +343,7 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
+        __props__.__dict__["tags"] = tags
         return ModelServing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -340,4 +369,9 @@ class ModelServing(pulumi.CustomResource):
         Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         """
         return pulumi.get(self, "serving_endpoint_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingTag']]]:
+        return pulumi.get(self, "tags")
 

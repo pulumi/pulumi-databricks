@@ -109,6 +109,7 @@ export class ModelServing extends pulumi.CustomResource {
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<outputs.ModelServingTag[] | undefined>;
 
     /**
      * Create a ModelServing resource with the given unique name, arguments, and options.
@@ -126,6 +127,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -133,6 +135,7 @@ export class ModelServing extends pulumi.CustomResource {
             }
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -156,6 +159,7 @@ export interface ModelServingState {
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     servingEndpointId?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
 }
 
 /**
@@ -170,4 +174,5 @@ export interface ModelServingArgs {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
 }

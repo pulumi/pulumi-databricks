@@ -111,6 +111,9 @@ class ClusterArgs:
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
+            warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
+        if cluster_mount_infos is not None:
             pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
@@ -243,6 +246,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
+        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
+
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
@@ -634,6 +640,9 @@ class _ClusterState:
         if cluster_log_conf is not None:
             pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
+            warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
+        if cluster_mount_infos is not None:
             pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
@@ -762,6 +771,9 @@ class _ClusterState:
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
+        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
+
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
@@ -1268,6 +1280,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["azure_attributes"] = azure_attributes
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_log_conf"] = cluster_log_conf
+            if cluster_mount_infos is not None and not opts.urn:
+                warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+                pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
             __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["custom_tags"] = custom_tags
@@ -1482,6 +1497,9 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterClusterMountInfo']]]:
+        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
+        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
+
         return pulumi.get(self, "cluster_mount_infos")
 
     @property

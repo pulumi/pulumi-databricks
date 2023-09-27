@@ -31,16 +31,12 @@ public final class StorageCredentialAzureServicePrincipalArgs extends com.pulumi
     /**
      * The client secret generated for the above app ID in AAD. **This field is redacted on output**
      * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-     * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
      * @return The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     * 
-     * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
      * 
      */
     public Output<String> clientSecret() {
@@ -112,8 +108,6 @@ public final class StorageCredentialAzureServicePrincipalArgs extends com.pulumi
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
          * 
-         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-         * 
          * @return builder
          * 
          */
@@ -124,8 +118,6 @@ public final class StorageCredentialAzureServicePrincipalArgs extends com.pulumi
 
         /**
          * @param clientSecret The client secret generated for the above app ID in AAD. **This field is redacted on output**
-         * 
-         * `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
          * 
          * @return builder
          * 

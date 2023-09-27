@@ -309,6 +309,7 @@ namespace Pulumi.Databricks
 
         [Input("clusterMountInfos")]
         private InputList<Inputs.ClusterClusterMountInfoArgs>? _clusterMountInfos;
+        [Obsolete(@"cluster_mount_info block is deprecated due the Clusters API changes.")]
         public InputList<Inputs.ClusterClusterMountInfoArgs> ClusterMountInfos
         {
             get => _clusterMountInfos ?? (_clusterMountInfos = new InputList<Inputs.ClusterClusterMountInfoArgs>());
@@ -554,6 +555,7 @@ namespace Pulumi.Databricks
 
         [Input("clusterMountInfos")]
         private InputList<Inputs.ClusterClusterMountInfoGetArgs>? _clusterMountInfos;
+        [Obsolete(@"cluster_mount_info block is deprecated due the Clusters API changes.")]
         public InputList<Inputs.ClusterClusterMountInfoGetArgs> ClusterMountInfos
         {
             get => _clusterMountInfos ?? (_clusterMountInfos = new InputList<Inputs.ClusterClusterMountInfoGetArgs>());
