@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EntitlementsArgs', 'Entitlements']
@@ -33,20 +33,41 @@ class EntitlementsArgs:
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
+        EntitlementsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_cluster_create=allow_cluster_create,
+            allow_instance_pool_create=allow_instance_pool_create,
+            databricks_sql_access=databricks_sql_access,
+            group_id=group_id,
+            service_principal_id=service_principal_id,
+            user_id=user_id,
+            workspace_access=workspace_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
+             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
+             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             workspace_access: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_cluster_create is not None:
-            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
+            _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+            _setter("allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+            _setter("databricks_sql_access", databricks_sql_access)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if workspace_access is not None:
-            pulumi.set(__self__, "workspace_access", workspace_access)
+            _setter("workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -157,20 +178,41 @@ class _EntitlementsState:
         :param pulumi.Input[str] user_id: Canonical unique identifier for the user.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the principal to have access to Databricks Workspace.
         """
+        _EntitlementsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_cluster_create=allow_cluster_create,
+            allow_instance_pool_create=allow_instance_pool_create,
+            databricks_sql_access=databricks_sql_access,
+            group_id=group_id,
+            service_principal_id=service_principal_id,
+            user_id=user_id,
+            workspace_access=workspace_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
+             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
+             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             workspace_access: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_cluster_create is not None:
-            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
+            _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+            _setter("allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+            _setter("databricks_sql_access", databricks_sql_access)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if workspace_access is not None:
-            pulumi.set(__self__, "workspace_access", workspace_access)
+            _setter("workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="allowClusterCreate")
@@ -430,6 +472,10 @@ class Entitlements(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EntitlementsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

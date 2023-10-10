@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,19 +33,40 @@ class RecipientArgs:
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
-        pulumi.set(__self__, "authentication_type", authentication_type)
+        RecipientArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_type=authentication_type,
+            comment=comment,
+            data_recipient_global_metastore_id=data_recipient_global_metastore_id,
+            ip_access_list=ip_access_list,
+            name=name,
+            sharing_code=sharing_code,
+            tokens=tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_type: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+             ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             sharing_code: Optional[pulumi.Input[str]] = None,
+             tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authentication_type", authentication_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if data_recipient_global_metastore_id is not None:
-            pulumi.set(__self__, "data_recipient_global_metastore_id", data_recipient_global_metastore_id)
+            _setter("data_recipient_global_metastore_id", data_recipient_global_metastore_id)
         if ip_access_list is not None:
-            pulumi.set(__self__, "ip_access_list", ip_access_list)
+            _setter("ip_access_list", ip_access_list)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sharing_code is not None:
-            pulumi.set(__self__, "sharing_code", sharing_code)
+            _setter("sharing_code", sharing_code)
         if tokens is not None:
-            pulumi.set(__self__, "tokens", tokens)
+            _setter("tokens", tokens)
 
     @property
     @pulumi.getter(name="authenticationType")
@@ -152,20 +173,41 @@ class _RecipientState:
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
+        _RecipientState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_type=authentication_type,
+            comment=comment,
+            data_recipient_global_metastore_id=data_recipient_global_metastore_id,
+            ip_access_list=ip_access_list,
+            name=name,
+            sharing_code=sharing_code,
+            tokens=tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_type: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
+             ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             sharing_code: Optional[pulumi.Input[str]] = None,
+             tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authentication_type is not None:
-            pulumi.set(__self__, "authentication_type", authentication_type)
+            _setter("authentication_type", authentication_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if data_recipient_global_metastore_id is not None:
-            pulumi.set(__self__, "data_recipient_global_metastore_id", data_recipient_global_metastore_id)
+            _setter("data_recipient_global_metastore_id", data_recipient_global_metastore_id)
         if ip_access_list is not None:
-            pulumi.set(__self__, "ip_access_list", ip_access_list)
+            _setter("ip_access_list", ip_access_list)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if sharing_code is not None:
-            pulumi.set(__self__, "sharing_code", sharing_code)
+            _setter("sharing_code", sharing_code)
         if tokens is not None:
-            pulumi.set(__self__, "tokens", tokens)
+            _setter("tokens", tokens)
 
     @property
     @pulumi.getter(name="authenticationType")
@@ -363,6 +405,10 @@ class Recipient(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RecipientArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -389,6 +435,11 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["authentication_type"] = authentication_type
             __props__.__dict__["comment"] = comment
             __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
+            if ip_access_list is not None and not isinstance(ip_access_list, RecipientIpAccessListArgs):
+                ip_access_list = ip_access_list or {}
+                def _setter(key, value):
+                    ip_access_list[key] = value
+                RecipientIpAccessListArgs._configure(_setter, **ip_access_list)
             __props__.__dict__["ip_access_list"] = ip_access_list
             __props__.__dict__["name"] = name
             __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)

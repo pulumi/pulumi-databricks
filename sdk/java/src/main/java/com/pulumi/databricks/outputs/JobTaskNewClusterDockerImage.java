@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class JobTaskNewClusterDockerImage {
     private @Nullable JobTaskNewClusterDockerImageBasicAuth basicAuth;
     /**
-     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * @return URL of the job on the given workspace
      * 
      */
     private String url;
@@ -24,7 +24,7 @@ public final class JobTaskNewClusterDockerImage {
         return Optional.ofNullable(this.basicAuth);
     }
     /**
-     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * @return URL of the job on the given workspace
      * 
      */
     public String url() {

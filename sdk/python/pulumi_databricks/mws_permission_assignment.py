@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsPermissionAssignmentArgs', 'MwsPermissionAssignment']
@@ -25,9 +25,22 @@ class MwsPermissionAssignmentArgs:
         :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[int] workspace_id: Databricks workspace ID.
         """
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "workspace_id", workspace_id)
+        MwsPermissionAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            principal_id=principal_id,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             principal_id: pulumi.Input[int],
+             workspace_id: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permissions", permissions)
+        _setter("principal_id", principal_id)
+        _setter("workspace_id", workspace_id)
 
     @property
     @pulumi.getter
@@ -82,12 +95,25 @@ class _MwsPermissionAssignmentState:
         :param pulumi.Input[int] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[int] workspace_id: Databricks workspace ID.
         """
+        _MwsPermissionAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permissions=permissions,
+            principal_id=principal_id,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             principal_id: Optional[pulumi.Input[int]] = None,
+             workspace_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if principal_id is not None:
-            pulumi.set(__self__, "principal_id", principal_id)
+            _setter("principal_id", principal_id)
         if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+            _setter("workspace_id", workspace_id)
 
     @property
     @pulumi.getter
@@ -281,6 +307,10 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MwsPermissionAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

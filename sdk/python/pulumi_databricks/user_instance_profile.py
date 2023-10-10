@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserInstanceProfileArgs', 'UserInstanceProfile']
@@ -21,8 +21,19 @@ class UserInstanceProfileArgs:
         :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
-        pulumi.set(__self__, "instance_profile_id", instance_profile_id)
-        pulumi.set(__self__, "user_id", user_id)
+        UserInstanceProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_profile_id=instance_profile_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_profile_id: pulumi.Input[str],
+             user_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_profile_id", instance_profile_id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="instanceProfileId")
@@ -59,10 +70,21 @@ class _UserInstanceProfileState:
         :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         :param pulumi.Input[str] user_id: This is the id of the user resource.
         """
+        _UserInstanceProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_profile_id=instance_profile_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_profile_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_profile_id is not None:
-            pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+            _setter("instance_profile_id", instance_profile_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="instanceProfileId")
@@ -182,6 +204,10 @@ class UserInstanceProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserInstanceProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

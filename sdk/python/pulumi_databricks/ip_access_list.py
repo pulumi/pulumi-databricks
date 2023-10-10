@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IpAccessListArgs', 'IpAccessList']
@@ -25,11 +25,26 @@ class IpAccessListArgs:
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         :param pulumi.Input[bool] enabled: Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         """
-        pulumi.set(__self__, "ip_addresses", ip_addresses)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "list_type", list_type)
+        IpAccessListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_addresses=ip_addresses,
+            label=label,
+            list_type=list_type,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+             label: pulumi.Input[str],
+             list_type: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_addresses", ip_addresses)
+        _setter("label", label)
+        _setter("list_type", list_type)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="ipAddresses")
@@ -94,14 +109,29 @@ class _IpAccessListState:
         :param pulumi.Input[str] label: This is the display name for the given IP ACL List.
         :param pulumi.Input[str] list_type: Can only be "ALLOW" or "BLOCK".
         """
+        _IpAccessListState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ip_addresses=ip_addresses,
+            label=label,
+            list_type=list_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             list_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
+            _setter("ip_addresses", ip_addresses)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if list_type is not None:
-            pulumi.set(__self__, "list_type", list_type)
+            _setter("list_type", list_type)
 
     @property
     @pulumi.getter
@@ -271,6 +301,10 @@ class IpAccessList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IpAccessListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

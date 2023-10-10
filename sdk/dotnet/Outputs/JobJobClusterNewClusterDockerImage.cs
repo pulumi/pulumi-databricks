@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.JobJobClusterNewClusterDockerImageBasicAuth? BasicAuth;
         /// <summary>
-        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        /// URL of the job on the given workspace
         /// </summary>
         public readonly string Url;
 
