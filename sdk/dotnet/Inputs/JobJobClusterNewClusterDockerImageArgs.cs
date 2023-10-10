@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobJobClusterNewClusterDockerImageBasicAuthArgs>? BasicAuth { get; set; }
 
         /// <summary>
-        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        /// URL of the job on the given workspace
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

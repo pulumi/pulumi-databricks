@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MetastoreProviderArgs', 'MetastoreProvider']
@@ -25,12 +25,27 @@ class MetastoreProviderArgs:
         :param pulumi.Input[str] comment: Description about the provider.
         :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
         """
-        pulumi.set(__self__, "authentication_type", authentication_type)
-        pulumi.set(__self__, "recipient_profile_str", recipient_profile_str)
+        MetastoreProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_type=authentication_type,
+            recipient_profile_str=recipient_profile_str,
+            comment=comment,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_type: pulumi.Input[str],
+             recipient_profile_str: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authentication_type", authentication_type)
+        _setter("recipient_profile_str", recipient_profile_str)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="authenticationType")
@@ -95,14 +110,29 @@ class _MetastoreProviderState:
         :param pulumi.Input[str] name: Name of provider. Change forces creation of a new resource.
         :param pulumi.Input[str] recipient_profile_str: This is the json file that is created from a recipient url.
         """
+        _MetastoreProviderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication_type=authentication_type,
+            comment=comment,
+            name=name,
+            recipient_profile_str=recipient_profile_str,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication_type: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             recipient_profile_str: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authentication_type is not None:
-            pulumi.set(__self__, "authentication_type", authentication_type)
+            _setter("authentication_type", authentication_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if recipient_profile_str is not None:
-            pulumi.set(__self__, "recipient_profile_str", recipient_profile_str)
+            _setter("recipient_profile_str", recipient_profile_str)
 
     @property
     @pulumi.getter(name="authenticationType")
@@ -250,6 +280,10 @@ class MetastoreProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetastoreProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

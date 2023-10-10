@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetCurrentUserResult',
     'AwaitableGetCurrentUserResult',
     'get_current_user',
+    'get_current_user_output',
 ]
 
 @pulumi.output_type
@@ -143,3 +144,31 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         repos=pulumi.get(__ret__, 'repos'),
         user_name=pulumi.get(__ret__, 'user_name'),
         workspace_url=pulumi.get(__ret__, 'workspace_url'))
+
+
+@_utilities.lift_output_func(get_current_user)
+def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
+    """
+    ## Exported attributes
+
+    Data source exposes the following attributes:
+
+    * `id` -  The id of the calling user.
+    * `external_id` - ID of the user in an external identity provider.
+    * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
+    * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
+    * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
+    * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
+    * `workspace_url` - URL of the current Databricks workspace.
+    * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide
+    * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+    * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+    """
+    ...

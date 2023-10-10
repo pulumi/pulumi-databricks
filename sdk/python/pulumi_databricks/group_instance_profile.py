@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupInstanceProfileArgs', 'GroupInstanceProfile']
@@ -21,8 +21,19 @@ class GroupInstanceProfileArgs:
         :param pulumi.Input[str] group_id: This is the id of the group resource.
         :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+        GroupInstanceProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            instance_profile_id=instance_profile_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             instance_profile_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("instance_profile_id", instance_profile_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -59,10 +70,21 @@ class _GroupInstanceProfileState:
         :param pulumi.Input[str] group_id: This is the id of the group resource.
         :param pulumi.Input[str] instance_profile_id: This is the id of the instance profile resource.
         """
+        _GroupInstanceProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            instance_profile_id=instance_profile_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             instance_profile_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if instance_profile_id is not None:
-            pulumi.set(__self__, "instance_profile_id", instance_profile_id)
+            _setter("instance_profile_id", instance_profile_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -188,6 +210,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupInstanceProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

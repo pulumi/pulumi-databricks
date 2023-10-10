@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,28 +39,57 @@ class StorageCredentialArgs:
                
                `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
+        StorageCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_iam_role=aws_iam_role,
+            azure_managed_identity=azure_managed_identity,
+            azure_service_principal=azure_service_principal,
+            comment=comment,
+            databricks_gcp_service_account=databricks_gcp_service_account,
+            force_destroy=force_destroy,
+            gcp_service_account_key=gcp_service_account_key,
+            metastore_id=metastore_id,
+            name=name,
+            owner=owner,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
+             azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
+             azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aws_iam_role is not None:
-            pulumi.set(__self__, "aws_iam_role", aws_iam_role)
+            _setter("aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
-            pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
+            _setter("azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
-            pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+            _setter("azure_service_principal", azure_service_principal)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if databricks_gcp_service_account is not None:
-            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+            _setter("databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if gcp_service_account_key is not None:
-            pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
+            _setter("gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -207,28 +236,57 @@ class _StorageCredentialState:
                
                `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
+        _StorageCredentialState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_iam_role=aws_iam_role,
+            azure_managed_identity=azure_managed_identity,
+            azure_service_principal=azure_service_principal,
+            comment=comment,
+            databricks_gcp_service_account=databricks_gcp_service_account,
+            force_destroy=force_destroy,
+            gcp_service_account_key=gcp_service_account_key,
+            metastore_id=metastore_id,
+            name=name,
+            owner=owner,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
+             azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
+             azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aws_iam_role is not None:
-            pulumi.set(__self__, "aws_iam_role", aws_iam_role)
+            _setter("aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:
-            pulumi.set(__self__, "azure_managed_identity", azure_managed_identity)
+            _setter("azure_managed_identity", azure_managed_identity)
         if azure_service_principal is not None:
-            pulumi.set(__self__, "azure_service_principal", azure_service_principal)
+            _setter("azure_service_principal", azure_service_principal)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if databricks_gcp_service_account is not None:
-            pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
+            _setter("databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if gcp_service_account_key is not None:
-            pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
+            _setter("gcp_service_account_key", gcp_service_account_key)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -532,6 +590,10 @@ class StorageCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StorageCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -557,12 +619,37 @@ class StorageCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StorageCredentialArgs.__new__(StorageCredentialArgs)
 
+            if aws_iam_role is not None and not isinstance(aws_iam_role, StorageCredentialAwsIamRoleArgs):
+                aws_iam_role = aws_iam_role or {}
+                def _setter(key, value):
+                    aws_iam_role[key] = value
+                StorageCredentialAwsIamRoleArgs._configure(_setter, **aws_iam_role)
             __props__.__dict__["aws_iam_role"] = aws_iam_role
+            if azure_managed_identity is not None and not isinstance(azure_managed_identity, StorageCredentialAzureManagedIdentityArgs):
+                azure_managed_identity = azure_managed_identity or {}
+                def _setter(key, value):
+                    azure_managed_identity[key] = value
+                StorageCredentialAzureManagedIdentityArgs._configure(_setter, **azure_managed_identity)
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
+            if azure_service_principal is not None and not isinstance(azure_service_principal, StorageCredentialAzureServicePrincipalArgs):
+                azure_service_principal = azure_service_principal or {}
+                def _setter(key, value):
+                    azure_service_principal[key] = value
+                StorageCredentialAzureServicePrincipalArgs._configure(_setter, **azure_service_principal)
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["comment"] = comment
+            if databricks_gcp_service_account is not None and not isinstance(databricks_gcp_service_account, StorageCredentialDatabricksGcpServiceAccountArgs):
+                databricks_gcp_service_account = databricks_gcp_service_account or {}
+                def _setter(key, value):
+                    databricks_gcp_service_account[key] = value
+                StorageCredentialDatabricksGcpServiceAccountArgs._configure(_setter, **databricks_gcp_service_account)
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
+            if gcp_service_account_key is not None and not isinstance(gcp_service_account_key, StorageCredentialGcpServiceAccountKeyArgs):
+                gcp_service_account_key = gcp_service_account_key or {}
+                def _setter(key, value):
+                    gcp_service_account_key[key] = value
+                StorageCredentialGcpServiceAccountKeyArgs._configure(_setter, **gcp_service_account_key)
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name

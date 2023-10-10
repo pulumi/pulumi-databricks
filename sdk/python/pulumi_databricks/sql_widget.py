@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,21 +27,44 @@ class SqlWidgetArgs:
         """
         The set of arguments for constructing a SqlWidget resource.
         """
-        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        SqlWidgetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            description=description,
+            parameters=parameters,
+            position=position,
+            text=text,
+            title=title,
+            visualization_id=visualization_id,
+            widget_id=widget_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
+             position: Optional[pulumi.Input['SqlWidgetPositionArgs']] = None,
+             text: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             visualization_id: Optional[pulumi.Input[str]] = None,
+             widget_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dashboard_id", dashboard_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if visualization_id is not None:
-            pulumi.set(__self__, "visualization_id", visualization_id)
+            _setter("visualization_id", visualization_id)
         if widget_id is not None:
-            pulumi.set(__self__, "widget_id", widget_id)
+            _setter("widget_id", widget_id)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -130,22 +153,45 @@ class _SqlWidgetState:
         """
         Input properties used for looking up and filtering SqlWidget resources.
         """
+        _SqlWidgetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            description=description,
+            parameters=parameters,
+            position=position,
+            text=text,
+            title=title,
+            visualization_id=visualization_id,
+            widget_id=widget_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
+             position: Optional[pulumi.Input['SqlWidgetPositionArgs']] = None,
+             text: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             visualization_id: Optional[pulumi.Input[str]] = None,
+             widget_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if text is not None:
-            pulumi.set(__self__, "text", text)
+            _setter("text", text)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if visualization_id is not None:
-            pulumi.set(__self__, "visualization_id", visualization_id)
+            _setter("visualization_id", visualization_id)
         if widget_id is not None:
-            pulumi.set(__self__, "widget_id", widget_id)
+            _setter("widget_id", widget_id)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -353,6 +399,10 @@ class SqlWidget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SqlWidgetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -380,6 +430,11 @@ class SqlWidget(pulumi.CustomResource):
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["description"] = description
             __props__.__dict__["parameters"] = parameters
+            if position is not None and not isinstance(position, SqlWidgetPositionArgs):
+                position = position or {}
+                def _setter(key, value):
+                    position[key] = value
+                SqlWidgetPositionArgs._configure(_setter, **position)
             __props__.__dict__["position"] = position
             __props__.__dict__["text"] = text
             __props__.__dict__["title"] = title

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TokenArgs', 'Token']
@@ -24,16 +24,33 @@ class TokenArgs:
         :param pulumi.Input[str] comment: (String) Comment that will appear on the user’s settings page for this token.
         :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
         """
+        TokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            creation_time=creation_time,
+            expiry_time=expiry_time,
+            lifetime_seconds=lifetime_seconds,
+            token_id=token_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             expiry_time: Optional[pulumi.Input[int]] = None,
+             lifetime_seconds: Optional[pulumi.Input[int]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if expiry_time is not None:
-            pulumi.set(__self__, "expiry_time", expiry_time)
+            _setter("expiry_time", expiry_time)
         if lifetime_seconds is not None:
-            pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+            _setter("lifetime_seconds", lifetime_seconds)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
 
     @property
     @pulumi.getter
@@ -102,18 +119,37 @@ class _TokenState:
         :param pulumi.Input[int] lifetime_seconds: (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
+        _TokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            creation_time=creation_time,
+            expiry_time=expiry_time,
+            lifetime_seconds=lifetime_seconds,
+            token_id=token_id,
+            token_value=token_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             expiry_time: Optional[pulumi.Input[int]] = None,
+             lifetime_seconds: Optional[pulumi.Input[int]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             token_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if expiry_time is not None:
-            pulumi.set(__self__, "expiry_time", expiry_time)
+            _setter("expiry_time", expiry_time)
         if lifetime_seconds is not None:
-            pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+            _setter("lifetime_seconds", lifetime_seconds)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
         if token_value is not None:
-            pulumi.set(__self__, "token_value", token_value)
+            _setter("token_value", token_value)
 
     @property
     @pulumi.getter
@@ -283,6 +319,10 @@ class Token(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

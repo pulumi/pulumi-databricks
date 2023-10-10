@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsLogDeliveryArgs', 'MwsLogDelivery']
@@ -39,23 +39,52 @@ class MwsLogDeliveryArgs:
         :param pulumi.Input[str] status: Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] workspace_ids_filters: By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "credentials_id", credentials_id)
-        pulumi.set(__self__, "log_type", log_type)
-        pulumi.set(__self__, "output_format", output_format)
-        pulumi.set(__self__, "storage_configuration_id", storage_configuration_id)
+        MwsLogDeliveryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            credentials_id=credentials_id,
+            log_type=log_type,
+            output_format=output_format,
+            storage_configuration_id=storage_configuration_id,
+            config_id=config_id,
+            config_name=config_name,
+            delivery_path_prefix=delivery_path_prefix,
+            delivery_start_time=delivery_start_time,
+            status=status,
+            workspace_ids_filters=workspace_ids_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             credentials_id: pulumi.Input[str],
+             log_type: pulumi.Input[str],
+             output_format: pulumi.Input[str],
+             storage_configuration_id: pulumi.Input[str],
+             config_id: Optional[pulumi.Input[str]] = None,
+             config_name: Optional[pulumi.Input[str]] = None,
+             delivery_path_prefix: Optional[pulumi.Input[str]] = None,
+             delivery_start_time: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("credentials_id", credentials_id)
+        _setter("log_type", log_type)
+        _setter("output_format", output_format)
+        _setter("storage_configuration_id", storage_configuration_id)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if config_name is not None:
-            pulumi.set(__self__, "config_name", config_name)
+            _setter("config_name", config_name)
         if delivery_path_prefix is not None:
-            pulumi.set(__self__, "delivery_path_prefix", delivery_path_prefix)
+            _setter("delivery_path_prefix", delivery_path_prefix)
         if delivery_start_time is not None:
-            pulumi.set(__self__, "delivery_start_time", delivery_start_time)
+            _setter("delivery_start_time", delivery_start_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if workspace_ids_filters is not None:
-            pulumi.set(__self__, "workspace_ids_filters", workspace_ids_filters)
+            _setter("workspace_ids_filters", workspace_ids_filters)
 
     @property
     @pulumi.getter(name="accountId")
@@ -218,28 +247,57 @@ class _MwsLogDeliveryState:
         :param pulumi.Input[str] storage_configuration_id: The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] workspace_ids_filters: By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
         """
+        _MwsLogDeliveryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            config_id=config_id,
+            config_name=config_name,
+            credentials_id=credentials_id,
+            delivery_path_prefix=delivery_path_prefix,
+            delivery_start_time=delivery_start_time,
+            log_type=log_type,
+            output_format=output_format,
+            status=status,
+            storage_configuration_id=storage_configuration_id,
+            workspace_ids_filters=workspace_ids_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             config_id: Optional[pulumi.Input[str]] = None,
+             config_name: Optional[pulumi.Input[str]] = None,
+             credentials_id: Optional[pulumi.Input[str]] = None,
+             delivery_path_prefix: Optional[pulumi.Input[str]] = None,
+             delivery_start_time: Optional[pulumi.Input[str]] = None,
+             log_type: Optional[pulumi.Input[str]] = None,
+             output_format: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_configuration_id: Optional[pulumi.Input[str]] = None,
+             workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if config_name is not None:
-            pulumi.set(__self__, "config_name", config_name)
+            _setter("config_name", config_name)
         if credentials_id is not None:
-            pulumi.set(__self__, "credentials_id", credentials_id)
+            _setter("credentials_id", credentials_id)
         if delivery_path_prefix is not None:
-            pulumi.set(__self__, "delivery_path_prefix", delivery_path_prefix)
+            _setter("delivery_path_prefix", delivery_path_prefix)
         if delivery_start_time is not None:
-            pulumi.set(__self__, "delivery_start_time", delivery_start_time)
+            _setter("delivery_start_time", delivery_start_time)
         if log_type is not None:
-            pulumi.set(__self__, "log_type", log_type)
+            _setter("log_type", log_type)
         if output_format is not None:
-            pulumi.set(__self__, "output_format", output_format)
+            _setter("output_format", output_format)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_configuration_id is not None:
-            pulumi.set(__self__, "storage_configuration_id", storage_configuration_id)
+            _setter("storage_configuration_id", storage_configuration_id)
         if workspace_ids_filters is not None:
-            pulumi.set(__self__, "workspace_ids_filters", workspace_ids_filters)
+            _setter("workspace_ids_filters", workspace_ids_filters)
 
     @property
     @pulumi.getter(name="accountId")
@@ -545,6 +603,10 @@ class MwsLogDelivery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MwsLogDeliveryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

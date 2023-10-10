@@ -10662,7 +10662,7 @@ func (o JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoOutput) Serv
 
 type JobJobClusterNewClusterDockerImage struct {
 	BasicAuth *JobJobClusterNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -10679,7 +10679,7 @@ type JobJobClusterNewClusterDockerImageInput interface {
 
 type JobJobClusterNewClusterDockerImageArgs struct {
 	BasicAuth JobJobClusterNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -10784,7 +10784,7 @@ func (o JobJobClusterNewClusterDockerImageOutput) BasicAuth() JobJobClusterNewCl
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobJobClusterNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -10828,7 +10828,7 @@ func (o JobJobClusterNewClusterDockerImagePtrOutput) BasicAuth() JobJobClusterNe
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobJobClusterNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterDockerImage) *string {
 		if v == nil {
@@ -15779,7 +15779,7 @@ func (o JobNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress(
 
 type JobNewClusterDockerImage struct {
 	BasicAuth *JobNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -15796,7 +15796,7 @@ type JobNewClusterDockerImageInput interface {
 
 type JobNewClusterDockerImageArgs struct {
 	BasicAuth JobNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -15899,7 +15899,7 @@ func (o JobNewClusterDockerImageOutput) BasicAuth() JobNewClusterDockerImageBasi
 	return o.ApplyT(func(v JobNewClusterDockerImage) *JobNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -15943,7 +15943,7 @@ func (o JobNewClusterDockerImagePtrOutput) BasicAuth() JobNewClusterDockerImageB
 	}).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobNewClusterDockerImage) *string {
 		if v == nil {
@@ -24615,7 +24615,7 @@ func (o JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddr
 
 type JobTaskNewClusterDockerImage struct {
 	BasicAuth *JobTaskNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 }
 
@@ -24632,7 +24632,7 @@ type JobTaskNewClusterDockerImageInput interface {
 
 type JobTaskNewClusterDockerImageArgs struct {
 	BasicAuth JobTaskNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -24735,7 +24735,7 @@ func (o JobTaskNewClusterDockerImageOutput) BasicAuth() JobTaskNewClusterDockerI
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) *JobTaskNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobTaskNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -24779,7 +24779,7 @@ func (o JobTaskNewClusterDockerImagePtrOutput) BasicAuth() JobTaskNewClusterDock
 	}).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobTaskNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterDockerImage) *string {
 		if v == nil {
@@ -30270,7 +30270,7 @@ func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 type JobTriggerFileArrival struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url string `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
@@ -30290,7 +30290,7 @@ type JobTriggerFileArrivalInput interface {
 type JobTriggerFileArrivalArgs struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
-	// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+	// URL of the job on the given workspace
 	Url pulumi.StringInput `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
@@ -30396,7 +30396,7 @@ func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntP
 	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobTriggerFileArrivalOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -30446,7 +30446,7 @@ func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+// URL of the job on the given workspace
 func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *string {
 		if v == nil {
@@ -30765,9 +30765,7 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30783,9 +30781,7 @@ type JobWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30858,9 +30854,7 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToOutpu
 	}
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -30892,9 +30886,7 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) In
 }
 
 type JobWebhookNotificationsOnFailure struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -30910,9 +30902,7 @@ type JobWebhookNotificationsOnFailureInput interface {
 }
 
 type JobWebhookNotificationsOnFailureArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -30985,9 +30975,7 @@ func (o JobWebhookNotificationsOnFailureOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -31019,9 +31007,7 @@ func (o JobWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobWebhookNotificationsOnStart struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -31037,9 +31023,7 @@ type JobWebhookNotificationsOnStartInput interface {
 }
 
 type JobWebhookNotificationsOnStartArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -31112,9 +31096,7 @@ func (o JobWebhookNotificationsOnStartOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -31146,9 +31128,7 @@ func (o JobWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobW
 }
 
 type JobWebhookNotificationsOnSuccess struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id string `pulumi:"id"`
 }
 
@@ -31164,9 +31144,7 @@ type JobWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobWebhookNotificationsOnSuccessArgs struct {
-	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-	//
-	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+	// ID of the job
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -31239,9 +31217,7 @@ func (o JobWebhookNotificationsOnSuccessOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-//
-// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+// ID of the job
 func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -42355,6 +42331,7 @@ func (o ShareObjectArrayOutput) Index(i pulumi.IntInput) ShareObjectOutput {
 }
 
 type ShareObjectPartition struct {
+	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 	Values []ShareObjectPartitionValue `pulumi:"values"`
 }
 
@@ -42370,6 +42347,7 @@ type ShareObjectPartitionInput interface {
 }
 
 type ShareObjectPartitionArgs struct {
+	// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 	Values ShareObjectPartitionValueArrayInput `pulumi:"values"`
 }
 
@@ -42442,6 +42420,7 @@ func (o ShareObjectPartitionOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
 func (o ShareObjectPartitionOutput) Values() ShareObjectPartitionValueArrayOutput {
 	return o.ApplyT(func(v ShareObjectPartition) []ShareObjectPartitionValue { return v.Values }).(ShareObjectPartitionValueArrayOutput)
 }

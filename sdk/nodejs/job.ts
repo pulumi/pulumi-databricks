@@ -130,7 +130,7 @@ export class Job extends pulumi.CustomResource {
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -322,7 +322,7 @@ export interface JobState {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url?: pulumi.Input<string>;
     /**

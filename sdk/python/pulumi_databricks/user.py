@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -45,35 +45,72 @@ class UserArgs:
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         """
-        pulumi.set(__self__, "user_name", user_name)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            user_name=user_name,
+            acl_principal_id=acl_principal_id,
+            active=active,
+            allow_cluster_create=allow_cluster_create,
+            allow_instance_pool_create=allow_instance_pool_create,
+            databricks_sql_access=databricks_sql_access,
+            disable_as_user_deletion=disable_as_user_deletion,
+            display_name=display_name,
+            external_id=external_id,
+            force=force,
+            force_delete_home_dir=force_delete_home_dir,
+            force_delete_repos=force_delete_repos,
+            home=home,
+            repos=repos,
+            workspace_access=workspace_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             user_name: pulumi.Input[str],
+             acl_principal_id: Optional[pulumi.Input[str]] = None,
+             active: Optional[pulumi.Input[bool]] = None,
+             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
+             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
+             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+             disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+             force_delete_repos: Optional[pulumi.Input[bool]] = None,
+             home: Optional[pulumi.Input[str]] = None,
+             repos: Optional[pulumi.Input[str]] = None,
+             workspace_access: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("user_name", user_name)
         if acl_principal_id is not None:
-            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
+            _setter("acl_principal_id", acl_principal_id)
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if allow_cluster_create is not None:
-            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
+            _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+            _setter("allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+            _setter("databricks_sql_access", databricks_sql_access)
         if disable_as_user_deletion is not None:
-            pulumi.set(__self__, "disable_as_user_deletion", disable_as_user_deletion)
+            _setter("disable_as_user_deletion", disable_as_user_deletion)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if force_delete_home_dir is not None:
-            pulumi.set(__self__, "force_delete_home_dir", force_delete_home_dir)
+            _setter("force_delete_home_dir", force_delete_home_dir)
         if force_delete_repos is not None:
-            pulumi.set(__self__, "force_delete_repos", force_delete_repos)
+            _setter("force_delete_repos", force_delete_repos)
         if home is not None:
-            pulumi.set(__self__, "home", home)
+            _setter("home", home)
         if repos is not None:
-            pulumi.set(__self__, "repos", repos)
+            _setter("repos", repos)
         if workspace_access is not None:
-            pulumi.set(__self__, "workspace_access", workspace_access)
+            _setter("workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="userName")
@@ -284,36 +321,73 @@ class _UserState:
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_principal_id=acl_principal_id,
+            active=active,
+            allow_cluster_create=allow_cluster_create,
+            allow_instance_pool_create=allow_instance_pool_create,
+            databricks_sql_access=databricks_sql_access,
+            disable_as_user_deletion=disable_as_user_deletion,
+            display_name=display_name,
+            external_id=external_id,
+            force=force,
+            force_delete_home_dir=force_delete_home_dir,
+            force_delete_repos=force_delete_repos,
+            home=home,
+            repos=repos,
+            user_name=user_name,
+            workspace_access=workspace_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_principal_id: Optional[pulumi.Input[str]] = None,
+             active: Optional[pulumi.Input[bool]] = None,
+             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
+             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
+             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
+             disable_as_user_deletion: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             force_delete_home_dir: Optional[pulumi.Input[bool]] = None,
+             force_delete_repos: Optional[pulumi.Input[bool]] = None,
+             home: Optional[pulumi.Input[str]] = None,
+             repos: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             workspace_access: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_principal_id is not None:
-            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
+            _setter("acl_principal_id", acl_principal_id)
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if allow_cluster_create is not None:
-            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
+            _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
+            _setter("allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
+            _setter("databricks_sql_access", databricks_sql_access)
         if disable_as_user_deletion is not None:
-            pulumi.set(__self__, "disable_as_user_deletion", disable_as_user_deletion)
+            _setter("disable_as_user_deletion", disable_as_user_deletion)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if force_delete_home_dir is not None:
-            pulumi.set(__self__, "force_delete_home_dir", force_delete_home_dir)
+            _setter("force_delete_home_dir", force_delete_home_dir)
         if force_delete_repos is not None:
-            pulumi.set(__self__, "force_delete_repos", force_delete_repos)
+            _setter("force_delete_repos", force_delete_repos)
         if home is not None:
-            pulumi.set(__self__, "home", home)
+            _setter("home", home)
         if repos is not None:
-            pulumi.set(__self__, "repos", repos)
+            _setter("repos", repos)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
         if workspace_access is not None:
-            pulumi.set(__self__, "workspace_access", workspace_access)
+            _setter("workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -737,6 +811,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

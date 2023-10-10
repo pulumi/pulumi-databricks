@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,25 +31,56 @@ class TableArgs:
         """
         The set of arguments for constructing a Table resource.
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "columns", columns)
-        pulumi.set(__self__, "data_source_format", data_source_format)
-        pulumi.set(__self__, "schema_name", schema_name)
-        pulumi.set(__self__, "table_type", table_type)
+        TableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            columns=columns,
+            data_source_format=data_source_format,
+            schema_name=schema_name,
+            table_type=table_type,
+            comment=comment,
+            name=name,
+            owner=owner,
+            properties=properties,
+            storage_credential_name=storage_credential_name,
+            storage_location=storage_location,
+            view_definition=view_definition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: pulumi.Input[str],
+             columns: pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]],
+             data_source_format: pulumi.Input[str],
+             schema_name: pulumi.Input[str],
+             table_type: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             storage_credential_name: Optional[pulumi.Input[str]] = None,
+             storage_location: Optional[pulumi.Input[str]] = None,
+             view_definition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("catalog_name", catalog_name)
+        _setter("columns", columns)
+        _setter("data_source_format", data_source_format)
+        _setter("schema_name", schema_name)
+        _setter("table_type", table_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if storage_credential_name is not None:
-            pulumi.set(__self__, "storage_credential_name", storage_credential_name)
+            _setter("storage_credential_name", storage_credential_name)
         if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
+            _setter("storage_location", storage_location)
         if view_definition is not None:
-            pulumi.set(__self__, "view_definition", view_definition)
+            _setter("view_definition", view_definition)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -178,30 +209,61 @@ class _TableState:
         """
         Input properties used for looking up and filtering Table resources.
         """
+        _TableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            columns=columns,
+            comment=comment,
+            data_source_format=data_source_format,
+            name=name,
+            owner=owner,
+            properties=properties,
+            schema_name=schema_name,
+            storage_credential_name=storage_credential_name,
+            storage_location=storage_location,
+            table_type=table_type,
+            view_definition=view_definition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             data_source_format: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             schema_name: Optional[pulumi.Input[str]] = None,
+             storage_credential_name: Optional[pulumi.Input[str]] = None,
+             storage_location: Optional[pulumi.Input[str]] = None,
+             table_type: Optional[pulumi.Input[str]] = None,
+             view_definition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if catalog_name is not None:
-            pulumi.set(__self__, "catalog_name", catalog_name)
+            _setter("catalog_name", catalog_name)
         if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+            _setter("columns", columns)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if data_source_format is not None:
-            pulumi.set(__self__, "data_source_format", data_source_format)
+            _setter("data_source_format", data_source_format)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if schema_name is not None:
-            pulumi.set(__self__, "schema_name", schema_name)
+            _setter("schema_name", schema_name)
         if storage_credential_name is not None:
-            pulumi.set(__self__, "storage_credential_name", storage_credential_name)
+            _setter("storage_credential_name", storage_credential_name)
         if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
+            _setter("storage_location", storage_location)
         if table_type is not None:
-            pulumi.set(__self__, "table_type", table_type)
+            _setter("table_type", table_type)
         if view_definition is not None:
-            pulumi.set(__self__, "view_definition", view_definition)
+            _setter("view_definition", view_definition)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -353,6 +415,10 @@ class Table(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

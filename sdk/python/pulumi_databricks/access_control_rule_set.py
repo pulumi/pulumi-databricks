@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,10 +28,21 @@ class AccessControlRuleSetArgs:
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
                * `accounts/{account_id}/ruleSets/default`
         """
+        AccessControlRuleSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            grant_rules=grant_rules,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if grant_rules is not None:
-            pulumi.set(__self__, "grant_rules", grant_rules)
+            _setter("grant_rules", grant_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="grantRules")
@@ -79,12 +90,25 @@ class _AccessControlRuleSetState:
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
                * `accounts/{account_id}/ruleSets/default`
         """
+        _AccessControlRuleSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            etag=etag,
+            grant_rules=grant_rules,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             etag: Optional[pulumi.Input[str]] = None,
+             grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if grant_rules is not None:
-            pulumi.set(__self__, "grant_rules", grant_rules)
+            _setter("grant_rules", grant_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -413,6 +437,10 @@ class AccessControlRuleSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessControlRuleSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

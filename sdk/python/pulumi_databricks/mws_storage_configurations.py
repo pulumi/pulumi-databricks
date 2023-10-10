@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsStorageConfigurationsArgs', 'MwsStorageConfigurations']
@@ -23,9 +23,22 @@ class MwsStorageConfigurationsArgs:
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "storage_configuration_name", storage_configuration_name)
+        MwsStorageConfigurationsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            bucket_name=bucket_name,
+            storage_configuration_name=storage_configuration_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             bucket_name: pulumi.Input[str],
+             storage_configuration_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("bucket_name", bucket_name)
+        _setter("storage_configuration_name", storage_configuration_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -79,16 +92,33 @@ class _MwsStorageConfigurationsState:
         :param pulumi.Input[str] storage_configuration_id: (String) id of storage config to be used for `databricks_mws_workspace` resource.
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
+        _MwsStorageConfigurationsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            bucket_name=bucket_name,
+            creation_time=creation_time,
+            storage_configuration_id=storage_configuration_id,
+            storage_configuration_name=storage_configuration_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             storage_configuration_id: Optional[pulumi.Input[str]] = None,
+             storage_configuration_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if storage_configuration_id is not None:
-            pulumi.set(__self__, "storage_configuration_id", storage_configuration_id)
+            _setter("storage_configuration_id", storage_configuration_id)
         if storage_configuration_name is not None:
-            pulumi.set(__self__, "storage_configuration_name", storage_configuration_name)
+            _setter("storage_configuration_name", storage_configuration_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -255,6 +285,10 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MwsStorageConfigurationsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
