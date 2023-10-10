@@ -180,7 +180,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
         /// <summary>
-        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        /// URL of the job on the given workspace
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -632,7 +632,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+        /// URL of the job on the given workspace
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

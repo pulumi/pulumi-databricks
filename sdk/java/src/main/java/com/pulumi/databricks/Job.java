@@ -432,14 +432,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trigger);
     }
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      * 
      */
     @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**
-     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * @return URL of the job on the given workspace
      * 
      */
     public Output<String> url() {

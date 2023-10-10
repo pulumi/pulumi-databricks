@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClusterPolicyArgs', 'ClusterPolicy']
@@ -29,18 +29,37 @@ class ClusterPolicyArgs:
         :param pulumi.Input[str] policy_family_definition_overrides: Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
         :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         """
+        ClusterPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            definition=definition,
+            description=description,
+            max_clusters_per_user=max_clusters_per_user,
+            name=name,
+            policy_family_definition_overrides=policy_family_definition_overrides,
+            policy_family_id=policy_family_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             definition: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             max_clusters_per_user: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+             policy_family_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if definition is not None:
-            pulumi.set(__self__, "definition", definition)
+            _setter("definition", definition)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if max_clusters_per_user is not None:
-            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
+            _setter("max_clusters_per_user", max_clusters_per_user)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_family_definition_overrides is not None:
-            pulumi.set(__self__, "policy_family_definition_overrides", policy_family_definition_overrides)
+            _setter("policy_family_definition_overrides", policy_family_definition_overrides)
         if policy_family_id is not None:
-            pulumi.set(__self__, "policy_family_id", policy_family_id)
+            _setter("policy_family_id", policy_family_id)
 
     @property
     @pulumi.getter
@@ -135,20 +154,41 @@ class _ClusterPolicyState:
         :param pulumi.Input[str] policy_family_id: ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         :param pulumi.Input[str] policy_id: Canonical unique identifier for the cluster policy.
         """
+        _ClusterPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            definition=definition,
+            description=description,
+            max_clusters_per_user=max_clusters_per_user,
+            name=name,
+            policy_family_definition_overrides=policy_family_definition_overrides,
+            policy_family_id=policy_family_id,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             definition: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             max_clusters_per_user: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
+             policy_family_id: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if definition is not None:
-            pulumi.set(__self__, "definition", definition)
+            _setter("definition", definition)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if max_clusters_per_user is not None:
-            pulumi.set(__self__, "max_clusters_per_user", max_clusters_per_user)
+            _setter("max_clusters_per_user", max_clusters_per_user)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy_family_definition_overrides is not None:
-            pulumi.set(__self__, "policy_family_definition_overrides", policy_family_definition_overrides)
+            _setter("policy_family_definition_overrides", policy_family_definition_overrides)
         if policy_family_id is not None:
-            pulumi.set(__self__, "policy_family_id", policy_family_id)
+            _setter("policy_family_id", policy_family_id)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter
@@ -360,6 +400,10 @@ class ClusterPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

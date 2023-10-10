@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MetastoreAssignmentArgs', 'MetastoreAssignment']
@@ -23,10 +23,23 @@ class MetastoreAssignmentArgs:
         :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
         :param pulumi.Input[str] default_catalog_name: Default catalog used for this assignment, default to `hive_metastore`
         """
-        pulumi.set(__self__, "metastore_id", metastore_id)
-        pulumi.set(__self__, "workspace_id", workspace_id)
+        MetastoreAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metastore_id=metastore_id,
+            workspace_id=workspace_id,
+            default_catalog_name=default_catalog_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metastore_id: pulumi.Input[str],
+             workspace_id: pulumi.Input[int],
+             default_catalog_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metastore_id", metastore_id)
+        _setter("workspace_id", workspace_id)
         if default_catalog_name is not None:
-            pulumi.set(__self__, "default_catalog_name", default_catalog_name)
+            _setter("default_catalog_name", default_catalog_name)
 
     @property
     @pulumi.getter(name="metastoreId")
@@ -77,12 +90,25 @@ class _MetastoreAssignmentState:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
         :param pulumi.Input[int] workspace_id: id of the workspace for the assignment
         """
+        _MetastoreAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_catalog_name=default_catalog_name,
+            metastore_id=metastore_id,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_catalog_name: Optional[pulumi.Input[str]] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_catalog_name is not None:
-            pulumi.set(__self__, "default_catalog_name", default_catalog_name)
+            _setter("default_catalog_name", default_catalog_name)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
         if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+            _setter("workspace_id", workspace_id)
 
     @property
     @pulumi.getter(name="defaultCatalogName")
@@ -206,6 +232,10 @@ class MetastoreAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetastoreAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

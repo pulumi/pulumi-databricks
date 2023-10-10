@@ -1842,7 +1842,7 @@ export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: outputs.JobJobClusterNewClusterDockerImageBasicAuth;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -2076,7 +2076,7 @@ export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobNewClusterDockerImage {
     basicAuth?: outputs.JobNewClusterDockerImageBasicAuth;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -2628,7 +2628,7 @@ export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: outputs.JobTaskNewClusterDockerImageBasicAuth;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -3001,7 +3001,7 @@ export interface JobTriggerFileArrival {
      */
     minTimeBetweenTriggersSeconds?: number;
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      */
     url: string;
     /**
@@ -3039,36 +3039,28 @@ export interface JobWebhookNotifications {
 
 export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnFailure {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnStart {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
@@ -3690,6 +3682,9 @@ export interface ShareObject {
 }
 
 export interface ShareObjectPartition {
+    /**
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
+     */
     values: outputs.ShareObjectPartitionValue[];
 }
 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsPrivateAccessSettingsArgs', 'MwsPrivateAccessSettings']
@@ -33,20 +33,43 @@ class MwsPrivateAccessSettingsArgs:
         :param pulumi.Input[bool] public_access_enabled: If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
         :param pulumi.Input[str] status: (AWS only) Status of Private Access Settings
         """
-        pulumi.set(__self__, "private_access_settings_name", private_access_settings_name)
-        pulumi.set(__self__, "region", region)
+        MwsPrivateAccessSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            private_access_settings_name=private_access_settings_name,
+            region=region,
+            account_id=account_id,
+            allowed_vpc_endpoint_ids=allowed_vpc_endpoint_ids,
+            private_access_level=private_access_level,
+            private_access_settings_id=private_access_settings_id,
+            public_access_enabled=public_access_enabled,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             private_access_settings_name: pulumi.Input[str],
+             region: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_access_level: Optional[pulumi.Input[str]] = None,
+             private_access_settings_id: Optional[pulumi.Input[str]] = None,
+             public_access_enabled: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("private_access_settings_name", private_access_settings_name)
+        _setter("region", region)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if allowed_vpc_endpoint_ids is not None:
-            pulumi.set(__self__, "allowed_vpc_endpoint_ids", allowed_vpc_endpoint_ids)
+            _setter("allowed_vpc_endpoint_ids", allowed_vpc_endpoint_ids)
         if private_access_level is not None:
-            pulumi.set(__self__, "private_access_level", private_access_level)
+            _setter("private_access_level", private_access_level)
         if private_access_settings_id is not None:
-            pulumi.set(__self__, "private_access_settings_id", private_access_settings_id)
+            _setter("private_access_settings_id", private_access_settings_id)
         if public_access_enabled is not None:
-            pulumi.set(__self__, "public_access_enabled", public_access_enabled)
+            _setter("public_access_enabled", public_access_enabled)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="privateAccessSettingsName")
@@ -167,22 +190,45 @@ class _MwsPrivateAccessSettingsState:
         :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
         :param pulumi.Input[str] status: (AWS only) Status of Private Access Settings
         """
+        _MwsPrivateAccessSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allowed_vpc_endpoint_ids=allowed_vpc_endpoint_ids,
+            private_access_level=private_access_level,
+            private_access_settings_id=private_access_settings_id,
+            private_access_settings_name=private_access_settings_name,
+            public_access_enabled=public_access_enabled,
+            region=region,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_access_level: Optional[pulumi.Input[str]] = None,
+             private_access_settings_id: Optional[pulumi.Input[str]] = None,
+             private_access_settings_name: Optional[pulumi.Input[str]] = None,
+             public_access_enabled: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if allowed_vpc_endpoint_ids is not None:
-            pulumi.set(__self__, "allowed_vpc_endpoint_ids", allowed_vpc_endpoint_ids)
+            _setter("allowed_vpc_endpoint_ids", allowed_vpc_endpoint_ids)
         if private_access_level is not None:
-            pulumi.set(__self__, "private_access_level", private_access_level)
+            _setter("private_access_level", private_access_level)
         if private_access_settings_id is not None:
-            pulumi.set(__self__, "private_access_settings_id", private_access_settings_id)
+            _setter("private_access_settings_id", private_access_settings_id)
         if private_access_settings_name is not None:
-            pulumi.set(__self__, "private_access_settings_name", private_access_settings_name)
+            _setter("private_access_settings_name", private_access_settings_name)
         if public_access_enabled is not None:
-            pulumi.set(__self__, "public_access_enabled", public_access_enabled)
+            _setter("public_access_enabled", public_access_enabled)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -484,6 +530,10 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MwsPrivateAccessSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

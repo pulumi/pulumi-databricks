@@ -459,14 +459,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * URL of the job on the given workspace
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+     * @return URL of the job on the given workspace
      * 
      */
     public Optional<Output<String>> url() {
@@ -1122,7 +1122,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 
@@ -1133,7 +1133,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 

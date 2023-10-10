@@ -1256,7 +1256,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                    "description": "URL of the job on the given workspace\n"
                 }
             },
             "type": "object",
@@ -1777,7 +1777,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                    "description": "URL of the job on the given workspace\n"
                 }
             },
             "type": "object",
@@ -2747,7 +2747,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                    "description": "URL of the job on the given workspace\n"
                 }
             },
             "type": "object",
@@ -3233,7 +3233,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                    "description": "URL of the job on the given workspace\n"
                 },
                 "waitAfterLastChangeSeconds": {
                     "type": "integer",
@@ -3282,7 +3282,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.\n\n\u003e **Note** The following configuration blocks can be standalone or nested inside a `task` block\n"
+                    "description": "ID of the job\n"
                 }
             },
             "type": "object",
@@ -3294,7 +3294,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.\n\n\u003e **Note** The following configuration blocks can be standalone or nested inside a `task` block\n"
+                    "description": "ID of the job\n"
                 }
             },
             "type": "object",
@@ -3306,7 +3306,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.\n\n\u003e **Note** The following configuration blocks can be standalone or nested inside a `task` block\n"
+                    "description": "ID of the job\n"
                 }
             },
             "type": "object",
@@ -3318,7 +3318,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.\n\n\u003e **Note** The following configuration blocks can be standalone or nested inside a `task` block\n"
+                    "description": "ID of the job\n"
                 }
             },
             "type": "object",
@@ -4724,7 +4724,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/databricks:index/ShareObjectPartitionValue:ShareObjectPartitionValue"
-                    }
+                    },
+                    "description": "The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.\n"
                 }
             },
             "type": "object",
@@ -11789,7 +11790,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                    "description": "URL of the job on the given workspace\n"
                 },
                 "webhookNotifications": {
                     "$ref": "#/types/databricks:index/JobWebhookNotifications:JobWebhookNotifications",
@@ -12084,7 +12085,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).\n"
+                        "description": "URL of the job on the given workspace\n"
                     },
                     "webhookNotifications": {
                         "$ref": "#/types/databricks:index/JobWebhookNotifications:JobWebhookNotifications",
