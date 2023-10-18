@@ -1327,6 +1327,10 @@
                     }
                 }
             },
+            "databricks_registered_model": {
+                "current": "databricks:index/registeredModel:RegisteredModel",
+                "majorVersion": 1
+            },
             "databricks_repo": {
                 "current": "databricks:index/repo:Repo",
                 "majorVersion": 1,
@@ -1617,6 +1621,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "databricks_system_schema": {
+                "current": "databricks:index/systemSchema:SystemSchema",
+                "majorVersion": 1
             },
             "databricks_table": {
                 "current": "databricks:index/table:Table",
@@ -2775,6 +2783,7 @@
             "databricks:index/permissions:Permissions": "databricks_permissions",
             "databricks:index/pipeline:Pipeline": "databricks_pipeline",
             "databricks:index/recipient:Recipient": "databricks_recipient",
+            "databricks:index/registeredModel:RegisteredModel": "databricks_registered_model",
             "databricks:index/repo:Repo": "databricks_repo",
             "databricks:index/schema:Schema": "databricks_schema",
             "databricks:index/secret:Secret": "databricks_secret",
@@ -2794,6 +2803,7 @@
             "databricks:index/sqlVisualization:SqlVisualization": "databricks_sql_visualization",
             "databricks:index/sqlWidget:SqlWidget": "databricks_sql_widget",
             "databricks:index/storageCredential:StorageCredential": "databricks_storage_credential",
+            "databricks:index/systemSchema:SystemSchema": "databricks_system_schema",
             "databricks:index/table:Table": "databricks_table",
             "databricks:index/token:Token": "databricks_token",
             "databricks:index/user:User": "databricks_user",
@@ -3386,7 +3396,8 @@
                 "modelName": "model_name",
                 "modelVersion": "model_version",
                 "scaleToZeroEnabled": "scale_to_zero_enabled",
-                "workloadSize": "workload_size"
+                "workloadSize": "workload_size",
+                "workloadType": "workload_type"
             },
             "databricks:index/ModelServingConfigTrafficConfigRoute:ModelServingConfigTrafficConfigRoute": {
                 "servedModelName": "served_model_name",
@@ -3576,7 +3587,8 @@
             },
             "databricks:index/SqlAlertOptions:SqlAlertOptions": {
                 "customBody": "custom_body",
-                "customSubject": "custom_subject"
+                "customSubject": "custom_subject",
+                "emptyResultState": "empty_result_state"
             },
             "databricks:index/SqlEndpointTags:SqlEndpointTags": {
                 "customTags": "custom_tags"
@@ -4836,6 +4848,11 @@
                 "ipAccessList": "ip_access_list",
                 "sharingCode": "sharing_code"
             },
+            "databricks:index/registeredModel:RegisteredModel": {
+                "catalogName": "catalog_name",
+                "schemaName": "schema_name",
+                "storageLocation": "storage_location"
+            },
             "databricks:index/repo:Repo": {
                 "commitHash": "commit_hash",
                 "gitProvider": "git_provider",
@@ -4888,6 +4905,7 @@
             },
             "databricks:index/sqlDashboard:SqlDashboard": {
                 "createdAt": "created_at",
+                "dashboardFiltersEnabled": "dashboard_filters_enabled",
                 "updatedAt": "updated_at"
             },
             "databricks:index/sqlEndpoint:SqlEndpoint": {
@@ -4957,6 +4975,9 @@
                 "gcpServiceAccountKey": "gcp_service_account_key",
                 "metastoreId": "metastore_id",
                 "readOnly": "read_only"
+            },
+            "databricks:index/systemSchema:SystemSchema": {
+                "metastoreId": "metastore_id"
             },
             "databricks:index/table:Table": {
                 "catalogName": "catalog_name",
