@@ -44,7 +44,13 @@ class ShareArgs:
              name: Optional[pulumi.Input[str]] = None,
              objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
              owner: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if created_by is not None:
@@ -145,7 +151,13 @@ class _ShareState:
              name: Optional[pulumi.Input[str]] = None,
              objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
              owner: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if created_by is not None:

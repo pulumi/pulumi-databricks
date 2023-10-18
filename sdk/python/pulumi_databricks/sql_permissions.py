@@ -55,7 +55,17 @@ class SqlPermissionsArgs:
              privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'anonymousFunction' in kwargs:
+            anonymous_function = kwargs['anonymousFunction']
+        if 'anyFile' in kwargs:
+            any_file = kwargs['anyFile']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'privilegeAssignments' in kwargs:
+            privilege_assignments = kwargs['privilegeAssignments']
+
         if anonymous_function is not None:
             _setter("anonymous_function", anonymous_function)
         if any_file is not None:
@@ -206,7 +216,17 @@ class _SqlPermissionsState:
              privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'anonymousFunction' in kwargs:
+            anonymous_function = kwargs['anonymousFunction']
+        if 'anyFile' in kwargs:
+            any_file = kwargs['anyFile']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'privilegeAssignments' in kwargs:
+            privilege_assignments = kwargs['privilegeAssignments']
+
         if anonymous_function is not None:
             _setter("anonymous_function", anonymous_function)
         if any_file is not None:

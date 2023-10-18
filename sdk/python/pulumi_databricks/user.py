@@ -31,7 +31,7 @@ class UserArgs:
                  workspace_access: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
+        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         :param pulumi.Input[str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
         :param pulumi.Input[bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -81,7 +81,31 @@ class UserArgs:
              home: Optional[pulumi.Input[str]] = None,
              repos: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'disableAsUserDeletion' in kwargs:
+            disable_as_user_deletion = kwargs['disableAsUserDeletion']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'forceDeleteHomeDir' in kwargs:
+            force_delete_home_dir = kwargs['forceDeleteHomeDir']
+        if 'forceDeleteRepos' in kwargs:
+            force_delete_repos = kwargs['forceDeleteRepos']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         _setter("user_name", user_name)
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
@@ -116,7 +140,7 @@ class UserArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
         """
-        This is the username of the given user and will be their form of access and identity.
+        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         return pulumi.get(self, "user_name")
 
@@ -319,7 +343,7 @@ class _UserState:
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
+        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         _UserState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -357,7 +381,31 @@ class _UserState:
              repos: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'disableAsUserDeletion' in kwargs:
+            disable_as_user_deletion = kwargs['disableAsUserDeletion']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'forceDeleteHomeDir' in kwargs:
+            force_delete_home_dir = kwargs['forceDeleteHomeDir']
+        if 'forceDeleteRepos' in kwargs:
+            force_delete_repos = kwargs['forceDeleteRepos']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
         if active is not None:
@@ -546,7 +594,7 @@ class _UserState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the username of the given user and will be their form of access and identity.
+        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         return pulumi.get(self, "user_name")
 
@@ -696,7 +744,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
+        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         ...
     @overload
@@ -905,7 +953,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.
+        :param pulumi.Input[str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1033,7 +1081,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        This is the username of the given user and will be their form of access and identity.
+        This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         """
         return pulumi.get(self, "user_name")
 

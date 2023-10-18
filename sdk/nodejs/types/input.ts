@@ -1802,9 +1802,11 @@ export interface GetJobJobSettingsSettingsPythonWheelTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsQueue {
+    enabled: boolean;
 }
 
 export interface GetJobJobSettingsSettingsQueueArgs {
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface GetJobJobSettingsSettingsRunAs {
@@ -3577,13 +3579,14 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface JobRunAs {
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
-     * Example
+     * Example:
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -4529,6 +4532,10 @@ export interface ModelServingConfigServedModel {
      * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
      */
     workloadSize: pulumi.Input<string>;
+    /**
+     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     */
+    workloadType?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigTrafficConfig {
@@ -5031,6 +5038,10 @@ export interface SqlAlertOptions {
      */
     customSubject?: pulumi.Input<string>;
     /**
+     * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     */
+    emptyResultState?: pulumi.Input<string>;
+    /**
      * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      */
     muted?: pulumi.Input<boolean>;
@@ -5089,19 +5100,37 @@ export interface SqlQueryParameter {
     datetimesec?: pulumi.Input<inputs.SqlQueryParameterDatetimesec>;
     datetimesecRange?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRange>;
     enum?: pulumi.Input<inputs.SqlQueryParameterEnum>;
+    /**
+     * The literal parameter marker that appears between double curly braces in the query text.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
+     *
+     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
+     */
     name: pulumi.Input<string>;
     number?: pulumi.Input<inputs.SqlQueryParameterNumber>;
+    /**
+     * The text of the query to be run.
+     */
     query?: pulumi.Input<inputs.SqlQueryParameterQuery>;
     text?: pulumi.Input<inputs.SqlQueryParameterText>;
+    /**
+     * The text displayed in a parameter picking widget.
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDate {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDateRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -5111,11 +5140,17 @@ export interface SqlQueryParameterDateRangeRange {
 }
 
 export interface SqlQueryParameterDatetime {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimeRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -5125,11 +5160,17 @@ export interface SqlQueryParameterDatetimeRangeRange {
 }
 
 export interface SqlQueryParameterDatetimesec {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterDatetimesecRange {
     range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -5141,6 +5182,9 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 export interface SqlQueryParameterEnum {
     multiple?: pulumi.Input<inputs.SqlQueryParameterEnumMultiple>;
     options: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -5152,12 +5196,18 @@ export interface SqlQueryParameterEnumMultiple {
 }
 
 export interface SqlQueryParameterNumber {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<number>;
 }
 
 export interface SqlQueryParameterQuery {
     multiple?: pulumi.Input<inputs.SqlQueryParameterQueryMultiple>;
     queryId: pulumi.Input<string>;
+    /**
+     * The default value for this parameter.
+     */
     value?: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -5169,6 +5219,9 @@ export interface SqlQueryParameterQueryMultiple {
 }
 
 export interface SqlQueryParameterText {
+    /**
+     * The default value for this parameter.
+     */
     value: pulumi.Input<string>;
 }
 

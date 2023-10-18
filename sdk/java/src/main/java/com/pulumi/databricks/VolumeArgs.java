@@ -91,14 +91,14 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      * 
      */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
     /**
-     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> storageLocation() {
@@ -106,14 +106,14 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume type. `EXTERNAL` or `MANAGED`.
+     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
     @Import(name="volumeType", required=true)
     private Output<String> volumeType;
 
     /**
-     * @return Volume type. `EXTERNAL` or `MANAGED`.
+     * @return Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
     public Output<String> volumeType() {
@@ -256,7 +256,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes.
+         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes.
+         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`.
+         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`.
+         * @param volumeType Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
          * 
          * @return builder
          * 

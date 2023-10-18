@@ -53,7 +53,23 @@ class EntitlementsArgs:
              service_principal_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if allow_cluster_create is not None:
             _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
@@ -198,7 +214,23 @@ class _EntitlementsState:
              service_principal_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if allow_cluster_create is not None:
             _setter("allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:

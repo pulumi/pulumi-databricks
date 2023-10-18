@@ -82,7 +82,31 @@ class ServicePrincipalArgs:
              home: Optional[pulumi.Input[str]] = None,
              repos: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'disableAsUserDeletion' in kwargs:
+            disable_as_user_deletion = kwargs['disableAsUserDeletion']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'forceDeleteHomeDir' in kwargs:
+            force_delete_home_dir = kwargs['forceDeleteHomeDir']
+        if 'forceDeleteRepos' in kwargs:
+            force_delete_repos = kwargs['forceDeleteRepos']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
         if active is not None:
@@ -363,7 +387,31 @@ class _ServicePrincipalState:
              home: Optional[pulumi.Input[str]] = None,
              repos: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'disableAsUserDeletion' in kwargs:
+            disable_as_user_deletion = kwargs['disableAsUserDeletion']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'forceDeleteHomeDir' in kwargs:
+            force_delete_home_dir = kwargs['forceDeleteHomeDir']
+        if 'forceDeleteRepos' in kwargs:
+            force_delete_repos = kwargs['forceDeleteRepos']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
         if active is not None:

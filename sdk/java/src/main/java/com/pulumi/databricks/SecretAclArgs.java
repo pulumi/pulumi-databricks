@@ -29,14 +29,14 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+     * principal&#39;s identifier. It can be:
      * 
      */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
     /**
-     * @return name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+     * @return principal&#39;s identifier. It can be:
      * 
      */
     public Output<String> principal() {
@@ -106,7 +106,7 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param principal name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+         * @param principal principal&#39;s identifier. It can be:
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class SecretAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param principal name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+         * @param principal principal&#39;s identifier. It can be:
          * 
          * @return builder
          * 

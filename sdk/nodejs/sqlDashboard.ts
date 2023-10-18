@@ -87,6 +87,7 @@ export class SqlDashboard extends pulumi.CustomResource {
     }
 
     public readonly createdAt!: pulumi.Output<string>;
+    public readonly dashboardFiltersEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly parent!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -106,6 +107,7 @@ export class SqlDashboard extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SqlDashboardState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dashboardFiltersEnabled"] = state ? state.dashboardFiltersEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -113,6 +115,7 @@ export class SqlDashboard extends pulumi.CustomResource {
         } else {
             const args = argsOrState as SqlDashboardArgs | undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
+            resourceInputs["dashboardFiltersEnabled"] = args ? args.dashboardFiltersEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -128,6 +131,7 @@ export class SqlDashboard extends pulumi.CustomResource {
  */
 export interface SqlDashboardState {
     createdAt?: pulumi.Input<string>;
+    dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -139,6 +143,7 @@ export interface SqlDashboardState {
  */
 export interface SqlDashboardArgs {
     createdAt?: pulumi.Input<string>;
+    dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;

@@ -53,7 +53,15 @@ class ConnectionArgs:
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("connection_type", connection_type)
         _setter("options", options)
         if comment is not None:
@@ -202,7 +210,15 @@ class _ConnectionState:
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if comment is not None:
             _setter("comment", comment)
         if connection_type is not None:

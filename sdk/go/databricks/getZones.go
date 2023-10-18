@@ -4,8 +4,12 @@
 package databricks
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -53,4 +57,55 @@ type GetZonesResult struct {
 	Id string `pulumi:"id"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones []string `pulumi:"zones"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetZonesResult, error) {
+		r, err := GetZones(ctx, opts...)
+		var s GetZonesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetZonesResultOutput)
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesResult] {
+	return pulumix.Output[GetZonesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
+func (o GetZonesResultOutput) DefaultZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.DefaultZone }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// This is a list of all the zones available for your subnets in your Databricks workspace.
+func (o GetZonesResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

@@ -110,7 +110,57 @@ class ProviderArgs:
              token: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              warehouse_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'azureClientId' in kwargs:
+            azure_client_id = kwargs['azureClientId']
+        if 'azureClientSecret' in kwargs:
+            azure_client_secret = kwargs['azureClientSecret']
+        if 'azureEnvironment' in kwargs:
+            azure_environment = kwargs['azureEnvironment']
+        if 'azureLoginAppId' in kwargs:
+            azure_login_app_id = kwargs['azureLoginAppId']
+        if 'azureTenantId' in kwargs:
+            azure_tenant_id = kwargs['azureTenantId']
+        if 'azureUseMsi' in kwargs:
+            azure_use_msi = kwargs['azureUseMsi']
+        if 'azureWorkspaceResourceId' in kwargs:
+            azure_workspace_resource_id = kwargs['azureWorkspaceResourceId']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configFile' in kwargs:
+            config_file = kwargs['configFile']
+        if 'databricksCliPath' in kwargs:
+            databricks_cli_path = kwargs['databricksCliPath']
+        if 'debugHeaders' in kwargs:
+            debug_headers = kwargs['debugHeaders']
+        if 'debugTruncateBytes' in kwargs:
+            debug_truncate_bytes = kwargs['debugTruncateBytes']
+        if 'googleCredentials' in kwargs:
+            google_credentials = kwargs['googleCredentials']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'httpTimeoutSeconds' in kwargs:
+            http_timeout_seconds = kwargs['httpTimeoutSeconds']
+        if 'metadataServiceUrl' in kwargs:
+            metadata_service_url = kwargs['metadataServiceUrl']
+        if 'rateLimit' in kwargs:
+            rate_limit = kwargs['rateLimit']
+        if 'retryTimeoutSeconds' in kwargs:
+            retry_timeout_seconds = kwargs['retryTimeoutSeconds']
+        if 'skipVerify' in kwargs:
+            skip_verify = kwargs['skipVerify']
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if auth_type is not None:

@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterDatetimesec {
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     private String value;
 
     private SqlQueryParameterDatetimesec() {}
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     public String value() {
         return this.value;
     }

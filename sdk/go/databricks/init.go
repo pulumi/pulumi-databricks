@@ -113,6 +113,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Pipeline{}
 	case "databricks:index/recipient:Recipient":
 		r = &Recipient{}
+	case "databricks:index/registeredModel:RegisteredModel":
+		r = &RegisteredModel{}
 	case "databricks:index/repo:Repo":
 		r = &Repo{}
 	case "databricks:index/schema:Schema":
@@ -151,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlWidget{}
 	case "databricks:index/storageCredential:StorageCredential":
 		r = &StorageCredential{}
+	case "databricks:index/systemSchema:SystemSchema":
+		r = &SystemSchema{}
 	case "databricks:index/table:Table":
 		r = &Table{}
 	case "databricks:index/token:Token":
@@ -430,6 +434,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/registeredModel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/repo",
 		&module{version},
 	)
@@ -521,6 +530,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/storageCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/systemSchema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

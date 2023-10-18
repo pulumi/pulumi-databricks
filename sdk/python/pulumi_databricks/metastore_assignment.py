@@ -35,7 +35,15 @@ class MetastoreAssignmentArgs:
              metastore_id: pulumi.Input[str],
              workspace_id: pulumi.Input[int],
              default_catalog_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+        if 'defaultCatalogName' in kwargs:
+            default_catalog_name = kwargs['defaultCatalogName']
+
         _setter("metastore_id", metastore_id)
         _setter("workspace_id", workspace_id)
         if default_catalog_name is not None:
@@ -102,7 +110,15 @@ class _MetastoreAssignmentState:
              default_catalog_name: Optional[pulumi.Input[str]] = None,
              metastore_id: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultCatalogName' in kwargs:
+            default_catalog_name = kwargs['defaultCatalogName']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         if default_catalog_name is not None:
             _setter("default_catalog_name", default_catalog_name)
         if metastore_id is not None:

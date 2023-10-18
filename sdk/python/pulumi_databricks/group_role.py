@@ -31,7 +31,11 @@ class GroupRoleArgs:
              _setter: Callable[[Any, Any], None],
              group_id: pulumi.Input[str],
              role: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         _setter("group_id", group_id)
         _setter("role", role)
 
@@ -80,7 +84,11 @@ class _GroupRoleState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if role is not None:

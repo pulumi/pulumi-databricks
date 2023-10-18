@@ -46,7 +46,21 @@ class SqlGlobalConfigArgs:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataAccessConfig' in kwargs:
+            data_access_config = kwargs['dataAccessConfig']
+        if 'enableServerlessCompute' in kwargs:
+            enable_serverless_compute = kwargs['enableServerlessCompute']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if 'sqlConfigParams' in kwargs:
+            sql_config_params = kwargs['sqlConfigParams']
+
         if data_access_config is not None:
             _setter("data_access_config", data_access_config)
         if enable_serverless_compute is not None:
@@ -171,7 +185,21 @@ class _SqlGlobalConfigState:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataAccessConfig' in kwargs:
+            data_access_config = kwargs['dataAccessConfig']
+        if 'enableServerlessCompute' in kwargs:
+            enable_serverless_compute = kwargs['enableServerlessCompute']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'securityPolicy' in kwargs:
+            security_policy = kwargs['securityPolicy']
+        if 'sqlConfigParams' in kwargs:
+            sql_config_params = kwargs['sqlConfigParams']
+
         if data_access_config is not None:
             _setter("data_access_config", data_access_config)
         if enable_serverless_compute is not None:

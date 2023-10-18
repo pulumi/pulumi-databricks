@@ -99,12 +99,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<ClusterClusterLogConf>> clusterLogConf() {
         return Codegen.optional(this.clusterLogConf);
     }
-    /**
-     * @deprecated
-     * cluster_mount_info block is deprecated due the Clusters API changes.
-     * 
-     */
-    @Deprecated /* cluster_mount_info block is deprecated due the Clusters API changes. */
     @Export(name="clusterMountInfos", type=List.class, parameters={ClusterClusterMountInfo.class})
     private Output</* @Nullable */ List<ClusterClusterMountInfo>> clusterMountInfos;
 

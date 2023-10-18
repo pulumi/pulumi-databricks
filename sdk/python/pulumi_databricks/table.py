@@ -61,7 +61,23 @@ class TableArgs:
              storage_credential_name: Optional[pulumi.Input[str]] = None,
              storage_location: Optional[pulumi.Input[str]] = None,
              view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'dataSourceFormat' in kwargs:
+            data_source_format = kwargs['dataSourceFormat']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+        if 'storageCredentialName' in kwargs:
+            storage_credential_name = kwargs['storageCredentialName']
+        if 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+        if 'viewDefinition' in kwargs:
+            view_definition = kwargs['viewDefinition']
+
         _setter("catalog_name", catalog_name)
         _setter("columns", columns)
         _setter("data_source_format", data_source_format)
@@ -239,7 +255,23 @@ class _TableState:
              storage_location: Optional[pulumi.Input[str]] = None,
              table_type: Optional[pulumi.Input[str]] = None,
              view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'dataSourceFormat' in kwargs:
+            data_source_format = kwargs['dataSourceFormat']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'storageCredentialName' in kwargs:
+            storage_credential_name = kwargs['storageCredentialName']
+        if 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+        if 'tableType' in kwargs:
+            table_type = kwargs['tableType']
+        if 'viewDefinition' in kwargs:
+            view_definition = kwargs['viewDefinition']
+
         if catalog_name is not None:
             _setter("catalog_name", catalog_name)
         if columns is not None:

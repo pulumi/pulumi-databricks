@@ -39,7 +39,13 @@ class MetastoreProviderArgs:
              recipient_profile_str: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationType' in kwargs:
+            authentication_type = kwargs['authenticationType']
+        if 'recipientProfileStr' in kwargs:
+            recipient_profile_str = kwargs['recipientProfileStr']
+
         _setter("authentication_type", authentication_type)
         _setter("recipient_profile_str", recipient_profile_str)
         if comment is not None:
@@ -124,7 +130,13 @@ class _MetastoreProviderState:
              comment: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              recipient_profile_str: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationType' in kwargs:
+            authentication_type = kwargs['authenticationType']
+        if 'recipientProfileStr' in kwargs:
+            recipient_profile_str = kwargs['recipientProfileStr']
+
         if authentication_type is not None:
             _setter("authentication_type", authentication_type)
         if comment is not None:

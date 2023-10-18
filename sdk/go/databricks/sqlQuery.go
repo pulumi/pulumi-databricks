@@ -159,14 +159,20 @@ import (
 type SqlQuery struct {
 	pulumi.CustomResourceState
 
-	CreatedAt    pulumi.StringOutput          `pulumi:"createdAt"`
-	DataSourceId pulumi.StringOutput          `pulumi:"dataSourceId"`
-	Description  pulumi.StringPtrOutput       `pulumi:"description"`
-	Name         pulumi.StringOutput          `pulumi:"name"`
-	Parameters   SqlQueryParameterArrayOutput `pulumi:"parameters"`
-	Parent       pulumi.StringPtrOutput       `pulumi:"parent"`
-	Query        pulumi.StringOutput          `pulumi:"query"`
-	RunAsRole    pulumi.StringPtrOutput       `pulumi:"runAsRole"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Data source ID of a SQL warehouse
+	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The title of this query that appears in list views, widget headings, and on the query page.
+	Name       pulumi.StringOutput          `pulumi:"name"`
+	Parameters SqlQueryParameterArrayOutput `pulumi:"parameters"`
+	// The identifier of the workspace folder containing the object.
+	Parent pulumi.StringPtrOutput `pulumi:"parent"`
+	// The text of the query to be run.
+	Query pulumi.StringOutput `pulumi:"query"`
+	// Run as role. Possible values are `viewer`, `owner`.
+	RunAsRole pulumi.StringPtrOutput `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrOutput `pulumi:"schedule"`
 	Tags      pulumi.StringArrayOutput  `pulumi:"tags"`
@@ -209,14 +215,20 @@ func GetSqlQuery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlQuery resources.
 type sqlQueryState struct {
-	CreatedAt    *string             `pulumi:"createdAt"`
-	DataSourceId *string             `pulumi:"dataSourceId"`
-	Description  *string             `pulumi:"description"`
-	Name         *string             `pulumi:"name"`
-	Parameters   []SqlQueryParameter `pulumi:"parameters"`
-	Parent       *string             `pulumi:"parent"`
-	Query        *string             `pulumi:"query"`
-	RunAsRole    *string             `pulumi:"runAsRole"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Data source ID of a SQL warehouse
+	DataSourceId *string `pulumi:"dataSourceId"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description *string `pulumi:"description"`
+	// The title of this query that appears in list views, widget headings, and on the query page.
+	Name       *string             `pulumi:"name"`
+	Parameters []SqlQueryParameter `pulumi:"parameters"`
+	// The identifier of the workspace folder containing the object.
+	Parent *string `pulumi:"parent"`
+	// The text of the query to be run.
+	Query *string `pulumi:"query"`
+	// Run as role. Possible values are `viewer`, `owner`.
+	RunAsRole *string `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
 	Tags      []string          `pulumi:"tags"`
@@ -224,14 +236,20 @@ type sqlQueryState struct {
 }
 
 type SqlQueryState struct {
-	CreatedAt    pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Data source ID of a SQL warehouse
 	DataSourceId pulumi.StringPtrInput
-	Description  pulumi.StringPtrInput
-	Name         pulumi.StringPtrInput
-	Parameters   SqlQueryParameterArrayInput
-	Parent       pulumi.StringPtrInput
-	Query        pulumi.StringPtrInput
-	RunAsRole    pulumi.StringPtrInput
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrInput
+	// The title of this query that appears in list views, widget headings, and on the query page.
+	Name       pulumi.StringPtrInput
+	Parameters SqlQueryParameterArrayInput
+	// The identifier of the workspace folder containing the object.
+	Parent pulumi.StringPtrInput
+	// The text of the query to be run.
+	Query pulumi.StringPtrInput
+	// Run as role. Possible values are `viewer`, `owner`.
+	RunAsRole pulumi.StringPtrInput
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrInput
 	Tags      pulumi.StringArrayInput
@@ -243,14 +261,20 @@ func (SqlQueryState) ElementType() reflect.Type {
 }
 
 type sqlQueryArgs struct {
-	CreatedAt    *string             `pulumi:"createdAt"`
-	DataSourceId string              `pulumi:"dataSourceId"`
-	Description  *string             `pulumi:"description"`
-	Name         *string             `pulumi:"name"`
-	Parameters   []SqlQueryParameter `pulumi:"parameters"`
-	Parent       *string             `pulumi:"parent"`
-	Query        string              `pulumi:"query"`
-	RunAsRole    *string             `pulumi:"runAsRole"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Data source ID of a SQL warehouse
+	DataSourceId string `pulumi:"dataSourceId"`
+	// General description that conveys additional information about this query such as usage notes.
+	Description *string `pulumi:"description"`
+	// The title of this query that appears in list views, widget headings, and on the query page.
+	Name       *string             `pulumi:"name"`
+	Parameters []SqlQueryParameter `pulumi:"parameters"`
+	// The identifier of the workspace folder containing the object.
+	Parent *string `pulumi:"parent"`
+	// The text of the query to be run.
+	Query string `pulumi:"query"`
+	// Run as role. Possible values are `viewer`, `owner`.
+	RunAsRole *string `pulumi:"runAsRole"`
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
 	Tags      []string          `pulumi:"tags"`
@@ -259,14 +283,20 @@ type sqlQueryArgs struct {
 
 // The set of arguments for constructing a SqlQuery resource.
 type SqlQueryArgs struct {
-	CreatedAt    pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Data source ID of a SQL warehouse
 	DataSourceId pulumi.StringInput
-	Description  pulumi.StringPtrInput
-	Name         pulumi.StringPtrInput
-	Parameters   SqlQueryParameterArrayInput
-	Parent       pulumi.StringPtrInput
-	Query        pulumi.StringInput
-	RunAsRole    pulumi.StringPtrInput
+	// General description that conveys additional information about this query such as usage notes.
+	Description pulumi.StringPtrInput
+	// The title of this query that appears in list views, widget headings, and on the query page.
+	Name       pulumi.StringPtrInput
+	Parameters SqlQueryParameterArrayInput
+	// The identifier of the workspace folder containing the object.
+	Parent pulumi.StringPtrInput
+	// The text of the query to be run.
+	Query pulumi.StringInput
+	// Run as role. Possible values are `viewer`, `owner`.
+	RunAsRole pulumi.StringPtrInput
 	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrInput
 	Tags      pulumi.StringArrayInput
@@ -388,14 +418,17 @@ func (o SqlQueryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Data source ID of a SQL warehouse
 func (o SqlQueryOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
 }
 
+// General description that conveys additional information about this query such as usage notes.
 func (o SqlQueryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The title of this query that appears in list views, widget headings, and on the query page.
 func (o SqlQueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -404,14 +437,17 @@ func (o SqlQueryOutput) Parameters() SqlQueryParameterArrayOutput {
 	return o.ApplyT(func(v *SqlQuery) SqlQueryParameterArrayOutput { return v.Parameters }).(SqlQueryParameterArrayOutput)
 }
 
+// The identifier of the workspace folder containing the object.
 func (o SqlQueryOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
+// The text of the query to be run.
 func (o SqlQueryOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringOutput { return v.Query }).(pulumi.StringOutput)
 }
 
+// Run as role. Possible values are `viewer`, `owner`.
 func (o SqlQueryOutput) RunAsRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.RunAsRole }).(pulumi.StringPtrOutput)
 }

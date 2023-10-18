@@ -143,12 +143,30 @@ export class SqlQuery extends pulumi.CustomResource {
     }
 
     public readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Data source ID of a SQL warehouse
+     */
     public readonly dataSourceId!: pulumi.Output<string>;
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The title of this query that appears in list views, widget headings, and on the query page.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly parameters!: pulumi.Output<outputs.SqlQueryParameter[] | undefined>;
+    /**
+     * The identifier of the workspace folder containing the object.
+     */
     public readonly parent!: pulumi.Output<string | undefined>;
+    /**
+     * The text of the query to be run.
+     */
     public readonly query!: pulumi.Output<string>;
+    /**
+     * Run as role. Possible values are `viewer`, `owner`.
+     */
     public readonly runAsRole!: pulumi.Output<string | undefined>;
     /**
      * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
@@ -211,12 +229,30 @@ export class SqlQuery extends pulumi.CustomResource {
  */
 export interface SqlQueryState {
     createdAt?: pulumi.Input<string>;
+    /**
+     * Data source ID of a SQL warehouse
+     */
     dataSourceId?: pulumi.Input<string>;
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The title of this query that appears in list views, widget headings, and on the query page.
+     */
     name?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    /**
+     * The identifier of the workspace folder containing the object.
+     */
     parent?: pulumi.Input<string>;
+    /**
+     * The text of the query to be run.
+     */
     query?: pulumi.Input<string>;
+    /**
+     * Run as role. Possible values are `viewer`, `owner`.
+     */
     runAsRole?: pulumi.Input<string>;
     /**
      * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
@@ -231,12 +267,30 @@ export interface SqlQueryState {
  */
 export interface SqlQueryArgs {
     createdAt?: pulumi.Input<string>;
+    /**
+     * Data source ID of a SQL warehouse
+     */
     dataSourceId: pulumi.Input<string>;
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The title of this query that appears in list views, widget headings, and on the query page.
+     */
     name?: pulumi.Input<string>;
     parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    /**
+     * The identifier of the workspace folder containing the object.
+     */
     parent?: pulumi.Input<string>;
+    /**
+     * The text of the query to be run.
+     */
     query: pulumi.Input<string>;
+    /**
+     * Run as role. Possible values are `viewer`, `owner`.
+     */
     runAsRole?: pulumi.Input<string>;
     /**
      * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.

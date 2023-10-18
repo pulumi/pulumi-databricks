@@ -19137,6 +19137,7 @@ func (o JobPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobQueue struct {
+	Enabled bool `pulumi:"enabled"`
 }
 
 // JobQueueInput is an input type that accepts JobQueueArgs and JobQueueOutput values.
@@ -19151,6 +19152,7 @@ type JobQueueInput interface {
 }
 
 type JobQueueArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (JobQueueArgs) ElementType() reflect.Type {
@@ -19248,6 +19250,10 @@ func (o JobQueueOutput) ToOutput(ctx context.Context) pulumix.Output[JobQueue] {
 	}
 }
 
+func (o JobQueueOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v JobQueue) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type JobQueuePtrOutput struct{ *pulumi.OutputState }
 
 func (JobQueuePtrOutput) ElementType() reflect.Type {
@@ -19278,10 +19284,19 @@ func (o JobQueuePtrOutput) Elem() JobQueueOutput {
 	}).(JobQueueOutput)
 }
 
+func (o JobQueuePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQueue) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type JobRunAs struct {
 	// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
 	//
-	// Example
+	// Example:
 	//
 	// ```go
 	// package main
@@ -19324,7 +19339,7 @@ type JobRunAsInput interface {
 type JobRunAsArgs struct {
 	// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
 	//
-	// Example
+	// Example:
 	//
 	// ```go
 	// package main
@@ -19450,7 +19465,7 @@ func (o JobRunAsOutput) ToOutput(ctx context.Context) pulumix.Output[JobRunAs] {
 
 // The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
 //
-// # Example
+// Example:
 //
 // ```go
 // package main
@@ -19518,7 +19533,7 @@ func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
 
 // The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
 //
-// # Example
+// Example:
 //
 // ```go
 // package main
@@ -33469,6 +33484,8 @@ type ModelServingConfigServedModel struct {
 	ScaleToZeroEnabled *bool `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
 	WorkloadSize string `pulumi:"workloadSize"`
+	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+	WorkloadType *string `pulumi:"workloadType"`
 }
 
 // ModelServingConfigServedModelInput is an input type that accepts ModelServingConfigServedModelArgs and ModelServingConfigServedModelOutput values.
@@ -33497,6 +33514,8 @@ type ModelServingConfigServedModelArgs struct {
 	ScaleToZeroEnabled pulumi.BoolPtrInput `pulumi:"scaleToZeroEnabled"`
 	// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
 	WorkloadSize pulumi.StringInput `pulumi:"workloadSize"`
+	// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+	WorkloadType pulumi.StringPtrInput `pulumi:"workloadType"`
 }
 
 func (ModelServingConfigServedModelArgs) ElementType() reflect.Type {
@@ -33601,6 +33620,11 @@ func (o ModelServingConfigServedModelOutput) ScaleToZeroEnabled() pulumi.BoolPtr
 // The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
 func (o ModelServingConfigServedModelOutput) WorkloadSize() pulumi.StringOutput {
 	return o.ApplyT(func(v ModelServingConfigServedModel) string { return v.WorkloadSize }).(pulumi.StringOutput)
+}
+
+// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+func (o ModelServingConfigServedModelOutput) WorkloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigServedModel) *string { return v.WorkloadType }).(pulumi.StringPtrOutput)
 }
 
 type ModelServingConfigServedModelArrayOutput struct{ *pulumi.OutputState }
@@ -42606,6 +42630,8 @@ type SqlAlertOptions struct {
 	CustomBody *string `pulumi:"customBody"`
 	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
 	CustomSubject *string `pulumi:"customSubject"`
+	// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+	EmptyResultState *string `pulumi:"emptyResultState"`
 	// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
 	Muted *bool `pulumi:"muted"`
 	// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
@@ -42632,6 +42658,8 @@ type SqlAlertOptionsArgs struct {
 	CustomBody pulumi.StringPtrInput `pulumi:"customBody"`
 	// Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
 	CustomSubject pulumi.StringPtrInput `pulumi:"customSubject"`
+	// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+	EmptyResultState pulumi.StringPtrInput `pulumi:"emptyResultState"`
 	// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
 	Muted pulumi.BoolPtrInput `pulumi:"muted"`
 	// Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
@@ -42750,6 +42778,11 @@ func (o SqlAlertOptionsOutput) CustomSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlAlertOptions) *string { return v.CustomSubject }).(pulumi.StringPtrOutput)
 }
 
+// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+func (o SqlAlertOptionsOutput) EmptyResultState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAlertOptions) *string { return v.EmptyResultState }).(pulumi.StringPtrOutput)
+}
+
 // Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
 func (o SqlAlertOptionsOutput) Muted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlAlertOptions) *bool { return v.Muted }).(pulumi.BoolPtrOutput)
@@ -42822,6 +42855,16 @@ func (o SqlAlertOptionsPtrOutput) CustomSubject() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.CustomSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+func (o SqlAlertOptionsPtrOutput) EmptyResultState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlAlertOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmptyResultState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43658,11 +43701,17 @@ type SqlQueryParameter struct {
 	Datetimesec      *SqlQueryParameterDatetimesec      `pulumi:"datetimesec"`
 	DatetimesecRange *SqlQueryParameterDatetimesecRange `pulumi:"datetimesecRange"`
 	Enum             *SqlQueryParameterEnum             `pulumi:"enum"`
-	Name             string                             `pulumi:"name"`
-	Number           *SqlQueryParameterNumber           `pulumi:"number"`
-	Query            *SqlQueryParameterQuery            `pulumi:"query"`
-	Text             *SqlQueryParameterText             `pulumi:"text"`
-	Title            *string                            `pulumi:"title"`
+	// The literal parameter marker that appears between double curly braces in the query text.
+	// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
+	//
+	// For `text`, `number`, `date`, `datetime`, `datetimesec` block
+	Name   string                   `pulumi:"name"`
+	Number *SqlQueryParameterNumber `pulumi:"number"`
+	// The text of the query to be run.
+	Query *SqlQueryParameterQuery `pulumi:"query"`
+	Text  *SqlQueryParameterText  `pulumi:"text"`
+	// The text displayed in a parameter picking widget.
+	Title *string `pulumi:"title"`
 }
 
 // SqlQueryParameterInput is an input type that accepts SqlQueryParameterArgs and SqlQueryParameterOutput values.
@@ -43684,11 +43733,17 @@ type SqlQueryParameterArgs struct {
 	Datetimesec      SqlQueryParameterDatetimesecPtrInput      `pulumi:"datetimesec"`
 	DatetimesecRange SqlQueryParameterDatetimesecRangePtrInput `pulumi:"datetimesecRange"`
 	Enum             SqlQueryParameterEnumPtrInput             `pulumi:"enum"`
-	Name             pulumi.StringInput                        `pulumi:"name"`
-	Number           SqlQueryParameterNumberPtrInput           `pulumi:"number"`
-	Query            SqlQueryParameterQueryPtrInput            `pulumi:"query"`
-	Text             SqlQueryParameterTextPtrInput             `pulumi:"text"`
-	Title            pulumi.StringPtrInput                     `pulumi:"title"`
+	// The literal parameter marker that appears between double curly braces in the query text.
+	// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
+	//
+	// For `text`, `number`, `date`, `datetime`, `datetimesec` block
+	Name   pulumi.StringInput              `pulumi:"name"`
+	Number SqlQueryParameterNumberPtrInput `pulumi:"number"`
+	// The text of the query to be run.
+	Query SqlQueryParameterQueryPtrInput `pulumi:"query"`
+	Text  SqlQueryParameterTextPtrInput  `pulumi:"text"`
+	// The text displayed in a parameter picking widget.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (SqlQueryParameterArgs) ElementType() reflect.Type {
@@ -43788,6 +43843,10 @@ func (o SqlQueryParameterOutput) Enum() SqlQueryParameterEnumPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterEnum { return v.Enum }).(SqlQueryParameterEnumPtrOutput)
 }
 
+// The literal parameter marker that appears between double curly braces in the query text.
+// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
+//
+// For `text`, `number`, `date`, `datetime`, `datetimesec` block
 func (o SqlQueryParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -43796,6 +43855,7 @@ func (o SqlQueryParameterOutput) Number() SqlQueryParameterNumberPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterNumber { return v.Number }).(SqlQueryParameterNumberPtrOutput)
 }
 
+// The text of the query to be run.
 func (o SqlQueryParameterOutput) Query() SqlQueryParameterQueryPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterQuery { return v.Query }).(SqlQueryParameterQueryPtrOutput)
 }
@@ -43804,6 +43864,7 @@ func (o SqlQueryParameterOutput) Text() SqlQueryParameterTextPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameter) *SqlQueryParameterText { return v.Text }).(SqlQueryParameterTextPtrOutput)
 }
 
+// The text displayed in a parameter picking widget.
 func (o SqlQueryParameterOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameter) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -43835,6 +43896,7 @@ func (o SqlQueryParameterArrayOutput) Index(i pulumi.IntInput) SqlQueryParameter
 }
 
 type SqlQueryParameterDate struct {
+	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -43850,6 +43912,7 @@ type SqlQueryParameterDateInput interface {
 }
 
 type SqlQueryParameterDateArgs struct {
+	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -43948,6 +44011,7 @@ func (o SqlQueryParameterDateOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDateOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDate) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -43982,6 +44046,7 @@ func (o SqlQueryParameterDatePtrOutput) Elem() SqlQueryParameterDateOutput {
 	}).(SqlQueryParameterDateOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDate) *string {
 		if v == nil {
@@ -43993,7 +44058,8 @@ func (o SqlQueryParameterDatePtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDateRange struct {
 	Range *SqlQueryParameterDateRangeRange `pulumi:"range"`
-	Value *string                          `pulumi:"value"`
+	// The default value for this parameter.
+	Value *string `pulumi:"value"`
 }
 
 // SqlQueryParameterDateRangeInput is an input type that accepts SqlQueryParameterDateRangeArgs and SqlQueryParameterDateRangeOutput values.
@@ -44009,7 +44075,8 @@ type SqlQueryParameterDateRangeInput interface {
 
 type SqlQueryParameterDateRangeArgs struct {
 	Range SqlQueryParameterDateRangeRangePtrInput `pulumi:"range"`
-	Value pulumi.StringPtrInput                   `pulumi:"value"`
+	// The default value for this parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SqlQueryParameterDateRangeArgs) ElementType() reflect.Type {
@@ -44111,6 +44178,7 @@ func (o SqlQueryParameterDateRangeOutput) Range() SqlQueryParameterDateRangeRang
 	return o.ApplyT(func(v SqlQueryParameterDateRange) *SqlQueryParameterDateRangeRange { return v.Range }).(SqlQueryParameterDateRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDateRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDateRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -44154,6 +44222,7 @@ func (o SqlQueryParameterDateRangePtrOutput) Range() SqlQueryParameterDateRangeR
 	}).(SqlQueryParameterDateRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDateRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDateRange) *string {
 		if v == nil {
@@ -44336,6 +44405,7 @@ func (o SqlQueryParameterDateRangeRangePtrOutput) Start() pulumi.StringPtrOutput
 }
 
 type SqlQueryParameterDatetime struct {
+	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -44351,6 +44421,7 @@ type SqlQueryParameterDatetimeInput interface {
 }
 
 type SqlQueryParameterDatetimeArgs struct {
+	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -44449,6 +44520,7 @@ func (o SqlQueryParameterDatetimeOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetime) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -44483,6 +44555,7 @@ func (o SqlQueryParameterDatetimePtrOutput) Elem() SqlQueryParameterDatetimeOutp
 	}).(SqlQueryParameterDatetimeOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetime) *string {
 		if v == nil {
@@ -44494,7 +44567,8 @@ func (o SqlQueryParameterDatetimePtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDatetimeRange struct {
 	Range *SqlQueryParameterDatetimeRangeRange `pulumi:"range"`
-	Value *string                              `pulumi:"value"`
+	// The default value for this parameter.
+	Value *string `pulumi:"value"`
 }
 
 // SqlQueryParameterDatetimeRangeInput is an input type that accepts SqlQueryParameterDatetimeRangeArgs and SqlQueryParameterDatetimeRangeOutput values.
@@ -44510,7 +44584,8 @@ type SqlQueryParameterDatetimeRangeInput interface {
 
 type SqlQueryParameterDatetimeRangeArgs struct {
 	Range SqlQueryParameterDatetimeRangeRangePtrInput `pulumi:"range"`
-	Value pulumi.StringPtrInput                       `pulumi:"value"`
+	// The default value for this parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SqlQueryParameterDatetimeRangeArgs) ElementType() reflect.Type {
@@ -44612,6 +44687,7 @@ func (o SqlQueryParameterDatetimeRangeOutput) Range() SqlQueryParameterDatetimeR
 	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *SqlQueryParameterDatetimeRangeRange { return v.Range }).(SqlQueryParameterDatetimeRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimeRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimeRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -44655,6 +44731,7 @@ func (o SqlQueryParameterDatetimeRangePtrOutput) Range() SqlQueryParameterDateti
 	}).(SqlQueryParameterDatetimeRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimeRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimeRange) *string {
 		if v == nil {
@@ -44837,6 +44914,7 @@ func (o SqlQueryParameterDatetimeRangeRangePtrOutput) Start() pulumi.StringPtrOu
 }
 
 type SqlQueryParameterDatetimesec struct {
+	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -44852,6 +44930,7 @@ type SqlQueryParameterDatetimesecInput interface {
 }
 
 type SqlQueryParameterDatetimesecArgs struct {
+	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -44950,6 +45029,7 @@ func (o SqlQueryParameterDatetimesecOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimesec) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -44984,6 +45064,7 @@ func (o SqlQueryParameterDatetimesecPtrOutput) Elem() SqlQueryParameterDatetimes
 	}).(SqlQueryParameterDatetimesecOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimesec) *string {
 		if v == nil {
@@ -44995,7 +45076,8 @@ func (o SqlQueryParameterDatetimesecPtrOutput) Value() pulumi.StringPtrOutput {
 
 type SqlQueryParameterDatetimesecRange struct {
 	Range *SqlQueryParameterDatetimesecRangeRange `pulumi:"range"`
-	Value *string                                 `pulumi:"value"`
+	// The default value for this parameter.
+	Value *string `pulumi:"value"`
 }
 
 // SqlQueryParameterDatetimesecRangeInput is an input type that accepts SqlQueryParameterDatetimesecRangeArgs and SqlQueryParameterDatetimesecRangeOutput values.
@@ -45011,7 +45093,8 @@ type SqlQueryParameterDatetimesecRangeInput interface {
 
 type SqlQueryParameterDatetimesecRangeArgs struct {
 	Range SqlQueryParameterDatetimesecRangeRangePtrInput `pulumi:"range"`
-	Value pulumi.StringPtrInput                          `pulumi:"value"`
+	// The default value for this parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (SqlQueryParameterDatetimesecRangeArgs) ElementType() reflect.Type {
@@ -45113,6 +45196,7 @@ func (o SqlQueryParameterDatetimesecRangeOutput) Range() SqlQueryParameterDateti
 	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *SqlQueryParameterDatetimesecRangeRange { return v.Range }).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecRangeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterDatetimesecRange) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -45156,6 +45240,7 @@ func (o SqlQueryParameterDatetimesecRangePtrOutput) Range() SqlQueryParameterDat
 	}).(SqlQueryParameterDatetimesecRangeRangePtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterDatetimesecRangePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterDatetimesecRange) *string {
 		if v == nil {
@@ -45340,8 +45425,9 @@ func (o SqlQueryParameterDatetimesecRangeRangePtrOutput) Start() pulumi.StringPt
 type SqlQueryParameterEnum struct {
 	Multiple *SqlQueryParameterEnumMultiple `pulumi:"multiple"`
 	Options  []string                       `pulumi:"options"`
-	Value    *string                        `pulumi:"value"`
-	Values   []string                       `pulumi:"values"`
+	// The default value for this parameter.
+	Value  *string  `pulumi:"value"`
+	Values []string `pulumi:"values"`
 }
 
 // SqlQueryParameterEnumInput is an input type that accepts SqlQueryParameterEnumArgs and SqlQueryParameterEnumOutput values.
@@ -45358,8 +45444,9 @@ type SqlQueryParameterEnumInput interface {
 type SqlQueryParameterEnumArgs struct {
 	Multiple SqlQueryParameterEnumMultiplePtrInput `pulumi:"multiple"`
 	Options  pulumi.StringArrayInput               `pulumi:"options"`
-	Value    pulumi.StringPtrInput                 `pulumi:"value"`
-	Values   pulumi.StringArrayInput               `pulumi:"values"`
+	// The default value for this parameter.
+	Value  pulumi.StringPtrInput   `pulumi:"value"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (SqlQueryParameterEnumArgs) ElementType() reflect.Type {
@@ -45465,6 +45552,7 @@ func (o SqlQueryParameterEnumOutput) Options() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlQueryParameterEnum) []string { return v.Options }).(pulumi.StringArrayOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterEnumOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterEnum) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -45521,6 +45609,7 @@ func (o SqlQueryParameterEnumPtrOutput) Options() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterEnumPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterEnum) *string {
 		if v == nil {
@@ -45727,6 +45816,7 @@ func (o SqlQueryParameterEnumMultiplePtrOutput) Suffix() pulumi.StringPtrOutput 
 }
 
 type SqlQueryParameterNumber struct {
+	// The default value for this parameter.
 	Value float64 `pulumi:"value"`
 }
 
@@ -45742,6 +45832,7 @@ type SqlQueryParameterNumberInput interface {
 }
 
 type SqlQueryParameterNumberArgs struct {
+	// The default value for this parameter.
 	Value pulumi.Float64Input `pulumi:"value"`
 }
 
@@ -45840,6 +45931,7 @@ func (o SqlQueryParameterNumberOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterNumberOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v SqlQueryParameterNumber) float64 { return v.Value }).(pulumi.Float64Output)
 }
@@ -45874,6 +45966,7 @@ func (o SqlQueryParameterNumberPtrOutput) Elem() SqlQueryParameterNumberOutput {
 	}).(SqlQueryParameterNumberOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterNumberPtrOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterNumber) *float64 {
 		if v == nil {
@@ -45886,8 +45979,9 @@ func (o SqlQueryParameterNumberPtrOutput) Value() pulumi.Float64PtrOutput {
 type SqlQueryParameterQuery struct {
 	Multiple *SqlQueryParameterQueryMultiple `pulumi:"multiple"`
 	QueryId  string                          `pulumi:"queryId"`
-	Value    *string                         `pulumi:"value"`
-	Values   []string                        `pulumi:"values"`
+	// The default value for this parameter.
+	Value  *string  `pulumi:"value"`
+	Values []string `pulumi:"values"`
 }
 
 // SqlQueryParameterQueryInput is an input type that accepts SqlQueryParameterQueryArgs and SqlQueryParameterQueryOutput values.
@@ -45904,8 +45998,9 @@ type SqlQueryParameterQueryInput interface {
 type SqlQueryParameterQueryArgs struct {
 	Multiple SqlQueryParameterQueryMultiplePtrInput `pulumi:"multiple"`
 	QueryId  pulumi.StringInput                     `pulumi:"queryId"`
-	Value    pulumi.StringPtrInput                  `pulumi:"value"`
-	Values   pulumi.StringArrayInput                `pulumi:"values"`
+	// The default value for this parameter.
+	Value  pulumi.StringPtrInput   `pulumi:"value"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (SqlQueryParameterQueryArgs) ElementType() reflect.Type {
@@ -46011,6 +46106,7 @@ func (o SqlQueryParameterQueryOutput) QueryId() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterQuery) string { return v.QueryId }).(pulumi.StringOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterQueryOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlQueryParameterQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -46067,6 +46163,7 @@ func (o SqlQueryParameterQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterQueryPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterQuery) *string {
 		if v == nil {
@@ -46273,6 +46370,7 @@ func (o SqlQueryParameterQueryMultiplePtrOutput) Suffix() pulumi.StringPtrOutput
 }
 
 type SqlQueryParameterText struct {
+	// The default value for this parameter.
 	Value string `pulumi:"value"`
 }
 
@@ -46288,6 +46386,7 @@ type SqlQueryParameterTextInput interface {
 }
 
 type SqlQueryParameterTextArgs struct {
+	// The default value for this parameter.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -46386,6 +46485,7 @@ func (o SqlQueryParameterTextOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterTextOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterText) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -46420,6 +46520,7 @@ func (o SqlQueryParameterTextPtrOutput) Elem() SqlQueryParameterTextOutput {
 	}).(SqlQueryParameterTextOutput)
 }
 
+// The default value for this parameter.
 func (o SqlQueryParameterTextPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQueryParameterText) *string {
 		if v == nil {
@@ -69124,6 +69225,7 @@ func (o GetJobJobSettingsSettingsPythonWheelTaskPtrOutput) Parameters() pulumi.S
 }
 
 type GetJobJobSettingsSettingsQueue struct {
+	Enabled bool `pulumi:"enabled"`
 }
 
 // GetJobJobSettingsSettingsQueueInput is an input type that accepts GetJobJobSettingsSettingsQueueArgs and GetJobJobSettingsSettingsQueueOutput values.
@@ -69138,6 +69240,7 @@ type GetJobJobSettingsSettingsQueueInput interface {
 }
 
 type GetJobJobSettingsSettingsQueueArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (GetJobJobSettingsSettingsQueueArgs) ElementType() reflect.Type {
@@ -69235,6 +69338,10 @@ func (o GetJobJobSettingsSettingsQueueOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
+func (o GetJobJobSettingsSettingsQueueOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsQueue) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type GetJobJobSettingsSettingsQueuePtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsQueuePtrOutput) ElementType() reflect.Type {
@@ -69263,6 +69370,15 @@ func (o GetJobJobSettingsSettingsQueuePtrOutput) Elem() GetJobJobSettingsSetting
 		var ret GetJobJobSettingsSettingsQueue
 		return ret
 	}).(GetJobJobSettingsSettingsQueueOutput)
+}
+
+func (o GetJobJobSettingsSettingsQueuePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsQueue) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetJobJobSettingsSettingsRunAs struct {

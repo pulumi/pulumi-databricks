@@ -35,7 +35,15 @@ class MwsStorageConfigurationsArgs:
              account_id: pulumi.Input[str],
              bucket_name: pulumi.Input[str],
              storage_configuration_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'storageConfigurationName' in kwargs:
+            storage_configuration_name = kwargs['storageConfigurationName']
+
         _setter("account_id", account_id)
         _setter("bucket_name", bucket_name)
         _setter("storage_configuration_name", storage_configuration_name)
@@ -108,7 +116,19 @@ class _MwsStorageConfigurationsState:
              creation_time: Optional[pulumi.Input[int]] = None,
              storage_configuration_id: Optional[pulumi.Input[str]] = None,
              storage_configuration_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'storageConfigurationId' in kwargs:
+            storage_configuration_id = kwargs['storageConfigurationId']
+        if 'storageConfigurationName' in kwargs:
+            storage_configuration_name = kwargs['storageConfigurationName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if bucket_name is not None:

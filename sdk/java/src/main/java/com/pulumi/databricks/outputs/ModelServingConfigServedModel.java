@@ -49,6 +49,11 @@ public final class ModelServingConfigServedModel {
      * 
      */
     private String workloadSize;
+    /**
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * 
+     */
+    private @Nullable String workloadType;
 
     private ModelServingConfigServedModel() {}
     /**
@@ -100,6 +105,13 @@ public final class ModelServingConfigServedModel {
     public String workloadSize() {
         return this.workloadSize;
     }
+    /**
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * 
+     */
+    public Optional<String> workloadType() {
+        return Optional.ofNullable(this.workloadType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -117,6 +129,7 @@ public final class ModelServingConfigServedModel {
         private @Nullable String name;
         private @Nullable Boolean scaleToZeroEnabled;
         private String workloadSize;
+        private @Nullable String workloadType;
         public Builder() {}
         public Builder(ModelServingConfigServedModel defaults) {
     	      Objects.requireNonNull(defaults);
@@ -127,6 +140,7 @@ public final class ModelServingConfigServedModel {
     	      this.name = defaults.name;
     	      this.scaleToZeroEnabled = defaults.scaleToZeroEnabled;
     	      this.workloadSize = defaults.workloadSize;
+    	      this.workloadType = defaults.workloadType;
         }
 
         @CustomType.Setter
@@ -164,6 +178,11 @@ public final class ModelServingConfigServedModel {
             this.workloadSize = Objects.requireNonNull(workloadSize);
             return this;
         }
+        @CustomType.Setter
+        public Builder workloadType(@Nullable String workloadType) {
+            this.workloadType = workloadType;
+            return this;
+        }
         public ModelServingConfigServedModel build() {
             final var o = new ModelServingConfigServedModel();
             o.environmentVars = environmentVars;
@@ -173,6 +192,7 @@ public final class ModelServingConfigServedModel {
             o.name = name;
             o.scaleToZeroEnabled = scaleToZeroEnabled;
             o.workloadSize = workloadSize;
+            o.workloadType = workloadType;
             return o;
         }
     }

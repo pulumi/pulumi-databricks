@@ -57,7 +57,23 @@ class GroupArgs:
              force: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:
@@ -226,7 +242,23 @@ class _GroupState:
              force: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclPrincipalId' in kwargs:
+            acl_principal_id = kwargs['aclPrincipalId']
+        if 'allowClusterCreate' in kwargs:
+            allow_cluster_create = kwargs['allowClusterCreate']
+        if 'allowInstancePoolCreate' in kwargs:
+            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
+        if 'databricksSqlAccess' in kwargs:
+            databricks_sql_access = kwargs['databricksSqlAccess']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'workspaceAccess' in kwargs:
+            workspace_access = kwargs['workspaceAccess']
+
         if acl_principal_id is not None:
             _setter("acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+ * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,7 +80,7 @@ export class SecretAcl extends pulumi.CustomResource {
      */
     public readonly permission!: pulumi.Output<string>;
     /**
-     * name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+     * principal's identifier. It can be:
      */
     public readonly principal!: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export interface SecretAclState {
      */
     permission?: pulumi.Input<string>;
     /**
-     * name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+     * principal's identifier. It can be:
      */
     principal?: pulumi.Input<string>;
     /**
@@ -151,7 +151,7 @@ export interface SecretAclArgs {
      */
     permission: pulumi.Input<string>;
     /**
-     * name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+     * principal's identifier. It can be:
      */
     principal: pulumi.Input<string>;
     /**

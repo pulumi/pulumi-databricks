@@ -415,6 +415,11 @@ export type Recipient = import("./recipient").Recipient;
 export const Recipient: typeof import("./recipient").Recipient = null as any;
 utilities.lazyLoad(exports, ["Recipient"], () => require("./recipient"));
 
+export { RegisteredModelArgs, RegisteredModelState } from "./registeredModel";
+export type RegisteredModel = import("./registeredModel").RegisteredModel;
+export const RegisteredModel: typeof import("./registeredModel").RegisteredModel = null as any;
+utilities.lazyLoad(exports, ["RegisteredModel"], () => require("./registeredModel"));
+
 export { RepoArgs, RepoState } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
@@ -509,6 +514,11 @@ export { StorageCredentialArgs, StorageCredentialState } from "./storageCredenti
 export type StorageCredential = import("./storageCredential").StorageCredential;
 export const StorageCredential: typeof import("./storageCredential").StorageCredential = null as any;
 utilities.lazyLoad(exports, ["StorageCredential"], () => require("./storageCredential"));
+
+export { SystemSchemaArgs, SystemSchemaState } from "./systemSchema";
+export type SystemSchema = import("./systemSchema").SystemSchema;
+export const SystemSchema: typeof import("./systemSchema").SystemSchema = null as any;
+utilities.lazyLoad(exports, ["SystemSchema"], () => require("./systemSchema"));
 
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
@@ -656,6 +666,8 @@ const _module = {
                 return new Pipeline(name, <any>undefined, { urn })
             case "databricks:index/recipient:Recipient":
                 return new Recipient(name, <any>undefined, { urn })
+            case "databricks:index/registeredModel:RegisteredModel":
+                return new RegisteredModel(name, <any>undefined, { urn })
             case "databricks:index/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
             case "databricks:index/schema:Schema":
@@ -694,6 +706,8 @@ const _module = {
                 return new SqlWidget(name, <any>undefined, { urn })
             case "databricks:index/storageCredential:StorageCredential":
                 return new StorageCredential(name, <any>undefined, { urn })
+            case "databricks:index/systemSchema:SystemSchema":
+                return new SystemSchema(name, <any>undefined, { urn })
             case "databricks:index/table:Table":
                 return new Table(name, <any>undefined, { urn })
             case "databricks:index/token:Token":
@@ -761,6 +775,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment"
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/schema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
@@ -780,6 +795,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/sqlTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlVisualization", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlWidget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/storageCredential", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/systemSchema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/table", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/token", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/user", _module)

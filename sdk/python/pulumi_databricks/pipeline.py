@@ -85,7 +85,11 @@ class PipelineArgs:
              serverless: Optional[pulumi.Input[bool]] = None,
              storage: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowDuplicateNames' in kwargs:
+            allow_duplicate_names = kwargs['allowDuplicateNames']
+
         if allow_duplicate_names is not None:
             _setter("allow_duplicate_names", allow_duplicate_names)
         if catalog is not None:
@@ -375,7 +379,11 @@ class _PipelineState:
              storage: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowDuplicateNames' in kwargs:
+            allow_duplicate_names = kwargs['allowDuplicateNames']
+
         if allow_duplicate_names is not None:
             _setter("allow_duplicate_names", allow_duplicate_names)
         if catalog is not None:

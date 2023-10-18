@@ -63,7 +63,25 @@ class MwsVpcEndpointArgs:
              state: Optional[pulumi.Input[str]] = None,
              use_case: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcEndpointName' in kwargs:
+            vpc_endpoint_name = kwargs['vpcEndpointName']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'awsAccountId' in kwargs:
+            aws_account_id = kwargs['awsAccountId']
+        if 'awsEndpointServiceId' in kwargs:
+            aws_endpoint_service_id = kwargs['awsEndpointServiceId']
+        if 'awsVpcEndpointId' in kwargs:
+            aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
+        if 'gcpVpcEndpointInfo' in kwargs:
+            gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
+        if 'useCase' in kwargs:
+            use_case = kwargs['useCase']
+        if 'vpcEndpointId' in kwargs:
+            vpc_endpoint_id = kwargs['vpcEndpointId']
+
         _setter("vpc_endpoint_name", vpc_endpoint_name)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -249,7 +267,25 @@ class _MwsVpcEndpointState:
              use_case: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'awsAccountId' in kwargs:
+            aws_account_id = kwargs['awsAccountId']
+        if 'awsEndpointServiceId' in kwargs:
+            aws_endpoint_service_id = kwargs['awsEndpointServiceId']
+        if 'awsVpcEndpointId' in kwargs:
+            aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
+        if 'gcpVpcEndpointInfo' in kwargs:
+            gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
+        if 'useCase' in kwargs:
+            use_case = kwargs['useCase']
+        if 'vpcEndpointId' in kwargs:
+            vpc_endpoint_id = kwargs['vpcEndpointId']
+        if 'vpcEndpointName' in kwargs:
+            vpc_endpoint_name = kwargs['vpcEndpointName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if aws_account_id is not None:

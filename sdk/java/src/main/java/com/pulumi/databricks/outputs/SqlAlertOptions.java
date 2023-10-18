@@ -28,6 +28,11 @@ public final class SqlAlertOptions {
      */
     private @Nullable String customSubject;
     /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
+    private @Nullable String emptyResultState;
+    /**
      * @return Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      * 
      */
@@ -66,6 +71,13 @@ public final class SqlAlertOptions {
         return Optional.ofNullable(this.customSubject);
     }
     /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
+    public Optional<String> emptyResultState() {
+        return Optional.ofNullable(this.emptyResultState);
+    }
+    /**
      * @return Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      * 
      */
@@ -99,6 +111,7 @@ public final class SqlAlertOptions {
         private String column;
         private @Nullable String customBody;
         private @Nullable String customSubject;
+        private @Nullable String emptyResultState;
         private @Nullable Boolean muted;
         private String op;
         private String value;
@@ -108,6 +121,7 @@ public final class SqlAlertOptions {
     	      this.column = defaults.column;
     	      this.customBody = defaults.customBody;
     	      this.customSubject = defaults.customSubject;
+    	      this.emptyResultState = defaults.emptyResultState;
     	      this.muted = defaults.muted;
     	      this.op = defaults.op;
     	      this.value = defaults.value;
@@ -126,6 +140,11 @@ public final class SqlAlertOptions {
         @CustomType.Setter
         public Builder customSubject(@Nullable String customSubject) {
             this.customSubject = customSubject;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emptyResultState(@Nullable String emptyResultState) {
+            this.emptyResultState = emptyResultState;
             return this;
         }
         @CustomType.Setter
@@ -148,6 +167,7 @@ public final class SqlAlertOptions {
             o.column = column;
             o.customBody = customBody;
             o.customSubject = customSubject;
+            o.emptyResultState = emptyResultState;
             o.muted = muted;
             o.op = op;
             o.value = value;

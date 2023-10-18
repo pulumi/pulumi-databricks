@@ -31,7 +31,13 @@ class GroupInstanceProfileArgs:
              _setter: Callable[[Any, Any], None],
              group_id: pulumi.Input[str],
              instance_profile_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'instanceProfileId' in kwargs:
+            instance_profile_id = kwargs['instanceProfileId']
+
         _setter("group_id", group_id)
         _setter("instance_profile_id", instance_profile_id)
 
@@ -80,7 +86,13 @@ class _GroupInstanceProfileState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              instance_profile_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'instanceProfileId' in kwargs:
+            instance_profile_id = kwargs['instanceProfileId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if instance_profile_id is not None:

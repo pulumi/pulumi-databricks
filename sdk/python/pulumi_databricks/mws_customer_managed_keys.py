@@ -49,7 +49,21 @@ class MwsCustomerManagedKeysArgs:
              creation_time: Optional[pulumi.Input[int]] = None,
              customer_managed_key_id: Optional[pulumi.Input[str]] = None,
              gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'useCases' in kwargs:
+            use_cases = kwargs['useCases']
+        if 'awsKeyInfo' in kwargs:
+            aws_key_info = kwargs['awsKeyInfo']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'customerManagedKeyId' in kwargs:
+            customer_managed_key_id = kwargs['customerManagedKeyId']
+        if 'gcpKeyInfo' in kwargs:
+            gcp_key_info = kwargs['gcpKeyInfo']
+
         _setter("account_id", account_id)
         _setter("use_cases", use_cases)
         if aws_key_info is not None:
@@ -170,7 +184,21 @@ class _MwsCustomerManagedKeysState:
              customer_managed_key_id: Optional[pulumi.Input[str]] = None,
              gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
              use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'awsKeyInfo' in kwargs:
+            aws_key_info = kwargs['awsKeyInfo']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'customerManagedKeyId' in kwargs:
+            customer_managed_key_id = kwargs['customerManagedKeyId']
+        if 'gcpKeyInfo' in kwargs:
+            gcp_key_info = kwargs['gcpKeyInfo']
+        if 'useCases' in kwargs:
+            use_cases = kwargs['useCases']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if aws_key_info is not None:

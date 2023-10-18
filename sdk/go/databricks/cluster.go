@@ -29,13 +29,12 @@ type Cluster struct {
 	ApplyPolicyDefaultValues pulumi.BoolPtrOutput      `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                ClusterAutoscalePtrOutput `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes pulumi.IntPtrOutput             `pulumi:"autoterminationMinutes"`
-	AwsAttributes          ClusterAwsAttributesPtrOutput   `pulumi:"awsAttributes"`
-	AzureAttributes        ClusterAzureAttributesPtrOutput `pulumi:"azureAttributes"`
-	ClusterId              pulumi.StringOutput             `pulumi:"clusterId"`
-	ClusterLogConf         ClusterClusterLogConfPtrOutput  `pulumi:"clusterLogConf"`
-	// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
-	ClusterMountInfos ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes pulumi.IntPtrOutput                `pulumi:"autoterminationMinutes"`
+	AwsAttributes          ClusterAwsAttributesPtrOutput      `pulumi:"awsAttributes"`
+	AzureAttributes        ClusterAzureAttributesPtrOutput    `pulumi:"azureAttributes"`
+	ClusterId              pulumi.StringOutput                `pulumi:"clusterId"`
+	ClusterLogConf         ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
+	ClusterMountInfos      ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
 	// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `defaultTags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
@@ -169,13 +168,12 @@ type clusterState struct {
 	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
-	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
-	AzureAttributes        *ClusterAzureAttributes `pulumi:"azureAttributes"`
-	ClusterId              *string                 `pulumi:"clusterId"`
-	ClusterLogConf         *ClusterClusterLogConf  `pulumi:"clusterLogConf"`
-	// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
-	ClusterMountInfos []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
+	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
+	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
+	ClusterId              *string                   `pulumi:"clusterId"`
+	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName *string `pulumi:"clusterName"`
 	// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `defaultTags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
@@ -282,8 +280,7 @@ type ClusterState struct {
 	AzureAttributes        ClusterAzureAttributesPtrInput
 	ClusterId              pulumi.StringPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
-	// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
-	ClusterMountInfos ClusterClusterMountInfoArrayInput
+	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrInput
 	// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `defaultTags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
@@ -389,13 +386,12 @@ type clusterArgs struct {
 	ApplyPolicyDefaultValues *bool             `pulumi:"applyPolicyDefaultValues"`
 	Autoscale                *ClusterAutoscale `pulumi:"autoscale"`
 	// Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
-	AutoterminationMinutes *int                    `pulumi:"autoterminationMinutes"`
-	AwsAttributes          *ClusterAwsAttributes   `pulumi:"awsAttributes"`
-	AzureAttributes        *ClusterAzureAttributes `pulumi:"azureAttributes"`
-	ClusterId              *string                 `pulumi:"clusterId"`
-	ClusterLogConf         *ClusterClusterLogConf  `pulumi:"clusterLogConf"`
-	// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
-	ClusterMountInfos []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
+	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
+	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
+	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
+	ClusterId              *string                   `pulumi:"clusterId"`
+	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
+	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName *string `pulumi:"clusterName"`
 	// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `defaultTags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
@@ -498,8 +494,7 @@ type ClusterArgs struct {
 	AzureAttributes        ClusterAzureAttributesPtrInput
 	ClusterId              pulumi.StringPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
-	// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
-	ClusterMountInfos ClusterClusterMountInfoArrayInput
+	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 	ClusterName pulumi.StringPtrInput
 	// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `defaultTags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
@@ -732,7 +727,6 @@ func (o ClusterOutput) ClusterLogConf() ClusterClusterLogConfPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterLogConfPtrOutput { return v.ClusterLogConf }).(ClusterClusterLogConfPtrOutput)
 }
 
-// Deprecated: cluster_mount_info block is deprecated due the Clusters API changes.
 func (o ClusterOutput) ClusterMountInfos() ClusterClusterMountInfoArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterMountInfoArrayOutput { return v.ClusterMountInfos }).(ClusterClusterMountInfoArrayOutput)
 }

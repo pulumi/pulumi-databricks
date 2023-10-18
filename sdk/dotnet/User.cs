@@ -244,7 +244,7 @@ namespace Pulumi.Databricks
         public Output<string> Repos { get; private set; } = null!;
 
         /// <summary>
-        /// This is the username of the given user and will be their form of access and identity.
+        /// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -374,7 +374,7 @@ namespace Pulumi.Databricks
         public Input<string>? Repos { get; set; }
 
         /// <summary>
-        /// This is the username of the given user and will be their form of access and identity.
+        /// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.Databricks
         public Input<string>? Repos { get; set; }
 
         /// <summary>
-        /// This is the username of the given user and will be their form of access and identity.
+        /// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

@@ -151,7 +151,55 @@ class JobArgs:
              timeout_seconds: Optional[pulumi.Input[int]] = None,
              trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
              webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alwaysRunning' in kwargs:
+            always_running = kwargs['alwaysRunning']
+        if 'controlRunState' in kwargs:
+            control_run_state = kwargs['controlRunState']
+        if 'dbtTask' in kwargs:
+            dbt_task = kwargs['dbtTask']
+        if 'emailNotifications' in kwargs:
+            email_notifications = kwargs['emailNotifications']
+        if 'existingClusterId' in kwargs:
+            existing_cluster_id = kwargs['existingClusterId']
+        if 'gitSource' in kwargs:
+            git_source = kwargs['gitSource']
+        if 'jobClusters' in kwargs:
+            job_clusters = kwargs['jobClusters']
+        if 'maxConcurrentRuns' in kwargs:
+            max_concurrent_runs = kwargs['maxConcurrentRuns']
+        if 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if 'minRetryIntervalMillis' in kwargs:
+            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+        if 'notebookTask' in kwargs:
+            notebook_task = kwargs['notebookTask']
+        if 'notificationSettings' in kwargs:
+            notification_settings = kwargs['notificationSettings']
+        if 'pipelineTask' in kwargs:
+            pipeline_task = kwargs['pipelineTask']
+        if 'pythonWheelTask' in kwargs:
+            python_wheel_task = kwargs['pythonWheelTask']
+        if 'retryOnTimeout' in kwargs:
+            retry_on_timeout = kwargs['retryOnTimeout']
+        if 'runAs' in kwargs:
+            run_as = kwargs['runAs']
+        if 'runJobTask' in kwargs:
+            run_job_task = kwargs['runJobTask']
+        if 'sparkJarTask' in kwargs:
+            spark_jar_task = kwargs['sparkJarTask']
+        if 'sparkPythonTask' in kwargs:
+            spark_python_task = kwargs['sparkPythonTask']
+        if 'sparkSubmitTask' in kwargs:
+            spark_submit_task = kwargs['sparkSubmitTask']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+        if 'webhookNotifications' in kwargs:
+            webhook_notifications = kwargs['webhookNotifications']
+
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
@@ -740,7 +788,55 @@ class _JobState:
              trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
              url: Optional[pulumi.Input[str]] = None,
              webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alwaysRunning' in kwargs:
+            always_running = kwargs['alwaysRunning']
+        if 'controlRunState' in kwargs:
+            control_run_state = kwargs['controlRunState']
+        if 'dbtTask' in kwargs:
+            dbt_task = kwargs['dbtTask']
+        if 'emailNotifications' in kwargs:
+            email_notifications = kwargs['emailNotifications']
+        if 'existingClusterId' in kwargs:
+            existing_cluster_id = kwargs['existingClusterId']
+        if 'gitSource' in kwargs:
+            git_source = kwargs['gitSource']
+        if 'jobClusters' in kwargs:
+            job_clusters = kwargs['jobClusters']
+        if 'maxConcurrentRuns' in kwargs:
+            max_concurrent_runs = kwargs['maxConcurrentRuns']
+        if 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if 'minRetryIntervalMillis' in kwargs:
+            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+        if 'notebookTask' in kwargs:
+            notebook_task = kwargs['notebookTask']
+        if 'notificationSettings' in kwargs:
+            notification_settings = kwargs['notificationSettings']
+        if 'pipelineTask' in kwargs:
+            pipeline_task = kwargs['pipelineTask']
+        if 'pythonWheelTask' in kwargs:
+            python_wheel_task = kwargs['pythonWheelTask']
+        if 'retryOnTimeout' in kwargs:
+            retry_on_timeout = kwargs['retryOnTimeout']
+        if 'runAs' in kwargs:
+            run_as = kwargs['runAs']
+        if 'runJobTask' in kwargs:
+            run_job_task = kwargs['runJobTask']
+        if 'sparkJarTask' in kwargs:
+            spark_jar_task = kwargs['sparkJarTask']
+        if 'sparkPythonTask' in kwargs:
+            spark_python_task = kwargs['sparkPythonTask']
+        if 'sparkSubmitTask' in kwargs:
+            spark_submit_task = kwargs['sparkSubmitTask']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+        if 'webhookNotifications' in kwargs:
+            webhook_notifications = kwargs['webhookNotifications']
+
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")

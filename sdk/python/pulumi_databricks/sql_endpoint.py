@@ -94,7 +94,35 @@ class SqlEndpointArgs:
              state: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
              warehouse_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if 'autoStopMins' in kwargs:
+            auto_stop_mins = kwargs['autoStopMins']
+        if 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if 'enablePhoton' in kwargs:
+            enable_photon = kwargs['enablePhoton']
+        if 'enableServerlessCompute' in kwargs:
+            enable_serverless_compute = kwargs['enableServerlessCompute']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'jdbcUrl' in kwargs:
+            jdbc_url = kwargs['jdbcUrl']
+        if 'maxNumClusters' in kwargs:
+            max_num_clusters = kwargs['maxNumClusters']
+        if 'minNumClusters' in kwargs:
+            min_num_clusters = kwargs['minNumClusters']
+        if 'numClusters' in kwargs:
+            num_clusters = kwargs['numClusters']
+        if 'odbcParams' in kwargs:
+            odbc_params = kwargs['odbcParams']
+        if 'spotInstancePolicy' in kwargs:
+            spot_instance_policy = kwargs['spotInstancePolicy']
+        if 'warehouseType' in kwargs:
+            warehouse_type = kwargs['warehouseType']
+
         _setter("cluster_size", cluster_size)
         if auto_stop_mins is not None:
             _setter("auto_stop_mins", auto_stop_mins)
@@ -410,7 +438,35 @@ class _SqlEndpointState:
              state: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
              warehouse_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoStopMins' in kwargs:
+            auto_stop_mins = kwargs['autoStopMins']
+        if 'clusterSize' in kwargs:
+            cluster_size = kwargs['clusterSize']
+        if 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if 'enablePhoton' in kwargs:
+            enable_photon = kwargs['enablePhoton']
+        if 'enableServerlessCompute' in kwargs:
+            enable_serverless_compute = kwargs['enableServerlessCompute']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'jdbcUrl' in kwargs:
+            jdbc_url = kwargs['jdbcUrl']
+        if 'maxNumClusters' in kwargs:
+            max_num_clusters = kwargs['maxNumClusters']
+        if 'minNumClusters' in kwargs:
+            min_num_clusters = kwargs['minNumClusters']
+        if 'numClusters' in kwargs:
+            num_clusters = kwargs['numClusters']
+        if 'odbcParams' in kwargs:
+            odbc_params = kwargs['odbcParams']
+        if 'spotInstancePolicy' in kwargs:
+            spot_instance_policy = kwargs['spotInstancePolicy']
+        if 'warehouseType' in kwargs:
+            warehouse_type = kwargs['warehouseType']
+
         if auto_stop_mins is not None:
             _setter("auto_stop_mins", auto_stop_mins)
         if channel is not None:

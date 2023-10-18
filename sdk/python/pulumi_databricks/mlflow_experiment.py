@@ -47,7 +47,19 @@ class MlflowExperimentArgs:
              last_update_time: Optional[pulumi.Input[int]] = None,
              lifecycle_stage: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'artifactLocation' in kwargs:
+            artifact_location = kwargs['artifactLocation']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if 'lifecycleStage' in kwargs:
+            lifecycle_stage = kwargs['lifecycleStage']
+
         if artifact_location is not None:
             _setter("artifact_location", artifact_location)
         if creation_time is not None:
@@ -172,7 +184,19 @@ class _MlflowExperimentState:
              last_update_time: Optional[pulumi.Input[int]] = None,
              lifecycle_stage: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'artifactLocation' in kwargs:
+            artifact_location = kwargs['artifactLocation']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if 'lifecycleStage' in kwargs:
+            lifecycle_stage = kwargs['lifecycleStage']
+
         if artifact_location is not None:
             _setter("artifact_location", artifact_location)
         if creation_time is not None:
@@ -296,9 +320,10 @@ class MlflowExperiment(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
@@ -345,9 +370,10 @@ class MlflowExperiment(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).

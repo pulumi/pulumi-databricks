@@ -29,6 +29,12 @@ class SqlQueryArgs:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlQuery resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         SqlQueryArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -58,7 +64,17 @@ class SqlQueryArgs:
              schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'runAsRole' in kwargs:
+            run_as_role = kwargs['runAsRole']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         _setter("data_source_id", data_source_id)
         _setter("query", query)
         if created_at is not None:
@@ -86,6 +102,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Input[str]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
@@ -95,6 +114,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -113,6 +135,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -122,6 +147,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -140,6 +168,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -149,6 +180,9 @@ class SqlQueryArgs:
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
@@ -202,6 +236,12 @@ class _SqlQueryState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlQuery resources.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         _SqlQueryState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -231,7 +271,17 @@ class _SqlQueryState:
              schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if 'runAsRole' in kwargs:
+            run_as_role = kwargs['runAsRole']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if data_source_id is not None:
@@ -270,6 +320,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
@@ -279,6 +332,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -288,6 +344,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -306,6 +365,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -315,6 +377,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -324,6 +389,9 @@ class _SqlQueryState:
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
@@ -486,6 +554,12 @@ class SqlQuery(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         ...
     @overload
@@ -686,6 +760,12 @@ class SqlQuery(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_source_id: Data source ID of a SQL warehouse
+        :param pulumi.Input[str] description: General description that conveys additional information about this query such as usage notes.
+        :param pulumi.Input[str] name: The title of this query that appears in list views, widget headings, and on the query page.
+        :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
+        :param pulumi.Input[str] query: The text of the query to be run.
+        :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -712,16 +792,25 @@ class SqlQuery(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> pulumi.Output[str]:
+        """
+        Data source ID of a SQL warehouse
+        """
         return pulumi.get(self, "data_source_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        General description that conveys additional information about this query such as usage notes.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The title of this query that appears in list views, widget headings, and on the query page.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -732,16 +821,25 @@ class SqlQuery(pulumi.CustomResource):
     @property
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
+        """
+        The identifier of the workspace folder containing the object.
+        """
         return pulumi.get(self, "parent")
 
     @property
     @pulumi.getter
     def query(self) -> pulumi.Output[str]:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="runAsRole")
     def run_as_role(self) -> pulumi.Output[Optional[str]]:
+        """
+        Run as role. Possible values are `viewer`, `owner`.
+        """
         return pulumi.get(self, "run_as_role")
 
     @property

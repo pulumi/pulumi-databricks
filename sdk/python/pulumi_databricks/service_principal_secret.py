@@ -32,7 +32,11 @@ class ServicePrincipalSecretArgs:
              service_principal_id: pulumi.Input[str],
              secret: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         _setter("service_principal_id", service_principal_id)
         if secret is not None:
             _setter("secret", secret)
@@ -88,7 +92,11 @@ class _ServicePrincipalSecretState:
              secret: Optional[pulumi.Input[str]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         if secret is not None:
             _setter("secret", secret)
         if service_principal_id is not None:

@@ -55,7 +55,21 @@ class MwsPrivateAccessSettingsArgs:
              private_access_settings_id: Optional[pulumi.Input[str]] = None,
              public_access_enabled: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateAccessSettingsName' in kwargs:
+            private_access_settings_name = kwargs['privateAccessSettingsName']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedVpcEndpointIds' in kwargs:
+            allowed_vpc_endpoint_ids = kwargs['allowedVpcEndpointIds']
+        if 'privateAccessLevel' in kwargs:
+            private_access_level = kwargs['privateAccessLevel']
+        if 'privateAccessSettingsId' in kwargs:
+            private_access_settings_id = kwargs['privateAccessSettingsId']
+        if 'publicAccessEnabled' in kwargs:
+            public_access_enabled = kwargs['publicAccessEnabled']
+
         _setter("private_access_settings_name", private_access_settings_name)
         _setter("region", region)
         if account_id is not None:
@@ -212,7 +226,21 @@ class _MwsPrivateAccessSettingsState:
              public_access_enabled: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedVpcEndpointIds' in kwargs:
+            allowed_vpc_endpoint_ids = kwargs['allowedVpcEndpointIds']
+        if 'privateAccessLevel' in kwargs:
+            private_access_level = kwargs['privateAccessLevel']
+        if 'privateAccessSettingsId' in kwargs:
+            private_access_settings_id = kwargs['privateAccessSettingsId']
+        if 'privateAccessSettingsName' in kwargs:
+            private_access_settings_name = kwargs['privateAccessSettingsName']
+        if 'publicAccessEnabled' in kwargs:
+            public_access_enabled = kwargs['publicAccessEnabled']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allowed_vpc_endpoint_ids is not None:

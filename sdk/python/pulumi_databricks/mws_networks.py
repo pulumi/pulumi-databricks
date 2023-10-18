@@ -71,7 +71,33 @@ class MwsNetworksArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_status: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'errorMessages' in kwargs:
+            error_messages = kwargs['errorMessages']
+        if 'gcpNetworkInfo' in kwargs:
+            gcp_network_info = kwargs['gcpNetworkInfo']
+        if 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'vpcEndpoints' in kwargs:
+            vpc_endpoints = kwargs['vpcEndpoints']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcStatus' in kwargs:
+            vpc_status = kwargs['vpcStatus']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         _setter("account_id", account_id)
         _setter("network_name", network_name)
         if creation_time is not None:
@@ -292,7 +318,33 @@ class _MwsNetworksState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vpc_status: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'errorMessages' in kwargs:
+            error_messages = kwargs['errorMessages']
+        if 'gcpNetworkInfo' in kwargs:
+            gcp_network_info = kwargs['gcpNetworkInfo']
+        if 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'vpcEndpoints' in kwargs:
+            vpc_endpoints = kwargs['vpcEndpoints']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcStatus' in kwargs:
+            vpc_status = kwargs['vpcStatus']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if creation_time is not None:

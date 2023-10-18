@@ -67,7 +67,27 @@ class MetastoreDataAccessArgs:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'awsIamRole' in kwargs:
+            aws_iam_role = kwargs['awsIamRole']
+        if 'azureManagedIdentity' in kwargs:
+            azure_managed_identity = kwargs['azureManagedIdentity']
+        if 'azureServicePrincipal' in kwargs:
+            azure_service_principal = kwargs['azureServicePrincipal']
+        if 'databricksGcpServiceAccount' in kwargs:
+            databricks_gcp_service_account = kwargs['databricksGcpServiceAccount']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'gcpServiceAccountKey' in kwargs:
+            gcp_service_account_key = kwargs['gcpServiceAccountKey']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("metastore_id", metastore_id)
         if aws_iam_role is not None:
             _setter("aws_iam_role", aws_iam_role)
@@ -269,7 +289,27 @@ class _MetastoreDataAccessState:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsIamRole' in kwargs:
+            aws_iam_role = kwargs['awsIamRole']
+        if 'azureManagedIdentity' in kwargs:
+            azure_managed_identity = kwargs['azureManagedIdentity']
+        if 'azureServicePrincipal' in kwargs:
+            azure_service_principal = kwargs['azureServicePrincipal']
+        if 'databricksGcpServiceAccount' in kwargs:
+            databricks_gcp_service_account = kwargs['databricksGcpServiceAccount']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'gcpServiceAccountKey' in kwargs:
+            gcp_service_account_key = kwargs['gcpServiceAccountKey']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if aws_iam_role is not None:
             _setter("aws_iam_role", aws_iam_role)
         if azure_managed_identity is not None:

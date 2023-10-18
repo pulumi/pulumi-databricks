@@ -204,14 +204,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the username of the given user and will be their form of access and identity.
+     * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return This is the username of the given user and will be their form of access and identity.
+     * @return This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -525,7 +525,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName This is the username of the given user and will be their form of access and identity.
+         * @param userName This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName This is the username of the given user and will be their form of access and identity.
+         * @param userName This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
          * 
          * @return builder
          * 

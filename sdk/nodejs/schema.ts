@@ -100,7 +100,7 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly properties!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     public readonly storageRoot!: pulumi.Output<string | undefined>;
 
@@ -174,7 +174,7 @@ export interface SchemaState {
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
 }
@@ -209,7 +209,7 @@ export interface SchemaArgs {
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
 }

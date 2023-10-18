@@ -31,7 +31,11 @@ class ServicePrincipalRoleArgs:
              _setter: Callable[[Any, Any], None],
              role: pulumi.Input[str],
              service_principal_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         _setter("role", role)
         _setter("service_principal_id", service_principal_id)
 
@@ -80,7 +84,11 @@ class _ServicePrincipalRoleState:
              _setter: Callable[[Any, Any], None],
              role: Optional[pulumi.Input[str]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         if role is not None:
             _setter("role", role)
         if service_principal_id is not None:

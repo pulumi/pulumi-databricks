@@ -185,28 +185,28 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.schemaName;
     }
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      * 
      */
     @Export(name="storageLocation", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageLocation;
 
     /**
-     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageLocation() {
         return Codegen.optional(this.storageLocation);
     }
     /**
-     * Volume type. `EXTERNAL` or `MANAGED`.
+     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
     @Export(name="volumeType", type=String.class, parameters={})
     private Output<String> volumeType;
 
     /**
-     * @return Volume type. `EXTERNAL` or `MANAGED`.
+     * @return Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
     public Output<String> volumeType() {

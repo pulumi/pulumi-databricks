@@ -120,11 +120,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly schemaName!: pulumi.Output<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      */
     public readonly storageLocation!: pulumi.Output<string | undefined>;
     /**
-     * Volume type. `EXTERNAL` or `MANAGED`.
+     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
     public readonly volumeType!: pulumi.Output<string>;
 
@@ -197,11 +197,11 @@ export interface VolumeState {
      */
     schemaName?: pulumi.Input<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      */
     storageLocation?: pulumi.Input<string>;
     /**
-     * Volume type. `EXTERNAL` or `MANAGED`.
+     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
     volumeType?: pulumi.Input<string>;
 }
@@ -231,11 +231,11 @@ export interface VolumeArgs {
      */
     schemaName: pulumi.Input<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes.
+     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      */
     storageLocation?: pulumi.Input<string>;
     /**
-     * Volume type. `EXTERNAL` or `MANAGED`.
+     * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
     volumeType: pulumi.Input<string>;
 }

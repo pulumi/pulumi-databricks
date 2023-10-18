@@ -49,7 +49,15 @@ class SqlWidgetArgs:
              title: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
              widget_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if 'visualizationId' in kwargs:
+            visualization_id = kwargs['visualizationId']
+        if 'widgetId' in kwargs:
+            widget_id = kwargs['widgetId']
+
         _setter("dashboard_id", dashboard_id)
         if description is not None:
             _setter("description", description)
@@ -175,7 +183,15 @@ class _SqlWidgetState:
              title: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
              widget_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if 'visualizationId' in kwargs:
+            visualization_id = kwargs['visualizationId']
+        if 'widgetId' in kwargs:
+            widget_id = kwargs['widgetId']
+
         if dashboard_id is not None:
             _setter("dashboard_id", dashboard_id)
         if description is not None:

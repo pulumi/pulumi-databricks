@@ -70,7 +70,23 @@ class CatalogArgs:
              provider_name: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'isolationMode' in kwargs:
+            isolation_mode = kwargs['isolationMode']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+        if 'shareName' in kwargs:
+            share_name = kwargs['shareName']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
         if comment is not None:
             _setter("comment", comment)
         if connection_name is not None:
@@ -297,7 +313,23 @@ class _CatalogState:
              provider_name: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'isolationMode' in kwargs:
+            isolation_mode = kwargs['isolationMode']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+        if 'shareName' in kwargs:
+            share_name = kwargs['shareName']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
         if comment is not None:
             _setter("comment", comment)
         if connection_name is not None:

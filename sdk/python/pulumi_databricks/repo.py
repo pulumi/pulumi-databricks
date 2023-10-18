@@ -52,7 +52,15 @@ class RepoArgs:
              path: Optional[pulumi.Input[str]] = None,
              sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
              tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commitHash' in kwargs:
+            commit_hash = kwargs['commitHash']
+        if 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if 'sparseCheckout' in kwargs:
+            sparse_checkout = kwargs['sparseCheckout']
+
         _setter("url", url)
         if branch is not None:
             _setter("branch", branch)
@@ -188,7 +196,15 @@ class _RepoState:
              sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
              tag: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commitHash' in kwargs:
+            commit_hash = kwargs['commitHash']
+        if 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if 'sparseCheckout' in kwargs:
+            sparse_checkout = kwargs['sparseCheckout']
+
         if branch is not None:
             _setter("branch", branch)
         if commit_hash is not None:

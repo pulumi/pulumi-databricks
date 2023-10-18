@@ -36,7 +36,9 @@ class ModelServingArgs:
              config: pulumi.Input['ModelServingConfigArgs'],
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("config", config)
         if name is not None:
             _setter("name", name)
@@ -104,7 +106,11 @@ class _ModelServingState:
              name: Optional[pulumi.Input[str]] = None,
              serving_endpoint_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servingEndpointId' in kwargs:
+            serving_endpoint_id = kwargs['servingEndpointId']
+
         if config is not None:
             _setter("config", config)
         if name is not None:
@@ -217,9 +223,10 @@ class ModelServing(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
@@ -291,9 +298,10 @@ class ModelServing(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
-        * MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+        * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
         * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
         * Notebook data to export a notebook from Databricks Workspace.
         * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).

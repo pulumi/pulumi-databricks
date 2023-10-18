@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.SqlDashboardArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlDashboardState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -120,6 +121,12 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
 
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    @Export(name="dashboardFiltersEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> dashboardFiltersEnabled;
+
+    public Output<Optional<Boolean>> dashboardFiltersEnabled() {
+        return Codegen.optional(this.dashboardFiltersEnabled);
     }
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;

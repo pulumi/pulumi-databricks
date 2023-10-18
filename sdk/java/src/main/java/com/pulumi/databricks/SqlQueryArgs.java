@@ -25,23 +25,47 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Data source ID of a SQL warehouse
+     * 
+     */
     @Import(name="dataSourceId", required=true)
     private Output<String> dataSourceId;
 
+    /**
+     * @return Data source ID of a SQL warehouse
+     * 
+     */
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
 
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The title of this query that appears in list views, widget headings, and on the query page.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The title of this query that appears in list views, widget headings, and on the query page.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -53,23 +77,47 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parameters);
     }
 
+    /**
+     * The identifier of the workspace folder containing the object.
+     * 
+     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
+    /**
+     * @return The identifier of the workspace folder containing the object.
+     * 
+     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
 
+    /**
+     * The text of the query to be run.
+     * 
+     */
     @Import(name="query", required=true)
     private Output<String> query;
 
+    /**
+     * @return The text of the query to be run.
+     * 
+     */
     public Output<String> query() {
         return this.query;
     }
 
+    /**
+     * Run as role. Possible values are `viewer`, `owner`.
+     * 
+     */
     @Import(name="runAsRole")
     private @Nullable Output<String> runAsRole;
 
+    /**
+     * @return Run as role. Possible values are `viewer`, `owner`.
+     * 
+     */
     public Optional<Output<String>> runAsRole() {
         return Optional.ofNullable(this.runAsRole);
     }
@@ -150,29 +198,65 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param dataSourceId Data source ID of a SQL warehouse
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(Output<String> dataSourceId) {
             $.dataSourceId = dataSourceId;
             return this;
         }
 
+        /**
+         * @param dataSourceId Data source ID of a SQL warehouse
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(String dataSourceId) {
             return dataSourceId(Output.of(dataSourceId));
         }
 
+        /**
+         * @param description General description that conveys additional information about this query such as usage notes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description General description that conveys additional information about this query such as usage notes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param name The title of this query that appears in list views, widget headings, and on the query page.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The title of this query that appears in list views, widget headings, and on the query page.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -190,29 +274,65 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
             return parameters(List.of(parameters));
         }
 
+        /**
+         * @param parent The identifier of the workspace folder containing the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
+        /**
+         * @param parent The identifier of the workspace folder containing the object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }
 
+        /**
+         * @param query The text of the query to be run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(Output<String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query The text of the query to be run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(String query) {
             return query(Output.of(query));
         }
 
+        /**
+         * @param runAsRole Run as role. Possible values are `viewer`, `owner`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsRole(@Nullable Output<String> runAsRole) {
             $.runAsRole = runAsRole;
             return this;
         }
 
+        /**
+         * @param runAsRole Run as role. Possible values are `viewer`, `owner`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runAsRole(String runAsRole) {
             return runAsRole(Output.of(runAsRole));
         }

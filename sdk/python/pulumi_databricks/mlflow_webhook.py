@@ -49,7 +49,15 @@ class MlflowWebhookArgs:
              job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpUrlSpec' in kwargs:
+            http_url_spec = kwargs['httpUrlSpec']
+        if 'jobSpec' in kwargs:
+            job_spec = kwargs['jobSpec']
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         _setter("events", events)
         if description is not None:
             _setter("description", description)
@@ -167,7 +175,15 @@ class _MlflowWebhookState:
              job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpUrlSpec' in kwargs:
+            http_url_spec = kwargs['httpUrlSpec']
+        if 'jobSpec' in kwargs:
+            job_spec = kwargs['jobSpec']
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         if description is not None:
             _setter("description", description)
         if events is not None:

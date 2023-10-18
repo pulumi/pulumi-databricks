@@ -37,7 +37,13 @@ class MwsPermissionAssignmentArgs:
              permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
              principal_id: pulumi.Input[int],
              workspace_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         _setter("permissions", permissions)
         _setter("principal_id", principal_id)
         _setter("workspace_id", workspace_id)
@@ -107,7 +113,13 @@ class _MwsPermissionAssignmentState:
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              principal_id: Optional[pulumi.Input[int]] = None,
              workspace_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         if permissions is not None:
             _setter("permissions", permissions)
         if principal_id is not None:
