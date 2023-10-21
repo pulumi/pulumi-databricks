@@ -180,21 +180,45 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<String> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Data source ID of a SQL warehouse
+     * 
+     */
     @Export(name="dataSourceId", type=String.class, parameters={})
     private Output<String> dataSourceId;
 
+    /**
+     * @return Data source ID of a SQL warehouse
+     * 
+     */
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
+    /**
+     * General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return General description that conveys additional information about this query such as usage notes.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The title of this query that appears in list views, widget headings, and on the query page.
+     * 
+     */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
+    /**
+     * @return The title of this query that appears in list views, widget headings, and on the query page.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -204,21 +228,45 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<SqlQueryParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
+    /**
+     * The identifier of the workspace folder containing the object.
+     * 
+     */
     @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
+    /**
+     * @return The identifier of the workspace folder containing the object.
+     * 
+     */
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
+    /**
+     * The text of the query to be run.
+     * 
+     */
     @Export(name="query", type=String.class, parameters={})
     private Output<String> query;
 
+    /**
+     * @return The text of the query to be run.
+     * 
+     */
     public Output<String> query() {
         return this.query;
     }
+    /**
+     * Run as role. Possible values are `viewer`, `owner`.
+     * 
+     */
     @Export(name="runAsRole", type=String.class, parameters={})
     private Output</* @Nullable */ String> runAsRole;
 
+    /**
+     * @return Run as role. Possible values are `viewer`, `owner`.
+     * 
+     */
     public Output<Optional<String>> runAsRole() {
         return Codegen.optional(this.runAsRole);
     }

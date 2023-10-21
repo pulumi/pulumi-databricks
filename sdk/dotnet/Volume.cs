@@ -130,13 +130,13 @@ namespace Pulumi.Databricks
         public Output<string> SchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         /// </summary>
         [Output("storageLocation")]
         public Output<string?> StorageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Volume type. `EXTERNAL` or `MANAGED`.
+        /// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         /// </summary>
         [Output("volumeType")]
         public Output<string> VolumeType { get; private set; } = null!;
@@ -218,13 +218,13 @@ namespace Pulumi.Databricks
         public Input<string> SchemaName { get; set; } = null!;
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Volume type. `EXTERNAL` or `MANAGED`.
+        /// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         /// </summary>
         [Input("volumeType", required: true)]
         public Input<string> VolumeType { get; set; } = null!;
@@ -268,13 +268,13 @@ namespace Pulumi.Databricks
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Volume type. `EXTERNAL` or `MANAGED`.
+        /// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

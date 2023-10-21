@@ -82,7 +82,35 @@ class MetastoreArgs:
              storage_root_credential_id: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[int]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'defaultDataAccessConfigId' in kwargs:
+            default_data_access_config_id = kwargs['defaultDataAccessConfigId']
+        if 'deltaSharingOrganizationName' in kwargs:
+            delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
+        if 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
+            delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
+        if 'deltaSharingScope' in kwargs:
+            delta_sharing_scope = kwargs['deltaSharingScope']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'globalMetastoreId' in kwargs:
+            global_metastore_id = kwargs['globalMetastoreId']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'storageRootCredentialId' in kwargs:
+            storage_root_credential_id = kwargs['storageRootCredentialId']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         _setter("storage_root", storage_root)
         if cloud is not None:
             _setter("cloud", cloud)
@@ -366,7 +394,35 @@ class _MetastoreState:
              storage_root_credential_id: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[int]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'defaultDataAccessConfigId' in kwargs:
+            default_data_access_config_id = kwargs['defaultDataAccessConfigId']
+        if 'deltaSharingOrganizationName' in kwargs:
+            delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
+        if 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
+            delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
+        if 'deltaSharingScope' in kwargs:
+            delta_sharing_scope = kwargs['deltaSharingScope']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'globalMetastoreId' in kwargs:
+            global_metastore_id = kwargs['globalMetastoreId']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+        if 'storageRootCredentialId' in kwargs:
+            storage_root_credential_id = kwargs['storageRootCredentialId']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         if cloud is not None:
             _setter("cloud", cloud)
         if created_at is not None:

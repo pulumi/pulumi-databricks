@@ -4,11 +4,17 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.util.Objects;
 
 @CustomType
 public final class JobQueue {
+    private Boolean enabled;
+
     private JobQueue() {}
+    public Boolean enabled() {
+        return this.enabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +25,21 @@ public final class JobQueue {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enabled;
         public Builder() {}
         public Builder(JobQueue defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            this.enabled = Objects.requireNonNull(enabled);
+            return this;
+        }
         public JobQueue build() {
             final var o = new JobQueue();
+            o.enabled = enabled;
             return o;
         }
     }

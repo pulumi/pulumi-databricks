@@ -30,7 +30,7 @@ class SchemaArgs:
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
-        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         SchemaArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -54,7 +54,17 @@ class SchemaArgs:
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
         _setter("catalog_name", catalog_name)
         if comment is not None:
             _setter("comment", comment)
@@ -156,7 +166,7 @@ class SchemaArgs:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -184,7 +194,7 @@ class _SchemaState:
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
-        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         _SchemaState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -208,7 +218,17 @@ class _SchemaState:
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
         if catalog_name is not None:
             _setter("catalog_name", catalog_name)
         if comment is not None:
@@ -311,7 +331,7 @@ class _SchemaState:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -382,7 +402,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
-        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -507,7 +527,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
-        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -580,7 +600,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 

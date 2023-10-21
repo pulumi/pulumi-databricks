@@ -3,15 +3,34 @@
 
 package com.pulumi.databricks.inputs;
 
-
+import com.pulumi.core.Output;
+import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.util.Objects;
 
 
 public final class JobQueueArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobQueueArgs Empty = new JobQueueArgs();
 
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    private JobQueueArgs() {}
+
+    private JobQueueArgs(JobQueueArgs $) {
+        this.enabled = $.enabled;
+    }
+
     public static Builder builder() {
         return new Builder();
+    }
+    public static Builder builder(JobQueueArgs defaults) {
+        return new Builder(defaults);
     }
 
     public static final class Builder {
@@ -20,7 +39,22 @@ public final class JobQueueArgs extends com.pulumi.resources.ResourceArgs {
         public Builder() {
             $ = new JobQueueArgs();
         }
+
+        public Builder(JobQueueArgs defaults) {
+            $ = new JobQueueArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
         public JobQueueArgs build() {
+            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             return $;
         }
     }

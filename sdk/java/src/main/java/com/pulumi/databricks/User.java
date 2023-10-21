@@ -411,14 +411,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.repos;
     }
     /**
-     * This is the username of the given user and will be their form of access and identity.
+     * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      * 
      */
     @Export(name="userName", type=String.class, parameters={})
     private Output<String> userName;
 
     /**
-     * @return This is the username of the given user and will be their form of access and identity.
+     * @return This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      * 
      */
     public Output<String> userName() {

@@ -78,7 +78,39 @@ class InstancePoolArgs:
              node_type_id: Optional[pulumi.Input[str]] = None,
              preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
              preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'idleInstanceAutoterminationMinutes' in kwargs:
+            idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
+        if 'instancePoolName' in kwargs:
+            instance_pool_name = kwargs['instancePoolName']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'diskSpec' in kwargs:
+            disk_spec = kwargs['diskSpec']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'instancePoolFleetAttributes' in kwargs:
+            instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'preloadedDockerImages' in kwargs:
+            preloaded_docker_images = kwargs['preloadedDockerImages']
+        if 'preloadedSparkVersions' in kwargs:
+            preloaded_spark_versions = kwargs['preloadedSparkVersions']
+
         _setter("idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
         _setter("instance_pool_name", instance_pool_name)
         if aws_attributes is not None:
@@ -333,7 +365,39 @@ class _InstancePoolState:
              node_type_id: Optional[pulumi.Input[str]] = None,
              preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
              preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'diskSpec' in kwargs:
+            disk_spec = kwargs['diskSpec']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idleInstanceAutoterminationMinutes' in kwargs:
+            idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
+        if 'instancePoolFleetAttributes' in kwargs:
+            instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'instancePoolName' in kwargs:
+            instance_pool_name = kwargs['instancePoolName']
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'preloadedDockerImages' in kwargs:
+            preloaded_docker_images = kwargs['preloadedDockerImages']
+        if 'preloadedSparkVersions' in kwargs:
+            preloaded_spark_versions = kwargs['preloadedSparkVersions']
+
         if aws_attributes is not None:
             _setter("aws_attributes", aws_attributes)
         if azure_attributes is not None:

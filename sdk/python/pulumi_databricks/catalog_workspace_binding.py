@@ -31,7 +31,13 @@ class CatalogWorkspaceBindingArgs:
              _setter: Callable[[Any, Any], None],
              catalog_name: pulumi.Input[str],
              workspace_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         _setter("catalog_name", catalog_name)
         _setter("workspace_id", workspace_id)
 
@@ -80,7 +86,13 @@ class _CatalogWorkspaceBindingState:
              _setter: Callable[[Any, Any], None],
              catalog_name: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         if catalog_name is not None:
             _setter("catalog_name", catalog_name)
         if workspace_id is not None:

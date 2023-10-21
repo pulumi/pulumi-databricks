@@ -35,7 +35,11 @@ class SecretArgs:
              key: pulumi.Input[str],
              scope: pulumi.Input[str],
              string_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+
         _setter("key", key)
         _setter("scope", scope)
         _setter("string_value", string_value)
@@ -109,7 +113,15 @@ class _SecretState:
              last_updated_timestamp: Optional[pulumi.Input[int]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              string_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configReference' in kwargs:
+            config_reference = kwargs['configReference']
+        if 'lastUpdatedTimestamp' in kwargs:
+            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
+        if 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+
         if config_reference is not None:
             _setter("config_reference", config_reference)
         if key is not None:

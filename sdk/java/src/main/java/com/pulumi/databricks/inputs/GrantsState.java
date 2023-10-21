@@ -66,6 +66,13 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metastore);
     }
 
+    @Import(name="model")
+    private @Nullable Output<String> model;
+
+    public Optional<Output<String>> model() {
+        return Optional.ofNullable(this.model);
+    }
+
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
@@ -118,6 +125,7 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         this.grants = $.grants;
         this.materializedView = $.materializedView;
         this.metastore = $.metastore;
+        this.model = $.model;
         this.schema = $.schema;
         this.share = $.share;
         this.storageCredential = $.storageCredential;
@@ -209,6 +217,15 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder metastore(String metastore) {
             return metastore(Output.of(metastore));
+        }
+
+        public Builder model(@Nullable Output<String> model) {
+            $.model = model;
+            return this;
+        }
+
+        public Builder model(String model) {
+            return model(Output.of(model));
         }
 
         public Builder schema(@Nullable Output<String> schema) {

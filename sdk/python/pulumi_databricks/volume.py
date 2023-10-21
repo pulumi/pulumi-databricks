@@ -25,11 +25,11 @@ class VolumeArgs:
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[str] catalog_name: Name of parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
-        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         VolumeArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -51,7 +51,17 @@ class VolumeArgs:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              storage_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+
         _setter("catalog_name", catalog_name)
         _setter("schema_name", schema_name)
         _setter("volume_type", volume_type)
@@ -92,7 +102,7 @@ class VolumeArgs:
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[str]:
         """
-        Volume type. `EXTERNAL` or `MANAGED`.
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "volume_type")
 
@@ -140,7 +150,7 @@ class VolumeArgs:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
@@ -166,8 +176,8 @@ class _VolumeState:
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
-        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         _VolumeState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -189,7 +199,17 @@ class _VolumeState:
              schema_name: Optional[pulumi.Input[str]] = None,
              storage_location: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if catalog_name is not None:
             _setter("catalog_name", catalog_name)
         if comment is not None:
@@ -269,7 +289,7 @@ class _VolumeState:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
@@ -281,7 +301,7 @@ class _VolumeState:
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume type. `EXTERNAL` or `MANAGED`.
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "volume_type")
 
@@ -373,8 +393,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
-        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -522,8 +542,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Volume
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes.
-        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`.
+        :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -582,7 +602,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[Optional[str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes.
+        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
@@ -590,7 +610,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[str]:
         """
-        Volume type. `EXTERNAL` or `MANAGED`.
+        Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "volume_type")
 

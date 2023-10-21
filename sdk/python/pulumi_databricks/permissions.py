@@ -114,7 +114,53 @@ class PermissionsArgs:
              sql_query_id: Optional[pulumi.Input[str]] = None,
              workspace_file_id: Optional[pulumi.Input[str]] = None,
              workspace_file_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessControls' in kwargs:
+            access_controls = kwargs['accessControls']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterPolicyId' in kwargs:
+            cluster_policy_id = kwargs['clusterPolicyId']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'directoryPath' in kwargs:
+            directory_path = kwargs['directoryPath']
+        if 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'notebookId' in kwargs:
+            notebook_id = kwargs['notebookId']
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'registeredModelId' in kwargs:
+            registered_model_id = kwargs['registeredModelId']
+        if 'repoId' in kwargs:
+            repo_id = kwargs['repoId']
+        if 'repoPath' in kwargs:
+            repo_path = kwargs['repoPath']
+        if 'servingEndpointId' in kwargs:
+            serving_endpoint_id = kwargs['servingEndpointId']
+        if 'sqlAlertId' in kwargs:
+            sql_alert_id = kwargs['sqlAlertId']
+        if 'sqlDashboardId' in kwargs:
+            sql_dashboard_id = kwargs['sqlDashboardId']
+        if 'sqlEndpointId' in kwargs:
+            sql_endpoint_id = kwargs['sqlEndpointId']
+        if 'sqlQueryId' in kwargs:
+            sql_query_id = kwargs['sqlQueryId']
+        if 'workspaceFileId' in kwargs:
+            workspace_file_id = kwargs['workspaceFileId']
+        if 'workspaceFilePath' in kwargs:
+            workspace_file_path = kwargs['workspaceFilePath']
+
         _setter("access_controls", access_controls)
         if authorization is not None:
             _setter("authorization", authorization)
@@ -530,7 +576,53 @@ class _PermissionsState:
              sql_query_id: Optional[pulumi.Input[str]] = None,
              workspace_file_id: Optional[pulumi.Input[str]] = None,
              workspace_file_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessControls' in kwargs:
+            access_controls = kwargs['accessControls']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterPolicyId' in kwargs:
+            cluster_policy_id = kwargs['clusterPolicyId']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'directoryPath' in kwargs:
+            directory_path = kwargs['directoryPath']
+        if 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'notebookId' in kwargs:
+            notebook_id = kwargs['notebookId']
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'registeredModelId' in kwargs:
+            registered_model_id = kwargs['registeredModelId']
+        if 'repoId' in kwargs:
+            repo_id = kwargs['repoId']
+        if 'repoPath' in kwargs:
+            repo_path = kwargs['repoPath']
+        if 'servingEndpointId' in kwargs:
+            serving_endpoint_id = kwargs['servingEndpointId']
+        if 'sqlAlertId' in kwargs:
+            sql_alert_id = kwargs['sqlAlertId']
+        if 'sqlDashboardId' in kwargs:
+            sql_dashboard_id = kwargs['sqlDashboardId']
+        if 'sqlEndpointId' in kwargs:
+            sql_endpoint_id = kwargs['sqlEndpointId']
+        if 'sqlQueryId' in kwargs:
+            sql_query_id = kwargs['sqlQueryId']
+        if 'workspaceFileId' in kwargs:
+            workspace_file_id = kwargs['workspaceFileId']
+        if 'workspaceFilePath' in kwargs:
+            workspace_file_path = kwargs['workspaceFilePath']
+
         if access_controls is not None:
             _setter("access_controls", access_controls)
         if authorization is not None:

@@ -37,7 +37,11 @@ class DbfsFileArgs:
              content_base64: Optional[pulumi.Input[str]] = None,
              md5: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+
         _setter("path", path)
         if content_base64 is not None:
             _setter("content_base64", content_base64)
@@ -123,7 +127,15 @@ class _DbfsFileState:
              md5: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'dbfsPath' in kwargs:
+            dbfs_path = kwargs['dbfsPath']
+        if 'fileSize' in kwargs:
+            file_size = kwargs['fileSize']
+
         if content_base64 is not None:
             _setter("content_base64", content_base64)
         if dbfs_path is not None:

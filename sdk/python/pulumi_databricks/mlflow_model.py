@@ -46,7 +46,15 @@ class MlflowModelArgs:
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if 'lastUpdatedTimestamp' in kwargs:
+            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -160,7 +168,17 @@ class _MlflowModelState:
              registered_model_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTimestamp' in kwargs:
+            creation_timestamp = kwargs['creationTimestamp']
+        if 'lastUpdatedTimestamp' in kwargs:
+            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
+        if 'registeredModelId' in kwargs:
+            registered_model_id = kwargs['registeredModelId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if creation_timestamp is not None:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
@@ -264,6 +282,8 @@ class MlflowModel(pulumi.CustomResource):
         """
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
 
+        **Note** This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+
         ## Example Usage
 
         ```python
@@ -291,6 +311,7 @@ class MlflowModel(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * ModelServing to serve this model on a Databricks serving endpoint.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -322,6 +343,8 @@ class MlflowModel(pulumi.CustomResource):
         """
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
 
+        **Note** This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+
         ## Example Usage
 
         ```python
@@ -349,6 +372,7 @@ class MlflowModel(pulumi.CustomResource):
 
         The following resources are often used in the same context:
 
+        * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
         * End to end workspace management guide.
         * ModelServing to serve this model on a Databricks serving endpoint.
         * Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).

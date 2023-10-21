@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+// This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 //
 // ```go
 // package main
@@ -85,7 +85,7 @@ type SecretAcl struct {
 
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+	// principal's identifier. It can be:
 	Principal pulumi.StringOutput `pulumi:"principal"`
 	// name of the scope
 	Scope pulumi.StringOutput `pulumi:"scope"`
@@ -132,7 +132,7 @@ func GetSecretAcl(ctx *pulumi.Context,
 type secretAclState struct {
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission *string `pulumi:"permission"`
-	// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+	// principal's identifier. It can be:
 	Principal *string `pulumi:"principal"`
 	// name of the scope
 	Scope *string `pulumi:"scope"`
@@ -141,7 +141,7 @@ type secretAclState struct {
 type SecretAclState struct {
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission pulumi.StringPtrInput
-	// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+	// principal's identifier. It can be:
 	Principal pulumi.StringPtrInput
 	// name of the scope
 	Scope pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (SecretAclState) ElementType() reflect.Type {
 type secretAclArgs struct {
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission string `pulumi:"permission"`
-	// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+	// principal's identifier. It can be:
 	Principal string `pulumi:"principal"`
 	// name of the scope
 	Scope string `pulumi:"scope"`
@@ -164,7 +164,7 @@ type secretAclArgs struct {
 type SecretAclArgs struct {
 	// `READ`, `WRITE` or `MANAGE`.
 	Permission pulumi.StringInput
-	// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+	// principal's identifier. It can be:
 	Principal pulumi.StringInput
 	// name of the scope
 	Scope pulumi.StringInput
@@ -286,7 +286,7 @@ func (o SecretAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// name of the principals. It can be `users` for all users or name or `displayName` of databricks_group
+// principal's identifier. It can be:
 func (o SecretAclOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretAcl) pulumi.StringOutput { return v.Principal }).(pulumi.StringOutput)
 }

@@ -39,7 +39,15 @@ class GitCredentialArgs:
              force: Optional[pulumi.Input[bool]] = None,
              git_username: Optional[pulumi.Input[str]] = None,
              personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if 'gitUsername' in kwargs:
+            git_username = kwargs['gitUsername']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+
         _setter("git_provider", git_provider)
         if force is not None:
             _setter("force", force)
@@ -125,7 +133,15 @@ class _GitCredentialState:
              git_provider: Optional[pulumi.Input[str]] = None,
              git_username: Optional[pulumi.Input[str]] = None,
              personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if 'gitUsername' in kwargs:
+            git_username = kwargs['gitUsername']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+
         if force is not None:
             _setter("force", force)
         if git_provider is not None:

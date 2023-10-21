@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,13 @@ public final class SqlDashboardState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
+    }
+
+    @Import(name="dashboardFiltersEnabled")
+    private @Nullable Output<Boolean> dashboardFiltersEnabled;
+
+    public Optional<Output<Boolean>> dashboardFiltersEnabled() {
+        return Optional.ofNullable(this.dashboardFiltersEnabled);
     }
 
     @Import(name="name")
@@ -55,6 +63,7 @@ public final class SqlDashboardState extends com.pulumi.resources.ResourceArgs {
 
     private SqlDashboardState(SqlDashboardState $) {
         this.createdAt = $.createdAt;
+        this.dashboardFiltersEnabled = $.dashboardFiltersEnabled;
         this.name = $.name;
         this.parent = $.parent;
         this.tags = $.tags;
@@ -86,6 +95,15 @@ public final class SqlDashboardState extends com.pulumi.resources.ResourceArgs {
 
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        public Builder dashboardFiltersEnabled(@Nullable Output<Boolean> dashboardFiltersEnabled) {
+            $.dashboardFiltersEnabled = dashboardFiltersEnabled;
+            return this;
+        }
+
+        public Builder dashboardFiltersEnabled(Boolean dashboardFiltersEnabled) {
+            return dashboardFiltersEnabled(Output.of(dashboardFiltersEnabled));
         }
 
         public Builder name(@Nullable Output<String> name) {

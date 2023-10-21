@@ -18,7 +18,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
-     * Example
+     * Example:
      * ```java
      * package generated_program;
      * 
@@ -58,7 +58,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
-     * Example
+     * Example:
      * ```java
      * package generated_program;
      * 
@@ -139,7 +139,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
          * 
-         * Example
+         * Example:
          * ```java
          * package generated_program;
          * 
@@ -183,7 +183,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
          * 
-         * Example
+         * Example:
          * ```java
          * package generated_program;
          * 

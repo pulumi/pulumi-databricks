@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsQueueArgs : global::Pulumi.InvokeArgs
     {
+        [Input("enabled", required: true)]
+        public bool Enabled { get; set; }
+
         public GetJobJobSettingsSettingsQueueArgs()
         {
         }

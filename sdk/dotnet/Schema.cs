@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, object>?> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }

@@ -123,6 +123,21 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         return this.workloadSize;
     }
 
+    /**
+     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * 
+     */
+    @Import(name="workloadType")
+    private @Nullable Output<String> workloadType;
+
+    /**
+     * @return The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     * 
+     */
+    public Optional<Output<String>> workloadType() {
+        return Optional.ofNullable(this.workloadType);
+    }
+
     private ModelServingConfigServedModelArgs() {}
 
     private ModelServingConfigServedModelArgs(ModelServingConfigServedModelArgs $) {
@@ -133,6 +148,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         this.name = $.name;
         this.scaleToZeroEnabled = $.scaleToZeroEnabled;
         this.workloadSize = $.workloadSize;
+        this.workloadType = $.workloadType;
     }
 
     public static Builder builder() {
@@ -298,6 +314,27 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
          */
         public Builder workloadSize(String workloadSize) {
             return workloadSize(Output.of(workloadSize));
+        }
+
+        /**
+         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadType(@Nullable Output<String> workloadType) {
+            $.workloadType = workloadType;
+            return this;
+        }
+
+        /**
+         * @param workloadType The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadType(String workloadType) {
+            return workloadType(Output.of(workloadType));
         }
 
         public ModelServingConfigServedModelArgs build() {

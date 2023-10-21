@@ -62,6 +62,21 @@ public final class SqlAlertOptionsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
+    @Import(name="emptyResultState")
+    private @Nullable Output<String> emptyResultState;
+
+    /**
+     * @return State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     * 
+     */
+    public Optional<Output<String>> emptyResultState() {
+        return Optional.ofNullable(this.emptyResultState);
+    }
+
+    /**
      * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      * 
      */
@@ -112,6 +127,7 @@ public final class SqlAlertOptionsArgs extends com.pulumi.resources.ResourceArgs
         this.column = $.column;
         this.customBody = $.customBody;
         this.customSubject = $.customSubject;
+        this.emptyResultState = $.emptyResultState;
         this.muted = $.muted;
         this.op = $.op;
         this.value = $.value;
@@ -196,6 +212,27 @@ public final class SqlAlertOptionsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder customSubject(String customSubject) {
             return customSubject(Output.of(customSubject));
+        }
+
+        /**
+         * @param emptyResultState State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyResultState(@Nullable Output<String> emptyResultState) {
+            $.emptyResultState = emptyResultState;
+            return this;
+        }
+
+        /**
+         * @param emptyResultState State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyResultState(String emptyResultState) {
+            return emptyResultState(Output.of(emptyResultState));
         }
 
         /**

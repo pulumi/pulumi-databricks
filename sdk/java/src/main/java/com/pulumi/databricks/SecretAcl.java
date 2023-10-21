@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+ * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
  * ```java
  * package generated_program;
  * 
@@ -100,14 +100,14 @@ public class SecretAcl extends com.pulumi.resources.CustomResource {
         return this.permission;
     }
     /**
-     * name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+     * principal&#39;s identifier. It can be:
      * 
      */
     @Export(name="principal", type=String.class, parameters={})
     private Output<String> principal;
 
     /**
-     * @return name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+     * @return principal&#39;s identifier. It can be:
      * 
      */
     public Output<String> principal() {

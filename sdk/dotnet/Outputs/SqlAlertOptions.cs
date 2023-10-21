@@ -26,6 +26,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? CustomSubject;
         /// <summary>
+        /// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        /// </summary>
+        public readonly string? EmptyResultState;
+        /// <summary>
         /// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
         /// </summary>
         public readonly bool? Muted;
@@ -46,6 +50,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? customSubject,
 
+            string? emptyResultState,
+
             bool? muted,
 
             string op,
@@ -55,6 +61,7 @@ namespace Pulumi.Databricks.Outputs
             Column = column;
             CustomBody = customBody;
             CustomSubject = customSubject;
+            EmptyResultState = emptyResultState;
             Muted = muted;
             Op = op;
             Value = value;

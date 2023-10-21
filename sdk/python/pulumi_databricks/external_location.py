@@ -72,7 +72,25 @@ class ExternalLocationArgs:
              owner: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'credentialName' in kwargs:
+            credential_name = kwargs['credentialName']
+        if 'accessPoint' in kwargs:
+            access_point = kwargs['accessPoint']
+        if 'encryptionDetails' in kwargs:
+            encryption_details = kwargs['encryptionDetails']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+        if 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
         _setter("credential_name", credential_name)
         _setter("url", url)
         if access_point is not None:
@@ -297,7 +315,25 @@ class _ExternalLocationState:
              read_only: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPoint' in kwargs:
+            access_point = kwargs['accessPoint']
+        if 'credentialName' in kwargs:
+            credential_name = kwargs['credentialName']
+        if 'encryptionDetails' in kwargs:
+            encryption_details = kwargs['encryptionDetails']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'forceUpdate' in kwargs:
+            force_update = kwargs['forceUpdate']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+        if 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
         if access_point is not None:
             _setter("access_point", access_point)
         if comment is not None:

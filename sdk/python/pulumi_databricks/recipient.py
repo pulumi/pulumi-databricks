@@ -53,7 +53,17 @@ class RecipientArgs:
              name: Optional[pulumi.Input[str]] = None,
              sharing_code: Optional[pulumi.Input[str]] = None,
              tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationType' in kwargs:
+            authentication_type = kwargs['authenticationType']
+        if 'dataRecipientGlobalMetastoreId' in kwargs:
+            data_recipient_global_metastore_id = kwargs['dataRecipientGlobalMetastoreId']
+        if 'ipAccessList' in kwargs:
+            ip_access_list = kwargs['ipAccessList']
+        if 'sharingCode' in kwargs:
+            sharing_code = kwargs['sharingCode']
+
         _setter("authentication_type", authentication_type)
         if comment is not None:
             _setter("comment", comment)
@@ -193,7 +203,17 @@ class _RecipientState:
              name: Optional[pulumi.Input[str]] = None,
              sharing_code: Optional[pulumi.Input[str]] = None,
              tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationType' in kwargs:
+            authentication_type = kwargs['authenticationType']
+        if 'dataRecipientGlobalMetastoreId' in kwargs:
+            data_recipient_global_metastore_id = kwargs['dataRecipientGlobalMetastoreId']
+        if 'ipAccessList' in kwargs:
+            ip_access_list = kwargs['ipAccessList']
+        if 'sharingCode' in kwargs:
+            sharing_code = kwargs['sharingCode']
+
         if authentication_type is not None:
             _setter("authentication_type", authentication_type)
         if comment is not None:

@@ -233,7 +233,7 @@ type User struct {
 	Home pulumi.StringOutput `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringOutput `pulumi:"repos"`
-	// This is the username of the given user and will be their form of access and identity.
+	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName        pulumi.StringOutput  `pulumi:"userName"`
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
 }
@@ -296,7 +296,7 @@ type userState struct {
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos *string `pulumi:"repos"`
-	// This is the username of the given user and will be their form of access and identity.
+	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName        *string `pulumi:"userName"`
 	WorkspaceAccess *bool   `pulumi:"workspaceAccess"`
 }
@@ -327,7 +327,7 @@ type UserState struct {
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringPtrInput
-	// This is the username of the given user and will be their form of access and identity.
+	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName        pulumi.StringPtrInput
 	WorkspaceAccess pulumi.BoolPtrInput
 }
@@ -362,7 +362,7 @@ type userArgs struct {
 	Home *string `pulumi:"home"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos *string `pulumi:"repos"`
-	// This is the username of the given user and will be their form of access and identity.
+	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName        string `pulumi:"userName"`
 	WorkspaceAccess *bool  `pulumi:"workspaceAccess"`
 }
@@ -394,7 +394,7 @@ type UserArgs struct {
 	Home pulumi.StringPtrInput
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringPtrInput
-	// This is the username of the given user and will be their form of access and identity.
+	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName        pulumi.StringInput
 	WorkspaceAccess pulumi.BoolPtrInput
 }
@@ -574,7 +574,7 @@ func (o UserOutput) Repos() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Repos }).(pulumi.StringOutput)
 }
 
-// This is the username of the given user and will be their form of access and identity.
+// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 func (o UserOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

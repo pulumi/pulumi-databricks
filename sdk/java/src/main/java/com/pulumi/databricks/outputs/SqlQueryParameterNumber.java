@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class SqlQueryParameterNumber {
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     private Double value;
 
     private SqlQueryParameterNumber() {}
+    /**
+     * @return The default value for this parameter.
+     * 
+     */
     public Double value() {
         return this.value;
     }

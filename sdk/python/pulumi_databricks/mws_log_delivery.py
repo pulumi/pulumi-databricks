@@ -67,7 +67,29 @@ class MwsLogDeliveryArgs:
              delivery_start_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'credentialsId' in kwargs:
+            credentials_id = kwargs['credentialsId']
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+        if 'storageConfigurationId' in kwargs:
+            storage_configuration_id = kwargs['storageConfigurationId']
+        if 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if 'configName' in kwargs:
+            config_name = kwargs['configName']
+        if 'deliveryPathPrefix' in kwargs:
+            delivery_path_prefix = kwargs['deliveryPathPrefix']
+        if 'deliveryStartTime' in kwargs:
+            delivery_start_time = kwargs['deliveryStartTime']
+        if 'workspaceIdsFilters' in kwargs:
+            workspace_ids_filters = kwargs['workspaceIdsFilters']
+
         _setter("account_id", account_id)
         _setter("credentials_id", credentials_id)
         _setter("log_type", log_type)
@@ -275,7 +297,29 @@ class _MwsLogDeliveryState:
              status: Optional[pulumi.Input[str]] = None,
              storage_configuration_id: Optional[pulumi.Input[str]] = None,
              workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if 'configName' in kwargs:
+            config_name = kwargs['configName']
+        if 'credentialsId' in kwargs:
+            credentials_id = kwargs['credentialsId']
+        if 'deliveryPathPrefix' in kwargs:
+            delivery_path_prefix = kwargs['deliveryPathPrefix']
+        if 'deliveryStartTime' in kwargs:
+            delivery_start_time = kwargs['deliveryStartTime']
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if 'outputFormat' in kwargs:
+            output_format = kwargs['outputFormat']
+        if 'storageConfigurationId' in kwargs:
+            storage_configuration_id = kwargs['storageConfigurationId']
+        if 'workspaceIdsFilters' in kwargs:
+            workspace_ids_filters = kwargs['workspaceIdsFilters']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if config_id is not None:

@@ -51,7 +51,15 @@ class NotebookArgs:
              object_id: Optional[pulumi.Input[int]] = None,
              object_type: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+
         _setter("path", path)
         if content_base64 is not None:
             _setter("content_base64", content_base64)
@@ -203,7 +211,15 @@ class _NotebookState:
              path: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+
         if content_base64 is not None:
             _setter("content_base64", content_base64)
         if format is not None:

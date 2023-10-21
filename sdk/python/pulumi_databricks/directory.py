@@ -34,7 +34,13 @@ class DirectoryArgs:
              path: pulumi.Input[str],
              delete_recursive: Optional[pulumi.Input[bool]] = None,
              object_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteRecursive' in kwargs:
+            delete_recursive = kwargs['deleteRecursive']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("path", path)
         if delete_recursive is not None:
             _setter("delete_recursive", delete_recursive)
@@ -98,7 +104,13 @@ class _DirectoryState:
              delete_recursive: Optional[pulumi.Input[bool]] = None,
              object_id: Optional[pulumi.Input[int]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteRecursive' in kwargs:
+            delete_recursive = kwargs['deleteRecursive']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         if delete_recursive is not None:
             _setter("delete_recursive", delete_recursive)
         if object_id is not None:

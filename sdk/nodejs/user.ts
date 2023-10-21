@@ -189,7 +189,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly repos!: pulumi.Output<string>;
     /**
-     * This is the username of the given user and will be their form of access and identity.
+     * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     public readonly userName!: pulumi.Output<string>;
     public readonly workspaceAccess!: pulumi.Output<boolean | undefined>;
@@ -302,7 +302,7 @@ export interface UserState {
      */
     repos?: pulumi.Input<string>;
     /**
-     * This is the username of the given user and will be their form of access and identity.
+     * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     userName?: pulumi.Input<string>;
     workspaceAccess?: pulumi.Input<boolean>;
@@ -362,7 +362,7 @@ export interface UserArgs {
      */
     repos?: pulumi.Input<string>;
     /**
-     * This is the username of the given user and will be their form of access and identity.
+     * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
     userName: pulumi.Input<string>;
     workspaceAccess?: pulumi.Input<boolean>;

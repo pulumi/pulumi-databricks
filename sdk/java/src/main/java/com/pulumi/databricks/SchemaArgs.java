@@ -116,14 +116,14 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
     /**
-     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> storageRoot() {
@@ -297,7 +297,7 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+         * @param storageRoot Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+         * @param storageRoot Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
          * 
          * @return builder
          * 

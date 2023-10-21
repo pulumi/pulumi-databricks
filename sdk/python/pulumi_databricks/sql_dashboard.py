@@ -15,6 +15,7 @@ __all__ = ['SqlDashboardArgs', 'SqlDashboard']
 class SqlDashboardArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -25,6 +26,7 @@ class SqlDashboardArgs:
         SqlDashboardArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             created_at=created_at,
+            dashboard_filters_enabled=dashboard_filters_enabled,
             name=name,
             parent=parent,
             tags=tags,
@@ -34,13 +36,24 @@ class SqlDashboardArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              created_at: Optional[pulumi.Input[str]] = None,
+             dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dashboardFiltersEnabled' in kwargs:
+            dashboard_filters_enabled = kwargs['dashboardFiltersEnabled']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
+        if dashboard_filters_enabled is not None:
+            _setter("dashboard_filters_enabled", dashboard_filters_enabled)
         if name is not None:
             _setter("name", name)
         if parent is not None:
@@ -58,6 +71,15 @@ class SqlDashboardArgs:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="dashboardFiltersEnabled")
+    def dashboard_filters_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "dashboard_filters_enabled")
+
+    @dashboard_filters_enabled.setter
+    def dashboard_filters_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dashboard_filters_enabled", value)
 
     @property
     @pulumi.getter
@@ -100,6 +122,7 @@ class SqlDashboardArgs:
 class _SqlDashboardState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -110,6 +133,7 @@ class _SqlDashboardState:
         _SqlDashboardState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             created_at=created_at,
+            dashboard_filters_enabled=dashboard_filters_enabled,
             name=name,
             parent=parent,
             tags=tags,
@@ -119,13 +143,24 @@ class _SqlDashboardState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              created_at: Optional[pulumi.Input[str]] = None,
+             dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dashboardFiltersEnabled' in kwargs:
+            dashboard_filters_enabled = kwargs['dashboardFiltersEnabled']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
+        if dashboard_filters_enabled is not None:
+            _setter("dashboard_filters_enabled", dashboard_filters_enabled)
         if name is not None:
             _setter("name", name)
         if parent is not None:
@@ -143,6 +178,15 @@ class _SqlDashboardState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="dashboardFiltersEnabled")
+    def dashboard_filters_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "dashboard_filters_enabled")
+
+    @dashboard_filters_enabled.setter
+    def dashboard_filters_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dashboard_filters_enabled", value)
 
     @property
     @pulumi.getter
@@ -187,6 +231,7 @@ class SqlDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -325,6 +370,7 @@ class SqlDashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -339,6 +385,7 @@ class SqlDashboard(pulumi.CustomResource):
             __props__ = SqlDashboardArgs.__new__(SqlDashboardArgs)
 
             __props__.__dict__["created_at"] = created_at
+            __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
             __props__.__dict__["tags"] = tags
@@ -354,6 +401,7 @@ class SqlDashboard(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -371,6 +419,7 @@ class SqlDashboard(pulumi.CustomResource):
         __props__ = _SqlDashboardState.__new__(_SqlDashboardState)
 
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["tags"] = tags
@@ -381,6 +430,11 @@ class SqlDashboard(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="dashboardFiltersEnabled")
+    def dashboard_filters_enabled(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "dashboard_filters_enabled")
 
     @property
     @pulumi.getter

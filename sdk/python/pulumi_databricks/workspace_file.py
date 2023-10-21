@@ -41,7 +41,13 @@ class WorkspaceFileArgs:
              md5: Optional[pulumi.Input[str]] = None,
              object_id: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("path", path)
         if content_base64 is not None:
             _setter("content_base64", content_base64)
@@ -141,7 +147,13 @@ class _WorkspaceFileState:
              path: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         if content_base64 is not None:
             _setter("content_base64", content_base64)
         if md5 is not None:

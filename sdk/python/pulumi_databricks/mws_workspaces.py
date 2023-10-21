@@ -117,7 +117,53 @@ class MwsWorkspacesArgs:
              workspace_status: Optional[pulumi.Input[str]] = None,
              workspace_status_message: Optional[pulumi.Input[str]] = None,
              workspace_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'workspaceName' in kwargs:
+            workspace_name = kwargs['workspaceName']
+        if 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if 'cloudResourceContainer' in kwargs:
+            cloud_resource_container = kwargs['cloudResourceContainer']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'credentialsId' in kwargs:
+            credentials_id = kwargs['credentialsId']
+        if 'customerManagedKeyId' in kwargs:
+            customer_managed_key_id = kwargs['customerManagedKeyId']
+        if 'deploymentName' in kwargs:
+            deployment_name = kwargs['deploymentName']
+        if 'externalCustomerInfo' in kwargs:
+            external_customer_info = kwargs['externalCustomerInfo']
+        if 'gcpManagedNetworkConfig' in kwargs:
+            gcp_managed_network_config = kwargs['gcpManagedNetworkConfig']
+        if 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if 'isNoPublicIpEnabled' in kwargs:
+            is_no_public_ip_enabled = kwargs['isNoPublicIpEnabled']
+        if 'managedServicesCustomerManagedKeyId' in kwargs:
+            managed_services_customer_managed_key_id = kwargs['managedServicesCustomerManagedKeyId']
+        if 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if 'pricingTier' in kwargs:
+            pricing_tier = kwargs['pricingTier']
+        if 'privateAccessSettingsId' in kwargs:
+            private_access_settings_id = kwargs['privateAccessSettingsId']
+        if 'storageConfigurationId' in kwargs:
+            storage_configuration_id = kwargs['storageConfigurationId']
+        if 'storageCustomerManagedKeyId' in kwargs:
+            storage_customer_managed_key_id = kwargs['storageCustomerManagedKeyId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+        if 'workspaceStatus' in kwargs:
+            workspace_status = kwargs['workspaceStatus']
+        if 'workspaceStatusMessage' in kwargs:
+            workspace_status_message = kwargs['workspaceStatusMessage']
+        if 'workspaceUrl' in kwargs:
+            workspace_url = kwargs['workspaceUrl']
+
         _setter("account_id", account_id)
         _setter("workspace_name", workspace_name)
         if aws_region is not None:
@@ -554,7 +600,53 @@ class _MwsWorkspacesState:
              workspace_status: Optional[pulumi.Input[str]] = None,
              workspace_status_message: Optional[pulumi.Input[str]] = None,
              workspace_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'awsRegion' in kwargs:
+            aws_region = kwargs['awsRegion']
+        if 'cloudResourceContainer' in kwargs:
+            cloud_resource_container = kwargs['cloudResourceContainer']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'credentialsId' in kwargs:
+            credentials_id = kwargs['credentialsId']
+        if 'customerManagedKeyId' in kwargs:
+            customer_managed_key_id = kwargs['customerManagedKeyId']
+        if 'deploymentName' in kwargs:
+            deployment_name = kwargs['deploymentName']
+        if 'externalCustomerInfo' in kwargs:
+            external_customer_info = kwargs['externalCustomerInfo']
+        if 'gcpManagedNetworkConfig' in kwargs:
+            gcp_managed_network_config = kwargs['gcpManagedNetworkConfig']
+        if 'gkeConfig' in kwargs:
+            gke_config = kwargs['gkeConfig']
+        if 'isNoPublicIpEnabled' in kwargs:
+            is_no_public_ip_enabled = kwargs['isNoPublicIpEnabled']
+        if 'managedServicesCustomerManagedKeyId' in kwargs:
+            managed_services_customer_managed_key_id = kwargs['managedServicesCustomerManagedKeyId']
+        if 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if 'pricingTier' in kwargs:
+            pricing_tier = kwargs['pricingTier']
+        if 'privateAccessSettingsId' in kwargs:
+            private_access_settings_id = kwargs['privateAccessSettingsId']
+        if 'storageConfigurationId' in kwargs:
+            storage_configuration_id = kwargs['storageConfigurationId']
+        if 'storageCustomerManagedKeyId' in kwargs:
+            storage_customer_managed_key_id = kwargs['storageCustomerManagedKeyId']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+        if 'workspaceName' in kwargs:
+            workspace_name = kwargs['workspaceName']
+        if 'workspaceStatus' in kwargs:
+            workspace_status = kwargs['workspaceStatus']
+        if 'workspaceStatusMessage' in kwargs:
+            workspace_status_message = kwargs['workspaceStatusMessage']
+        if 'workspaceUrl' in kwargs:
+            workspace_url = kwargs['workspaceUrl']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if aws_region is not None:

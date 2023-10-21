@@ -44,7 +44,15 @@ class SqlVisualizationArgs:
              name: Optional[pulumi.Input[str]] = None,
              query_plan: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'queryPlan' in kwargs:
+            query_plan = kwargs['queryPlan']
+        if 'visualizationId' in kwargs:
+            visualization_id = kwargs['visualizationId']
+
         _setter("options", options)
         _setter("query_id", query_id)
         _setter("type", type)
@@ -154,7 +162,15 @@ class _SqlVisualizationState:
              query_plan: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'queryPlan' in kwargs:
+            query_plan = kwargs['queryPlan']
+        if 'visualizationId' in kwargs:
+            visualization_id = kwargs['visualizationId']
+
         if description is not None:
             _setter("description", description)
         if name is not None:

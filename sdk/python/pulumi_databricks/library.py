@@ -46,7 +46,11 @@ class LibraryArgs:
              maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
              pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
              whl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         _setter("cluster_id", cluster_id)
         if cran is not None:
             _setter("cran", cran)
@@ -158,7 +162,11 @@ class _LibraryState:
              maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
              pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
              whl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if cran is not None:

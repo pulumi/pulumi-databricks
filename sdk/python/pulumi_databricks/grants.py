@@ -23,6 +23,7 @@ class GrantsArgs:
                  function: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class GrantsArgs:
             function=function,
             materialized_view=materialized_view,
             metastore=metastore,
+            model=model,
             schema=schema,
             share=share,
             storage_credential=storage_credential,
@@ -58,13 +60,24 @@ class GrantsArgs:
              function: Optional[pulumi.Input[str]] = None,
              materialized_view: Optional[pulumi.Input[str]] = None,
              metastore: Optional[pulumi.Input[str]] = None,
+             model: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              share: Optional[pulumi.Input[str]] = None,
              storage_credential: Optional[pulumi.Input[str]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
              volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalLocation' in kwargs:
+            external_location = kwargs['externalLocation']
+        if 'foreignConnection' in kwargs:
+            foreign_connection = kwargs['foreignConnection']
+        if 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if 'storageCredential' in kwargs:
+            storage_credential = kwargs['storageCredential']
+
         _setter("grants", grants)
         if catalog is not None:
             _setter("catalog", catalog)
@@ -78,6 +91,8 @@ class GrantsArgs:
             _setter("materialized_view", materialized_view)
         if metastore is not None:
             _setter("metastore", metastore)
+        if model is not None:
+            _setter("model", model)
         if schema is not None:
             _setter("schema", schema)
         if share is not None:
@@ -156,6 +171,15 @@ class GrantsArgs:
 
     @property
     @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schema")
 
@@ -219,6 +243,7 @@ class _GrantsState:
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -237,6 +262,7 @@ class _GrantsState:
             grants=grants,
             materialized_view=materialized_view,
             metastore=metastore,
+            model=model,
             schema=schema,
             share=share,
             storage_credential=storage_credential,
@@ -254,13 +280,24 @@ class _GrantsState:
              grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
              materialized_view: Optional[pulumi.Input[str]] = None,
              metastore: Optional[pulumi.Input[str]] = None,
+             model: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              share: Optional[pulumi.Input[str]] = None,
              storage_credential: Optional[pulumi.Input[str]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
              volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalLocation' in kwargs:
+            external_location = kwargs['externalLocation']
+        if 'foreignConnection' in kwargs:
+            foreign_connection = kwargs['foreignConnection']
+        if 'materializedView' in kwargs:
+            materialized_view = kwargs['materializedView']
+        if 'storageCredential' in kwargs:
+            storage_credential = kwargs['storageCredential']
+
         if catalog is not None:
             _setter("catalog", catalog)
         if external_location is not None:
@@ -275,6 +312,8 @@ class _GrantsState:
             _setter("materialized_view", materialized_view)
         if metastore is not None:
             _setter("metastore", metastore)
+        if model is not None:
+            _setter("model", model)
         if schema is not None:
             _setter("schema", schema)
         if share is not None:
@@ -353,6 +392,15 @@ class _GrantsState:
 
     @property
     @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schema")
 
@@ -418,6 +466,7 @@ class Grants(pulumi.CustomResource):
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -464,6 +513,7 @@ class Grants(pulumi.CustomResource):
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  materialized_view: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -488,6 +538,7 @@ class Grants(pulumi.CustomResource):
             __props__.__dict__["grants"] = grants
             __props__.__dict__["materialized_view"] = materialized_view
             __props__.__dict__["metastore"] = metastore
+            __props__.__dict__["model"] = model
             __props__.__dict__["schema"] = schema
             __props__.__dict__["share"] = share
             __props__.__dict__["storage_credential"] = storage_credential
@@ -511,6 +562,7 @@ class Grants(pulumi.CustomResource):
             grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
             materialized_view: Optional[pulumi.Input[str]] = None,
             metastore: Optional[pulumi.Input[str]] = None,
+            model: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             share: Optional[pulumi.Input[str]] = None,
             storage_credential: Optional[pulumi.Input[str]] = None,
@@ -536,6 +588,7 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["grants"] = grants
         __props__.__dict__["materialized_view"] = materialized_view
         __props__.__dict__["metastore"] = metastore
+        __props__.__dict__["model"] = model
         __props__.__dict__["schema"] = schema
         __props__.__dict__["share"] = share
         __props__.__dict__["storage_credential"] = storage_credential
@@ -578,6 +631,11 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter
     def metastore(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "metastore")
+
+    @property
+    @pulumi.getter
+    def model(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "model")
 
     @property
     @pulumi.getter

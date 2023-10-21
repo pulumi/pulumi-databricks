@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
  * 
+ * **Note** This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -67,6 +69,7 @@ import javax.annotation.Nullable;
  * 
  * The following resources are often used in the same context:
  * 
+ * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
  * * End to end workspace management guide.
  * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
  * * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).

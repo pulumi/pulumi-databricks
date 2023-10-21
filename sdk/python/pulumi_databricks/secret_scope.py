@@ -40,7 +40,15 @@ class SecretScopeArgs:
              initial_manage_principal: Optional[pulumi.Input[str]] = None,
              keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if 'initialManagePrincipal' in kwargs:
+            initial_manage_principal = kwargs['initialManagePrincipal']
+        if 'keyvaultMetadata' in kwargs:
+            keyvault_metadata = kwargs['keyvaultMetadata']
+
         if backend_type is not None:
             _setter("backend_type", backend_type)
         if initial_manage_principal is not None:
@@ -123,7 +131,15 @@ class _SecretScopeState:
              initial_manage_principal: Optional[pulumi.Input[str]] = None,
              keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendType' in kwargs:
+            backend_type = kwargs['backendType']
+        if 'initialManagePrincipal' in kwargs:
+            initial_manage_principal = kwargs['initialManagePrincipal']
+        if 'keyvaultMetadata' in kwargs:
+            keyvault_metadata = kwargs['keyvaultMetadata']
+
         if backend_type is not None:
             _setter("backend_type", backend_type)
         if initial_manage_principal is not None:

@@ -39,7 +39,13 @@ class IpAccessListArgs:
              label: pulumi.Input[str],
              list_type: pulumi.Input[str],
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if 'listType' in kwargs:
+            list_type = kwargs['listType']
+
         _setter("ip_addresses", ip_addresses)
         _setter("label", label)
         _setter("list_type", list_type)
@@ -123,7 +129,13 @@ class _IpAccessListState:
              ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              label: Optional[pulumi.Input[str]] = None,
              list_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddresses' in kwargs:
+            ip_addresses = kwargs['ipAddresses']
+        if 'listType' in kwargs:
+            list_type = kwargs['listType']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if ip_addresses is not None:

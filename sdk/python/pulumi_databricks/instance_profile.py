@@ -39,7 +39,17 @@ class InstanceProfileArgs:
              iam_role_arn: Optional[pulumi.Input[str]] = None,
              is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'iamRoleArn' in kwargs:
+            iam_role_arn = kwargs['iamRoleArn']
+        if 'isMetaInstanceProfile' in kwargs:
+            is_meta_instance_profile = kwargs['isMetaInstanceProfile']
+        if 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
         _setter("instance_profile_arn", instance_profile_arn)
         if iam_role_arn is not None:
             _setter("iam_role_arn", iam_role_arn)
@@ -125,7 +135,17 @@ class _InstanceProfileState:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'iamRoleArn' in kwargs:
+            iam_role_arn = kwargs['iamRoleArn']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'isMetaInstanceProfile' in kwargs:
+            is_meta_instance_profile = kwargs['isMetaInstanceProfile']
+        if 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
         if iam_role_arn is not None:
             _setter("iam_role_arn", iam_role_arn)
         if instance_profile_arn is not None:

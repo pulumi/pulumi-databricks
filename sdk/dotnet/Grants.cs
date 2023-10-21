@@ -33,6 +33,9 @@ namespace Pulumi.Databricks
         [Output("metastore")]
         public Output<string?> Metastore { get; private set; } = null!;
 
+        [Output("model")]
+        public Output<string?> Model { get; private set; } = null!;
+
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.Databricks
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
+        [Input("model")]
+        public Input<string>? Model { get; set; }
+
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
@@ -174,6 +180,9 @@ namespace Pulumi.Databricks
 
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
+
+        [Input("model")]
+        public Input<string>? Model { get; set; }
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }

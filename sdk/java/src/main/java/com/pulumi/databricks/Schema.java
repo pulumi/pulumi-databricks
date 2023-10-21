@@ -171,14 +171,14 @@ public class Schema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.properties);
     }
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     @Export(name="storageRoot", type=String.class, parameters={})
     private Output</* @Nullable */ String> storageRoot;
 
     /**
-     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageRoot() {

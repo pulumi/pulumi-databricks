@@ -110,11 +110,12 @@ import (
 type SqlDashboard struct {
 	pulumi.CustomResourceState
 
-	CreatedAt pulumi.StringOutput      `pulumi:"createdAt"`
-	Name      pulumi.StringOutput      `pulumi:"name"`
-	Parent    pulumi.StringPtrOutput   `pulumi:"parent"`
-	Tags      pulumi.StringArrayOutput `pulumi:"tags"`
-	UpdatedAt pulumi.StringOutput      `pulumi:"updatedAt"`
+	CreatedAt               pulumi.StringOutput      `pulumi:"createdAt"`
+	DashboardFiltersEnabled pulumi.BoolPtrOutput     `pulumi:"dashboardFiltersEnabled"`
+	Name                    pulumi.StringOutput      `pulumi:"name"`
+	Parent                  pulumi.StringPtrOutput   `pulumi:"parent"`
+	Tags                    pulumi.StringArrayOutput `pulumi:"tags"`
+	UpdatedAt               pulumi.StringOutput      `pulumi:"updatedAt"`
 }
 
 // NewSqlDashboard registers a new resource with the given unique name, arguments, and options.
@@ -147,19 +148,21 @@ func GetSqlDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlDashboard resources.
 type sqlDashboardState struct {
-	CreatedAt *string  `pulumi:"createdAt"`
-	Name      *string  `pulumi:"name"`
-	Parent    *string  `pulumi:"parent"`
-	Tags      []string `pulumi:"tags"`
-	UpdatedAt *string  `pulumi:"updatedAt"`
+	CreatedAt               *string  `pulumi:"createdAt"`
+	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
+	Name                    *string  `pulumi:"name"`
+	Parent                  *string  `pulumi:"parent"`
+	Tags                    []string `pulumi:"tags"`
+	UpdatedAt               *string  `pulumi:"updatedAt"`
 }
 
 type SqlDashboardState struct {
-	CreatedAt pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
-	Parent    pulumi.StringPtrInput
-	Tags      pulumi.StringArrayInput
-	UpdatedAt pulumi.StringPtrInput
+	CreatedAt               pulumi.StringPtrInput
+	DashboardFiltersEnabled pulumi.BoolPtrInput
+	Name                    pulumi.StringPtrInput
+	Parent                  pulumi.StringPtrInput
+	Tags                    pulumi.StringArrayInput
+	UpdatedAt               pulumi.StringPtrInput
 }
 
 func (SqlDashboardState) ElementType() reflect.Type {
@@ -167,20 +170,22 @@ func (SqlDashboardState) ElementType() reflect.Type {
 }
 
 type sqlDashboardArgs struct {
-	CreatedAt *string  `pulumi:"createdAt"`
-	Name      *string  `pulumi:"name"`
-	Parent    *string  `pulumi:"parent"`
-	Tags      []string `pulumi:"tags"`
-	UpdatedAt *string  `pulumi:"updatedAt"`
+	CreatedAt               *string  `pulumi:"createdAt"`
+	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
+	Name                    *string  `pulumi:"name"`
+	Parent                  *string  `pulumi:"parent"`
+	Tags                    []string `pulumi:"tags"`
+	UpdatedAt               *string  `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a SqlDashboard resource.
 type SqlDashboardArgs struct {
-	CreatedAt pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
-	Parent    pulumi.StringPtrInput
-	Tags      pulumi.StringArrayInput
-	UpdatedAt pulumi.StringPtrInput
+	CreatedAt               pulumi.StringPtrInput
+	DashboardFiltersEnabled pulumi.BoolPtrInput
+	Name                    pulumi.StringPtrInput
+	Parent                  pulumi.StringPtrInput
+	Tags                    pulumi.StringArrayInput
+	UpdatedAt               pulumi.StringPtrInput
 }
 
 func (SqlDashboardArgs) ElementType() reflect.Type {
@@ -296,6 +301,10 @@ func (o SqlDashboardOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlDas
 
 func (o SqlDashboardOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlDashboard) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o SqlDashboardOutput) DashboardFiltersEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlDashboard) pulumi.BoolPtrOutput { return v.DashboardFiltersEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o SqlDashboardOutput) Name() pulumi.StringOutput {

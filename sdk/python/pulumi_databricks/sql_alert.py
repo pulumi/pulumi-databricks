@@ -51,7 +51,15 @@ class SqlAlertArgs:
              parent: Optional[pulumi.Input[str]] = None,
              rearm: Optional[pulumi.Input[int]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         _setter("options", options)
         _setter("query_id", query_id)
         if created_at is not None:
@@ -182,7 +190,15 @@ class _SqlAlertState:
              query_id: Optional[pulumi.Input[str]] = None,
              rearm: Optional[pulumi.Input[int]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if name is not None:

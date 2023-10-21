@@ -31,7 +31,13 @@ class GroupMemberArgs:
              _setter: Callable[[Any, Any], None],
              group_id: pulumi.Input[str],
              member_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+
         _setter("group_id", group_id)
         _setter("member_id", member_id)
 
@@ -80,7 +86,13 @@ class _GroupMemberState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              member_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if member_id is not None:

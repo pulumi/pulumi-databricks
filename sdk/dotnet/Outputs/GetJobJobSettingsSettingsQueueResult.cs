@@ -13,9 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsQueueResult
     {
+        public readonly bool Enabled;
+
         [OutputConstructor]
-        private GetJobJobSettingsSettingsQueueResult()
+        private GetJobJobSettingsSettingsQueueResult(bool enabled)
         {
+            Enabled = enabled;
         }
     }
 }

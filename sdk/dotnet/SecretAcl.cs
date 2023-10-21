@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+    /// This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace Pulumi.Databricks
         public Output<string> Permission { get; private set; } = null!;
 
         /// <summary>
-        /// name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        /// principal's identifier. It can be:
         /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Databricks
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        /// principal's identifier. It can be:
         /// </summary>
         [Input("principal", required: true)]
         public Input<string> Principal { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks
         public Input<string>? Permission { get; set; }
 
         /// <summary>
-        /// name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        /// principal's identifier. It can be:
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }

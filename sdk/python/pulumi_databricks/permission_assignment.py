@@ -29,7 +29,11 @@ class PermissionAssignmentArgs:
              _setter: Callable[[Any, Any], None],
              permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
              principal_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+
         _setter("permissions", permissions)
         _setter("principal_id", principal_id)
 
@@ -70,7 +74,11 @@ class _PermissionAssignmentState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              principal_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+
         if permissions is not None:
             _setter("permissions", permissions)
         if principal_id is not None:

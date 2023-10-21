@@ -35,7 +35,13 @@ class OboTokenArgs:
              application_id: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+
         _setter("application_id", application_id)
         if comment is not None:
             _setter("comment", comment)
@@ -107,7 +113,15 @@ class _OboTokenState:
              comment: Optional[pulumi.Input[str]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+        if 'tokenValue' in kwargs:
+            token_value = kwargs['tokenValue']
+
         if application_id is not None:
             _setter("application_id", application_id)
         if comment is not None:

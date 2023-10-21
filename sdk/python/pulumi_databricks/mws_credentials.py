@@ -35,7 +35,15 @@ class MwsCredentialsArgs:
              account_id: pulumi.Input[str],
              credentials_name: pulumi.Input[str],
              role_arn: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'credentialsName' in kwargs:
+            credentials_name = kwargs['credentialsName']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("account_id", account_id)
         _setter("credentials_name", credentials_name)
         _setter("role_arn", role_arn)
@@ -112,7 +120,21 @@ class _MwsCredentialsState:
              credentials_name: Optional[pulumi.Input[str]] = None,
              external_id: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'credentialsId' in kwargs:
+            credentials_id = kwargs['credentialsId']
+        if 'credentialsName' in kwargs:
+            credentials_name = kwargs['credentialsName']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if creation_time is not None:

@@ -14,7 +14,7 @@ public final class JobRunAs {
     /**
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
-     * Example
+     * Example:
      * ```java
      * package generated_program;
      * 
@@ -59,7 +59,7 @@ public final class JobRunAs {
     /**
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
-     * Example
+     * Example:
      * ```java
      * package generated_program;
      * 

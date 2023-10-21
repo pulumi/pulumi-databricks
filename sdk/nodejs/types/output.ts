@@ -1003,6 +1003,7 @@ export interface GetJobJobSettingsSettingsPythonWheelTask {
 }
 
 export interface GetJobJobSettingsSettingsQueue {
+    enabled: boolean;
 }
 
 export interface GetJobJobSettingsSettingsRunAs {
@@ -2267,13 +2268,14 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+    enabled: boolean;
 }
 
 export interface JobRunAs {
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
-     * Example
+     * Example:
      *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
@@ -3120,13 +3122,13 @@ export interface MetastoreDataAccessAzureServicePrincipal {
 }
 
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
-    credentialId?: string;
+    credentialId: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
      * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
-    email?: string;
+    email: string;
 }
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
@@ -3219,6 +3221,10 @@ export interface ModelServingConfigServedModel {
      * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
      */
     workloadSize: string;
+    /**
+     * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+     */
+    workloadType?: string;
 }
 
 export interface ModelServingConfigTrafficConfig {
@@ -3721,6 +3727,10 @@ export interface SqlAlertOptions {
      */
     customSubject?: string;
     /**
+     * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+     */
+    emptyResultState?: string;
+    /**
      * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      */
     muted?: boolean;
@@ -3779,19 +3789,37 @@ export interface SqlQueryParameter {
     datetimesec?: outputs.SqlQueryParameterDatetimesec;
     datetimesecRange?: outputs.SqlQueryParameterDatetimesecRange;
     enum?: outputs.SqlQueryParameterEnum;
+    /**
+     * The literal parameter marker that appears between double curly braces in the query text.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
+     *
+     * For `text`, `number`, `date`, `datetime`, `datetimesec` block
+     */
     name: string;
     number?: outputs.SqlQueryParameterNumber;
+    /**
+     * The text of the query to be run.
+     */
     query?: outputs.SqlQueryParameterQuery;
     text?: outputs.SqlQueryParameterText;
+    /**
+     * The text displayed in a parameter picking widget.
+     */
     title?: string;
 }
 
 export interface SqlQueryParameterDate {
+    /**
+     * The default value for this parameter.
+     */
     value: string;
 }
 
 export interface SqlQueryParameterDateRange {
     range?: outputs.SqlQueryParameterDateRangeRange;
+    /**
+     * The default value for this parameter.
+     */
     value?: string;
 }
 
@@ -3801,11 +3829,17 @@ export interface SqlQueryParameterDateRangeRange {
 }
 
 export interface SqlQueryParameterDatetime {
+    /**
+     * The default value for this parameter.
+     */
     value: string;
 }
 
 export interface SqlQueryParameterDatetimeRange {
     range?: outputs.SqlQueryParameterDatetimeRangeRange;
+    /**
+     * The default value for this parameter.
+     */
     value?: string;
 }
 
@@ -3815,11 +3849,17 @@ export interface SqlQueryParameterDatetimeRangeRange {
 }
 
 export interface SqlQueryParameterDatetimesec {
+    /**
+     * The default value for this parameter.
+     */
     value: string;
 }
 
 export interface SqlQueryParameterDatetimesecRange {
     range?: outputs.SqlQueryParameterDatetimesecRangeRange;
+    /**
+     * The default value for this parameter.
+     */
     value?: string;
 }
 
@@ -3831,6 +3871,9 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 export interface SqlQueryParameterEnum {
     multiple?: outputs.SqlQueryParameterEnumMultiple;
     options: string[];
+    /**
+     * The default value for this parameter.
+     */
     value?: string;
     values?: string[];
 }
@@ -3842,12 +3885,18 @@ export interface SqlQueryParameterEnumMultiple {
 }
 
 export interface SqlQueryParameterNumber {
+    /**
+     * The default value for this parameter.
+     */
     value: number;
 }
 
 export interface SqlQueryParameterQuery {
     multiple?: outputs.SqlQueryParameterQueryMultiple;
     queryId: string;
+    /**
+     * The default value for this parameter.
+     */
     value?: string;
     values?: string[];
 }
@@ -3859,6 +3908,9 @@ export interface SqlQueryParameterQueryMultiple {
 }
 
 export interface SqlQueryParameterText {
+    /**
+     * The default value for this parameter.
+     */
     value: string;
 }
 
@@ -3961,11 +4013,11 @@ export interface StorageCredentialAzureServicePrincipal {
 }
 
 export interface StorageCredentialDatabricksGcpServiceAccount {
-    credentialId?: string;
+    credentialId: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      */
-    email?: string;
+    email: string;
 }
 
 export interface StorageCredentialGcpServiceAccountKey {

@@ -92,6 +92,9 @@ namespace Pulumi.Databricks
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        [Output("dashboardFiltersEnabled")]
+        public Output<bool?> DashboardFiltersEnabled { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -153,6 +156,9 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        [Input("dashboardFiltersEnabled")]
+        public Input<bool>? DashboardFiltersEnabled { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -180,6 +186,9 @@ namespace Pulumi.Databricks
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        [Input("dashboardFiltersEnabled")]
+        public Input<bool>? DashboardFiltersEnabled { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

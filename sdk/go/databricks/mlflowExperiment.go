@@ -52,9 +52,10 @@ import (
 //
 // The following resources are often used in the same context:
 //
+// * RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 // * End to end workspace management guide.
 // * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-// * MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+// * MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
 // * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
 // * Notebook data to export a notebook from Databricks Workspace.
 // * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).

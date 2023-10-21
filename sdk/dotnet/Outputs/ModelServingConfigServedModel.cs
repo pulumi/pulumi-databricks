@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         /// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
         /// </summary>
         public readonly string WorkloadSize;
+        /// <summary>
+        /// The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        /// </summary>
+        public readonly string? WorkloadType;
 
         [OutputConstructor]
         private ModelServingConfigServedModel(
@@ -56,7 +60,9 @@ namespace Pulumi.Databricks.Outputs
 
             bool? scaleToZeroEnabled,
 
-            string workloadSize)
+            string workloadSize,
+
+            string? workloadType)
         {
             EnvironmentVars = environmentVars;
             InstanceProfileArn = instanceProfileArn;
@@ -65,6 +71,7 @@ namespace Pulumi.Databricks.Outputs
             Name = name;
             ScaleToZeroEnabled = scaleToZeroEnabled;
             WorkloadSize = workloadSize;
+            WorkloadType = workloadType;
         }
     }
 }

@@ -20,7 +20,7 @@ class SecretAclArgs:
         """
         The set of arguments for constructing a SecretAcl resource.
         :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
         SecretAclArgs._configure(
@@ -35,7 +35,9 @@ class SecretAclArgs:
              permission: pulumi.Input[str],
              principal: pulumi.Input[str],
              scope: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("permission", permission)
         _setter("principal", principal)
         _setter("scope", scope)
@@ -56,7 +58,7 @@ class SecretAclArgs:
     @pulumi.getter
     def principal(self) -> pulumi.Input[str]:
         """
-        name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        principal's identifier. It can be:
         """
         return pulumi.get(self, "principal")
 
@@ -86,7 +88,7 @@ class _SecretAclState:
         """
         Input properties used for looking up and filtering SecretAcl resources.
         :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
         _SecretAclState._configure(
@@ -101,7 +103,9 @@ class _SecretAclState:
              permission: Optional[pulumi.Input[str]] = None,
              principal: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if permission is not None:
             _setter("permission", permission)
         if principal is not None:
@@ -125,7 +129,7 @@ class _SecretAclState:
     @pulumi.getter
     def principal(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        principal's identifier. It can be:
         """
         return pulumi.get(self, "principal")
 
@@ -160,7 +164,7 @@ class SecretAcl(pulumi.CustomResource):
 
         ## Example Usage
 
-        This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+        This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
         ```python
         import pulumi
@@ -199,7 +203,7 @@ class SecretAcl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
         ...
@@ -213,7 +217,7 @@ class SecretAcl(pulumi.CustomResource):
 
         ## Example Usage
 
-        This way, data scientists can read the Publishing API key that is synchronized from example, Azure Key Vault.
+        This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
         ```python
         import pulumi
@@ -310,7 +314,7 @@ class SecretAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] permission: `READ`, `WRITE` or `MANAGE`.
-        :param pulumi.Input[str] principal: name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -334,7 +338,7 @@ class SecretAcl(pulumi.CustomResource):
     @pulumi.getter
     def principal(self) -> pulumi.Output[str]:
         """
-        name of the principals. It can be `users` for all users or name or `display_name` of databricks_group
+        principal's identifier. It can be:
         """
         return pulumi.get(self, "principal")
 

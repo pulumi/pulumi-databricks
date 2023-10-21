@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
         /// 
-        /// Example
+        /// Example:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

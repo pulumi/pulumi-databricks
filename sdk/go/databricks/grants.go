@@ -23,6 +23,7 @@ type Grants struct {
 	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
 	MaterializedView  pulumi.StringPtrOutput `pulumi:"materializedView"`
 	Metastore         pulumi.StringPtrOutput `pulumi:"metastore"`
+	Model             pulumi.StringPtrOutput `pulumi:"model"`
 	Schema            pulumi.StringPtrOutput `pulumi:"schema"`
 	Share             pulumi.StringPtrOutput `pulumi:"share"`
 	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
@@ -71,6 +72,7 @@ type grantsState struct {
 	Grants            []GrantsGrant `pulumi:"grants"`
 	MaterializedView  *string       `pulumi:"materializedView"`
 	Metastore         *string       `pulumi:"metastore"`
+	Model             *string       `pulumi:"model"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
@@ -87,6 +89,7 @@ type GrantsState struct {
 	Grants            GrantsGrantArrayInput
 	MaterializedView  pulumi.StringPtrInput
 	Metastore         pulumi.StringPtrInput
+	Model             pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
@@ -107,6 +110,7 @@ type grantsArgs struct {
 	Grants            []GrantsGrant `pulumi:"grants"`
 	MaterializedView  *string       `pulumi:"materializedView"`
 	Metastore         *string       `pulumi:"metastore"`
+	Model             *string       `pulumi:"model"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
@@ -124,6 +128,7 @@ type GrantsArgs struct {
 	Grants            GrantsGrantArrayInput
 	MaterializedView  pulumi.StringPtrInput
 	Metastore         pulumi.StringPtrInput
+	Model             pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
@@ -269,6 +274,10 @@ func (o GrantsOutput) MaterializedView() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Metastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Metastore }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Model }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Schema() pulumi.StringPtrOutput {

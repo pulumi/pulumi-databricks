@@ -89,7 +89,7 @@ type Schema struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties pulumi.MapOutput `pulumi:"properties"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
@@ -139,7 +139,7 @@ type schemaState struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
 
@@ -157,7 +157,7 @@ type SchemaState struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
 
@@ -179,7 +179,7 @@ type schemaArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]interface{} `pulumi:"properties"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
 
@@ -198,7 +198,7 @@ type SchemaArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.MapInput
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
 
@@ -347,7 +347,7 @@ func (o SchemaOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v *Schema) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
 }
 
-// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 func (o SchemaOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

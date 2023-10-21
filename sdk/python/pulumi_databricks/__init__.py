@@ -87,6 +87,7 @@ from .permissions import *
 from .pipeline import *
 from .provider import *
 from .recipient import *
+from .registered_model import *
 from .repo import *
 from .schema import *
 from .secret import *
@@ -106,6 +107,7 @@ from .sql_table import *
 from .sql_visualization import *
 from .sql_widget import *
 from .storage_credential import *
+from .system_schema import *
 from .table import *
 from .token import *
 from .user import *
@@ -497,6 +499,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/registeredModel",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/registeredModel:RegisteredModel": "RegisteredModel"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/repo",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -645,6 +655,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/storageCredential:StorageCredential": "StorageCredential"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/systemSchema",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/systemSchema:SystemSchema": "SystemSchema"
   }
  },
  {

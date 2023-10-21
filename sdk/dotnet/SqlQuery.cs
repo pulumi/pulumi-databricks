@@ -154,24 +154,42 @@ namespace Pulumi.Databricks
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Data source ID of a SQL warehouse
+        /// </summary>
         [Output("dataSourceId")]
         public Output<string> DataSourceId { get; private set; } = null!;
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The title of this query that appears in list views, widget headings, and on the query page.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.SqlQueryParameter>> Parameters { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the object.
+        /// </summary>
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// The text of the query to be run.
+        /// </summary>
         [Output("query")]
         public Output<string> Query { get; private set; } = null!;
 
+        /// <summary>
+        /// Run as role. Possible values are `viewer`, `owner`.
+        /// </summary>
         [Output("runAsRole")]
         public Output<string?> RunAsRole { get; private set; } = null!;
 
@@ -233,12 +251,21 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Data source ID of a SQL warehouse
+        /// </summary>
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The title of this query that appears in list views, widget headings, and on the query page.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -250,12 +277,21 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the object.
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// The text of the query to be run.
+        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
+        /// <summary>
+        /// Run as role. Possible values are `viewer`, `owner`.
+        /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
 
@@ -284,12 +320,21 @@ namespace Pulumi.Databricks
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Data source ID of a SQL warehouse
+        /// </summary>
         [Input("dataSourceId")]
         public Input<string>? DataSourceId { get; set; }
 
+        /// <summary>
+        /// General description that conveys additional information about this query such as usage notes.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The title of this query that appears in list views, widget headings, and on the query page.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -301,12 +346,21 @@ namespace Pulumi.Databricks
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The identifier of the workspace folder containing the object.
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// The text of the query to be run.
+        /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
 
+        /// <summary>
+        /// Run as role. Possible values are `viewer`, `owner`.
+        /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
 

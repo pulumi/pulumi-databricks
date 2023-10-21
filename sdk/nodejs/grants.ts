@@ -41,6 +41,7 @@ export class Grants extends pulumi.CustomResource {
     public readonly grants!: pulumi.Output<outputs.GrantsGrant[]>;
     public readonly materializedView!: pulumi.Output<string | undefined>;
     public readonly metastore!: pulumi.Output<string | undefined>;
+    public readonly model!: pulumi.Output<string | undefined>;
     public readonly schema!: pulumi.Output<string | undefined>;
     public readonly share!: pulumi.Output<string | undefined>;
     public readonly storageCredential!: pulumi.Output<string | undefined>;
@@ -68,6 +69,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["grants"] = state ? state.grants : undefined;
             resourceInputs["materializedView"] = state ? state.materializedView : undefined;
             resourceInputs["metastore"] = state ? state.metastore : undefined;
+            resourceInputs["model"] = state ? state.model : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["share"] = state ? state.share : undefined;
             resourceInputs["storageCredential"] = state ? state.storageCredential : undefined;
@@ -86,6 +88,7 @@ export class Grants extends pulumi.CustomResource {
             resourceInputs["grants"] = args ? args.grants : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
             resourceInputs["metastore"] = args ? args.metastore : undefined;
+            resourceInputs["model"] = args ? args.model : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["share"] = args ? args.share : undefined;
             resourceInputs["storageCredential"] = args ? args.storageCredential : undefined;
@@ -109,6 +112,7 @@ export interface GrantsState {
     grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     materializedView?: pulumi.Input<string>;
     metastore?: pulumi.Input<string>;
+    model?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;
     storageCredential?: pulumi.Input<string>;
@@ -128,6 +132,7 @@ export interface GrantsArgs {
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
     materializedView?: pulumi.Input<string>;
     metastore?: pulumi.Input<string>;
+    model?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     share?: pulumi.Input<string>;
     storageCredential?: pulumi.Input<string>;

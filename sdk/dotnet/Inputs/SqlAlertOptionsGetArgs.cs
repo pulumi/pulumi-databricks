@@ -31,6 +31,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? CustomSubject { get; set; }
 
         /// <summary>
+        /// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        /// </summary>
+        [Input("emptyResultState")]
+        public Input<string>? EmptyResultState { get; set; }
+
+        /// <summary>
         /// Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
         /// </summary>
         [Input("muted")]

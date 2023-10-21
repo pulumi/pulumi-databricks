@@ -60,6 +60,12 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> metastore() {
         return Codegen.optional(this.metastore);
     }
+    @Export(name="model", type=String.class, parameters={})
+    private Output</* @Nullable */ String> model;
+
+    public Output<Optional<String>> model() {
+        return Codegen.optional(this.model);
+    }
     @Export(name="schema", type=String.class, parameters={})
     private Output</* @Nullable */ String> schema;
 

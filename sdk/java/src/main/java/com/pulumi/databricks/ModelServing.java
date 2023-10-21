@@ -86,9 +86,10 @@ import javax.annotation.Nullable;
  * 
  * The following resources are often used in the same context:
  * 
+ * * databricks.RegisteredModel to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
  * * End to end workspace management guide.
  * * databricks.Directory to manage directories in [Databricks Workspace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricks.MlflowModel to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
+ * * databricks.MlflowModel to create models in the [workspace model registry](https://docs.databricks.com/en/mlflow/model-registry.html) in Databricks.
  * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
  * * databricks.Notebook data to export a notebook from Databricks Workspace.
  * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).

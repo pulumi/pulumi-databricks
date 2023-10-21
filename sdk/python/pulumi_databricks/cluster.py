@@ -165,7 +165,69 @@ class ClusterArgs:
              spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'isPinned' in kwargs:
+            is_pinned = kwargs['isPinned']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("spark_version", spark_version)
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
@@ -181,9 +243,6 @@ class ClusterArgs:
             _setter("cluster_id", cluster_id)
         if cluster_log_conf is not None:
             _setter("cluster_log_conf", cluster_log_conf)
-        if cluster_mount_infos is not None:
-            warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
-            pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
         if cluster_mount_infos is not None:
             _setter("cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
@@ -317,9 +376,6 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
-        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
-        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
-
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
@@ -772,7 +828,71 @@ class _ClusterState:
              state: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'defaultTags' in kwargs:
+            default_tags = kwargs['defaultTags']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'isPinned' in kwargs:
+            is_pinned = kwargs['isPinned']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -787,9 +907,6 @@ class _ClusterState:
             _setter("cluster_id", cluster_id)
         if cluster_log_conf is not None:
             _setter("cluster_log_conf", cluster_log_conf)
-        if cluster_mount_infos is not None:
-            warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
-            pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
         if cluster_mount_infos is not None:
             _setter("cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
@@ -919,9 +1036,6 @@ class _ClusterState:
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
-        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
-        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
-
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
@@ -1681,9 +1795,6 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterMountInfos")
     def cluster_mount_infos(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterClusterMountInfo']]]:
-        warnings.warn("""cluster_mount_info block is deprecated due the Clusters API changes.""", DeprecationWarning)
-        pulumi.log.warn("""cluster_mount_infos is deprecated: cluster_mount_info block is deprecated due the Clusters API changes.""")
-
         return pulumi.get(self, "cluster_mount_infos")
 
     @property

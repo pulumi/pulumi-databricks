@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
     ///         SharingCode = db2opensharecode.Result,
     ///         IpAccessList = new Databricks.Inputs.RecipientIpAccessListArgs
     ///         {
-    ///             AllowedIpAddresses = new[] {},
+    ///             AllowedIpAddresses = new() { },
     ///         },
     ///     });
     /// 

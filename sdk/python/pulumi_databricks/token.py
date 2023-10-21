@@ -40,7 +40,17 @@ class TokenArgs:
              expiry_time: Optional[pulumi.Input[int]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'expiryTime' in kwargs:
+            expiry_time = kwargs['expiryTime']
+        if 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+
         if comment is not None:
             _setter("comment", comment)
         if creation_time is not None:
@@ -137,7 +147,19 @@ class _TokenState:
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_id: Optional[pulumi.Input[str]] = None,
              token_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'expiryTime' in kwargs:
+            expiry_time = kwargs['expiryTime']
+        if 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if 'tokenValue' in kwargs:
+            token_value = kwargs['tokenValue']
+
         if comment is not None:
             _setter("comment", comment)
         if creation_time is not None:

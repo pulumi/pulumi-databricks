@@ -476,7 +476,9 @@ class AccessControlRuleSetGrantRule(dict):
              _setter: Callable[[Any, Any], None],
              role: str,
              principals: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("role", role)
         if principals is not None:
             _setter("principals", principals)
@@ -539,7 +541,13 @@ class ClusterAutoscale(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -618,7 +626,23 @@ class ClusterAwsAttributes(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -714,7 +738,13 @@ class ClusterAzureAttributes(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -753,7 +783,9 @@ class ClusterClusterLogConf(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.ClusterClusterLogConfDbfs'] = None,
              s3: Optional['outputs.ClusterClusterLogConfS3'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -782,7 +814,9 @@ class ClusterClusterLogConfDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -844,7 +878,17 @@ class ClusterClusterLogConfS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -934,7 +978,15 @@ class ClusterClusterMountInfo(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.ClusterClusterMountInfoNetworkFilesystemInfo',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -990,7 +1042,13 @@ class ClusterClusterMountInfoNetworkFilesystemInfo(dict):
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -1038,7 +1096,11 @@ class ClusterDockerImage(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.ClusterDockerImageBasicAuth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -1069,7 +1131,9 @@ class ClusterDockerImageBasicAuth(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -1136,7 +1200,19 @@ class ClusterGcpAttributes(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -1214,7 +1290,9 @@ class ClusterInitScript(dict):
              s3: Optional['outputs.ClusterInitScriptS3'] = None,
              volumes: Optional['outputs.ClusterInitScriptVolumes'] = None,
              workspace: Optional['outputs.ClusterInitScriptWorkspace'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -1281,7 +1359,9 @@ class ClusterInitScriptAbfss(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -1303,7 +1383,9 @@ class ClusterInitScriptDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -1324,7 +1406,9 @@ class ClusterInitScriptFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -1346,7 +1430,9 @@ class ClusterInitScriptGcs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -1409,7 +1495,17 @@ class ClusterInitScriptS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -1472,7 +1568,9 @@ class ClusterInitScriptVolumes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -1494,7 +1592,9 @@ class ClusterInitScriptWorkspace(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -1531,7 +1631,9 @@ class ClusterLibrary(dict):
              maven: Optional['outputs.ClusterLibraryMaven'] = None,
              pypi: Optional['outputs.ClusterLibraryPypi'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cran is not None:
             _setter("cran", cran)
         if egg is not None:
@@ -1591,7 +1693,9 @@ class ClusterLibraryCran(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -1625,7 +1729,9 @@ class ClusterLibraryMaven(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -1663,7 +1769,9 @@ class ClusterLibraryPypi(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -1691,7 +1799,9 @@ class ClusterWorkloadType(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.ClusterWorkloadTypeClients',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -1715,7 +1825,9 @@ class ClusterWorkloadTypeClients(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -1761,7 +1873,11 @@ class ExternalLocationEncryptionDetails(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sse_encryption_details: Optional['outputs.ExternalLocationEncryptionDetailsSseEncryptionDetails'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sseEncryptionDetails' in kwargs:
+            sse_encryption_details = kwargs['sseEncryptionDetails']
+
         if sse_encryption_details is not None:
             _setter("sse_encryption_details", sse_encryption_details)
 
@@ -1803,7 +1919,11 @@ class ExternalLocationEncryptionDetailsSseEncryptionDetails(dict):
              _setter: Callable[[Any, Any], None],
              algorithm: Optional[str] = None,
              aws_kms_key_arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'awsKmsKeyArn' in kwargs:
+            aws_kms_key_arn = kwargs['awsKmsKeyArn']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if aws_kms_key_arn is not None:
@@ -1835,7 +1955,9 @@ class GrantsGrant(dict):
              _setter: Callable[[Any, Any], None],
              principal: str,
              privileges: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("principal", principal)
         _setter("privileges", privileges)
 
@@ -1892,7 +2014,13 @@ class InstancePoolAwsAttributes(dict):
              availability: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if spot_bid_price_percent is not None:
@@ -1961,7 +2089,11 @@ class InstancePoolAzureAttributes(dict):
              _setter: Callable[[Any, Any], None],
              availability: Optional[str] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if spot_bid_max_price is not None:
@@ -2027,7 +2159,15 @@ class InstancePoolDiskSpec(dict):
              disk_count: Optional[int] = None,
              disk_size: Optional[int] = None,
              disk_type: Optional['outputs.InstancePoolDiskSpecDiskType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         if disk_count is not None:
             _setter("disk_count", disk_count)
         if disk_size is not None:
@@ -2091,7 +2231,13 @@ class InstancePoolDiskSpecDiskType(dict):
              _setter: Callable[[Any, Any], None],
              azure_disk_volume_type: Optional[str] = None,
              ebs_volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'azureDiskVolumeType' in kwargs:
+            azure_disk_volume_type = kwargs['azureDiskVolumeType']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+
         if azure_disk_volume_type is not None:
             _setter("azure_disk_volume_type", azure_disk_volume_type)
         if ebs_volume_type is not None:
@@ -2146,7 +2292,13 @@ class InstancePoolGcpAttributes(dict):
              _setter: Callable[[Any, Any], None],
              gcp_availability: Optional[str] = None,
              local_ssd_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gcpAvailability' in kwargs:
+            gcp_availability = kwargs['gcpAvailability']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+
         if gcp_availability is not None:
             _setter("gcp_availability", gcp_availability)
         if local_ssd_count is not None:
@@ -2208,7 +2360,15 @@ class InstancePoolInstancePoolFleetAttributes(dict):
              launch_template_overrides: Sequence['outputs.InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride'],
              fleet_on_demand_option: Optional['outputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption'] = None,
              fleet_spot_option: Optional['outputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'launchTemplateOverrides' in kwargs:
+            launch_template_overrides = kwargs['launchTemplateOverrides']
+        if 'fleetOnDemandOption' in kwargs:
+            fleet_on_demand_option = kwargs['fleetOnDemandOption']
+        if 'fleetSpotOption' in kwargs:
+            fleet_spot_option = kwargs['fleetSpotOption']
+
         _setter("launch_template_overrides", launch_template_overrides)
         if fleet_on_demand_option is not None:
             _setter("fleet_on_demand_option", fleet_on_demand_option)
@@ -2265,7 +2425,13 @@ class InstancePoolInstancePoolFleetAttributesFleetOnDemandOption(dict):
              _setter: Callable[[Any, Any], None],
              allocation_strategy: str,
              instance_pools_to_use_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStrategy' in kwargs:
+            allocation_strategy = kwargs['allocationStrategy']
+        if 'instancePoolsToUseCount' in kwargs:
+            instance_pools_to_use_count = kwargs['instancePoolsToUseCount']
+
         _setter("allocation_strategy", allocation_strategy)
         if instance_pools_to_use_count is not None:
             _setter("instance_pools_to_use_count", instance_pools_to_use_count)
@@ -2315,7 +2481,13 @@ class InstancePoolInstancePoolFleetAttributesFleetSpotOption(dict):
              _setter: Callable[[Any, Any], None],
              allocation_strategy: str,
              instance_pools_to_use_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStrategy' in kwargs:
+            allocation_strategy = kwargs['allocationStrategy']
+        if 'instancePoolsToUseCount' in kwargs:
+            instance_pools_to_use_count = kwargs['instancePoolsToUseCount']
+
         _setter("allocation_strategy", allocation_strategy)
         if instance_pools_to_use_count is not None:
             _setter("instance_pools_to_use_count", instance_pools_to_use_count)
@@ -2365,7 +2537,13 @@ class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride(dict):
              _setter: Callable[[Any, Any], None],
              availability_zone: str,
              instance_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         _setter("availability_zone", availability_zone)
         _setter("instance_type", instance_type)
 
@@ -2412,7 +2590,11 @@ class InstancePoolPreloadedDockerImage(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.InstancePoolPreloadedDockerImageBasicAuth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -2443,7 +2625,9 @@ class InstancePoolPreloadedDockerImageBasicAuth(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -2490,7 +2674,11 @@ class JobCompute(dict):
              _setter: Callable[[Any, Any], None],
              compute_key: Optional[str] = None,
              spec: Optional['outputs.JobComputeSpec'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeKey' in kwargs:
+            compute_key = kwargs['computeKey']
+
         if compute_key is not None:
             _setter("compute_key", compute_key)
         if spec is not None:
@@ -2519,7 +2707,9 @@ class JobComputeSpec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              kind: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if kind is not None:
             _setter("kind", kind)
 
@@ -2561,7 +2751,11 @@ class JobContinuous(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         if pause_status is not None:
             _setter("pause_status", pause_status)
 
@@ -2632,7 +2826,15 @@ class JobDbtTask(dict):
              project_directory: Optional[str] = None,
              schema: Optional[str] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'profilesDirectory' in kwargs:
+            profiles_directory = kwargs['profilesDirectory']
+        if 'projectDirectory' in kwargs:
+            project_directory = kwargs['projectDirectory']
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         _setter("commands", commands)
         if catalog is not None:
             _setter("catalog", catalog)
@@ -2758,7 +2960,21 @@ class JobEmailNotifications(dict):
              on_failures: Optional[Sequence[str]] = None,
              on_starts: Optional[Sequence[str]] = None,
              on_successes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
@@ -2872,7 +3088,11 @@ class JobGitSource(dict):
              job_source: Optional['outputs.JobGitSourceJobSource'] = None,
              provider: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobSource' in kwargs:
+            job_source = kwargs['jobSource']
+
         _setter("url", url)
         if branch is not None:
             _setter("branch", branch)
@@ -2970,7 +3190,15 @@ class JobGitSourceJobSource(dict):
              import_from_git_branch: str,
              job_config_path: str,
              dirty_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'importFromGitBranch' in kwargs:
+            import_from_git_branch = kwargs['importFromGitBranch']
+        if 'jobConfigPath' in kwargs:
+            job_config_path = kwargs['jobConfigPath']
+        if 'dirtyState' in kwargs:
+            dirty_state = kwargs['dirtyState']
+
         _setter("import_from_git_branch", import_from_git_branch)
         _setter("job_config_path", job_config_path)
         if dirty_state is not None:
@@ -3007,7 +3235,9 @@ class JobHealth(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rules: Sequence['outputs.JobHealthRule'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rules", rules)
 
     @property
@@ -3042,7 +3272,9 @@ class JobHealthRule(dict):
              metric: Optional[str] = None,
              op: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if metric is not None:
             _setter("metric", metric)
         if op is not None:
@@ -3113,7 +3345,13 @@ class JobJobCluster(dict):
              _setter: Callable[[Any, Any], None],
              job_cluster_key: Optional[str] = None,
              new_cluster: Optional['outputs.JobJobClusterNewCluster'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobClusterKey' in kwargs:
+            job_cluster_key = kwargs['jobClusterKey']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+
         if job_cluster_key is not None:
             _setter("job_cluster_key", job_cluster_key)
         if new_cluster is not None:
@@ -3308,7 +3546,67 @@ class JobJobClusterNewCluster(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.JobJobClusterNewClusterWorkloadType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("spark_version", spark_version)
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
@@ -3554,7 +3852,13 @@ class JobJobClusterNewClusterAutoscale(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -3633,7 +3937,23 @@ class JobJobClusterNewClusterAwsAttributes(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -3729,7 +4049,13 @@ class JobJobClusterNewClusterAzureAttributes(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -3768,7 +4094,9 @@ class JobJobClusterNewClusterClusterLogConf(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.JobJobClusterNewClusterClusterLogConfDbfs'] = None,
              s3: Optional['outputs.JobJobClusterNewClusterClusterLogConfS3'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -3797,7 +4125,9 @@ class JobJobClusterNewClusterClusterLogConfDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -3859,7 +4189,17 @@ class JobJobClusterNewClusterClusterLogConfS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -3949,7 +4289,15 @@ class JobJobClusterNewClusterClusterMountInfo(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -4005,7 +4353,13 @@ class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -4056,7 +4410,11 @@ class JobJobClusterNewClusterDockerImage(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.JobJobClusterNewClusterDockerImageBasicAuth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -4090,7 +4448,9 @@ class JobJobClusterNewClusterDockerImageBasicAuth(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -4157,7 +4517,19 @@ class JobJobClusterNewClusterGcpAttributes(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -4278,7 +4650,9 @@ class JobJobClusterNewClusterInitScript(dict):
              s3: Optional['outputs.JobJobClusterNewClusterInitScriptS3'] = None,
              volumes: Optional['outputs.JobJobClusterNewClusterInitScriptVolumes'] = None,
              workspace: Optional['outputs.JobJobClusterNewClusterInitScriptWorkspace'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -4391,7 +4765,9 @@ class JobJobClusterNewClusterInitScriptAbfss(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -4413,7 +4789,9 @@ class JobJobClusterNewClusterInitScriptDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -4434,7 +4812,9 @@ class JobJobClusterNewClusterInitScriptFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -4456,7 +4836,9 @@ class JobJobClusterNewClusterInitScriptGcs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -4519,7 +4901,17 @@ class JobJobClusterNewClusterInitScriptS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -4582,7 +4974,9 @@ class JobJobClusterNewClusterInitScriptVolumes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -4604,7 +4998,9 @@ class JobJobClusterNewClusterInitScriptWorkspace(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -4626,7 +5022,9 @@ class JobJobClusterNewClusterWorkloadType(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.JobJobClusterNewClusterWorkloadTypeClients',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -4650,7 +5048,9 @@ class JobJobClusterNewClusterWorkloadTypeClients(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -4694,7 +5094,9 @@ class JobLibrary(dict):
              maven: Optional['outputs.JobLibraryMaven'] = None,
              pypi: Optional['outputs.JobLibraryPypi'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cran is not None:
             _setter("cran", cran)
         if egg is not None:
@@ -4754,7 +5156,9 @@ class JobLibraryCran(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -4788,7 +5192,9 @@ class JobLibraryMaven(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -4826,7 +5232,9 @@ class JobLibraryPypi(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -5014,7 +5422,67 @@ class JobNewCluster(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.JobNewClusterWorkloadType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("spark_version", spark_version)
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
@@ -5260,7 +5728,13 @@ class JobNewClusterAutoscale(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -5339,7 +5813,23 @@ class JobNewClusterAwsAttributes(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -5435,7 +5925,13 @@ class JobNewClusterAzureAttributes(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -5474,7 +5970,9 @@ class JobNewClusterClusterLogConf(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.JobNewClusterClusterLogConfDbfs'] = None,
              s3: Optional['outputs.JobNewClusterClusterLogConfS3'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -5503,7 +6001,9 @@ class JobNewClusterClusterLogConfDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -5565,7 +6065,17 @@ class JobNewClusterClusterLogConfS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -5655,7 +6165,15 @@ class JobNewClusterClusterMountInfo(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -5711,7 +6229,13 @@ class JobNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -5762,7 +6286,11 @@ class JobNewClusterDockerImage(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.JobNewClusterDockerImageBasicAuth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -5796,7 +6324,9 @@ class JobNewClusterDockerImageBasicAuth(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -5863,7 +6393,19 @@ class JobNewClusterGcpAttributes(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -5984,7 +6526,9 @@ class JobNewClusterInitScript(dict):
              s3: Optional['outputs.JobNewClusterInitScriptS3'] = None,
              volumes: Optional['outputs.JobNewClusterInitScriptVolumes'] = None,
              workspace: Optional['outputs.JobNewClusterInitScriptWorkspace'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -6097,7 +6641,9 @@ class JobNewClusterInitScriptAbfss(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -6119,7 +6665,9 @@ class JobNewClusterInitScriptDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -6140,7 +6688,9 @@ class JobNewClusterInitScriptFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -6162,7 +6712,9 @@ class JobNewClusterInitScriptGcs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -6225,7 +6777,17 @@ class JobNewClusterInitScriptS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -6288,7 +6850,9 @@ class JobNewClusterInitScriptVolumes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -6310,7 +6874,9 @@ class JobNewClusterInitScriptWorkspace(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -6332,7 +6898,9 @@ class JobNewClusterWorkloadType(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.JobNewClusterWorkloadTypeClients',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -6356,7 +6924,9 @@ class JobNewClusterWorkloadTypeClients(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -6415,7 +6985,13 @@ class JobNotebookTask(dict):
              notebook_path: str,
              base_parameters: Optional[Mapping[str, Any]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'baseParameters' in kwargs:
+            base_parameters = kwargs['baseParameters']
+
         _setter("notebook_path", notebook_path)
         if base_parameters is not None:
             _setter("base_parameters", base_parameters)
@@ -6485,7 +7061,13 @@ class JobNotificationSettings(dict):
              _setter: Callable[[Any, Any], None],
              no_alert_for_canceled_runs: Optional[bool] = None,
              no_alert_for_skipped_runs: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'noAlertForCanceledRuns' in kwargs:
+            no_alert_for_canceled_runs = kwargs['noAlertForCanceledRuns']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+
         if no_alert_for_canceled_runs is not None:
             _setter("no_alert_for_canceled_runs", no_alert_for_canceled_runs)
         if no_alert_for_skipped_runs is not None:
@@ -6527,7 +7109,9 @@ class JobParameter(dict):
              _setter: Callable[[Any, Any], None],
              default: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if default is not None:
             _setter("default", default)
         if name is not None:
@@ -6590,7 +7174,13 @@ class JobPipelineTask(dict):
              _setter: Callable[[Any, Any], None],
              pipeline_id: str,
              full_refresh: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'fullRefresh' in kwargs:
+            full_refresh = kwargs['fullRefresh']
+
         _setter("pipeline_id", pipeline_id)
         if full_refresh is not None:
             _setter("full_refresh", full_refresh)
@@ -6662,7 +7252,15 @@ class JobPythonWheelTask(dict):
              named_parameters: Optional[Mapping[str, Any]] = None,
              package_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if 'namedParameters' in kwargs:
+            named_parameters = kwargs['namedParameters']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+
         if entry_point is not None:
             _setter("entry_point", entry_point)
         if named_parameters is not None:
@@ -6707,13 +7305,25 @@ class JobPythonWheelTask(dict):
 
 @pulumi.output_type
 class JobQueue(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 enabled: bool):
+        JobQueue._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
-        pass
+             enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -6743,7 +7353,7 @@ class JobRunAs(dict):
         """
         :param str service_principal_name: The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
                
-               Example
+               Example:
                
                ```python
                import pulumi
@@ -6765,7 +7375,13 @@ class JobRunAs(dict):
              _setter: Callable[[Any, Any], None],
              service_principal_name: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalName' in kwargs:
+            service_principal_name = kwargs['servicePrincipalName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if service_principal_name is not None:
             _setter("service_principal_name", service_principal_name)
         if user_name is not None:
@@ -6777,7 +7393,7 @@ class JobRunAs(dict):
         """
         The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
 
-        Example
+        Example:
 
         ```python
         import pulumi
@@ -6837,7 +7453,13 @@ class JobRunJobTask(dict):
              _setter: Callable[[Any, Any], None],
              job_id: int,
              job_parameters: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'jobParameters' in kwargs:
+            job_parameters = kwargs['jobParameters']
+
         _setter("job_id", job_id)
         if job_parameters is not None:
             _setter("job_parameters", job_parameters)
@@ -6903,7 +7525,15 @@ class JobSchedule(dict):
              quartz_cron_expression: str,
              timezone_id: str,
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'quartzCronExpression' in kwargs:
+            quartz_cron_expression = kwargs['quartzCronExpression']
+        if 'timezoneId' in kwargs:
+            timezone_id = kwargs['timezoneId']
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         _setter("quartz_cron_expression", quartz_cron_expression)
         _setter("timezone_id", timezone_id)
         if pause_status is not None:
@@ -6975,7 +7605,13 @@ class JobSparkJarTask(dict):
              jar_uri: Optional[str] = None,
              main_class_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jarUri' in kwargs:
+            jar_uri = kwargs['jarUri']
+        if 'mainClassName' in kwargs:
+            main_class_name = kwargs['mainClassName']
+
         if jar_uri is not None:
             _setter("jar_uri", jar_uri)
         if main_class_name is not None:
@@ -7045,7 +7681,11 @@ class JobSparkPythonTask(dict):
              python_file: str,
              parameters: Optional[Sequence[str]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pythonFile' in kwargs:
+            python_file = kwargs['pythonFile']
+
         _setter("python_file", python_file)
         if parameters is not None:
             _setter("parameters", parameters)
@@ -7092,7 +7732,9 @@ class JobSparkSubmitTask(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if parameters is not None:
             _setter("parameters", parameters)
 
@@ -7269,7 +7911,55 @@ class JobTask(dict):
              sql_task: Optional['outputs.JobTaskSqlTask'] = None,
              task_key: Optional[str] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeKey' in kwargs:
+            compute_key = kwargs['computeKey']
+        if 'conditionTask' in kwargs:
+            condition_task = kwargs['conditionTask']
+        if 'dbtTask' in kwargs:
+            dbt_task = kwargs['dbtTask']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if 'emailNotifications' in kwargs:
+            email_notifications = kwargs['emailNotifications']
+        if 'existingClusterId' in kwargs:
+            existing_cluster_id = kwargs['existingClusterId']
+        if 'jobClusterKey' in kwargs:
+            job_cluster_key = kwargs['jobClusterKey']
+        if 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if 'minRetryIntervalMillis' in kwargs:
+            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+        if 'notebookTask' in kwargs:
+            notebook_task = kwargs['notebookTask']
+        if 'notificationSettings' in kwargs:
+            notification_settings = kwargs['notificationSettings']
+        if 'pipelineTask' in kwargs:
+            pipeline_task = kwargs['pipelineTask']
+        if 'pythonWheelTask' in kwargs:
+            python_wheel_task = kwargs['pythonWheelTask']
+        if 'retryOnTimeout' in kwargs:
+            retry_on_timeout = kwargs['retryOnTimeout']
+        if 'runIf' in kwargs:
+            run_if = kwargs['runIf']
+        if 'runJobTask' in kwargs:
+            run_job_task = kwargs['runJobTask']
+        if 'sparkJarTask' in kwargs:
+            spark_jar_task = kwargs['sparkJarTask']
+        if 'sparkPythonTask' in kwargs:
+            spark_python_task = kwargs['sparkPythonTask']
+        if 'sparkSubmitTask' in kwargs:
+            spark_submit_task = kwargs['sparkSubmitTask']
+        if 'sqlTask' in kwargs:
+            sql_task = kwargs['sqlTask']
+        if 'taskKey' in kwargs:
+            task_key = kwargs['taskKey']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if compute_key is not None:
             _setter("compute_key", compute_key)
         if condition_task is not None:
@@ -7515,7 +8205,9 @@ class JobTaskConditionTask(dict):
              left: Optional[str] = None,
              op: Optional[str] = None,
              right: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if left is not None:
             _setter("left", left)
         if op is not None:
@@ -7600,7 +8292,15 @@ class JobTaskDbtTask(dict):
              project_directory: Optional[str] = None,
              schema: Optional[str] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'profilesDirectory' in kwargs:
+            profiles_directory = kwargs['profilesDirectory']
+        if 'projectDirectory' in kwargs:
+            project_directory = kwargs['projectDirectory']
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         _setter("commands", commands)
         if catalog is not None:
             _setter("catalog", catalog)
@@ -7699,7 +8399,11 @@ class JobTaskDependsOn(dict):
              _setter: Callable[[Any, Any], None],
              task_key: str,
              outcome: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'taskKey' in kwargs:
+            task_key = kwargs['taskKey']
+
         _setter("task_key", task_key)
         if outcome is not None:
             _setter("outcome", outcome)
@@ -7780,7 +8484,21 @@ class JobTaskEmailNotifications(dict):
              on_failures: Optional[Sequence[str]] = None,
              on_starts: Optional[Sequence[str]] = None,
              on_successes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
@@ -7858,7 +8576,9 @@ class JobTaskHealth(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rules: Sequence['outputs.JobTaskHealthRule'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rules", rules)
 
     @property
@@ -7893,7 +8613,9 @@ class JobTaskHealthRule(dict):
              metric: Optional[str] = None,
              op: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if metric is not None:
             _setter("metric", metric)
         if op is not None:
@@ -7953,7 +8675,9 @@ class JobTaskLibrary(dict):
              maven: Optional['outputs.JobTaskLibraryMaven'] = None,
              pypi: Optional['outputs.JobTaskLibraryPypi'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cran is not None:
             _setter("cran", cran)
         if egg is not None:
@@ -8013,7 +8737,9 @@ class JobTaskLibraryCran(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -8047,7 +8773,9 @@ class JobTaskLibraryMaven(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -8085,7 +8813,9 @@ class JobTaskLibraryPypi(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -8273,7 +9003,67 @@ class JobTaskNewCluster(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.JobTaskNewClusterWorkloadType'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("spark_version", spark_version)
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
@@ -8519,7 +9309,13 @@ class JobTaskNewClusterAutoscale(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -8598,7 +9394,23 @@ class JobTaskNewClusterAwsAttributes(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -8694,7 +9506,13 @@ class JobTaskNewClusterAzureAttributes(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -8733,7 +9551,9 @@ class JobTaskNewClusterClusterLogConf(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.JobTaskNewClusterClusterLogConfDbfs'] = None,
              s3: Optional['outputs.JobTaskNewClusterClusterLogConfS3'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -8762,7 +9582,9 @@ class JobTaskNewClusterClusterLogConfDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -8824,7 +9646,17 @@ class JobTaskNewClusterClusterLogConfS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -8914,7 +9746,15 @@ class JobTaskNewClusterClusterMountInfo(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -8970,7 +9810,13 @@ class JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo(dict):
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -9021,7 +9867,11 @@ class JobTaskNewClusterDockerImage(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.JobTaskNewClusterDockerImageBasicAuth'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -9055,7 +9905,9 @@ class JobTaskNewClusterDockerImageBasicAuth(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -9122,7 +9974,19 @@ class JobTaskNewClusterGcpAttributes(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -9243,7 +10107,9 @@ class JobTaskNewClusterInitScript(dict):
              s3: Optional['outputs.JobTaskNewClusterInitScriptS3'] = None,
              volumes: Optional['outputs.JobTaskNewClusterInitScriptVolumes'] = None,
              workspace: Optional['outputs.JobTaskNewClusterInitScriptWorkspace'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -9356,7 +10222,9 @@ class JobTaskNewClusterInitScriptAbfss(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -9378,7 +10246,9 @@ class JobTaskNewClusterInitScriptDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -9399,7 +10269,9 @@ class JobTaskNewClusterInitScriptFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -9421,7 +10293,9 @@ class JobTaskNewClusterInitScriptGcs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -9484,7 +10358,17 @@ class JobTaskNewClusterInitScriptS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -9547,7 +10431,9 @@ class JobTaskNewClusterInitScriptVolumes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -9569,7 +10455,9 @@ class JobTaskNewClusterInitScriptWorkspace(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -9591,7 +10479,9 @@ class JobTaskNewClusterWorkloadType(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.JobTaskNewClusterWorkloadTypeClients',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -9615,7 +10505,9 @@ class JobTaskNewClusterWorkloadTypeClients(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -9674,7 +10566,13 @@ class JobTaskNotebookTask(dict):
              notebook_path: str,
              base_parameters: Optional[Mapping[str, Any]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'baseParameters' in kwargs:
+            base_parameters = kwargs['baseParameters']
+
         _setter("notebook_path", notebook_path)
         if base_parameters is not None:
             _setter("base_parameters", base_parameters)
@@ -9750,7 +10648,15 @@ class JobTaskNotificationSettings(dict):
              alert_on_last_attempt: Optional[bool] = None,
              no_alert_for_canceled_runs: Optional[bool] = None,
              no_alert_for_skipped_runs: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForCanceledRuns' in kwargs:
+            no_alert_for_canceled_runs = kwargs['noAlertForCanceledRuns']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_canceled_runs is not None:
@@ -9823,7 +10729,13 @@ class JobTaskPipelineTask(dict):
              _setter: Callable[[Any, Any], None],
              pipeline_id: str,
              full_refresh: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'fullRefresh' in kwargs:
+            full_refresh = kwargs['fullRefresh']
+
         _setter("pipeline_id", pipeline_id)
         if full_refresh is not None:
             _setter("full_refresh", full_refresh)
@@ -9895,7 +10807,15 @@ class JobTaskPythonWheelTask(dict):
              named_parameters: Optional[Mapping[str, Any]] = None,
              package_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if 'namedParameters' in kwargs:
+            named_parameters = kwargs['namedParameters']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+
         if entry_point is not None:
             _setter("entry_point", entry_point)
         if named_parameters is not None:
@@ -9976,7 +10896,13 @@ class JobTaskRunJobTask(dict):
              _setter: Callable[[Any, Any], None],
              job_id: int,
              job_parameters: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'jobParameters' in kwargs:
+            job_parameters = kwargs['jobParameters']
+
         _setter("job_id", job_id)
         if job_parameters is not None:
             _setter("job_parameters", job_parameters)
@@ -10039,7 +10965,13 @@ class JobTaskSparkJarTask(dict):
              jar_uri: Optional[str] = None,
              main_class_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jarUri' in kwargs:
+            jar_uri = kwargs['jarUri']
+        if 'mainClassName' in kwargs:
+            main_class_name = kwargs['mainClassName']
+
         if jar_uri is not None:
             _setter("jar_uri", jar_uri)
         if main_class_name is not None:
@@ -10109,7 +11041,11 @@ class JobTaskSparkPythonTask(dict):
              python_file: str,
              parameters: Optional[Sequence[str]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pythonFile' in kwargs:
+            python_file = kwargs['pythonFile']
+
         _setter("python_file", python_file)
         if parameters is not None:
             _setter("parameters", parameters)
@@ -10156,7 +11092,9 @@ class JobTaskSparkSubmitTask(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if parameters is not None:
             _setter("parameters", parameters)
 
@@ -10264,7 +11202,11 @@ class JobTaskSqlTask(dict):
              parameters: Optional[Mapping[str, Any]] = None,
              query: Optional['outputs.JobTaskSqlTaskQuery'] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         if alert is not None:
             _setter("alert", alert)
         if dashboard is not None:
@@ -10412,7 +11354,13 @@ class JobTaskSqlTaskAlert(dict):
              alert_id: str,
              subscriptions: Sequence['outputs.JobTaskSqlTaskAlertSubscription'],
              pause_subscriptions: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertId' in kwargs:
+            alert_id = kwargs['alertId']
+        if 'pauseSubscriptions' in kwargs:
+            pause_subscriptions = kwargs['pauseSubscriptions']
+
         _setter("alert_id", alert_id)
         _setter("subscriptions", subscriptions)
         if pause_subscriptions is not None:
@@ -10480,7 +11428,13 @@ class JobTaskSqlTaskAlertSubscription(dict):
              _setter: Callable[[Any, Any], None],
              destination_id: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationId' in kwargs:
+            destination_id = kwargs['destinationId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if destination_id is not None:
             _setter("destination_id", destination_id)
         if user_name is not None:
@@ -10548,7 +11502,15 @@ class JobTaskSqlTaskDashboard(dict):
              custom_subject: Optional[str] = None,
              pause_subscriptions: Optional[bool] = None,
              subscriptions: Optional[Sequence['outputs.JobTaskSqlTaskDashboardSubscription']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if 'customSubject' in kwargs:
+            custom_subject = kwargs['customSubject']
+        if 'pauseSubscriptions' in kwargs:
+            pause_subscriptions = kwargs['pauseSubscriptions']
+
         _setter("dashboard_id", dashboard_id)
         if custom_subject is not None:
             _setter("custom_subject", custom_subject)
@@ -10627,7 +11589,13 @@ class JobTaskSqlTaskDashboardSubscription(dict):
              _setter: Callable[[Any, Any], None],
              destination_id: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationId' in kwargs:
+            destination_id = kwargs['destinationId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if destination_id is not None:
             _setter("destination_id", destination_id)
         if user_name is not None:
@@ -10659,7 +11627,9 @@ class JobTaskSqlTaskFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
 
     @property
@@ -10697,7 +11667,11 @@ class JobTaskSqlTaskQuery(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              query_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+
         _setter("query_id", query_id)
 
     @property
@@ -10744,7 +11718,13 @@ class JobTrigger(dict):
              _setter: Callable[[Any, Any], None],
              file_arrival: 'outputs.JobTriggerFileArrival',
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileArrival' in kwargs:
+            file_arrival = kwargs['fileArrival']
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         _setter("file_arrival", file_arrival)
         if pause_status is not None:
             _setter("pause_status", pause_status)
@@ -10808,7 +11788,13 @@ class JobTriggerFileArrival(dict):
              url: str,
              min_time_between_triggers_seconds: Optional[int] = None,
              wait_after_last_change_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'minTimeBetweenTriggersSeconds' in kwargs:
+            min_time_between_triggers_seconds = kwargs['minTimeBetweenTriggersSeconds']
+        if 'waitAfterLastChangeSeconds' in kwargs:
+            wait_after_last_change_seconds = kwargs['waitAfterLastChangeSeconds']
+
         _setter("url", url)
         if min_time_between_triggers_seconds is not None:
             _setter("min_time_between_triggers_seconds", min_time_between_triggers_seconds)
@@ -10898,7 +11884,17 @@ class JobWebhookNotifications(dict):
              on_failures: Optional[Sequence['outputs.JobWebhookNotificationsOnFailure']] = None,
              on_starts: Optional[Sequence['outputs.JobWebhookNotificationsOnStart']] = None,
              on_successes: Optional[Sequence['outputs.JobWebhookNotificationsOnSuccess']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if on_duration_warning_threshold_exceededs is not None:
             _setter("on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -10964,7 +11960,9 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -10991,7 +11989,9 @@ class JobWebhookNotificationsOnFailure(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -11018,7 +12018,9 @@ class JobWebhookNotificationsOnStart(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -11045,7 +12047,9 @@ class JobWebhookNotificationsOnSuccess(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -11072,7 +12076,9 @@ class LibraryCran(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -11106,7 +12112,9 @@ class LibraryMaven(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -11144,7 +12152,9 @@ class LibraryPypi(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -11194,7 +12204,11 @@ class MetastoreDataAccessAwsIamRole(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              role_arn: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("role_arn", role_arn)
 
     @property
@@ -11253,7 +12267,15 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
              access_connector_id: str,
              credential_id: Optional[str] = None,
              managed_identity_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConnectorId' in kwargs:
+            access_connector_id = kwargs['accessConnectorId']
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+        if 'managedIdentityId' in kwargs:
+            managed_identity_id = kwargs['managedIdentityId']
+
         _setter("access_connector_id", access_connector_id)
         if credential_id is not None:
             _setter("credential_id", credential_id)
@@ -11328,7 +12350,15 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
              application_id: str,
              client_secret: str,
              directory_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+
         _setter("application_id", application_id)
         _setter("client_secret", client_secret)
         _setter("directory_id", directory_id)
@@ -11395,7 +12425,11 @@ class MetastoreDataAccessDatabricksGcpServiceAccount(dict):
              _setter: Callable[[Any, Any], None],
              credential_id: Optional[str] = None,
              email: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+
         if credential_id is not None:
             _setter("credential_id", credential_id)
         if email is not None:
@@ -11459,7 +12493,13 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
              email: str,
              private_key: str,
              private_key_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+
         _setter("email", email)
         _setter("private_key", private_key)
         _setter("private_key_id", private_key_id)
@@ -11500,7 +12540,9 @@ class MlflowModelTag(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -11561,7 +12603,11 @@ class MlflowWebhookHttpUrlSpec(dict):
              authorization: Optional[str] = None,
              enable_ssl_verification: Optional[bool] = None,
              secret: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableSslVerification' in kwargs:
+            enable_ssl_verification = kwargs['enableSslVerification']
+
         _setter("url", url)
         if authorization is not None:
             _setter("authorization", authorization)
@@ -11647,7 +12693,15 @@ class MlflowWebhookJobSpec(dict):
              access_token: str,
              job_id: str,
              workspace_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'workspaceUrl' in kwargs:
+            workspace_url = kwargs['workspaceUrl']
+
         _setter("access_token", access_token)
         _setter("job_id", job_id)
         if workspace_url is not None:
@@ -11716,7 +12770,13 @@ class ModelServingConfig(dict):
              _setter: Callable[[Any, Any], None],
              served_models: Sequence['outputs.ModelServingConfigServedModel'],
              traffic_config: Optional['outputs.ModelServingConfigTrafficConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servedModels' in kwargs:
+            served_models = kwargs['servedModels']
+        if 'trafficConfig' in kwargs:
+            traffic_config = kwargs['trafficConfig']
+
         _setter("served_models", served_models)
         if traffic_config is not None:
             _setter("traffic_config", traffic_config)
@@ -11755,6 +12815,8 @@ class ModelServingConfigServedModel(dict):
             suggest = "instance_profile_arn"
         elif key == "scaleToZeroEnabled":
             suggest = "scale_to_zero_enabled"
+        elif key == "workloadType":
+            suggest = "workload_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelServingConfigServedModel. Access the value via the '{suggest}' property getter instead.")
@@ -11774,7 +12836,8 @@ class ModelServingConfigServedModel(dict):
                  environment_vars: Optional[Mapping[str, Any]] = None,
                  instance_profile_arn: Optional[str] = None,
                  name: Optional[str] = None,
-                 scale_to_zero_enabled: Optional[bool] = None):
+                 scale_to_zero_enabled: Optional[bool] = None,
+                 workload_type: Optional[str] = None):
         """
         :param str model_name: The name of the model in Databricks Model Registry to be served.
         :param str model_version: The version of the model in Databricks Model Registry to be served.
@@ -11783,6 +12846,7 @@ class ModelServingConfigServedModel(dict):
         :param str instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
         :param str name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
         :param bool scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        :param str workload_type: The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
         """
         ModelServingConfigServedModel._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -11793,6 +12857,7 @@ class ModelServingConfigServedModel(dict):
             instance_profile_arn=instance_profile_arn,
             name=name,
             scale_to_zero_enabled=scale_to_zero_enabled,
+            workload_type=workload_type,
         )
     @staticmethod
     def _configure(
@@ -11804,7 +12869,24 @@ class ModelServingConfigServedModel(dict):
              instance_profile_arn: Optional[str] = None,
              name: Optional[str] = None,
              scale_to_zero_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             workload_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+        if 'modelVersion' in kwargs:
+            model_version = kwargs['modelVersion']
+        if 'workloadSize' in kwargs:
+            workload_size = kwargs['workloadSize']
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'scaleToZeroEnabled' in kwargs:
+            scale_to_zero_enabled = kwargs['scaleToZeroEnabled']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("model_name", model_name)
         _setter("model_version", model_version)
         _setter("workload_size", workload_size)
@@ -11816,6 +12898,8 @@ class ModelServingConfigServedModel(dict):
             _setter("name", name)
         if scale_to_zero_enabled is not None:
             _setter("scale_to_zero_enabled", scale_to_zero_enabled)
+        if workload_type is not None:
+            _setter("workload_type", workload_type)
 
     @property
     @pulumi.getter(name="modelName")
@@ -11873,6 +12957,14 @@ class ModelServingConfigServedModel(dict):
         """
         return pulumi.get(self, "scale_to_zero_enabled")
 
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional[str]:
+        """
+        The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
+        """
+        return pulumi.get(self, "workload_type")
+
 
 @pulumi.output_type
 class ModelServingConfigTrafficConfig(dict):
@@ -11889,7 +12981,9 @@ class ModelServingConfigTrafficConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              routes: Optional[Sequence['outputs.ModelServingConfigTrafficConfigRoute']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if routes is not None:
             _setter("routes", routes)
 
@@ -11940,7 +13034,13 @@ class ModelServingConfigTrafficConfigRoute(dict):
              _setter: Callable[[Any, Any], None],
              served_model_name: str,
              traffic_percentage: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servedModelName' in kwargs:
+            served_model_name = kwargs['servedModelName']
+        if 'trafficPercentage' in kwargs:
+            traffic_percentage = kwargs['trafficPercentage']
+
         _setter("served_model_name", served_model_name)
         _setter("traffic_percentage", traffic_percentage)
 
@@ -11976,7 +13076,9 @@ class ModelServingTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if value is not None:
             _setter("value", value)
@@ -12054,7 +13156,23 @@ class MountAbfs(dict):
              directory: Optional[str] = None,
              storage_account_name: Optional[str] = None,
              tenant_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecretKey' in kwargs:
+            client_secret_key = kwargs['clientSecretKey']
+        if 'clientSecretScope' in kwargs:
+            client_secret_scope = kwargs['clientSecretScope']
+        if 'initializeFileSystem' in kwargs:
+            initialize_file_system = kwargs['initializeFileSystem']
+        if 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if 'storageAccountName' in kwargs:
+            storage_account_name = kwargs['storageAccountName']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("client_id", client_id)
         _setter("client_secret_key", client_secret_key)
         _setter("client_secret_scope", client_secret_scope)
@@ -12166,7 +13284,21 @@ class MountAdl(dict):
              spark_conf_prefix: Optional[str] = None,
              storage_resource_name: Optional[str] = None,
              tenant_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecretKey' in kwargs:
+            client_secret_key = kwargs['clientSecretKey']
+        if 'clientSecretScope' in kwargs:
+            client_secret_scope = kwargs['clientSecretScope']
+        if 'sparkConfPrefix' in kwargs:
+            spark_conf_prefix = kwargs['sparkConfPrefix']
+        if 'storageResourceName' in kwargs:
+            storage_resource_name = kwargs['storageResourceName']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("client_id", client_id)
         _setter("client_secret_key", client_secret_key)
         _setter("client_secret_scope", client_secret_scope)
@@ -12249,7 +13381,13 @@ class MountGs(dict):
              _setter: Callable[[Any, Any], None],
              bucket_name: str,
              service_account: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+
         _setter("bucket_name", bucket_name)
         if service_account is not None:
             _setter("service_account", service_account)
@@ -12299,7 +13437,13 @@ class MountS3(dict):
              _setter: Callable[[Any, Any], None],
              bucket_name: str,
              instance_profile: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'instanceProfile' in kwargs:
+            instance_profile = kwargs['instanceProfile']
+
         _setter("bucket_name", bucket_name)
         if instance_profile is not None:
             _setter("instance_profile", instance_profile)
@@ -12367,7 +13511,19 @@ class MountWasb(dict):
              container_name: Optional[str] = None,
              directory: Optional[str] = None,
              storage_account_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'tokenSecretKey' in kwargs:
+            token_secret_key = kwargs['tokenSecretKey']
+        if 'tokenSecretScope' in kwargs:
+            token_secret_scope = kwargs['tokenSecretScope']
+        if 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if 'storageAccountName' in kwargs:
+            storage_account_name = kwargs['storageAccountName']
+
         _setter("auth_type", auth_type)
         _setter("token_secret_key", token_secret_key)
         _setter("token_secret_scope", token_secret_scope)
@@ -12453,7 +13609,15 @@ class MwsCustomerManagedKeysAwsKeyInfo(dict):
              key_alias: str,
              key_arn: str,
              key_region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyAlias' in kwargs:
+            key_alias = kwargs['keyAlias']
+        if 'keyArn' in kwargs:
+            key_arn = kwargs['keyArn']
+        if 'keyRegion' in kwargs:
+            key_region = kwargs['keyRegion']
+
         _setter("key_alias", key_alias)
         _setter("key_arn", key_arn)
         if key_region is not None:
@@ -12516,7 +13680,11 @@ class MwsCustomerManagedKeysGcpKeyInfo(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              kms_key_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+
         _setter("kms_key_id", kms_key_id)
 
     @property
@@ -12562,7 +13730,13 @@ class MwsNetworksErrorMessage(dict):
              _setter: Callable[[Any, Any], None],
              error_message: Optional[str] = None,
              error_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if 'errorType' in kwargs:
+            error_type = kwargs['errorType']
+
         if error_message is not None:
             _setter("error_message", error_message)
         if error_type is not None:
@@ -12641,7 +13815,21 @@ class MwsNetworksGcpNetworkInfo(dict):
              subnet_id: str,
              subnet_region: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkProjectId' in kwargs:
+            network_project_id = kwargs['networkProjectId']
+        if 'podIpRangeName' in kwargs:
+            pod_ip_range_name = kwargs['podIpRangeName']
+        if 'serviceIpRangeName' in kwargs:
+            service_ip_range_name = kwargs['serviceIpRangeName']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'subnetRegion' in kwargs:
+            subnet_region = kwargs['subnetRegion']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("network_project_id", network_project_id)
         _setter("pod_ip_range_name", pod_ip_range_name)
         _setter("service_ip_range_name", service_ip_range_name)
@@ -12732,7 +13920,13 @@ class MwsNetworksVpcEndpoints(dict):
              _setter: Callable[[Any, Any], None],
              dataplane_relays: Sequence[str],
              rest_apis: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataplaneRelays' in kwargs:
+            dataplane_relays = kwargs['dataplaneRelays']
+        if 'restApis' in kwargs:
+            rest_apis = kwargs['restApis']
+
         _setter("dataplane_relays", dataplane_relays)
         _setter("rest_apis", rest_apis)
 
@@ -12803,7 +13997,19 @@ class MwsVpcEndpointGcpVpcEndpointInfo(dict):
              psc_endpoint_name: str,
              psc_connection_id: Optional[str] = None,
              service_attachment_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointRegion' in kwargs:
+            endpoint_region = kwargs['endpointRegion']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'pscEndpointName' in kwargs:
+            psc_endpoint_name = kwargs['pscEndpointName']
+        if 'pscConnectionId' in kwargs:
+            psc_connection_id = kwargs['pscConnectionId']
+        if 'serviceAttachmentId' in kwargs:
+            service_attachment_id = kwargs['serviceAttachmentId']
+
         _setter("endpoint_region", endpoint_region)
         _setter("project_id", project_id)
         _setter("psc_endpoint_name", psc_endpoint_name)
@@ -12868,7 +14074,9 @@ class MwsWorkspacesCloudResourceContainer(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              gcp: 'outputs.MwsWorkspacesCloudResourceContainerGcp',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("gcp", gcp)
 
     @property
@@ -12912,7 +14120,11 @@ class MwsWorkspacesCloudResourceContainerGcp(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              project_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("project_id", project_id)
 
     @property
@@ -12963,7 +14175,15 @@ class MwsWorkspacesExternalCustomerInfo(dict):
              authoritative_user_email: str,
              authoritative_user_full_name: str,
              customer_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authoritativeUserEmail' in kwargs:
+            authoritative_user_email = kwargs['authoritativeUserEmail']
+        if 'authoritativeUserFullName' in kwargs:
+            authoritative_user_full_name = kwargs['authoritativeUserFullName']
+        if 'customerName' in kwargs:
+            customer_name = kwargs['customerName']
+
         _setter("authoritative_user_email", authoritative_user_email)
         _setter("authoritative_user_full_name", authoritative_user_full_name)
         _setter("customer_name", customer_name)
@@ -13023,7 +14243,15 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
              gke_cluster_pod_ip_range: str,
              gke_cluster_service_ip_range: str,
              subnet_cidr: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gkeClusterPodIpRange' in kwargs:
+            gke_cluster_pod_ip_range = kwargs['gkeClusterPodIpRange']
+        if 'gkeClusterServiceIpRange' in kwargs:
+            gke_cluster_service_ip_range = kwargs['gkeClusterServiceIpRange']
+        if 'subnetCidr' in kwargs:
+            subnet_cidr = kwargs['subnetCidr']
+
         _setter("gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         _setter("gke_cluster_service_ip_range", gke_cluster_service_ip_range)
         _setter("subnet_cidr", subnet_cidr)
@@ -13082,7 +14310,13 @@ class MwsWorkspacesGkeConfig(dict):
              _setter: Callable[[Any, Any], None],
              connectivity_type: str,
              master_ip_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectivityType' in kwargs:
+            connectivity_type = kwargs['connectivityType']
+        if 'masterIpRange' in kwargs:
+            master_ip_range = kwargs['masterIpRange']
+
         _setter("connectivity_type", connectivity_type)
         _setter("master_ip_range", master_ip_range)
 
@@ -13148,7 +14382,15 @@ class MwsWorkspacesToken(dict):
              lifetime_seconds: Optional[int] = None,
              token_id: Optional[str] = None,
              token_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if 'tokenValue' in kwargs:
+            token_value = kwargs['tokenValue']
+
         if comment is not None:
             _setter("comment", comment)
         if lifetime_seconds is not None:
@@ -13234,7 +14476,17 @@ class PermissionsAccessControl(dict):
              group_name: Optional[str] = None,
              service_principal_name: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'permissionLevel' in kwargs:
+            permission_level = kwargs['permissionLevel']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'servicePrincipalName' in kwargs:
+            service_principal_name = kwargs['servicePrincipalName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("permission_level", permission_level)
         if group_name is not None:
             _setter("group_name", group_name)
@@ -13393,7 +14645,43 @@ class PipelineCluster(dict):
              spark_conf: Optional[Mapping[str, Any]] = None,
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+
         if apply_policy_default_values is not None:
             _setter("apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
@@ -13566,7 +14854,13 @@ class PipelineClusterAutoscale(dict):
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
              mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -13652,7 +14946,23 @@ class PipelineClusterAwsAttributes(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -13748,7 +15058,13 @@ class PipelineClusterAzureAttributes(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -13787,7 +15103,9 @@ class PipelineClusterClusterLogConf(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.PipelineClusterClusterLogConfDbfs'] = None,
              s3: Optional['outputs.PipelineClusterClusterLogConfS3'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -13816,7 +15134,9 @@ class PipelineClusterClusterLogConfDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -13878,7 +15198,17 @@ class PipelineClusterClusterLogConfS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -13971,7 +15301,15 @@ class PipelineClusterGcpAttributes(dict):
              google_service_account: Optional[str] = None,
              local_ssd_count: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if google_service_account is not None:
@@ -14032,7 +15370,9 @@ class PipelineClusterInitScript(dict):
              s3: Optional['outputs.PipelineClusterInitScriptS3'] = None,
              volumes: Optional['outputs.PipelineClusterInitScriptVolumes'] = None,
              workspace: Optional['outputs.PipelineClusterInitScriptWorkspace'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -14099,7 +15439,9 @@ class PipelineClusterInitScriptAbfss(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -14121,7 +15463,9 @@ class PipelineClusterInitScriptDbfs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -14142,7 +15486,9 @@ class PipelineClusterInitScriptFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -14164,7 +15510,9 @@ class PipelineClusterInitScriptGcs(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -14227,7 +15575,17 @@ class PipelineClusterInitScriptS3(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -14290,7 +15648,9 @@ class PipelineClusterInitScriptVolumes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -14312,7 +15672,9 @@ class PipelineClusterInitScriptWorkspace(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -14337,7 +15699,9 @@ class PipelineFilters(dict):
              _setter: Callable[[Any, Any], None],
              excludes: Optional[Sequence[str]] = None,
              includes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if excludes is not None:
             _setter("excludes", excludes)
         if includes is not None:
@@ -14378,7 +15742,9 @@ class PipelineLibrary(dict):
              maven: Optional['outputs.PipelineLibraryMaven'] = None,
              notebook: Optional['outputs.PipelineLibraryNotebook'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if file is not None:
             _setter("file", file)
         if jar is not None:
@@ -14428,7 +15794,9 @@ class PipelineLibraryFile(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
 
     @property
@@ -14455,7 +15823,9 @@ class PipelineLibraryMaven(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -14490,7 +15860,9 @@ class PipelineLibraryNotebook(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
 
     @property
@@ -14539,7 +15911,11 @@ class PipelineNotification(dict):
              _setter: Callable[[Any, Any], None],
              alerts: Sequence[str],
              email_recipients: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'emailRecipients' in kwargs:
+            email_recipients = kwargs['emailRecipients']
+
         _setter("alerts", alerts)
         _setter("email_recipients", email_recipients)
 
@@ -14596,7 +15972,11 @@ class RecipientIpAccessList(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              allowed_ip_addresses: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedIpAddresses' in kwargs:
+            allowed_ip_addresses = kwargs['allowedIpAddresses']
+
         _setter("allowed_ip_addresses", allowed_ip_addresses)
 
     @property
@@ -14674,7 +16054,21 @@ class RecipientToken(dict):
              id: Optional[str] = None,
              updated_at: Optional[int] = None,
              updated_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationUrl' in kwargs:
+            activation_url = kwargs['activationUrl']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         if activation_url is not None:
             _setter("activation_url", activation_url)
         if created_at is not None:
@@ -14759,7 +16153,9 @@ class RepoSparseCheckout(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              patterns: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("patterns", patterns)
 
     @property
@@ -14802,7 +16198,13 @@ class SecretScopeKeyvaultMetadata(dict):
              _setter: Callable[[Any, Any], None],
              dns_name: str,
              resource_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         _setter("dns_name", dns_name)
         _setter("resource_id", resource_id)
 
@@ -14900,7 +16302,23 @@ class ShareObject(dict):
              shared_as: Optional[str] = None,
              start_version: Optional[int] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataObjectType' in kwargs:
+            data_object_type = kwargs['dataObjectType']
+        if 'addedAt' in kwargs:
+            added_at = kwargs['addedAt']
+        if 'addedBy' in kwargs:
+            added_by = kwargs['addedBy']
+        if 'cdfEnabled' in kwargs:
+            cdf_enabled = kwargs['cdfEnabled']
+        if 'historyDataSharingStatus' in kwargs:
+            history_data_sharing_status = kwargs['historyDataSharingStatus']
+        if 'sharedAs' in kwargs:
+            shared_as = kwargs['sharedAs']
+        if 'startVersion' in kwargs:
+            start_version = kwargs['startVersion']
+
         _setter("data_object_type", data_object_type)
         _setter("name", name)
         if added_at is not None:
@@ -15019,7 +16437,9 @@ class ShareObjectPartition(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence['outputs.ShareObjectPartitionValue'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -15075,7 +16495,11 @@ class ShareObjectPartitionValue(dict):
              op: str,
              recipient_property_key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recipientPropertyKey' in kwargs:
+            recipient_property_key = kwargs['recipientPropertyKey']
+
         _setter("name", name)
         _setter("op", op)
         if recipient_property_key is not None:
@@ -15125,6 +16549,8 @@ class SqlAlertOptions(dict):
             suggest = "custom_body"
         elif key == "customSubject":
             suggest = "custom_subject"
+        elif key == "emptyResultState":
+            suggest = "empty_result_state"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SqlAlertOptions. Access the value via the '{suggest}' property getter instead.")
@@ -15143,6 +16569,7 @@ class SqlAlertOptions(dict):
                  value: str,
                  custom_body: Optional[str] = None,
                  custom_subject: Optional[str] = None,
+                 empty_result_state: Optional[str] = None,
                  muted: Optional[bool] = None):
         """
         :param str column: Name of column in the query result to compare in alert evaluation.
@@ -15150,6 +16577,7 @@ class SqlAlertOptions(dict):
         :param str value: Value used to compare in alert evaluation.
         :param str custom_body: Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
         :param str custom_subject: Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
+        :param str empty_result_state: State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
         :param bool muted: Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
         """
         SqlAlertOptions._configure(
@@ -15159,6 +16587,7 @@ class SqlAlertOptions(dict):
             value=value,
             custom_body=custom_body,
             custom_subject=custom_subject,
+            empty_result_state=empty_result_state,
             muted=muted,
         )
     @staticmethod
@@ -15169,8 +16598,17 @@ class SqlAlertOptions(dict):
              value: str,
              custom_body: Optional[str] = None,
              custom_subject: Optional[str] = None,
+             empty_result_state: Optional[str] = None,
              muted: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customBody' in kwargs:
+            custom_body = kwargs['customBody']
+        if 'customSubject' in kwargs:
+            custom_subject = kwargs['customSubject']
+        if 'emptyResultState' in kwargs:
+            empty_result_state = kwargs['emptyResultState']
+
         _setter("column", column)
         _setter("op", op)
         _setter("value", value)
@@ -15178,6 +16616,8 @@ class SqlAlertOptions(dict):
             _setter("custom_body", custom_body)
         if custom_subject is not None:
             _setter("custom_subject", custom_subject)
+        if empty_result_state is not None:
+            _setter("empty_result_state", empty_result_state)
         if muted is not None:
             _setter("muted", muted)
 
@@ -15222,6 +16662,14 @@ class SqlAlertOptions(dict):
         return pulumi.get(self, "custom_subject")
 
     @property
+    @pulumi.getter(name="emptyResultState")
+    def empty_result_state(self) -> Optional[str]:
+        """
+        State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        """
+        return pulumi.get(self, "empty_result_state")
+
+    @property
     @pulumi.getter
     def muted(self) -> Optional[bool]:
         """
@@ -15245,7 +16693,9 @@ class SqlEndpointChannel(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -15282,7 +16732,9 @@ class SqlEndpointOdbcParams(dict):
              protocol: str,
              host: Optional[str] = None,
              hostname: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
         _setter("port", port)
         _setter("protocol", protocol)
@@ -15346,7 +16798,11 @@ class SqlEndpointTags(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              custom_tags: Sequence['outputs.SqlEndpointTagsCustomTag'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+
         _setter("custom_tags", custom_tags)
 
     @property
@@ -15370,7 +16826,9 @@ class SqlEndpointTagsCustomTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -15406,7 +16864,9 @@ class SqlPermissionsPrivilegeAssignment(dict):
              _setter: Callable[[Any, Any], None],
              principal: str,
              privileges: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("principal", principal)
         _setter("privileges", privileges)
 
@@ -15465,6 +16925,14 @@ class SqlQueryParameter(dict):
                  query: Optional['outputs.SqlQueryParameterQuery'] = None,
                  text: Optional['outputs.SqlQueryParameterText'] = None,
                  title: Optional[str] = None):
+        """
+        :param str name: The literal parameter marker that appears between double curly braces in the query text.
+               Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+               
+               For `text`, `number`, `date`, `datetime`, `datetimesec` block
+        :param 'SqlQueryParameterQueryArgs' query: The text of the query to be run.
+        :param str title: The text displayed in a parameter picking widget.
+        """
         SqlQueryParameter._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             name=name,
@@ -15495,7 +16963,15 @@ class SqlQueryParameter(dict):
              query: Optional['outputs.SqlQueryParameterQuery'] = None,
              text: Optional['outputs.SqlQueryParameterText'] = None,
              title: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dateRange' in kwargs:
+            date_range = kwargs['dateRange']
+        if 'datetimeRange' in kwargs:
+            datetime_range = kwargs['datetimeRange']
+        if 'datetimesecRange' in kwargs:
+            datetimesec_range = kwargs['datetimesecRange']
+
         _setter("name", name)
         if date is not None:
             _setter("date", date)
@@ -15523,6 +16999,12 @@ class SqlQueryParameter(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The literal parameter marker that appears between double curly braces in the query text.
+        Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+
+        For `text`, `number`, `date`, `datetime`, `datetimesec` block
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -15568,6 +17050,9 @@ class SqlQueryParameter(dict):
     @property
     @pulumi.getter
     def query(self) -> Optional['outputs.SqlQueryParameterQuery']:
+        """
+        The text of the query to be run.
+        """
         return pulumi.get(self, "query")
 
     @property
@@ -15578,6 +17063,9 @@ class SqlQueryParameter(dict):
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The text displayed in a parameter picking widget.
+        """
         return pulumi.get(self, "title")
 
 
@@ -15585,6 +17073,9 @@ class SqlQueryParameter(dict):
 class SqlQueryParameterDate(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDate._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             value=value,
@@ -15593,12 +17084,17 @@ class SqlQueryParameterDate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15607,6 +17103,9 @@ class SqlQueryParameterDateRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDateRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDateRange._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             range=range,
@@ -15617,7 +17116,9 @@ class SqlQueryParameterDateRange(dict):
              _setter: Callable[[Any, Any], None],
              range: Optional['outputs.SqlQueryParameterDateRangeRange'] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if range is not None:
             _setter("range", range)
         if value is not None:
@@ -15631,6 +17132,9 @@ class SqlQueryParameterDateRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15649,7 +17153,9 @@ class SqlQueryParameterDateRangeRange(dict):
              _setter: Callable[[Any, Any], None],
              end: str,
              start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("end", end)
         _setter("start", start)
 
@@ -15668,6 +17174,9 @@ class SqlQueryParameterDateRangeRange(dict):
 class SqlQueryParameterDatetime(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDatetime._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             value=value,
@@ -15676,12 +17185,17 @@ class SqlQueryParameterDatetime(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15690,6 +17204,9 @@ class SqlQueryParameterDatetimeRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimeRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDatetimeRange._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             range=range,
@@ -15700,7 +17217,9 @@ class SqlQueryParameterDatetimeRange(dict):
              _setter: Callable[[Any, Any], None],
              range: Optional['outputs.SqlQueryParameterDatetimeRangeRange'] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if range is not None:
             _setter("range", range)
         if value is not None:
@@ -15714,6 +17233,9 @@ class SqlQueryParameterDatetimeRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15732,7 +17254,9 @@ class SqlQueryParameterDatetimeRangeRange(dict):
              _setter: Callable[[Any, Any], None],
              end: str,
              start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("end", end)
         _setter("start", start)
 
@@ -15751,6 +17275,9 @@ class SqlQueryParameterDatetimeRangeRange(dict):
 class SqlQueryParameterDatetimesec(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDatetimesec._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             value=value,
@@ -15759,12 +17286,17 @@ class SqlQueryParameterDatetimesec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15773,6 +17305,9 @@ class SqlQueryParameterDatetimesecRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimesecRangeRange'] = None,
                  value: Optional[str] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterDatetimesecRange._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             range=range,
@@ -15783,7 +17318,9 @@ class SqlQueryParameterDatetimesecRange(dict):
              _setter: Callable[[Any, Any], None],
              range: Optional['outputs.SqlQueryParameterDatetimesecRangeRange'] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if range is not None:
             _setter("range", range)
         if value is not None:
@@ -15797,6 +17334,9 @@ class SqlQueryParameterDatetimesecRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15815,7 +17355,9 @@ class SqlQueryParameterDatetimesecRangeRange(dict):
              _setter: Callable[[Any, Any], None],
              end: str,
              start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("end", end)
         _setter("start", start)
 
@@ -15837,6 +17379,9 @@ class SqlQueryParameterEnum(dict):
                  multiple: Optional['outputs.SqlQueryParameterEnumMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterEnum._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             options=options,
@@ -15851,7 +17396,9 @@ class SqlQueryParameterEnum(dict):
              multiple: Optional['outputs.SqlQueryParameterEnumMultiple'] = None,
              value: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("options", options)
         if multiple is not None:
             _setter("multiple", multiple)
@@ -15873,6 +17420,9 @@ class SqlQueryParameterEnum(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
     @property
@@ -15899,7 +17449,9 @@ class SqlQueryParameterEnumMultiple(dict):
              prefix: str,
              separator: str,
              suffix: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("prefix", prefix)
         _setter("separator", separator)
         _setter("suffix", suffix)
@@ -15924,6 +17476,9 @@ class SqlQueryParameterEnumMultiple(dict):
 class SqlQueryParameterNumber(dict):
     def __init__(__self__, *,
                  value: float):
+        """
+        :param float value: The default value for this parameter.
+        """
         SqlQueryParameterNumber._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             value=value,
@@ -15932,12 +17487,17 @@ class SqlQueryParameterNumber(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
 
     @property
     @pulumi.getter
     def value(self) -> float:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -15965,6 +17525,9 @@ class SqlQueryParameterQuery(dict):
                  multiple: Optional['outputs.SqlQueryParameterQueryMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterQuery._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             query_id=query_id,
@@ -15979,7 +17542,11 @@ class SqlQueryParameterQuery(dict):
              multiple: Optional['outputs.SqlQueryParameterQueryMultiple'] = None,
              value: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+
         _setter("query_id", query_id)
         if multiple is not None:
             _setter("multiple", multiple)
@@ -16001,6 +17568,9 @@ class SqlQueryParameterQuery(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
     @property
@@ -16027,7 +17597,9 @@ class SqlQueryParameterQueryMultiple(dict):
              prefix: str,
              separator: str,
              suffix: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("prefix", prefix)
         _setter("separator", separator)
         _setter("suffix", suffix)
@@ -16052,6 +17624,9 @@ class SqlQueryParameterQueryMultiple(dict):
 class SqlQueryParameterText(dict):
     def __init__(__self__, *,
                  value: str):
+        """
+        :param str value: The default value for this parameter.
+        """
         SqlQueryParameterText._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             value=value,
@@ -16060,12 +17635,17 @@ class SqlQueryParameterText(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The default value for this parameter.
+        """
         return pulumi.get(self, "value")
 
 
@@ -16087,7 +17667,9 @@ class SqlQuerySchedule(dict):
              continuous: Optional['outputs.SqlQueryScheduleContinuous'] = None,
              daily: Optional['outputs.SqlQueryScheduleDaily'] = None,
              weekly: Optional['outputs.SqlQueryScheduleWeekly'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if continuous is not None:
             _setter("continuous", continuous)
         if daily is not None:
@@ -16145,7 +17727,13 @@ class SqlQueryScheduleContinuous(dict):
              _setter: Callable[[Any, Any], None],
              interval_seconds: int,
              until_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'intervalSeconds' in kwargs:
+            interval_seconds = kwargs['intervalSeconds']
+        if 'untilDate' in kwargs:
+            until_date = kwargs['untilDate']
+
         _setter("interval_seconds", interval_seconds)
         if until_date is not None:
             _setter("until_date", until_date)
@@ -16200,7 +17788,15 @@ class SqlQueryScheduleDaily(dict):
              interval_days: int,
              time_of_day: str,
              until_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'intervalDays' in kwargs:
+            interval_days = kwargs['intervalDays']
+        if 'timeOfDay' in kwargs:
+            time_of_day = kwargs['timeOfDay']
+        if 'untilDate' in kwargs:
+            until_date = kwargs['untilDate']
+
         _setter("interval_days", interval_days)
         _setter("time_of_day", time_of_day)
         if until_date is not None:
@@ -16266,7 +17862,17 @@ class SqlQueryScheduleWeekly(dict):
              interval_weeks: int,
              time_of_day: str,
              until_date: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if 'intervalWeeks' in kwargs:
+            interval_weeks = kwargs['intervalWeeks']
+        if 'timeOfDay' in kwargs:
+            time_of_day = kwargs['timeOfDay']
+        if 'untilDate' in kwargs:
+            until_date = kwargs['untilDate']
+
         _setter("day_of_week", day_of_week)
         _setter("interval_weeks", interval_weeks)
         _setter("time_of_day", time_of_day)
@@ -16321,7 +17927,9 @@ class SqlTableColumn(dict):
              comment: Optional[str] = None,
              nullable: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if comment is not None:
             _setter("comment", comment)
@@ -16407,7 +18015,11 @@ class SqlWidgetParameter(dict):
              title: Optional[str] = None,
              value: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mapTo' in kwargs:
+            map_to = kwargs['mapTo']
+
         _setter("name", name)
         _setter("type", type)
         if map_to is not None:
@@ -16499,7 +18111,19 @@ class SqlWidgetPosition(dict):
              auto_height: Optional[bool] = None,
              pos_x: Optional[int] = None,
              pos_y: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sizeX' in kwargs:
+            size_x = kwargs['sizeX']
+        if 'sizeY' in kwargs:
+            size_y = kwargs['sizeY']
+        if 'autoHeight' in kwargs:
+            auto_height = kwargs['autoHeight']
+        if 'posX' in kwargs:
+            pos_x = kwargs['posX']
+        if 'posY' in kwargs:
+            pos_y = kwargs['posY']
+
         _setter("size_x", size_x)
         _setter("size_y", size_y)
         if auto_height is not None:
@@ -16569,7 +18193,11 @@ class StorageCredentialAwsIamRole(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              role_arn: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("role_arn", role_arn)
 
     @property
@@ -16628,7 +18256,15 @@ class StorageCredentialAzureManagedIdentity(dict):
              access_connector_id: str,
              credential_id: Optional[str] = None,
              managed_identity_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConnectorId' in kwargs:
+            access_connector_id = kwargs['accessConnectorId']
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+        if 'managedIdentityId' in kwargs:
+            managed_identity_id = kwargs['managedIdentityId']
+
         _setter("access_connector_id", access_connector_id)
         if credential_id is not None:
             _setter("credential_id", credential_id)
@@ -16703,7 +18339,15 @@ class StorageCredentialAzureServicePrincipal(dict):
              application_id: str,
              client_secret: str,
              directory_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+
         _setter("application_id", application_id)
         _setter("client_secret", client_secret)
         _setter("directory_id", directory_id)
@@ -16768,7 +18412,11 @@ class StorageCredentialDatabricksGcpServiceAccount(dict):
              _setter: Callable[[Any, Any], None],
              credential_id: Optional[str] = None,
              email: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+
         if credential_id is not None:
             _setter("credential_id", credential_id)
         if email is not None:
@@ -16828,7 +18476,13 @@ class StorageCredentialGcpServiceAccountKey(dict):
              email: str,
              private_key: str,
              private_key_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+
         _setter("email", email)
         _setter("private_key", private_key)
         _setter("private_key_id", private_key_id)
@@ -16923,7 +18577,23 @@ class TableColumn(dict):
              type_json: Optional[str] = None,
              type_precision: Optional[int] = None,
              type_scale: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'typeName' in kwargs:
+            type_name = kwargs['typeName']
+        if 'typeText' in kwargs:
+            type_text = kwargs['typeText']
+        if 'partitionIndex' in kwargs:
+            partition_index = kwargs['partitionIndex']
+        if 'typeIntervalType' in kwargs:
+            type_interval_type = kwargs['typeIntervalType']
+        if 'typeJson' in kwargs:
+            type_json = kwargs['typeJson']
+        if 'typePrecision' in kwargs:
+            type_precision = kwargs['typePrecision']
+        if 'typeScale' in kwargs:
+            type_scale = kwargs['typeScale']
+
         _setter("name", name)
         _setter("position", position)
         _setter("type_name", type_name)
@@ -17157,7 +18827,87 @@ class GetClusterClusterInfoResult(dict):
              state_message: Optional[str] = None,
              terminate_time: Optional[int] = None,
              termination_reason: Optional['outputs.GetClusterClusterInfoTerminationReasonResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultTags' in kwargs:
+            default_tags = kwargs['defaultTags']
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterCores' in kwargs:
+            cluster_cores = kwargs['clusterCores']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterLogStatus' in kwargs:
+            cluster_log_status = kwargs['clusterLogStatus']
+        if 'clusterMemoryMb' in kwargs:
+            cluster_memory_mb = kwargs['clusterMemoryMb']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterSource' in kwargs:
+            cluster_source = kwargs['clusterSource']
+        if 'creatorUserName' in kwargs:
+            creator_user_name = kwargs['creatorUserName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'jdbcPort' in kwargs:
+            jdbc_port = kwargs['jdbcPort']
+        if 'lastActivityTime' in kwargs:
+            last_activity_time = kwargs['lastActivityTime']
+        if 'lastStateLossTime' in kwargs:
+            last_state_loss_time = kwargs['lastStateLossTime']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkContextId' in kwargs:
+            spark_context_id = kwargs['sparkContextId']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'stateMessage' in kwargs:
+            state_message = kwargs['stateMessage']
+        if 'terminateTime' in kwargs:
+            terminate_time = kwargs['terminateTime']
+        if 'terminationReason' in kwargs:
+            termination_reason = kwargs['terminationReason']
+
         _setter("default_tags", default_tags)
         _setter("driver_instance_pool_id", driver_instance_pool_id)
         _setter("spark_version", spark_version)
@@ -17526,7 +19276,13 @@ class GetClusterClusterInfoAutoscaleResult(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -17576,7 +19332,23 @@ class GetClusterClusterInfoAwsAttributesResult(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -17653,7 +19425,13 @@ class GetClusterClusterInfoAzureAttributesResult(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -17692,7 +19470,9 @@ class GetClusterClusterInfoClusterLogConfResult(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.GetClusterClusterInfoClusterLogConfDbfsResult'] = None,
              s3: Optional['outputs.GetClusterClusterInfoClusterLogConfS3Result'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -17721,7 +19501,9 @@ class GetClusterClusterInfoClusterLogConfDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -17760,7 +19542,17 @@ class GetClusterClusterInfoClusterLogConfS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -17826,7 +19618,13 @@ class GetClusterClusterInfoClusterLogStatusResult(dict):
              _setter: Callable[[Any, Any], None],
              last_attempted: Optional[int] = None,
              last_exception: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lastAttempted' in kwargs:
+            last_attempted = kwargs['lastAttempted']
+        if 'lastException' in kwargs:
+            last_exception = kwargs['lastException']
+
         if last_attempted is not None:
             _setter("last_attempted", last_attempted)
         if last_exception is not None:
@@ -17858,7 +19656,11 @@ class GetClusterClusterInfoDockerImageResult(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.GetClusterClusterInfoDockerImageBasicAuthResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -17889,7 +19691,9 @@ class GetClusterClusterInfoDockerImageBasicAuthResult(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -17934,7 +19738,23 @@ class GetClusterClusterInfoDriverResult(dict):
              private_ip: Optional[str] = None,
              public_dns: Optional[str] = None,
              start_timestamp: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostPrivateIp' in kwargs:
+            host_private_ip = kwargs['hostPrivateIp']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'nodeAwsAttributes' in kwargs:
+            node_aws_attributes = kwargs['nodeAwsAttributes']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicDns' in kwargs:
+            public_dns = kwargs['publicDns']
+        if 'startTimestamp' in kwargs:
+            start_timestamp = kwargs['startTimestamp']
+
         if host_private_ip is not None:
             _setter("host_private_ip", host_private_ip)
         if instance_id is not None:
@@ -17998,7 +19818,11 @@ class GetClusterClusterInfoDriverNodeAwsAttributesResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              is_spot: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isSpot' in kwargs:
+            is_spot = kwargs['isSpot']
+
         if is_spot is not None:
             _setter("is_spot", is_spot)
 
@@ -18038,7 +19862,23 @@ class GetClusterClusterInfoExecutorResult(dict):
              private_ip: Optional[str] = None,
              public_dns: Optional[str] = None,
              start_timestamp: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostPrivateIp' in kwargs:
+            host_private_ip = kwargs['hostPrivateIp']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'nodeAwsAttributes' in kwargs:
+            node_aws_attributes = kwargs['nodeAwsAttributes']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicDns' in kwargs:
+            public_dns = kwargs['publicDns']
+        if 'startTimestamp' in kwargs:
+            start_timestamp = kwargs['startTimestamp']
+
         if host_private_ip is not None:
             _setter("host_private_ip", host_private_ip)
         if instance_id is not None:
@@ -18102,7 +19942,11 @@ class GetClusterClusterInfoExecutorNodeAwsAttributesResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              is_spot: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isSpot' in kwargs:
+            is_spot = kwargs['isSpot']
+
         if is_spot is not None:
             _setter("is_spot", is_spot)
 
@@ -18139,7 +19983,19 @@ class GetClusterClusterInfoGcpAttributesResult(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -18214,7 +20070,9 @@ class GetClusterClusterInfoInitScriptResult(dict):
              s3: Optional['outputs.GetClusterClusterInfoInitScriptS3Result'] = None,
              volumes: Optional['outputs.GetClusterClusterInfoInitScriptVolumesResult'] = None,
              workspace: Optional['outputs.GetClusterClusterInfoInitScriptWorkspaceResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -18278,7 +20136,9 @@ class GetClusterClusterInfoInitScriptAbfssResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -18300,7 +20160,9 @@ class GetClusterClusterInfoInitScriptDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -18321,7 +20183,9 @@ class GetClusterClusterInfoInitScriptFileResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -18343,7 +20207,9 @@ class GetClusterClusterInfoInitScriptGcsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -18383,7 +20249,17 @@ class GetClusterClusterInfoInitScriptS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -18446,7 +20322,9 @@ class GetClusterClusterInfoInitScriptVolumesResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -18468,7 +20346,9 @@ class GetClusterClusterInfoInitScriptWorkspaceResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -18496,7 +20376,9 @@ class GetClusterClusterInfoTerminationReasonResult(dict):
              code: Optional[str] = None,
              parameters: Optional[Mapping[str, Any]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if code is not None:
             _setter("code", code)
         if parameters is not None:
@@ -18538,7 +20420,11 @@ class GetDbfsFilePathsPathListResult(dict):
              _setter: Callable[[Any, Any], None],
              file_size: Optional[int] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSize' in kwargs:
+            file_size = kwargs['fileSize']
+
         if file_size is not None:
             _setter("file_size", file_size)
         if path is not None:
@@ -18621,7 +20507,41 @@ class GetInstancePoolPoolInfoResult(dict):
              preloaded_spark_versions: Optional[Sequence[str]] = None,
              state: Optional[str] = None,
              stats: Optional['outputs.GetInstancePoolPoolInfoStatsResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultTags' in kwargs:
+            default_tags = kwargs['defaultTags']
+        if 'idleInstanceAutoterminationMinutes' in kwargs:
+            idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'instancePoolName' in kwargs:
+            instance_pool_name = kwargs['instancePoolName']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'diskSpec' in kwargs:
+            disk_spec = kwargs['diskSpec']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'instancePoolFleetAttributes' in kwargs:
+            instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'preloadedDockerImages' in kwargs:
+            preloaded_docker_images = kwargs['preloadedDockerImages']
+        if 'preloadedSparkVersions' in kwargs:
+            preloaded_spark_versions = kwargs['preloadedSparkVersions']
+
         _setter("default_tags", default_tags)
         _setter("idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
         _setter("instance_pool_id", instance_pool_id)
@@ -18764,7 +20684,13 @@ class GetInstancePoolPoolInfoAwsAttributesResult(dict):
              zone_id: str,
              availability: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+
         _setter("zone_id", zone_id)
         if availability is not None:
             _setter("availability", availability)
@@ -18802,7 +20728,11 @@ class GetInstancePoolPoolInfoAzureAttributesResult(dict):
              _setter: Callable[[Any, Any], None],
              availability: Optional[str] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if spot_bid_max_price is not None:
@@ -18837,7 +20767,15 @@ class GetInstancePoolPoolInfoDiskSpecResult(dict):
              disk_count: Optional[int] = None,
              disk_size: Optional[int] = None,
              disk_type: Optional['outputs.GetInstancePoolPoolInfoDiskSpecDiskTypeResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         if disk_count is not None:
             _setter("disk_count", disk_count)
         if disk_size is not None:
@@ -18876,7 +20814,13 @@ class GetInstancePoolPoolInfoDiskSpecDiskTypeResult(dict):
              _setter: Callable[[Any, Any], None],
              azure_disk_volume_type: Optional[str] = None,
              ebs_volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'azureDiskVolumeType' in kwargs:
+            azure_disk_volume_type = kwargs['azureDiskVolumeType']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+
         if azure_disk_volume_type is not None:
             _setter("azure_disk_volume_type", azure_disk_volume_type)
         if ebs_volume_type is not None:
@@ -18908,7 +20852,13 @@ class GetInstancePoolPoolInfoGcpAttributesResult(dict):
              _setter: Callable[[Any, Any], None],
              gcp_availability: Optional[str] = None,
              local_ssd_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gcpAvailability' in kwargs:
+            gcp_availability = kwargs['gcpAvailability']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+
         if gcp_availability is not None:
             _setter("gcp_availability", gcp_availability)
         if local_ssd_count is not None:
@@ -18943,7 +20893,15 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeResult(dict):
              launch_template_overrides: Sequence['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideResult'],
              fleet_on_demand_option: Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult'] = None,
              fleet_spot_option: Optional['outputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'launchTemplateOverrides' in kwargs:
+            launch_template_overrides = kwargs['launchTemplateOverrides']
+        if 'fleetOnDemandOption' in kwargs:
+            fleet_on_demand_option = kwargs['fleetOnDemandOption']
+        if 'fleetSpotOption' in kwargs:
+            fleet_spot_option = kwargs['fleetSpotOption']
+
         _setter("launch_template_overrides", launch_template_overrides)
         if fleet_on_demand_option is not None:
             _setter("fleet_on_demand_option", fleet_on_demand_option)
@@ -18981,7 +20939,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionResult
              _setter: Callable[[Any, Any], None],
              allocation_strategy: str,
              instance_pools_to_use_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStrategy' in kwargs:
+            allocation_strategy = kwargs['allocationStrategy']
+        if 'instancePoolsToUseCount' in kwargs:
+            instance_pools_to_use_count = kwargs['instancePoolsToUseCount']
+
         _setter("allocation_strategy", allocation_strategy)
         if instance_pools_to_use_count is not None:
             _setter("instance_pools_to_use_count", instance_pools_to_use_count)
@@ -19012,7 +20976,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionResult(dic
              _setter: Callable[[Any, Any], None],
              allocation_strategy: str,
              instance_pools_to_use_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStrategy' in kwargs:
+            allocation_strategy = kwargs['allocationStrategy']
+        if 'instancePoolsToUseCount' in kwargs:
+            instance_pools_to_use_count = kwargs['instancePoolsToUseCount']
+
         _setter("allocation_strategy", allocation_strategy)
         if instance_pools_to_use_count is not None:
             _setter("instance_pools_to_use_count", instance_pools_to_use_count)
@@ -19043,7 +21013,13 @@ class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideRes
              _setter: Callable[[Any, Any], None],
              availability_zone: str,
              instance_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         _setter("availability_zone", availability_zone)
         _setter("instance_type", instance_type)
 
@@ -19073,7 +21049,11 @@ class GetInstancePoolPoolInfoPreloadedDockerImageResult(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -19104,7 +21084,9 @@ class GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -19140,7 +21122,17 @@ class GetInstancePoolPoolInfoStatsResult(dict):
              pending_idle_count: Optional[int] = None,
              pending_used_count: Optional[int] = None,
              used_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'idleCount' in kwargs:
+            idle_count = kwargs['idleCount']
+        if 'pendingIdleCount' in kwargs:
+            pending_idle_count = kwargs['pendingIdleCount']
+        if 'pendingUsedCount' in kwargs:
+            pending_used_count = kwargs['pendingUsedCount']
+        if 'usedCount' in kwargs:
+            used_count = kwargs['usedCount']
+
         if idle_count is not None:
             _setter("idle_count", idle_count)
         if pending_idle_count is not None:
@@ -19195,7 +21187,17 @@ class GetJobJobSettingsResult(dict):
              creator_user_name: Optional[str] = None,
              job_id: Optional[int] = None,
              settings: Optional['outputs.GetJobJobSettingsSettingsResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'runAsUserName' in kwargs:
+            run_as_user_name = kwargs['runAsUserName']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'creatorUserName' in kwargs:
+            creator_user_name = kwargs['creatorUserName']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+
         _setter("run_as_user_name", run_as_user_name)
         if created_time is not None:
             _setter("created_time", created_time)
@@ -19343,7 +21345,51 @@ class GetJobJobSettingsSettingsResult(dict):
              timeout_seconds: Optional[int] = None,
              trigger: Optional['outputs.GetJobJobSettingsSettingsTriggerResult'] = None,
              webhook_notifications: Optional['outputs.GetJobJobSettingsSettingsWebhookNotificationsResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbtTask' in kwargs:
+            dbt_task = kwargs['dbtTask']
+        if 'emailNotifications' in kwargs:
+            email_notifications = kwargs['emailNotifications']
+        if 'existingClusterId' in kwargs:
+            existing_cluster_id = kwargs['existingClusterId']
+        if 'gitSource' in kwargs:
+            git_source = kwargs['gitSource']
+        if 'jobClusters' in kwargs:
+            job_clusters = kwargs['jobClusters']
+        if 'maxConcurrentRuns' in kwargs:
+            max_concurrent_runs = kwargs['maxConcurrentRuns']
+        if 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if 'minRetryIntervalMillis' in kwargs:
+            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+        if 'notebookTask' in kwargs:
+            notebook_task = kwargs['notebookTask']
+        if 'notificationSettings' in kwargs:
+            notification_settings = kwargs['notificationSettings']
+        if 'pipelineTask' in kwargs:
+            pipeline_task = kwargs['pipelineTask']
+        if 'pythonWheelTask' in kwargs:
+            python_wheel_task = kwargs['pythonWheelTask']
+        if 'retryOnTimeout' in kwargs:
+            retry_on_timeout = kwargs['retryOnTimeout']
+        if 'runAs' in kwargs:
+            run_as = kwargs['runAs']
+        if 'runJobTask' in kwargs:
+            run_job_task = kwargs['runJobTask']
+        if 'sparkJarTask' in kwargs:
+            spark_jar_task = kwargs['sparkJarTask']
+        if 'sparkPythonTask' in kwargs:
+            spark_python_task = kwargs['sparkPythonTask']
+        if 'sparkSubmitTask' in kwargs:
+            spark_submit_task = kwargs['sparkSubmitTask']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+        if 'webhookNotifications' in kwargs:
+            webhook_notifications = kwargs['webhookNotifications']
+
         _setter("format", format)
         if computes is not None:
             _setter("computes", computes)
@@ -19594,7 +21640,11 @@ class GetJobJobSettingsSettingsComputeResult(dict):
              _setter: Callable[[Any, Any], None],
              compute_key: Optional[str] = None,
              spec: Optional['outputs.GetJobJobSettingsSettingsComputeSpecResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeKey' in kwargs:
+            compute_key = kwargs['computeKey']
+
         if compute_key is not None:
             _setter("compute_key", compute_key)
         if spec is not None:
@@ -19623,7 +21673,9 @@ class GetJobJobSettingsSettingsComputeSpecResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              kind: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if kind is not None:
             _setter("kind", kind)
 
@@ -19645,7 +21697,11 @@ class GetJobJobSettingsSettingsContinuousResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         if pause_status is not None:
             _setter("pause_status", pause_status)
 
@@ -19682,7 +21738,15 @@ class GetJobJobSettingsSettingsDbtTaskResult(dict):
              project_directory: Optional[str] = None,
              schema: Optional[str] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'profilesDirectory' in kwargs:
+            profiles_directory = kwargs['profilesDirectory']
+        if 'projectDirectory' in kwargs:
+            project_directory = kwargs['projectDirectory']
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         _setter("commands", commands)
         if catalog is not None:
             _setter("catalog", catalog)
@@ -19753,7 +21817,21 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
              on_failures: Optional[Sequence[str]] = None,
              on_starts: Optional[Sequence[str]] = None,
              on_successes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
@@ -19825,7 +21903,11 @@ class GetJobJobSettingsSettingsGitSourceResult(dict):
              job_source: Optional['outputs.GetJobJobSettingsSettingsGitSourceJobSourceResult'] = None,
              provider: Optional[str] = None,
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobSource' in kwargs:
+            job_source = kwargs['jobSource']
+
         _setter("url", url)
         if branch is not None:
             _setter("branch", branch)
@@ -19887,7 +21969,15 @@ class GetJobJobSettingsSettingsGitSourceJobSourceResult(dict):
              import_from_git_branch: str,
              job_config_path: str,
              dirty_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'importFromGitBranch' in kwargs:
+            import_from_git_branch = kwargs['importFromGitBranch']
+        if 'jobConfigPath' in kwargs:
+            job_config_path = kwargs['jobConfigPath']
+        if 'dirtyState' in kwargs:
+            dirty_state = kwargs['dirtyState']
+
         _setter("import_from_git_branch", import_from_git_branch)
         _setter("job_config_path", job_config_path)
         if dirty_state is not None:
@@ -19921,7 +22011,9 @@ class GetJobJobSettingsSettingsHealthResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rules: Sequence['outputs.GetJobJobSettingsSettingsHealthRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rules", rules)
 
     @property
@@ -19948,7 +22040,9 @@ class GetJobJobSettingsSettingsHealthRuleResult(dict):
              metric: Optional[str] = None,
              op: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if metric is not None:
             _setter("metric", metric)
         if op is not None:
@@ -19987,7 +22081,13 @@ class GetJobJobSettingsSettingsJobClusterResult(dict):
              _setter: Callable[[Any, Any], None],
              job_cluster_key: Optional[str] = None,
              new_cluster: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobClusterKey' in kwargs:
+            job_cluster_key = kwargs['jobClusterKey']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+
         if job_cluster_key is not None:
             _setter("job_cluster_key", job_cluster_key)
         if new_cluster is not None:
@@ -20103,7 +22203,67 @@ class GetJobJobSettingsSettingsJobClusterNewClusterResult(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("driver_instance_pool_id", driver_instance_pool_id)
         _setter("driver_node_type_id", driver_node_type_id)
         _setter("enable_elastic_disk", enable_elastic_disk)
@@ -20324,7 +22484,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleResult(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -20374,7 +22540,23 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesResult(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -20451,7 +22633,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesResult(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -20490,7 +22678,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfResult(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsResult'] = None,
              s3: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Result'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -20519,7 +22709,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsResult(dict
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -20558,7 +22750,17 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -20627,7 +22829,15 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoResult(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoResult',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -20664,7 +22874,13 @@ class GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesy
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -20695,7 +22911,11 @@ class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageResult(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -20726,7 +22946,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthResult(di
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -20768,7 +22990,19 @@ class GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesResult(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -20843,7 +23077,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptResult(dict):
              s3: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Result'] = None,
              volumes: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesResult'] = None,
              workspace: Optional['outputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -20907,7 +23143,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -20929,7 +23167,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -20950,7 +23190,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -20972,7 +23214,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -21012,7 +23256,17 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -21075,7 +23329,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesResult(dict)
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -21097,7 +23353,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceResult(dic
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -21119,7 +23377,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -21143,7 +23403,9 @@ class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsResult(dic
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -21187,7 +23449,9 @@ class GetJobJobSettingsSettingsLibraryResult(dict):
              maven: Optional['outputs.GetJobJobSettingsSettingsLibraryMavenResult'] = None,
              pypi: Optional['outputs.GetJobJobSettingsSettingsLibraryPypiResult'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cran is not None:
             _setter("cran", cran)
         if egg is not None:
@@ -21247,7 +23511,9 @@ class GetJobJobSettingsSettingsLibraryCranResult(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -21281,7 +23547,9 @@ class GetJobJobSettingsSettingsLibraryMavenResult(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -21319,7 +23587,9 @@ class GetJobJobSettingsSettingsLibraryPypiResult(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -21434,7 +23704,67 @@ class GetJobJobSettingsSettingsNewClusterResult(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("driver_instance_pool_id", driver_instance_pool_id)
         _setter("driver_node_type_id", driver_node_type_id)
         _setter("enable_elastic_disk", enable_elastic_disk)
@@ -21655,7 +23985,13 @@ class GetJobJobSettingsSettingsNewClusterAutoscaleResult(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -21705,7 +24041,23 @@ class GetJobJobSettingsSettingsNewClusterAwsAttributesResult(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -21782,7 +24134,13 @@ class GetJobJobSettingsSettingsNewClusterAzureAttributesResult(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -21821,7 +24179,9 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfResult(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsResult'] = None,
              s3: Optional['outputs.GetJobJobSettingsSettingsNewClusterClusterLogConfS3Result'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -21850,7 +24210,9 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -21889,7 +24251,17 @@ class GetJobJobSettingsSettingsNewClusterClusterLogConfS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -21958,7 +24330,15 @@ class GetJobJobSettingsSettingsNewClusterClusterMountInfoResult(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoResult',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -21995,7 +24375,13 @@ class GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoRe
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -22026,7 +24412,11 @@ class GetJobJobSettingsSettingsNewClusterDockerImageResult(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -22057,7 +24447,9 @@ class GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthResult(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -22099,7 +24491,19 @@ class GetJobJobSettingsSettingsNewClusterGcpAttributesResult(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -22174,7 +24578,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptResult(dict):
              s3: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Result'] = None,
              volumes: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumesResult'] = None,
              workspace: Optional['outputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -22238,7 +24644,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptAbfssResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -22260,7 +24668,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -22281,7 +24691,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptFileResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -22303,7 +24715,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptGcsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -22343,7 +24757,17 @@ class GetJobJobSettingsSettingsNewClusterInitScriptS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -22406,7 +24830,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptVolumesResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -22428,7 +24854,9 @@ class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -22450,7 +24878,9 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -22474,7 +24904,9 @@ class GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsResult(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -22509,7 +24941,13 @@ class GetJobJobSettingsSettingsNotebookTaskResult(dict):
              notebook_path: str,
              base_parameters: Optional[Mapping[str, Any]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'baseParameters' in kwargs:
+            base_parameters = kwargs['baseParameters']
+
         _setter("notebook_path", notebook_path)
         if base_parameters is not None:
             _setter("base_parameters", base_parameters)
@@ -22547,7 +24985,13 @@ class GetJobJobSettingsSettingsNotificationSettingsResult(dict):
              _setter: Callable[[Any, Any], None],
              no_alert_for_canceled_runs: Optional[bool] = None,
              no_alert_for_skipped_runs: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'noAlertForCanceledRuns' in kwargs:
+            no_alert_for_canceled_runs = kwargs['noAlertForCanceledRuns']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+
         if no_alert_for_canceled_runs is not None:
             _setter("no_alert_for_canceled_runs", no_alert_for_canceled_runs)
         if no_alert_for_skipped_runs is not None:
@@ -22582,7 +25026,9 @@ class GetJobJobSettingsSettingsParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              default: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if default is not None:
             _setter("default", default)
         if name is not None:
@@ -22617,7 +25063,13 @@ class GetJobJobSettingsSettingsPipelineTaskResult(dict):
              _setter: Callable[[Any, Any], None],
              pipeline_id: str,
              full_refresh: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'fullRefresh' in kwargs:
+            full_refresh = kwargs['fullRefresh']
+
         _setter("pipeline_id", pipeline_id)
         if full_refresh is not None:
             _setter("full_refresh", full_refresh)
@@ -22654,7 +25106,15 @@ class GetJobJobSettingsSettingsPythonWheelTaskResult(dict):
              named_parameters: Optional[Mapping[str, Any]] = None,
              package_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if 'namedParameters' in kwargs:
+            named_parameters = kwargs['namedParameters']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+
         if entry_point is not None:
             _setter("entry_point", entry_point)
         if named_parameters is not None:
@@ -22687,13 +25147,25 @@ class GetJobJobSettingsSettingsPythonWheelTaskResult(dict):
 
 @pulumi.output_type
 class GetJobJobSettingsSettingsQueueResult(dict):
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 enabled: bool):
+        GetJobJobSettingsSettingsQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+        )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
-        pass
+             enabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -22711,7 +25183,13 @@ class GetJobJobSettingsSettingsRunAsResult(dict):
              _setter: Callable[[Any, Any], None],
              service_principal_name: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalName' in kwargs:
+            service_principal_name = kwargs['servicePrincipalName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if service_principal_name is not None:
             _setter("service_principal_name", service_principal_name)
         if user_name is not None:
@@ -22743,7 +25221,13 @@ class GetJobJobSettingsSettingsRunJobTaskResult(dict):
              _setter: Callable[[Any, Any], None],
              job_id: int,
              job_parameters: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'jobParameters' in kwargs:
+            job_parameters = kwargs['jobParameters']
+
         _setter("job_id", job_id)
         if job_parameters is not None:
             _setter("job_parameters", job_parameters)
@@ -22777,7 +25261,15 @@ class GetJobJobSettingsSettingsScheduleResult(dict):
              quartz_cron_expression: str,
              timezone_id: str,
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'quartzCronExpression' in kwargs:
+            quartz_cron_expression = kwargs['quartzCronExpression']
+        if 'timezoneId' in kwargs:
+            timezone_id = kwargs['timezoneId']
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         _setter("quartz_cron_expression", quartz_cron_expression)
         _setter("timezone_id", timezone_id)
         if pause_status is not None:
@@ -22817,7 +25309,13 @@ class GetJobJobSettingsSettingsSparkJarTaskResult(dict):
              jar_uri: Optional[str] = None,
              main_class_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jarUri' in kwargs:
+            jar_uri = kwargs['jarUri']
+        if 'mainClassName' in kwargs:
+            main_class_name = kwargs['mainClassName']
+
         if jar_uri is not None:
             _setter("jar_uri", jar_uri)
         if main_class_name is not None:
@@ -22859,7 +25357,11 @@ class GetJobJobSettingsSettingsSparkPythonTaskResult(dict):
              python_file: str,
              parameters: Optional[Sequence[str]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pythonFile' in kwargs:
+            python_file = kwargs['pythonFile']
+
         _setter("python_file", python_file)
         if parameters is not None:
             _setter("parameters", parameters)
@@ -22894,7 +25396,9 @@ class GetJobJobSettingsSettingsSparkSubmitTaskResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if parameters is not None:
             _setter("parameters", parameters)
 
@@ -22991,7 +25495,55 @@ class GetJobJobSettingsSettingsTaskResult(dict):
              sql_task: Optional['outputs.GetJobJobSettingsSettingsTaskSqlTaskResult'] = None,
              task_key: Optional[str] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'retryOnTimeout' in kwargs:
+            retry_on_timeout = kwargs['retryOnTimeout']
+        if 'computeKey' in kwargs:
+            compute_key = kwargs['computeKey']
+        if 'conditionTask' in kwargs:
+            condition_task = kwargs['conditionTask']
+        if 'dbtTask' in kwargs:
+            dbt_task = kwargs['dbtTask']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if 'emailNotifications' in kwargs:
+            email_notifications = kwargs['emailNotifications']
+        if 'existingClusterId' in kwargs:
+            existing_cluster_id = kwargs['existingClusterId']
+        if 'jobClusterKey' in kwargs:
+            job_cluster_key = kwargs['jobClusterKey']
+        if 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if 'minRetryIntervalMillis' in kwargs:
+            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
+        if 'newCluster' in kwargs:
+            new_cluster = kwargs['newCluster']
+        if 'notebookTask' in kwargs:
+            notebook_task = kwargs['notebookTask']
+        if 'notificationSettings' in kwargs:
+            notification_settings = kwargs['notificationSettings']
+        if 'pipelineTask' in kwargs:
+            pipeline_task = kwargs['pipelineTask']
+        if 'pythonWheelTask' in kwargs:
+            python_wheel_task = kwargs['pythonWheelTask']
+        if 'runIf' in kwargs:
+            run_if = kwargs['runIf']
+        if 'runJobTask' in kwargs:
+            run_job_task = kwargs['runJobTask']
+        if 'sparkJarTask' in kwargs:
+            spark_jar_task = kwargs['sparkJarTask']
+        if 'sparkPythonTask' in kwargs:
+            spark_python_task = kwargs['sparkPythonTask']
+        if 'sparkSubmitTask' in kwargs:
+            spark_submit_task = kwargs['sparkSubmitTask']
+        if 'sqlTask' in kwargs:
+            sql_task = kwargs['sqlTask']
+        if 'taskKey' in kwargs:
+            task_key = kwargs['taskKey']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         _setter("retry_on_timeout", retry_on_timeout)
         if compute_key is not None:
             _setter("compute_key", compute_key)
@@ -23193,7 +25745,9 @@ class GetJobJobSettingsSettingsTaskConditionTaskResult(dict):
              left: Optional[str] = None,
              op: Optional[str] = None,
              right: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if left is not None:
             _setter("left", left)
         if op is not None:
@@ -23244,7 +25798,15 @@ class GetJobJobSettingsSettingsTaskDbtTaskResult(dict):
              project_directory: Optional[str] = None,
              schema: Optional[str] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'profilesDirectory' in kwargs:
+            profiles_directory = kwargs['profilesDirectory']
+        if 'projectDirectory' in kwargs:
+            project_directory = kwargs['projectDirectory']
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         _setter("commands", commands)
         if catalog is not None:
             _setter("catalog", catalog)
@@ -23303,7 +25865,11 @@ class GetJobJobSettingsSettingsTaskDependsOnResult(dict):
              _setter: Callable[[Any, Any], None],
              task_key: str,
              outcome: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'taskKey' in kwargs:
+            task_key = kwargs['taskKey']
+
         _setter("task_key", task_key)
         if outcome is not None:
             _setter("outcome", outcome)
@@ -23346,7 +25912,21 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
              on_failures: Optional[Sequence[str]] = None,
              on_starts: Optional[Sequence[str]] = None,
              on_successes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
@@ -23403,7 +25983,9 @@ class GetJobJobSettingsSettingsTaskHealthResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              rules: Sequence['outputs.GetJobJobSettingsSettingsTaskHealthRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("rules", rules)
 
     @property
@@ -23430,7 +26012,9 @@ class GetJobJobSettingsSettingsTaskHealthRuleResult(dict):
              metric: Optional[str] = None,
              op: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if metric is not None:
             _setter("metric", metric)
         if op is not None:
@@ -23481,7 +26065,9 @@ class GetJobJobSettingsSettingsTaskLibraryResult(dict):
              maven: Optional['outputs.GetJobJobSettingsSettingsTaskLibraryMavenResult'] = None,
              pypi: Optional['outputs.GetJobJobSettingsSettingsTaskLibraryPypiResult'] = None,
              whl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cran is not None:
             _setter("cran", cran)
         if egg is not None:
@@ -23541,7 +26127,9 @@ class GetJobJobSettingsSettingsTaskLibraryCranResult(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -23575,7 +26163,9 @@ class GetJobJobSettingsSettingsTaskLibraryMavenResult(dict):
              coordinates: str,
              exclusions: Optional[Sequence[str]] = None,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("coordinates", coordinates)
         if exclusions is not None:
             _setter("exclusions", exclusions)
@@ -23613,7 +26203,9 @@ class GetJobJobSettingsSettingsTaskLibraryPypiResult(dict):
              _setter: Callable[[Any, Any], None],
              package: str,
              repo: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("package", package)
         if repo is not None:
             _setter("repo", repo)
@@ -23728,7 +26320,67 @@ class GetJobJobSettingsSettingsTaskNewClusterResult(dict):
              spark_env_vars: Optional[Mapping[str, Any]] = None,
              ssh_public_keys: Optional[Sequence[str]] = None,
              workload_type: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'driverInstancePoolId' in kwargs:
+            driver_instance_pool_id = kwargs['driverInstancePoolId']
+        if 'driverNodeTypeId' in kwargs:
+            driver_node_type_id = kwargs['driverNodeTypeId']
+        if 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if 'enableLocalDiskEncryption' in kwargs:
+            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
+        if 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if 'numWorkers' in kwargs:
+            num_workers = kwargs['numWorkers']
+        if 'sparkVersion' in kwargs:
+            spark_version = kwargs['sparkVersion']
+        if 'applyPolicyDefaultValues' in kwargs:
+            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
+        if 'autoterminationMinutes' in kwargs:
+            autotermination_minutes = kwargs['autoterminationMinutes']
+        if 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterLogConf' in kwargs:
+            cluster_log_conf = kwargs['clusterLogConf']
+        if 'clusterMountInfos' in kwargs:
+            cluster_mount_infos = kwargs['clusterMountInfos']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if 'dataSecurityMode' in kwargs:
+            data_security_mode = kwargs['dataSecurityMode']
+        if 'dockerImage' in kwargs:
+            docker_image = kwargs['dockerImage']
+        if 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if 'idempotencyToken' in kwargs:
+            idempotency_token = kwargs['idempotencyToken']
+        if 'initScripts' in kwargs:
+            init_scripts = kwargs['initScripts']
+        if 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'runtimeEngine' in kwargs:
+            runtime_engine = kwargs['runtimeEngine']
+        if 'singleUserName' in kwargs:
+            single_user_name = kwargs['singleUserName']
+        if 'sparkConf' in kwargs:
+            spark_conf = kwargs['sparkConf']
+        if 'sparkEnvVars' in kwargs:
+            spark_env_vars = kwargs['sparkEnvVars']
+        if 'sshPublicKeys' in kwargs:
+            ssh_public_keys = kwargs['sshPublicKeys']
+        if 'workloadType' in kwargs:
+            workload_type = kwargs['workloadType']
+
         _setter("driver_instance_pool_id", driver_instance_pool_id)
         _setter("driver_node_type_id", driver_node_type_id)
         _setter("enable_elastic_disk", enable_elastic_disk)
@@ -23949,7 +26601,13 @@ class GetJobJobSettingsSettingsTaskNewClusterAutoscaleResult(dict):
              _setter: Callable[[Any, Any], None],
              max_workers: Optional[int] = None,
              min_workers: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxWorkers' in kwargs:
+            max_workers = kwargs['maxWorkers']
+        if 'minWorkers' in kwargs:
+            min_workers = kwargs['minWorkers']
+
         if max_workers is not None:
             _setter("max_workers", max_workers)
         if min_workers is not None:
@@ -23999,7 +26657,23 @@ class GetJobJobSettingsSettingsTaskNewClusterAwsAttributesResult(dict):
              instance_profile_arn: Optional[str] = None,
              spot_bid_price_percent: Optional[int] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ebsVolumeCount' in kwargs:
+            ebs_volume_count = kwargs['ebsVolumeCount']
+        if 'ebsVolumeSize' in kwargs:
+            ebs_volume_size = kwargs['ebsVolumeSize']
+        if 'ebsVolumeType' in kwargs:
+            ebs_volume_type = kwargs['ebsVolumeType']
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if 'spotBidPricePercent' in kwargs:
+            spot_bid_price_percent = kwargs['spotBidPricePercent']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if ebs_volume_count is not None:
@@ -24076,7 +26750,13 @@ class GetJobJobSettingsSettingsTaskNewClusterAzureAttributesResult(dict):
              availability: Optional[str] = None,
              first_on_demand: Optional[int] = None,
              spot_bid_max_price: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstOnDemand' in kwargs:
+            first_on_demand = kwargs['firstOnDemand']
+        if 'spotBidMaxPrice' in kwargs:
+            spot_bid_max_price = kwargs['spotBidMaxPrice']
+
         if availability is not None:
             _setter("availability", availability)
         if first_on_demand is not None:
@@ -24115,7 +26795,9 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfResult(dict):
              _setter: Callable[[Any, Any], None],
              dbfs: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsResult'] = None,
              s3: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Result'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dbfs is not None:
             _setter("dbfs", dbfs)
         if s3 is not None:
@@ -24144,7 +26826,9 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -24183,7 +26867,17 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -24252,7 +26946,15 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoResult(dict):
              local_mount_dir_path: str,
              network_filesystem_info: 'outputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoResult',
              remote_mount_dir_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localMountDirPath' in kwargs:
+            local_mount_dir_path = kwargs['localMountDirPath']
+        if 'networkFilesystemInfo' in kwargs:
+            network_filesystem_info = kwargs['networkFilesystemInfo']
+        if 'remoteMountDirPath' in kwargs:
+            remote_mount_dir_path = kwargs['remoteMountDirPath']
+
         _setter("local_mount_dir_path", local_mount_dir_path)
         _setter("network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -24289,7 +26991,13 @@ class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemIn
              _setter: Callable[[Any, Any], None],
              server_address: str,
              mount_options: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'mountOptions' in kwargs:
+            mount_options = kwargs['mountOptions']
+
         _setter("server_address", server_address)
         if mount_options is not None:
             _setter("mount_options", mount_options)
@@ -24320,7 +27028,11 @@ class GetJobJobSettingsSettingsTaskNewClusterDockerImageResult(dict):
              _setter: Callable[[Any, Any], None],
              url: str,
              basic_auth: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'basicAuth' in kwargs:
+            basic_auth = kwargs['basicAuth']
+
         _setter("url", url)
         if basic_auth is not None:
             _setter("basic_auth", basic_auth)
@@ -24351,7 +27063,9 @@ class GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthResult(dict):
              _setter: Callable[[Any, Any], None],
              password: str,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("password", password)
         _setter("username", username)
 
@@ -24393,7 +27107,19 @@ class GetJobJobSettingsSettingsTaskNewClusterGcpAttributesResult(dict):
              local_ssd_count: Optional[int] = None,
              use_preemptible_executors: Optional[bool] = None,
              zone_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootDiskSize' in kwargs:
+            boot_disk_size = kwargs['bootDiskSize']
+        if 'googleServiceAccount' in kwargs:
+            google_service_account = kwargs['googleServiceAccount']
+        if 'localSsdCount' in kwargs:
+            local_ssd_count = kwargs['localSsdCount']
+        if 'usePreemptibleExecutors' in kwargs:
+            use_preemptible_executors = kwargs['usePreemptibleExecutors']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if availability is not None:
             _setter("availability", availability)
         if boot_disk_size is not None:
@@ -24468,7 +27194,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptResult(dict):
              s3: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result'] = None,
              volumes: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesResult'] = None,
              workspace: Optional['outputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceResult'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if abfss is not None:
             _setter("abfss", abfss)
         if dbfs is not None:
@@ -24532,7 +27260,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -24554,7 +27284,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -24575,7 +27307,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptFileResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -24597,7 +27331,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -24637,7 +27373,17 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Result(dict):
              endpoint: Optional[str] = None,
              kms_key: Optional[str] = None,
              region: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cannedAcl' in kwargs:
+            canned_acl = kwargs['cannedAcl']
+        if 'enableEncryption' in kwargs:
+            enable_encryption = kwargs['enableEncryption']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKey' in kwargs:
+            kms_key = kwargs['kmsKey']
+
         _setter("destination", destination)
         if canned_acl is not None:
             _setter("canned_acl", canned_acl)
@@ -24700,7 +27446,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -24722,7 +27470,9 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if destination is not None:
             _setter("destination", destination)
 
@@ -24744,7 +27494,9 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              clients: 'outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("clients", clients)
 
     @property
@@ -24768,7 +27520,9 @@ class GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsResult(dict):
              _setter: Callable[[Any, Any], None],
              jobs: Optional[bool] = None,
              notebooks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jobs is not None:
             _setter("jobs", jobs)
         if notebooks is not None:
@@ -24803,7 +27557,13 @@ class GetJobJobSettingsSettingsTaskNotebookTaskResult(dict):
              notebook_path: str,
              base_parameters: Optional[Mapping[str, Any]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if 'baseParameters' in kwargs:
+            base_parameters = kwargs['baseParameters']
+
         _setter("notebook_path", notebook_path)
         if base_parameters is not None:
             _setter("base_parameters", base_parameters)
@@ -24844,7 +27604,15 @@ class GetJobJobSettingsSettingsTaskNotificationSettingsResult(dict):
              alert_on_last_attempt: Optional[bool] = None,
              no_alert_for_canceled_runs: Optional[bool] = None,
              no_alert_for_skipped_runs: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertOnLastAttempt' in kwargs:
+            alert_on_last_attempt = kwargs['alertOnLastAttempt']
+        if 'noAlertForCanceledRuns' in kwargs:
+            no_alert_for_canceled_runs = kwargs['noAlertForCanceledRuns']
+        if 'noAlertForSkippedRuns' in kwargs:
+            no_alert_for_skipped_runs = kwargs['noAlertForSkippedRuns']
+
         if alert_on_last_attempt is not None:
             _setter("alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_canceled_runs is not None:
@@ -24883,7 +27651,13 @@ class GetJobJobSettingsSettingsTaskPipelineTaskResult(dict):
              _setter: Callable[[Any, Any], None],
              pipeline_id: str,
              full_refresh: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if 'fullRefresh' in kwargs:
+            full_refresh = kwargs['fullRefresh']
+
         _setter("pipeline_id", pipeline_id)
         if full_refresh is not None:
             _setter("full_refresh", full_refresh)
@@ -24920,7 +27694,15 @@ class GetJobJobSettingsSettingsTaskPythonWheelTaskResult(dict):
              named_parameters: Optional[Mapping[str, Any]] = None,
              package_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryPoint' in kwargs:
+            entry_point = kwargs['entryPoint']
+        if 'namedParameters' in kwargs:
+            named_parameters = kwargs['namedParameters']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+
         if entry_point is not None:
             _setter("entry_point", entry_point)
         if named_parameters is not None:
@@ -24966,7 +27748,13 @@ class GetJobJobSettingsSettingsTaskRunJobTaskResult(dict):
              _setter: Callable[[Any, Any], None],
              job_id: int,
              job_parameters: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'jobParameters' in kwargs:
+            job_parameters = kwargs['jobParameters']
+
         _setter("job_id", job_id)
         if job_parameters is not None:
             _setter("job_parameters", job_parameters)
@@ -25000,7 +27788,13 @@ class GetJobJobSettingsSettingsTaskSparkJarTaskResult(dict):
              jar_uri: Optional[str] = None,
              main_class_name: Optional[str] = None,
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jarUri' in kwargs:
+            jar_uri = kwargs['jarUri']
+        if 'mainClassName' in kwargs:
+            main_class_name = kwargs['mainClassName']
+
         if jar_uri is not None:
             _setter("jar_uri", jar_uri)
         if main_class_name is not None:
@@ -25042,7 +27836,11 @@ class GetJobJobSettingsSettingsTaskSparkPythonTaskResult(dict):
              python_file: str,
              parameters: Optional[Sequence[str]] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pythonFile' in kwargs:
+            python_file = kwargs['pythonFile']
+
         _setter("python_file", python_file)
         if parameters is not None:
             _setter("parameters", parameters)
@@ -25077,7 +27875,9 @@ class GetJobJobSettingsSettingsTaskSparkSubmitTaskResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              parameters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if parameters is not None:
             _setter("parameters", parameters)
 
@@ -25114,7 +27914,11 @@ class GetJobJobSettingsSettingsTaskSqlTaskResult(dict):
              parameters: Optional[Mapping[str, Any]] = None,
              query: Optional['outputs.GetJobJobSettingsSettingsTaskSqlTaskQueryResult'] = None,
              warehouse_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'warehouseId' in kwargs:
+            warehouse_id = kwargs['warehouseId']
+
         if alert is not None:
             _setter("alert", alert)
         if dashboard is not None:
@@ -25177,7 +27981,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertResult(dict):
              alert_id: str,
              subscriptions: Sequence['outputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionResult'],
              pause_subscriptions: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertId' in kwargs:
+            alert_id = kwargs['alertId']
+        if 'pauseSubscriptions' in kwargs:
+            pause_subscriptions = kwargs['pauseSubscriptions']
+
         _setter("alert_id", alert_id)
         _setter("subscriptions", subscriptions)
         if pause_subscriptions is not None:
@@ -25214,7 +28024,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionResult(dict):
              _setter: Callable[[Any, Any], None],
              destination_id: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationId' in kwargs:
+            destination_id = kwargs['destinationId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if destination_id is not None:
             _setter("destination_id", destination_id)
         if user_name is not None:
@@ -25252,7 +28068,15 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardResult(dict):
              custom_subject: Optional[str] = None,
              pause_subscriptions: Optional[bool] = None,
              subscriptions: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if 'customSubject' in kwargs:
+            custom_subject = kwargs['customSubject']
+        if 'pauseSubscriptions' in kwargs:
+            pause_subscriptions = kwargs['pauseSubscriptions']
+
         _setter("dashboard_id", dashboard_id)
         if custom_subject is not None:
             _setter("custom_subject", custom_subject)
@@ -25297,7 +28121,13 @@ class GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionResult(dict):
              _setter: Callable[[Any, Any], None],
              destination_id: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationId' in kwargs:
+            destination_id = kwargs['destinationId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if destination_id is not None:
             _setter("destination_id", destination_id)
         if user_name is not None:
@@ -25326,7 +28156,9 @@ class GetJobJobSettingsSettingsTaskSqlTaskFileResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
 
     @property
@@ -25347,7 +28179,11 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              query_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+
         _setter("query_id", query_id)
 
     @property
@@ -25371,7 +28207,13 @@ class GetJobJobSettingsSettingsTriggerResult(dict):
              _setter: Callable[[Any, Any], None],
              file_arrival: 'outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult',
              pause_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileArrival' in kwargs:
+            file_arrival = kwargs['fileArrival']
+        if 'pauseStatus' in kwargs:
+            pause_status = kwargs['pauseStatus']
+
         _setter("file_arrival", file_arrival)
         if pause_status is not None:
             _setter("pause_status", pause_status)
@@ -25405,7 +28247,13 @@ class GetJobJobSettingsSettingsTriggerFileArrivalResult(dict):
              url: str,
              min_time_between_triggers_seconds: Optional[int] = None,
              wait_after_last_change_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'minTimeBetweenTriggersSeconds' in kwargs:
+            min_time_between_triggers_seconds = kwargs['minTimeBetweenTriggersSeconds']
+        if 'waitAfterLastChangeSeconds' in kwargs:
+            wait_after_last_change_seconds = kwargs['waitAfterLastChangeSeconds']
+
         _setter("url", url)
         if min_time_between_triggers_seconds is not None:
             _setter("min_time_between_triggers_seconds", min_time_between_triggers_seconds)
@@ -25449,7 +28297,17 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
              on_failures: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult']] = None,
              on_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartResult']] = None,
              on_successes: Optional[Sequence['outputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'onDurationWarningThresholdExceededs' in kwargs:
+            on_duration_warning_threshold_exceededs = kwargs['onDurationWarningThresholdExceededs']
+        if 'onFailures' in kwargs:
+            on_failures = kwargs['onFailures']
+        if 'onStarts' in kwargs:
+            on_starts = kwargs['onStarts']
+        if 'onSuccesses' in kwargs:
+            on_successes = kwargs['onSuccesses']
+
         if on_duration_warning_threshold_exceededs is not None:
             _setter("on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -25495,7 +28353,9 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExc
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -25522,7 +28382,9 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -25549,7 +28411,9 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -25576,7 +28440,9 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -25660,7 +28526,37 @@ class GetMetastoreMetastoreInfoResult(dict):
              storage_root_credential_name: Optional[str] = None,
              updated_at: Optional[int] = None,
              updated_by: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'defaultDataAccessConfigId' in kwargs:
+            default_data_access_config_id = kwargs['defaultDataAccessConfigId']
+        if 'deltaSharingOrganizationName' in kwargs:
+            delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
+        if 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
+            delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
+        if 'deltaSharingScope' in kwargs:
+            delta_sharing_scope = kwargs['deltaSharingScope']
+        if 'globalMetastoreId' in kwargs:
+            global_metastore_id = kwargs['globalMetastoreId']
+        if 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if 'privilegeModelVersion' in kwargs:
+            privilege_model_version = kwargs['privilegeModelVersion']
+        if 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+        if 'storageRootCredentialId' in kwargs:
+            storage_root_credential_id = kwargs['storageRootCredentialId']
+        if 'storageRootCredentialName' in kwargs:
+            storage_root_credential_name = kwargs['storageRootCredentialName']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         if cloud is not None:
             _setter("cloud", cloud)
         if created_at is not None:
@@ -25828,7 +28724,9 @@ class GetNotebookPathsNotebookPathListResult(dict):
              _setter: Callable[[Any, Any], None],
              language: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if language is not None:
             _setter("language", language)
         if path is not None:
@@ -25895,7 +28793,23 @@ class GetShareObjectResult(dict):
              partitions: Optional[Sequence['outputs.GetShareObjectPartitionResult']] = None,
              shared_as: Optional[str] = None,
              start_version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addedAt' in kwargs:
+            added_at = kwargs['addedAt']
+        if 'addedBy' in kwargs:
+            added_by = kwargs['addedBy']
+        if 'dataObjectType' in kwargs:
+            data_object_type = kwargs['dataObjectType']
+        if 'cdfEnabled' in kwargs:
+            cdf_enabled = kwargs['cdfEnabled']
+        if 'historyDataSharingStatus' in kwargs:
+            history_data_sharing_status = kwargs['historyDataSharingStatus']
+        if 'sharedAs' in kwargs:
+            shared_as = kwargs['sharedAs']
+        if 'startVersion' in kwargs:
+            start_version = kwargs['startVersion']
+
         _setter("added_at", added_at)
         _setter("added_by", added_by)
         _setter("data_object_type", data_object_type)
@@ -25991,7 +28905,9 @@ class GetShareObjectPartitionResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence['outputs.GetShareObjectPartitionValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -26024,7 +28940,11 @@ class GetShareObjectPartitionValueResult(dict):
              op: str,
              recipient_property_key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'recipientPropertyKey' in kwargs:
+            recipient_property_key = kwargs['recipientPropertyKey']
+
         _setter("name", name)
         _setter("op", op)
         if recipient_property_key is not None:
@@ -26071,7 +28991,9 @@ class GetSqlWarehouseChannelResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -26108,7 +29030,9 @@ class GetSqlWarehouseOdbcParamsResult(dict):
              protocol: str,
              host: Optional[str] = None,
              hostname: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
         _setter("port", port)
         _setter("protocol", protocol)
@@ -26155,7 +29079,11 @@ class GetSqlWarehouseTagsResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              custom_tags: Sequence['outputs.GetSqlWarehouseTagsCustomTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+
         _setter("custom_tags", custom_tags)
 
     @property
@@ -26179,7 +29107,9 @@ class GetSqlWarehouseTagsCustomTagResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 

@@ -58,7 +58,17 @@ class MountArgs:
              s3: Optional[pulumi.Input['MountS3Args']] = None,
              uri: Optional[pulumi.Input[str]] = None,
              wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'extraConfigs' in kwargs:
+            extra_configs = kwargs['extraConfigs']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if abfs is not None:
             _setter("abfs", abfs)
         if adl is not None:
@@ -231,7 +241,17 @@ class _MountState:
              source: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
              wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'extraConfigs' in kwargs:
+            extra_configs = kwargs['extraConfigs']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if abfs is not None:
             _setter("abfs", abfs)
         if adl is not None:
