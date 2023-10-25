@@ -32,7 +32,7 @@ import (
 //			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
 //				SecurityPolicy:     pulumi.String("DATA_ACCESS_CONTROL"),
 //				InstanceProfileArn: pulumi.String("arn:...."),
-//				DataAccessConfig: pulumi.AnyMap{
+//				DataAccessConfig: pulumi.Map{
 //					"spark.sql.session.timeZone": pulumi.Any("UTC"),
 //				},
 //			})
@@ -64,14 +64,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewSqlGlobalConfig(ctx, "this", &databricks.SqlGlobalConfigArgs{
 //				SecurityPolicy: pulumi.String("DATA_ACCESS_CONTROL"),
-//				DataAccessConfig: pulumi.AnyMap{
+//				DataAccessConfig: pulumi.Map{
 //					"spark.hadoop.fs.azure.account.auth.type":              pulumi.Any("OAuth"),
 //					"spark.hadoop.fs.azure.account.oauth.provider.type":    pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
 //					"spark.hadoop.fs.azure.account.oauth2.client.id":       pulumi.Any(_var.Application_id),
 //					"spark.hadoop.fs.azure.account.oauth2.client.secret":   pulumi.Any(fmt.Sprintf("{{secrets/%v/%v}}", local.Secret_scope, local.Secret_key)),
 //					"spark.hadoop.fs.azure.account.oauth2.client.endpoint": pulumi.Any(fmt.Sprintf("https://login.microsoftonline.com/%v/oauth2/token", _var.Tenant_id)),
 //				},
-//				SqlConfigParams: pulumi.AnyMap{
+//				SqlConfigParams: pulumi.Map{
 //					"ANSI_MODE": pulumi.Any("true"),
 //				},
 //			})

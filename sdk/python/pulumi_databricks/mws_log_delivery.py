@@ -56,38 +56,48 @@ class MwsLogDeliveryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             credentials_id: pulumi.Input[str],
-             log_type: pulumi.Input[str],
-             output_format: pulumi.Input[str],
-             storage_configuration_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             credentials_id: Optional[pulumi.Input[str]] = None,
+             log_type: Optional[pulumi.Input[str]] = None,
+             output_format: Optional[pulumi.Input[str]] = None,
+             storage_configuration_id: Optional[pulumi.Input[str]] = None,
              config_id: Optional[pulumi.Input[str]] = None,
              config_name: Optional[pulumi.Input[str]] = None,
              delivery_path_prefix: Optional[pulumi.Input[str]] = None,
              delivery_start_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'credentialsId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if credentials_id is None and 'credentialsId' in kwargs:
             credentials_id = kwargs['credentialsId']
-        if 'logType' in kwargs:
+        if credentials_id is None:
+            raise TypeError("Missing 'credentials_id' argument")
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
-        if 'outputFormat' in kwargs:
+        if log_type is None:
+            raise TypeError("Missing 'log_type' argument")
+        if output_format is None and 'outputFormat' in kwargs:
             output_format = kwargs['outputFormat']
-        if 'storageConfigurationId' in kwargs:
+        if output_format is None:
+            raise TypeError("Missing 'output_format' argument")
+        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
             storage_configuration_id = kwargs['storageConfigurationId']
-        if 'configId' in kwargs:
+        if storage_configuration_id is None:
+            raise TypeError("Missing 'storage_configuration_id' argument")
+        if config_id is None and 'configId' in kwargs:
             config_id = kwargs['configId']
-        if 'configName' in kwargs:
+        if config_name is None and 'configName' in kwargs:
             config_name = kwargs['configName']
-        if 'deliveryPathPrefix' in kwargs:
+        if delivery_path_prefix is None and 'deliveryPathPrefix' in kwargs:
             delivery_path_prefix = kwargs['deliveryPathPrefix']
-        if 'deliveryStartTime' in kwargs:
+        if delivery_start_time is None and 'deliveryStartTime' in kwargs:
             delivery_start_time = kwargs['deliveryStartTime']
-        if 'workspaceIdsFilters' in kwargs:
+        if workspace_ids_filters is None and 'workspaceIdsFilters' in kwargs:
             workspace_ids_filters = kwargs['workspaceIdsFilters']
 
         _setter("account_id", account_id)
@@ -297,27 +307,27 @@ class _MwsLogDeliveryState:
              status: Optional[pulumi.Input[str]] = None,
              storage_configuration_id: Optional[pulumi.Input[str]] = None,
              workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'configId' in kwargs:
+        if config_id is None and 'configId' in kwargs:
             config_id = kwargs['configId']
-        if 'configName' in kwargs:
+        if config_name is None and 'configName' in kwargs:
             config_name = kwargs['configName']
-        if 'credentialsId' in kwargs:
+        if credentials_id is None and 'credentialsId' in kwargs:
             credentials_id = kwargs['credentialsId']
-        if 'deliveryPathPrefix' in kwargs:
+        if delivery_path_prefix is None and 'deliveryPathPrefix' in kwargs:
             delivery_path_prefix = kwargs['deliveryPathPrefix']
-        if 'deliveryStartTime' in kwargs:
+        if delivery_start_time is None and 'deliveryStartTime' in kwargs:
             delivery_start_time = kwargs['deliveryStartTime']
-        if 'logType' in kwargs:
+        if log_type is None and 'logType' in kwargs:
             log_type = kwargs['logType']
-        if 'outputFormat' in kwargs:
+        if output_format is None and 'outputFormat' in kwargs:
             output_format = kwargs['outputFormat']
-        if 'storageConfigurationId' in kwargs:
+        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
             storage_configuration_id = kwargs['storageConfigurationId']
-        if 'workspaceIdsFilters' in kwargs:
+        if workspace_ids_filters is None and 'workspaceIdsFilters' in kwargs:
             workspace_ids_filters = kwargs['workspaceIdsFilters']
 
         if account_id is not None:

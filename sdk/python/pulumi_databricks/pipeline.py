@@ -85,9 +85,9 @@ class PipelineArgs:
              serverless: Optional[pulumi.Input[bool]] = None,
              storage: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowDuplicateNames' in kwargs:
+        if allow_duplicate_names is None and 'allowDuplicateNames' in kwargs:
             allow_duplicate_names = kwargs['allowDuplicateNames']
 
         if allow_duplicate_names is not None:
@@ -379,9 +379,9 @@ class _PipelineState:
              storage: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowDuplicateNames' in kwargs:
+        if allow_duplicate_names is None and 'allowDuplicateNames' in kwargs:
             allow_duplicate_names = kwargs['allowDuplicateNames']
 
         if allow_duplicate_names is not None:
@@ -862,11 +862,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["development"] = development
             __props__.__dict__["edition"] = edition
-            if filters is not None and not isinstance(filters, PipelineFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                PipelineFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, PipelineFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["name"] = name

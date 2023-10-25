@@ -55,7 +55,7 @@ class MetastoreDataAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metastore_id: pulumi.Input[str],
+             metastore_id: Optional[pulumi.Input[str]] = None,
              aws_iam_role: Optional[pulumi.Input['MetastoreDataAccessAwsIamRoleArgs']] = None,
              azure_managed_identity: Optional[pulumi.Input['MetastoreDataAccessAzureManagedIdentityArgs']] = None,
              azure_service_principal: Optional[pulumi.Input['MetastoreDataAccessAzureServicePrincipalArgs']] = None,
@@ -67,25 +67,27 @@ class MetastoreDataAccessArgs:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'awsIamRole' in kwargs:
+        if metastore_id is None:
+            raise TypeError("Missing 'metastore_id' argument")
+        if aws_iam_role is None and 'awsIamRole' in kwargs:
             aws_iam_role = kwargs['awsIamRole']
-        if 'azureManagedIdentity' in kwargs:
+        if azure_managed_identity is None and 'azureManagedIdentity' in kwargs:
             azure_managed_identity = kwargs['azureManagedIdentity']
-        if 'azureServicePrincipal' in kwargs:
+        if azure_service_principal is None and 'azureServicePrincipal' in kwargs:
             azure_service_principal = kwargs['azureServicePrincipal']
-        if 'databricksGcpServiceAccount' in kwargs:
+        if databricks_gcp_service_account is None and 'databricksGcpServiceAccount' in kwargs:
             databricks_gcp_service_account = kwargs['databricksGcpServiceAccount']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'gcpServiceAccountKey' in kwargs:
+        if gcp_service_account_key is None and 'gcpServiceAccountKey' in kwargs:
             gcp_service_account_key = kwargs['gcpServiceAccountKey']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         _setter("metastore_id", metastore_id)
@@ -289,25 +291,25 @@ class _MetastoreDataAccessState:
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsIamRole' in kwargs:
+        if aws_iam_role is None and 'awsIamRole' in kwargs:
             aws_iam_role = kwargs['awsIamRole']
-        if 'azureManagedIdentity' in kwargs:
+        if azure_managed_identity is None and 'azureManagedIdentity' in kwargs:
             azure_managed_identity = kwargs['azureManagedIdentity']
-        if 'azureServicePrincipal' in kwargs:
+        if azure_service_principal is None and 'azureServicePrincipal' in kwargs:
             azure_service_principal = kwargs['azureServicePrincipal']
-        if 'databricksGcpServiceAccount' in kwargs:
+        if databricks_gcp_service_account is None and 'databricksGcpServiceAccount' in kwargs:
             databricks_gcp_service_account = kwargs['databricksGcpServiceAccount']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'gcpServiceAccountKey' in kwargs:
+        if gcp_service_account_key is None and 'gcpServiceAccountKey' in kwargs:
             gcp_service_account_key = kwargs['gcpServiceAccountKey']
-        if 'isDefault' in kwargs:
+        if is_default is None and 'isDefault' in kwargs:
             is_default = kwargs['isDefault']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if aws_iam_role is not None:
@@ -553,37 +555,17 @@ class MetastoreDataAccess(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetastoreDataAccessArgs.__new__(MetastoreDataAccessArgs)
 
-            if aws_iam_role is not None and not isinstance(aws_iam_role, MetastoreDataAccessAwsIamRoleArgs):
-                aws_iam_role = aws_iam_role or {}
-                def _setter(key, value):
-                    aws_iam_role[key] = value
-                MetastoreDataAccessAwsIamRoleArgs._configure(_setter, **aws_iam_role)
+            aws_iam_role = _utilities.configure(aws_iam_role, MetastoreDataAccessAwsIamRoleArgs, True)
             __props__.__dict__["aws_iam_role"] = aws_iam_role
-            if azure_managed_identity is not None and not isinstance(azure_managed_identity, MetastoreDataAccessAzureManagedIdentityArgs):
-                azure_managed_identity = azure_managed_identity or {}
-                def _setter(key, value):
-                    azure_managed_identity[key] = value
-                MetastoreDataAccessAzureManagedIdentityArgs._configure(_setter, **azure_managed_identity)
+            azure_managed_identity = _utilities.configure(azure_managed_identity, MetastoreDataAccessAzureManagedIdentityArgs, True)
             __props__.__dict__["azure_managed_identity"] = azure_managed_identity
-            if azure_service_principal is not None and not isinstance(azure_service_principal, MetastoreDataAccessAzureServicePrincipalArgs):
-                azure_service_principal = azure_service_principal or {}
-                def _setter(key, value):
-                    azure_service_principal[key] = value
-                MetastoreDataAccessAzureServicePrincipalArgs._configure(_setter, **azure_service_principal)
+            azure_service_principal = _utilities.configure(azure_service_principal, MetastoreDataAccessAzureServicePrincipalArgs, True)
             __props__.__dict__["azure_service_principal"] = azure_service_principal
             __props__.__dict__["comment"] = comment
-            if databricks_gcp_service_account is not None and not isinstance(databricks_gcp_service_account, MetastoreDataAccessDatabricksGcpServiceAccountArgs):
-                databricks_gcp_service_account = databricks_gcp_service_account or {}
-                def _setter(key, value):
-                    databricks_gcp_service_account[key] = value
-                MetastoreDataAccessDatabricksGcpServiceAccountArgs._configure(_setter, **databricks_gcp_service_account)
+            databricks_gcp_service_account = _utilities.configure(databricks_gcp_service_account, MetastoreDataAccessDatabricksGcpServiceAccountArgs, True)
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
-            if gcp_service_account_key is not None and not isinstance(gcp_service_account_key, MetastoreDataAccessGcpServiceAccountKeyArgs):
-                gcp_service_account_key = gcp_service_account_key or {}
-                def _setter(key, value):
-                    gcp_service_account_key[key] = value
-                MetastoreDataAccessGcpServiceAccountKeyArgs._configure(_setter, **gcp_service_account_key)
+            gcp_service_account_key = _utilities.configure(gcp_service_account_key, MetastoreDataAccessGcpServiceAccountKeyArgs, True)
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["is_default"] = is_default
             if metastore_id is None and not opts.urn:

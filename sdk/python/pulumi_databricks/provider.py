@@ -110,55 +110,55 @@ class ProviderArgs:
              token: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
              warehouse_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'authType' in kwargs:
+        if auth_type is None and 'authType' in kwargs:
             auth_type = kwargs['authType']
-        if 'azureClientId' in kwargs:
+        if azure_client_id is None and 'azureClientId' in kwargs:
             azure_client_id = kwargs['azureClientId']
-        if 'azureClientSecret' in kwargs:
+        if azure_client_secret is None and 'azureClientSecret' in kwargs:
             azure_client_secret = kwargs['azureClientSecret']
-        if 'azureEnvironment' in kwargs:
+        if azure_environment is None and 'azureEnvironment' in kwargs:
             azure_environment = kwargs['azureEnvironment']
-        if 'azureLoginAppId' in kwargs:
+        if azure_login_app_id is None and 'azureLoginAppId' in kwargs:
             azure_login_app_id = kwargs['azureLoginAppId']
-        if 'azureTenantId' in kwargs:
+        if azure_tenant_id is None and 'azureTenantId' in kwargs:
             azure_tenant_id = kwargs['azureTenantId']
-        if 'azureUseMsi' in kwargs:
+        if azure_use_msi is None and 'azureUseMsi' in kwargs:
             azure_use_msi = kwargs['azureUseMsi']
-        if 'azureWorkspaceResourceId' in kwargs:
+        if azure_workspace_resource_id is None and 'azureWorkspaceResourceId' in kwargs:
             azure_workspace_resource_id = kwargs['azureWorkspaceResourceId']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configFile' in kwargs:
+        if config_file is None and 'configFile' in kwargs:
             config_file = kwargs['configFile']
-        if 'databricksCliPath' in kwargs:
+        if databricks_cli_path is None and 'databricksCliPath' in kwargs:
             databricks_cli_path = kwargs['databricksCliPath']
-        if 'debugHeaders' in kwargs:
+        if debug_headers is None and 'debugHeaders' in kwargs:
             debug_headers = kwargs['debugHeaders']
-        if 'debugTruncateBytes' in kwargs:
+        if debug_truncate_bytes is None and 'debugTruncateBytes' in kwargs:
             debug_truncate_bytes = kwargs['debugTruncateBytes']
-        if 'googleCredentials' in kwargs:
+        if google_credentials is None and 'googleCredentials' in kwargs:
             google_credentials = kwargs['googleCredentials']
-        if 'googleServiceAccount' in kwargs:
+        if google_service_account is None and 'googleServiceAccount' in kwargs:
             google_service_account = kwargs['googleServiceAccount']
-        if 'httpTimeoutSeconds' in kwargs:
+        if http_timeout_seconds is None and 'httpTimeoutSeconds' in kwargs:
             http_timeout_seconds = kwargs['httpTimeoutSeconds']
-        if 'metadataServiceUrl' in kwargs:
+        if metadata_service_url is None and 'metadataServiceUrl' in kwargs:
             metadata_service_url = kwargs['metadataServiceUrl']
-        if 'rateLimit' in kwargs:
+        if rate_limit is None and 'rateLimit' in kwargs:
             rate_limit = kwargs['rateLimit']
-        if 'retryTimeoutSeconds' in kwargs:
+        if retry_timeout_seconds is None and 'retryTimeoutSeconds' in kwargs:
             retry_timeout_seconds = kwargs['retryTimeoutSeconds']
-        if 'skipVerify' in kwargs:
+        if skip_verify is None and 'skipVerify' in kwargs:
             skip_verify = kwargs['skipVerify']
-        if 'warehouseId' in kwargs:
+        if warehouse_id is None and 'warehouseId' in kwargs:
             warehouse_id = kwargs['warehouseId']
 
         if account_id is not None:

@@ -27,12 +27,16 @@ class PermissionAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             principal_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             principal_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'principalId' in kwargs:
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
 
         _setter("permissions", permissions)
         _setter("principal_id", principal_id)
@@ -74,9 +78,9 @@ class _PermissionAssignmentState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              principal_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'principalId' in kwargs:
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
 
         if permissions is not None:

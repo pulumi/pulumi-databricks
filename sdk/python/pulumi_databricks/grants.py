@@ -53,7 +53,7 @@ class GrantsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             grants: pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]],
+             grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
              catalog: Optional[pulumi.Input[str]] = None,
              external_location: Optional[pulumi.Input[str]] = None,
              foreign_connection: Optional[pulumi.Input[str]] = None,
@@ -67,15 +67,17 @@ class GrantsArgs:
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
              volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalLocation' in kwargs:
+        if grants is None:
+            raise TypeError("Missing 'grants' argument")
+        if external_location is None and 'externalLocation' in kwargs:
             external_location = kwargs['externalLocation']
-        if 'foreignConnection' in kwargs:
+        if foreign_connection is None and 'foreignConnection' in kwargs:
             foreign_connection = kwargs['foreignConnection']
-        if 'materializedView' in kwargs:
+        if materialized_view is None and 'materializedView' in kwargs:
             materialized_view = kwargs['materializedView']
-        if 'storageCredential' in kwargs:
+        if storage_credential is None and 'storageCredential' in kwargs:
             storage_credential = kwargs['storageCredential']
 
         _setter("grants", grants)
@@ -287,15 +289,15 @@ class _GrantsState:
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
              volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'externalLocation' in kwargs:
+        if external_location is None and 'externalLocation' in kwargs:
             external_location = kwargs['externalLocation']
-        if 'foreignConnection' in kwargs:
+        if foreign_connection is None and 'foreignConnection' in kwargs:
             foreign_connection = kwargs['foreignConnection']
-        if 'materializedView' in kwargs:
+        if materialized_view is None and 'materializedView' in kwargs:
             materialized_view = kwargs['materializedView']
-        if 'storageCredential' in kwargs:
+        if storage_credential is None and 'storageCredential' in kwargs:
             storage_credential = kwargs['storageCredential']
 
         if catalog is not None:

@@ -46,13 +46,13 @@ class MlflowModelArgs:
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTimestamp' in kwargs:
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
             creation_timestamp = kwargs['creationTimestamp']
-        if 'lastUpdatedTimestamp' in kwargs:
+        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
             last_updated_timestamp = kwargs['lastUpdatedTimestamp']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if creation_timestamp is not None:
@@ -168,15 +168,15 @@ class _MlflowModelState:
              registered_model_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTimestamp' in kwargs:
+        if creation_timestamp is None and 'creationTimestamp' in kwargs:
             creation_timestamp = kwargs['creationTimestamp']
-        if 'lastUpdatedTimestamp' in kwargs:
+        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
             last_updated_timestamp = kwargs['lastUpdatedTimestamp']
-        if 'registeredModelId' in kwargs:
+        if registered_model_id is None and 'registeredModelId' in kwargs:
             registered_model_id = kwargs['registeredModelId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if creation_timestamp is not None:

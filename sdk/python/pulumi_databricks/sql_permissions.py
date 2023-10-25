@@ -55,15 +55,15 @@ class SqlPermissionsArgs:
              privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'anonymousFunction' in kwargs:
+        if anonymous_function is None and 'anonymousFunction' in kwargs:
             anonymous_function = kwargs['anonymousFunction']
-        if 'anyFile' in kwargs:
+        if any_file is None and 'anyFile' in kwargs:
             any_file = kwargs['anyFile']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'privilegeAssignments' in kwargs:
+        if privilege_assignments is None and 'privilegeAssignments' in kwargs:
             privilege_assignments = kwargs['privilegeAssignments']
 
         if anonymous_function is not None:
@@ -216,15 +216,15 @@ class _SqlPermissionsState:
              privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
              table: Optional[pulumi.Input[str]] = None,
              view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'anonymousFunction' in kwargs:
+        if anonymous_function is None and 'anonymousFunction' in kwargs:
             anonymous_function = kwargs['anonymousFunction']
-        if 'anyFile' in kwargs:
+        if any_file is None and 'anyFile' in kwargs:
             any_file = kwargs['anyFile']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'privilegeAssignments' in kwargs:
+        if privilege_assignments is None and 'privilegeAssignments' in kwargs:
             privilege_assignments = kwargs['privilegeAssignments']
 
         if anonymous_function is not None:

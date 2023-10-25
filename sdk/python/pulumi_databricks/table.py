@@ -49,11 +49,11 @@ class TableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_name: pulumi.Input[str],
-             columns: pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]],
-             data_source_format: pulumi.Input[str],
-             schema_name: pulumi.Input[str],
-             table_type: pulumi.Input[str],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]]] = None,
+             data_source_format: Optional[pulumi.Input[str]] = None,
+             schema_name: Optional[pulumi.Input[str]] = None,
+             table_type: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
@@ -61,21 +61,31 @@ class TableArgs:
              storage_credential_name: Optional[pulumi.Input[str]] = None,
              storage_location: Optional[pulumi.Input[str]] = None,
              view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'dataSourceFormat' in kwargs:
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if columns is None:
+            raise TypeError("Missing 'columns' argument")
+        if data_source_format is None and 'dataSourceFormat' in kwargs:
             data_source_format = kwargs['dataSourceFormat']
-        if 'schemaName' in kwargs:
+        if data_source_format is None:
+            raise TypeError("Missing 'data_source_format' argument")
+        if schema_name is None and 'schemaName' in kwargs:
             schema_name = kwargs['schemaName']
-        if 'tableType' in kwargs:
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if table_type is None and 'tableType' in kwargs:
             table_type = kwargs['tableType']
-        if 'storageCredentialName' in kwargs:
+        if table_type is None:
+            raise TypeError("Missing 'table_type' argument")
+        if storage_credential_name is None and 'storageCredentialName' in kwargs:
             storage_credential_name = kwargs['storageCredentialName']
-        if 'storageLocation' in kwargs:
+        if storage_location is None and 'storageLocation' in kwargs:
             storage_location = kwargs['storageLocation']
-        if 'viewDefinition' in kwargs:
+        if view_definition is None and 'viewDefinition' in kwargs:
             view_definition = kwargs['viewDefinition']
 
         _setter("catalog_name", catalog_name)
@@ -255,21 +265,21 @@ class _TableState:
              storage_location: Optional[pulumi.Input[str]] = None,
              table_type: Optional[pulumi.Input[str]] = None,
              view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'dataSourceFormat' in kwargs:
+        if data_source_format is None and 'dataSourceFormat' in kwargs:
             data_source_format = kwargs['dataSourceFormat']
-        if 'schemaName' in kwargs:
+        if schema_name is None and 'schemaName' in kwargs:
             schema_name = kwargs['schemaName']
-        if 'storageCredentialName' in kwargs:
+        if storage_credential_name is None and 'storageCredentialName' in kwargs:
             storage_credential_name = kwargs['storageCredentialName']
-        if 'storageLocation' in kwargs:
+        if storage_location is None and 'storageLocation' in kwargs:
             storage_location = kwargs['storageLocation']
-        if 'tableType' in kwargs:
+        if table_type is None and 'tableType' in kwargs:
             table_type = kwargs['tableType']
-        if 'viewDefinition' in kwargs:
+        if view_definition is None and 'viewDefinition' in kwargs:
             view_definition = kwargs['viewDefinition']
 
         if catalog_name is not None:

@@ -32,17 +32,23 @@ class MwsCredentialsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             credentials_name: pulumi.Input[str],
-             role_arn: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             credentials_name: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'credentialsName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if credentials_name is None and 'credentialsName' in kwargs:
             credentials_name = kwargs['credentialsName']
-        if 'roleArn' in kwargs:
+        if credentials_name is None:
+            raise TypeError("Missing 'credentials_name' argument")
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
+        if role_arn is None:
+            raise TypeError("Missing 'role_arn' argument")
 
         _setter("account_id", account_id)
         _setter("credentials_name", credentials_name)
@@ -120,19 +126,19 @@ class _MwsCredentialsState:
              credentials_name: Optional[pulumi.Input[str]] = None,
              external_id: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'credentialsId' in kwargs:
+        if credentials_id is None and 'credentialsId' in kwargs:
             credentials_id = kwargs['credentialsId']
-        if 'credentialsName' in kwargs:
+        if credentials_name is None and 'credentialsName' in kwargs:
             credentials_name = kwargs['credentialsName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'roleArn' in kwargs:
+        if role_arn is None and 'roleArn' in kwargs:
             role_arn = kwargs['roleArn']
 
         if account_id is not None:

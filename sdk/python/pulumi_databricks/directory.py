@@ -31,14 +31,16 @@ class DirectoryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              delete_recursive: Optional[pulumi.Input[bool]] = None,
              object_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteRecursive' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if delete_recursive is None and 'deleteRecursive' in kwargs:
             delete_recursive = kwargs['deleteRecursive']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
 
         _setter("path", path)
@@ -104,11 +106,11 @@ class _DirectoryState:
              delete_recursive: Optional[pulumi.Input[bool]] = None,
              object_id: Optional[pulumi.Input[int]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'deleteRecursive' in kwargs:
+        if delete_recursive is None and 'deleteRecursive' in kwargs:
             delete_recursive = kwargs['deleteRecursive']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
 
         if delete_recursive is not None:

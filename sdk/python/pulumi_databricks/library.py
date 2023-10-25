@@ -39,17 +39,19 @@ class LibraryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
              egg: Optional[pulumi.Input[str]] = None,
              jar: Optional[pulumi.Input[str]] = None,
              maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
              pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
              whl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
 
         _setter("cluster_id", cluster_id)
         if cran is not None:
@@ -162,9 +164,9 @@ class _LibraryState:
              maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
              pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
              whl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
 
         if cluster_id is not None:
@@ -574,25 +576,13 @@ class Library(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if cran is not None and not isinstance(cran, LibraryCranArgs):
-                cran = cran or {}
-                def _setter(key, value):
-                    cran[key] = value
-                LibraryCranArgs._configure(_setter, **cran)
+            cran = _utilities.configure(cran, LibraryCranArgs, True)
             __props__.__dict__["cran"] = cran
             __props__.__dict__["egg"] = egg
             __props__.__dict__["jar"] = jar
-            if maven is not None and not isinstance(maven, LibraryMavenArgs):
-                maven = maven or {}
-                def _setter(key, value):
-                    maven[key] = value
-                LibraryMavenArgs._configure(_setter, **maven)
+            maven = _utilities.configure(maven, LibraryMavenArgs, True)
             __props__.__dict__["maven"] = maven
-            if pypi is not None and not isinstance(pypi, LibraryPypiArgs):
-                pypi = pypi or {}
-                def _setter(key, value):
-                    pypi[key] = value
-                LibraryPypiArgs._configure(_setter, **pypi)
+            pypi = _utilities.configure(pypi, LibraryPypiArgs, True)
             __props__.__dict__["pypi"] = pypi
             __props__.__dict__["whl"] = whl
         super(Library, __self__).__init__(

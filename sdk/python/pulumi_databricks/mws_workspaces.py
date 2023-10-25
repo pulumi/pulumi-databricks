@@ -92,8 +92,8 @@ class MwsWorkspacesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             workspace_name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             workspace_name: Optional[pulumi.Input[str]] = None,
              aws_region: Optional[pulumi.Input[str]] = None,
              cloud: Optional[pulumi.Input[str]] = None,
              cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
@@ -117,51 +117,55 @@ class MwsWorkspacesArgs:
              workspace_status: Optional[pulumi.Input[str]] = None,
              workspace_status_message: Optional[pulumi.Input[str]] = None,
              workspace_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'workspaceName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if workspace_name is None and 'workspaceName' in kwargs:
             workspace_name = kwargs['workspaceName']
-        if 'awsRegion' in kwargs:
+        if workspace_name is None:
+            raise TypeError("Missing 'workspace_name' argument")
+        if aws_region is None and 'awsRegion' in kwargs:
             aws_region = kwargs['awsRegion']
-        if 'cloudResourceContainer' in kwargs:
+        if cloud_resource_container is None and 'cloudResourceContainer' in kwargs:
             cloud_resource_container = kwargs['cloudResourceContainer']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'credentialsId' in kwargs:
+        if credentials_id is None and 'credentialsId' in kwargs:
             credentials_id = kwargs['credentialsId']
-        if 'customerManagedKeyId' in kwargs:
+        if customer_managed_key_id is None and 'customerManagedKeyId' in kwargs:
             customer_managed_key_id = kwargs['customerManagedKeyId']
-        if 'deploymentName' in kwargs:
+        if deployment_name is None and 'deploymentName' in kwargs:
             deployment_name = kwargs['deploymentName']
-        if 'externalCustomerInfo' in kwargs:
+        if external_customer_info is None and 'externalCustomerInfo' in kwargs:
             external_customer_info = kwargs['externalCustomerInfo']
-        if 'gcpManagedNetworkConfig' in kwargs:
+        if gcp_managed_network_config is None and 'gcpManagedNetworkConfig' in kwargs:
             gcp_managed_network_config = kwargs['gcpManagedNetworkConfig']
-        if 'gkeConfig' in kwargs:
+        if gke_config is None and 'gkeConfig' in kwargs:
             gke_config = kwargs['gkeConfig']
-        if 'isNoPublicIpEnabled' in kwargs:
+        if is_no_public_ip_enabled is None and 'isNoPublicIpEnabled' in kwargs:
             is_no_public_ip_enabled = kwargs['isNoPublicIpEnabled']
-        if 'managedServicesCustomerManagedKeyId' in kwargs:
+        if managed_services_customer_managed_key_id is None and 'managedServicesCustomerManagedKeyId' in kwargs:
             managed_services_customer_managed_key_id = kwargs['managedServicesCustomerManagedKeyId']
-        if 'networkId' in kwargs:
+        if network_id is None and 'networkId' in kwargs:
             network_id = kwargs['networkId']
-        if 'pricingTier' in kwargs:
+        if pricing_tier is None and 'pricingTier' in kwargs:
             pricing_tier = kwargs['pricingTier']
-        if 'privateAccessSettingsId' in kwargs:
+        if private_access_settings_id is None and 'privateAccessSettingsId' in kwargs:
             private_access_settings_id = kwargs['privateAccessSettingsId']
-        if 'storageConfigurationId' in kwargs:
+        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
             storage_configuration_id = kwargs['storageConfigurationId']
-        if 'storageCustomerManagedKeyId' in kwargs:
+        if storage_customer_managed_key_id is None and 'storageCustomerManagedKeyId' in kwargs:
             storage_customer_managed_key_id = kwargs['storageCustomerManagedKeyId']
-        if 'workspaceId' in kwargs:
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
-        if 'workspaceStatus' in kwargs:
+        if workspace_status is None and 'workspaceStatus' in kwargs:
             workspace_status = kwargs['workspaceStatus']
-        if 'workspaceStatusMessage' in kwargs:
+        if workspace_status_message is None and 'workspaceStatusMessage' in kwargs:
             workspace_status_message = kwargs['workspaceStatusMessage']
-        if 'workspaceUrl' in kwargs:
+        if workspace_url is None and 'workspaceUrl' in kwargs:
             workspace_url = kwargs['workspaceUrl']
 
         _setter("account_id", account_id)
@@ -600,51 +604,51 @@ class _MwsWorkspacesState:
              workspace_status: Optional[pulumi.Input[str]] = None,
              workspace_status_message: Optional[pulumi.Input[str]] = None,
              workspace_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'awsRegion' in kwargs:
+        if aws_region is None and 'awsRegion' in kwargs:
             aws_region = kwargs['awsRegion']
-        if 'cloudResourceContainer' in kwargs:
+        if cloud_resource_container is None and 'cloudResourceContainer' in kwargs:
             cloud_resource_container = kwargs['cloudResourceContainer']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'credentialsId' in kwargs:
+        if credentials_id is None and 'credentialsId' in kwargs:
             credentials_id = kwargs['credentialsId']
-        if 'customerManagedKeyId' in kwargs:
+        if customer_managed_key_id is None and 'customerManagedKeyId' in kwargs:
             customer_managed_key_id = kwargs['customerManagedKeyId']
-        if 'deploymentName' in kwargs:
+        if deployment_name is None and 'deploymentName' in kwargs:
             deployment_name = kwargs['deploymentName']
-        if 'externalCustomerInfo' in kwargs:
+        if external_customer_info is None and 'externalCustomerInfo' in kwargs:
             external_customer_info = kwargs['externalCustomerInfo']
-        if 'gcpManagedNetworkConfig' in kwargs:
+        if gcp_managed_network_config is None and 'gcpManagedNetworkConfig' in kwargs:
             gcp_managed_network_config = kwargs['gcpManagedNetworkConfig']
-        if 'gkeConfig' in kwargs:
+        if gke_config is None and 'gkeConfig' in kwargs:
             gke_config = kwargs['gkeConfig']
-        if 'isNoPublicIpEnabled' in kwargs:
+        if is_no_public_ip_enabled is None and 'isNoPublicIpEnabled' in kwargs:
             is_no_public_ip_enabled = kwargs['isNoPublicIpEnabled']
-        if 'managedServicesCustomerManagedKeyId' in kwargs:
+        if managed_services_customer_managed_key_id is None and 'managedServicesCustomerManagedKeyId' in kwargs:
             managed_services_customer_managed_key_id = kwargs['managedServicesCustomerManagedKeyId']
-        if 'networkId' in kwargs:
+        if network_id is None and 'networkId' in kwargs:
             network_id = kwargs['networkId']
-        if 'pricingTier' in kwargs:
+        if pricing_tier is None and 'pricingTier' in kwargs:
             pricing_tier = kwargs['pricingTier']
-        if 'privateAccessSettingsId' in kwargs:
+        if private_access_settings_id is None and 'privateAccessSettingsId' in kwargs:
             private_access_settings_id = kwargs['privateAccessSettingsId']
-        if 'storageConfigurationId' in kwargs:
+        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
             storage_configuration_id = kwargs['storageConfigurationId']
-        if 'storageCustomerManagedKeyId' in kwargs:
+        if storage_customer_managed_key_id is None and 'storageCustomerManagedKeyId' in kwargs:
             storage_customer_managed_key_id = kwargs['storageCustomerManagedKeyId']
-        if 'workspaceId' in kwargs:
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
-        if 'workspaceName' in kwargs:
+        if workspace_name is None and 'workspaceName' in kwargs:
             workspace_name = kwargs['workspaceName']
-        if 'workspaceStatus' in kwargs:
+        if workspace_status is None and 'workspaceStatus' in kwargs:
             workspace_status = kwargs['workspaceStatus']
-        if 'workspaceStatusMessage' in kwargs:
+        if workspace_status_message is None and 'workspaceStatusMessage' in kwargs:
             workspace_status_message = kwargs['workspaceStatusMessage']
-        if 'workspaceUrl' in kwargs:
+        if workspace_url is None and 'workspaceUrl' in kwargs:
             workspace_url = kwargs['workspaceUrl']
 
         if account_id is not None:
@@ -1106,33 +1110,17 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["aws_region"] = aws_region
             __props__.__dict__["cloud"] = cloud
-            if cloud_resource_container is not None and not isinstance(cloud_resource_container, MwsWorkspacesCloudResourceContainerArgs):
-                cloud_resource_container = cloud_resource_container or {}
-                def _setter(key, value):
-                    cloud_resource_container[key] = value
-                MwsWorkspacesCloudResourceContainerArgs._configure(_setter, **cloud_resource_container)
+            cloud_resource_container = _utilities.configure(cloud_resource_container, MwsWorkspacesCloudResourceContainerArgs, True)
             __props__.__dict__["cloud_resource_container"] = cloud_resource_container
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["credentials_id"] = credentials_id
             __props__.__dict__["customer_managed_key_id"] = customer_managed_key_id
             __props__.__dict__["deployment_name"] = deployment_name
-            if external_customer_info is not None and not isinstance(external_customer_info, MwsWorkspacesExternalCustomerInfoArgs):
-                external_customer_info = external_customer_info or {}
-                def _setter(key, value):
-                    external_customer_info[key] = value
-                MwsWorkspacesExternalCustomerInfoArgs._configure(_setter, **external_customer_info)
+            external_customer_info = _utilities.configure(external_customer_info, MwsWorkspacesExternalCustomerInfoArgs, True)
             __props__.__dict__["external_customer_info"] = external_customer_info
-            if gcp_managed_network_config is not None and not isinstance(gcp_managed_network_config, MwsWorkspacesGcpManagedNetworkConfigArgs):
-                gcp_managed_network_config = gcp_managed_network_config or {}
-                def _setter(key, value):
-                    gcp_managed_network_config[key] = value
-                MwsWorkspacesGcpManagedNetworkConfigArgs._configure(_setter, **gcp_managed_network_config)
+            gcp_managed_network_config = _utilities.configure(gcp_managed_network_config, MwsWorkspacesGcpManagedNetworkConfigArgs, True)
             __props__.__dict__["gcp_managed_network_config"] = gcp_managed_network_config
-            if gke_config is not None and not isinstance(gke_config, MwsWorkspacesGkeConfigArgs):
-                gke_config = gke_config or {}
-                def _setter(key, value):
-                    gke_config[key] = value
-                MwsWorkspacesGkeConfigArgs._configure(_setter, **gke_config)
+            gke_config = _utilities.configure(gke_config, MwsWorkspacesGkeConfigArgs, True)
             __props__.__dict__["gke_config"] = gke_config
             __props__.__dict__["is_no_public_ip_enabled"] = is_no_public_ip_enabled
             __props__.__dict__["location"] = location
@@ -1142,11 +1130,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             __props__.__dict__["private_access_settings_id"] = private_access_settings_id
             __props__.__dict__["storage_configuration_id"] = storage_configuration_id
             __props__.__dict__["storage_customer_managed_key_id"] = storage_customer_managed_key_id
-            if token is not None and not isinstance(token, MwsWorkspacesTokenArgs):
-                token = token or {}
-                def _setter(key, value):
-                    token[key] = value
-                MwsWorkspacesTokenArgs._configure(_setter, **token)
+            token = _utilities.configure(token, MwsWorkspacesTokenArgs, True)
             __props__.__dict__["token"] = token
             __props__.__dict__["workspace_id"] = workspace_id
             if workspace_name is None and not opts.urn:

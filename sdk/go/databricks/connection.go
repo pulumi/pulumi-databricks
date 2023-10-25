@@ -37,13 +37,13 @@ import (
 //			_, err := databricks.NewConnection(ctx, "mysql", &databricks.ConnectionArgs{
 //				Comment:        pulumi.String("this is a connection to mysql db"),
 //				ConnectionType: pulumi.String("MYSQL"),
-//				Options: pulumi.AnyMap{
+//				Options: pulumi.Map{
 //					"host":     pulumi.Any("test.mysql.database.azure.com"),
 //					"password": pulumi.Any("password"),
 //					"port":     pulumi.Any("3306"),
 //					"user":     pulumi.Any("user"),
 //				},
-//				Properties: pulumi.AnyMap{
+//				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
 //				},
 //			})

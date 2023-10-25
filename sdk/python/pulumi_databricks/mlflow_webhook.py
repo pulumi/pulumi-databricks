@@ -43,19 +43,21 @@ class MlflowWebhookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             events: pulumi.Input[Sequence[pulumi.Input[str]]],
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
              job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpUrlSpec' in kwargs:
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if http_url_spec is None and 'httpUrlSpec' in kwargs:
             http_url_spec = kwargs['httpUrlSpec']
-        if 'jobSpec' in kwargs:
+        if job_spec is None and 'jobSpec' in kwargs:
             job_spec = kwargs['jobSpec']
-        if 'modelName' in kwargs:
+        if model_name is None and 'modelName' in kwargs:
             model_name = kwargs['modelName']
 
         _setter("events", events)
@@ -175,13 +177,13 @@ class _MlflowWebhookState:
              job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
              model_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'httpUrlSpec' in kwargs:
+        if http_url_spec is None and 'httpUrlSpec' in kwargs:
             http_url_spec = kwargs['httpUrlSpec']
-        if 'jobSpec' in kwargs:
+        if job_spec is None and 'jobSpec' in kwargs:
             job_spec = kwargs['jobSpec']
-        if 'modelName' in kwargs:
+        if model_name is None and 'modelName' in kwargs:
             model_name = kwargs['modelName']
 
         if description is not None:
@@ -405,17 +407,9 @@ class MlflowWebhook(pulumi.CustomResource):
             if events is None and not opts.urn:
                 raise TypeError("Missing required property 'events'")
             __props__.__dict__["events"] = events
-            if http_url_spec is not None and not isinstance(http_url_spec, MlflowWebhookHttpUrlSpecArgs):
-                http_url_spec = http_url_spec or {}
-                def _setter(key, value):
-                    http_url_spec[key] = value
-                MlflowWebhookHttpUrlSpecArgs._configure(_setter, **http_url_spec)
+            http_url_spec = _utilities.configure(http_url_spec, MlflowWebhookHttpUrlSpecArgs, True)
             __props__.__dict__["http_url_spec"] = http_url_spec
-            if job_spec is not None and not isinstance(job_spec, MlflowWebhookJobSpecArgs):
-                job_spec = job_spec or {}
-                def _setter(key, value):
-                    job_spec[key] = value
-                MlflowWebhookJobSpecArgs._configure(_setter, **job_spec)
+            job_spec = _utilities.configure(job_spec, MlflowWebhookJobSpecArgs, True)
             __props__.__dict__["job_spec"] = job_spec
             __props__.__dict__["model_name"] = model_name
             __props__.__dict__["status"] = status

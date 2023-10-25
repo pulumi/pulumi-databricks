@@ -47,13 +47,13 @@ class ClusterPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
              policy_family_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxClustersPerUser' in kwargs:
+        if max_clusters_per_user is None and 'maxClustersPerUser' in kwargs:
             max_clusters_per_user = kwargs['maxClustersPerUser']
-        if 'policyFamilyDefinitionOverrides' in kwargs:
+        if policy_family_definition_overrides is None and 'policyFamilyDefinitionOverrides' in kwargs:
             policy_family_definition_overrides = kwargs['policyFamilyDefinitionOverrides']
-        if 'policyFamilyId' in kwargs:
+        if policy_family_id is None and 'policyFamilyId' in kwargs:
             policy_family_id = kwargs['policyFamilyId']
 
         if definition is not None:
@@ -182,15 +182,15 @@ class _ClusterPolicyState:
              policy_family_definition_overrides: Optional[pulumi.Input[str]] = None,
              policy_family_id: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'maxClustersPerUser' in kwargs:
+        if max_clusters_per_user is None and 'maxClustersPerUser' in kwargs:
             max_clusters_per_user = kwargs['maxClustersPerUser']
-        if 'policyFamilyDefinitionOverrides' in kwargs:
+        if policy_family_definition_overrides is None and 'policyFamilyDefinitionOverrides' in kwargs:
             policy_family_definition_overrides = kwargs['policyFamilyDefinitionOverrides']
-        if 'policyFamilyId' in kwargs:
+        if policy_family_id is None and 'policyFamilyId' in kwargs:
             policy_family_id = kwargs['policyFamilyId']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
 
         if definition is not None:

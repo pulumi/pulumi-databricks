@@ -29,14 +29,18 @@ class UserInstanceProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_profile_id: pulumi.Input[str],
-             user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             instance_profile_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceProfileId' in kwargs:
+        if instance_profile_id is None and 'instanceProfileId' in kwargs:
             instance_profile_id = kwargs['instanceProfileId']
-        if 'userId' in kwargs:
+        if instance_profile_id is None:
+            raise TypeError("Missing 'instance_profile_id' argument")
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
+        if user_id is None:
+            raise TypeError("Missing 'user_id' argument")
 
         _setter("instance_profile_id", instance_profile_id)
         _setter("user_id", user_id)
@@ -86,11 +90,11 @@ class _UserInstanceProfileState:
              _setter: Callable[[Any, Any], None],
              instance_profile_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceProfileId' in kwargs:
+        if instance_profile_id is None and 'instanceProfileId' in kwargs:
             instance_profile_id = kwargs['instanceProfileId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if instance_profile_id is not None:

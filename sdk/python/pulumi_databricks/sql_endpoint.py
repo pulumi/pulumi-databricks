@@ -77,7 +77,7 @@ class SqlEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_size: pulumi.Input[str],
+             cluster_size: Optional[pulumi.Input[str]] = None,
              auto_stop_mins: Optional[pulumi.Input[int]] = None,
              channel: Optional[pulumi.Input['SqlEndpointChannelArgs']] = None,
              data_source_id: Optional[pulumi.Input[str]] = None,
@@ -94,33 +94,35 @@ class SqlEndpointArgs:
              state: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
              warehouse_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterSize' in kwargs:
+        if cluster_size is None and 'clusterSize' in kwargs:
             cluster_size = kwargs['clusterSize']
-        if 'autoStopMins' in kwargs:
+        if cluster_size is None:
+            raise TypeError("Missing 'cluster_size' argument")
+        if auto_stop_mins is None and 'autoStopMins' in kwargs:
             auto_stop_mins = kwargs['autoStopMins']
-        if 'dataSourceId' in kwargs:
+        if data_source_id is None and 'dataSourceId' in kwargs:
             data_source_id = kwargs['dataSourceId']
-        if 'enablePhoton' in kwargs:
+        if enable_photon is None and 'enablePhoton' in kwargs:
             enable_photon = kwargs['enablePhoton']
-        if 'enableServerlessCompute' in kwargs:
+        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
             enable_serverless_compute = kwargs['enableServerlessCompute']
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'jdbcUrl' in kwargs:
+        if jdbc_url is None and 'jdbcUrl' in kwargs:
             jdbc_url = kwargs['jdbcUrl']
-        if 'maxNumClusters' in kwargs:
+        if max_num_clusters is None and 'maxNumClusters' in kwargs:
             max_num_clusters = kwargs['maxNumClusters']
-        if 'minNumClusters' in kwargs:
+        if min_num_clusters is None and 'minNumClusters' in kwargs:
             min_num_clusters = kwargs['minNumClusters']
-        if 'numClusters' in kwargs:
+        if num_clusters is None and 'numClusters' in kwargs:
             num_clusters = kwargs['numClusters']
-        if 'odbcParams' in kwargs:
+        if odbc_params is None and 'odbcParams' in kwargs:
             odbc_params = kwargs['odbcParams']
-        if 'spotInstancePolicy' in kwargs:
+        if spot_instance_policy is None and 'spotInstancePolicy' in kwargs:
             spot_instance_policy = kwargs['spotInstancePolicy']
-        if 'warehouseType' in kwargs:
+        if warehouse_type is None and 'warehouseType' in kwargs:
             warehouse_type = kwargs['warehouseType']
 
         _setter("cluster_size", cluster_size)
@@ -438,33 +440,33 @@ class _SqlEndpointState:
              state: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
              warehouse_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoStopMins' in kwargs:
+        if auto_stop_mins is None and 'autoStopMins' in kwargs:
             auto_stop_mins = kwargs['autoStopMins']
-        if 'clusterSize' in kwargs:
+        if cluster_size is None and 'clusterSize' in kwargs:
             cluster_size = kwargs['clusterSize']
-        if 'dataSourceId' in kwargs:
+        if data_source_id is None and 'dataSourceId' in kwargs:
             data_source_id = kwargs['dataSourceId']
-        if 'enablePhoton' in kwargs:
+        if enable_photon is None and 'enablePhoton' in kwargs:
             enable_photon = kwargs['enablePhoton']
-        if 'enableServerlessCompute' in kwargs:
+        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
             enable_serverless_compute = kwargs['enableServerlessCompute']
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'jdbcUrl' in kwargs:
+        if jdbc_url is None and 'jdbcUrl' in kwargs:
             jdbc_url = kwargs['jdbcUrl']
-        if 'maxNumClusters' in kwargs:
+        if max_num_clusters is None and 'maxNumClusters' in kwargs:
             max_num_clusters = kwargs['maxNumClusters']
-        if 'minNumClusters' in kwargs:
+        if min_num_clusters is None and 'minNumClusters' in kwargs:
             min_num_clusters = kwargs['minNumClusters']
-        if 'numClusters' in kwargs:
+        if num_clusters is None and 'numClusters' in kwargs:
             num_clusters = kwargs['numClusters']
-        if 'odbcParams' in kwargs:
+        if odbc_params is None and 'odbcParams' in kwargs:
             odbc_params = kwargs['odbcParams']
-        if 'spotInstancePolicy' in kwargs:
+        if spot_instance_policy is None and 'spotInstancePolicy' in kwargs:
             spot_instance_policy = kwargs['spotInstancePolicy']
-        if 'warehouseType' in kwargs:
+        if warehouse_type is None and 'warehouseType' in kwargs:
             warehouse_type = kwargs['warehouseType']
 
         if auto_stop_mins is not None:
@@ -884,11 +886,7 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__ = SqlEndpointArgs.__new__(SqlEndpointArgs)
 
             __props__.__dict__["auto_stop_mins"] = auto_stop_mins
-            if channel is not None and not isinstance(channel, SqlEndpointChannelArgs):
-                channel = channel or {}
-                def _setter(key, value):
-                    channel[key] = value
-                SqlEndpointChannelArgs._configure(_setter, **channel)
+            channel = _utilities.configure(channel, SqlEndpointChannelArgs, True)
             __props__.__dict__["channel"] = channel
             if cluster_size is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_size'")
@@ -902,19 +900,11 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__.__dict__["min_num_clusters"] = min_num_clusters
             __props__.__dict__["name"] = name
             __props__.__dict__["num_clusters"] = num_clusters
-            if odbc_params is not None and not isinstance(odbc_params, SqlEndpointOdbcParamsArgs):
-                odbc_params = odbc_params or {}
-                def _setter(key, value):
-                    odbc_params[key] = value
-                SqlEndpointOdbcParamsArgs._configure(_setter, **odbc_params)
+            odbc_params = _utilities.configure(odbc_params, SqlEndpointOdbcParamsArgs, True)
             __props__.__dict__["odbc_params"] = odbc_params
             __props__.__dict__["spot_instance_policy"] = spot_instance_policy
             __props__.__dict__["state"] = state
-            if tags is not None and not isinstance(tags, SqlEndpointTagsArgs):
-                tags = tags or {}
-                def _setter(key, value):
-                    tags[key] = value
-                SqlEndpointTagsArgs._configure(_setter, **tags)
+            tags = _utilities.configure(tags, SqlEndpointTagsArgs, True)
             __props__.__dict__["tags"] = tags
             __props__.__dict__["warehouse_type"] = warehouse_type
         super(SqlEndpoint, __self__).__init__(

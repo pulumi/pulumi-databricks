@@ -33,11 +33,13 @@ class ModelServingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['ModelServingConfigArgs'],
+             config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
 
         _setter("config", config)
         if name is not None:
@@ -106,9 +108,9 @@ class _ModelServingState:
              name: Optional[pulumi.Input[str]] = None,
              serving_endpoint_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'servingEndpointId' in kwargs:
+        if serving_endpoint_id is None and 'servingEndpointId' in kwargs:
             serving_endpoint_id = kwargs['servingEndpointId']
 
         if config is not None:
@@ -345,11 +347,7 @@ class ModelServing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ModelServingArgs.__new__(ModelServingArgs)
 
-            if config is not None and not isinstance(config, ModelServingConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                ModelServingConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, ModelServingConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

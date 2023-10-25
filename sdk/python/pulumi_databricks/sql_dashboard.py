@@ -41,13 +41,13 @@ class SqlDashboardArgs:
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'dashboardFiltersEnabled' in kwargs:
+        if dashboard_filters_enabled is None and 'dashboardFiltersEnabled' in kwargs:
             dashboard_filters_enabled = kwargs['dashboardFiltersEnabled']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         if created_at is not None:
@@ -148,13 +148,13 @@ class _SqlDashboardState:
              parent: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'dashboardFiltersEnabled' in kwargs:
+        if dashboard_filters_enabled is None and 'dashboardFiltersEnabled' in kwargs:
             dashboard_filters_enabled = kwargs['dashboardFiltersEnabled']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         if created_at is not None:

@@ -27,9 +27,9 @@ class WorkspaceConfArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
 
         if custom_config is not None:
@@ -64,9 +64,9 @@ class _WorkspaceConfState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              custom_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customConfig' in kwargs:
+        if custom_config is None and 'customConfig' in kwargs:
             custom_config = kwargs['customConfig']
 
         if custom_config is not None:

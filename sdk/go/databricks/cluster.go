@@ -93,7 +93,7 @@ type Cluster struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.AnyMap{
+	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
@@ -232,7 +232,7 @@ type clusterState struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.AnyMap{
+	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
@@ -339,7 +339,7 @@ type ClusterState struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.AnyMap{
+	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
@@ -448,7 +448,7 @@ type clusterArgs struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.AnyMap{
+	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
@@ -551,7 +551,7 @@ type ClusterArgs struct {
 	// 				MinWorkers: pulumi.Int(1),
 	// 				MaxWorkers: pulumi.Int(50),
 	// 			},
-	// 			SparkConf: pulumi.AnyMap{
+	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),
@@ -830,7 +830,7 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //					MinWorkers: pulumi.Int(1),
 //					MaxWorkers: pulumi.Int(50),
 //				},
-//				SparkConf: pulumi.AnyMap{
+//				SparkConf: pulumi.Map{
 //					"spark.databricks.io.cache.enabled":          pulumi.Any(true),
 //					"spark.databricks.io.cache.maxDiskUsage":     pulumi.Any("50g"),
 //					"spark.databricks.io.cache.maxMetaDataCache": pulumi.Any("1g"),

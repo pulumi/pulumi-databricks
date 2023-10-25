@@ -44,20 +44,24 @@ class SqlAlertArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: pulumi.Input['SqlAlertOptionsArgs'],
-             query_id: pulumi.Input[str],
+             options: Optional[pulumi.Input['SqlAlertOptionsArgs']] = None,
+             query_id: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
              rearm: Optional[pulumi.Input[int]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'queryId' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if query_id is None and 'queryId' in kwargs:
             query_id = kwargs['queryId']
-        if 'createdAt' in kwargs:
+        if query_id is None:
+            raise TypeError("Missing 'query_id' argument")
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         _setter("options", options)
@@ -190,13 +194,13 @@ class _SqlAlertState:
              query_id: Optional[pulumi.Input[str]] = None,
              rearm: Optional[pulumi.Input[int]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'queryId' in kwargs:
+        if query_id is None and 'queryId' in kwargs:
             query_id = kwargs['queryId']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         if created_at is not None:
@@ -385,11 +389,7 @@ class SqlAlert(pulumi.CustomResource):
 
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["name"] = name
-            if options is not None and not isinstance(options, SqlAlertOptionsArgs):
-                options = options or {}
-                def _setter(key, value):
-                    options[key] = value
-                SqlAlertOptionsArgs._configure(_setter, **options)
+            options = _utilities.configure(options, SqlAlertOptionsArgs, True)
             if options is None and not opts.urn:
                 raise TypeError("Missing required property 'options'")
             __props__.__dict__["options"] = options

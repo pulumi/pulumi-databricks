@@ -37,20 +37,26 @@ class SqlVisualizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             options: pulumi.Input[str],
-             query_id: pulumi.Input[str],
-             type: pulumi.Input[str],
+             options: Optional[pulumi.Input[str]] = None,
+             query_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              query_plan: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'queryId' in kwargs:
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if query_id is None and 'queryId' in kwargs:
             query_id = kwargs['queryId']
-        if 'queryPlan' in kwargs:
+        if query_id is None:
+            raise TypeError("Missing 'query_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if query_plan is None and 'queryPlan' in kwargs:
             query_plan = kwargs['queryPlan']
-        if 'visualizationId' in kwargs:
+        if visualization_id is None and 'visualizationId' in kwargs:
             visualization_id = kwargs['visualizationId']
 
         _setter("options", options)
@@ -162,13 +168,13 @@ class _SqlVisualizationState:
              query_plan: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'queryId' in kwargs:
+        if query_id is None and 'queryId' in kwargs:
             query_id = kwargs['queryId']
-        if 'queryPlan' in kwargs:
+        if query_plan is None and 'queryPlan' in kwargs:
             query_plan = kwargs['queryPlan']
-        if 'visualizationId' in kwargs:
+        if visualization_id is None and 'visualizationId' in kwargs:
             visualization_id = kwargs['visualizationId']
 
         if description is not None:

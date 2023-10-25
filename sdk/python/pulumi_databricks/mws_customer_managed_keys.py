@@ -43,25 +43,29 @@ class MwsCustomerManagedKeysArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             use_cases: pulumi.Input[Sequence[pulumi.Input[str]]],
+             account_id: Optional[pulumi.Input[str]] = None,
+             use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              aws_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']] = None,
              creation_time: Optional[pulumi.Input[int]] = None,
              customer_managed_key_id: Optional[pulumi.Input[str]] = None,
              gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'useCases' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if use_cases is None and 'useCases' in kwargs:
             use_cases = kwargs['useCases']
-        if 'awsKeyInfo' in kwargs:
+        if use_cases is None:
+            raise TypeError("Missing 'use_cases' argument")
+        if aws_key_info is None and 'awsKeyInfo' in kwargs:
             aws_key_info = kwargs['awsKeyInfo']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'customerManagedKeyId' in kwargs:
+        if customer_managed_key_id is None and 'customerManagedKeyId' in kwargs:
             customer_managed_key_id = kwargs['customerManagedKeyId']
-        if 'gcpKeyInfo' in kwargs:
+        if gcp_key_info is None and 'gcpKeyInfo' in kwargs:
             gcp_key_info = kwargs['gcpKeyInfo']
 
         _setter("account_id", account_id)
@@ -184,19 +188,19 @@ class _MwsCustomerManagedKeysState:
              customer_managed_key_id: Optional[pulumi.Input[str]] = None,
              gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
              use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'awsKeyInfo' in kwargs:
+        if aws_key_info is None and 'awsKeyInfo' in kwargs:
             aws_key_info = kwargs['awsKeyInfo']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'customerManagedKeyId' in kwargs:
+        if customer_managed_key_id is None and 'customerManagedKeyId' in kwargs:
             customer_managed_key_id = kwargs['customerManagedKeyId']
-        if 'gcpKeyInfo' in kwargs:
+        if gcp_key_info is None and 'gcpKeyInfo' in kwargs:
             gcp_key_info = kwargs['gcpKeyInfo']
-        if 'useCases' in kwargs:
+        if use_cases is None and 'useCases' in kwargs:
             use_cases = kwargs['useCases']
 
         if account_id is not None:
@@ -729,19 +733,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if aws_key_info is not None and not isinstance(aws_key_info, MwsCustomerManagedKeysAwsKeyInfoArgs):
-                aws_key_info = aws_key_info or {}
-                def _setter(key, value):
-                    aws_key_info[key] = value
-                MwsCustomerManagedKeysAwsKeyInfoArgs._configure(_setter, **aws_key_info)
+            aws_key_info = _utilities.configure(aws_key_info, MwsCustomerManagedKeysAwsKeyInfoArgs, True)
             __props__.__dict__["aws_key_info"] = aws_key_info
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["customer_managed_key_id"] = customer_managed_key_id
-            if gcp_key_info is not None and not isinstance(gcp_key_info, MwsCustomerManagedKeysGcpKeyInfoArgs):
-                gcp_key_info = gcp_key_info or {}
-                def _setter(key, value):
-                    gcp_key_info[key] = value
-                MwsCustomerManagedKeysGcpKeyInfoArgs._configure(_setter, **gcp_key_info)
+            gcp_key_info = _utilities.configure(gcp_key_info, MwsCustomerManagedKeysGcpKeyInfoArgs, True)
             __props__.__dict__["gcp_key_info"] = gcp_key_info
             if use_cases is None and not opts.urn:
                 raise TypeError("Missing required property 'use_cases'")

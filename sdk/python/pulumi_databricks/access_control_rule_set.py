@@ -38,9 +38,9 @@ class AccessControlRuleSetArgs:
              _setter: Callable[[Any, Any], None],
              grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'grantRules' in kwargs:
+        if grant_rules is None and 'grantRules' in kwargs:
             grant_rules = kwargs['grantRules']
 
         if grant_rules is not None:
@@ -106,9 +106,9 @@ class _AccessControlRuleSetState:
              etag: Optional[pulumi.Input[str]] = None,
              grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'grantRules' in kwargs:
+        if grant_rules is None and 'grantRules' in kwargs:
             grant_rules = kwargs['grantRules']
 
         if etag is not None:

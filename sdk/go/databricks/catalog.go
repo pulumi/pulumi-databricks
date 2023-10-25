@@ -29,7 +29,7 @@ import (
 //			_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
 //				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
 //				Comment:     pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.AnyMap{
+//				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
 //				},
 //			})

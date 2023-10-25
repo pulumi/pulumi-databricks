@@ -63,8 +63,8 @@ class InstancePoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             idle_instance_autotermination_minutes: pulumi.Input[int],
-             instance_pool_name: pulumi.Input[str],
+             idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
+             instance_pool_name: Optional[pulumi.Input[str]] = None,
              aws_attributes: Optional[pulumi.Input['InstancePoolAwsAttributesArgs']] = None,
              azure_attributes: Optional[pulumi.Input['InstancePoolAzureAttributesArgs']] = None,
              custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -78,37 +78,41 @@ class InstancePoolArgs:
              node_type_id: Optional[pulumi.Input[str]] = None,
              preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
              preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'idleInstanceAutoterminationMinutes' in kwargs:
+        if idle_instance_autotermination_minutes is None and 'idleInstanceAutoterminationMinutes' in kwargs:
             idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
-        if 'instancePoolName' in kwargs:
+        if idle_instance_autotermination_minutes is None:
+            raise TypeError("Missing 'idle_instance_autotermination_minutes' argument")
+        if instance_pool_name is None and 'instancePoolName' in kwargs:
             instance_pool_name = kwargs['instancePoolName']
-        if 'awsAttributes' in kwargs:
+        if instance_pool_name is None:
+            raise TypeError("Missing 'instance_pool_name' argument")
+        if aws_attributes is None and 'awsAttributes' in kwargs:
             aws_attributes = kwargs['awsAttributes']
-        if 'azureAttributes' in kwargs:
+        if azure_attributes is None and 'azureAttributes' in kwargs:
             azure_attributes = kwargs['azureAttributes']
-        if 'customTags' in kwargs:
+        if custom_tags is None and 'customTags' in kwargs:
             custom_tags = kwargs['customTags']
-        if 'diskSpec' in kwargs:
+        if disk_spec is None and 'diskSpec' in kwargs:
             disk_spec = kwargs['diskSpec']
-        if 'enableElasticDisk' in kwargs:
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
             enable_elastic_disk = kwargs['enableElasticDisk']
-        if 'gcpAttributes' in kwargs:
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
             gcp_attributes = kwargs['gcpAttributes']
-        if 'instancePoolFleetAttributes' in kwargs:
+        if instance_pool_fleet_attributes is None and 'instancePoolFleetAttributes' in kwargs:
             instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'maxCapacity' in kwargs:
+        if max_capacity is None and 'maxCapacity' in kwargs:
             max_capacity = kwargs['maxCapacity']
-        if 'minIdleInstances' in kwargs:
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
             min_idle_instances = kwargs['minIdleInstances']
-        if 'nodeTypeId' in kwargs:
+        if node_type_id is None and 'nodeTypeId' in kwargs:
             node_type_id = kwargs['nodeTypeId']
-        if 'preloadedDockerImages' in kwargs:
+        if preloaded_docker_images is None and 'preloadedDockerImages' in kwargs:
             preloaded_docker_images = kwargs['preloadedDockerImages']
-        if 'preloadedSparkVersions' in kwargs:
+        if preloaded_spark_versions is None and 'preloadedSparkVersions' in kwargs:
             preloaded_spark_versions = kwargs['preloadedSparkVersions']
 
         _setter("idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
@@ -365,37 +369,37 @@ class _InstancePoolState:
              node_type_id: Optional[pulumi.Input[str]] = None,
              preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
              preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'awsAttributes' in kwargs:
+        if aws_attributes is None and 'awsAttributes' in kwargs:
             aws_attributes = kwargs['awsAttributes']
-        if 'azureAttributes' in kwargs:
+        if azure_attributes is None and 'azureAttributes' in kwargs:
             azure_attributes = kwargs['azureAttributes']
-        if 'customTags' in kwargs:
+        if custom_tags is None and 'customTags' in kwargs:
             custom_tags = kwargs['customTags']
-        if 'diskSpec' in kwargs:
+        if disk_spec is None and 'diskSpec' in kwargs:
             disk_spec = kwargs['diskSpec']
-        if 'enableElasticDisk' in kwargs:
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
             enable_elastic_disk = kwargs['enableElasticDisk']
-        if 'gcpAttributes' in kwargs:
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
             gcp_attributes = kwargs['gcpAttributes']
-        if 'idleInstanceAutoterminationMinutes' in kwargs:
+        if idle_instance_autotermination_minutes is None and 'idleInstanceAutoterminationMinutes' in kwargs:
             idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
-        if 'instancePoolFleetAttributes' in kwargs:
+        if instance_pool_fleet_attributes is None and 'instancePoolFleetAttributes' in kwargs:
             instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'instancePoolName' in kwargs:
+        if instance_pool_name is None and 'instancePoolName' in kwargs:
             instance_pool_name = kwargs['instancePoolName']
-        if 'maxCapacity' in kwargs:
+        if max_capacity is None and 'maxCapacity' in kwargs:
             max_capacity = kwargs['maxCapacity']
-        if 'minIdleInstances' in kwargs:
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
             min_idle_instances = kwargs['minIdleInstances']
-        if 'nodeTypeId' in kwargs:
+        if node_type_id is None and 'nodeTypeId' in kwargs:
             node_type_id = kwargs['nodeTypeId']
-        if 'preloadedDockerImages' in kwargs:
+        if preloaded_docker_images is None and 'preloadedDockerImages' in kwargs:
             preloaded_docker_images = kwargs['preloadedDockerImages']
-        if 'preloadedSparkVersions' in kwargs:
+        if preloaded_spark_versions is None and 'preloadedSparkVersions' in kwargs:
             preloaded_spark_versions = kwargs['preloadedSparkVersions']
 
         if aws_attributes is not None:
@@ -814,40 +818,20 @@ class InstancePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstancePoolArgs.__new__(InstancePoolArgs)
 
-            if aws_attributes is not None and not isinstance(aws_attributes, InstancePoolAwsAttributesArgs):
-                aws_attributes = aws_attributes or {}
-                def _setter(key, value):
-                    aws_attributes[key] = value
-                InstancePoolAwsAttributesArgs._configure(_setter, **aws_attributes)
+            aws_attributes = _utilities.configure(aws_attributes, InstancePoolAwsAttributesArgs, True)
             __props__.__dict__["aws_attributes"] = aws_attributes
-            if azure_attributes is not None and not isinstance(azure_attributes, InstancePoolAzureAttributesArgs):
-                azure_attributes = azure_attributes or {}
-                def _setter(key, value):
-                    azure_attributes[key] = value
-                InstancePoolAzureAttributesArgs._configure(_setter, **azure_attributes)
+            azure_attributes = _utilities.configure(azure_attributes, InstancePoolAzureAttributesArgs, True)
             __props__.__dict__["azure_attributes"] = azure_attributes
             __props__.__dict__["custom_tags"] = custom_tags
-            if disk_spec is not None and not isinstance(disk_spec, InstancePoolDiskSpecArgs):
-                disk_spec = disk_spec or {}
-                def _setter(key, value):
-                    disk_spec[key] = value
-                InstancePoolDiskSpecArgs._configure(_setter, **disk_spec)
+            disk_spec = _utilities.configure(disk_spec, InstancePoolDiskSpecArgs, True)
             __props__.__dict__["disk_spec"] = disk_spec
             __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
-            if gcp_attributes is not None and not isinstance(gcp_attributes, InstancePoolGcpAttributesArgs):
-                gcp_attributes = gcp_attributes or {}
-                def _setter(key, value):
-                    gcp_attributes[key] = value
-                InstancePoolGcpAttributesArgs._configure(_setter, **gcp_attributes)
+            gcp_attributes = _utilities.configure(gcp_attributes, InstancePoolGcpAttributesArgs, True)
             __props__.__dict__["gcp_attributes"] = gcp_attributes
             if idle_instance_autotermination_minutes is None and not opts.urn:
                 raise TypeError("Missing required property 'idle_instance_autotermination_minutes'")
             __props__.__dict__["idle_instance_autotermination_minutes"] = idle_instance_autotermination_minutes
-            if instance_pool_fleet_attributes is not None and not isinstance(instance_pool_fleet_attributes, InstancePoolInstancePoolFleetAttributesArgs):
-                instance_pool_fleet_attributes = instance_pool_fleet_attributes or {}
-                def _setter(key, value):
-                    instance_pool_fleet_attributes[key] = value
-                InstancePoolInstancePoolFleetAttributesArgs._configure(_setter, **instance_pool_fleet_attributes)
+            instance_pool_fleet_attributes = _utilities.configure(instance_pool_fleet_attributes, InstancePoolInstancePoolFleetAttributesArgs, True)
             __props__.__dict__["instance_pool_fleet_attributes"] = instance_pool_fleet_attributes
             __props__.__dict__["instance_pool_id"] = instance_pool_id
             if instance_pool_name is None and not opts.urn:

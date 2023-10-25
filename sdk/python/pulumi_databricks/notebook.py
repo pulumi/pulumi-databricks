@@ -43,7 +43,7 @@ class NotebookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              content_base64: Optional[pulumi.Input[str]] = None,
              format: Optional[pulumi.Input[str]] = None,
              language: Optional[pulumi.Input[str]] = None,
@@ -51,13 +51,15 @@ class NotebookArgs:
              object_id: Optional[pulumi.Input[int]] = None,
              object_type: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'objectType' in kwargs:
+        if object_type is None and 'objectType' in kwargs:
             object_type = kwargs['objectType']
 
         _setter("path", path)
@@ -211,13 +213,13 @@ class _NotebookState:
              path: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'objectType' in kwargs:
+        if object_type is None and 'objectType' in kwargs:
             object_type = kwargs['objectType']
 
         if content_base64 is not None:

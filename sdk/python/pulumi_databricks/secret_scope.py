@@ -40,13 +40,13 @@ class SecretScopeArgs:
              initial_manage_principal: Optional[pulumi.Input[str]] = None,
              keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendType' in kwargs:
+        if backend_type is None and 'backendType' in kwargs:
             backend_type = kwargs['backendType']
-        if 'initialManagePrincipal' in kwargs:
+        if initial_manage_principal is None and 'initialManagePrincipal' in kwargs:
             initial_manage_principal = kwargs['initialManagePrincipal']
-        if 'keyvaultMetadata' in kwargs:
+        if keyvault_metadata is None and 'keyvaultMetadata' in kwargs:
             keyvault_metadata = kwargs['keyvaultMetadata']
 
         if backend_type is not None:
@@ -131,13 +131,13 @@ class _SecretScopeState:
              initial_manage_principal: Optional[pulumi.Input[str]] = None,
              keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendType' in kwargs:
+        if backend_type is None and 'backendType' in kwargs:
             backend_type = kwargs['backendType']
-        if 'initialManagePrincipal' in kwargs:
+        if initial_manage_principal is None and 'initialManagePrincipal' in kwargs:
             initial_manage_principal = kwargs['initialManagePrincipal']
-        if 'keyvaultMetadata' in kwargs:
+        if keyvault_metadata is None and 'keyvaultMetadata' in kwargs:
             keyvault_metadata = kwargs['keyvaultMetadata']
 
         if backend_type is not None:
@@ -269,11 +269,7 @@ class SecretScope(pulumi.CustomResource):
 
             __props__.__dict__["backend_type"] = backend_type
             __props__.__dict__["initial_manage_principal"] = initial_manage_principal
-            if keyvault_metadata is not None and not isinstance(keyvault_metadata, SecretScopeKeyvaultMetadataArgs):
-                keyvault_metadata = keyvault_metadata or {}
-                def _setter(key, value):
-                    keyvault_metadata[key] = value
-                SecretScopeKeyvaultMetadataArgs._configure(_setter, **keyvault_metadata)
+            keyvault_metadata = _utilities.configure(keyvault_metadata, SecretScopeKeyvaultMetadataArgs, True)
             __props__.__dict__["keyvault_metadata"] = keyvault_metadata
             __props__.__dict__["name"] = name
         super(SecretScope, __self__).__init__(

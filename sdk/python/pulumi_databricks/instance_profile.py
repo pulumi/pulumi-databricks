@@ -35,19 +35,21 @@ class InstanceProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_profile_arn: pulumi.Input[str],
+             instance_profile_arn: Optional[pulumi.Input[str]] = None,
              iam_role_arn: Optional[pulumi.Input[str]] = None,
              is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'iamRoleArn' in kwargs:
+        if instance_profile_arn is None:
+            raise TypeError("Missing 'instance_profile_arn' argument")
+        if iam_role_arn is None and 'iamRoleArn' in kwargs:
             iam_role_arn = kwargs['iamRoleArn']
-        if 'isMetaInstanceProfile' in kwargs:
+        if is_meta_instance_profile is None and 'isMetaInstanceProfile' in kwargs:
             is_meta_instance_profile = kwargs['isMetaInstanceProfile']
-        if 'skipValidation' in kwargs:
+        if skip_validation is None and 'skipValidation' in kwargs:
             skip_validation = kwargs['skipValidation']
 
         _setter("instance_profile_arn", instance_profile_arn)
@@ -135,15 +137,15 @@ class _InstanceProfileState:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
              skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'iamRoleArn' in kwargs:
+        if iam_role_arn is None and 'iamRoleArn' in kwargs:
             iam_role_arn = kwargs['iamRoleArn']
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'isMetaInstanceProfile' in kwargs:
+        if is_meta_instance_profile is None and 'isMetaInstanceProfile' in kwargs:
             is_meta_instance_profile = kwargs['isMetaInstanceProfile']
-        if 'skipValidation' in kwargs:
+        if skip_validation is None and 'skipValidation' in kwargs:
             skip_validation = kwargs['skipValidation']
 
         if iam_role_arn is not None:

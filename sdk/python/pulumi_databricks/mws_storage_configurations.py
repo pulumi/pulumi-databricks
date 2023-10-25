@@ -32,17 +32,23 @@ class MwsStorageConfigurationsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             bucket_name: pulumi.Input[str],
-             storage_configuration_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             storage_configuration_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'bucketName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'storageConfigurationName' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if storage_configuration_name is None and 'storageConfigurationName' in kwargs:
             storage_configuration_name = kwargs['storageConfigurationName']
+        if storage_configuration_name is None:
+            raise TypeError("Missing 'storage_configuration_name' argument")
 
         _setter("account_id", account_id)
         _setter("bucket_name", bucket_name)
@@ -116,17 +122,17 @@ class _MwsStorageConfigurationsState:
              creation_time: Optional[pulumi.Input[int]] = None,
              storage_configuration_id: Optional[pulumi.Input[str]] = None,
              storage_configuration_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'storageConfigurationId' in kwargs:
+        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
             storage_configuration_id = kwargs['storageConfigurationId']
-        if 'storageConfigurationName' in kwargs:
+        if storage_configuration_name is None and 'storageConfigurationName' in kwargs:
             storage_configuration_name = kwargs['storageConfigurationName']
 
         if account_id is not None:
