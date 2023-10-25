@@ -47,17 +47,17 @@ class MlflowExperimentArgs:
              last_update_time: Optional[pulumi.Input[int]] = None,
              lifecycle_stage: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'artifactLocation' in kwargs:
+        if artifact_location is None and 'artifactLocation' in kwargs:
             artifact_location = kwargs['artifactLocation']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'experimentId' in kwargs:
+        if experiment_id is None and 'experimentId' in kwargs:
             experiment_id = kwargs['experimentId']
-        if 'lastUpdateTime' in kwargs:
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
             last_update_time = kwargs['lastUpdateTime']
-        if 'lifecycleStage' in kwargs:
+        if lifecycle_stage is None and 'lifecycleStage' in kwargs:
             lifecycle_stage = kwargs['lifecycleStage']
 
         if artifact_location is not None:
@@ -184,17 +184,17 @@ class _MlflowExperimentState:
              last_update_time: Optional[pulumi.Input[int]] = None,
              lifecycle_stage: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'artifactLocation' in kwargs:
+        if artifact_location is None and 'artifactLocation' in kwargs:
             artifact_location = kwargs['artifactLocation']
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'experimentId' in kwargs:
+        if experiment_id is None and 'experimentId' in kwargs:
             experiment_id = kwargs['experimentId']
-        if 'lastUpdateTime' in kwargs:
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
             last_update_time = kwargs['lastUpdateTime']
-        if 'lifecycleStage' in kwargs:
+        if lifecycle_stage is None and 'lifecycleStage' in kwargs:
             lifecycle_stage = kwargs['lifecycleStage']
 
         if artifact_location is not None:

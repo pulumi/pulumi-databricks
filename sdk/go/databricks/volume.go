@@ -54,7 +54,7 @@ import (
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
 //				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
 //				Comment:     pulumi.String("this catalog is managed by terraform"),
-//				Properties: pulumi.AnyMap{
+//				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
 //				},
 //			})
@@ -64,7 +64,7 @@ import (
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
 //				CatalogName: sandbox.Name,
 //				Comment:     pulumi.String("this schema is managed by terraform"),
-//				Properties: pulumi.AnyMap{
+//				Properties: pulumi.Map{
 //					"kind": pulumi.Any("various"),
 //				},
 //			})

@@ -91,7 +91,7 @@ class PermissionsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_controls: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]],
+             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
              authorization: Optional[pulumi.Input[str]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              cluster_policy_id: Optional[pulumi.Input[str]] = None,
@@ -114,51 +114,53 @@ class PermissionsArgs:
              sql_query_id: Optional[pulumi.Input[str]] = None,
              workspace_file_id: Optional[pulumi.Input[str]] = None,
              workspace_file_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessControls' in kwargs:
+        if access_controls is None and 'accessControls' in kwargs:
             access_controls = kwargs['accessControls']
-        if 'clusterId' in kwargs:
+        if access_controls is None:
+            raise TypeError("Missing 'access_controls' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterPolicyId' in kwargs:
+        if cluster_policy_id is None and 'clusterPolicyId' in kwargs:
             cluster_policy_id = kwargs['clusterPolicyId']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'directoryPath' in kwargs:
+        if directory_path is None and 'directoryPath' in kwargs:
             directory_path = kwargs['directoryPath']
-        if 'experimentId' in kwargs:
+        if experiment_id is None and 'experimentId' in kwargs:
             experiment_id = kwargs['experimentId']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'jobId' in kwargs:
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'notebookId' in kwargs:
+        if notebook_id is None and 'notebookId' in kwargs:
             notebook_id = kwargs['notebookId']
-        if 'notebookPath' in kwargs:
+        if notebook_path is None and 'notebookPath' in kwargs:
             notebook_path = kwargs['notebookPath']
-        if 'objectType' in kwargs:
+        if object_type is None and 'objectType' in kwargs:
             object_type = kwargs['objectType']
-        if 'pipelineId' in kwargs:
+        if pipeline_id is None and 'pipelineId' in kwargs:
             pipeline_id = kwargs['pipelineId']
-        if 'registeredModelId' in kwargs:
+        if registered_model_id is None and 'registeredModelId' in kwargs:
             registered_model_id = kwargs['registeredModelId']
-        if 'repoId' in kwargs:
+        if repo_id is None and 'repoId' in kwargs:
             repo_id = kwargs['repoId']
-        if 'repoPath' in kwargs:
+        if repo_path is None and 'repoPath' in kwargs:
             repo_path = kwargs['repoPath']
-        if 'servingEndpointId' in kwargs:
+        if serving_endpoint_id is None and 'servingEndpointId' in kwargs:
             serving_endpoint_id = kwargs['servingEndpointId']
-        if 'sqlAlertId' in kwargs:
+        if sql_alert_id is None and 'sqlAlertId' in kwargs:
             sql_alert_id = kwargs['sqlAlertId']
-        if 'sqlDashboardId' in kwargs:
+        if sql_dashboard_id is None and 'sqlDashboardId' in kwargs:
             sql_dashboard_id = kwargs['sqlDashboardId']
-        if 'sqlEndpointId' in kwargs:
+        if sql_endpoint_id is None and 'sqlEndpointId' in kwargs:
             sql_endpoint_id = kwargs['sqlEndpointId']
-        if 'sqlQueryId' in kwargs:
+        if sql_query_id is None and 'sqlQueryId' in kwargs:
             sql_query_id = kwargs['sqlQueryId']
-        if 'workspaceFileId' in kwargs:
+        if workspace_file_id is None and 'workspaceFileId' in kwargs:
             workspace_file_id = kwargs['workspaceFileId']
-        if 'workspaceFilePath' in kwargs:
+        if workspace_file_path is None and 'workspaceFilePath' in kwargs:
             workspace_file_path = kwargs['workspaceFilePath']
 
         _setter("access_controls", access_controls)
@@ -576,51 +578,51 @@ class _PermissionsState:
              sql_query_id: Optional[pulumi.Input[str]] = None,
              workspace_file_id: Optional[pulumi.Input[str]] = None,
              workspace_file_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessControls' in kwargs:
+        if access_controls is None and 'accessControls' in kwargs:
             access_controls = kwargs['accessControls']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterPolicyId' in kwargs:
+        if cluster_policy_id is None and 'clusterPolicyId' in kwargs:
             cluster_policy_id = kwargs['clusterPolicyId']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'directoryPath' in kwargs:
+        if directory_path is None and 'directoryPath' in kwargs:
             directory_path = kwargs['directoryPath']
-        if 'experimentId' in kwargs:
+        if experiment_id is None and 'experimentId' in kwargs:
             experiment_id = kwargs['experimentId']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'jobId' in kwargs:
+        if job_id is None and 'jobId' in kwargs:
             job_id = kwargs['jobId']
-        if 'notebookId' in kwargs:
+        if notebook_id is None and 'notebookId' in kwargs:
             notebook_id = kwargs['notebookId']
-        if 'notebookPath' in kwargs:
+        if notebook_path is None and 'notebookPath' in kwargs:
             notebook_path = kwargs['notebookPath']
-        if 'objectType' in kwargs:
+        if object_type is None and 'objectType' in kwargs:
             object_type = kwargs['objectType']
-        if 'pipelineId' in kwargs:
+        if pipeline_id is None and 'pipelineId' in kwargs:
             pipeline_id = kwargs['pipelineId']
-        if 'registeredModelId' in kwargs:
+        if registered_model_id is None and 'registeredModelId' in kwargs:
             registered_model_id = kwargs['registeredModelId']
-        if 'repoId' in kwargs:
+        if repo_id is None and 'repoId' in kwargs:
             repo_id = kwargs['repoId']
-        if 'repoPath' in kwargs:
+        if repo_path is None and 'repoPath' in kwargs:
             repo_path = kwargs['repoPath']
-        if 'servingEndpointId' in kwargs:
+        if serving_endpoint_id is None and 'servingEndpointId' in kwargs:
             serving_endpoint_id = kwargs['servingEndpointId']
-        if 'sqlAlertId' in kwargs:
+        if sql_alert_id is None and 'sqlAlertId' in kwargs:
             sql_alert_id = kwargs['sqlAlertId']
-        if 'sqlDashboardId' in kwargs:
+        if sql_dashboard_id is None and 'sqlDashboardId' in kwargs:
             sql_dashboard_id = kwargs['sqlDashboardId']
-        if 'sqlEndpointId' in kwargs:
+        if sql_endpoint_id is None and 'sqlEndpointId' in kwargs:
             sql_endpoint_id = kwargs['sqlEndpointId']
-        if 'sqlQueryId' in kwargs:
+        if sql_query_id is None and 'sqlQueryId' in kwargs:
             sql_query_id = kwargs['sqlQueryId']
-        if 'workspaceFileId' in kwargs:
+        if workspace_file_id is None and 'workspaceFileId' in kwargs:
             workspace_file_id = kwargs['workspaceFileId']
-        if 'workspaceFilePath' in kwargs:
+        if workspace_file_path is None and 'workspaceFilePath' in kwargs:
             workspace_file_path = kwargs['workspaceFilePath']
 
         if access_controls is not None:

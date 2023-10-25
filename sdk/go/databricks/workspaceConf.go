@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewWorkspaceConf(ctx, "this", &databricks.WorkspaceConfArgs{
-//				CustomConfig: pulumi.AnyMap{
+//				CustomConfig: pulumi.Map{
 //					"enableIpAccessLists": pulumi.Any(true),
 //				},
 //			})

@@ -33,13 +33,15 @@ class DbfsFileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              content_base64: Optional[pulumi.Input[str]] = None,
              md5: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
 
         _setter("path", path)
@@ -127,13 +129,13 @@ class _DbfsFileState:
              md5: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
-        if 'dbfsPath' in kwargs:
+        if dbfs_path is None and 'dbfsPath' in kwargs:
             dbfs_path = kwargs['dbfsPath']
-        if 'fileSize' in kwargs:
+        if file_size is None and 'fileSize' in kwargs:
             file_size = kwargs['fileSize']
 
         if content_base64 is not None:

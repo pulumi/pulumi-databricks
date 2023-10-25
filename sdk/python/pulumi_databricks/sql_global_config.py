@@ -46,19 +46,19 @@ class SqlGlobalConfigArgs:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataAccessConfig' in kwargs:
+        if data_access_config is None and 'dataAccessConfig' in kwargs:
             data_access_config = kwargs['dataAccessConfig']
-        if 'enableServerlessCompute' in kwargs:
+        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
             enable_serverless_compute = kwargs['enableServerlessCompute']
-        if 'googleServiceAccount' in kwargs:
+        if google_service_account is None and 'googleServiceAccount' in kwargs:
             google_service_account = kwargs['googleServiceAccount']
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'securityPolicy' in kwargs:
+        if security_policy is None and 'securityPolicy' in kwargs:
             security_policy = kwargs['securityPolicy']
-        if 'sqlConfigParams' in kwargs:
+        if sql_config_params is None and 'sqlConfigParams' in kwargs:
             sql_config_params = kwargs['sqlConfigParams']
 
         if data_access_config is not None:
@@ -185,19 +185,19 @@ class _SqlGlobalConfigState:
              instance_profile_arn: Optional[pulumi.Input[str]] = None,
              security_policy: Optional[pulumi.Input[str]] = None,
              sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataAccessConfig' in kwargs:
+        if data_access_config is None and 'dataAccessConfig' in kwargs:
             data_access_config = kwargs['dataAccessConfig']
-        if 'enableServerlessCompute' in kwargs:
+        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
             enable_serverless_compute = kwargs['enableServerlessCompute']
-        if 'googleServiceAccount' in kwargs:
+        if google_service_account is None and 'googleServiceAccount' in kwargs:
             google_service_account = kwargs['googleServiceAccount']
-        if 'instanceProfileArn' in kwargs:
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
             instance_profile_arn = kwargs['instanceProfileArn']
-        if 'securityPolicy' in kwargs:
+        if security_policy is None and 'securityPolicy' in kwargs:
             security_policy = kwargs['securityPolicy']
-        if 'sqlConfigParams' in kwargs:
+        if sql_config_params is None and 'sqlConfigParams' in kwargs:
             sql_config_params = kwargs['sqlConfigParams']
 
         if data_access_config is not None:

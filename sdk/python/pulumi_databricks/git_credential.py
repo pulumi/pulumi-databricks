@@ -35,17 +35,19 @@ class GitCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             git_provider: pulumi.Input[str],
+             git_provider: Optional[pulumi.Input[str]] = None,
              force: Optional[pulumi.Input[bool]] = None,
              git_username: Optional[pulumi.Input[str]] = None,
              personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gitProvider' in kwargs:
+        if git_provider is None and 'gitProvider' in kwargs:
             git_provider = kwargs['gitProvider']
-        if 'gitUsername' in kwargs:
+        if git_provider is None:
+            raise TypeError("Missing 'git_provider' argument")
+        if git_username is None and 'gitUsername' in kwargs:
             git_username = kwargs['gitUsername']
-        if 'personalAccessToken' in kwargs:
+        if personal_access_token is None and 'personalAccessToken' in kwargs:
             personal_access_token = kwargs['personalAccessToken']
 
         _setter("git_provider", git_provider)
@@ -133,13 +135,13 @@ class _GitCredentialState:
              git_provider: Optional[pulumi.Input[str]] = None,
              git_username: Optional[pulumi.Input[str]] = None,
              personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'gitProvider' in kwargs:
+        if git_provider is None and 'gitProvider' in kwargs:
             git_provider = kwargs['gitProvider']
-        if 'gitUsername' in kwargs:
+        if git_username is None and 'gitUsername' in kwargs:
             git_username = kwargs['gitUsername']
-        if 'personalAccessToken' in kwargs:
+        if personal_access_token is None and 'personalAccessToken' in kwargs:
             personal_access_token = kwargs['personalAccessToken']
 
         if force is not None:

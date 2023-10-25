@@ -32,13 +32,19 @@ class SecretArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             scope: pulumi.Input[str],
-             string_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'stringValue' in kwargs:
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if string_value is None and 'stringValue' in kwargs:
             string_value = kwargs['stringValue']
+        if string_value is None:
+            raise TypeError("Missing 'string_value' argument")
 
         _setter("key", key)
         _setter("scope", scope)
@@ -113,13 +119,13 @@ class _SecretState:
              last_updated_timestamp: Optional[pulumi.Input[int]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              string_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'configReference' in kwargs:
+        if config_reference is None and 'configReference' in kwargs:
             config_reference = kwargs['configReference']
-        if 'lastUpdatedTimestamp' in kwargs:
+        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
             last_updated_timestamp = kwargs['lastUpdatedTimestamp']
-        if 'stringValue' in kwargs:
+        if string_value is None and 'stringValue' in kwargs:
             string_value = kwargs['stringValue']
 
         if config_reference is not None:

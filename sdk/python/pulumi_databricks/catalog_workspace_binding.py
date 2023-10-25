@@ -29,14 +29,18 @@ class CatalogWorkspaceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_name: pulumi.Input[str],
-             workspace_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'workspaceId' in kwargs:
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
+        if workspace_id is None:
+            raise TypeError("Missing 'workspace_id' argument")
 
         _setter("catalog_name", catalog_name)
         _setter("workspace_id", workspace_id)
@@ -86,11 +90,11 @@ class _CatalogWorkspaceBindingState:
              _setter: Callable[[Any, Any], None],
              catalog_name: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogName' in kwargs:
+        if catalog_name is None and 'catalogName' in kwargs:
             catalog_name = kwargs['catalogName']
-        if 'workspaceId' in kwargs:
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
 
         if catalog_name is not None:

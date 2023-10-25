@@ -70,21 +70,21 @@ class CatalogArgs:
              provider_name: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionName' in kwargs:
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'isolationMode' in kwargs:
+        if isolation_mode is None and 'isolationMode' in kwargs:
             isolation_mode = kwargs['isolationMode']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'providerName' in kwargs:
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
-        if 'shareName' in kwargs:
+        if share_name is None and 'shareName' in kwargs:
             share_name = kwargs['shareName']
-        if 'storageRoot' in kwargs:
+        if storage_root is None and 'storageRoot' in kwargs:
             storage_root = kwargs['storageRoot']
 
         if comment is not None:
@@ -313,21 +313,21 @@ class _CatalogState:
              provider_name: Optional[pulumi.Input[str]] = None,
              share_name: Optional[pulumi.Input[str]] = None,
              storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionName' in kwargs:
+        if connection_name is None and 'connectionName' in kwargs:
             connection_name = kwargs['connectionName']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'isolationMode' in kwargs:
+        if isolation_mode is None and 'isolationMode' in kwargs:
             isolation_mode = kwargs['isolationMode']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'providerName' in kwargs:
+        if provider_name is None and 'providerName' in kwargs:
             provider_name = kwargs['providerName']
-        if 'shareName' in kwargs:
+        if share_name is None and 'shareName' in kwargs:
             share_name = kwargs['shareName']
-        if 'storageRoot' in kwargs:
+        if storage_root is None and 'storageRoot' in kwargs:
             storage_root = kwargs['storageRoot']
 
         if comment is not None:

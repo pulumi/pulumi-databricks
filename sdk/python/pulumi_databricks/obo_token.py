@@ -32,14 +32,16 @@ class OboTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'lifetimeSeconds' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
             lifetime_seconds = kwargs['lifetimeSeconds']
 
         _setter("application_id", application_id)
@@ -113,13 +115,13 @@ class _OboTokenState:
              comment: Optional[pulumi.Input[str]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'lifetimeSeconds' in kwargs:
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
             lifetime_seconds = kwargs['lifetimeSeconds']
-        if 'tokenValue' in kwargs:
+        if token_value is None and 'tokenValue' in kwargs:
             token_value = kwargs['tokenValue']
 
         if application_id is not None:

@@ -45,9 +45,9 @@ class GlobalInitScriptArgs:
              name: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
 
         if content_base64 is not None:
@@ -164,9 +164,9 @@ class _GlobalInitScriptState:
              name: Optional[pulumi.Input[str]] = None,
              position: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'contentBase64' in kwargs:
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
 
         if content_base64 is not None:

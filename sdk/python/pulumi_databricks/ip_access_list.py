@@ -35,16 +35,22 @@ class IpAccessListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
-             label: pulumi.Input[str],
-             list_type: pulumi.Input[str],
+             ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             list_type: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddresses' in kwargs:
+        if ip_addresses is None and 'ipAddresses' in kwargs:
             ip_addresses = kwargs['ipAddresses']
-        if 'listType' in kwargs:
+        if ip_addresses is None:
+            raise TypeError("Missing 'ip_addresses' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if list_type is None and 'listType' in kwargs:
             list_type = kwargs['listType']
+        if list_type is None:
+            raise TypeError("Missing 'list_type' argument")
 
         _setter("ip_addresses", ip_addresses)
         _setter("label", label)
@@ -129,11 +135,11 @@ class _IpAccessListState:
              ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              label: Optional[pulumi.Input[str]] = None,
              list_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipAddresses' in kwargs:
+        if ip_addresses is None and 'ipAddresses' in kwargs:
             ip_addresses = kwargs['ipAddresses']
-        if 'listType' in kwargs:
+        if list_type is None and 'listType' in kwargs:
             list_type = kwargs['listType']
 
         if enabled is not None:

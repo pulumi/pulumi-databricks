@@ -65,7 +65,7 @@ class MetastoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             storage_root: pulumi.Input[str],
+             storage_root: Optional[pulumi.Input[str]] = None,
              cloud: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[int]] = None,
              created_by: Optional[pulumi.Input[str]] = None,
@@ -82,33 +82,35 @@ class MetastoreArgs:
              storage_root_credential_id: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[int]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'storageRoot' in kwargs:
+        if storage_root is None and 'storageRoot' in kwargs:
             storage_root = kwargs['storageRoot']
-        if 'createdAt' in kwargs:
+        if storage_root is None:
+            raise TypeError("Missing 'storage_root' argument")
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'defaultDataAccessConfigId' in kwargs:
+        if default_data_access_config_id is None and 'defaultDataAccessConfigId' in kwargs:
             default_data_access_config_id = kwargs['defaultDataAccessConfigId']
-        if 'deltaSharingOrganizationName' in kwargs:
+        if delta_sharing_organization_name is None and 'deltaSharingOrganizationName' in kwargs:
             delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
-        if 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
+        if delta_sharing_recipient_token_lifetime_in_seconds is None and 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
             delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
-        if 'deltaSharingScope' in kwargs:
+        if delta_sharing_scope is None and 'deltaSharingScope' in kwargs:
             delta_sharing_scope = kwargs['deltaSharingScope']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'globalMetastoreId' in kwargs:
+        if global_metastore_id is None and 'globalMetastoreId' in kwargs:
             global_metastore_id = kwargs['globalMetastoreId']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'storageRootCredentialId' in kwargs:
+        if storage_root_credential_id is None and 'storageRootCredentialId' in kwargs:
             storage_root_credential_id = kwargs['storageRootCredentialId']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
 
         _setter("storage_root", storage_root)
@@ -394,33 +396,33 @@ class _MetastoreState:
              storage_root_credential_id: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[int]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'createdBy' in kwargs:
+        if created_by is None and 'createdBy' in kwargs:
             created_by = kwargs['createdBy']
-        if 'defaultDataAccessConfigId' in kwargs:
+        if default_data_access_config_id is None and 'defaultDataAccessConfigId' in kwargs:
             default_data_access_config_id = kwargs['defaultDataAccessConfigId']
-        if 'deltaSharingOrganizationName' in kwargs:
+        if delta_sharing_organization_name is None and 'deltaSharingOrganizationName' in kwargs:
             delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
-        if 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
+        if delta_sharing_recipient_token_lifetime_in_seconds is None and 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
             delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
-        if 'deltaSharingScope' in kwargs:
+        if delta_sharing_scope is None and 'deltaSharingScope' in kwargs:
             delta_sharing_scope = kwargs['deltaSharingScope']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'globalMetastoreId' in kwargs:
+        if global_metastore_id is None and 'globalMetastoreId' in kwargs:
             global_metastore_id = kwargs['globalMetastoreId']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'storageRoot' in kwargs:
+        if storage_root is None and 'storageRoot' in kwargs:
             storage_root = kwargs['storageRoot']
-        if 'storageRootCredentialId' in kwargs:
+        if storage_root_credential_id is None and 'storageRootCredentialId' in kwargs:
             storage_root_credential_id = kwargs['storageRootCredentialId']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
-        if 'updatedBy' in kwargs:
+        if updated_by is None and 'updatedBy' in kwargs:
             updated_by = kwargs['updatedBy']
 
         if cloud is not None:

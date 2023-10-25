@@ -41,7 +41,7 @@ class SqlWidgetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dashboard_id: pulumi.Input[str],
+             dashboard_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
              position: Optional[pulumi.Input['SqlWidgetPositionArgs']] = None,
@@ -49,13 +49,15 @@ class SqlWidgetArgs:
              title: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
              widget_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dashboardId' in kwargs:
+        if dashboard_id is None and 'dashboardId' in kwargs:
             dashboard_id = kwargs['dashboardId']
-        if 'visualizationId' in kwargs:
+        if dashboard_id is None:
+            raise TypeError("Missing 'dashboard_id' argument")
+        if visualization_id is None and 'visualizationId' in kwargs:
             visualization_id = kwargs['visualizationId']
-        if 'widgetId' in kwargs:
+        if widget_id is None and 'widgetId' in kwargs:
             widget_id = kwargs['widgetId']
 
         _setter("dashboard_id", dashboard_id)
@@ -183,13 +185,13 @@ class _SqlWidgetState:
              title: Optional[pulumi.Input[str]] = None,
              visualization_id: Optional[pulumi.Input[str]] = None,
              widget_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dashboardId' in kwargs:
+        if dashboard_id is None and 'dashboardId' in kwargs:
             dashboard_id = kwargs['dashboardId']
-        if 'visualizationId' in kwargs:
+        if visualization_id is None and 'visualizationId' in kwargs:
             visualization_id = kwargs['visualizationId']
-        if 'widgetId' in kwargs:
+        if widget_id is None and 'widgetId' in kwargs:
             widget_id = kwargs['widgetId']
 
         if dashboard_id is not None:
@@ -446,11 +448,7 @@ class SqlWidget(pulumi.CustomResource):
             __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["description"] = description
             __props__.__dict__["parameters"] = parameters
-            if position is not None and not isinstance(position, SqlWidgetPositionArgs):
-                position = position or {}
-                def _setter(key, value):
-                    position[key] = value
-                SqlWidgetPositionArgs._configure(_setter, **position)
+            position = _utilities.configure(position, SqlWidgetPositionArgs, True)
             __props__.__dict__["position"] = position
             __props__.__dict__["text"] = text
             __props__.__dict__["title"] = title

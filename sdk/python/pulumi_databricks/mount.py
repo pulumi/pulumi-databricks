@@ -58,15 +58,15 @@ class MountArgs:
              s3: Optional[pulumi.Input['MountS3Args']] = None,
              uri: Optional[pulumi.Input[str]] = None,
              wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'extraConfigs' in kwargs:
+        if extra_configs is None and 'extraConfigs' in kwargs:
             extra_configs = kwargs['extraConfigs']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
 
         if abfs is not None:
@@ -241,15 +241,15 @@ class _MountState:
              source: Optional[pulumi.Input[str]] = None,
              uri: Optional[pulumi.Input[str]] = None,
              wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'extraConfigs' in kwargs:
+        if extra_configs is None and 'extraConfigs' in kwargs:
             extra_configs = kwargs['extraConfigs']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
 
         if abfs is not None:
@@ -464,41 +464,21 @@ class Mount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MountArgs.__new__(MountArgs)
 
-            if abfs is not None and not isinstance(abfs, MountAbfsArgs):
-                abfs = abfs or {}
-                def _setter(key, value):
-                    abfs[key] = value
-                MountAbfsArgs._configure(_setter, **abfs)
+            abfs = _utilities.configure(abfs, MountAbfsArgs, True)
             __props__.__dict__["abfs"] = abfs
-            if adl is not None and not isinstance(adl, MountAdlArgs):
-                adl = adl or {}
-                def _setter(key, value):
-                    adl[key] = value
-                MountAdlArgs._configure(_setter, **adl)
+            adl = _utilities.configure(adl, MountAdlArgs, True)
             __props__.__dict__["adl"] = adl
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["encryption_type"] = encryption_type
             __props__.__dict__["extra_configs"] = extra_configs
-            if gs is not None and not isinstance(gs, MountGsArgs):
-                gs = gs or {}
-                def _setter(key, value):
-                    gs[key] = value
-                MountGsArgs._configure(_setter, **gs)
+            gs = _utilities.configure(gs, MountGsArgs, True)
             __props__.__dict__["gs"] = gs
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_id"] = resource_id
-            if s3 is not None and not isinstance(s3, MountS3Args):
-                s3 = s3 or {}
-                def _setter(key, value):
-                    s3[key] = value
-                MountS3Args._configure(_setter, **s3)
+            s3 = _utilities.configure(s3, MountS3Args, True)
             __props__.__dict__["s3"] = s3
             __props__.__dict__["uri"] = uri
-            if wasb is not None and not isinstance(wasb, MountWasbArgs):
-                wasb = wasb or {}
-                def _setter(key, value):
-                    wasb[key] = value
-                MountWasbArgs._configure(_setter, **wasb)
+            wasb = _utilities.configure(wasb, MountWasbArgs, True)
             __props__.__dict__["wasb"] = wasb
             __props__.__dict__["source"] = None
         super(Mount, __self__).__init__(

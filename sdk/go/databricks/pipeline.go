@@ -40,7 +40,7 @@ import (
 //			}
 //			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
 //				Storage: pulumi.String("/test/first-pipeline"),
-//				Configuration: pulumi.AnyMap{
+//				Configuration: pulumi.Map{
 //					"key1": pulumi.Any("value1"),
 //					"key2": pulumi.Any("value2"),
 //				},
@@ -48,14 +48,14 @@ import (
 //					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("default"),
 //						NumWorkers: pulumi.Int(2),
-//						CustomTags: pulumi.AnyMap{
+//						CustomTags: pulumi.Map{
 //							"cluster_type": pulumi.Any("default"),
 //						},
 //					},
 //					&databricks.PipelineClusterArgs{
 //						Label:      pulumi.String("maintenance"),
 //						NumWorkers: pulumi.Int(1),
-//						CustomTags: pulumi.AnyMap{
+//						CustomTags: pulumi.Map{
 //							"cluster_type": pulumi.Any("maintenance"),
 //						},
 //					},

@@ -151,53 +151,53 @@ class JobArgs:
              timeout_seconds: Optional[pulumi.Input[int]] = None,
              trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
              webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alwaysRunning' in kwargs:
+        if always_running is None and 'alwaysRunning' in kwargs:
             always_running = kwargs['alwaysRunning']
-        if 'controlRunState' in kwargs:
+        if control_run_state is None and 'controlRunState' in kwargs:
             control_run_state = kwargs['controlRunState']
-        if 'dbtTask' in kwargs:
+        if dbt_task is None and 'dbtTask' in kwargs:
             dbt_task = kwargs['dbtTask']
-        if 'emailNotifications' in kwargs:
+        if email_notifications is None and 'emailNotifications' in kwargs:
             email_notifications = kwargs['emailNotifications']
-        if 'existingClusterId' in kwargs:
+        if existing_cluster_id is None and 'existingClusterId' in kwargs:
             existing_cluster_id = kwargs['existingClusterId']
-        if 'gitSource' in kwargs:
+        if git_source is None and 'gitSource' in kwargs:
             git_source = kwargs['gitSource']
-        if 'jobClusters' in kwargs:
+        if job_clusters is None and 'jobClusters' in kwargs:
             job_clusters = kwargs['jobClusters']
-        if 'maxConcurrentRuns' in kwargs:
+        if max_concurrent_runs is None and 'maxConcurrentRuns' in kwargs:
             max_concurrent_runs = kwargs['maxConcurrentRuns']
-        if 'maxRetries' in kwargs:
+        if max_retries is None and 'maxRetries' in kwargs:
             max_retries = kwargs['maxRetries']
-        if 'minRetryIntervalMillis' in kwargs:
+        if min_retry_interval_millis is None and 'minRetryIntervalMillis' in kwargs:
             min_retry_interval_millis = kwargs['minRetryIntervalMillis']
-        if 'newCluster' in kwargs:
+        if new_cluster is None and 'newCluster' in kwargs:
             new_cluster = kwargs['newCluster']
-        if 'notebookTask' in kwargs:
+        if notebook_task is None and 'notebookTask' in kwargs:
             notebook_task = kwargs['notebookTask']
-        if 'notificationSettings' in kwargs:
+        if notification_settings is None and 'notificationSettings' in kwargs:
             notification_settings = kwargs['notificationSettings']
-        if 'pipelineTask' in kwargs:
+        if pipeline_task is None and 'pipelineTask' in kwargs:
             pipeline_task = kwargs['pipelineTask']
-        if 'pythonWheelTask' in kwargs:
+        if python_wheel_task is None and 'pythonWheelTask' in kwargs:
             python_wheel_task = kwargs['pythonWheelTask']
-        if 'retryOnTimeout' in kwargs:
+        if retry_on_timeout is None and 'retryOnTimeout' in kwargs:
             retry_on_timeout = kwargs['retryOnTimeout']
-        if 'runAs' in kwargs:
+        if run_as is None and 'runAs' in kwargs:
             run_as = kwargs['runAs']
-        if 'runJobTask' in kwargs:
+        if run_job_task is None and 'runJobTask' in kwargs:
             run_job_task = kwargs['runJobTask']
-        if 'sparkJarTask' in kwargs:
+        if spark_jar_task is None and 'sparkJarTask' in kwargs:
             spark_jar_task = kwargs['sparkJarTask']
-        if 'sparkPythonTask' in kwargs:
+        if spark_python_task is None and 'sparkPythonTask' in kwargs:
             spark_python_task = kwargs['sparkPythonTask']
-        if 'sparkSubmitTask' in kwargs:
+        if spark_submit_task is None and 'sparkSubmitTask' in kwargs:
             spark_submit_task = kwargs['sparkSubmitTask']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
-        if 'webhookNotifications' in kwargs:
+        if webhook_notifications is None and 'webhookNotifications' in kwargs:
             webhook_notifications = kwargs['webhookNotifications']
 
         if always_running is not None:
@@ -788,53 +788,53 @@ class _JobState:
              trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
              url: Optional[pulumi.Input[str]] = None,
              webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'alwaysRunning' in kwargs:
+        if always_running is None and 'alwaysRunning' in kwargs:
             always_running = kwargs['alwaysRunning']
-        if 'controlRunState' in kwargs:
+        if control_run_state is None and 'controlRunState' in kwargs:
             control_run_state = kwargs['controlRunState']
-        if 'dbtTask' in kwargs:
+        if dbt_task is None and 'dbtTask' in kwargs:
             dbt_task = kwargs['dbtTask']
-        if 'emailNotifications' in kwargs:
+        if email_notifications is None and 'emailNotifications' in kwargs:
             email_notifications = kwargs['emailNotifications']
-        if 'existingClusterId' in kwargs:
+        if existing_cluster_id is None and 'existingClusterId' in kwargs:
             existing_cluster_id = kwargs['existingClusterId']
-        if 'gitSource' in kwargs:
+        if git_source is None and 'gitSource' in kwargs:
             git_source = kwargs['gitSource']
-        if 'jobClusters' in kwargs:
+        if job_clusters is None and 'jobClusters' in kwargs:
             job_clusters = kwargs['jobClusters']
-        if 'maxConcurrentRuns' in kwargs:
+        if max_concurrent_runs is None and 'maxConcurrentRuns' in kwargs:
             max_concurrent_runs = kwargs['maxConcurrentRuns']
-        if 'maxRetries' in kwargs:
+        if max_retries is None and 'maxRetries' in kwargs:
             max_retries = kwargs['maxRetries']
-        if 'minRetryIntervalMillis' in kwargs:
+        if min_retry_interval_millis is None and 'minRetryIntervalMillis' in kwargs:
             min_retry_interval_millis = kwargs['minRetryIntervalMillis']
-        if 'newCluster' in kwargs:
+        if new_cluster is None and 'newCluster' in kwargs:
             new_cluster = kwargs['newCluster']
-        if 'notebookTask' in kwargs:
+        if notebook_task is None and 'notebookTask' in kwargs:
             notebook_task = kwargs['notebookTask']
-        if 'notificationSettings' in kwargs:
+        if notification_settings is None and 'notificationSettings' in kwargs:
             notification_settings = kwargs['notificationSettings']
-        if 'pipelineTask' in kwargs:
+        if pipeline_task is None and 'pipelineTask' in kwargs:
             pipeline_task = kwargs['pipelineTask']
-        if 'pythonWheelTask' in kwargs:
+        if python_wheel_task is None and 'pythonWheelTask' in kwargs:
             python_wheel_task = kwargs['pythonWheelTask']
-        if 'retryOnTimeout' in kwargs:
+        if retry_on_timeout is None and 'retryOnTimeout' in kwargs:
             retry_on_timeout = kwargs['retryOnTimeout']
-        if 'runAs' in kwargs:
+        if run_as is None and 'runAs' in kwargs:
             run_as = kwargs['runAs']
-        if 'runJobTask' in kwargs:
+        if run_job_task is None and 'runJobTask' in kwargs:
             run_job_task = kwargs['runJobTask']
-        if 'sparkJarTask' in kwargs:
+        if spark_jar_task is None and 'sparkJarTask' in kwargs:
             spark_jar_task = kwargs['sparkJarTask']
-        if 'sparkPythonTask' in kwargs:
+        if spark_python_task is None and 'sparkPythonTask' in kwargs:
             spark_python_task = kwargs['sparkPythonTask']
-        if 'sparkSubmitTask' in kwargs:
+        if spark_submit_task is None and 'sparkSubmitTask' in kwargs:
             spark_submit_task = kwargs['sparkSubmitTask']
-        if 'timeoutSeconds' in kwargs:
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
             timeout_seconds = kwargs['timeoutSeconds']
-        if 'webhookNotifications' in kwargs:
+        if webhook_notifications is None and 'webhookNotifications' in kwargs:
             webhook_notifications = kwargs['webhookNotifications']
 
         if always_running is not None:
@@ -1451,38 +1451,18 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["always_running"] = always_running
             __props__.__dict__["computes"] = computes
-            if continuous is not None and not isinstance(continuous, JobContinuousArgs):
-                continuous = continuous or {}
-                def _setter(key, value):
-                    continuous[key] = value
-                JobContinuousArgs._configure(_setter, **continuous)
+            continuous = _utilities.configure(continuous, JobContinuousArgs, True)
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["control_run_state"] = control_run_state
-            if dbt_task is not None and not isinstance(dbt_task, JobDbtTaskArgs):
-                dbt_task = dbt_task or {}
-                def _setter(key, value):
-                    dbt_task[key] = value
-                JobDbtTaskArgs._configure(_setter, **dbt_task)
+            dbt_task = _utilities.configure(dbt_task, JobDbtTaskArgs, True)
             __props__.__dict__["dbt_task"] = dbt_task
-            if email_notifications is not None and not isinstance(email_notifications, JobEmailNotificationsArgs):
-                email_notifications = email_notifications or {}
-                def _setter(key, value):
-                    email_notifications[key] = value
-                JobEmailNotificationsArgs._configure(_setter, **email_notifications)
+            email_notifications = _utilities.configure(email_notifications, JobEmailNotificationsArgs, True)
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
-            if git_source is not None and not isinstance(git_source, JobGitSourceArgs):
-                git_source = git_source or {}
-                def _setter(key, value):
-                    git_source[key] = value
-                JobGitSourceArgs._configure(_setter, **git_source)
+            git_source = _utilities.configure(git_source, JobGitSourceArgs, True)
             __props__.__dict__["git_source"] = git_source
-            if health is not None and not isinstance(health, JobHealthArgs):
-                health = health or {}
-                def _setter(key, value):
-                    health[key] = value
-                JobHealthArgs._configure(_setter, **health)
+            health = _utilities.configure(health, JobHealthArgs, True)
             __props__.__dict__["health"] = health
             __props__.__dict__["job_clusters"] = job_clusters
             __props__.__dict__["libraries"] = libraries
@@ -1490,94 +1470,38 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["max_retries"] = max_retries
             __props__.__dict__["min_retry_interval_millis"] = min_retry_interval_millis
             __props__.__dict__["name"] = name
-            if new_cluster is not None and not isinstance(new_cluster, JobNewClusterArgs):
-                new_cluster = new_cluster or {}
-                def _setter(key, value):
-                    new_cluster[key] = value
-                JobNewClusterArgs._configure(_setter, **new_cluster)
+            new_cluster = _utilities.configure(new_cluster, JobNewClusterArgs, True)
             __props__.__dict__["new_cluster"] = new_cluster
-            if notebook_task is not None and not isinstance(notebook_task, JobNotebookTaskArgs):
-                notebook_task = notebook_task or {}
-                def _setter(key, value):
-                    notebook_task[key] = value
-                JobNotebookTaskArgs._configure(_setter, **notebook_task)
+            notebook_task = _utilities.configure(notebook_task, JobNotebookTaskArgs, True)
             __props__.__dict__["notebook_task"] = notebook_task
-            if notification_settings is not None and not isinstance(notification_settings, JobNotificationSettingsArgs):
-                notification_settings = notification_settings or {}
-                def _setter(key, value):
-                    notification_settings[key] = value
-                JobNotificationSettingsArgs._configure(_setter, **notification_settings)
+            notification_settings = _utilities.configure(notification_settings, JobNotificationSettingsArgs, True)
             __props__.__dict__["notification_settings"] = notification_settings
             __props__.__dict__["parameters"] = parameters
-            if pipeline_task is not None and not isinstance(pipeline_task, JobPipelineTaskArgs):
-                pipeline_task = pipeline_task or {}
-                def _setter(key, value):
-                    pipeline_task[key] = value
-                JobPipelineTaskArgs._configure(_setter, **pipeline_task)
+            pipeline_task = _utilities.configure(pipeline_task, JobPipelineTaskArgs, True)
             __props__.__dict__["pipeline_task"] = pipeline_task
-            if python_wheel_task is not None and not isinstance(python_wheel_task, JobPythonWheelTaskArgs):
-                python_wheel_task = python_wheel_task or {}
-                def _setter(key, value):
-                    python_wheel_task[key] = value
-                JobPythonWheelTaskArgs._configure(_setter, **python_wheel_task)
+            python_wheel_task = _utilities.configure(python_wheel_task, JobPythonWheelTaskArgs, True)
             __props__.__dict__["python_wheel_task"] = python_wheel_task
-            if queue is not None and not isinstance(queue, JobQueueArgs):
-                queue = queue or {}
-                def _setter(key, value):
-                    queue[key] = value
-                JobQueueArgs._configure(_setter, **queue)
+            queue = _utilities.configure(queue, JobQueueArgs, True)
             __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
-            if run_as is not None and not isinstance(run_as, JobRunAsArgs):
-                run_as = run_as or {}
-                def _setter(key, value):
-                    run_as[key] = value
-                JobRunAsArgs._configure(_setter, **run_as)
+            run_as = _utilities.configure(run_as, JobRunAsArgs, True)
             __props__.__dict__["run_as"] = run_as
-            if run_job_task is not None and not isinstance(run_job_task, JobRunJobTaskArgs):
-                run_job_task = run_job_task or {}
-                def _setter(key, value):
-                    run_job_task[key] = value
-                JobRunJobTaskArgs._configure(_setter, **run_job_task)
+            run_job_task = _utilities.configure(run_job_task, JobRunJobTaskArgs, True)
             __props__.__dict__["run_job_task"] = run_job_task
-            if schedule is not None and not isinstance(schedule, JobScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                JobScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, JobScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
-            if spark_jar_task is not None and not isinstance(spark_jar_task, JobSparkJarTaskArgs):
-                spark_jar_task = spark_jar_task or {}
-                def _setter(key, value):
-                    spark_jar_task[key] = value
-                JobSparkJarTaskArgs._configure(_setter, **spark_jar_task)
+            spark_jar_task = _utilities.configure(spark_jar_task, JobSparkJarTaskArgs, True)
             __props__.__dict__["spark_jar_task"] = spark_jar_task
-            if spark_python_task is not None and not isinstance(spark_python_task, JobSparkPythonTaskArgs):
-                spark_python_task = spark_python_task or {}
-                def _setter(key, value):
-                    spark_python_task[key] = value
-                JobSparkPythonTaskArgs._configure(_setter, **spark_python_task)
+            spark_python_task = _utilities.configure(spark_python_task, JobSparkPythonTaskArgs, True)
             __props__.__dict__["spark_python_task"] = spark_python_task
-            if spark_submit_task is not None and not isinstance(spark_submit_task, JobSparkSubmitTaskArgs):
-                spark_submit_task = spark_submit_task or {}
-                def _setter(key, value):
-                    spark_submit_task[key] = value
-                JobSparkSubmitTaskArgs._configure(_setter, **spark_submit_task)
+            spark_submit_task = _utilities.configure(spark_submit_task, JobSparkSubmitTaskArgs, True)
             __props__.__dict__["spark_submit_task"] = spark_submit_task
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
-            if trigger is not None and not isinstance(trigger, JobTriggerArgs):
-                trigger = trigger or {}
-                def _setter(key, value):
-                    trigger[key] = value
-                JobTriggerArgs._configure(_setter, **trigger)
+            trigger = _utilities.configure(trigger, JobTriggerArgs, True)
             __props__.__dict__["trigger"] = trigger
-            if webhook_notifications is not None and not isinstance(webhook_notifications, JobWebhookNotificationsArgs):
-                webhook_notifications = webhook_notifications or {}
-                def _setter(key, value):
-                    webhook_notifications[key] = value
-                JobWebhookNotificationsArgs._configure(_setter, **webhook_notifications)
+            webhook_notifications = _utilities.configure(webhook_notifications, JobWebhookNotificationsArgs, True)
             __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
         super(Job, __self__).__init__(

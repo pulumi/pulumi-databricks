@@ -40,15 +40,15 @@ class TokenArgs:
              expiry_time: Optional[pulumi.Input[int]] = None,
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'expiryTime' in kwargs:
+        if expiry_time is None and 'expiryTime' in kwargs:
             expiry_time = kwargs['expiryTime']
-        if 'lifetimeSeconds' in kwargs:
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
             lifetime_seconds = kwargs['lifetimeSeconds']
-        if 'tokenId' in kwargs:
+        if token_id is None and 'tokenId' in kwargs:
             token_id = kwargs['tokenId']
 
         if comment is not None:
@@ -147,17 +147,17 @@ class _TokenState:
              lifetime_seconds: Optional[pulumi.Input[int]] = None,
              token_id: Optional[pulumi.Input[str]] = None,
              token_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'creationTime' in kwargs:
+        if creation_time is None and 'creationTime' in kwargs:
             creation_time = kwargs['creationTime']
-        if 'expiryTime' in kwargs:
+        if expiry_time is None and 'expiryTime' in kwargs:
             expiry_time = kwargs['expiryTime']
-        if 'lifetimeSeconds' in kwargs:
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
             lifetime_seconds = kwargs['lifetimeSeconds']
-        if 'tokenId' in kwargs:
+        if token_id is None and 'tokenId' in kwargs:
             token_id = kwargs['tokenId']
-        if 'tokenValue' in kwargs:
+        if token_value is None and 'tokenValue' in kwargs:
             token_value = kwargs['tokenValue']
 
         if comment is not None:

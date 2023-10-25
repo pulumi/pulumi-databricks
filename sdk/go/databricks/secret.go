@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
-//				SparkConf: pulumi.AnyMap{
+//				SparkConf: pulumi.Map{
 //					"fs.azure.account.oauth2.client.secret": publishingApi.ConfigReference,
 //				},
 //			})

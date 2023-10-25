@@ -29,14 +29,18 @@ class GroupMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             member_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'memberId' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if member_id is None and 'memberId' in kwargs:
             member_id = kwargs['memberId']
+        if member_id is None:
+            raise TypeError("Missing 'member_id' argument")
 
         _setter("group_id", group_id)
         _setter("member_id", member_id)
@@ -86,11 +90,11 @@ class _GroupMemberState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              member_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'memberId' in kwargs:
+        if member_id is None and 'memberId' in kwargs:
             member_id = kwargs['memberId']
 
         if group_id is not None:

@@ -45,21 +45,25 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connection_type: pulumi.Input[str],
-             options: pulumi.Input[Mapping[str, Any]],
+             connection_type: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              metastore_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionType' in kwargs:
+        if connection_type is None and 'connectionType' in kwargs:
             connection_type = kwargs['connectionType']
-        if 'metastoreId' in kwargs:
+        if connection_type is None:
+            raise TypeError("Missing 'connection_type' argument")
+        if options is None:
+            raise TypeError("Missing 'options' argument")
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         _setter("connection_type", connection_type)
@@ -210,13 +214,13 @@ class _ConnectionState:
              owner: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionType' in kwargs:
+        if connection_type is None and 'connectionType' in kwargs:
             connection_type = kwargs['connectionType']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'readOnly' in kwargs:
+        if read_only is None and 'readOnly' in kwargs:
             read_only = kwargs['readOnly']
 
         if comment is not None:

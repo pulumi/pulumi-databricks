@@ -31,7 +31,7 @@ class SystemSchemaArgs:
              _setter: Callable[[Any, Any], None],
              schema: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if schema is not None:
@@ -87,9 +87,9 @@ class _SystemSchemaState:
              metastore_id: Optional[pulumi.Input[str]] = None,
              schema: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
 
         if metastore_id is not None:

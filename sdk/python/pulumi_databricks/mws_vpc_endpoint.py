@@ -53,7 +53,7 @@ class MwsVpcEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             vpc_endpoint_name: pulumi.Input[str],
+             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              aws_account_id: Optional[pulumi.Input[str]] = None,
              aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
@@ -63,23 +63,25 @@ class MwsVpcEndpointArgs:
              state: Optional[pulumi.Input[str]] = None,
              use_case: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcEndpointName' in kwargs:
+        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
             vpc_endpoint_name = kwargs['vpcEndpointName']
-        if 'accountId' in kwargs:
+        if vpc_endpoint_name is None:
+            raise TypeError("Missing 'vpc_endpoint_name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'awsAccountId' in kwargs:
+        if aws_account_id is None and 'awsAccountId' in kwargs:
             aws_account_id = kwargs['awsAccountId']
-        if 'awsEndpointServiceId' in kwargs:
+        if aws_endpoint_service_id is None and 'awsEndpointServiceId' in kwargs:
             aws_endpoint_service_id = kwargs['awsEndpointServiceId']
-        if 'awsVpcEndpointId' in kwargs:
+        if aws_vpc_endpoint_id is None and 'awsVpcEndpointId' in kwargs:
             aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
-        if 'gcpVpcEndpointInfo' in kwargs:
+        if gcp_vpc_endpoint_info is None and 'gcpVpcEndpointInfo' in kwargs:
             gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
-        if 'useCase' in kwargs:
+        if use_case is None and 'useCase' in kwargs:
             use_case = kwargs['useCase']
-        if 'vpcEndpointId' in kwargs:
+        if vpc_endpoint_id is None and 'vpcEndpointId' in kwargs:
             vpc_endpoint_id = kwargs['vpcEndpointId']
 
         _setter("vpc_endpoint_name", vpc_endpoint_name)
@@ -267,23 +269,23 @@ class _MwsVpcEndpointState:
              use_case: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'awsAccountId' in kwargs:
+        if aws_account_id is None and 'awsAccountId' in kwargs:
             aws_account_id = kwargs['awsAccountId']
-        if 'awsEndpointServiceId' in kwargs:
+        if aws_endpoint_service_id is None and 'awsEndpointServiceId' in kwargs:
             aws_endpoint_service_id = kwargs['awsEndpointServiceId']
-        if 'awsVpcEndpointId' in kwargs:
+        if aws_vpc_endpoint_id is None and 'awsVpcEndpointId' in kwargs:
             aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
-        if 'gcpVpcEndpointInfo' in kwargs:
+        if gcp_vpc_endpoint_info is None and 'gcpVpcEndpointInfo' in kwargs:
             gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
-        if 'useCase' in kwargs:
+        if use_case is None and 'useCase' in kwargs:
             use_case = kwargs['useCase']
-        if 'vpcEndpointId' in kwargs:
+        if vpc_endpoint_id is None and 'vpcEndpointId' in kwargs:
             vpc_endpoint_id = kwargs['vpcEndpointId']
-        if 'vpcEndpointName' in kwargs:
+        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
             vpc_endpoint_name = kwargs['vpcEndpointName']
 
         if account_id is not None:
@@ -507,11 +509,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             __props__.__dict__["aws_account_id"] = aws_account_id
             __props__.__dict__["aws_endpoint_service_id"] = aws_endpoint_service_id
             __props__.__dict__["aws_vpc_endpoint_id"] = aws_vpc_endpoint_id
-            if gcp_vpc_endpoint_info is not None and not isinstance(gcp_vpc_endpoint_info, MwsVpcEndpointGcpVpcEndpointInfoArgs):
-                gcp_vpc_endpoint_info = gcp_vpc_endpoint_info or {}
-                def _setter(key, value):
-                    gcp_vpc_endpoint_info[key] = value
-                MwsVpcEndpointGcpVpcEndpointInfoArgs._configure(_setter, **gcp_vpc_endpoint_info)
+            gcp_vpc_endpoint_info = _utilities.configure(gcp_vpc_endpoint_info, MwsVpcEndpointGcpVpcEndpointInfoArgs, True)
             __props__.__dict__["gcp_vpc_endpoint_info"] = gcp_vpc_endpoint_info
             __props__.__dict__["region"] = region
             __props__.__dict__["state"] = state

@@ -53,8 +53,8 @@ class SqlQueryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_source_id: pulumi.Input[str],
-             query: pulumi.Input[str],
+             data_source_id: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -64,15 +64,19 @@ class SqlQueryArgs:
              schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataSourceId' in kwargs:
+        if data_source_id is None and 'dataSourceId' in kwargs:
             data_source_id = kwargs['dataSourceId']
-        if 'createdAt' in kwargs:
+        if data_source_id is None:
+            raise TypeError("Missing 'data_source_id' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'runAsRole' in kwargs:
+        if run_as_role is None and 'runAsRole' in kwargs:
             run_as_role = kwargs['runAsRole']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         _setter("data_source_id", data_source_id)
@@ -271,15 +275,15 @@ class _SqlQueryState:
              schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'dataSourceId' in kwargs:
+        if data_source_id is None and 'dataSourceId' in kwargs:
             data_source_id = kwargs['dataSourceId']
-        if 'runAsRole' in kwargs:
+        if run_as_role is None and 'runAsRole' in kwargs:
             run_as_role = kwargs['runAsRole']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
 
         if created_at is not None:
@@ -724,11 +728,7 @@ class SqlQuery(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query'")
             __props__.__dict__["query"] = query
             __props__.__dict__["run_as_role"] = run_as_role
-            if schedule is not None and not isinstance(schedule, SqlQueryScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                SqlQueryScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, SqlQueryScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["tags"] = tags
             __props__.__dict__["updated_at"] = updated_at

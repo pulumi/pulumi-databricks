@@ -32,11 +32,17 @@ class SecretAclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission: pulumi.Input[str],
-             principal: pulumi.Input[str],
-             scope: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             permission: Optional[pulumi.Input[str]] = None,
+             principal: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
 
         _setter("permission", permission)
         _setter("principal", principal)
@@ -103,7 +109,7 @@ class _SecretAclState:
              permission: Optional[pulumi.Input[str]] = None,
              principal: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if permission is not None:

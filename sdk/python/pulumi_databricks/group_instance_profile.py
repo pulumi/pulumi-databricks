@@ -29,14 +29,18 @@ class GroupInstanceProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             instance_profile_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             instance_profile_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'instanceProfileId' in kwargs:
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if instance_profile_id is None and 'instanceProfileId' in kwargs:
             instance_profile_id = kwargs['instanceProfileId']
+        if instance_profile_id is None:
+            raise TypeError("Missing 'instance_profile_id' argument")
 
         _setter("group_id", group_id)
         _setter("instance_profile_id", instance_profile_id)
@@ -86,11 +90,11 @@ class _GroupInstanceProfileState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              instance_profile_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupId' in kwargs:
+        if group_id is None and 'groupId' in kwargs:
             group_id = kwargs['groupId']
-        if 'instanceProfileId' in kwargs:
+        if instance_profile_id is None and 'instanceProfileId' in kwargs:
             instance_profile_id = kwargs['instanceProfileId']
 
         if group_id is not None:

@@ -32,16 +32,20 @@ class MetastoreAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metastore_id: pulumi.Input[str],
-             workspace_id: pulumi.Input[int],
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[int]] = None,
              default_catalog_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'workspaceId' in kwargs:
+        if metastore_id is None:
+            raise TypeError("Missing 'metastore_id' argument")
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
-        if 'defaultCatalogName' in kwargs:
+        if workspace_id is None:
+            raise TypeError("Missing 'workspace_id' argument")
+        if default_catalog_name is None and 'defaultCatalogName' in kwargs:
             default_catalog_name = kwargs['defaultCatalogName']
 
         _setter("metastore_id", metastore_id)
@@ -110,13 +114,13 @@ class _MetastoreAssignmentState:
              default_catalog_name: Optional[pulumi.Input[str]] = None,
              metastore_id: Optional[pulumi.Input[str]] = None,
              workspace_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultCatalogName' in kwargs:
+        if default_catalog_name is None and 'defaultCatalogName' in kwargs:
             default_catalog_name = kwargs['defaultCatalogName']
-        if 'metastoreId' in kwargs:
+        if metastore_id is None and 'metastoreId' in kwargs:
             metastore_id = kwargs['metastoreId']
-        if 'workspaceId' in kwargs:
+        if workspace_id is None and 'workspaceId' in kwargs:
             workspace_id = kwargs['workspaceId']
 
         if default_catalog_name is not None:

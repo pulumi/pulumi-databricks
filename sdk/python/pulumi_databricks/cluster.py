@@ -133,7 +133,7 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             spark_version: pulumi.Input[str],
+             spark_version: Optional[pulumi.Input[str]] = None,
              apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
              autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
              autotermination_minutes: Optional[pulumi.Input[int]] = None,
@@ -165,67 +165,69 @@ class ClusterArgs:
              spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sparkVersion' in kwargs:
+        if spark_version is None and 'sparkVersion' in kwargs:
             spark_version = kwargs['sparkVersion']
-        if 'applyPolicyDefaultValues' in kwargs:
+        if spark_version is None:
+            raise TypeError("Missing 'spark_version' argument")
+        if apply_policy_default_values is None and 'applyPolicyDefaultValues' in kwargs:
             apply_policy_default_values = kwargs['applyPolicyDefaultValues']
-        if 'autoterminationMinutes' in kwargs:
+        if autotermination_minutes is None and 'autoterminationMinutes' in kwargs:
             autotermination_minutes = kwargs['autoterminationMinutes']
-        if 'awsAttributes' in kwargs:
+        if aws_attributes is None and 'awsAttributes' in kwargs:
             aws_attributes = kwargs['awsAttributes']
-        if 'azureAttributes' in kwargs:
+        if azure_attributes is None and 'azureAttributes' in kwargs:
             azure_attributes = kwargs['azureAttributes']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterLogConf' in kwargs:
+        if cluster_log_conf is None and 'clusterLogConf' in kwargs:
             cluster_log_conf = kwargs['clusterLogConf']
-        if 'clusterMountInfos' in kwargs:
+        if cluster_mount_infos is None and 'clusterMountInfos' in kwargs:
             cluster_mount_infos = kwargs['clusterMountInfos']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'customTags' in kwargs:
+        if custom_tags is None and 'customTags' in kwargs:
             custom_tags = kwargs['customTags']
-        if 'dataSecurityMode' in kwargs:
+        if data_security_mode is None and 'dataSecurityMode' in kwargs:
             data_security_mode = kwargs['dataSecurityMode']
-        if 'dockerImage' in kwargs:
+        if docker_image is None and 'dockerImage' in kwargs:
             docker_image = kwargs['dockerImage']
-        if 'driverInstancePoolId' in kwargs:
+        if driver_instance_pool_id is None and 'driverInstancePoolId' in kwargs:
             driver_instance_pool_id = kwargs['driverInstancePoolId']
-        if 'driverNodeTypeId' in kwargs:
+        if driver_node_type_id is None and 'driverNodeTypeId' in kwargs:
             driver_node_type_id = kwargs['driverNodeTypeId']
-        if 'enableElasticDisk' in kwargs:
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
             enable_elastic_disk = kwargs['enableElasticDisk']
-        if 'enableLocalDiskEncryption' in kwargs:
+        if enable_local_disk_encryption is None and 'enableLocalDiskEncryption' in kwargs:
             enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
-        if 'gcpAttributes' in kwargs:
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
             gcp_attributes = kwargs['gcpAttributes']
-        if 'idempotencyToken' in kwargs:
+        if idempotency_token is None and 'idempotencyToken' in kwargs:
             idempotency_token = kwargs['idempotencyToken']
-        if 'initScripts' in kwargs:
+        if init_scripts is None and 'initScripts' in kwargs:
             init_scripts = kwargs['initScripts']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'isPinned' in kwargs:
+        if is_pinned is None and 'isPinned' in kwargs:
             is_pinned = kwargs['isPinned']
-        if 'nodeTypeId' in kwargs:
+        if node_type_id is None and 'nodeTypeId' in kwargs:
             node_type_id = kwargs['nodeTypeId']
-        if 'numWorkers' in kwargs:
+        if num_workers is None and 'numWorkers' in kwargs:
             num_workers = kwargs['numWorkers']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'runtimeEngine' in kwargs:
+        if runtime_engine is None and 'runtimeEngine' in kwargs:
             runtime_engine = kwargs['runtimeEngine']
-        if 'singleUserName' in kwargs:
+        if single_user_name is None and 'singleUserName' in kwargs:
             single_user_name = kwargs['singleUserName']
-        if 'sparkConf' in kwargs:
+        if spark_conf is None and 'sparkConf' in kwargs:
             spark_conf = kwargs['sparkConf']
-        if 'sparkEnvVars' in kwargs:
+        if spark_env_vars is None and 'sparkEnvVars' in kwargs:
             spark_env_vars = kwargs['sparkEnvVars']
-        if 'sshPublicKeys' in kwargs:
+        if ssh_public_keys is None and 'sshPublicKeys' in kwargs:
             ssh_public_keys = kwargs['sshPublicKeys']
-        if 'workloadType' in kwargs:
+        if workload_type is None and 'workloadType' in kwargs:
             workload_type = kwargs['workloadType']
 
         _setter("spark_version", spark_version)
@@ -828,69 +830,69 @@ class _ClusterState:
              state: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applyPolicyDefaultValues' in kwargs:
+        if apply_policy_default_values is None and 'applyPolicyDefaultValues' in kwargs:
             apply_policy_default_values = kwargs['applyPolicyDefaultValues']
-        if 'autoterminationMinutes' in kwargs:
+        if autotermination_minutes is None and 'autoterminationMinutes' in kwargs:
             autotermination_minutes = kwargs['autoterminationMinutes']
-        if 'awsAttributes' in kwargs:
+        if aws_attributes is None and 'awsAttributes' in kwargs:
             aws_attributes = kwargs['awsAttributes']
-        if 'azureAttributes' in kwargs:
+        if azure_attributes is None and 'azureAttributes' in kwargs:
             azure_attributes = kwargs['azureAttributes']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterLogConf' in kwargs:
+        if cluster_log_conf is None and 'clusterLogConf' in kwargs:
             cluster_log_conf = kwargs['clusterLogConf']
-        if 'clusterMountInfos' in kwargs:
+        if cluster_mount_infos is None and 'clusterMountInfos' in kwargs:
             cluster_mount_infos = kwargs['clusterMountInfos']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'customTags' in kwargs:
+        if custom_tags is None and 'customTags' in kwargs:
             custom_tags = kwargs['customTags']
-        if 'dataSecurityMode' in kwargs:
+        if data_security_mode is None and 'dataSecurityMode' in kwargs:
             data_security_mode = kwargs['dataSecurityMode']
-        if 'defaultTags' in kwargs:
+        if default_tags is None and 'defaultTags' in kwargs:
             default_tags = kwargs['defaultTags']
-        if 'dockerImage' in kwargs:
+        if docker_image is None and 'dockerImage' in kwargs:
             docker_image = kwargs['dockerImage']
-        if 'driverInstancePoolId' in kwargs:
+        if driver_instance_pool_id is None and 'driverInstancePoolId' in kwargs:
             driver_instance_pool_id = kwargs['driverInstancePoolId']
-        if 'driverNodeTypeId' in kwargs:
+        if driver_node_type_id is None and 'driverNodeTypeId' in kwargs:
             driver_node_type_id = kwargs['driverNodeTypeId']
-        if 'enableElasticDisk' in kwargs:
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
             enable_elastic_disk = kwargs['enableElasticDisk']
-        if 'enableLocalDiskEncryption' in kwargs:
+        if enable_local_disk_encryption is None and 'enableLocalDiskEncryption' in kwargs:
             enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
-        if 'gcpAttributes' in kwargs:
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
             gcp_attributes = kwargs['gcpAttributes']
-        if 'idempotencyToken' in kwargs:
+        if idempotency_token is None and 'idempotencyToken' in kwargs:
             idempotency_token = kwargs['idempotencyToken']
-        if 'initScripts' in kwargs:
+        if init_scripts is None and 'initScripts' in kwargs:
             init_scripts = kwargs['initScripts']
-        if 'instancePoolId' in kwargs:
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
             instance_pool_id = kwargs['instancePoolId']
-        if 'isPinned' in kwargs:
+        if is_pinned is None and 'isPinned' in kwargs:
             is_pinned = kwargs['isPinned']
-        if 'nodeTypeId' in kwargs:
+        if node_type_id is None and 'nodeTypeId' in kwargs:
             node_type_id = kwargs['nodeTypeId']
-        if 'numWorkers' in kwargs:
+        if num_workers is None and 'numWorkers' in kwargs:
             num_workers = kwargs['numWorkers']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
-        if 'runtimeEngine' in kwargs:
+        if runtime_engine is None and 'runtimeEngine' in kwargs:
             runtime_engine = kwargs['runtimeEngine']
-        if 'singleUserName' in kwargs:
+        if single_user_name is None and 'singleUserName' in kwargs:
             single_user_name = kwargs['singleUserName']
-        if 'sparkConf' in kwargs:
+        if spark_conf is None and 'sparkConf' in kwargs:
             spark_conf = kwargs['sparkConf']
-        if 'sparkEnvVars' in kwargs:
+        if spark_env_vars is None and 'sparkEnvVars' in kwargs:
             spark_env_vars = kwargs['sparkEnvVars']
-        if 'sparkVersion' in kwargs:
+        if spark_version is None and 'sparkVersion' in kwargs:
             spark_version = kwargs['sparkVersion']
-        if 'sshPublicKeys' in kwargs:
+        if ssh_public_keys is None and 'sshPublicKeys' in kwargs:
             ssh_public_keys = kwargs['sshPublicKeys']
-        if 'workloadType' in kwargs:
+        if workload_type is None and 'workloadType' in kwargs:
             workload_type = kwargs['workloadType']
 
         if apply_policy_default_values is not None:
@@ -1540,51 +1542,27 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["apply_policy_default_values"] = apply_policy_default_values
-            if autoscale is not None and not isinstance(autoscale, ClusterAutoscaleArgs):
-                autoscale = autoscale or {}
-                def _setter(key, value):
-                    autoscale[key] = value
-                ClusterAutoscaleArgs._configure(_setter, **autoscale)
+            autoscale = _utilities.configure(autoscale, ClusterAutoscaleArgs, True)
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["autotermination_minutes"] = autotermination_minutes
-            if aws_attributes is not None and not isinstance(aws_attributes, ClusterAwsAttributesArgs):
-                aws_attributes = aws_attributes or {}
-                def _setter(key, value):
-                    aws_attributes[key] = value
-                ClusterAwsAttributesArgs._configure(_setter, **aws_attributes)
+            aws_attributes = _utilities.configure(aws_attributes, ClusterAwsAttributesArgs, True)
             __props__.__dict__["aws_attributes"] = aws_attributes
-            if azure_attributes is not None and not isinstance(azure_attributes, ClusterAzureAttributesArgs):
-                azure_attributes = azure_attributes or {}
-                def _setter(key, value):
-                    azure_attributes[key] = value
-                ClusterAzureAttributesArgs._configure(_setter, **azure_attributes)
+            azure_attributes = _utilities.configure(azure_attributes, ClusterAzureAttributesArgs, True)
             __props__.__dict__["azure_attributes"] = azure_attributes
             __props__.__dict__["cluster_id"] = cluster_id
-            if cluster_log_conf is not None and not isinstance(cluster_log_conf, ClusterClusterLogConfArgs):
-                cluster_log_conf = cluster_log_conf or {}
-                def _setter(key, value):
-                    cluster_log_conf[key] = value
-                ClusterClusterLogConfArgs._configure(_setter, **cluster_log_conf)
+            cluster_log_conf = _utilities.configure(cluster_log_conf, ClusterClusterLogConfArgs, True)
             __props__.__dict__["cluster_log_conf"] = cluster_log_conf
             __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["custom_tags"] = custom_tags
             __props__.__dict__["data_security_mode"] = data_security_mode
-            if docker_image is not None and not isinstance(docker_image, ClusterDockerImageArgs):
-                docker_image = docker_image or {}
-                def _setter(key, value):
-                    docker_image[key] = value
-                ClusterDockerImageArgs._configure(_setter, **docker_image)
+            docker_image = _utilities.configure(docker_image, ClusterDockerImageArgs, True)
             __props__.__dict__["docker_image"] = docker_image
             __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
             __props__.__dict__["driver_node_type_id"] = driver_node_type_id
             __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
             __props__.__dict__["enable_local_disk_encryption"] = enable_local_disk_encryption
-            if gcp_attributes is not None and not isinstance(gcp_attributes, ClusterGcpAttributesArgs):
-                gcp_attributes = gcp_attributes or {}
-                def _setter(key, value):
-                    gcp_attributes[key] = value
-                ClusterGcpAttributesArgs._configure(_setter, **gcp_attributes)
+            gcp_attributes = _utilities.configure(gcp_attributes, ClusterGcpAttributesArgs, True)
             __props__.__dict__["gcp_attributes"] = gcp_attributes
             __props__.__dict__["idempotency_token"] = idempotency_token
             __props__.__dict__["init_scripts"] = init_scripts
@@ -1602,11 +1580,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spark_version'")
             __props__.__dict__["spark_version"] = spark_version
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
-            if workload_type is not None and not isinstance(workload_type, ClusterWorkloadTypeArgs):
-                workload_type = workload_type or {}
-                def _setter(key, value):
-                    workload_type[key] = value
-                ClusterWorkloadTypeArgs._configure(_setter, **workload_type)
+            workload_type = _utilities.configure(workload_type, ClusterWorkloadTypeArgs, True)
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["default_tags"] = None
             __props__.__dict__["state"] = None

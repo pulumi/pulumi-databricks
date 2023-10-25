@@ -46,22 +46,24 @@ class RecipientArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             authentication_type: pulumi.Input[str],
+             authentication_type: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
              ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              sharing_code: Optional[pulumi.Input[str]] = None,
              tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authenticationType' in kwargs:
+        if authentication_type is None and 'authenticationType' in kwargs:
             authentication_type = kwargs['authenticationType']
-        if 'dataRecipientGlobalMetastoreId' in kwargs:
+        if authentication_type is None:
+            raise TypeError("Missing 'authentication_type' argument")
+        if data_recipient_global_metastore_id is None and 'dataRecipientGlobalMetastoreId' in kwargs:
             data_recipient_global_metastore_id = kwargs['dataRecipientGlobalMetastoreId']
-        if 'ipAccessList' in kwargs:
+        if ip_access_list is None and 'ipAccessList' in kwargs:
             ip_access_list = kwargs['ipAccessList']
-        if 'sharingCode' in kwargs:
+        if sharing_code is None and 'sharingCode' in kwargs:
             sharing_code = kwargs['sharingCode']
 
         _setter("authentication_type", authentication_type)
@@ -203,15 +205,15 @@ class _RecipientState:
              name: Optional[pulumi.Input[str]] = None,
              sharing_code: Optional[pulumi.Input[str]] = None,
              tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authenticationType' in kwargs:
+        if authentication_type is None and 'authenticationType' in kwargs:
             authentication_type = kwargs['authenticationType']
-        if 'dataRecipientGlobalMetastoreId' in kwargs:
+        if data_recipient_global_metastore_id is None and 'dataRecipientGlobalMetastoreId' in kwargs:
             data_recipient_global_metastore_id = kwargs['dataRecipientGlobalMetastoreId']
-        if 'ipAccessList' in kwargs:
+        if ip_access_list is None and 'ipAccessList' in kwargs:
             ip_access_list = kwargs['ipAccessList']
-        if 'sharingCode' in kwargs:
+        if sharing_code is None and 'sharingCode' in kwargs:
             sharing_code = kwargs['sharingCode']
 
         if authentication_type is not None:
@@ -455,11 +457,7 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["authentication_type"] = authentication_type
             __props__.__dict__["comment"] = comment
             __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
-            if ip_access_list is not None and not isinstance(ip_access_list, RecipientIpAccessListArgs):
-                ip_access_list = ip_access_list or {}
-                def _setter(key, value):
-                    ip_access_list[key] = value
-                RecipientIpAccessListArgs._configure(_setter, **ip_access_list)
+            ip_access_list = _utilities.configure(ip_access_list, RecipientIpAccessListArgs, True)
             __props__.__dict__["ip_access_list"] = ip_access_list
             __props__.__dict__["name"] = name
             __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)

@@ -66,7 +66,7 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             user_name: pulumi.Input[str],
+             user_name: Optional[pulumi.Input[str]] = None,
              acl_principal_id: Optional[pulumi.Input[str]] = None,
              active: Optional[pulumi.Input[bool]] = None,
              allow_cluster_create: Optional[pulumi.Input[bool]] = None,
@@ -81,29 +81,31 @@ class UserArgs:
              home: Optional[pulumi.Input[str]] = None,
              repos: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'aclPrincipalId' in kwargs:
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
             acl_principal_id = kwargs['aclPrincipalId']
-        if 'allowClusterCreate' in kwargs:
+        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
             allow_cluster_create = kwargs['allowClusterCreate']
-        if 'allowInstancePoolCreate' in kwargs:
+        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
             allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if 'databricksSqlAccess' in kwargs:
+        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
             databricks_sql_access = kwargs['databricksSqlAccess']
-        if 'disableAsUserDeletion' in kwargs:
+        if disable_as_user_deletion is None and 'disableAsUserDeletion' in kwargs:
             disable_as_user_deletion = kwargs['disableAsUserDeletion']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'forceDeleteHomeDir' in kwargs:
+        if force_delete_home_dir is None and 'forceDeleteHomeDir' in kwargs:
             force_delete_home_dir = kwargs['forceDeleteHomeDir']
-        if 'forceDeleteRepos' in kwargs:
+        if force_delete_repos is None and 'forceDeleteRepos' in kwargs:
             force_delete_repos = kwargs['forceDeleteRepos']
-        if 'workspaceAccess' in kwargs:
+        if workspace_access is None and 'workspaceAccess' in kwargs:
             workspace_access = kwargs['workspaceAccess']
 
         _setter("user_name", user_name)
@@ -381,29 +383,29 @@ class _UserState:
              repos: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclPrincipalId' in kwargs:
+        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
             acl_principal_id = kwargs['aclPrincipalId']
-        if 'allowClusterCreate' in kwargs:
+        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
             allow_cluster_create = kwargs['allowClusterCreate']
-        if 'allowInstancePoolCreate' in kwargs:
+        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
             allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if 'databricksSqlAccess' in kwargs:
+        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
             databricks_sql_access = kwargs['databricksSqlAccess']
-        if 'disableAsUserDeletion' in kwargs:
+        if disable_as_user_deletion is None and 'disableAsUserDeletion' in kwargs:
             disable_as_user_deletion = kwargs['disableAsUserDeletion']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'forceDeleteHomeDir' in kwargs:
+        if force_delete_home_dir is None and 'forceDeleteHomeDir' in kwargs:
             force_delete_home_dir = kwargs['forceDeleteHomeDir']
-        if 'forceDeleteRepos' in kwargs:
+        if force_delete_repos is None and 'forceDeleteRepos' in kwargs:
             force_delete_repos = kwargs['forceDeleteRepos']
-        if 'userName' in kwargs:
+        if user_name is None and 'userName' in kwargs:
             user_name = kwargs['userName']
-        if 'workspaceAccess' in kwargs:
+        if workspace_access is None and 'workspaceAccess' in kwargs:
             workspace_access = kwargs['workspaceAccess']
 
         if acl_principal_id is not None:

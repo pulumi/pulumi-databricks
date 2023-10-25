@@ -57,21 +57,21 @@ class GroupArgs:
              force: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclPrincipalId' in kwargs:
+        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
             acl_principal_id = kwargs['aclPrincipalId']
-        if 'allowClusterCreate' in kwargs:
+        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
             allow_cluster_create = kwargs['allowClusterCreate']
-        if 'allowInstancePoolCreate' in kwargs:
+        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
             allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if 'databricksSqlAccess' in kwargs:
+        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
             databricks_sql_access = kwargs['databricksSqlAccess']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'workspaceAccess' in kwargs:
+        if workspace_access is None and 'workspaceAccess' in kwargs:
             workspace_access = kwargs['workspaceAccess']
 
         if acl_principal_id is not None:
@@ -242,21 +242,21 @@ class _GroupState:
              force: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aclPrincipalId' in kwargs:
+        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
             acl_principal_id = kwargs['aclPrincipalId']
-        if 'allowClusterCreate' in kwargs:
+        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
             allow_cluster_create = kwargs['allowClusterCreate']
-        if 'allowInstancePoolCreate' in kwargs:
+        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
             allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if 'databricksSqlAccess' in kwargs:
+        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
             databricks_sql_access = kwargs['databricksSqlAccess']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externalId' in kwargs:
+        if external_id is None and 'externalId' in kwargs:
             external_id = kwargs['externalId']
-        if 'workspaceAccess' in kwargs:
+        if workspace_access is None and 'workspaceAccess' in kwargs:
             workspace_access = kwargs['workspaceAccess']
 
         if acl_principal_id is not None:

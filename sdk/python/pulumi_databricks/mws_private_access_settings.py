@@ -47,27 +47,31 @@ class MwsPrivateAccessSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             private_access_settings_name: pulumi.Input[str],
-             region: pulumi.Input[str],
+             private_access_settings_name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              private_access_level: Optional[pulumi.Input[str]] = None,
              private_access_settings_id: Optional[pulumi.Input[str]] = None,
              public_access_enabled: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateAccessSettingsName' in kwargs:
+        if private_access_settings_name is None and 'privateAccessSettingsName' in kwargs:
             private_access_settings_name = kwargs['privateAccessSettingsName']
-        if 'accountId' in kwargs:
+        if private_access_settings_name is None:
+            raise TypeError("Missing 'private_access_settings_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedVpcEndpointIds' in kwargs:
+        if allowed_vpc_endpoint_ids is None and 'allowedVpcEndpointIds' in kwargs:
             allowed_vpc_endpoint_ids = kwargs['allowedVpcEndpointIds']
-        if 'privateAccessLevel' in kwargs:
+        if private_access_level is None and 'privateAccessLevel' in kwargs:
             private_access_level = kwargs['privateAccessLevel']
-        if 'privateAccessSettingsId' in kwargs:
+        if private_access_settings_id is None and 'privateAccessSettingsId' in kwargs:
             private_access_settings_id = kwargs['privateAccessSettingsId']
-        if 'publicAccessEnabled' in kwargs:
+        if public_access_enabled is None and 'publicAccessEnabled' in kwargs:
             public_access_enabled = kwargs['publicAccessEnabled']
 
         _setter("private_access_settings_name", private_access_settings_name)
@@ -226,19 +230,19 @@ class _MwsPrivateAccessSettingsState:
              public_access_enabled: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedVpcEndpointIds' in kwargs:
+        if allowed_vpc_endpoint_ids is None and 'allowedVpcEndpointIds' in kwargs:
             allowed_vpc_endpoint_ids = kwargs['allowedVpcEndpointIds']
-        if 'privateAccessLevel' in kwargs:
+        if private_access_level is None and 'privateAccessLevel' in kwargs:
             private_access_level = kwargs['privateAccessLevel']
-        if 'privateAccessSettingsId' in kwargs:
+        if private_access_settings_id is None and 'privateAccessSettingsId' in kwargs:
             private_access_settings_id = kwargs['privateAccessSettingsId']
-        if 'privateAccessSettingsName' in kwargs:
+        if private_access_settings_name is None and 'privateAccessSettingsName' in kwargs:
             private_access_settings_name = kwargs['privateAccessSettingsName']
-        if 'publicAccessEnabled' in kwargs:
+        if public_access_enabled is None and 'publicAccessEnabled' in kwargs:
             public_access_enabled = kwargs['publicAccessEnabled']
 
         if account_id is not None:
