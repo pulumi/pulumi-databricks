@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NotebookArgs', 'Notebook']
@@ -29,57 +29,24 @@ class NotebookArgs:
         :param pulumi.Input[int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
-        NotebookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            content_base64=content_base64,
-            format=format,
-            language=language,
-            md5=md5,
-            object_id=object_id,
-            object_type=object_type,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             content_base64: Optional[pulumi.Input[str]] = None,
-             format: Optional[pulumi.Input[str]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             object_id: Optional[pulumi.Input[int]] = None,
-             object_type: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_type is None and 'objectType' in kwargs:
-            object_type = kwargs['objectType']
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             warnings.warn("""Always is a notebook""", DeprecationWarning)
             pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
         if object_type is not None:
-            _setter("object_type", object_type)
+            pulumi.set(__self__, "object_type", object_type)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -189,60 +156,27 @@ class _NotebookState:
         :param pulumi.Input[str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[str] url: Routable URL of the notebook
         """
-        _NotebookState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content_base64=content_base64,
-            format=format,
-            language=language,
-            md5=md5,
-            object_id=object_id,
-            object_type=object_type,
-            path=path,
-            source=source,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content_base64: Optional[pulumi.Input[str]] = None,
-             format: Optional[pulumi.Input[str]] = None,
-             language: Optional[pulumi.Input[str]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             object_id: Optional[pulumi.Input[int]] = None,
-             object_type: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_type is None and 'objectType' in kwargs:
-            object_type = kwargs['objectType']
-
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             warnings.warn("""Always is a notebook""", DeprecationWarning)
             pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
         if object_type is not None:
-            _setter("object_type", object_type)
+            pulumi.set(__self__, "object_type", object_type)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="contentBase64")
@@ -399,10 +333,6 @@ class Notebook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NotebookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

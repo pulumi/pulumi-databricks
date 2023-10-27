@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,81 +42,28 @@ class ExternalLocationArgs:
         :param pulumi.Input[bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         """
-        ExternalLocationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            credential_name=credential_name,
-            url=url,
-            access_point=access_point,
-            comment=comment,
-            encryption_details=encryption_details,
-            force_destroy=force_destroy,
-            force_update=force_update,
-            metastore_id=metastore_id,
-            name=name,
-            owner=owner,
-            read_only=read_only,
-            skip_validation=skip_validation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             credential_name: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             access_point: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             force_update: Optional[pulumi.Input[bool]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             skip_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if credential_name is None and 'credentialName' in kwargs:
-            credential_name = kwargs['credentialName']
-        if credential_name is None:
-            raise TypeError("Missing 'credential_name' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if access_point is None and 'accessPoint' in kwargs:
-            access_point = kwargs['accessPoint']
-        if encryption_details is None and 'encryptionDetails' in kwargs:
-            encryption_details = kwargs['encryptionDetails']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if force_update is None and 'forceUpdate' in kwargs:
-            force_update = kwargs['forceUpdate']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if skip_validation is None and 'skipValidation' in kwargs:
-            skip_validation = kwargs['skipValidation']
-
-        _setter("credential_name", credential_name)
-        _setter("url", url)
+        pulumi.set(__self__, "credential_name", credential_name)
+        pulumi.set(__self__, "url", url)
         if access_point is not None:
-            _setter("access_point", access_point)
+            pulumi.set(__self__, "access_point", access_point)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if encryption_details is not None:
-            _setter("encryption_details", encryption_details)
+            pulumi.set(__self__, "encryption_details", encryption_details)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
-            _setter("force_update", force_update)
+            pulumi.set(__self__, "force_update", force_update)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
-            _setter("skip_validation", skip_validation)
+            pulumi.set(__self__, "skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="credentialName")
@@ -289,79 +236,30 @@ class _ExternalLocationState:
         :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
         """
-        _ExternalLocationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_point=access_point,
-            comment=comment,
-            credential_name=credential_name,
-            encryption_details=encryption_details,
-            force_destroy=force_destroy,
-            force_update=force_update,
-            metastore_id=metastore_id,
-            name=name,
-            owner=owner,
-            read_only=read_only,
-            skip_validation=skip_validation,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_point: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             credential_name: Optional[pulumi.Input[str]] = None,
-             encryption_details: Optional[pulumi.Input['ExternalLocationEncryptionDetailsArgs']] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             force_update: Optional[pulumi.Input[bool]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             skip_validation: Optional[pulumi.Input[bool]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_point is None and 'accessPoint' in kwargs:
-            access_point = kwargs['accessPoint']
-        if credential_name is None and 'credentialName' in kwargs:
-            credential_name = kwargs['credentialName']
-        if encryption_details is None and 'encryptionDetails' in kwargs:
-            encryption_details = kwargs['encryptionDetails']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if force_update is None and 'forceUpdate' in kwargs:
-            force_update = kwargs['forceUpdate']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if skip_validation is None and 'skipValidation' in kwargs:
-            skip_validation = kwargs['skipValidation']
-
         if access_point is not None:
-            _setter("access_point", access_point)
+            pulumi.set(__self__, "access_point", access_point)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if credential_name is not None:
-            _setter("credential_name", credential_name)
+            pulumi.set(__self__, "credential_name", credential_name)
         if encryption_details is not None:
-            _setter("encryption_details", encryption_details)
+            pulumi.set(__self__, "encryption_details", encryption_details)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if force_update is not None:
-            _setter("force_update", force_update)
+            pulumi.set(__self__, "force_update", force_update)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if skip_validation is not None:
-            _setter("skip_validation", skip_validation)
+            pulumi.set(__self__, "skip_validation", skip_validation)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="accessPoint")
@@ -581,10 +479,6 @@ class ExternalLocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExternalLocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -616,7 +510,6 @@ class ExternalLocation(pulumi.CustomResource):
             if credential_name is None and not opts.urn:
                 raise TypeError("Missing required property 'credential_name'")
             __props__.__dict__["credential_name"] = credential_name
-            encryption_details = _utilities.configure(encryption_details, ExternalLocationEncryptionDetailsArgs, True)
             __props__.__dict__["encryption_details"] = encryption_details
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["force_update"] = force_update

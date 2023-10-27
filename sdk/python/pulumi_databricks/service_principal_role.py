@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalRoleArgs', 'ServicePrincipalRole']
@@ -21,27 +21,8 @@ class ServicePrincipalRoleArgs:
         :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
         :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
-        ServicePrincipalRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            role=role,
-            service_principal_id=service_principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             role: Optional[pulumi.Input[str]] = None,
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-        if service_principal_id is None:
-            raise TypeError("Missing 'service_principal_id' argument")
-
-        _setter("role", role)
-        _setter("service_principal_id", service_principal_id)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _ServicePrincipalRoleState:
         :param pulumi.Input[str] role: This is the id of the role or instance profile resource.
         :param pulumi.Input[str] service_principal_id: This is the id of the service principal resource.
         """
-        _ServicePrincipalRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            role=role,
-            service_principal_id=service_principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             role: Optional[pulumi.Input[str]] = None,
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if service_principal_id is not None:
-            _setter("service_principal_id", service_principal_id)
+            pulumi.set(__self__, "service_principal_id", service_principal_id)
 
     @property
     @pulumi.getter
@@ -214,10 +180,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePrincipalRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

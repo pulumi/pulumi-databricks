@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -33,65 +33,24 @@ class GroupArgs:
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_principal_id=acl_principal_id,
-            allow_cluster_create=allow_cluster_create,
-            allow_instance_pool_create=allow_instance_pool_create,
-            databricks_sql_access=databricks_sql_access,
-            display_name=display_name,
-            external_id=external_id,
-            force=force,
-            url=url,
-            workspace_access=workspace_access,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_principal_id: Optional[pulumi.Input[str]] = None,
-             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
-             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
-             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
-            acl_principal_id = kwargs['aclPrincipalId']
-        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
-            allow_cluster_create = kwargs['allowClusterCreate']
-        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
-            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
-            databricks_sql_access = kwargs['databricksSqlAccess']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if workspace_access is None and 'workspaceAccess' in kwargs:
-            workspace_access = kwargs['workspaceAccess']
-
         if acl_principal_id is not None:
-            _setter("acl_principal_id", acl_principal_id)
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:
-            _setter("allow_cluster_create", allow_cluster_create)
+            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            _setter("allow_instance_pool_create", allow_instance_pool_create)
+            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            _setter("databricks_sql_access", databricks_sql_access)
+            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if workspace_access is not None:
-            _setter("workspace_access", workspace_access)
+            pulumi.set(__self__, "workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -218,65 +177,24 @@ class _GroupState:
         :param pulumi.Input[str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[bool] workspace_access: This is a field to allow the group to have access to Databricks Workspace.
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl_principal_id=acl_principal_id,
-            allow_cluster_create=allow_cluster_create,
-            allow_instance_pool_create=allow_instance_pool_create,
-            databricks_sql_access=databricks_sql_access,
-            display_name=display_name,
-            external_id=external_id,
-            force=force,
-            url=url,
-            workspace_access=workspace_access,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl_principal_id: Optional[pulumi.Input[str]] = None,
-             allow_cluster_create: Optional[pulumi.Input[bool]] = None,
-             allow_instance_pool_create: Optional[pulumi.Input[bool]] = None,
-             databricks_sql_access: Optional[pulumi.Input[bool]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             workspace_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acl_principal_id is None and 'aclPrincipalId' in kwargs:
-            acl_principal_id = kwargs['aclPrincipalId']
-        if allow_cluster_create is None and 'allowClusterCreate' in kwargs:
-            allow_cluster_create = kwargs['allowClusterCreate']
-        if allow_instance_pool_create is None and 'allowInstancePoolCreate' in kwargs:
-            allow_instance_pool_create = kwargs['allowInstancePoolCreate']
-        if databricks_sql_access is None and 'databricksSqlAccess' in kwargs:
-            databricks_sql_access = kwargs['databricksSqlAccess']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if workspace_access is None and 'workspaceAccess' in kwargs:
-            workspace_access = kwargs['workspaceAccess']
-
         if acl_principal_id is not None:
-            _setter("acl_principal_id", acl_principal_id)
+            pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if allow_cluster_create is not None:
-            _setter("allow_cluster_create", allow_cluster_create)
+            pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
         if allow_instance_pool_create is not None:
-            _setter("allow_instance_pool_create", allow_instance_pool_create)
+            pulumi.set(__self__, "allow_instance_pool_create", allow_instance_pool_create)
         if databricks_sql_access is not None:
-            _setter("databricks_sql_access", databricks_sql_access)
+            pulumi.set(__self__, "databricks_sql_access", databricks_sql_access)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if workspace_access is not None:
-            _setter("workspace_access", workspace_access)
+            pulumi.set(__self__, "workspace_access", workspace_access)
 
     @property
     @pulumi.getter(name="aclPrincipalId")
@@ -578,10 +496,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

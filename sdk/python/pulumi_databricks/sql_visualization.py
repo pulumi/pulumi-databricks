@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SqlVisualizationArgs', 'SqlVisualization']
@@ -24,52 +24,17 @@ class SqlVisualizationArgs:
         """
         The set of arguments for constructing a SqlVisualization resource.
         """
-        SqlVisualizationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            options=options,
-            query_id=query_id,
-            type=type,
-            description=description,
-            name=name,
-            query_plan=query_plan,
-            visualization_id=visualization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             options: Optional[pulumi.Input[str]] = None,
-             query_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             query_plan: Optional[pulumi.Input[str]] = None,
-             visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if options is None:
-            raise TypeError("Missing 'options' argument")
-        if query_id is None and 'queryId' in kwargs:
-            query_id = kwargs['queryId']
-        if query_id is None:
-            raise TypeError("Missing 'query_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if query_plan is None and 'queryPlan' in kwargs:
-            query_plan = kwargs['queryPlan']
-        if visualization_id is None and 'visualizationId' in kwargs:
-            visualization_id = kwargs['visualizationId']
-
-        _setter("options", options)
-        _setter("query_id", query_id)
-        _setter("type", type)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "query_id", query_id)
+        pulumi.set(__self__, "type", type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if query_plan is not None:
-            _setter("query_plan", query_plan)
+            pulumi.set(__self__, "query_plan", query_plan)
         if visualization_id is not None:
-            _setter("visualization_id", visualization_id)
+            pulumi.set(__self__, "visualization_id", visualization_id)
 
     @property
     @pulumi.getter
@@ -148,49 +113,20 @@ class _SqlVisualizationState:
         """
         Input properties used for looking up and filtering SqlVisualization resources.
         """
-        _SqlVisualizationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            options=options,
-            query_id=query_id,
-            query_plan=query_plan,
-            type=type,
-            visualization_id=visualization_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[str]] = None,
-             query_id: Optional[pulumi.Input[str]] = None,
-             query_plan: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             visualization_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if query_id is None and 'queryId' in kwargs:
-            query_id = kwargs['queryId']
-        if query_plan is None and 'queryPlan' in kwargs:
-            query_plan = kwargs['queryPlan']
-        if visualization_id is None and 'visualizationId' in kwargs:
-            visualization_id = kwargs['visualizationId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if query_id is not None:
-            _setter("query_id", query_id)
+            pulumi.set(__self__, "query_id", query_id)
         if query_plan is not None:
-            _setter("query_plan", query_plan)
+            pulumi.set(__self__, "query_plan", query_plan)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if visualization_id is not None:
-            _setter("visualization_id", visualization_id)
+            pulumi.set(__self__, "visualization_id", visualization_id)
 
     @property
     @pulumi.getter
@@ -306,10 +242,6 @@ class SqlVisualization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SqlVisualizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

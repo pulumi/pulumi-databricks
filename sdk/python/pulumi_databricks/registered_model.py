@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RegisteredModelArgs', 'RegisteredModel']
@@ -26,43 +26,14 @@ class RegisteredModelArgs:
         :param pulumi.Input[str] comment: The comment attached to the registered model.
         :param pulumi.Input[str] name: The name of the registered model.
         """
-        RegisteredModelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            schema_name=schema_name,
-            comment=comment,
-            name=name,
-            storage_location=storage_location,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             schema_name: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             storage_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if catalog_name is None:
-            raise TypeError("Missing 'catalog_name' argument")
-        if schema_name is None and 'schemaName' in kwargs:
-            schema_name = kwargs['schemaName']
-        if schema_name is None:
-            raise TypeError("Missing 'schema_name' argument")
-        if storage_location is None and 'storageLocation' in kwargs:
-            storage_location = kwargs['storageLocation']
-
-        _setter("catalog_name", catalog_name)
-        _setter("schema_name", schema_name)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "schema_name", schema_name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if storage_location is not None:
-            _setter("storage_location", storage_location)
+            pulumi.set(__self__, "storage_location", storage_location)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -137,41 +108,16 @@ class _RegisteredModelState:
         :param pulumi.Input[str] name: The name of the registered model.
         :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides.
         """
-        _RegisteredModelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            comment=comment,
-            name=name,
-            schema_name=schema_name,
-            storage_location=storage_location,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             schema_name: Optional[pulumi.Input[str]] = None,
-             storage_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if schema_name is None and 'schemaName' in kwargs:
-            schema_name = kwargs['schemaName']
-        if storage_location is None and 'storageLocation' in kwargs:
-            storage_location = kwargs['storageLocation']
-
         if catalog_name is not None:
-            _setter("catalog_name", catalog_name)
+            pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schema_name is not None:
-            _setter("schema_name", schema_name)
+            pulumi.set(__self__, "schema_name", schema_name)
         if storage_location is not None:
-            _setter("storage_location", storage_location)
+            pulumi.set(__self__, "storage_location", storage_location)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -335,10 +281,6 @@ class RegisteredModel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegisteredModelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalSecretArgs', 'ServicePrincipalSecret']
@@ -20,30 +20,11 @@ class ServicePrincipalSecretArgs:
         """
         The set of arguments for constructing a ServicePrincipalSecret resource.
         """
-        ServicePrincipalSecretArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_principal_id=service_principal_id,
-            secret=secret,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-        if service_principal_id is None:
-            raise TypeError("Missing 'service_principal_id' argument")
-
-        _setter("service_principal_id", service_principal_id)
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="servicePrincipalId")
@@ -82,29 +63,12 @@ class _ServicePrincipalSecretState:
         """
         Input properties used for looking up and filtering ServicePrincipalSecret resources.
         """
-        _ServicePrincipalSecretState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret=secret,
-            service_principal_id=service_principal_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret: Optional[pulumi.Input[str]] = None,
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if service_principal_id is not None:
-            _setter("service_principal_id", service_principal_id)
+            pulumi.set(__self__, "service_principal_id", service_principal_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -166,10 +130,6 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePrincipalSecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

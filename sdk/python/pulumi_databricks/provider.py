@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -46,179 +46,64 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            auth_type=auth_type,
-            azure_client_id=azure_client_id,
-            azure_client_secret=azure_client_secret,
-            azure_environment=azure_environment,
-            azure_login_app_id=azure_login_app_id,
-            azure_tenant_id=azure_tenant_id,
-            azure_use_msi=azure_use_msi,
-            azure_workspace_resource_id=azure_workspace_resource_id,
-            client_id=client_id,
-            client_secret=client_secret,
-            cluster_id=cluster_id,
-            config_file=config_file,
-            databricks_cli_path=databricks_cli_path,
-            debug_headers=debug_headers,
-            debug_truncate_bytes=debug_truncate_bytes,
-            google_credentials=google_credentials,
-            google_service_account=google_service_account,
-            host=host,
-            http_timeout_seconds=http_timeout_seconds,
-            metadata_service_url=metadata_service_url,
-            password=password,
-            profile=profile,
-            rate_limit=rate_limit,
-            retry_timeout_seconds=retry_timeout_seconds,
-            skip_verify=skip_verify,
-            token=token,
-            username=username,
-            warehouse_id=warehouse_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             auth_type: Optional[pulumi.Input[str]] = None,
-             azure_client_id: Optional[pulumi.Input[str]] = None,
-             azure_client_secret: Optional[pulumi.Input[str]] = None,
-             azure_environment: Optional[pulumi.Input[str]] = None,
-             azure_login_app_id: Optional[pulumi.Input[str]] = None,
-             azure_tenant_id: Optional[pulumi.Input[str]] = None,
-             azure_use_msi: Optional[pulumi.Input[bool]] = None,
-             azure_workspace_resource_id: Optional[pulumi.Input[str]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             config_file: Optional[pulumi.Input[str]] = None,
-             databricks_cli_path: Optional[pulumi.Input[str]] = None,
-             debug_headers: Optional[pulumi.Input[bool]] = None,
-             debug_truncate_bytes: Optional[pulumi.Input[int]] = None,
-             google_credentials: Optional[pulumi.Input[str]] = None,
-             google_service_account: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             http_timeout_seconds: Optional[pulumi.Input[int]] = None,
-             metadata_service_url: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             profile: Optional[pulumi.Input[str]] = None,
-             rate_limit: Optional[pulumi.Input[int]] = None,
-             retry_timeout_seconds: Optional[pulumi.Input[int]] = None,
-             skip_verify: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             warehouse_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if auth_type is None and 'authType' in kwargs:
-            auth_type = kwargs['authType']
-        if azure_client_id is None and 'azureClientId' in kwargs:
-            azure_client_id = kwargs['azureClientId']
-        if azure_client_secret is None and 'azureClientSecret' in kwargs:
-            azure_client_secret = kwargs['azureClientSecret']
-        if azure_environment is None and 'azureEnvironment' in kwargs:
-            azure_environment = kwargs['azureEnvironment']
-        if azure_login_app_id is None and 'azureLoginAppId' in kwargs:
-            azure_login_app_id = kwargs['azureLoginAppId']
-        if azure_tenant_id is None and 'azureTenantId' in kwargs:
-            azure_tenant_id = kwargs['azureTenantId']
-        if azure_use_msi is None and 'azureUseMsi' in kwargs:
-            azure_use_msi = kwargs['azureUseMsi']
-        if azure_workspace_resource_id is None and 'azureWorkspaceResourceId' in kwargs:
-            azure_workspace_resource_id = kwargs['azureWorkspaceResourceId']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if config_file is None and 'configFile' in kwargs:
-            config_file = kwargs['configFile']
-        if databricks_cli_path is None and 'databricksCliPath' in kwargs:
-            databricks_cli_path = kwargs['databricksCliPath']
-        if debug_headers is None and 'debugHeaders' in kwargs:
-            debug_headers = kwargs['debugHeaders']
-        if debug_truncate_bytes is None and 'debugTruncateBytes' in kwargs:
-            debug_truncate_bytes = kwargs['debugTruncateBytes']
-        if google_credentials is None and 'googleCredentials' in kwargs:
-            google_credentials = kwargs['googleCredentials']
-        if google_service_account is None and 'googleServiceAccount' in kwargs:
-            google_service_account = kwargs['googleServiceAccount']
-        if http_timeout_seconds is None and 'httpTimeoutSeconds' in kwargs:
-            http_timeout_seconds = kwargs['httpTimeoutSeconds']
-        if metadata_service_url is None and 'metadataServiceUrl' in kwargs:
-            metadata_service_url = kwargs['metadataServiceUrl']
-        if rate_limit is None and 'rateLimit' in kwargs:
-            rate_limit = kwargs['rateLimit']
-        if retry_timeout_seconds is None and 'retryTimeoutSeconds' in kwargs:
-            retry_timeout_seconds = kwargs['retryTimeoutSeconds']
-        if skip_verify is None and 'skipVerify' in kwargs:
-            skip_verify = kwargs['skipVerify']
-        if warehouse_id is None and 'warehouseId' in kwargs:
-            warehouse_id = kwargs['warehouseId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if auth_type is not None:
-            _setter("auth_type", auth_type)
+            pulumi.set(__self__, "auth_type", auth_type)
         if azure_client_id is not None:
-            _setter("azure_client_id", azure_client_id)
+            pulumi.set(__self__, "azure_client_id", azure_client_id)
         if azure_client_secret is not None:
-            _setter("azure_client_secret", azure_client_secret)
+            pulumi.set(__self__, "azure_client_secret", azure_client_secret)
         if azure_environment is not None:
-            _setter("azure_environment", azure_environment)
+            pulumi.set(__self__, "azure_environment", azure_environment)
         if azure_login_app_id is not None:
-            _setter("azure_login_app_id", azure_login_app_id)
+            pulumi.set(__self__, "azure_login_app_id", azure_login_app_id)
         if azure_tenant_id is not None:
-            _setter("azure_tenant_id", azure_tenant_id)
+            pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         if azure_use_msi is not None:
-            _setter("azure_use_msi", azure_use_msi)
+            pulumi.set(__self__, "azure_use_msi", azure_use_msi)
         if azure_workspace_resource_id is not None:
-            _setter("azure_workspace_resource_id", azure_workspace_resource_id)
+            pulumi.set(__self__, "azure_workspace_resource_id", azure_workspace_resource_id)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
-            _setter("client_secret", client_secret)
+            pulumi.set(__self__, "client_secret", client_secret)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if config_file is not None:
-            _setter("config_file", config_file)
+            pulumi.set(__self__, "config_file", config_file)
         if databricks_cli_path is not None:
-            _setter("databricks_cli_path", databricks_cli_path)
+            pulumi.set(__self__, "databricks_cli_path", databricks_cli_path)
         if debug_headers is not None:
-            _setter("debug_headers", debug_headers)
+            pulumi.set(__self__, "debug_headers", debug_headers)
         if debug_truncate_bytes is not None:
-            _setter("debug_truncate_bytes", debug_truncate_bytes)
+            pulumi.set(__self__, "debug_truncate_bytes", debug_truncate_bytes)
         if google_credentials is not None:
-            _setter("google_credentials", google_credentials)
+            pulumi.set(__self__, "google_credentials", google_credentials)
         if google_service_account is not None:
-            _setter("google_service_account", google_service_account)
+            pulumi.set(__self__, "google_service_account", google_service_account)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if http_timeout_seconds is not None:
-            _setter("http_timeout_seconds", http_timeout_seconds)
+            pulumi.set(__self__, "http_timeout_seconds", http_timeout_seconds)
         if metadata_service_url is not None:
-            _setter("metadata_service_url", metadata_service_url)
+            pulumi.set(__self__, "metadata_service_url", metadata_service_url)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if profile is not None:
-            _setter("profile", profile)
+            pulumi.set(__self__, "profile", profile)
         if rate_limit is not None:
-            _setter("rate_limit", rate_limit)
+            pulumi.set(__self__, "rate_limit", rate_limit)
         if retry_timeout_seconds is not None:
-            _setter("retry_timeout_seconds", retry_timeout_seconds)
+            pulumi.set(__self__, "retry_timeout_seconds", retry_timeout_seconds)
         if skip_verify is not None:
-            _setter("skip_verify", skip_verify)
+            pulumi.set(__self__, "skip_verify", skip_verify)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
         if warehouse_id is not None:
-            _setter("warehouse_id", warehouse_id)
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -548,10 +433,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

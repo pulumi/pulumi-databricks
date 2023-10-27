@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -31,55 +31,20 @@ class ConnectionArgs:
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
         """
-        ConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connection_type=connection_type,
-            options=options,
-            comment=comment,
-            metastore_id=metastore_id,
-            name=name,
-            owner=owner,
-            properties=properties,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connection_type: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_type is None and 'connectionType' in kwargs:
-            connection_type = kwargs['connectionType']
-        if connection_type is None:
-            raise TypeError("Missing 'connection_type' argument")
-        if options is None:
-            raise TypeError("Missing 'options' argument")
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
-        _setter("connection_type", connection_type)
-        _setter("options", options)
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "options", options)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter(name="connectionType")
@@ -192,53 +157,22 @@ class _ConnectionState:
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
         """
-        _ConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            connection_type=connection_type,
-            metastore_id=metastore_id,
-            name=name,
-            options=options,
-            owner=owner,
-            properties=properties,
-            read_only=read_only,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             connection_type: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_type is None and 'connectionType' in kwargs:
-            connection_type = kwargs['connectionType']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if read_only is None and 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if connection_type is not None:
-            _setter("connection_type", connection_type)
+            pulumi.set(__self__, "connection_type", connection_type)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter
@@ -442,10 +376,6 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

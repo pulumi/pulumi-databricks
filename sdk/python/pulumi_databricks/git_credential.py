@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GitCredentialArgs', 'GitCredential']
@@ -25,38 +25,13 @@ class GitCredentialArgs:
         :param pulumi.Input[str] git_username: user name at Git provider.
         :param pulumi.Input[str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
         """
-        GitCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            git_provider=git_provider,
-            force=force,
-            git_username=git_username,
-            personal_access_token=personal_access_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             git_provider: Optional[pulumi.Input[str]] = None,
-             force: Optional[pulumi.Input[bool]] = None,
-             git_username: Optional[pulumi.Input[str]] = None,
-             personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if git_provider is None and 'gitProvider' in kwargs:
-            git_provider = kwargs['gitProvider']
-        if git_provider is None:
-            raise TypeError("Missing 'git_provider' argument")
-        if git_username is None and 'gitUsername' in kwargs:
-            git_username = kwargs['gitUsername']
-        if personal_access_token is None and 'personalAccessToken' in kwargs:
-            personal_access_token = kwargs['personalAccessToken']
-
-        _setter("git_provider", git_provider)
+        pulumi.set(__self__, "git_provider", git_provider)
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if git_username is not None:
-            _setter("git_username", git_username)
+            pulumi.set(__self__, "git_username", git_username)
         if personal_access_token is not None:
-            _setter("personal_access_token", personal_access_token)
+            pulumi.set(__self__, "personal_access_token", personal_access_token)
 
     @property
     @pulumi.getter(name="gitProvider")
@@ -121,37 +96,14 @@ class _GitCredentialState:
         :param pulumi.Input[str] git_username: user name at Git provider.
         :param pulumi.Input[str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
         """
-        _GitCredentialState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            force=force,
-            git_provider=git_provider,
-            git_username=git_username,
-            personal_access_token=personal_access_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             force: Optional[pulumi.Input[bool]] = None,
-             git_provider: Optional[pulumi.Input[str]] = None,
-             git_username: Optional[pulumi.Input[str]] = None,
-             personal_access_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if git_provider is None and 'gitProvider' in kwargs:
-            git_provider = kwargs['gitProvider']
-        if git_username is None and 'gitUsername' in kwargs:
-            git_username = kwargs['gitUsername']
-        if personal_access_token is None and 'personalAccessToken' in kwargs:
-            personal_access_token = kwargs['personalAccessToken']
-
         if force is not None:
-            _setter("force", force)
+            pulumi.set(__self__, "force", force)
         if git_provider is not None:
-            _setter("git_provider", git_provider)
+            pulumi.set(__self__, "git_provider", git_provider)
         if git_username is not None:
-            _setter("git_username", git_username)
+            pulumi.set(__self__, "git_username", git_username)
         if personal_access_token is not None:
-            _setter("personal_access_token", personal_access_token)
+            pulumi.set(__self__, "personal_access_token", personal_access_token)
 
     @property
     @pulumi.getter
@@ -253,10 +205,6 @@ class GitCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GitCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

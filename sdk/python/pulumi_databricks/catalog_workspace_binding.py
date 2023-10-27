@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CatalogWorkspaceBindingArgs', 'CatalogWorkspaceBinding']
@@ -21,29 +21,8 @@ class CatalogWorkspaceBindingArgs:
         :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
-        CatalogWorkspaceBindingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            workspace_id=workspace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             workspace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if catalog_name is None:
-            raise TypeError("Missing 'catalog_name' argument")
-        if workspace_id is None and 'workspaceId' in kwargs:
-            workspace_id = kwargs['workspaceId']
-        if workspace_id is None:
-            raise TypeError("Missing 'workspace_id' argument")
-
-        _setter("catalog_name", catalog_name)
-        _setter("workspace_id", workspace_id)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -80,27 +59,10 @@ class _CatalogWorkspaceBindingState:
         :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
-        _CatalogWorkspaceBindingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            workspace_id=workspace_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             workspace_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if workspace_id is None and 'workspaceId' in kwargs:
-            workspace_id = kwargs['workspaceId']
-
         if catalog_name is not None:
-            _setter("catalog_name", catalog_name)
+            pulumi.set(__self__, "catalog_name", catalog_name)
         if workspace_id is not None:
-            _setter("workspace_id", workspace_id)
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -190,10 +152,6 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CatalogWorkspaceBindingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
