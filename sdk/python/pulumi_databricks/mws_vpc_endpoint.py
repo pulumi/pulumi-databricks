@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,72 +37,25 @@ class MwsVpcEndpointArgs:
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         """
-        MwsVpcEndpointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vpc_endpoint_name=vpc_endpoint_name,
-            account_id=account_id,
-            aws_account_id=aws_account_id,
-            aws_endpoint_service_id=aws_endpoint_service_id,
-            aws_vpc_endpoint_id=aws_vpc_endpoint_id,
-            gcp_vpc_endpoint_info=gcp_vpc_endpoint_info,
-            region=region,
-            state=state,
-            use_case=use_case,
-            vpc_endpoint_id=vpc_endpoint_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             aws_account_id: Optional[pulumi.Input[str]] = None,
-             aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
-             aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             use_case: Optional[pulumi.Input[str]] = None,
-             vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
-            vpc_endpoint_name = kwargs['vpcEndpointName']
-        if vpc_endpoint_name is None:
-            raise TypeError("Missing 'vpc_endpoint_name' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if aws_account_id is None and 'awsAccountId' in kwargs:
-            aws_account_id = kwargs['awsAccountId']
-        if aws_endpoint_service_id is None and 'awsEndpointServiceId' in kwargs:
-            aws_endpoint_service_id = kwargs['awsEndpointServiceId']
-        if aws_vpc_endpoint_id is None and 'awsVpcEndpointId' in kwargs:
-            aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
-        if gcp_vpc_endpoint_info is None and 'gcpVpcEndpointInfo' in kwargs:
-            gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
-        if use_case is None and 'useCase' in kwargs:
-            use_case = kwargs['useCase']
-        if vpc_endpoint_id is None and 'vpcEndpointId' in kwargs:
-            vpc_endpoint_id = kwargs['vpcEndpointId']
-
-        _setter("vpc_endpoint_name", vpc_endpoint_name)
+        pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if aws_account_id is not None:
-            _setter("aws_account_id", aws_account_id)
+            pulumi.set(__self__, "aws_account_id", aws_account_id)
         if aws_endpoint_service_id is not None:
-            _setter("aws_endpoint_service_id", aws_endpoint_service_id)
+            pulumi.set(__self__, "aws_endpoint_service_id", aws_endpoint_service_id)
         if aws_vpc_endpoint_id is not None:
-            _setter("aws_vpc_endpoint_id", aws_vpc_endpoint_id)
+            pulumi.set(__self__, "aws_vpc_endpoint_id", aws_vpc_endpoint_id)
         if gcp_vpc_endpoint_info is not None:
-            _setter("gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
+            pulumi.set(__self__, "gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if use_case is not None:
-            _setter("use_case", use_case)
+            pulumi.set(__self__, "use_case", use_case)
         if vpc_endpoint_id is not None:
-            _setter("vpc_endpoint_id", vpc_endpoint_id)
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
 
     @property
     @pulumi.getter(name="vpcEndpointName")
@@ -243,71 +196,26 @@ class _MwsVpcEndpointState:
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         """
-        _MwsVpcEndpointState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            aws_account_id=aws_account_id,
-            aws_endpoint_service_id=aws_endpoint_service_id,
-            aws_vpc_endpoint_id=aws_vpc_endpoint_id,
-            gcp_vpc_endpoint_info=gcp_vpc_endpoint_info,
-            region=region,
-            state=state,
-            use_case=use_case,
-            vpc_endpoint_id=vpc_endpoint_id,
-            vpc_endpoint_name=vpc_endpoint_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             aws_account_id: Optional[pulumi.Input[str]] = None,
-             aws_endpoint_service_id: Optional[pulumi.Input[str]] = None,
-             aws_vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             use_case: Optional[pulumi.Input[str]] = None,
-             vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
-             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if aws_account_id is None and 'awsAccountId' in kwargs:
-            aws_account_id = kwargs['awsAccountId']
-        if aws_endpoint_service_id is None and 'awsEndpointServiceId' in kwargs:
-            aws_endpoint_service_id = kwargs['awsEndpointServiceId']
-        if aws_vpc_endpoint_id is None and 'awsVpcEndpointId' in kwargs:
-            aws_vpc_endpoint_id = kwargs['awsVpcEndpointId']
-        if gcp_vpc_endpoint_info is None and 'gcpVpcEndpointInfo' in kwargs:
-            gcp_vpc_endpoint_info = kwargs['gcpVpcEndpointInfo']
-        if use_case is None and 'useCase' in kwargs:
-            use_case = kwargs['useCase']
-        if vpc_endpoint_id is None and 'vpcEndpointId' in kwargs:
-            vpc_endpoint_id = kwargs['vpcEndpointId']
-        if vpc_endpoint_name is None and 'vpcEndpointName' in kwargs:
-            vpc_endpoint_name = kwargs['vpcEndpointName']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if aws_account_id is not None:
-            _setter("aws_account_id", aws_account_id)
+            pulumi.set(__self__, "aws_account_id", aws_account_id)
         if aws_endpoint_service_id is not None:
-            _setter("aws_endpoint_service_id", aws_endpoint_service_id)
+            pulumi.set(__self__, "aws_endpoint_service_id", aws_endpoint_service_id)
         if aws_vpc_endpoint_id is not None:
-            _setter("aws_vpc_endpoint_id", aws_vpc_endpoint_id)
+            pulumi.set(__self__, "aws_vpc_endpoint_id", aws_vpc_endpoint_id)
         if gcp_vpc_endpoint_info is not None:
-            _setter("gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
+            pulumi.set(__self__, "gcp_vpc_endpoint_info", gcp_vpc_endpoint_info)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if use_case is not None:
-            _setter("use_case", use_case)
+            pulumi.set(__self__, "use_case", use_case)
         if vpc_endpoint_id is not None:
-            _setter("vpc_endpoint_id", vpc_endpoint_id)
+            pulumi.set(__self__, "vpc_endpoint_id", vpc_endpoint_id)
         if vpc_endpoint_name is not None:
-            _setter("vpc_endpoint_name", vpc_endpoint_name)
+            pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -477,10 +385,6 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MwsVpcEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -509,7 +413,6 @@ class MwsVpcEndpoint(pulumi.CustomResource):
             __props__.__dict__["aws_account_id"] = aws_account_id
             __props__.__dict__["aws_endpoint_service_id"] = aws_endpoint_service_id
             __props__.__dict__["aws_vpc_endpoint_id"] = aws_vpc_endpoint_id
-            gcp_vpc_endpoint_info = _utilities.configure(gcp_vpc_endpoint_info, MwsVpcEndpointGcpVpcEndpointInfoArgs, True)
             __props__.__dict__["gcp_vpc_endpoint_info"] = gcp_vpc_endpoint_info
             __props__.__dict__["region"] = region
             __props__.__dict__["state"] = state

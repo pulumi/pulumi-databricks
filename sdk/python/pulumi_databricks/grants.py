@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,80 +33,33 @@ class GrantsArgs:
         """
         The set of arguments for constructing a Grants resource.
         """
-        GrantsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            grants=grants,
-            catalog=catalog,
-            external_location=external_location,
-            foreign_connection=foreign_connection,
-            function=function,
-            materialized_view=materialized_view,
-            metastore=metastore,
-            model=model,
-            schema=schema,
-            share=share,
-            storage_credential=storage_credential,
-            table=table,
-            view=view,
-            volume=volume,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
-             catalog: Optional[pulumi.Input[str]] = None,
-             external_location: Optional[pulumi.Input[str]] = None,
-             foreign_connection: Optional[pulumi.Input[str]] = None,
-             function: Optional[pulumi.Input[str]] = None,
-             materialized_view: Optional[pulumi.Input[str]] = None,
-             metastore: Optional[pulumi.Input[str]] = None,
-             model: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             share: Optional[pulumi.Input[str]] = None,
-             storage_credential: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             view: Optional[pulumi.Input[str]] = None,
-             volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if grants is None:
-            raise TypeError("Missing 'grants' argument")
-        if external_location is None and 'externalLocation' in kwargs:
-            external_location = kwargs['externalLocation']
-        if foreign_connection is None and 'foreignConnection' in kwargs:
-            foreign_connection = kwargs['foreignConnection']
-        if materialized_view is None and 'materializedView' in kwargs:
-            materialized_view = kwargs['materializedView']
-        if storage_credential is None and 'storageCredential' in kwargs:
-            storage_credential = kwargs['storageCredential']
-
-        _setter("grants", grants)
+        pulumi.set(__self__, "grants", grants)
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if external_location is not None:
-            _setter("external_location", external_location)
+            pulumi.set(__self__, "external_location", external_location)
         if foreign_connection is not None:
-            _setter("foreign_connection", foreign_connection)
+            pulumi.set(__self__, "foreign_connection", foreign_connection)
         if function is not None:
-            _setter("function", function)
+            pulumi.set(__self__, "function", function)
         if materialized_view is not None:
-            _setter("materialized_view", materialized_view)
+            pulumi.set(__self__, "materialized_view", materialized_view)
         if metastore is not None:
-            _setter("metastore", metastore)
+            pulumi.set(__self__, "metastore", metastore)
         if model is not None:
-            _setter("model", model)
+            pulumi.set(__self__, "model", model)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if share is not None:
-            _setter("share", share)
+            pulumi.set(__self__, "share", share)
         if storage_credential is not None:
-            _setter("storage_credential", storage_credential)
+            pulumi.set(__self__, "storage_credential", storage_credential)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if view is not None:
-            _setter("view", view)
+            pulumi.set(__self__, "view", view)
         if volume is not None:
-            _setter("volume", volume)
+            pulumi.set(__self__, "volume", volume)
 
     @property
     @pulumi.getter
@@ -255,79 +208,34 @@ class _GrantsState:
         """
         Input properties used for looking up and filtering Grants resources.
         """
-        _GrantsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog=catalog,
-            external_location=external_location,
-            foreign_connection=foreign_connection,
-            function=function,
-            grants=grants,
-            materialized_view=materialized_view,
-            metastore=metastore,
-            model=model,
-            schema=schema,
-            share=share,
-            storage_credential=storage_credential,
-            table=table,
-            view=view,
-            volume=volume,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog: Optional[pulumi.Input[str]] = None,
-             external_location: Optional[pulumi.Input[str]] = None,
-             foreign_connection: Optional[pulumi.Input[str]] = None,
-             function: Optional[pulumi.Input[str]] = None,
-             grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
-             materialized_view: Optional[pulumi.Input[str]] = None,
-             metastore: Optional[pulumi.Input[str]] = None,
-             model: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             share: Optional[pulumi.Input[str]] = None,
-             storage_credential: Optional[pulumi.Input[str]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             view: Optional[pulumi.Input[str]] = None,
-             volume: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if external_location is None and 'externalLocation' in kwargs:
-            external_location = kwargs['externalLocation']
-        if foreign_connection is None and 'foreignConnection' in kwargs:
-            foreign_connection = kwargs['foreignConnection']
-        if materialized_view is None and 'materializedView' in kwargs:
-            materialized_view = kwargs['materializedView']
-        if storage_credential is None and 'storageCredential' in kwargs:
-            storage_credential = kwargs['storageCredential']
-
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if external_location is not None:
-            _setter("external_location", external_location)
+            pulumi.set(__self__, "external_location", external_location)
         if foreign_connection is not None:
-            _setter("foreign_connection", foreign_connection)
+            pulumi.set(__self__, "foreign_connection", foreign_connection)
         if function is not None:
-            _setter("function", function)
+            pulumi.set(__self__, "function", function)
         if grants is not None:
-            _setter("grants", grants)
+            pulumi.set(__self__, "grants", grants)
         if materialized_view is not None:
-            _setter("materialized_view", materialized_view)
+            pulumi.set(__self__, "materialized_view", materialized_view)
         if metastore is not None:
-            _setter("metastore", metastore)
+            pulumi.set(__self__, "metastore", metastore)
         if model is not None:
-            _setter("model", model)
+            pulumi.set(__self__, "model", model)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if share is not None:
-            _setter("share", share)
+            pulumi.set(__self__, "share", share)
         if storage_credential is not None:
-            _setter("storage_credential", storage_credential)
+            pulumi.set(__self__, "storage_credential", storage_credential)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if view is not None:
-            _setter("view", view)
+            pulumi.set(__self__, "view", view)
         if volume is not None:
-            _setter("volume", volume)
+            pulumi.set(__self__, "volume", volume)
 
     @property
     @pulumi.getter
@@ -499,10 +407,6 @@ class Grants(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GrantsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

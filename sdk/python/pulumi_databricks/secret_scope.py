@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,37 +26,14 @@ class SecretScopeArgs:
         :param pulumi.Input[str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         """
-        SecretScopeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_type=backend_type,
-            initial_manage_principal=initial_manage_principal,
-            keyvault_metadata=keyvault_metadata,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_type: Optional[pulumi.Input[str]] = None,
-             initial_manage_principal: Optional[pulumi.Input[str]] = None,
-             keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_type is None and 'backendType' in kwargs:
-            backend_type = kwargs['backendType']
-        if initial_manage_principal is None and 'initialManagePrincipal' in kwargs:
-            initial_manage_principal = kwargs['initialManagePrincipal']
-        if keyvault_metadata is None and 'keyvaultMetadata' in kwargs:
-            keyvault_metadata = kwargs['keyvaultMetadata']
-
         if backend_type is not None:
-            _setter("backend_type", backend_type)
+            pulumi.set(__self__, "backend_type", backend_type)
         if initial_manage_principal is not None:
-            _setter("initial_manage_principal", initial_manage_principal)
+            pulumi.set(__self__, "initial_manage_principal", initial_manage_principal)
         if keyvault_metadata is not None:
-            _setter("keyvault_metadata", keyvault_metadata)
+            pulumi.set(__self__, "keyvault_metadata", keyvault_metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="backendType")
@@ -117,37 +94,14 @@ class _SecretScopeState:
         :param pulumi.Input[str] initial_manage_principal: The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         :param pulumi.Input[str] name: Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         """
-        _SecretScopeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_type=backend_type,
-            initial_manage_principal=initial_manage_principal,
-            keyvault_metadata=keyvault_metadata,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_type: Optional[pulumi.Input[str]] = None,
-             initial_manage_principal: Optional[pulumi.Input[str]] = None,
-             keyvault_metadata: Optional[pulumi.Input['SecretScopeKeyvaultMetadataArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_type is None and 'backendType' in kwargs:
-            backend_type = kwargs['backendType']
-        if initial_manage_principal is None and 'initialManagePrincipal' in kwargs:
-            initial_manage_principal = kwargs['initialManagePrincipal']
-        if keyvault_metadata is None and 'keyvaultMetadata' in kwargs:
-            keyvault_metadata = kwargs['keyvaultMetadata']
-
         if backend_type is not None:
-            _setter("backend_type", backend_type)
+            pulumi.set(__self__, "backend_type", backend_type)
         if initial_manage_principal is not None:
-            _setter("initial_manage_principal", initial_manage_principal)
+            pulumi.set(__self__, "initial_manage_principal", initial_manage_principal)
         if keyvault_metadata is not None:
-            _setter("keyvault_metadata", keyvault_metadata)
+            pulumi.set(__self__, "keyvault_metadata", keyvault_metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="backendType")
@@ -245,10 +199,6 @@ class SecretScope(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecretScopeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -269,7 +219,6 @@ class SecretScope(pulumi.CustomResource):
 
             __props__.__dict__["backend_type"] = backend_type
             __props__.__dict__["initial_manage_principal"] = initial_manage_principal
-            keyvault_metadata = _utilities.configure(keyvault_metadata, SecretScopeKeyvaultMetadataArgs, True)
             __props__.__dict__["keyvault_metadata"] = keyvault_metadata
             __props__.__dict__["name"] = name
         super(SecretScope, __self__).__init__(

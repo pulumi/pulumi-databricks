@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsStorageConfigurationsArgs', 'MwsStorageConfigurations']
@@ -23,36 +23,9 @@ class MwsStorageConfigurationsArgs:
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
-        MwsStorageConfigurationsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            bucket_name=bucket_name,
-            storage_configuration_name=storage_configuration_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             bucket_name: Optional[pulumi.Input[str]] = None,
-             storage_configuration_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-        if storage_configuration_name is None and 'storageConfigurationName' in kwargs:
-            storage_configuration_name = kwargs['storageConfigurationName']
-        if storage_configuration_name is None:
-            raise TypeError("Missing 'storage_configuration_name' argument")
-
-        _setter("account_id", account_id)
-        _setter("bucket_name", bucket_name)
-        _setter("storage_configuration_name", storage_configuration_name)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "storage_configuration_name", storage_configuration_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -106,45 +79,16 @@ class _MwsStorageConfigurationsState:
         :param pulumi.Input[str] storage_configuration_id: (String) id of storage config to be used for `databricks_mws_workspace` resource.
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
-        _MwsStorageConfigurationsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            bucket_name=bucket_name,
-            creation_time=creation_time,
-            storage_configuration_id=storage_configuration_id,
-            storage_configuration_name=storage_configuration_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             bucket_name: Optional[pulumi.Input[str]] = None,
-             creation_time: Optional[pulumi.Input[int]] = None,
-             storage_configuration_id: Optional[pulumi.Input[str]] = None,
-             storage_configuration_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if storage_configuration_id is None and 'storageConfigurationId' in kwargs:
-            storage_configuration_id = kwargs['storageConfigurationId']
-        if storage_configuration_name is None and 'storageConfigurationName' in kwargs:
-            storage_configuration_name = kwargs['storageConfigurationName']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if bucket_name is not None:
-            _setter("bucket_name", bucket_name)
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if storage_configuration_id is not None:
-            _setter("storage_configuration_id", storage_configuration_id)
+            pulumi.set(__self__, "storage_configuration_id", storage_configuration_id)
         if storage_configuration_name is not None:
-            _setter("storage_configuration_name", storage_configuration_name)
+            pulumi.set(__self__, "storage_configuration_name", storage_configuration_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -311,10 +255,6 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MwsStorageConfigurationsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

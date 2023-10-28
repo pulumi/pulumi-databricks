@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MetastoreArgs', 'Metastore']
@@ -42,110 +42,39 @@ class MetastoreArgs:
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[str] region: The region of the metastore
         """
-        MetastoreArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            storage_root=storage_root,
-            cloud=cloud,
-            created_at=created_at,
-            created_by=created_by,
-            default_data_access_config_id=default_data_access_config_id,
-            delta_sharing_organization_name=delta_sharing_organization_name,
-            delta_sharing_recipient_token_lifetime_in_seconds=delta_sharing_recipient_token_lifetime_in_seconds,
-            delta_sharing_scope=delta_sharing_scope,
-            force_destroy=force_destroy,
-            global_metastore_id=global_metastore_id,
-            metastore_id=metastore_id,
-            name=name,
-            owner=owner,
-            region=region,
-            storage_root_credential_id=storage_root_credential_id,
-            updated_at=updated_at,
-            updated_by=updated_by,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             storage_root: Optional[pulumi.Input[str]] = None,
-             cloud: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[int]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             default_data_access_config_id: Optional[pulumi.Input[str]] = None,
-             delta_sharing_organization_name: Optional[pulumi.Input[str]] = None,
-             delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             delta_sharing_scope: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             global_metastore_id: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             storage_root_credential_id: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[int]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if storage_root is None and 'storageRoot' in kwargs:
-            storage_root = kwargs['storageRoot']
-        if storage_root is None:
-            raise TypeError("Missing 'storage_root' argument")
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if default_data_access_config_id is None and 'defaultDataAccessConfigId' in kwargs:
-            default_data_access_config_id = kwargs['defaultDataAccessConfigId']
-        if delta_sharing_organization_name is None and 'deltaSharingOrganizationName' in kwargs:
-            delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
-        if delta_sharing_recipient_token_lifetime_in_seconds is None and 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
-            delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
-        if delta_sharing_scope is None and 'deltaSharingScope' in kwargs:
-            delta_sharing_scope = kwargs['deltaSharingScope']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if global_metastore_id is None and 'globalMetastoreId' in kwargs:
-            global_metastore_id = kwargs['globalMetastoreId']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if storage_root_credential_id is None and 'storageRootCredentialId' in kwargs:
-            storage_root_credential_id = kwargs['storageRootCredentialId']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-
-        _setter("storage_root", storage_root)
+        pulumi.set(__self__, "storage_root", storage_root)
         if cloud is not None:
-            _setter("cloud", cloud)
+            pulumi.set(__self__, "cloud", cloud)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if default_data_access_config_id is not None:
-            _setter("default_data_access_config_id", default_data_access_config_id)
+            pulumi.set(__self__, "default_data_access_config_id", default_data_access_config_id)
         if delta_sharing_organization_name is not None:
-            _setter("delta_sharing_organization_name", delta_sharing_organization_name)
+            pulumi.set(__self__, "delta_sharing_organization_name", delta_sharing_organization_name)
         if delta_sharing_recipient_token_lifetime_in_seconds is not None:
-            _setter("delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
+            pulumi.set(__self__, "delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
         if delta_sharing_scope is not None:
-            _setter("delta_sharing_scope", delta_sharing_scope)
+            pulumi.set(__self__, "delta_sharing_scope", delta_sharing_scope)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if global_metastore_id is not None:
-            _setter("global_metastore_id", global_metastore_id)
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if storage_root_credential_id is not None:
-            _setter("storage_root_credential_id", storage_root_credential_id)
+            pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
 
     @property
     @pulumi.getter(name="storageRoot")
@@ -356,109 +285,40 @@ class _MetastoreState:
         :param pulumi.Input[str] region: The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
-        _MetastoreState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloud=cloud,
-            created_at=created_at,
-            created_by=created_by,
-            default_data_access_config_id=default_data_access_config_id,
-            delta_sharing_organization_name=delta_sharing_organization_name,
-            delta_sharing_recipient_token_lifetime_in_seconds=delta_sharing_recipient_token_lifetime_in_seconds,
-            delta_sharing_scope=delta_sharing_scope,
-            force_destroy=force_destroy,
-            global_metastore_id=global_metastore_id,
-            metastore_id=metastore_id,
-            name=name,
-            owner=owner,
-            region=region,
-            storage_root=storage_root,
-            storage_root_credential_id=storage_root_credential_id,
-            updated_at=updated_at,
-            updated_by=updated_by,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloud: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[int]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             default_data_access_config_id: Optional[pulumi.Input[str]] = None,
-             delta_sharing_organization_name: Optional[pulumi.Input[str]] = None,
-             delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[int]] = None,
-             delta_sharing_scope: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             global_metastore_id: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             storage_root: Optional[pulumi.Input[str]] = None,
-             storage_root_credential_id: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[int]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if default_data_access_config_id is None and 'defaultDataAccessConfigId' in kwargs:
-            default_data_access_config_id = kwargs['defaultDataAccessConfigId']
-        if delta_sharing_organization_name is None and 'deltaSharingOrganizationName' in kwargs:
-            delta_sharing_organization_name = kwargs['deltaSharingOrganizationName']
-        if delta_sharing_recipient_token_lifetime_in_seconds is None and 'deltaSharingRecipientTokenLifetimeInSeconds' in kwargs:
-            delta_sharing_recipient_token_lifetime_in_seconds = kwargs['deltaSharingRecipientTokenLifetimeInSeconds']
-        if delta_sharing_scope is None and 'deltaSharingScope' in kwargs:
-            delta_sharing_scope = kwargs['deltaSharingScope']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if global_metastore_id is None and 'globalMetastoreId' in kwargs:
-            global_metastore_id = kwargs['globalMetastoreId']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if storage_root is None and 'storageRoot' in kwargs:
-            storage_root = kwargs['storageRoot']
-        if storage_root_credential_id is None and 'storageRootCredentialId' in kwargs:
-            storage_root_credential_id = kwargs['storageRootCredentialId']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-        if updated_by is None and 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-
         if cloud is not None:
-            _setter("cloud", cloud)
+            pulumi.set(__self__, "cloud", cloud)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if default_data_access_config_id is not None:
-            _setter("default_data_access_config_id", default_data_access_config_id)
+            pulumi.set(__self__, "default_data_access_config_id", default_data_access_config_id)
         if delta_sharing_organization_name is not None:
-            _setter("delta_sharing_organization_name", delta_sharing_organization_name)
+            pulumi.set(__self__, "delta_sharing_organization_name", delta_sharing_organization_name)
         if delta_sharing_recipient_token_lifetime_in_seconds is not None:
-            _setter("delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
+            pulumi.set(__self__, "delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
         if delta_sharing_scope is not None:
-            _setter("delta_sharing_scope", delta_sharing_scope)
+            pulumi.set(__self__, "delta_sharing_scope", delta_sharing_scope)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if global_metastore_id is not None:
-            _setter("global_metastore_id", global_metastore_id)
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if storage_root is not None:
-            _setter("storage_root", storage_root)
+            pulumi.set(__self__, "storage_root", storage_root)
         if storage_root_credential_id is not None:
-            _setter("storage_root_credential_id", storage_root_credential_id)
+            pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
 
     @property
     @pulumi.getter
@@ -714,10 +574,6 @@ class Metastore(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MetastoreArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

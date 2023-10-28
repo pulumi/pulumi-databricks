@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,45 +28,18 @@ class MlflowModelArgs:
         :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
         :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
-        MlflowModelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            last_updated_timestamp=last_updated_timestamp,
-            name=name,
-            tags=tags,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
-            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if last_updated_timestamp is not None:
-            _setter("last_updated_timestamp", last_updated_timestamp)
+            pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -148,51 +121,20 @@ class _MlflowModelState:
         :param pulumi.Input[str] name: Name of MLflow model. Change of name triggers new resource.
         :param pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]] tags: Tags for the MLflow model.
         """
-        _MlflowModelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            creation_timestamp=creation_timestamp,
-            description=description,
-            last_updated_timestamp=last_updated_timestamp,
-            name=name,
-            registered_model_id=registered_model_id,
-            tags=tags,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             creation_timestamp: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             registered_model_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowModelTagArgs']]]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if creation_timestamp is None and 'creationTimestamp' in kwargs:
-            creation_timestamp = kwargs['creationTimestamp']
-        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
-            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
-        if registered_model_id is None and 'registeredModelId' in kwargs:
-            registered_model_id = kwargs['registeredModelId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if creation_timestamp is not None:
-            _setter("creation_timestamp", creation_timestamp)
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if last_updated_timestamp is not None:
-            _setter("last_updated_timestamp", last_updated_timestamp)
+            pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if registered_model_id is not None:
-            _setter("registered_model_id", registered_model_id)
+            pulumi.set(__self__, "registered_model_id", registered_model_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -399,10 +341,6 @@ class MlflowModel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MlflowModelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

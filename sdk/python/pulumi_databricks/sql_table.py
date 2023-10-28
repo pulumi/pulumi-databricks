@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,82 +41,27 @@ class SqlTableArgs:
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         """
-        SqlTableArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            schema_name=schema_name,
-            table_type=table_type,
-            cluster_id=cluster_id,
-            columns=columns,
-            comment=comment,
-            data_source_format=data_source_format,
-            name=name,
-            properties=properties,
-            storage_credential_name=storage_credential_name,
-            storage_location=storage_location,
-            view_definition=view_definition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             schema_name: Optional[pulumi.Input[str]] = None,
-             table_type: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             data_source_format: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             storage_credential_name: Optional[pulumi.Input[str]] = None,
-             storage_location: Optional[pulumi.Input[str]] = None,
-             view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if catalog_name is None:
-            raise TypeError("Missing 'catalog_name' argument")
-        if schema_name is None and 'schemaName' in kwargs:
-            schema_name = kwargs['schemaName']
-        if schema_name is None:
-            raise TypeError("Missing 'schema_name' argument")
-        if table_type is None and 'tableType' in kwargs:
-            table_type = kwargs['tableType']
-        if table_type is None:
-            raise TypeError("Missing 'table_type' argument")
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if data_source_format is None and 'dataSourceFormat' in kwargs:
-            data_source_format = kwargs['dataSourceFormat']
-        if storage_credential_name is None and 'storageCredentialName' in kwargs:
-            storage_credential_name = kwargs['storageCredentialName']
-        if storage_location is None and 'storageLocation' in kwargs:
-            storage_location = kwargs['storageLocation']
-        if view_definition is None and 'viewDefinition' in kwargs:
-            view_definition = kwargs['viewDefinition']
-
-        _setter("catalog_name", catalog_name)
-        _setter("schema_name", schema_name)
-        _setter("table_type", table_type)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_type", table_type)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if columns is not None:
-            _setter("columns", columns)
+            pulumi.set(__self__, "columns", columns)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if data_source_format is not None:
-            _setter("data_source_format", data_source_format)
+            pulumi.set(__self__, "data_source_format", data_source_format)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if storage_credential_name is not None:
-            _setter("storage_credential_name", storage_credential_name)
+            pulumi.set(__self__, "storage_credential_name", storage_credential_name)
         if storage_location is not None:
-            _setter("storage_location", storage_location)
+            pulumi.set(__self__, "storage_location", storage_location)
         if view_definition is not None:
-            _setter("view_definition", view_definition)
+            pulumi.set(__self__, "view_definition", view_definition)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -285,79 +230,30 @@ class _SqlTableState:
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         """
-        _SqlTableState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            catalog_name=catalog_name,
-            cluster_id=cluster_id,
-            columns=columns,
-            comment=comment,
-            data_source_format=data_source_format,
-            name=name,
-            properties=properties,
-            schema_name=schema_name,
-            storage_credential_name=storage_credential_name,
-            storage_location=storage_location,
-            table_type=table_type,
-            view_definition=view_definition,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             catalog_name: Optional[pulumi.Input[str]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             data_source_format: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             schema_name: Optional[pulumi.Input[str]] = None,
-             storage_credential_name: Optional[pulumi.Input[str]] = None,
-             storage_location: Optional[pulumi.Input[str]] = None,
-             table_type: Optional[pulumi.Input[str]] = None,
-             view_definition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if catalog_name is None and 'catalogName' in kwargs:
-            catalog_name = kwargs['catalogName']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if data_source_format is None and 'dataSourceFormat' in kwargs:
-            data_source_format = kwargs['dataSourceFormat']
-        if schema_name is None and 'schemaName' in kwargs:
-            schema_name = kwargs['schemaName']
-        if storage_credential_name is None and 'storageCredentialName' in kwargs:
-            storage_credential_name = kwargs['storageCredentialName']
-        if storage_location is None and 'storageLocation' in kwargs:
-            storage_location = kwargs['storageLocation']
-        if table_type is None and 'tableType' in kwargs:
-            table_type = kwargs['tableType']
-        if view_definition is None and 'viewDefinition' in kwargs:
-            view_definition = kwargs['viewDefinition']
-
         if catalog_name is not None:
-            _setter("catalog_name", catalog_name)
+            pulumi.set(__self__, "catalog_name", catalog_name)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if columns is not None:
-            _setter("columns", columns)
+            pulumi.set(__self__, "columns", columns)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if data_source_format is not None:
-            _setter("data_source_format", data_source_format)
+            pulumi.set(__self__, "data_source_format", data_source_format)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if schema_name is not None:
-            _setter("schema_name", schema_name)
+            pulumi.set(__self__, "schema_name", schema_name)
         if storage_credential_name is not None:
-            _setter("storage_credential_name", storage_credential_name)
+            pulumi.set(__self__, "storage_credential_name", storage_credential_name)
         if storage_location is not None:
-            _setter("storage_location", storage_location)
+            pulumi.set(__self__, "storage_location", storage_location)
         if table_type is not None:
-            _setter("table_type", table_type)
+            pulumi.set(__self__, "table_type", table_type)
         if view_definition is not None:
-            _setter("view_definition", view_definition)
+            pulumi.set(__self__, "view_definition", view_definition)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -575,10 +471,6 @@ class SqlTable(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SqlTableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

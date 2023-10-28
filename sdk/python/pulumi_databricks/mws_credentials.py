@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MwsCredentialsArgs', 'MwsCredentials']
@@ -23,36 +23,9 @@ class MwsCredentialsArgs:
         :param pulumi.Input[str] credentials_name: name of credentials to register
         :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
-        MwsCredentialsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            credentials_name=credentials_name,
-            role_arn=role_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             credentials_name: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if credentials_name is None and 'credentialsName' in kwargs:
-            credentials_name = kwargs['credentialsName']
-        if credentials_name is None:
-            raise TypeError("Missing 'credentials_name' argument")
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if role_arn is None:
-            raise TypeError("Missing 'role_arn' argument")
-
-        _setter("account_id", account_id)
-        _setter("credentials_name", credentials_name)
-        _setter("role_arn", role_arn)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "credentials_name", credentials_name)
+        pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="accountId")
@@ -108,51 +81,18 @@ class _MwsCredentialsState:
         :param pulumi.Input[str] credentials_name: name of credentials to register
         :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
-        _MwsCredentialsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            creation_time=creation_time,
-            credentials_id=credentials_id,
-            credentials_name=credentials_name,
-            external_id=external_id,
-            role_arn=role_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             creation_time: Optional[pulumi.Input[int]] = None,
-             credentials_id: Optional[pulumi.Input[str]] = None,
-             credentials_name: Optional[pulumi.Input[str]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if credentials_id is None and 'credentialsId' in kwargs:
-            credentials_id = kwargs['credentialsId']
-        if credentials_name is None and 'credentialsName' in kwargs:
-            credentials_name = kwargs['credentialsName']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if credentials_id is not None:
-            _setter("credentials_id", credentials_id)
+            pulumi.set(__self__, "credentials_id", credentials_id)
         if credentials_name is not None:
-            _setter("credentials_name", credentials_name)
+            pulumi.set(__self__, "credentials_name", credentials_name)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
 
     @property
     @pulumi.getter(name="accountId")
@@ -333,10 +273,6 @@ class MwsCredentials(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MwsCredentialsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

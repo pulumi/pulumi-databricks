@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DbfsFileArgs', 'DbfsFile']
@@ -23,34 +23,13 @@ class DbfsFileArgs:
         :param pulumi.Input[str] path: The path of the file in which you wish to save.
         :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
-        DbfsFileArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            content_base64=content_base64,
-            md5=md5,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             content_base64: Optional[pulumi.Input[str]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -111,45 +90,18 @@ class _DbfsFileState:
         :param pulumi.Input[str] path: The path of the file in which you wish to save.
         :param pulumi.Input[str] source: The full absolute path to the file. Conflicts with `content_base64`.
         """
-        _DbfsFileState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content_base64=content_base64,
-            dbfs_path=dbfs_path,
-            file_size=file_size,
-            md5=md5,
-            path=path,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content_base64: Optional[pulumi.Input[str]] = None,
-             dbfs_path: Optional[pulumi.Input[str]] = None,
-             file_size: Optional[pulumi.Input[int]] = None,
-             md5: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content_base64 is None and 'contentBase64' in kwargs:
-            content_base64 = kwargs['contentBase64']
-        if dbfs_path is None and 'dbfsPath' in kwargs:
-            dbfs_path = kwargs['dbfsPath']
-        if file_size is None and 'fileSize' in kwargs:
-            file_size = kwargs['fileSize']
-
         if content_base64 is not None:
-            _setter("content_base64", content_base64)
+            pulumi.set(__self__, "content_base64", content_base64)
         if dbfs_path is not None:
-            _setter("dbfs_path", dbfs_path)
+            pulumi.set(__self__, "dbfs_path", dbfs_path)
         if file_size is not None:
-            _setter("file_size", file_size)
+            pulumi.set(__self__, "file_size", file_size)
         if md5 is not None:
-            _setter("md5", md5)
+            pulumi.set(__self__, "md5", md5)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="contentBase64")
@@ -267,10 +219,6 @@ class DbfsFile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DbfsFileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

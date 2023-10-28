@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -75,204 +75,79 @@ class JobArgs:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
-        JobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            always_running=always_running,
-            computes=computes,
-            continuous=continuous,
-            control_run_state=control_run_state,
-            dbt_task=dbt_task,
-            email_notifications=email_notifications,
-            existing_cluster_id=existing_cluster_id,
-            format=format,
-            git_source=git_source,
-            health=health,
-            job_clusters=job_clusters,
-            libraries=libraries,
-            max_concurrent_runs=max_concurrent_runs,
-            max_retries=max_retries,
-            min_retry_interval_millis=min_retry_interval_millis,
-            name=name,
-            new_cluster=new_cluster,
-            notebook_task=notebook_task,
-            notification_settings=notification_settings,
-            parameters=parameters,
-            pipeline_task=pipeline_task,
-            python_wheel_task=python_wheel_task,
-            queue=queue,
-            retry_on_timeout=retry_on_timeout,
-            run_as=run_as,
-            run_job_task=run_job_task,
-            schedule=schedule,
-            spark_jar_task=spark_jar_task,
-            spark_python_task=spark_python_task,
-            spark_submit_task=spark_submit_task,
-            tags=tags,
-            tasks=tasks,
-            timeout_seconds=timeout_seconds,
-            trigger=trigger,
-            webhook_notifications=webhook_notifications,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             always_running: Optional[pulumi.Input[bool]] = None,
-             computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
-             continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
-             control_run_state: Optional[pulumi.Input[bool]] = None,
-             dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
-             email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
-             existing_cluster_id: Optional[pulumi.Input[str]] = None,
-             format: Optional[pulumi.Input[str]] = None,
-             git_source: Optional[pulumi.Input['JobGitSourceArgs']] = None,
-             health: Optional[pulumi.Input['JobHealthArgs']] = None,
-             job_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]] = None,
-             max_concurrent_runs: Optional[pulumi.Input[int]] = None,
-             max_retries: Optional[pulumi.Input[int]] = None,
-             min_retry_interval_millis: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
-             notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
-             notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
-             pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
-             python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
-             queue: Optional[pulumi.Input['JobQueueArgs']] = None,
-             retry_on_timeout: Optional[pulumi.Input[bool]] = None,
-             run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
-             run_job_task: Optional[pulumi.Input['JobRunJobTaskArgs']] = None,
-             schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
-             spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
-             spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
-             spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
-             webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if always_running is None and 'alwaysRunning' in kwargs:
-            always_running = kwargs['alwaysRunning']
-        if control_run_state is None and 'controlRunState' in kwargs:
-            control_run_state = kwargs['controlRunState']
-        if dbt_task is None and 'dbtTask' in kwargs:
-            dbt_task = kwargs['dbtTask']
-        if email_notifications is None and 'emailNotifications' in kwargs:
-            email_notifications = kwargs['emailNotifications']
-        if existing_cluster_id is None and 'existingClusterId' in kwargs:
-            existing_cluster_id = kwargs['existingClusterId']
-        if git_source is None and 'gitSource' in kwargs:
-            git_source = kwargs['gitSource']
-        if job_clusters is None and 'jobClusters' in kwargs:
-            job_clusters = kwargs['jobClusters']
-        if max_concurrent_runs is None and 'maxConcurrentRuns' in kwargs:
-            max_concurrent_runs = kwargs['maxConcurrentRuns']
-        if max_retries is None and 'maxRetries' in kwargs:
-            max_retries = kwargs['maxRetries']
-        if min_retry_interval_millis is None and 'minRetryIntervalMillis' in kwargs:
-            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
-        if new_cluster is None and 'newCluster' in kwargs:
-            new_cluster = kwargs['newCluster']
-        if notebook_task is None and 'notebookTask' in kwargs:
-            notebook_task = kwargs['notebookTask']
-        if notification_settings is None and 'notificationSettings' in kwargs:
-            notification_settings = kwargs['notificationSettings']
-        if pipeline_task is None and 'pipelineTask' in kwargs:
-            pipeline_task = kwargs['pipelineTask']
-        if python_wheel_task is None and 'pythonWheelTask' in kwargs:
-            python_wheel_task = kwargs['pythonWheelTask']
-        if retry_on_timeout is None and 'retryOnTimeout' in kwargs:
-            retry_on_timeout = kwargs['retryOnTimeout']
-        if run_as is None and 'runAs' in kwargs:
-            run_as = kwargs['runAs']
-        if run_job_task is None and 'runJobTask' in kwargs:
-            run_job_task = kwargs['runJobTask']
-        if spark_jar_task is None and 'sparkJarTask' in kwargs:
-            spark_jar_task = kwargs['sparkJarTask']
-        if spark_python_task is None and 'sparkPythonTask' in kwargs:
-            spark_python_task = kwargs['sparkPythonTask']
-        if spark_submit_task is None and 'sparkSubmitTask' in kwargs:
-            spark_submit_task = kwargs['sparkSubmitTask']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-        if webhook_notifications is None and 'webhookNotifications' in kwargs:
-            webhook_notifications = kwargs['webhookNotifications']
-
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
-            _setter("always_running", always_running)
+            pulumi.set(__self__, "always_running", always_running)
         if computes is not None:
-            _setter("computes", computes)
+            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
-            _setter("continuous", continuous)
+            pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
-            _setter("control_run_state", control_run_state)
+            pulumi.set(__self__, "control_run_state", control_run_state)
         if dbt_task is not None:
-            _setter("dbt_task", dbt_task)
+            pulumi.set(__self__, "dbt_task", dbt_task)
         if email_notifications is not None:
-            _setter("email_notifications", email_notifications)
+            pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
-            _setter("existing_cluster_id", existing_cluster_id)
+            pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if git_source is not None:
-            _setter("git_source", git_source)
+            pulumi.set(__self__, "git_source", git_source)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if job_clusters is not None:
-            _setter("job_clusters", job_clusters)
+            pulumi.set(__self__, "job_clusters", job_clusters)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if max_concurrent_runs is not None:
-            _setter("max_concurrent_runs", max_concurrent_runs)
+            pulumi.set(__self__, "max_concurrent_runs", max_concurrent_runs)
         if max_retries is not None:
-            _setter("max_retries", max_retries)
+            pulumi.set(__self__, "max_retries", max_retries)
         if min_retry_interval_millis is not None:
-            _setter("min_retry_interval_millis", min_retry_interval_millis)
+            pulumi.set(__self__, "min_retry_interval_millis", min_retry_interval_millis)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if new_cluster is not None:
-            _setter("new_cluster", new_cluster)
+            pulumi.set(__self__, "new_cluster", new_cluster)
         if notebook_task is not None:
-            _setter("notebook_task", notebook_task)
+            pulumi.set(__self__, "notebook_task", notebook_task)
         if notification_settings is not None:
-            _setter("notification_settings", notification_settings)
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if pipeline_task is not None:
-            _setter("pipeline_task", pipeline_task)
+            pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
-            _setter("python_wheel_task", python_wheel_task)
+            pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if queue is not None:
-            _setter("queue", queue)
+            pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
-            _setter("retry_on_timeout", retry_on_timeout)
+            pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_as is not None:
-            _setter("run_as", run_as)
+            pulumi.set(__self__, "run_as", run_as)
         if run_job_task is not None:
-            _setter("run_job_task", run_job_task)
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
-            _setter("spark_jar_task", spark_jar_task)
+            pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
-            _setter("spark_python_task", spark_python_task)
+            pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
-            _setter("spark_submit_task", spark_submit_task)
+            pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tasks is not None:
-            _setter("tasks", tasks)
+            pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if trigger is not None:
-            _setter("trigger", trigger)
+            pulumi.set(__self__, "trigger", trigger)
         if webhook_notifications is not None:
-            _setter("webhook_notifications", webhook_notifications)
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="alwaysRunning")
@@ -710,208 +585,81 @@ class _JobState:
         :param pulumi.Input[str] url: URL of the job on the given workspace
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
-        _JobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            always_running=always_running,
-            computes=computes,
-            continuous=continuous,
-            control_run_state=control_run_state,
-            dbt_task=dbt_task,
-            email_notifications=email_notifications,
-            existing_cluster_id=existing_cluster_id,
-            format=format,
-            git_source=git_source,
-            health=health,
-            job_clusters=job_clusters,
-            libraries=libraries,
-            max_concurrent_runs=max_concurrent_runs,
-            max_retries=max_retries,
-            min_retry_interval_millis=min_retry_interval_millis,
-            name=name,
-            new_cluster=new_cluster,
-            notebook_task=notebook_task,
-            notification_settings=notification_settings,
-            parameters=parameters,
-            pipeline_task=pipeline_task,
-            python_wheel_task=python_wheel_task,
-            queue=queue,
-            retry_on_timeout=retry_on_timeout,
-            run_as=run_as,
-            run_job_task=run_job_task,
-            schedule=schedule,
-            spark_jar_task=spark_jar_task,
-            spark_python_task=spark_python_task,
-            spark_submit_task=spark_submit_task,
-            tags=tags,
-            tasks=tasks,
-            timeout_seconds=timeout_seconds,
-            trigger=trigger,
-            url=url,
-            webhook_notifications=webhook_notifications,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             always_running: Optional[pulumi.Input[bool]] = None,
-             computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
-             continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
-             control_run_state: Optional[pulumi.Input[bool]] = None,
-             dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
-             email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
-             existing_cluster_id: Optional[pulumi.Input[str]] = None,
-             format: Optional[pulumi.Input[str]] = None,
-             git_source: Optional[pulumi.Input['JobGitSourceArgs']] = None,
-             health: Optional[pulumi.Input['JobHealthArgs']] = None,
-             job_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]]] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]] = None,
-             max_concurrent_runs: Optional[pulumi.Input[int]] = None,
-             max_retries: Optional[pulumi.Input[int]] = None,
-             min_retry_interval_millis: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             new_cluster: Optional[pulumi.Input['JobNewClusterArgs']] = None,
-             notebook_task: Optional[pulumi.Input['JobNotebookTaskArgs']] = None,
-             notification_settings: Optional[pulumi.Input['JobNotificationSettingsArgs']] = None,
-             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
-             pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
-             python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
-             queue: Optional[pulumi.Input['JobQueueArgs']] = None,
-             retry_on_timeout: Optional[pulumi.Input[bool]] = None,
-             run_as: Optional[pulumi.Input['JobRunAsArgs']] = None,
-             run_job_task: Optional[pulumi.Input['JobRunJobTaskArgs']] = None,
-             schedule: Optional[pulumi.Input['JobScheduleArgs']] = None,
-             spark_jar_task: Optional[pulumi.Input['JobSparkJarTaskArgs']] = None,
-             spark_python_task: Optional[pulumi.Input['JobSparkPythonTaskArgs']] = None,
-             spark_submit_task: Optional[pulumi.Input['JobSparkSubmitTaskArgs']] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             tasks: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             trigger: Optional[pulumi.Input['JobTriggerArgs']] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             webhook_notifications: Optional[pulumi.Input['JobWebhookNotificationsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if always_running is None and 'alwaysRunning' in kwargs:
-            always_running = kwargs['alwaysRunning']
-        if control_run_state is None and 'controlRunState' in kwargs:
-            control_run_state = kwargs['controlRunState']
-        if dbt_task is None and 'dbtTask' in kwargs:
-            dbt_task = kwargs['dbtTask']
-        if email_notifications is None and 'emailNotifications' in kwargs:
-            email_notifications = kwargs['emailNotifications']
-        if existing_cluster_id is None and 'existingClusterId' in kwargs:
-            existing_cluster_id = kwargs['existingClusterId']
-        if git_source is None and 'gitSource' in kwargs:
-            git_source = kwargs['gitSource']
-        if job_clusters is None and 'jobClusters' in kwargs:
-            job_clusters = kwargs['jobClusters']
-        if max_concurrent_runs is None and 'maxConcurrentRuns' in kwargs:
-            max_concurrent_runs = kwargs['maxConcurrentRuns']
-        if max_retries is None and 'maxRetries' in kwargs:
-            max_retries = kwargs['maxRetries']
-        if min_retry_interval_millis is None and 'minRetryIntervalMillis' in kwargs:
-            min_retry_interval_millis = kwargs['minRetryIntervalMillis']
-        if new_cluster is None and 'newCluster' in kwargs:
-            new_cluster = kwargs['newCluster']
-        if notebook_task is None and 'notebookTask' in kwargs:
-            notebook_task = kwargs['notebookTask']
-        if notification_settings is None and 'notificationSettings' in kwargs:
-            notification_settings = kwargs['notificationSettings']
-        if pipeline_task is None and 'pipelineTask' in kwargs:
-            pipeline_task = kwargs['pipelineTask']
-        if python_wheel_task is None and 'pythonWheelTask' in kwargs:
-            python_wheel_task = kwargs['pythonWheelTask']
-        if retry_on_timeout is None and 'retryOnTimeout' in kwargs:
-            retry_on_timeout = kwargs['retryOnTimeout']
-        if run_as is None and 'runAs' in kwargs:
-            run_as = kwargs['runAs']
-        if run_job_task is None and 'runJobTask' in kwargs:
-            run_job_task = kwargs['runJobTask']
-        if spark_jar_task is None and 'sparkJarTask' in kwargs:
-            spark_jar_task = kwargs['sparkJarTask']
-        if spark_python_task is None and 'sparkPythonTask' in kwargs:
-            spark_python_task = kwargs['sparkPythonTask']
-        if spark_submit_task is None and 'sparkSubmitTask' in kwargs:
-            spark_submit_task = kwargs['sparkSubmitTask']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-        if webhook_notifications is None and 'webhookNotifications' in kwargs:
-            webhook_notifications = kwargs['webhookNotifications']
-
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
-            _setter("always_running", always_running)
+            pulumi.set(__self__, "always_running", always_running)
         if computes is not None:
-            _setter("computes", computes)
+            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
-            _setter("continuous", continuous)
+            pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
-            _setter("control_run_state", control_run_state)
+            pulumi.set(__self__, "control_run_state", control_run_state)
         if dbt_task is not None:
-            _setter("dbt_task", dbt_task)
+            pulumi.set(__self__, "dbt_task", dbt_task)
         if email_notifications is not None:
-            _setter("email_notifications", email_notifications)
+            pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
-            _setter("existing_cluster_id", existing_cluster_id)
+            pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if format is not None:
-            _setter("format", format)
+            pulumi.set(__self__, "format", format)
         if git_source is not None:
-            _setter("git_source", git_source)
+            pulumi.set(__self__, "git_source", git_source)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if job_clusters is not None:
-            _setter("job_clusters", job_clusters)
+            pulumi.set(__self__, "job_clusters", job_clusters)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if max_concurrent_runs is not None:
-            _setter("max_concurrent_runs", max_concurrent_runs)
+            pulumi.set(__self__, "max_concurrent_runs", max_concurrent_runs)
         if max_retries is not None:
-            _setter("max_retries", max_retries)
+            pulumi.set(__self__, "max_retries", max_retries)
         if min_retry_interval_millis is not None:
-            _setter("min_retry_interval_millis", min_retry_interval_millis)
+            pulumi.set(__self__, "min_retry_interval_millis", min_retry_interval_millis)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if new_cluster is not None:
-            _setter("new_cluster", new_cluster)
+            pulumi.set(__self__, "new_cluster", new_cluster)
         if notebook_task is not None:
-            _setter("notebook_task", notebook_task)
+            pulumi.set(__self__, "notebook_task", notebook_task)
         if notification_settings is not None:
-            _setter("notification_settings", notification_settings)
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if pipeline_task is not None:
-            _setter("pipeline_task", pipeline_task)
+            pulumi.set(__self__, "pipeline_task", pipeline_task)
         if python_wheel_task is not None:
-            _setter("python_wheel_task", python_wheel_task)
+            pulumi.set(__self__, "python_wheel_task", python_wheel_task)
         if queue is not None:
-            _setter("queue", queue)
+            pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
-            _setter("retry_on_timeout", retry_on_timeout)
+            pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if run_as is not None:
-            _setter("run_as", run_as)
+            pulumi.set(__self__, "run_as", run_as)
         if run_job_task is not None:
-            _setter("run_job_task", run_job_task)
+            pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if spark_jar_task is not None:
-            _setter("spark_jar_task", spark_jar_task)
+            pulumi.set(__self__, "spark_jar_task", spark_jar_task)
         if spark_python_task is not None:
-            _setter("spark_python_task", spark_python_task)
+            pulumi.set(__self__, "spark_python_task", spark_python_task)
         if spark_submit_task is not None:
-            _setter("spark_submit_task", spark_submit_task)
+            pulumi.set(__self__, "spark_submit_task", spark_submit_task)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tasks is not None:
-            _setter("tasks", tasks)
+            pulumi.set(__self__, "tasks", tasks)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
         if trigger is not None:
-            _setter("trigger", trigger)
+            pulumi.set(__self__, "trigger", trigger)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if webhook_notifications is not None:
-            _setter("webhook_notifications", webhook_notifications)
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="alwaysRunning")
@@ -1396,10 +1144,6 @@ class Job(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            JobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1451,18 +1195,13 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["always_running"] = always_running
             __props__.__dict__["computes"] = computes
-            continuous = _utilities.configure(continuous, JobContinuousArgs, True)
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["control_run_state"] = control_run_state
-            dbt_task = _utilities.configure(dbt_task, JobDbtTaskArgs, True)
             __props__.__dict__["dbt_task"] = dbt_task
-            email_notifications = _utilities.configure(email_notifications, JobEmailNotificationsArgs, True)
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
-            git_source = _utilities.configure(git_source, JobGitSourceArgs, True)
             __props__.__dict__["git_source"] = git_source
-            health = _utilities.configure(health, JobHealthArgs, True)
             __props__.__dict__["health"] = health
             __props__.__dict__["job_clusters"] = job_clusters
             __props__.__dict__["libraries"] = libraries
@@ -1470,38 +1209,24 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["max_retries"] = max_retries
             __props__.__dict__["min_retry_interval_millis"] = min_retry_interval_millis
             __props__.__dict__["name"] = name
-            new_cluster = _utilities.configure(new_cluster, JobNewClusterArgs, True)
             __props__.__dict__["new_cluster"] = new_cluster
-            notebook_task = _utilities.configure(notebook_task, JobNotebookTaskArgs, True)
             __props__.__dict__["notebook_task"] = notebook_task
-            notification_settings = _utilities.configure(notification_settings, JobNotificationSettingsArgs, True)
             __props__.__dict__["notification_settings"] = notification_settings
             __props__.__dict__["parameters"] = parameters
-            pipeline_task = _utilities.configure(pipeline_task, JobPipelineTaskArgs, True)
             __props__.__dict__["pipeline_task"] = pipeline_task
-            python_wheel_task = _utilities.configure(python_wheel_task, JobPythonWheelTaskArgs, True)
             __props__.__dict__["python_wheel_task"] = python_wheel_task
-            queue = _utilities.configure(queue, JobQueueArgs, True)
             __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
-            run_as = _utilities.configure(run_as, JobRunAsArgs, True)
             __props__.__dict__["run_as"] = run_as
-            run_job_task = _utilities.configure(run_job_task, JobRunJobTaskArgs, True)
             __props__.__dict__["run_job_task"] = run_job_task
-            schedule = _utilities.configure(schedule, JobScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
-            spark_jar_task = _utilities.configure(spark_jar_task, JobSparkJarTaskArgs, True)
             __props__.__dict__["spark_jar_task"] = spark_jar_task
-            spark_python_task = _utilities.configure(spark_python_task, JobSparkPythonTaskArgs, True)
             __props__.__dict__["spark_python_task"] = spark_python_task
-            spark_submit_task = _utilities.configure(spark_submit_task, JobSparkSubmitTaskArgs, True)
             __props__.__dict__["spark_submit_task"] = spark_submit_task
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tasks"] = tasks
             __props__.__dict__["timeout_seconds"] = timeout_seconds
-            trigger = _utilities.configure(trigger, JobTriggerArgs, True)
             __props__.__dict__["trigger"] = trigger
-            webhook_notifications = _utilities.configure(webhook_notifications, JobWebhookNotificationsArgs, True)
             __props__.__dict__["webhook_notifications"] = webhook_notifications
             __props__.__dict__["url"] = None
         super(Job, __self__).__init__(
