@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DirectoryArgs', 'Directory']
@@ -22,32 +22,11 @@ class DirectoryArgs:
         :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
         :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
         """
-        DirectoryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            delete_recursive=delete_recursive,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[pulumi.Input[str]] = None,
-             delete_recursive: Optional[pulumi.Input[bool]] = None,
-             object_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if delete_recursive is None and 'deleteRecursive' in kwargs:
-            delete_recursive = kwargs['deleteRecursive']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if delete_recursive is not None:
-            _setter("delete_recursive", delete_recursive)
+            pulumi.set(__self__, "delete_recursive", delete_recursive)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter
@@ -94,31 +73,12 @@ class _DirectoryState:
         :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
         """
-        _DirectoryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_recursive=delete_recursive,
-            object_id=object_id,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_recursive: Optional[pulumi.Input[bool]] = None,
-             object_id: Optional[pulumi.Input[int]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_recursive is None and 'deleteRecursive' in kwargs:
-            delete_recursive = kwargs['deleteRecursive']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
         if delete_recursive is not None:
-            _setter("delete_recursive", delete_recursive)
+            pulumi.set(__self__, "delete_recursive", delete_recursive)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if path is not None:
-            _setter("path", path)
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter(name="deleteRecursive")
@@ -202,10 +162,6 @@ class Directory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DirectoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PermissionAssignmentArgs', 'PermissionAssignment']
@@ -19,27 +19,8 @@ class PermissionAssignmentArgs:
         """
         The set of arguments for constructing a PermissionAssignment resource.
         """
-        PermissionAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            permissions=permissions,
-            principal_id=principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             principal_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if permissions is None:
-            raise TypeError("Missing 'permissions' argument")
-        if principal_id is None and 'principalId' in kwargs:
-            principal_id = kwargs['principalId']
-        if principal_id is None:
-            raise TypeError("Missing 'principal_id' argument")
-
-        _setter("permissions", permissions)
-        _setter("principal_id", principal_id)
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "principal_id", principal_id)
 
     @property
     @pulumi.getter
@@ -68,25 +49,10 @@ class _PermissionAssignmentState:
         """
         Input properties used for looking up and filtering PermissionAssignment resources.
         """
-        _PermissionAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            permissions=permissions,
-            principal_id=principal_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             principal_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if principal_id is None and 'principalId' in kwargs:
-            principal_id = kwargs['principalId']
-
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
         if principal_id is not None:
-            _setter("principal_id", principal_id)
+            pulumi.set(__self__, "principal_id", principal_id)
 
     @property
     @pulumi.getter
@@ -138,10 +104,6 @@ class PermissionAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PermissionAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

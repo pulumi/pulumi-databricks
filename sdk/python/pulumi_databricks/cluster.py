@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -95,204 +95,69 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, Any]] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
-        ClusterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            spark_version=spark_version,
-            apply_policy_default_values=apply_policy_default_values,
-            autoscale=autoscale,
-            autotermination_minutes=autotermination_minutes,
-            aws_attributes=aws_attributes,
-            azure_attributes=azure_attributes,
-            cluster_id=cluster_id,
-            cluster_log_conf=cluster_log_conf,
-            cluster_mount_infos=cluster_mount_infos,
-            cluster_name=cluster_name,
-            custom_tags=custom_tags,
-            data_security_mode=data_security_mode,
-            docker_image=docker_image,
-            driver_instance_pool_id=driver_instance_pool_id,
-            driver_node_type_id=driver_node_type_id,
-            enable_elastic_disk=enable_elastic_disk,
-            enable_local_disk_encryption=enable_local_disk_encryption,
-            gcp_attributes=gcp_attributes,
-            idempotency_token=idempotency_token,
-            init_scripts=init_scripts,
-            instance_pool_id=instance_pool_id,
-            is_pinned=is_pinned,
-            libraries=libraries,
-            node_type_id=node_type_id,
-            num_workers=num_workers,
-            policy_id=policy_id,
-            runtime_engine=runtime_engine,
-            single_user_name=single_user_name,
-            spark_conf=spark_conf,
-            spark_env_vars=spark_env_vars,
-            ssh_public_keys=ssh_public_keys,
-            workload_type=workload_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             spark_version: Optional[pulumi.Input[str]] = None,
-             apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
-             autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
-             autotermination_minutes: Optional[pulumi.Input[int]] = None,
-             aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
-             azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
-             cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             data_security_mode: Optional[pulumi.Input[str]] = None,
-             docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
-             driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
-             driver_node_type_id: Optional[pulumi.Input[str]] = None,
-             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
-             enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
-             gcp_attributes: Optional[pulumi.Input['ClusterGcpAttributesArgs']] = None,
-             idempotency_token: Optional[pulumi.Input[str]] = None,
-             init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
-             instance_pool_id: Optional[pulumi.Input[str]] = None,
-             is_pinned: Optional[pulumi.Input[bool]] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
-             node_type_id: Optional[pulumi.Input[str]] = None,
-             num_workers: Optional[pulumi.Input[int]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             runtime_engine: Optional[pulumi.Input[str]] = None,
-             single_user_name: Optional[pulumi.Input[str]] = None,
-             spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if spark_version is None and 'sparkVersion' in kwargs:
-            spark_version = kwargs['sparkVersion']
-        if spark_version is None:
-            raise TypeError("Missing 'spark_version' argument")
-        if apply_policy_default_values is None and 'applyPolicyDefaultValues' in kwargs:
-            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
-        if autotermination_minutes is None and 'autoterminationMinutes' in kwargs:
-            autotermination_minutes = kwargs['autoterminationMinutes']
-        if aws_attributes is None and 'awsAttributes' in kwargs:
-            aws_attributes = kwargs['awsAttributes']
-        if azure_attributes is None and 'azureAttributes' in kwargs:
-            azure_attributes = kwargs['azureAttributes']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_log_conf is None and 'clusterLogConf' in kwargs:
-            cluster_log_conf = kwargs['clusterLogConf']
-        if cluster_mount_infos is None and 'clusterMountInfos' in kwargs:
-            cluster_mount_infos = kwargs['clusterMountInfos']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if custom_tags is None and 'customTags' in kwargs:
-            custom_tags = kwargs['customTags']
-        if data_security_mode is None and 'dataSecurityMode' in kwargs:
-            data_security_mode = kwargs['dataSecurityMode']
-        if docker_image is None and 'dockerImage' in kwargs:
-            docker_image = kwargs['dockerImage']
-        if driver_instance_pool_id is None and 'driverInstancePoolId' in kwargs:
-            driver_instance_pool_id = kwargs['driverInstancePoolId']
-        if driver_node_type_id is None and 'driverNodeTypeId' in kwargs:
-            driver_node_type_id = kwargs['driverNodeTypeId']
-        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
-            enable_elastic_disk = kwargs['enableElasticDisk']
-        if enable_local_disk_encryption is None and 'enableLocalDiskEncryption' in kwargs:
-            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
-        if gcp_attributes is None and 'gcpAttributes' in kwargs:
-            gcp_attributes = kwargs['gcpAttributes']
-        if idempotency_token is None and 'idempotencyToken' in kwargs:
-            idempotency_token = kwargs['idempotencyToken']
-        if init_scripts is None and 'initScripts' in kwargs:
-            init_scripts = kwargs['initScripts']
-        if instance_pool_id is None and 'instancePoolId' in kwargs:
-            instance_pool_id = kwargs['instancePoolId']
-        if is_pinned is None and 'isPinned' in kwargs:
-            is_pinned = kwargs['isPinned']
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if runtime_engine is None and 'runtimeEngine' in kwargs:
-            runtime_engine = kwargs['runtimeEngine']
-        if single_user_name is None and 'singleUserName' in kwargs:
-            single_user_name = kwargs['singleUserName']
-        if spark_conf is None and 'sparkConf' in kwargs:
-            spark_conf = kwargs['sparkConf']
-        if spark_env_vars is None and 'sparkEnvVars' in kwargs:
-            spark_env_vars = kwargs['sparkEnvVars']
-        if ssh_public_keys is None and 'sshPublicKeys' in kwargs:
-            ssh_public_keys = kwargs['sshPublicKeys']
-        if workload_type is None and 'workloadType' in kwargs:
-            workload_type = kwargs['workloadType']
-
-        _setter("spark_version", spark_version)
+        pulumi.set(__self__, "spark_version", spark_version)
         if apply_policy_default_values is not None:
-            _setter("apply_policy_default_values", apply_policy_default_values)
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
-            _setter("autoscale", autoscale)
+            pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
-            _setter("autotermination_minutes", autotermination_minutes)
+            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
-            _setter("aws_attributes", aws_attributes)
+            pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
-            _setter("azure_attributes", azure_attributes)
+            pulumi.set(__self__, "azure_attributes", azure_attributes)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
-            _setter("cluster_log_conf", cluster_log_conf)
+            pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
-            _setter("cluster_mount_infos", cluster_mount_infos)
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
-            _setter("custom_tags", custom_tags)
+            pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
-            _setter("data_security_mode", data_security_mode)
+            pulumi.set(__self__, "data_security_mode", data_security_mode)
         if docker_image is not None:
-            _setter("docker_image", docker_image)
+            pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
-            _setter("driver_instance_pool_id", driver_instance_pool_id)
+            pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
-            _setter("driver_node_type_id", driver_node_type_id)
+            pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
-            _setter("enable_elastic_disk", enable_elastic_disk)
+            pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
         if enable_local_disk_encryption is not None:
-            _setter("enable_local_disk_encryption", enable_local_disk_encryption)
+            pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         if gcp_attributes is not None:
-            _setter("gcp_attributes", gcp_attributes)
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if idempotency_token is not None:
-            _setter("idempotency_token", idempotency_token)
+            pulumi.set(__self__, "idempotency_token", idempotency_token)
         if init_scripts is not None:
-            _setter("init_scripts", init_scripts)
+            pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
-            _setter("instance_pool_id", instance_pool_id)
+            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if is_pinned is not None:
-            _setter("is_pinned", is_pinned)
+            pulumi.set(__self__, "is_pinned", is_pinned)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
-            _setter("node_type_id", node_type_id)
+            pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if runtime_engine is not None:
-            _setter("runtime_engine", runtime_engine)
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
-            _setter("single_user_name", single_user_name)
+            pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
-            _setter("spark_conf", spark_conf)
+            pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
-            _setter("spark_env_vars", spark_env_vars)
+            pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if ssh_public_keys is not None:
-            _setter("ssh_public_keys", ssh_public_keys)
+            pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if workload_type is not None:
-            _setter("workload_type", workload_type)
+            pulumi.set(__self__, "workload_type", workload_type)
 
     @property
     @pulumi.getter(name="sparkVersion")
@@ -754,217 +619,76 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         :param pulumi.Input[str] state: (string) State of the cluster.
         """
-        _ClusterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            apply_policy_default_values=apply_policy_default_values,
-            autoscale=autoscale,
-            autotermination_minutes=autotermination_minutes,
-            aws_attributes=aws_attributes,
-            azure_attributes=azure_attributes,
-            cluster_id=cluster_id,
-            cluster_log_conf=cluster_log_conf,
-            cluster_mount_infos=cluster_mount_infos,
-            cluster_name=cluster_name,
-            custom_tags=custom_tags,
-            data_security_mode=data_security_mode,
-            default_tags=default_tags,
-            docker_image=docker_image,
-            driver_instance_pool_id=driver_instance_pool_id,
-            driver_node_type_id=driver_node_type_id,
-            enable_elastic_disk=enable_elastic_disk,
-            enable_local_disk_encryption=enable_local_disk_encryption,
-            gcp_attributes=gcp_attributes,
-            idempotency_token=idempotency_token,
-            init_scripts=init_scripts,
-            instance_pool_id=instance_pool_id,
-            is_pinned=is_pinned,
-            libraries=libraries,
-            node_type_id=node_type_id,
-            num_workers=num_workers,
-            policy_id=policy_id,
-            runtime_engine=runtime_engine,
-            single_user_name=single_user_name,
-            spark_conf=spark_conf,
-            spark_env_vars=spark_env_vars,
-            spark_version=spark_version,
-            ssh_public_keys=ssh_public_keys,
-            state=state,
-            url=url,
-            workload_type=workload_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             apply_policy_default_values: Optional[pulumi.Input[bool]] = None,
-             autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
-             autotermination_minutes: Optional[pulumi.Input[int]] = None,
-             aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
-             azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
-             cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
-             cluster_name: Optional[pulumi.Input[str]] = None,
-             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             data_security_mode: Optional[pulumi.Input[str]] = None,
-             default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
-             driver_instance_pool_id: Optional[pulumi.Input[str]] = None,
-             driver_node_type_id: Optional[pulumi.Input[str]] = None,
-             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
-             enable_local_disk_encryption: Optional[pulumi.Input[bool]] = None,
-             gcp_attributes: Optional[pulumi.Input['ClusterGcpAttributesArgs']] = None,
-             idempotency_token: Optional[pulumi.Input[str]] = None,
-             init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
-             instance_pool_id: Optional[pulumi.Input[str]] = None,
-             is_pinned: Optional[pulumi.Input[bool]] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
-             node_type_id: Optional[pulumi.Input[str]] = None,
-             num_workers: Optional[pulumi.Input[int]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             runtime_engine: Optional[pulumi.Input[str]] = None,
-             single_user_name: Optional[pulumi.Input[str]] = None,
-             spark_conf: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             spark_env_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             spark_version: Optional[pulumi.Input[str]] = None,
-             ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if apply_policy_default_values is None and 'applyPolicyDefaultValues' in kwargs:
-            apply_policy_default_values = kwargs['applyPolicyDefaultValues']
-        if autotermination_minutes is None and 'autoterminationMinutes' in kwargs:
-            autotermination_minutes = kwargs['autoterminationMinutes']
-        if aws_attributes is None and 'awsAttributes' in kwargs:
-            aws_attributes = kwargs['awsAttributes']
-        if azure_attributes is None and 'azureAttributes' in kwargs:
-            azure_attributes = kwargs['azureAttributes']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if cluster_log_conf is None and 'clusterLogConf' in kwargs:
-            cluster_log_conf = kwargs['clusterLogConf']
-        if cluster_mount_infos is None and 'clusterMountInfos' in kwargs:
-            cluster_mount_infos = kwargs['clusterMountInfos']
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if custom_tags is None and 'customTags' in kwargs:
-            custom_tags = kwargs['customTags']
-        if data_security_mode is None and 'dataSecurityMode' in kwargs:
-            data_security_mode = kwargs['dataSecurityMode']
-        if default_tags is None and 'defaultTags' in kwargs:
-            default_tags = kwargs['defaultTags']
-        if docker_image is None and 'dockerImage' in kwargs:
-            docker_image = kwargs['dockerImage']
-        if driver_instance_pool_id is None and 'driverInstancePoolId' in kwargs:
-            driver_instance_pool_id = kwargs['driverInstancePoolId']
-        if driver_node_type_id is None and 'driverNodeTypeId' in kwargs:
-            driver_node_type_id = kwargs['driverNodeTypeId']
-        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
-            enable_elastic_disk = kwargs['enableElasticDisk']
-        if enable_local_disk_encryption is None and 'enableLocalDiskEncryption' in kwargs:
-            enable_local_disk_encryption = kwargs['enableLocalDiskEncryption']
-        if gcp_attributes is None and 'gcpAttributes' in kwargs:
-            gcp_attributes = kwargs['gcpAttributes']
-        if idempotency_token is None and 'idempotencyToken' in kwargs:
-            idempotency_token = kwargs['idempotencyToken']
-        if init_scripts is None and 'initScripts' in kwargs:
-            init_scripts = kwargs['initScripts']
-        if instance_pool_id is None and 'instancePoolId' in kwargs:
-            instance_pool_id = kwargs['instancePoolId']
-        if is_pinned is None and 'isPinned' in kwargs:
-            is_pinned = kwargs['isPinned']
-        if node_type_id is None and 'nodeTypeId' in kwargs:
-            node_type_id = kwargs['nodeTypeId']
-        if num_workers is None and 'numWorkers' in kwargs:
-            num_workers = kwargs['numWorkers']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if runtime_engine is None and 'runtimeEngine' in kwargs:
-            runtime_engine = kwargs['runtimeEngine']
-        if single_user_name is None and 'singleUserName' in kwargs:
-            single_user_name = kwargs['singleUserName']
-        if spark_conf is None and 'sparkConf' in kwargs:
-            spark_conf = kwargs['sparkConf']
-        if spark_env_vars is None and 'sparkEnvVars' in kwargs:
-            spark_env_vars = kwargs['sparkEnvVars']
-        if spark_version is None and 'sparkVersion' in kwargs:
-            spark_version = kwargs['sparkVersion']
-        if ssh_public_keys is None and 'sshPublicKeys' in kwargs:
-            ssh_public_keys = kwargs['sshPublicKeys']
-        if workload_type is None and 'workloadType' in kwargs:
-            workload_type = kwargs['workloadType']
-
         if apply_policy_default_values is not None:
-            _setter("apply_policy_default_values", apply_policy_default_values)
+            pulumi.set(__self__, "apply_policy_default_values", apply_policy_default_values)
         if autoscale is not None:
-            _setter("autoscale", autoscale)
+            pulumi.set(__self__, "autoscale", autoscale)
         if autotermination_minutes is not None:
-            _setter("autotermination_minutes", autotermination_minutes)
+            pulumi.set(__self__, "autotermination_minutes", autotermination_minutes)
         if aws_attributes is not None:
-            _setter("aws_attributes", aws_attributes)
+            pulumi.set(__self__, "aws_attributes", aws_attributes)
         if azure_attributes is not None:
-            _setter("azure_attributes", azure_attributes)
+            pulumi.set(__self__, "azure_attributes", azure_attributes)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_log_conf is not None:
-            _setter("cluster_log_conf", cluster_log_conf)
+            pulumi.set(__self__, "cluster_log_conf", cluster_log_conf)
         if cluster_mount_infos is not None:
-            _setter("cluster_mount_infos", cluster_mount_infos)
+            pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
-            _setter("cluster_name", cluster_name)
+            pulumi.set(__self__, "cluster_name", cluster_name)
         if custom_tags is not None:
-            _setter("custom_tags", custom_tags)
+            pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
-            _setter("data_security_mode", data_security_mode)
+            pulumi.set(__self__, "data_security_mode", data_security_mode)
         if default_tags is not None:
-            _setter("default_tags", default_tags)
+            pulumi.set(__self__, "default_tags", default_tags)
         if docker_image is not None:
-            _setter("docker_image", docker_image)
+            pulumi.set(__self__, "docker_image", docker_image)
         if driver_instance_pool_id is not None:
-            _setter("driver_instance_pool_id", driver_instance_pool_id)
+            pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         if driver_node_type_id is not None:
-            _setter("driver_node_type_id", driver_node_type_id)
+            pulumi.set(__self__, "driver_node_type_id", driver_node_type_id)
         if enable_elastic_disk is not None:
-            _setter("enable_elastic_disk", enable_elastic_disk)
+            pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
         if enable_local_disk_encryption is not None:
-            _setter("enable_local_disk_encryption", enable_local_disk_encryption)
+            pulumi.set(__self__, "enable_local_disk_encryption", enable_local_disk_encryption)
         if gcp_attributes is not None:
-            _setter("gcp_attributes", gcp_attributes)
+            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
         if idempotency_token is not None:
-            _setter("idempotency_token", idempotency_token)
+            pulumi.set(__self__, "idempotency_token", idempotency_token)
         if init_scripts is not None:
-            _setter("init_scripts", init_scripts)
+            pulumi.set(__self__, "init_scripts", init_scripts)
         if instance_pool_id is not None:
-            _setter("instance_pool_id", instance_pool_id)
+            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if is_pinned is not None:
-            _setter("is_pinned", is_pinned)
+            pulumi.set(__self__, "is_pinned", is_pinned)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if node_type_id is not None:
-            _setter("node_type_id", node_type_id)
+            pulumi.set(__self__, "node_type_id", node_type_id)
         if num_workers is not None:
-            _setter("num_workers", num_workers)
+            pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if runtime_engine is not None:
-            _setter("runtime_engine", runtime_engine)
+            pulumi.set(__self__, "runtime_engine", runtime_engine)
         if single_user_name is not None:
-            _setter("single_user_name", single_user_name)
+            pulumi.set(__self__, "single_user_name", single_user_name)
         if spark_conf is not None:
-            _setter("spark_conf", spark_conf)
+            pulumi.set(__self__, "spark_conf", spark_conf)
         if spark_env_vars is not None:
-            _setter("spark_env_vars", spark_env_vars)
+            pulumi.set(__self__, "spark_env_vars", spark_env_vars)
         if spark_version is not None:
-            _setter("spark_version", spark_version)
+            pulumi.set(__self__, "spark_version", spark_version)
         if ssh_public_keys is not None:
-            _setter("ssh_public_keys", ssh_public_keys)
+            pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if workload_type is not None:
-            _setter("workload_type", workload_type)
+            pulumi.set(__self__, "workload_type", workload_type)
 
     @property
     @pulumi.getter(name="applyPolicyDefaultValues")
@@ -1491,10 +1215,6 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1542,27 +1262,21 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["apply_policy_default_values"] = apply_policy_default_values
-            autoscale = _utilities.configure(autoscale, ClusterAutoscaleArgs, True)
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["autotermination_minutes"] = autotermination_minutes
-            aws_attributes = _utilities.configure(aws_attributes, ClusterAwsAttributesArgs, True)
             __props__.__dict__["aws_attributes"] = aws_attributes
-            azure_attributes = _utilities.configure(azure_attributes, ClusterAzureAttributesArgs, True)
             __props__.__dict__["azure_attributes"] = azure_attributes
             __props__.__dict__["cluster_id"] = cluster_id
-            cluster_log_conf = _utilities.configure(cluster_log_conf, ClusterClusterLogConfArgs, True)
             __props__.__dict__["cluster_log_conf"] = cluster_log_conf
             __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["custom_tags"] = custom_tags
             __props__.__dict__["data_security_mode"] = data_security_mode
-            docker_image = _utilities.configure(docker_image, ClusterDockerImageArgs, True)
             __props__.__dict__["docker_image"] = docker_image
             __props__.__dict__["driver_instance_pool_id"] = driver_instance_pool_id
             __props__.__dict__["driver_node_type_id"] = driver_node_type_id
             __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
             __props__.__dict__["enable_local_disk_encryption"] = enable_local_disk_encryption
-            gcp_attributes = _utilities.configure(gcp_attributes, ClusterGcpAttributesArgs, True)
             __props__.__dict__["gcp_attributes"] = gcp_attributes
             __props__.__dict__["idempotency_token"] = idempotency_token
             __props__.__dict__["init_scripts"] = init_scripts
@@ -1580,7 +1294,6 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spark_version'")
             __props__.__dict__["spark_version"] = spark_version
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
-            workload_type = _utilities.configure(workload_type, ClusterWorkloadTypeArgs, True)
             __props__.__dict__["workload_type"] = workload_type
             __props__.__dict__["default_tags"] = None
             __props__.__dict__["state"] = None

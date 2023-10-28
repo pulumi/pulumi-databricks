@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CatalogArgs', 'Catalog']
@@ -40,77 +40,30 @@ class CatalogArgs:
         :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
-        CatalogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            connection_name=connection_name,
-            force_destroy=force_destroy,
-            isolation_mode=isolation_mode,
-            metastore_id=metastore_id,
-            name=name,
-            options=options,
-            owner=owner,
-            properties=properties,
-            provider_name=provider_name,
-            share_name=share_name,
-            storage_root=storage_root,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             connection_name: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             isolation_mode: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             share_name: Optional[pulumi.Input[str]] = None,
-             storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_name is None and 'connectionName' in kwargs:
-            connection_name = kwargs['connectionName']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if isolation_mode is None and 'isolationMode' in kwargs:
-            isolation_mode = kwargs['isolationMode']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if share_name is None and 'shareName' in kwargs:
-            share_name = kwargs['shareName']
-        if storage_root is None and 'storageRoot' in kwargs:
-            storage_root = kwargs['storageRoot']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
-            _setter("connection_name", connection_name)
+            pulumi.set(__self__, "connection_name", connection_name)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
-            _setter("isolation_mode", isolation_mode)
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if provider_name is not None:
-            _setter("provider_name", provider_name)
+            pulumi.set(__self__, "provider_name", provider_name)
         if share_name is not None:
-            _setter("share_name", share_name)
+            pulumi.set(__self__, "share_name", share_name)
         if storage_root is not None:
-            _setter("storage_root", storage_root)
+            pulumi.set(__self__, "storage_root", storage_root)
 
     @property
     @pulumi.getter
@@ -283,77 +236,30 @@ class _CatalogState:
         :param pulumi.Input[str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
-        _CatalogState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            comment=comment,
-            connection_name=connection_name,
-            force_destroy=force_destroy,
-            isolation_mode=isolation_mode,
-            metastore_id=metastore_id,
-            name=name,
-            options=options,
-            owner=owner,
-            properties=properties,
-            provider_name=provider_name,
-            share_name=share_name,
-            storage_root=storage_root,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             comment: Optional[pulumi.Input[str]] = None,
-             connection_name: Optional[pulumi.Input[str]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             isolation_mode: Optional[pulumi.Input[str]] = None,
-             metastore_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             owner: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             share_name: Optional[pulumi.Input[str]] = None,
-             storage_root: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if connection_name is None and 'connectionName' in kwargs:
-            connection_name = kwargs['connectionName']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if isolation_mode is None and 'isolationMode' in kwargs:
-            isolation_mode = kwargs['isolationMode']
-        if metastore_id is None and 'metastoreId' in kwargs:
-            metastore_id = kwargs['metastoreId']
-        if provider_name is None and 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if share_name is None and 'shareName' in kwargs:
-            share_name = kwargs['shareName']
-        if storage_root is None and 'storageRoot' in kwargs:
-            storage_root = kwargs['storageRoot']
-
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
-            _setter("connection_name", connection_name)
+            pulumi.set(__self__, "connection_name", connection_name)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
-            _setter("isolation_mode", isolation_mode)
+            pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
-            _setter("metastore_id", metastore_id)
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if options is not None:
-            _setter("options", options)
+            pulumi.set(__self__, "options", options)
         if owner is not None:
-            _setter("owner", owner)
+            pulumi.set(__self__, "owner", owner)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if provider_name is not None:
-            _setter("provider_name", provider_name)
+            pulumi.set(__self__, "provider_name", provider_name)
         if share_name is not None:
-            _setter("share_name", share_name)
+            pulumi.set(__self__, "share_name", share_name)
         if storage_root is not None:
-            _setter("storage_root", storage_root)
+            pulumi.set(__self__, "storage_root", storage_root)
 
     @property
     @pulumi.getter
@@ -605,10 +511,6 @@ class Catalog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CatalogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

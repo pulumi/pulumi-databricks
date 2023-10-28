@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,81 +47,38 @@ class PipelineArgs:
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
-        PipelineArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_duplicate_names=allow_duplicate_names,
-            catalog=catalog,
-            channel=channel,
-            clusters=clusters,
-            configuration=configuration,
-            continuous=continuous,
-            development=development,
-            edition=edition,
-            filters=filters,
-            libraries=libraries,
-            name=name,
-            notifications=notifications,
-            photon=photon,
-            serverless=serverless,
-            storage=storage,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             catalog: Optional[pulumi.Input[str]] = None,
-             channel: Optional[pulumi.Input[str]] = None,
-             clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             continuous: Optional[pulumi.Input[bool]] = None,
-             development: Optional[pulumi.Input[bool]] = None,
-             edition: Optional[pulumi.Input[str]] = None,
-             filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
-             photon: Optional[pulumi.Input[bool]] = None,
-             serverless: Optional[pulumi.Input[bool]] = None,
-             storage: Optional[pulumi.Input[str]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_duplicate_names is None and 'allowDuplicateNames' in kwargs:
-            allow_duplicate_names = kwargs['allowDuplicateNames']
-
         if allow_duplicate_names is not None:
-            _setter("allow_duplicate_names", allow_duplicate_names)
+            pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if channel is not None:
-            _setter("channel", channel)
+            pulumi.set(__self__, "channel", channel)
         if clusters is not None:
-            _setter("clusters", clusters)
+            pulumi.set(__self__, "clusters", clusters)
         if configuration is not None:
-            _setter("configuration", configuration)
+            pulumi.set(__self__, "configuration", configuration)
         if continuous is not None:
-            _setter("continuous", continuous)
+            pulumi.set(__self__, "continuous", continuous)
         if development is not None:
-            _setter("development", development)
+            pulumi.set(__self__, "development", development)
         if edition is not None:
-            _setter("edition", edition)
+            pulumi.set(__self__, "edition", edition)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
-            _setter("photon", photon)
+            pulumi.set(__self__, "photon", photon)
         if serverless is not None:
-            _setter("serverless", serverless)
+            pulumi.set(__self__, "serverless", serverless)
         if storage is not None:
-            _setter("storage", storage)
+            pulumi.set(__self__, "storage", storage)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="allowDuplicateNames")
@@ -339,85 +296,40 @@ class _PipelineState:
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
-        _PipelineState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_duplicate_names=allow_duplicate_names,
-            catalog=catalog,
-            channel=channel,
-            clusters=clusters,
-            configuration=configuration,
-            continuous=continuous,
-            development=development,
-            edition=edition,
-            filters=filters,
-            libraries=libraries,
-            name=name,
-            notifications=notifications,
-            photon=photon,
-            serverless=serverless,
-            storage=storage,
-            target=target,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             catalog: Optional[pulumi.Input[str]] = None,
-             channel: Optional[pulumi.Input[str]] = None,
-             clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             continuous: Optional[pulumi.Input[bool]] = None,
-             development: Optional[pulumi.Input[bool]] = None,
-             edition: Optional[pulumi.Input[str]] = None,
-             filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
-             libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
-             photon: Optional[pulumi.Input[bool]] = None,
-             serverless: Optional[pulumi.Input[bool]] = None,
-             storage: Optional[pulumi.Input[str]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_duplicate_names is None and 'allowDuplicateNames' in kwargs:
-            allow_duplicate_names = kwargs['allowDuplicateNames']
-
         if allow_duplicate_names is not None:
-            _setter("allow_duplicate_names", allow_duplicate_names)
+            pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if channel is not None:
-            _setter("channel", channel)
+            pulumi.set(__self__, "channel", channel)
         if clusters is not None:
-            _setter("clusters", clusters)
+            pulumi.set(__self__, "clusters", clusters)
         if configuration is not None:
-            _setter("configuration", configuration)
+            pulumi.set(__self__, "configuration", configuration)
         if continuous is not None:
-            _setter("continuous", continuous)
+            pulumi.set(__self__, "continuous", continuous)
         if development is not None:
-            _setter("development", development)
+            pulumi.set(__self__, "development", development)
         if edition is not None:
-            _setter("edition", edition)
+            pulumi.set(__self__, "edition", edition)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if libraries is not None:
-            _setter("libraries", libraries)
+            pulumi.set(__self__, "libraries", libraries)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if photon is not None:
-            _setter("photon", photon)
+            pulumi.set(__self__, "photon", photon)
         if serverless is not None:
-            _setter("serverless", serverless)
+            pulumi.set(__self__, "serverless", serverless)
         if storage is not None:
-            _setter("storage", storage)
+            pulumi.set(__self__, "storage", storage)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="allowDuplicateNames")
@@ -820,10 +732,6 @@ class Pipeline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PipelineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -862,7 +770,6 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["development"] = development
             __props__.__dict__["edition"] = edition
-            filters = _utilities.configure(filters, PipelineFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["libraries"] = libraries
             __props__.__dict__["name"] = name

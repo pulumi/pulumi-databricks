@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,55 +33,22 @@ class SqlPermissionsArgs:
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
         """
-        SqlPermissionsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            anonymous_function=anonymous_function,
-            any_file=any_file,
-            catalog=catalog,
-            cluster_id=cluster_id,
-            database=database,
-            privilege_assignments=privilege_assignments,
-            table=table,
-            view=view,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             anonymous_function: Optional[pulumi.Input[bool]] = None,
-             any_file: Optional[pulumi.Input[bool]] = None,
-             catalog: Optional[pulumi.Input[bool]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if anonymous_function is None and 'anonymousFunction' in kwargs:
-            anonymous_function = kwargs['anonymousFunction']
-        if any_file is None and 'anyFile' in kwargs:
-            any_file = kwargs['anyFile']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if privilege_assignments is None and 'privilegeAssignments' in kwargs:
-            privilege_assignments = kwargs['privilegeAssignments']
-
         if anonymous_function is not None:
-            _setter("anonymous_function", anonymous_function)
+            pulumi.set(__self__, "anonymous_function", anonymous_function)
         if any_file is not None:
-            _setter("any_file", any_file)
+            pulumi.set(__self__, "any_file", any_file)
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if privilege_assignments is not None:
-            _setter("privilege_assignments", privilege_assignments)
+            pulumi.set(__self__, "privilege_assignments", privilege_assignments)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if view is not None:
-            _setter("view", view)
+            pulumi.set(__self__, "view", view)
 
     @property
     @pulumi.getter(name="anonymousFunction")
@@ -194,55 +161,22 @@ class _SqlPermissionsState:
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
         :param pulumi.Input[str] view: Name of the view. Can be combined with `database`.
         """
-        _SqlPermissionsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            anonymous_function=anonymous_function,
-            any_file=any_file,
-            catalog=catalog,
-            cluster_id=cluster_id,
-            database=database,
-            privilege_assignments=privilege_assignments,
-            table=table,
-            view=view,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             anonymous_function: Optional[pulumi.Input[bool]] = None,
-             any_file: Optional[pulumi.Input[bool]] = None,
-             catalog: Optional[pulumi.Input[bool]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             database: Optional[pulumi.Input[str]] = None,
-             privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             view: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if anonymous_function is None and 'anonymousFunction' in kwargs:
-            anonymous_function = kwargs['anonymousFunction']
-        if any_file is None and 'anyFile' in kwargs:
-            any_file = kwargs['anyFile']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if privilege_assignments is None and 'privilegeAssignments' in kwargs:
-            privilege_assignments = kwargs['privilegeAssignments']
-
         if anonymous_function is not None:
-            _setter("anonymous_function", anonymous_function)
+            pulumi.set(__self__, "anonymous_function", anonymous_function)
         if any_file is not None:
-            _setter("any_file", any_file)
+            pulumi.set(__self__, "any_file", any_file)
         if catalog is not None:
-            _setter("catalog", catalog)
+            pulumi.set(__self__, "catalog", catalog)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if privilege_assignments is not None:
-            _setter("privilege_assignments", privilege_assignments)
+            pulumi.set(__self__, "privilege_assignments", privilege_assignments)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if view is not None:
-            _setter("view", view)
+            pulumi.set(__self__, "view", view)
 
     @property
     @pulumi.getter(name="anonymousFunction")
@@ -470,10 +404,6 @@ class SqlPermissions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SqlPermissionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

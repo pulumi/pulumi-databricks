@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SqlGlobalConfigArgs', 'SqlGlobalConfig']
@@ -28,54 +28,21 @@ class SqlGlobalConfigArgs:
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
-        SqlGlobalConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_access_config=data_access_config,
-            enable_serverless_compute=enable_serverless_compute,
-            google_service_account=google_service_account,
-            instance_profile_arn=instance_profile_arn,
-            security_policy=security_policy,
-            sql_config_params=sql_config_params,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_access_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-             google_service_account: Optional[pulumi.Input[str]] = None,
-             instance_profile_arn: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_access_config is None and 'dataAccessConfig' in kwargs:
-            data_access_config = kwargs['dataAccessConfig']
-        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
-            enable_serverless_compute = kwargs['enableServerlessCompute']
-        if google_service_account is None and 'googleServiceAccount' in kwargs:
-            google_service_account = kwargs['googleServiceAccount']
-        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
-            instance_profile_arn = kwargs['instanceProfileArn']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if sql_config_params is None and 'sqlConfigParams' in kwargs:
-            sql_config_params = kwargs['sqlConfigParams']
-
         if data_access_config is not None:
-            _setter("data_access_config", data_access_config)
+            pulumi.set(__self__, "data_access_config", data_access_config)
         if enable_serverless_compute is not None:
             warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
             pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
         if enable_serverless_compute is not None:
-            _setter("enable_serverless_compute", enable_serverless_compute)
+            pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
         if google_service_account is not None:
-            _setter("google_service_account", google_service_account)
+            pulumi.set(__self__, "google_service_account", google_service_account)
         if instance_profile_arn is not None:
-            _setter("instance_profile_arn", instance_profile_arn)
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if sql_config_params is not None:
-            _setter("sql_config_params", sql_config_params)
+            pulumi.set(__self__, "sql_config_params", sql_config_params)
 
     @property
     @pulumi.getter(name="dataAccessConfig")
@@ -167,54 +134,21 @@ class _SqlGlobalConfigState:
         :param pulumi.Input[str] security_policy: The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         :param pulumi.Input[Mapping[str, Any]] sql_config_params: SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
-        _SqlGlobalConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_access_config=data_access_config,
-            enable_serverless_compute=enable_serverless_compute,
-            google_service_account=google_service_account,
-            instance_profile_arn=instance_profile_arn,
-            security_policy=security_policy,
-            sql_config_params=sql_config_params,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_access_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             enable_serverless_compute: Optional[pulumi.Input[bool]] = None,
-             google_service_account: Optional[pulumi.Input[str]] = None,
-             instance_profile_arn: Optional[pulumi.Input[str]] = None,
-             security_policy: Optional[pulumi.Input[str]] = None,
-             sql_config_params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_access_config is None and 'dataAccessConfig' in kwargs:
-            data_access_config = kwargs['dataAccessConfig']
-        if enable_serverless_compute is None and 'enableServerlessCompute' in kwargs:
-            enable_serverless_compute = kwargs['enableServerlessCompute']
-        if google_service_account is None and 'googleServiceAccount' in kwargs:
-            google_service_account = kwargs['googleServiceAccount']
-        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
-            instance_profile_arn = kwargs['instanceProfileArn']
-        if security_policy is None and 'securityPolicy' in kwargs:
-            security_policy = kwargs['securityPolicy']
-        if sql_config_params is None and 'sqlConfigParams' in kwargs:
-            sql_config_params = kwargs['sqlConfigParams']
-
         if data_access_config is not None:
-            _setter("data_access_config", data_access_config)
+            pulumi.set(__self__, "data_access_config", data_access_config)
         if enable_serverless_compute is not None:
             warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
             pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
         if enable_serverless_compute is not None:
-            _setter("enable_serverless_compute", enable_serverless_compute)
+            pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
         if google_service_account is not None:
-            _setter("google_service_account", google_service_account)
+            pulumi.set(__self__, "google_service_account", google_service_account)
         if instance_profile_arn is not None:
-            _setter("instance_profile_arn", instance_profile_arn)
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if security_policy is not None:
-            _setter("security_policy", security_policy)
+            pulumi.set(__self__, "security_policy", security_policy)
         if sql_config_params is not None:
-            _setter("sql_config_params", sql_config_params)
+            pulumi.set(__self__, "sql_config_params", sql_config_params)
 
     @property
     @pulumi.getter(name="dataAccessConfig")
@@ -437,10 +371,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SqlGlobalConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
