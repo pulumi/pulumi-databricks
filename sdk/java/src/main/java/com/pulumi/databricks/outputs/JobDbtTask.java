@@ -151,14 +151,14 @@ public final class JobDbtTask {
             return this;
         }
         public JobDbtTask build() {
-            final var o = new JobDbtTask();
-            o.catalog = catalog;
-            o.commands = commands;
-            o.profilesDirectory = profilesDirectory;
-            o.projectDirectory = projectDirectory;
-            o.schema = schema;
-            o.warehouseId = warehouseId;
-            return o;
+            final var _resultValue = new JobDbtTask();
+            _resultValue.catalog = catalog;
+            _resultValue.commands = commands;
+            _resultValue.profilesDirectory = profilesDirectory;
+            _resultValue.projectDirectory = projectDirectory;
+            _resultValue.schema = schema;
+            _resultValue.warehouseId = warehouseId;
+            return _resultValue;
         }
     }
 }

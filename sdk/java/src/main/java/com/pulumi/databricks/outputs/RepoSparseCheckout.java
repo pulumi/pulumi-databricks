@@ -42,9 +42,9 @@ public final class RepoSparseCheckout {
             return patterns(List.of(patterns));
         }
         public RepoSparseCheckout build() {
-            final var o = new RepoSparseCheckout();
-            o.patterns = patterns;
-            return o;
+            final var _resultValue = new RepoSparseCheckout();
+            _resultValue.patterns = patterns;
+            return _resultValue;
         }
     }
 }

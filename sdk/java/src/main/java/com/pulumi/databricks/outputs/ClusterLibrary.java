@@ -98,14 +98,14 @@ public final class ClusterLibrary {
             return this;
         }
         public ClusterLibrary build() {
-            final var o = new ClusterLibrary();
-            o.cran = cran;
-            o.egg = egg;
-            o.jar = jar;
-            o.maven = maven;
-            o.pypi = pypi;
-            o.whl = whl;
-            return o;
+            final var _resultValue = new ClusterLibrary();
+            _resultValue.cran = cran;
+            _resultValue.egg = egg;
+            _resultValue.jar = jar;
+            _resultValue.maven = maven;
+            _resultValue.pypi = pypi;
+            _resultValue.whl = whl;
+            return _resultValue;
         }
     }
 }

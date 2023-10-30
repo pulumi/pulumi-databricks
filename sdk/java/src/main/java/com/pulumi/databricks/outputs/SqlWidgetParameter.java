@@ -99,14 +99,14 @@ public final class SqlWidgetParameter {
             return values(List.of(values));
         }
         public SqlWidgetParameter build() {
-            final var o = new SqlWidgetParameter();
-            o.mapTo = mapTo;
-            o.name = name;
-            o.title = title;
-            o.type = type;
-            o.value = value;
-            o.values = values;
-            return o;
+            final var _resultValue = new SqlWidgetParameter();
+            _resultValue.mapTo = mapTo;
+            _resultValue.name = name;
+            _resultValue.title = title;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

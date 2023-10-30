@@ -91,7 +91,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * If this access control for using anonymous function. Defaults to `false`.
      * 
      */
-    @Export(name="anonymousFunction", type=Boolean.class, parameters={})
+    @Export(name="anonymousFunction", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anonymousFunction;
 
     /**
@@ -105,7 +105,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * If this access control for reading any file. Defaults to `false`.
      * 
      */
-    @Export(name="anyFile", type=Boolean.class, parameters={})
+    @Export(name="anyFile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anyFile;
 
     /**
@@ -119,7 +119,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * If this access control for the entire catalog. Defaults to `false`.
      * 
      */
-    @Export(name="catalog", type=Boolean.class, parameters={})
+    @Export(name="catalog", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> catalog;
 
     /**
@@ -129,7 +129,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> catalog() {
         return Codegen.optional(this.catalog);
     }
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     public Output<String> clusterId() {
@@ -139,7 +139,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * Name of the database. Has default value of `default`.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
@@ -149,7 +149,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> database() {
         return Codegen.optional(this.database);
     }
-    @Export(name="privilegeAssignments", type=List.class, parameters={SqlPermissionsPrivilegeAssignment.class})
+    @Export(name="privilegeAssignments", refs={List.class,SqlPermissionsPrivilegeAssignment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SqlPermissionsPrivilegeAssignment>> privilegeAssignments;
 
     public Output<Optional<List<SqlPermissionsPrivilegeAssignment>>> privilegeAssignments() {
@@ -159,7 +159,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * Name of the table. Can be combined with `database`.
      * 
      */
-    @Export(name="table", type=String.class, parameters={})
+    @Export(name="table", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> table;
 
     /**
@@ -173,7 +173,7 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
      * Name of the view. Can be combined with `database`.
      * 
      */
-    @Export(name="view", type=String.class, parameters={})
+    @Export(name="view", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> view;
 
     /**

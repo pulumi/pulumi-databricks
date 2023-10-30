@@ -60,11 +60,11 @@ public final class MwsWorkspacesGcpManagedNetworkConfig {
             return this;
         }
         public MwsWorkspacesGcpManagedNetworkConfig build() {
-            final var o = new MwsWorkspacesGcpManagedNetworkConfig();
-            o.gkeClusterPodIpRange = gkeClusterPodIpRange;
-            o.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
-            o.subnetCidr = subnetCidr;
-            return o;
+            final var _resultValue = new MwsWorkspacesGcpManagedNetworkConfig();
+            _resultValue.gkeClusterPodIpRange = gkeClusterPodIpRange;
+            _resultValue.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
+            _resultValue.subnetCidr = subnetCidr;
+            return _resultValue;
         }
     }
 }

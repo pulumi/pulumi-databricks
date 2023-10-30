@@ -107,13 +107,13 @@ public final class GetJobResult {
             return this;
         }
         public GetJobResult build() {
-            final var o = new GetJobResult();
-            o.id = id;
-            o.jobId = jobId;
-            o.jobName = jobName;
-            o.jobSettings = jobSettings;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetJobResult();
+            _resultValue.id = id;
+            _resultValue.jobId = jobId;
+            _resultValue.jobName = jobName;
+            _resultValue.jobSettings = jobSettings;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -59,10 +59,10 @@ public final class JobTaskSqlTaskDashboardSubscription {
             return this;
         }
         public JobTaskSqlTaskDashboardSubscription build() {
-            final var o = new JobTaskSqlTaskDashboardSubscription();
-            o.destinationId = destinationId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskDashboardSubscription();
+            _resultValue.destinationId = destinationId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

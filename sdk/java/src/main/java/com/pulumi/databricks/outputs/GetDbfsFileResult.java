@@ -108,13 +108,13 @@ public final class GetDbfsFileResult {
             return this;
         }
         public GetDbfsFileResult build() {
-            final var o = new GetDbfsFileResult();
-            o.content = content;
-            o.fileSize = fileSize;
-            o.id = id;
-            o.limitFileSize = limitFileSize;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetDbfsFileResult();
+            _resultValue.content = content;
+            _resultValue.fileSize = fileSize;
+            _resultValue.id = id;
+            _resultValue.limitFileSize = limitFileSize;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

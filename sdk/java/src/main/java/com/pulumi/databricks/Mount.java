@@ -29,55 +29,55 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mount:Mount")
 public class Mount extends com.pulumi.resources.CustomResource {
-    @Export(name="abfs", type=MountAbfs.class, parameters={})
+    @Export(name="abfs", refs={MountAbfs.class}, tree="[0]")
     private Output</* @Nullable */ MountAbfs> abfs;
 
     public Output<Optional<MountAbfs>> abfs() {
         return Codegen.optional(this.abfs);
     }
-    @Export(name="adl", type=MountAdl.class, parameters={})
+    @Export(name="adl", refs={MountAdl.class}, tree="[0]")
     private Output</* @Nullable */ MountAdl> adl;
 
     public Output<Optional<MountAdl>> adl() {
         return Codegen.optional(this.adl);
     }
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     public Output<String> clusterId() {
         return this.clusterId;
     }
-    @Export(name="encryptionType", type=String.class, parameters={})
+    @Export(name="encryptionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionType;
 
     public Output<Optional<String>> encryptionType() {
         return Codegen.optional(this.encryptionType);
     }
-    @Export(name="extraConfigs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="extraConfigs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> extraConfigs;
 
     public Output<Optional<Map<String,Object>>> extraConfigs() {
         return Codegen.optional(this.extraConfigs);
     }
-    @Export(name="gs", type=MountGs.class, parameters={})
+    @Export(name="gs", refs={MountGs.class}, tree="[0]")
     private Output</* @Nullable */ MountGs> gs;
 
     public Output<Optional<MountGs>> gs() {
         return Codegen.optional(this.gs);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceId;
 
     public Output<Optional<String>> resourceId() {
         return Codegen.optional(this.resourceId);
     }
-    @Export(name="s3", type=MountS3.class, parameters={})
+    @Export(name="s3", refs={MountS3.class}, tree="[0]")
     private Output</* @Nullable */ MountS3> s3;
 
     public Output<Optional<MountS3>> s3() {
@@ -87,7 +87,7 @@ public class Mount extends com.pulumi.resources.CustomResource {
      * (String) HDFS-compatible url
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -97,13 +97,13 @@ public class Mount extends com.pulumi.resources.CustomResource {
     public Output<String> source() {
         return this.source;
     }
-    @Export(name="uri", type=String.class, parameters={})
+    @Export(name="uri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uri;
 
     public Output<Optional<String>> uri() {
         return Codegen.optional(this.uri);
     }
-    @Export(name="wasb", type=MountWasb.class, parameters={})
+    @Export(name="wasb", refs={MountWasb.class}, tree="[0]")
     private Output</* @Nullable */ MountWasb> wasb;
 
     public Output<Optional<MountWasb>> wasb() {

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsCompute;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDeployment;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSource;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealth;
@@ -62,6 +63,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
     public Optional<GetJobJobSettingsSettingsDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
+    }
+
+    @Import(name="deployment")
+    private @Nullable GetJobJobSettingsSettingsDeployment deployment;
+
+    public Optional<GetJobJobSettingsSettingsDeployment> deployment() {
+        return Optional.ofNullable(this.deployment);
     }
 
     @Import(name="emailNotifications")
@@ -288,6 +296,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.computes = $.computes;
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
+        this.deployment = $.deployment;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -354,6 +363,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsDbtTask dbtTask) {
             $.dbtTask = dbtTask;
+            return this;
+        }
+
+        public Builder deployment(@Nullable GetJobJobSettingsSettingsDeployment deployment) {
+            $.deployment = deployment;
             return this;
         }
 

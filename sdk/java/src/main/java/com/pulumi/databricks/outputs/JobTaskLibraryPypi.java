@@ -51,10 +51,10 @@ public final class JobTaskLibraryPypi {
             return this;
         }
         public JobTaskLibraryPypi build() {
-            final var o = new JobTaskLibraryPypi();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new JobTaskLibraryPypi();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

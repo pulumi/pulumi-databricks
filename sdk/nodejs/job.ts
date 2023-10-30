@@ -61,6 +61,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly controlRunState!: pulumi.Output<boolean | undefined>;
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
+    public readonly deployment!: pulumi.Output<outputs.JobDeployment | undefined>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -156,6 +157,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["continuous"] = state ? state.continuous : undefined;
             resourceInputs["controlRunState"] = state ? state.controlRunState : undefined;
             resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
+            resourceInputs["deployment"] = state ? state.deployment : undefined;
             resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = state ? state.existingClusterId : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
@@ -194,6 +196,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["continuous"] = args ? args.continuous : undefined;
             resourceInputs["controlRunState"] = args ? args.controlRunState : undefined;
             resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
             resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = args ? args.existingClusterId : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
@@ -253,6 +256,7 @@ export interface JobState {
      */
     controlRunState?: pulumi.Input<boolean>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
+    deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
@@ -353,6 +357,7 @@ export interface JobArgs {
      */
     controlRunState?: pulumi.Input<boolean>;
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
+    deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */

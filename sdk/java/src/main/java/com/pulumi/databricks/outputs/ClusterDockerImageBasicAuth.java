@@ -49,10 +49,10 @@ public final class ClusterDockerImageBasicAuth {
             return this;
         }
         public ClusterDockerImageBasicAuth build() {
-            final var o = new ClusterDockerImageBasicAuth();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new ClusterDockerImageBasicAuth();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

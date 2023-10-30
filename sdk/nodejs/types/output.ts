@@ -23,6 +23,17 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface ArtifactAllowlistArtifactMatcher {
+    /**
+     * The artifact path or maven coordinate.
+     */
+    artifact: string;
+    /**
+     * The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+     */
+    matchType: string;
+}
+
 export interface ClusterAutoscale {
     maxWorkers?: number;
     minWorkers?: number;
@@ -536,6 +547,7 @@ export interface GetJobJobSettingsSettings {
     computes?: outputs.GetJobJobSettingsSettingsCompute[];
     continuous?: outputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
+    deployment?: outputs.GetJobJobSettingsSettingsDeployment;
     emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
     format: string;
@@ -591,6 +603,11 @@ export interface GetJobJobSettingsSettingsDbtTask {
     projectDirectory?: string;
     schema?: string;
     warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsDeployment {
+    kind: string;
+    metadataFilePath?: string;
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
@@ -1663,6 +1680,11 @@ export interface JobDbtTask {
      * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
     warehouseId?: string;
+}
+
+export interface JobDeployment {
+    kind: string;
+    metadataFilePath?: string;
 }
 
 export interface JobEmailNotifications {

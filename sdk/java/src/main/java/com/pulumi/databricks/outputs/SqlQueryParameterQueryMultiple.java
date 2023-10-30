@@ -60,11 +60,11 @@ public final class SqlQueryParameterQueryMultiple {
             return this;
         }
         public SqlQueryParameterQueryMultiple build() {
-            final var o = new SqlQueryParameterQueryMultiple();
-            o.prefix = prefix;
-            o.separator = separator;
-            o.suffix = suffix;
-            return o;
+            final var _resultValue = new SqlQueryParameterQueryMultiple();
+            _resultValue.prefix = prefix;
+            _resultValue.separator = separator;
+            _resultValue.suffix = suffix;
+            return _resultValue;
         }
     }
 }

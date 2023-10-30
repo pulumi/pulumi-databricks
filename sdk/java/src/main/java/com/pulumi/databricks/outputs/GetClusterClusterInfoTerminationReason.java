@@ -64,11 +64,11 @@ public final class GetClusterClusterInfoTerminationReason {
             return this;
         }
         public GetClusterClusterInfoTerminationReason build() {
-            final var o = new GetClusterClusterInfoTerminationReason();
-            o.code = code;
-            o.parameters = parameters;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoTerminationReason();
+            _resultValue.code = code;
+            _resultValue.parameters = parameters;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

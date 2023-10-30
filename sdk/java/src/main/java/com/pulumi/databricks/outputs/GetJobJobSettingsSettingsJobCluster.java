@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsJobCluster {
             return this;
         }
         public GetJobJobSettingsSettingsJobCluster build() {
-            final var o = new GetJobJobSettingsSettingsJobCluster();
-            o.jobClusterKey = jobClusterKey;
-            o.newCluster = newCluster;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsJobCluster();
+            _resultValue.jobClusterKey = jobClusterKey;
+            _resultValue.newCluster = newCluster;
+            return _resultValue;
         }
     }
 }

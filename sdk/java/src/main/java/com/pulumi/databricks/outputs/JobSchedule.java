@@ -86,11 +86,11 @@ public final class JobSchedule {
             return this;
         }
         public JobSchedule build() {
-            final var o = new JobSchedule();
-            o.pauseStatus = pauseStatus;
-            o.quartzCronExpression = quartzCronExpression;
-            o.timezoneId = timezoneId;
-            return o;
+            final var _resultValue = new JobSchedule();
+            _resultValue.pauseStatus = pauseStatus;
+            _resultValue.quartzCronExpression = quartzCronExpression;
+            _resultValue.timezoneId = timezoneId;
+            return _resultValue;
         }
     }
 }

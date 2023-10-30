@@ -248,26 +248,26 @@ public final class GetInstancePoolPoolInfo {
             return this;
         }
         public GetInstancePoolPoolInfo build() {
-            final var o = new GetInstancePoolPoolInfo();
-            o.awsAttributes = awsAttributes;
-            o.azureAttributes = azureAttributes;
-            o.customTags = customTags;
-            o.defaultTags = defaultTags;
-            o.diskSpec = diskSpec;
-            o.enableElasticDisk = enableElasticDisk;
-            o.gcpAttributes = gcpAttributes;
-            o.idleInstanceAutoterminationMinutes = idleInstanceAutoterminationMinutes;
-            o.instancePoolFleetAttributes = instancePoolFleetAttributes;
-            o.instancePoolId = instancePoolId;
-            o.instancePoolName = instancePoolName;
-            o.maxCapacity = maxCapacity;
-            o.minIdleInstances = minIdleInstances;
-            o.nodeTypeId = nodeTypeId;
-            o.preloadedDockerImages = preloadedDockerImages;
-            o.preloadedSparkVersions = preloadedSparkVersions;
-            o.state = state;
-            o.stats = stats;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfo();
+            _resultValue.awsAttributes = awsAttributes;
+            _resultValue.azureAttributes = azureAttributes;
+            _resultValue.customTags = customTags;
+            _resultValue.defaultTags = defaultTags;
+            _resultValue.diskSpec = diskSpec;
+            _resultValue.enableElasticDisk = enableElasticDisk;
+            _resultValue.gcpAttributes = gcpAttributes;
+            _resultValue.idleInstanceAutoterminationMinutes = idleInstanceAutoterminationMinutes;
+            _resultValue.instancePoolFleetAttributes = instancePoolFleetAttributes;
+            _resultValue.instancePoolId = instancePoolId;
+            _resultValue.instancePoolName = instancePoolName;
+            _resultValue.maxCapacity = maxCapacity;
+            _resultValue.minIdleInstances = minIdleInstances;
+            _resultValue.nodeTypeId = nodeTypeId;
+            _resultValue.preloadedDockerImages = preloadedDockerImages;
+            _resultValue.preloadedSparkVersions = preloadedSparkVersions;
+            _resultValue.state = state;
+            _resultValue.stats = stats;
+            return _resultValue;
         }
     }
 }

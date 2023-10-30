@@ -67,10 +67,10 @@ public final class GetMwsWorkspacesResult {
             return this;
         }
         public GetMwsWorkspacesResult build() {
-            final var o = new GetMwsWorkspacesResult();
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetMwsWorkspacesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

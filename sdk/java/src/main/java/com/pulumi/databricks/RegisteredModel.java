@@ -76,7 +76,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * The name of the catalog where the schema and the registered model reside.
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -90,7 +90,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * The comment attached to the registered model.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -104,7 +104,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * The name of the registered model.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -118,7 +118,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * The name of the schema where the registered model resides.
      * 
      */
-    @Export(name="schemaName", type=String.class, parameters={})
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
@@ -128,7 +128,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
     public Output<String> schemaName() {
         return this.schemaName;
     }
-    @Export(name="storageLocation", type=String.class, parameters={})
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output<String> storageLocation;
 
     public Output<String> storageLocation() {

@@ -51,9 +51,9 @@ public final class ModelServingConfigTrafficConfig {
             return routes(List.of(routes));
         }
         public ModelServingConfigTrafficConfig build() {
-            final var o = new ModelServingConfigTrafficConfig();
-            o.routes = routes;
-            return o;
+            final var _resultValue = new ModelServingConfigTrafficConfig();
+            _resultValue.routes = routes;
+            return _resultValue;
         }
     }
 }

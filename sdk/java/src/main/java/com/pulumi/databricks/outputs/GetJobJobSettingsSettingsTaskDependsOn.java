@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsTaskDependsOn {
             return this;
         }
         public GetJobJobSettingsSettingsTaskDependsOn build() {
-            final var o = new GetJobJobSettingsSettingsTaskDependsOn();
-            o.outcome = outcome;
-            o.taskKey = taskKey;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskDependsOn();
+            _resultValue.outcome = outcome;
+            _resultValue.taskKey = taskKey;
+            return _resultValue;
         }
     }
 }

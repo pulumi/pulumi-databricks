@@ -51,10 +51,10 @@ public final class ExternalLocationEncryptionDetailsSseEncryptionDetails {
             return this;
         }
         public ExternalLocationEncryptionDetailsSseEncryptionDetails build() {
-            final var o = new ExternalLocationEncryptionDetailsSseEncryptionDetails();
-            o.algorithm = algorithm;
-            o.awsKmsKeyArn = awsKmsKeyArn;
-            return o;
+            final var _resultValue = new ExternalLocationEncryptionDetailsSseEncryptionDetails();
+            _resultValue.algorithm = algorithm;
+            _resultValue.awsKmsKeyArn = awsKmsKeyArn;
+            return _resultValue;
         }
     }
 }

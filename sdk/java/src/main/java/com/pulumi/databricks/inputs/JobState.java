@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobComputeArgs;
 import com.pulumi.databricks.inputs.JobContinuousArgs;
 import com.pulumi.databricks.inputs.JobDbtTaskArgs;
+import com.pulumi.databricks.inputs.JobDeploymentArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.JobGitSourceArgs;
 import com.pulumi.databricks.inputs.JobHealthArgs;
@@ -149,6 +150,13 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<JobDbtTaskArgs>> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
+    }
+
+    @Import(name="deployment")
+    private @Nullable Output<JobDeploymentArgs> deployment;
+
+    public Optional<Output<JobDeploymentArgs>> deployment() {
+        return Optional.ofNullable(this.deployment);
     }
 
     /**
@@ -496,6 +504,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.continuous = $.continuous;
         this.controlRunState = $.controlRunState;
         this.dbtTask = $.dbtTask;
+        this.deployment = $.deployment;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -674,6 +683,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         public Builder dbtTask(JobDbtTaskArgs dbtTask) {
             return dbtTask(Output.of(dbtTask));
+        }
+
+        public Builder deployment(@Nullable Output<JobDeploymentArgs> deployment) {
+            $.deployment = deployment;
+            return this;
+        }
+
+        public Builder deployment(JobDeploymentArgs deployment) {
+            return deployment(Output.of(deployment));
         }
 
         /**

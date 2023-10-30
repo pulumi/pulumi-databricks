@@ -79,11 +79,11 @@ public final class InstancePoolDiskSpec {
             return this;
         }
         public InstancePoolDiskSpec build() {
-            final var o = new InstancePoolDiskSpec();
-            o.diskCount = diskCount;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            return o;
+            final var _resultValue = new InstancePoolDiskSpec();
+            _resultValue.diskCount = diskCount;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            return _resultValue;
         }
     }
 }

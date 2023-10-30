@@ -38,9 +38,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskQuery {
             return this;
         }
         public GetJobJobSettingsSettingsTaskSqlTaskQuery build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTaskQuery();
-            o.queryId = queryId;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskQuery();
+            _resultValue.queryId = queryId;
+            return _resultValue;
         }
     }
 }

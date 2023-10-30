@@ -63,11 +63,11 @@ public final class GetInstancePoolPoolInfoAwsAttributes {
             return this;
         }
         public GetInstancePoolPoolInfoAwsAttributes build() {
-            final var o = new GetInstancePoolPoolInfoAwsAttributes();
-            o.availability = availability;
-            o.spotBidPricePercent = spotBidPricePercent;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoAwsAttributes();
+            _resultValue.availability = availability;
+            _resultValue.spotBidPricePercent = spotBidPricePercent;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

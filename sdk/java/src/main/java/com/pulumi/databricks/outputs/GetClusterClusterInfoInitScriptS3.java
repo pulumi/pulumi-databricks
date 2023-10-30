@@ -107,15 +107,15 @@ public final class GetClusterClusterInfoInitScriptS3 {
             return this;
         }
         public GetClusterClusterInfoInitScriptS3 build() {
-            final var o = new GetClusterClusterInfoInitScriptS3();
-            o.cannedAcl = cannedAcl;
-            o.destination = destination;
-            o.enableEncryption = enableEncryption;
-            o.encryptionType = encryptionType;
-            o.endpoint = endpoint;
-            o.kmsKey = kmsKey;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoInitScriptS3();
+            _resultValue.cannedAcl = cannedAcl;
+            _resultValue.destination = destination;
+            _resultValue.enableEncryption = enableEncryption;
+            _resultValue.encryptionType = encryptionType;
+            _resultValue.endpoint = endpoint;
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

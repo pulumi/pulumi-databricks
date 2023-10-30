@@ -93,49 +93,49 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlWidget:SqlWidget")
 public class SqlWidget extends com.pulumi.resources.CustomResource {
-    @Export(name="dashboardId", type=String.class, parameters={})
+    @Export(name="dashboardId", refs={String.class}, tree="[0]")
     private Output<String> dashboardId;
 
     public Output<String> dashboardId() {
         return this.dashboardId;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="parameters", type=List.class, parameters={SqlWidgetParameter.class})
+    @Export(name="parameters", refs={List.class,SqlWidgetParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SqlWidgetParameter>> parameters;
 
     public Output<Optional<List<SqlWidgetParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
-    @Export(name="position", type=SqlWidgetPosition.class, parameters={})
+    @Export(name="position", refs={SqlWidgetPosition.class}, tree="[0]")
     private Output</* @Nullable */ SqlWidgetPosition> position;
 
     public Output<Optional<SqlWidgetPosition>> position() {
         return Codegen.optional(this.position);
     }
-    @Export(name="text", type=String.class, parameters={})
+    @Export(name="text", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> text;
 
     public Output<Optional<String>> text() {
         return Codegen.optional(this.text);
     }
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> title;
 
     public Output<Optional<String>> title() {
         return Codegen.optional(this.title);
     }
-    @Export(name="visualizationId", type=String.class, parameters={})
+    @Export(name="visualizationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> visualizationId;
 
     public Output<Optional<String>> visualizationId() {
         return Codegen.optional(this.visualizationId);
     }
-    @Export(name="widgetId", type=String.class, parameters={})
+    @Export(name="widgetId", refs={String.class}, tree="[0]")
     private Output<String> widgetId;
 
     public Output<String> widgetId() {

@@ -52,10 +52,10 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDeman
             return this;
         }
         public GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption build() {
-            final var o = new GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption();
-            o.allocationStrategy = allocationStrategy;
-            o.instancePoolsToUseCount = instancePoolsToUseCount;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOption();
+            _resultValue.allocationStrategy = allocationStrategy;
+            _resultValue.instancePoolsToUseCount = instancePoolsToUseCount;
+            return _resultValue;
         }
     }
 }

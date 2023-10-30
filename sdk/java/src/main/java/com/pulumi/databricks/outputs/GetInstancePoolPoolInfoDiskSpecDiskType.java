@@ -51,10 +51,10 @@ public final class GetInstancePoolPoolInfoDiskSpecDiskType {
             return this;
         }
         public GetInstancePoolPoolInfoDiskSpecDiskType build() {
-            final var o = new GetInstancePoolPoolInfoDiskSpecDiskType();
-            o.azureDiskVolumeType = azureDiskVolumeType;
-            o.ebsVolumeType = ebsVolumeType;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoDiskSpecDiskType();
+            _resultValue.azureDiskVolumeType = azureDiskVolumeType;
+            _resultValue.ebsVolumeType = ebsVolumeType;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class JobJobClusterNewClusterWorkloadTypeClients {
             return this;
         }
         public JobJobClusterNewClusterWorkloadTypeClients build() {
-            final var o = new JobJobClusterNewClusterWorkloadTypeClients();
-            o.jobs = jobs;
-            o.notebooks = notebooks;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterWorkloadTypeClients();
+            _resultValue.jobs = jobs;
+            _resultValue.notebooks = notebooks;
+            return _resultValue;
         }
     }
 }

@@ -101,13 +101,13 @@ public final class GetAwsAssumeRolePolicyResult {
             return this;
         }
         public GetAwsAssumeRolePolicyResult build() {
-            final var o = new GetAwsAssumeRolePolicyResult();
-            o.databricksAccountId = databricksAccountId;
-            o.externalId = externalId;
-            o.forLogDelivery = forLogDelivery;
-            o.id = id;
-            o.json = json;
-            return o;
+            final var _resultValue = new GetAwsAssumeRolePolicyResult();
+            _resultValue.databricksAccountId = databricksAccountId;
+            _resultValue.externalId = externalId;
+            _resultValue.forLogDelivery = forLogDelivery;
+            _resultValue.id = id;
+            _resultValue.json = json;
+            return _resultValue;
         }
     }
 }

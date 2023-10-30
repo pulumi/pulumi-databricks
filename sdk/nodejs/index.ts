@@ -10,6 +10,11 @@ export type AccessControlRuleSet = import("./accessControlRuleSet").AccessContro
 export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
 utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
 
+export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
+export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
+export const ArtifactAllowlist: typeof import("./artifactAllowlist").ArtifactAllowlist = null as any;
+utilities.lazyLoad(exports, ["ArtifactAllowlist"], () => require("./artifactAllowlist"));
+
 export { CatalogArgs, CatalogState } from "./catalog";
 export type Catalog = import("./catalog").Catalog;
 export const Catalog: typeof import("./catalog").Catalog = null as any;
@@ -576,6 +581,8 @@ const _module = {
         switch (type) {
             case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
+            case "databricks:index/artifactAllowlist:ArtifactAllowlist":
+                return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/catalog:Catalog":
                 return new Catalog(name, <any>undefined, { urn })
             case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -730,6 +737,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/catalogWorkspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)

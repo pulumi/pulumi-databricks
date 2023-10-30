@@ -57,10 +57,10 @@ public final class PipelineFilters {
             return includes(List.of(includes));
         }
         public PipelineFilters build() {
-            final var o = new PipelineFilters();
-            o.excludes = excludes;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new PipelineFilters();
+            _resultValue.excludes = excludes;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

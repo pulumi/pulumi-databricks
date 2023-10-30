@@ -97,14 +97,14 @@ public final class JobJobClusterNewClusterGcpAttributes {
             return this;
         }
         public JobJobClusterNewClusterGcpAttributes build() {
-            final var o = new JobJobClusterNewClusterGcpAttributes();
-            o.availability = availability;
-            o.bootDiskSize = bootDiskSize;
-            o.googleServiceAccount = googleServiceAccount;
-            o.localSsdCount = localSsdCount;
-            o.usePreemptibleExecutors = usePreemptibleExecutors;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterGcpAttributes();
+            _resultValue.availability = availability;
+            _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.googleServiceAccount = googleServiceAccount;
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.usePreemptibleExecutors = usePreemptibleExecutors;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

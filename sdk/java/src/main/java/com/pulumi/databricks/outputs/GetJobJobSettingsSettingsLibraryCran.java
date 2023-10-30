@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsLibraryCran {
             return this;
         }
         public GetJobJobSettingsSettingsLibraryCran build() {
-            final var o = new GetJobJobSettingsSettingsLibraryCran();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsLibraryCran();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

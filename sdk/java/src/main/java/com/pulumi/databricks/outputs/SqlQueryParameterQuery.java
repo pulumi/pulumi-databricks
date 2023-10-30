@@ -86,12 +86,12 @@ public final class SqlQueryParameterQuery {
             return values(List.of(values));
         }
         public SqlQueryParameterQuery build() {
-            final var o = new SqlQueryParameterQuery();
-            o.multiple = multiple;
-            o.queryId = queryId;
-            o.value = value;
-            o.values = values;
-            return o;
+            final var _resultValue = new SqlQueryParameterQuery();
+            _resultValue.multiple = multiple;
+            _resultValue.queryId = queryId;
+            _resultValue.value = value;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class InstancePoolGcpAttributes {
             return this;
         }
         public InstancePoolGcpAttributes build() {
-            final var o = new InstancePoolGcpAttributes();
-            o.gcpAvailability = gcpAvailability;
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new InstancePoolGcpAttributes();
+            _resultValue.gcpAvailability = gcpAvailability;
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

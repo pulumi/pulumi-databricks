@@ -40,9 +40,9 @@ public final class ClusterInitScriptGcs {
             return this;
         }
         public ClusterInitScriptGcs build() {
-            final var o = new ClusterInitScriptGcs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterInitScriptGcs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

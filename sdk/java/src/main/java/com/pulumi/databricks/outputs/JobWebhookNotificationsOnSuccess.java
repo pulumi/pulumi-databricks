@@ -46,9 +46,9 @@ public final class JobWebhookNotificationsOnSuccess {
             return this;
         }
         public JobWebhookNotificationsOnSuccess build() {
-            final var o = new JobWebhookNotificationsOnSuccess();
-            o.id = id;
-            return o;
+            final var _resultValue = new JobWebhookNotificationsOnSuccess();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

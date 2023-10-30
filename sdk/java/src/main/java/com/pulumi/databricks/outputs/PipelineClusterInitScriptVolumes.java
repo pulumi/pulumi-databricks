@@ -40,9 +40,9 @@ public final class PipelineClusterInitScriptVolumes {
             return this;
         }
         public PipelineClusterInitScriptVolumes build() {
-            final var o = new PipelineClusterInitScriptVolumes();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new PipelineClusterInitScriptVolumes();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

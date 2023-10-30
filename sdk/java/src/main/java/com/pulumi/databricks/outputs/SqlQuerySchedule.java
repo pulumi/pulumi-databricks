@@ -64,11 +64,11 @@ public final class SqlQuerySchedule {
             return this;
         }
         public SqlQuerySchedule build() {
-            final var o = new SqlQuerySchedule();
-            o.continuous = continuous;
-            o.daily = daily;
-            o.weekly = weekly;
-            return o;
+            final var _resultValue = new SqlQuerySchedule();
+            _resultValue.continuous = continuous;
+            _resultValue.daily = daily;
+            _resultValue.weekly = weekly;
+            return _resultValue;
         }
     }
 }

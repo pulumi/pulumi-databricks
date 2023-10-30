@@ -23,7 +23,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * Time when the share was created.
      * 
      */
-    @Export(name="createdAt", type=Integer.class, parameters={})
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
     /**
@@ -37,7 +37,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * The principal that created the share.
      * 
      */
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
@@ -51,7 +51,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * Name of share. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -61,7 +61,7 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="objects", type=List.class, parameters={ShareObject.class})
+    @Export(name="objects", refs={List.class,ShareObject.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ShareObject>> objects;
 
     public Output<Optional<List<ShareObject>>> objects() {
@@ -71,7 +71,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * User name/group name/sp application_id of the share owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> owner;
 
     /**

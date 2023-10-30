@@ -88,12 +88,12 @@ public final class GetJobJobSettingsSettingsWebhookNotifications {
             return onSuccesses(List.of(onSuccesses));
         }
         public GetJobJobSettingsSettingsWebhookNotifications build() {
-            final var o = new GetJobJobSettingsSettingsWebhookNotifications();
-            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
-            o.onFailures = onFailures;
-            o.onStarts = onStarts;
-            o.onSuccesses = onSuccesses;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsWebhookNotifications();
+            _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            _resultValue.onFailures = onFailures;
+            _resultValue.onStarts = onStarts;
+            _resultValue.onSuccesses = onSuccesses;
+            return _resultValue;
         }
     }
 }

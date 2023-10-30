@@ -162,7 +162,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
-    @Export(name="allowClusterCreate", type=Boolean.class, parameters={})
+    @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
@@ -176,7 +176,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
-    @Export(name="allowInstancePoolCreate", type=Boolean.class, parameters={})
+    @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
@@ -190,7 +190,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
-    @Export(name="databricksSqlAccess", type=Boolean.class, parameters={})
+    @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
@@ -204,7 +204,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * Canonical unique identifier for the group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -220,7 +220,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * The following entitlements are available.
      * 
      */
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> servicePrincipalId;
 
     /**
@@ -236,7 +236,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * Canonical unique identifier for the user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userId;
 
     /**
@@ -250,7 +250,7 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * This is a field to allow the principal to have access to Databricks Workspace.
      * 
      */
-    @Export(name="workspaceAccess", type=Boolean.class, parameters={})
+    @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**

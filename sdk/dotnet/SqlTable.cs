@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
     /// 
-    /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation.
+    /// This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
     /// 
     /// ## Import
     /// 
@@ -28,13 +28,19 @@ namespace Pulumi.Databricks
     public partial class SqlTable : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("catalogName")]
         public Output<string> CatalogName { get; private set; } = null!;
 
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
+        [Output("clusterKeys")]
+        public Output<ImmutableArray<string>> ClusterKeys { get; private set; } = null!;
 
         [Output("columns")]
         public Output<ImmutableArray<Outputs.SqlTableColumn>> Columns { get; private set; } = null!;
@@ -58,19 +64,31 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Extensible Table properties.
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
+        [Output("options")]
+        public Output<ImmutableDictionary<string, object>?> Options { get; private set; } = null!;
+
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// </summary>
+        [Output("partitions")]
+        public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
+
+        /// <summary>
+        /// Map of table properties.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, object>> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         /// </summary>
         [Output("storageCredentialName")]
         public Output<string?> StorageCredentialName { get; private set; } = null!;
@@ -92,6 +110,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("viewDefinition")]
         public Output<string?> ViewDefinition { get; private set; } = null!;
+
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
+        [Output("warehouseId")]
+        public Output<string?> WarehouseId { get; private set; } = null!;
 
 
         /// <summary>
@@ -140,13 +164,25 @@ namespace Pulumi.Databricks
     public sealed class SqlTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        [Input("clusterKeys")]
+        private InputList<string>? _clusterKeys;
+
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
+        public InputList<string> ClusterKeys
+        {
+            get => _clusterKeys ?? (_clusterKeys = new InputList<string>());
+            set => _clusterKeys = value;
+        }
 
         [Input("columns")]
         private InputList<Inputs.SqlTableColumnArgs>? _columns;
@@ -174,11 +210,35 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("options")]
+        private InputMap<object>? _options;
+
+        /// <summary>
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
+        public InputMap<object> Options
+        {
+            get => _options ?? (_options = new InputMap<object>());
+            set => _options = value;
+        }
+
+        [Input("partitions")]
+        private InputList<string>? _partitions;
+
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// </summary>
+        public InputList<string> Partitions
+        {
+            get => _partitions ?? (_partitions = new InputList<string>());
+            set => _partitions = value;
+        }
+
         [Input("properties")]
         private InputMap<object>? _properties;
 
         /// <summary>
-        /// Extensible Table properties.
+        /// Map of table properties.
         /// </summary>
         public InputMap<object> Properties
         {
@@ -187,13 +247,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
@@ -216,6 +276,12 @@ namespace Pulumi.Databricks
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
+
         public SqlTableArgs()
         {
         }
@@ -225,13 +291,25 @@ namespace Pulumi.Databricks
     public sealed class SqlTableState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of parent catalog
+        /// Name of parent catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
 
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        [Input("clusterKeys")]
+        private InputList<string>? _clusterKeys;
+
+        /// <summary>
+        /// a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        /// </summary>
+        public InputList<string> ClusterKeys
+        {
+            get => _clusterKeys ?? (_clusterKeys = new InputList<string>());
+            set => _clusterKeys = value;
+        }
 
         [Input("columns")]
         private InputList<Inputs.SqlTableColumnGetArgs>? _columns;
@@ -259,11 +337,35 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("options")]
+        private InputMap<object>? _options;
+
+        /// <summary>
+        /// Map of user defined table options. Change forces creation of a new resource.
+        /// </summary>
+        public InputMap<object> Options
+        {
+            get => _options ?? (_options = new InputMap<object>());
+            set => _options = value;
+        }
+
+        [Input("partitions")]
+        private InputList<string>? _partitions;
+
+        /// <summary>
+        /// a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        /// </summary>
+        public InputList<string> Partitions
+        {
+            get => _partitions ?? (_partitions = new InputList<string>());
+            set => _partitions = value;
+        }
+
         [Input("properties")]
         private InputMap<object>? _properties;
 
         /// <summary>
-        /// Extensible Table properties.
+        /// Map of table properties.
         /// </summary>
         public InputMap<object> Properties
         {
@@ -272,13 +374,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of parent Schema relative to parent Catalog
+        /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         /// </summary>
         [Input("schemaName")]
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        /// For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         /// </summary>
         [Input("storageCredentialName")]
         public Input<string>? StorageCredentialName { get; set; }
@@ -300,6 +402,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
+
+        /// <summary>
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// </summary>
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
 
         public SqlTableState()
         {

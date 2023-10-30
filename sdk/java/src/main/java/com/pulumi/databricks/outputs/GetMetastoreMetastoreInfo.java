@@ -284,26 +284,26 @@ public final class GetMetastoreMetastoreInfo {
             return this;
         }
         public GetMetastoreMetastoreInfo build() {
-            final var o = new GetMetastoreMetastoreInfo();
-            o.cloud = cloud;
-            o.createdAt = createdAt;
-            o.createdBy = createdBy;
-            o.defaultDataAccessConfigId = defaultDataAccessConfigId;
-            o.deltaSharingOrganizationName = deltaSharingOrganizationName;
-            o.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
-            o.deltaSharingScope = deltaSharingScope;
-            o.globalMetastoreId = globalMetastoreId;
-            o.metastoreId = metastoreId;
-            o.name = name;
-            o.owner = owner;
-            o.privilegeModelVersion = privilegeModelVersion;
-            o.region = region;
-            o.storageRoot = storageRoot;
-            o.storageRootCredentialId = storageRootCredentialId;
-            o.storageRootCredentialName = storageRootCredentialName;
-            o.updatedAt = updatedAt;
-            o.updatedBy = updatedBy;
-            return o;
+            final var _resultValue = new GetMetastoreMetastoreInfo();
+            _resultValue.cloud = cloud;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
+            _resultValue.defaultDataAccessConfigId = defaultDataAccessConfigId;
+            _resultValue.deltaSharingOrganizationName = deltaSharingOrganizationName;
+            _resultValue.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
+            _resultValue.deltaSharingScope = deltaSharingScope;
+            _resultValue.globalMetastoreId = globalMetastoreId;
+            _resultValue.metastoreId = metastoreId;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.privilegeModelVersion = privilegeModelVersion;
+            _resultValue.region = region;
+            _resultValue.storageRoot = storageRoot;
+            _resultValue.storageRootCredentialId = storageRootCredentialId;
+            _resultValue.storageRootCredentialName = storageRootCredentialName;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.updatedBy = updatedBy;
+            return _resultValue;
         }
     }
 }

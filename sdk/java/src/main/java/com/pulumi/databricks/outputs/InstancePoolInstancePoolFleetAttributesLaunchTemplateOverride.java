@@ -49,10 +49,10 @@ public final class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride
             return this;
         }
         public InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride build() {
-            final var o = new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride();
-            o.availabilityZone = availabilityZone;
-            o.instanceType = instanceType;
-            return o;
+            final var _resultValue = new InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.instanceType = instanceType;
+            return _resultValue;
         }
     }
 }

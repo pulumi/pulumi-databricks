@@ -145,15 +145,15 @@ public final class GetNotebookResult {
             return this;
         }
         public GetNotebookResult build() {
-            final var o = new GetNotebookResult();
-            o.content = content;
-            o.format = format;
-            o.id = id;
-            o.language = language;
-            o.objectId = objectId;
-            o.objectType = objectType;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetNotebookResult();
+            _resultValue.content = content;
+            _resultValue.format = format;
+            _resultValue.id = id;
+            _resultValue.language = language;
+            _resultValue.objectId = objectId;
+            _resultValue.objectType = objectType;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

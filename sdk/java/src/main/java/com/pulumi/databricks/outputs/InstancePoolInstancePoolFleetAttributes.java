@@ -68,11 +68,11 @@ public final class InstancePoolInstancePoolFleetAttributes {
             return launchTemplateOverrides(List.of(launchTemplateOverrides));
         }
         public InstancePoolInstancePoolFleetAttributes build() {
-            final var o = new InstancePoolInstancePoolFleetAttributes();
-            o.fleetOnDemandOption = fleetOnDemandOption;
-            o.fleetSpotOption = fleetSpotOption;
-            o.launchTemplateOverrides = launchTemplateOverrides;
-            return o;
+            final var _resultValue = new InstancePoolInstancePoolFleetAttributes();
+            _resultValue.fleetOnDemandOption = fleetOnDemandOption;
+            _resultValue.fleetSpotOption = fleetSpotOption;
+            _resultValue.launchTemplateOverrides = launchTemplateOverrides;
+            return _resultValue;
         }
     }
 }

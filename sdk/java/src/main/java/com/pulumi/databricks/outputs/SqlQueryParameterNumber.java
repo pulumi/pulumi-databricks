@@ -46,9 +46,9 @@ public final class SqlQueryParameterNumber {
             return this;
         }
         public SqlQueryParameterNumber build() {
-            final var o = new SqlQueryParameterNumber();
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterNumber();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class MwsNetworksErrorMessage {
             return this;
         }
         public MwsNetworksErrorMessage build() {
-            final var o = new MwsNetworksErrorMessage();
-            o.errorMessage = errorMessage;
-            o.errorType = errorType;
-            return o;
+            final var _resultValue = new MwsNetworksErrorMessage();
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.errorType = errorType;
+            return _resultValue;
         }
     }
 }

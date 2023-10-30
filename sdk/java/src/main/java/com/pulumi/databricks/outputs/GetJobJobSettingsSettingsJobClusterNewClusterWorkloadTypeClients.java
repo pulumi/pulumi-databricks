@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClie
             return this;
         }
         public GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients build() {
-            final var o = new GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients();
-            o.jobs = jobs;
-            o.notebooks = notebooks;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClients();
+            _resultValue.jobs = jobs;
+            _resultValue.notebooks = notebooks;
+            return _resultValue;
         }
     }
 }

@@ -26,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dbtTask")]
         public Inputs.GetJobJobSettingsSettingsDbtTaskArgs? DbtTask { get; set; }
 
+        [Input("deployment")]
+        public Inputs.GetJobJobSettingsSettingsDeploymentArgs? Deployment { get; set; }
+
         [Input("emailNotifications")]
         public Inputs.GetJobJobSettingsSettingsEmailNotificationsArgs? EmailNotifications { get; set; }
 

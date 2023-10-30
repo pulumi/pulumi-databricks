@@ -79,7 +79,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Free-form text.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -93,7 +93,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
      * 
      */
-    @Export(name="connectionType", type=String.class, parameters={})
+    @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
     /**
@@ -103,7 +103,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<String> connectionType() {
         return this.connectionType;
     }
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -113,7 +113,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Name of the Connection.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -127,7 +127,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
      * 
      */
-    @Export(name="options", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> options;
 
     /**
@@ -141,7 +141,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Name of the connection owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> owner;
 
     /**
@@ -155,7 +155,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Free-form connection properties.
      * 
      */
-    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> properties;
 
     /**
@@ -165,7 +165,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> properties() {
         return Codegen.optional(this.properties);
     }
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
     public Output<Boolean> readOnly() {

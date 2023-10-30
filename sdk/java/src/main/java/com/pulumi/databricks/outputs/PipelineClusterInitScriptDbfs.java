@@ -38,9 +38,9 @@ public final class PipelineClusterInitScriptDbfs {
             return this;
         }
         public PipelineClusterInitScriptDbfs build() {
-            final var o = new PipelineClusterInitScriptDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new PipelineClusterInitScriptDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

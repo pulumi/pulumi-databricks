@@ -38,9 +38,9 @@ public final class GetJobJobSettingsSettingsNewClusterWorkloadType {
             return this;
         }
         public GetJobJobSettingsSettingsNewClusterWorkloadType build() {
-            final var o = new GetJobJobSettingsSettingsNewClusterWorkloadType();
-            o.clients = clients;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsNewClusterWorkloadType();
+            _resultValue.clients = clients;
+            return _resultValue;
         }
     }
 }

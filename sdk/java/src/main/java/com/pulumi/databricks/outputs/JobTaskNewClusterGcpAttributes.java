@@ -97,14 +97,14 @@ public final class JobTaskNewClusterGcpAttributes {
             return this;
         }
         public JobTaskNewClusterGcpAttributes build() {
-            final var o = new JobTaskNewClusterGcpAttributes();
-            o.availability = availability;
-            o.bootDiskSize = bootDiskSize;
-            o.googleServiceAccount = googleServiceAccount;
-            o.localSsdCount = localSsdCount;
-            o.usePreemptibleExecutors = usePreemptibleExecutors;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new JobTaskNewClusterGcpAttributes();
+            _resultValue.availability = availability;
+            _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.googleServiceAccount = googleServiceAccount;
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.usePreemptibleExecutors = usePreemptibleExecutors;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

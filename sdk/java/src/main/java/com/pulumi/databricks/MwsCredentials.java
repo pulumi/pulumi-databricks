@@ -97,7 +97,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -111,7 +111,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
      * (Integer) time of credentials registration
      * 
      */
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     /**
@@ -125,7 +125,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
      * (String) identifier of credentials
      * 
      */
-    @Export(name="credentialsId", type=String.class, parameters={})
+    @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output<String> credentialsId;
 
     /**
@@ -139,7 +139,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
      * name of credentials to register
      * 
      */
-    @Export(name="credentialsName", type=String.class, parameters={})
+    @Export(name="credentialsName", refs={String.class}, tree="[0]")
     private Output<String> credentialsName;
 
     /**
@@ -149,7 +149,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     public Output<String> credentialsName() {
         return this.credentialsName;
     }
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     public Output<String> externalId() {
@@ -159,7 +159,7 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
      * ARN of cross-account role
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
     /**

@@ -49,10 +49,10 @@ public final class SecretScopeKeyvaultMetadata {
             return this;
         }
         public SecretScopeKeyvaultMetadata build() {
-            final var o = new SecretScopeKeyvaultMetadata();
-            o.dnsName = dnsName;
-            o.resourceId = resourceId;
-            return o;
+            final var _resultValue = new SecretScopeKeyvaultMetadata();
+            _resultValue.dnsName = dnsName;
+            _resultValue.resourceId = resourceId;
+            return _resultValue;
         }
     }
 }

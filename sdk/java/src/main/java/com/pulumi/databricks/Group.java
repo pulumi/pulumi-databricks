@@ -199,7 +199,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
      * 
      */
-    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    @Export(name="aclPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipalId;
 
     /**
@@ -213,7 +213,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
-    @Export(name="allowClusterCreate", type=Boolean.class, parameters={})
+    @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
@@ -227,7 +227,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
-    @Export(name="allowInstancePoolCreate", type=Boolean.class, parameters={})
+    @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
@@ -241,7 +241,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
-    @Export(name="databricksSqlAccess", type=Boolean.class, parameters={})
+    @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
@@ -255,7 +255,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This is the display name for the given group.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -269,7 +269,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * ID of the group in an external identity provider.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
@@ -279,13 +279,13 @@ public class Group extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     public Output<String> url() {
@@ -295,7 +295,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have access to Databricks Workspace.
      * 
      */
-    @Export(name="workspaceAccess", type=Boolean.class, parameters={})
+    @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**

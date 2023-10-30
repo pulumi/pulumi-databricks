@@ -51,10 +51,10 @@ public final class ClusterAutoscale {
             return this;
         }
         public ClusterAutoscale build() {
-            final var o = new ClusterAutoscale();
-            o.maxWorkers = maxWorkers;
-            o.minWorkers = minWorkers;
-            return o;
+            final var _resultValue = new ClusterAutoscale();
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.minWorkers = minWorkers;
+            return _resultValue;
         }
     }
 }

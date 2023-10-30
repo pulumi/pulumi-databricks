@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -43,7 +43,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      * Name of the alert.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -57,7 +57,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      * Alert configuration options.
      * 
      */
-    @Export(name="options", type=SqlAlertOptions.class, parameters={})
+    @Export(name="options", refs={SqlAlertOptions.class}, tree="[0]")
     private Output<SqlAlertOptions> options;
 
     /**
@@ -71,7 +71,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      * The identifier of the workspace folder containing the alert. The default is ther user&#39;s home folder. The folder identifier is formatted as `folder/&lt;folder_id&gt;`.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -85,7 +85,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      * ID of the query evaluated by the alert.
      * 
      */
-    @Export(name="queryId", type=String.class, parameters={})
+    @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;
 
     /**
@@ -99,7 +99,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      * 
      */
-    @Export(name="rearm", type=Integer.class, parameters={})
+    @Export(name="rearm", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> rearm;
 
     /**
@@ -109,7 +109,7 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rearm() {
         return Codegen.optional(this.rearm);
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {

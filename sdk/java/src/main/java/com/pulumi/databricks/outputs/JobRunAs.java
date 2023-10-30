@@ -133,10 +133,10 @@ public final class JobRunAs {
             return this;
         }
         public JobRunAs build() {
-            final var o = new JobRunAs();
-            o.servicePrincipalName = servicePrincipalName;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new JobRunAs();
+            _resultValue.servicePrincipalName = servicePrincipalName;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

@@ -255,27 +255,27 @@ public final class PipelineCluster {
             return sshPublicKeys(List.of(sshPublicKeys));
         }
         public PipelineCluster build() {
-            final var o = new PipelineCluster();
-            o.applyPolicyDefaultValues = applyPolicyDefaultValues;
-            o.autoscale = autoscale;
-            o.awsAttributes = awsAttributes;
-            o.azureAttributes = azureAttributes;
-            o.clusterLogConf = clusterLogConf;
-            o.customTags = customTags;
-            o.driverInstancePoolId = driverInstancePoolId;
-            o.driverNodeTypeId = driverNodeTypeId;
-            o.enableLocalDiskEncryption = enableLocalDiskEncryption;
-            o.gcpAttributes = gcpAttributes;
-            o.initScripts = initScripts;
-            o.instancePoolId = instancePoolId;
-            o.label = label;
-            o.nodeTypeId = nodeTypeId;
-            o.numWorkers = numWorkers;
-            o.policyId = policyId;
-            o.sparkConf = sparkConf;
-            o.sparkEnvVars = sparkEnvVars;
-            o.sshPublicKeys = sshPublicKeys;
-            return o;
+            final var _resultValue = new PipelineCluster();
+            _resultValue.applyPolicyDefaultValues = applyPolicyDefaultValues;
+            _resultValue.autoscale = autoscale;
+            _resultValue.awsAttributes = awsAttributes;
+            _resultValue.azureAttributes = azureAttributes;
+            _resultValue.clusterLogConf = clusterLogConf;
+            _resultValue.customTags = customTags;
+            _resultValue.driverInstancePoolId = driverInstancePoolId;
+            _resultValue.driverNodeTypeId = driverNodeTypeId;
+            _resultValue.enableLocalDiskEncryption = enableLocalDiskEncryption;
+            _resultValue.gcpAttributes = gcpAttributes;
+            _resultValue.initScripts = initScripts;
+            _resultValue.instancePoolId = instancePoolId;
+            _resultValue.label = label;
+            _resultValue.nodeTypeId = nodeTypeId;
+            _resultValue.numWorkers = numWorkers;
+            _resultValue.policyId = policyId;
+            _resultValue.sparkConf = sparkConf;
+            _resultValue.sparkEnvVars = sparkEnvVars;
+            _resultValue.sshPublicKeys = sshPublicKeys;
+            return _resultValue;
         }
     }
 }

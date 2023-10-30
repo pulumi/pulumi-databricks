@@ -68,11 +68,11 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttribute {
             return launchTemplateOverrides(List.of(launchTemplateOverrides));
         }
         public GetInstancePoolPoolInfoInstancePoolFleetAttribute build() {
-            final var o = new GetInstancePoolPoolInfoInstancePoolFleetAttribute();
-            o.fleetOnDemandOption = fleetOnDemandOption;
-            o.fleetSpotOption = fleetSpotOption;
-            o.launchTemplateOverrides = launchTemplateOverrides;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoInstancePoolFleetAttribute();
+            _resultValue.fleetOnDemandOption = fleetOnDemandOption;
+            _resultValue.fleetSpotOption = fleetSpotOption;
+            _resultValue.launchTemplateOverrides = launchTemplateOverrides;
+            return _resultValue;
         }
     }
 }

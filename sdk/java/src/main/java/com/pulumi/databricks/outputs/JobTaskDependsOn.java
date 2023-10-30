@@ -59,10 +59,10 @@ public final class JobTaskDependsOn {
             return this;
         }
         public JobTaskDependsOn build() {
-            final var o = new JobTaskDependsOn();
-            o.outcome = outcome;
-            o.taskKey = taskKey;
-            return o;
+            final var _resultValue = new JobTaskDependsOn();
+            _resultValue.outcome = outcome;
+            _resultValue.taskKey = taskKey;
+            return _resultValue;
         }
     }
 }

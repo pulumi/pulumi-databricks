@@ -52,10 +52,10 @@ public final class GetClusterClusterInfoClusterLogStatus {
             return this;
         }
         public GetClusterClusterInfoClusterLogStatus build() {
-            final var o = new GetClusterClusterInfoClusterLogStatus();
-            o.lastAttempted = lastAttempted;
-            o.lastException = lastException;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoClusterLogStatus();
+            _resultValue.lastAttempted = lastAttempted;
+            _resultValue.lastException = lastException;
+            return _resultValue;
         }
     }
 }

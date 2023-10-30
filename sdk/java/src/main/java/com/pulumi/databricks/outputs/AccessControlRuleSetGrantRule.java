@@ -84,10 +84,10 @@ public final class AccessControlRuleSetGrantRule {
             return this;
         }
         public AccessControlRuleSetGrantRule build() {
-            final var o = new AccessControlRuleSetGrantRule();
-            o.principals = principals;
-            o.role = role;
-            return o;
+            final var _resultValue = new AccessControlRuleSetGrantRule();
+            _resultValue.principals = principals;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

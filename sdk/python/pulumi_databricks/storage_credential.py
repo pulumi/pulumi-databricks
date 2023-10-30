@@ -389,7 +389,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 
@@ -408,7 +408,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=databricks_storage_credential["external"]["id"],
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 
@@ -423,7 +423,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 
@@ -476,7 +476,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 
@@ -495,7 +495,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=databricks_storage_credential["external"]["id"],
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 
@@ -510,7 +510,7 @@ class StorageCredential(pulumi.CustomResource):
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
-                privileges=["CREATE_TABLE"],
+                privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
 

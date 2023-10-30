@@ -111,12 +111,12 @@ public final class JobTaskPythonWheelTask {
             return parameters(List.of(parameters));
         }
         public JobTaskPythonWheelTask build() {
-            final var o = new JobTaskPythonWheelTask();
-            o.entryPoint = entryPoint;
-            o.namedParameters = namedParameters;
-            o.packageName = packageName;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new JobTaskPythonWheelTask();
+            _resultValue.entryPoint = entryPoint;
+            _resultValue.namedParameters = namedParameters;
+            _resultValue.packageName = packageName;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

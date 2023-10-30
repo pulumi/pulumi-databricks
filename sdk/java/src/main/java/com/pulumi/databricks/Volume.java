@@ -118,7 +118,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Name of parent Catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -132,7 +132,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Free-form text.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -146,7 +146,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Name of the Volume
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -160,7 +160,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Name of the volume owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -174,7 +174,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="schemaName", type=String.class, parameters={})
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
@@ -188,7 +188,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      * 
      */
-    @Export(name="storageLocation", type=String.class, parameters={})
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageLocation;
 
     /**
@@ -202,7 +202,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
-    @Export(name="volumeType", type=String.class, parameters={})
+    @Export(name="volumeType", refs={String.class}, tree="[0]")
     private Output<String> volumeType;
 
     /**

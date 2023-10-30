@@ -42,9 +42,9 @@ public final class GetShareObjectPartition {
             return values(List.of(values));
         }
         public GetShareObjectPartition build() {
-            final var o = new GetShareObjectPartition();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetShareObjectPartition();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

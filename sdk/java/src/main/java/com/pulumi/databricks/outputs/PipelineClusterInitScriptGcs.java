@@ -40,9 +40,9 @@ public final class PipelineClusterInitScriptGcs {
             return this;
         }
         public PipelineClusterInitScriptGcs build() {
-            final var o = new PipelineClusterInitScriptGcs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new PipelineClusterInitScriptGcs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

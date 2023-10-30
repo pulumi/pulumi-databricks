@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsTaskNewClusterAutoscale {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNewClusterAutoscale build() {
-            final var o = new GetJobJobSettingsSettingsTaskNewClusterAutoscale();
-            o.maxWorkers = maxWorkers;
-            o.minWorkers = minWorkers;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNewClusterAutoscale();
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.minWorkers = minWorkers;
+            return _resultValue;
         }
     }
 }

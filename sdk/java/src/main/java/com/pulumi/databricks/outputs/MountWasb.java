@@ -95,14 +95,14 @@ public final class MountWasb {
             return this;
         }
         public MountWasb build() {
-            final var o = new MountWasb();
-            o.authType = authType;
-            o.containerName = containerName;
-            o.directory = directory;
-            o.storageAccountName = storageAccountName;
-            o.tokenSecretKey = tokenSecretKey;
-            o.tokenSecretScope = tokenSecretScope;
-            return o;
+            final var _resultValue = new MountWasb();
+            _resultValue.authType = authType;
+            _resultValue.containerName = containerName;
+            _resultValue.directory = directory;
+            _resultValue.storageAccountName = storageAccountName;
+            _resultValue.tokenSecretKey = tokenSecretKey;
+            _resultValue.tokenSecretScope = tokenSecretScope;
+            return _resultValue;
         }
     }
 }

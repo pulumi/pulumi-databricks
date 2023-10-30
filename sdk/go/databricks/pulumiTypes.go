@@ -165,6 +165,136 @@ func (o AccessControlRuleSetGrantRuleArrayOutput) Index(i pulumi.IntInput) Acces
 	}).(AccessControlRuleSetGrantRuleOutput)
 }
 
+type ArtifactAllowlistArtifactMatcher struct {
+	// The artifact path or maven coordinate.
+	Artifact string `pulumi:"artifact"`
+	// The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+	MatchType string `pulumi:"matchType"`
+}
+
+// ArtifactAllowlistArtifactMatcherInput is an input type that accepts ArtifactAllowlistArtifactMatcherArgs and ArtifactAllowlistArtifactMatcherOutput values.
+// You can construct a concrete instance of `ArtifactAllowlistArtifactMatcherInput` via:
+//
+//	ArtifactAllowlistArtifactMatcherArgs{...}
+type ArtifactAllowlistArtifactMatcherInput interface {
+	pulumi.Input
+
+	ToArtifactAllowlistArtifactMatcherOutput() ArtifactAllowlistArtifactMatcherOutput
+	ToArtifactAllowlistArtifactMatcherOutputWithContext(context.Context) ArtifactAllowlistArtifactMatcherOutput
+}
+
+type ArtifactAllowlistArtifactMatcherArgs struct {
+	// The artifact path or maven coordinate.
+	Artifact pulumi.StringInput `pulumi:"artifact"`
+	// The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+}
+
+func (ArtifactAllowlistArtifactMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactAllowlistArtifactMatcher)(nil)).Elem()
+}
+
+func (i ArtifactAllowlistArtifactMatcherArgs) ToArtifactAllowlistArtifactMatcherOutput() ArtifactAllowlistArtifactMatcherOutput {
+	return i.ToArtifactAllowlistArtifactMatcherOutputWithContext(context.Background())
+}
+
+func (i ArtifactAllowlistArtifactMatcherArgs) ToArtifactAllowlistArtifactMatcherOutputWithContext(ctx context.Context) ArtifactAllowlistArtifactMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactAllowlistArtifactMatcherOutput)
+}
+
+func (i ArtifactAllowlistArtifactMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[ArtifactAllowlistArtifactMatcher] {
+	return pulumix.Output[ArtifactAllowlistArtifactMatcher]{
+		OutputState: i.ToArtifactAllowlistArtifactMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ArtifactAllowlistArtifactMatcherArrayInput is an input type that accepts ArtifactAllowlistArtifactMatcherArray and ArtifactAllowlistArtifactMatcherArrayOutput values.
+// You can construct a concrete instance of `ArtifactAllowlistArtifactMatcherArrayInput` via:
+//
+//	ArtifactAllowlistArtifactMatcherArray{ ArtifactAllowlistArtifactMatcherArgs{...} }
+type ArtifactAllowlistArtifactMatcherArrayInput interface {
+	pulumi.Input
+
+	ToArtifactAllowlistArtifactMatcherArrayOutput() ArtifactAllowlistArtifactMatcherArrayOutput
+	ToArtifactAllowlistArtifactMatcherArrayOutputWithContext(context.Context) ArtifactAllowlistArtifactMatcherArrayOutput
+}
+
+type ArtifactAllowlistArtifactMatcherArray []ArtifactAllowlistArtifactMatcherInput
+
+func (ArtifactAllowlistArtifactMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactAllowlistArtifactMatcher)(nil)).Elem()
+}
+
+func (i ArtifactAllowlistArtifactMatcherArray) ToArtifactAllowlistArtifactMatcherArrayOutput() ArtifactAllowlistArtifactMatcherArrayOutput {
+	return i.ToArtifactAllowlistArtifactMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i ArtifactAllowlistArtifactMatcherArray) ToArtifactAllowlistArtifactMatcherArrayOutputWithContext(ctx context.Context) ArtifactAllowlistArtifactMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactAllowlistArtifactMatcherArrayOutput)
+}
+
+func (i ArtifactAllowlistArtifactMatcherArray) ToOutput(ctx context.Context) pulumix.Output[[]ArtifactAllowlistArtifactMatcher] {
+	return pulumix.Output[[]ArtifactAllowlistArtifactMatcher]{
+		OutputState: i.ToArtifactAllowlistArtifactMatcherArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ArtifactAllowlistArtifactMatcherOutput struct{ *pulumi.OutputState }
+
+func (ArtifactAllowlistArtifactMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactAllowlistArtifactMatcher)(nil)).Elem()
+}
+
+func (o ArtifactAllowlistArtifactMatcherOutput) ToArtifactAllowlistArtifactMatcherOutput() ArtifactAllowlistArtifactMatcherOutput {
+	return o
+}
+
+func (o ArtifactAllowlistArtifactMatcherOutput) ToArtifactAllowlistArtifactMatcherOutputWithContext(ctx context.Context) ArtifactAllowlistArtifactMatcherOutput {
+	return o
+}
+
+func (o ArtifactAllowlistArtifactMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactAllowlistArtifactMatcher] {
+	return pulumix.Output[ArtifactAllowlistArtifactMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The artifact path or maven coordinate.
+func (o ArtifactAllowlistArtifactMatcherOutput) Artifact() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactAllowlistArtifactMatcher) string { return v.Artifact }).(pulumi.StringOutput)
+}
+
+// The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+func (o ArtifactAllowlistArtifactMatcherOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactAllowlistArtifactMatcher) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+type ArtifactAllowlistArtifactMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (ArtifactAllowlistArtifactMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactAllowlistArtifactMatcher)(nil)).Elem()
+}
+
+func (o ArtifactAllowlistArtifactMatcherArrayOutput) ToArtifactAllowlistArtifactMatcherArrayOutput() ArtifactAllowlistArtifactMatcherArrayOutput {
+	return o
+}
+
+func (o ArtifactAllowlistArtifactMatcherArrayOutput) ToArtifactAllowlistArtifactMatcherArrayOutputWithContext(ctx context.Context) ArtifactAllowlistArtifactMatcherArrayOutput {
+	return o
+}
+
+func (o ArtifactAllowlistArtifactMatcherArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArtifactAllowlistArtifactMatcher] {
+	return pulumix.Output[[]ArtifactAllowlistArtifactMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ArtifactAllowlistArtifactMatcherArrayOutput) Index(i pulumi.IntInput) ArtifactAllowlistArtifactMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArtifactAllowlistArtifactMatcher {
+		return vs[0].([]ArtifactAllowlistArtifactMatcher)[vs[1].(int)]
+	}).(ArtifactAllowlistArtifactMatcherOutput)
+}
+
 type ClusterAutoscale struct {
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	MinWorkers *int `pulumi:"minWorkers"`
@@ -7542,6 +7672,178 @@ func (o JobDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobDeployment struct {
+	Kind             string  `pulumi:"kind"`
+	MetadataFilePath *string `pulumi:"metadataFilePath"`
+}
+
+// JobDeploymentInput is an input type that accepts JobDeploymentArgs and JobDeploymentOutput values.
+// You can construct a concrete instance of `JobDeploymentInput` via:
+//
+//	JobDeploymentArgs{...}
+type JobDeploymentInput interface {
+	pulumi.Input
+
+	ToJobDeploymentOutput() JobDeploymentOutput
+	ToJobDeploymentOutputWithContext(context.Context) JobDeploymentOutput
+}
+
+type JobDeploymentArgs struct {
+	Kind             pulumi.StringInput    `pulumi:"kind"`
+	MetadataFilePath pulumi.StringPtrInput `pulumi:"metadataFilePath"`
+}
+
+func (JobDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDeployment)(nil)).Elem()
+}
+
+func (i JobDeploymentArgs) ToJobDeploymentOutput() JobDeploymentOutput {
+	return i.ToJobDeploymentOutputWithContext(context.Background())
+}
+
+func (i JobDeploymentArgs) ToJobDeploymentOutputWithContext(ctx context.Context) JobDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDeploymentOutput)
+}
+
+func (i JobDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[JobDeployment] {
+	return pulumix.Output[JobDeployment]{
+		OutputState: i.ToJobDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i JobDeploymentArgs) ToJobDeploymentPtrOutput() JobDeploymentPtrOutput {
+	return i.ToJobDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i JobDeploymentArgs) ToJobDeploymentPtrOutputWithContext(ctx context.Context) JobDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDeploymentOutput).ToJobDeploymentPtrOutputWithContext(ctx)
+}
+
+// JobDeploymentPtrInput is an input type that accepts JobDeploymentArgs, JobDeploymentPtr and JobDeploymentPtrOutput values.
+// You can construct a concrete instance of `JobDeploymentPtrInput` via:
+//
+//	        JobDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToJobDeploymentPtrOutput() JobDeploymentPtrOutput
+	ToJobDeploymentPtrOutputWithContext(context.Context) JobDeploymentPtrOutput
+}
+
+type jobDeploymentPtrType JobDeploymentArgs
+
+func JobDeploymentPtr(v *JobDeploymentArgs) JobDeploymentPtrInput {
+	return (*jobDeploymentPtrType)(v)
+}
+
+func (*jobDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDeployment)(nil)).Elem()
+}
+
+func (i *jobDeploymentPtrType) ToJobDeploymentPtrOutput() JobDeploymentPtrOutput {
+	return i.ToJobDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *jobDeploymentPtrType) ToJobDeploymentPtrOutputWithContext(ctx context.Context) JobDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDeploymentPtrOutput)
+}
+
+func (i *jobDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobDeployment] {
+	return pulumix.Output[*JobDeployment]{
+		OutputState: i.ToJobDeploymentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type JobDeploymentOutput struct{ *pulumi.OutputState }
+
+func (JobDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDeployment)(nil)).Elem()
+}
+
+func (o JobDeploymentOutput) ToJobDeploymentOutput() JobDeploymentOutput {
+	return o
+}
+
+func (o JobDeploymentOutput) ToJobDeploymentOutputWithContext(ctx context.Context) JobDeploymentOutput {
+	return o
+}
+
+func (o JobDeploymentOutput) ToJobDeploymentPtrOutput() JobDeploymentPtrOutput {
+	return o.ToJobDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o JobDeploymentOutput) ToJobDeploymentPtrOutputWithContext(ctx context.Context) JobDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobDeployment) *JobDeployment {
+		return &v
+	}).(JobDeploymentPtrOutput)
+}
+
+func (o JobDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[JobDeployment] {
+	return pulumix.Output[JobDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JobDeploymentOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v JobDeployment) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o JobDeploymentOutput) MetadataFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobDeployment) *string { return v.MetadataFilePath }).(pulumi.StringPtrOutput)
+}
+
+type JobDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (JobDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDeployment)(nil)).Elem()
+}
+
+func (o JobDeploymentPtrOutput) ToJobDeploymentPtrOutput() JobDeploymentPtrOutput {
+	return o
+}
+
+func (o JobDeploymentPtrOutput) ToJobDeploymentPtrOutputWithContext(ctx context.Context) JobDeploymentPtrOutput {
+	return o
+}
+
+func (o JobDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobDeployment] {
+	return pulumix.Output[*JobDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JobDeploymentPtrOutput) Elem() JobDeploymentOutput {
+	return o.ApplyT(func(v *JobDeployment) JobDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret JobDeployment
+		return ret
+	}).(JobDeploymentOutput)
+}
+
+func (o JobDeploymentPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFilePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -56732,6 +57034,7 @@ type GetJobJobSettingsSettings struct {
 	Computes               []GetJobJobSettingsSettingsCompute           `pulumi:"computes"`
 	Continuous             *GetJobJobSettingsSettingsContinuous         `pulumi:"continuous"`
 	DbtTask                *GetJobJobSettingsSettingsDbtTask            `pulumi:"dbtTask"`
+	Deployment             *GetJobJobSettingsSettingsDeployment         `pulumi:"deployment"`
 	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId      *string                                      `pulumi:"existingClusterId"`
 	Format                 string                                       `pulumi:"format"`
@@ -56780,6 +57083,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	Computes               GetJobJobSettingsSettingsComputeArrayInput          `pulumi:"computes"`
 	Continuous             GetJobJobSettingsSettingsContinuousPtrInput         `pulumi:"continuous"`
 	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput            `pulumi:"dbtTask"`
+	Deployment             GetJobJobSettingsSettingsDeploymentPtrInput         `pulumi:"deployment"`
 	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId      pulumi.StringPtrInput                               `pulumi:"existingClusterId"`
 	Format                 pulumi.StringInput                                  `pulumi:"format"`
@@ -56918,6 +57222,10 @@ func (o GetJobJobSettingsSettingsOutput) Continuous() GetJobJobSettingsSettingsC
 
 func (o GetJobJobSettingsSettingsOutput) DbtTask() GetJobJobSettingsSettingsDbtTaskPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsDbtTask { return v.DbtTask }).(GetJobJobSettingsSettingsDbtTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) Deployment() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsDeployment { return v.Deployment }).(GetJobJobSettingsSettingsDeploymentPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) EmailNotifications() GetJobJobSettingsSettingsEmailNotificationsPtrOutput {
@@ -57102,6 +57410,15 @@ func (o GetJobJobSettingsSettingsPtrOutput) DbtTask() GetJobJobSettingsSettingsD
 		}
 		return v.DbtTask
 	}).(GetJobJobSettingsSettingsDbtTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Deployment() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *GetJobJobSettingsSettingsDeployment {
+		if v == nil {
+			return nil
+		}
+		return v.Deployment
+	}).(GetJobJobSettingsSettingsDeploymentPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) EmailNotifications() GetJobJobSettingsSettingsEmailNotificationsPtrOutput {
@@ -58042,6 +58359,178 @@ func (o GetJobJobSettingsSettingsDbtTaskPtrOutput) WarehouseId() pulumi.StringPt
 			return nil
 		}
 		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsDeployment struct {
+	Kind             string  `pulumi:"kind"`
+	MetadataFilePath *string `pulumi:"metadataFilePath"`
+}
+
+// GetJobJobSettingsSettingsDeploymentInput is an input type that accepts GetJobJobSettingsSettingsDeploymentArgs and GetJobJobSettingsSettingsDeploymentOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsDeploymentInput` via:
+//
+//	GetJobJobSettingsSettingsDeploymentArgs{...}
+type GetJobJobSettingsSettingsDeploymentInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsDeploymentOutput() GetJobJobSettingsSettingsDeploymentOutput
+	ToGetJobJobSettingsSettingsDeploymentOutputWithContext(context.Context) GetJobJobSettingsSettingsDeploymentOutput
+}
+
+type GetJobJobSettingsSettingsDeploymentArgs struct {
+	Kind             pulumi.StringInput    `pulumi:"kind"`
+	MetadataFilePath pulumi.StringPtrInput `pulumi:"metadataFilePath"`
+}
+
+func (GetJobJobSettingsSettingsDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsDeployment)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsDeploymentArgs) ToGetJobJobSettingsSettingsDeploymentOutput() GetJobJobSettingsSettingsDeploymentOutput {
+	return i.ToGetJobJobSettingsSettingsDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsDeploymentArgs) ToGetJobJobSettingsSettingsDeploymentOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsDeploymentOutput)
+}
+
+func (i GetJobJobSettingsSettingsDeploymentArgs) ToOutput(ctx context.Context) pulumix.Output[GetJobJobSettingsSettingsDeployment] {
+	return pulumix.Output[GetJobJobSettingsSettingsDeployment]{
+		OutputState: i.ToGetJobJobSettingsSettingsDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i GetJobJobSettingsSettingsDeploymentArgs) ToGetJobJobSettingsSettingsDeploymentPtrOutput() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return i.ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsDeploymentArgs) ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsDeploymentOutput).ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsDeploymentPtrInput is an input type that accepts GetJobJobSettingsSettingsDeploymentArgs, GetJobJobSettingsSettingsDeploymentPtr and GetJobJobSettingsSettingsDeploymentPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsDeploymentPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsDeploymentPtrOutput() GetJobJobSettingsSettingsDeploymentPtrOutput
+	ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsDeploymentPtrOutput
+}
+
+type getJobJobSettingsSettingsDeploymentPtrType GetJobJobSettingsSettingsDeploymentArgs
+
+func GetJobJobSettingsSettingsDeploymentPtr(v *GetJobJobSettingsSettingsDeploymentArgs) GetJobJobSettingsSettingsDeploymentPtrInput {
+	return (*getJobJobSettingsSettingsDeploymentPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsDeployment)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsDeploymentPtrType) ToGetJobJobSettingsSettingsDeploymentPtrOutput() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return i.ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsDeploymentPtrType) ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsDeploymentPtrOutput)
+}
+
+func (i *getJobJobSettingsSettingsDeploymentPtrType) ToOutput(ctx context.Context) pulumix.Output[*GetJobJobSettingsSettingsDeployment] {
+	return pulumix.Output[*GetJobJobSettingsSettingsDeployment]{
+		OutputState: i.ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetJobJobSettingsSettingsDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsDeployment)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) ToGetJobJobSettingsSettingsDeploymentOutput() GetJobJobSettingsSettingsDeploymentOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) ToGetJobJobSettingsSettingsDeploymentOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) ToGetJobJobSettingsSettingsDeploymentPtrOutput() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o.ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsDeployment) *GetJobJobSettingsSettingsDeployment {
+		return &v
+	}).(GetJobJobSettingsSettingsDeploymentPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[GetJobJobSettingsSettingsDeployment] {
+	return pulumix.Output[GetJobJobSettingsSettingsDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsDeployment) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsDeploymentOutput) MetadataFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsDeployment) *string { return v.MetadataFilePath }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsDeployment)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) ToGetJobJobSettingsSettingsDeploymentPtrOutput() GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) ToGetJobJobSettingsSettingsDeploymentPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsDeploymentPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetJobJobSettingsSettingsDeployment] {
+	return pulumix.Output[*GetJobJobSettingsSettingsDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) Elem() GetJobJobSettingsSettingsDeploymentOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsDeployment) GetJobJobSettingsSettingsDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsDeployment
+		return ret
+	}).(GetJobJobSettingsSettingsDeploymentOutput)
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFilePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -82128,6 +82617,8 @@ func (o GetSqlWarehouseTagsCustomTagArrayOutput) Index(i pulumi.IntInput) GetSql
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlRuleSetGrantRuleArrayInput)(nil)).Elem(), AccessControlRuleSetGrantRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactAllowlistArtifactMatcherInput)(nil)).Elem(), ArtifactAllowlistArtifactMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactAllowlistArtifactMatcherArrayInput)(nil)).Elem(), ArtifactAllowlistArtifactMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscaleInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalePtrInput)(nil)).Elem(), ClusterAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAwsAttributesInput)(nil)).Elem(), ClusterAwsAttributesArgs{})
@@ -82213,6 +82704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobContinuousPtrInput)(nil)).Elem(), JobContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskInput)(nil)).Elem(), JobDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobDbtTaskPtrInput)(nil)).Elem(), JobDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobDeploymentInput)(nil)).Elem(), JobDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobDeploymentPtrInput)(nil)).Elem(), JobDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsInput)(nil)).Elem(), JobEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobEmailNotificationsPtrInput)(nil)).Elem(), JobEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobGitSourceInput)(nil)).Elem(), JobGitSourceArgs{})
@@ -82736,6 +83229,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsContinuousPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsContinuousArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsDbtTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDbtTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDeploymentInput)(nil)).Elem(), GetJobJobSettingsSettingsDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsDeploymentPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsEmailNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsEmailNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsEmailNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsGitSourceInput)(nil)).Elem(), GetJobJobSettingsSettingsGitSourceArgs{})
@@ -82995,6 +83490,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsCustomTagArrayInput)(nil)).Elem(), GetSqlWarehouseTagsCustomTagArray{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleOutput{})
 	pulumi.RegisterOutputType(AccessControlRuleSetGrantRuleArrayOutput{})
+	pulumi.RegisterOutputType(ArtifactAllowlistArtifactMatcherOutput{})
+	pulumi.RegisterOutputType(ArtifactAllowlistArtifactMatcherArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscaleOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAwsAttributesOutput{})
@@ -83080,6 +83577,8 @@ func init() {
 	pulumi.RegisterOutputType(JobContinuousPtrOutput{})
 	pulumi.RegisterOutputType(JobDbtTaskOutput{})
 	pulumi.RegisterOutputType(JobDbtTaskPtrOutput{})
+	pulumi.RegisterOutputType(JobDeploymentOutput{})
+	pulumi.RegisterOutputType(JobDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(JobEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(JobEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(JobGitSourceOutput{})
@@ -83603,6 +84102,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsContinuousPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDbtTaskOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDbtTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDeploymentOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsEmailNotificationsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsEmailNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsGitSourceOutput{})

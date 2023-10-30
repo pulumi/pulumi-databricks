@@ -43,9 +43,9 @@ public final class GetJobJobSettingsSettingsTaskSparkSubmitTask {
             return parameters(List.of(parameters));
         }
         public GetJobJobSettingsSettingsTaskSparkSubmitTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskSparkSubmitTask();
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSparkSubmitTask();
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

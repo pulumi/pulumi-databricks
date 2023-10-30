@@ -118,16 +118,16 @@ public final class ClusterAwsAttributes {
             return this;
         }
         public ClusterAwsAttributes build() {
-            final var o = new ClusterAwsAttributes();
-            o.availability = availability;
-            o.ebsVolumeCount = ebsVolumeCount;
-            o.ebsVolumeSize = ebsVolumeSize;
-            o.ebsVolumeType = ebsVolumeType;
-            o.firstOnDemand = firstOnDemand;
-            o.instanceProfileArn = instanceProfileArn;
-            o.spotBidPricePercent = spotBidPricePercent;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new ClusterAwsAttributes();
+            _resultValue.availability = availability;
+            _resultValue.ebsVolumeCount = ebsVolumeCount;
+            _resultValue.ebsVolumeSize = ebsVolumeSize;
+            _resultValue.ebsVolumeType = ebsVolumeType;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.spotBidPricePercent = spotBidPricePercent;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

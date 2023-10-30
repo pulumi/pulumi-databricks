@@ -81,12 +81,12 @@ public final class GetShareObjectPartitionValue {
             return this;
         }
         public GetShareObjectPartitionValue build() {
-            final var o = new GetShareObjectPartitionValue();
-            o.name = name;
-            o.op = op;
-            o.recipientPropertyKey = recipientPropertyKey;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetShareObjectPartitionValue();
+            _resultValue.name = name;
+            _resultValue.op = op;
+            _resultValue.recipientPropertyKey = recipientPropertyKey;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

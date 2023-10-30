@@ -62,11 +62,11 @@ public final class GetJobJobSettingsSettingsSchedule {
             return this;
         }
         public GetJobJobSettingsSettingsSchedule build() {
-            final var o = new GetJobJobSettingsSettingsSchedule();
-            o.pauseStatus = pauseStatus;
-            o.quartzCronExpression = quartzCronExpression;
-            o.timezoneId = timezoneId;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsSchedule();
+            _resultValue.pauseStatus = pauseStatus;
+            _resultValue.quartzCronExpression = quartzCronExpression;
+            _resultValue.timezoneId = timezoneId;
+            return _resultValue;
         }
     }
 }

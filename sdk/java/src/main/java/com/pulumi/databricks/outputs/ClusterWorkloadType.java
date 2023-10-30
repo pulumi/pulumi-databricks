@@ -38,9 +38,9 @@ public final class ClusterWorkloadType {
             return this;
         }
         public ClusterWorkloadType build() {
-            final var o = new ClusterWorkloadType();
-            o.clients = clients;
-            return o;
+            final var _resultValue = new ClusterWorkloadType();
+            _resultValue.clients = clients;
+            return _resultValue;
         }
     }
 }

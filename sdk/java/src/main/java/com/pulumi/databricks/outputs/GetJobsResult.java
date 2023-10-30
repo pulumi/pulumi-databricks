@@ -67,10 +67,10 @@ public final class GetJobsResult {
             return this;
         }
         public GetJobsResult build() {
-            final var o = new GetJobsResult();
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetJobsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
+ *         privileges: ["CREATE_EXTERNAL_TABLE"],
  *     }],
  * });
  * ```
@@ -51,7 +51,7 @@ import * as utilities from "./utilities";
  *     storageCredential: databricks_storage_credential.external.id,
  *     grants: [{
  *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
+ *         privileges: ["CREATE_EXTERNAL_TABLE"],
  *     }],
  * });
  * ```
@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",
- *         privileges: ["CREATE_TABLE"],
+ *         privileges: ["CREATE_EXTERNAL_TABLE"],
  *     }],
  * });
  * ```

@@ -240,7 +240,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
      * 
      */
-    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    @Export(name="aclPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipalId;
 
     /**
@@ -254,7 +254,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> active;
 
     /**
@@ -268,7 +268,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
-    @Export(name="allowClusterCreate", type=Boolean.class, parameters={})
+    @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
@@ -282,7 +282,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
-    @Export(name="allowInstancePoolCreate", type=Boolean.class, parameters={})
+    @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
@@ -296,7 +296,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
      * 
      */
-    @Export(name="databricksSqlAccess", type=Boolean.class, parameters={})
+    @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
@@ -310,7 +310,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
      * 
      */
-    @Export(name="disableAsUserDeletion", type=Boolean.class, parameters={})
+    @Export(name="disableAsUserDeletion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAsUserDeletion;
 
     /**
@@ -324,7 +324,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This is an alias for the username that can be the full name of the user.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -338,7 +338,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * ID of the user in an external identity provider.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
@@ -348,7 +348,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     public Output<Optional<Boolean>> force() {
@@ -358,7 +358,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This flag determines whether the user&#39;s home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
      * 
      */
-    @Export(name="forceDeleteHomeDir", type=Boolean.class, parameters={})
+    @Export(name="forceDeleteHomeDir", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteHomeDir;
 
     /**
@@ -372,7 +372,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This flag determines whether the user&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      * 
      */
-    @Export(name="forceDeleteRepos", type=Boolean.class, parameters={})
+    @Export(name="forceDeleteRepos", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteRepos;
 
     /**
@@ -386,7 +386,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      * 
      */
-    @Export(name="home", type=String.class, parameters={})
+    @Export(name="home", refs={String.class}, tree="[0]")
     private Output<String> home;
 
     /**
@@ -400,7 +400,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      * 
      */
-    @Export(name="repos", type=String.class, parameters={})
+    @Export(name="repos", refs={String.class}, tree="[0]")
     private Output<String> repos;
 
     /**
@@ -414,7 +414,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
@@ -424,7 +424,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> userName() {
         return this.userName;
     }
-    @Export(name="workspaceAccess", type=Boolean.class, parameters={})
+    @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     public Output<Optional<Boolean>> workspaceAccess() {

@@ -46,9 +46,9 @@ public final class MwsWorkspacesCloudResourceContainerGcp {
             return this;
         }
         public MwsWorkspacesCloudResourceContainerGcp build() {
-            final var o = new MwsWorkspacesCloudResourceContainerGcp();
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new MwsWorkspacesCloudResourceContainerGcp();
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

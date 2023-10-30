@@ -38,9 +38,9 @@ public final class ClusterClusterLogConfDbfs {
             return this;
         }
         public ClusterClusterLogConfDbfs build() {
-            final var o = new ClusterClusterLogConfDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterClusterLogConfDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -116,37 +116,37 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlDashboard:SqlDashboard")
 public class SqlDashboard extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="dashboardFiltersEnabled", type=Boolean.class, parameters={})
+    @Export(name="dashboardFiltersEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dashboardFiltersEnabled;
 
     public Output<Optional<Boolean>> dashboardFiltersEnabled() {
         return Codegen.optional(this.dashboardFiltersEnabled);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {

@@ -87,11 +87,11 @@ public final class JobTriggerFileArrival {
             return this;
         }
         public JobTriggerFileArrival build() {
-            final var o = new JobTriggerFileArrival();
-            o.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
-            o.url = url;
-            o.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
-            return o;
+            final var _resultValue = new JobTriggerFileArrival();
+            _resultValue.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
+            _resultValue.url = url;
+            _resultValue.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
+            return _resultValue;
         }
     }
 }

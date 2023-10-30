@@ -40,9 +40,9 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss 
             return this;
         }
         public GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss build() {
-            final var o = new GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

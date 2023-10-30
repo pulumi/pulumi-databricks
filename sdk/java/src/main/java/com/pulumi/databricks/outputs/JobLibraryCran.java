@@ -51,10 +51,10 @@ public final class JobLibraryCran {
             return this;
         }
         public JobLibraryCran build() {
-            final var o = new JobLibraryCran();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new JobLibraryCran();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

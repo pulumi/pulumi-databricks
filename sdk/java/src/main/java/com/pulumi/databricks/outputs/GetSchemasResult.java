@@ -80,11 +80,11 @@ public final class GetSchemasResult {
             return ids(List.of(ids));
         }
         public GetSchemasResult build() {
-            final var o = new GetSchemasResult();
-            o.catalogName = catalogName;
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetSchemasResult();
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

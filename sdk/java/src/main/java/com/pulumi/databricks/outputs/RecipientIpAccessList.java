@@ -50,9 +50,9 @@ public final class RecipientIpAccessList {
             return allowedIpAddresses(List.of(allowedIpAddresses));
         }
         public RecipientIpAccessList build() {
-            final var o = new RecipientIpAccessList();
-            o.allowedIpAddresses = allowedIpAddresses;
-            return o;
+            final var _resultValue = new RecipientIpAccessList();
+            _resultValue.allowedIpAddresses = allowedIpAddresses;
+            return _resultValue;
         }
     }
 }

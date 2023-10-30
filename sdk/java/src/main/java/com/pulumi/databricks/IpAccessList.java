@@ -90,7 +90,7 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -104,7 +104,7 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      * A string list of IP addresses and CIDR ranges.
      * 
      */
-    @Export(name="ipAddresses", type=List.class, parameters={String.class})
+    @Export(name="ipAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipAddresses;
 
     /**
@@ -118,7 +118,7 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      * This is the display name for the given IP ACL List.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -132,7 +132,7 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      * Can only be &#34;ALLOW&#34; or &#34;BLOCK&#34;.
      * 
      */
-    @Export(name="listType", type=String.class, parameters={})
+    @Export(name="listType", refs={String.class}, tree="[0]")
     private Output<String> listType;
 
     /**

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
 		r = &AccessControlRuleSet{}
+	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
+		r = &ArtifactAllowlist{}
 	case "databricks:index/catalog:Catalog":
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
@@ -205,6 +207,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accessControlRuleSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/artifactAllowlist",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

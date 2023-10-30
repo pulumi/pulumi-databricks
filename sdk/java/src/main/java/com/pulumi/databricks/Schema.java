@@ -84,7 +84,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Name of parent catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -98,7 +98,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * User-supplied free-form text.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -112,7 +112,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Delete schema regardless of its contents.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -122,7 +122,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -132,7 +132,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -146,7 +146,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the schema owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -160,7 +160,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Extensible Schema properties.
      * 
      */
-    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> properties;
 
     /**
@@ -174,7 +174,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
-    @Export(name="storageRoot", type=String.class, parameters={})
+    @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
     /**

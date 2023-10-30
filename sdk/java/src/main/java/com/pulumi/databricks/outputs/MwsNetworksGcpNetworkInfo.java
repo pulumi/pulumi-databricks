@@ -141,14 +141,14 @@ public final class MwsNetworksGcpNetworkInfo {
             return this;
         }
         public MwsNetworksGcpNetworkInfo build() {
-            final var o = new MwsNetworksGcpNetworkInfo();
-            o.networkProjectId = networkProjectId;
-            o.podIpRangeName = podIpRangeName;
-            o.serviceIpRangeName = serviceIpRangeName;
-            o.subnetId = subnetId;
-            o.subnetRegion = subnetRegion;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new MwsNetworksGcpNetworkInfo();
+            _resultValue.networkProjectId = networkProjectId;
+            _resultValue.podIpRangeName = podIpRangeName;
+            _resultValue.serviceIpRangeName = serviceIpRangeName;
+            _resultValue.subnetId = subnetId;
+            _resultValue.subnetRegion = subnetRegion;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

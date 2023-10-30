@@ -51,10 +51,10 @@ public final class MountGs {
             return this;
         }
         public MountGs build() {
-            final var o = new MountGs();
-            o.bucketName = bucketName;
-            o.serviceAccount = serviceAccount;
-            return o;
+            final var _resultValue = new MountGs();
+            _resultValue.bucketName = bucketName;
+            _resultValue.serviceAccount = serviceAccount;
+            return _resultValue;
         }
     }
 }

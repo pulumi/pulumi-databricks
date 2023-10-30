@@ -50,9 +50,9 @@ public final class JobTaskHealth {
             return rules(List.of(rules));
         }
         public JobTaskHealth build() {
-            final var o = new JobTaskHealth();
-            o.rules = rules;
-            return o;
+            final var _resultValue = new JobTaskHealth();
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

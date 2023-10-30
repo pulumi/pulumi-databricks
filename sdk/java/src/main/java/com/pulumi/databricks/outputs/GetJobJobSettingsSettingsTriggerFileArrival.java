@@ -63,11 +63,11 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival {
             return this;
         }
         public GetJobJobSettingsSettingsTriggerFileArrival build() {
-            final var o = new GetJobJobSettingsSettingsTriggerFileArrival();
-            o.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
-            o.url = url;
-            o.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTriggerFileArrival();
+            _resultValue.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
+            _resultValue.url = url;
+            _resultValue.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
+            return _resultValue;
         }
     }
 }

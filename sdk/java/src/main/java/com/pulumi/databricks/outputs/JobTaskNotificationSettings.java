@@ -86,11 +86,11 @@ public final class JobTaskNotificationSettings {
             return this;
         }
         public JobTaskNotificationSettings build() {
-            final var o = new JobTaskNotificationSettings();
-            o.alertOnLastAttempt = alertOnLastAttempt;
-            o.noAlertForCanceledRuns = noAlertForCanceledRuns;
-            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return o;
+            final var _resultValue = new JobTaskNotificationSettings();
+            _resultValue.alertOnLastAttempt = alertOnLastAttempt;
+            _resultValue.noAlertForCanceledRuns = noAlertForCanceledRuns;
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return _resultValue;
         }
     }
 }

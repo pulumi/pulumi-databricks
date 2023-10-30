@@ -72,10 +72,10 @@ public final class ModelServingConfig {
             return this;
         }
         public ModelServingConfig build() {
-            final var o = new ModelServingConfig();
-            o.servedModels = servedModels;
-            o.trafficConfig = trafficConfig;
-            return o;
+            final var _resultValue = new ModelServingConfig();
+            _resultValue.servedModels = servedModels;
+            _resultValue.trafficConfig = trafficConfig;
+            return _resultValue;
         }
     }
 }

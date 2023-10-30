@@ -93,12 +93,12 @@ public final class GetDbfsFilePathsResult {
             return this;
         }
         public GetDbfsFilePathsResult build() {
-            final var o = new GetDbfsFilePathsResult();
-            o.id = id;
-            o.path = path;
-            o.pathLists = pathLists;
-            o.recursive = recursive;
-            return o;
+            final var _resultValue = new GetDbfsFilePathsResult();
+            _resultValue.id = id;
+            _resultValue.path = path;
+            _resultValue.pathLists = pathLists;
+            _resultValue.recursive = recursive;
+            return _resultValue;
         }
     }
 }

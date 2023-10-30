@@ -66,7 +66,7 @@ public class WorkspaceConf extends com.pulumi.resources.CustomResource {
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      * 
      */
-    @Export(name="customConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="customConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> customConfig;
 
     /**

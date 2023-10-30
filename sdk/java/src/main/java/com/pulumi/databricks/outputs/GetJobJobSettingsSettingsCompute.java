@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsCompute {
             return this;
         }
         public GetJobJobSettingsSettingsCompute build() {
-            final var o = new GetJobJobSettingsSettingsCompute();
-            o.computeKey = computeKey;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsCompute();
+            _resultValue.computeKey = computeKey;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

@@ -63,11 +63,11 @@ public final class JobTaskNewClusterClusterMountInfo {
             return this;
         }
         public JobTaskNewClusterClusterMountInfo build() {
-            final var o = new JobTaskNewClusterClusterMountInfo();
-            o.localMountDirPath = localMountDirPath;
-            o.networkFilesystemInfo = networkFilesystemInfo;
-            o.remoteMountDirPath = remoteMountDirPath;
-            return o;
+            final var _resultValue = new JobTaskNewClusterClusterMountInfo();
+            _resultValue.localMountDirPath = localMountDirPath;
+            _resultValue.networkFilesystemInfo = networkFilesystemInfo;
+            _resultValue.remoteMountDirPath = remoteMountDirPath;
+            return _resultValue;
         }
     }
 }

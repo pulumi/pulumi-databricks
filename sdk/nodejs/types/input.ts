@@ -23,6 +23,17 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface ArtifactAllowlistArtifactMatcher {
+    /**
+     * The artifact path or maven coordinate.
+     */
+    artifact: pulumi.Input<string>;
+    /**
+     * The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+     */
+    matchType: pulumi.Input<string>;
+}
+
 export interface ClusterAutoscale {
     maxWorkers?: pulumi.Input<number>;
     minWorkers?: pulumi.Input<number>;
@@ -865,6 +876,7 @@ export interface GetJobJobSettingsSettings {
     computes?: inputs.GetJobJobSettingsSettingsCompute[];
     continuous?: inputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: inputs.GetJobJobSettingsSettingsDbtTask;
+    deployment?: inputs.GetJobJobSettingsSettingsDeployment;
     emailNotifications?: inputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
     format?: string;
@@ -904,6 +916,7 @@ export interface GetJobJobSettingsSettingsArgs {
     computes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsComputeArgs>[]>;
     continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
+    deployment?: pulumi.Input<inputs.GetJobJobSettingsSettingsDeploymentArgs>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
@@ -981,6 +994,16 @@ export interface GetJobJobSettingsSettingsDbtTaskArgs {
     projectDirectory?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsDeployment {
+    kind: string;
+    metadataFilePath?: string;
+}
+
+export interface GetJobJobSettingsSettingsDeploymentArgs {
+    kind: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
@@ -2974,6 +2997,11 @@ export interface JobDbtTask {
      * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
     warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobDeployment {
+    kind: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string>;
 }
 
 export interface JobEmailNotifications {

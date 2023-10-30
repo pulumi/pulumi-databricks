@@ -52,10 +52,10 @@ public final class ClusterClusterLogConf {
             return this;
         }
         public ClusterClusterLogConf build() {
-            final var o = new ClusterClusterLogConf();
-            o.dbfs = dbfs;
-            o.s3 = s3;
-            return o;
+            final var _resultValue = new ClusterClusterLogConf();
+            _resultValue.dbfs = dbfs;
+            _resultValue.s3 = s3;
+            return _resultValue;
         }
     }
 }

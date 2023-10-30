@@ -96,12 +96,12 @@ public final class GetClusterResult {
             return this;
         }
         public GetClusterResult build() {
-            final var o = new GetClusterResult();
-            o.clusterId = clusterId;
-            o.clusterInfo = clusterInfo;
-            o.clusterName = clusterName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetClusterResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterInfo = clusterInfo;
+            _resultValue.clusterName = clusterName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

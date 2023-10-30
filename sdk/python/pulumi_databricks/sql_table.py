@@ -20,32 +20,42 @@ class SqlTableArgs:
                  schema_name: pulumi.Input[str],
                  table_type: pulumi.Input[str],
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
-                 view_definition: Optional[pulumi.Input[str]] = None):
+                 view_definition: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SqlTable resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
         pulumi.set(__self__, "table_type", table_type)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_keys is not None:
+            pulumi.set(__self__, "cluster_keys", cluster_keys)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
         if comment is not None:
@@ -54,6 +64,10 @@ class SqlTableArgs:
             pulumi.set(__self__, "data_source_format", data_source_format)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if storage_credential_name is not None:
@@ -62,12 +76,14 @@ class SqlTableArgs:
             pulumi.set(__self__, "storage_location", storage_location)
         if view_definition is not None:
             pulumi.set(__self__, "view_definition", view_definition)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -79,7 +95,7 @@ class SqlTableArgs:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -107,6 +123,18 @@ class SqlTableArgs:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="clusterKeys")
+    def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        """
+        return pulumi.get(self, "cluster_keys")
+
+    @cluster_keys.setter
+    def cluster_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_keys", value)
 
     @property
     @pulumi.getter
@@ -155,9 +183,33 @@ class SqlTableArgs:
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of user defined table options. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Extensible Table properties.
+        Map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -169,7 +221,7 @@ class SqlTableArgs:
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -201,39 +253,61 @@ class SqlTableArgs:
     def view_definition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "view_definition", value)
 
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_id", value)
+
 
 @pulumi.input_type
 class _SqlTableState:
     def __init__(__self__, *,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  table_type: Optional[pulumi.Input[str]] = None,
-                 view_definition: Optional[pulumi.Input[str]] = None):
+                 view_definition: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SqlTable resources.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_keys is not None:
+            pulumi.set(__self__, "cluster_keys", cluster_keys)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
         if comment is not None:
@@ -242,6 +316,10 @@ class _SqlTableState:
             pulumi.set(__self__, "data_source_format", data_source_format)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if schema_name is not None:
@@ -254,12 +332,14 @@ class _SqlTableState:
             pulumi.set(__self__, "table_type", table_type)
         if view_definition is not None:
             pulumi.set(__self__, "view_definition", view_definition)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -275,6 +355,18 @@ class _SqlTableState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="clusterKeys")
+    def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        """
+        return pulumi.get(self, "cluster_keys")
+
+    @cluster_keys.setter
+    def cluster_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cluster_keys", value)
 
     @property
     @pulumi.getter
@@ -323,9 +415,33 @@ class _SqlTableState:
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of user defined table options. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Extensible Table properties.
+        Map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -337,7 +453,7 @@ class _SqlTableState:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -349,7 +465,7 @@ class _SqlTableState:
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> Optional[pulumi.Input[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -393,6 +509,18 @@ class _SqlTableState:
     def view_definition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "view_definition", value)
 
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warehouse_id", value)
+
 
 class SqlTable(pulumi.CustomResource):
     @overload
@@ -401,23 +529,27 @@ class SqlTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlTableColumnArgs']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  table_type: Optional[pulumi.Input[str]] = None,
                  view_definition: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables / views.
 
         A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
 
-        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation.
+        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
 
         ## Import
 
@@ -429,16 +561,20 @@ class SqlTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         ...
     @overload
@@ -451,7 +587,7 @@ class SqlTable(pulumi.CustomResource):
 
         A `SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
 
-        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation.
+        This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
 
         ## Import
 
@@ -478,16 +614,20 @@ class SqlTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlTableColumnArgs']]]]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  data_source_format: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_credential_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  table_type: Optional[pulumi.Input[str]] = None,
                  view_definition: Optional[pulumi.Input[str]] = None,
+                 warehouse_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,10 +641,13 @@ class SqlTable(pulumi.CustomResource):
                 raise TypeError("Missing required property 'catalog_name'")
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["cluster_keys"] = cluster_keys
             __props__.__dict__["columns"] = columns
             __props__.__dict__["comment"] = comment
             __props__.__dict__["data_source_format"] = data_source_format
             __props__.__dict__["name"] = name
+            __props__.__dict__["options"] = options
+            __props__.__dict__["partitions"] = partitions
             __props__.__dict__["properties"] = properties
             if schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_name'")
@@ -515,6 +658,7 @@ class SqlTable(pulumi.CustomResource):
                 raise TypeError("Missing required property 'table_type'")
             __props__.__dict__["table_type"] = table_type
             __props__.__dict__["view_definition"] = view_definition
+            __props__.__dict__["warehouse_id"] = warehouse_id
         super(SqlTable, __self__).__init__(
             'databricks:index/sqlTable:SqlTable',
             resource_name,
@@ -527,16 +671,20 @@ class SqlTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SqlTableColumnArgs']]]]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             data_source_format: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            options: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            partitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             schema_name: Optional[pulumi.Input[str]] = None,
             storage_credential_name: Optional[pulumi.Input[str]] = None,
             storage_location: Optional[pulumi.Input[str]] = None,
             table_type: Optional[pulumi.Input[str]] = None,
-            view_definition: Optional[pulumi.Input[str]] = None) -> 'SqlTable':
+            view_definition: Optional[pulumi.Input[str]] = None,
+            warehouse_id: Optional[pulumi.Input[str]] = None) -> 'SqlTable':
         """
         Get an existing SqlTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -544,16 +692,20 @@ class SqlTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of parent catalog
+        :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_keys: a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
         :param pulumi.Input[str] comment: User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
         :param pulumi.Input[str] data_source_format: External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         :param pulumi.Input[str] name: Name of table relative to parent catalog and schema. Change forces creation of a new resource.
-        :param pulumi.Input[Mapping[str, Any]] properties: Extensible Table properties.
-        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog
-        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        :param pulumi.Input[Mapping[str, Any]] options: Map of user defined table options. Change forces creation of a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] partitions: a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        :param pulumi.Input[Mapping[str, Any]] properties: Map of table properties.
+        :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
+        :param pulumi.Input[str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
         :param pulumi.Input[str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        :param pulumi.Input[str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -561,23 +713,27 @@ class SqlTable(pulumi.CustomResource):
 
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["cluster_keys"] = cluster_keys
         __props__.__dict__["columns"] = columns
         __props__.__dict__["comment"] = comment
         __props__.__dict__["data_source_format"] = data_source_format
         __props__.__dict__["name"] = name
+        __props__.__dict__["options"] = options
+        __props__.__dict__["partitions"] = partitions
         __props__.__dict__["properties"] = properties
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_credential_name"] = storage_credential_name
         __props__.__dict__["storage_location"] = storage_location
         __props__.__dict__["table_type"] = table_type
         __props__.__dict__["view_definition"] = view_definition
+        __props__.__dict__["warehouse_id"] = warehouse_id
         return SqlTable(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
         """
-        Name of parent catalog
+        Name of parent catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
@@ -585,6 +741,14 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterKeys")
+    def cluster_keys(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+        """
+        return pulumi.get(self, "cluster_keys")
 
     @property
     @pulumi.getter
@@ -617,9 +781,25 @@ class SqlTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def options(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Map of user defined table options. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+        """
+        return pulumi.get(self, "partitions")
+
+    @property
+    @pulumi.getter
     def properties(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Extensible Table properties.
+        Map of table properties.
         """
         return pulumi.get(self, "properties")
 
@@ -627,7 +807,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
         """
-        Name of parent Schema relative to parent Catalog
+        Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
@@ -635,7 +815,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="storageCredentialName")
     def storage_credential_name(self) -> pulumi.Output[Optional[str]]:
         """
-        For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+        For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
@@ -662,4 +842,12 @@ class SqlTable(pulumi.CustomResource):
         SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         """
         return pulumi.get(self, "view_definition")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        """
+        return pulumi.get(self, "warehouse_id")
 

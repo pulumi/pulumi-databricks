@@ -86,11 +86,11 @@ public final class MlflowWebhookJobSpec {
             return this;
         }
         public MlflowWebhookJobSpec build() {
-            final var o = new MlflowWebhookJobSpec();
-            o.accessToken = accessToken;
-            o.jobId = jobId;
-            o.workspaceUrl = workspaceUrl;
-            return o;
+            final var _resultValue = new MlflowWebhookJobSpec();
+            _resultValue.accessToken = accessToken;
+            _resultValue.jobId = jobId;
+            _resultValue.workspaceUrl = workspaceUrl;
+            return _resultValue;
         }
     }
 }

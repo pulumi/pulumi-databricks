@@ -152,19 +152,19 @@ public final class TableColumn {
             return this;
         }
         public TableColumn build() {
-            final var o = new TableColumn();
-            o.comment = comment;
-            o.name = name;
-            o.nullable = nullable;
-            o.partitionIndex = partitionIndex;
-            o.position = position;
-            o.typeIntervalType = typeIntervalType;
-            o.typeJson = typeJson;
-            o.typeName = typeName;
-            o.typePrecision = typePrecision;
-            o.typeScale = typeScale;
-            o.typeText = typeText;
-            return o;
+            final var _resultValue = new TableColumn();
+            _resultValue.comment = comment;
+            _resultValue.name = name;
+            _resultValue.nullable = nullable;
+            _resultValue.partitionIndex = partitionIndex;
+            _resultValue.position = position;
+            _resultValue.typeIntervalType = typeIntervalType;
+            _resultValue.typeJson = typeJson;
+            _resultValue.typeName = typeName;
+            _resultValue.typePrecision = typePrecision;
+            _resultValue.typeScale = typeScale;
+            _resultValue.typeText = typeText;
+            return _resultValue;
         }
     }
 }

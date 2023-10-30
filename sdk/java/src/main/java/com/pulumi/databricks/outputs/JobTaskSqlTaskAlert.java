@@ -92,11 +92,11 @@ public final class JobTaskSqlTaskAlert {
             return subscriptions(List.of(subscriptions));
         }
         public JobTaskSqlTaskAlert build() {
-            final var o = new JobTaskSqlTaskAlert();
-            o.alertId = alertId;
-            o.pauseSubscriptions = pauseSubscriptions;
-            o.subscriptions = subscriptions;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskAlert();
+            _resultValue.alertId = alertId;
+            _resultValue.pauseSubscriptions = pauseSubscriptions;
+            _resultValue.subscriptions = subscriptions;
+            return _resultValue;
         }
     }
 }

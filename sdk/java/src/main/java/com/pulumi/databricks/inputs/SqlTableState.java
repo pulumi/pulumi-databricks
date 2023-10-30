@@ -20,14 +20,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     public static final SqlTableState Empty = new SqlTableState();
 
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog
+     * @return Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> catalogName() {
@@ -39,6 +39,21 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * 
+     */
+    @Import(name="clusterKeys")
+    private @Nullable Output<List<String>> clusterKeys;
+
+    /**
+     * @return a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * 
+     */
+    public Optional<Output<List<String>>> clusterKeys() {
+        return Optional.ofNullable(this.clusterKeys);
     }
 
     @Import(name="columns")
@@ -94,14 +109,44 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Extensible Table properties.
+     * Map of user defined table options. Change forces creation of a new resource.
+     * 
+     */
+    @Import(name="options")
+    private @Nullable Output<Map<String,Object>> options;
+
+    /**
+     * @return Map of user defined table options. Change forces creation of a new resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> options() {
+        return Optional.ofNullable(this.options);
+    }
+
+    /**
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * 
+     */
+    @Import(name="partitions")
+    private @Nullable Output<List<String>> partitions;
+
+    /**
+     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * 
+     */
+    public Optional<Output<List<String>>> partitions() {
+        return Optional.ofNullable(this.partitions);
+    }
+
+    /**
+     * Map of table properties.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,Object>> properties;
 
     /**
-     * @return Extensible Table properties.
+     * @return Map of table properties.
      * 
      */
     public Optional<Output<Map<String,Object>>> properties() {
@@ -109,14 +154,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog
+     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> schemaName() {
@@ -124,14 +169,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+     * For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
      * 
      */
     @Import(name="storageCredentialName")
     private @Nullable Output<String> storageCredentialName;
 
     /**
-     * @return For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> storageCredentialName() {
@@ -183,21 +228,40 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.viewDefinition);
     }
 
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * 
+     */
+    @Import(name="warehouseId")
+    private @Nullable Output<String> warehouseId;
+
+    /**
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * 
+     */
+    public Optional<Output<String>> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
+    }
+
     private SqlTableState() {}
 
     private SqlTableState(SqlTableState $) {
         this.catalogName = $.catalogName;
         this.clusterId = $.clusterId;
+        this.clusterKeys = $.clusterKeys;
         this.columns = $.columns;
         this.comment = $.comment;
         this.dataSourceFormat = $.dataSourceFormat;
         this.name = $.name;
+        this.options = $.options;
+        this.partitions = $.partitions;
         this.properties = $.properties;
         this.schemaName = $.schemaName;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
         this.tableType = $.tableType;
         this.viewDefinition = $.viewDefinition;
+        this.warehouseId = $.warehouseId;
     }
 
     public static Builder builder() {
@@ -219,7 +283,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog
+         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -230,7 +294,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalogName Name of parent catalog
+         * @param catalogName Name of parent catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -246,6 +310,37 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterKeys(@Nullable Output<List<String>> clusterKeys) {
+            $.clusterKeys = clusterKeys;
+            return this;
+        }
+
+        /**
+         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterKeys(List<String> clusterKeys) {
+            return clusterKeys(Output.of(clusterKeys));
+        }
+
+        /**
+         * @param clusterKeys a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterKeys(String... clusterKeys) {
+            return clusterKeys(List.of(clusterKeys));
         }
 
         public Builder columns(@Nullable Output<List<SqlTableColumnArgs>> columns) {
@@ -325,7 +420,59 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Extensible Table properties.
+         * @param options Map of user defined table options. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(@Nullable Output<Map<String,Object>> options) {
+            $.options = options;
+            return this;
+        }
+
+        /**
+         * @param options Map of user defined table options. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(Map<String,Object> options) {
+            return options(Output.of(options));
+        }
+
+        /**
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitions(@Nullable Output<List<String>> partitions) {
+            $.partitions = partitions;
+            return this;
+        }
+
+        /**
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitions(List<String> partitions) {
+            return partitions(Output.of(partitions));
+        }
+
+        /**
+         * @param partitions a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder partitions(String... partitions) {
+            return partitions(List.of(partitions));
+        }
+
+        /**
+         * @param properties Map of table properties.
          * 
          * @return builder
          * 
@@ -336,7 +483,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Extensible Table properties.
+         * @param properties Map of table properties.
          * 
          * @return builder
          * 
@@ -346,7 +493,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -357,7 +504,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaName Name of parent Schema relative to parent Catalog
+         * @param schemaName Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -367,7 +514,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -378,7 +525,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+         * @param storageCredentialName For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -448,6 +595,27 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder viewDefinition(String viewDefinition) {
             return viewDefinition(Output.of(viewDefinition));
+        }
+
+        /**
+         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+            $.warehouseId = warehouseId;
+            return this;
+        }
+
+        /**
+         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(String warehouseId) {
+            return warehouseId(Output.of(warehouseId));
         }
 
         public SqlTableState build() {

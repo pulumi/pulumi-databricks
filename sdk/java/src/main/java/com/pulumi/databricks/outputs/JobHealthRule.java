@@ -87,11 +87,11 @@ public final class JobHealthRule {
             return this;
         }
         public JobHealthRule build() {
-            final var o = new JobHealthRule();
-            o.metric = metric;
-            o.op = op;
-            o.value = value;
-            return o;
+            final var _resultValue = new JobHealthRule();
+            _resultValue.metric = metric;
+            _resultValue.op = op;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

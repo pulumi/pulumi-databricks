@@ -66,11 +66,11 @@ public final class GetJobJobSettingsSettingsSparkJarTask {
             return parameters(List.of(parameters));
         }
         public GetJobJobSettingsSettingsSparkJarTask build() {
-            final var o = new GetJobJobSettingsSettingsSparkJarTask();
-            o.jarUri = jarUri;
-            o.mainClassName = mainClassName;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsSparkJarTask();
+            _resultValue.jarUri = jarUri;
+            _resultValue.mainClassName = mainClassName;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

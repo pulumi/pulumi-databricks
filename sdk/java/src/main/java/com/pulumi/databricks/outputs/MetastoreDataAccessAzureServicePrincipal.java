@@ -84,11 +84,11 @@ public final class MetastoreDataAccessAzureServicePrincipal {
             return this;
         }
         public MetastoreDataAccessAzureServicePrincipal build() {
-            final var o = new MetastoreDataAccessAzureServicePrincipal();
-            o.applicationId = applicationId;
-            o.clientSecret = clientSecret;
-            o.directoryId = directoryId;
-            return o;
+            final var _resultValue = new MetastoreDataAccessAzureServicePrincipal();
+            _resultValue.applicationId = applicationId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.directoryId = directoryId;
+            return _resultValue;
         }
     }
 }

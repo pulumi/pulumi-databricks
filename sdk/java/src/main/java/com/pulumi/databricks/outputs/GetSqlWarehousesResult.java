@@ -82,11 +82,11 @@ public final class GetSqlWarehousesResult {
             return this;
         }
         public GetSqlWarehousesResult build() {
-            final var o = new GetSqlWarehousesResult();
-            o.id = id;
-            o.ids = ids;
-            o.warehouseNameContains = warehouseNameContains;
-            return o;
+            final var _resultValue = new GetSqlWarehousesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.warehouseNameContains = warehouseNameContains;
+            return _resultValue;
         }
     }
 }

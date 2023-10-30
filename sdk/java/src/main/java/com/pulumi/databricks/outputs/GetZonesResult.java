@@ -88,11 +88,11 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.defaultZone = defaultZone;
-            o.id = id;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.defaultZone = defaultZone;
+            _resultValue.id = id;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

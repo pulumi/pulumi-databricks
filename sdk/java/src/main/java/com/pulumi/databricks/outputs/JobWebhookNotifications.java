@@ -172,12 +172,12 @@ public final class JobWebhookNotifications {
             return onSuccesses(List.of(onSuccesses));
         }
         public JobWebhookNotifications build() {
-            final var o = new JobWebhookNotifications();
-            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
-            o.onFailures = onFailures;
-            o.onStarts = onStarts;
-            o.onSuccesses = onSuccesses;
-            return o;
+            final var _resultValue = new JobWebhookNotifications();
+            _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            _resultValue.onFailures = onFailures;
+            _resultValue.onStarts = onStarts;
+            _resultValue.onSuccesses = onSuccesses;
+            return _resultValue;
         }
     }
 }

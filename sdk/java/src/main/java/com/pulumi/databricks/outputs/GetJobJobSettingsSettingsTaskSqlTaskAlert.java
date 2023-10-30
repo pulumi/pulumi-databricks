@@ -68,11 +68,11 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert {
             return subscriptions(List.of(subscriptions));
         }
         public GetJobJobSettingsSettingsTaskSqlTaskAlert build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTaskAlert();
-            o.alertId = alertId;
-            o.pauseSubscriptions = pauseSubscriptions;
-            o.subscriptions = subscriptions;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskAlert();
+            _resultValue.alertId = alertId;
+            _resultValue.pauseSubscriptions = pauseSubscriptions;
+            _resultValue.subscriptions = subscriptions;
+            return _resultValue;
         }
     }
 }

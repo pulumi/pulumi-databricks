@@ -64,11 +64,11 @@ public final class JobJobClusterNewClusterAzureAttributes {
             return this;
         }
         public JobJobClusterNewClusterAzureAttributes build() {
-            final var o = new JobJobClusterNewClusterAzureAttributes();
-            o.availability = availability;
-            o.firstOnDemand = firstOnDemand;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

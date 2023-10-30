@@ -50,9 +50,9 @@ public final class StorageCredentialAwsIamRole {
             return this;
         }
         public StorageCredentialAwsIamRole build() {
-            final var o = new StorageCredentialAwsIamRole();
-            o.roleArn = roleArn;
-            return o;
+            final var _resultValue = new StorageCredentialAwsIamRole();
+            _resultValue.roleArn = roleArn;
+            return _resultValue;
         }
     }
 }

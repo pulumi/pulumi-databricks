@@ -50,9 +50,9 @@ public final class ShareObjectPartition {
             return values(List.of(values));
         }
         public ShareObjectPartition build() {
-            final var o = new ShareObjectPartition();
-            o.values = values;
-            return o;
+            final var _resultValue = new ShareObjectPartition();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

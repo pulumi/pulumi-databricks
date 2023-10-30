@@ -82,7 +82,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * Optional description of the MLflow webhook.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
      * 
      */
-    @Export(name="events", type=List.class, parameters={String.class})
+    @Export(name="events", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> events;
 
     /**
@@ -110,13 +110,13 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
     public Output<List<String>> events() {
         return this.events;
     }
-    @Export(name="httpUrlSpec", type=MlflowWebhookHttpUrlSpec.class, parameters={})
+    @Export(name="httpUrlSpec", refs={MlflowWebhookHttpUrlSpec.class}, tree="[0]")
     private Output</* @Nullable */ MlflowWebhookHttpUrlSpec> httpUrlSpec;
 
     public Output<Optional<MlflowWebhookHttpUrlSpec>> httpUrlSpec() {
         return Codegen.optional(this.httpUrlSpec);
     }
-    @Export(name="jobSpec", type=MlflowWebhookJobSpec.class, parameters={})
+    @Export(name="jobSpec", refs={MlflowWebhookJobSpec.class}, tree="[0]")
     private Output</* @Nullable */ MlflowWebhookJobSpec> jobSpec;
 
     public Output<Optional<MlflowWebhookJobSpec>> jobSpec() {
@@ -126,7 +126,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      * 
      */
-    @Export(name="modelName", type=String.class, parameters={})
+    @Export(name="modelName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modelName;
 
     /**
@@ -140,7 +140,7 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**

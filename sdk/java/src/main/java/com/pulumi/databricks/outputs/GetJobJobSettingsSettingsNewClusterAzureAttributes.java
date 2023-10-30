@@ -64,11 +64,11 @@ public final class GetJobJobSettingsSettingsNewClusterAzureAttributes {
             return this;
         }
         public GetJobJobSettingsSettingsNewClusterAzureAttributes build() {
-            final var o = new GetJobJobSettingsSettingsNewClusterAzureAttributes();
-            o.availability = availability;
-            o.firstOnDemand = firstOnDemand;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsNewClusterAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

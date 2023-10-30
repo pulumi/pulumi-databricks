@@ -59,10 +59,10 @@ public final class GetJobJobSettingsSettingsParameter {
             return this;
         }
         public GetJobJobSettingsSettingsParameter build() {
-            final var o = new GetJobJobSettingsSettingsParameter();
-            o.default_ = default_;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsParameter();
+            _resultValue.default_ = default_;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

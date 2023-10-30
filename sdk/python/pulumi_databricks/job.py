@@ -21,6 +21,7 @@ class JobArgs:
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
+                 deployment: Optional[pulumi.Input['JobDeploymentArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -88,6 +89,8 @@ class JobArgs:
             pulumi.set(__self__, "control_run_state", control_run_state)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -207,6 +210,15 @@ class JobArgs:
     @dbt_task.setter
     def dbt_task(self, value: Optional[pulumi.Input['JobDbtTaskArgs']]):
         pulumi.set(self, "dbt_task", value)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional[pulumi.Input['JobDeploymentArgs']]:
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: Optional[pulumi.Input['JobDeploymentArgs']]):
+        pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -529,6 +541,7 @@ class _JobState:
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
+                 deployment: Optional[pulumi.Input['JobDeploymentArgs']] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -598,6 +611,8 @@ class _JobState:
             pulumi.set(__self__, "control_run_state", control_run_state)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -719,6 +734,15 @@ class _JobState:
     @dbt_task.setter
     def dbt_task(self, value: Optional[pulumi.Input['JobDbtTaskArgs']]):
         pulumi.set(self, "dbt_task", value)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional[pulumi.Input['JobDeploymentArgs']]:
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: Optional[pulumi.Input['JobDeploymentArgs']]):
+        pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -1055,6 +1079,7 @@ class Job(pulumi.CustomResource):
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -1154,6 +1179,7 @@ class Job(pulumi.CustomResource):
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -1198,6 +1224,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["control_run_state"] = control_run_state
             __props__.__dict__["dbt_task"] = dbt_task
+            __props__.__dict__["deployment"] = deployment
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
@@ -1244,6 +1271,7 @@ class Job(pulumi.CustomResource):
             continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
             control_run_state: Optional[pulumi.Input[bool]] = None,
             dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
+            deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
             email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
             existing_cluster_id: Optional[pulumi.Input[str]] = None,
             format: Optional[pulumi.Input[str]] = None,
@@ -1314,6 +1342,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["continuous"] = continuous
         __props__.__dict__["control_run_state"] = control_run_state
         __props__.__dict__["dbt_task"] = dbt_task
+        __props__.__dict__["deployment"] = deployment
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["existing_cluster_id"] = existing_cluster_id
         __props__.__dict__["format"] = format
@@ -1385,6 +1414,11 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="dbtTask")
     def dbt_task(self) -> pulumi.Output[Optional['outputs.JobDbtTask']]:
         return pulumi.get(self, "dbt_task")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Output[Optional['outputs.JobDeployment']]:
+        return pulumi.get(self, "deployment")
 
     @property
     @pulumi.getter(name="emailNotifications")

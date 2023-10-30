@@ -52,10 +52,10 @@ public final class GetInstancePoolPoolInfoGcpAttributes {
             return this;
         }
         public GetInstancePoolPoolInfoGcpAttributes build() {
-            final var o = new GetInstancePoolPoolInfoGcpAttributes();
-            o.gcpAvailability = gcpAvailability;
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoGcpAttributes();
+            _resultValue.gcpAvailability = gcpAvailability;
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

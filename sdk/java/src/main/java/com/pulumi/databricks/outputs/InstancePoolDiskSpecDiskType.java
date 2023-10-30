@@ -51,10 +51,10 @@ public final class InstancePoolDiskSpecDiskType {
             return this;
         }
         public InstancePoolDiskSpecDiskType build() {
-            final var o = new InstancePoolDiskSpecDiskType();
-            o.azureDiskVolumeType = azureDiskVolumeType;
-            o.ebsVolumeType = ebsVolumeType;
-            return o;
+            final var _resultValue = new InstancePoolDiskSpecDiskType();
+            _resultValue.azureDiskVolumeType = azureDiskVolumeType;
+            _resultValue.ebsVolumeType = ebsVolumeType;
+            return _resultValue;
         }
     }
 }

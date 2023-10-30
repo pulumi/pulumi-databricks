@@ -38,9 +38,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFile {
             return this;
         }
         public GetJobJobSettingsSettingsTaskSqlTaskFile build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTaskFile();
-            o.path = path;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskFile();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

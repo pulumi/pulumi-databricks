@@ -91,12 +91,12 @@ public final class GetViewsResult {
             return this;
         }
         public GetViewsResult build() {
-            final var o = new GetViewsResult();
-            o.catalogName = catalogName;
-            o.id = id;
-            o.ids = ids;
-            o.schemaName = schemaName;
-            return o;
+            final var _resultValue = new GetViewsResult();
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.schemaName = schemaName;
+            return _resultValue;
         }
     }
 }

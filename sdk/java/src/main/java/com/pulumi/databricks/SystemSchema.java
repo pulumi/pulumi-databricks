@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/systemSchema:SystemSchema")
 public class SystemSchema extends com.pulumi.resources.CustomResource {
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -75,7 +75,7 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * Full name of the system schema.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     /**
@@ -89,7 +89,7 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * The current state of enablement for the system schema.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

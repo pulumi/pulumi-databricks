@@ -38,9 +38,9 @@ public final class PipelineClusterClusterLogConfDbfs {
             return this;
         }
         public PipelineClusterClusterLogConfDbfs build() {
-            final var o = new PipelineClusterClusterLogConfDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new PipelineClusterClusterLogConfDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class JobNotificationSettings {
             return this;
         }
         public JobNotificationSettings build() {
-            final var o = new JobNotificationSettings();
-            o.noAlertForCanceledRuns = noAlertForCanceledRuns;
-            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return o;
+            final var _resultValue = new JobNotificationSettings();
+            _resultValue.noAlertForCanceledRuns = noAlertForCanceledRuns;
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return _resultValue;
         }
     }
 }

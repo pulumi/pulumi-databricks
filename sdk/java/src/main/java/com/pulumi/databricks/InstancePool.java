@@ -152,13 +152,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/instancePool:InstancePool")
 public class InstancePool extends com.pulumi.resources.CustomResource {
-    @Export(name="awsAttributes", type=InstancePoolAwsAttributes.class, parameters={})
+    @Export(name="awsAttributes", refs={InstancePoolAwsAttributes.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolAwsAttributes> awsAttributes;
 
     public Output<Optional<InstancePoolAwsAttributes>> awsAttributes() {
         return Codegen.optional(this.awsAttributes);
     }
-    @Export(name="azureAttributes", type=InstancePoolAzureAttributes.class, parameters={})
+    @Export(name="azureAttributes", refs={InstancePoolAzureAttributes.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolAzureAttributes> azureAttributes;
 
     public Output<Optional<InstancePoolAzureAttributes>> azureAttributes() {
@@ -168,7 +168,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Map) Additional tags for instance pool resources. Databricks tags all pool resources (e.g. AWS &amp; Azure instances and Disk volumes). The tags of the instance pool will propagate to the clusters using the pool (see the [official documentation](https://docs.databricks.com/administration-guide/account-settings/usage-detail-tags-aws.html#tag-propagation)). Attempting to set the same tags in both cluster and instance pool will raise an error. *Databricks allows at most 43 custom tags.*
      * 
      */
-    @Export(name="customTags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> customTags;
 
     /**
@@ -178,7 +178,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> customTags() {
         return Codegen.optional(this.customTags);
     }
-    @Export(name="diskSpec", type=InstancePoolDiskSpec.class, parameters={})
+    @Export(name="diskSpec", refs={InstancePoolDiskSpec.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolDiskSpec> diskSpec;
 
     public Output<Optional<InstancePoolDiskSpec>> diskSpec() {
@@ -188,7 +188,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Bool) Autoscaling Local Storage: when enabled, the instances in the pool dynamically acquire additional disk space when they are running low on disk space.
      * 
      */
-    @Export(name="enableElasticDisk", type=Boolean.class, parameters={})
+    @Export(name="enableElasticDisk", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableElasticDisk;
 
     /**
@@ -198,7 +198,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enableElasticDisk() {
         return Codegen.optional(this.enableElasticDisk);
     }
-    @Export(name="gcpAttributes", type=InstancePoolGcpAttributes.class, parameters={})
+    @Export(name="gcpAttributes", refs={InstancePoolGcpAttributes.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolGcpAttributes> gcpAttributes;
 
     public Output<Optional<InstancePoolGcpAttributes>> gcpAttributes() {
@@ -208,7 +208,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
      * 
      */
-    @Export(name="idleInstanceAutoterminationMinutes", type=Integer.class, parameters={})
+    @Export(name="idleInstanceAutoterminationMinutes", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleInstanceAutoterminationMinutes;
 
     /**
@@ -218,13 +218,13 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
     public Output<Integer> idleInstanceAutoterminationMinutes() {
         return this.idleInstanceAutoterminationMinutes;
     }
-    @Export(name="instancePoolFleetAttributes", type=InstancePoolInstancePoolFleetAttributes.class, parameters={})
+    @Export(name="instancePoolFleetAttributes", refs={InstancePoolInstancePoolFleetAttributes.class}, tree="[0]")
     private Output</* @Nullable */ InstancePoolInstancePoolFleetAttributes> instancePoolFleetAttributes;
 
     public Output<Optional<InstancePoolInstancePoolFleetAttributes>> instancePoolFleetAttributes() {
         return Codegen.optional(this.instancePoolFleetAttributes);
     }
-    @Export(name="instancePoolId", type=String.class, parameters={})
+    @Export(name="instancePoolId", refs={String.class}, tree="[0]")
     private Output<String> instancePoolId;
 
     public Output<String> instancePoolId() {
@@ -234,7 +234,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (String) The name of the instance pool. This is required for create and edit operations. It must be unique, non-empty, and less than 100 characters.
      * 
      */
-    @Export(name="instancePoolName", type=String.class, parameters={})
+    @Export(name="instancePoolName", refs={String.class}, tree="[0]")
     private Output<String> instancePoolName;
 
     /**
@@ -248,7 +248,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Integer) The maximum number of instances the pool can contain, including both idle instances and ones in use by clusters. Once the maximum capacity is reached, you cannot create new clusters from the pool and existing clusters cannot autoscale up until some instances are made idle in the pool via cluster termination or down-scaling. There is no default limit, but as a [best practice](https://docs.databricks.com/clusters/instance-pools/pool-best-practices.html#configure-pools-to-control-cost), this should be set based on anticipated usage.
      * 
      */
-    @Export(name="maxCapacity", type=Integer.class, parameters={})
+    @Export(name="maxCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxCapacity;
 
     /**
@@ -262,7 +262,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (Integer) The minimum number of idle instances maintained by the pool. This is in addition to any instances in use by active clusters.
      * 
      */
-    @Export(name="minIdleInstances", type=Integer.class, parameters={})
+    @Export(name="minIdleInstances", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minIdleInstances;
 
     /**
@@ -276,7 +276,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
      * 
      */
-    @Export(name="nodeTypeId", type=String.class, parameters={})
+    @Export(name="nodeTypeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeTypeId;
 
     /**
@@ -286,7 +286,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> nodeTypeId() {
         return Codegen.optional(this.nodeTypeId);
     }
-    @Export(name="preloadedDockerImages", type=List.class, parameters={InstancePoolPreloadedDockerImage.class})
+    @Export(name="preloadedDockerImages", refs={List.class,InstancePoolPreloadedDockerImage.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstancePoolPreloadedDockerImage>> preloadedDockerImages;
 
     public Output<Optional<List<InstancePoolPreloadedDockerImage>>> preloadedDockerImages() {
@@ -296,7 +296,7 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via databricks.getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
      * 
      */
-    @Export(name="preloadedSparkVersions", type=List.class, parameters={String.class})
+    @Export(name="preloadedSparkVersions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> preloadedSparkVersions;
 
     /**

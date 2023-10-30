@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mlflowModel:MlflowModel")
 public class MlflowModel extends com.pulumi.resources.CustomResource {
-    @Export(name="creationTimestamp", type=Integer.class, parameters={})
+    @Export(name="creationTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> creationTimestamp;
 
     public Output<Optional<Integer>> creationTimestamp() {
@@ -99,7 +99,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * The description of the MLflow model.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="lastUpdatedTimestamp", type=Integer.class, parameters={})
+    @Export(name="lastUpdatedTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lastUpdatedTimestamp;
 
     public Output<Optional<Integer>> lastUpdatedTimestamp() {
@@ -119,7 +119,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * Name of MLflow model. Change of name triggers new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -129,7 +129,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="registeredModelId", type=String.class, parameters={})
+    @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output<String> registeredModelId;
 
     public Output<String> registeredModelId() {
@@ -139,7 +139,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * Tags for the MLflow model.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={MlflowModelTag.class})
+    @Export(name="tags", refs={List.class,MlflowModelTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MlflowModelTag>> tags;
 
     /**
@@ -149,7 +149,7 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MlflowModelTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userId;
 
     public Output<Optional<String>> userId() {

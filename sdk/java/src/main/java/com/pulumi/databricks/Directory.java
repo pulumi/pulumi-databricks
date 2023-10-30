@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/directory:Directory")
 public class Directory extends com.pulumi.resources.CustomResource {
-    @Export(name="deleteRecursive", type=Boolean.class, parameters={})
+    @Export(name="deleteRecursive", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteRecursive;
 
     public Output<Optional<Boolean>> deleteRecursive() {
@@ -38,7 +38,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * Unique identifier for a DIRECTORY
      * 
      */
-    @Export(name="objectId", type=Integer.class, parameters={})
+    @Export(name="objectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> objectId;
 
     /**
@@ -52,7 +52,7 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * The absolute path of the directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**

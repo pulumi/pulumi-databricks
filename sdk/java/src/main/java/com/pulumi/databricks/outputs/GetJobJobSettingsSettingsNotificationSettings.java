@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsNotificationSettings {
             return this;
         }
         public GetJobJobSettingsSettingsNotificationSettings build() {
-            final var o = new GetJobJobSettingsSettingsNotificationSettings();
-            o.noAlertForCanceledRuns = noAlertForCanceledRuns;
-            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsNotificationSettings();
+            _resultValue.noAlertForCanceledRuns = noAlertForCanceledRuns;
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return _resultValue;
         }
     }
 }

@@ -79,12 +79,12 @@ public final class GetJobJobSettingsSettingsPythonWheelTask {
             return parameters(List.of(parameters));
         }
         public GetJobJobSettingsSettingsPythonWheelTask build() {
-            final var o = new GetJobJobSettingsSettingsPythonWheelTask();
-            o.entryPoint = entryPoint;
-            o.namedParameters = namedParameters;
-            o.packageName = packageName;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsPythonWheelTask();
+            _resultValue.entryPoint = entryPoint;
+            _resultValue.namedParameters = namedParameters;
+            _resultValue.packageName = packageName;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

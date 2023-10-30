@@ -51,10 +51,10 @@ public final class ClusterClusterMountInfoNetworkFilesystemInfo {
             return this;
         }
         public ClusterClusterMountInfoNetworkFilesystemInfo build() {
-            final var o = new ClusterClusterMountInfoNetworkFilesystemInfo();
-            o.mountOptions = mountOptions;
-            o.serverAddress = serverAddress;
-            return o;
+            final var _resultValue = new ClusterClusterMountInfoNetworkFilesystemInfo();
+            _resultValue.mountOptions = mountOptions;
+            _resultValue.serverAddress = serverAddress;
+            return _resultValue;
         }
     }
 }

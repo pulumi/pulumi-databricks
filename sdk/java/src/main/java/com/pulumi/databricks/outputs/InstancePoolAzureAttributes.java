@@ -68,10 +68,10 @@ public final class InstancePoolAzureAttributes {
             return this;
         }
         public InstancePoolAzureAttributes build() {
-            final var o = new InstancePoolAzureAttributes();
-            o.availability = availability;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new InstancePoolAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

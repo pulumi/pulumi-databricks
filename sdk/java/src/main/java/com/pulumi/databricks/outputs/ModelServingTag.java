@@ -51,10 +51,10 @@ public final class ModelServingTag {
             return this;
         }
         public ModelServingTag build() {
-            final var o = new ModelServingTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ModelServingTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

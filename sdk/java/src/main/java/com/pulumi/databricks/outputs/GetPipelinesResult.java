@@ -82,11 +82,11 @@ public final class GetPipelinesResult {
             return this;
         }
         public GetPipelinesResult build() {
-            final var o = new GetPipelinesResult();
-            o.id = id;
-            o.ids = ids;
-            o.pipelineName = pipelineName;
-            return o;
+            final var _resultValue = new GetPipelinesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.pipelineName = pipelineName;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class JobNewClusterAutoscale {
             return this;
         }
         public JobNewClusterAutoscale build() {
-            final var o = new JobNewClusterAutoscale();
-            o.maxWorkers = maxWorkers;
-            o.minWorkers = minWorkers;
-            return o;
+            final var _resultValue = new JobNewClusterAutoscale();
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.minWorkers = minWorkers;
+            return _resultValue;
         }
     }
 }

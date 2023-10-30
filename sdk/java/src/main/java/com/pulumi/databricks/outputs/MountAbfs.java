@@ -118,16 +118,16 @@ public final class MountAbfs {
             return this;
         }
         public MountAbfs build() {
-            final var o = new MountAbfs();
-            o.clientId = clientId;
-            o.clientSecretKey = clientSecretKey;
-            o.clientSecretScope = clientSecretScope;
-            o.containerName = containerName;
-            o.directory = directory;
-            o.initializeFileSystem = initializeFileSystem;
-            o.storageAccountName = storageAccountName;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new MountAbfs();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecretKey = clientSecretKey;
+            _resultValue.clientSecretScope = clientSecretScope;
+            _resultValue.containerName = containerName;
+            _resultValue.directory = directory;
+            _resultValue.initializeFileSystem = initializeFileSystem;
+            _resultValue.storageAccountName = storageAccountName;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

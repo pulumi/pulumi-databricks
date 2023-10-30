@@ -62,11 +62,11 @@ public final class GetJobJobSettingsSettingsTaskNotificationSettings {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNotificationSettings build() {
-            final var o = new GetJobJobSettingsSettingsTaskNotificationSettings();
-            o.alertOnLastAttempt = alertOnLastAttempt;
-            o.noAlertForCanceledRuns = noAlertForCanceledRuns;
-            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNotificationSettings();
+            _resultValue.alertOnLastAttempt = alertOnLastAttempt;
+            _resultValue.noAlertForCanceledRuns = noAlertForCanceledRuns;
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return _resultValue;
         }
     }
 }

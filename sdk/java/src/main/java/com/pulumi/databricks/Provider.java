@@ -23,133 +23,133 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:databricks")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    @Export(name="authType", type=String.class, parameters={})
+    @Export(name="authType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authType;
 
     public Output<Optional<String>> authType() {
         return Codegen.optional(this.authType);
     }
-    @Export(name="azureClientId", type=String.class, parameters={})
+    @Export(name="azureClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureClientId;
 
     public Output<Optional<String>> azureClientId() {
         return Codegen.optional(this.azureClientId);
     }
-    @Export(name="azureClientSecret", type=String.class, parameters={})
+    @Export(name="azureClientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureClientSecret;
 
     public Output<Optional<String>> azureClientSecret() {
         return Codegen.optional(this.azureClientSecret);
     }
-    @Export(name="azureEnvironment", type=String.class, parameters={})
+    @Export(name="azureEnvironment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureEnvironment;
 
     public Output<Optional<String>> azureEnvironment() {
         return Codegen.optional(this.azureEnvironment);
     }
-    @Export(name="azureLoginAppId", type=String.class, parameters={})
+    @Export(name="azureLoginAppId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureLoginAppId;
 
     public Output<Optional<String>> azureLoginAppId() {
         return Codegen.optional(this.azureLoginAppId);
     }
-    @Export(name="azureTenantId", type=String.class, parameters={})
+    @Export(name="azureTenantId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureTenantId;
 
     public Output<Optional<String>> azureTenantId() {
         return Codegen.optional(this.azureTenantId);
     }
-    @Export(name="azureWorkspaceResourceId", type=String.class, parameters={})
+    @Export(name="azureWorkspaceResourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> azureWorkspaceResourceId;
 
     public Output<Optional<String>> azureWorkspaceResourceId() {
         return Codegen.optional(this.azureWorkspaceResourceId);
     }
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientId;
 
     public Output<Optional<String>> clientId() {
         return Codegen.optional(this.clientId);
     }
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientSecret;
 
     public Output<Optional<String>> clientSecret() {
         return Codegen.optional(this.clientSecret);
     }
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     public Output<Optional<String>> clusterId() {
         return Codegen.optional(this.clusterId);
     }
-    @Export(name="configFile", type=String.class, parameters={})
+    @Export(name="configFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configFile;
 
     public Output<Optional<String>> configFile() {
         return Codegen.optional(this.configFile);
     }
-    @Export(name="databricksCliPath", type=String.class, parameters={})
+    @Export(name="databricksCliPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> databricksCliPath;
 
     public Output<Optional<String>> databricksCliPath() {
         return Codegen.optional(this.databricksCliPath);
     }
-    @Export(name="googleCredentials", type=String.class, parameters={})
+    @Export(name="googleCredentials", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> googleCredentials;
 
     public Output<Optional<String>> googleCredentials() {
         return Codegen.optional(this.googleCredentials);
     }
-    @Export(name="googleServiceAccount", type=String.class, parameters={})
+    @Export(name="googleServiceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> googleServiceAccount;
 
     public Output<Optional<String>> googleServiceAccount() {
         return Codegen.optional(this.googleServiceAccount);
     }
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
     }
-    @Export(name="metadataServiceUrl", type=String.class, parameters={})
+    @Export(name="metadataServiceUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metadataServiceUrl;
 
     public Output<Optional<String>> metadataServiceUrl() {
         return Codegen.optional(this.metadataServiceUrl);
     }
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
-    @Export(name="profile", type=String.class, parameters={})
+    @Export(name="profile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> profile;
 
     public Output<Optional<String>> profile() {
         return Codegen.optional(this.profile);
     }
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
     }
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     public Output<Optional<String>> username() {
         return Codegen.optional(this.username);
     }
-    @Export(name="warehouseId", type=String.class, parameters={})
+    @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseId;
 
     public Output<Optional<String>> warehouseId() {

@@ -70,11 +70,11 @@ public final class JobTaskConditionTask {
             return this;
         }
         public JobTaskConditionTask build() {
-            final var o = new JobTaskConditionTask();
-            o.left = left;
-            o.op = op;
-            o.right = right;
-            return o;
+            final var _resultValue = new JobTaskConditionTask();
+            _resultValue.left = left;
+            _resultValue.op = op;
+            _resultValue.right = right;
+            return _resultValue;
         }
     }
 }

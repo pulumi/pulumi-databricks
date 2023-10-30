@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
             return this;
         }
         public GetJobJobSettingsSettingsJobClusterNewClusterDockerImage build() {
-            final var o = new GetJobJobSettingsSettingsJobClusterNewClusterDockerImage();
-            o.basicAuth = basicAuth;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsJobClusterNewClusterDockerImage();
+            _resultValue.basicAuth = basicAuth;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

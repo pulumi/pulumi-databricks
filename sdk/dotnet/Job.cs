@@ -53,6 +53,9 @@ namespace Pulumi.Databricks
         [Output("dbtTask")]
         public Output<Outputs.JobDbtTask?> DbtTask { get; private set; } = null!;
 
+        [Output("deployment")]
+        public Output<Outputs.JobDeployment?> Deployment { get; private set; } = null!;
+
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -274,6 +277,9 @@ namespace Pulumi.Databricks
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskArgs>? DbtTask { get; set; }
 
+        [Input("deployment")]
+        public Input<Inputs.JobDeploymentArgs>? Deployment { get; set; }
+
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
@@ -477,6 +483,9 @@ namespace Pulumi.Databricks
 
         [Input("dbtTask")]
         public Input<Inputs.JobDbtTaskGetArgs>? DbtTask { get; set; }
+
+        [Input("deployment")]
+        public Input<Inputs.JobDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
         /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.

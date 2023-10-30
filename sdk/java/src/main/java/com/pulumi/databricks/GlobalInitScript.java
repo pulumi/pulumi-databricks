@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/globalInitScript:GlobalInitScript")
 public class GlobalInitScript extends com.pulumi.resources.CustomResource {
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     public Output<Optional<String>> contentBase64() {
@@ -38,7 +38,7 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      * specifies if the script is enabled for execution, or not
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -48,7 +48,7 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
-    @Export(name="md5", type=String.class, parameters={})
+    @Export(name="md5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> md5;
 
     public Output<Optional<String>> md5() {
@@ -58,7 +58,7 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      * the name of the script.  It should be unique
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -72,7 +72,7 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
-    @Export(name="position", type=Integer.class, parameters={})
+    @Export(name="position", refs={Integer.class}, tree="[0]")
     private Output<Integer> position;
 
     /**
@@ -86,7 +86,7 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      * Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**

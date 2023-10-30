@@ -52,10 +52,10 @@ public final class SqlQueryScheduleContinuous {
             return this;
         }
         public SqlQueryScheduleContinuous build() {
-            final var o = new SqlQueryScheduleContinuous();
-            o.intervalSeconds = intervalSeconds;
-            o.untilDate = untilDate;
-            return o;
+            final var _resultValue = new SqlQueryScheduleContinuous();
+            _resultValue.intervalSeconds = intervalSeconds;
+            _resultValue.untilDate = untilDate;
+            return _resultValue;
         }
     }
 }

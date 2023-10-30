@@ -72,11 +72,11 @@ public final class MetastoreDataAccessGcpServiceAccountKey {
             return this;
         }
         public MetastoreDataAccessGcpServiceAccountKey build() {
-            final var o = new MetastoreDataAccessGcpServiceAccountKey();
-            o.email = email;
-            o.privateKey = privateKey;
-            o.privateKeyId = privateKeyId;
-            return o;
+            final var _resultValue = new MetastoreDataAccessGcpServiceAccountKey();
+            _resultValue.email = email;
+            _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyId = privateKeyId;
+            return _resultValue;
         }
     }
 }

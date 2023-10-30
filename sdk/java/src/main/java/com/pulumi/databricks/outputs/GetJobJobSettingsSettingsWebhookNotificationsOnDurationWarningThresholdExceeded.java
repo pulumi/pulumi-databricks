@@ -46,9 +46,9 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarnin
             return this;
         }
         public GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded build() {
-            final var o = new GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

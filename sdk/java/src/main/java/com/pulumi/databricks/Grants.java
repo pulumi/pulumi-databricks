@@ -18,85 +18,85 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/grants:Grants")
 public class Grants extends com.pulumi.resources.CustomResource {
-    @Export(name="catalog", type=String.class, parameters={})
+    @Export(name="catalog", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalog;
 
     public Output<Optional<String>> catalog() {
         return Codegen.optional(this.catalog);
     }
-    @Export(name="externalLocation", type=String.class, parameters={})
+    @Export(name="externalLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalLocation;
 
     public Output<Optional<String>> externalLocation() {
         return Codegen.optional(this.externalLocation);
     }
-    @Export(name="foreignConnection", type=String.class, parameters={})
+    @Export(name="foreignConnection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> foreignConnection;
 
     public Output<Optional<String>> foreignConnection() {
         return Codegen.optional(this.foreignConnection);
     }
-    @Export(name="function", type=String.class, parameters={})
+    @Export(name="function", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> function;
 
     public Output<Optional<String>> function() {
         return Codegen.optional(this.function);
     }
-    @Export(name="grants", type=List.class, parameters={GrantsGrant.class})
+    @Export(name="grants", refs={List.class,GrantsGrant.class}, tree="[0,1]")
     private Output<List<GrantsGrant>> grants;
 
     public Output<List<GrantsGrant>> grants() {
         return this.grants;
     }
-    @Export(name="materializedView", type=String.class, parameters={})
+    @Export(name="materializedView", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> materializedView;
 
     public Output<Optional<String>> materializedView() {
         return Codegen.optional(this.materializedView);
     }
-    @Export(name="metastore", type=String.class, parameters={})
+    @Export(name="metastore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metastore;
 
     public Output<Optional<String>> metastore() {
         return Codegen.optional(this.metastore);
     }
-    @Export(name="model", type=String.class, parameters={})
+    @Export(name="model", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> model;
 
     public Output<Optional<String>> model() {
         return Codegen.optional(this.model);
     }
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 
     public Output<Optional<String>> schema() {
         return Codegen.optional(this.schema);
     }
-    @Export(name="share", type=String.class, parameters={})
+    @Export(name="share", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> share;
 
     public Output<Optional<String>> share() {
         return Codegen.optional(this.share);
     }
-    @Export(name="storageCredential", type=String.class, parameters={})
+    @Export(name="storageCredential", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCredential;
 
     public Output<Optional<String>> storageCredential() {
         return Codegen.optional(this.storageCredential);
     }
-    @Export(name="table", type=String.class, parameters={})
+    @Export(name="table", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> table;
 
     public Output<Optional<String>> table() {
         return Codegen.optional(this.table);
     }
-    @Export(name="view", type=String.class, parameters={})
+    @Export(name="view", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> view;
 
     public Output<Optional<String>> view() {
         return Codegen.optional(this.view);
     }
-    @Export(name="volume", type=String.class, parameters={})
+    @Export(name="volume", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volume;
 
     public Output<Optional<String>> volume() {

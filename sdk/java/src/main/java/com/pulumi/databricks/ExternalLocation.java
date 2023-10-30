@@ -37,7 +37,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * The ARN of the s3 access point to use with the external location (AWS).
      * 
      */
-    @Export(name="accessPoint", type=String.class, parameters={})
+    @Export(name="accessPoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessPoint;
 
     /**
@@ -51,7 +51,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * User-supplied free-form text.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -65,7 +65,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Name of the databricks.StorageCredential to use with this external location.
      * 
      */
-    @Export(name="credentialName", type=String.class, parameters={})
+    @Export(name="credentialName", refs={String.class}, tree="[0]")
     private Output<String> credentialName;
 
     /**
@@ -79,7 +79,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
      * 
      */
-    @Export(name="encryptionDetails", type=ExternalLocationEncryptionDetails.class, parameters={})
+    @Export(name="encryptionDetails", refs={ExternalLocationEncryptionDetails.class}, tree="[0]")
     private Output</* @Nullable */ ExternalLocationEncryptionDetails> encryptionDetails;
 
     /**
@@ -93,7 +93,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Destroy external location regardless of its dependents.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -107,7 +107,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Update external location regardless of its dependents.
      * 
      */
-    @Export(name="forceUpdate", type=Boolean.class, parameters={})
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
     /**
@@ -117,7 +117,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceUpdate() {
         return Codegen.optional(this.forceUpdate);
     }
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -127,7 +127,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -141,7 +141,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the external location owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -155,7 +155,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Indicates whether the external location is read-only.
      * 
      */
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
     /**
@@ -169,7 +169,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Suppress validation errors if any &amp; force save the external location
      * 
      */
-    @Export(name="skipValidation", type=Boolean.class, parameters={})
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipValidation;
 
     /**
@@ -183,7 +183,7 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

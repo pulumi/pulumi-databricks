@@ -46,9 +46,9 @@ public final class SqlQueryParameterText {
             return this;
         }
         public SqlQueryParameterText build() {
-            final var o = new SqlQueryParameterText();
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterText();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -72,7 +72,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * User-supplied free-form text.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -86,7 +86,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      * 
      */
-    @Export(name="connectionName", type=String.class, parameters={})
+    @Export(name="connectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionName;
 
     /**
@@ -100,7 +100,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Delete catalog regardless of its contents.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -114,7 +114,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      * 
      */
-    @Export(name="isolationMode", type=String.class, parameters={})
+    @Export(name="isolationMode", refs={String.class}, tree="[0]")
     private Output<String> isolationMode;
 
     /**
@@ -124,7 +124,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<String> isolationMode() {
         return this.isolationMode;
     }
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -134,7 +134,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Name of Catalog relative to parent metastore.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -148,7 +148,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      * 
      */
-    @Export(name="options", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> options;
 
     /**
@@ -162,7 +162,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the catalog owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -176,7 +176,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Extensible Catalog properties.
      * 
      */
-    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> properties;
 
     /**
@@ -190,7 +190,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      * 
      */
-    @Export(name="providerName", type=String.class, parameters={})
+    @Export(name="providerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> providerName;
 
     /**
@@ -204,7 +204,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      * 
      */
-    @Export(name="shareName", type=String.class, parameters={})
+    @Export(name="shareName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shareName;
 
     /**
@@ -218,7 +218,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      * 
      */
-    @Export(name="storageRoot", type=String.class, parameters={})
+    @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
     /**

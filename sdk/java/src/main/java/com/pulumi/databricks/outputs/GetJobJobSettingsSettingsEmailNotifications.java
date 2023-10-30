@@ -109,14 +109,14 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
             return onSuccesses(List.of(onSuccesses));
         }
         public GetJobJobSettingsSettingsEmailNotifications build() {
-            final var o = new GetJobJobSettingsSettingsEmailNotifications();
-            o.alertOnLastAttempt = alertOnLastAttempt;
-            o.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            o.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
-            o.onFailures = onFailures;
-            o.onStarts = onStarts;
-            o.onSuccesses = onSuccesses;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsEmailNotifications();
+            _resultValue.alertOnLastAttempt = alertOnLastAttempt;
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
+            _resultValue.onFailures = onFailures;
+            _resultValue.onStarts = onStarts;
+            _resultValue.onSuccesses = onSuccesses;
+            return _resultValue;
         }
     }
 }

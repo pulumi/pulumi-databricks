@@ -77,11 +77,11 @@ public final class GetDirectoryResult {
             return this;
         }
         public GetDirectoryResult build() {
-            final var o = new GetDirectoryResult();
-            o.id = id;
-            o.objectId = objectId;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetDirectoryResult();
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

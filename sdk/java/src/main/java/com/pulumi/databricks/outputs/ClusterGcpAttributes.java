@@ -109,14 +109,14 @@ public final class ClusterGcpAttributes {
             return this;
         }
         public ClusterGcpAttributes build() {
-            final var o = new ClusterGcpAttributes();
-            o.availability = availability;
-            o.bootDiskSize = bootDiskSize;
-            o.googleServiceAccount = googleServiceAccount;
-            o.localSsdCount = localSsdCount;
-            o.usePreemptibleExecutors = usePreemptibleExecutors;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new ClusterGcpAttributes();
+            _resultValue.availability = availability;
+            _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.googleServiceAccount = googleServiceAccount;
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.usePreemptibleExecutors = usePreemptibleExecutors;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

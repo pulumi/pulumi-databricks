@@ -62,11 +62,11 @@ public final class JobGitSourceJobSource {
             return this;
         }
         public JobGitSourceJobSource build() {
-            final var o = new JobGitSourceJobSource();
-            o.dirtyState = dirtyState;
-            o.importFromGitBranch = importFromGitBranch;
-            o.jobConfigPath = jobConfigPath;
-            return o;
+            final var _resultValue = new JobGitSourceJobSource();
+            _resultValue.dirtyState = dirtyState;
+            _resultValue.importFromGitBranch = importFromGitBranch;
+            _resultValue.jobConfigPath = jobConfigPath;
+            return _resultValue;
         }
     }
 }

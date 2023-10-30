@@ -51,10 +51,10 @@ public final class GetClusterClusterInfoAutoscale {
             return this;
         }
         public GetClusterClusterInfoAutoscale build() {
-            final var o = new GetClusterClusterInfoAutoscale();
-            o.maxWorkers = maxWorkers;
-            o.minWorkers = minWorkers;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoAutoscale();
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.minWorkers = minWorkers;
+            return _resultValue;
         }
     }
 }

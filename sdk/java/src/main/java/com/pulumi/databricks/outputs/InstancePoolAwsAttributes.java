@@ -87,11 +87,11 @@ public final class InstancePoolAwsAttributes {
             return this;
         }
         public InstancePoolAwsAttributes build() {
-            final var o = new InstancePoolAwsAttributes();
-            o.availability = availability;
-            o.spotBidPricePercent = spotBidPricePercent;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new InstancePoolAwsAttributes();
+            _resultValue.availability = availability;
+            _resultValue.spotBidPricePercent = spotBidPricePercent;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

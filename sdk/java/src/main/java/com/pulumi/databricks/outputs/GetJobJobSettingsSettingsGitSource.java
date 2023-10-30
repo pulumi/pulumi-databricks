@@ -96,14 +96,14 @@ public final class GetJobJobSettingsSettingsGitSource {
             return this;
         }
         public GetJobJobSettingsSettingsGitSource build() {
-            final var o = new GetJobJobSettingsSettingsGitSource();
-            o.branch = branch;
-            o.commit = commit;
-            o.jobSource = jobSource;
-            o.provider = provider;
-            o.tag = tag;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsGitSource();
+            _resultValue.branch = branch;
+            _resultValue.commit = commit;
+            _resultValue.jobSource = jobSource;
+            _resultValue.provider = provider;
+            _resultValue.tag = tag;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

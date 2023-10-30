@@ -268,15 +268,15 @@ public final class JobTaskNewClusterInitScript {
             return this;
         }
         public JobTaskNewClusterInitScript build() {
-            final var o = new JobTaskNewClusterInitScript();
-            o.abfss = abfss;
-            o.dbfs = dbfs;
-            o.file = file;
-            o.gcs = gcs;
-            o.s3 = s3;
-            o.volumes = volumes;
-            o.workspace = workspace;
-            return o;
+            final var _resultValue = new JobTaskNewClusterInitScript();
+            _resultValue.abfss = abfss;
+            _resultValue.dbfs = dbfs;
+            _resultValue.file = file;
+            _resultValue.gcs = gcs;
+            _resultValue.s3 = s3;
+            _resultValue.volumes = volumes;
+            _resultValue.workspace = workspace;
+            return _resultValue;
         }
     }
 }

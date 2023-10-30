@@ -38,9 +38,9 @@ public final class JobNewClusterClusterLogConfDbfs {
             return this;
         }
         public JobNewClusterClusterLogConfDbfs build() {
-            final var o = new JobNewClusterClusterLogConfDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new JobNewClusterClusterLogConfDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

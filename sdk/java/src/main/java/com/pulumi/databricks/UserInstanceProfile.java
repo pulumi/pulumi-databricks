@@ -82,7 +82,7 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      * This is the id of the instance profile resource.
      * 
      */
-    @Export(name="instanceProfileId", type=String.class, parameters={})
+    @Export(name="instanceProfileId", refs={String.class}, tree="[0]")
     private Output<String> instanceProfileId;
 
     /**
@@ -96,7 +96,7 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
      * This is the id of the user resource.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

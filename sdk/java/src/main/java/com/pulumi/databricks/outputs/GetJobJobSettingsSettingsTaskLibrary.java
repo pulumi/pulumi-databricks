@@ -98,14 +98,14 @@ public final class GetJobJobSettingsSettingsTaskLibrary {
             return this;
         }
         public GetJobJobSettingsSettingsTaskLibrary build() {
-            final var o = new GetJobJobSettingsSettingsTaskLibrary();
-            o.cran = cran;
-            o.egg = egg;
-            o.jar = jar;
-            o.maven = maven;
-            o.pypi = pypi;
-            o.whl = whl;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskLibrary();
+            _resultValue.cran = cran;
+            _resultValue.egg = egg;
+            _resultValue.jar = jar;
+            _resultValue.maven = maven;
+            _resultValue.pypi = pypi;
+            _resultValue.whl = whl;
+            return _resultValue;
         }
     }
 }

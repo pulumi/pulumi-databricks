@@ -46,8 +46,9 @@ type Job struct {
 	// 	})
 	// }
 	// ```
-	ControlRunState pulumi.BoolPtrOutput `pulumi:"controlRunState"`
-	DbtTask         JobDbtTaskPtrOutput  `pulumi:"dbtTask"`
+	ControlRunState pulumi.BoolPtrOutput   `pulumi:"controlRunState"`
+	DbtTask         JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
+	Deployment      JobDeploymentPtrOutput `pulumi:"deployment"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
@@ -148,8 +149,9 @@ type jobState struct {
 	// 	})
 	// }
 	// ```
-	ControlRunState *bool       `pulumi:"controlRunState"`
-	DbtTask         *JobDbtTask `pulumi:"dbtTask"`
+	ControlRunState *bool          `pulumi:"controlRunState"`
+	DbtTask         *JobDbtTask    `pulumi:"dbtTask"`
+	Deployment      *JobDeployment `pulumi:"deployment"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
@@ -223,6 +225,7 @@ type JobState struct {
 	// ```
 	ControlRunState pulumi.BoolPtrInput
 	DbtTask         JobDbtTaskPtrInput
+	Deployment      JobDeploymentPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
@@ -298,8 +301,9 @@ type jobArgs struct {
 	// 	})
 	// }
 	// ```
-	ControlRunState *bool       `pulumi:"controlRunState"`
-	DbtTask         *JobDbtTask `pulumi:"dbtTask"`
+	ControlRunState *bool          `pulumi:"controlRunState"`
+	DbtTask         *JobDbtTask    `pulumi:"dbtTask"`
+	Deployment      *JobDeployment `pulumi:"deployment"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
@@ -372,6 +376,7 @@ type JobArgs struct {
 	// ```
 	ControlRunState pulumi.BoolPtrInput
 	DbtTask         JobDbtTaskPtrInput
+	Deployment      JobDeploymentPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
 	ExistingClusterId  pulumi.StringPtrInput
@@ -569,6 +574,10 @@ func (o JobOutput) ControlRunState() pulumi.BoolPtrOutput {
 
 func (o JobOutput) DbtTask() JobDbtTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobDbtTaskPtrOutput { return v.DbtTask }).(JobDbtTaskPtrOutput)
+}
+
+func (o JobOutput) Deployment() JobDeploymentPtrOutput {
+	return o.ApplyT(func(v *Job) JobDeploymentPtrOutput { return v.Deployment }).(JobDeploymentPtrOutput)
 }
 
 // (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.

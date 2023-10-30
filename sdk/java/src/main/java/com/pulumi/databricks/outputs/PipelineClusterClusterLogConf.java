@@ -52,10 +52,10 @@ public final class PipelineClusterClusterLogConf {
             return this;
         }
         public PipelineClusterClusterLogConf build() {
-            final var o = new PipelineClusterClusterLogConf();
-            o.dbfs = dbfs;
-            o.s3 = s3;
-            return o;
+            final var _resultValue = new PipelineClusterClusterLogConf();
+            _resultValue.dbfs = dbfs;
+            _resultValue.s3 = s3;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class SqlEndpointTags {
             return customTags(List.of(customTags));
         }
         public SqlEndpointTags build() {
-            final var o = new SqlEndpointTags();
-            o.customTags = customTags;
-            return o;
+            final var _resultValue = new SqlEndpointTags();
+            _resultValue.customTags = customTags;
+            return _resultValue;
         }
     }
 }

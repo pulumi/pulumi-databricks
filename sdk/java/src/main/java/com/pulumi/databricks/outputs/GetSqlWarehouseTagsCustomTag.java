@@ -49,10 +49,10 @@ public final class GetSqlWarehouseTagsCustomTag {
             return this;
         }
         public GetSqlWarehouseTagsCustomTag build() {
-            final var o = new GetSqlWarehouseTagsCustomTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetSqlWarehouseTagsCustomTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -183,19 +183,19 @@ public final class GetSparkVersionResult {
             return this;
         }
         public GetSparkVersionResult build() {
-            final var o = new GetSparkVersionResult();
-            o.beta = beta;
-            o.genomics = genomics;
-            o.gpu = gpu;
-            o.graviton = graviton;
-            o.id = id;
-            o.latest = latest;
-            o.longTermSupport = longTermSupport;
-            o.ml = ml;
-            o.photon = photon;
-            o.scala = scala;
-            o.sparkVersion = sparkVersion;
-            return o;
+            final var _resultValue = new GetSparkVersionResult();
+            _resultValue.beta = beta;
+            _resultValue.genomics = genomics;
+            _resultValue.gpu = gpu;
+            _resultValue.graviton = graviton;
+            _resultValue.id = id;
+            _resultValue.latest = latest;
+            _resultValue.longTermSupport = longTermSupport;
+            _resultValue.ml = ml;
+            _resultValue.photon = photon;
+            _resultValue.scala = scala;
+            _resultValue.sparkVersion = sparkVersion;
+            return _resultValue;
         }
     }
 }

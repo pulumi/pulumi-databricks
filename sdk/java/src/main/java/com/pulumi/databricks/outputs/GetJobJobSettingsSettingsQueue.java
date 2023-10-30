@@ -38,9 +38,9 @@ public final class GetJobJobSettingsSettingsQueue {
             return this;
         }
         public GetJobJobSettingsSettingsQueue build() {
-            final var o = new GetJobJobSettingsSettingsQueue();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsQueue();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

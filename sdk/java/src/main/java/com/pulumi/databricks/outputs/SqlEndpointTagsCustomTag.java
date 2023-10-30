@@ -49,10 +49,10 @@ public final class SqlEndpointTagsCustomTag {
             return this;
         }
         public SqlEndpointTagsCustomTag build() {
-            final var o = new SqlEndpointTagsCustomTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlEndpointTagsCustomTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

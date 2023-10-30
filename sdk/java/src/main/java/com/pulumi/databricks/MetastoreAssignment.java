@@ -73,7 +73,7 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
      * Default catalog used for this assignment, default to `hive_metastore`
      * 
      */
-    @Export(name="defaultCatalogName", type=String.class, parameters={})
+    @Export(name="defaultCatalogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCatalogName;
 
     /**
@@ -87,7 +87,7 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
      * Unique identifier of the parent Metastore
      * 
      */
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
@@ -101,7 +101,7 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
      * id of the workspace for the assignment
      * 
      */
-    @Export(name="workspaceId", type=Integer.class, parameters={})
+    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> workspaceId;
 
     /**

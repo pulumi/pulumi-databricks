@@ -51,9 +51,9 @@ public final class JobSparkSubmitTask {
             return parameters(List.of(parameters));
         }
         public JobSparkSubmitTask build() {
-            final var o = new JobSparkSubmitTask();
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new JobSparkSubmitTask();
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

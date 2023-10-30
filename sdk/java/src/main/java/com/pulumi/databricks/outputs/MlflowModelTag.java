@@ -51,10 +51,10 @@ public final class MlflowModelTag {
             return this;
         }
         public MlflowModelTag build() {
-            final var o = new MlflowModelTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new MlflowModelTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class MwsWorkspacesGkeConfig {
             return this;
         }
         public MwsWorkspacesGkeConfig build() {
-            final var o = new MwsWorkspacesGkeConfig();
-            o.connectivityType = connectivityType;
-            o.masterIpRange = masterIpRange;
-            return o;
+            final var _resultValue = new MwsWorkspacesGkeConfig();
+            _resultValue.connectivityType = connectivityType;
+            _resultValue.masterIpRange = masterIpRange;
+            return _resultValue;
         }
     }
 }

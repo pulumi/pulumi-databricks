@@ -80,10 +80,10 @@ public final class PipelineNotification {
             return emailRecipients(List.of(emailRecipients));
         }
         public PipelineNotification build() {
-            final var o = new PipelineNotification();
-            o.alerts = alerts;
-            o.emailRecipients = emailRecipients;
-            return o;
+            final var _resultValue = new PipelineNotification();
+            _resultValue.alerts = alerts;
+            _resultValue.emailRecipients = emailRecipients;
+            return _resultValue;
         }
     }
 }

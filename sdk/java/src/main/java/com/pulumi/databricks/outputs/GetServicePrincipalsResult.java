@@ -80,11 +80,11 @@ public final class GetServicePrincipalsResult {
             return this;
         }
         public GetServicePrincipalsResult build() {
-            final var o = new GetServicePrincipalsResult();
-            o.applicationIds = applicationIds;
-            o.displayNameContains = displayNameContains;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetServicePrincipalsResult();
+            _resultValue.applicationIds = applicationIds;
+            _resultValue.displayNameContains = displayNameContains;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

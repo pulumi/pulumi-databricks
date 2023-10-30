@@ -66,11 +66,11 @@ public final class JobLibraryMaven {
             return this;
         }
         public JobLibraryMaven build() {
-            final var o = new JobLibraryMaven();
-            o.coordinates = coordinates;
-            o.exclusions = exclusions;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new JobLibraryMaven();
+            _resultValue.coordinates = coordinates;
+            _resultValue.exclusions = exclusions;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

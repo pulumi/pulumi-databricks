@@ -28,7 +28,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * Application ID of databricks.ServicePrincipal to create a PAT token for.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -42,7 +42,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * Comment that describes the purpose of the token.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -56,7 +56,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
-    @Export(name="lifetimeSeconds", type=Integer.class, parameters={})
+    @Export(name="lifetimeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifetimeSeconds;
 
     /**
@@ -70,7 +70,7 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * **Sensitive** value of the newly-created token.
      * 
      */
-    @Export(name="tokenValue", type=String.class, parameters={})
+    @Export(name="tokenValue", refs={String.class}, tree="[0]")
     private Output<String> tokenValue;
 
     /**

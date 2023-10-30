@@ -40,9 +40,9 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes build() {
-            final var o = new GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

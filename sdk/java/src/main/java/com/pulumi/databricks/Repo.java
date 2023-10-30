@@ -31,7 +31,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn&#39;t specified, then the repository will stay at the previously checked out state.
      * 
      */
-    @Export(name="branch", type=String.class, parameters={})
+    @Export(name="branch", refs={String.class}, tree="[0]")
     private Output<String> branch;
 
     /**
@@ -45,7 +45,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * Hash of the HEAD commit at time of the last executed operation. It won&#39;t change if you manually perform pull operation via UI or API
      * 
      */
-    @Export(name="commitHash", type=String.class, parameters={})
+    @Export(name="commitHash", refs={String.class}, tree="[0]")
     private Output<String> commitHash;
 
     /**
@@ -59,7 +59,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      * 
      */
-    @Export(name="gitProvider", type=String.class, parameters={})
+    @Export(name="gitProvider", refs={String.class}, tree="[0]")
     private Output<String> gitProvider;
 
     /**
@@ -73,7 +73,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * path to put the checked out Repo. If not specified, then repo will be created in the user&#39;s repo directory (`/Repos/&lt;username&gt;/...`).  If the value changes, repo is re-created.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -83,7 +83,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
     public Output<String> path() {
         return this.path;
     }
-    @Export(name="sparseCheckout", type=RepoSparseCheckout.class, parameters={})
+    @Export(name="sparseCheckout", refs={RepoSparseCheckout.class}, tree="[0]")
     private Output</* @Nullable */ RepoSparseCheckout> sparseCheckout;
 
     public Output<Optional<RepoSparseCheckout>> sparseCheckout() {
@@ -93,7 +93,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * name of the tag for initial checkout.  Conflicts with `branch`.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tag;
 
     /**
@@ -107,7 +107,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
