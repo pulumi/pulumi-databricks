@@ -17,6 +17,15 @@
                     }
                 }
             },
+            "databricks_artifact_allowlist": {
+                "current": "databricks:index/artifactAllowlist:ArtifactAllowlist",
+                "majorVersion": 1,
+                "fields": {
+                    "artifact_matcher": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_catalog": {
                 "current": "databricks:index/catalog:Catalog",
                 "majorVersion": 1
@@ -309,6 +318,9 @@
                                 }
                             }
                         }
+                    },
+                    "deployment": {
+                        "maxItemsOne": true
                     },
                     "email_notifications": {
                         "maxItemsOne": true,
@@ -1573,7 +1585,13 @@
                 "current": "databricks:index/sqlTable:SqlTable",
                 "majorVersion": 1,
                 "fields": {
+                    "cluster_keys": {
+                        "maxItemsOne": false
+                    },
                     "column": {
+                        "maxItemsOne": false
+                    },
+                    "partitions": {
                         "maxItemsOne": false
                     }
                 }
@@ -1952,6 +1970,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": true
                                             },
                                             "email_notifications": {
                                                 "maxItemsOne": true,
@@ -2738,6 +2759,7 @@
     "renames": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": "databricks_access_control_rule_set",
+            "databricks:index/artifactAllowlist:ArtifactAllowlist": "databricks_artifact_allowlist",
             "databricks:index/catalog:Catalog": "databricks_catalog",
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": "databricks_catalog_workspace_binding",
             "databricks:index/cluster:Cluster": "databricks_cluster",
@@ -2851,6 +2873,9 @@
             "databricks:index/getZones:getZones": "databricks_zones"
         },
         "renamedProperties": {
+            "databricks:index/ArtifactAllowlistArtifactMatcher:ArtifactAllowlistArtifactMatcher": {
+                "matchType": "match_type"
+            },
             "databricks:index/ClusterAutoscale:ClusterAutoscale": {
                 "maxWorkers": "max_workers",
                 "minWorkers": "min_workers"
@@ -2955,6 +2980,9 @@
                 "profilesDirectory": "profiles_directory",
                 "projectDirectory": "project_directory",
                 "warehouseId": "warehouse_id"
+            },
+            "databricks:index/JobDeployment:JobDeployment": {
+                "metadataFilePath": "metadata_file_path"
             },
             "databricks:index/JobEmailNotifications:JobEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
@@ -3658,6 +3686,13 @@
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": {
                 "grantRules": "grant_rules"
             },
+            "databricks:index/artifactAllowlist:ArtifactAllowlist": {
+                "artifactMatchers": "artifact_matcher",
+                "artifactType": "artifact_type",
+                "createdAt": "created_at",
+                "createdBy": "created_by",
+                "metastoreId": "metastore_id"
+            },
             "databricks:index/catalog:Catalog": {
                 "connectionName": "connection_name",
                 "forceDestroy": "force_destroy",
@@ -4025,6 +4060,9 @@
                 "profilesDirectory": "profiles_directory",
                 "projectDirectory": "project_directory",
                 "warehouseId": "warehouse_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsDeployment:getJobJobSettingsSettingsDeployment": {
+                "metadataFilePath": "metadata_file_path"
             },
             "databricks:index/getJobJobSettingsSettingsEmailNotifications:getJobJobSettingsSettingsEmailNotifications": {
                 "alertOnLastAttempt": "alert_on_last_attempt",
@@ -4947,13 +4985,15 @@
             "databricks:index/sqlTable:SqlTable": {
                 "catalogName": "catalog_name",
                 "clusterId": "cluster_id",
+                "clusterKeys": "cluster_keys",
                 "columns": "column",
                 "dataSourceFormat": "data_source_format",
                 "schemaName": "schema_name",
                 "storageCredentialName": "storage_credential_name",
                 "storageLocation": "storage_location",
                 "tableType": "table_type",
-                "viewDefinition": "view_definition"
+                "viewDefinition": "view_definition",
+                "warehouseId": "warehouse_id"
             },
             "databricks:index/sqlVisualization:SqlVisualization": {
                 "queryId": "query_id",
