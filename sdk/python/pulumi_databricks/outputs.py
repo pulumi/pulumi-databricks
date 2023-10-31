@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AccessControlRuleSetGrantRule',
+    'ArtifactAllowlistArtifactMatcher',
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
@@ -55,6 +56,7 @@ __all__ = [
     'JobComputeSpec',
     'JobContinuous',
     'JobDbtTask',
+    'JobDeployment',
     'JobEmailNotifications',
     'JobGitSource',
     'JobGitSourceJobSource',
@@ -318,6 +320,7 @@ __all__ = [
     'GetJobJobSettingsSettingsComputeSpecResult',
     'GetJobJobSettingsSettingsContinuousResult',
     'GetJobJobSettingsSettingsDbtTaskResult',
+    'GetJobJobSettingsSettingsDeploymentResult',
     'GetJobJobSettingsSettingsEmailNotificationsResult',
     'GetJobJobSettingsSettingsGitSourceResult',
     'GetJobJobSettingsSettingsGitSourceJobSourceResult',
@@ -492,6 +495,52 @@ class AccessControlRuleSetGrantRule(dict):
         * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
         """
         return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class ArtifactAllowlistArtifactMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArtifactAllowlistArtifactMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArtifactAllowlistArtifactMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArtifactAllowlistArtifactMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact: str,
+                 match_type: str):
+        """
+        :param str artifact: The artifact path or maven coordinate.
+        :param str match_type: The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+        """
+        pulumi.set(__self__, "artifact", artifact)
+        pulumi.set(__self__, "match_type", match_type)
+
+    @property
+    @pulumi.getter
+    def artifact(self) -> str:
+        """
+        The artifact path or maven coordinate.
+        """
+        return pulumi.get(self, "artifact")
+
+    @property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> str:
+        """
+        The pattern matching type of the artifact. Only `PREFIX_MATCH` is supported.
+        """
+        return pulumi.get(self, "match_type")
 
 
 @pulumi.output_type
@@ -2154,6 +2203,43 @@ class JobDbtTask(dict):
         You also need to include a `git_source` block to configure the repository that contains the dbt project.
         """
         return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class JobDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataFilePath":
+            suggest = "metadata_file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kind: str,
+                 metadata_file_path: Optional[str] = None):
+        pulumi.set(__self__, "kind", kind)
+        if metadata_file_path is not None:
+            pulumi.set(__self__, "metadata_file_path", metadata_file_path)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="metadataFilePath")
+    def metadata_file_path(self) -> Optional[str]:
+        return pulumi.get(self, "metadata_file_path")
 
 
 @pulumi.output_type
@@ -15129,6 +15215,7 @@ class GetJobJobSettingsSettingsResult(dict):
                  computes: Optional[Sequence['outputs.GetJobJobSettingsSettingsComputeResult']] = None,
                  continuous: Optional['outputs.GetJobJobSettingsSettingsContinuousResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsDbtTaskResult'] = None,
+                 deployment: Optional['outputs.GetJobJobSettingsSettingsDeploymentResult'] = None,
                  email_notifications: Optional['outputs.GetJobJobSettingsSettingsEmailNotificationsResult'] = None,
                  existing_cluster_id: Optional[str] = None,
                  git_source: Optional['outputs.GetJobJobSettingsSettingsGitSourceResult'] = None,
@@ -15168,6 +15255,8 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
             pulumi.set(__self__, "dbt_task", dbt_task)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -15246,6 +15335,11 @@ class GetJobJobSettingsSettingsResult(dict):
     @pulumi.getter(name="dbtTask")
     def dbt_task(self) -> Optional['outputs.GetJobJobSettingsSettingsDbtTaskResult']:
         return pulumi.get(self, "dbt_task")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional['outputs.GetJobJobSettingsSettingsDeploymentResult']:
+        return pulumi.get(self, "deployment")
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -15493,6 +15587,26 @@ class GetJobJobSettingsSettingsDbtTaskResult(dict):
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> Optional[str]:
         return pulumi.get(self, "warehouse_id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsDeploymentResult(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 metadata_file_path: Optional[str] = None):
+        pulumi.set(__self__, "kind", kind)
+        if metadata_file_path is not None:
+            pulumi.set(__self__, "metadata_file_path", metadata_file_path)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="metadataFilePath")
+    def metadata_file_path(self) -> Optional[str]:
+        return pulumi.get(self, "metadata_file_path")
 
 
 @pulumi.output_type

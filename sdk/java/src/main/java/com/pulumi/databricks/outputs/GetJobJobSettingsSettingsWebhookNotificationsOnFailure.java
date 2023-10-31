@@ -46,9 +46,9 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
             return this;
         }
         public GetJobJobSettingsSettingsWebhookNotificationsOnFailure build() {
-            final var o = new GetJobJobSettingsSettingsWebhookNotificationsOnFailure();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsWebhookNotificationsOnFailure();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

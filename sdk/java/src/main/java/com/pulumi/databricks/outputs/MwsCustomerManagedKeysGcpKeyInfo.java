@@ -46,9 +46,9 @@ public final class MwsCustomerManagedKeysGcpKeyInfo {
             return this;
         }
         public MwsCustomerManagedKeysGcpKeyInfo build() {
-            final var o = new MwsCustomerManagedKeysGcpKeyInfo();
-            o.kmsKeyId = kmsKeyId;
-            return o;
+            final var _resultValue = new MwsCustomerManagedKeysGcpKeyInfo();
+            _resultValue.kmsKeyId = kmsKeyId;
+            return _resultValue;
         }
     }
 }

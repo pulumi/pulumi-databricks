@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsRunAs {
             return this;
         }
         public GetJobJobSettingsSettingsRunAs build() {
-            final var o = new GetJobJobSettingsSettingsRunAs();
-            o.servicePrincipalName = servicePrincipalName;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsRunAs();
+            _resultValue.servicePrincipalName = servicePrincipalName;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

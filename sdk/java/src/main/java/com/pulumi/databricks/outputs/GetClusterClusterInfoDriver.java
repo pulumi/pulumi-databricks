@@ -108,15 +108,15 @@ public final class GetClusterClusterInfoDriver {
             return this;
         }
         public GetClusterClusterInfoDriver build() {
-            final var o = new GetClusterClusterInfoDriver();
-            o.hostPrivateIp = hostPrivateIp;
-            o.instanceId = instanceId;
-            o.nodeAwsAttributes = nodeAwsAttributes;
-            o.nodeId = nodeId;
-            o.privateIp = privateIp;
-            o.publicDns = publicDns;
-            o.startTimestamp = startTimestamp;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoDriver();
+            _resultValue.hostPrivateIp = hostPrivateIp;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nodeAwsAttributes = nodeAwsAttributes;
+            _resultValue.nodeId = nodeId;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicDns = publicDns;
+            _resultValue.startTimestamp = startTimestamp;
+            return _resultValue;
         }
     }
 }

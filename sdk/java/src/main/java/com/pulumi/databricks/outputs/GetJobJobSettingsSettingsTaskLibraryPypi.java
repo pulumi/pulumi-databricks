@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsTaskLibraryPypi {
             return this;
         }
         public GetJobJobSettingsSettingsTaskLibraryPypi build() {
-            final var o = new GetJobJobSettingsSettingsTaskLibraryPypi();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskLibraryPypi();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

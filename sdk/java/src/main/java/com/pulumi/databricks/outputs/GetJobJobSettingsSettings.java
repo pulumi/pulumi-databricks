@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsCompute;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDbtTask;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDeployment;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEmailNotifications;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSource;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsHealth;
@@ -43,6 +44,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
     private @Nullable GetJobJobSettingsSettingsContinuous continuous;
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
+    private @Nullable GetJobJobSettingsSettingsDeployment deployment;
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
     private String format;
@@ -87,6 +89,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsDbtTask> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
+    }
+    public Optional<GetJobJobSettingsSettingsDeployment> deployment() {
+        return Optional.ofNullable(this.deployment);
     }
     public Optional<GetJobJobSettingsSettingsEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
@@ -195,6 +200,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
         private @Nullable GetJobJobSettingsSettingsContinuous continuous;
         private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
+        private @Nullable GetJobJobSettingsSettingsDeployment deployment;
         private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
         private String format;
@@ -231,6 +237,7 @@ public final class GetJobJobSettingsSettings {
     	      this.computes = defaults.computes;
     	      this.continuous = defaults.continuous;
     	      this.dbtTask = defaults.dbtTask;
+    	      this.deployment = defaults.deployment;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.format = defaults.format;
@@ -279,6 +286,11 @@ public final class GetJobJobSettingsSettings {
         @CustomType.Setter
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsDbtTask dbtTask) {
             this.dbtTask = dbtTask;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deployment(@Nullable GetJobJobSettingsSettingsDeployment deployment) {
+            this.deployment = deployment;
             return this;
         }
         @CustomType.Setter
@@ -444,41 +456,42 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         public GetJobJobSettingsSettings build() {
-            final var o = new GetJobJobSettingsSettings();
-            o.computes = computes;
-            o.continuous = continuous;
-            o.dbtTask = dbtTask;
-            o.emailNotifications = emailNotifications;
-            o.existingClusterId = existingClusterId;
-            o.format = format;
-            o.gitSource = gitSource;
-            o.health = health;
-            o.jobClusters = jobClusters;
-            o.libraries = libraries;
-            o.maxConcurrentRuns = maxConcurrentRuns;
-            o.maxRetries = maxRetries;
-            o.minRetryIntervalMillis = minRetryIntervalMillis;
-            o.name = name;
-            o.newCluster = newCluster;
-            o.notebookTask = notebookTask;
-            o.notificationSettings = notificationSettings;
-            o.parameters = parameters;
-            o.pipelineTask = pipelineTask;
-            o.pythonWheelTask = pythonWheelTask;
-            o.queue = queue;
-            o.retryOnTimeout = retryOnTimeout;
-            o.runAs = runAs;
-            o.runJobTask = runJobTask;
-            o.schedule = schedule;
-            o.sparkJarTask = sparkJarTask;
-            o.sparkPythonTask = sparkPythonTask;
-            o.sparkSubmitTask = sparkSubmitTask;
-            o.tags = tags;
-            o.tasks = tasks;
-            o.timeoutSeconds = timeoutSeconds;
-            o.trigger = trigger;
-            o.webhookNotifications = webhookNotifications;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettings();
+            _resultValue.computes = computes;
+            _resultValue.continuous = continuous;
+            _resultValue.dbtTask = dbtTask;
+            _resultValue.deployment = deployment;
+            _resultValue.emailNotifications = emailNotifications;
+            _resultValue.existingClusterId = existingClusterId;
+            _resultValue.format = format;
+            _resultValue.gitSource = gitSource;
+            _resultValue.health = health;
+            _resultValue.jobClusters = jobClusters;
+            _resultValue.libraries = libraries;
+            _resultValue.maxConcurrentRuns = maxConcurrentRuns;
+            _resultValue.maxRetries = maxRetries;
+            _resultValue.minRetryIntervalMillis = minRetryIntervalMillis;
+            _resultValue.name = name;
+            _resultValue.newCluster = newCluster;
+            _resultValue.notebookTask = notebookTask;
+            _resultValue.notificationSettings = notificationSettings;
+            _resultValue.parameters = parameters;
+            _resultValue.pipelineTask = pipelineTask;
+            _resultValue.pythonWheelTask = pythonWheelTask;
+            _resultValue.queue = queue;
+            _resultValue.retryOnTimeout = retryOnTimeout;
+            _resultValue.runAs = runAs;
+            _resultValue.runJobTask = runJobTask;
+            _resultValue.schedule = schedule;
+            _resultValue.sparkJarTask = sparkJarTask;
+            _resultValue.sparkPythonTask = sparkPythonTask;
+            _resultValue.sparkSubmitTask = sparkSubmitTask;
+            _resultValue.tags = tags;
+            _resultValue.tasks = tasks;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            _resultValue.trigger = trigger;
+            _resultValue.webhookNotifications = webhookNotifications;
+            return _resultValue;
         }
     }
 }

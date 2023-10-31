@@ -106,15 +106,15 @@ public final class MountAdl {
             return this;
         }
         public MountAdl build() {
-            final var o = new MountAdl();
-            o.clientId = clientId;
-            o.clientSecretKey = clientSecretKey;
-            o.clientSecretScope = clientSecretScope;
-            o.directory = directory;
-            o.sparkConfPrefix = sparkConfPrefix;
-            o.storageResourceName = storageResourceName;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new MountAdl();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecretKey = clientSecretKey;
+            _resultValue.clientSecretScope = clientSecretScope;
+            _resultValue.directory = directory;
+            _resultValue.sparkConfPrefix = sparkConfPrefix;
+            _resultValue.storageResourceName = storageResourceName;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

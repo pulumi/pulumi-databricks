@@ -40,9 +40,9 @@ public final class ClusterInitScriptAbfss {
             return this;
         }
         public ClusterInitScriptAbfss build() {
-            final var o = new ClusterInitScriptAbfss();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterInitScriptAbfss();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

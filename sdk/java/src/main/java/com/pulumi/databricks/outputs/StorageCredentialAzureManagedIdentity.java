@@ -82,11 +82,11 @@ public final class StorageCredentialAzureManagedIdentity {
             return this;
         }
         public StorageCredentialAzureManagedIdentity build() {
-            final var o = new StorageCredentialAzureManagedIdentity();
-            o.accessConnectorId = accessConnectorId;
-            o.credentialId = credentialId;
-            o.managedIdentityId = managedIdentityId;
-            return o;
+            final var _resultValue = new StorageCredentialAzureManagedIdentity();
+            _resultValue.accessConnectorId = accessConnectorId;
+            _resultValue.credentialId = credentialId;
+            _resultValue.managedIdentityId = managedIdentityId;
+            return _resultValue;
         }
     }
 }

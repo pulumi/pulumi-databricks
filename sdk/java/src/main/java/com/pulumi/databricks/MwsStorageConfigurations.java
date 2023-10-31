@@ -91,7 +91,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -105,7 +105,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * name of AWS S3 bucket
      * 
      */
-    @Export(name="bucketName", type=String.class, parameters={})
+    @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
@@ -115,7 +115,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
     public Output<String> bucketName() {
         return this.bucketName;
     }
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     public Output<Integer> creationTime() {
@@ -125,7 +125,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * (String) id of storage config to be used for `databricks_mws_workspace` resource.
      * 
      */
-    @Export(name="storageConfigurationId", type=String.class, parameters={})
+    @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationId;
 
     /**
@@ -139,7 +139,7 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
      * name under which this storage configuration is stored
      * 
      */
-    @Export(name="storageConfigurationName", type=String.class, parameters={})
+    @Export(name="storageConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationName;
 
     /**

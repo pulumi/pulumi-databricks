@@ -66,11 +66,11 @@ public final class LibraryMaven {
             return this;
         }
         public LibraryMaven build() {
-            final var o = new LibraryMaven();
-            o.coordinates = coordinates;
-            o.exclusions = exclusions;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new LibraryMaven();
+            _resultValue.coordinates = coordinates;
+            _resultValue.exclusions = exclusions;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class ModelServingConfigTrafficConfigRoute {
             return this;
         }
         public ModelServingConfigTrafficConfigRoute build() {
-            final var o = new ModelServingConfigTrafficConfigRoute();
-            o.servedModelName = servedModelName;
-            o.trafficPercentage = trafficPercentage;
-            return o;
+            final var _resultValue = new ModelServingConfigTrafficConfigRoute();
+            _resultValue.servedModelName = servedModelName;
+            _resultValue.trafficPercentage = trafficPercentage;
+            return _resultValue;
         }
     }
 }

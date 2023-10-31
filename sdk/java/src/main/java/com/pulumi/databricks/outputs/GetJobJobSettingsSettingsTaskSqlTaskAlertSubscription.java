@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
             return this;
         }
         public GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription();
-            o.destinationId = destinationId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription();
+            _resultValue.destinationId = destinationId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

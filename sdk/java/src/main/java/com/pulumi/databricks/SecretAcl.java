@@ -89,7 +89,7 @@ public class SecretAcl extends com.pulumi.resources.CustomResource {
      * `READ`, `WRITE` or `MANAGE`.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -103,7 +103,7 @@ public class SecretAcl extends com.pulumi.resources.CustomResource {
      * principal&#39;s identifier. It can be:
      * 
      */
-    @Export(name="principal", type=String.class, parameters={})
+    @Export(name="principal", refs={String.class}, tree="[0]")
     private Output<String> principal;
 
     /**
@@ -117,7 +117,7 @@ public class SecretAcl extends com.pulumi.resources.CustomResource {
      * name of the scope
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**

@@ -292,7 +292,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::&lt;account-id&gt;:role/&lt;name&gt;`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
      * 
      */
-    @Export(name="iamRoleArn", type=String.class, parameters={})
+    @Export(name="iamRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iamRoleArn;
 
     /**
@@ -306,7 +306,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
-    @Export(name="instanceProfileArn", type=String.class, parameters={})
+    @Export(name="instanceProfileArn", refs={String.class}, tree="[0]")
     private Output<String> instanceProfileArn;
 
     /**
@@ -320,7 +320,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      * 
      */
-    @Export(name="isMetaInstanceProfile", type=Boolean.class, parameters={})
+    @Export(name="isMetaInstanceProfile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isMetaInstanceProfile;
 
     /**
@@ -334,7 +334,7 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. &#34;Your requested instance type is not supported in your requested availability zone&#34;), you can pass this flag to skip the validation and forcibly add the instance profile.
      * 
      */
-    @Export(name="skipValidation", type=Boolean.class, parameters={})
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipValidation;
 
     /**

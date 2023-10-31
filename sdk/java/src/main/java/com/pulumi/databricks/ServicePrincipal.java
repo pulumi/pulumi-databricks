@@ -237,7 +237,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      * 
      */
-    @Export(name="aclPrincipalId", type=String.class, parameters={})
+    @Export(name="aclPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipalId;
 
     /**
@@ -251,7 +251,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      * 
      */
-    @Export(name="active", type=Boolean.class, parameters={})
+    @Export(name="active", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> active;
 
     /**
@@ -265,7 +265,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      * 
      */
-    @Export(name="allowClusterCreate", type=Boolean.class, parameters={})
+    @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
@@ -279,7 +279,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
      * 
      */
-    @Export(name="allowInstancePoolCreate", type=Boolean.class, parameters={})
+    @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
@@ -293,7 +293,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -307,7 +307,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
      * 
      */
-    @Export(name="databricksSqlAccess", type=Boolean.class, parameters={})
+    @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
@@ -321,7 +321,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
      * 
      */
-    @Export(name="disableAsUserDeletion", type=Boolean.class, parameters={})
+    @Export(name="disableAsUserDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableAsUserDeletion;
 
     /**
@@ -335,7 +335,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This is an alias for the service principal and can be the full name of the service principal.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -349,7 +349,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * ID of the service principal in an external identity provider.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
@@ -359,7 +359,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     public Output<Optional<Boolean>> force() {
@@ -369,7 +369,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This flag determines whether the service principal&#39;s home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      * 
      */
-    @Export(name="forceDeleteHomeDir", type=Boolean.class, parameters={})
+    @Export(name="forceDeleteHomeDir", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteHomeDir;
 
     /**
@@ -383,7 +383,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This flag determines whether the service principal&#39;s repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      * 
      */
-    @Export(name="forceDeleteRepos", type=Boolean.class, parameters={})
+    @Export(name="forceDeleteRepos", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteRepos;
 
     /**
@@ -397,7 +397,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      * 
      */
-    @Export(name="home", type=String.class, parameters={})
+    @Export(name="home", refs={String.class}, tree="[0]")
     private Output<String> home;
 
     /**
@@ -411,7 +411,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      * 
      */
-    @Export(name="repos", type=String.class, parameters={})
+    @Export(name="repos", refs={String.class}, tree="[0]")
     private Output<String> repos;
 
     /**
@@ -425,7 +425,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * This is a field to allow the group to have access to Databricks Workspace.
      * 
      */
-    @Export(name="workspaceAccess", type=Boolean.class, parameters={})
+    @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**

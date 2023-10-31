@@ -59,10 +59,10 @@ public final class GetNotebookPathsNotebookPathList {
             return this;
         }
         public GetNotebookPathsNotebookPathList build() {
-            final var o = new GetNotebookPathsNotebookPathList();
-            o.language = language;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetNotebookPathsNotebookPathList();
+            _resultValue.language = language;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

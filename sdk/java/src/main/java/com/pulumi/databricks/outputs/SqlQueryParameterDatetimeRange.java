@@ -60,10 +60,10 @@ public final class SqlQueryParameterDatetimeRange {
             return this;
         }
         public SqlQueryParameterDatetimeRange build() {
-            final var o = new SqlQueryParameterDatetimeRange();
-            o.range = range;
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterDatetimeRange();
+            _resultValue.range = range;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

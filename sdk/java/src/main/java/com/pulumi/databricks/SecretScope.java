@@ -31,7 +31,7 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
      * Either `DATABRICKS` or `AZURE_KEYVAULT`
      * 
      */
-    @Export(name="backendType", type=String.class, parameters={})
+    @Export(name="backendType", refs={String.class}, tree="[0]")
     private Output<String> backendType;
 
     /**
@@ -45,7 +45,7 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
      * The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it&#39;s omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer&#39;s user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
      * 
      */
-    @Export(name="initialManagePrincipal", type=String.class, parameters={})
+    @Export(name="initialManagePrincipal", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialManagePrincipal;
 
     /**
@@ -55,7 +55,7 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> initialManagePrincipal() {
         return Codegen.optional(this.initialManagePrincipal);
     }
-    @Export(name="keyvaultMetadata", type=SecretScopeKeyvaultMetadata.class, parameters={})
+    @Export(name="keyvaultMetadata", refs={SecretScopeKeyvaultMetadata.class}, tree="[0]")
     private Output</* @Nullable */ SecretScopeKeyvaultMetadata> keyvaultMetadata;
 
     public Output<Optional<SecretScopeKeyvaultMetadata>> keyvaultMetadata() {
@@ -65,7 +65,7 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

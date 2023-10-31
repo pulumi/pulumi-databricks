@@ -125,7 +125,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -139,7 +139,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * Databricks log delivery configuration ID.
      * 
      */
-    @Export(name="configId", type=String.class, parameters={})
+    @Export(name="configId", refs={String.class}, tree="[0]")
     private Output<String> configId;
 
     /**
@@ -153,7 +153,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The optional human-readable name of the log delivery configuration. Defaults to empty.
      * 
      */
-    @Export(name="configName", type=String.class, parameters={})
+    @Export(name="configName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configName;
 
     /**
@@ -167,7 +167,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
      * 
      */
-    @Export(name="credentialsId", type=String.class, parameters={})
+    @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output<String> credentialsId;
 
     /**
@@ -181,7 +181,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
      * 
      */
-    @Export(name="deliveryPathPrefix", type=String.class, parameters={})
+    @Export(name="deliveryPathPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deliveryPathPrefix;
 
     /**
@@ -195,7 +195,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
      * 
      */
-    @Export(name="deliveryStartTime", type=String.class, parameters={})
+    @Export(name="deliveryStartTime", refs={String.class}, tree="[0]")
     private Output<String> deliveryStartTime;
 
     /**
@@ -209,7 +209,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
      * 
      */
-    @Export(name="logType", type=String.class, parameters={})
+    @Export(name="logType", refs={String.class}, tree="[0]")
     private Output<String> logType;
 
     /**
@@ -223,7 +223,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.
      * 
      */
-    @Export(name="outputFormat", type=String.class, parameters={})
+    @Export(name="outputFormat", refs={String.class}, tree="[0]")
     private Output<String> outputFormat;
 
     /**
@@ -237,7 +237,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -251,7 +251,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
      * 
      */
-    @Export(name="storageConfigurationId", type=String.class, parameters={})
+    @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationId;
 
     /**
@@ -265,7 +265,7 @@ public class MwsLogDelivery extends com.pulumi.resources.CustomResource {
      * By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the E2 version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
      * 
      */
-    @Export(name="workspaceIdsFilters", type=List.class, parameters={Integer.class})
+    @Export(name="workspaceIdsFilters", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> workspaceIdsFilters;
 
     /**

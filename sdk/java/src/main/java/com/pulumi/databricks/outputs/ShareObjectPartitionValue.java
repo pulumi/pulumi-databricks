@@ -105,12 +105,12 @@ public final class ShareObjectPartitionValue {
             return this;
         }
         public ShareObjectPartitionValue build() {
-            final var o = new ShareObjectPartitionValue();
-            o.name = name;
-            o.op = op;
-            o.recipientPropertyKey = recipientPropertyKey;
-            o.value = value;
-            return o;
+            final var _resultValue = new ShareObjectPartitionValue();
+            _resultValue.name = name;
+            _resultValue.op = op;
+            _resultValue.recipientPropertyKey = recipientPropertyKey;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

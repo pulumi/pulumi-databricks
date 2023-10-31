@@ -26,43 +26,43 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlVisualization:SqlVisualization")
 public class SqlVisualization extends com.pulumi.resources.CustomResource {
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="options", type=String.class, parameters={})
+    @Export(name="options", refs={String.class}, tree="[0]")
     private Output<String> options;
 
     public Output<String> options() {
         return this.options;
     }
-    @Export(name="queryId", type=String.class, parameters={})
+    @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;
 
     public Output<String> queryId() {
         return this.queryId;
     }
-    @Export(name="queryPlan", type=String.class, parameters={})
+    @Export(name="queryPlan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryPlan;
 
     public Output<Optional<String>> queryPlan() {
         return Codegen.optional(this.queryPlan);
     }
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="visualizationId", type=String.class, parameters={})
+    @Export(name="visualizationId", refs={String.class}, tree="[0]")
     private Output<String> visualizationId;
 
     public Output<String> visualizationId() {

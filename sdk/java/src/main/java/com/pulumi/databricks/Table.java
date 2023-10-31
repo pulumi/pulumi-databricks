@@ -20,73 +20,73 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     public Output<String> catalogName() {
         return this.catalogName;
     }
-    @Export(name="columns", type=List.class, parameters={TableColumn.class})
+    @Export(name="columns", refs={List.class,TableColumn.class}, tree="[0,1]")
     private Output<List<TableColumn>> columns;
 
     public Output<List<TableColumn>> columns() {
         return this.columns;
     }
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    @Export(name="dataSourceFormat", type=String.class, parameters={})
+    @Export(name="dataSourceFormat", refs={String.class}, tree="[0]")
     private Output<String> dataSourceFormat;
 
     public Output<String> dataSourceFormat() {
         return this.dataSourceFormat;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     public Output<String> owner() {
         return this.owner;
     }
-    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> properties;
 
     public Output<Optional<Map<String,Object>>> properties() {
         return Codegen.optional(this.properties);
     }
-    @Export(name="schemaName", type=String.class, parameters={})
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     public Output<String> schemaName() {
         return this.schemaName;
     }
-    @Export(name="storageCredentialName", type=String.class, parameters={})
+    @Export(name="storageCredentialName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCredentialName;
 
     public Output<Optional<String>> storageCredentialName() {
         return Codegen.optional(this.storageCredentialName);
     }
-    @Export(name="storageLocation", type=String.class, parameters={})
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageLocation;
 
     public Output<Optional<String>> storageLocation() {
         return Codegen.optional(this.storageLocation);
     }
-    @Export(name="tableType", type=String.class, parameters={})
+    @Export(name="tableType", refs={String.class}, tree="[0]")
     private Output<String> tableType;
 
     public Output<String> tableType() {
         return this.tableType;
     }
-    @Export(name="viewDefinition", type=String.class, parameters={})
+    @Export(name="viewDefinition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> viewDefinition;
 
     public Output<Optional<String>> viewDefinition() {

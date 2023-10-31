@@ -86,11 +86,11 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
             return this;
         }
         public MwsCustomerManagedKeysAwsKeyInfo build() {
-            final var o = new MwsCustomerManagedKeysAwsKeyInfo();
-            o.keyAlias = keyAlias;
-            o.keyArn = keyArn;
-            o.keyRegion = keyRegion;
-            return o;
+            final var _resultValue = new MwsCustomerManagedKeysAwsKeyInfo();
+            _resultValue.keyAlias = keyAlias;
+            _resultValue.keyArn = keyArn;
+            _resultValue.keyRegion = keyRegion;
+            return _resultValue;
         }
     }
 }

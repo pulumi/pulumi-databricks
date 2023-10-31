@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsComputeArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuousArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTaskArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDeploymentArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealthArgs;
@@ -63,6 +64,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
     public Optional<Output<GetJobJobSettingsSettingsDbtTaskArgs>> dbtTask() {
         return Optional.ofNullable(this.dbtTask);
+    }
+
+    @Import(name="deployment")
+    private @Nullable Output<GetJobJobSettingsSettingsDeploymentArgs> deployment;
+
+    public Optional<Output<GetJobJobSettingsSettingsDeploymentArgs>> deployment() {
+        return Optional.ofNullable(this.deployment);
     }
 
     @Import(name="emailNotifications")
@@ -289,6 +297,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.computes = $.computes;
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
+        this.deployment = $.deployment;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -368,6 +377,15 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder dbtTask(GetJobJobSettingsSettingsDbtTaskArgs dbtTask) {
             return dbtTask(Output.of(dbtTask));
+        }
+
+        public Builder deployment(@Nullable Output<GetJobJobSettingsSettingsDeploymentArgs> deployment) {
+            $.deployment = deployment;
+            return this;
+        }
+
+        public Builder deployment(GetJobJobSettingsSettingsDeploymentArgs deployment) {
+            return deployment(Output.of(deployment));
         }
 
         public Builder emailNotifications(@Nullable Output<GetJobJobSettingsSettingsEmailNotificationsArgs> emailNotifications) {

@@ -38,9 +38,9 @@ public final class JobTaskSqlTaskQuery {
             return this;
         }
         public JobTaskSqlTaskQuery build() {
-            final var o = new JobTaskSqlTaskQuery();
-            o.queryId = queryId;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskQuery();
+            _resultValue.queryId = queryId;
+            return _resultValue;
         }
     }
 }

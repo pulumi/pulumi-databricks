@@ -174,7 +174,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/sqlQuery:SqlQuery")
 public class SqlQuery extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -184,7 +184,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * Data source ID of a SQL warehouse
      * 
      */
-    @Export(name="dataSourceId", type=String.class, parameters={})
+    @Export(name="dataSourceId", refs={String.class}, tree="[0]")
     private Output<String> dataSourceId;
 
     /**
@@ -198,7 +198,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * General description that conveys additional information about this query such as usage notes.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -212,7 +212,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * The title of this query that appears in list views, widget headings, and on the query page.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -222,7 +222,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="parameters", type=List.class, parameters={SqlQueryParameter.class})
+    @Export(name="parameters", refs={List.class,SqlQueryParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SqlQueryParameter>> parameters;
 
     public Output<Optional<List<SqlQueryParameter>>> parameters() {
@@ -232,7 +232,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * The identifier of the workspace folder containing the object.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -246,7 +246,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * The text of the query to be run.
      * 
      */
-    @Export(name="query", type=String.class, parameters={})
+    @Export(name="query", refs={String.class}, tree="[0]")
     private Output<String> query;
 
     /**
@@ -260,7 +260,7 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * Run as role. Possible values are `viewer`, `owner`.
      * 
      */
-    @Export(name="runAsRole", type=String.class, parameters={})
+    @Export(name="runAsRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsRole;
 
     /**
@@ -276,19 +276,19 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
-    @Export(name="schedule", type=SqlQuerySchedule.class, parameters={})
+    @Export(name="schedule", refs={SqlQuerySchedule.class}, tree="[0]")
     private Output</* @Nullable */ SqlQuerySchedule> schedule;
 
     public Output<Optional<SqlQuerySchedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {

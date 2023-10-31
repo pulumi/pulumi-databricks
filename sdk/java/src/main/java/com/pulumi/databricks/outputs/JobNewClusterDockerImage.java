@@ -60,10 +60,10 @@ public final class JobNewClusterDockerImage {
             return this;
         }
         public JobNewClusterDockerImage build() {
-            final var o = new JobNewClusterDockerImage();
-            o.basicAuth = basicAuth;
-            o.url = url;
-            return o;
+            final var _resultValue = new JobNewClusterDockerImage();
+            _resultValue.basicAuth = basicAuth;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

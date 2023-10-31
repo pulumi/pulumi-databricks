@@ -87,13 +87,13 @@ public final class PipelineLibrary {
             return this;
         }
         public PipelineLibrary build() {
-            final var o = new PipelineLibrary();
-            o.file = file;
-            o.jar = jar;
-            o.maven = maven;
-            o.notebook = notebook;
-            o.whl = whl;
-            return o;
+            final var _resultValue = new PipelineLibrary();
+            _resultValue.file = file;
+            _resultValue.jar = jar;
+            _resultValue.maven = maven;
+            _resultValue.notebook = notebook;
+            _resultValue.whl = whl;
+            return _resultValue;
         }
     }
 }

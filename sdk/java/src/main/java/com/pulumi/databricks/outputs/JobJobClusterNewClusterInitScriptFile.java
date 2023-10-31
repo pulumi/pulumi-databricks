@@ -40,9 +40,9 @@ public final class JobJobClusterNewClusterInitScriptFile {
             return this;
         }
         public JobJobClusterNewClusterInitScriptFile build() {
-            final var o = new JobJobClusterNewClusterInitScriptFile();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterInitScriptFile();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

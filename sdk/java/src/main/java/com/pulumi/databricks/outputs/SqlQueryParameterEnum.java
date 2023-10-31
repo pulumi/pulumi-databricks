@@ -89,12 +89,12 @@ public final class SqlQueryParameterEnum {
             return values(List.of(values));
         }
         public SqlQueryParameterEnum build() {
-            final var o = new SqlQueryParameterEnum();
-            o.multiple = multiple;
-            o.options = options;
-            o.value = value;
-            o.values = values;
-            return o;
+            final var _resultValue = new SqlQueryParameterEnum();
+            _resultValue.multiple = multiple;
+            _resultValue.options = options;
+            _resultValue.value = value;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

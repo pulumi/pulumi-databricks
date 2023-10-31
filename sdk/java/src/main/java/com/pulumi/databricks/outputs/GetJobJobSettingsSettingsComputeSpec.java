@@ -40,9 +40,9 @@ public final class GetJobJobSettingsSettingsComputeSpec {
             return this;
         }
         public GetJobJobSettingsSettingsComputeSpec build() {
-            final var o = new GetJobJobSettingsSettingsComputeSpec();
-            o.kind = kind;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsComputeSpec();
+            _resultValue.kind = kind;
+            return _resultValue;
         }
     }
 }

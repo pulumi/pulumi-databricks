@@ -446,34 +446,34 @@ public final class JobTask {
             return this;
         }
         public JobTask build() {
-            final var o = new JobTask();
-            o.computeKey = computeKey;
-            o.conditionTask = conditionTask;
-            o.dbtTask = dbtTask;
-            o.dependsOns = dependsOns;
-            o.description = description;
-            o.emailNotifications = emailNotifications;
-            o.existingClusterId = existingClusterId;
-            o.health = health;
-            o.jobClusterKey = jobClusterKey;
-            o.libraries = libraries;
-            o.maxRetries = maxRetries;
-            o.minRetryIntervalMillis = minRetryIntervalMillis;
-            o.newCluster = newCluster;
-            o.notebookTask = notebookTask;
-            o.notificationSettings = notificationSettings;
-            o.pipelineTask = pipelineTask;
-            o.pythonWheelTask = pythonWheelTask;
-            o.retryOnTimeout = retryOnTimeout;
-            o.runIf = runIf;
-            o.runJobTask = runJobTask;
-            o.sparkJarTask = sparkJarTask;
-            o.sparkPythonTask = sparkPythonTask;
-            o.sparkSubmitTask = sparkSubmitTask;
-            o.sqlTask = sqlTask;
-            o.taskKey = taskKey;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new JobTask();
+            _resultValue.computeKey = computeKey;
+            _resultValue.conditionTask = conditionTask;
+            _resultValue.dbtTask = dbtTask;
+            _resultValue.dependsOns = dependsOns;
+            _resultValue.description = description;
+            _resultValue.emailNotifications = emailNotifications;
+            _resultValue.existingClusterId = existingClusterId;
+            _resultValue.health = health;
+            _resultValue.jobClusterKey = jobClusterKey;
+            _resultValue.libraries = libraries;
+            _resultValue.maxRetries = maxRetries;
+            _resultValue.minRetryIntervalMillis = minRetryIntervalMillis;
+            _resultValue.newCluster = newCluster;
+            _resultValue.notebookTask = notebookTask;
+            _resultValue.notificationSettings = notificationSettings;
+            _resultValue.pipelineTask = pipelineTask;
+            _resultValue.pythonWheelTask = pythonWheelTask;
+            _resultValue.retryOnTimeout = retryOnTimeout;
+            _resultValue.runIf = runIf;
+            _resultValue.runJobTask = runJobTask;
+            _resultValue.sparkJarTask = sparkJarTask;
+            _resultValue.sparkPythonTask = sparkPythonTask;
+            _resultValue.sparkSubmitTask = sparkSubmitTask;
+            _resultValue.sqlTask = sqlTask;
+            _resultValue.taskKey = taskKey;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

@@ -173,16 +173,16 @@ public final class GetClusterPolicyResult {
             return this;
         }
         public GetClusterPolicyResult build() {
-            final var o = new GetClusterPolicyResult();
-            o.definition = definition;
-            o.description = description;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.maxClustersPerUser = maxClustersPerUser;
-            o.name = name;
-            o.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
-            o.policyFamilyId = policyFamilyId;
-            return o;
+            final var _resultValue = new GetClusterPolicyResult();
+            _resultValue.definition = definition;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.maxClustersPerUser = maxClustersPerUser;
+            _resultValue.name = name;
+            _resultValue.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
+            _resultValue.policyFamilyId = policyFamilyId;
+            return _resultValue;
         }
     }
 }

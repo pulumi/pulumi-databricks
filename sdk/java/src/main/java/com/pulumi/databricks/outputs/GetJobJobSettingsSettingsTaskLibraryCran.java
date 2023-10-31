@@ -51,10 +51,10 @@ public final class GetJobJobSettingsSettingsTaskLibraryCran {
             return this;
         }
         public GetJobJobSettingsSettingsTaskLibraryCran build() {
-            final var o = new GetJobJobSettingsSettingsTaskLibraryCran();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskLibraryCran();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

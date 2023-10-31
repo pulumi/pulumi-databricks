@@ -66,11 +66,11 @@ public final class GetJobJobSettingsSettingsTaskSparkPythonTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskSparkPythonTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskSparkPythonTask();
-            o.parameters = parameters;
-            o.pythonFile = pythonFile;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSparkPythonTask();
+            _resultValue.parameters = parameters;
+            _resultValue.pythonFile = pythonFile;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

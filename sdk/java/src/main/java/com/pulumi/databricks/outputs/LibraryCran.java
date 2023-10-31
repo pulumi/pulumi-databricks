@@ -51,10 +51,10 @@ public final class LibraryCran {
             return this;
         }
         public LibraryCran build() {
-            final var o = new LibraryCran();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new LibraryCran();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

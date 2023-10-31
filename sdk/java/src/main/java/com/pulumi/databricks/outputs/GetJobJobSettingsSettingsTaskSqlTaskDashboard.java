@@ -79,12 +79,12 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboard {
             return subscriptions(List.of(subscriptions));
         }
         public GetJobJobSettingsSettingsTaskSqlTaskDashboard build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTaskDashboard();
-            o.customSubject = customSubject;
-            o.dashboardId = dashboardId;
-            o.pauseSubscriptions = pauseSubscriptions;
-            o.subscriptions = subscriptions;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskDashboard();
+            _resultValue.customSubject = customSubject;
+            _resultValue.dashboardId = dashboardId;
+            _resultValue.pauseSubscriptions = pauseSubscriptions;
+            _resultValue.subscriptions = subscriptions;
+            return _resultValue;
         }
     }
 }

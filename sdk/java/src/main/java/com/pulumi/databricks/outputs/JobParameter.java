@@ -67,10 +67,10 @@ public final class JobParameter {
             return this;
         }
         public JobParameter build() {
-            final var o = new JobParameter();
-            o.default_ = default_;
-            o.name = name;
-            return o;
+            final var _resultValue = new JobParameter();
+            _resultValue.default_ = default_;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

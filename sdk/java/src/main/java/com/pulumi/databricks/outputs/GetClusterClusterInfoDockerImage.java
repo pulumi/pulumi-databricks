@@ -52,10 +52,10 @@ public final class GetClusterClusterInfoDockerImage {
             return this;
         }
         public GetClusterClusterInfoDockerImage build() {
-            final var o = new GetClusterClusterInfoDockerImage();
-            o.basicAuth = basicAuth;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoDockerImage();
+            _resultValue.basicAuth = basicAuth;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

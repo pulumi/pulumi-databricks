@@ -64,11 +64,11 @@ public final class ClusterAzureAttributes {
             return this;
         }
         public ClusterAzureAttributes build() {
-            final var o = new ClusterAzureAttributes();
-            o.availability = availability;
-            o.firstOnDemand = firstOnDemand;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new ClusterAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

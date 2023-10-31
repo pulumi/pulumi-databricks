@@ -69,10 +69,10 @@ public final class JobRunJobTask {
             return this;
         }
         public JobRunJobTask build() {
-            final var o = new JobRunJobTask();
-            o.jobId = jobId;
-            o.jobParameters = jobParameters;
-            return o;
+            final var _resultValue = new JobRunJobTask();
+            _resultValue.jobId = jobId;
+            _resultValue.jobParameters = jobParameters;
+            return _resultValue;
         }
     }
 }

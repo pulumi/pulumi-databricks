@@ -86,7 +86,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
      * 
      */
-    @Export(name="authenticationType", type=String.class, parameters={})
+    @Export(name="authenticationType", refs={String.class}, tree="[0]")
     private Output<String> authenticationType;
 
     /**
@@ -100,7 +100,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * Description about the recipient.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -114,7 +114,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * Required when authentication_type is DATABRICKS.
      * 
      */
-    @Export(name="dataRecipientGlobalMetastoreId", type=String.class, parameters={})
+    @Export(name="dataRecipientGlobalMetastoreId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataRecipientGlobalMetastoreId;
 
     /**
@@ -128,7 +128,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * The one-time sharing code provided by the data recipient.
      * 
      */
-    @Export(name="ipAccessList", type=RecipientIpAccessList.class, parameters={})
+    @Export(name="ipAccessList", refs={RecipientIpAccessList.class}, tree="[0]")
     private Output</* @Nullable */ RecipientIpAccessList> ipAccessList;
 
     /**
@@ -142,7 +142,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * Name of recipient. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -156,7 +156,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * The one-time sharing code provided by the data recipient.
      * 
      */
-    @Export(name="sharingCode", type=String.class, parameters={})
+    @Export(name="sharingCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharingCode;
 
     /**
@@ -170,7 +170,7 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
      * 
      */
-    @Export(name="tokens", type=List.class, parameters={RecipientToken.class})
+    @Export(name="tokens", refs={List.class,RecipientToken.class}, tree="[0,1]")
     private Output<List<RecipientToken>> tokens;
 
     /**

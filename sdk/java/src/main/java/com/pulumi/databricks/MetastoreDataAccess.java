@@ -34,31 +34,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/metastoreDataAccess:MetastoreDataAccess")
 public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
-    @Export(name="awsIamRole", type=MetastoreDataAccessAwsIamRole.class, parameters={})
+    @Export(name="awsIamRole", refs={MetastoreDataAccessAwsIamRole.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreDataAccessAwsIamRole> awsIamRole;
 
     public Output<Optional<MetastoreDataAccessAwsIamRole>> awsIamRole() {
         return Codegen.optional(this.awsIamRole);
     }
-    @Export(name="azureManagedIdentity", type=MetastoreDataAccessAzureManagedIdentity.class, parameters={})
+    @Export(name="azureManagedIdentity", refs={MetastoreDataAccessAzureManagedIdentity.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreDataAccessAzureManagedIdentity> azureManagedIdentity;
 
     public Output<Optional<MetastoreDataAccessAzureManagedIdentity>> azureManagedIdentity() {
         return Codegen.optional(this.azureManagedIdentity);
     }
-    @Export(name="azureServicePrincipal", type=MetastoreDataAccessAzureServicePrincipal.class, parameters={})
+    @Export(name="azureServicePrincipal", refs={MetastoreDataAccessAzureServicePrincipal.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreDataAccessAzureServicePrincipal> azureServicePrincipal;
 
     public Output<Optional<MetastoreDataAccessAzureServicePrincipal>> azureServicePrincipal() {
         return Codegen.optional(this.azureServicePrincipal);
     }
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    @Export(name="databricksGcpServiceAccount", type=MetastoreDataAccessDatabricksGcpServiceAccount.class, parameters={})
+    @Export(name="databricksGcpServiceAccount", refs={MetastoreDataAccessDatabricksGcpServiceAccount.class}, tree="[0]")
     private Output<MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount;
 
     public Output<MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
@@ -70,7 +70,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -82,13 +82,13 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="gcpServiceAccountKey", type=MetastoreDataAccessGcpServiceAccountKey.class, parameters={})
+    @Export(name="gcpServiceAccountKey", refs={MetastoreDataAccessGcpServiceAccountKey.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreDataAccessGcpServiceAccountKey> gcpServiceAccountKey;
 
     public Output<Optional<MetastoreDataAccessGcpServiceAccountKey>> gcpServiceAccountKey() {
         return Codegen.optional(this.gcpServiceAccountKey);
     }
-    @Export(name="isDefault", type=Boolean.class, parameters={})
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
     public Output<Optional<Boolean>> isDefault() {
@@ -98,7 +98,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * Unique identifier of the parent Metastore
      * 
      */
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
@@ -112,7 +112,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -126,7 +126,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the data access configuration owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -136,7 +136,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<String> owner() {
         return this.owner;
     }
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
     public Output<Optional<Boolean>> readOnly() {

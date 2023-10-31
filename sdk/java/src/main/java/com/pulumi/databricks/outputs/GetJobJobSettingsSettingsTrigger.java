@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsTrigger {
             return this;
         }
         public GetJobJobSettingsSettingsTrigger build() {
-            final var o = new GetJobJobSettingsSettingsTrigger();
-            o.fileArrival = fileArrival;
-            o.pauseStatus = pauseStatus;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTrigger();
+            _resultValue.fileArrival = fileArrival;
+            _resultValue.pauseStatus = pauseStatus;
+            return _resultValue;
         }
     }
 }

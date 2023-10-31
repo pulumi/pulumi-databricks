@@ -40,9 +40,9 @@ public final class ClusterInitScriptWorkspace {
             return this;
         }
         public ClusterInitScriptWorkspace build() {
-            final var o = new ClusterInitScriptWorkspace();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterInitScriptWorkspace();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

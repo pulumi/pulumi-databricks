@@ -66,7 +66,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
-    @Export(name="definition", type=String.class, parameters={})
+    @Export(name="definition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> definition;
 
     /**
@@ -80,7 +80,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Additional human-readable description of the cluster policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -94,7 +94,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      * 
      */
-    @Export(name="maxClustersPerUser", type=Integer.class, parameters={})
+    @Export(name="maxClustersPerUser", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxClustersPerUser;
 
     /**
@@ -108,7 +108,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -122,7 +122,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
      * 
      */
-    @Export(name="policyFamilyDefinitionOverrides", type=String.class, parameters={})
+    @Export(name="policyFamilyDefinitionOverrides", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyFamilyDefinitionOverrides;
 
     /**
@@ -136,7 +136,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
      * 
      */
-    @Export(name="policyFamilyId", type=String.class, parameters={})
+    @Export(name="policyFamilyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyFamilyId;
 
     /**
@@ -150,7 +150,7 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * Canonical unique identifier for the cluster policy.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**

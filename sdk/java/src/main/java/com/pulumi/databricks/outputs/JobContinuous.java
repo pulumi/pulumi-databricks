@@ -48,9 +48,9 @@ public final class JobContinuous {
             return this;
         }
         public JobContinuous build() {
-            final var o = new JobContinuous();
-            o.pauseStatus = pauseStatus;
-            return o;
+            final var _resultValue = new JobContinuous();
+            _resultValue.pauseStatus = pauseStatus;
+            return _resultValue;
         }
     }
 }

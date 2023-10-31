@@ -38,9 +38,9 @@ public final class GetClusterClusterInfoInitScriptDbfs {
             return this;
         }
         public GetClusterClusterInfoInitScriptDbfs build() {
-            final var o = new GetClusterClusterInfoInitScriptDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoInitScriptDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

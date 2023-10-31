@@ -109,12 +109,12 @@ public final class PermissionsAccessControl {
             return this;
         }
         public PermissionsAccessControl build() {
-            final var o = new PermissionsAccessControl();
-            o.groupName = groupName;
-            o.permissionLevel = permissionLevel;
-            o.servicePrincipalName = servicePrincipalName;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new PermissionsAccessControl();
+            _resultValue.groupName = groupName;
+            _resultValue.permissionLevel = permissionLevel;
+            _resultValue.servicePrincipalName = servicePrincipalName;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class SqlQueryParameterDatetimesec {
             return this;
         }
         public SqlQueryParameterDatetimesec build() {
-            final var o = new SqlQueryParameterDatetimesec();
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterDatetimesec();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

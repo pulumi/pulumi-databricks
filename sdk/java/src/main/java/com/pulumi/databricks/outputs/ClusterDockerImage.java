@@ -52,10 +52,10 @@ public final class ClusterDockerImage {
             return this;
         }
         public ClusterDockerImage build() {
-            final var o = new ClusterDockerImage();
-            o.basicAuth = basicAuth;
-            o.url = url;
-            return o;
+            final var _resultValue = new ClusterDockerImage();
+            _resultValue.basicAuth = basicAuth;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

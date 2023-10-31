@@ -49,10 +49,10 @@ public final class JobJobClusterNewClusterDockerImageBasicAuth {
             return this;
         }
         public JobJobClusterNewClusterDockerImageBasicAuth build() {
-            final var o = new JobJobClusterNewClusterDockerImageBasicAuth();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterDockerImageBasicAuth();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

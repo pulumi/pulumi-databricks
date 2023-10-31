@@ -40,9 +40,9 @@ public final class GetClusterClusterInfoInitScriptFile {
             return this;
         }
         public GetClusterClusterInfoInitScriptFile build() {
-            final var o = new GetClusterClusterInfoInitScriptFile();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoInitScriptFile();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

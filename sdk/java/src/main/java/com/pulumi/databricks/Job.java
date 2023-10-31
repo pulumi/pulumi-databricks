@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.JobState;
 import com.pulumi.databricks.outputs.JobCompute;
 import com.pulumi.databricks.outputs.JobContinuous;
 import com.pulumi.databricks.outputs.JobDbtTask;
+import com.pulumi.databricks.outputs.JobDeployment;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
 import com.pulumi.databricks.outputs.JobGitSource;
 import com.pulumi.databricks.outputs.JobHealth;
@@ -63,7 +64,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
-    @Export(name="alwaysRunning", type=Boolean.class, parameters={})
+    @Export(name="alwaysRunning", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> alwaysRunning;
 
     /**
@@ -73,13 +74,13 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
     }
-    @Export(name="computes", type=List.class, parameters={JobCompute.class})
+    @Export(name="computes", refs={List.class,JobCompute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobCompute>> computes;
 
     public Output<Optional<List<JobCompute>>> computes() {
         return Codegen.optional(this.computes);
     }
-    @Export(name="continuous", type=JobContinuous.class, parameters={})
+    @Export(name="continuous", refs={JobContinuous.class}, tree="[0]")
     private Output</* @Nullable */ JobContinuous> continuous;
 
     public Output<Optional<JobContinuous>> continuous() {
@@ -113,7 +114,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * ```
      * 
      */
-    @Export(name="controlRunState", type=Boolean.class, parameters={})
+    @Export(name="controlRunState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> controlRunState;
 
     /**
@@ -147,17 +148,23 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> controlRunState() {
         return Codegen.optional(this.controlRunState);
     }
-    @Export(name="dbtTask", type=JobDbtTask.class, parameters={})
+    @Export(name="dbtTask", refs={JobDbtTask.class}, tree="[0]")
     private Output</* @Nullable */ JobDbtTask> dbtTask;
 
     public Output<Optional<JobDbtTask>> dbtTask() {
         return Codegen.optional(this.dbtTask);
     }
+    @Export(name="deployment", refs={JobDeployment.class}, tree="[0]")
+    private Output</* @Nullable */ JobDeployment> deployment;
+
+    public Output<Optional<JobDeployment>> deployment() {
+        return Codegen.optional(this.deployment);
+    }
     /**
      * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
-    @Export(name="emailNotifications", type=JobEmailNotifications.class, parameters={})
+    @Export(name="emailNotifications", refs={JobEmailNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobEmailNotifications> emailNotifications;
 
     /**
@@ -167,19 +174,19 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
         return Codegen.optional(this.emailNotifications);
     }
-    @Export(name="existingClusterId", type=String.class, parameters={})
+    @Export(name="existingClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> existingClusterId;
 
     public Output<Optional<String>> existingClusterId() {
         return Codegen.optional(this.existingClusterId);
     }
-    @Export(name="format", type=String.class, parameters={})
+    @Export(name="format", refs={String.class}, tree="[0]")
     private Output<String> format;
 
     public Output<String> format() {
         return this.format;
     }
-    @Export(name="gitSource", type=JobGitSource.class, parameters={})
+    @Export(name="gitSource", refs={JobGitSource.class}, tree="[0]")
     private Output</* @Nullable */ JobGitSource> gitSource;
 
     public Output<Optional<JobGitSource>> gitSource() {
@@ -189,7 +196,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * An optional block that specifies the health conditions for the job (described below).
      * 
      */
-    @Export(name="health", type=JobHealth.class, parameters={})
+    @Export(name="health", refs={JobHealth.class}, tree="[0]")
     private Output</* @Nullable */ JobHealth> health;
 
     /**
@@ -203,7 +210,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * A list of job databricks.Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
      * 
      */
-    @Export(name="jobClusters", type=List.class, parameters={JobJobCluster.class})
+    @Export(name="jobClusters", refs={List.class,JobJobCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobJobCluster>> jobClusters;
 
     /**
@@ -217,7 +224,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
      * 
      */
-    @Export(name="libraries", type=List.class, parameters={JobLibrary.class})
+    @Export(name="libraries", refs={List.class,JobLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobLibrary>> libraries;
 
     /**
@@ -231,7 +238,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
      * 
      */
-    @Export(name="maxConcurrentRuns", type=Integer.class, parameters={})
+    @Export(name="maxConcurrentRuns", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxConcurrentRuns;
 
     /**
@@ -245,7 +252,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
      * 
      */
-    @Export(name="maxRetries", type=Integer.class, parameters={})
+    @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxRetries;
 
     /**
@@ -259,7 +266,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      * 
      */
-    @Export(name="minRetryIntervalMillis", type=Integer.class, parameters={})
+    @Export(name="minRetryIntervalMillis", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minRetryIntervalMillis;
 
     /**
@@ -273,7 +280,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * An optional name for the job. The default value is Untitled.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -287,7 +294,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Same set of parameters as for databricks.Cluster resource.
      * 
      */
-    @Export(name="newCluster", type=JobNewCluster.class, parameters={})
+    @Export(name="newCluster", refs={JobNewCluster.class}, tree="[0]")
     private Output</* @Nullable */ JobNewCluster> newCluster;
 
     /**
@@ -297,7 +304,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNewCluster>> newCluster() {
         return Codegen.optional(this.newCluster);
     }
-    @Export(name="notebookTask", type=JobNotebookTask.class, parameters={})
+    @Export(name="notebookTask", refs={JobNotebookTask.class}, tree="[0]")
     private Output</* @Nullable */ JobNotebookTask> notebookTask;
 
     public Output<Optional<JobNotebookTask>> notebookTask() {
@@ -307,7 +314,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * An optional block controlling the notification settings on the job level (described below).
      * 
      */
-    @Export(name="notificationSettings", type=JobNotificationSettings.class, parameters={})
+    @Export(name="notificationSettings", refs={JobNotificationSettings.class}, tree="[0]")
     private Output</* @Nullable */ JobNotificationSettings> notificationSettings;
 
     /**
@@ -317,25 +324,25 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNotificationSettings>> notificationSettings() {
         return Codegen.optional(this.notificationSettings);
     }
-    @Export(name="parameters", type=List.class, parameters={JobParameter.class})
+    @Export(name="parameters", refs={List.class,JobParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobParameter>> parameters;
 
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
-    @Export(name="pipelineTask", type=JobPipelineTask.class, parameters={})
+    @Export(name="pipelineTask", refs={JobPipelineTask.class}, tree="[0]")
     private Output</* @Nullable */ JobPipelineTask> pipelineTask;
 
     public Output<Optional<JobPipelineTask>> pipelineTask() {
         return Codegen.optional(this.pipelineTask);
     }
-    @Export(name="pythonWheelTask", type=JobPythonWheelTask.class, parameters={})
+    @Export(name="pythonWheelTask", refs={JobPythonWheelTask.class}, tree="[0]")
     private Output</* @Nullable */ JobPythonWheelTask> pythonWheelTask;
 
     public Output<Optional<JobPythonWheelTask>> pythonWheelTask() {
         return Codegen.optional(this.pythonWheelTask);
     }
-    @Export(name="queue", type=JobQueue.class, parameters={})
+    @Export(name="queue", refs={JobQueue.class}, tree="[0]")
     private Output</* @Nullable */ JobQueue> queue;
 
     public Output<Optional<JobQueue>> queue() {
@@ -345,7 +352,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
      */
-    @Export(name="retryOnTimeout", type=Boolean.class, parameters={})
+    @Export(name="retryOnTimeout", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retryOnTimeout;
 
     /**
@@ -355,13 +362,13 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> retryOnTimeout() {
         return Codegen.optional(this.retryOnTimeout);
     }
-    @Export(name="runAs", type=JobRunAs.class, parameters={})
+    @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
     private Output</* @Nullable */ JobRunAs> runAs;
 
     public Output<Optional<JobRunAs>> runAs() {
         return Codegen.optional(this.runAs);
     }
-    @Export(name="runJobTask", type=JobRunJobTask.class, parameters={})
+    @Export(name="runJobTask", refs={JobRunJobTask.class}, tree="[0]")
     private Output</* @Nullable */ JobRunJobTask> runJobTask;
 
     public Output<Optional<JobRunJobTask>> runJobTask() {
@@ -371,7 +378,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      * 
      */
-    @Export(name="schedule", type=JobSchedule.class, parameters={})
+    @Export(name="schedule", refs={JobSchedule.class}, tree="[0]")
     private Output</* @Nullable */ JobSchedule> schedule;
 
     /**
@@ -381,31 +388,31 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobSchedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
-    @Export(name="sparkJarTask", type=JobSparkJarTask.class, parameters={})
+    @Export(name="sparkJarTask", refs={JobSparkJarTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkJarTask> sparkJarTask;
 
     public Output<Optional<JobSparkJarTask>> sparkJarTask() {
         return Codegen.optional(this.sparkJarTask);
     }
-    @Export(name="sparkPythonTask", type=JobSparkPythonTask.class, parameters={})
+    @Export(name="sparkPythonTask", refs={JobSparkPythonTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkPythonTask> sparkPythonTask;
 
     public Output<Optional<JobSparkPythonTask>> sparkPythonTask() {
         return Codegen.optional(this.sparkPythonTask);
     }
-    @Export(name="sparkSubmitTask", type=JobSparkSubmitTask.class, parameters={})
+    @Export(name="sparkSubmitTask", refs={JobSparkSubmitTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkSubmitTask> sparkSubmitTask;
 
     public Output<Optional<JobSparkSubmitTask>> sparkSubmitTask() {
         return Codegen.optional(this.sparkSubmitTask);
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="tasks", type=List.class, parameters={JobTask.class})
+    @Export(name="tasks", refs={List.class,JobTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobTask>> tasks;
 
     public Output<Optional<List<JobTask>>> tasks() {
@@ -415,7 +422,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      * 
      */
-    @Export(name="timeoutSeconds", type=Integer.class, parameters={})
+    @Export(name="timeoutSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutSeconds;
 
     /**
@@ -425,7 +432,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> timeoutSeconds() {
         return Codegen.optional(this.timeoutSeconds);
     }
-    @Export(name="trigger", type=JobTrigger.class, parameters={})
+    @Export(name="trigger", refs={JobTrigger.class}, tree="[0]")
     private Output</* @Nullable */ JobTrigger> trigger;
 
     public Output<Optional<JobTrigger>> trigger() {
@@ -435,7 +442,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * URL of the job on the given workspace
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -449,7 +456,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
      */
-    @Export(name="webhookNotifications", type=JobWebhookNotifications.class, parameters={})
+    @Export(name="webhookNotifications", refs={JobWebhookNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobWebhookNotifications> webhookNotifications;
 
     /**

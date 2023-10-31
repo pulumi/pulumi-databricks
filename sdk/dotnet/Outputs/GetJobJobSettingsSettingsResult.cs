@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsComputeResult> Computes;
         public readonly Outputs.GetJobJobSettingsSettingsContinuousResult? Continuous;
         public readonly Outputs.GetJobJobSettingsSettingsDbtTaskResult? DbtTask;
+        public readonly Outputs.GetJobJobSettingsSettingsDeploymentResult? Deployment;
         public readonly Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? EmailNotifications;
         public readonly string? ExistingClusterId;
         public readonly string Format;
@@ -57,6 +58,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsContinuousResult? continuous,
 
             Outputs.GetJobJobSettingsSettingsDbtTaskResult? dbtTask,
+
+            Outputs.GetJobJobSettingsSettingsDeploymentResult? deployment,
 
             Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? emailNotifications,
 
@@ -121,6 +124,7 @@ namespace Pulumi.Databricks.Outputs
             Computes = computes;
             Continuous = continuous;
             DbtTask = dbtTask;
+            Deployment = deployment;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
             Format = format;

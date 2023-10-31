@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
+from .artifact_allowlist import *
 from .catalog import *
 from .catalog_workspace_binding import *
 from .cluster import *
@@ -135,6 +136,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accessControlRuleSet:AccessControlRuleSet": "AccessControlRuleSet"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/artifactAllowlist",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/artifactAllowlist:ArtifactAllowlist": "ArtifactAllowlist"
   }
  },
  {

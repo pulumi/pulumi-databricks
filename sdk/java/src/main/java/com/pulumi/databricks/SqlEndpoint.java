@@ -92,7 +92,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
      * 
      */
-    @Export(name="autoStopMins", type=Integer.class, parameters={})
+    @Export(name="autoStopMins", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoStopMins;
 
     /**
@@ -106,7 +106,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * block, consisting of following fields:
      * 
      */
-    @Export(name="channel", type=SqlEndpointChannel.class, parameters={})
+    @Export(name="channel", refs={SqlEndpointChannel.class}, tree="[0]")
     private Output</* @Nullable */ SqlEndpointChannel> channel;
 
     /**
@@ -120,7 +120,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * The size of the clusters allocated to the endpoint: &#34;2X-Small&#34;, &#34;X-Small&#34;, &#34;Small&#34;, &#34;Medium&#34;, &#34;Large&#34;, &#34;X-Large&#34;, &#34;2X-Large&#34;, &#34;3X-Large&#34;, &#34;4X-Large&#34;.
      * 
      */
-    @Export(name="clusterSize", type=String.class, parameters={})
+    @Export(name="clusterSize", refs={String.class}, tree="[0]")
     private Output<String> clusterSize;
 
     /**
@@ -134,7 +134,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
-    @Export(name="dataSourceId", type=String.class, parameters={})
+    @Export(name="dataSourceId", refs={String.class}, tree="[0]")
     private Output<String> dataSourceId;
 
     /**
@@ -148,7 +148,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
      * 
      */
-    @Export(name="enablePhoton", type=Boolean.class, parameters={})
+    @Export(name="enablePhoton", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePhoton;
 
     /**
@@ -166,7 +166,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
      * 
      */
-    @Export(name="enableServerlessCompute", type=Boolean.class, parameters={})
+    @Export(name="enableServerlessCompute", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableServerlessCompute;
 
     /**
@@ -180,7 +180,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enableServerlessCompute() {
         return Codegen.optional(this.enableServerlessCompute);
     }
-    @Export(name="instanceProfileArn", type=String.class, parameters={})
+    @Export(name="instanceProfileArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceProfileArn;
 
     public Output<Optional<String>> instanceProfileArn() {
@@ -190,7 +190,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * JDBC connection string.
      * 
      */
-    @Export(name="jdbcUrl", type=String.class, parameters={})
+    @Export(name="jdbcUrl", refs={String.class}, tree="[0]")
     private Output<String> jdbcUrl;
 
     /**
@@ -204,7 +204,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      * 
      */
-    @Export(name="maxNumClusters", type=Integer.class, parameters={})
+    @Export(name="maxNumClusters", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxNumClusters;
 
     /**
@@ -218,7 +218,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
      * 
      */
-    @Export(name="minNumClusters", type=Integer.class, parameters={})
+    @Export(name="minNumClusters", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minNumClusters;
 
     /**
@@ -232,7 +232,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="numClusters", type=Integer.class, parameters={})
+    @Export(name="numClusters", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> numClusters;
 
     public Output<Optional<Integer>> numClusters() {
@@ -252,7 +252,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      * 
      */
-    @Export(name="odbcParams", type=SqlEndpointOdbcParams.class, parameters={})
+    @Export(name="odbcParams", refs={SqlEndpointOdbcParams.class}, tree="[0]")
     private Output<SqlEndpointOdbcParams> odbcParams;
 
     /**
@@ -266,7 +266,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      * 
      */
-    @Export(name="spotInstancePolicy", type=String.class, parameters={})
+    @Export(name="spotInstancePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotInstancePolicy;
 
     /**
@@ -276,7 +276,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> spotInstancePolicy() {
         return Codegen.optional(this.spotInstancePolicy);
     }
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     public Output<String> state() {
@@ -286,7 +286,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * Databricks tags all endpoint resources with these tags.
      * 
      */
-    @Export(name="tags", type=SqlEndpointTags.class, parameters={})
+    @Export(name="tags", refs={SqlEndpointTags.class}, tree="[0]")
     private Output</* @Nullable */ SqlEndpointTags> tags;
 
     /**
@@ -300,7 +300,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      * 
      */
-    @Export(name="warehouseType", type=String.class, parameters={})
+    @Export(name="warehouseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseType;
 
     /**

@@ -184,16 +184,16 @@ public final class ModelServingConfigServedModel {
             return this;
         }
         public ModelServingConfigServedModel build() {
-            final var o = new ModelServingConfigServedModel();
-            o.environmentVars = environmentVars;
-            o.instanceProfileArn = instanceProfileArn;
-            o.modelName = modelName;
-            o.modelVersion = modelVersion;
-            o.name = name;
-            o.scaleToZeroEnabled = scaleToZeroEnabled;
-            o.workloadSize = workloadSize;
-            o.workloadType = workloadType;
-            return o;
+            final var _resultValue = new ModelServingConfigServedModel();
+            _resultValue.environmentVars = environmentVars;
+            _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.modelName = modelName;
+            _resultValue.modelVersion = modelVersion;
+            _resultValue.name = name;
+            _resultValue.scaleToZeroEnabled = scaleToZeroEnabled;
+            _resultValue.workloadSize = workloadSize;
+            _resultValue.workloadType = workloadType;
+            return _resultValue;
         }
     }
 }

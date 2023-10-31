@@ -40,9 +40,9 @@ public final class ExternalLocationEncryptionDetails {
             return this;
         }
         public ExternalLocationEncryptionDetails build() {
-            final var o = new ExternalLocationEncryptionDetails();
-            o.sseEncryptionDetails = sseEncryptionDetails;
-            return o;
+            final var _resultValue = new ExternalLocationEncryptionDetails();
+            _resultValue.sseEncryptionDetails = sseEncryptionDetails;
+            return _resultValue;
         }
     }
 }

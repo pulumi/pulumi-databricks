@@ -59,10 +59,10 @@ public final class JobTaskSqlTaskAlertSubscription {
             return this;
         }
         public JobTaskSqlTaskAlertSubscription build() {
-            final var o = new JobTaskSqlTaskAlertSubscription();
-            o.destinationId = destinationId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskAlertSubscription();
+            _resultValue.destinationId = destinationId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

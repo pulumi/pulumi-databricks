@@ -63,10 +63,10 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccount {
             return this;
         }
         public MetastoreDataAccessDatabricksGcpServiceAccount build() {
-            final var o = new MetastoreDataAccessDatabricksGcpServiceAccount();
-            o.credentialId = credentialId;
-            o.email = email;
-            return o;
+            final var _resultValue = new MetastoreDataAccessDatabricksGcpServiceAccount();
+            _resultValue.credentialId = credentialId;
+            _resultValue.email = email;
+            return _resultValue;
         }
     }
 }

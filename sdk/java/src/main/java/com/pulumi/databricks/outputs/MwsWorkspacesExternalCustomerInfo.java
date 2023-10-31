@@ -60,11 +60,11 @@ public final class MwsWorkspacesExternalCustomerInfo {
             return this;
         }
         public MwsWorkspacesExternalCustomerInfo build() {
-            final var o = new MwsWorkspacesExternalCustomerInfo();
-            o.authoritativeUserEmail = authoritativeUserEmail;
-            o.authoritativeUserFullName = authoritativeUserFullName;
-            o.customerName = customerName;
-            return o;
+            final var _resultValue = new MwsWorkspacesExternalCustomerInfo();
+            _resultValue.authoritativeUserEmail = authoritativeUserEmail;
+            _resultValue.authoritativeUserFullName = authoritativeUserFullName;
+            _resultValue.customerName = customerName;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class ClusterLibraryCran {
             return this;
         }
         public ClusterLibraryCran build() {
-            final var o = new ClusterLibraryCran();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new ClusterLibraryCran();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

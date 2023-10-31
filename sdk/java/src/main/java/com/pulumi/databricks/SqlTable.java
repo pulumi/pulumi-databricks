@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * A `databricks.SqlTable` is contained within databricks_schema, and can represent either a managed table, an external table or a view.
  * 
- * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation.
+ * This resource creates and updates the Unity Catalog table/view by executing the necessary SQL queries on a special auto-terminating cluster it would create for this operation. You could also specify a SQL warehouse or cluster for the queries to be executed on.
  * 
  * ## Import
  * 
@@ -37,26 +37,40 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlTable:SqlTable")
 public class SqlTable extends com.pulumi.resources.CustomResource {
     /**
-     * Name of parent catalog
+     * Name of parent catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
-     * @return Name of parent catalog
+     * @return Name of parent catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> catalogName() {
         return this.catalogName;
     }
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     public Output<String> clusterId() {
         return this.clusterId;
     }
-    @Export(name="columns", type=List.class, parameters={SqlTableColumn.class})
+    /**
+     * a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * 
+     */
+    @Export(name="clusterKeys", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> clusterKeys;
+
+    /**
+     * @return a subset of columns to liquid cluster the table by. Conflicts with `partitions`.
+     * 
+     */
+    public Output<Optional<List<String>>> clusterKeys() {
+        return Codegen.optional(this.clusterKeys);
+    }
+    @Export(name="columns", refs={List.class,SqlTableColumn.class}, tree="[0,1]")
     private Output<List<SqlTableColumn>> columns;
 
     public Output<List<SqlTableColumn>> columns() {
@@ -66,7 +80,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * User-supplied free-form text. Changing comment is not currently supported on `VIEW` table_type.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -80,7 +94,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, `TEXT`. Change forces creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      * 
      */
-    @Export(name="dataSourceFormat", type=String.class, parameters={})
+    @Export(name="dataSourceFormat", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataSourceFormat;
 
     /**
@@ -94,7 +108,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * Name of table relative to parent catalog and schema. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -105,42 +119,70 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Extensible Table properties.
+     * Map of user defined table options. Change forces creation of a new resource.
      * 
      */
-    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> options;
+
+    /**
+     * @return Map of user defined table options. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> options() {
+        return Codegen.optional(this.options);
+    }
+    /**
+     * a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * 
+     */
+    @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> partitions;
+
+    /**
+     * @return a subset of columns to partition the table by. Change forces creation of a new resource. Conflicts with `cluster_keys`.
+     * 
+     */
+    public Output<Optional<List<String>>> partitions() {
+        return Codegen.optional(this.partitions);
+    }
+    /**
+     * Map of table properties.
+     * 
+     */
+    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> properties;
 
     /**
-     * @return Extensible Table properties.
+     * @return Map of table properties.
      * 
      */
     public Output<Map<String,Object>> properties() {
         return this.properties;
     }
     /**
-     * Name of parent Schema relative to parent Catalog
+     * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="schemaName", type=String.class, parameters={})
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
-     * @return Name of parent Schema relative to parent Catalog
+     * @return Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      * 
      */
     public Output<String> schemaName() {
         return this.schemaName;
     }
     /**
-     * For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+     * For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
      * 
      */
-    @Export(name="storageCredentialName", type=String.class, parameters={})
+    @Export(name="storageCredentialName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCredentialName;
 
     /**
-     * @return For EXTERNAL Tables only: the name of storage credential to use. This cannot be updated
+     * @return For EXTERNAL Tables only: the name of storage credential to use. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageCredentialName() {
@@ -150,7 +192,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
      * 
      */
-    @Export(name="storageLocation", type=String.class, parameters={})
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageLocation;
 
     /**
@@ -164,7 +206,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces creation of a new resource.
      * 
      */
-    @Export(name="tableType", type=String.class, parameters={})
+    @Export(name="tableType", refs={String.class}, tree="[0]")
     private Output<String> tableType;
 
     /**
@@ -178,7 +220,7 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      * 
      */
-    @Export(name="viewDefinition", type=String.class, parameters={})
+    @Export(name="viewDefinition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> viewDefinition;
 
     /**
@@ -187,6 +229,20 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> viewDefinition() {
         return Codegen.optional(this.viewDefinition);
+    }
+    /**
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * 
+     */
+    @Export(name="warehouseId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> warehouseId;
+
+    /**
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * 
+     */
+    public Output<Optional<String>> warehouseId() {
+        return Codegen.optional(this.warehouseId);
     }
 
     /**

@@ -66,11 +66,11 @@ public final class PipelineLibraryMaven {
             return this;
         }
         public PipelineLibraryMaven build() {
-            final var o = new PipelineLibraryMaven();
-            o.coordinates = coordinates;
-            o.exclusions = exclusions;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new PipelineLibraryMaven();
+            _resultValue.coordinates = coordinates;
+            _resultValue.exclusions = exclusions;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

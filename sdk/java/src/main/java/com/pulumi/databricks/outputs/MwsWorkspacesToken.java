@@ -82,12 +82,12 @@ public final class MwsWorkspacesToken {
             return this;
         }
         public MwsWorkspacesToken build() {
-            final var o = new MwsWorkspacesToken();
-            o.comment = comment;
-            o.lifetimeSeconds = lifetimeSeconds;
-            o.tokenId = tokenId;
-            o.tokenValue = tokenValue;
-            return o;
+            final var _resultValue = new MwsWorkspacesToken();
+            _resultValue.comment = comment;
+            _resultValue.lifetimeSeconds = lifetimeSeconds;
+            _resultValue.tokenId = tokenId;
+            _resultValue.tokenValue = tokenValue;
+            return _resultValue;
         }
     }
 }

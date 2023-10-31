@@ -56,10 +56,10 @@ public final class MwsNetworksVpcEndpoints {
             return restApis(List.of(restApis));
         }
         public MwsNetworksVpcEndpoints build() {
-            final var o = new MwsNetworksVpcEndpoints();
-            o.dataplaneRelays = dataplaneRelays;
-            o.restApis = restApis;
-            return o;
+            final var _resultValue = new MwsNetworksVpcEndpoints();
+            _resultValue.dataplaneRelays = dataplaneRelays;
+            _resultValue.restApis = restApis;
+            return _resultValue;
         }
     }
 }

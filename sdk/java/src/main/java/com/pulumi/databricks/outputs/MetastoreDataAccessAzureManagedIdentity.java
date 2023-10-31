@@ -82,11 +82,11 @@ public final class MetastoreDataAccessAzureManagedIdentity {
             return this;
         }
         public MetastoreDataAccessAzureManagedIdentity build() {
-            final var o = new MetastoreDataAccessAzureManagedIdentity();
-            o.accessConnectorId = accessConnectorId;
-            o.credentialId = credentialId;
-            o.managedIdentityId = managedIdentityId;
-            return o;
+            final var _resultValue = new MetastoreDataAccessAzureManagedIdentity();
+            _resultValue.accessConnectorId = accessConnectorId;
+            _resultValue.credentialId = credentialId;
+            _resultValue.managedIdentityId = managedIdentityId;
+            return _resultValue;
         }
     }
 }

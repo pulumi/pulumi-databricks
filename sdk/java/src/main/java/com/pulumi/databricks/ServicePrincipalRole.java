@@ -81,7 +81,7 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      * This is the id of the role or instance profile resource.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -95,7 +95,7 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
      * This is the id of the service principal resource.
      * 
      */
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**

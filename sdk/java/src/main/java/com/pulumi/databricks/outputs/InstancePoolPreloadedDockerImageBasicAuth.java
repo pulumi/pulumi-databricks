@@ -49,10 +49,10 @@ public final class InstancePoolPreloadedDockerImageBasicAuth {
             return this;
         }
         public InstancePoolPreloadedDockerImageBasicAuth build() {
-            final var o = new InstancePoolPreloadedDockerImageBasicAuth();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new InstancePoolPreloadedDockerImageBasicAuth();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -85,13 +85,13 @@ public final class SqlEndpointOdbcParams {
             return this;
         }
         public SqlEndpointOdbcParams build() {
-            final var o = new SqlEndpointOdbcParams();
-            o.host = host;
-            o.hostname = hostname;
-            o.path = path;
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new SqlEndpointOdbcParams();
+            _resultValue.host = host;
+            _resultValue.hostname = hostname;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

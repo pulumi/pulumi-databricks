@@ -66,11 +66,11 @@ public final class GetJobJobSettingsSettingsLibraryMaven {
             return this;
         }
         public GetJobJobSettingsSettingsLibraryMaven build() {
-            final var o = new GetJobJobSettingsSettingsLibraryMaven();
-            o.coordinates = coordinates;
-            o.exclusions = exclusions;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsLibraryMaven();
+            _resultValue.coordinates = coordinates;
+            _resultValue.exclusions = exclusions;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

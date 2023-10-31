@@ -52,10 +52,10 @@ public final class GetInstancePoolPoolInfoPreloadedDockerImage {
             return this;
         }
         public GetInstancePoolPoolInfoPreloadedDockerImage build() {
-            final var o = new GetInstancePoolPoolInfoPreloadedDockerImage();
-            o.basicAuth = basicAuth;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoPreloadedDockerImage();
+            _resultValue.basicAuth = basicAuth;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

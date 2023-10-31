@@ -72,10 +72,10 @@ public final class JobTaskPipelineTask {
             return this;
         }
         public JobTaskPipelineTask build() {
-            final var o = new JobTaskPipelineTask();
-            o.fullRefresh = fullRefresh;
-            o.pipelineId = pipelineId;
-            return o;
+            final var _resultValue = new JobTaskPipelineTask();
+            _resultValue.fullRefresh = fullRefresh;
+            _resultValue.pipelineId = pipelineId;
+            return _resultValue;
         }
     }
 }

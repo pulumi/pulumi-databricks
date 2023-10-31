@@ -88,11 +88,11 @@ public final class JobNotebookTask {
             return this;
         }
         public JobNotebookTask build() {
-            final var o = new JobNotebookTask();
-            o.baseParameters = baseParameters;
-            o.notebookPath = notebookPath;
-            o.source = source;
-            return o;
+            final var _resultValue = new JobNotebookTask();
+            _resultValue.baseParameters = baseParameters;
+            _resultValue.notebookPath = notebookPath;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

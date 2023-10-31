@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsTaskPipelineTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskPipelineTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskPipelineTask();
-            o.fullRefresh = fullRefresh;
-            o.pipelineId = pipelineId;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskPipelineTask();
+            _resultValue.fullRefresh = fullRefresh;
+            _resultValue.pipelineId = pipelineId;
+            return _resultValue;
         }
     }
 }

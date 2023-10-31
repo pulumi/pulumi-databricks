@@ -74,12 +74,12 @@ public final class SqlQueryScheduleWeekly {
             return this;
         }
         public SqlQueryScheduleWeekly build() {
-            final var o = new SqlQueryScheduleWeekly();
-            o.dayOfWeek = dayOfWeek;
-            o.intervalWeeks = intervalWeeks;
-            o.timeOfDay = timeOfDay;
-            o.untilDate = untilDate;
-            return o;
+            final var _resultValue = new SqlQueryScheduleWeekly();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.intervalWeeks = intervalWeeks;
+            _resultValue.timeOfDay = timeOfDay;
+            _resultValue.untilDate = untilDate;
+            return _resultValue;
         }
     }
 }

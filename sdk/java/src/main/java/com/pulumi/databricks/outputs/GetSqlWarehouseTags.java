@@ -42,9 +42,9 @@ public final class GetSqlWarehouseTags {
             return customTags(List.of(customTags));
         }
         public GetSqlWarehouseTags build() {
-            final var o = new GetSqlWarehouseTags();
-            o.customTags = customTags;
-            return o;
+            final var _resultValue = new GetSqlWarehouseTags();
+            _resultValue.customTags = customTags;
+            return _resultValue;
         }
     }
 }

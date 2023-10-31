@@ -68,10 +68,10 @@ public final class JobJobCluster {
             return this;
         }
         public JobJobCluster build() {
-            final var o = new JobJobCluster();
-            o.jobClusterKey = jobClusterKey;
-            o.newCluster = newCluster;
-            return o;
+            final var _resultValue = new JobJobCluster();
+            _resultValue.jobClusterKey = jobClusterKey;
+            _resultValue.newCluster = newCluster;
+            return _resultValue;
         }
     }
 }

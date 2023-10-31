@@ -63,11 +63,11 @@ public final class ClusterClusterMountInfo {
             return this;
         }
         public ClusterClusterMountInfo build() {
-            final var o = new ClusterClusterMountInfo();
-            o.localMountDirPath = localMountDirPath;
-            o.networkFilesystemInfo = networkFilesystemInfo;
-            o.remoteMountDirPath = remoteMountDirPath;
-            return o;
+            final var _resultValue = new ClusterClusterMountInfo();
+            _resultValue.localMountDirPath = localMountDirPath;
+            _resultValue.networkFilesystemInfo = networkFilesystemInfo;
+            _resultValue.remoteMountDirPath = remoteMountDirPath;
+            return _resultValue;
         }
     }
 }

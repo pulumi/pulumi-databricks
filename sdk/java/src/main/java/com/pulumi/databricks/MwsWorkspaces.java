@@ -34,7 +34,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -48,7 +48,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * region of VPC.
      * 
      */
-    @Export(name="awsRegion", type=String.class, parameters={})
+    @Export(name="awsRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRegion;
 
     /**
@@ -58,7 +58,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> awsRegion() {
         return Codegen.optional(this.awsRegion);
     }
-    @Export(name="cloud", type=String.class, parameters={})
+    @Export(name="cloud", refs={String.class}, tree="[0]")
     private Output<String> cloud;
 
     public Output<String> cloud() {
@@ -68,7 +68,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * A block that specifies GCP workspace configurations, consisting of following blocks:
      * 
      */
-    @Export(name="cloudResourceContainer", type=MwsWorkspacesCloudResourceContainer.class, parameters={})
+    @Export(name="cloudResourceContainer", refs={MwsWorkspacesCloudResourceContainer.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesCloudResourceContainer> cloudResourceContainer;
 
     /**
@@ -82,7 +82,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * (Integer) time when workspace was created
      * 
      */
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     /**
@@ -92,7 +92,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
-    @Export(name="credentialsId", type=String.class, parameters={})
+    @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialsId;
 
     public Output<Optional<String>> credentialsId() {
@@ -104,7 +104,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use managed_services_customer_managed_key_id instead */
-    @Export(name="customerManagedKeyId", type=String.class, parameters={})
+    @Export(name="customerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customerManagedKeyId;
 
     public Output<Optional<String>> customerManagedKeyId() {
@@ -114,7 +114,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * part of URL as in `https://&lt;prefix&gt;-&lt;deployment-name&gt;.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      * 
      */
-    @Export(name="deploymentName", type=String.class, parameters={})
+    @Export(name="deploymentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentName;
 
     /**
@@ -124,13 +124,13 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> deploymentName() {
         return Codegen.optional(this.deploymentName);
     }
-    @Export(name="externalCustomerInfo", type=MwsWorkspacesExternalCustomerInfo.class, parameters={})
+    @Export(name="externalCustomerInfo", refs={MwsWorkspacesExternalCustomerInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesExternalCustomerInfo> externalCustomerInfo;
 
     public Output<Optional<MwsWorkspacesExternalCustomerInfo>> externalCustomerInfo() {
         return Codegen.optional(this.externalCustomerInfo);
     }
-    @Export(name="gcpManagedNetworkConfig", type=MwsWorkspacesGcpManagedNetworkConfig.class, parameters={})
+    @Export(name="gcpManagedNetworkConfig", refs={MwsWorkspacesGcpManagedNetworkConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGcpManagedNetworkConfig> gcpManagedNetworkConfig;
 
     public Output<Optional<MwsWorkspacesGcpManagedNetworkConfig>> gcpManagedNetworkConfig() {
@@ -140,7 +140,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
-    @Export(name="gkeConfig", type=MwsWorkspacesGkeConfig.class, parameters={})
+    @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
     /**
@@ -150,7 +150,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
         return Codegen.optional(this.gkeConfig);
     }
-    @Export(name="isNoPublicIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="isNoPublicIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isNoPublicIpEnabled;
 
     public Output<Optional<Boolean>> isNoPublicIpEnabled() {
@@ -160,7 +160,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * region of the subnet.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -174,7 +174,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
      * 
      */
-    @Export(name="managedServicesCustomerManagedKeyId", type=String.class, parameters={})
+    @Export(name="managedServicesCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedServicesCustomerManagedKeyId;
 
     /**
@@ -188,7 +188,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * `network_id` from networks.
      * 
      */
-    @Export(name="networkId", type=String.class, parameters={})
+    @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkId;
 
     /**
@@ -198,7 +198,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> networkId() {
         return Codegen.optional(this.networkId);
     }
-    @Export(name="pricingTier", type=String.class, parameters={})
+    @Export(name="pricingTier", refs={String.class}, tree="[0]")
     private Output<String> pricingTier;
 
     public Output<String> pricingTier() {
@@ -208,7 +208,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
      * 
      */
-    @Export(name="privateAccessSettingsId", type=String.class, parameters={})
+    @Export(name="privateAccessSettingsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateAccessSettingsId;
 
     /**
@@ -222,7 +222,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * `storage_configuration_id` from storage configuration.
      * 
      */
-    @Export(name="storageConfigurationId", type=String.class, parameters={})
+    @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageConfigurationId;
 
     /**
@@ -236,7 +236,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
      * 
      */
-    @Export(name="storageCustomerManagedKeyId", type=String.class, parameters={})
+    @Export(name="storageCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCustomerManagedKeyId;
 
     /**
@@ -246,7 +246,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> storageCustomerManagedKeyId() {
         return Codegen.optional(this.storageCustomerManagedKeyId);
     }
-    @Export(name="token", type=MwsWorkspacesToken.class, parameters={})
+    @Export(name="token", refs={MwsWorkspacesToken.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesToken> token;
 
     public Output<Optional<MwsWorkspacesToken>> token() {
@@ -256,7 +256,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * (String) workspace id
      * 
      */
-    @Export(name="workspaceId", type=Integer.class, parameters={})
+    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> workspaceId;
 
     /**
@@ -270,7 +270,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * name of the workspace, will appear on UI.
      * 
      */
-    @Export(name="workspaceName", type=String.class, parameters={})
+    @Export(name="workspaceName", refs={String.class}, tree="[0]")
     private Output<String> workspaceName;
 
     /**
@@ -284,7 +284,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * (String) workspace status
      * 
      */
-    @Export(name="workspaceStatus", type=String.class, parameters={})
+    @Export(name="workspaceStatus", refs={String.class}, tree="[0]")
     private Output<String> workspaceStatus;
 
     /**
@@ -298,7 +298,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * (String) updates on workspace status
      * 
      */
-    @Export(name="workspaceStatusMessage", type=String.class, parameters={})
+    @Export(name="workspaceStatusMessage", refs={String.class}, tree="[0]")
     private Output<String> workspaceStatusMessage;
 
     /**
@@ -312,7 +312,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      * (String) URL of the workspace
      * 
      */
-    @Export(name="workspaceUrl", type=String.class, parameters={})
+    @Export(name="workspaceUrl", refs={String.class}, tree="[0]")
     private Output<String> workspaceUrl;
 
     /**

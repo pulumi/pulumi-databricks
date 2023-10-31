@@ -16,19 +16,19 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/servicePrincipalSecret:ServicePrincipalSecret")
 public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource {
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     public Output<String> secret() {
         return this.secret;
     }
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {

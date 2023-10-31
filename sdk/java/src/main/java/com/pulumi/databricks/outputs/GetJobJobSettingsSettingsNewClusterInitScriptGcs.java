@@ -40,9 +40,9 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptGcs {
             return this;
         }
         public GetJobJobSettingsSettingsNewClusterInitScriptGcs build() {
-            final var o = new GetJobJobSettingsSettingsNewClusterInitScriptGcs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsNewClusterInitScriptGcs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -59,10 +59,10 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
             return this;
         }
         public StorageCredentialDatabricksGcpServiceAccount build() {
-            final var o = new StorageCredentialDatabricksGcpServiceAccount();
-            o.credentialId = credentialId;
-            o.email = email;
-            return o;
+            final var _resultValue = new StorageCredentialDatabricksGcpServiceAccount();
+            _resultValue.credentialId = credentialId;
+            _resultValue.email = email;
+            return _resultValue;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     ///                 Principal = "Data Engineers",
     ///                 Privileges = new[]
     ///                 {
-    ///                     "CREATE_TABLE",
+    ///                     "CREATE_EXTERNAL_TABLE",
     ///                 },
     ///             },
     ///         },
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
     ///                 Principal = "Data Engineers",
     ///                 Privileges = new[]
     ///                 {
-    ///                     "CREATE_TABLE",
+    ///                     "CREATE_EXTERNAL_TABLE",
     ///                 },
     ///             },
     ///         },
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
     ///                 Principal = "Data Engineers",
     ///                 Privileges = new[]
     ///                 {
-    ///                     "CREATE_TABLE",
+    ///                     "CREATE_EXTERNAL_TABLE",
     ///                 },
     ///             },
     ///         },

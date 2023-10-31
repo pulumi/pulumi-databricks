@@ -68,10 +68,10 @@ public final class JobTrigger {
             return this;
         }
         public JobTrigger build() {
-            final var o = new JobTrigger();
-            o.fileArrival = fileArrival;
-            o.pauseStatus = pauseStatus;
-            return o;
+            final var _resultValue = new JobTrigger();
+            _resultValue.fileArrival = fileArrival;
+            _resultValue.pauseStatus = pauseStatus;
+            return _resultValue;
         }
     }
 }

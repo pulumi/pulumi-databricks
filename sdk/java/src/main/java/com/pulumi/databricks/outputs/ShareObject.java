@@ -225,19 +225,19 @@ public final class ShareObject {
             return this;
         }
         public ShareObject build() {
-            final var o = new ShareObject();
-            o.addedAt = addedAt;
-            o.addedBy = addedBy;
-            o.cdfEnabled = cdfEnabled;
-            o.comment = comment;
-            o.dataObjectType = dataObjectType;
-            o.historyDataSharingStatus = historyDataSharingStatus;
-            o.name = name;
-            o.partitions = partitions;
-            o.sharedAs = sharedAs;
-            o.startVersion = startVersion;
-            o.status = status;
-            return o;
+            final var _resultValue = new ShareObject();
+            _resultValue.addedAt = addedAt;
+            _resultValue.addedBy = addedBy;
+            _resultValue.cdfEnabled = cdfEnabled;
+            _resultValue.comment = comment;
+            _resultValue.dataObjectType = dataObjectType;
+            _resultValue.historyDataSharingStatus = historyDataSharingStatus;
+            _resultValue.name = name;
+            _resultValue.partitions = partitions;
+            _resultValue.sharedAs = sharedAs;
+            _resultValue.startVersion = startVersion;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

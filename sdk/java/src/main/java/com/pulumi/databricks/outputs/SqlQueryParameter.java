@@ -201,20 +201,20 @@ public final class SqlQueryParameter {
             return this;
         }
         public SqlQueryParameter build() {
-            final var o = new SqlQueryParameter();
-            o.date = date;
-            o.dateRange = dateRange;
-            o.datetime = datetime;
-            o.datetimeRange = datetimeRange;
-            o.datetimesec = datetimesec;
-            o.datetimesecRange = datetimesecRange;
-            o.enum_ = enum_;
-            o.name = name;
-            o.number = number;
-            o.query = query;
-            o.text = text;
-            o.title = title;
-            return o;
+            final var _resultValue = new SqlQueryParameter();
+            _resultValue.date = date;
+            _resultValue.dateRange = dateRange;
+            _resultValue.datetime = datetime;
+            _resultValue.datetimeRange = datetimeRange;
+            _resultValue.datetimesec = datetimesec;
+            _resultValue.datetimesecRange = datetimesecRange;
+            _resultValue.enum_ = enum_;
+            _resultValue.name = name;
+            _resultValue.number = number;
+            _resultValue.query = query;
+            _resultValue.text = text;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -174,7 +174,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -188,7 +188,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
      * 
      */
-    @Export(name="allowedVpcEndpointIds", type=List.class, parameters={String.class})
+    @Export(name="allowedVpcEndpointIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedVpcEndpointIds;
 
     /**
@@ -202,7 +202,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
      * 
      */
-    @Export(name="privateAccessLevel", type=String.class, parameters={})
+    @Export(name="privateAccessLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateAccessLevel;
 
     /**
@@ -216,7 +216,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * Canonical unique identifier of Private Access Settings in Databricks Account
      * 
      */
-    @Export(name="privateAccessSettingsId", type=String.class, parameters={})
+    @Export(name="privateAccessSettingsId", refs={String.class}, tree="[0]")
     private Output<String> privateAccessSettingsId;
 
     /**
@@ -230,7 +230,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * Name of Private Access Settings in Databricks Account
      * 
      */
-    @Export(name="privateAccessSettingsName", type=String.class, parameters={})
+    @Export(name="privateAccessSettingsName", refs={String.class}, tree="[0]")
     private Output<String> privateAccessSettingsName;
 
     /**
@@ -244,7 +244,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
      * 
      */
-    @Export(name="publicAccessEnabled", type=Boolean.class, parameters={})
+    @Export(name="publicAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publicAccessEnabled;
 
     /**
@@ -258,7 +258,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * Region of AWS VPC or the Google Cloud VPC network
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -272,7 +272,7 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
      * (AWS only) Status of Private Access Settings
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

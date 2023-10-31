@@ -32,25 +32,25 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/metastore:Metastore")
 public class Metastore extends com.pulumi.resources.CustomResource {
-    @Export(name="cloud", type=String.class, parameters={})
+    @Export(name="cloud", refs={String.class}, tree="[0]")
     private Output<String> cloud;
 
     public Output<String> cloud() {
         return this.cloud;
     }
-    @Export(name="createdAt", type=Integer.class, parameters={})
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
         return this.createdBy;
     }
-    @Export(name="defaultDataAccessConfigId", type=String.class, parameters={})
+    @Export(name="defaultDataAccessConfigId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultDataAccessConfigId;
 
     public Output<Optional<String>> defaultDataAccessConfigId() {
@@ -60,7 +60,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
      * 
      */
-    @Export(name="deltaSharingOrganizationName", type=String.class, parameters={})
+    @Export(name="deltaSharingOrganizationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingOrganizationName;
 
     /**
@@ -74,7 +74,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
      * 
      */
-    @Export(name="deltaSharingRecipientTokenLifetimeInSeconds", type=Integer.class, parameters={})
+    @Export(name="deltaSharingRecipientTokenLifetimeInSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
     /**
@@ -88,7 +88,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
      * 
      */
-    @Export(name="deltaSharingScope", type=String.class, parameters={})
+    @Export(name="deltaSharingScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingScope;
 
     /**
@@ -102,7 +102,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Destroy metastore regardless of its contents.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -112,13 +112,13 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="globalMetastoreId", type=String.class, parameters={})
+    @Export(name="globalMetastoreId", refs={String.class}, tree="[0]")
     private Output<String> globalMetastoreId;
 
     public Output<String> globalMetastoreId() {
         return this.globalMetastoreId;
     }
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     public Output<String> metastoreId() {
@@ -128,7 +128,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Name of metastore.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -142,7 +142,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the metastore owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -156,7 +156,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * The region of the metastore
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -170,7 +170,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
      * 
      */
-    @Export(name="storageRoot", type=String.class, parameters={})
+    @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output<String> storageRoot;
 
     /**
@@ -180,19 +180,19 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<String> storageRoot() {
         return this.storageRoot;
     }
-    @Export(name="storageRootCredentialId", type=String.class, parameters={})
+    @Export(name="storageRootCredentialId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRootCredentialId;
 
     public Output<Optional<String>> storageRootCredentialId() {
         return Codegen.optional(this.storageRootCredentialId);
     }
-    @Export(name="updatedAt", type=Integer.class, parameters={})
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedAt;
 
     public Output<Integer> updatedAt() {
         return this.updatedAt;
     }
-    @Export(name="updatedBy", type=String.class, parameters={})
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     public Output<String> updatedBy() {

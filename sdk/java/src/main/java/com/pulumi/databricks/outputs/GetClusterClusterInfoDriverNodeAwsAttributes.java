@@ -40,9 +40,9 @@ public final class GetClusterClusterInfoDriverNodeAwsAttributes {
             return this;
         }
         public GetClusterClusterInfoDriverNodeAwsAttributes build() {
-            final var o = new GetClusterClusterInfoDriverNodeAwsAttributes();
-            o.isSpot = isSpot;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoDriverNodeAwsAttributes();
+            _resultValue.isSpot = isSpot;
+            return _resultValue;
         }
     }
 }

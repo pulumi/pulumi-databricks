@@ -84,7 +84,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
      * 
      */
-    @Export(name="configReference", type=String.class, parameters={})
+    @Export(name="configReference", refs={String.class}, tree="[0]")
     private Output<String> configReference;
 
     /**
@@ -98,7 +98,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -112,7 +112,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * (Integer) time secret was updated
      * 
      */
-    @Export(name="lastUpdatedTimestamp", type=Integer.class, parameters={})
+    @Export(name="lastUpdatedTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastUpdatedTimestamp;
 
     /**
@@ -126,7 +126,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -140,7 +140,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * (String) super secret sensitive value.
      * 
      */
-    @Export(name="stringValue", type=String.class, parameters={})
+    @Export(name="stringValue", refs={String.class}, tree="[0]")
     private Output<String> stringValue;
 
     /**

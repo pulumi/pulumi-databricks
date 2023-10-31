@@ -90,11 +90,11 @@ public final class JobSparkPythonTask {
             return this;
         }
         public JobSparkPythonTask build() {
-            final var o = new JobSparkPythonTask();
-            o.parameters = parameters;
-            o.pythonFile = pythonFile;
-            o.source = source;
-            return o;
+            final var _resultValue = new JobSparkPythonTask();
+            _resultValue.parameters = parameters;
+            _resultValue.pythonFile = pythonFile;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

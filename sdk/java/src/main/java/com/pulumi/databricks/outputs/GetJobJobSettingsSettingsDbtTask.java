@@ -99,14 +99,14 @@ public final class GetJobJobSettingsSettingsDbtTask {
             return this;
         }
         public GetJobJobSettingsSettingsDbtTask build() {
-            final var o = new GetJobJobSettingsSettingsDbtTask();
-            o.catalog = catalog;
-            o.commands = commands;
-            o.profilesDirectory = profilesDirectory;
-            o.projectDirectory = projectDirectory;
-            o.schema = schema;
-            o.warehouseId = warehouseId;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsDbtTask();
+            _resultValue.catalog = catalog;
+            _resultValue.commands = commands;
+            _resultValue.profilesDirectory = profilesDirectory;
+            _resultValue.projectDirectory = projectDirectory;
+            _resultValue.schema = schema;
+            _resultValue.warehouseId = warehouseId;
+            return _resultValue;
         }
     }
 }

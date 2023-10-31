@@ -38,9 +38,9 @@ public final class JobQueue {
             return this;
         }
         public JobQueue build() {
-            final var o = new JobQueue();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new JobQueue();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

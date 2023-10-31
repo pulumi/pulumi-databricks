@@ -52,10 +52,10 @@ public final class JobCompute {
             return this;
         }
         public JobCompute build() {
-            final var o = new JobCompute();
-            o.computeKey = computeKey;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new JobCompute();
+            _resultValue.computeKey = computeKey;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

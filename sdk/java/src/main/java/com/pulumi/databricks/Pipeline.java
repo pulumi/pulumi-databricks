@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/pipeline:Pipeline")
 public class Pipeline extends com.pulumi.resources.CustomResource {
-    @Export(name="allowDuplicateNames", type=Boolean.class, parameters={})
+    @Export(name="allowDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowDuplicateNames;
 
     public Output<Optional<Boolean>> allowDuplicateNames() {
@@ -133,7 +133,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
      * 
      */
-    @Export(name="catalog", type=String.class, parameters={})
+    @Export(name="catalog", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalog;
 
     /**
@@ -147,7 +147,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * optional name of the release channel for Spark version used by DLT pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      * 
      */
-    @Export(name="channel", type=String.class, parameters={})
+    @Export(name="channel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channel;
 
     /**
@@ -161,7 +161,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that DLT pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-api-guide.html#pipelinesnewcluster).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      * 
      */
-    @Export(name="clusters", type=List.class, parameters={PipelineCluster.class})
+    @Export(name="clusters", refs={List.class,PipelineCluster.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineCluster>> clusters;
 
     /**
@@ -175,7 +175,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      * 
      */
-    @Export(name="configuration", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="configuration", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> configuration;
 
     /**
@@ -189,7 +189,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      * 
      */
-    @Export(name="continuous", type=Boolean.class, parameters={})
+    @Export(name="continuous", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> continuous;
 
     /**
@@ -203,7 +203,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      * 
      */
-    @Export(name="development", type=Boolean.class, parameters={})
+    @Export(name="development", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> development;
 
     /**
@@ -217,7 +217,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
      * 
      */
-    @Export(name="edition", type=String.class, parameters={})
+    @Export(name="edition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edition;
 
     /**
@@ -227,7 +227,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
-    @Export(name="filters", type=PipelineFilters.class, parameters={})
+    @Export(name="filters", refs={PipelineFilters.class}, tree="[0]")
     private Output</* @Nullable */ PipelineFilters> filters;
 
     public Output<Optional<PipelineFilters>> filters() {
@@ -237,7 +237,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * blocks - Specifies pipeline code and required artifacts. Syntax resembles library configuration block with the addition of a special `notebook` &amp; `file` library types that should have the `path` attribute. *Right now only the `notebook` &amp; `file` types are supported.*
      * 
      */
-    @Export(name="libraries", type=List.class, parameters={PipelineLibrary.class})
+    @Export(name="libraries", refs={List.class,PipelineLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineLibrary>> libraries;
 
     /**
@@ -251,7 +251,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -261,7 +261,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="notifications", type=List.class, parameters={PipelineNotification.class})
+    @Export(name="notifications", refs={List.class,PipelineNotification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PipelineNotification>> notifications;
 
     public Output<Optional<List<PipelineNotification>>> notifications() {
@@ -271,7 +271,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A flag indicating whether to use Photon engine. The default value is `false`.
      * 
      */
-    @Export(name="photon", type=Boolean.class, parameters={})
+    @Export(name="photon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> photon;
 
     /**
@@ -281,7 +281,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> photon() {
         return Codegen.optional(this.photon);
     }
-    @Export(name="serverless", type=Boolean.class, parameters={})
+    @Export(name="serverless", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> serverless;
 
     public Output<Optional<Boolean>> serverless() {
@@ -291,7 +291,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      * 
      */
-    @Export(name="storage", type=String.class, parameters={})
+    @Export(name="storage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storage;
 
     /**
@@ -305,7 +305,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> target;
 
     /**
@@ -315,7 +315,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
     }
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     public Output<String> url() {

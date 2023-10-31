@@ -106,12 +106,12 @@ public final class SqlTableColumn {
             return this;
         }
         public SqlTableColumn build() {
-            final var o = new SqlTableColumn();
-            o.comment = comment;
-            o.name = name;
-            o.nullable = nullable;
-            o.type = type;
-            return o;
+            final var _resultValue = new SqlTableColumn();
+            _resultValue.comment = comment;
+            _resultValue.name = name;
+            _resultValue.nullable = nullable;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

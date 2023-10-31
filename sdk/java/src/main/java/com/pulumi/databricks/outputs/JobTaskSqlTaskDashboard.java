@@ -111,12 +111,12 @@ public final class JobTaskSqlTaskDashboard {
             return subscriptions(List.of(subscriptions));
         }
         public JobTaskSqlTaskDashboard build() {
-            final var o = new JobTaskSqlTaskDashboard();
-            o.customSubject = customSubject;
-            o.dashboardId = dashboardId;
-            o.pauseSubscriptions = pauseSubscriptions;
-            o.subscriptions = subscriptions;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskDashboard();
+            _resultValue.customSubject = customSubject;
+            _resultValue.dashboardId = dashboardId;
+            _resultValue.pauseSubscriptions = pauseSubscriptions;
+            _resultValue.subscriptions = subscriptions;
+            return _resultValue;
         }
     }
 }

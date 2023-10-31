@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/dbfsFile:DbfsFile")
 public class DbfsFile extends com.pulumi.resources.CustomResource {
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     public Output<Optional<String>> contentBase64() {
@@ -37,7 +37,7 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      * Path, but with `dbfs:` prefix.
      * 
      */
-    @Export(name="dbfsPath", type=String.class, parameters={})
+    @Export(name="dbfsPath", refs={String.class}, tree="[0]")
     private Output<String> dbfsPath;
 
     /**
@@ -51,7 +51,7 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      * The file size of the file that is being tracked by this resource in bytes.
      * 
      */
-    @Export(name="fileSize", type=Integer.class, parameters={})
+    @Export(name="fileSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileSize;
 
     /**
@@ -61,7 +61,7 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
     public Output<Integer> fileSize() {
         return this.fileSize;
     }
-    @Export(name="md5", type=String.class, parameters={})
+    @Export(name="md5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> md5;
 
     public Output<Optional<String>> md5() {
@@ -71,7 +71,7 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      * The path of the file in which you wish to save.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -85,7 +85,7 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      * The full absolute path to the file. Conflicts with `content_base64`.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**

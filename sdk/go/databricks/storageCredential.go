@@ -48,7 +48,7 @@ import (
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
 //						Privileges: pulumi.StringArray{
-//							pulumi.String("CREATE_TABLE"),
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
 //						},
 //					},
 //				},
@@ -91,7 +91,7 @@ import (
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
 //						Privileges: pulumi.StringArray{
-//							pulumi.String("CREATE_TABLE"),
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
 //						},
 //					},
 //				},
@@ -131,7 +131,7 @@ import (
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
 //						Privileges: pulumi.StringArray{
-//							pulumi.String("CREATE_TABLE"),
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
 //						},
 //					},
 //				},

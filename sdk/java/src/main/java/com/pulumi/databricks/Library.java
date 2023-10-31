@@ -321,43 +321,43 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/library:Library")
 public class Library extends com.pulumi.resources.CustomResource {
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     public Output<String> clusterId() {
         return this.clusterId;
     }
-    @Export(name="cran", type=LibraryCran.class, parameters={})
+    @Export(name="cran", refs={LibraryCran.class}, tree="[0]")
     private Output</* @Nullable */ LibraryCran> cran;
 
     public Output<Optional<LibraryCran>> cran() {
         return Codegen.optional(this.cran);
     }
-    @Export(name="egg", type=String.class, parameters={})
+    @Export(name="egg", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> egg;
 
     public Output<Optional<String>> egg() {
         return Codegen.optional(this.egg);
     }
-    @Export(name="jar", type=String.class, parameters={})
+    @Export(name="jar", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jar;
 
     public Output<Optional<String>> jar() {
         return Codegen.optional(this.jar);
     }
-    @Export(name="maven", type=LibraryMaven.class, parameters={})
+    @Export(name="maven", refs={LibraryMaven.class}, tree="[0]")
     private Output</* @Nullable */ LibraryMaven> maven;
 
     public Output<Optional<LibraryMaven>> maven() {
         return Codegen.optional(this.maven);
     }
-    @Export(name="pypi", type=LibraryPypi.class, parameters={})
+    @Export(name="pypi", refs={LibraryPypi.class}, tree="[0]")
     private Output</* @Nullable */ LibraryPypi> pypi;
 
     public Output<Optional<LibraryPypi>> pypi() {
         return Codegen.optional(this.pypi);
     }
-    @Export(name="whl", type=String.class, parameters={})
+    @Export(name="whl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> whl;
 
     public Output<Optional<String>> whl() {

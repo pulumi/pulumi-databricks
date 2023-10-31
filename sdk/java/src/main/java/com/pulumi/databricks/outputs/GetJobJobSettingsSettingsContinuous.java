@@ -40,9 +40,9 @@ public final class GetJobJobSettingsSettingsContinuous {
             return this;
         }
         public GetJobJobSettingsSettingsContinuous build() {
-            final var o = new GetJobJobSettingsSettingsContinuous();
-            o.pauseStatus = pauseStatus;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsContinuous();
+            _resultValue.pauseStatus = pauseStatus;
+            return _resultValue;
         }
     }
 }

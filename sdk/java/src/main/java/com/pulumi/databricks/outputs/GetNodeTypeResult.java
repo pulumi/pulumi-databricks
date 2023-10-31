@@ -193,22 +193,22 @@ public final class GetNodeTypeResult {
             return this;
         }
         public GetNodeTypeResult build() {
-            final var o = new GetNodeTypeResult();
-            o.category = category;
-            o.fleet = fleet;
-            o.gbPerCore = gbPerCore;
-            o.graviton = graviton;
-            o.id = id;
-            o.isIoCacheEnabled = isIoCacheEnabled;
-            o.localDisk = localDisk;
-            o.localDiskMinSize = localDiskMinSize;
-            o.minCores = minCores;
-            o.minGpus = minGpus;
-            o.minMemoryGb = minMemoryGb;
-            o.photonDriverCapable = photonDriverCapable;
-            o.photonWorkerCapable = photonWorkerCapable;
-            o.supportPortForwarding = supportPortForwarding;
-            return o;
+            final var _resultValue = new GetNodeTypeResult();
+            _resultValue.category = category;
+            _resultValue.fleet = fleet;
+            _resultValue.gbPerCore = gbPerCore;
+            _resultValue.graviton = graviton;
+            _resultValue.id = id;
+            _resultValue.isIoCacheEnabled = isIoCacheEnabled;
+            _resultValue.localDisk = localDisk;
+            _resultValue.localDiskMinSize = localDiskMinSize;
+            _resultValue.minCores = minCores;
+            _resultValue.minGpus = minGpus;
+            _resultValue.minMemoryGb = minMemoryGb;
+            _resultValue.photonDriverCapable = photonDriverCapable;
+            _resultValue.photonWorkerCapable = photonWorkerCapable;
+            _resultValue.supportPortForwarding = supportPortForwarding;
+            return _resultValue;
         }
     }
 }

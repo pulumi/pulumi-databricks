@@ -51,10 +51,10 @@ public final class JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo 
             return this;
         }
         public JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo build() {
-            final var o = new JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo();
-            o.mountOptions = mountOptions;
-            o.serverAddress = serverAddress;
-            return o;
+            final var _resultValue = new JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo();
+            _resultValue.mountOptions = mountOptions;
+            _resultValue.serverAddress = serverAddress;
+            return _resultValue;
         }
     }
 }

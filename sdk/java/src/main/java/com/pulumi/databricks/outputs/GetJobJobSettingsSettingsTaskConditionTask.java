@@ -62,11 +62,11 @@ public final class GetJobJobSettingsSettingsTaskConditionTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskConditionTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskConditionTask();
-            o.left = left;
-            o.op = op;
-            o.right = right;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskConditionTask();
+            _resultValue.left = left;
+            _resultValue.op = op;
+            _resultValue.right = right;
+            return _resultValue;
         }
     }
 }

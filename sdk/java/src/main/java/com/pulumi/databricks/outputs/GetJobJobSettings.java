@@ -86,13 +86,13 @@ public final class GetJobJobSettings {
             return this;
         }
         public GetJobJobSettings build() {
-            final var o = new GetJobJobSettings();
-            o.createdTime = createdTime;
-            o.creatorUserName = creatorUserName;
-            o.jobId = jobId;
-            o.runAsUserName = runAsUserName;
-            o.settings = settings;
-            return o;
+            final var _resultValue = new GetJobJobSettings();
+            _resultValue.createdTime = createdTime;
+            _resultValue.creatorUserName = creatorUserName;
+            _resultValue.jobId = jobId;
+            _resultValue.runAsUserName = runAsUserName;
+            _resultValue.settings = settings;
+            return _resultValue;
         }
     }
 }

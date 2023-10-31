@@ -75,7 +75,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * The delta sharing authentication type. Valid values are `TOKEN`.
      * 
      */
-    @Export(name="authenticationType", type=String.class, parameters={})
+    @Export(name="authenticationType", refs={String.class}, tree="[0]")
     private Output<String> authenticationType;
 
     /**
@@ -89,7 +89,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * Description about the provider.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -103,7 +103,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * Name of provider. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * This is the json file that is created from a recipient url.
      * 
      */
-    @Export(name="recipientProfileStr", type=String.class, parameters={})
+    @Export(name="recipientProfileStr", refs={String.class}, tree="[0]")
     private Output<String> recipientProfileStr;
 
     /**

@@ -106,12 +106,12 @@ public final class MlflowWebhookHttpUrlSpec {
             return this;
         }
         public MlflowWebhookHttpUrlSpec build() {
-            final var o = new MlflowWebhookHttpUrlSpec();
-            o.authorization = authorization;
-            o.enableSslVerification = enableSslVerification;
-            o.secret = secret;
-            o.url = url;
-            return o;
+            final var _resultValue = new MlflowWebhookHttpUrlSpec();
+            _resultValue.authorization = authorization;
+            _resultValue.enableSslVerification = enableSslVerification;
+            _resultValue.secret = secret;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

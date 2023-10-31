@@ -53,10 +53,10 @@ public final class GetJobJobSettingsSettingsTaskRunJobTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskRunJobTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskRunJobTask();
-            o.jobId = jobId;
-            o.jobParameters = jobParameters;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskRunJobTask();
+            _resultValue.jobId = jobId;
+            _resultValue.jobParameters = jobParameters;
+            return _resultValue;
         }
     }
 }

@@ -77,11 +77,11 @@ public final class GetInstancePoolResult {
             return this;
         }
         public GetInstancePoolResult build() {
-            final var o = new GetInstancePoolResult();
-            o.id = id;
-            o.name = name;
-            o.poolInfo = poolInfo;
-            return o;
+            final var _resultValue = new GetInstancePoolResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.poolInfo = poolInfo;
+            return _resultValue;
         }
     }
 }

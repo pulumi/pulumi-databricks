@@ -63,11 +63,11 @@ public final class SqlQueryScheduleDaily {
             return this;
         }
         public SqlQueryScheduleDaily build() {
-            final var o = new SqlQueryScheduleDaily();
-            o.intervalDays = intervalDays;
-            o.timeOfDay = timeOfDay;
-            o.untilDate = untilDate;
-            return o;
+            final var _resultValue = new SqlQueryScheduleDaily();
+            _resultValue.intervalDays = intervalDays;
+            _resultValue.timeOfDay = timeOfDay;
+            _resultValue.untilDate = untilDate;
+            return _resultValue;
         }
     }
 }

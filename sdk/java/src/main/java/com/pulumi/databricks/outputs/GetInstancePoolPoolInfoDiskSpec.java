@@ -63,11 +63,11 @@ public final class GetInstancePoolPoolInfoDiskSpec {
             return this;
         }
         public GetInstancePoolPoolInfoDiskSpec build() {
-            final var o = new GetInstancePoolPoolInfoDiskSpec();
-            o.diskCount = diskCount;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoDiskSpec();
+            _resultValue.diskCount = diskCount;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            return _resultValue;
         }
     }
 }

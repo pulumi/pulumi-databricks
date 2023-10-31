@@ -67,10 +67,10 @@ public final class GetMetastoresResult {
             return this;
         }
         public GetMetastoresResult build() {
-            final var o = new GetMetastoresResult();
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetMetastoresResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

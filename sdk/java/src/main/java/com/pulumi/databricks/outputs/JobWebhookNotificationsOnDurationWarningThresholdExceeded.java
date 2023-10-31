@@ -46,9 +46,9 @@ public final class JobWebhookNotificationsOnDurationWarningThresholdExceeded {
             return this;
         }
         public JobWebhookNotificationsOnDurationWarningThresholdExceeded build() {
-            final var o = new JobWebhookNotificationsOnDurationWarningThresholdExceeded();
-            o.id = id;
-            return o;
+            final var _resultValue = new JobWebhookNotificationsOnDurationWarningThresholdExceeded();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

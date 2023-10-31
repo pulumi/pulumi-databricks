@@ -48,9 +48,9 @@ public final class GetSqlWarehouseChannel {
             return this;
         }
         public GetSqlWarehouseChannel build() {
-            final var o = new GetSqlWarehouseChannel();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetSqlWarehouseChannel();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

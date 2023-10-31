@@ -82,11 +82,11 @@ public final class JobSparkJarTask {
             return parameters(List.of(parameters));
         }
         public JobSparkJarTask build() {
-            final var o = new JobSparkJarTask();
-            o.jarUri = jarUri;
-            o.mainClassName = mainClassName;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new JobSparkJarTask();
+            _resultValue.jarUri = jarUri;
+            _resultValue.mainClassName = mainClassName;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

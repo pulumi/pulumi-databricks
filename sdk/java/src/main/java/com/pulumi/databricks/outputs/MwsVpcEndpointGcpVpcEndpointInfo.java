@@ -124,13 +124,13 @@ public final class MwsVpcEndpointGcpVpcEndpointInfo {
             return this;
         }
         public MwsVpcEndpointGcpVpcEndpointInfo build() {
-            final var o = new MwsVpcEndpointGcpVpcEndpointInfo();
-            o.endpointRegion = endpointRegion;
-            o.projectId = projectId;
-            o.pscConnectionId = pscConnectionId;
-            o.pscEndpointName = pscEndpointName;
-            o.serviceAttachmentId = serviceAttachmentId;
-            return o;
+            final var _resultValue = new MwsVpcEndpointGcpVpcEndpointInfo();
+            _resultValue.endpointRegion = endpointRegion;
+            _resultValue.projectId = projectId;
+            _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.pscEndpointName = pscEndpointName;
+            _resultValue.serviceAttachmentId = serviceAttachmentId;
+            return _resultValue;
         }
     }
 }

@@ -203,18 +203,18 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.aclPrincipalId = aclPrincipalId;
-            o.alphanumeric = alphanumeric;
-            o.applicationId = applicationId;
-            o.displayName = displayName;
-            o.externalId = externalId;
-            o.home = home;
-            o.id = id;
-            o.repos = repos;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.aclPrincipalId = aclPrincipalId;
+            _resultValue.alphanumeric = alphanumeric;
+            _resultValue.applicationId = applicationId;
+            _resultValue.displayName = displayName;
+            _resultValue.externalId = externalId;
+            _resultValue.home = home;
+            _resultValue.id = id;
+            _resultValue.repos = repos;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

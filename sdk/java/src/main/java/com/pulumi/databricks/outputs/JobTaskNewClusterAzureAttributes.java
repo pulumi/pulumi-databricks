@@ -64,11 +64,11 @@ public final class JobTaskNewClusterAzureAttributes {
             return this;
         }
         public JobTaskNewClusterAzureAttributes build() {
-            final var o = new JobTaskNewClusterAzureAttributes();
-            o.availability = availability;
-            o.firstOnDemand = firstOnDemand;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new JobTaskNewClusterAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

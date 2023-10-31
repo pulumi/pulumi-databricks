@@ -331,25 +331,25 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         public GetSqlWarehouseResult build() {
-            final var o = new GetSqlWarehouseResult();
-            o.autoStopMins = autoStopMins;
-            o.channel = channel;
-            o.clusterSize = clusterSize;
-            o.dataSourceId = dataSourceId;
-            o.enablePhoton = enablePhoton;
-            o.enableServerlessCompute = enableServerlessCompute;
-            o.id = id;
-            o.instanceProfileArn = instanceProfileArn;
-            o.jdbcUrl = jdbcUrl;
-            o.maxNumClusters = maxNumClusters;
-            o.minNumClusters = minNumClusters;
-            o.name = name;
-            o.numClusters = numClusters;
-            o.odbcParams = odbcParams;
-            o.spotInstancePolicy = spotInstancePolicy;
-            o.state = state;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetSqlWarehouseResult();
+            _resultValue.autoStopMins = autoStopMins;
+            _resultValue.channel = channel;
+            _resultValue.clusterSize = clusterSize;
+            _resultValue.dataSourceId = dataSourceId;
+            _resultValue.enablePhoton = enablePhoton;
+            _resultValue.enableServerlessCompute = enableServerlessCompute;
+            _resultValue.id = id;
+            _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.jdbcUrl = jdbcUrl;
+            _resultValue.maxNumClusters = maxNumClusters;
+            _resultValue.minNumClusters = minNumClusters;
+            _resultValue.name = name;
+            _resultValue.numClusters = numClusters;
+            _resultValue.odbcParams = odbcParams;
+            _resultValue.spotInstancePolicy = spotInstancePolicy;
+            _resultValue.state = state;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

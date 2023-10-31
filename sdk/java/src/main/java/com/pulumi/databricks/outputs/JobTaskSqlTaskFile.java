@@ -38,9 +38,9 @@ public final class JobTaskSqlTaskFile {
             return this;
         }
         public JobTaskSqlTaskFile build() {
-            final var o = new JobTaskSqlTaskFile();
-            o.path = path;
-            return o;
+            final var _resultValue = new JobTaskSqlTaskFile();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

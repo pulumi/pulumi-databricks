@@ -60,10 +60,10 @@ public final class GetDbfsFilePathsPathList {
             return this;
         }
         public GetDbfsFilePathsPathList build() {
-            final var o = new GetDbfsFilePathsPathList();
-            o.fileSize = fileSize;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetDbfsFilePathsPathList();
+            _resultValue.fileSize = fileSize;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

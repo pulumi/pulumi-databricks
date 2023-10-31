@@ -128,13 +128,13 @@ public final class GetShareResult {
             return objects(List.of(objects));
         }
         public GetShareResult build() {
-            final var o = new GetShareResult();
-            o.createdAt = createdAt;
-            o.createdBy = createdBy;
-            o.id = id;
-            o.name = name;
-            o.objects = objects;
-            return o;
+            final var _resultValue = new GetShareResult();
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.objects = objects;
+            return _resultValue;
         }
     }
 }

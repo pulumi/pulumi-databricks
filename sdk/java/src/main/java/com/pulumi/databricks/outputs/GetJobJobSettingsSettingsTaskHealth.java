@@ -42,9 +42,9 @@ public final class GetJobJobSettingsSettingsTaskHealth {
             return rules(List.of(rules));
         }
         public GetJobJobSettingsSettingsTaskHealth build() {
-            final var o = new GetJobJobSettingsSettingsTaskHealth();
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskHealth();
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

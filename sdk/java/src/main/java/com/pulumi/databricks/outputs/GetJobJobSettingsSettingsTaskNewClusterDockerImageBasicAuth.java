@@ -49,10 +49,10 @@ public final class GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth build() {
-            final var o = new GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

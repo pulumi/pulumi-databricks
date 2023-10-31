@@ -40,9 +40,9 @@ public final class PipelineClusterInitScriptAbfss {
             return this;
         }
         public PipelineClusterInitScriptAbfss build() {
-            final var o = new PipelineClusterInitScriptAbfss();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new PipelineClusterInitScriptAbfss();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

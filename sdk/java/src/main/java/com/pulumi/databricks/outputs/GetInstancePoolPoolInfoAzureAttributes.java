@@ -52,10 +52,10 @@ public final class GetInstancePoolPoolInfoAzureAttributes {
             return this;
         }
         public GetInstancePoolPoolInfoAzureAttributes build() {
-            final var o = new GetInstancePoolPoolInfoAzureAttributes();
-            o.availability = availability;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

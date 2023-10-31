@@ -40,9 +40,9 @@ public final class JobTaskNewClusterInitScriptWorkspace {
             return this;
         }
         public JobTaskNewClusterInitScriptWorkspace build() {
-            final var o = new JobTaskNewClusterInitScriptWorkspace();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new JobTaskNewClusterInitScriptWorkspace();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

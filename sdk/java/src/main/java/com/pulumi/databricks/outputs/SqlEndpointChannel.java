@@ -48,9 +48,9 @@ public final class SqlEndpointChannel {
             return this;
         }
         public SqlEndpointChannel build() {
-            final var o = new SqlEndpointChannel();
-            o.name = name;
-            return o;
+            final var _resultValue = new SqlEndpointChannel();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -116,7 +116,7 @@ public class GroupRole extends com.pulumi.resources.CustomResource {
      * This is the id of the group resource.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -130,7 +130,7 @@ public class GroupRole extends com.pulumi.resources.CustomResource {
      * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

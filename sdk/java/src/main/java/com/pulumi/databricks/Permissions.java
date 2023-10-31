@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/permissions:Permissions")
 public class Permissions extends com.pulumi.resources.CustomResource {
-    @Export(name="accessControls", type=List.class, parameters={PermissionsAccessControl.class})
+    @Export(name="accessControls", refs={List.class,PermissionsAccessControl.class}, tree="[0,1]")
     private Output<List<PermissionsAccessControl>> accessControls;
 
     public Output<List<PermissionsAccessControl>> accessControls() {
@@ -56,7 +56,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
      * 
      */
-    @Export(name="authorization", type=String.class, parameters={})
+    @Export(name="authorization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authorization;
 
     /**
@@ -70,7 +70,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * cluster id
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     /**
@@ -84,7 +84,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * cluster policy id
      * 
      */
-    @Export(name="clusterPolicyId", type=String.class, parameters={})
+    @Export(name="clusterPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterPolicyId;
 
     /**
@@ -98,7 +98,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * directory id
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryId;
 
     /**
@@ -112,7 +112,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * path of directory
      * 
      */
-    @Export(name="directoryPath", type=String.class, parameters={})
+    @Export(name="directoryPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryPath;
 
     /**
@@ -126,7 +126,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * MLflow experiment id
      * 
      */
-    @Export(name="experimentId", type=String.class, parameters={})
+    @Export(name="experimentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> experimentId;
 
     /**
@@ -140,7 +140,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * instance pool id
      * 
      */
-    @Export(name="instancePoolId", type=String.class, parameters={})
+    @Export(name="instancePoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instancePoolId;
 
     /**
@@ -154,7 +154,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * job id
      * 
      */
-    @Export(name="jobId", type=String.class, parameters={})
+    @Export(name="jobId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobId;
 
     /**
@@ -168,7 +168,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * ID of notebook within workspace
      * 
      */
-    @Export(name="notebookId", type=String.class, parameters={})
+    @Export(name="notebookId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notebookId;
 
     /**
@@ -182,7 +182,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * path of notebook
      * 
      */
-    @Export(name="notebookPath", type=String.class, parameters={})
+    @Export(name="notebookPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notebookPath;
 
     /**
@@ -196,7 +196,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * type of permissions.
      * 
      */
-    @Export(name="objectType", type=String.class, parameters={})
+    @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     /**
@@ -210,7 +210,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * pipeline id
      * 
      */
-    @Export(name="pipelineId", type=String.class, parameters={})
+    @Export(name="pipelineId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipelineId;
 
     /**
@@ -224,7 +224,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * MLflow registered model id
      * 
      */
-    @Export(name="registeredModelId", type=String.class, parameters={})
+    @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> registeredModelId;
 
     /**
@@ -238,7 +238,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * repo id
      * 
      */
-    @Export(name="repoId", type=String.class, parameters={})
+    @Export(name="repoId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoId;
 
     /**
@@ -252,7 +252,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
      * 
      */
-    @Export(name="repoPath", type=String.class, parameters={})
+    @Export(name="repoPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoPath;
 
     /**
@@ -266,7 +266,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * Model Serving endpoint id.
      * 
      */
-    @Export(name="servingEndpointId", type=String.class, parameters={})
+    @Export(name="servingEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> servingEndpointId;
 
     /**
@@ -280,7 +280,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
      * 
      */
-    @Export(name="sqlAlertId", type=String.class, parameters={})
+    @Export(name="sqlAlertId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlAlertId;
 
     /**
@@ -294,7 +294,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * SQL dashboard id
      * 
      */
-    @Export(name="sqlDashboardId", type=String.class, parameters={})
+    @Export(name="sqlDashboardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlDashboardId;
 
     /**
@@ -308,7 +308,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * SQL warehouse id
      * 
      */
-    @Export(name="sqlEndpointId", type=String.class, parameters={})
+    @Export(name="sqlEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlEndpointId;
 
     /**
@@ -322,7 +322,7 @@ public class Permissions extends com.pulumi.resources.CustomResource {
      * SQL query id
      * 
      */
-    @Export(name="sqlQueryId", type=String.class, parameters={})
+    @Export(name="sqlQueryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlQueryId;
 
     /**
@@ -332,13 +332,13 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> sqlQueryId() {
         return Codegen.optional(this.sqlQueryId);
     }
-    @Export(name="workspaceFileId", type=String.class, parameters={})
+    @Export(name="workspaceFileId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceFileId;
 
     public Output<Optional<String>> workspaceFileId() {
         return Codegen.optional(this.workspaceFileId);
     }
-    @Export(name="workspaceFilePath", type=String.class, parameters={})
+    @Export(name="workspaceFilePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workspaceFilePath;
 
     public Output<Optional<String>> workspaceFilePath() {

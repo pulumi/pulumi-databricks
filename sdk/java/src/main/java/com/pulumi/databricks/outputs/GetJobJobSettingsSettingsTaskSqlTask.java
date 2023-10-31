@@ -101,14 +101,14 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskSqlTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskSqlTask();
-            o.alert = alert;
-            o.dashboard = dashboard;
-            o.file = file;
-            o.parameters = parameters;
-            o.query = query;
-            o.warehouseId = warehouseId;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTask();
+            _resultValue.alert = alert;
+            _resultValue.dashboard = dashboard;
+            _resultValue.file = file;
+            _resultValue.parameters = parameters;
+            _resultValue.query = query;
+            _resultValue.warehouseId = warehouseId;
+            return _resultValue;
         }
     }
 }

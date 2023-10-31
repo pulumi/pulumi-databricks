@@ -40,9 +40,9 @@ public final class GetClusterClusterInfoExecutorNodeAwsAttributes {
             return this;
         }
         public GetClusterClusterInfoExecutorNodeAwsAttributes build() {
-            final var o = new GetClusterClusterInfoExecutorNodeAwsAttributes();
-            o.isSpot = isSpot;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoExecutorNodeAwsAttributes();
+            _resultValue.isSpot = isSpot;
+            return _resultValue;
         }
     }
 }

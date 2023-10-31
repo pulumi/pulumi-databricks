@@ -73,10 +73,10 @@ public final class SqlPermissionsPrivilegeAssignment {
             return privileges(List.of(privileges));
         }
         public SqlPermissionsPrivilegeAssignment build() {
-            final var o = new SqlPermissionsPrivilegeAssignment();
-            o.principal = principal;
-            o.privileges = privileges;
-            return o;
+            final var _resultValue = new SqlPermissionsPrivilegeAssignment();
+            _resultValue.principal = principal;
+            _resultValue.privileges = privileges;
+            return _resultValue;
         }
     }
 }

@@ -74,12 +74,12 @@ public final class PipelineClusterGcpAttributes {
             return this;
         }
         public PipelineClusterGcpAttributes build() {
-            final var o = new PipelineClusterGcpAttributes();
-            o.availability = availability;
-            o.googleServiceAccount = googleServiceAccount;
-            o.localSsdCount = localSsdCount;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new PipelineClusterGcpAttributes();
+            _resultValue.availability = availability;
+            _resultValue.googleServiceAccount = googleServiceAccount;
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

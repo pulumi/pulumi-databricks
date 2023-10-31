@@ -27,7 +27,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -37,7 +37,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    @Export(name="awsAccountId", type=String.class, parameters={})
+    @Export(name="awsAccountId", refs={String.class}, tree="[0]")
     private Output<String> awsAccountId;
 
     public Output<String> awsAccountId() {
@@ -47,7 +47,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      * 
      */
-    @Export(name="awsEndpointServiceId", type=String.class, parameters={})
+    @Export(name="awsEndpointServiceId", refs={String.class}, tree="[0]")
     private Output<String> awsEndpointServiceId;
 
     /**
@@ -61,7 +61,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * ID of configured aws_vpc_endpoint
      * 
      */
-    @Export(name="awsVpcEndpointId", type=String.class, parameters={})
+    @Export(name="awsVpcEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsVpcEndpointId;
 
     /**
@@ -75,7 +75,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      * 
      */
-    @Export(name="gcpVpcEndpointInfo", type=MwsVpcEndpointGcpVpcEndpointInfo.class, parameters={})
+    @Export(name="gcpVpcEndpointInfo", refs={MwsVpcEndpointGcpVpcEndpointInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsVpcEndpointGcpVpcEndpointInfo> gcpVpcEndpointInfo;
 
     /**
@@ -89,7 +89,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * Region of AWS VPC
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -103,7 +103,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * (AWS Only) State of VPC Endpoint
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -113,7 +113,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
-    @Export(name="useCase", type=String.class, parameters={})
+    @Export(name="useCase", refs={String.class}, tree="[0]")
     private Output<String> useCase;
 
     public Output<String> useCase() {
@@ -123,7 +123,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * Canonical unique identifier of VPC Endpoint in Databricks Account
      * 
      */
-    @Export(name="vpcEndpointId", type=String.class, parameters={})
+    @Export(name="vpcEndpointId", refs={String.class}, tree="[0]")
     private Output<String> vpcEndpointId;
 
     /**
@@ -137,7 +137,7 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
      * Name of VPC Endpoint in Databricks Account
      * 
      */
-    @Export(name="vpcEndpointName", type=String.class, parameters={})
+    @Export(name="vpcEndpointName", refs={String.class}, tree="[0]")
     private Output<String> vpcEndpointName;
 
     /**

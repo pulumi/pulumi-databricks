@@ -82,11 +82,11 @@ public final class GetClustersResult {
             return ids(List.of(ids));
         }
         public GetClustersResult build() {
-            final var o = new GetClustersResult();
-            o.clusterNameContains = clusterNameContains;
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetClustersResult();
+            _resultValue.clusterNameContains = clusterNameContains;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

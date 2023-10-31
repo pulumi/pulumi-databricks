@@ -85,13 +85,13 @@ public final class SqlWidgetPosition {
             return this;
         }
         public SqlWidgetPosition build() {
-            final var o = new SqlWidgetPosition();
-            o.autoHeight = autoHeight;
-            o.posX = posX;
-            o.posY = posY;
-            o.sizeX = sizeX;
-            o.sizeY = sizeY;
-            return o;
+            final var _resultValue = new SqlWidgetPosition();
+            _resultValue.autoHeight = autoHeight;
+            _resultValue.posX = posX;
+            _resultValue.posY = posY;
+            _resultValue.sizeX = sizeX;
+            _resultValue.sizeY = sizeY;
+            return _resultValue;
         }
     }
 }

@@ -63,11 +63,11 @@ public final class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo build() {
-            final var o = new GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo();
-            o.localMountDirPath = localMountDirPath;
-            o.networkFilesystemInfo = networkFilesystemInfo;
-            o.remoteMountDirPath = remoteMountDirPath;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo();
+            _resultValue.localMountDirPath = localMountDirPath;
+            _resultValue.networkFilesystemInfo = networkFilesystemInfo;
+            _resultValue.remoteMountDirPath = remoteMountDirPath;
+            return _resultValue;
         }
     }
 }

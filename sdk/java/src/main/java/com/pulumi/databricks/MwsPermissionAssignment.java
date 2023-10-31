@@ -156,7 +156,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={String.class})
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
     /**
@@ -172,7 +172,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources.
      * 
      */
-    @Export(name="principalId", type=Integer.class, parameters={})
+    @Export(name="principalId", refs={Integer.class}, tree="[0]")
     private Output<Integer> principalId;
 
     /**
@@ -186,7 +186,7 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
      * Databricks workspace ID.
      * 
      */
-    @Export(name="workspaceId", type=Integer.class, parameters={})
+    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> workspaceId;
 
     /**

@@ -27,13 +27,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/notebook:Notebook")
 public class Notebook extends com.pulumi.resources.CustomResource {
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
-    @Export(name="format", type=String.class, parameters={})
+    @Export(name="format", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> format;
 
     public Output<Optional<String>> format() {
@@ -43,7 +43,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      * 
      */
-    @Export(name="language", type=String.class, parameters={})
+    @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
@@ -53,7 +53,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> language() {
         return Codegen.optional(this.language);
     }
-    @Export(name="md5", type=String.class, parameters={})
+    @Export(name="md5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> md5;
 
     public Output<Optional<String>> md5() {
@@ -63,7 +63,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * Unique identifier for a NOTEBOOK
      * 
      */
-    @Export(name="objectId", type=Integer.class, parameters={})
+    @Export(name="objectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> objectId;
 
     /**
@@ -79,7 +79,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Always is a notebook */
-    @Export(name="objectType", type=String.class, parameters={})
+    @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     public Output<String> objectType() {
@@ -89,7 +89,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * The absolute path of the notebook or directory, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -103,7 +103,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
@@ -117,7 +117,7 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * Routable URL of the notebook
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

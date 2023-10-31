@@ -163,15 +163,15 @@ public final class SqlAlertOptions {
             return this;
         }
         public SqlAlertOptions build() {
-            final var o = new SqlAlertOptions();
-            o.column = column;
-            o.customBody = customBody;
-            o.customSubject = customSubject;
-            o.emptyResultState = emptyResultState;
-            o.muted = muted;
-            o.op = op;
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlAlertOptions();
+            _resultValue.column = column;
+            _resultValue.customBody = customBody;
+            _resultValue.customSubject = customSubject;
+            _resultValue.emptyResultState = emptyResultState;
+            _resultValue.muted = muted;
+            _resultValue.op = op;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

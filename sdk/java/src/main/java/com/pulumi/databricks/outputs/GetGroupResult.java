@@ -306,23 +306,23 @@ public final class GetGroupResult {
             return this;
         }
         public GetGroupResult build() {
-            final var o = new GetGroupResult();
-            o.aclPrincipalId = aclPrincipalId;
-            o.allowClusterCreate = allowClusterCreate;
-            o.allowInstancePoolCreate = allowInstancePoolCreate;
-            o.childGroups = childGroups;
-            o.databricksSqlAccess = databricksSqlAccess;
-            o.displayName = displayName;
-            o.externalId = externalId;
-            o.groups = groups;
-            o.id = id;
-            o.instanceProfiles = instanceProfiles;
-            o.members = members;
-            o.recursive = recursive;
-            o.servicePrincipals = servicePrincipals;
-            o.users = users;
-            o.workspaceAccess = workspaceAccess;
-            return o;
+            final var _resultValue = new GetGroupResult();
+            _resultValue.aclPrincipalId = aclPrincipalId;
+            _resultValue.allowClusterCreate = allowClusterCreate;
+            _resultValue.allowInstancePoolCreate = allowInstancePoolCreate;
+            _resultValue.childGroups = childGroups;
+            _resultValue.databricksSqlAccess = databricksSqlAccess;
+            _resultValue.displayName = displayName;
+            _resultValue.externalId = externalId;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.instanceProfiles = instanceProfiles;
+            _resultValue.members = members;
+            _resultValue.recursive = recursive;
+            _resultValue.servicePrincipals = servicePrincipals;
+            _resultValue.users = users;
+            _resultValue.workspaceAccess = workspaceAccess;
+            return _resultValue;
         }
     }
 }

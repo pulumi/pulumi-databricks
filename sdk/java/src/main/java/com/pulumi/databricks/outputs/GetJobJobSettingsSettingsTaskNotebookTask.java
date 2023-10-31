@@ -64,11 +64,11 @@ public final class GetJobJobSettingsSettingsTaskNotebookTask {
             return this;
         }
         public GetJobJobSettingsSettingsTaskNotebookTask build() {
-            final var o = new GetJobJobSettingsSettingsTaskNotebookTask();
-            o.baseParameters = baseParameters;
-            o.notebookPath = notebookPath;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsTaskNotebookTask();
+            _resultValue.baseParameters = baseParameters;
+            _resultValue.notebookPath = notebookPath;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

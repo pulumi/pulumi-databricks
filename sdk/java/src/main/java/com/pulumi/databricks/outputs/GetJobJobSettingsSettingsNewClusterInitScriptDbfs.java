@@ -38,9 +38,9 @@ public final class GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
             return this;
         }
         public GetJobJobSettingsSettingsNewClusterInitScriptDbfs build() {
-            final var o = new GetJobJobSettingsSettingsNewClusterInitScriptDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsNewClusterInitScriptDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class JobTaskNewClusterWorkloadType {
             return this;
         }
         public JobTaskNewClusterWorkloadType build() {
-            final var o = new JobTaskNewClusterWorkloadType();
-            o.clients = clients;
-            return o;
+            final var _resultValue = new JobTaskNewClusterWorkloadType();
+            _resultValue.clients = clients;
+            return _resultValue;
         }
     }
 }

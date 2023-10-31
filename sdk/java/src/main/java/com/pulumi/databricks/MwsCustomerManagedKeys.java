@@ -323,7 +323,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -337,7 +337,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * This field is a block and is documented below. This conflicts with `gcp_key_info`
      * 
      */
-    @Export(name="awsKeyInfo", type=MwsCustomerManagedKeysAwsKeyInfo.class, parameters={})
+    @Export(name="awsKeyInfo", refs={MwsCustomerManagedKeysAwsKeyInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo;
 
     /**
@@ -351,7 +351,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * (Integer) Time in epoch milliseconds when the customer key was created.
      * 
      */
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     /**
@@ -365,7 +365,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * (String) ID of the encryption key configuration object.
      * 
      */
-    @Export(name="customerManagedKeyId", type=String.class, parameters={})
+    @Export(name="customerManagedKeyId", refs={String.class}, tree="[0]")
     private Output<String> customerManagedKeyId;
 
     /**
@@ -379,7 +379,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * This field is a block and is documented below. This conflicts with `aws_key_info`
      * 
      */
-    @Export(name="gcpKeyInfo", type=MwsCustomerManagedKeysGcpKeyInfo.class, parameters={})
+    @Export(name="gcpKeyInfo", refs={MwsCustomerManagedKeysGcpKeyInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsCustomerManagedKeysGcpKeyInfo> gcpKeyInfo;
 
     /**
@@ -393,7 +393,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * 
      */
-    @Export(name="useCases", type=List.class, parameters={String.class})
+    @Export(name="useCases", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> useCases;
 
     /**

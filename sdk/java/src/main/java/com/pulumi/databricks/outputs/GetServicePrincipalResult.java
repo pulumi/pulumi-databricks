@@ -183,17 +183,17 @@ public final class GetServicePrincipalResult {
             return this;
         }
         public GetServicePrincipalResult build() {
-            final var o = new GetServicePrincipalResult();
-            o.aclPrincipalId = aclPrincipalId;
-            o.active = active;
-            o.applicationId = applicationId;
-            o.displayName = displayName;
-            o.externalId = externalId;
-            o.home = home;
-            o.id = id;
-            o.repos = repos;
-            o.spId = spId;
-            return o;
+            final var _resultValue = new GetServicePrincipalResult();
+            _resultValue.aclPrincipalId = aclPrincipalId;
+            _resultValue.active = active;
+            _resultValue.applicationId = applicationId;
+            _resultValue.displayName = displayName;
+            _resultValue.externalId = externalId;
+            _resultValue.home = home;
+            _resultValue.id = id;
+            _resultValue.repos = repos;
+            _resultValue.spId = spId;
+            return _resultValue;
         }
     }
 }

@@ -285,14 +285,14 @@ public final class JobTaskSqlTask {
             return this;
         }
         public JobTaskSqlTask build() {
-            final var o = new JobTaskSqlTask();
-            o.alert = alert;
-            o.dashboard = dashboard;
-            o.file = file;
-            o.parameters = parameters;
-            o.query = query;
-            o.warehouseId = warehouseId;
-            return o;
+            final var _resultValue = new JobTaskSqlTask();
+            _resultValue.alert = alert;
+            _resultValue.dashboard = dashboard;
+            _resultValue.file = file;
+            _resultValue.parameters = parameters;
+            _resultValue.query = query;
+            _resultValue.warehouseId = warehouseId;
+            return _resultValue;
         }
     }
 }

@@ -53,10 +53,10 @@ public final class GrantsGrant {
             return privileges(List.of(privileges));
         }
         public GrantsGrant build() {
-            final var o = new GrantsGrant();
-            o.principal = principal;
-            o.privileges = privileges;
-            return o;
+            final var _resultValue = new GrantsGrant();
+            _resultValue.principal = principal;
+            _resultValue.privileges = privileges;
+            return _resultValue;
         }
     }
 }

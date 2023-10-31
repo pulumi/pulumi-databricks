@@ -91,12 +91,12 @@ public final class GetTablesResult {
             return this;
         }
         public GetTablesResult build() {
-            final var o = new GetTablesResult();
-            o.catalogName = catalogName;
-            o.id = id;
-            o.ids = ids;
-            o.schemaName = schemaName;
-            return o;
+            final var _resultValue = new GetTablesResult();
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.schemaName = schemaName;
+            return _resultValue;
         }
     }
 }

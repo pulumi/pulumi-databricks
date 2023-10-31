@@ -38,9 +38,9 @@ public final class JobTaskNewClusterInitScriptDbfs {
             return this;
         }
         public JobTaskNewClusterInitScriptDbfs build() {
-            final var o = new JobTaskNewClusterInitScriptDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new JobTaskNewClusterInitScriptDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

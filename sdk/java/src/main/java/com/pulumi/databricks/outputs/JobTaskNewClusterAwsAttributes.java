@@ -118,16 +118,16 @@ public final class JobTaskNewClusterAwsAttributes {
             return this;
         }
         public JobTaskNewClusterAwsAttributes build() {
-            final var o = new JobTaskNewClusterAwsAttributes();
-            o.availability = availability;
-            o.ebsVolumeCount = ebsVolumeCount;
-            o.ebsVolumeSize = ebsVolumeSize;
-            o.ebsVolumeType = ebsVolumeType;
-            o.firstOnDemand = firstOnDemand;
-            o.instanceProfileArn = instanceProfileArn;
-            o.spotBidPricePercent = spotBidPricePercent;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new JobTaskNewClusterAwsAttributes();
+            _resultValue.availability = availability;
+            _resultValue.ebsVolumeCount = ebsVolumeCount;
+            _resultValue.ebsVolumeSize = ebsVolumeSize;
+            _resultValue.ebsVolumeType = ebsVolumeType;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.instanceProfileArn = instanceProfileArn;
+            _resultValue.spotBidPricePercent = spotBidPricePercent;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

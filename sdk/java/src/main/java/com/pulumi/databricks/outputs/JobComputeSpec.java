@@ -40,9 +40,9 @@ public final class JobComputeSpec {
             return this;
         }
         public JobComputeSpec build() {
-            final var o = new JobComputeSpec();
-            o.kind = kind;
-            return o;
+            final var _resultValue = new JobComputeSpec();
+            _resultValue.kind = kind;
+            return _resultValue;
         }
     }
 }

@@ -68,11 +68,11 @@ public final class StorageCredentialGcpServiceAccountKey {
             return this;
         }
         public StorageCredentialGcpServiceAccountKey build() {
-            final var o = new StorageCredentialGcpServiceAccountKey();
-            o.email = email;
-            o.privateKey = privateKey;
-            o.privateKeyId = privateKeyId;
-            return o;
+            final var _resultValue = new StorageCredentialGcpServiceAccountKey();
+            _resultValue.email = email;
+            _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyId = privateKeyId;
+            return _resultValue;
         }
     }
 }

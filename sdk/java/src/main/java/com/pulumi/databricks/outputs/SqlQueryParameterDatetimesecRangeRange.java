@@ -49,10 +49,10 @@ public final class SqlQueryParameterDatetimesecRangeRange {
             return this;
         }
         public SqlQueryParameterDatetimesecRangeRange build() {
-            final var o = new SqlQueryParameterDatetimesecRangeRange();
-            o.end = end;
-            o.start = start;
-            return o;
+            final var _resultValue = new SqlQueryParameterDatetimesecRangeRange();
+            _resultValue.end = end;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

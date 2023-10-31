@@ -84,11 +84,11 @@ public final class StorageCredentialAzureServicePrincipal {
             return this;
         }
         public StorageCredentialAzureServicePrincipal build() {
-            final var o = new StorageCredentialAzureServicePrincipal();
-            o.applicationId = applicationId;
-            o.clientSecret = clientSecret;
-            o.directoryId = directoryId;
-            return o;
+            final var _resultValue = new StorageCredentialAzureServicePrincipal();
+            _resultValue.applicationId = applicationId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.directoryId = directoryId;
+            return _resultValue;
         }
     }
 }

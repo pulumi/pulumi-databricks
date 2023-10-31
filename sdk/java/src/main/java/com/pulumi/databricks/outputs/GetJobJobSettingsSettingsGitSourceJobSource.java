@@ -62,11 +62,11 @@ public final class GetJobJobSettingsSettingsGitSourceJobSource {
             return this;
         }
         public GetJobJobSettingsSettingsGitSourceJobSource build() {
-            final var o = new GetJobJobSettingsSettingsGitSourceJobSource();
-            o.dirtyState = dirtyState;
-            o.importFromGitBranch = importFromGitBranch;
-            o.jobConfigPath = jobConfigPath;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsGitSourceJobSource();
+            _resultValue.dirtyState = dirtyState;
+            _resultValue.importFromGitBranch = importFromGitBranch;
+            _resultValue.jobConfigPath = jobConfigPath;
+            return _resultValue;
         }
     }
 }

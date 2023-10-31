@@ -163,15 +163,15 @@ public final class RecipientToken {
             return this;
         }
         public RecipientToken build() {
-            final var o = new RecipientToken();
-            o.activationUrl = activationUrl;
-            o.createdAt = createdAt;
-            o.createdBy = createdBy;
-            o.expirationTime = expirationTime;
-            o.id = id;
-            o.updatedAt = updatedAt;
-            o.updatedBy = updatedBy;
-            return o;
+            final var _resultValue = new RecipientToken();
+            _resultValue.activationUrl = activationUrl;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.id = id;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.updatedBy = updatedBy;
+            return _resultValue;
         }
     }
 }

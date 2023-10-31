@@ -67,10 +67,10 @@ public final class GetMwsCredentialsResult {
             return this;
         }
         public GetMwsCredentialsResult build() {
-            final var o = new GetMwsCredentialsResult();
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetMwsCredentialsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

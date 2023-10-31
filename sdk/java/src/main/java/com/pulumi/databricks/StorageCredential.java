@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
  *                 .build())
  *             .build());
  * 
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .storageCredential(databricks_storage_credential.external().id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
  *                 .build())
  *             .build());
  * 
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
- *                 .privileges(&#34;CREATE_TABLE&#34;)
+ *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
  *                 .build())
  *             .build());
  * 
@@ -171,31 +171,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/storageCredential:StorageCredential")
 public class StorageCredential extends com.pulumi.resources.CustomResource {
-    @Export(name="awsIamRole", type=StorageCredentialAwsIamRole.class, parameters={})
+    @Export(name="awsIamRole", refs={StorageCredentialAwsIamRole.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialAwsIamRole> awsIamRole;
 
     public Output<Optional<StorageCredentialAwsIamRole>> awsIamRole() {
         return Codegen.optional(this.awsIamRole);
     }
-    @Export(name="azureManagedIdentity", type=StorageCredentialAzureManagedIdentity.class, parameters={})
+    @Export(name="azureManagedIdentity", refs={StorageCredentialAzureManagedIdentity.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialAzureManagedIdentity> azureManagedIdentity;
 
     public Output<Optional<StorageCredentialAzureManagedIdentity>> azureManagedIdentity() {
         return Codegen.optional(this.azureManagedIdentity);
     }
-    @Export(name="azureServicePrincipal", type=StorageCredentialAzureServicePrincipal.class, parameters={})
+    @Export(name="azureServicePrincipal", refs={StorageCredentialAzureServicePrincipal.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialAzureServicePrincipal> azureServicePrincipal;
 
     public Output<Optional<StorageCredentialAzureServicePrincipal>> azureServicePrincipal() {
         return Codegen.optional(this.azureServicePrincipal);
     }
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    @Export(name="databricksGcpServiceAccount", type=StorageCredentialDatabricksGcpServiceAccount.class, parameters={})
+    @Export(name="databricksGcpServiceAccount", refs={StorageCredentialDatabricksGcpServiceAccount.class}, tree="[0]")
     private Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount;
 
     public Output<StorageCredentialDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
@@ -207,7 +207,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * `aws_iam_role` optional configuration block for credential details for AWS:
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -219,7 +219,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="gcpServiceAccountKey", type=StorageCredentialGcpServiceAccountKey.class, parameters={})
+    @Export(name="gcpServiceAccountKey", refs={StorageCredentialGcpServiceAccountKey.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialGcpServiceAccountKey> gcpServiceAccountKey;
 
     public Output<Optional<StorageCredentialGcpServiceAccountKey>> gcpServiceAccountKey() {
@@ -229,7 +229,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * Unique identifier of the parent Metastore
      * 
      */
-    @Export(name="metastoreId", type=String.class, parameters={})
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
@@ -243,7 +243,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -257,7 +257,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * Username/groupname/sp application_id of the storage credential owner.
      * 
      */
-    @Export(name="owner", type=String.class, parameters={})
+    @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
@@ -273,7 +273,7 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
     /**

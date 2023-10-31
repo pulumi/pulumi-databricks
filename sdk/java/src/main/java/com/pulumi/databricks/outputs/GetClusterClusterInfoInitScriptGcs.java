@@ -40,9 +40,9 @@ public final class GetClusterClusterInfoInitScriptGcs {
             return this;
         }
         public GetClusterClusterInfoInitScriptGcs build() {
-            final var o = new GetClusterClusterInfoInitScriptGcs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoInitScriptGcs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -64,11 +64,11 @@ public final class GetClusterClusterInfoAzureAttributes {
             return this;
         }
         public GetClusterClusterInfoAzureAttributes build() {
-            final var o = new GetClusterClusterInfoAzureAttributes();
-            o.availability = availability;
-            o.firstOnDemand = firstOnDemand;
-            o.spotBidMaxPrice = spotBidMaxPrice;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoAzureAttributes();
+            _resultValue.availability = availability;
+            _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.spotBidMaxPrice = spotBidMaxPrice;
+            return _resultValue;
         }
     }
 }

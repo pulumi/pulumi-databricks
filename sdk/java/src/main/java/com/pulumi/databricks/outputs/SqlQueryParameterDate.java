@@ -46,9 +46,9 @@ public final class SqlQueryParameterDate {
             return this;
         }
         public SqlQueryParameterDate build() {
-            final var o = new SqlQueryParameterDate();
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterDate();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class MetastoreDataAccessAwsIamRole {
             return this;
         }
         public MetastoreDataAccessAwsIamRole build() {
-            final var o = new MetastoreDataAccessAwsIamRole();
-            o.roleArn = roleArn;
-            return o;
+            final var _resultValue = new MetastoreDataAccessAwsIamRole();
+            _resultValue.roleArn = roleArn;
+            return _resultValue;
         }
     }
 }

@@ -111,14 +111,14 @@ public final class GetAwsBucketPolicyResult {
             return this;
         }
         public GetAwsBucketPolicyResult build() {
-            final var o = new GetAwsBucketPolicyResult();
-            o.bucket = bucket;
-            o.databricksAccountId = databricksAccountId;
-            o.databricksE2AccountId = databricksE2AccountId;
-            o.fullAccessRole = fullAccessRole;
-            o.id = id;
-            o.json = json;
-            return o;
+            final var _resultValue = new GetAwsBucketPolicyResult();
+            _resultValue.bucket = bucket;
+            _resultValue.databricksAccountId = databricksAccountId;
+            _resultValue.databricksE2AccountId = databricksE2AccountId;
+            _resultValue.fullAccessRole = fullAccessRole;
+            _resultValue.id = id;
+            _resultValue.json = json;
+            return _resultValue;
         }
     }
 }

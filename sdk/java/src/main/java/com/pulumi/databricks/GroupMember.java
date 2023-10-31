@@ -43,7 +43,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * This is the id of the `group` resource.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -57,7 +57,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * This is the id of the `group`, `service principal`, or `user`.
      * 
      */
-    @Export(name="memberId", type=String.class, parameters={})
+    @Export(name="memberId", refs={String.class}, tree="[0]")
     private Output<String> memberId;
 
     /**

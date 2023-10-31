@@ -108,7 +108,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (String) Comment that will appear on the user’s settings page for this token.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -118,13 +118,13 @@ public class Token extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
-    @Export(name="expiryTime", type=Integer.class, parameters={})
+    @Export(name="expiryTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> expiryTime;
 
     public Output<Integer> expiryTime() {
@@ -134,7 +134,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
-    @Export(name="lifetimeSeconds", type=Integer.class, parameters={})
+    @Export(name="lifetimeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifetimeSeconds;
 
     /**
@@ -144,7 +144,7 @@ public class Token extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> lifetimeSeconds() {
         return Codegen.optional(this.lifetimeSeconds);
     }
-    @Export(name="tokenId", type=String.class, parameters={})
+    @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;
 
     public Output<String> tokenId() {
@@ -154,7 +154,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * **Sensitive** value of the newly-created token.
      * 
      */
-    @Export(name="tokenValue", type=String.class, parameters={})
+    @Export(name="tokenValue", refs={String.class}, tree="[0]")
     private Output<String> tokenValue;
 
     /**

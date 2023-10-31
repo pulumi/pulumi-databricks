@@ -60,10 +60,10 @@ public final class SqlQueryParameterDatetimesecRange {
             return this;
         }
         public SqlQueryParameterDatetimesecRange build() {
-            final var o = new SqlQueryParameterDatetimesecRange();
-            o.range = range;
-            o.value = value;
-            return o;
+            final var _resultValue = new SqlQueryParameterDatetimesecRange();
+            _resultValue.range = range;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

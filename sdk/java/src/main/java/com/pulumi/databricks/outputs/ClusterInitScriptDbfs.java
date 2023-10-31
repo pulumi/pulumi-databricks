@@ -38,9 +38,9 @@ public final class ClusterInitScriptDbfs {
             return this;
         }
         public ClusterInitScriptDbfs build() {
-            final var o = new ClusterInitScriptDbfs();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterInitScriptDbfs();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

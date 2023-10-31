@@ -109,7 +109,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * The model serving endpoint configuration.
      * 
      */
-    @Export(name="config", type=ModelServingConfig.class, parameters={})
+    @Export(name="config", refs={ModelServingConfig.class}, tree="[0]")
     private Output<ModelServingConfig> config;
 
     /**
@@ -123,7 +123,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      * 
      */
-    @Export(name="servingEndpointId", type=String.class, parameters={})
+    @Export(name="servingEndpointId", refs={String.class}, tree="[0]")
     private Output<String> servingEndpointId;
 
     /**
@@ -147,7 +147,7 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     public Output<String> servingEndpointId() {
         return this.servingEndpointId;
     }
-    @Export(name="tags", type=List.class, parameters={ModelServingTag.class})
+    @Export(name="tags", refs={List.class,ModelServingTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingTag>> tags;
 
     public Output<Optional<List<ModelServingTag>>> tags() {

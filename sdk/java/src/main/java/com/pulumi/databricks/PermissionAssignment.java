@@ -17,13 +17,13 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="databricks:index/permissionAssignment:PermissionAssignment")
 public class PermissionAssignment extends com.pulumi.resources.CustomResource {
-    @Export(name="permissions", type=List.class, parameters={String.class})
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
     public Output<List<String>> permissions() {
         return this.permissions;
     }
-    @Export(name="principalId", type=Integer.class, parameters={})
+    @Export(name="principalId", refs={Integer.class}, tree="[0]")
     private Output<Integer> principalId;
 
     public Output<Integer> principalId() {

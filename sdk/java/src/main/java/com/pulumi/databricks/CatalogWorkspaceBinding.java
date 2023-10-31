@@ -62,7 +62,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * Name of Catalog. Change forces creation of a new resource.
      * 
      */
-    @Export(name="catalogName", type=String.class, parameters={})
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
@@ -76,7 +76,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    @Export(name="workspaceId", type=String.class, parameters={})
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
     private Output<String> workspaceId;
 
     /**

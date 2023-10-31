@@ -27,13 +27,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/workspaceFile:WorkspaceFile")
 public class WorkspaceFile extends com.pulumi.resources.CustomResource {
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
-    @Export(name="md5", type=String.class, parameters={})
+    @Export(name="md5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> md5;
 
     public Output<Optional<String>> md5() {
@@ -43,7 +43,7 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
      * Unique identifier for a workspace file
      * 
      */
-    @Export(name="objectId", type=Integer.class, parameters={})
+    @Export(name="objectId", refs={Integer.class}, tree="[0]")
     private Output<Integer> objectId;
 
     /**
@@ -57,7 +57,7 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
      * The absolute path of the workspace file, beginning with &#34;/&#34;, e.g. &#34;/Demo&#34;.
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**
@@ -71,7 +71,7 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
      * Path to file on local filesystem. Conflicts with `content_base64`.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
@@ -85,7 +85,7 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
      * Routable URL of the workspace file
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

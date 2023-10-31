@@ -265,7 +265,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -275,13 +275,13 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
-    @Export(name="errorMessages", type=List.class, parameters={MwsNetworksErrorMessage.class})
+    @Export(name="errorMessages", refs={List.class,MwsNetworksErrorMessage.class}, tree="[0,1]")
     private Output<List<MwsNetworksErrorMessage>> errorMessages;
 
     public Output<List<MwsNetworksErrorMessage>> errorMessages() {
@@ -291,7 +291,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      * 
      */
-    @Export(name="gcpNetworkInfo", type=MwsNetworksGcpNetworkInfo.class, parameters={})
+    @Export(name="gcpNetworkInfo", refs={MwsNetworksGcpNetworkInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsNetworksGcpNetworkInfo> gcpNetworkInfo;
 
     /**
@@ -305,7 +305,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * (String) id of network to be used for databricks.MwsWorkspaces resource.
      * 
      */
-    @Export(name="networkId", type=String.class, parameters={})
+    @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
@@ -319,7 +319,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * name under which this network is registered
      * 
      */
-    @Export(name="networkName", type=String.class, parameters={})
+    @Export(name="networkName", refs={String.class}, tree="[0]")
     private Output<String> networkName;
 
     /**
@@ -333,7 +333,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * ids of aws_security_group
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
@@ -347,7 +347,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * ids of aws_subnet
      * 
      */
-    @Export(name="subnetIds", type=List.class, parameters={String.class})
+    @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subnetIds;
 
     /**
@@ -361,7 +361,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      * 
      */
-    @Export(name="vpcEndpoints", type=MwsNetworksVpcEndpoints.class, parameters={})
+    @Export(name="vpcEndpoints", refs={MwsNetworksVpcEndpoints.class}, tree="[0]")
     private Output<MwsNetworksVpcEndpoints> vpcEndpoints;
 
     /**
@@ -375,7 +375,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
@@ -389,7 +389,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * (String) VPC attachment status
      * 
      */
-    @Export(name="vpcStatus", type=String.class, parameters={})
+    @Export(name="vpcStatus", refs={String.class}, tree="[0]")
     private Output<String> vpcStatus;
 
     /**
@@ -403,7 +403,7 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
      * (Integer) id of associated workspace
      * 
      */
-    @Export(name="workspaceId", type=Integer.class, parameters={})
+    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
     private Output<Integer> workspaceId;
 
     /**

@@ -331,7 +331,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/accessControlRuleSet:AccessControlRuleSet")
 public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -343,7 +343,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * !&gt; **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      * 
      */
-    @Export(name="grantRules", type=List.class, parameters={AccessControlRuleSetGrantRule.class})
+    @Export(name="grantRules", refs={List.class,AccessControlRuleSetGrantRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessControlRuleSetGrantRule>> grantRules;
 
     /**
@@ -362,7 +362,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * * `accounts/{account_id}/ruleSets/default`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

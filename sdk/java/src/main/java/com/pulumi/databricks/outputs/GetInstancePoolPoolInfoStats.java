@@ -73,12 +73,12 @@ public final class GetInstancePoolPoolInfoStats {
             return this;
         }
         public GetInstancePoolPoolInfoStats build() {
-            final var o = new GetInstancePoolPoolInfoStats();
-            o.idleCount = idleCount;
-            o.pendingIdleCount = pendingIdleCount;
-            o.pendingUsedCount = pendingUsedCount;
-            o.usedCount = usedCount;
-            return o;
+            final var _resultValue = new GetInstancePoolPoolInfoStats();
+            _resultValue.idleCount = idleCount;
+            _resultValue.pendingIdleCount = pendingIdleCount;
+            _resultValue.pendingUsedCount = pendingUsedCount;
+            _resultValue.usedCount = usedCount;
+            return _resultValue;
         }
     }
 }

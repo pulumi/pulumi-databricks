@@ -81,11 +81,11 @@ public final class GetAwsCrossAccountPolicyResult {
             return passRoles(List.of(passRoles));
         }
         public GetAwsCrossAccountPolicyResult build() {
-            final var o = new GetAwsCrossAccountPolicyResult();
-            o.id = id;
-            o.json = json;
-            o.passRoles = passRoles;
-            return o;
+            final var _resultValue = new GetAwsCrossAccountPolicyResult();
+            _resultValue.id = id;
+            _resultValue.json = json;
+            _resultValue.passRoles = passRoles;
+            return _resultValue;
         }
     }
 }

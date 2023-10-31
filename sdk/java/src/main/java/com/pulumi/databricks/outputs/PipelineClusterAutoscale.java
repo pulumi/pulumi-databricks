@@ -63,11 +63,11 @@ public final class PipelineClusterAutoscale {
             return this;
         }
         public PipelineClusterAutoscale build() {
-            final var o = new PipelineClusterAutoscale();
-            o.maxWorkers = maxWorkers;
-            o.minWorkers = minWorkers;
-            o.mode = mode;
-            return o;
+            final var _resultValue = new PipelineClusterAutoscale();
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.minWorkers = minWorkers;
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

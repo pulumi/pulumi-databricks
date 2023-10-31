@@ -69,10 +69,10 @@ public final class GetCatalogsResult {
             return ids(List.of(ids));
         }
         public GetCatalogsResult build() {
-            final var o = new GetCatalogsResult();
-            o.id = id;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new GetCatalogsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

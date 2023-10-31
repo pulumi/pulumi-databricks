@@ -77,11 +77,11 @@ public final class GetMetastoreResult {
             return this;
         }
         public GetMetastoreResult build() {
-            final var o = new GetMetastoreResult();
-            o.id = id;
-            o.metastoreId = metastoreId;
-            o.metastoreInfo = metastoreInfo;
-            return o;
+            final var _resultValue = new GetMetastoreResult();
+            _resultValue.id = id;
+            _resultValue.metastoreId = metastoreId;
+            _resultValue.metastoreInfo = metastoreInfo;
+            return _resultValue;
         }
     }
 }

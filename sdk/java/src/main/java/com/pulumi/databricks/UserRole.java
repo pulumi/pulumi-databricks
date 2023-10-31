@@ -119,7 +119,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * Either a role name or the ARN/ID of the instance profile resource.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -133,7 +133,7 @@ public class UserRole extends com.pulumi.resources.CustomResource {
      * This is the id of the user resource.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

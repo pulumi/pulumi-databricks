@@ -51,10 +51,10 @@ public final class ClusterLibraryPypi {
             return this;
         }
         public ClusterLibraryPypi build() {
-            final var o = new ClusterLibraryPypi();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new ClusterLibraryPypi();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

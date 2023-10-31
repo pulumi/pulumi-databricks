@@ -38,9 +38,9 @@ public final class PipelineLibraryNotebook {
             return this;
         }
         public PipelineLibraryNotebook build() {
-            final var o = new PipelineLibraryNotebook();
-            o.path = path;
-            return o;
+            final var _resultValue = new PipelineLibraryNotebook();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

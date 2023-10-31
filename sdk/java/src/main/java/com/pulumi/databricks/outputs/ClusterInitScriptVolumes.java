@@ -40,9 +40,9 @@ public final class ClusterInitScriptVolumes {
             return this;
         }
         public ClusterInitScriptVolumes build() {
-            final var o = new ClusterInitScriptVolumes();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new ClusterInitScriptVolumes();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

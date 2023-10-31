@@ -123,16 +123,16 @@ public final class GetCurrentUserResult {
             return this;
         }
         public GetCurrentUserResult build() {
-            final var o = new GetCurrentUserResult();
-            o.aclPrincipalId = aclPrincipalId;
-            o.alphanumeric = alphanumeric;
-            o.externalId = externalId;
-            o.home = home;
-            o.id = id;
-            o.repos = repos;
-            o.userName = userName;
-            o.workspaceUrl = workspaceUrl;
-            return o;
+            final var _resultValue = new GetCurrentUserResult();
+            _resultValue.aclPrincipalId = aclPrincipalId;
+            _resultValue.alphanumeric = alphanumeric;
+            _resultValue.externalId = externalId;
+            _resultValue.home = home;
+            _resultValue.id = id;
+            _resultValue.repos = repos;
+            _resultValue.userName = userName;
+            _resultValue.workspaceUrl = workspaceUrl;
+            return _resultValue;
         }
     }
 }

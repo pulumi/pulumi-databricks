@@ -93,12 +93,12 @@ public final class GetNotebookPathsResult {
             return this;
         }
         public GetNotebookPathsResult build() {
-            final var o = new GetNotebookPathsResult();
-            o.id = id;
-            o.notebookPathLists = notebookPathLists;
-            o.path = path;
-            o.recursive = recursive;
-            return o;
+            final var _resultValue = new GetNotebookPathsResult();
+            _resultValue.id = id;
+            _resultValue.notebookPathLists = notebookPathLists;
+            _resultValue.path = path;
+            _resultValue.recursive = recursive;
+            return _resultValue;
         }
     }
 }

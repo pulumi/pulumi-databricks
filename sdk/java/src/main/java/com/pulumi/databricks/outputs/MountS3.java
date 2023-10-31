@@ -51,10 +51,10 @@ public final class MountS3 {
             return this;
         }
         public MountS3 build() {
-            final var o = new MountS3();
-            o.bucketName = bucketName;
-            o.instanceProfile = instanceProfile;
-            return o;
+            final var _resultValue = new MountS3();
+            _resultValue.bucketName = bucketName;
+            _resultValue.instanceProfile = instanceProfile;
+            return _resultValue;
         }
     }
 }

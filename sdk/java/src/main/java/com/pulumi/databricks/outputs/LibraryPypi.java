@@ -51,10 +51,10 @@ public final class LibraryPypi {
             return this;
         }
         public LibraryPypi build() {
-            final var o = new LibraryPypi();
-            o.package_ = package_;
-            o.repo = repo;
-            return o;
+            final var _resultValue = new LibraryPypi();
+            _resultValue.package_ = package_;
+            _resultValue.repo = repo;
+            return _resultValue;
         }
     }
 }

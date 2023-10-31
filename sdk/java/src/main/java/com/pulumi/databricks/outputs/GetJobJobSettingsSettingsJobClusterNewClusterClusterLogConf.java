@@ -52,10 +52,10 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf {
             return this;
         }
         public GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf build() {
-            final var o = new GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf();
-            o.dbfs = dbfs;
-            o.s3 = s3;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf();
+            _resultValue.dbfs = dbfs;
+            _resultValue.s3 = s3;
+            return _resultValue;
         }
     }
 }

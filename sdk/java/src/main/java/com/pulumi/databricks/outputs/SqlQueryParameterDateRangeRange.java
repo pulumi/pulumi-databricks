@@ -49,10 +49,10 @@ public final class SqlQueryParameterDateRangeRange {
             return this;
         }
         public SqlQueryParameterDateRangeRange build() {
-            final var o = new SqlQueryParameterDateRangeRange();
-            o.end = end;
-            o.start = start;
-            return o;
+            final var _resultValue = new SqlQueryParameterDateRangeRange();
+            _resultValue.end = end;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

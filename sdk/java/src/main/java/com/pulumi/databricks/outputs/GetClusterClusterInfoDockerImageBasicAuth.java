@@ -49,10 +49,10 @@ public final class GetClusterClusterInfoDockerImageBasicAuth {
             return this;
         }
         public GetClusterClusterInfoDockerImageBasicAuth build() {
-            final var o = new GetClusterClusterInfoDockerImageBasicAuth();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetClusterClusterInfoDockerImageBasicAuth();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

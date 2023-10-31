@@ -31,7 +31,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * specify if settings need to be enforced - right now, Databricks allows only single Git credential, so if it&#39;s already configured, the apply operation will fail.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -45,7 +45,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      * 
      */
-    @Export(name="gitProvider", type=String.class, parameters={})
+    @Export(name="gitProvider", refs={String.class}, tree="[0]")
     private Output<String> gitProvider;
 
     /**
@@ -59,7 +59,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * user name at Git provider.
      * 
      */
-    @Export(name="gitUsername", type=String.class, parameters={})
+    @Export(name="gitUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gitUsername;
 
     /**
@@ -73,7 +73,7 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, that has a non-empty value.
      * 
      */
-    @Export(name="personalAccessToken", type=String.class, parameters={})
+    @Export(name="personalAccessToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> personalAccessToken;
 
     /**

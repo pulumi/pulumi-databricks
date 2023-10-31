@@ -63,11 +63,11 @@ public final class GetJobJobSettingsSettingsHealthRule {
             return this;
         }
         public GetJobJobSettingsSettingsHealthRule build() {
-            final var o = new GetJobJobSettingsSettingsHealthRule();
-            o.metric = metric;
-            o.op = op;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetJobJobSettingsSettingsHealthRule();
+            _resultValue.metric = metric;
+            _resultValue.op = op;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }
