@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,19 +26,46 @@ class LibraryArgs:
         """
         The set of arguments for constructing a Library resource.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        LibraryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cran=cran,
+            egg=egg,
+            jar=jar,
+            maven=maven,
+            pypi=pypi,
+            whl=whl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
+             egg: Optional[pulumi.Input[str]] = None,
+             jar: Optional[pulumi.Input[str]] = None,
+             maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
+             pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
+             whl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+
+        _setter("cluster_id", cluster_id)
         if cran is not None:
-            pulumi.set(__self__, "cran", cran)
+            _setter("cran", cran)
         if egg is not None:
-            pulumi.set(__self__, "egg", egg)
+            _setter("egg", egg)
         if jar is not None:
-            pulumi.set(__self__, "jar", jar)
+            _setter("jar", jar)
         if maven is not None:
-            pulumi.set(__self__, "maven", maven)
+            _setter("maven", maven)
         if pypi is not None:
-            pulumi.set(__self__, "pypi", pypi)
+            _setter("pypi", pypi)
         if whl is not None:
-            pulumi.set(__self__, "whl", whl)
+            _setter("whl", whl)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -117,20 +144,45 @@ class _LibraryState:
         """
         Input properties used for looking up and filtering Library resources.
         """
+        _LibraryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cran=cran,
+            egg=egg,
+            jar=jar,
+            maven=maven,
+            pypi=pypi,
+            whl=whl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
+             egg: Optional[pulumi.Input[str]] = None,
+             jar: Optional[pulumi.Input[str]] = None,
+             maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
+             pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
+             whl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cran is not None:
-            pulumi.set(__self__, "cran", cran)
+            _setter("cran", cran)
         if egg is not None:
-            pulumi.set(__self__, "egg", egg)
+            _setter("egg", egg)
         if jar is not None:
-            pulumi.set(__self__, "jar", jar)
+            _setter("jar", jar)
         if maven is not None:
-            pulumi.set(__self__, "maven", maven)
+            _setter("maven", maven)
         if pypi is not None:
-            pulumi.set(__self__, "pypi", pypi)
+            _setter("pypi", pypi)
         if whl is not None:
-            pulumi.set(__self__, "whl", whl)
+            _setter("whl", whl)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -496,6 +548,10 @@ class Library(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LibraryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -520,10 +576,25 @@ class Library(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            if cran is not None and not isinstance(cran, LibraryCranArgs):
+                cran = cran or {}
+                def _setter(key, value):
+                    cran[key] = value
+                LibraryCranArgs._configure(_setter, **cran)
             __props__.__dict__["cran"] = cran
             __props__.__dict__["egg"] = egg
             __props__.__dict__["jar"] = jar
+            if maven is not None and not isinstance(maven, LibraryMavenArgs):
+                maven = maven or {}
+                def _setter(key, value):
+                    maven[key] = value
+                LibraryMavenArgs._configure(_setter, **maven)
             __props__.__dict__["maven"] = maven
+            if pypi is not None and not isinstance(pypi, LibraryPypiArgs):
+                pypi = pypi or {}
+                def _setter(key, value):
+                    pypi[key] = value
+                LibraryPypiArgs._configure(_setter, **pypi)
             __props__.__dict__["pypi"] = pypi
             __props__.__dict__["whl"] = whl
         super(Library, __self__).__init__(

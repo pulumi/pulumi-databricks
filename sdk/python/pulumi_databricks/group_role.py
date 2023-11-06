@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupRoleArgs', 'GroupRole']
@@ -21,8 +21,27 @@ class GroupRoleArgs:
         :param pulumi.Input[str] group_id: This is the id of the group resource.
         :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "role", role)
+        GroupRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+
+        _setter("group_id", group_id)
+        _setter("role", role)
 
     @property
     @pulumi.getter(name="groupId")
@@ -59,10 +78,25 @@ class _GroupRoleState:
         :param pulumi.Input[str] group_id: This is the id of the group resource.
         :param pulumi.Input[str] role: Either a role name or the ARN/ID of the instance profile resource.
         """
+        _GroupRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="groupId")
@@ -212,6 +246,10 @@ class GroupRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

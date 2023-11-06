@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,29 +36,72 @@ class SqlQueryArgs:
         :param pulumi.Input[str] parent: The identifier of the workspace folder containing the object.
         :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
-        pulumi.set(__self__, "data_source_id", data_source_id)
-        pulumi.set(__self__, "query", query)
+        SqlQueryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_source_id=data_source_id,
+            query=query,
+            created_at=created_at,
+            description=description,
+            name=name,
+            parameters=parameters,
+            parent=parent,
+            run_as_role=run_as_role,
+            schedule=schedule,
+            tags=tags,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_source_id: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             run_as_role: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if data_source_id is None:
+            raise TypeError("Missing 'data_source_id' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if run_as_role is None and 'runAsRole' in kwargs:
+            run_as_role = kwargs['runAsRole']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
+        _setter("data_source_id", data_source_id)
+        _setter("query", query)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if run_as_role is not None:
-            pulumi.set(__self__, "run_as_role", run_as_role)
+            _setter("run_as_role", run_as_role)
         if schedule is not None:
             warnings.warn("""Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""", DeprecationWarning)
             pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="dataSourceId")
@@ -204,31 +247,70 @@ class _SqlQueryState:
         :param pulumi.Input[str] query: The text of the query to be run.
         :param pulumi.Input[str] run_as_role: Run as role. Possible values are `viewer`, `owner`.
         """
+        _SqlQueryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            data_source_id=data_source_id,
+            description=description,
+            name=name,
+            parameters=parameters,
+            parent=parent,
+            query=query,
+            run_as_role=run_as_role,
+            schedule=schedule,
+            tags=tags,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             data_source_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             run_as_role: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if data_source_id is None and 'dataSourceId' in kwargs:
+            data_source_id = kwargs['dataSourceId']
+        if run_as_role is None and 'runAsRole' in kwargs:
+            run_as_role = kwargs['runAsRole']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if data_source_id is not None:
-            pulumi.set(__self__, "data_source_id", data_source_id)
+            _setter("data_source_id", data_source_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
         if run_as_role is not None:
-            pulumi.set(__self__, "run_as_role", run_as_role)
+            _setter("run_as_role", run_as_role)
         if schedule is not None:
             warnings.warn("""Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""", DeprecationWarning)
             pulumi.log.warn("""schedule is deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.""")
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -605,6 +687,10 @@ class SqlQuery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SqlQueryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -642,6 +728,11 @@ class SqlQuery(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query'")
             __props__.__dict__["query"] = query
             __props__.__dict__["run_as_role"] = run_as_role
+            if schedule is not None and not isinstance(schedule, SqlQueryScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                SqlQueryScheduleArgs._configure(_setter, **schedule)
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["tags"] = tags
             __props__.__dict__["updated_at"] = updated_at

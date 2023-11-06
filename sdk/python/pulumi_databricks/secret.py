@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecretArgs', 'Secret']
@@ -23,9 +23,32 @@ class SecretArgs:
         :param pulumi.Input[str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[str] string_value: (String) super secret sensitive value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "scope", scope)
-        pulumi.set(__self__, "string_value", string_value)
+        SecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            scope=scope,
+            string_value=string_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+        if string_value is None:
+            raise TypeError("Missing 'string_value' argument")
+
+        _setter("key", key)
+        _setter("scope", scope)
+        _setter("string_value", string_value)
 
     @property
     @pulumi.getter
@@ -80,16 +103,41 @@ class _SecretState:
         :param pulumi.Input[str] scope: (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
         :param pulumi.Input[str] string_value: (String) super secret sensitive value.
         """
+        _SecretState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_reference=config_reference,
+            key=key,
+            last_updated_timestamp=last_updated_timestamp,
+            scope=scope,
+            string_value=string_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_reference: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             last_updated_timestamp: Optional[pulumi.Input[int]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             string_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if config_reference is None and 'configReference' in kwargs:
+            config_reference = kwargs['configReference']
+        if last_updated_timestamp is None and 'lastUpdatedTimestamp' in kwargs:
+            last_updated_timestamp = kwargs['lastUpdatedTimestamp']
+        if string_value is None and 'stringValue' in kwargs:
+            string_value = kwargs['stringValue']
+
         if config_reference is not None:
-            pulumi.set(__self__, "config_reference", config_reference)
+            _setter("config_reference", config_reference)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if last_updated_timestamp is not None:
-            pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
+            _setter("last_updated_timestamp", last_updated_timestamp)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
+            _setter("string_value", string_value)
 
     @property
     @pulumi.getter(name="configReference")
@@ -257,6 +305,10 @@ class Secret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

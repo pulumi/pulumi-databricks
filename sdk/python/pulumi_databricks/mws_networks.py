@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,28 +41,89 @@ class MwsNetworksArgs:
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "network_name", network_name)
+        MwsNetworksArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            network_name=network_name,
+            creation_time=creation_time,
+            error_messages=error_messages,
+            gcp_network_info=gcp_network_info,
+            network_id=network_id,
+            security_group_ids=security_group_ids,
+            subnet_ids=subnet_ids,
+            vpc_endpoints=vpc_endpoints,
+            vpc_id=vpc_id,
+            vpc_status=vpc_status,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             network_name: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+             gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_status: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if network_name is None and 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if network_name is None:
+            raise TypeError("Missing 'network_name' argument")
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if error_messages is None and 'errorMessages' in kwargs:
+            error_messages = kwargs['errorMessages']
+        if gcp_network_info is None and 'gcpNetworkInfo' in kwargs:
+            gcp_network_info = kwargs['gcpNetworkInfo']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if vpc_endpoints is None and 'vpcEndpoints' in kwargs:
+            vpc_endpoints = kwargs['vpcEndpoints']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_status is None and 'vpcStatus' in kwargs:
+            vpc_status = kwargs['vpcStatus']
+        if workspace_id is None and 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
+        _setter("account_id", account_id)
+        _setter("network_name", network_name)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if error_messages is not None:
-            pulumi.set(__self__, "error_messages", error_messages)
+            _setter("error_messages", error_messages)
         if gcp_network_info is not None:
-            pulumi.set(__self__, "gcp_network_info", gcp_network_info)
+            _setter("gcp_network_info", gcp_network_info)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if vpc_endpoints is not None:
-            pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
+            _setter("vpc_endpoints", vpc_endpoints)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vpc_status is not None:
-            pulumi.set(__self__, "vpc_status", vpc_status)
+            _setter("vpc_status", vpc_status)
         if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+            _setter("workspace_id", workspace_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -231,30 +292,87 @@ class _MwsNetworksState:
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
+        _MwsNetworksState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            creation_time=creation_time,
+            error_messages=error_messages,
+            gcp_network_info=gcp_network_info,
+            network_id=network_id,
+            network_name=network_name,
+            security_group_ids=security_group_ids,
+            subnet_ids=subnet_ids,
+            vpc_endpoints=vpc_endpoints,
+            vpc_id=vpc_id,
+            vpc_status=vpc_status,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+             gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             network_name: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_status: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if error_messages is None and 'errorMessages' in kwargs:
+            error_messages = kwargs['errorMessages']
+        if gcp_network_info is None and 'gcpNetworkInfo' in kwargs:
+            gcp_network_info = kwargs['gcpNetworkInfo']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if network_name is None and 'networkName' in kwargs:
+            network_name = kwargs['networkName']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if vpc_endpoints is None and 'vpcEndpoints' in kwargs:
+            vpc_endpoints = kwargs['vpcEndpoints']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_status is None and 'vpcStatus' in kwargs:
+            vpc_status = kwargs['vpcStatus']
+        if workspace_id is None and 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if error_messages is not None:
-            pulumi.set(__self__, "error_messages", error_messages)
+            _setter("error_messages", error_messages)
         if gcp_network_info is not None:
-            pulumi.set(__self__, "gcp_network_info", gcp_network_info)
+            _setter("gcp_network_info", gcp_network_info)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if network_name is not None:
-            pulumi.set(__self__, "network_name", network_name)
+            _setter("network_name", network_name)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if vpc_endpoints is not None:
-            pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
+            _setter("vpc_endpoints", vpc_endpoints)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vpc_status is not None:
-            pulumi.set(__self__, "vpc_status", vpc_status)
+            _setter("vpc_status", vpc_status)
         if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+            _setter("workspace_id", workspace_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -726,6 +844,10 @@ class MwsNetworks(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MwsNetworksArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -757,6 +879,11 @@ class MwsNetworks(pulumi.CustomResource):
             __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["error_messages"] = error_messages
+            if gcp_network_info is not None and not isinstance(gcp_network_info, MwsNetworksGcpNetworkInfoArgs):
+                gcp_network_info = gcp_network_info or {}
+                def _setter(key, value):
+                    gcp_network_info[key] = value
+                MwsNetworksGcpNetworkInfoArgs._configure(_setter, **gcp_network_info)
             __props__.__dict__["gcp_network_info"] = gcp_network_info
             __props__.__dict__["network_id"] = network_id
             if network_name is None and not opts.urn:
@@ -764,6 +891,11 @@ class MwsNetworks(pulumi.CustomResource):
             __props__.__dict__["network_name"] = network_name
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["subnet_ids"] = subnet_ids
+            if vpc_endpoints is not None and not isinstance(vpc_endpoints, MwsNetworksVpcEndpointsArgs):
+                vpc_endpoints = vpc_endpoints or {}
+                def _setter(key, value):
+                    vpc_endpoints[key] = value
+                MwsNetworksVpcEndpointsArgs._configure(_setter, **vpc_endpoints)
             __props__.__dict__["vpc_endpoints"] = vpc_endpoints
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vpc_status"] = vpc_status

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['VolumeArgs', 'Volume']
@@ -31,17 +31,54 @@ class VolumeArgs:
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "schema_name", schema_name)
-        pulumi.set(__self__, "volume_type", volume_type)
+        VolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            schema_name=schema_name,
+            volume_type=volume_type,
+            comment=comment,
+            name=name,
+            owner=owner,
+            storage_location=storage_location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             schema_name: Optional[pulumi.Input[str]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             storage_location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if schema_name is None:
+            raise TypeError("Missing 'schema_name' argument")
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if volume_type is None:
+            raise TypeError("Missing 'volume_type' argument")
+        if storage_location is None and 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+
+        _setter("catalog_name", catalog_name)
+        _setter("schema_name", schema_name)
+        _setter("volume_type", volume_type)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
+            _setter("storage_location", storage_location)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -148,20 +185,51 @@ class _VolumeState:
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
+        _VolumeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            comment=comment,
+            name=name,
+            owner=owner,
+            schema_name=schema_name,
+            storage_location=storage_location,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             schema_name: Optional[pulumi.Input[str]] = None,
+             storage_location: Optional[pulumi.Input[str]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if schema_name is None and 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if storage_location is None and 'storageLocation' in kwargs:
+            storage_location = kwargs['storageLocation']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if catalog_name is not None:
-            pulumi.set(__self__, "catalog_name", catalog_name)
+            _setter("catalog_name", catalog_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if schema_name is not None:
-            pulumi.set(__self__, "schema_name", schema_name)
+            _setter("schema_name", schema_name)
         if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
+            _setter("storage_location", storage_location)
         if volume_type is not None:
-            pulumi.set(__self__, "volume_type", volume_type)
+            _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -413,6 +481,10 @@ class Volume(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

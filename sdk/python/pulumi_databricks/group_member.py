@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupMemberArgs', 'GroupMember']
@@ -21,8 +21,29 @@ class GroupMemberArgs:
         :param pulumi.Input[str] group_id: This is the id of the `group` resource.
         :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "member_id", member_id)
+        GroupMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            member_id=member_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if group_id is None:
+            raise TypeError("Missing 'group_id' argument")
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if member_id is None:
+            raise TypeError("Missing 'member_id' argument")
+
+        _setter("group_id", group_id)
+        _setter("member_id", member_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -59,10 +80,27 @@ class _GroupMemberState:
         :param pulumi.Input[str] group_id: This is the id of the `group` resource.
         :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
         """
+        _GroupMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            member_id=member_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
+            _setter("member_id", member_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -164,6 +202,10 @@ class GroupMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

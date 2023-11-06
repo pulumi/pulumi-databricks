@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SecretAclArgs', 'SecretAcl']
@@ -23,9 +23,30 @@ class SecretAclArgs:
         :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "principal", principal)
-        pulumi.set(__self__, "scope", scope)
+        SecretAclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            principal=principal,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: Optional[pulumi.Input[str]] = None,
+             principal: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if permission is None:
+            raise TypeError("Missing 'permission' argument")
+        if principal is None:
+            raise TypeError("Missing 'principal' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+
+        _setter("permission", permission)
+        _setter("principal", principal)
+        _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -76,12 +97,27 @@ class _SecretAclState:
         :param pulumi.Input[str] principal: principal's identifier. It can be:
         :param pulumi.Input[str] scope: name of the scope
         """
+        _SecretAclState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission=permission,
+            principal=principal,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission: Optional[pulumi.Input[str]] = None,
+             principal: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if permission is not None:
-            pulumi.set(__self__, "permission", permission)
+            _setter("permission", permission)
         if principal is not None:
-            pulumi.set(__self__, "principal", principal)
+            _setter("principal", principal)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -233,6 +269,10 @@ class SecretAcl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretAclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

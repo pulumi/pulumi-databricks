@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -62,51 +62,152 @@ class PermissionsArgs:
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
-        pulumi.set(__self__, "access_controls", access_controls)
+        PermissionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_controls=access_controls,
+            authorization=authorization,
+            cluster_id=cluster_id,
+            cluster_policy_id=cluster_policy_id,
+            directory_id=directory_id,
+            directory_path=directory_path,
+            experiment_id=experiment_id,
+            instance_pool_id=instance_pool_id,
+            job_id=job_id,
+            notebook_id=notebook_id,
+            notebook_path=notebook_path,
+            object_type=object_type,
+            pipeline_id=pipeline_id,
+            registered_model_id=registered_model_id,
+            repo_id=repo_id,
+            repo_path=repo_path,
+            serving_endpoint_id=serving_endpoint_id,
+            sql_alert_id=sql_alert_id,
+            sql_dashboard_id=sql_dashboard_id,
+            sql_endpoint_id=sql_endpoint_id,
+            sql_query_id=sql_query_id,
+            workspace_file_id=workspace_file_id,
+            workspace_file_path=workspace_file_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+             authorization: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cluster_policy_id: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             directory_path: Optional[pulumi.Input[str]] = None,
+             experiment_id: Optional[pulumi.Input[str]] = None,
+             instance_pool_id: Optional[pulumi.Input[str]] = None,
+             job_id: Optional[pulumi.Input[str]] = None,
+             notebook_id: Optional[pulumi.Input[str]] = None,
+             notebook_path: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             pipeline_id: Optional[pulumi.Input[str]] = None,
+             registered_model_id: Optional[pulumi.Input[str]] = None,
+             repo_id: Optional[pulumi.Input[str]] = None,
+             repo_path: Optional[pulumi.Input[str]] = None,
+             serving_endpoint_id: Optional[pulumi.Input[str]] = None,
+             sql_alert_id: Optional[pulumi.Input[str]] = None,
+             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
+             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
+             sql_query_id: Optional[pulumi.Input[str]] = None,
+             workspace_file_id: Optional[pulumi.Input[str]] = None,
+             workspace_file_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_controls is None and 'accessControls' in kwargs:
+            access_controls = kwargs['accessControls']
+        if access_controls is None:
+            raise TypeError("Missing 'access_controls' argument")
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_policy_id is None and 'clusterPolicyId' in kwargs:
+            cluster_policy_id = kwargs['clusterPolicyId']
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if directory_path is None and 'directoryPath' in kwargs:
+            directory_path = kwargs['directoryPath']
+        if experiment_id is None and 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if notebook_id is None and 'notebookId' in kwargs:
+            notebook_id = kwargs['notebookId']
+        if notebook_path is None and 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if pipeline_id is None and 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if registered_model_id is None and 'registeredModelId' in kwargs:
+            registered_model_id = kwargs['registeredModelId']
+        if repo_id is None and 'repoId' in kwargs:
+            repo_id = kwargs['repoId']
+        if repo_path is None and 'repoPath' in kwargs:
+            repo_path = kwargs['repoPath']
+        if serving_endpoint_id is None and 'servingEndpointId' in kwargs:
+            serving_endpoint_id = kwargs['servingEndpointId']
+        if sql_alert_id is None and 'sqlAlertId' in kwargs:
+            sql_alert_id = kwargs['sqlAlertId']
+        if sql_dashboard_id is None and 'sqlDashboardId' in kwargs:
+            sql_dashboard_id = kwargs['sqlDashboardId']
+        if sql_endpoint_id is None and 'sqlEndpointId' in kwargs:
+            sql_endpoint_id = kwargs['sqlEndpointId']
+        if sql_query_id is None and 'sqlQueryId' in kwargs:
+            sql_query_id = kwargs['sqlQueryId']
+        if workspace_file_id is None and 'workspaceFileId' in kwargs:
+            workspace_file_id = kwargs['workspaceFileId']
+        if workspace_file_path is None and 'workspaceFilePath' in kwargs:
+            workspace_file_path = kwargs['workspaceFilePath']
+
+        _setter("access_controls", access_controls)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_policy_id is not None:
-            pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
+            _setter("cluster_policy_id", cluster_policy_id)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if directory_path is not None:
-            pulumi.set(__self__, "directory_path", directory_path)
+            _setter("directory_path", directory_path)
         if experiment_id is not None:
-            pulumi.set(__self__, "experiment_id", experiment_id)
+            _setter("experiment_id", experiment_id)
         if instance_pool_id is not None:
-            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+            _setter("instance_pool_id", instance_pool_id)
         if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+            _setter("job_id", job_id)
         if notebook_id is not None:
-            pulumi.set(__self__, "notebook_id", notebook_id)
+            _setter("notebook_id", notebook_id)
         if notebook_path is not None:
-            pulumi.set(__self__, "notebook_path", notebook_path)
+            _setter("notebook_path", notebook_path)
         if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
+            _setter("object_type", object_type)
         if pipeline_id is not None:
-            pulumi.set(__self__, "pipeline_id", pipeline_id)
+            _setter("pipeline_id", pipeline_id)
         if registered_model_id is not None:
-            pulumi.set(__self__, "registered_model_id", registered_model_id)
+            _setter("registered_model_id", registered_model_id)
         if repo_id is not None:
-            pulumi.set(__self__, "repo_id", repo_id)
+            _setter("repo_id", repo_id)
         if repo_path is not None:
-            pulumi.set(__self__, "repo_path", repo_path)
+            _setter("repo_path", repo_path)
         if serving_endpoint_id is not None:
-            pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
+            _setter("serving_endpoint_id", serving_endpoint_id)
         if sql_alert_id is not None:
-            pulumi.set(__self__, "sql_alert_id", sql_alert_id)
+            _setter("sql_alert_id", sql_alert_id)
         if sql_dashboard_id is not None:
-            pulumi.set(__self__, "sql_dashboard_id", sql_dashboard_id)
+            _setter("sql_dashboard_id", sql_dashboard_id)
         if sql_endpoint_id is not None:
-            pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
+            _setter("sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
-            pulumi.set(__self__, "sql_query_id", sql_query_id)
+            _setter("sql_query_id", sql_query_id)
         if workspace_file_id is not None:
-            pulumi.set(__self__, "workspace_file_id", workspace_file_id)
+            _setter("workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
-            pulumi.set(__self__, "workspace_file_path", workspace_file_path)
+            _setter("workspace_file_path", workspace_file_path)
 
     @property
     @pulumi.getter(name="accessControls")
@@ -425,52 +526,151 @@ class _PermissionsState:
         :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
         :param pulumi.Input[str] sql_query_id: SQL query id
         """
+        _PermissionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_controls=access_controls,
+            authorization=authorization,
+            cluster_id=cluster_id,
+            cluster_policy_id=cluster_policy_id,
+            directory_id=directory_id,
+            directory_path=directory_path,
+            experiment_id=experiment_id,
+            instance_pool_id=instance_pool_id,
+            job_id=job_id,
+            notebook_id=notebook_id,
+            notebook_path=notebook_path,
+            object_type=object_type,
+            pipeline_id=pipeline_id,
+            registered_model_id=registered_model_id,
+            repo_id=repo_id,
+            repo_path=repo_path,
+            serving_endpoint_id=serving_endpoint_id,
+            sql_alert_id=sql_alert_id,
+            sql_dashboard_id=sql_dashboard_id,
+            sql_endpoint_id=sql_endpoint_id,
+            sql_query_id=sql_query_id,
+            workspace_file_id=workspace_file_id,
+            workspace_file_path=workspace_file_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+             authorization: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cluster_policy_id: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             directory_path: Optional[pulumi.Input[str]] = None,
+             experiment_id: Optional[pulumi.Input[str]] = None,
+             instance_pool_id: Optional[pulumi.Input[str]] = None,
+             job_id: Optional[pulumi.Input[str]] = None,
+             notebook_id: Optional[pulumi.Input[str]] = None,
+             notebook_path: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             pipeline_id: Optional[pulumi.Input[str]] = None,
+             registered_model_id: Optional[pulumi.Input[str]] = None,
+             repo_id: Optional[pulumi.Input[str]] = None,
+             repo_path: Optional[pulumi.Input[str]] = None,
+             serving_endpoint_id: Optional[pulumi.Input[str]] = None,
+             sql_alert_id: Optional[pulumi.Input[str]] = None,
+             sql_dashboard_id: Optional[pulumi.Input[str]] = None,
+             sql_endpoint_id: Optional[pulumi.Input[str]] = None,
+             sql_query_id: Optional[pulumi.Input[str]] = None,
+             workspace_file_id: Optional[pulumi.Input[str]] = None,
+             workspace_file_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_controls is None and 'accessControls' in kwargs:
+            access_controls = kwargs['accessControls']
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_policy_id is None and 'clusterPolicyId' in kwargs:
+            cluster_policy_id = kwargs['clusterPolicyId']
+        if directory_id is None and 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if directory_path is None and 'directoryPath' in kwargs:
+            directory_path = kwargs['directoryPath']
+        if experiment_id is None and 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if job_id is None and 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if notebook_id is None and 'notebookId' in kwargs:
+            notebook_id = kwargs['notebookId']
+        if notebook_path is None and 'notebookPath' in kwargs:
+            notebook_path = kwargs['notebookPath']
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if pipeline_id is None and 'pipelineId' in kwargs:
+            pipeline_id = kwargs['pipelineId']
+        if registered_model_id is None and 'registeredModelId' in kwargs:
+            registered_model_id = kwargs['registeredModelId']
+        if repo_id is None and 'repoId' in kwargs:
+            repo_id = kwargs['repoId']
+        if repo_path is None and 'repoPath' in kwargs:
+            repo_path = kwargs['repoPath']
+        if serving_endpoint_id is None and 'servingEndpointId' in kwargs:
+            serving_endpoint_id = kwargs['servingEndpointId']
+        if sql_alert_id is None and 'sqlAlertId' in kwargs:
+            sql_alert_id = kwargs['sqlAlertId']
+        if sql_dashboard_id is None and 'sqlDashboardId' in kwargs:
+            sql_dashboard_id = kwargs['sqlDashboardId']
+        if sql_endpoint_id is None and 'sqlEndpointId' in kwargs:
+            sql_endpoint_id = kwargs['sqlEndpointId']
+        if sql_query_id is None and 'sqlQueryId' in kwargs:
+            sql_query_id = kwargs['sqlQueryId']
+        if workspace_file_id is None and 'workspaceFileId' in kwargs:
+            workspace_file_id = kwargs['workspaceFileId']
+        if workspace_file_path is None and 'workspaceFilePath' in kwargs:
+            workspace_file_path = kwargs['workspaceFilePath']
+
         if access_controls is not None:
-            pulumi.set(__self__, "access_controls", access_controls)
+            _setter("access_controls", access_controls)
         if authorization is not None:
-            pulumi.set(__self__, "authorization", authorization)
+            _setter("authorization", authorization)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_policy_id is not None:
-            pulumi.set(__self__, "cluster_policy_id", cluster_policy_id)
+            _setter("cluster_policy_id", cluster_policy_id)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if directory_path is not None:
-            pulumi.set(__self__, "directory_path", directory_path)
+            _setter("directory_path", directory_path)
         if experiment_id is not None:
-            pulumi.set(__self__, "experiment_id", experiment_id)
+            _setter("experiment_id", experiment_id)
         if instance_pool_id is not None:
-            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+            _setter("instance_pool_id", instance_pool_id)
         if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+            _setter("job_id", job_id)
         if notebook_id is not None:
-            pulumi.set(__self__, "notebook_id", notebook_id)
+            _setter("notebook_id", notebook_id)
         if notebook_path is not None:
-            pulumi.set(__self__, "notebook_path", notebook_path)
+            _setter("notebook_path", notebook_path)
         if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
+            _setter("object_type", object_type)
         if pipeline_id is not None:
-            pulumi.set(__self__, "pipeline_id", pipeline_id)
+            _setter("pipeline_id", pipeline_id)
         if registered_model_id is not None:
-            pulumi.set(__self__, "registered_model_id", registered_model_id)
+            _setter("registered_model_id", registered_model_id)
         if repo_id is not None:
-            pulumi.set(__self__, "repo_id", repo_id)
+            _setter("repo_id", repo_id)
         if repo_path is not None:
-            pulumi.set(__self__, "repo_path", repo_path)
+            _setter("repo_path", repo_path)
         if serving_endpoint_id is not None:
-            pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
+            _setter("serving_endpoint_id", serving_endpoint_id)
         if sql_alert_id is not None:
-            pulumi.set(__self__, "sql_alert_id", sql_alert_id)
+            _setter("sql_alert_id", sql_alert_id)
         if sql_dashboard_id is not None:
-            pulumi.set(__self__, "sql_dashboard_id", sql_dashboard_id)
+            _setter("sql_dashboard_id", sql_dashboard_id)
         if sql_endpoint_id is not None:
-            pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
+            _setter("sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
-            pulumi.set(__self__, "sql_query_id", sql_query_id)
+            _setter("sql_query_id", sql_query_id)
         if workspace_file_id is not None:
-            pulumi.set(__self__, "workspace_file_id", workspace_file_id)
+            _setter("workspace_file_id", workspace_file_id)
         if workspace_file_path is not None:
-            pulumi.set(__self__, "workspace_file_path", workspace_file_path)
+            _setter("workspace_file_path", workspace_file_path)
 
     @property
     @pulumi.getter(name="accessControls")
@@ -862,6 +1062,10 @@ class Permissions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PermissionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

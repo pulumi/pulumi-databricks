@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,28 +30,67 @@ class MountArgs:
         """
         The set of arguments for constructing a Mount resource.
         """
+        MountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abfs=abfs,
+            adl=adl,
+            cluster_id=cluster_id,
+            encryption_type=encryption_type,
+            extra_configs=extra_configs,
+            gs=gs,
+            name=name,
+            resource_id=resource_id,
+            s3=s3,
+            uri=uri,
+            wasb=wasb,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abfs: Optional[pulumi.Input['MountAbfsArgs']] = None,
+             adl: Optional[pulumi.Input['MountAdlArgs']] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             gs: Optional[pulumi.Input['MountGsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             s3: Optional[pulumi.Input['MountS3Args']] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if extra_configs is None and 'extraConfigs' in kwargs:
+            extra_configs = kwargs['extraConfigs']
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if abfs is not None:
-            pulumi.set(__self__, "abfs", abfs)
+            _setter("abfs", abfs)
         if adl is not None:
-            pulumi.set(__self__, "adl", adl)
+            _setter("adl", adl)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if extra_configs is not None:
-            pulumi.set(__self__, "extra_configs", extra_configs)
+            _setter("extra_configs", extra_configs)
         if gs is not None:
-            pulumi.set(__self__, "gs", gs)
+            _setter("gs", gs)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
         if s3 is not None:
-            pulumi.set(__self__, "s3", s3)
+            _setter("s3", s3)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
         if wasb is not None:
-            pulumi.set(__self__, "wasb", wasb)
+            _setter("wasb", wasb)
 
     @property
     @pulumi.getter
@@ -172,30 +211,71 @@ class _MountState:
         Input properties used for looking up and filtering Mount resources.
         :param pulumi.Input[str] source: (String) HDFS-compatible url
         """
+        _MountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abfs=abfs,
+            adl=adl,
+            cluster_id=cluster_id,
+            encryption_type=encryption_type,
+            extra_configs=extra_configs,
+            gs=gs,
+            name=name,
+            resource_id=resource_id,
+            s3=s3,
+            source=source,
+            uri=uri,
+            wasb=wasb,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abfs: Optional[pulumi.Input['MountAbfsArgs']] = None,
+             adl: Optional[pulumi.Input['MountAdlArgs']] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             extra_configs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             gs: Optional[pulumi.Input['MountGsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             s3: Optional[pulumi.Input['MountS3Args']] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             wasb: Optional[pulumi.Input['MountWasbArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if encryption_type is None and 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if extra_configs is None and 'extraConfigs' in kwargs:
+            extra_configs = kwargs['extraConfigs']
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if abfs is not None:
-            pulumi.set(__self__, "abfs", abfs)
+            _setter("abfs", abfs)
         if adl is not None:
-            pulumi.set(__self__, "adl", adl)
+            _setter("adl", adl)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if extra_configs is not None:
-            pulumi.set(__self__, "extra_configs", extra_configs)
+            _setter("extra_configs", extra_configs)
         if gs is not None:
-            pulumi.set(__self__, "gs", gs)
+            _setter("gs", gs)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
         if s3 is not None:
-            pulumi.set(__self__, "s3", s3)
+            _setter("s3", s3)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
         if wasb is not None:
-            pulumi.set(__self__, "wasb", wasb)
+            _setter("wasb", wasb)
 
     @property
     @pulumi.getter
@@ -355,6 +435,10 @@ class Mount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -380,16 +464,41 @@ class Mount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MountArgs.__new__(MountArgs)
 
+            if abfs is not None and not isinstance(abfs, MountAbfsArgs):
+                abfs = abfs or {}
+                def _setter(key, value):
+                    abfs[key] = value
+                MountAbfsArgs._configure(_setter, **abfs)
             __props__.__dict__["abfs"] = abfs
+            if adl is not None and not isinstance(adl, MountAdlArgs):
+                adl = adl or {}
+                def _setter(key, value):
+                    adl[key] = value
+                MountAdlArgs._configure(_setter, **adl)
             __props__.__dict__["adl"] = adl
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["encryption_type"] = encryption_type
             __props__.__dict__["extra_configs"] = extra_configs
+            if gs is not None and not isinstance(gs, MountGsArgs):
+                gs = gs or {}
+                def _setter(key, value):
+                    gs[key] = value
+                MountGsArgs._configure(_setter, **gs)
             __props__.__dict__["gs"] = gs
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_id"] = resource_id
+            if s3 is not None and not isinstance(s3, MountS3Args):
+                s3 = s3 or {}
+                def _setter(key, value):
+                    s3[key] = value
+                MountS3Args._configure(_setter, **s3)
             __props__.__dict__["s3"] = s3
             __props__.__dict__["uri"] = uri
+            if wasb is not None and not isinstance(wasb, MountWasbArgs):
+                wasb = wasb or {}
+                def _setter(key, value):
+                    wasb[key] = value
+                MountWasbArgs._configure(_setter, **wasb)
             __props__.__dict__["wasb"] = wasb
             __props__.__dict__["source"] = None
         super(Mount, __self__).__init__(

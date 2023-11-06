@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SchemaArgs', 'Schema']
@@ -32,21 +32,56 @@ class SchemaArgs:
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
+        SchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            comment=comment,
+            force_destroy=force_destroy,
+            metastore_id=metastore_id,
+            name=name,
+            owner=owner,
+            properties=properties,
+            storage_root=storage_root,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             storage_root: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if catalog_name is None:
+            raise TypeError("Missing 'catalog_name' argument")
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if metastore_id is None and 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if storage_root is None and 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
+        _setter("catalog_name", catalog_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if storage_root is not None:
-            pulumi.set(__self__, "storage_root", storage_root)
+            _setter("storage_root", storage_root)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -163,22 +198,55 @@ class _SchemaState:
         :param pulumi.Input[Mapping[str, Any]] properties: Extensible Schema properties.
         :param pulumi.Input[str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
+        _SchemaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            comment=comment,
+            force_destroy=force_destroy,
+            metastore_id=metastore_id,
+            name=name,
+            owner=owner,
+            properties=properties,
+            storage_root=storage_root,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             storage_root: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_name is None and 'catalogName' in kwargs:
+            catalog_name = kwargs['catalogName']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if metastore_id is None and 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+        if storage_root is None and 'storageRoot' in kwargs:
+            storage_root = kwargs['storageRoot']
+
         if catalog_name is not None:
-            pulumi.set(__self__, "catalog_name", catalog_name)
+            _setter("catalog_name", catalog_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if storage_root is not None:
-            pulumi.set(__self__, "storage_root", storage_root)
+            _setter("storage_root", storage_root)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -394,6 +462,10 @@ class Schema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

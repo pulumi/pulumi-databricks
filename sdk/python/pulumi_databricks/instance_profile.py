@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InstanceProfileArgs', 'InstanceProfile']
@@ -25,13 +25,40 @@ class InstanceProfileArgs:
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
-        pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        InstanceProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_profile_arn=instance_profile_arn,
+            iam_role_arn=iam_role_arn,
+            is_meta_instance_profile=is_meta_instance_profile,
+            skip_validation=skip_validation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_profile_arn: Optional[pulumi.Input[str]] = None,
+             iam_role_arn: Optional[pulumi.Input[str]] = None,
+             is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
+             skip_validation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if instance_profile_arn is None:
+            raise TypeError("Missing 'instance_profile_arn' argument")
+        if iam_role_arn is None and 'iamRoleArn' in kwargs:
+            iam_role_arn = kwargs['iamRoleArn']
+        if is_meta_instance_profile is None and 'isMetaInstanceProfile' in kwargs:
+            is_meta_instance_profile = kwargs['isMetaInstanceProfile']
+        if skip_validation is None and 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
+        _setter("instance_profile_arn", instance_profile_arn)
         if iam_role_arn is not None:
-            pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+            _setter("iam_role_arn", iam_role_arn)
         if is_meta_instance_profile is not None:
-            pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
+            _setter("is_meta_instance_profile", is_meta_instance_profile)
         if skip_validation is not None:
-            pulumi.set(__self__, "skip_validation", skip_validation)
+            _setter("skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="instanceProfileArn")
@@ -96,14 +123,39 @@ class _InstanceProfileState:
         :param pulumi.Input[bool] is_meta_instance_profile: Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
         :param pulumi.Input[bool] skip_validation: **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
         """
+        _InstanceProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            iam_role_arn=iam_role_arn,
+            instance_profile_arn=instance_profile_arn,
+            is_meta_instance_profile=is_meta_instance_profile,
+            skip_validation=skip_validation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             iam_role_arn: Optional[pulumi.Input[str]] = None,
+             instance_profile_arn: Optional[pulumi.Input[str]] = None,
+             is_meta_instance_profile: Optional[pulumi.Input[bool]] = None,
+             skip_validation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if iam_role_arn is None and 'iamRoleArn' in kwargs:
+            iam_role_arn = kwargs['iamRoleArn']
+        if instance_profile_arn is None and 'instanceProfileArn' in kwargs:
+            instance_profile_arn = kwargs['instanceProfileArn']
+        if is_meta_instance_profile is None and 'isMetaInstanceProfile' in kwargs:
+            is_meta_instance_profile = kwargs['isMetaInstanceProfile']
+        if skip_validation is None and 'skipValidation' in kwargs:
+            skip_validation = kwargs['skipValidation']
+
         if iam_role_arn is not None:
-            pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+            _setter("iam_role_arn", iam_role_arn)
         if instance_profile_arn is not None:
-            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+            _setter("instance_profile_arn", instance_profile_arn)
         if is_meta_instance_profile is not None:
-            pulumi.set(__self__, "is_meta_instance_profile", is_meta_instance_profile)
+            _setter("is_meta_instance_profile", is_meta_instance_profile)
         if skip_validation is not None:
-            pulumi.set(__self__, "skip_validation", skip_validation)
+            _setter("skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="iamRoleArn")
@@ -441,6 +493,10 @@ class InstanceProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

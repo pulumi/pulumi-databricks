@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,14 +28,47 @@ class ArtifactAllowlistArgs:
         :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
-        pulumi.set(__self__, "artifact_matchers", artifact_matchers)
-        pulumi.set(__self__, "artifact_type", artifact_type)
+        ArtifactAllowlistArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            artifact_matchers=artifact_matchers,
+            artifact_type=artifact_type,
+            created_at=created_at,
+            created_by=created_by,
+            metastore_id=metastore_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ArtifactAllowlistArtifactMatcherArgs']]]] = None,
+             artifact_type: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[int]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_matchers is None and 'artifactMatchers' in kwargs:
+            artifact_matchers = kwargs['artifactMatchers']
+        if artifact_matchers is None:
+            raise TypeError("Missing 'artifact_matchers' argument")
+        if artifact_type is None and 'artifactType' in kwargs:
+            artifact_type = kwargs['artifactType']
+        if artifact_type is None:
+            raise TypeError("Missing 'artifact_type' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if metastore_id is None and 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+
+        _setter("artifact_matchers", artifact_matchers)
+        _setter("artifact_type", artifact_type)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
 
     @property
     @pulumi.getter(name="artifactMatchers")
@@ -110,16 +143,45 @@ class _ArtifactAllowlistState:
         :param pulumi.Input[str] created_by: Identity that set the artifact allowlist.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         """
+        _ArtifactAllowlistState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            artifact_matchers=artifact_matchers,
+            artifact_type=artifact_type,
+            created_at=created_at,
+            created_by=created_by,
+            metastore_id=metastore_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             artifact_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ArtifactAllowlistArtifactMatcherArgs']]]] = None,
+             artifact_type: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[int]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             metastore_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_matchers is None and 'artifactMatchers' in kwargs:
+            artifact_matchers = kwargs['artifactMatchers']
+        if artifact_type is None and 'artifactType' in kwargs:
+            artifact_type = kwargs['artifactType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if metastore_id is None and 'metastoreId' in kwargs:
+            metastore_id = kwargs['metastoreId']
+
         if artifact_matchers is not None:
-            pulumi.set(__self__, "artifact_matchers", artifact_matchers)
+            _setter("artifact_matchers", artifact_matchers)
         if artifact_type is not None:
-            pulumi.set(__self__, "artifact_type", artifact_type)
+            _setter("artifact_type", artifact_type)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if metastore_id is not None:
-            pulumi.set(__self__, "metastore_id", metastore_id)
+            _setter("metastore_id", metastore_id)
 
     @property
     @pulumi.getter(name="artifactMatchers")
@@ -271,6 +333,10 @@ class ArtifactAllowlist(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ArtifactAllowlistArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

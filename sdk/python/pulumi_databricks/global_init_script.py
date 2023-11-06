@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GlobalInitScriptArgs', 'GlobalInitScript']
@@ -27,18 +27,41 @@ class GlobalInitScriptArgs:
         :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
+        GlobalInitScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_base64=content_base64,
+            enabled=enabled,
+            md5=md5,
+            name=name,
+            position=position,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_base64: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             md5: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+
         if content_base64 is not None:
-            pulumi.set(__self__, "content_base64", content_base64)
+            _setter("content_base64", content_base64)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if md5 is not None:
-            pulumi.set(__self__, "md5", md5)
+            _setter("md5", md5)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter(name="contentBase64")
@@ -123,18 +146,41 @@ class _GlobalInitScriptState:
         :param pulumi.Input[int] position: the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         :param pulumi.Input[str] source: Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
+        _GlobalInitScriptState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_base64=content_base64,
+            enabled=enabled,
+            md5=md5,
+            name=name,
+            position=position,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_base64: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             md5: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+
         if content_base64 is not None:
-            pulumi.set(__self__, "content_base64", content_base64)
+            _setter("content_base64", content_base64)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if md5 is not None:
-            pulumi.set(__self__, "md5", md5)
+            _setter("md5", md5)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter(name="contentBase64")
@@ -256,6 +302,10 @@ class GlobalInitScript(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalInitScriptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

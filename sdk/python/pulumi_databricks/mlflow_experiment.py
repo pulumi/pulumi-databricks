@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MlflowExperimentArgs', 'MlflowExperiment']
@@ -27,20 +27,53 @@ class MlflowExperimentArgs:
         :param pulumi.Input[str] description: The description of the MLflow experiment.
         :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
+        MlflowExperimentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            artifact_location=artifact_location,
+            creation_time=creation_time,
+            description=description,
+            experiment_id=experiment_id,
+            last_update_time=last_update_time,
+            lifecycle_stage=lifecycle_stage,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             artifact_location: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             experiment_id: Optional[pulumi.Input[str]] = None,
+             last_update_time: Optional[pulumi.Input[int]] = None,
+             lifecycle_stage: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_location is None and 'artifactLocation' in kwargs:
+            artifact_location = kwargs['artifactLocation']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if experiment_id is None and 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if lifecycle_stage is None and 'lifecycleStage' in kwargs:
+            lifecycle_stage = kwargs['lifecycleStage']
+
         if artifact_location is not None:
-            pulumi.set(__self__, "artifact_location", artifact_location)
+            _setter("artifact_location", artifact_location)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if experiment_id is not None:
-            pulumi.set(__self__, "experiment_id", experiment_id)
+            _setter("experiment_id", experiment_id)
         if last_update_time is not None:
-            pulumi.set(__self__, "last_update_time", last_update_time)
+            _setter("last_update_time", last_update_time)
         if lifecycle_stage is not None:
-            pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
+            _setter("lifecycle_stage", lifecycle_stage)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="artifactLocation")
@@ -131,20 +164,53 @@ class _MlflowExperimentState:
         :param pulumi.Input[str] description: The description of the MLflow experiment.
         :param pulumi.Input[str] name: Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
+        _MlflowExperimentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            artifact_location=artifact_location,
+            creation_time=creation_time,
+            description=description,
+            experiment_id=experiment_id,
+            last_update_time=last_update_time,
+            lifecycle_stage=lifecycle_stage,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             artifact_location: Optional[pulumi.Input[str]] = None,
+             creation_time: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             experiment_id: Optional[pulumi.Input[str]] = None,
+             last_update_time: Optional[pulumi.Input[int]] = None,
+             lifecycle_stage: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if artifact_location is None and 'artifactLocation' in kwargs:
+            artifact_location = kwargs['artifactLocation']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if experiment_id is None and 'experimentId' in kwargs:
+            experiment_id = kwargs['experimentId']
+        if last_update_time is None and 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if lifecycle_stage is None and 'lifecycleStage' in kwargs:
+            lifecycle_stage = kwargs['lifecycleStage']
+
         if artifact_location is not None:
-            pulumi.set(__self__, "artifact_location", artifact_location)
+            _setter("artifact_location", artifact_location)
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if experiment_id is not None:
-            pulumi.set(__self__, "experiment_id", experiment_id)
+            _setter("experiment_id", experiment_id)
         if last_update_time is not None:
-            pulumi.set(__self__, "last_update_time", last_update_time)
+            _setter("last_update_time", last_update_time)
         if lifecycle_stage is not None:
-            pulumi.set(__self__, "lifecycle_stage", lifecycle_stage)
+            _setter("lifecycle_stage", lifecycle_stage)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="artifactLocation")
@@ -330,6 +396,10 @@ class MlflowExperiment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MlflowExperimentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

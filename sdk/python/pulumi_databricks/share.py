@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,16 +28,39 @@ class ShareArgs:
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
+        ShareArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            created_by=created_by,
+            name=name,
+            objects=objects,
+            owner=owner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[int]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if objects is not None:
-            pulumi.set(__self__, "objects", objects)
+            _setter("objects", objects)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -112,16 +135,39 @@ class _ShareState:
         :param pulumi.Input[str] name: Name of share. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: User name/group name/sp application_id of the share owner.
         """
+        _ShareState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            created_by=created_by,
+            name=name,
+            objects=objects,
+            owner=owner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[int]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if objects is not None:
-            pulumi.set(__self__, "objects", objects)
+            _setter("objects", objects)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -219,6 +265,10 @@ class Share(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShareArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

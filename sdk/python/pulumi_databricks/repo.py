@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,19 +32,50 @@ class RepoArgs:
         :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         """
-        pulumi.set(__self__, "url", url)
+        RepoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            branch=branch,
+            commit_hash=commit_hash,
+            git_provider=git_provider,
+            path=path,
+            sparse_checkout=sparse_checkout,
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: Optional[pulumi.Input[str]] = None,
+             branch: Optional[pulumi.Input[str]] = None,
+             commit_hash: Optional[pulumi.Input[str]] = None,
+             git_provider: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if commit_hash is None and 'commitHash' in kwargs:
+            commit_hash = kwargs['commitHash']
+        if git_provider is None and 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if sparse_checkout is None and 'sparseCheckout' in kwargs:
+            sparse_checkout = kwargs['sparseCheckout']
+
+        _setter("url", url)
         if branch is not None:
-            pulumi.set(__self__, "branch", branch)
+            _setter("branch", branch)
         if commit_hash is not None:
-            pulumi.set(__self__, "commit_hash", commit_hash)
+            _setter("commit_hash", commit_hash)
         if git_provider is not None:
-            pulumi.set(__self__, "git_provider", git_provider)
+            _setter("git_provider", git_provider)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if sparse_checkout is not None:
-            pulumi.set(__self__, "sparse_checkout", sparse_checkout)
+            _setter("sparse_checkout", sparse_checkout)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -147,20 +178,49 @@ class _RepoState:
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
+        _RepoState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            branch=branch,
+            commit_hash=commit_hash,
+            git_provider=git_provider,
+            path=path,
+            sparse_checkout=sparse_checkout,
+            tag=tag,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             branch: Optional[pulumi.Input[str]] = None,
+             commit_hash: Optional[pulumi.Input[str]] = None,
+             git_provider: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if commit_hash is None and 'commitHash' in kwargs:
+            commit_hash = kwargs['commitHash']
+        if git_provider is None and 'gitProvider' in kwargs:
+            git_provider = kwargs['gitProvider']
+        if sparse_checkout is None and 'sparseCheckout' in kwargs:
+            sparse_checkout = kwargs['sparseCheckout']
+
         if branch is not None:
-            pulumi.set(__self__, "branch", branch)
+            _setter("branch", branch)
         if commit_hash is not None:
-            pulumi.set(__self__, "commit_hash", commit_hash)
+            _setter("commit_hash", commit_hash)
         if git_provider is not None:
-            pulumi.set(__self__, "git_provider", git_provider)
+            _setter("git_provider", git_provider)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if sparse_checkout is not None:
-            pulumi.set(__self__, "sparse_checkout", sparse_checkout)
+            _setter("sparse_checkout", sparse_checkout)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -300,6 +360,10 @@ class Repo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RepoArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -325,6 +389,11 @@ class Repo(pulumi.CustomResource):
             __props__.__dict__["commit_hash"] = commit_hash
             __props__.__dict__["git_provider"] = git_provider
             __props__.__dict__["path"] = path
+            if sparse_checkout is not None and not isinstance(sparse_checkout, RepoSparseCheckoutArgs):
+                sparse_checkout = sparse_checkout or {}
+                def _setter(key, value):
+                    sparse_checkout[key] = value
+                RepoSparseCheckoutArgs._configure(_setter, **sparse_checkout)
             __props__.__dict__["sparse_checkout"] = sparse_checkout
             __props__.__dict__["tag"] = tag
             if url is None and not opts.urn:

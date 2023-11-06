@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OboTokenArgs', 'OboToken']
@@ -23,11 +23,32 @@ class OboTokenArgs:
         :param pulumi.Input[str] comment: Comment that describes the purpose of the token.
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         """
-        pulumi.set(__self__, "application_id", application_id)
+        OboTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            comment=comment,
+            lifetime_seconds=lifetime_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             lifetime_seconds: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+
+        _setter("application_id", application_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if lifetime_seconds is not None:
-            pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+            _setter("lifetime_seconds", lifetime_seconds)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -80,14 +101,37 @@ class _OboTokenState:
         :param pulumi.Input[int] lifetime_seconds: The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         :param pulumi.Input[str] token_value: **Sensitive** value of the newly-created token.
         """
+        _OboTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            comment=comment,
+            lifetime_seconds=lifetime_seconds,
+            token_value=token_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             lifetime_seconds: Optional[pulumi.Input[int]] = None,
+             token_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if lifetime_seconds is None and 'lifetimeSeconds' in kwargs:
+            lifetime_seconds = kwargs['lifetimeSeconds']
+        if token_value is None and 'tokenValue' in kwargs:
+            token_value = kwargs['tokenValue']
+
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if lifetime_seconds is not None:
-            pulumi.set(__self__, "lifetime_seconds", lifetime_seconds)
+            _setter("lifetime_seconds", lifetime_seconds)
         if token_value is not None:
-            pulumi.set(__self__, "token_value", token_value)
+            _setter("token_value", token_value)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -179,6 +223,10 @@ class OboToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OboTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

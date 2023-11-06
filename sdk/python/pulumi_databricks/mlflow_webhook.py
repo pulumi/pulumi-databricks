@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,17 +31,46 @@ class MlflowWebhookArgs:
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
-        pulumi.set(__self__, "events", events)
+        MlflowWebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            events=events,
+            description=description,
+            http_url_spec=http_url_spec,
+            job_spec=job_spec,
+            model_name=model_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
+             job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
+             model_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if http_url_spec is None and 'httpUrlSpec' in kwargs:
+            http_url_spec = kwargs['httpUrlSpec']
+        if job_spec is None and 'jobSpec' in kwargs:
+            job_spec = kwargs['jobSpec']
+        if model_name is None and 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
+        _setter("events", events)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if http_url_spec is not None:
-            pulumi.set(__self__, "http_url_spec", http_url_spec)
+            _setter("http_url_spec", http_url_spec)
         if job_spec is not None:
-            pulumi.set(__self__, "job_spec", job_spec)
+            _setter("job_spec", job_spec)
         if model_name is not None:
-            pulumi.set(__self__, "model_name", model_name)
+            _setter("model_name", model_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -130,18 +159,45 @@ class _MlflowWebhookState:
         :param pulumi.Input[str] model_name: Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         :param pulumi.Input[str] status: Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
+        _MlflowWebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            events=events,
+            http_url_spec=http_url_spec,
+            job_spec=job_spec,
+            model_name=model_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
+             job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
+             model_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if http_url_spec is None and 'httpUrlSpec' in kwargs:
+            http_url_spec = kwargs['httpUrlSpec']
+        if job_spec is None and 'jobSpec' in kwargs:
+            job_spec = kwargs['jobSpec']
+        if model_name is None and 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if events is not None:
-            pulumi.set(__self__, "events", events)
+            _setter("events", events)
         if http_url_spec is not None:
-            pulumi.set(__self__, "http_url_spec", http_url_spec)
+            _setter("http_url_spec", http_url_spec)
         if job_spec is not None:
-            pulumi.set(__self__, "job_spec", job_spec)
+            _setter("job_spec", job_spec)
         if model_name is not None:
-            pulumi.set(__self__, "model_name", model_name)
+            _setter("model_name", model_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -323,6 +379,10 @@ class MlflowWebhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MlflowWebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -347,7 +407,17 @@ class MlflowWebhook(pulumi.CustomResource):
             if events is None and not opts.urn:
                 raise TypeError("Missing required property 'events'")
             __props__.__dict__["events"] = events
+            if http_url_spec is not None and not isinstance(http_url_spec, MlflowWebhookHttpUrlSpecArgs):
+                http_url_spec = http_url_spec or {}
+                def _setter(key, value):
+                    http_url_spec[key] = value
+                MlflowWebhookHttpUrlSpecArgs._configure(_setter, **http_url_spec)
             __props__.__dict__["http_url_spec"] = http_url_spec
+            if job_spec is not None and not isinstance(job_spec, MlflowWebhookJobSpecArgs):
+                job_spec = job_spec or {}
+                def _setter(key, value):
+                    job_spec[key] = value
+                MlflowWebhookJobSpecArgs._configure(_setter, **job_spec)
             __props__.__dict__["job_spec"] = job_spec
             __props__.__dict__["model_name"] = model_name
             __props__.__dict__["status"] = status

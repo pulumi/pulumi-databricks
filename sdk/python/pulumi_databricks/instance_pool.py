@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,34 +42,107 @@ class InstancePoolArgs:
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
-        pulumi.set(__self__, "idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
-        pulumi.set(__self__, "instance_pool_name", instance_pool_name)
+        InstancePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            idle_instance_autotermination_minutes=idle_instance_autotermination_minutes,
+            instance_pool_name=instance_pool_name,
+            aws_attributes=aws_attributes,
+            azure_attributes=azure_attributes,
+            custom_tags=custom_tags,
+            disk_spec=disk_spec,
+            enable_elastic_disk=enable_elastic_disk,
+            gcp_attributes=gcp_attributes,
+            instance_pool_fleet_attributes=instance_pool_fleet_attributes,
+            instance_pool_id=instance_pool_id,
+            max_capacity=max_capacity,
+            min_idle_instances=min_idle_instances,
+            node_type_id=node_type_id,
+            preloaded_docker_images=preloaded_docker_images,
+            preloaded_spark_versions=preloaded_spark_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
+             instance_pool_name: Optional[pulumi.Input[str]] = None,
+             aws_attributes: Optional[pulumi.Input['InstancePoolAwsAttributesArgs']] = None,
+             azure_attributes: Optional[pulumi.Input['InstancePoolAzureAttributesArgs']] = None,
+             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             disk_spec: Optional[pulumi.Input['InstancePoolDiskSpecArgs']] = None,
+             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
+             gcp_attributes: Optional[pulumi.Input['InstancePoolGcpAttributesArgs']] = None,
+             instance_pool_fleet_attributes: Optional[pulumi.Input['InstancePoolInstancePoolFleetAttributesArgs']] = None,
+             instance_pool_id: Optional[pulumi.Input[str]] = None,
+             max_capacity: Optional[pulumi.Input[int]] = None,
+             min_idle_instances: Optional[pulumi.Input[int]] = None,
+             node_type_id: Optional[pulumi.Input[str]] = None,
+             preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
+             preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if idle_instance_autotermination_minutes is None and 'idleInstanceAutoterminationMinutes' in kwargs:
+            idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
+        if idle_instance_autotermination_minutes is None:
+            raise TypeError("Missing 'idle_instance_autotermination_minutes' argument")
+        if instance_pool_name is None and 'instancePoolName' in kwargs:
+            instance_pool_name = kwargs['instancePoolName']
+        if instance_pool_name is None:
+            raise TypeError("Missing 'instance_pool_name' argument")
+        if aws_attributes is None and 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if azure_attributes is None and 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if custom_tags is None and 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if disk_spec is None and 'diskSpec' in kwargs:
+            disk_spec = kwargs['diskSpec']
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if instance_pool_fleet_attributes is None and 'instancePoolFleetAttributes' in kwargs:
+            instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if max_capacity is None and 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if node_type_id is None and 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if preloaded_docker_images is None and 'preloadedDockerImages' in kwargs:
+            preloaded_docker_images = kwargs['preloadedDockerImages']
+        if preloaded_spark_versions is None and 'preloadedSparkVersions' in kwargs:
+            preloaded_spark_versions = kwargs['preloadedSparkVersions']
+
+        _setter("idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
+        _setter("instance_pool_name", instance_pool_name)
         if aws_attributes is not None:
-            pulumi.set(__self__, "aws_attributes", aws_attributes)
+            _setter("aws_attributes", aws_attributes)
         if azure_attributes is not None:
-            pulumi.set(__self__, "azure_attributes", azure_attributes)
+            _setter("azure_attributes", azure_attributes)
         if custom_tags is not None:
-            pulumi.set(__self__, "custom_tags", custom_tags)
+            _setter("custom_tags", custom_tags)
         if disk_spec is not None:
-            pulumi.set(__self__, "disk_spec", disk_spec)
+            _setter("disk_spec", disk_spec)
         if enable_elastic_disk is not None:
-            pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
+            _setter("enable_elastic_disk", enable_elastic_disk)
         if gcp_attributes is not None:
-            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
+            _setter("gcp_attributes", gcp_attributes)
         if instance_pool_fleet_attributes is not None:
-            pulumi.set(__self__, "instance_pool_fleet_attributes", instance_pool_fleet_attributes)
+            _setter("instance_pool_fleet_attributes", instance_pool_fleet_attributes)
         if instance_pool_id is not None:
-            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+            _setter("instance_pool_id", instance_pool_id)
         if max_capacity is not None:
-            pulumi.set(__self__, "max_capacity", max_capacity)
+            _setter("max_capacity", max_capacity)
         if min_idle_instances is not None:
-            pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+            _setter("min_idle_instances", min_idle_instances)
         if node_type_id is not None:
-            pulumi.set(__self__, "node_type_id", node_type_id)
+            _setter("node_type_id", node_type_id)
         if preloaded_docker_images is not None:
-            pulumi.set(__self__, "preloaded_docker_images", preloaded_docker_images)
+            _setter("preloaded_docker_images", preloaded_docker_images)
         if preloaded_spark_versions is not None:
-            pulumi.set(__self__, "preloaded_spark_versions", preloaded_spark_versions)
+            _setter("preloaded_spark_versions", preloaded_spark_versions)
 
     @property
     @pulumi.getter(name="idleInstanceAutoterminationMinutes")
@@ -260,36 +333,105 @@ class _InstancePoolState:
         :param pulumi.Input[str] node_type_id: (String) The node type for the instances in the pool. All clusters attached to the pool inherit this node type and the pool’s idle instances are allocated based on this type. You can retrieve a list of available node types by using the [List Node Types API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistnodetypes) call.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preloaded_spark_versions: (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via get_spark_version data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
         """
+        _InstancePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_attributes=aws_attributes,
+            azure_attributes=azure_attributes,
+            custom_tags=custom_tags,
+            disk_spec=disk_spec,
+            enable_elastic_disk=enable_elastic_disk,
+            gcp_attributes=gcp_attributes,
+            idle_instance_autotermination_minutes=idle_instance_autotermination_minutes,
+            instance_pool_fleet_attributes=instance_pool_fleet_attributes,
+            instance_pool_id=instance_pool_id,
+            instance_pool_name=instance_pool_name,
+            max_capacity=max_capacity,
+            min_idle_instances=min_idle_instances,
+            node_type_id=node_type_id,
+            preloaded_docker_images=preloaded_docker_images,
+            preloaded_spark_versions=preloaded_spark_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_attributes: Optional[pulumi.Input['InstancePoolAwsAttributesArgs']] = None,
+             azure_attributes: Optional[pulumi.Input['InstancePoolAzureAttributesArgs']] = None,
+             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             disk_spec: Optional[pulumi.Input['InstancePoolDiskSpecArgs']] = None,
+             enable_elastic_disk: Optional[pulumi.Input[bool]] = None,
+             gcp_attributes: Optional[pulumi.Input['InstancePoolGcpAttributesArgs']] = None,
+             idle_instance_autotermination_minutes: Optional[pulumi.Input[int]] = None,
+             instance_pool_fleet_attributes: Optional[pulumi.Input['InstancePoolInstancePoolFleetAttributesArgs']] = None,
+             instance_pool_id: Optional[pulumi.Input[str]] = None,
+             instance_pool_name: Optional[pulumi.Input[str]] = None,
+             max_capacity: Optional[pulumi.Input[int]] = None,
+             min_idle_instances: Optional[pulumi.Input[int]] = None,
+             node_type_id: Optional[pulumi.Input[str]] = None,
+             preloaded_docker_images: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePoolPreloadedDockerImageArgs']]]] = None,
+             preloaded_spark_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_attributes is None and 'awsAttributes' in kwargs:
+            aws_attributes = kwargs['awsAttributes']
+        if azure_attributes is None and 'azureAttributes' in kwargs:
+            azure_attributes = kwargs['azureAttributes']
+        if custom_tags is None and 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if disk_spec is None and 'diskSpec' in kwargs:
+            disk_spec = kwargs['diskSpec']
+        if enable_elastic_disk is None and 'enableElasticDisk' in kwargs:
+            enable_elastic_disk = kwargs['enableElasticDisk']
+        if gcp_attributes is None and 'gcpAttributes' in kwargs:
+            gcp_attributes = kwargs['gcpAttributes']
+        if idle_instance_autotermination_minutes is None and 'idleInstanceAutoterminationMinutes' in kwargs:
+            idle_instance_autotermination_minutes = kwargs['idleInstanceAutoterminationMinutes']
+        if instance_pool_fleet_attributes is None and 'instancePoolFleetAttributes' in kwargs:
+            instance_pool_fleet_attributes = kwargs['instancePoolFleetAttributes']
+        if instance_pool_id is None and 'instancePoolId' in kwargs:
+            instance_pool_id = kwargs['instancePoolId']
+        if instance_pool_name is None and 'instancePoolName' in kwargs:
+            instance_pool_name = kwargs['instancePoolName']
+        if max_capacity is None and 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if min_idle_instances is None and 'minIdleInstances' in kwargs:
+            min_idle_instances = kwargs['minIdleInstances']
+        if node_type_id is None and 'nodeTypeId' in kwargs:
+            node_type_id = kwargs['nodeTypeId']
+        if preloaded_docker_images is None and 'preloadedDockerImages' in kwargs:
+            preloaded_docker_images = kwargs['preloadedDockerImages']
+        if preloaded_spark_versions is None and 'preloadedSparkVersions' in kwargs:
+            preloaded_spark_versions = kwargs['preloadedSparkVersions']
+
         if aws_attributes is not None:
-            pulumi.set(__self__, "aws_attributes", aws_attributes)
+            _setter("aws_attributes", aws_attributes)
         if azure_attributes is not None:
-            pulumi.set(__self__, "azure_attributes", azure_attributes)
+            _setter("azure_attributes", azure_attributes)
         if custom_tags is not None:
-            pulumi.set(__self__, "custom_tags", custom_tags)
+            _setter("custom_tags", custom_tags)
         if disk_spec is not None:
-            pulumi.set(__self__, "disk_spec", disk_spec)
+            _setter("disk_spec", disk_spec)
         if enable_elastic_disk is not None:
-            pulumi.set(__self__, "enable_elastic_disk", enable_elastic_disk)
+            _setter("enable_elastic_disk", enable_elastic_disk)
         if gcp_attributes is not None:
-            pulumi.set(__self__, "gcp_attributes", gcp_attributes)
+            _setter("gcp_attributes", gcp_attributes)
         if idle_instance_autotermination_minutes is not None:
-            pulumi.set(__self__, "idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
+            _setter("idle_instance_autotermination_minutes", idle_instance_autotermination_minutes)
         if instance_pool_fleet_attributes is not None:
-            pulumi.set(__self__, "instance_pool_fleet_attributes", instance_pool_fleet_attributes)
+            _setter("instance_pool_fleet_attributes", instance_pool_fleet_attributes)
         if instance_pool_id is not None:
-            pulumi.set(__self__, "instance_pool_id", instance_pool_id)
+            _setter("instance_pool_id", instance_pool_id)
         if instance_pool_name is not None:
-            pulumi.set(__self__, "instance_pool_name", instance_pool_name)
+            _setter("instance_pool_name", instance_pool_name)
         if max_capacity is not None:
-            pulumi.set(__self__, "max_capacity", max_capacity)
+            _setter("max_capacity", max_capacity)
         if min_idle_instances is not None:
-            pulumi.set(__self__, "min_idle_instances", min_idle_instances)
+            _setter("min_idle_instances", min_idle_instances)
         if node_type_id is not None:
-            pulumi.set(__self__, "node_type_id", node_type_id)
+            _setter("node_type_id", node_type_id)
         if preloaded_docker_images is not None:
-            pulumi.set(__self__, "preloaded_docker_images", preloaded_docker_images)
+            _setter("preloaded_docker_images", preloaded_docker_images)
         if preloaded_spark_versions is not None:
-            pulumi.set(__self__, "preloaded_spark_versions", preloaded_spark_versions)
+            _setter("preloaded_spark_versions", preloaded_spark_versions)
 
     @property
     @pulumi.getter(name="awsAttributes")
@@ -643,6 +785,10 @@ class InstancePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstancePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -672,15 +818,40 @@ class InstancePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstancePoolArgs.__new__(InstancePoolArgs)
 
+            if aws_attributes is not None and not isinstance(aws_attributes, InstancePoolAwsAttributesArgs):
+                aws_attributes = aws_attributes or {}
+                def _setter(key, value):
+                    aws_attributes[key] = value
+                InstancePoolAwsAttributesArgs._configure(_setter, **aws_attributes)
             __props__.__dict__["aws_attributes"] = aws_attributes
+            if azure_attributes is not None and not isinstance(azure_attributes, InstancePoolAzureAttributesArgs):
+                azure_attributes = azure_attributes or {}
+                def _setter(key, value):
+                    azure_attributes[key] = value
+                InstancePoolAzureAttributesArgs._configure(_setter, **azure_attributes)
             __props__.__dict__["azure_attributes"] = azure_attributes
             __props__.__dict__["custom_tags"] = custom_tags
+            if disk_spec is not None and not isinstance(disk_spec, InstancePoolDiskSpecArgs):
+                disk_spec = disk_spec or {}
+                def _setter(key, value):
+                    disk_spec[key] = value
+                InstancePoolDiskSpecArgs._configure(_setter, **disk_spec)
             __props__.__dict__["disk_spec"] = disk_spec
             __props__.__dict__["enable_elastic_disk"] = enable_elastic_disk
+            if gcp_attributes is not None and not isinstance(gcp_attributes, InstancePoolGcpAttributesArgs):
+                gcp_attributes = gcp_attributes or {}
+                def _setter(key, value):
+                    gcp_attributes[key] = value
+                InstancePoolGcpAttributesArgs._configure(_setter, **gcp_attributes)
             __props__.__dict__["gcp_attributes"] = gcp_attributes
             if idle_instance_autotermination_minutes is None and not opts.urn:
                 raise TypeError("Missing required property 'idle_instance_autotermination_minutes'")
             __props__.__dict__["idle_instance_autotermination_minutes"] = idle_instance_autotermination_minutes
+            if instance_pool_fleet_attributes is not None and not isinstance(instance_pool_fleet_attributes, InstancePoolInstancePoolFleetAttributesArgs):
+                instance_pool_fleet_attributes = instance_pool_fleet_attributes or {}
+                def _setter(key, value):
+                    instance_pool_fleet_attributes[key] = value
+                InstancePoolInstancePoolFleetAttributesArgs._configure(_setter, **instance_pool_fleet_attributes)
             __props__.__dict__["instance_pool_fleet_attributes"] = instance_pool_fleet_attributes
             __props__.__dict__["instance_pool_id"] = instance_pool_id
             if instance_pool_name is None and not opts.urn:
