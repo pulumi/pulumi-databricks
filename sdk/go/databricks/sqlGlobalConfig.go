@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace. *Please note that changing parameters of this resource will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
@@ -236,12 +235,6 @@ func (i *SqlGlobalConfig) ToSqlGlobalConfigOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SqlGlobalConfigOutput)
 }
 
-func (i *SqlGlobalConfig) ToOutput(ctx context.Context) pulumix.Output[*SqlGlobalConfig] {
-	return pulumix.Output[*SqlGlobalConfig]{
-		OutputState: i.ToSqlGlobalConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SqlGlobalConfigArrayInput is an input type that accepts SqlGlobalConfigArray and SqlGlobalConfigArrayOutput values.
 // You can construct a concrete instance of `SqlGlobalConfigArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i SqlGlobalConfigArray) ToSqlGlobalConfigArrayOutput() SqlGlobalConfigArra
 
 func (i SqlGlobalConfigArray) ToSqlGlobalConfigArrayOutputWithContext(ctx context.Context) SqlGlobalConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlGlobalConfigArrayOutput)
-}
-
-func (i SqlGlobalConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlGlobalConfig] {
-	return pulumix.Output[[]*SqlGlobalConfig]{
-		OutputState: i.ToSqlGlobalConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SqlGlobalConfigMapInput is an input type that accepts SqlGlobalConfigMap and SqlGlobalConfigMapOutput values.
@@ -298,12 +285,6 @@ func (i SqlGlobalConfigMap) ToSqlGlobalConfigMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SqlGlobalConfigMapOutput)
 }
 
-func (i SqlGlobalConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlGlobalConfig] {
-	return pulumix.Output[map[string]*SqlGlobalConfig]{
-		OutputState: i.ToSqlGlobalConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlGlobalConfigOutput struct{ *pulumi.OutputState }
 
 func (SqlGlobalConfigOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o SqlGlobalConfigOutput) ToSqlGlobalConfigOutput() SqlGlobalConfigOutput {
 
 func (o SqlGlobalConfigOutput) ToSqlGlobalConfigOutputWithContext(ctx context.Context) SqlGlobalConfigOutput {
 	return o
-}
-
-func (o SqlGlobalConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlGlobalConfig] {
-	return pulumix.Output[*SqlGlobalConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
@@ -368,12 +343,6 @@ func (o SqlGlobalConfigArrayOutput) ToSqlGlobalConfigArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o SqlGlobalConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlGlobalConfig] {
-	return pulumix.Output[[]*SqlGlobalConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlGlobalConfigArrayOutput) Index(i pulumi.IntInput) SqlGlobalConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlGlobalConfig {
 		return vs[0].([]*SqlGlobalConfig)[vs[1].(int)]
@@ -392,12 +361,6 @@ func (o SqlGlobalConfigMapOutput) ToSqlGlobalConfigMapOutput() SqlGlobalConfigMa
 
 func (o SqlGlobalConfigMapOutput) ToSqlGlobalConfigMapOutputWithContext(ctx context.Context) SqlGlobalConfigMapOutput {
 	return o
-}
-
-func (o SqlGlobalConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlGlobalConfig] {
-	return pulumix.Output[map[string]*SqlGlobalConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlGlobalConfigMapOutput) MapIndex(k pulumi.StringInput) SqlGlobalConfigOutput {

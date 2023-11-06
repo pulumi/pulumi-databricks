@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
@@ -110,12 +109,6 @@ func (o GetAwsCrossAccountPolicyResultOutput) ToGetAwsCrossAccountPolicyResultOu
 
 func (o GetAwsCrossAccountPolicyResultOutput) ToGetAwsCrossAccountPolicyResultOutputWithContext(ctx context.Context) GetAwsCrossAccountPolicyResultOutput {
 	return o
-}
-
-func (o GetAwsCrossAccountPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAwsCrossAccountPolicyResult] {
-	return pulumix.Output[GetAwsCrossAccountPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

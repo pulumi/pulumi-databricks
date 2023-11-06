@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -135,12 +134,6 @@ func (i *WorkspaceConf) ToWorkspaceConfOutputWithContext(ctx context.Context) Wo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConfOutput)
 }
 
-func (i *WorkspaceConf) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceConf] {
-	return pulumix.Output[*WorkspaceConf]{
-		OutputState: i.ToWorkspaceConfOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkspaceConfArrayInput is an input type that accepts WorkspaceConfArray and WorkspaceConfArrayOutput values.
 // You can construct a concrete instance of `WorkspaceConfArrayInput` via:
 //
@@ -164,12 +157,6 @@ func (i WorkspaceConfArray) ToWorkspaceConfArrayOutput() WorkspaceConfArrayOutpu
 
 func (i WorkspaceConfArray) ToWorkspaceConfArrayOutputWithContext(ctx context.Context) WorkspaceConfArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConfArrayOutput)
-}
-
-func (i WorkspaceConfArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkspaceConf] {
-	return pulumix.Output[[]*WorkspaceConf]{
-		OutputState: i.ToWorkspaceConfArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkspaceConfMapInput is an input type that accepts WorkspaceConfMap and WorkspaceConfMapOutput values.
@@ -197,12 +184,6 @@ func (i WorkspaceConfMap) ToWorkspaceConfMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConfMapOutput)
 }
 
-func (i WorkspaceConfMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkspaceConf] {
-	return pulumix.Output[map[string]*WorkspaceConf]{
-		OutputState: i.ToWorkspaceConfMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkspaceConfOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceConfOutput) ElementType() reflect.Type {
@@ -215,12 +196,6 @@ func (o WorkspaceConfOutput) ToWorkspaceConfOutput() WorkspaceConfOutput {
 
 func (o WorkspaceConfOutput) ToWorkspaceConfOutputWithContext(ctx context.Context) WorkspaceConfOutput {
 	return o
-}
-
-func (o WorkspaceConfOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceConf] {
-	return pulumix.Output[*WorkspaceConf]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
@@ -242,12 +217,6 @@ func (o WorkspaceConfArrayOutput) ToWorkspaceConfArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o WorkspaceConfArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkspaceConf] {
-	return pulumix.Output[[]*WorkspaceConf]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkspaceConfArrayOutput) Index(i pulumi.IntInput) WorkspaceConfOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkspaceConf {
 		return vs[0].([]*WorkspaceConf)[vs[1].(int)]
@@ -266,12 +235,6 @@ func (o WorkspaceConfMapOutput) ToWorkspaceConfMapOutput() WorkspaceConfMapOutpu
 
 func (o WorkspaceConfMapOutput) ToWorkspaceConfMapOutputWithContext(ctx context.Context) WorkspaceConfMapOutput {
 	return o
-}
-
-func (o WorkspaceConfMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkspaceConf] {
-	return pulumix.Output[map[string]*WorkspaceConf]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkspaceConfMapOutput) MapIndex(k pulumi.StringInput) WorkspaceConfOutput {

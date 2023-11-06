@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Security-conscious enterprises that use cloud SaaS applications need to restrict access to their own employees. Authentication helps to prove user identity, but that does not enforce network location of the users. Accessing a cloud service from an unsecured network can pose security risks to an enterprise, especially when the user may have authorized access to sensitive or personal data. Enterprise network perimeters apply security policies and limit access to external services (for example, firewalls, proxies, DLP, and logging), so access beyond these controls are assumed to be untrusted. Please see [IP Access List](https://docs.databricks.com/security/network/ip-access-list.html) for full feature documentation.
@@ -201,12 +200,6 @@ func (i *IpAccessList) ToIpAccessListOutputWithContext(ctx context.Context) IpAc
 	return pulumi.ToOutputWithContext(ctx, i).(IpAccessListOutput)
 }
 
-func (i *IpAccessList) ToOutput(ctx context.Context) pulumix.Output[*IpAccessList] {
-	return pulumix.Output[*IpAccessList]{
-		OutputState: i.ToIpAccessListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpAccessListArrayInput is an input type that accepts IpAccessListArray and IpAccessListArrayOutput values.
 // You can construct a concrete instance of `IpAccessListArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i IpAccessListArray) ToIpAccessListArrayOutput() IpAccessListArrayOutput {
 
 func (i IpAccessListArray) ToIpAccessListArrayOutputWithContext(ctx context.Context) IpAccessListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpAccessListArrayOutput)
-}
-
-func (i IpAccessListArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpAccessList] {
-	return pulumix.Output[[]*IpAccessList]{
-		OutputState: i.ToIpAccessListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpAccessListMapInput is an input type that accepts IpAccessListMap and IpAccessListMapOutput values.
@@ -263,12 +250,6 @@ func (i IpAccessListMap) ToIpAccessListMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IpAccessListMapOutput)
 }
 
-func (i IpAccessListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpAccessList] {
-	return pulumix.Output[map[string]*IpAccessList]{
-		OutputState: i.ToIpAccessListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpAccessListOutput struct{ *pulumi.OutputState }
 
 func (IpAccessListOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o IpAccessListOutput) ToIpAccessListOutput() IpAccessListOutput {
 
 func (o IpAccessListOutput) ToIpAccessListOutputWithContext(ctx context.Context) IpAccessListOutput {
 	return o
-}
-
-func (o IpAccessListOutput) ToOutput(ctx context.Context) pulumix.Output[*IpAccessList] {
-	return pulumix.Output[*IpAccessList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
@@ -323,12 +298,6 @@ func (o IpAccessListArrayOutput) ToIpAccessListArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o IpAccessListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpAccessList] {
-	return pulumix.Output[[]*IpAccessList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpAccessListArrayOutput) Index(i pulumi.IntInput) IpAccessListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpAccessList {
 		return vs[0].([]*IpAccessList)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o IpAccessListMapOutput) ToIpAccessListMapOutput() IpAccessListMapOutput {
 
 func (o IpAccessListMapOutput) ToIpAccessListMapOutputWithContext(ctx context.Context) IpAccessListMapOutput {
 	return o
-}
-
-func (o IpAccessListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpAccessList] {
-	return pulumix.Output[map[string]*IpAccessList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpAccessListMapOutput) MapIndex(k pulumi.StringInput) IpAccessListOutput {

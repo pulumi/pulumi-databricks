@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
@@ -225,12 +224,6 @@ func (i *Schema) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaOutput)
 }
 
-func (i *Schema) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
-	return pulumix.Output[*Schema]{
-		OutputState: i.ToSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SchemaArrayInput is an input type that accepts SchemaArray and SchemaArrayOutput values.
 // You can construct a concrete instance of `SchemaArrayInput` via:
 //
@@ -254,12 +247,6 @@ func (i SchemaArray) ToSchemaArrayOutput() SchemaArrayOutput {
 
 func (i SchemaArray) ToSchemaArrayOutputWithContext(ctx context.Context) SchemaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaArrayOutput)
-}
-
-func (i SchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]*Schema] {
-	return pulumix.Output[[]*Schema]{
-		OutputState: i.ToSchemaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SchemaMapInput is an input type that accepts SchemaMap and SchemaMapOutput values.
@@ -287,12 +274,6 @@ func (i SchemaMap) ToSchemaMapOutputWithContext(ctx context.Context) SchemaMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaMapOutput)
 }
 
-func (i SchemaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Schema] {
-	return pulumix.Output[map[string]*Schema]{
-		OutputState: i.ToSchemaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SchemaOutput struct{ *pulumi.OutputState }
 
 func (SchemaOutput) ElementType() reflect.Type {
@@ -305,12 +286,6 @@ func (o SchemaOutput) ToSchemaOutput() SchemaOutput {
 
 func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutput {
 	return o
-}
-
-func (o SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
-	return pulumix.Output[*Schema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of parent catalog. Change forces creation of a new resource.
@@ -366,12 +341,6 @@ func (o SchemaArrayOutput) ToSchemaArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Schema] {
-	return pulumix.Output[[]*Schema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SchemaArrayOutput) Index(i pulumi.IntInput) SchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Schema {
 		return vs[0].([]*Schema)[vs[1].(int)]
@@ -390,12 +359,6 @@ func (o SchemaMapOutput) ToSchemaMapOutput() SchemaMapOutput {
 
 func (o SchemaMapOutput) ToSchemaMapOutputWithContext(ctx context.Context) SchemaMapOutput {
 	return o
-}
-
-func (o SchemaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Schema] {
-	return pulumix.Output[map[string]*Schema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchemaMapOutput) MapIndex(k pulumi.StringInput) SchemaOutput {

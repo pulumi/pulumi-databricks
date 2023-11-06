@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
@@ -199,12 +198,6 @@ func (i *MlflowModel) ToMlflowModelOutputWithContext(ctx context.Context) Mlflow
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelOutput)
 }
 
-func (i *MlflowModel) ToOutput(ctx context.Context) pulumix.Output[*MlflowModel] {
-	return pulumix.Output[*MlflowModel]{
-		OutputState: i.ToMlflowModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MlflowModelArrayInput is an input type that accepts MlflowModelArray and MlflowModelArrayOutput values.
 // You can construct a concrete instance of `MlflowModelArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i MlflowModelArray) ToMlflowModelArrayOutput() MlflowModelArrayOutput {
 
 func (i MlflowModelArray) ToMlflowModelArrayOutputWithContext(ctx context.Context) MlflowModelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelArrayOutput)
-}
-
-func (i MlflowModelArray) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowModel] {
-	return pulumix.Output[[]*MlflowModel]{
-		OutputState: i.ToMlflowModelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MlflowModelMapInput is an input type that accepts MlflowModelMap and MlflowModelMapOutput values.
@@ -261,12 +248,6 @@ func (i MlflowModelMap) ToMlflowModelMapOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowModelMapOutput)
 }
 
-func (i MlflowModelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowModel] {
-	return pulumix.Output[map[string]*MlflowModel]{
-		OutputState: i.ToMlflowModelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MlflowModelOutput struct{ *pulumi.OutputState }
 
 func (MlflowModelOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o MlflowModelOutput) ToMlflowModelOutput() MlflowModelOutput {
 
 func (o MlflowModelOutput) ToMlflowModelOutputWithContext(ctx context.Context) MlflowModelOutput {
 	return o
-}
-
-func (o MlflowModelOutput) ToOutput(ctx context.Context) pulumix.Output[*MlflowModel] {
-	return pulumix.Output[*MlflowModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MlflowModelOutput) CreationTimestamp() pulumi.IntPtrOutput {
@@ -332,12 +307,6 @@ func (o MlflowModelArrayOutput) ToMlflowModelArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o MlflowModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowModel] {
-	return pulumix.Output[[]*MlflowModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MlflowModelArrayOutput) Index(i pulumi.IntInput) MlflowModelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MlflowModel {
 		return vs[0].([]*MlflowModel)[vs[1].(int)]
@@ -356,12 +325,6 @@ func (o MlflowModelMapOutput) ToMlflowModelMapOutput() MlflowModelMapOutput {
 
 func (o MlflowModelMapOutput) ToMlflowModelMapOutputWithContext(ctx context.Context) MlflowModelMapOutput {
 	return o
-}
-
-func (o MlflowModelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowModel] {
-	return pulumix.Output[map[string]*MlflowModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MlflowModelMapOutput) MapIndex(k pulumi.StringInput) MlflowModelOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create or overwrite the ACL associated with the given principal (user or group) on the specified databricks_secret_scope. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
@@ -193,12 +192,6 @@ func (i *SecretAcl) ToSecretAclOutputWithContext(ctx context.Context) SecretAclO
 	return pulumi.ToOutputWithContext(ctx, i).(SecretAclOutput)
 }
 
-func (i *SecretAcl) ToOutput(ctx context.Context) pulumix.Output[*SecretAcl] {
-	return pulumix.Output[*SecretAcl]{
-		OutputState: i.ToSecretAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretAclArrayInput is an input type that accepts SecretAclArray and SecretAclArrayOutput values.
 // You can construct a concrete instance of `SecretAclArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i SecretAclArray) ToSecretAclArrayOutput() SecretAclArrayOutput {
 
 func (i SecretAclArray) ToSecretAclArrayOutputWithContext(ctx context.Context) SecretAclArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretAclArrayOutput)
-}
-
-func (i SecretAclArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretAcl] {
-	return pulumix.Output[[]*SecretAcl]{
-		OutputState: i.ToSecretAclArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecretAclMapInput is an input type that accepts SecretAclMap and SecretAclMapOutput values.
@@ -255,12 +242,6 @@ func (i SecretAclMap) ToSecretAclMapOutputWithContext(ctx context.Context) Secre
 	return pulumi.ToOutputWithContext(ctx, i).(SecretAclMapOutput)
 }
 
-func (i SecretAclMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretAcl] {
-	return pulumix.Output[map[string]*SecretAcl]{
-		OutputState: i.ToSecretAclMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretAclOutput struct{ *pulumi.OutputState }
 
 func (SecretAclOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o SecretAclOutput) ToSecretAclOutput() SecretAclOutput {
 
 func (o SecretAclOutput) ToSecretAclOutputWithContext(ctx context.Context) SecretAclOutput {
 	return o
-}
-
-func (o SecretAclOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretAcl] {
-	return pulumix.Output[*SecretAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // `READ`, `WRITE` or `MANAGE`.
@@ -310,12 +285,6 @@ func (o SecretAclArrayOutput) ToSecretAclArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecretAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretAcl] {
-	return pulumix.Output[[]*SecretAcl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecretAclArrayOutput) Index(i pulumi.IntInput) SecretAclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretAcl {
 		return vs[0].([]*SecretAcl)[vs[1].(int)]
@@ -334,12 +303,6 @@ func (o SecretAclMapOutput) ToSecretAclMapOutput() SecretAclMapOutput {
 
 func (o SecretAclMapOutput) ToSecretAclMapOutputWithContext(ctx context.Context) SecretAclMapOutput {
 	return o
-}
-
-func (o SecretAclMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretAcl] {
-	return pulumix.Output[map[string]*SecretAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretAclMapOutput) MapIndex(k pulumi.StringInput) SecretAclOutput {

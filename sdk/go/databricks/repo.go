@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -164,12 +163,6 @@ func (i *Repo) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoOutput)
 }
 
-func (i *Repo) ToOutput(ctx context.Context) pulumix.Output[*Repo] {
-	return pulumix.Output[*Repo]{
-		OutputState: i.ToRepoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepoArrayInput is an input type that accepts RepoArray and RepoArrayOutput values.
 // You can construct a concrete instance of `RepoArrayInput` via:
 //
@@ -193,12 +186,6 @@ func (i RepoArray) ToRepoArrayOutput() RepoArrayOutput {
 
 func (i RepoArray) ToRepoArrayOutputWithContext(ctx context.Context) RepoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoArrayOutput)
-}
-
-func (i RepoArray) ToOutput(ctx context.Context) pulumix.Output[[]*Repo] {
-	return pulumix.Output[[]*Repo]{
-		OutputState: i.ToRepoArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RepoMapInput is an input type that accepts RepoMap and RepoMapOutput values.
@@ -226,12 +213,6 @@ func (i RepoMap) ToRepoMapOutputWithContext(ctx context.Context) RepoMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepoMapOutput)
 }
 
-func (i RepoMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repo] {
-	return pulumix.Output[map[string]*Repo]{
-		OutputState: i.ToRepoMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepoOutput struct{ *pulumi.OutputState }
 
 func (RepoOutput) ElementType() reflect.Type {
@@ -244,12 +225,6 @@ func (o RepoOutput) ToRepoOutput() RepoOutput {
 
 func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
-}
-
-func (o RepoOutput) ToOutput(ctx context.Context) pulumix.Output[*Repo] {
-	return pulumix.Output[*Repo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -300,12 +275,6 @@ func (o RepoArrayOutput) ToRepoArrayOutputWithContext(ctx context.Context) RepoA
 	return o
 }
 
-func (o RepoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Repo] {
-	return pulumix.Output[[]*Repo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RepoArrayOutput) Index(i pulumi.IntInput) RepoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Repo {
 		return vs[0].([]*Repo)[vs[1].(int)]
@@ -324,12 +293,6 @@ func (o RepoMapOutput) ToRepoMapOutput() RepoMapOutput {
 
 func (o RepoMapOutput) ToRepoMapOutputWithContext(ctx context.Context) RepoMapOutput {
 	return o
-}
-
-func (o RepoMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repo] {
-	return pulumix.Output[map[string]*Repo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepoMapOutput) MapIndex(k pulumi.StringInput) RepoOutput {

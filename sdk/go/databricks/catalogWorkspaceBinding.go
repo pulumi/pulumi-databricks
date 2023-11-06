@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -149,12 +148,6 @@ func (i *CatalogWorkspaceBinding) ToCatalogWorkspaceBindingOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogWorkspaceBindingOutput)
 }
 
-func (i *CatalogWorkspaceBinding) ToOutput(ctx context.Context) pulumix.Output[*CatalogWorkspaceBinding] {
-	return pulumix.Output[*CatalogWorkspaceBinding]{
-		OutputState: i.ToCatalogWorkspaceBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CatalogWorkspaceBindingArrayInput is an input type that accepts CatalogWorkspaceBindingArray and CatalogWorkspaceBindingArrayOutput values.
 // You can construct a concrete instance of `CatalogWorkspaceBindingArrayInput` via:
 //
@@ -178,12 +171,6 @@ func (i CatalogWorkspaceBindingArray) ToCatalogWorkspaceBindingArrayOutput() Cat
 
 func (i CatalogWorkspaceBindingArray) ToCatalogWorkspaceBindingArrayOutputWithContext(ctx context.Context) CatalogWorkspaceBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogWorkspaceBindingArrayOutput)
-}
-
-func (i CatalogWorkspaceBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogWorkspaceBinding] {
-	return pulumix.Output[[]*CatalogWorkspaceBinding]{
-		OutputState: i.ToCatalogWorkspaceBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CatalogWorkspaceBindingMapInput is an input type that accepts CatalogWorkspaceBindingMap and CatalogWorkspaceBindingMapOutput values.
@@ -211,12 +198,6 @@ func (i CatalogWorkspaceBindingMap) ToCatalogWorkspaceBindingMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogWorkspaceBindingMapOutput)
 }
 
-func (i CatalogWorkspaceBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogWorkspaceBinding] {
-	return pulumix.Output[map[string]*CatalogWorkspaceBinding]{
-		OutputState: i.ToCatalogWorkspaceBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CatalogWorkspaceBindingOutput struct{ *pulumi.OutputState }
 
 func (CatalogWorkspaceBindingOutput) ElementType() reflect.Type {
@@ -229,12 +210,6 @@ func (o CatalogWorkspaceBindingOutput) ToCatalogWorkspaceBindingOutput() Catalog
 
 func (o CatalogWorkspaceBindingOutput) ToCatalogWorkspaceBindingOutputWithContext(ctx context.Context) CatalogWorkspaceBindingOutput {
 	return o
-}
-
-func (o CatalogWorkspaceBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*CatalogWorkspaceBinding] {
-	return pulumix.Output[*CatalogWorkspaceBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of Catalog. Change forces creation of a new resource.
@@ -261,12 +236,6 @@ func (o CatalogWorkspaceBindingArrayOutput) ToCatalogWorkspaceBindingArrayOutput
 	return o
 }
 
-func (o CatalogWorkspaceBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogWorkspaceBinding] {
-	return pulumix.Output[[]*CatalogWorkspaceBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CatalogWorkspaceBindingArrayOutput) Index(i pulumi.IntInput) CatalogWorkspaceBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CatalogWorkspaceBinding {
 		return vs[0].([]*CatalogWorkspaceBinding)[vs[1].(int)]
@@ -285,12 +254,6 @@ func (o CatalogWorkspaceBindingMapOutput) ToCatalogWorkspaceBindingMapOutput() C
 
 func (o CatalogWorkspaceBindingMapOutput) ToCatalogWorkspaceBindingMapOutputWithContext(ctx context.Context) CatalogWorkspaceBindingMapOutput {
 	return o
-}
-
-func (o CatalogWorkspaceBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogWorkspaceBinding] {
-	return pulumix.Output[map[string]*CatalogWorkspaceBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CatalogWorkspaceBindingMapOutput) MapIndex(k pulumi.StringInput) CatalogWorkspaceBindingOutput {
