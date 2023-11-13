@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -83,12 +82,6 @@ func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
 
 func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
 	return o
-}
-
-func (o GetZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesResult] {
-	return pulumix.Output[GetZonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.

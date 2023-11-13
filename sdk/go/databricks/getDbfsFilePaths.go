@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -118,12 +117,6 @@ func (o GetDbfsFilePathsResultOutput) ToGetDbfsFilePathsResultOutput() GetDbfsFi
 
 func (o GetDbfsFilePathsResultOutput) ToGetDbfsFilePathsResultOutputWithContext(ctx context.Context) GetDbfsFilePathsResultOutput {
 	return o
-}
-
-func (o GetDbfsFilePathsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbfsFilePathsResult] {
-	return pulumix.Output[GetDbfsFilePathsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

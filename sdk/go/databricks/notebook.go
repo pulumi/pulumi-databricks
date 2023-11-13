@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -170,12 +169,6 @@ func (i *Notebook) ToNotebookOutputWithContext(ctx context.Context) NotebookOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookOutput)
 }
 
-func (i *Notebook) ToOutput(ctx context.Context) pulumix.Output[*Notebook] {
-	return pulumix.Output[*Notebook]{
-		OutputState: i.ToNotebookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NotebookArrayInput is an input type that accepts NotebookArray and NotebookArrayOutput values.
 // You can construct a concrete instance of `NotebookArrayInput` via:
 //
@@ -199,12 +192,6 @@ func (i NotebookArray) ToNotebookArrayOutput() NotebookArrayOutput {
 
 func (i NotebookArray) ToNotebookArrayOutputWithContext(ctx context.Context) NotebookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookArrayOutput)
-}
-
-func (i NotebookArray) ToOutput(ctx context.Context) pulumix.Output[[]*Notebook] {
-	return pulumix.Output[[]*Notebook]{
-		OutputState: i.ToNotebookArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NotebookMapInput is an input type that accepts NotebookMap and NotebookMapOutput values.
@@ -232,12 +219,6 @@ func (i NotebookMap) ToNotebookMapOutputWithContext(ctx context.Context) Noteboo
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookMapOutput)
 }
 
-func (i NotebookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notebook] {
-	return pulumix.Output[map[string]*Notebook]{
-		OutputState: i.ToNotebookMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotebookOutput struct{ *pulumi.OutputState }
 
 func (NotebookOutput) ElementType() reflect.Type {
@@ -250,12 +231,6 @@ func (o NotebookOutput) ToNotebookOutput() NotebookOutput {
 
 func (o NotebookOutput) ToNotebookOutputWithContext(ctx context.Context) NotebookOutput {
 	return o
-}
-
-func (o NotebookOutput) ToOutput(ctx context.Context) pulumix.Output[*Notebook] {
-	return pulumix.Output[*Notebook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotebookOutput) ContentBase64() pulumi.StringPtrOutput {
@@ -314,12 +289,6 @@ func (o NotebookArrayOutput) ToNotebookArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o NotebookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Notebook] {
-	return pulumix.Output[[]*Notebook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotebookArrayOutput) Index(i pulumi.IntInput) NotebookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Notebook {
 		return vs[0].([]*Notebook)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o NotebookMapOutput) ToNotebookMapOutput() NotebookMapOutput {
 
 func (o NotebookMapOutput) ToNotebookMapOutputWithContext(ctx context.Context) NotebookMapOutput {
 	return o
-}
-
-func (o NotebookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notebook] {
-	return pulumix.Output[map[string]*Notebook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotebookMapOutput) MapIndex(k pulumi.StringInput) NotebookOutput {

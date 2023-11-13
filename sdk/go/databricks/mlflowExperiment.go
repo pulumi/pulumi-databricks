@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
@@ -193,12 +192,6 @@ func (i *MlflowExperiment) ToMlflowExperimentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowExperimentOutput)
 }
 
-func (i *MlflowExperiment) ToOutput(ctx context.Context) pulumix.Output[*MlflowExperiment] {
-	return pulumix.Output[*MlflowExperiment]{
-		OutputState: i.ToMlflowExperimentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MlflowExperimentArrayInput is an input type that accepts MlflowExperimentArray and MlflowExperimentArrayOutput values.
 // You can construct a concrete instance of `MlflowExperimentArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i MlflowExperimentArray) ToMlflowExperimentArrayOutput() MlflowExperimentA
 
 func (i MlflowExperimentArray) ToMlflowExperimentArrayOutputWithContext(ctx context.Context) MlflowExperimentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowExperimentArrayOutput)
-}
-
-func (i MlflowExperimentArray) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowExperiment] {
-	return pulumix.Output[[]*MlflowExperiment]{
-		OutputState: i.ToMlflowExperimentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MlflowExperimentMapInput is an input type that accepts MlflowExperimentMap and MlflowExperimentMapOutput values.
@@ -255,12 +242,6 @@ func (i MlflowExperimentMap) ToMlflowExperimentMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MlflowExperimentMapOutput)
 }
 
-func (i MlflowExperimentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowExperiment] {
-	return pulumix.Output[map[string]*MlflowExperiment]{
-		OutputState: i.ToMlflowExperimentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MlflowExperimentOutput struct{ *pulumi.OutputState }
 
 func (MlflowExperimentOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o MlflowExperimentOutput) ToMlflowExperimentOutput() MlflowExperimentOutpu
 
 func (o MlflowExperimentOutput) ToMlflowExperimentOutputWithContext(ctx context.Context) MlflowExperimentOutput {
 	return o
-}
-
-func (o MlflowExperimentOutput) ToOutput(ctx context.Context) pulumix.Output[*MlflowExperiment] {
-	return pulumix.Output[*MlflowExperiment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to dbfs:/ or s3:// artifact location of the MLflow experiment.
@@ -326,12 +301,6 @@ func (o MlflowExperimentArrayOutput) ToMlflowExperimentArrayOutputWithContext(ct
 	return o
 }
 
-func (o MlflowExperimentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MlflowExperiment] {
-	return pulumix.Output[[]*MlflowExperiment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MlflowExperimentArrayOutput) Index(i pulumi.IntInput) MlflowExperimentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MlflowExperiment {
 		return vs[0].([]*MlflowExperiment)[vs[1].(int)]
@@ -350,12 +319,6 @@ func (o MlflowExperimentMapOutput) ToMlflowExperimentMapOutput() MlflowExperimen
 
 func (o MlflowExperimentMapOutput) ToMlflowExperimentMapOutputWithContext(ctx context.Context) MlflowExperimentMapOutput {
 	return o
-}
-
-func (o MlflowExperimentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MlflowExperiment] {
-	return pulumix.Output[map[string]*MlflowExperiment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MlflowExperimentMapOutput) MapIndex(k pulumi.StringInput) MlflowExperimentOutput {

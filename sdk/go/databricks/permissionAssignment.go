@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type PermissionAssignment struct {
@@ -103,12 +102,6 @@ func (i *PermissionAssignment) ToPermissionAssignmentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionAssignmentOutput)
 }
 
-func (i *PermissionAssignment) ToOutput(ctx context.Context) pulumix.Output[*PermissionAssignment] {
-	return pulumix.Output[*PermissionAssignment]{
-		OutputState: i.ToPermissionAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PermissionAssignmentArrayInput is an input type that accepts PermissionAssignmentArray and PermissionAssignmentArrayOutput values.
 // You can construct a concrete instance of `PermissionAssignmentArrayInput` via:
 //
@@ -132,12 +125,6 @@ func (i PermissionAssignmentArray) ToPermissionAssignmentArrayOutput() Permissio
 
 func (i PermissionAssignmentArray) ToPermissionAssignmentArrayOutputWithContext(ctx context.Context) PermissionAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionAssignmentArrayOutput)
-}
-
-func (i PermissionAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionAssignment] {
-	return pulumix.Output[[]*PermissionAssignment]{
-		OutputState: i.ToPermissionAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PermissionAssignmentMapInput is an input type that accepts PermissionAssignmentMap and PermissionAssignmentMapOutput values.
@@ -165,12 +152,6 @@ func (i PermissionAssignmentMap) ToPermissionAssignmentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionAssignmentMapOutput)
 }
 
-func (i PermissionAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionAssignment] {
-	return pulumix.Output[map[string]*PermissionAssignment]{
-		OutputState: i.ToPermissionAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PermissionAssignmentOutput struct{ *pulumi.OutputState }
 
 func (PermissionAssignmentOutput) ElementType() reflect.Type {
@@ -183,12 +164,6 @@ func (o PermissionAssignmentOutput) ToPermissionAssignmentOutput() PermissionAss
 
 func (o PermissionAssignmentOutput) ToPermissionAssignmentOutputWithContext(ctx context.Context) PermissionAssignmentOutput {
 	return o
-}
-
-func (o PermissionAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*PermissionAssignment] {
-	return pulumix.Output[*PermissionAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
@@ -213,12 +188,6 @@ func (o PermissionAssignmentArrayOutput) ToPermissionAssignmentArrayOutputWithCo
 	return o
 }
 
-func (o PermissionAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionAssignment] {
-	return pulumix.Output[[]*PermissionAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PermissionAssignmentArrayOutput) Index(i pulumi.IntInput) PermissionAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PermissionAssignment {
 		return vs[0].([]*PermissionAssignment)[vs[1].(int)]
@@ -237,12 +206,6 @@ func (o PermissionAssignmentMapOutput) ToPermissionAssignmentMapOutput() Permiss
 
 func (o PermissionAssignmentMapOutput) ToPermissionAssignmentMapOutputWithContext(ctx context.Context) PermissionAssignmentMapOutput {
 	return o
-}
-
-func (o PermissionAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionAssignment] {
-	return pulumix.Output[map[string]*PermissionAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PermissionAssignmentMapOutput) MapIndex(k pulumi.StringInput) PermissionAssignmentOutput {

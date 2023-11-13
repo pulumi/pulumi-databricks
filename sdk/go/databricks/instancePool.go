@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances. An instance pool reduces cluster start and auto-scaling times by maintaining a set of idle, ready-to-use cloud instances. When a cluster attached to a pool needs an instance, it first attempts to allocate one of the pool’s idle instances. If the pool has no idle instances, it expands by allocating a new instance from the instance provider in order to accommodate the cluster’s request. When a cluster releases an instance, it returns to the pool and is free for another cluster to use. Only clusters attached to a pool can use that pool’s idle instances.
@@ -326,12 +325,6 @@ func (i *InstancePool) ToInstancePoolOutputWithContext(ctx context.Context) Inst
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolOutput)
 }
 
-func (i *InstancePool) ToOutput(ctx context.Context) pulumix.Output[*InstancePool] {
-	return pulumix.Output[*InstancePool]{
-		OutputState: i.ToInstancePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstancePoolArrayInput is an input type that accepts InstancePoolArray and InstancePoolArrayOutput values.
 // You can construct a concrete instance of `InstancePoolArrayInput` via:
 //
@@ -355,12 +348,6 @@ func (i InstancePoolArray) ToInstancePoolArrayOutput() InstancePoolArrayOutput {
 
 func (i InstancePoolArray) ToInstancePoolArrayOutputWithContext(ctx context.Context) InstancePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolArrayOutput)
-}
-
-func (i InstancePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstancePool] {
-	return pulumix.Output[[]*InstancePool]{
-		OutputState: i.ToInstancePoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstancePoolMapInput is an input type that accepts InstancePoolMap and InstancePoolMapOutput values.
@@ -388,12 +375,6 @@ func (i InstancePoolMap) ToInstancePoolMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePoolMapOutput)
 }
 
-func (i InstancePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstancePool] {
-	return pulumix.Output[map[string]*InstancePool]{
-		OutputState: i.ToInstancePoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstancePoolOutput struct{ *pulumi.OutputState }
 
 func (InstancePoolOutput) ElementType() reflect.Type {
@@ -406,12 +387,6 @@ func (o InstancePoolOutput) ToInstancePoolOutput() InstancePoolOutput {
 
 func (o InstancePoolOutput) ToInstancePoolOutputWithContext(ctx context.Context) InstancePoolOutput {
 	return o
-}
-
-func (o InstancePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*InstancePool] {
-	return pulumix.Output[*InstancePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstancePoolOutput) AwsAttributes() InstancePoolAwsAttributesPtrOutput {
@@ -498,12 +473,6 @@ func (o InstancePoolArrayOutput) ToInstancePoolArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o InstancePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstancePool] {
-	return pulumix.Output[[]*InstancePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstancePoolArrayOutput) Index(i pulumi.IntInput) InstancePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstancePool {
 		return vs[0].([]*InstancePool)[vs[1].(int)]
@@ -522,12 +491,6 @@ func (o InstancePoolMapOutput) ToInstancePoolMapOutput() InstancePoolMapOutput {
 
 func (o InstancePoolMapOutput) ToInstancePoolMapOutputWithContext(ctx context.Context) InstancePoolMapOutput {
 	return o
-}
-
-func (o InstancePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstancePool] {
-	return pulumix.Output[map[string]*InstancePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstancePoolMapOutput) MapIndex(k pulumi.StringInput) InstancePoolOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Exported attributes
@@ -80,12 +79,6 @@ func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutput() GetCurrentUse
 
 func (o GetCurrentUserResultOutput) ToGetCurrentUserResultOutputWithContext(ctx context.Context) GetCurrentUserResultOutput {
 	return o
-}
-
-func (o GetCurrentUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCurrentUserResult] {
-	return pulumix.Output[GetCurrentUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCurrentUserResultOutput) AclPrincipalId() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
@@ -442,12 +441,6 @@ func (i *AccessControlRuleSet) ToAccessControlRuleSetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRuleSetOutput)
 }
 
-func (i *AccessControlRuleSet) ToOutput(ctx context.Context) pulumix.Output[*AccessControlRuleSet] {
-	return pulumix.Output[*AccessControlRuleSet]{
-		OutputState: i.ToAccessControlRuleSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessControlRuleSetArrayInput is an input type that accepts AccessControlRuleSetArray and AccessControlRuleSetArrayOutput values.
 // You can construct a concrete instance of `AccessControlRuleSetArrayInput` via:
 //
@@ -471,12 +464,6 @@ func (i AccessControlRuleSetArray) ToAccessControlRuleSetArrayOutput() AccessCon
 
 func (i AccessControlRuleSetArray) ToAccessControlRuleSetArrayOutputWithContext(ctx context.Context) AccessControlRuleSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRuleSetArrayOutput)
-}
-
-func (i AccessControlRuleSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessControlRuleSet] {
-	return pulumix.Output[[]*AccessControlRuleSet]{
-		OutputState: i.ToAccessControlRuleSetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessControlRuleSetMapInput is an input type that accepts AccessControlRuleSetMap and AccessControlRuleSetMapOutput values.
@@ -504,12 +491,6 @@ func (i AccessControlRuleSetMap) ToAccessControlRuleSetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AccessControlRuleSetMapOutput)
 }
 
-func (i AccessControlRuleSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessControlRuleSet] {
-	return pulumix.Output[map[string]*AccessControlRuleSet]{
-		OutputState: i.ToAccessControlRuleSetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessControlRuleSetOutput struct{ *pulumi.OutputState }
 
 func (AccessControlRuleSetOutput) ElementType() reflect.Type {
@@ -522,12 +503,6 @@ func (o AccessControlRuleSetOutput) ToAccessControlRuleSetOutput() AccessControl
 
 func (o AccessControlRuleSetOutput) ToAccessControlRuleSetOutputWithContext(ctx context.Context) AccessControlRuleSetOutput {
 	return o
-}
-
-func (o AccessControlRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessControlRuleSet] {
-	return pulumix.Output[*AccessControlRuleSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessControlRuleSetOutput) Etag() pulumi.StringOutput {
@@ -563,12 +538,6 @@ func (o AccessControlRuleSetArrayOutput) ToAccessControlRuleSetArrayOutputWithCo
 	return o
 }
 
-func (o AccessControlRuleSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessControlRuleSet] {
-	return pulumix.Output[[]*AccessControlRuleSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessControlRuleSetArrayOutput) Index(i pulumi.IntInput) AccessControlRuleSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessControlRuleSet {
 		return vs[0].([]*AccessControlRuleSet)[vs[1].(int)]
@@ -587,12 +556,6 @@ func (o AccessControlRuleSetMapOutput) ToAccessControlRuleSetMapOutput() AccessC
 
 func (o AccessControlRuleSetMapOutput) ToAccessControlRuleSetMapOutputWithContext(ctx context.Context) AccessControlRuleSetMapOutput {
 	return o
-}
-
-func (o AccessControlRuleSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessControlRuleSet] {
-	return pulumix.Output[map[string]*AccessControlRuleSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessControlRuleSetMapOutput) MapIndex(k pulumi.StringInput) AccessControlRuleSetOutput {

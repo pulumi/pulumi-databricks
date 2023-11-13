@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Related Resources
@@ -83,12 +82,6 @@ func (o LookupMetastoreResultOutput) ToLookupMetastoreResultOutput() LookupMetas
 
 func (o LookupMetastoreResultOutput) ToLookupMetastoreResultOutputWithContext(ctx context.Context) LookupMetastoreResultOutput {
 	return o
-}
-
-func (o LookupMetastoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetastoreResult] {
-	return pulumix.Output[LookupMetastoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
