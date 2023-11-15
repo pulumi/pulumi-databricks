@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -189,12 +188,6 @@ func (i *RegisteredModel) ToRegisteredModelOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredModelOutput)
 }
 
-func (i *RegisteredModel) ToOutput(ctx context.Context) pulumix.Output[*RegisteredModel] {
-	return pulumix.Output[*RegisteredModel]{
-		OutputState: i.ToRegisteredModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegisteredModelArrayInput is an input type that accepts RegisteredModelArray and RegisteredModelArrayOutput values.
 // You can construct a concrete instance of `RegisteredModelArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i RegisteredModelArray) ToRegisteredModelArrayOutput() RegisteredModelArra
 
 func (i RegisteredModelArray) ToRegisteredModelArrayOutputWithContext(ctx context.Context) RegisteredModelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredModelArrayOutput)
-}
-
-func (i RegisteredModelArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegisteredModel] {
-	return pulumix.Output[[]*RegisteredModel]{
-		OutputState: i.ToRegisteredModelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegisteredModelMapInput is an input type that accepts RegisteredModelMap and RegisteredModelMapOutput values.
@@ -251,12 +238,6 @@ func (i RegisteredModelMap) ToRegisteredModelMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredModelMapOutput)
 }
 
-func (i RegisteredModelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegisteredModel] {
-	return pulumix.Output[map[string]*RegisteredModel]{
-		OutputState: i.ToRegisteredModelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegisteredModelOutput struct{ *pulumi.OutputState }
 
 func (RegisteredModelOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o RegisteredModelOutput) ToRegisteredModelOutput() RegisteredModelOutput {
 
 func (o RegisteredModelOutput) ToRegisteredModelOutputWithContext(ctx context.Context) RegisteredModelOutput {
 	return o
-}
-
-func (o RegisteredModelOutput) ToOutput(ctx context.Context) pulumix.Output[*RegisteredModel] {
-	return pulumix.Output[*RegisteredModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the catalog where the schema and the registered model reside.
@@ -315,12 +290,6 @@ func (o RegisteredModelArrayOutput) ToRegisteredModelArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RegisteredModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegisteredModel] {
-	return pulumix.Output[[]*RegisteredModel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegisteredModelArrayOutput) Index(i pulumi.IntInput) RegisteredModelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegisteredModel {
 		return vs[0].([]*RegisteredModel)[vs[1].(int)]
@@ -339,12 +308,6 @@ func (o RegisteredModelMapOutput) ToRegisteredModelMapOutput() RegisteredModelMa
 
 func (o RegisteredModelMapOutput) ToRegisteredModelMapOutputWithContext(ctx context.Context) RegisteredModelMapOutput {
 	return o
-}
-
-func (o RegisteredModelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegisteredModel] {
-	return pulumix.Output[map[string]*RegisteredModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegisteredModelMapOutput) MapIndex(k pulumi.StringInput) RegisteredModelOutput {

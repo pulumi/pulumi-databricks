@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -104,12 +103,6 @@ func (o GetCatalogsResultOutput) ToGetCatalogsResultOutput() GetCatalogsResultOu
 
 func (o GetCatalogsResultOutput) ToGetCatalogsResultOutputWithContext(ctx context.Context) GetCatalogsResultOutput {
 	return o
-}
-
-func (o GetCatalogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCatalogsResult] {
-	return pulumix.Output[GetCatalogsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

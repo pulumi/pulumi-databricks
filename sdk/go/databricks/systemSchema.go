@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Public Preview** This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
@@ -154,12 +153,6 @@ func (i *SystemSchema) ToSystemSchemaOutputWithContext(ctx context.Context) Syst
 	return pulumi.ToOutputWithContext(ctx, i).(SystemSchemaOutput)
 }
 
-func (i *SystemSchema) ToOutput(ctx context.Context) pulumix.Output[*SystemSchema] {
-	return pulumix.Output[*SystemSchema]{
-		OutputState: i.ToSystemSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SystemSchemaArrayInput is an input type that accepts SystemSchemaArray and SystemSchemaArrayOutput values.
 // You can construct a concrete instance of `SystemSchemaArrayInput` via:
 //
@@ -183,12 +176,6 @@ func (i SystemSchemaArray) ToSystemSchemaArrayOutput() SystemSchemaArrayOutput {
 
 func (i SystemSchemaArray) ToSystemSchemaArrayOutputWithContext(ctx context.Context) SystemSchemaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SystemSchemaArrayOutput)
-}
-
-func (i SystemSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]*SystemSchema] {
-	return pulumix.Output[[]*SystemSchema]{
-		OutputState: i.ToSystemSchemaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SystemSchemaMapInput is an input type that accepts SystemSchemaMap and SystemSchemaMapOutput values.
@@ -216,12 +203,6 @@ func (i SystemSchemaMap) ToSystemSchemaMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SystemSchemaMapOutput)
 }
 
-func (i SystemSchemaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemSchema] {
-	return pulumix.Output[map[string]*SystemSchema]{
-		OutputState: i.ToSystemSchemaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemSchemaOutput struct{ *pulumi.OutputState }
 
 func (SystemSchemaOutput) ElementType() reflect.Type {
@@ -234,12 +215,6 @@ func (o SystemSchemaOutput) ToSystemSchemaOutput() SystemSchemaOutput {
 
 func (o SystemSchemaOutput) ToSystemSchemaOutputWithContext(ctx context.Context) SystemSchemaOutput {
 	return o
-}
-
-func (o SystemSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemSchema] {
-	return pulumix.Output[*SystemSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemSchemaOutput) MetastoreId() pulumi.StringOutput {
@@ -270,12 +245,6 @@ func (o SystemSchemaArrayOutput) ToSystemSchemaArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SystemSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SystemSchema] {
-	return pulumix.Output[[]*SystemSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SystemSchemaArrayOutput) Index(i pulumi.IntInput) SystemSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SystemSchema {
 		return vs[0].([]*SystemSchema)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o SystemSchemaMapOutput) ToSystemSchemaMapOutput() SystemSchemaMapOutput {
 
 func (o SystemSchemaMapOutput) ToSystemSchemaMapOutputWithContext(ctx context.Context) SystemSchemaMapOutput {
 	return o
-}
-
-func (o SystemSchemaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SystemSchema] {
-	return pulumix.Output[map[string]*SystemSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemSchemaMapOutput) MapIndex(k pulumi.StringInput) SystemSchemaOutput {

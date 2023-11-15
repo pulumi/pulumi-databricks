@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -133,12 +132,6 @@ func (i *OboToken) ToOboTokenOutputWithContext(ctx context.Context) OboTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OboTokenOutput)
 }
 
-func (i *OboToken) ToOutput(ctx context.Context) pulumix.Output[*OboToken] {
-	return pulumix.Output[*OboToken]{
-		OutputState: i.ToOboTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OboTokenArrayInput is an input type that accepts OboTokenArray and OboTokenArrayOutput values.
 // You can construct a concrete instance of `OboTokenArrayInput` via:
 //
@@ -162,12 +155,6 @@ func (i OboTokenArray) ToOboTokenArrayOutput() OboTokenArrayOutput {
 
 func (i OboTokenArray) ToOboTokenArrayOutputWithContext(ctx context.Context) OboTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OboTokenArrayOutput)
-}
-
-func (i OboTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*OboToken] {
-	return pulumix.Output[[]*OboToken]{
-		OutputState: i.ToOboTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OboTokenMapInput is an input type that accepts OboTokenMap and OboTokenMapOutput values.
@@ -195,12 +182,6 @@ func (i OboTokenMap) ToOboTokenMapOutputWithContext(ctx context.Context) OboToke
 	return pulumi.ToOutputWithContext(ctx, i).(OboTokenMapOutput)
 }
 
-func (i OboTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OboToken] {
-	return pulumix.Output[map[string]*OboToken]{
-		OutputState: i.ToOboTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OboTokenOutput struct{ *pulumi.OutputState }
 
 func (OboTokenOutput) ElementType() reflect.Type {
@@ -213,12 +194,6 @@ func (o OboTokenOutput) ToOboTokenOutput() OboTokenOutput {
 
 func (o OboTokenOutput) ToOboTokenOutputWithContext(ctx context.Context) OboTokenOutput {
 	return o
-}
-
-func (o OboTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*OboToken] {
-	return pulumix.Output[*OboToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application ID of ServicePrincipal to create a PAT token for.
@@ -255,12 +230,6 @@ func (o OboTokenArrayOutput) ToOboTokenArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o OboTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OboToken] {
-	return pulumix.Output[[]*OboToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OboTokenArrayOutput) Index(i pulumi.IntInput) OboTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OboToken {
 		return vs[0].([]*OboToken)[vs[1].(int)]
@@ -279,12 +248,6 @@ func (o OboTokenMapOutput) ToOboTokenMapOutput() OboTokenMapOutput {
 
 func (o OboTokenMapOutput) ToOboTokenMapOutputWithContext(ctx context.Context) OboTokenMapOutput {
 	return o
-}
-
-func (o OboTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OboToken] {
-	return pulumix.Output[map[string]*OboToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OboTokenMapOutput) MapIndex(k pulumi.StringInput) OboTokenOutput {

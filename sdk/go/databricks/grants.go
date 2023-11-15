@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Grants struct {
@@ -160,12 +159,6 @@ func (i *Grants) ToGrantsOutputWithContext(ctx context.Context) GrantsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantsOutput)
 }
 
-func (i *Grants) ToOutput(ctx context.Context) pulumix.Output[*Grants] {
-	return pulumix.Output[*Grants]{
-		OutputState: i.ToGrantsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GrantsArrayInput is an input type that accepts GrantsArray and GrantsArrayOutput values.
 // You can construct a concrete instance of `GrantsArrayInput` via:
 //
@@ -189,12 +182,6 @@ func (i GrantsArray) ToGrantsArrayOutput() GrantsArrayOutput {
 
 func (i GrantsArray) ToGrantsArrayOutputWithContext(ctx context.Context) GrantsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantsArrayOutput)
-}
-
-func (i GrantsArray) ToOutput(ctx context.Context) pulumix.Output[[]*Grants] {
-	return pulumix.Output[[]*Grants]{
-		OutputState: i.ToGrantsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GrantsMapInput is an input type that accepts GrantsMap and GrantsMapOutput values.
@@ -222,12 +209,6 @@ func (i GrantsMap) ToGrantsMapOutputWithContext(ctx context.Context) GrantsMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(GrantsMapOutput)
 }
 
-func (i GrantsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Grants] {
-	return pulumix.Output[map[string]*Grants]{
-		OutputState: i.ToGrantsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GrantsOutput struct{ *pulumi.OutputState }
 
 func (GrantsOutput) ElementType() reflect.Type {
@@ -240,12 +221,6 @@ func (o GrantsOutput) ToGrantsOutput() GrantsOutput {
 
 func (o GrantsOutput) ToGrantsOutputWithContext(ctx context.Context) GrantsOutput {
 	return o
-}
-
-func (o GrantsOutput) ToOutput(ctx context.Context) pulumix.Output[*Grants] {
-	return pulumix.Output[*Grants]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrantsOutput) Catalog() pulumi.StringPtrOutput {
@@ -318,12 +293,6 @@ func (o GrantsArrayOutput) ToGrantsArrayOutputWithContext(ctx context.Context) G
 	return o
 }
 
-func (o GrantsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Grants] {
-	return pulumix.Output[[]*Grants]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GrantsArrayOutput) Index(i pulumi.IntInput) GrantsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Grants {
 		return vs[0].([]*Grants)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o GrantsMapOutput) ToGrantsMapOutput() GrantsMapOutput {
 
 func (o GrantsMapOutput) ToGrantsMapOutputWithContext(ctx context.Context) GrantsMapOutput {
 	return o
-}
-
-func (o GrantsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Grants] {
-	return pulumix.Output[map[string]*Grants]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GrantsMapOutput) MapIndex(k pulumi.StringInput) GrantsOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -125,12 +124,6 @@ func (o LookupShareResultOutput) ToLookupShareResultOutput() LookupShareResultOu
 
 func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx context.Context) LookupShareResultOutput {
 	return o
-}
-
-func (o LookupShareResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupShareResult] {
-	return pulumix.Output[LookupShareResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time when the share was created.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -185,12 +184,6 @@ func (i *ArtifactAllowlist) ToArtifactAllowlistOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactAllowlistOutput)
 }
 
-func (i *ArtifactAllowlist) ToOutput(ctx context.Context) pulumix.Output[*ArtifactAllowlist] {
-	return pulumix.Output[*ArtifactAllowlist]{
-		OutputState: i.ToArtifactAllowlistOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ArtifactAllowlistArrayInput is an input type that accepts ArtifactAllowlistArray and ArtifactAllowlistArrayOutput values.
 // You can construct a concrete instance of `ArtifactAllowlistArrayInput` via:
 //
@@ -214,12 +207,6 @@ func (i ArtifactAllowlistArray) ToArtifactAllowlistArrayOutput() ArtifactAllowli
 
 func (i ArtifactAllowlistArray) ToArtifactAllowlistArrayOutputWithContext(ctx context.Context) ArtifactAllowlistArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactAllowlistArrayOutput)
-}
-
-func (i ArtifactAllowlistArray) ToOutput(ctx context.Context) pulumix.Output[[]*ArtifactAllowlist] {
-	return pulumix.Output[[]*ArtifactAllowlist]{
-		OutputState: i.ToArtifactAllowlistArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ArtifactAllowlistMapInput is an input type that accepts ArtifactAllowlistMap and ArtifactAllowlistMapOutput values.
@@ -247,12 +234,6 @@ func (i ArtifactAllowlistMap) ToArtifactAllowlistMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactAllowlistMapOutput)
 }
 
-func (i ArtifactAllowlistMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ArtifactAllowlist] {
-	return pulumix.Output[map[string]*ArtifactAllowlist]{
-		OutputState: i.ToArtifactAllowlistMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArtifactAllowlistOutput struct{ *pulumi.OutputState }
 
 func (ArtifactAllowlistOutput) ElementType() reflect.Type {
@@ -265,12 +246,6 @@ func (o ArtifactAllowlistOutput) ToArtifactAllowlistOutput() ArtifactAllowlistOu
 
 func (o ArtifactAllowlistOutput) ToArtifactAllowlistOutputWithContext(ctx context.Context) ArtifactAllowlistOutput {
 	return o
-}
-
-func (o ArtifactAllowlistOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactAllowlist] {
-	return pulumix.Output[*ArtifactAllowlist]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactAllowlistOutput) ArtifactMatchers() ArtifactAllowlistArtifactMatcherArrayOutput {
@@ -311,12 +286,6 @@ func (o ArtifactAllowlistArrayOutput) ToArtifactAllowlistArrayOutputWithContext(
 	return o
 }
 
-func (o ArtifactAllowlistArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ArtifactAllowlist] {
-	return pulumix.Output[[]*ArtifactAllowlist]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArtifactAllowlistArrayOutput) Index(i pulumi.IntInput) ArtifactAllowlistOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ArtifactAllowlist {
 		return vs[0].([]*ArtifactAllowlist)[vs[1].(int)]
@@ -335,12 +304,6 @@ func (o ArtifactAllowlistMapOutput) ToArtifactAllowlistMapOutput() ArtifactAllow
 
 func (o ArtifactAllowlistMapOutput) ToArtifactAllowlistMapOutputWithContext(ctx context.Context) ArtifactAllowlistMapOutput {
 	return o
-}
-
-func (o ArtifactAllowlistMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ArtifactAllowlist] {
-	return pulumix.Output[map[string]*ArtifactAllowlist]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactAllowlistMapOutput) MapIndex(k pulumi.StringInput) ArtifactAllowlistOutput {

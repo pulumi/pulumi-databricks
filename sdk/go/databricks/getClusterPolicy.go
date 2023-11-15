@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -148,12 +147,6 @@ func (o LookupClusterPolicyResultOutput) ToLookupClusterPolicyResultOutput() Loo
 
 func (o LookupClusterPolicyResultOutput) ToLookupClusterPolicyResultOutputWithContext(ctx context.Context) LookupClusterPolicyResultOutput {
 	return o
-}
-
-func (o LookupClusterPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterPolicyResult] {
-	return pulumix.Output[LookupClusterPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).

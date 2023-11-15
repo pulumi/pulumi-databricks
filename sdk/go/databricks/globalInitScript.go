@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -145,12 +144,6 @@ func (i *GlobalInitScript) ToGlobalInitScriptOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalInitScriptOutput)
 }
 
-func (i *GlobalInitScript) ToOutput(ctx context.Context) pulumix.Output[*GlobalInitScript] {
-	return pulumix.Output[*GlobalInitScript]{
-		OutputState: i.ToGlobalInitScriptOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GlobalInitScriptArrayInput is an input type that accepts GlobalInitScriptArray and GlobalInitScriptArrayOutput values.
 // You can construct a concrete instance of `GlobalInitScriptArrayInput` via:
 //
@@ -174,12 +167,6 @@ func (i GlobalInitScriptArray) ToGlobalInitScriptArrayOutput() GlobalInitScriptA
 
 func (i GlobalInitScriptArray) ToGlobalInitScriptArrayOutputWithContext(ctx context.Context) GlobalInitScriptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalInitScriptArrayOutput)
-}
-
-func (i GlobalInitScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalInitScript] {
-	return pulumix.Output[[]*GlobalInitScript]{
-		OutputState: i.ToGlobalInitScriptArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GlobalInitScriptMapInput is an input type that accepts GlobalInitScriptMap and GlobalInitScriptMapOutput values.
@@ -207,12 +194,6 @@ func (i GlobalInitScriptMap) ToGlobalInitScriptMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalInitScriptMapOutput)
 }
 
-func (i GlobalInitScriptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalInitScript] {
-	return pulumix.Output[map[string]*GlobalInitScript]{
-		OutputState: i.ToGlobalInitScriptMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalInitScriptOutput struct{ *pulumi.OutputState }
 
 func (GlobalInitScriptOutput) ElementType() reflect.Type {
@@ -225,12 +206,6 @@ func (o GlobalInitScriptOutput) ToGlobalInitScriptOutput() GlobalInitScriptOutpu
 
 func (o GlobalInitScriptOutput) ToGlobalInitScriptOutputWithContext(ctx context.Context) GlobalInitScriptOutput {
 	return o
-}
-
-func (o GlobalInitScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalInitScript] {
-	return pulumix.Output[*GlobalInitScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalInitScriptOutput) ContentBase64() pulumi.StringPtrOutput {
@@ -275,12 +250,6 @@ func (o GlobalInitScriptArrayOutput) ToGlobalInitScriptArrayOutputWithContext(ct
 	return o
 }
 
-func (o GlobalInitScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalInitScript] {
-	return pulumix.Output[[]*GlobalInitScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GlobalInitScriptArrayOutput) Index(i pulumi.IntInput) GlobalInitScriptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalInitScript {
 		return vs[0].([]*GlobalInitScript)[vs[1].(int)]
@@ -299,12 +268,6 @@ func (o GlobalInitScriptMapOutput) ToGlobalInitScriptMapOutput() GlobalInitScrip
 
 func (o GlobalInitScriptMapOutput) ToGlobalInitScriptMapOutputWithContext(ctx context.Context) GlobalInitScriptMapOutput {
 	return o
-}
-
-func (o GlobalInitScriptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalInitScript] {
-	return pulumix.Output[map[string]*GlobalInitScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalInitScriptMapOutput) MapIndex(k pulumi.StringInput) GlobalInitScriptOutput {

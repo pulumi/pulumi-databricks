@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -318,12 +317,6 @@ func (i *MwsWorkspaces) ToMwsWorkspacesOutputWithContext(ctx context.Context) Mw
 	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesOutput)
 }
 
-func (i *MwsWorkspaces) ToOutput(ctx context.Context) pulumix.Output[*MwsWorkspaces] {
-	return pulumix.Output[*MwsWorkspaces]{
-		OutputState: i.ToMwsWorkspacesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MwsWorkspacesArrayInput is an input type that accepts MwsWorkspacesArray and MwsWorkspacesArrayOutput values.
 // You can construct a concrete instance of `MwsWorkspacesArrayInput` via:
 //
@@ -347,12 +340,6 @@ func (i MwsWorkspacesArray) ToMwsWorkspacesArrayOutput() MwsWorkspacesArrayOutpu
 
 func (i MwsWorkspacesArray) ToMwsWorkspacesArrayOutputWithContext(ctx context.Context) MwsWorkspacesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesArrayOutput)
-}
-
-func (i MwsWorkspacesArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsWorkspaces] {
-	return pulumix.Output[[]*MwsWorkspaces]{
-		OutputState: i.ToMwsWorkspacesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MwsWorkspacesMapInput is an input type that accepts MwsWorkspacesMap and MwsWorkspacesMapOutput values.
@@ -380,12 +367,6 @@ func (i MwsWorkspacesMap) ToMwsWorkspacesMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MwsWorkspacesMapOutput)
 }
 
-func (i MwsWorkspacesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsWorkspaces] {
-	return pulumix.Output[map[string]*MwsWorkspaces]{
-		OutputState: i.ToMwsWorkspacesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MwsWorkspacesOutput struct{ *pulumi.OutputState }
 
 func (MwsWorkspacesOutput) ElementType() reflect.Type {
@@ -398,12 +379,6 @@ func (o MwsWorkspacesOutput) ToMwsWorkspacesOutput() MwsWorkspacesOutput {
 
 func (o MwsWorkspacesOutput) ToMwsWorkspacesOutputWithContext(ctx context.Context) MwsWorkspacesOutput {
 	return o
-}
-
-func (o MwsWorkspacesOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsWorkspaces] {
-	return pulumix.Output[*MwsWorkspaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -538,12 +513,6 @@ func (o MwsWorkspacesArrayOutput) ToMwsWorkspacesArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o MwsWorkspacesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsWorkspaces] {
-	return pulumix.Output[[]*MwsWorkspaces]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MwsWorkspacesArrayOutput) Index(i pulumi.IntInput) MwsWorkspacesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsWorkspaces {
 		return vs[0].([]*MwsWorkspaces)[vs[1].(int)]
@@ -562,12 +531,6 @@ func (o MwsWorkspacesMapOutput) ToMwsWorkspacesMapOutput() MwsWorkspacesMapOutpu
 
 func (o MwsWorkspacesMapOutput) ToMwsWorkspacesMapOutputWithContext(ctx context.Context) MwsWorkspacesMapOutput {
 	return o
-}
-
-func (o MwsWorkspacesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsWorkspaces] {
-	return pulumix.Output[map[string]*MwsWorkspaces]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MwsWorkspacesMapOutput) MapIndex(k pulumi.StringInput) MwsWorkspacesOutput {

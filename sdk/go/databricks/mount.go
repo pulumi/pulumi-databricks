@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -150,12 +149,6 @@ func (i *Mount) ToMountOutputWithContext(ctx context.Context) MountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MountOutput)
 }
 
-func (i *Mount) ToOutput(ctx context.Context) pulumix.Output[*Mount] {
-	return pulumix.Output[*Mount]{
-		OutputState: i.ToMountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MountArrayInput is an input type that accepts MountArray and MountArrayOutput values.
 // You can construct a concrete instance of `MountArrayInput` via:
 //
@@ -179,12 +172,6 @@ func (i MountArray) ToMountArrayOutput() MountArrayOutput {
 
 func (i MountArray) ToMountArrayOutputWithContext(ctx context.Context) MountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MountArrayOutput)
-}
-
-func (i MountArray) ToOutput(ctx context.Context) pulumix.Output[[]*Mount] {
-	return pulumix.Output[[]*Mount]{
-		OutputState: i.ToMountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MountMapInput is an input type that accepts MountMap and MountMapOutput values.
@@ -212,12 +199,6 @@ func (i MountMap) ToMountMapOutputWithContext(ctx context.Context) MountMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MountMapOutput)
 }
 
-func (i MountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Mount] {
-	return pulumix.Output[map[string]*Mount]{
-		OutputState: i.ToMountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MountOutput struct{ *pulumi.OutputState }
 
 func (MountOutput) ElementType() reflect.Type {
@@ -230,12 +211,6 @@ func (o MountOutput) ToMountOutput() MountOutput {
 
 func (o MountOutput) ToMountOutputWithContext(ctx context.Context) MountOutput {
 	return o
-}
-
-func (o MountOutput) ToOutput(ctx context.Context) pulumix.Output[*Mount] {
-	return pulumix.Output[*Mount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MountOutput) Abfs() MountAbfsPtrOutput {
@@ -301,12 +276,6 @@ func (o MountArrayOutput) ToMountArrayOutputWithContext(ctx context.Context) Mou
 	return o
 }
 
-func (o MountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Mount] {
-	return pulumix.Output[[]*Mount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MountArrayOutput) Index(i pulumi.IntInput) MountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Mount {
 		return vs[0].([]*Mount)[vs[1].(int)]
@@ -325,12 +294,6 @@ func (o MountMapOutput) ToMountMapOutput() MountMapOutput {
 
 func (o MountMapOutput) ToMountMapOutputWithContext(ctx context.Context) MountMapOutput {
 	return o
-}
-
-func (o MountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Mount] {
-	return pulumix.Output[map[string]*Mount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MountMapOutput) MapIndex(k pulumi.StringInput) MountOutput {

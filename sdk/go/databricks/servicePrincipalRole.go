@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
@@ -168,12 +167,6 @@ func (i *ServicePrincipalRole) ToServicePrincipalRoleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalRoleOutput)
 }
 
-func (i *ServicePrincipalRole) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalRole] {
-	return pulumix.Output[*ServicePrincipalRole]{
-		OutputState: i.ToServicePrincipalRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalRoleArrayInput is an input type that accepts ServicePrincipalRoleArray and ServicePrincipalRoleArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalRoleArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i ServicePrincipalRoleArray) ToServicePrincipalRoleArrayOutput() ServicePr
 
 func (i ServicePrincipalRoleArray) ToServicePrincipalRoleArrayOutputWithContext(ctx context.Context) ServicePrincipalRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalRoleArrayOutput)
-}
-
-func (i ServicePrincipalRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalRole] {
-	return pulumix.Output[[]*ServicePrincipalRole]{
-		OutputState: i.ToServicePrincipalRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePrincipalRoleMapInput is an input type that accepts ServicePrincipalRoleMap and ServicePrincipalRoleMapOutput values.
@@ -230,12 +217,6 @@ func (i ServicePrincipalRoleMap) ToServicePrincipalRoleMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalRoleMapOutput)
 }
 
-func (i ServicePrincipalRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalRole] {
-	return pulumix.Output[map[string]*ServicePrincipalRole]{
-		OutputState: i.ToServicePrincipalRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePrincipalRoleOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalRoleOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o ServicePrincipalRoleOutput) ToServicePrincipalRoleOutput() ServicePrinci
 
 func (o ServicePrincipalRoleOutput) ToServicePrincipalRoleOutputWithContext(ctx context.Context) ServicePrincipalRoleOutput {
 	return o
-}
-
-func (o ServicePrincipalRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalRole] {
-	return pulumix.Output[*ServicePrincipalRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the id of the role or instance profile resource.
@@ -280,12 +255,6 @@ func (o ServicePrincipalRoleArrayOutput) ToServicePrincipalRoleArrayOutputWithCo
 	return o
 }
 
-func (o ServicePrincipalRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalRole] {
-	return pulumix.Output[[]*ServicePrincipalRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePrincipalRoleArrayOutput) Index(i pulumi.IntInput) ServicePrincipalRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalRole {
 		return vs[0].([]*ServicePrincipalRole)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o ServicePrincipalRoleMapOutput) ToServicePrincipalRoleMapOutput() Service
 
 func (o ServicePrincipalRoleMapOutput) ToServicePrincipalRoleMapOutputWithContext(ctx context.Context) ServicePrincipalRoleMapOutput {
 	return o
-}
-
-func (o ServicePrincipalRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalRole] {
-	return pulumix.Output[map[string]*ServicePrincipalRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalRoleMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalRoleOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -212,12 +211,6 @@ func (o GetNodeTypeResultOutput) ToGetNodeTypeResultOutput() GetNodeTypeResultOu
 
 func (o GetNodeTypeResultOutput) ToGetNodeTypeResultOutputWithContext(ctx context.Context) GetNodeTypeResultOutput {
 	return o
-}
-
-func (o GetNodeTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeTypeResult] {
-	return pulumix.Output[GetNodeTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNodeTypeResultOutput) Category() pulumi.StringPtrOutput {

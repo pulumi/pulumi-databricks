@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource is used to manage [Databricks SQL Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
@@ -211,12 +210,6 @@ func (i *SqlDashboard) ToSqlDashboardOutputWithContext(ctx context.Context) SqlD
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDashboardOutput)
 }
 
-func (i *SqlDashboard) ToOutput(ctx context.Context) pulumix.Output[*SqlDashboard] {
-	return pulumix.Output[*SqlDashboard]{
-		OutputState: i.ToSqlDashboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SqlDashboardArrayInput is an input type that accepts SqlDashboardArray and SqlDashboardArrayOutput values.
 // You can construct a concrete instance of `SqlDashboardArrayInput` via:
 //
@@ -240,12 +233,6 @@ func (i SqlDashboardArray) ToSqlDashboardArrayOutput() SqlDashboardArrayOutput {
 
 func (i SqlDashboardArray) ToSqlDashboardArrayOutputWithContext(ctx context.Context) SqlDashboardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDashboardArrayOutput)
-}
-
-func (i SqlDashboardArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlDashboard] {
-	return pulumix.Output[[]*SqlDashboard]{
-		OutputState: i.ToSqlDashboardArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SqlDashboardMapInput is an input type that accepts SqlDashboardMap and SqlDashboardMapOutput values.
@@ -273,12 +260,6 @@ func (i SqlDashboardMap) ToSqlDashboardMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDashboardMapOutput)
 }
 
-func (i SqlDashboardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlDashboard] {
-	return pulumix.Output[map[string]*SqlDashboard]{
-		OutputState: i.ToSqlDashboardMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlDashboardOutput struct{ *pulumi.OutputState }
 
 func (SqlDashboardOutput) ElementType() reflect.Type {
@@ -291,12 +272,6 @@ func (o SqlDashboardOutput) ToSqlDashboardOutput() SqlDashboardOutput {
 
 func (o SqlDashboardOutput) ToSqlDashboardOutputWithContext(ctx context.Context) SqlDashboardOutput {
 	return o
-}
-
-func (o SqlDashboardOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlDashboard] {
-	return pulumix.Output[*SqlDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlDashboardOutput) CreatedAt() pulumi.StringOutput {
@@ -337,12 +312,6 @@ func (o SqlDashboardArrayOutput) ToSqlDashboardArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SqlDashboardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlDashboard] {
-	return pulumix.Output[[]*SqlDashboard]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlDashboardArrayOutput) Index(i pulumi.IntInput) SqlDashboardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlDashboard {
 		return vs[0].([]*SqlDashboard)[vs[1].(int)]
@@ -361,12 +330,6 @@ func (o SqlDashboardMapOutput) ToSqlDashboardMapOutput() SqlDashboardMapOutput {
 
 func (o SqlDashboardMapOutput) ToSqlDashboardMapOutputWithContext(ctx context.Context) SqlDashboardMapOutput {
 	return o
-}
-
-func (o SqlDashboardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlDashboard] {
-	return pulumix.Output[map[string]*SqlDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlDashboardMapOutput) MapIndex(k pulumi.StringInput) SqlDashboardOutput {

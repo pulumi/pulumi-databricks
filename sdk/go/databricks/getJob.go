@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -126,12 +125,6 @@ func (o LookupJobResultOutput) ToLookupJobResultOutput() LookupJobResultOutput {
 
 func (o LookupJobResultOutput) ToLookupJobResultOutputWithContext(ctx context.Context) LookupJobResultOutput {
 	return o
-}
-
-func (o LookupJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobResult] {
-	return pulumix.Output[LookupJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the id of Job if the resource was matched by name.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -202,12 +201,6 @@ func (i *ModelServing) ToModelServingOutputWithContext(ctx context.Context) Mode
 	return pulumi.ToOutputWithContext(ctx, i).(ModelServingOutput)
 }
 
-func (i *ModelServing) ToOutput(ctx context.Context) pulumix.Output[*ModelServing] {
-	return pulumix.Output[*ModelServing]{
-		OutputState: i.ToModelServingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ModelServingArrayInput is an input type that accepts ModelServingArray and ModelServingArrayOutput values.
 // You can construct a concrete instance of `ModelServingArrayInput` via:
 //
@@ -231,12 +224,6 @@ func (i ModelServingArray) ToModelServingArrayOutput() ModelServingArrayOutput {
 
 func (i ModelServingArray) ToModelServingArrayOutputWithContext(ctx context.Context) ModelServingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelServingArrayOutput)
-}
-
-func (i ModelServingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ModelServing] {
-	return pulumix.Output[[]*ModelServing]{
-		OutputState: i.ToModelServingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ModelServingMapInput is an input type that accepts ModelServingMap and ModelServingMapOutput values.
@@ -264,12 +251,6 @@ func (i ModelServingMap) ToModelServingMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ModelServingMapOutput)
 }
 
-func (i ModelServingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ModelServing] {
-	return pulumix.Output[map[string]*ModelServing]{
-		OutputState: i.ToModelServingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModelServingOutput struct{ *pulumi.OutputState }
 
 func (ModelServingOutput) ElementType() reflect.Type {
@@ -282,12 +263,6 @@ func (o ModelServingOutput) ToModelServingOutput() ModelServingOutput {
 
 func (o ModelServingOutput) ToModelServingOutputWithContext(ctx context.Context) ModelServingOutput {
 	return o
-}
-
-func (o ModelServingOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelServing] {
-	return pulumix.Output[*ModelServing]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The model serving endpoint configuration.
@@ -323,12 +298,6 @@ func (o ModelServingArrayOutput) ToModelServingArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ModelServingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ModelServing] {
-	return pulumix.Output[[]*ModelServing]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ModelServingArrayOutput) Index(i pulumi.IntInput) ModelServingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ModelServing {
 		return vs[0].([]*ModelServing)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o ModelServingMapOutput) ToModelServingMapOutput() ModelServingMapOutput {
 
 func (o ModelServingMapOutput) ToModelServingMapOutputWithContext(ctx context.Context) ModelServingMapOutput {
 	return o
-}
-
-func (o ModelServingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ModelServing] {
-	return pulumix.Output[map[string]*ModelServing]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelServingMapOutput) MapIndex(k pulumi.StringInput) ModelServingOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
@@ -165,12 +164,6 @@ func (i *SqlAlert) ToSqlAlertOutputWithContext(ctx context.Context) SqlAlertOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertOutput)
 }
 
-func (i *SqlAlert) ToOutput(ctx context.Context) pulumix.Output[*SqlAlert] {
-	return pulumix.Output[*SqlAlert]{
-		OutputState: i.ToSqlAlertOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SqlAlertArrayInput is an input type that accepts SqlAlertArray and SqlAlertArrayOutput values.
 // You can construct a concrete instance of `SqlAlertArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i SqlAlertArray) ToSqlAlertArrayOutput() SqlAlertArrayOutput {
 
 func (i SqlAlertArray) ToSqlAlertArrayOutputWithContext(ctx context.Context) SqlAlertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertArrayOutput)
-}
-
-func (i SqlAlertArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlAlert] {
-	return pulumix.Output[[]*SqlAlert]{
-		OutputState: i.ToSqlAlertArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SqlAlertMapInput is an input type that accepts SqlAlertMap and SqlAlertMapOutput values.
@@ -227,12 +214,6 @@ func (i SqlAlertMap) ToSqlAlertMapOutputWithContext(ctx context.Context) SqlAler
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAlertMapOutput)
 }
 
-func (i SqlAlertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlAlert] {
-	return pulumix.Output[map[string]*SqlAlert]{
-		OutputState: i.ToSqlAlertMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlAlertOutput struct{ *pulumi.OutputState }
 
 func (SqlAlertOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o SqlAlertOutput) ToSqlAlertOutput() SqlAlertOutput {
 
 func (o SqlAlertOutput) ToSqlAlertOutputWithContext(ctx context.Context) SqlAlertOutput {
 	return o
-}
-
-func (o SqlAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlAlert] {
-	return pulumix.Output[*SqlAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlAlertOutput) CreatedAt() pulumi.StringOutput {
@@ -300,12 +275,6 @@ func (o SqlAlertArrayOutput) ToSqlAlertArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o SqlAlertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlAlert] {
-	return pulumix.Output[[]*SqlAlert]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlAlertArrayOutput) Index(i pulumi.IntInput) SqlAlertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlAlert {
 		return vs[0].([]*SqlAlert)[vs[1].(int)]
@@ -324,12 +293,6 @@ func (o SqlAlertMapOutput) ToSqlAlertMapOutput() SqlAlertMapOutput {
 
 func (o SqlAlertMapOutput) ToSqlAlertMapOutputWithContext(ctx context.Context) SqlAlertMapOutput {
 	return o
-}
-
-func (o SqlAlertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlAlert] {
-	return pulumix.Output[map[string]*SqlAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlAlertMapOutput) MapIndex(k pulumi.StringInput) SqlAlertOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
@@ -294,12 +293,6 @@ func (i *Entitlements) ToEntitlementsOutputWithContext(ctx context.Context) Enti
 	return pulumi.ToOutputWithContext(ctx, i).(EntitlementsOutput)
 }
 
-func (i *Entitlements) ToOutput(ctx context.Context) pulumix.Output[*Entitlements] {
-	return pulumix.Output[*Entitlements]{
-		OutputState: i.ToEntitlementsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EntitlementsArrayInput is an input type that accepts EntitlementsArray and EntitlementsArrayOutput values.
 // You can construct a concrete instance of `EntitlementsArrayInput` via:
 //
@@ -323,12 +316,6 @@ func (i EntitlementsArray) ToEntitlementsArrayOutput() EntitlementsArrayOutput {
 
 func (i EntitlementsArray) ToEntitlementsArrayOutputWithContext(ctx context.Context) EntitlementsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntitlementsArrayOutput)
-}
-
-func (i EntitlementsArray) ToOutput(ctx context.Context) pulumix.Output[[]*Entitlements] {
-	return pulumix.Output[[]*Entitlements]{
-		OutputState: i.ToEntitlementsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EntitlementsMapInput is an input type that accepts EntitlementsMap and EntitlementsMapOutput values.
@@ -356,12 +343,6 @@ func (i EntitlementsMap) ToEntitlementsMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EntitlementsMapOutput)
 }
 
-func (i EntitlementsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entitlements] {
-	return pulumix.Output[map[string]*Entitlements]{
-		OutputState: i.ToEntitlementsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntitlementsOutput struct{ *pulumi.OutputState }
 
 func (EntitlementsOutput) ElementType() reflect.Type {
@@ -374,12 +355,6 @@ func (o EntitlementsOutput) ToEntitlementsOutput() EntitlementsOutput {
 
 func (o EntitlementsOutput) ToEntitlementsOutputWithContext(ctx context.Context) EntitlementsOutput {
 	return o
-}
-
-func (o EntitlementsOutput) ToOutput(ctx context.Context) pulumix.Output[*Entitlements] {
-	return pulumix.Output[*Entitlements]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
@@ -433,12 +408,6 @@ func (o EntitlementsArrayOutput) ToEntitlementsArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o EntitlementsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Entitlements] {
-	return pulumix.Output[[]*Entitlements]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntitlementsArrayOutput) Index(i pulumi.IntInput) EntitlementsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Entitlements {
 		return vs[0].([]*Entitlements)[vs[1].(int)]
@@ -457,12 +426,6 @@ func (o EntitlementsMapOutput) ToEntitlementsMapOutput() EntitlementsMapOutput {
 
 func (o EntitlementsMapOutput) ToEntitlementsMapOutputWithContext(ctx context.Context) EntitlementsMapOutput {
 	return o
-}
-
-func (o EntitlementsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entitlements] {
-	return pulumix.Output[map[string]*Entitlements]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntitlementsMapOutput) MapIndex(k pulumi.StringInput) EntitlementsOutput {

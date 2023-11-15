@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
@@ -394,12 +393,6 @@ func (i *Library) ToLibraryOutputWithContext(ctx context.Context) LibraryOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LibraryOutput)
 }
 
-func (i *Library) ToOutput(ctx context.Context) pulumix.Output[*Library] {
-	return pulumix.Output[*Library]{
-		OutputState: i.ToLibraryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LibraryArrayInput is an input type that accepts LibraryArray and LibraryArrayOutput values.
 // You can construct a concrete instance of `LibraryArrayInput` via:
 //
@@ -423,12 +416,6 @@ func (i LibraryArray) ToLibraryArrayOutput() LibraryArrayOutput {
 
 func (i LibraryArray) ToLibraryArrayOutputWithContext(ctx context.Context) LibraryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LibraryArrayOutput)
-}
-
-func (i LibraryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Library] {
-	return pulumix.Output[[]*Library]{
-		OutputState: i.ToLibraryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LibraryMapInput is an input type that accepts LibraryMap and LibraryMapOutput values.
@@ -456,12 +443,6 @@ func (i LibraryMap) ToLibraryMapOutputWithContext(ctx context.Context) LibraryMa
 	return pulumi.ToOutputWithContext(ctx, i).(LibraryMapOutput)
 }
 
-func (i LibraryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Library] {
-	return pulumix.Output[map[string]*Library]{
-		OutputState: i.ToLibraryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LibraryOutput struct{ *pulumi.OutputState }
 
 func (LibraryOutput) ElementType() reflect.Type {
@@ -474,12 +455,6 @@ func (o LibraryOutput) ToLibraryOutput() LibraryOutput {
 
 func (o LibraryOutput) ToLibraryOutputWithContext(ctx context.Context) LibraryOutput {
 	return o
-}
-
-func (o LibraryOutput) ToOutput(ctx context.Context) pulumix.Output[*Library] {
-	return pulumix.Output[*Library]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LibraryOutput) ClusterId() pulumi.StringOutput {
@@ -524,12 +499,6 @@ func (o LibraryArrayOutput) ToLibraryArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o LibraryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Library] {
-	return pulumix.Output[[]*Library]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LibraryArrayOutput) Index(i pulumi.IntInput) LibraryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Library {
 		return vs[0].([]*Library)[vs[1].(int)]
@@ -548,12 +517,6 @@ func (o LibraryMapOutput) ToLibraryMapOutput() LibraryMapOutput {
 
 func (o LibraryMapOutput) ToLibraryMapOutputWithContext(ctx context.Context) LibraryMapOutput {
 	return o
-}
-
-func (o LibraryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Library] {
-	return pulumix.Output[map[string]*Library]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LibraryMapOutput) MapIndex(k pulumi.StringInput) LibraryOutput {

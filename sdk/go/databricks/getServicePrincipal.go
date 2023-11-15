@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -170,12 +169,6 @@ func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutput
 
 func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutputWithContext(ctx context.Context) LookupServicePrincipalResultOutput {
 	return o
-}
-
-func (o LookupServicePrincipalResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServicePrincipalResult] {
-	return pulumix.Output[LookupServicePrincipalResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.

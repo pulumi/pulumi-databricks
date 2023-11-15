@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // These resources are invoked in the account context. Permission Assignment Account API endpoints are restricted to account admins. Provider must have `accountId` attribute configured. Account Id that could be found in the bottom left corner of Accounts Console
@@ -263,12 +262,6 @@ func (i *MwsPermissionAssignment) ToMwsPermissionAssignmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPermissionAssignmentOutput)
 }
 
-func (i *MwsPermissionAssignment) ToOutput(ctx context.Context) pulumix.Output[*MwsPermissionAssignment] {
-	return pulumix.Output[*MwsPermissionAssignment]{
-		OutputState: i.ToMwsPermissionAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MwsPermissionAssignmentArrayInput is an input type that accepts MwsPermissionAssignmentArray and MwsPermissionAssignmentArrayOutput values.
 // You can construct a concrete instance of `MwsPermissionAssignmentArrayInput` via:
 //
@@ -292,12 +285,6 @@ func (i MwsPermissionAssignmentArray) ToMwsPermissionAssignmentArrayOutput() Mws
 
 func (i MwsPermissionAssignmentArray) ToMwsPermissionAssignmentArrayOutputWithContext(ctx context.Context) MwsPermissionAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPermissionAssignmentArrayOutput)
-}
-
-func (i MwsPermissionAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsPermissionAssignment] {
-	return pulumix.Output[[]*MwsPermissionAssignment]{
-		OutputState: i.ToMwsPermissionAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MwsPermissionAssignmentMapInput is an input type that accepts MwsPermissionAssignmentMap and MwsPermissionAssignmentMapOutput values.
@@ -325,12 +312,6 @@ func (i MwsPermissionAssignmentMap) ToMwsPermissionAssignmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MwsPermissionAssignmentMapOutput)
 }
 
-func (i MwsPermissionAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsPermissionAssignment] {
-	return pulumix.Output[map[string]*MwsPermissionAssignment]{
-		OutputState: i.ToMwsPermissionAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MwsPermissionAssignmentOutput struct{ *pulumi.OutputState }
 
 func (MwsPermissionAssignmentOutput) ElementType() reflect.Type {
@@ -343,12 +324,6 @@ func (o MwsPermissionAssignmentOutput) ToMwsPermissionAssignmentOutput() MwsPerm
 
 func (o MwsPermissionAssignmentOutput) ToMwsPermissionAssignmentOutputWithContext(ctx context.Context) MwsPermissionAssignmentOutput {
 	return o
-}
-
-func (o MwsPermissionAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsPermissionAssignment] {
-	return pulumix.Output[*MwsPermissionAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of workspace permissions to assign to the principal:
@@ -382,12 +357,6 @@ func (o MwsPermissionAssignmentArrayOutput) ToMwsPermissionAssignmentArrayOutput
 	return o
 }
 
-func (o MwsPermissionAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsPermissionAssignment] {
-	return pulumix.Output[[]*MwsPermissionAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MwsPermissionAssignmentArrayOutput) Index(i pulumi.IntInput) MwsPermissionAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsPermissionAssignment {
 		return vs[0].([]*MwsPermissionAssignment)[vs[1].(int)]
@@ -406,12 +375,6 @@ func (o MwsPermissionAssignmentMapOutput) ToMwsPermissionAssignmentMapOutput() M
 
 func (o MwsPermissionAssignmentMapOutput) ToMwsPermissionAssignmentMapOutputWithContext(ctx context.Context) MwsPermissionAssignmentMapOutput {
 	return o
-}
-
-func (o MwsPermissionAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsPermissionAssignment] {
-	return pulumix.Output[map[string]*MwsPermissionAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MwsPermissionAssignmentMapOutput) MapIndex(k pulumi.StringInput) MwsPermissionAssignmentOutput {

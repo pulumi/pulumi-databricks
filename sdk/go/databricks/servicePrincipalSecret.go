@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ServicePrincipalSecret struct {
@@ -112,12 +111,6 @@ func (i *ServicePrincipalSecret) ToServicePrincipalSecretOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretOutput)
 }
 
-func (i *ServicePrincipalSecret) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalSecret] {
-	return pulumix.Output[*ServicePrincipalSecret]{
-		OutputState: i.ToServicePrincipalSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalSecretArrayInput is an input type that accepts ServicePrincipalSecretArray and ServicePrincipalSecretArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalSecretArrayInput` via:
 //
@@ -141,12 +134,6 @@ func (i ServicePrincipalSecretArray) ToServicePrincipalSecretArrayOutput() Servi
 
 func (i ServicePrincipalSecretArray) ToServicePrincipalSecretArrayOutputWithContext(ctx context.Context) ServicePrincipalSecretArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretArrayOutput)
-}
-
-func (i ServicePrincipalSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalSecret] {
-	return pulumix.Output[[]*ServicePrincipalSecret]{
-		OutputState: i.ToServicePrincipalSecretArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePrincipalSecretMapInput is an input type that accepts ServicePrincipalSecretMap and ServicePrincipalSecretMapOutput values.
@@ -174,12 +161,6 @@ func (i ServicePrincipalSecretMap) ToServicePrincipalSecretMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretMapOutput)
 }
 
-func (i ServicePrincipalSecretMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalSecret] {
-	return pulumix.Output[map[string]*ServicePrincipalSecret]{
-		OutputState: i.ToServicePrincipalSecretMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePrincipalSecretOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalSecretOutput) ElementType() reflect.Type {
@@ -192,12 +173,6 @@ func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutput() ServicePr
 
 func (o ServicePrincipalSecretOutput) ToServicePrincipalSecretOutputWithContext(ctx context.Context) ServicePrincipalSecretOutput {
 	return o
-}
-
-func (o ServicePrincipalSecretOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalSecret] {
-	return pulumix.Output[*ServicePrincipalSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalSecretOutput) Secret() pulumi.StringOutput {
@@ -226,12 +201,6 @@ func (o ServicePrincipalSecretArrayOutput) ToServicePrincipalSecretArrayOutputWi
 	return o
 }
 
-func (o ServicePrincipalSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalSecret] {
-	return pulumix.Output[[]*ServicePrincipalSecret]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePrincipalSecretArrayOutput) Index(i pulumi.IntInput) ServicePrincipalSecretOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalSecret {
 		return vs[0].([]*ServicePrincipalSecret)[vs[1].(int)]
@@ -250,12 +219,6 @@ func (o ServicePrincipalSecretMapOutput) ToServicePrincipalSecretMapOutput() Ser
 
 func (o ServicePrincipalSecretMapOutput) ToServicePrincipalSecretMapOutputWithContext(ctx context.Context) ServicePrincipalSecretMapOutput {
 	return o
-}
-
-func (o ServicePrincipalSecretMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalSecret] {
-	return pulumix.Output[map[string]*ServicePrincipalSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalSecretMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalSecretOutput {

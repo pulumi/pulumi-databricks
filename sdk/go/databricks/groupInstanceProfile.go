@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Deprecated** Please migrate to databricks_group_role.
@@ -170,12 +169,6 @@ func (i *GroupInstanceProfile) ToGroupInstanceProfileOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceProfileOutput)
 }
 
-func (i *GroupInstanceProfile) ToOutput(ctx context.Context) pulumix.Output[*GroupInstanceProfile] {
-	return pulumix.Output[*GroupInstanceProfile]{
-		OutputState: i.ToGroupInstanceProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupInstanceProfileArrayInput is an input type that accepts GroupInstanceProfileArray and GroupInstanceProfileArrayOutput values.
 // You can construct a concrete instance of `GroupInstanceProfileArrayInput` via:
 //
@@ -199,12 +192,6 @@ func (i GroupInstanceProfileArray) ToGroupInstanceProfileArrayOutput() GroupInst
 
 func (i GroupInstanceProfileArray) ToGroupInstanceProfileArrayOutputWithContext(ctx context.Context) GroupInstanceProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceProfileArrayOutput)
-}
-
-func (i GroupInstanceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupInstanceProfile] {
-	return pulumix.Output[[]*GroupInstanceProfile]{
-		OutputState: i.ToGroupInstanceProfileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupInstanceProfileMapInput is an input type that accepts GroupInstanceProfileMap and GroupInstanceProfileMapOutput values.
@@ -232,12 +219,6 @@ func (i GroupInstanceProfileMap) ToGroupInstanceProfileMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceProfileMapOutput)
 }
 
-func (i GroupInstanceProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupInstanceProfile] {
-	return pulumix.Output[map[string]*GroupInstanceProfile]{
-		OutputState: i.ToGroupInstanceProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupInstanceProfileOutput struct{ *pulumi.OutputState }
 
 func (GroupInstanceProfileOutput) ElementType() reflect.Type {
@@ -250,12 +231,6 @@ func (o GroupInstanceProfileOutput) ToGroupInstanceProfileOutput() GroupInstance
 
 func (o GroupInstanceProfileOutput) ToGroupInstanceProfileOutputWithContext(ctx context.Context) GroupInstanceProfileOutput {
 	return o
-}
-
-func (o GroupInstanceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupInstanceProfile] {
-	return pulumix.Output[*GroupInstanceProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the id of the group resource.
@@ -282,12 +257,6 @@ func (o GroupInstanceProfileArrayOutput) ToGroupInstanceProfileArrayOutputWithCo
 	return o
 }
 
-func (o GroupInstanceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupInstanceProfile] {
-	return pulumix.Output[[]*GroupInstanceProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupInstanceProfileArrayOutput) Index(i pulumi.IntInput) GroupInstanceProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupInstanceProfile {
 		return vs[0].([]*GroupInstanceProfile)[vs[1].(int)]
@@ -306,12 +275,6 @@ func (o GroupInstanceProfileMapOutput) ToGroupInstanceProfileMapOutput() GroupIn
 
 func (o GroupInstanceProfileMapOutput) ToGroupInstanceProfileMapOutputWithContext(ctx context.Context) GroupInstanceProfileMapOutput {
 	return o
-}
-
-func (o GroupInstanceProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupInstanceProfile] {
-	return pulumix.Output[map[string]*GroupInstanceProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupInstanceProfileMapOutput) MapIndex(k pulumi.StringInput) GroupInstanceProfileOutput {
