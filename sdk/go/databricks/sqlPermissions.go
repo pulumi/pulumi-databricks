@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -222,12 +221,6 @@ func (i *SqlPermissions) ToSqlPermissionsOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPermissionsOutput)
 }
 
-func (i *SqlPermissions) ToOutput(ctx context.Context) pulumix.Output[*SqlPermissions] {
-	return pulumix.Output[*SqlPermissions]{
-		OutputState: i.ToSqlPermissionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SqlPermissionsArrayInput is an input type that accepts SqlPermissionsArray and SqlPermissionsArrayOutput values.
 // You can construct a concrete instance of `SqlPermissionsArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i SqlPermissionsArray) ToSqlPermissionsArrayOutput() SqlPermissionsArrayOu
 
 func (i SqlPermissionsArray) ToSqlPermissionsArrayOutputWithContext(ctx context.Context) SqlPermissionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPermissionsArrayOutput)
-}
-
-func (i SqlPermissionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlPermissions] {
-	return pulumix.Output[[]*SqlPermissions]{
-		OutputState: i.ToSqlPermissionsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SqlPermissionsMapInput is an input type that accepts SqlPermissionsMap and SqlPermissionsMapOutput values.
@@ -284,12 +271,6 @@ func (i SqlPermissionsMap) ToSqlPermissionsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPermissionsMapOutput)
 }
 
-func (i SqlPermissionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlPermissions] {
-	return pulumix.Output[map[string]*SqlPermissions]{
-		OutputState: i.ToSqlPermissionsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlPermissionsOutput struct{ *pulumi.OutputState }
 
 func (SqlPermissionsOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o SqlPermissionsOutput) ToSqlPermissionsOutput() SqlPermissionsOutput {
 
 func (o SqlPermissionsOutput) ToSqlPermissionsOutputWithContext(ctx context.Context) SqlPermissionsOutput {
 	return o
-}
-
-func (o SqlPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPermissions] {
-	return pulumix.Output[*SqlPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If this access control for using anonymous function. Defaults to `false`.
@@ -362,12 +337,6 @@ func (o SqlPermissionsArrayOutput) ToSqlPermissionsArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SqlPermissionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlPermissions] {
-	return pulumix.Output[[]*SqlPermissions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlPermissionsArrayOutput) Index(i pulumi.IntInput) SqlPermissionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlPermissions {
 		return vs[0].([]*SqlPermissions)[vs[1].(int)]
@@ -386,12 +355,6 @@ func (o SqlPermissionsMapOutput) ToSqlPermissionsMapOutput() SqlPermissionsMapOu
 
 func (o SqlPermissionsMapOutput) ToSqlPermissionsMapOutputWithContext(ctx context.Context) SqlPermissionsMapOutput {
 	return o
-}
-
-func (o SqlPermissionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlPermissions] {
-	return pulumix.Output[map[string]*SqlPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlPermissionsMapOutput) MapIndex(k pulumi.StringInput) SqlPermissionsOutput {

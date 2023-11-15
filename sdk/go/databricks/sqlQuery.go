@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
@@ -326,12 +325,6 @@ func (i *SqlQuery) ToSqlQueryOutputWithContext(ctx context.Context) SqlQueryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryOutput)
 }
 
-func (i *SqlQuery) ToOutput(ctx context.Context) pulumix.Output[*SqlQuery] {
-	return pulumix.Output[*SqlQuery]{
-		OutputState: i.ToSqlQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SqlQueryArrayInput is an input type that accepts SqlQueryArray and SqlQueryArrayOutput values.
 // You can construct a concrete instance of `SqlQueryArrayInput` via:
 //
@@ -355,12 +348,6 @@ func (i SqlQueryArray) ToSqlQueryArrayOutput() SqlQueryArrayOutput {
 
 func (i SqlQueryArray) ToSqlQueryArrayOutputWithContext(ctx context.Context) SqlQueryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryArrayOutput)
-}
-
-func (i SqlQueryArray) ToOutput(ctx context.Context) pulumix.Output[[]*SqlQuery] {
-	return pulumix.Output[[]*SqlQuery]{
-		OutputState: i.ToSqlQueryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SqlQueryMapInput is an input type that accepts SqlQueryMap and SqlQueryMapOutput values.
@@ -388,12 +375,6 @@ func (i SqlQueryMap) ToSqlQueryMapOutputWithContext(ctx context.Context) SqlQuer
 	return pulumi.ToOutputWithContext(ctx, i).(SqlQueryMapOutput)
 }
 
-func (i SqlQueryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlQuery] {
-	return pulumix.Output[map[string]*SqlQuery]{
-		OutputState: i.ToSqlQueryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlQueryOutput struct{ *pulumi.OutputState }
 
 func (SqlQueryOutput) ElementType() reflect.Type {
@@ -406,12 +387,6 @@ func (o SqlQueryOutput) ToSqlQueryOutput() SqlQueryOutput {
 
 func (o SqlQueryOutput) ToSqlQueryOutputWithContext(ctx context.Context) SqlQueryOutput {
 	return o
-}
-
-func (o SqlQueryOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlQuery] {
-	return pulumix.Output[*SqlQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlQueryOutput) CreatedAt() pulumi.StringOutput {
@@ -479,12 +454,6 @@ func (o SqlQueryArrayOutput) ToSqlQueryArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o SqlQueryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SqlQuery] {
-	return pulumix.Output[[]*SqlQuery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlQueryArrayOutput) Index(i pulumi.IntInput) SqlQueryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SqlQuery {
 		return vs[0].([]*SqlQuery)[vs[1].(int)]
@@ -503,12 +472,6 @@ func (o SqlQueryMapOutput) ToSqlQueryMapOutput() SqlQueryMapOutput {
 
 func (o SqlQueryMapOutput) ToSqlQueryMapOutputWithContext(ctx context.Context) SqlQueryMapOutput {
 	return o
-}
-
-func (o SqlQueryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SqlQuery] {
-	return pulumix.Output[map[string]*SqlQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlQueryMapOutput) MapIndex(k pulumi.StringInput) SqlQueryOutput {

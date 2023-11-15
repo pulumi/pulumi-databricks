@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
@@ -201,12 +200,6 @@ func (i *GroupRole) ToGroupRoleOutputWithContext(ctx context.Context) GroupRoleO
 	return pulumi.ToOutputWithContext(ctx, i).(GroupRoleOutput)
 }
 
-func (i *GroupRole) ToOutput(ctx context.Context) pulumix.Output[*GroupRole] {
-	return pulumix.Output[*GroupRole]{
-		OutputState: i.ToGroupRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupRoleArrayInput is an input type that accepts GroupRoleArray and GroupRoleArrayOutput values.
 // You can construct a concrete instance of `GroupRoleArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i GroupRoleArray) ToGroupRoleArrayOutput() GroupRoleArrayOutput {
 
 func (i GroupRoleArray) ToGroupRoleArrayOutputWithContext(ctx context.Context) GroupRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupRoleArrayOutput)
-}
-
-func (i GroupRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*GroupRole] {
-	return pulumix.Output[[]*GroupRole]{
-		OutputState: i.ToGroupRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupRoleMapInput is an input type that accepts GroupRoleMap and GroupRoleMapOutput values.
@@ -263,12 +250,6 @@ func (i GroupRoleMap) ToGroupRoleMapOutputWithContext(ctx context.Context) Group
 	return pulumi.ToOutputWithContext(ctx, i).(GroupRoleMapOutput)
 }
 
-func (i GroupRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupRole] {
-	return pulumix.Output[map[string]*GroupRole]{
-		OutputState: i.ToGroupRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupRoleOutput struct{ *pulumi.OutputState }
 
 func (GroupRoleOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o GroupRoleOutput) ToGroupRoleOutput() GroupRoleOutput {
 
 func (o GroupRoleOutput) ToGroupRoleOutputWithContext(ctx context.Context) GroupRoleOutput {
 	return o
-}
-
-func (o GroupRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupRole] {
-	return pulumix.Output[*GroupRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the id of the group resource.
@@ -313,12 +288,6 @@ func (o GroupRoleArrayOutput) ToGroupRoleArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GroupRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupRole] {
-	return pulumix.Output[[]*GroupRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupRoleArrayOutput) Index(i pulumi.IntInput) GroupRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupRole {
 		return vs[0].([]*GroupRole)[vs[1].(int)]
@@ -337,12 +306,6 @@ func (o GroupRoleMapOutput) ToGroupRoleMapOutput() GroupRoleMapOutput {
 
 func (o GroupRoleMapOutput) ToGroupRoleMapOutputWithContext(ctx context.Context) GroupRoleMapOutput {
 	return o
-}
-
-func (o GroupRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupRole] {
-	return pulumix.Output[map[string]*GroupRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupRoleMapOutput) MapIndex(k pulumi.StringInput) GroupRoleOutput {

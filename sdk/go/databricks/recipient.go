@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
@@ -224,12 +223,6 @@ func (i *Recipient) ToRecipientOutputWithContext(ctx context.Context) RecipientO
 	return pulumi.ToOutputWithContext(ctx, i).(RecipientOutput)
 }
 
-func (i *Recipient) ToOutput(ctx context.Context) pulumix.Output[*Recipient] {
-	return pulumix.Output[*Recipient]{
-		OutputState: i.ToRecipientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RecipientArrayInput is an input type that accepts RecipientArray and RecipientArrayOutput values.
 // You can construct a concrete instance of `RecipientArrayInput` via:
 //
@@ -253,12 +246,6 @@ func (i RecipientArray) ToRecipientArrayOutput() RecipientArrayOutput {
 
 func (i RecipientArray) ToRecipientArrayOutputWithContext(ctx context.Context) RecipientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecipientArrayOutput)
-}
-
-func (i RecipientArray) ToOutput(ctx context.Context) pulumix.Output[[]*Recipient] {
-	return pulumix.Output[[]*Recipient]{
-		OutputState: i.ToRecipientArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RecipientMapInput is an input type that accepts RecipientMap and RecipientMapOutput values.
@@ -286,12 +273,6 @@ func (i RecipientMap) ToRecipientMapOutputWithContext(ctx context.Context) Recip
 	return pulumi.ToOutputWithContext(ctx, i).(RecipientMapOutput)
 }
 
-func (i RecipientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Recipient] {
-	return pulumix.Output[map[string]*Recipient]{
-		OutputState: i.ToRecipientMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RecipientOutput struct{ *pulumi.OutputState }
 
 func (RecipientOutput) ElementType() reflect.Type {
@@ -304,12 +285,6 @@ func (o RecipientOutput) ToRecipientOutput() RecipientOutput {
 
 func (o RecipientOutput) ToRecipientOutputWithContext(ctx context.Context) RecipientOutput {
 	return o
-}
-
-func (o RecipientOutput) ToOutput(ctx context.Context) pulumix.Output[*Recipient] {
-	return pulumix.Output[*Recipient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
@@ -361,12 +336,6 @@ func (o RecipientArrayOutput) ToRecipientArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RecipientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Recipient] {
-	return pulumix.Output[[]*Recipient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecipientArrayOutput) Index(i pulumi.IntInput) RecipientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Recipient {
 		return vs[0].([]*Recipient)[vs[1].(int)]
@@ -385,12 +354,6 @@ func (o RecipientMapOutput) ToRecipientMapOutput() RecipientMapOutput {
 
 func (o RecipientMapOutput) ToRecipientMapOutputWithContext(ctx context.Context) RecipientMapOutput {
 	return o
-}
-
-func (o RecipientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Recipient] {
-	return pulumix.Output[map[string]*Recipient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecipientMapOutput) MapIndex(k pulumi.StringInput) RecipientOutput {

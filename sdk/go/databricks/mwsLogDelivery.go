@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws` for all `databricks_mws_*` resources.
@@ -304,12 +303,6 @@ func (i *MwsLogDelivery) ToMwsLogDeliveryOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MwsLogDeliveryOutput)
 }
 
-func (i *MwsLogDelivery) ToOutput(ctx context.Context) pulumix.Output[*MwsLogDelivery] {
-	return pulumix.Output[*MwsLogDelivery]{
-		OutputState: i.ToMwsLogDeliveryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MwsLogDeliveryArrayInput is an input type that accepts MwsLogDeliveryArray and MwsLogDeliveryArrayOutput values.
 // You can construct a concrete instance of `MwsLogDeliveryArrayInput` via:
 //
@@ -333,12 +326,6 @@ func (i MwsLogDeliveryArray) ToMwsLogDeliveryArrayOutput() MwsLogDeliveryArrayOu
 
 func (i MwsLogDeliveryArray) ToMwsLogDeliveryArrayOutputWithContext(ctx context.Context) MwsLogDeliveryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MwsLogDeliveryArrayOutput)
-}
-
-func (i MwsLogDeliveryArray) ToOutput(ctx context.Context) pulumix.Output[[]*MwsLogDelivery] {
-	return pulumix.Output[[]*MwsLogDelivery]{
-		OutputState: i.ToMwsLogDeliveryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MwsLogDeliveryMapInput is an input type that accepts MwsLogDeliveryMap and MwsLogDeliveryMapOutput values.
@@ -366,12 +353,6 @@ func (i MwsLogDeliveryMap) ToMwsLogDeliveryMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(MwsLogDeliveryMapOutput)
 }
 
-func (i MwsLogDeliveryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsLogDelivery] {
-	return pulumix.Output[map[string]*MwsLogDelivery]{
-		OutputState: i.ToMwsLogDeliveryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MwsLogDeliveryOutput struct{ *pulumi.OutputState }
 
 func (MwsLogDeliveryOutput) ElementType() reflect.Type {
@@ -384,12 +365,6 @@ func (o MwsLogDeliveryOutput) ToMwsLogDeliveryOutput() MwsLogDeliveryOutput {
 
 func (o MwsLogDeliveryOutput) ToMwsLogDeliveryOutputWithContext(ctx context.Context) MwsLogDeliveryOutput {
 	return o
-}
-
-func (o MwsLogDeliveryOutput) ToOutput(ctx context.Context) pulumix.Output[*MwsLogDelivery] {
-	return pulumix.Output[*MwsLogDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -461,12 +436,6 @@ func (o MwsLogDeliveryArrayOutput) ToMwsLogDeliveryArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o MwsLogDeliveryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MwsLogDelivery] {
-	return pulumix.Output[[]*MwsLogDelivery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MwsLogDeliveryArrayOutput) Index(i pulumi.IntInput) MwsLogDeliveryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MwsLogDelivery {
 		return vs[0].([]*MwsLogDelivery)[vs[1].(int)]
@@ -485,12 +454,6 @@ func (o MwsLogDeliveryMapOutput) ToMwsLogDeliveryMapOutput() MwsLogDeliveryMapOu
 
 func (o MwsLogDeliveryMapOutput) ToMwsLogDeliveryMapOutputWithContext(ctx context.Context) MwsLogDeliveryMapOutput {
 	return o
-}
-
-func (o MwsLogDeliveryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MwsLogDelivery] {
-	return pulumix.Output[map[string]*MwsLogDelivery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MwsLogDeliveryMapOutput) MapIndex(k pulumi.StringInput) MwsLogDeliveryOutput {

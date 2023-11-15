@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -141,12 +140,6 @@ func (i *DbfsFile) ToDbfsFileOutputWithContext(ctx context.Context) DbfsFileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DbfsFileOutput)
 }
 
-func (i *DbfsFile) ToOutput(ctx context.Context) pulumix.Output[*DbfsFile] {
-	return pulumix.Output[*DbfsFile]{
-		OutputState: i.ToDbfsFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbfsFileArrayInput is an input type that accepts DbfsFileArray and DbfsFileArrayOutput values.
 // You can construct a concrete instance of `DbfsFileArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i DbfsFileArray) ToDbfsFileArrayOutput() DbfsFileArrayOutput {
 
 func (i DbfsFileArray) ToDbfsFileArrayOutputWithContext(ctx context.Context) DbfsFileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbfsFileArrayOutput)
-}
-
-func (i DbfsFileArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbfsFile] {
-	return pulumix.Output[[]*DbfsFile]{
-		OutputState: i.ToDbfsFileArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbfsFileMapInput is an input type that accepts DbfsFileMap and DbfsFileMapOutput values.
@@ -203,12 +190,6 @@ func (i DbfsFileMap) ToDbfsFileMapOutputWithContext(ctx context.Context) DbfsFil
 	return pulumi.ToOutputWithContext(ctx, i).(DbfsFileMapOutput)
 }
 
-func (i DbfsFileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbfsFile] {
-	return pulumix.Output[map[string]*DbfsFile]{
-		OutputState: i.ToDbfsFileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbfsFileOutput struct{ *pulumi.OutputState }
 
 func (DbfsFileOutput) ElementType() reflect.Type {
@@ -221,12 +202,6 @@ func (o DbfsFileOutput) ToDbfsFileOutput() DbfsFileOutput {
 
 func (o DbfsFileOutput) ToDbfsFileOutputWithContext(ctx context.Context) DbfsFileOutput {
 	return o
-}
-
-func (o DbfsFileOutput) ToOutput(ctx context.Context) pulumix.Output[*DbfsFile] {
-	return pulumix.Output[*DbfsFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbfsFileOutput) ContentBase64() pulumi.StringPtrOutput {
@@ -271,12 +246,6 @@ func (o DbfsFileArrayOutput) ToDbfsFileArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DbfsFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbfsFile] {
-	return pulumix.Output[[]*DbfsFile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DbfsFileArrayOutput) Index(i pulumi.IntInput) DbfsFileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DbfsFile {
 		return vs[0].([]*DbfsFile)[vs[1].(int)]
@@ -295,12 +264,6 @@ func (o DbfsFileMapOutput) ToDbfsFileMapOutput() DbfsFileMapOutput {
 
 func (o DbfsFileMapOutput) ToDbfsFileMapOutputWithContext(ctx context.Context) DbfsFileMapOutput {
 	return o
-}
-
-func (o DbfsFileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbfsFile] {
-	return pulumix.Output[map[string]*DbfsFile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbfsFileMapOutput) MapIndex(k pulumi.StringInput) DbfsFileOutput {

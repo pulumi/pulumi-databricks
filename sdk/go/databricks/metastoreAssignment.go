@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A single Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
@@ -172,12 +171,6 @@ func (i *MetastoreAssignment) ToMetastoreAssignmentOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreAssignmentOutput)
 }
 
-func (i *MetastoreAssignment) ToOutput(ctx context.Context) pulumix.Output[*MetastoreAssignment] {
-	return pulumix.Output[*MetastoreAssignment]{
-		OutputState: i.ToMetastoreAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreAssignmentArrayInput is an input type that accepts MetastoreAssignmentArray and MetastoreAssignmentArrayOutput values.
 // You can construct a concrete instance of `MetastoreAssignmentArrayInput` via:
 //
@@ -201,12 +194,6 @@ func (i MetastoreAssignmentArray) ToMetastoreAssignmentArrayOutput() MetastoreAs
 
 func (i MetastoreAssignmentArray) ToMetastoreAssignmentArrayOutputWithContext(ctx context.Context) MetastoreAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreAssignmentArrayOutput)
-}
-
-func (i MetastoreAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreAssignment] {
-	return pulumix.Output[[]*MetastoreAssignment]{
-		OutputState: i.ToMetastoreAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreAssignmentMapInput is an input type that accepts MetastoreAssignmentMap and MetastoreAssignmentMapOutput values.
@@ -234,12 +221,6 @@ func (i MetastoreAssignmentMap) ToMetastoreAssignmentMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreAssignmentMapOutput)
 }
 
-func (i MetastoreAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreAssignment] {
-	return pulumix.Output[map[string]*MetastoreAssignment]{
-		OutputState: i.ToMetastoreAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreAssignmentOutput struct{ *pulumi.OutputState }
 
 func (MetastoreAssignmentOutput) ElementType() reflect.Type {
@@ -252,12 +233,6 @@ func (o MetastoreAssignmentOutput) ToMetastoreAssignmentOutput() MetastoreAssign
 
 func (o MetastoreAssignmentOutput) ToMetastoreAssignmentOutputWithContext(ctx context.Context) MetastoreAssignmentOutput {
 	return o
-}
-
-func (o MetastoreAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreAssignment] {
-	return pulumix.Output[*MetastoreAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default catalog used for this assignment, default to `hiveMetastore`
@@ -289,12 +264,6 @@ func (o MetastoreAssignmentArrayOutput) ToMetastoreAssignmentArrayOutputWithCont
 	return o
 }
 
-func (o MetastoreAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreAssignment] {
-	return pulumix.Output[[]*MetastoreAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreAssignmentArrayOutput) Index(i pulumi.IntInput) MetastoreAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreAssignment {
 		return vs[0].([]*MetastoreAssignment)[vs[1].(int)]
@@ -313,12 +282,6 @@ func (o MetastoreAssignmentMapOutput) ToMetastoreAssignmentMapOutput() Metastore
 
 func (o MetastoreAssignmentMapOutput) ToMetastoreAssignmentMapOutputWithContext(ctx context.Context) MetastoreAssignmentMapOutput {
 	return o
-}
-
-func (o MetastoreAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreAssignment] {
-	return pulumix.Output[map[string]*MetastoreAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreAssignmentMapOutput) MapIndex(k pulumi.StringInput) MetastoreAssignmentOutput {
