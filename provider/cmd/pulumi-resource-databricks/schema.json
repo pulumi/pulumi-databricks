@@ -156,11 +156,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "a list of principals who are granted a role. The following format is supported:\n* `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).\n* `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).\n* `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).\n"
+                    "description": "a list of principals who are granted a role. The following format is supported:\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).\n* `roles/servicePrincipal.manager` - Manager of a service principal.\n* `roles/servicePrincipal.user` - User of a service principal.\n* `roles/group.manager` - Manager of a group.\n* `roles/marketplace.admin` - Admin of marketplace.\n"
+                    "description": "Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).\n"
                 }
             },
             "type": "object",
@@ -976,7 +976,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobHealthRule:JobHealthRule"
                     },
-                    "description": "list of rules that are represented as objects with the following attributes:\n"
+                    "description": "(List) list of rules that are represented as objects with the following attributes:\n"
                 }
             },
             "type": "object",
@@ -2029,7 +2029,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "An optional name for the job. The default value is Untitled.\n"
+                    "description": "The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.\n"
                 }
             },
             "type": "object"
@@ -2288,7 +2288,7 @@
                 },
                 "taskKey": {
                     "type": "string",
-                    "description": "string specifying an unique key for a given task.\n* `*_task` - (Required) one of the specific task blocks described below:\n"
+                    "description": "string specifying an unique key for a given task.\n"
                 },
                 "timeoutSeconds": {
                     "type": "integer",
@@ -2417,7 +2417,7 @@
                     "items": {
                         "$ref": "#/types/databricks:index/JobTaskHealthRule:JobTaskHealthRule"
                     },
-                    "description": "list of rules that are represented as objects with the following attributes:\n"
+                    "description": "(List) list of rules that are represented as objects with the following attributes:\n"
                 }
             },
             "type": "object",
@@ -3494,7 +3494,7 @@
                 },
                 "email": {
                     "type": "string",
-                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n\n`azure_service_principal` optional configuration block for credential details for Azure (Legacy):\n"
+                    "description": "(output only) - The email of the GCP service account created, to be granted access to relevant buckets.\n\n`azure_service_principal` optional configuration block for credential details for Azure (Legacy):\n"
                 }
             },
             "type": "object",
@@ -3511,7 +3511,7 @@
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n\n`azure_service_principal` optional configuration block for credential details for Azure (Legacy):\n",
+                    "description": "(output only) - The email of the GCP service account created, to be granted access to relevant buckets.\n\n`azure_service_principal` optional configuration block for credential details for Azure (Legacy):\n",
                     "willReplaceOnChanges": true
                 },
                 "privateKey": {
@@ -3908,7 +3908,7 @@
                 },
                 "keyRegion": {
                     "type": "string",
-                    "description": "(Computed) The AWS region in which KMS key is deployed to. This is not required.\n"
+                    "description": "The AWS region in which KMS key is deployed to. This is not required.\n"
                 }
             },
             "type": "object",
@@ -4597,7 +4597,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list\n* `on-update-success` - a pipeline update completes successfully.\n* `on-update-failure` - a pipeline update fails with a retryable error.\n* `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.\n* `on-flow-failure` - a single data flow fails.\n"
+                    "description": "non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list\n"
                 },
                 "emailRecipients": {
                     "type": "array",
@@ -5421,7 +5421,7 @@
                 },
                 "email": {
                     "type": "string",
-                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n"
+                    "description": "(output only) - The email of the GCP service account created, to be granted access to relevant buckets.\n"
                 }
             },
             "type": "object",
@@ -5438,7 +5438,7 @@
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "The email of the GCP service account created, to be granted access to relevant buckets.\n"
+                    "description": "(output only) - The email of the GCP service account created, to be granted access to relevant buckets.\n"
                 },
                 "privateKey": {
                     "type": "string",
@@ -9368,7 +9368,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n* `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`\n* `accounts/{account_id}/groups/{group_id}/ruleSets/default`\n* `accounts/{account_id}/ruleSets/default`\n"
+                    "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n"
                 }
             },
             "required": [
@@ -9385,7 +9385,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n* `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`\n* `accounts/{account_id}/groups/{group_id}/ruleSets/default`\n* `accounts/{account_id}/ruleSets/default`\n"
+                    "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n"
                 }
             },
             "stateInputs": {
@@ -9403,7 +9403,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n* `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`\n* `accounts/{account_id}/groups/{group_id}/ruleSets/default`\n* `accounts/{account_id}/ruleSets/default`\n"
+                        "description": "Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:\n"
                     }
                 },
                 "type": "object"
@@ -10936,18 +10936,18 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "specifies if the script is enabled for execution, or not\n"
+                    "description": "(bool, optional default: `false`) specifies if the script is enabled for execution, or not\n"
                 },
                 "md5": {
                     "type": "string"
                 },
                 "name": {
                     "type": "string",
-                    "description": "the name of the script.  It should be unique\n"
+                    "description": "(string, required) - the name of the script.  It should be unique\n"
                 },
                 "position": {
                     "type": "integer",
-                    "description": "the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
+                    "description": "(integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
                 },
                 "source": {
                     "type": "string",
@@ -10964,18 +10964,18 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "specifies if the script is enabled for execution, or not\n"
+                    "description": "(bool, optional default: `false`) specifies if the script is enabled for execution, or not\n"
                 },
                 "md5": {
                     "type": "string"
                 },
                 "name": {
                     "type": "string",
-                    "description": "the name of the script.  It should be unique\n"
+                    "description": "(string, required) - the name of the script.  It should be unique\n"
                 },
                 "position": {
                     "type": "integer",
-                    "description": "the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
+                    "description": "(integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
                 },
                 "source": {
                     "type": "string",
@@ -10990,18 +10990,18 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "specifies if the script is enabled for execution, or not\n"
+                        "description": "(bool, optional default: `false`) specifies if the script is enabled for execution, or not\n"
                     },
                     "md5": {
                         "type": "string"
                     },
                     "name": {
                         "type": "string",
-                        "description": "the name of the script.  It should be unique\n"
+                        "description": "(string, required) - the name of the script.  It should be unique\n"
                     },
                     "position": {
                         "type": "integer",
-                        "description": "the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
+                        "description": "(integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.\n"
                     },
                     "source": {
                         "type": "string",
@@ -11869,7 +11869,7 @@
                 },
                 "controlRunState": {
                     "type": "boolean",
-                    "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
@@ -11892,7 +11892,7 @@
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                    "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                    "description": "block described below that specifies health conditions for a given task.\n"
                 },
                 "jobClusters": {
                     "type": "array",
@@ -11914,7 +11914,7 @@
                 },
                 "maxRetries": {
                     "type": "integer",
-                    "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.\n"
+                    "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.\n"
                 },
                 "minRetryIntervalMillis": {
                     "type": "integer",
@@ -12023,7 +12023,7 @@
                 },
                 "controlRunState": {
                     "type": "boolean",
-                    "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 },
                 "dbtTask": {
                     "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
@@ -12046,7 +12046,7 @@
                 },
                 "health": {
                     "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                    "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                    "description": "block described below that specifies health conditions for a given task.\n"
                 },
                 "jobClusters": {
                     "type": "array",
@@ -12068,7 +12068,7 @@
                 },
                 "maxRetries": {
                     "type": "integer",
-                    "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.\n"
+                    "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.\n"
                 },
                 "minRetryIntervalMillis": {
                     "type": "integer",
@@ -12170,7 +12170,7 @@
                     },
                     "controlRunState": {
                         "type": "boolean",
-                        "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                        "description": "(Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.\n\nWhen migrating from `always_running` to `control_run_state`, set `continuous` as follows:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                     },
                     "dbtTask": {
                         "$ref": "#/types/databricks:index/JobDbtTask:JobDbtTask"
@@ -12193,7 +12193,7 @@
                     },
                     "health": {
                         "$ref": "#/types/databricks:index/JobHealth:JobHealth",
-                        "description": "An optional block that specifies the health conditions for the job (described below).\n"
+                        "description": "block described below that specifies health conditions for a given task.\n"
                     },
                     "jobClusters": {
                         "type": "array",
@@ -12215,7 +12215,7 @@
                     },
                     "maxRetries": {
                         "type": "integer",
-                        "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.\n"
+                        "description": "(Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.\n"
                     },
                     "minRetryIntervalMillis": {
                         "type": "integer",
@@ -12448,7 +12448,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the metastore\n"
+                    "description": "(Mandatory for account-level) The region of the metastore\n"
                 },
                 "storageRoot": {
                     "type": "string",
@@ -12522,7 +12522,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region of the metastore\n"
+                    "description": "(Mandatory for account-level) The region of the metastore\n"
                 },
                 "storageRoot": {
                     "type": "string",
@@ -12589,7 +12589,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region of the metastore\n"
+                        "description": "(Mandatory for account-level) The region of the metastore\n"
                     },
                     "storageRoot": {
                         "type": "string",
@@ -13832,7 +13832,7 @@
                 },
                 "gcpNetworkInfo": {
                     "$ref": "#/types/databricks:index/MwsNetworksGcpNetworkInfo:MwsNetworksGcpNetworkInfo",
-                    "description": "a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n"
+                    "description": "(GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n"
                 },
                 "networkId": {
                     "type": "string",
@@ -13847,14 +13847,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "ids of aws_security_group\n"
+                    "description": "(AWS only) ids of aws_security_group\n"
                 },
                 "subnetIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "ids of aws_subnet\n"
+                    "description": "(AWS only) ids of aws_subnet\n"
                 },
                 "vpcEndpoints": {
                     "$ref": "#/types/databricks:index/MwsNetworksVpcEndpoints:MwsNetworksVpcEndpoints",
@@ -13862,7 +13862,7 @@
                 },
                 "vpcId": {
                     "type": "string",
-                    "description": "The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.\n"
+                    "description": "(AWS only) aws_vpc id\n"
                 },
                 "vpcStatus": {
                     "type": "string",
@@ -13901,7 +13901,7 @@
                 },
                 "gcpNetworkInfo": {
                     "$ref": "#/types/databricks:index/MwsNetworksGcpNetworkInfo:MwsNetworksGcpNetworkInfo",
-                    "description": "a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n",
+                    "description": "(GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n",
                     "willReplaceOnChanges": true
                 },
                 "networkId": {
@@ -13918,7 +13918,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "ids of aws_security_group\n",
+                    "description": "(AWS only) ids of aws_security_group\n",
                     "willReplaceOnChanges": true
                 },
                 "subnetIds": {
@@ -13926,7 +13926,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "ids of aws_subnet\n",
+                    "description": "(AWS only) ids of aws_subnet\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcEndpoints": {
@@ -13936,7 +13936,7 @@
                 },
                 "vpcId": {
                     "type": "string",
-                    "description": "The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.\n",
+                    "description": "(AWS only) aws_vpc id\n",
                     "willReplaceOnChanges": true
                 },
                 "vpcStatus": {
@@ -13972,7 +13972,7 @@
                     },
                     "gcpNetworkInfo": {
                         "$ref": "#/types/databricks:index/MwsNetworksGcpNetworkInfo:MwsNetworksGcpNetworkInfo",
-                        "description": "a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n",
+                        "description": "(GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:\n",
                         "willReplaceOnChanges": true
                     },
                     "networkId": {
@@ -13989,7 +13989,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "ids of aws_security_group\n",
+                        "description": "(AWS only) ids of aws_security_group\n",
                         "willReplaceOnChanges": true
                     },
                     "subnetIds": {
@@ -13997,7 +13997,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "ids of aws_subnet\n",
+                        "description": "(AWS only) ids of aws_subnet\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcEndpoints": {
@@ -14007,7 +14007,7 @@
                     },
                     "vpcId": {
                         "type": "string",
-                        "description": "The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.\n",
+                        "description": "(AWS only) aws_vpc id\n",
                         "willReplaceOnChanges": true
                     },
                     "vpcStatus": {
@@ -14030,7 +14030,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of workspace permissions to assign to the principal:\n* `\"USER\"` - Can access the workspace with basic privileges.\n* `\"ADMIN\"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.\n"
+                    "description": "The list of workspace permissions to assign to the principal:\n"
                 },
                 "principalId": {
                     "type": "integer",
@@ -14052,7 +14052,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of workspace permissions to assign to the principal:\n* `\"USER\"` - Can access the workspace with basic privileges.\n* `\"ADMIN\"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.\n",
+                    "description": "The list of workspace permissions to assign to the principal:\n",
                     "willReplaceOnChanges": true
                 },
                 "principalId": {
@@ -14079,7 +14079,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of workspace permissions to assign to the principal:\n* `\"USER\"` - Can access the workspace with basic privileges.\n* `\"ADMIN\"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.\n",
+                        "description": "The list of workspace permissions to assign to the principal:\n",
                         "willReplaceOnChanges": true
                     },
                     "principalId": {
@@ -14124,7 +14124,7 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "(Boolean, Optional, `false` by default on AWS, `true` by default on GCP) - If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                 },
                 "region": {
                     "type": "string",
@@ -14167,7 +14167,7 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "(Boolean, Optional, `false` by default on AWS, `true` by default on GCP) - If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                 },
                 "region": {
                     "type": "string",
@@ -14210,7 +14210,7 @@
                     },
                     "publicAccessEnabled": {
                         "type": "boolean",
-                        "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                        "description": "(Boolean, Optional, `false` by default on AWS, `true` by default on GCP) - If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
                     },
                     "region": {
                         "type": "string",
@@ -14324,15 +14324,15 @@
                 },
                 "awsVpcEndpointId": {
                     "type": "string",
-                    "description": "ID of configured aws_vpc_endpoint\n"
+                    "description": "(AWS only) ID of configured aws_vpc_endpoint\n"
                 },
                 "gcpVpcEndpointInfo": {
                     "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
-                    "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n"
+                    "description": "(GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region of AWS VPC\n"
+                    "description": "(AWS only) Region of AWS VPC\n"
                 },
                 "state": {
                     "type": "string",
@@ -14373,17 +14373,17 @@
                 },
                 "awsVpcEndpointId": {
                     "type": "string",
-                    "description": "ID of configured aws_vpc_endpoint\n",
+                    "description": "(AWS only) ID of configured aws_vpc_endpoint\n",
                     "willReplaceOnChanges": true
                 },
                 "gcpVpcEndpointInfo": {
                     "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
-                    "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
+                    "description": "(GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region of AWS VPC\n",
+                    "description": "(AWS only) Region of AWS VPC\n",
                     "willReplaceOnChanges": true
                 },
                 "state": {
@@ -14423,17 +14423,17 @@
                     },
                     "awsVpcEndpointId": {
                         "type": "string",
-                        "description": "ID of configured aws_vpc_endpoint\n",
+                        "description": "(AWS only) ID of configured aws_vpc_endpoint\n",
                         "willReplaceOnChanges": true
                     },
                     "gcpVpcEndpointInfo": {
                         "$ref": "#/types/databricks:index/MwsVpcEndpointGcpVpcEndpointInfo:MwsVpcEndpointGcpVpcEndpointInfo",
-                        "description": "a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
+                        "description": "(GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
-                        "description": "Region of AWS VPC\n",
+                        "description": "(AWS only) Region of AWS VPC\n",
                         "willReplaceOnChanges": true
                     },
                     "state": {
@@ -14466,14 +14466,14 @@
                 },
                 "awsRegion": {
                     "type": "string",
-                    "description": "region of VPC.\n"
+                    "description": "(AWS only) region of VPC.\n"
                 },
                 "cloud": {
                     "type": "string"
                 },
                 "cloudResourceContainer": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer",
-                    "description": "A block that specifies GCP workspace configurations, consisting of following blocks:\n"
+                    "description": "(GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:\n"
                 },
                 "creationTime": {
                     "type": "integer",
@@ -14498,14 +14498,14 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                    "description": "A block that specifies GKE configuration for the Databricks workspace:\n"
+                    "description": "(GCP only) A block that specifies GKE configuration for the Databricks workspace:\n"
                 },
                 "isNoPublicIpEnabled": {
                     "type": "boolean"
                 },
                 "location": {
                     "type": "string",
-                    "description": "region of the subnet.\n"
+                    "description": "(GCP only) region of the subnet.\n"
                 },
                 "managedServicesCustomerManagedKeyId": {
                     "type": "string",
@@ -14513,7 +14513,7 @@
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "`network_id` from networks.\n"
+                    "description": "from networks.\n"
                 },
                 "pricingTier": {
                     "type": "string"
@@ -14524,7 +14524,7 @@
                 },
                 "storageConfigurationId": {
                     "type": "string",
-                    "description": "`storage_configuration_id` from storage configuration.\n"
+                    "description": "(AWS only)`storage_configuration_id` from storage configuration.\n"
                 },
                 "storageCustomerManagedKeyId": {
                     "type": "string",
@@ -14574,7 +14574,7 @@
                 },
                 "awsRegion": {
                     "type": "string",
-                    "description": "region of VPC.\n",
+                    "description": "(AWS only) region of VPC.\n",
                     "willReplaceOnChanges": true
                 },
                 "cloud": {
@@ -14582,7 +14582,7 @@
                 },
                 "cloudResourceContainer": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer",
-                    "description": "A block that specifies GCP workspace configurations, consisting of following blocks:\n",
+                    "description": "(GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:\n",
                     "willReplaceOnChanges": true
                 },
                 "creationTime": {
@@ -14612,7 +14612,7 @@
                 },
                 "gkeConfig": {
                     "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                    "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
+                    "description": "(GCP only) A block that specifies GKE configuration for the Databricks workspace:\n",
                     "willReplaceOnChanges": true
                 },
                 "isNoPublicIpEnabled": {
@@ -14621,7 +14621,7 @@
                 },
                 "location": {
                     "type": "string",
-                    "description": "region of the subnet.\n",
+                    "description": "(GCP only) region of the subnet.\n",
                     "willReplaceOnChanges": true
                 },
                 "managedServicesCustomerManagedKeyId": {
@@ -14630,7 +14630,7 @@
                 },
                 "networkId": {
                     "type": "string",
-                    "description": "`network_id` from networks.\n"
+                    "description": "from networks.\n"
                 },
                 "pricingTier": {
                     "type": "string"
@@ -14641,7 +14641,7 @@
                 },
                 "storageConfigurationId": {
                     "type": "string",
-                    "description": "`storage_configuration_id` from storage configuration.\n",
+                    "description": "(AWS only)`storage_configuration_id` from storage configuration.\n",
                     "willReplaceOnChanges": true
                 },
                 "storageCustomerManagedKeyId": {
@@ -14688,7 +14688,7 @@
                     },
                     "awsRegion": {
                         "type": "string",
-                        "description": "region of VPC.\n",
+                        "description": "(AWS only) region of VPC.\n",
                         "willReplaceOnChanges": true
                     },
                     "cloud": {
@@ -14696,7 +14696,7 @@
                     },
                     "cloudResourceContainer": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesCloudResourceContainer:MwsWorkspacesCloudResourceContainer",
-                        "description": "A block that specifies GCP workspace configurations, consisting of following blocks:\n",
+                        "description": "(GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:\n",
                         "willReplaceOnChanges": true
                     },
                     "creationTime": {
@@ -14726,7 +14726,7 @@
                     },
                     "gkeConfig": {
                         "$ref": "#/types/databricks:index/MwsWorkspacesGkeConfig:MwsWorkspacesGkeConfig",
-                        "description": "A block that specifies GKE configuration for the Databricks workspace:\n",
+                        "description": "(GCP only) A block that specifies GKE configuration for the Databricks workspace:\n",
                         "willReplaceOnChanges": true
                     },
                     "isNoPublicIpEnabled": {
@@ -14735,7 +14735,7 @@
                     },
                     "location": {
                         "type": "string",
-                        "description": "region of the subnet.\n",
+                        "description": "(GCP only) region of the subnet.\n",
                         "willReplaceOnChanges": true
                     },
                     "managedServicesCustomerManagedKeyId": {
@@ -14744,7 +14744,7 @@
                     },
                     "networkId": {
                         "type": "string",
-                        "description": "`network_id` from networks.\n"
+                        "description": "from networks.\n"
                     },
                     "pricingTier": {
                         "type": "string"
@@ -14755,7 +14755,7 @@
                     },
                     "storageConfigurationId": {
                         "type": "string",
-                        "description": "`storage_configuration_id` from storage configuration.\n",
+                        "description": "(AWS only)`storage_configuration_id` from storage configuration.\n",
                         "willReplaceOnChanges": true
                     },
                     "storageCustomerManagedKeyId": {
@@ -14918,11 +14918,11 @@
                 },
                 "comment": {
                     "type": "string",
-                    "description": "Comment that describes the purpose of the token.\n"
+                    "description": "(String, Optional) Comment that describes the purpose of the token.\n"
                 },
                 "lifetimeSeconds": {
                     "type": "integer",
-                    "description": "The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n"
+                    "description": "(Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n"
                 },
                 "tokenValue": {
                     "type": "string",
@@ -14942,12 +14942,12 @@
                 },
                 "comment": {
                     "type": "string",
-                    "description": "Comment that describes the purpose of the token.\n",
+                    "description": "(String, Optional) Comment that describes the purpose of the token.\n",
                     "willReplaceOnChanges": true
                 },
                 "lifetimeSeconds": {
                     "type": "integer",
-                    "description": "The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n",
+                    "description": "(Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -14964,12 +14964,12 @@
                     },
                     "comment": {
                         "type": "string",
-                        "description": "Comment that describes the purpose of the token.\n",
+                        "description": "(String, Optional) Comment that describes the purpose of the token.\n",
                         "willReplaceOnChanges": true
                     },
                     "lifetimeSeconds": {
                         "type": "integer",
-                        "description": "The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n",
+                        "description": "(Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.\n",
                         "willReplaceOnChanges": true
                     },
                     "tokenValue": {
@@ -16886,7 +16886,7 @@
                 },
                 "enableServerlessCompute": {
                     "type": "boolean",
-                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
+                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
                 },
                 "instanceProfileArn": {
                     "type": "string"
@@ -16905,7 +16905,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.\n"
+                    "description": "Name of the SQL warehouse. Must be unique.\n"
                 },
                 "numClusters": {
                     "type": "integer"
@@ -16961,7 +16961,7 @@
                 },
                 "enableServerlessCompute": {
                     "type": "boolean",
-                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
+                    "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
                 },
                 "instanceProfileArn": {
                     "type": "string"
@@ -16980,7 +16980,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.\n"
+                    "description": "Name of the SQL warehouse. Must be unique.\n"
                 },
                 "numClusters": {
                     "type": "integer"
@@ -17033,7 +17033,7 @@
                     },
                     "enableServerlessCompute": {
                         "type": "boolean",
-                        "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
+                        "description": "Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.\n- **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).\n\n\n- **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).\n"
                     },
                     "instanceProfileArn": {
                         "type": "string"
@@ -17052,7 +17052,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.\n"
+                        "description": "Name of the SQL warehouse. Must be unique.\n"
                     },
                     "numClusters": {
                         "type": "integer"
@@ -17188,15 +17188,15 @@
             "properties": {
                 "anonymousFunction": {
                     "type": "boolean",
-                    "description": "If this access control for using anonymous function. Defaults to `false`.\n"
+                    "description": "(Boolean) If this access control for using anonymous function. Defaults to `false`.\n"
                 },
                 "anyFile": {
                     "type": "boolean",
-                    "description": "If this access control for reading any file. Defaults to `false`.\n"
+                    "description": "(Boolean) If this access control for reading any file. Defaults to `false`.\n"
                 },
                 "catalog": {
                     "type": "boolean",
-                    "description": "If this access control for the entire catalog. Defaults to `false`.\n"
+                    "description": "(Boolean) If this access control for the entire catalog. Defaults to `false`.\n"
                 },
                 "clusterId": {
                     "type": "string"
@@ -17226,17 +17226,17 @@
             "inputProperties": {
                 "anonymousFunction": {
                     "type": "boolean",
-                    "description": "If this access control for using anonymous function. Defaults to `false`.\n",
+                    "description": "(Boolean) If this access control for using anonymous function. Defaults to `false`.\n",
                     "willReplaceOnChanges": true
                 },
                 "anyFile": {
                     "type": "boolean",
-                    "description": "If this access control for reading any file. Defaults to `false`.\n",
+                    "description": "(Boolean) If this access control for reading any file. Defaults to `false`.\n",
                     "willReplaceOnChanges": true
                 },
                 "catalog": {
                     "type": "boolean",
-                    "description": "If this access control for the entire catalog. Defaults to `false`.\n",
+                    "description": "(Boolean) If this access control for the entire catalog. Defaults to `false`.\n",
                     "willReplaceOnChanges": true
                 },
                 "clusterId": {
@@ -17269,17 +17269,17 @@
                 "properties": {
                     "anonymousFunction": {
                         "type": "boolean",
-                        "description": "If this access control for using anonymous function. Defaults to `false`.\n",
+                        "description": "(Boolean) If this access control for using anonymous function. Defaults to `false`.\n",
                         "willReplaceOnChanges": true
                     },
                     "anyFile": {
                         "type": "boolean",
-                        "description": "If this access control for reading any file. Defaults to `false`.\n",
+                        "description": "(Boolean) If this access control for reading any file. Defaults to `false`.\n",
                         "willReplaceOnChanges": true
                     },
                     "catalog": {
                         "type": "boolean",
-                        "description": "If this access control for the entire catalog. Defaults to `false`.\n",
+                        "description": "(Boolean) If this access control for the entire catalog. Defaults to `false`.\n",
                         "willReplaceOnChanges": true
                     },
                     "clusterId": {
@@ -19032,7 +19032,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.\n"
+                        "description": "(List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.\n"
                     }
                 },
                 "type": "object"
@@ -19942,11 +19942,11 @@
                 "properties": {
                     "category": {
                         "type": "string",
-                        "description": "Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):\n* `General Purpose` (all clouds)\n* `General Purpose (HDD)` (Azure)\n* `Compute Optimized` (all clouds)\n* `Memory Optimized` (all clouds)\n* `Memory Optimized (Remote HDD)` (Azure)\n* `Storage Optimized` (AWS, Azure)\n* `GPU Accelerated` (AWS, Azure)\n"
+                        "description": "Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):\n"
                     },
                     "fleet": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.\n"
+                        "description": "(boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.\n"
                     },
                     "gbPerCore": {
                         "type": "integer",
@@ -19954,7 +19954,7 @@
                     },
                     "graviton": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.\n"
+                        "description": "(boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.\n"
                     },
                     "id": {
                         "type": "string",
@@ -20520,45 +20520,45 @@
                 "properties": {
                     "beta": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to runtimes that are in Beta stage. Default to `false`.\n"
+                        "description": "(boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.\n"
                     },
                     "genomics": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.\n"
+                        "description": "(boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.\n"
                     },
                     "gpu": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to runtimes that support GPUs. Default to `false`.\n"
+                        "description": "(boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.\n"
                     },
                     "graviton": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*\n",
+                        "description": "(boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*\n",
                         "deprecationMessage": "Not required anymore - it's automatically enabled on the Graviton-based node types"
                     },
                     "latest": {
                         "type": "boolean",
-                        "description": "if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.\n"
+                        "description": "(boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.\n"
                     },
                     "longTermSupport": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to LTS (long term support) \u0026 ESR (extended support) versions. Default to `false`.\n"
+                        "description": "(boolean, optional) if we should limit the search only to LTS (long term support) \u0026 ESR (extended support) versions. Default to `false`.\n"
                     },
                     "ml": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to ML runtimes. Default to `false`.\n"
+                        "description": "(boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.\n"
                     },
                     "photon": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\\"PHOTON\\\"` in the cluster configuration instead!*\n",
+                        "description": "(boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\\"PHOTON\\\"` in the cluster configuration instead!*\n",
                         "deprecationMessage": "Specify runtime_engine=\"PHOTON\" in the cluster configuration"
                     },
                     "scala": {
                         "type": "string",
-                        "description": "if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.\n"
+                        "description": "(string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.\n"
                     },
                     "sparkVersion": {
                         "type": "string",
-                        "description": "if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.\n"
+                        "description": "(string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.\n"
                     }
                 },
                 "type": "object"
