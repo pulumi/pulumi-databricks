@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// region of VPC.
+        /// (AWS only) region of VPC.
         /// </summary>
         [Output("awsRegion")]
         public Output<string?> AwsRegion { get; private set; } = null!;
@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
         public Output<string> Cloud { get; private set; } = null!;
 
         /// <summary>
-        /// A block that specifies GCP workspace configurations, consisting of following blocks:
+        /// (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         /// </summary>
         [Output("cloudResourceContainer")]
         public Output<Outputs.MwsWorkspacesCloudResourceContainer?> CloudResourceContainer { get; private set; } = null!;
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsWorkspacesGcpManagedNetworkConfig?> GcpManagedNetworkConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
+        /// (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         /// </summary>
         [Output("gkeConfig")]
         public Output<Outputs.MwsWorkspacesGkeConfig?> GkeConfig { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
         public Output<bool?> IsNoPublicIpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// region of the subnet.
+        /// (GCP only) region of the subnet.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
         public Output<string?> ManagedServicesCustomerManagedKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// `network_id` from networks.
+        /// from networks.
         /// </summary>
         [Output("networkId")]
         public Output<string?> NetworkId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         public Output<string?> PrivateAccessSettingsId { get; private set; } = null!;
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// (AWS only)`storage_configuration_id` from storage configuration.
         /// </summary>
         [Output("storageConfigurationId")]
         public Output<string?> StorageConfigurationId { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// region of VPC.
+        /// (AWS only) region of VPC.
         /// </summary>
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Databricks
         public Input<string>? Cloud { get; set; }
 
         /// <summary>
-        /// A block that specifies GCP workspace configurations, consisting of following blocks:
+        /// (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         /// </summary>
         [Input("cloudResourceContainer")]
         public Input<Inputs.MwsWorkspacesCloudResourceContainerArgs>? CloudResourceContainer { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigArgs>? GcpManagedNetworkConfig { get; set; }
 
         /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
+        /// (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.MwsWorkspacesGkeConfigArgs>? GkeConfig { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsNoPublicIpEnabled { get; set; }
 
         /// <summary>
-        /// region of the subnet.
+        /// (GCP only) region of the subnet.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.Databricks
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// `network_id` from networks.
+        /// from networks.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// (AWS only)`storage_configuration_id` from storage configuration.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// region of VPC.
+        /// (AWS only) region of VPC.
         /// </summary>
         [Input("awsRegion")]
         public Input<string>? AwsRegion { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.Databricks
         public Input<string>? Cloud { get; set; }
 
         /// <summary>
-        /// A block that specifies GCP workspace configurations, consisting of following blocks:
+        /// (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         /// </summary>
         [Input("cloudResourceContainer")]
         public Input<Inputs.MwsWorkspacesCloudResourceContainerGetArgs>? CloudResourceContainer { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesGcpManagedNetworkConfigGetArgs>? GcpManagedNetworkConfig { get; set; }
 
         /// <summary>
-        /// A block that specifies GKE configuration for the Databricks workspace:
+        /// (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         /// </summary>
         [Input("gkeConfig")]
         public Input<Inputs.MwsWorkspacesGkeConfigGetArgs>? GkeConfig { get; set; }
@@ -402,7 +402,7 @@ namespace Pulumi.Databricks
         public Input<bool>? IsNoPublicIpEnabled { get; set; }
 
         /// <summary>
-        /// region of the subnet.
+        /// (GCP only) region of the subnet.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -414,7 +414,7 @@ namespace Pulumi.Databricks
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// `network_id` from networks.
+        /// from networks.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration.
+        /// (AWS only)`storage_configuration_id` from storage configuration.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }

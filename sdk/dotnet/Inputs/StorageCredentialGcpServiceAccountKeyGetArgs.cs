@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class StorageCredentialGcpServiceAccountKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;

@@ -292,7 +292,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
     @Import(name="taskKey")
@@ -300,7 +299,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
     public Optional<Output<String>> taskKey() {
@@ -741,7 +739,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param taskKey string specifying an unique key for a given task.
-         * * `*_task` - (Required) one of the specific task blocks described below:
          * 
          * @return builder
          * 
@@ -753,7 +750,6 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param taskKey string specifying an unique key for a given task.
-         * * `*_task` - (Required) one of the specific task blocks described below:
          * 
          * @return builder
          * 

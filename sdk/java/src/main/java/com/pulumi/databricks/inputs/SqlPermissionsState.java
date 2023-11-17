@@ -19,14 +19,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     public static final SqlPermissionsState Empty = new SqlPermissionsState();
 
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * (Boolean) If this access control for using anonymous function. Defaults to `false`.
      * 
      */
     @Import(name="anonymousFunction")
     private @Nullable Output<Boolean> anonymousFunction;
 
     /**
-     * @return If this access control for using anonymous function. Defaults to `false`.
+     * @return (Boolean) If this access control for using anonymous function. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> anonymousFunction() {
@@ -34,14 +34,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * (Boolean) If this access control for reading any file. Defaults to `false`.
      * 
      */
     @Import(name="anyFile")
     private @Nullable Output<Boolean> anyFile;
 
     /**
-     * @return If this access control for reading any file. Defaults to `false`.
+     * @return (Boolean) If this access control for reading any file. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> anyFile() {
@@ -49,14 +49,14 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If this access control for the entire catalog. Defaults to `false`.
+     * (Boolean) If this access control for the entire catalog. Defaults to `false`.
      * 
      */
     @Import(name="catalog")
     private @Nullable Output<Boolean> catalog;
 
     /**
-     * @return If this access control for the entire catalog. Defaults to `false`.
+     * @return (Boolean) If this access control for the entire catalog. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> catalog() {
@@ -154,7 +154,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
+         * @param anonymousFunction (Boolean) If this access control for using anonymous function. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anonymousFunction If this access control for using anonymous function. Defaults to `false`.
+         * @param anonymousFunction (Boolean) If this access control for using anonymous function. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anyFile If this access control for reading any file. Defaults to `false`.
+         * @param anyFile (Boolean) If this access control for reading any file. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param anyFile If this access control for reading any file. Defaults to `false`.
+         * @param anyFile (Boolean) If this access control for reading any file. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalog If this access control for the entire catalog. Defaults to `false`.
+         * @param catalog (Boolean) If this access control for the entire catalog. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class SqlPermissionsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalog If this access control for the entire catalog. Defaults to `false`.
+         * @param catalog (Boolean) If this access control for the entire catalog. Defaults to `false`.
          * 
          * @return builder
          * 

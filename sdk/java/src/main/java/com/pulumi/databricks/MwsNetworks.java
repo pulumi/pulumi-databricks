@@ -288,14 +288,14 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.errorMessages;
     }
     /**
-     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      * 
      */
     @Export(name="gcpNetworkInfo", refs={MwsNetworksGcpNetworkInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsNetworksGcpNetworkInfo> gcpNetworkInfo;
 
     /**
-     * @return a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * @return (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      * 
      */
     public Output<Optional<MwsNetworksGcpNetworkInfo>> gcpNetworkInfo() {
@@ -330,28 +330,28 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.networkName;
     }
     /**
-     * ids of aws_security_group
+     * (AWS only) ids of aws_security_group
      * 
      */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
-     * @return ids of aws_security_group
+     * @return (AWS only) ids of aws_security_group
      * 
      */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
     /**
-     * ids of aws_subnet
+     * (AWS only) ids of aws_subnet
      * 
      */
     @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> subnetIds;
 
     /**
-     * @return ids of aws_subnet
+     * @return (AWS only) ids of aws_subnet
      * 
      */
     public Output<Optional<List<String>>> subnetIds() {
@@ -372,14 +372,14 @@ public class MwsNetworks extends com.pulumi.resources.CustomResource {
         return this.vpcEndpoints;
     }
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * (AWS only) aws_vpc id
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * @return (AWS only) aws_vpc id
      * 
      */
     public Output<Optional<String>> vpcId() {

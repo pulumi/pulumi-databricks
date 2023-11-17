@@ -45,16 +45,16 @@ class MwsWorkspacesArgs:
         The set of arguments for constructing a MwsWorkspaces resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
-        :param pulumi.Input[str] aws_region: region of VPC.
-        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[str] aws_region: (AWS only) region of VPC.
+        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
-        :param pulumi.Input[str] location: region of the subnet.
+        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: (GCP only) A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: (GCP only) region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] network_id: from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_configuration_id: (AWS only)`storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_status: (String) workspace status
@@ -141,7 +141,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        region of VPC.
+        (AWS only) region of VPC.
         """
         return pulumi.get(self, "aws_region")
 
@@ -162,7 +162,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="cloudResourceContainer")
     def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
         """
-        A block that specifies GCP workspace configurations, consisting of following blocks:
+        (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         """
         return pulumi.get(self, "cloud_resource_container")
 
@@ -237,7 +237,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         """
-        A block that specifies GKE configuration for the Databricks workspace:
+        (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         """
         return pulumi.get(self, "gke_config")
 
@@ -258,7 +258,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        region of the subnet.
+        (GCP only) region of the subnet.
         """
         return pulumi.get(self, "location")
 
@@ -282,7 +282,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        `network_id` from networks.
+        from networks.
         """
         return pulumi.get(self, "network_id")
 
@@ -315,7 +315,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> Optional[pulumi.Input[str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        (AWS only)`storage_configuration_id` from storage configuration.
         """
         return pulumi.get(self, "storage_configuration_id")
 
@@ -424,16 +424,16 @@ class _MwsWorkspacesState:
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: region of VPC.
-        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[str] aws_region: (AWS only) region of VPC.
+        :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: A block that specifies GKE configuration for the Databricks workspace:
-        :param pulumi.Input[str] location: region of the subnet.
+        :param pulumi.Input['MwsWorkspacesGkeConfigArgs'] gke_config: (GCP only) A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: (GCP only) region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] network_id: from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_configuration_id: (AWS only)`storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
@@ -511,7 +511,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> Optional[pulumi.Input[str]]:
         """
-        region of VPC.
+        (AWS only) region of VPC.
         """
         return pulumi.get(self, "aws_region")
 
@@ -532,7 +532,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="cloudResourceContainer")
     def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
         """
-        A block that specifies GCP workspace configurations, consisting of following blocks:
+        (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         """
         return pulumi.get(self, "cloud_resource_container")
 
@@ -607,7 +607,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         """
-        A block that specifies GKE configuration for the Databricks workspace:
+        (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         """
         return pulumi.get(self, "gke_config")
 
@@ -628,7 +628,7 @@ class _MwsWorkspacesState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        region of the subnet.
+        (GCP only) region of the subnet.
         """
         return pulumi.get(self, "location")
 
@@ -652,7 +652,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        `network_id` from networks.
+        from networks.
         """
         return pulumi.get(self, "network_id")
 
@@ -685,7 +685,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> Optional[pulumi.Input[str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        (AWS only)`storage_configuration_id` from storage configuration.
         """
         return pulumi.get(self, "storage_configuration_id")
 
@@ -814,16 +814,16 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: region of VPC.
-        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[str] aws_region: (AWS only) region of VPC.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
-        :param pulumi.Input[str] location: region of the subnet.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: (GCP only) A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: (GCP only) region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] network_id: from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_configuration_id: (AWS only)`storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
@@ -965,16 +965,16 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
-        :param pulumi.Input[str] aws_region: region of VPC.
-        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
+        :param pulumi.Input[str] aws_region: (AWS only) region of VPC.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
         :param pulumi.Input[str] deployment_name: part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
-        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: A block that specifies GKE configuration for the Databricks workspace:
-        :param pulumi.Input[str] location: region of the subnet.
+        :param pulumi.Input[pulumi.InputType['MwsWorkspacesGkeConfigArgs']] gke_config: (GCP only) A block that specifies GKE configuration for the Databricks workspace:
+        :param pulumi.Input[str] location: (GCP only) region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
-        :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] network_id: from networks.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
-        :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
+        :param pulumi.Input[str] storage_configuration_id: (AWS only)`storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         :param pulumi.Input[int] workspace_id: (String) workspace id
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
@@ -1025,7 +1025,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> pulumi.Output[Optional[str]]:
         """
-        region of VPC.
+        (AWS only) region of VPC.
         """
         return pulumi.get(self, "aws_region")
 
@@ -1038,7 +1038,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="cloudResourceContainer")
     def cloud_resource_container(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesCloudResourceContainer']]:
         """
-        A block that specifies GCP workspace configurations, consisting of following blocks:
+        (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
         """
         return pulumi.get(self, "cloud_resource_container")
 
@@ -1085,7 +1085,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="gkeConfig")
     def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
         """
-        A block that specifies GKE configuration for the Databricks workspace:
+        (GCP only) A block that specifies GKE configuration for the Databricks workspace:
         """
         return pulumi.get(self, "gke_config")
 
@@ -1098,7 +1098,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
         """
-        region of the subnet.
+        (GCP only) region of the subnet.
         """
         return pulumi.get(self, "location")
 
@@ -1114,7 +1114,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[Optional[str]]:
         """
-        `network_id` from networks.
+        from networks.
         """
         return pulumi.get(self, "network_id")
 
@@ -1135,7 +1135,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="storageConfigurationId")
     def storage_configuration_id(self) -> pulumi.Output[Optional[str]]:
         """
-        `storage_configuration_id` from storage configuration.
+        (AWS only)`storage_configuration_id` from storage configuration.
         """
         return pulumi.get(self, "storage_configuration_id")
 

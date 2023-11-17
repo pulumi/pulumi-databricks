@@ -46,14 +46,14 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
     }
 
     /**
-     * (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * The AWS region in which KMS key is deployed to. This is not required.
      * 
      */
     @Import(name="keyRegion")
     private @Nullable Output<String> keyRegion;
 
     /**
-     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * @return The AWS region in which KMS key is deployed to. This is not required.
      * 
      */
     public Optional<Output<String>> keyRegion() {
@@ -129,7 +129,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keyRegion (Computed) The AWS region in which KMS key is deployed to. This is not required.
+         * @param keyRegion The AWS region in which KMS key is deployed to. This is not required.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keyRegion (Computed) The AWS region in which KMS key is deployed to. This is not required.
+         * @param keyRegion The AWS region in which KMS key is deployed to. This is not required.
          * 
          * @return builder
          * 

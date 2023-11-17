@@ -8,17 +8,10 @@ import * as outputs from "../types/output";
 export interface AccessControlRuleSetGrantRule {
     /**
      * a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      */
     principals?: string[];
     /**
      * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-     * * `roles/servicePrincipal.manager` - Manager of a service principal.
-     * * `roles/servicePrincipal.user` - User of a service principal.
-     * * `roles/group.manager` - Manager of a group.
-     * * `roles/marketplace.admin` - Admin of marketplace.
      */
     role: string;
 }
@@ -1746,7 +1739,7 @@ export interface JobGitSourceJobSource {
 
 export interface JobHealth {
     /**
-     * list of rules that are represented as objects with the following attributes:
+     * (List) list of rules that are represented as objects with the following attributes:
      */
     rules: outputs.JobHealthRule[];
 }
@@ -2252,7 +2245,7 @@ export interface JobParameter {
      */
     default?: string;
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      */
     name?: string;
 }
@@ -2435,7 +2428,6 @@ export interface JobTask {
     sqlTask?: outputs.JobTaskSqlTask;
     /**
      * string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
      */
     taskKey?: string;
     /**
@@ -2519,7 +2511,7 @@ export interface JobTaskEmailNotifications {
 
 export interface JobTaskHealth {
     /**
-     * list of rules that are represented as objects with the following attributes:
+     * (List) list of rules that are represented as objects with the following attributes:
      */
     rules: outputs.JobTaskHealthRule[];
 }
@@ -3146,7 +3138,7 @@ export interface MetastoreDataAccessAzureServicePrincipal {
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     credentialId: string;
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      *
      * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
@@ -3155,7 +3147,7 @@ export interface MetastoreDataAccessDatabricksGcpServiceAccount {
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      *
      * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
      */
@@ -3322,7 +3314,7 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
      */
     keyArn: string;
     /**
-     * (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * The AWS region in which KMS key is deployed to. This is not required.
      */
     keyRegion: string;
 }
@@ -3610,10 +3602,6 @@ export interface PipelineLibraryNotebook {
 export interface PipelineNotification {
     /**
      * non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-     * * `on-update-success` - a pipeline update completes successfully.
-     * * `on-update-failure` - a pipeline update fails with a retryable error.
-     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-     * * `on-flow-failure` - a single data flow fails.
      */
     alerts: string[];
     /**
@@ -4037,14 +4025,14 @@ export interface StorageCredentialAzureServicePrincipal {
 export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId: string;
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      */
     email: string;
 }
 
 export interface StorageCredentialGcpServiceAccountKey {
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      */
     email: string;
     privateKey: string;

@@ -14,7 +14,7 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
     public static final MetastoreDataAccessGcpServiceAccountKeyArgs Empty = new MetastoreDataAccessGcpServiceAccountKeyArgs();
 
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
      * 
@@ -23,7 +23,7 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
     private Output<String> email;
 
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
      * 
@@ -73,7 +73,7 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
          * 
@@ -86,7 +86,7 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
          * 

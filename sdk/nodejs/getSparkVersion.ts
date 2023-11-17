@@ -71,47 +71,47 @@ export function getSparkVersion(args?: GetSparkVersionArgs, opts?: pulumi.Invoke
  */
 export interface GetSparkVersionArgs {
     /**
-     * if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
      */
     beta?: boolean;
     /**
-     * if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
      */
     genomics?: boolean;
     /**
-     * if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
      */
     gpu?: boolean;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
      *
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: boolean;
     /**
-     * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      */
     latest?: boolean;
     /**
-     * if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
+     * (boolean, optional) if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
      */
     longTermSupport?: boolean;
     /**
-     * if we should limit the search only to ML runtimes. Default to `false`.
+     * (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
      */
     ml?: boolean;
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+     * (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
      *
      * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     photon?: boolean;
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      */
     scala?: string;
     /**
-     * if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
      */
     sparkVersion?: string;
 }
@@ -194,47 +194,47 @@ export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: p
  */
 export interface GetSparkVersionOutputArgs {
     /**
-     * if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
      */
     beta?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
      */
     genomics?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
      */
     gpu?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
      *
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
     graviton?: pulumi.Input<boolean>;
     /**
-     * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      */
     latest?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
+     * (boolean, optional) if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
      */
     longTermSupport?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to ML runtimes. Default to `false`.
+     * (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
      */
     ml?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+     * (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
      *
      * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     photon?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      */
     scala?: pulumi.Input<string>;
     /**
-     * if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
      */
     sparkVersion?: pulumi.Input<string>;
 }

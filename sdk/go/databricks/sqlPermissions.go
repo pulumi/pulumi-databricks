@@ -80,11 +80,11 @@ import (
 type SqlPermissions struct {
 	pulumi.CustomResourceState
 
-	// If this access control for using anonymous function. Defaults to `false`.
+	// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 	AnonymousFunction pulumi.BoolPtrOutput `pulumi:"anonymousFunction"`
-	// If this access control for reading any file. Defaults to `false`.
+	// (Boolean) If this access control for reading any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrOutput `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
+	// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 	Catalog   pulumi.BoolPtrOutput `pulumi:"catalog"`
 	ClusterId pulumi.StringOutput  `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
@@ -126,11 +126,11 @@ func GetSqlPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlPermissions resources.
 type sqlPermissionsState struct {
-	// If this access control for using anonymous function. Defaults to `false`.
+	// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 	AnonymousFunction *bool `pulumi:"anonymousFunction"`
-	// If this access control for reading any file. Defaults to `false`.
+	// (Boolean) If this access control for reading any file. Defaults to `false`.
 	AnyFile *bool `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
+	// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 	Catalog   *bool   `pulumi:"catalog"`
 	ClusterId *string `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
@@ -143,11 +143,11 @@ type sqlPermissionsState struct {
 }
 
 type SqlPermissionsState struct {
-	// If this access control for using anonymous function. Defaults to `false`.
+	// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 	AnonymousFunction pulumi.BoolPtrInput
-	// If this access control for reading any file. Defaults to `false`.
+	// (Boolean) If this access control for reading any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrInput
-	// If this access control for the entire catalog. Defaults to `false`.
+	// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 	Catalog   pulumi.BoolPtrInput
 	ClusterId pulumi.StringPtrInput
 	// Name of the database. Has default value of `default`.
@@ -164,11 +164,11 @@ func (SqlPermissionsState) ElementType() reflect.Type {
 }
 
 type sqlPermissionsArgs struct {
-	// If this access control for using anonymous function. Defaults to `false`.
+	// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 	AnonymousFunction *bool `pulumi:"anonymousFunction"`
-	// If this access control for reading any file. Defaults to `false`.
+	// (Boolean) If this access control for reading any file. Defaults to `false`.
 	AnyFile *bool `pulumi:"anyFile"`
-	// If this access control for the entire catalog. Defaults to `false`.
+	// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 	Catalog   *bool   `pulumi:"catalog"`
 	ClusterId *string `pulumi:"clusterId"`
 	// Name of the database. Has default value of `default`.
@@ -182,11 +182,11 @@ type sqlPermissionsArgs struct {
 
 // The set of arguments for constructing a SqlPermissions resource.
 type SqlPermissionsArgs struct {
-	// If this access control for using anonymous function. Defaults to `false`.
+	// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 	AnonymousFunction pulumi.BoolPtrInput
-	// If this access control for reading any file. Defaults to `false`.
+	// (Boolean) If this access control for reading any file. Defaults to `false`.
 	AnyFile pulumi.BoolPtrInput
-	// If this access control for the entire catalog. Defaults to `false`.
+	// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 	Catalog   pulumi.BoolPtrInput
 	ClusterId pulumi.StringPtrInput
 	// Name of the database. Has default value of `default`.
@@ -285,17 +285,17 @@ func (o SqlPermissionsOutput) ToSqlPermissionsOutputWithContext(ctx context.Cont
 	return o
 }
 
-// If this access control for using anonymous function. Defaults to `false`.
+// (Boolean) If this access control for using anonymous function. Defaults to `false`.
 func (o SqlPermissionsOutput) AnonymousFunction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.AnonymousFunction }).(pulumi.BoolPtrOutput)
 }
 
-// If this access control for reading any file. Defaults to `false`.
+// (Boolean) If this access control for reading any file. Defaults to `false`.
 func (o SqlPermissionsOutput) AnyFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.AnyFile }).(pulumi.BoolPtrOutput)
 }
 
-// If this access control for the entire catalog. Defaults to `false`.
+// (Boolean) If this access control for the entire catalog. Defaults to `false`.
 func (o SqlPermissionsOutput) Catalog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlPermissions) pulumi.BoolPtrOutput { return v.Catalog }).(pulumi.BoolPtrOutput)
 }

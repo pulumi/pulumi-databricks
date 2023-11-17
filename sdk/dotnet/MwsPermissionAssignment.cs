@@ -116,8 +116,6 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
@@ -185,8 +183,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -219,8 +215,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {

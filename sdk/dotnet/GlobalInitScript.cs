@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// specifies if the script is enabled for execution, or not
+        /// (bool, optional default: `false`) specifies if the script is enabled for execution, or not
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -34,13 +34,13 @@ namespace Pulumi.Databricks
         public Output<string?> Md5 { get; private set; } = null!;
 
         /// <summary>
-        /// the name of the script.  It should be unique
+        /// (string, required) - the name of the script.  It should be unique
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        /// (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         /// </summary>
         [Output("position")]
         public Output<int> Position { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// specifies if the script is enabled for execution, or not
+        /// (bool, optional default: `false`) specifies if the script is enabled for execution, or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -110,13 +110,13 @@ namespace Pulumi.Databricks
         public Input<string>? Md5 { get; set; }
 
         /// <summary>
-        /// the name of the script.  It should be unique
+        /// (string, required) - the name of the script.  It should be unique
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        /// (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         /// </summary>
         [Input("position")]
         public Input<int>? Position { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.Databricks
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// specifies if the script is enabled for execution, or not
+        /// (bool, optional default: `false`) specifies if the script is enabled for execution, or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -148,13 +148,13 @@ namespace Pulumi.Databricks
         public Input<string>? Md5 { get; set; }
 
         /// <summary>
-        /// the name of the script.  It should be unique
+        /// (string, required) - the name of the script.  It should be unique
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+        /// (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         /// </summary>
         [Input("position")]
         public Input<int>? Position { get; set; }

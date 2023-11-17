@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class StorageCredentialGcpServiceAccountKey {
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     private String email;
@@ -19,7 +19,7 @@ public final class StorageCredentialGcpServiceAccountKey {
 
     private StorageCredentialGcpServiceAccountKey() {}
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     public String email() {

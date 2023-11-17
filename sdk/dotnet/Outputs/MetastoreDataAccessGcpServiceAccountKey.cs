@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class MetastoreDataAccessGcpServiceAccountKey
     {
         /// <summary>
-        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         /// 
         /// `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         /// </summary>

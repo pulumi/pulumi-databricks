@@ -55,6 +55,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -70,7 +71,7 @@ export class Job extends pulumi.CustomResource {
     public readonly format!: pulumi.Output<string>;
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * block described below that specifies health conditions for a given task.
      */
     public readonly health!: pulumi.Output<outputs.JobHealth | undefined>;
     /**
@@ -86,7 +87,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
@@ -250,6 +251,7 @@ export interface JobState {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -265,7 +267,7 @@ export interface JobState {
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * block described below that specifies health conditions for a given task.
      */
     health?: pulumi.Input<inputs.JobHealth>;
     /**
@@ -281,7 +283,7 @@ export interface JobState {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -351,6 +353,7 @@ export interface JobArgs {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -366,7 +369,7 @@ export interface JobArgs {
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
     /**
-     * An optional block that specifies the health conditions for the job (described below).
+     * block described below that specifies health conditions for a given task.
      */
     health?: pulumi.Input<inputs.JobHealth>;
     /**
@@ -382,7 +385,7 @@ export interface JobArgs {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: pulumi.Input<number>;
     /**

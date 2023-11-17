@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? CredentialId;
         /// <summary>
-        /// The email of the GCP service account created, to be granted access to relevant buckets.
+        /// (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         /// </summary>
         public readonly string? Email;
 

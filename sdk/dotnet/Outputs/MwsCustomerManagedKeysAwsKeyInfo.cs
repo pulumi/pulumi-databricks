@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string KeyArn;
         /// <summary>
-        /// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+        /// The AWS region in which KMS key is deployed to. This is not required.
         /// </summary>
         public readonly string? KeyRegion;
 

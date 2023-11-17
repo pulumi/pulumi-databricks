@@ -50,14 +50,14 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      * 
      */
     @Import(name="gcpNetworkInfo")
     private @Nullable Output<MwsNetworksGcpNetworkInfoArgs> gcpNetworkInfo;
 
     /**
-     * @return a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * @return (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      * 
      */
     public Optional<Output<MwsNetworksGcpNetworkInfoArgs>> gcpNetworkInfo() {
@@ -95,14 +95,14 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ids of aws_security_group
+     * (AWS only) ids of aws_security_group
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return ids of aws_security_group
+     * @return (AWS only) ids of aws_security_group
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -110,14 +110,14 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ids of aws_subnet
+     * (AWS only) ids of aws_subnet
      * 
      */
     @Import(name="subnetIds")
     private @Nullable Output<List<String>> subnetIds;
 
     /**
-     * @return ids of aws_subnet
+     * @return (AWS only) ids of aws_subnet
      * 
      */
     public Optional<Output<List<String>>> subnetIds() {
@@ -140,14 +140,14 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * (AWS only) aws_vpc id
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * @return (AWS only) aws_vpc id
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -263,7 +263,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcpNetworkInfo a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+         * @param gcpNetworkInfo (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gcpNetworkInfo a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+         * @param gcpNetworkInfo (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds ids of aws_security_group
+         * @param securityGroupIds (AWS only) ids of aws_security_group
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds ids of aws_security_group
+         * @param securityGroupIds (AWS only) ids of aws_security_group
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds ids of aws_security_group
+         * @param securityGroupIds (AWS only) ids of aws_security_group
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnetIds ids of aws_subnet
+         * @param subnetIds (AWS only) ids of aws_subnet
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnetIds ids of aws_subnet
+         * @param subnetIds (AWS only) ids of aws_subnet
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnetIds ids of aws_subnet
+         * @param subnetIds (AWS only) ids of aws_subnet
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * @param vpcId (AWS only) aws_vpc id
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * @param vpcId (AWS only) aws_vpc id
          * 
          * @return builder
          * 

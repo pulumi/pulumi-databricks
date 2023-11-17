@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the metastore
+        /// (Mandatory for account-level) The region of the metastore
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// The region of the metastore
+        /// (Mandatory for account-level) The region of the metastore
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// The region of the metastore
+        /// (Mandatory for account-level) The region of the metastore
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

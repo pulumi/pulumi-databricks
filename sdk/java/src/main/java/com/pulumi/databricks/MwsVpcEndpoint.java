@@ -58,42 +58,42 @@ public class MwsVpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.awsEndpointServiceId;
     }
     /**
-     * ID of configured aws_vpc_endpoint
+     * (AWS only) ID of configured aws_vpc_endpoint
      * 
      */
     @Export(name="awsVpcEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsVpcEndpointId;
 
     /**
-     * @return ID of configured aws_vpc_endpoint
+     * @return (AWS only) ID of configured aws_vpc_endpoint
      * 
      */
     public Output<Optional<String>> awsVpcEndpointId() {
         return Codegen.optional(this.awsVpcEndpointId);
     }
     /**
-     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      * 
      */
     @Export(name="gcpVpcEndpointInfo", refs={MwsVpcEndpointGcpVpcEndpointInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsVpcEndpointGcpVpcEndpointInfo> gcpVpcEndpointInfo;
 
     /**
-     * @return a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * @return (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      * 
      */
     public Output<Optional<MwsVpcEndpointGcpVpcEndpointInfo>> gcpVpcEndpointInfo() {
         return Codegen.optional(this.gcpVpcEndpointInfo);
     }
     /**
-     * Region of AWS VPC
+     * (AWS only) Region of AWS VPC
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
-     * @return Region of AWS VPC
+     * @return (AWS only) Region of AWS VPC
      * 
      */
     public Output<Optional<String>> region() {

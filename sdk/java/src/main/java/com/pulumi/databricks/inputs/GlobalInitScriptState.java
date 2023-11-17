@@ -25,14 +25,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * specifies if the script is enabled for execution, or not
+     * (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return specifies if the script is enabled for execution, or not
+     * @return (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the name of the script.  It should be unique
+     * (string, required) - the name of the script.  It should be unique
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return the name of the script.  It should be unique
+     * @return (string, required) - the name of the script.  It should be unique
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,14 +62,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     @Import(name="position")
     private @Nullable Output<Integer> position;
 
     /**
-     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * @return (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     public Optional<Output<Integer>> position() {
@@ -130,7 +130,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled specifies if the script is enabled for execution, or not
+         * @param enabled (bool, optional default: `false`) specifies if the script is enabled for execution, or not
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled specifies if the script is enabled for execution, or not
+         * @param enabled (bool, optional default: `false`) specifies if the script is enabled for execution, or not
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name the name of the script.  It should be unique
+         * @param name (string, required) - the name of the script.  It should be unique
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name the name of the script.  It should be unique
+         * @param name (string, required) - the name of the script.  It should be unique
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+         * @param position (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param position the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+         * @param position (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
          * 
          * @return builder
          * 

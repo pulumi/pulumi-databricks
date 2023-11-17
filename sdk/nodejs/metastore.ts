@@ -76,7 +76,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string>;
     /**
-     * The region of the metastore
+     * (Mandatory for account-level) The region of the metastore
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface MetastoreState {
      */
     owner?: pulumi.Input<string>;
     /**
-     * The region of the metastore
+     * (Mandatory for account-level) The region of the metastore
      */
     region?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface MetastoreArgs {
      */
     owner?: pulumi.Input<string>;
     /**
-     * The region of the metastore
+     * (Mandatory for account-level) The region of the metastore
      */
     region?: pulumi.Input<string>;
     /**

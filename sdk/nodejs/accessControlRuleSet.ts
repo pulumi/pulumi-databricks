@@ -183,9 +183,6 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
     public readonly grantRules!: pulumi.Output<outputs.AccessControlRuleSetGrantRule[] | undefined>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -229,9 +226,6 @@ export interface AccessControlRuleSetState {
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
      */
     name?: pulumi.Input<string>;
 }
@@ -248,9 +242,6 @@ export interface AccessControlRuleSetArgs {
     grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
      */
     name?: pulumi.Input<string>;
 }

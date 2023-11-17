@@ -19,8 +19,6 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
 
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     @Import(name="permissions")
@@ -28,8 +26,6 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
 
     /**
      * @return The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     public Optional<Output<List<String>>> permissions() {
@@ -94,8 +90,6 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 
@@ -107,8 +101,6 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 
@@ -119,8 +111,6 @@ public final class MwsPermissionAssignmentState extends com.pulumi.resources.Res
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 

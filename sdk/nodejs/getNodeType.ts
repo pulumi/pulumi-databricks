@@ -76,17 +76,10 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
 export interface GetNodeTypeArgs {
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
      */
     category?: string;
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      */
     fleet?: boolean;
     /**
@@ -94,7 +87,7 @@ export interface GetNodeTypeArgs {
      */
     gbPerCore?: number;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      */
     graviton?: boolean;
     /**
@@ -215,17 +208,10 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
 export interface GetNodeTypeOutputArgs {
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
      */
     category?: pulumi.Input<string>;
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      */
     fleet?: pulumi.Input<boolean>;
     /**
@@ -233,7 +219,7 @@ export interface GetNodeTypeOutputArgs {
      */
     gbPerCore?: pulumi.Input<number>;
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      */
     graviton?: pulumi.Input<boolean>;
     /**

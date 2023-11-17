@@ -16,10 +16,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
     /**
      * non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-     * * `on-update-success` - a pipeline update completes successfully.
-     * * `on-update-failure` - a pipeline update fails with a retryable error.
-     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-     * * `on-flow-failure` - a single data flow fails.
      * 
      */
     @Import(name="alerts", required=true)
@@ -27,10 +23,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-     * * `on-update-success` - a pipeline update completes successfully.
-     * * `on-update-failure` - a pipeline update fails with a retryable error.
-     * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-     * * `on-flow-failure` - a single data flow fails.
      * 
      */
     public Output<List<String>> alerts() {
@@ -79,10 +71,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-         * * `on-update-success` - a pipeline update completes successfully.
-         * * `on-update-failure` - a pipeline update fails with a retryable error.
-         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-         * * `on-flow-failure` - a single data flow fails.
          * 
          * @return builder
          * 
@@ -94,10 +82,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-         * * `on-update-success` - a pipeline update completes successfully.
-         * * `on-update-failure` - a pipeline update fails with a retryable error.
-         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-         * * `on-flow-failure` - a single data flow fails.
          * 
          * @return builder
          * 
@@ -108,10 +92,6 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param alerts non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-         * * `on-update-success` - a pipeline update completes successfully.
-         * * `on-update-failure` - a pipeline update fails with a retryable error.
-         * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-         * * `on-flow-failure` - a single data flow fails.
          * 
          * @return builder
          * 

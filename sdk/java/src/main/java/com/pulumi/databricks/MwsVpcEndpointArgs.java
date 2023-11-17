@@ -54,14 +54,14 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ID of configured aws_vpc_endpoint
+     * (AWS only) ID of configured aws_vpc_endpoint
      * 
      */
     @Import(name="awsVpcEndpointId")
     private @Nullable Output<String> awsVpcEndpointId;
 
     /**
-     * @return ID of configured aws_vpc_endpoint
+     * @return (AWS only) ID of configured aws_vpc_endpoint
      * 
      */
     public Optional<Output<String>> awsVpcEndpointId() {
@@ -69,14 +69,14 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      * 
      */
     @Import(name="gcpVpcEndpointInfo")
     private @Nullable Output<MwsVpcEndpointGcpVpcEndpointInfoArgs> gcpVpcEndpointInfo;
 
     /**
-     * @return a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * @return (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      * 
      */
     public Optional<Output<MwsVpcEndpointGcpVpcEndpointInfoArgs>> gcpVpcEndpointInfo() {
@@ -84,14 +84,14 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Region of AWS VPC
+     * (AWS only) Region of AWS VPC
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Region of AWS VPC
+     * @return (AWS only) Region of AWS VPC
      * 
      */
     public Optional<Output<String>> region() {
@@ -235,7 +235,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsVpcEndpointId ID of configured aws_vpc_endpoint
+         * @param awsVpcEndpointId (AWS only) ID of configured aws_vpc_endpoint
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param awsVpcEndpointId ID of configured aws_vpc_endpoint
+         * @param awsVpcEndpointId (AWS only) ID of configured aws_vpc_endpoint
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gcpVpcEndpointInfo a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+         * @param gcpVpcEndpointInfo (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gcpVpcEndpointInfo a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+         * @param gcpVpcEndpointInfo (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param region Region of AWS VPC
+         * @param region (AWS only) Region of AWS VPC
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param region Region of AWS VPC
+         * @param region (AWS only) Region of AWS VPC
          * 
          * @return builder
          * 

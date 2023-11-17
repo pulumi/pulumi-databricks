@@ -16,14 +16,14 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
     public static final GetAwsCrossAccountPolicyPlainArgs Empty = new GetAwsCrossAccountPolicyPlainArgs();
 
     /**
-     * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * 
      */
     @Import(name="passRoles")
     private @Nullable List<String> passRoles;
 
     /**
-     * @return List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * @return (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * 
      */
     public Optional<List<String>> passRoles() {
@@ -55,7 +55,7 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param passRoles List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+         * @param passRoles (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param passRoles List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+         * @param passRoles (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
          * 
          * @return builder
          * 

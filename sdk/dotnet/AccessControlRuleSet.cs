@@ -302,9 +302,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -371,9 +368,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -405,9 +399,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        /// * `accounts/{account_id}/ruleSets/default`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

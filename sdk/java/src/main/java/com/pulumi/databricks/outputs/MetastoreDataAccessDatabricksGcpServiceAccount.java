@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class MetastoreDataAccessDatabricksGcpServiceAccount {
     private @Nullable String credentialId;
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
      * 
@@ -25,7 +25,7 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccount {
         return Optional.ofNullable(this.credentialId);
     }
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
      * 

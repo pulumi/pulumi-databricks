@@ -37,6 +37,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +73,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// block described below that specifies health conditions for a given task.
         /// </summary>
         [Output("health")]
         public Output<Outputs.JobHealth?> Health { get; private set; } = null!;
@@ -96,7 +97,7 @@ namespace Pulumi.Databricks
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
@@ -261,6 +262,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -296,7 +298,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// block described below that specifies health conditions for a given task.
         /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthArgs>? Health { get; set; }
@@ -332,7 +334,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -468,6 +470,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -503,7 +506,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
 
         /// <summary>
-        /// An optional block that specifies the health conditions for the job (described below).
+        /// block described below that specifies health conditions for a given task.
         /// </summary>
         [Input("health")]
         public Input<Inputs.JobHealthGetArgs>? Health { get; set; }
@@ -539,7 +542,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }

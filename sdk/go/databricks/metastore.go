@@ -46,7 +46,7 @@ type Metastore struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// The region of the metastore
+	// (Mandatory for account-level) The region of the metastore
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot             pulumi.StringOutput    `pulumi:"storageRoot"`
@@ -106,7 +106,7 @@ type metastoreState struct {
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner *string `pulumi:"owner"`
-	// The region of the metastore
+	// (Mandatory for account-level) The region of the metastore
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot             *string `pulumi:"storageRoot"`
@@ -134,7 +134,7 @@ type MetastoreState struct {
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner pulumi.StringPtrInput
-	// The region of the metastore
+	// (Mandatory for account-level) The region of the metastore
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot             pulumi.StringPtrInput
@@ -166,7 +166,7 @@ type metastoreArgs struct {
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner *string `pulumi:"owner"`
-	// The region of the metastore
+	// (Mandatory for account-level) The region of the metastore
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot             string  `pulumi:"storageRoot"`
@@ -195,7 +195,7 @@ type MetastoreArgs struct {
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner pulumi.StringPtrInput
-	// The region of the metastore
+	// (Mandatory for account-level) The region of the metastore
 	Region pulumi.StringPtrInput
 	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
 	StorageRoot             pulumi.StringInput
@@ -345,7 +345,7 @@ func (o MetastoreOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// The region of the metastore
+// (Mandatory for account-level) The region of the metastore
 func (o MetastoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

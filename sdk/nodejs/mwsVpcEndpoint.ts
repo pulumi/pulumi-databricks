@@ -49,15 +49,15 @@ export class MwsVpcEndpoint extends pulumi.CustomResource {
      */
     public readonly awsEndpointServiceId!: pulumi.Output<string>;
     /**
-     * ID of configured aws_vpc_endpoint
+     * (AWS only) ID of configured aws_vpc_endpoint
      */
     public readonly awsVpcEndpointId!: pulumi.Output<string | undefined>;
     /**
-     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
     public readonly gcpVpcEndpointInfo!: pulumi.Output<outputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
     /**
-     * Region of AWS VPC
+     * (AWS only) Region of AWS VPC
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
@@ -132,15 +132,15 @@ export interface MwsVpcEndpointState {
      */
     awsEndpointServiceId?: pulumi.Input<string>;
     /**
-     * ID of configured aws_vpc_endpoint
+     * (AWS only) ID of configured aws_vpc_endpoint
      */
     awsVpcEndpointId?: pulumi.Input<string>;
     /**
-     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
     gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
     /**
-     * Region of AWS VPC
+     * (AWS only) Region of AWS VPC
      */
     region?: pulumi.Input<string>;
     /**
@@ -172,15 +172,15 @@ export interface MwsVpcEndpointArgs {
      */
     awsEndpointServiceId?: pulumi.Input<string>;
     /**
-     * ID of configured aws_vpc_endpoint
+     * (AWS only) ID of configured aws_vpc_endpoint
      */
     awsVpcEndpointId?: pulumi.Input<string>;
     /**
-     * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
     gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
     /**
-     * Region of AWS VPC
+     * (AWS only) Region of AWS VPC
      */
     region?: pulumi.Input<string>;
     /**

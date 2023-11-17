@@ -38,14 +38,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * region of VPC.
+     * (AWS only) region of VPC.
      * 
      */
     @Import(name="awsRegion")
     private @Nullable Output<String> awsRegion;
 
     /**
-     * @return region of VPC.
+     * @return (AWS only) region of VPC.
      * 
      */
     public Optional<Output<String>> awsRegion() {
@@ -60,14 +60,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      * 
      */
     @Import(name="cloudResourceContainer")
     private @Nullable Output<MwsWorkspacesCloudResourceContainerArgs> cloudResourceContainer;
 
     /**
-     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
+     * @return (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      * 
      */
     public Optional<Output<MwsWorkspacesCloudResourceContainerArgs>> cloudResourceContainer() {
@@ -145,14 +145,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
+     * (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
     /**
-     * @return A block that specifies GKE configuration for the Databricks workspace:
+     * @return (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
@@ -167,14 +167,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * region of the subnet.
+     * (GCP only) region of the subnet.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return region of the subnet.
+     * @return (GCP only) region of the subnet.
      * 
      */
     public Optional<Output<String>> location() {
@@ -197,14 +197,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `network_id` from networks.
+     * from networks.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return `network_id` from networks.
+     * @return from networks.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -234,14 +234,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `storage_configuration_id` from storage configuration.
+     * (AWS only)`storage_configuration_id` from storage configuration.
      * 
      */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration.
+     * @return (AWS only)`storage_configuration_id` from storage configuration.
      * 
      */
     public Optional<Output<String>> storageConfigurationId() {
@@ -415,7 +415,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRegion region of VPC.
+         * @param awsRegion (AWS only) region of VPC.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param awsRegion region of VPC.
+         * @param awsRegion (AWS only) region of VPC.
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * @param cloudResourceContainer (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudResourceContainer A block that specifies GCP workspace configurations, consisting of following blocks:
+         * @param cloudResourceContainer (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * @param gkeConfig (GCP only) A block that specifies GKE configuration for the Databricks workspace:
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfig A block that specifies GKE configuration for the Databricks workspace:
+         * @param gkeConfig (GCP only) A block that specifies GKE configuration for the Databricks workspace:
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location region of the subnet.
+         * @param location (GCP only) region of the subnet.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location region of the subnet.
+         * @param location (GCP only) region of the subnet.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId `network_id` from networks.
+         * @param networkId from networks.
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId `network_id` from networks.
+         * @param networkId from networks.
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * @param storageConfigurationId (AWS only)`storage_configuration_id` from storage configuration.
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration.
+         * @param storageConfigurationId (AWS only)`storage_configuration_id` from storage configuration.
          * 
          * @return builder
          * 

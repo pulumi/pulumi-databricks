@@ -457,14 +457,7 @@ class AccessControlRuleSetGrantRuleArgs:
                  principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] role: Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-               * `roles/servicePrincipal.manager` - Manager of a service principal.
-               * `roles/servicePrincipal.user` - User of a service principal.
-               * `roles/group.manager` - Manager of a group.
-               * `roles/marketplace.admin` - Admin of marketplace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: a list of principals who are granted a role. The following format is supported:
-               * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
-               * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
-               * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
         """
         pulumi.set(__self__, "role", role)
         if principals is not None:
@@ -475,10 +468,6 @@ class AccessControlRuleSetGrantRuleArgs:
     def role(self) -> pulumi.Input[str]:
         """
         Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page) or [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role).
-        * `roles/servicePrincipal.manager` - Manager of a service principal.
-        * `roles/servicePrincipal.user` - User of a service principal.
-        * `roles/group.manager` - Manager of a group.
-        * `roles/marketplace.admin` - Admin of marketplace.
         """
         return pulumi.get(self, "role")
 
@@ -491,9 +480,6 @@ class AccessControlRuleSetGrantRuleArgs:
     def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         a list of principals who are granted a role. The following format is supported:
-        * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
-        * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
-        * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `ServicePrincipal` resource).
         """
         return pulumi.get(self, "principals")
 
@@ -2462,7 +2448,7 @@ class JobHealthArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgs']]] rules: list of rules that are represented as objects with the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgs']]] rules: (List) list of rules that are represented as objects with the following attributes:
         """
         pulumi.set(__self__, "rules", rules)
 
@@ -2470,7 +2456,7 @@ class JobHealthArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['JobHealthRuleArgs']]]:
         """
-        list of rules that are represented as objects with the following attributes:
+        (List) list of rules that are represented as objects with the following attributes:
         """
         return pulumi.get(self, "rules")
 
@@ -5434,7 +5420,7 @@ class JobParameterArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] default: Default value of the parameter.
-        :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
+        :param pulumi.Input[str] name: The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -5457,7 +5443,7 @@ class JobParameterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional name for the job. The default value is Untitled.
+        The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         return pulumi.get(self, "name")
 
@@ -5917,7 +5903,6 @@ class JobTaskArgs:
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[str] run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
         :param pulumi.Input[str] task_key: string specifying an unique key for a given task.
-               * `*_task` - (Required) one of the specific task blocks described below:
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         """
         if compute_key is not None:
@@ -6227,7 +6212,6 @@ class JobTaskArgs:
     def task_key(self) -> Optional[pulumi.Input[str]]:
         """
         string specifying an unique key for a given task.
-        * `*_task` - (Required) one of the specific task blocks described below:
         """
         return pulumi.get(self, "task_key")
 
@@ -6543,7 +6527,7 @@ class JobTaskHealthArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgs']]] rules: list of rules that are represented as objects with the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgs']]] rules: (List) list of rules that are represented as objects with the following attributes:
         """
         pulumi.set(__self__, "rules", rules)
 
@@ -6551,7 +6535,7 @@ class JobTaskHealthArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['JobTaskHealthRuleArgs']]]:
         """
-        list of rules that are represented as objects with the following attributes:
+        (List) list of rules that are represented as objects with the following attributes:
         """
         return pulumi.get(self, "rules")
 
@@ -9385,7 +9369,7 @@ class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
                  credential_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+        :param pulumi.Input[str] email: (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
                
                `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
@@ -9407,7 +9391,7 @@ class MetastoreDataAccessDatabricksGcpServiceAccountArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The email of the GCP service account created, to be granted access to relevant buckets.
+        (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
 
         `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
@@ -9425,7 +9409,7 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
                  private_key: pulumi.Input[str],
                  private_key_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+        :param pulumi.Input[str] email: (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
                
                `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
@@ -9437,7 +9421,7 @@ class MetastoreDataAccessGcpServiceAccountKeyArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        The email of the GCP service account created, to be granted access to relevant buckets.
+        (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
 
         `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
         """
@@ -10198,7 +10182,7 @@ class MwsCustomerManagedKeysAwsKeyInfoArgs:
         """
         :param pulumi.Input[str] key_alias: The AWS KMS key alias.
         :param pulumi.Input[str] key_arn: The AWS KMS key's Amazon Resource Name (ARN).
-        :param pulumi.Input[str] key_region: (Computed) The AWS region in which KMS key is deployed to. This is not required.
+        :param pulumi.Input[str] key_region: The AWS region in which KMS key is deployed to. This is not required.
         """
         pulumi.set(__self__, "key_alias", key_alias)
         pulumi.set(__self__, "key_arn", key_arn)
@@ -10233,7 +10217,7 @@ class MwsCustomerManagedKeysAwsKeyInfoArgs:
     @pulumi.getter(name="keyRegion")
     def key_region(self) -> Optional[pulumi.Input[str]]:
         """
-        (Computed) The AWS region in which KMS key is deployed to. This is not required.
+        The AWS region in which KMS key is deployed to. This is not required.
         """
         return pulumi.get(self, "key_region")
 
@@ -11850,10 +11834,6 @@ class PipelineNotificationArgs:
                  email_recipients: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alerts: non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-               * `on-update-success` - a pipeline update completes successfully.
-               * `on-update-failure` - a pipeline update fails with a retryable error.
-               * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-               * `on-flow-failure` - a single data flow fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_recipients: non-empty list of emails to notify.
         """
         pulumi.set(__self__, "alerts", alerts)
@@ -11864,10 +11844,6 @@ class PipelineNotificationArgs:
     def alerts(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-        * `on-update-success` - a pipeline update completes successfully.
-        * `on-update-failure` - a pipeline update fails with a retryable error.
-        * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-        * `on-flow-failure` - a single data flow fails.
         """
         return pulumi.get(self, "alerts")
 
@@ -13781,7 +13757,7 @@ class StorageCredentialDatabricksGcpServiceAccountArgs:
                  credential_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+        :param pulumi.Input[str] email: (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -13801,7 +13777,7 @@ class StorageCredentialDatabricksGcpServiceAccountArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The email of the GCP service account created, to be granted access to relevant buckets.
+        (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         """
         return pulumi.get(self, "email")
 
@@ -13817,7 +13793,7 @@ class StorageCredentialGcpServiceAccountKeyArgs:
                  private_key: pulumi.Input[str],
                  private_key_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] email: The email of the GCP service account created, to be granted access to relevant buckets.
+        :param pulumi.Input[str] email: (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
@@ -13827,7 +13803,7 @@ class StorageCredentialGcpServiceAccountKeyArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        The email of the GCP service account created, to be granted access to relevant buckets.
+        (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
         """
         return pulumi.get(self, "email")
 

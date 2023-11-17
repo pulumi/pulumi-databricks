@@ -39,28 +39,28 @@ public class OboToken extends com.pulumi.resources.CustomResource {
         return this.applicationId;
     }
     /**
-     * Comment that describes the purpose of the token.
+     * (String, Optional) Comment that describes the purpose of the token.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Comment that describes the purpose of the token.
+     * @return (String, Optional) Comment that describes the purpose of the token.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     @Export(name="lifetimeSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifetimeSeconds;
 
     /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * @return (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     public Output<Optional<Integer>> lifetimeSeconds() {

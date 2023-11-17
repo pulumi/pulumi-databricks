@@ -31,14 +31,14 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -92,7 +92,7 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name An optional name for the job. The default value is Untitled.
+         * @param name The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name An optional name for the job. The default value is Untitled.
+         * @param name The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
          * 
          * @return builder
          * 

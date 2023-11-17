@@ -17,14 +17,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSparkVersionArgs Empty = new GetSparkVersionArgs();
 
     /**
-     * if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
      * 
      */
     @Import(name="beta")
     private @Nullable Output<Boolean> beta;
 
     /**
-     * @return if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+     * @return (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> beta() {
@@ -32,14 +32,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
      * 
      */
     @Import(name="genomics")
     private @Nullable Output<Boolean> genomics;
 
     /**
-     * @return if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+     * @return (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> genomics() {
@@ -47,14 +47,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
      * 
      */
     @Import(name="gpu")
     private @Nullable Output<Boolean> gpu;
 
     /**
-     * @return if we should limit the search only to runtimes that support GPUs. Default to `false`.
+     * @return (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> gpu() {
@@ -62,7 +62,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
      * 
      * @deprecated
      * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
@@ -73,7 +73,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Boolean> graviton;
 
     /**
-     * @return if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * @return (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
      * 
      * @deprecated
      * Not required anymore - it&#39;s automatically enabled on the Graviton-based node types
@@ -85,14 +85,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      * 
      */
     @Import(name="latest")
     private @Nullable Output<Boolean> latest;
 
     /**
-     * @return if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+     * @return (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -100,14 +100,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+     * (boolean, optional) if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
      * 
      */
     @Import(name="longTermSupport")
     private @Nullable Output<Boolean> longTermSupport;
 
     /**
-     * @return if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+     * @return (boolean, optional) if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> longTermSupport() {
@@ -115,14 +115,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to ML runtimes. Default to `false`.
+     * (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
      * 
      */
     @Import(name="ml")
     private @Nullable Output<Boolean> ml;
 
     /**
-     * @return if we should limit the search only to ML runtimes. Default to `false`.
+     * @return (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> ml() {
@@ -130,7 +130,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
      * 
      * @deprecated
      * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
@@ -141,7 +141,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Boolean> photon;
 
     /**
-     * @return if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+     * @return (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
      * 
      * @deprecated
      * Specify runtime_engine=&#34;PHOTON&#34; in the cluster configuration
@@ -153,14 +153,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      * 
      */
     @Import(name="scala")
     private @Nullable Output<String> scala;
 
     /**
-     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * @return (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      * 
      */
     public Optional<Output<String>> scala() {
@@ -168,14 +168,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
      * 
      */
     @Import(name="sparkVersion")
     private @Nullable Output<String> sparkVersion;
 
     /**
-     * @return if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+     * @return (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
      * 
      */
     public Optional<Output<String>> sparkVersion() {
@@ -216,7 +216,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param beta if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+         * @param beta (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param beta if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+         * @param beta (boolean, optional) if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param genomics if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+         * @param genomics (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param genomics if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+         * @param genomics (boolean, optional)  if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param gpu if we should limit the search only to runtimes that support GPUs. Default to `false`.
+         * @param gpu (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param gpu if we should limit the search only to runtimes that support GPUs. Default to `false`.
+         * @param gpu (boolean, optional)  if we should limit the search only to runtimes that support GPUs. Default to `false`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+         * @param graviton (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+         * @param graviton (boolean, optional)  if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param latest if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+         * @param latest (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param latest if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+         * @param latest (boolean, optional) if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param longTermSupport if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+         * @param longTermSupport (boolean, optional) if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param longTermSupport if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+         * @param longTermSupport (boolean, optional) if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ml if we should limit the search only to ML runtimes. Default to `false`.
+         * @param ml (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ml if we should limit the search only to ML runtimes. Default to `false`.
+         * @param ml (boolean, optional) if we should limit the search only to ML runtimes. Default to `false`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param photon if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+         * @param photon (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param photon if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
+         * @param photon (boolean, optional)  if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\&#34;PHOTON\&#34;` in the cluster configuration instead!*
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * @param scala (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * @param scala (string, optional) if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sparkVersion if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+         * @param sparkVersion (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sparkVersion if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
+         * @param sparkVersion (string, optional) if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
          * 
          * @return builder
          * 

@@ -42,7 +42,7 @@ export function getAwsCrossAccountPolicy(args?: GetAwsCrossAccountPolicyArgs, op
  */
 export interface GetAwsCrossAccountPolicyArgs {
     /**
-     * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      */
     passRoles?: string[];
 }
@@ -94,7 +94,7 @@ export function getAwsCrossAccountPolicyOutput(args?: GetAwsCrossAccountPolicyOu
  */
 export interface GetAwsCrossAccountPolicyOutputArgs {
     /**
-     * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      */
     passRoles?: pulumi.Input<pulumi.Input<string>[]>;
 }

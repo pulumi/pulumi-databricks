@@ -14,14 +14,14 @@ public final class StorageCredentialGcpServiceAccountKeyArgs extends com.pulumi.
     public static final StorageCredentialGcpServiceAccountKeyArgs Empty = new StorageCredentialGcpServiceAccountKeyArgs();
 
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     public Output<String> email() {
@@ -69,7 +69,7 @@ public final class StorageCredentialGcpServiceAccountKeyArgs extends com.pulumi.
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class StorageCredentialGcpServiceAccountKeyArgs extends com.pulumi.
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * @return builder
          * 

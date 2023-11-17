@@ -88,42 +88,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/sqlPermissions:SqlPermissions")
 public class SqlPermissions extends com.pulumi.resources.CustomResource {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * (Boolean) If this access control for using anonymous function. Defaults to `false`.
      * 
      */
     @Export(name="anonymousFunction", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anonymousFunction;
 
     /**
-     * @return If this access control for using anonymous function. Defaults to `false`.
+     * @return (Boolean) If this access control for using anonymous function. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> anonymousFunction() {
         return Codegen.optional(this.anonymousFunction);
     }
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * (Boolean) If this access control for reading any file. Defaults to `false`.
      * 
      */
     @Export(name="anyFile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anyFile;
 
     /**
-     * @return If this access control for reading any file. Defaults to `false`.
+     * @return (Boolean) If this access control for reading any file. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> anyFile() {
         return Codegen.optional(this.anyFile);
     }
     /**
-     * If this access control for the entire catalog. Defaults to `false`.
+     * (Boolean) If this access control for the entire catalog. Defaults to `false`.
      * 
      */
     @Export(name="catalog", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> catalog;
 
     /**
-     * @return If this access control for the entire catalog. Defaults to `false`.
+     * @return (Boolean) If this access control for the entire catalog. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> catalog() {

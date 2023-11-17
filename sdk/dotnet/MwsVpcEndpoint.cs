@@ -33,19 +33,19 @@ namespace Pulumi.Databricks
         public Output<string> AwsEndpointServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// ID of configured aws_vpc_endpoint
+        /// (AWS only) ID of configured aws_vpc_endpoint
         /// </summary>
         [Output("awsVpcEndpointId")]
         public Output<string?> AwsVpcEndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         /// </summary>
         [Output("gcpVpcEndpointInfo")]
         public Output<Outputs.MwsVpcEndpointGcpVpcEndpointInfo?> GcpVpcEndpointInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Region of AWS VPC
+        /// (AWS only) Region of AWS VPC
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -133,19 +133,19 @@ namespace Pulumi.Databricks
         public Input<string>? AwsEndpointServiceId { get; set; }
 
         /// <summary>
-        /// ID of configured aws_vpc_endpoint
+        /// (AWS only) ID of configured aws_vpc_endpoint
         /// </summary>
         [Input("awsVpcEndpointId")]
         public Input<string>? AwsVpcEndpointId { get; set; }
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         /// </summary>
         [Input("gcpVpcEndpointInfo")]
         public Input<Inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs>? GcpVpcEndpointInfo { get; set; }
 
         /// <summary>
-        /// Region of AWS VPC
+        /// (AWS only) Region of AWS VPC
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -195,19 +195,19 @@ namespace Pulumi.Databricks
         public Input<string>? AwsEndpointServiceId { get; set; }
 
         /// <summary>
-        /// ID of configured aws_vpc_endpoint
+        /// (AWS only) ID of configured aws_vpc_endpoint
         /// </summary>
         [Input("awsVpcEndpointId")]
         public Input<string>? AwsVpcEndpointId { get; set; }
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         /// </summary>
         [Input("gcpVpcEndpointInfo")]
         public Input<Inputs.MwsVpcEndpointGcpVpcEndpointInfoGetArgs>? GcpVpcEndpointInfo { get; set; }
 
         /// <summary>
-        /// Region of AWS VPC
+        /// (AWS only) Region of AWS VPC
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

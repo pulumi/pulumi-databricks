@@ -40,7 +40,7 @@ class MetastoreArgs:
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
+        :param pulumi.Input[str] region: (Mandatory for account-level) The region of the metastore
         """
         pulumi.set(__self__, "storage_root", storage_root)
         if cloud is not None:
@@ -218,7 +218,7 @@ class MetastoreArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region of the metastore
+        (Mandatory for account-level) The region of the metastore
         """
         return pulumi.get(self, "region")
 
@@ -282,7 +282,7 @@ class _MetastoreState:
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
+        :param pulumi.Input[str] region: (Mandatory for account-level) The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         if cloud is not None:
@@ -450,7 +450,7 @@ class _MetastoreState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region of the metastore
+        (Mandatory for account-level) The region of the metastore
         """
         return pulumi.get(self, "region")
 
@@ -542,7 +542,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
+        :param pulumi.Input[str] region: (Mandatory for account-level) The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         ...
@@ -664,7 +664,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Destroy metastore regardless of its contents.
         :param pulumi.Input[str] name: Name of metastore.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the metastore owner.
-        :param pulumi.Input[str] region: The region of the metastore
+        :param pulumi.Input[str] region: (Mandatory for account-level) The region of the metastore
         :param pulumi.Input[str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -772,7 +772,7 @@ class Metastore(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region of the metastore
+        (Mandatory for account-level) The region of the metastore
         """
         return pulumi.get(self, "region")
 

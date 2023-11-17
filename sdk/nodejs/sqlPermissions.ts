@@ -84,15 +84,15 @@ export class SqlPermissions extends pulumi.CustomResource {
     }
 
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * (Boolean) If this access control for using anonymous function. Defaults to `false`.
      */
     public readonly anonymousFunction!: pulumi.Output<boolean | undefined>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * (Boolean) If this access control for reading any file. Defaults to `false`.
      */
     public readonly anyFile!: pulumi.Output<boolean | undefined>;
     /**
-     * If this access control for the entire catalog. Defaults to `false`.
+     * (Boolean) If this access control for the entire catalog. Defaults to `false`.
      */
     public readonly catalog!: pulumi.Output<boolean | undefined>;
     public readonly clusterId!: pulumi.Output<string>;
@@ -152,15 +152,15 @@ export class SqlPermissions extends pulumi.CustomResource {
  */
 export interface SqlPermissionsState {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * (Boolean) If this access control for using anonymous function. Defaults to `false`.
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * (Boolean) If this access control for reading any file. Defaults to `false`.
      */
     anyFile?: pulumi.Input<boolean>;
     /**
-     * If this access control for the entire catalog. Defaults to `false`.
+     * (Boolean) If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
     clusterId?: pulumi.Input<string>;
@@ -184,15 +184,15 @@ export interface SqlPermissionsState {
  */
 export interface SqlPermissionsArgs {
     /**
-     * If this access control for using anonymous function. Defaults to `false`.
+     * (Boolean) If this access control for using anonymous function. Defaults to `false`.
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * (Boolean) If this access control for reading any file. Defaults to `false`.
      */
     anyFile?: pulumi.Input<boolean>;
     /**
-     * If this access control for the entire catalog. Defaults to `false`.
+     * (Boolean) If this access control for the entire catalog. Defaults to `false`.
      */
     catalog?: pulumi.Input<boolean>;
     clusterId?: pulumi.Input<string>;

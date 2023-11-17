@@ -23,14 +23,14 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
     }
 
     /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
+     * (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     public Optional<Output<String>> email() {
@@ -72,7 +72,7 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
         }
 
         /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * @param email (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
          * 
          * @return builder
          * 

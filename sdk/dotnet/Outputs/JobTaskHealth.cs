@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskHealth
     {
         /// <summary>
-        /// list of rules that are represented as objects with the following attributes:
+        /// (List) list of rules that are represented as objects with the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskHealthRule> Rules;
 

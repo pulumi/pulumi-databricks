@@ -24,9 +24,6 @@ class AccessControlRuleSetArgs:
                
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
         """
         if grant_rules is not None:
             pulumi.set(__self__, "grant_rules", grant_rules)
@@ -52,9 +49,6 @@ class AccessControlRuleSetArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 
@@ -75,9 +69,6 @@ class _AccessControlRuleSetState:
                
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -114,9 +105,6 @@ class _AccessControlRuleSetState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 
@@ -266,9 +254,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
                
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
         """
         ...
     @overload
@@ -456,9 +441,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
                
                !> **Warning** Name uniquely identifies a rule set resource. Ensure all the grant_rules blocks for a rule set name are present in one `AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
         :param pulumi.Input[str] name: Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-               * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-               * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-               * `accounts/{account_id}/ruleSets/default`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -489,9 +471,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-        * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-        * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-        * `accounts/{account_id}/ruleSets/default`
         """
         return pulumi.get(self, "name")
 

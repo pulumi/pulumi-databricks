@@ -97,8 +97,6 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
 
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     public readonly permissions!: pulumi.Output<string[]>;
     /**
@@ -152,8 +150,6 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
 export interface MwsPermissionAssignmentState {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -172,8 +168,6 @@ export interface MwsPermissionAssignmentState {
 export interface MwsPermissionAssignmentArgs {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**

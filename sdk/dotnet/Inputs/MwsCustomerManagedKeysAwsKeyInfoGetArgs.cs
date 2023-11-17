@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> KeyArn { get; set; } = null!;
 
         /// <summary>
-        /// (Computed) The AWS region in which KMS key is deployed to. This is not required.
+        /// The AWS region in which KMS key is deployed to. This is not required.
         /// </summary>
         [Input("keyRegion")]
         public Input<string>? KeyRegion { get; set; }

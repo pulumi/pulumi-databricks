@@ -152,8 +152,6 @@ import javax.annotation.Nullable;
 public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
@@ -161,8 +159,6 @@ public class MwsPermissionAssignment extends com.pulumi.resources.CustomResource
 
     /**
      * @return The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     public Output<List<String>> permissions() {

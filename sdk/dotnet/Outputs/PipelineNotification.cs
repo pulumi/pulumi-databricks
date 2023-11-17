@@ -15,10 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// non-empty list of alert types. Right now following alert types are supported, consult documentation for actual list
-        /// * `on-update-success` - a pipeline update completes successfully.
-        /// * `on-update-failure` - a pipeline update fails with a retryable error.
-        /// * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
-        /// * `on-flow-failure` - a single data flow fails.
         /// </summary>
         public readonly ImmutableArray<string> Alerts;
         /// <summary>

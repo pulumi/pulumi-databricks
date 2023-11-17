@@ -242,7 +242,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.MwsNetworksErrorMessage>> ErrorMessages { get; private set; } = null!;
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         /// </summary>
         [Output("gcpNetworkInfo")]
         public Output<Outputs.MwsNetworksGcpNetworkInfo?> GcpNetworkInfo { get; private set; } = null!;
@@ -260,13 +260,13 @@ namespace Pulumi.Databricks
         public Output<string> NetworkName { get; private set; } = null!;
 
         /// <summary>
-        /// ids of aws_security_group
+        /// (AWS only) ids of aws_security_group
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// ids of aws_subnet
+        /// (AWS only) ids of aws_subnet
         /// </summary>
         [Output("subnetIds")]
         public Output<ImmutableArray<string>> SubnetIds { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsNetworksVpcEndpoints> VpcEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// (AWS only) aws_vpc id
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         /// </summary>
         [Input("gcpNetworkInfo")]
         public Input<Inputs.MwsNetworksGcpNetworkInfoArgs>? GcpNetworkInfo { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// ids of aws_security_group
+        /// (AWS only) ids of aws_security_group
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -406,7 +406,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// ids of aws_subnet
+        /// (AWS only) ids of aws_subnet
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -421,7 +421,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsNetworksVpcEndpointsArgs>? VpcEndpoints { get; set; }
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// (AWS only) aws_vpc id
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        /// (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         /// </summary>
         [Input("gcpNetworkInfo")]
         public Input<Inputs.MwsNetworksGcpNetworkInfoGetArgs>? GcpNetworkInfo { get; set; }
@@ -495,7 +495,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// ids of aws_security_group
+        /// (AWS only) ids of aws_security_group
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -507,7 +507,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _subnetIds;
 
         /// <summary>
-        /// ids of aws_subnet
+        /// (AWS only) ids of aws_subnet
         /// </summary>
         public InputList<string> SubnetIds
         {
@@ -522,7 +522,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsNetworksVpcEndpointsGetArgs>? VpcEndpoints { get; set; }
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// (AWS only) aws_vpc id
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

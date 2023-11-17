@@ -22,7 +22,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
      */
     private String keyArn;
     /**
-     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * @return The AWS region in which KMS key is deployed to. This is not required.
      * 
      */
     private @Nullable String keyRegion;
@@ -43,7 +43,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
         return this.keyArn;
     }
     /**
-     * @return (Computed) The AWS region in which KMS key is deployed to. This is not required.
+     * @return The AWS region in which KMS key is deployed to. This is not required.
      * 
      */
     public Optional<String> keyRegion() {

@@ -24,13 +24,13 @@ namespace Pulumi.Databricks
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Comment that describes the purpose of the token.
+        /// (String, Optional) Comment that describes the purpose of the token.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         /// </summary>
         [Output("lifetimeSeconds")]
         public Output<int?> LifetimeSeconds { get; private set; } = null!;
@@ -98,13 +98,13 @@ namespace Pulumi.Databricks
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// Comment that describes the purpose of the token.
+        /// (String, Optional) Comment that describes the purpose of the token.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }
@@ -124,13 +124,13 @@ namespace Pulumi.Databricks
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Comment that describes the purpose of the token.
+        /// (String, Optional) Comment that describes the purpose of the token.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+        /// (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
         /// </summary>
         [Input("lifetimeSeconds")]
         public Input<int>? LifetimeSeconds { get; set; }

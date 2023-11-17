@@ -42,11 +42,11 @@ export class OboToken extends pulumi.CustomResource {
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * Comment that describes the purpose of the token.
+     * (String, Optional) Comment that describes the purpose of the token.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
     public readonly lifetimeSeconds!: pulumi.Output<number | undefined>;
     /**
@@ -97,11 +97,11 @@ export interface OboTokenState {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Comment that describes the purpose of the token.
+     * (String, Optional) Comment that describes the purpose of the token.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
     lifetimeSeconds?: pulumi.Input<number>;
     /**
@@ -119,11 +119,11 @@ export interface OboTokenArgs {
      */
     applicationId: pulumi.Input<string>;
     /**
-     * Comment that describes the purpose of the token.
+     * (String, Optional) Comment that describes the purpose of the token.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
     lifetimeSeconds?: pulumi.Input<number>;
 }

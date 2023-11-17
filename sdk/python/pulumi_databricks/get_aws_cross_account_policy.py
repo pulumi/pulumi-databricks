@@ -92,7 +92,7 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
 
-    :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+    :param Sequence[str] pass_roles: (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
     """
     __args__ = dict()
     __args__['passRoles'] = pass_roles
@@ -133,6 +133,6 @@ def get_aws_cross_account_policy_output(pass_roles: Optional[pulumi.Input[Option
     * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
 
 
-    :param Sequence[str] pass_roles: List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+    :param Sequence[str] pass_roles: (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
     """
     ...

@@ -150,14 +150,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region of the metastore
+     * (Mandatory for account-level) The region of the metastore
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region of the metastore
+     * @return (Mandatory for account-level) The region of the metastore
      * 
      */
     public Optional<Output<String>> region() {
@@ -421,7 +421,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region of the metastore
+         * @param region (Mandatory for account-level) The region of the metastore
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region of the metastore
+         * @param region (Mandatory for account-level) The region of the metastore
          * 
          * @return builder
          * 

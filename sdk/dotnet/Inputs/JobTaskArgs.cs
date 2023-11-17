@@ -131,7 +131,6 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// string specifying an unique key for a given task.
-        /// * `*_task` - (Required) one of the specific task blocks described below:
         /// </summary>
         [Input("taskKey")]
         public Input<string>? TaskKey { get; set; }

@@ -43,16 +43,16 @@ export class GlobalInitScript extends pulumi.CustomResource {
 
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
-     * specifies if the script is enabled for execution, or not
+     * (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly md5!: pulumi.Output<string | undefined>;
     /**
-     * the name of the script.  It should be unique
+     * (string, required) - the name of the script.  It should be unique
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     public readonly position!: pulumi.Output<number>;
     /**
@@ -99,16 +99,16 @@ export class GlobalInitScript extends pulumi.CustomResource {
 export interface GlobalInitScriptState {
     contentBase64?: pulumi.Input<string>;
     /**
-     * specifies if the script is enabled for execution, or not
+     * (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      */
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
     /**
-     * the name of the script.  It should be unique
+     * (string, required) - the name of the script.  It should be unique
      */
     name?: pulumi.Input<string>;
     /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     position?: pulumi.Input<number>;
     /**
@@ -123,16 +123,16 @@ export interface GlobalInitScriptState {
 export interface GlobalInitScriptArgs {
     contentBase64?: pulumi.Input<string>;
     /**
-     * specifies if the script is enabled for execution, or not
+     * (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      */
     enabled?: pulumi.Input<boolean>;
     md5?: pulumi.Input<string>;
     /**
-     * the name of the script.  It should be unique
+     * (string, required) - the name of the script.  It should be unique
      */
     name?: pulumi.Input<string>;
     /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
     position?: pulumi.Input<number>;
     /**

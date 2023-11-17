@@ -32,12 +32,12 @@ class MwsNetworksArgs:
         The set of arguments for constructing a MwsNetworks resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: (AWS only) ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: (AWS only) ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: (AWS only) aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -110,7 +110,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
         """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         """
         return pulumi.get(self, "gcp_network_info")
 
@@ -134,7 +134,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ids of aws_security_group
+        (AWS only) ids of aws_security_group
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -146,7 +146,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ids of aws_subnet
+        (AWS only) ids of aws_subnet
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -170,7 +170,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        (AWS only) aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -221,13 +221,13 @@ class _MwsNetworksState:
         """
         Input properties used for looking up and filtering MwsNetworks resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: (AWS only) ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: (AWS only) ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: (AWS only) aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -290,7 +290,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
         """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         """
         return pulumi.get(self, "gcp_network_info")
 
@@ -326,7 +326,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ids of aws_security_group
+        (AWS only) ids of aws_security_group
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -338,7 +338,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ids of aws_subnet
+        (AWS only) ids of aws_subnet
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -362,7 +362,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        (AWS only) aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -558,13 +558,13 @@ class MwsNetworks(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: (AWS only) ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: (AWS only) ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: (AWS only) aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -800,13 +800,13 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: (AWS only) ids of aws_security_group
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: (AWS only) ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: (AWS only) aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -850,7 +850,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="gcpNetworkInfo")
     def gcp_network_info(self) -> pulumi.Output[Optional['outputs.MwsNetworksGcpNetworkInfo']]:
         """
-        a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         """
         return pulumi.get(self, "gcp_network_info")
 
@@ -874,7 +874,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        ids of aws_security_group
+        (AWS only) ids of aws_security_group
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -882,7 +882,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        ids of aws_subnet
+        (AWS only) ids of aws_subnet
         """
         return pulumi.get(self, "subnet_ids")
 
@@ -898,7 +898,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        (AWS only) aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 

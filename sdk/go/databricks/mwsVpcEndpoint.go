@@ -23,11 +23,11 @@ type MwsVpcEndpoint struct {
 	AwsAccountId pulumi.StringOutput    `pulumi:"awsAccountId"`
 	// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringOutput `pulumi:"awsEndpointServiceId"`
-	// ID of configured aws_vpc_endpoint
+	// (AWS only) ID of configured aws_vpc_endpoint
 	AwsVpcEndpointId pulumi.StringPtrOutput `pulumi:"awsVpcEndpointId"`
-	// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+	// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 	GcpVpcEndpointInfo MwsVpcEndpointGcpVpcEndpointInfoPtrOutput `pulumi:"gcpVpcEndpointInfo"`
-	// Region of AWS VPC
+	// (AWS only) Region of AWS VPC
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// (AWS Only) State of VPC Endpoint
 	State   pulumi.StringOutput `pulumi:"state"`
@@ -76,11 +76,11 @@ type mwsVpcEndpointState struct {
 	AwsAccountId *string `pulumi:"awsAccountId"`
 	// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
-	// ID of configured aws_vpc_endpoint
+	// (AWS only) ID of configured aws_vpc_endpoint
 	AwsVpcEndpointId *string `pulumi:"awsVpcEndpointId"`
-	// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+	// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 	GcpVpcEndpointInfo *MwsVpcEndpointGcpVpcEndpointInfo `pulumi:"gcpVpcEndpointInfo"`
-	// Region of AWS VPC
+	// (AWS only) Region of AWS VPC
 	Region *string `pulumi:"region"`
 	// (AWS Only) State of VPC Endpoint
 	State   *string `pulumi:"state"`
@@ -97,11 +97,11 @@ type MwsVpcEndpointState struct {
 	AwsAccountId pulumi.StringPtrInput
 	// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringPtrInput
-	// ID of configured aws_vpc_endpoint
+	// (AWS only) ID of configured aws_vpc_endpoint
 	AwsVpcEndpointId pulumi.StringPtrInput
-	// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+	// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 	GcpVpcEndpointInfo MwsVpcEndpointGcpVpcEndpointInfoPtrInput
-	// Region of AWS VPC
+	// (AWS only) Region of AWS VPC
 	Region pulumi.StringPtrInput
 	// (AWS Only) State of VPC Endpoint
 	State   pulumi.StringPtrInput
@@ -122,11 +122,11 @@ type mwsVpcEndpointArgs struct {
 	AwsAccountId *string `pulumi:"awsAccountId"`
 	// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId *string `pulumi:"awsEndpointServiceId"`
-	// ID of configured aws_vpc_endpoint
+	// (AWS only) ID of configured aws_vpc_endpoint
 	AwsVpcEndpointId *string `pulumi:"awsVpcEndpointId"`
-	// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+	// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 	GcpVpcEndpointInfo *MwsVpcEndpointGcpVpcEndpointInfo `pulumi:"gcpVpcEndpointInfo"`
-	// Region of AWS VPC
+	// (AWS only) Region of AWS VPC
 	Region *string `pulumi:"region"`
 	// (AWS Only) State of VPC Endpoint
 	State   *string `pulumi:"state"`
@@ -144,11 +144,11 @@ type MwsVpcEndpointArgs struct {
 	AwsAccountId pulumi.StringPtrInput
 	// (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
 	AwsEndpointServiceId pulumi.StringPtrInput
-	// ID of configured aws_vpc_endpoint
+	// (AWS only) ID of configured aws_vpc_endpoint
 	AwsVpcEndpointId pulumi.StringPtrInput
-	// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+	// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 	GcpVpcEndpointInfo MwsVpcEndpointGcpVpcEndpointInfoPtrInput
-	// Region of AWS VPC
+	// (AWS only) Region of AWS VPC
 	Region pulumi.StringPtrInput
 	// (AWS Only) State of VPC Endpoint
 	State   pulumi.StringPtrInput
@@ -260,17 +260,17 @@ func (o MwsVpcEndpointOutput) AwsEndpointServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) pulumi.StringOutput { return v.AwsEndpointServiceId }).(pulumi.StringOutput)
 }
 
-// ID of configured aws_vpc_endpoint
+// (AWS only) ID of configured aws_vpc_endpoint
 func (o MwsVpcEndpointOutput) AwsVpcEndpointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) pulumi.StringPtrOutput { return v.AwsVpcEndpointId }).(pulumi.StringPtrOutput)
 }
 
-// a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+// (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
 func (o MwsVpcEndpointOutput) GcpVpcEndpointInfo() MwsVpcEndpointGcpVpcEndpointInfoPtrOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) MwsVpcEndpointGcpVpcEndpointInfoPtrOutput { return v.GcpVpcEndpointInfo }).(MwsVpcEndpointGcpVpcEndpointInfoPtrOutput)
 }
 
-// Region of AWS VPC
+// (AWS only) Region of AWS VPC
 func (o MwsVpcEndpointOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsVpcEndpoint) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }

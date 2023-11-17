@@ -72,7 +72,6 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskSqlTask? SqlTask;
         /// <summary>
         /// string specifying an unique key for a given task.
-        /// * `*_task` - (Required) one of the specific task blocks described below:
         /// </summary>
         public readonly string? TaskKey;
         /// <summary>

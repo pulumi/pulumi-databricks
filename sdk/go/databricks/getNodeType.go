@@ -87,19 +87,12 @@ func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeArgs struct {
 	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-	// * `General Purpose` (all clouds)
-	// * `General Purpose (HDD)` (Azure)
-	// * `Compute Optimized` (all clouds)
-	// * `Memory Optimized` (all clouds)
-	// * `Memory Optimized (Remote HDD)` (Azure)
-	// * `Storage Optimized` (AWS, Azure)
-	// * `GPU Accelerated` (AWS, Azure)
 	Category *string `pulumi:"category"`
-	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	// (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
 	Fleet *bool `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore *int `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+	// (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
 	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id *string `pulumi:"id"`
@@ -158,19 +151,12 @@ func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeOutputArgs struct {
 	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-	// * `General Purpose` (all clouds)
-	// * `General Purpose (HDD)` (Azure)
-	// * `Compute Optimized` (all clouds)
-	// * `Memory Optimized` (all clouds)
-	// * `Memory Optimized (Remote HDD)` (Azure)
-	// * `Storage Optimized` (AWS, Azure)
-	// * `GPU Accelerated` (AWS, Azure)
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	// (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
 	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+	// (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`

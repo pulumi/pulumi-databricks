@@ -193,7 +193,7 @@ export class MwsNetworks extends pulumi.CustomResource {
     public readonly creationTime!: pulumi.Output<number>;
     public readonly errorMessages!: pulumi.Output<outputs.MwsNetworksErrorMessage[]>;
     /**
-     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
     public readonly gcpNetworkInfo!: pulumi.Output<outputs.MwsNetworksGcpNetworkInfo | undefined>;
     /**
@@ -205,11 +205,11 @@ export class MwsNetworks extends pulumi.CustomResource {
      */
     public readonly networkName!: pulumi.Output<string>;
     /**
-     * ids of aws_security_group
+     * (AWS only) ids of aws_security_group
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
     /**
-     * ids of aws_subnet
+     * (AWS only) ids of aws_subnet
      */
     public readonly subnetIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -217,7 +217,7 @@ export class MwsNetworks extends pulumi.CustomResource {
      */
     public readonly vpcEndpoints!: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * (AWS only) awsVpc id
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
@@ -293,7 +293,7 @@ export interface MwsNetworksState {
     creationTime?: pulumi.Input<number>;
     errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
     /**
-     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
     gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
     /**
@@ -305,11 +305,11 @@ export interface MwsNetworksState {
      */
     networkName?: pulumi.Input<string>;
     /**
-     * ids of aws_security_group
+     * (AWS only) ids of aws_security_group
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ids of aws_subnet
+     * (AWS only) ids of aws_subnet
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -317,7 +317,7 @@ export interface MwsNetworksState {
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * (AWS only) awsVpc id
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface MwsNetworksArgs {
     creationTime?: pulumi.Input<number>;
     errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
     /**
-     * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
+     * (GCP only) a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
     gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
     /**
@@ -353,11 +353,11 @@ export interface MwsNetworksArgs {
      */
     networkName: pulumi.Input<string>;
     /**
-     * ids of aws_security_group
+     * (AWS only) ids of aws_security_group
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ids of aws_subnet
+     * (AWS only) ids of aws_subnet
      */
     subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -365,7 +365,7 @@ export interface MwsNetworksArgs {
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * (AWS only) awsVpc id
      */
     vpcId?: pulumi.Input<string>;
     /**

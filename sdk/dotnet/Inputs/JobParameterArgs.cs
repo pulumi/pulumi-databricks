@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Default { get; set; }
 
         /// <summary>
-        /// An optional name for the job. The default value is Untitled.
+        /// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

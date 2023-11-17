@@ -93,7 +93,7 @@ namespace Pulumi.Databricks
         private List<string>? _passRoles;
 
         /// <summary>
-        /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+        /// (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
         /// </summary>
         public List<string> PassRoles
         {
@@ -113,7 +113,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _passRoles;
 
         /// <summary>
-        /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+        /// (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
         /// </summary>
         public InputList<string> PassRoles
         {

@@ -45,14 +45,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * region of VPC.
+     * (AWS only) region of VPC.
      * 
      */
     @Export(name="awsRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> awsRegion;
 
     /**
-     * @return region of VPC.
+     * @return (AWS only) region of VPC.
      * 
      */
     public Output<Optional<String>> awsRegion() {
@@ -65,14 +65,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.cloud;
     }
     /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      * 
      */
     @Export(name="cloudResourceContainer", refs={MwsWorkspacesCloudResourceContainer.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesCloudResourceContainer> cloudResourceContainer;
 
     /**
-     * @return A block that specifies GCP workspace configurations, consisting of following blocks:
+     * @return (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      * 
      */
     public Output<Optional<MwsWorkspacesCloudResourceContainer>> cloudResourceContainer() {
@@ -137,14 +137,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gcpManagedNetworkConfig);
     }
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
+     * (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
     /**
-     * @return A block that specifies GKE configuration for the Databricks workspace:
+     * @return (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      * 
      */
     public Output<Optional<MwsWorkspacesGkeConfig>> gkeConfig() {
@@ -157,14 +157,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isNoPublicIpEnabled);
     }
     /**
-     * region of the subnet.
+     * (GCP only) region of the subnet.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return region of the subnet.
+     * @return (GCP only) region of the subnet.
      * 
      */
     public Output<Optional<String>> location() {
@@ -185,14 +185,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.managedServicesCustomerManagedKeyId);
     }
     /**
-     * `network_id` from networks.
+     * from networks.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkId;
 
     /**
-     * @return `network_id` from networks.
+     * @return from networks.
      * 
      */
     public Output<Optional<String>> networkId() {
@@ -219,14 +219,14 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateAccessSettingsId);
     }
     /**
-     * `storage_configuration_id` from storage configuration.
+     * (AWS only)`storage_configuration_id` from storage configuration.
      * 
      */
     @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration.
+     * @return (AWS only)`storage_configuration_id` from storage configuration.
      * 
      */
     public Output<Optional<String>> storageConfigurationId() {

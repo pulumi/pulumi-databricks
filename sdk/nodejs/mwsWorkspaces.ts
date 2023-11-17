@@ -44,12 +44,12 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * region of VPC.
+     * (AWS only) region of VPC.
      */
     public readonly awsRegion!: pulumi.Output<string | undefined>;
     public readonly cloud!: pulumi.Output<string>;
     /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      */
     public readonly cloudResourceContainer!: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
@@ -68,12 +68,12 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly externalCustomerInfo!: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
     public readonly gcpManagedNetworkConfig!: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
+     * (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      */
     public readonly gkeConfig!: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     public readonly isNoPublicIpEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * region of the subnet.
+     * (GCP only) region of the subnet.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -81,7 +81,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly managedServicesCustomerManagedKeyId!: pulumi.Output<string | undefined>;
     /**
-     * `networkId` from networks.
+     * from networks.
      */
     public readonly networkId!: pulumi.Output<string | undefined>;
     public readonly pricingTier!: pulumi.Output<string>;
@@ -90,7 +90,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly privateAccessSettingsId!: pulumi.Output<string | undefined>;
     /**
-     * `storageConfigurationId` from storage configuration.
+     * (AWS only)`storageConfigurationId` from storage configuration.
      */
     public readonly storageConfigurationId!: pulumi.Output<string | undefined>;
     /**
@@ -207,12 +207,12 @@ export interface MwsWorkspacesState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * region of VPC.
+     * (AWS only) region of VPC.
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
     /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      */
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
@@ -231,12 +231,12 @@ export interface MwsWorkspacesState {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
+     * (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
     /**
-     * region of the subnet.
+     * (GCP only) region of the subnet.
      */
     location?: pulumi.Input<string>;
     /**
@@ -244,7 +244,7 @@ export interface MwsWorkspacesState {
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
     /**
-     * `networkId` from networks.
+     * from networks.
      */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
@@ -253,7 +253,7 @@ export interface MwsWorkspacesState {
      */
     privateAccessSettingsId?: pulumi.Input<string>;
     /**
-     * `storageConfigurationId` from storage configuration.
+     * (AWS only)`storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
     /**
@@ -292,12 +292,12 @@ export interface MwsWorkspacesArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * region of VPC.
+     * (AWS only) region of VPC.
      */
     awsRegion?: pulumi.Input<string>;
     cloud?: pulumi.Input<string>;
     /**
-     * A block that specifies GCP workspace configurations, consisting of following blocks:
+     * (GCP only) A block that specifies GCP workspace configurations, consisting of following blocks:
      */
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
@@ -316,12 +316,12 @@ export interface MwsWorkspacesArgs {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * A block that specifies GKE configuration for the Databricks workspace:
+     * (GCP only) A block that specifies GKE configuration for the Databricks workspace:
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
     /**
-     * region of the subnet.
+     * (GCP only) region of the subnet.
      */
     location?: pulumi.Input<string>;
     /**
@@ -329,7 +329,7 @@ export interface MwsWorkspacesArgs {
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
     /**
-     * `networkId` from networks.
+     * from networks.
      */
     networkId?: pulumi.Input<string>;
     pricingTier?: pulumi.Input<string>;
@@ -338,7 +338,7 @@ export interface MwsWorkspacesArgs {
      */
     privateAccessSettingsId?: pulumi.Input<string>;
     /**
-     * `storageConfigurationId` from storage configuration.
+     * (AWS only)`storageConfigurationId` from storage configuration.
      */
     storageConfigurationId?: pulumi.Input<string>;
     /**

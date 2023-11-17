@@ -32,14 +32,14 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Comment that describes the purpose of the token.
+     * (String, Optional) Comment that describes the purpose of the token.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Comment that describes the purpose of the token.
+     * @return (String, Optional) Comment that describes the purpose of the token.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -47,14 +47,14 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     @Import(name="lifetimeSeconds")
     private @Nullable Output<Integer> lifetimeSeconds;
 
     /**
-     * @return The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+     * @return (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      * 
      */
     public Optional<Output<Integer>> lifetimeSeconds() {
@@ -109,7 +109,7 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Comment that describes the purpose of the token.
+         * @param comment (String, Optional) Comment that describes the purpose of the token.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Comment that describes the purpose of the token.
+         * @param comment (String, Optional) Comment that describes the purpose of the token.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+         * @param lifetimeSeconds (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifetimeSeconds The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
+         * @param lifetimeSeconds (Integer, Optional) The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
          * 
          * @return builder
          * 

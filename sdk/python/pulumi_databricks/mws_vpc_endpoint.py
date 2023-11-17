@@ -31,9 +31,9 @@ class MwsVpcEndpointArgs:
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
-        :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
-        :param pulumi.Input[str] region: Region of AWS VPC
+        :param pulumi.Input[str] aws_vpc_endpoint_id: (AWS only) ID of configured aws_vpc_endpoint
+        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[str] region: (AWS only) Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         """
@@ -106,7 +106,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter(name="awsVpcEndpointId")
     def aws_vpc_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of configured aws_vpc_endpoint
+        (AWS only) ID of configured aws_vpc_endpoint
         """
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
@@ -118,7 +118,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter(name="gcpVpcEndpointInfo")
     def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
         """
-        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         """
         return pulumi.get(self, "gcp_vpc_endpoint_info")
 
@@ -130,7 +130,7 @@ class MwsVpcEndpointArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of AWS VPC
+        (AWS only) Region of AWS VPC
         """
         return pulumi.get(self, "region")
 
@@ -189,9 +189,9 @@ class _MwsVpcEndpointState:
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
-        :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
-        :param pulumi.Input[str] region: Region of AWS VPC
+        :param pulumi.Input[str] aws_vpc_endpoint_id: (AWS only) ID of configured aws_vpc_endpoint
+        :param pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs'] gcp_vpc_endpoint_info: (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[str] region: (AWS only) Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
@@ -254,7 +254,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter(name="awsVpcEndpointId")
     def aws_vpc_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of configured aws_vpc_endpoint
+        (AWS only) ID of configured aws_vpc_endpoint
         """
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
@@ -266,7 +266,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter(name="gcpVpcEndpointInfo")
     def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
         """
-        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         """
         return pulumi.get(self, "gcp_vpc_endpoint_info")
 
@@ -278,7 +278,7 @@ class _MwsVpcEndpointState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of AWS VPC
+        (AWS only) Region of AWS VPC
         """
         return pulumi.get(self, "region")
 
@@ -357,9 +357,9 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
-        :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
-        :param pulumi.Input[str] region: Region of AWS VPC
+        :param pulumi.Input[str] aws_vpc_endpoint_id: (AWS only) ID of configured aws_vpc_endpoint
+        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[str] region: (AWS only) Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
@@ -450,9 +450,9 @@ class MwsVpcEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[str] aws_endpoint_service_id: (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
-        :param pulumi.Input[str] aws_vpc_endpoint_id: ID of configured aws_vpc_endpoint
-        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
-        :param pulumi.Input[str] region: Region of AWS VPC
+        :param pulumi.Input[str] aws_vpc_endpoint_id: (AWS only) ID of configured aws_vpc_endpoint
+        :param pulumi.Input[pulumi.InputType['MwsVpcEndpointGcpVpcEndpointInfoArgs']] gcp_vpc_endpoint_info: (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        :param pulumi.Input[str] region: (AWS only) Region of AWS VPC
         :param pulumi.Input[str] state: (AWS Only) State of VPC Endpoint
         :param pulumi.Input[str] vpc_endpoint_id: Canonical unique identifier of VPC Endpoint in Databricks Account
         :param pulumi.Input[str] vpc_endpoint_name: Name of VPC Endpoint in Databricks Account
@@ -498,7 +498,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcEndpointId")
     def aws_vpc_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        ID of configured aws_vpc_endpoint
+        (AWS only) ID of configured aws_vpc_endpoint
         """
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
@@ -506,7 +506,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="gcpVpcEndpointInfo")
     def gcp_vpc_endpoint_info(self) -> pulumi.Output[Optional['outputs.MwsVpcEndpointGcpVpcEndpointInfo']]:
         """
-        a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
+        (GCP only) a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         """
         return pulumi.get(self, "gcp_vpc_endpoint_info")
 
@@ -514,7 +514,7 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
         """
-        Region of AWS VPC
+        (AWS only) Region of AWS VPC
         """
         return pulumi.get(self, "region")
 

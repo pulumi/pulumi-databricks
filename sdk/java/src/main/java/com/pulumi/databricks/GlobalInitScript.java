@@ -35,14 +35,14 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentBase64);
     }
     /**
-     * specifies if the script is enabled for execution, or not
+     * (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return specifies if the script is enabled for execution, or not
+     * @return (bool, optional default: `false`) specifies if the script is enabled for execution, or not
      * 
      */
     public Output<Optional<Boolean>> enabled() {
@@ -55,28 +55,28 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.md5);
     }
     /**
-     * the name of the script.  It should be unique
+     * (string, required) - the name of the script.  It should be unique
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return the name of the script.  It should be unique
+     * @return (string, required) - the name of the script.  It should be unique
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     @Export(name="position", refs={Integer.class}, tree="[0]")
     private Output<Integer> position;
 
     /**
-     * @return the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
+     * @return (integer, optional default: `null`) - the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      * 
      */
     public Output<Integer> position() {

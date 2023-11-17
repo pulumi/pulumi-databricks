@@ -76,19 +76,19 @@ namespace Pulumi.Databricks
     public partial class SqlPermissions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// (Boolean) If this access control for using anonymous function. Defaults to `false`.
         /// </summary>
         [Output("anonymousFunction")]
         public Output<bool?> AnonymousFunction { get; private set; } = null!;
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// (Boolean) If this access control for reading any file. Defaults to `false`.
         /// </summary>
         [Output("anyFile")]
         public Output<bool?> AnyFile { get; private set; } = null!;
 
         /// <summary>
-        /// If this access control for the entire catalog. Defaults to `false`.
+        /// (Boolean) If this access control for the entire catalog. Defaults to `false`.
         /// </summary>
         [Output("catalog")]
         public Output<bool?> Catalog { get; private set; } = null!;
@@ -164,19 +164,19 @@ namespace Pulumi.Databricks
     public sealed class SqlPermissionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// (Boolean) If this access control for using anonymous function. Defaults to `false`.
         /// </summary>
         [Input("anonymousFunction")]
         public Input<bool>? AnonymousFunction { get; set; }
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// (Boolean) If this access control for reading any file. Defaults to `false`.
         /// </summary>
         [Input("anyFile")]
         public Input<bool>? AnyFile { get; set; }
 
         /// <summary>
-        /// If this access control for the entire catalog. Defaults to `false`.
+        /// (Boolean) If this access control for the entire catalog. Defaults to `false`.
         /// </summary>
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }
@@ -219,19 +219,19 @@ namespace Pulumi.Databricks
     public sealed class SqlPermissionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If this access control for using anonymous function. Defaults to `false`.
+        /// (Boolean) If this access control for using anonymous function. Defaults to `false`.
         /// </summary>
         [Input("anonymousFunction")]
         public Input<bool>? AnonymousFunction { get; set; }
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// (Boolean) If this access control for reading any file. Defaults to `false`.
         /// </summary>
         [Input("anyFile")]
         public Input<bool>? AnyFile { get; set; }
 
         /// <summary>
-        /// If this access control for the entire catalog. Defaults to `false`.
+        /// (Boolean) If this access control for the entire catalog. Defaults to `false`.
         /// </summary>
         [Input("catalog")]
         public Input<bool>? Catalog { get; set; }

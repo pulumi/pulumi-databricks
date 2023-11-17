@@ -153,14 +153,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * The region of the metastore
+     * (Mandatory for account-level) The region of the metastore
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region of the metastore
+     * @return (Mandatory for account-level) The region of the metastore
      * 
      */
     public Output<String> region() {

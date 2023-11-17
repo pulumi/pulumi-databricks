@@ -19,13 +19,6 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
      * 
      */
     @Import(name="category")
@@ -33,13 +26,6 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
-     * * `General Purpose` (all clouds)
-     * * `General Purpose (HDD)` (Azure)
-     * * `Compute Optimized` (all clouds)
-     * * `Memory Optimized` (all clouds)
-     * * `Memory Optimized (Remote HDD)` (Azure)
-     * * `Storage Optimized` (AWS, Azure)
-     * * `GPU Accelerated` (AWS, Azure)
      * 
      */
     public Optional<Output<String>> category() {
@@ -47,14 +33,14 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      * 
      */
     @Import(name="fleet")
     private @Nullable Output<Boolean> fleet;
 
     /**
-     * @return if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * @return (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
      * 
      */
     public Optional<Output<Boolean>> fleet() {
@@ -77,14 +63,14 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      * 
      */
     @Import(name="graviton")
     private @Nullable Output<Boolean> graviton;
 
     /**
-     * @return if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * @return (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
      * 
      */
     public Optional<Output<Boolean>> graviton() {
@@ -280,13 +266,6 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
-         * * `General Purpose` (all clouds)
-         * * `General Purpose (HDD)` (Azure)
-         * * `Compute Optimized` (all clouds)
-         * * `Memory Optimized` (all clouds)
-         * * `Memory Optimized (Remote HDD)` (Azure)
-         * * `Storage Optimized` (AWS, Azure)
-         * * `GPU Accelerated` (AWS, Azure)
          * 
          * @return builder
          * 
@@ -298,13 +277,6 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
-         * * `General Purpose` (all clouds)
-         * * `General Purpose (HDD)` (Azure)
-         * * `Compute Optimized` (all clouds)
-         * * `Memory Optimized` (all clouds)
-         * * `Memory Optimized (Remote HDD)` (Azure)
-         * * `Storage Optimized` (AWS, Azure)
-         * * `GPU Accelerated` (AWS, Azure)
          * 
          * @return builder
          * 
@@ -314,7 +286,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fleet if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+         * @param fleet (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
          * 
          * @return builder
          * 
@@ -325,7 +297,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param fleet if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+         * @param fleet (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
          * 
          * @return builder
          * 
@@ -356,7 +328,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+         * @param graviton (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
          * 
          * @return builder
          * 
@@ -367,7 +339,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+         * @param graviton (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
          * 
          * @return builder
          * 

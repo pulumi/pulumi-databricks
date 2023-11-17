@@ -60,7 +60,7 @@ func GetAwsCrossAccountPolicy(ctx *pulumi.Context, args *GetAwsCrossAccountPolic
 
 // A collection of arguments for invoking getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyArgs struct {
-	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+	// (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	PassRoles []string `pulumi:"passRoles"`
 }
 
@@ -88,7 +88,7 @@ func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccount
 
 // A collection of arguments for invoking getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyOutputArgs struct {
-	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+	// (List) List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
 	PassRoles pulumi.StringArrayInput `pulumi:"passRoles"`
 }
 

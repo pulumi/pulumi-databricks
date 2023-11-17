@@ -100,7 +100,6 @@ public final class JobTask {
     private @Nullable JobTaskSqlTask sqlTask;
     /**
      * @return string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
     private @Nullable String taskKey;
@@ -229,7 +228,6 @@ public final class JobTask {
     }
     /**
      * @return string specifying an unique key for a given task.
-     * * `*_task` - (Required) one of the specific task blocks described below:
      * 
      */
     public Optional<String> taskKey() {

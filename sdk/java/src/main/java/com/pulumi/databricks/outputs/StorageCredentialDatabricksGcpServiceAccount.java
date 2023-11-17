@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class StorageCredentialDatabricksGcpServiceAccount {
     private @Nullable String credentialId;
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     private @Nullable String email;
@@ -23,7 +23,7 @@ public final class StorageCredentialDatabricksGcpServiceAccount {
         return Optional.ofNullable(this.credentialId);
     }
     /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * @return (output only) - The email of the GCP service account created, to be granted access to relevant buckets.
      * 
      */
     public Optional<String> email() {

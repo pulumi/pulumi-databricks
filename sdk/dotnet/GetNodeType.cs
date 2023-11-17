@@ -143,19 +143,12 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-        /// * `General Purpose` (all clouds)
-        /// * `General Purpose (HDD)` (Azure)
-        /// * `Compute Optimized` (all clouds)
-        /// * `Memory Optimized` (all clouds)
-        /// * `Memory Optimized (Remote HDD)` (Azure)
-        /// * `Storage Optimized` (AWS, Azure)
-        /// * `GPU Accelerated` (AWS, Azure)
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
         /// </summary>
         [Input("fleet")]
         public bool? Fleet { get; set; }
@@ -167,7 +160,7 @@ namespace Pulumi.Databricks
         public int? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+        /// (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -242,19 +235,12 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
-        /// * `General Purpose` (all clouds)
-        /// * `General Purpose (HDD)` (Azure)
-        /// * `Compute Optimized` (all clouds)
-        /// * `Memory Optimized` (all clouds)
-        /// * `Memory Optimized (Remote HDD)` (Azure)
-        /// * `Storage Optimized` (AWS, Azure)
-        /// * `GPU Accelerated` (AWS, Azure)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// (boolean, optional)  if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
         /// </summary>
         [Input("fleet")]
         public Input<bool>? Fleet { get; set; }
@@ -266,7 +252,7 @@ namespace Pulumi.Databricks
         public Input<int>? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+        /// (boolean, optional)  if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }

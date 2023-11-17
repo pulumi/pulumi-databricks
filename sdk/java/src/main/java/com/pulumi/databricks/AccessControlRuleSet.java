@@ -357,9 +357,6 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -367,9 +364,6 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Unique identifier of a rule set. The name determines the resource to which the rule set applies. Currently, only default rule sets are supported. The following rule set formats are supported:
-     * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
-     * * `accounts/{account_id}/groups/{group_id}/ruleSets/default`
-     * * `accounts/{account_id}/ruleSets/default`
      * 
      */
     public Output<String> name() {
