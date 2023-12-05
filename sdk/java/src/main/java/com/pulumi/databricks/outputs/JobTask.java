@@ -20,6 +20,7 @@ import com.pulumi.databricks.outputs.JobTaskSparkJarTask;
 import com.pulumi.databricks.outputs.JobTaskSparkPythonTask;
 import com.pulumi.databricks.outputs.JobTaskSparkSubmitTask;
 import com.pulumi.databricks.outputs.JobTaskSqlTask;
+import com.pulumi.databricks.outputs.JobTaskWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -38,9 +39,13 @@ public final class JobTask {
      * 
      */
     private @Nullable List<JobTaskDependsOn> dependsOns;
+    /**
+     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     private @Nullable String description;
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     private @Nullable JobTaskEmailNotifications emailNotifications;
@@ -109,6 +114,11 @@ public final class JobTask {
      * 
      */
     private @Nullable Integer timeoutSeconds;
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
+    private @Nullable JobTaskWebhookNotifications webhookNotifications;
 
     private JobTask() {}
     public Optional<String> computeKey() {
@@ -127,11 +137,15 @@ public final class JobTask {
     public List<JobTaskDependsOn> dependsOns() {
         return this.dependsOns == null ? List.of() : this.dependsOns;
     }
+    /**
+     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     public Optional<JobTaskEmailNotifications> emailNotifications() {
@@ -242,6 +256,13 @@ public final class JobTask {
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
+    public Optional<JobTaskWebhookNotifications> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -278,6 +299,7 @@ public final class JobTask {
         private @Nullable JobTaskSqlTask sqlTask;
         private @Nullable String taskKey;
         private @Nullable Integer timeoutSeconds;
+        private @Nullable JobTaskWebhookNotifications webhookNotifications;
         public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -307,6 +329,7 @@ public final class JobTask {
     	      this.sqlTask = defaults.sqlTask;
     	      this.taskKey = defaults.taskKey;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
+    	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
         @CustomType.Setter
@@ -445,6 +468,11 @@ public final class JobTask {
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
+        @CustomType.Setter
+        public Builder webhookNotifications(@Nullable JobTaskWebhookNotifications webhookNotifications) {
+            this.webhookNotifications = webhookNotifications;
+            return this;
+        }
         public JobTask build() {
             final var _resultValue = new JobTask();
             _resultValue.computeKey = computeKey;
@@ -473,6 +501,7 @@ public final class JobTask {
             _resultValue.sqlTask = sqlTask;
             _resultValue.taskKey = taskKey;
             _resultValue.timeoutSeconds = timeoutSeconds;
+            _resultValue.webhookNotifications = webhookNotifications;
             return _resultValue;
         }
     }

@@ -161,14 +161,34 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deployment);
     }
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    @Export(name="editMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> editMode;
+
+    public Output<Optional<String>> editMode() {
+        return Codegen.optional(this.editMode);
+    }
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     @Export(name="emailNotifications", refs={JobEmailNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobEmailNotifications> emailNotifications;
 
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
@@ -249,14 +269,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxConcurrentRuns);
     }
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
      */
     public Output<Optional<Integer>> maxRetries() {
@@ -363,10 +383,10 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retryOnTimeout);
     }
     @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
-    private Output</* @Nullable */ JobRunAs> runAs;
+    private Output<JobRunAs> runAs;
 
-    public Output<Optional<JobRunAs>> runAs() {
-        return Codegen.optional(this.runAs);
+    public Output<JobRunAs> runAs() {
+        return this.runAs;
     }
     @Export(name="runJobTask", refs={JobRunJobTask.class}, tree="[0]")
     private Output</* @Nullable */ JobRunJobTask> runJobTask;
@@ -453,14 +473,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
      */
     @Export(name="webhookNotifications", refs={JobWebhookNotifications.class}, tree="[0]")
     private Output</* @Nullable */ JobWebhookNotifications> webhookNotifications;
 
     /**
-     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
      */
     public Output<Optional<JobWebhookNotifications>> webhookNotifications() {

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,6 +22,37 @@ import * as utilities from "./utilities";
  * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
  * * A user that has access to only cluster policies, can select the policies they have access to.
  *
+ * ## Example Usage
+ * ### Overriding the built-in cluster policies
+ *
+ * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
+ *
+ * * `name` - the name of the built-in cluster policy.
+ * * `policyFamilyId` - the ID of the cluster policy family used for built-in cluster policy.
+ * * `policyFamilyDefinitionOverrides` - settings to override in the built-in cluster policy.
+ *
+ * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const personalVmOverride = {
+ *     autotermination_minutes: {
+ *         type: "fixed",
+ *         value: 220,
+ *         hidden: true,
+ *     },
+ *     "custom_tags.Team": {
+ *         type: "fixed",
+ *         value: _var.team,
+ *     },
+ * };
+ * const personalVm = new databricks.ClusterPolicy("personalVm", {
+ *     policyFamilyId: "personal-vm",
+ *     policyFamilyDefinitionOverrides: JSON.stringify(personal_vm_override),
+ * });
+ * ```
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -79,11 +112,15 @@ export class ClusterPolicy extends pulumi.CustomResource {
     /**
      * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      */
-    public readonly definition!: pulumi.Output<string | undefined>;
+    public readonly definition!: pulumi.Output<string>;
     /**
      * Additional human-readable description of the cluster policy.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+     */
+    public readonly libraries!: pulumi.Output<outputs.ClusterPolicyLibrary[] | undefined>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
@@ -120,6 +157,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
             const state = argsOrState as ClusterPolicyState | undefined;
             resourceInputs["definition"] = state ? state.definition : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["libraries"] = state ? state.libraries : undefined;
             resourceInputs["maxClustersPerUser"] = state ? state.maxClustersPerUser : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["policyFamilyDefinitionOverrides"] = state ? state.policyFamilyDefinitionOverrides : undefined;
@@ -129,6 +167,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
             const args = argsOrState as ClusterPolicyArgs | undefined;
             resourceInputs["definition"] = args ? args.definition : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["libraries"] = args ? args.libraries : undefined;
             resourceInputs["maxClustersPerUser"] = args ? args.maxClustersPerUser : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["policyFamilyDefinitionOverrides"] = args ? args.policyFamilyDefinitionOverrides : undefined;
@@ -152,6 +191,10 @@ export interface ClusterPolicyState {
      * Additional human-readable description of the cluster policy.
      */
     description?: pulumi.Input<string>;
+    /**
+     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterPolicyLibrary>[]>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */
@@ -186,6 +229,10 @@ export interface ClusterPolicyArgs {
      * Additional human-readable description of the cluster policy.
      */
     description?: pulumi.Input<string>;
+    /**
+     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.ClusterPolicyLibrary>[]>;
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
      */

@@ -12,8 +12,6 @@ namespace Pulumi.Databricks
     public static class GetAwsCrossAccountPolicy
     {
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-        /// 
         /// This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// 
         /// {{% examples %}}
@@ -49,8 +47,6 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsCrossAccountPolicyResult>("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", args ?? new GetAwsCrossAccountPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-        /// 
         /// This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// 
         /// {{% examples %}}

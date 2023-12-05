@@ -73,6 +73,20 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.deployment);
     }
 
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="editMode")
+    private @Nullable Output<String> editMode;
+
+    public Optional<Output<String>> editMode() {
+        return Optional.ofNullable(this.editMode);
+    }
+
     @Import(name="emailNotifications")
     private @Nullable Output<GetJobJobSettingsSettingsEmailNotificationsArgs> emailNotifications;
 
@@ -214,11 +228,11 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
-    @Import(name="runAs")
-    private @Nullable Output<GetJobJobSettingsSettingsRunAsArgs> runAs;
+    @Import(name="runAs", required=true)
+    private Output<GetJobJobSettingsSettingsRunAsArgs> runAs;
 
-    public Optional<Output<GetJobJobSettingsSettingsRunAsArgs>> runAs() {
-        return Optional.ofNullable(this.runAs);
+    public Output<GetJobJobSettingsSettingsRunAsArgs> runAs() {
+        return this.runAs;
     }
 
     @Import(name="runJobTask")
@@ -298,6 +312,8 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.deployment = $.deployment;
+        this.description = $.description;
+        this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -386,6 +402,24 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder deployment(GetJobJobSettingsSettingsDeploymentArgs deployment) {
             return deployment(Output.of(deployment));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        public Builder editMode(@Nullable Output<String> editMode) {
+            $.editMode = editMode;
+            return this;
+        }
+
+        public Builder editMode(String editMode) {
+            return editMode(Output.of(editMode));
         }
 
         public Builder emailNotifications(@Nullable Output<GetJobJobSettingsSettingsEmailNotificationsArgs> emailNotifications) {
@@ -583,7 +617,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
             return retryOnTimeout(Output.of(retryOnTimeout));
         }
 
-        public Builder runAs(@Nullable Output<GetJobJobSettingsSettingsRunAsArgs> runAs) {
+        public Builder runAs(Output<GetJobJobSettingsSettingsRunAsArgs> runAs) {
             $.runAs = runAs;
             return this;
         }
@@ -688,6 +722,7 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public GetJobJobSettingsSettingsArgs build() {
             $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
+            $.runAs = Objects.requireNonNull($.runAs, "expected parameter 'runAs' to be non-null");
             return $;
         }
     }

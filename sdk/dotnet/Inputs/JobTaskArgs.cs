@@ -33,11 +33,14 @@ namespace Pulumi.Databricks.Inputs
             set => _dependsOns = value;
         }
 
+        /// <summary>
+        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobTaskEmailNotificationsArgs>? EmailNotifications { get; set; }
@@ -141,6 +144,12 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// </summary>
+        [Input("webhookNotifications")]
+        public Input<Inputs.JobTaskWebhookNotificationsArgs>? WebhookNotifications { get; set; }
 
         public JobTaskArgs()
         {

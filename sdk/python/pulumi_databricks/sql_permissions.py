@@ -27,7 +27,7 @@ class SqlPermissionsArgs:
         """
         The set of arguments for constructing a SqlPermissions resource.
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
-        :param pulumi.Input[bool] any_file: If this access control for reading any file. Defaults to `false`.
+        :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
@@ -66,7 +66,7 @@ class SqlPermissionsArgs:
     @pulumi.getter(name="anyFile")
     def any_file(self) -> Optional[pulumi.Input[bool]]:
         """
-        If this access control for reading any file. Defaults to `false`.
+        If this access control for reading/writing any file. Defaults to `false`.
         """
         return pulumi.get(self, "any_file")
 
@@ -155,7 +155,7 @@ class _SqlPermissionsState:
         """
         Input properties used for looking up and filtering SqlPermissions resources.
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
-        :param pulumi.Input[bool] any_file: If this access control for reading any file. Defaults to `false`.
+        :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
@@ -194,7 +194,7 @@ class _SqlPermissionsState:
     @pulumi.getter(name="anyFile")
     def any_file(self) -> Optional[pulumi.Input[bool]]:
         """
-        If this access control for reading any file. Defaults to `false`.
+        If this access control for reading/writing any file. Defaults to `false`.
         """
         return pulumi.get(self, "any_file")
 
@@ -334,7 +334,7 @@ class SqlPermissions(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
-        :param pulumi.Input[bool] any_file: If this access control for reading any file. Defaults to `false`.
+        :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
@@ -460,7 +460,7 @@ class SqlPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] anonymous_function: If this access control for using anonymous function. Defaults to `false`.
-        :param pulumi.Input[bool] any_file: If this access control for reading any file. Defaults to `false`.
+        :param pulumi.Input[bool] any_file: If this access control for reading/writing any file. Defaults to `false`.
         :param pulumi.Input[bool] catalog: If this access control for the entire catalog. Defaults to `false`.
         :param pulumi.Input[str] database: Name of the database. Has default value of `default`.
         :param pulumi.Input[str] table: Name of the table. Can be combined with `database`.
@@ -492,7 +492,7 @@ class SqlPermissions(pulumi.CustomResource):
     @pulumi.getter(name="anyFile")
     def any_file(self) -> pulumi.Output[Optional[bool]]:
         """
-        If this access control for reading any file. Defaults to `false`.
+        If this access control for reading/writing any file. Defaults to `false`.
         """
         return pulumi.get(self, "any_file")
 

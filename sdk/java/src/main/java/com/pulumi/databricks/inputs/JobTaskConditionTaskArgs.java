@@ -15,31 +15,51 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
 
     public static final JobTaskConditionTaskArgs Empty = new JobTaskConditionTaskArgs();
 
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     @Import(name="left")
     private @Nullable Output<String> left;
 
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     public Optional<Output<String>> left() {
         return Optional.ofNullable(this.left);
     }
 
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     @Import(name="op")
     private @Nullable Output<String> op;
 
     /**
-     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     public Optional<Output<String>> op() {
         return Optional.ofNullable(this.op);
     }
 
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     @Import(name="right")
     private @Nullable Output<String> right;
 
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     public Optional<Output<String>> right() {
         return Optional.ofNullable(this.right);
     }
@@ -70,17 +90,31 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
             $ = new JobTaskConditionTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param left The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder left(@Nullable Output<String> left) {
             $.left = left;
             return this;
         }
 
+        /**
+         * @param left The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder left(String left) {
             return left(Output.of(left));
         }
 
         /**
-         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
          * 
          * @return builder
          * 
@@ -91,7 +125,9 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
          * 
          * @return builder
          * 
@@ -100,11 +136,23 @@ public final class JobTaskConditionTaskArgs extends com.pulumi.resources.Resourc
             return op(Output.of(op));
         }
 
+        /**
+         * @param right The right operand of the condition task. It could be a string value, job state, or parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder right(@Nullable Output<String> right) {
             $.right = right;
             return this;
         }
 
+        /**
+         * @param right The right operand of the condition task. It could be a string value, job state, or parameter reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder right(String right) {
             return right(Output.of(right));
         }

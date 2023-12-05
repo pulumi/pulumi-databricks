@@ -101,6 +101,9 @@ namespace Pulumi.Databricks
         [Output("parent")]
         public Output<string?> Parent { get; private set; } = null!;
 
+        [Output("runAsRole")]
+        public Output<string?> RunAsRole { get; private set; } = null!;
+
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -165,6 +168,9 @@ namespace Pulumi.Databricks
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("runAsRole")]
+        public Input<string>? RunAsRole { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
         public InputList<string> Tags
@@ -195,6 +201,9 @@ namespace Pulumi.Databricks
 
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        [Input("runAsRole")]
+        public Input<string>? RunAsRole { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

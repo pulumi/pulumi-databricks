@@ -21,6 +21,7 @@ import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkPythonTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkSubmitTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskWebhookNotificationsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -70,22 +71,30 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dependsOns);
     }
 
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     @Import(name="emailNotifications")
     private @Nullable Output<JobTaskEmailNotificationsArgs> emailNotifications;
 
     /**
-     * @return (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * @return (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      * 
      */
     public Optional<Output<JobTaskEmailNotificationsArgs>> emailNotifications() {
@@ -322,6 +331,21 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
+    @Import(name="webhookNotifications")
+    private @Nullable Output<JobTaskWebhookNotificationsArgs> webhookNotifications;
+
+    /**
+     * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * 
+     */
+    public Optional<Output<JobTaskWebhookNotificationsArgs>> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
+
     private JobTaskArgs() {}
 
     private JobTaskArgs(JobTaskArgs $) {
@@ -351,6 +375,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.sqlTask = $.sqlTask;
         this.taskKey = $.taskKey;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.webhookNotifications = $.webhookNotifications;
     }
 
     public static Builder builder() {
@@ -429,17 +454,29 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return dependsOns(List.of(dependsOns));
         }
 
+        /**
+         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -450,7 +487,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param emailNotifications (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+         * @param emailNotifications (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -781,6 +818,27 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             return timeoutSeconds(Output.of(timeoutSeconds));
+        }
+
+        /**
+         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookNotifications(@Nullable Output<JobTaskWebhookNotificationsArgs> webhookNotifications) {
+            $.webhookNotifications = webhookNotifications;
+            return this;
+        }
+
+        /**
+         * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookNotifications(JobTaskWebhookNotificationsArgs webhookNotifications) {
+            return webhookNotifications(Output.of(webhookNotifications));
         }
 
         public JobTaskArgs build() {

@@ -6,6 +6,8 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class JobWebhookNotificationsOnSuccess {
@@ -13,15 +15,15 @@ public final class JobWebhookNotificationsOnSuccess {
      * @return ID of the job
      * 
      */
-    private String id;
+    private @Nullable String id;
 
     private JobWebhookNotificationsOnSuccess() {}
     /**
      * @return ID of the job
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
 
     public static Builder builder() {
@@ -33,7 +35,7 @@ public final class JobWebhookNotificationsOnSuccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
+        private @Nullable String id;
         public Builder() {}
         public Builder(JobWebhookNotificationsOnSuccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -41,8 +43,8 @@ public final class JobWebhookNotificationsOnSuccess {
         }
 
         @CustomType.Setter
-        public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+        public Builder id(@Nullable String id) {
+            this.id = id;
             return this;
         }
         public JobWebhookNotificationsOnSuccess build() {

@@ -37,6 +37,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,7 +58,16 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobDeployment?> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        [Output("editMode")]
+        public Output<string?> EditMode { get; private set; } = null!;
+
+        /// <summary>
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Output("emailNotifications")]
         public Output<Outputs.JobEmailNotifications?> EmailNotifications { get; private set; } = null!;
@@ -96,7 +106,7 @@ namespace Pulumi.Databricks
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
@@ -147,7 +157,7 @@ namespace Pulumi.Databricks
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
         [Output("runAs")]
-        public Output<Outputs.JobRunAs?> RunAs { get; private set; } = null!;
+        public Output<Outputs.JobRunAs> RunAs { get; private set; } = null!;
 
         [Output("runJobTask")]
         public Output<Outputs.JobRunJobTask?> RunJobTask { get; private set; } = null!;
@@ -189,7 +199,7 @@ namespace Pulumi.Databricks
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         /// </summary>
         [Output("webhookNotifications")]
         public Output<Outputs.JobWebhookNotifications?> WebhookNotifications { get; private set; } = null!;
@@ -261,6 +271,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -281,7 +292,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobDeploymentArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("editMode")]
+        public Input<string>? EditMode { get; set; }
+
+        /// <summary>
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsArgs>? EmailNotifications { get; set; }
@@ -332,7 +352,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -434,7 +454,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobTriggerArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsArgs>? WebhookNotifications { get; set; }
@@ -468,6 +488,7 @@ namespace Pulumi.Databricks
         /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -488,7 +509,16 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("editMode")]
+        public Input<string>? EditMode { get; set; }
+
+        /// <summary>
+        /// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsGetArgs>? EmailNotifications { get; set; }
@@ -539,7 +569,7 @@ namespace Pulumi.Databricks
         public Input<int>? MaxConcurrentRuns { get; set; }
 
         /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
@@ -647,7 +677,7 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobWebhookNotificationsGetArgs>? WebhookNotifications { get; set; }

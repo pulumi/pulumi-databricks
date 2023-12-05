@@ -23,9 +23,9 @@ import * as utilities from "./utilities";
  *
  * The following resources are used in the same context:
  *
- * * databricks.Table data to list tables within Unity Catalog.
- * * databricks.Schema data to list schemas within Unity Catalog.
- * * databricks.Catalog data to list catalogs within Unity Catalog.
+ * * databricks.getTables data to list tables within Unity Catalog.
+ * * databricks.getSchemas data to list schemas within Unity Catalog.
+ * * databricks.getCatalogs data to list catalogs within Unity Catalog.
  *
  * ## Import
  *
@@ -79,6 +79,9 @@ export class Catalog extends pulumi.CustomResource {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     public readonly isolationMode!: pulumi.Output<string>;
+    /**
+     * ID of the metastore.
+     */
     public readonly metastoreId!: pulumi.Output<string>;
     /**
      * Name of Catalog relative to parent metastore.
@@ -174,6 +177,9 @@ export interface CatalogState {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
+    /**
+     * ID of the metastore.
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Catalog relative to parent metastore.
@@ -225,6 +231,9 @@ export interface CatalogArgs {
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
     isolationMode?: pulumi.Input<string>;
+    /**
+     * ID of the metastore.
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of Catalog relative to parent metastore.

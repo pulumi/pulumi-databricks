@@ -11,7 +11,6 @@ import com.pulumi.databricks.MlflowModelArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MlflowModelState;
 import com.pulumi.databricks.outputs.MlflowModelTag;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -89,12 +88,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mlflowModel:MlflowModel")
 public class MlflowModel extends com.pulumi.resources.CustomResource {
-    @Export(name="creationTimestamp", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> creationTimestamp;
-
-    public Output<Optional<Integer>> creationTimestamp() {
-        return Codegen.optional(this.creationTimestamp);
-    }
     /**
      * The description of the MLflow model.
      * 
@@ -108,12 +101,6 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
-    }
-    @Export(name="lastUpdatedTimestamp", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> lastUpdatedTimestamp;
-
-    public Output<Optional<Integer>> lastUpdatedTimestamp() {
-        return Codegen.optional(this.lastUpdatedTimestamp);
     }
     /**
      * Name of MLflow model. Change of name triggers new resource.
@@ -148,12 +135,6 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<MlflowModelTag>>> tags() {
         return Codegen.optional(this.tags);
-    }
-    @Export(name="userId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> userId;
-
-    public Output<Optional<String>> userId() {
-        return Codegen.optional(this.userId);
     }
 
     /**

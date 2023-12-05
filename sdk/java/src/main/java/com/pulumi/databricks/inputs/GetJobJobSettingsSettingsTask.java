@@ -20,6 +20,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkJarTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkPythonTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTask;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -215,6 +216,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         return Optional.ofNullable(this.timeoutSeconds);
     }
 
+    @Import(name="webhookNotifications")
+    private @Nullable GetJobJobSettingsSettingsTaskWebhookNotifications webhookNotifications;
+
+    public Optional<GetJobJobSettingsSettingsTaskWebhookNotifications> webhookNotifications() {
+        return Optional.ofNullable(this.webhookNotifications);
+    }
+
     private GetJobJobSettingsSettingsTask() {}
 
     private GetJobJobSettingsSettingsTask(GetJobJobSettingsSettingsTask $) {
@@ -244,6 +252,7 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         this.sqlTask = $.sqlTask;
         this.taskKey = $.taskKey;
         this.timeoutSeconds = $.timeoutSeconds;
+        this.webhookNotifications = $.webhookNotifications;
     }
 
     public static Builder builder() {
@@ -399,6 +408,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             $.timeoutSeconds = timeoutSeconds;
+            return this;
+        }
+
+        public Builder webhookNotifications(@Nullable GetJobJobSettingsSettingsTaskWebhookNotifications webhookNotifications) {
+            $.webhookNotifications = webhookNotifications;
             return this;
         }
 

@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded extends com.pulumi.resources.InvokeArgs {
@@ -16,15 +18,15 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarnin
      * the id of databricks.Job if the resource was matched by name.
      * 
      */
-    @Import(name="id", required=true)
-    private String id;
+    @Import(name="id")
+    private @Nullable String id;
 
     /**
      * @return the id of databricks.Job if the resource was matched by name.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded() {}
@@ -57,13 +59,12 @@ public final class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarnin
          * @return builder
          * 
          */
-        public Builder id(String id) {
+        public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
         public GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             return $;
         }
     }

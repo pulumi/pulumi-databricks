@@ -12,12 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskEmailNotificationsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("alertOnLastAttempt")]
-        public bool? AlertOnLastAttempt { get; set; }
-
-        [Input("noAlertForSkippedRuns")]
-        public bool? NoAlertForSkippedRuns { get; set; }
-
         [Input("onDurationWarningThresholdExceededs")]
         private List<string>? _onDurationWarningThresholdExceededs;
         public List<string> OnDurationWarningThresholdExceededs

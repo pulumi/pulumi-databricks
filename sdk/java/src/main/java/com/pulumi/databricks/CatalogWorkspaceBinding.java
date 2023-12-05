@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.CatalogWorkspaceBindingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogWorkspaceBindingState;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -43,7 +45,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding(&#34;sandboxCatalogWorkspaceBinding&#34;, CatalogWorkspaceBindingArgs.builder()        
- *             .catalogName(sandboxCatalog.name())
+ *             .securableName(sandboxCatalog.name())
  *             .workspaceId(databricks_mws_workspaces.other().workspace_id())
  *             .build());
  * 
@@ -59,32 +61,72 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding")
 public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource {
     /**
-     * Name of Catalog. Change forces creation of a new resource.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      * 
      */
-    @Export(name="catalogName", refs={String.class}, tree="[0]")
-    private Output<String> catalogName;
+    @Export(name="bindingType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bindingType;
 
     /**
-     * @return Name of Catalog. Change forces creation of a new resource.
+     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      * 
      */
-    public Output<String> catalogName() {
-        return this.catalogName;
+    public Output<Optional<String>> bindingType() {
+        return Codegen.optional(this.bindingType);
+    }
+    /**
+     * @deprecated
+     * Please use &#39;securable_name&#39; and &#39;securable_type instead.
+     * 
+     */
+    @Deprecated /* Please use 'securable_name' and 'securable_type instead. */
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> catalogName;
+
+    public Output<Optional<String>> catalogName() {
+        return Codegen.optional(this.catalogName);
+    }
+    /**
+     * Name of securable. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="securableName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securableName;
+
+    /**
+     * @return Name of securable. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> securableName() {
+        return Codegen.optional(this.securableName);
+    }
+    /**
+     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     * 
+     */
+    @Export(name="securableType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securableType;
+
+    /**
+     * @return Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     * 
+     */
+    public Output<Optional<String>> securableType() {
+        return Codegen.optional(this.securableType);
     }
     /**
      * ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output<String> workspaceId;
+    @Export(name="workspaceId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> workspaceId;
 
     /**
      * @return ID of the workspace. Change forces creation of a new resource.
      * 
      */
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Output<Optional<Integer>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**
@@ -99,7 +141,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CatalogWorkspaceBinding(String name, CatalogWorkspaceBindingArgs args) {
+    public CatalogWorkspaceBinding(String name, @Nullable CatalogWorkspaceBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -108,7 +150,7 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CatalogWorkspaceBinding(String name, CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public CatalogWorkspaceBinding(String name, @Nullable CatalogWorkspaceBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding", name, args == null ? CatalogWorkspaceBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

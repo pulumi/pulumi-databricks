@@ -34,14 +34,14 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * If this access control for reading/writing any file. Defaults to `false`.
      * 
      */
     @Import(name="anyFile")
     private @Nullable Output<Boolean> anyFile;
 
     /**
-     * @return If this access control for reading any file. Defaults to `false`.
+     * @return If this access control for reading/writing any file. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> anyFile() {
@@ -175,7 +175,7 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param anyFile If this access control for reading any file. Defaults to `false`.
+         * @param anyFile If this access control for reading/writing any file. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SqlPermissionsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param anyFile If this access control for reading any file. Defaults to `false`.
+         * @param anyFile If this access control for reading/writing any file. Defaults to `false`.
          * 
          * @return builder
          * 

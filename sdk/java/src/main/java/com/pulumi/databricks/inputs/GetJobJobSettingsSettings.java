@@ -72,6 +72,20 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.deployment);
     }
 
+    @Import(name="description")
+    private @Nullable String description;
+
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="editMode")
+    private @Nullable String editMode;
+
+    public Optional<String> editMode() {
+        return Optional.ofNullable(this.editMode);
+    }
+
     @Import(name="emailNotifications")
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
 
@@ -213,11 +227,11 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.retryOnTimeout);
     }
 
-    @Import(name="runAs")
-    private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+    @Import(name="runAs", required=true)
+    private GetJobJobSettingsSettingsRunAs runAs;
 
-    public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
-        return Optional.ofNullable(this.runAs);
+    public GetJobJobSettingsSettingsRunAs runAs() {
+        return this.runAs;
     }
 
     @Import(name="runJobTask")
@@ -297,6 +311,8 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.deployment = $.deployment;
+        this.description = $.description;
+        this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
@@ -368,6 +384,16 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public Builder deployment(@Nullable GetJobJobSettingsSettingsDeployment deployment) {
             $.deployment = deployment;
+            return this;
+        }
+
+        public Builder description(@Nullable String description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder editMode(@Nullable String editMode) {
+            $.editMode = editMode;
             return this;
         }
 
@@ -484,7 +510,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
             return this;
         }
 
-        public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
+        public Builder runAs(GetJobJobSettingsSettingsRunAs runAs) {
             $.runAs = runAs;
             return this;
         }
@@ -545,6 +571,7 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
         public GetJobJobSettingsSettings build() {
             $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
+            $.runAs = Objects.requireNonNull($.runAs, "expected parameter 'runAs' to be non-null");
             return $;
         }
     }

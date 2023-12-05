@@ -50,9 +50,9 @@ namespace Pulumi.Databricks
     /// 
     /// The following resources are used in the same context:
     /// 
-    /// * databricks.Table data to list tables within Unity Catalog.
-    /// * databricks.Schema data to list schemas within Unity Catalog.
-    /// * databricks.Catalog data to list catalogs within Unity Catalog.
+    /// * databricks.getTables data to list tables within Unity Catalog.
+    /// * databricks.getSchemas data to list schemas within Unity Catalog.
+    /// * databricks.getCatalogs data to list catalogs within Unity Catalog.
     /// 
     /// ## Import
     /// 

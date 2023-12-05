@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > **Note** To assign an account level group to a workspace use databricks_mws_permission_assignment.
  *
+ * > **Note** Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
+ *
  * To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = "https://accounts.cloud.databricks.com"` and `accountId = "00000000-0000-0000-0000-000000000000"`. On Azure deployments `host = "https://accounts.azuredatabricks.net"`, `accountId = "00000000-0000-0000-0000-000000000000"` and using AAD tokens as authentication.
  *
  * Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:

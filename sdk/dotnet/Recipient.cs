@@ -74,13 +74,13 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Required when authentication_type is DATABRICKS.
+        /// Required when `authentication_type` is `DATABRICKS`.
         /// </summary>
         [Output("dataRecipientGlobalMetastoreId")]
         public Output<string?> DataRecipientGlobalMetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// The one-time sharing code provided by the data recipient.
+        /// Recipient IP access list.
         /// </summary>
         [Output("ipAccessList")]
         public Output<Outputs.RecipientIpAccessList?> IpAccessList { get; private set; } = null!;
@@ -90,6 +90,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the recipient owner.
+        /// </summary>
+        [Output("owner")]
+        public Output<string?> Owner { get; private set; } = null!;
 
         /// <summary>
         /// The one-time sharing code provided by the data recipient.
@@ -166,13 +172,13 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Required when authentication_type is DATABRICKS.
+        /// Required when `authentication_type` is `DATABRICKS`.
         /// </summary>
         [Input("dataRecipientGlobalMetastoreId")]
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
 
         /// <summary>
-        /// The one-time sharing code provided by the data recipient.
+        /// Recipient IP access list.
         /// </summary>
         [Input("ipAccessList")]
         public Input<Inputs.RecipientIpAccessListArgs>? IpAccessList { get; set; }
@@ -182,6 +188,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the recipient owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         [Input("sharingCode")]
         private Input<string>? _sharingCode;
@@ -232,13 +244,13 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Required when authentication_type is DATABRICKS.
+        /// Required when `authentication_type` is `DATABRICKS`.
         /// </summary>
         [Input("dataRecipientGlobalMetastoreId")]
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
 
         /// <summary>
-        /// The one-time sharing code provided by the data recipient.
+        /// Recipient IP access list.
         /// </summary>
         [Input("ipAccessList")]
         public Input<Inputs.RecipientIpAccessListGetArgs>? IpAccessList { get; set; }
@@ -248,6 +260,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Username/groupname/sp application_id of the recipient owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         [Input("sharingCode")]
         private Input<string>? _sharingCode;

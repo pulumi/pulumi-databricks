@@ -18,6 +18,7 @@ class SqlDashboardArgs:
                  dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 run_as_role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
@@ -31,6 +32,8 @@ class SqlDashboardArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if run_as_role is not None:
+            pulumi.set(__self__, "run_as_role", run_as_role)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if updated_at is not None:
@@ -71,6 +74,15 @@ class SqlDashboardArgs:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="runAsRole")
+    def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "run_as_role")
+
+    @run_as_role.setter
+    def run_as_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_role", value)
 
     @property
     @pulumi.getter
@@ -98,6 +110,7 @@ class _SqlDashboardState:
                  dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 run_as_role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
@@ -111,6 +124,8 @@ class _SqlDashboardState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if run_as_role is not None:
+            pulumi.set(__self__, "run_as_role", run_as_role)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if updated_at is not None:
@@ -151,6 +166,15 @@ class _SqlDashboardState:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="runAsRole")
+    def run_as_role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "run_as_role")
+
+    @run_as_role.setter
+    def run_as_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "run_as_role", value)
 
     @property
     @pulumi.getter
@@ -180,6 +204,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 run_as_role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -315,6 +340,7 @@ class SqlDashboard(pulumi.CustomResource):
                  dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 run_as_role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -330,6 +356,7 @@ class SqlDashboard(pulumi.CustomResource):
             __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["run_as_role"] = run_as_role
             __props__.__dict__["tags"] = tags
             __props__.__dict__["updated_at"] = updated_at
         super(SqlDashboard, __self__).__init__(
@@ -346,6 +373,7 @@ class SqlDashboard(pulumi.CustomResource):
             dashboard_filters_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
+            run_as_role: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None) -> 'SqlDashboard':
         """
@@ -364,6 +392,7 @@ class SqlDashboard(pulumi.CustomResource):
         __props__.__dict__["dashboard_filters_enabled"] = dashboard_filters_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["run_as_role"] = run_as_role
         __props__.__dict__["tags"] = tags
         __props__.__dict__["updated_at"] = updated_at
         return SqlDashboard(resource_name, opts=opts, __props__=__props__)
@@ -387,6 +416,11 @@ class SqlDashboard(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="runAsRole")
+    def run_as_role(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "run_as_role")
 
     @property
     @pulumi.getter

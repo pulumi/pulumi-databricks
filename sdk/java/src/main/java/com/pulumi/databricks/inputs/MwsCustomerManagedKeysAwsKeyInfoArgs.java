@@ -19,15 +19,15 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
      * The AWS KMS key alias.
      * 
      */
-    @Import(name="keyAlias", required=true)
-    private Output<String> keyAlias;
+    @Import(name="keyAlias")
+    private @Nullable Output<String> keyAlias;
 
     /**
      * @return The AWS KMS key alias.
      * 
      */
-    public Output<String> keyAlias() {
-        return this.keyAlias;
+    public Optional<Output<String>> keyAlias() {
+        return Optional.ofNullable(this.keyAlias);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder keyAlias(Output<String> keyAlias) {
+        public Builder keyAlias(@Nullable Output<String> keyAlias) {
             $.keyAlias = keyAlias;
             return this;
         }
@@ -150,7 +150,6 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
         }
 
         public MwsCustomerManagedKeysAwsKeyInfoArgs build() {
-            $.keyAlias = Objects.requireNonNull($.keyAlias, "expected parameter 'keyAlias' to be non-null");
             $.keyArn = Objects.requireNonNull($.keyArn, "expected parameter 'keyArn' to be non-null");
             return $;
         }

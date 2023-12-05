@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  * 
  * The following resources are used in the same context:
  * 
- * * databricks.Table data to list tables within Unity Catalog.
- * * databricks.Schema data to list schemas within Unity Catalog.
- * * databricks.Catalog data to list catalogs within Unity Catalog.
+ * * databricks.getTables data to list tables within Unity Catalog.
+ * * databricks.getSchemas data to list schemas within Unity Catalog.
+ * * databricks.getCatalogs data to list catalogs within Unity Catalog.
  * 
  * ## Import
  * 
@@ -124,9 +124,17 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<String> isolationMode() {
         return this.isolationMode;
     }
+    /**
+     * ID of the metastore.
+     * 
+     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
+    /**
+     * @return ID of the metastore.
+     * 
+     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }

@@ -29,6 +29,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("deployment")]
         public Input<Inputs.GetJobJobSettingsSettingsDeploymentInputArgs>? Deployment { get; set; }
 
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("editMode")]
+        public Input<string>? EditMode { get; set; }
+
         [Input("emailNotifications")]
         public Input<Inputs.GetJobJobSettingsSettingsEmailNotificationsInputArgs>? EmailNotifications { get; set; }
 
@@ -104,8 +110,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
-        [Input("runAs")]
-        public Input<Inputs.GetJobJobSettingsSettingsRunAsInputArgs>? RunAs { get; set; }
+        [Input("runAs", required: true)]
+        public Input<Inputs.GetJobJobSettingsSettingsRunAsInputArgs> RunAs { get; set; } = null!;
 
         [Input("runJobTask")]
         public Input<Inputs.GetJobJobSettingsSettingsRunJobTaskInputArgs>? RunJobTask { get; set; }

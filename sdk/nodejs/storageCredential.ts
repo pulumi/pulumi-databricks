@@ -134,8 +134,6 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly owner!: pulumi.Output<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
-     *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
 
@@ -212,8 +210,6 @@ export interface StorageCredentialState {
     owner?: pulumi.Input<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
-     *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     readOnly?: pulumi.Input<boolean>;
 }
@@ -248,8 +244,6 @@ export interface StorageCredentialArgs {
     owner?: pulumi.Input<string>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
-     *
-     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     readOnly?: pulumi.Input<boolean>;
 }

@@ -184,8 +184,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
-        /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
@@ -282,8 +280,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
-        /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -342,8 +338,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.
-        /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

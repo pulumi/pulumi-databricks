@@ -14,16 +14,31 @@ namespace Pulumi.Databricks.Outputs
     public sealed class StorageCredentialAwsIamRole
     {
         /// <summary>
+        /// The external ID used in role assumption to prevent confused deputy problem.
+        /// </summary>
+        public readonly string? ExternalId;
+        /// <summary>
         /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        /// </summary>
+        public readonly string RoleArn;
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
         /// 
         /// `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         /// </summary>
-        public readonly string RoleArn;
+        public readonly string? UnityCatalogIamArn;
 
         [OutputConstructor]
-        private StorageCredentialAwsIamRole(string roleArn)
+        private StorageCredentialAwsIamRole(
+            string? externalId,
+
+            string roleArn,
+
+            string? unityCatalogIamArn)
         {
+            ExternalId = externalId;
             RoleArn = roleArn;
+            UnityCatalogIamArn = unityCatalogIamArn;
         }
     }
 }

@@ -7,17 +7,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SqlQueryParameterEnumMultipleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SqlQueryParameterEnumMultipleArgs Empty = new SqlQueryParameterEnumMultipleArgs();
 
-    @Import(name="prefix", required=true)
-    private Output<String> prefix;
+    @Import(name="prefix")
+    private @Nullable Output<String> prefix;
 
-    public Output<String> prefix() {
-        return this.prefix;
+    public Optional<Output<String>> prefix() {
+        return Optional.ofNullable(this.prefix);
     }
 
     @Import(name="separator", required=true)
@@ -27,11 +29,11 @@ public final class SqlQueryParameterEnumMultipleArgs extends com.pulumi.resource
         return this.separator;
     }
 
-    @Import(name="suffix", required=true)
-    private Output<String> suffix;
+    @Import(name="suffix")
+    private @Nullable Output<String> suffix;
 
-    public Output<String> suffix() {
-        return this.suffix;
+    public Optional<Output<String>> suffix() {
+        return Optional.ofNullable(this.suffix);
     }
 
     private SqlQueryParameterEnumMultipleArgs() {}
@@ -60,7 +62,7 @@ public final class SqlQueryParameterEnumMultipleArgs extends com.pulumi.resource
             $ = new SqlQueryParameterEnumMultipleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder prefix(Output<String> prefix) {
+        public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
@@ -78,7 +80,7 @@ public final class SqlQueryParameterEnumMultipleArgs extends com.pulumi.resource
             return separator(Output.of(separator));
         }
 
-        public Builder suffix(Output<String> suffix) {
+        public Builder suffix(@Nullable Output<String> suffix) {
             $.suffix = suffix;
             return this;
         }
@@ -88,9 +90,7 @@ public final class SqlQueryParameterEnumMultipleArgs extends com.pulumi.resource
         }
 
         public SqlQueryParameterEnumMultipleArgs build() {
-            $.prefix = Objects.requireNonNull($.prefix, "expected parameter 'prefix' to be non-null");
             $.separator = Objects.requireNonNull($.separator, "expected parameter 'separator' to be non-null");
-            $.suffix = Objects.requireNonNull($.suffix, "expected parameter 'suffix' to be non-null");
             return $;
         }
     }

@@ -36,8 +36,13 @@ __all__ = [
     'ClusterLibraryCran',
     'ClusterLibraryMaven',
     'ClusterLibraryPypi',
+    'ClusterPolicyLibrary',
+    'ClusterPolicyLibraryCran',
+    'ClusterPolicyLibraryMaven',
+    'ClusterPolicyLibraryPypi',
     'ClusterWorkloadType',
     'ClusterWorkloadTypeClients',
+    'DefaultNamespaceSettingNamespace',
     'ExternalLocationEncryptionDetails',
     'ExternalLocationEncryptionDetailsSseEncryptionDetails',
     'GrantsGrant',
@@ -171,6 +176,11 @@ __all__ = [
     'JobTaskSqlTaskDashboardSubscription',
     'JobTaskSqlTaskFile',
     'JobTaskSqlTaskQuery',
+    'JobTaskWebhookNotifications',
+    'JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded',
+    'JobTaskWebhookNotificationsOnFailure',
+    'JobTaskWebhookNotificationsOnStart',
+    'JobTaskWebhookNotificationsOnSuccess',
     'JobTrigger',
     'JobTriggerFileArrival',
     'JobWebhookNotifications',
@@ -314,6 +324,7 @@ __all__ = [
     'GetInstancePoolPoolInfoPreloadedDockerImageResult',
     'GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthResult',
     'GetInstancePoolPoolInfoStatsResult',
+    'GetInstanceProfilesInstanceProfileResult',
     'GetJobJobSettingsResult',
     'GetJobJobSettingsSettingsResult',
     'GetJobJobSettingsSettingsComputeResult',
@@ -435,6 +446,11 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionResult',
     'GetJobJobSettingsSettingsTaskSqlTaskFileResult',
     'GetJobJobSettingsSettingsTaskSqlTaskQueryResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult',
+    'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult',
     'GetJobJobSettingsSettingsTriggerResult',
     'GetJobJobSettingsSettingsTriggerFileArrivalResult',
     'GetJobJobSettingsSettingsWebhookNotificationsResult',
@@ -443,6 +459,9 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStartResult',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult',
     'GetMetastoreMetastoreInfoResult',
+    'GetMlflowModelLatestVersionResult',
+    'GetMlflowModelLatestVersionTagResult',
+    'GetMlflowModelTagResult',
     'GetNotebookPathsNotebookPathListResult',
     'GetShareObjectResult',
     'GetShareObjectPartitionResult',
@@ -1415,6 +1434,127 @@ class ClusterLibraryPypi(dict):
 
 
 @pulumi.output_type
+class ClusterPolicyLibrary(dict):
+    def __init__(__self__, *,
+                 cran: Optional['outputs.ClusterPolicyLibraryCran'] = None,
+                 egg: Optional[str] = None,
+                 jar: Optional[str] = None,
+                 maven: Optional['outputs.ClusterPolicyLibraryMaven'] = None,
+                 pypi: Optional['outputs.ClusterPolicyLibraryPypi'] = None,
+                 whl: Optional[str] = None):
+        if cran is not None:
+            pulumi.set(__self__, "cran", cran)
+        if egg is not None:
+            pulumi.set(__self__, "egg", egg)
+        if jar is not None:
+            pulumi.set(__self__, "jar", jar)
+        if maven is not None:
+            pulumi.set(__self__, "maven", maven)
+        if pypi is not None:
+            pulumi.set(__self__, "pypi", pypi)
+        if whl is not None:
+            pulumi.set(__self__, "whl", whl)
+
+    @property
+    @pulumi.getter
+    def cran(self) -> Optional['outputs.ClusterPolicyLibraryCran']:
+        return pulumi.get(self, "cran")
+
+    @property
+    @pulumi.getter
+    def egg(self) -> Optional[str]:
+        return pulumi.get(self, "egg")
+
+    @property
+    @pulumi.getter
+    def jar(self) -> Optional[str]:
+        return pulumi.get(self, "jar")
+
+    @property
+    @pulumi.getter
+    def maven(self) -> Optional['outputs.ClusterPolicyLibraryMaven']:
+        return pulumi.get(self, "maven")
+
+    @property
+    @pulumi.getter
+    def pypi(self) -> Optional['outputs.ClusterPolicyLibraryPypi']:
+        return pulumi.get(self, "pypi")
+
+    @property
+    @pulumi.getter
+    def whl(self) -> Optional[str]:
+        return pulumi.get(self, "whl")
+
+
+@pulumi.output_type
+class ClusterPolicyLibraryCran(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class ClusterPolicyLibraryMaven(dict):
+    def __init__(__self__, *,
+                 coordinates: str,
+                 exclusions: Optional[Sequence[str]] = None,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "coordinates", coordinates)
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def coordinates(self) -> str:
+        return pulumi.get(self, "coordinates")
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclusions")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class ClusterPolicyLibraryPypi(dict):
+    def __init__(__self__, *,
+                 package: str,
+                 repo: Optional[str] = None):
+        pulumi.set(__self__, "package", package)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def package(self) -> str:
+        return pulumi.get(self, "package")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
 class ClusterWorkloadType(dict):
     def __init__(__self__, *,
                  clients: 'outputs.ClusterWorkloadTypeClients'):
@@ -1445,6 +1585,25 @@ class ClusterWorkloadTypeClients(dict):
     @pulumi.getter
     def notebooks(self) -> Optional[bool]:
         return pulumi.get(self, "notebooks")
+
+
+@pulumi.output_type
+class DefaultNamespaceSettingNamespace(dict):
+    def __init__(__self__, *,
+                 value: Optional[str] = None):
+        """
+        :param str value: The value for the setting.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The value for the setting.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -2247,9 +2406,7 @@ class JobEmailNotifications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "alertOnLastAttempt":
-            suggest = "alert_on_last_attempt"
-        elif key == "noAlertForSkippedRuns":
+        if key == "noAlertForSkippedRuns":
             suggest = "no_alert_for_skipped_runs"
         elif key == "onDurationWarningThresholdExceededs":
             suggest = "on_duration_warning_threshold_exceededs"
@@ -2272,22 +2429,18 @@ class JobEmailNotifications(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alert_on_last_attempt: Optional[bool] = None,
                  no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         """
-        :param bool alert_on_last_attempt: (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
         :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
         :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
         :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
         :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
-        if alert_on_last_attempt is not None:
-            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -2298,14 +2451,6 @@ class JobEmailNotifications(dict):
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
-
-    @property
-    @pulumi.getter(name="alertOnLastAttempt")
-    def alert_on_last_attempt(self) -> Optional[bool]:
-        """
-        (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-        """
-        return pulumi.get(self, "alert_on_last_attempt")
 
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
@@ -2513,7 +2658,9 @@ class JobHealthRule(dict):
                  value: Optional[int] = None):
         """
         :param str metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+               
+               This task does not require a cluster to execute and does not support retries or notifications.
         :param int value: integer value used to compare to the given metric.
         """
         if metric is not None:
@@ -2535,7 +2682,9 @@ class JobHealthRule(dict):
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+
+        This task does not require a cluster to execute and does not support retries or notifications.
         """
         return pulumi.get(self, "op")
 
@@ -5227,7 +5376,7 @@ class JobParameter(dict):
                  name: Optional[str] = None):
         """
         :param str default: Default value of the parameter.
-        :param str name: An optional name for the job. The default value is Untitled.
+        :param str name: The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         if default is not None:
             pulumi.set(__self__, "default", default)
@@ -5246,7 +5395,7 @@ class JobParameter(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        An optional name for the job. The default value is Untitled.
+        The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         return pulumi.get(self, "name")
 
@@ -5384,11 +5533,17 @@ class JobPythonWheelTask(dict):
 class JobQueue(dict):
     def __init__(__self__, *,
                  enabled: bool):
+        """
+        :param bool enabled: If true, enable queueing for the job.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        If true, enable queueing for the job.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -5762,6 +5917,8 @@ class JobTask(dict):
             suggest = "task_key"
         elif key == "timeoutSeconds":
             suggest = "timeout_seconds"
+        elif key == "webhookNotifications":
+            suggest = "webhook_notifications"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTask. Access the value via the '{suggest}' property getter instead.")
@@ -5800,10 +5957,12 @@ class JobTask(dict):
                  spark_submit_task: Optional['outputs.JobTaskSparkSubmitTask'] = None,
                  sql_task: Optional['outputs.JobTaskSqlTask'] = None,
                  task_key: Optional[str] = None,
-                 timeout_seconds: Optional[int] = None):
+                 timeout_seconds: Optional[int] = None,
+                 webhook_notifications: Optional['outputs.JobTaskWebhookNotifications'] = None):
         """
         :param Sequence['JobTaskDependsOnArgs'] depends_ons: block specifying dependency(-ies) for a given task.
-        :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param 'JobTaskHealthArgs' health: block described below that specifies health conditions for a given task.
         :param str job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         :param Sequence['JobTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
@@ -5816,6 +5975,7 @@ class JobTask(dict):
         :param str task_key: string specifying an unique key for a given task.
                * `*_task` - (Required) one of the specific task blocks described below:
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+        :param 'JobTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if compute_key is not None:
             pulumi.set(__self__, "compute_key", compute_key)
@@ -5869,6 +6029,8 @@ class JobTask(dict):
             pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if webhook_notifications is not None:
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="computeKey")
@@ -5896,13 +6058,16 @@ class JobTask(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.JobTaskEmailNotifications']:
         """
-        (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -6040,6 +6205,14 @@ class JobTask(dict):
         """
         return pulumi.get(self, "timeout_seconds")
 
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> Optional['outputs.JobTaskWebhookNotifications']:
+        """
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        """
+        return pulumi.get(self, "webhook_notifications")
+
 
 @pulumi.output_type
 class JobTaskConditionTask(dict):
@@ -6048,7 +6221,11 @@ class JobTaskConditionTask(dict):
                  op: Optional[str] = None,
                  right: Optional[str] = None):
         """
-        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        :param str left: The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+               
+               This task does not require a cluster to execute and does not support retries or notifications.
+        :param str right: The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
         if left is not None:
             pulumi.set(__self__, "left", left)
@@ -6060,19 +6237,27 @@ class JobTaskConditionTask(dict):
     @property
     @pulumi.getter
     def left(self) -> Optional[str]:
+        """
+        The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+        """
         return pulumi.get(self, "left")
 
     @property
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+
+        This task does not require a cluster to execute and does not support retries or notifications.
         """
         return pulumi.get(self, "op")
 
     @property
     @pulumi.getter
     def right(self) -> Optional[str]:
+        """
+        The right operand of the condition task. It could be a string value, job state, or parameter reference.
+        """
         return pulumi.get(self, "right")
 
 
@@ -6203,6 +6388,7 @@ class JobTaskDependsOn(dict):
                  outcome: Optional[str] = None):
         """
         :param str task_key: The name of the task this task depends on.
+        :param str outcome: Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
         """
         pulumi.set(__self__, "task_key", task_key)
         if outcome is not None:
@@ -6219,6 +6405,9 @@ class JobTaskDependsOn(dict):
     @property
     @pulumi.getter
     def outcome(self) -> Optional[str]:
+        """
+        Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+        """
         return pulumi.get(self, "outcome")
 
 
@@ -6227,11 +6416,7 @@ class JobTaskEmailNotifications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "alertOnLastAttempt":
-            suggest = "alert_on_last_attempt"
-        elif key == "noAlertForSkippedRuns":
-            suggest = "no_alert_for_skipped_runs"
-        elif key == "onDurationWarningThresholdExceededs":
+        if key == "onDurationWarningThresholdExceededs":
             suggest = "on_duration_warning_threshold_exceededs"
         elif key == "onFailures":
             suggest = "on_failures"
@@ -6252,24 +6437,16 @@ class JobTaskEmailNotifications(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alert_on_last_attempt: Optional[bool] = None,
-                 no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
         """
-        :param bool alert_on_last_attempt: (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
         :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
         :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
         :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
         """
-        if alert_on_last_attempt is not None:
-            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
-        if no_alert_for_skipped_runs is not None:
-            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -6278,22 +6455,6 @@ class JobTaskEmailNotifications(dict):
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
-
-    @property
-    @pulumi.getter(name="alertOnLastAttempt")
-    def alert_on_last_attempt(self) -> Optional[bool]:
-        """
-        (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-        """
-        return pulumi.get(self, "alert_on_last_attempt")
-
-    @property
-    @pulumi.getter(name="noAlertForSkippedRuns")
-    def no_alert_for_skipped_runs(self) -> Optional[bool]:
-        """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        """
-        return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -6354,7 +6515,9 @@ class JobTaskHealthRule(dict):
                  value: Optional[int] = None):
         """
         :param str metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+               
+               This task does not require a cluster to execute and does not support retries or notifications.
         :param int value: integer value used to compare to the given metric.
         """
         if metric is not None:
@@ -6376,7 +6539,9 @@ class JobTaskHealthRule(dict):
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+
+        This task does not require a cluster to execute and does not support retries or notifications.
         """
         return pulumi.get(self, "op")
 
@@ -8595,6 +8760,176 @@ class JobTaskSqlTaskQuery(dict):
 
 
 @pulumi.output_type
+class JobTaskWebhookNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onDurationWarningThresholdExceededs":
+            suggest = "on_duration_warning_threshold_exceededs"
+        elif key == "onFailures":
+            suggest = "on_failures"
+        elif key == "onStarts":
+            suggest = "on_starts"
+        elif key == "onSuccesses":
+            suggest = "on_successes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTaskWebhookNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTaskWebhookNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTaskWebhookNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded']] = None,
+                 on_failures: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnFailure']] = None,
+                 on_starts: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnStart']] = None,
+                 on_successes: Optional[Sequence['outputs.JobTaskWebhookNotificationsOnSuccess']] = None):
+        """
+        :param Sequence['JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs'] on_duration_warning_threshold_exceededs: (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+               
+               Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+               
+               Example
+               
+               ```python
+               import pulumi
+               ```
+        :param Sequence['JobTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        :param Sequence['JobTaskWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        """
+        if on_duration_warning_threshold_exceededs is not None:
+            pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
+        if on_failures is not None:
+            pulumi.set(__self__, "on_failures", on_failures)
+        if on_starts is not None:
+            pulumi.set(__self__, "on_starts", on_starts)
+        if on_successes is not None:
+            pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="onDurationWarningThresholdExceededs")
+    def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded']]:
+        """
+        (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+
+        Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+
+        Example
+
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "on_duration_warning_threshold_exceededs")
+
+    @property
+    @pulumi.getter(name="onFailures")
+    def on_failures(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnFailure']]:
+        """
+        (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+        """
+        return pulumi.get(self, "on_failures")
+
+    @property
+    @pulumi.getter(name="onStarts")
+    def on_starts(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnStart']]:
+        """
+        (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+        """
+        return pulumi.get(self, "on_starts")
+
+    @property
+    @pulumi.getter(name="onSuccesses")
+    def on_successes(self) -> Optional[Sequence['outputs.JobTaskWebhookNotificationsOnSuccess']]:
+        """
+        (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+        """
+        return pulumi.get(self, "on_successes")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the job
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnFailure(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the job
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnStart(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the job
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class JobTaskWebhookNotificationsOnSuccess(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: ID of the job
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of the job
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class JobTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8801,15 +9136,16 @@ class JobWebhookNotifications(dict):
 @pulumi.output_type
 class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: ID of the job
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         ID of the job
         """
@@ -8819,15 +9155,16 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
 @pulumi.output_type
 class JobWebhookNotificationsOnFailure(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: ID of the job
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         ID of the job
         """
@@ -8837,15 +9174,16 @@ class JobWebhookNotificationsOnFailure(dict):
 @pulumi.output_type
 class JobWebhookNotificationsOnStart(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: ID of the job
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         ID of the job
         """
@@ -8855,15 +9193,16 @@ class JobWebhookNotificationsOnStart(dict):
 @pulumi.output_type
 class JobWebhookNotificationsOnSuccess(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: ID of the job
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         ID of the job
         """
@@ -8945,6 +9284,10 @@ class MetastoreDataAccessAwsIamRole(dict):
         suggest = None
         if key == "roleArn":
             suggest = "role_arn"
+        elif key == "externalId":
+            suggest = "external_id"
+        elif key == "unityCatalogIamArn":
+            suggest = "unity_catalog_iam_arn"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MetastoreDataAccessAwsIamRole. Access the value via the '{suggest}' property getter instead.")
@@ -8958,23 +9301,29 @@ class MetastoreDataAccessAwsIamRole(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 role_arn: str):
-        """
-        :param str role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-               
-               `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-        """
+                 role_arn: str,
+                 external_id: Optional[str] = None,
+                 unity_catalog_iam_arn: Optional[str] = None):
         pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if unity_catalog_iam_arn is not None:
+            pulumi.set(__self__, "unity_catalog_iam_arn", unity_catalog_iam_arn)
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
-        """
-        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-
-        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-        """
         return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="unityCatalogIamArn")
+    def unity_catalog_iam_arn(self) -> Optional[str]:
+        return pulumi.get(self, "unity_catalog_iam_arn")
 
 
 @pulumi.output_type
@@ -9004,12 +9353,6 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
                  access_connector_id: str,
                  credential_id: Optional[str] = None,
                  managed_identity_id: Optional[str] = None):
-        """
-        :param str access_connector_id: The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-        :param str managed_identity_id: The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-               
-               `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-        """
         pulumi.set(__self__, "access_connector_id", access_connector_id)
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -9019,9 +9362,6 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
     @property
     @pulumi.getter(name="accessConnectorId")
     def access_connector_id(self) -> str:
-        """
-        The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-        """
         return pulumi.get(self, "access_connector_id")
 
     @property
@@ -9032,11 +9372,6 @@ class MetastoreDataAccessAzureManagedIdentity(dict):
     @property
     @pulumi.getter(name="managedIdentityId")
     def managed_identity_id(self) -> Optional[str]:
-        """
-        The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-
-        `databricks_gcp_service_account` optional configuration block for creating a Databricks-managed GCP Service Account:
-        """
         return pulumi.get(self, "managed_identity_id")
 
 
@@ -9067,11 +9402,6 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
                  application_id: str,
                  client_secret: str,
                  directory_id: str):
-        """
-        :param str application_id: The application ID of the application registration within the referenced AAD tenant
-        :param str client_secret: The client secret generated for the above app ID in AAD. **This field is redacted on output**
-        :param str directory_id: The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-        """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "directory_id", directory_id)
@@ -9079,25 +9409,16 @@ class MetastoreDataAccessAzureServicePrincipal(dict):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The application ID of the application registration within the referenced AAD tenant
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> str:
-        """
-        The client secret generated for the above app ID in AAD. **This field is redacted on output**
-        """
         return pulumi.get(self, "client_secret")
 
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> str:
-        """
-        The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-        """
         return pulumi.get(self, "directory_id")
 
 
@@ -9123,11 +9444,6 @@ class MetastoreDataAccessDatabricksGcpServiceAccount(dict):
     def __init__(__self__, *,
                  credential_id: Optional[str] = None,
                  email: Optional[str] = None):
-        """
-        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
-               
-               `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-        """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
         if email is not None:
@@ -9141,11 +9457,6 @@ class MetastoreDataAccessDatabricksGcpServiceAccount(dict):
     @property
     @pulumi.getter
     def email(self) -> Optional[str]:
-        """
-        The email of the GCP service account created, to be granted access to relevant buckets.
-
-        `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-        """
         return pulumi.get(self, "email")
 
 
@@ -9174,11 +9485,6 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
                  email: str,
                  private_key: str,
                  private_key_id: str):
-        """
-        :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
-               
-               `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-        """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "private_key_id", private_key_id)
@@ -9186,11 +9492,6 @@ class MetastoreDataAccessGcpServiceAccountKey(dict):
     @property
     @pulumi.getter
     def email(self) -> str:
-        """
-        The email of the GCP service account created, to be granted access to relevant buckets.
-
-        `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-        """
         return pulumi.get(self, "email")
 
     @property
@@ -9960,10 +10261,10 @@ class MwsCustomerManagedKeysAwsKeyInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "keyAlias":
-            suggest = "key_alias"
-        elif key == "keyArn":
+        if key == "keyArn":
             suggest = "key_arn"
+        elif key == "keyAlias":
+            suggest = "key_alias"
         elif key == "keyRegion":
             suggest = "key_region"
 
@@ -9979,26 +10280,19 @@ class MwsCustomerManagedKeysAwsKeyInfo(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 key_alias: str,
                  key_arn: str,
+                 key_alias: Optional[str] = None,
                  key_region: Optional[str] = None):
         """
-        :param str key_alias: The AWS KMS key alias.
         :param str key_arn: The AWS KMS key's Amazon Resource Name (ARN).
+        :param str key_alias: The AWS KMS key alias.
         :param str key_region: (Computed) The AWS region in which KMS key is deployed to. This is not required.
         """
-        pulumi.set(__self__, "key_alias", key_alias)
         pulumi.set(__self__, "key_arn", key_arn)
+        if key_alias is not None:
+            pulumi.set(__self__, "key_alias", key_alias)
         if key_region is not None:
             pulumi.set(__self__, "key_region", key_region)
-
-    @property
-    @pulumi.getter(name="keyAlias")
-    def key_alias(self) -> str:
-        """
-        The AWS KMS key alias.
-        """
-        return pulumi.get(self, "key_alias")
 
     @property
     @pulumi.getter(name="keyArn")
@@ -10007,6 +10301,14 @@ class MwsCustomerManagedKeysAwsKeyInfo(dict):
         The AWS KMS key's Amazon Resource Name (ARN).
         """
         return pulumi.get(self, "key_arn")
+
+    @property
+    @pulumi.getter(name="keyAlias")
+    def key_alias(self) -> Optional[str]:
+        """
+        The AWS KMS key alias.
+        """
+        return pulumi.get(self, "key_alias")
 
     @property
     @pulumi.getter(name="keyRegion")
@@ -12707,17 +13009,14 @@ class SqlQueryParameterEnum(dict):
 @pulumi.output_type
 class SqlQueryParameterEnumMultiple(dict):
     def __init__(__self__, *,
-                 prefix: str,
                  separator: str,
-                 suffix: str):
-        pulumi.set(__self__, "prefix", prefix)
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
         pulumi.set(__self__, "separator", separator)
-        pulumi.set(__self__, "suffix", suffix)
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> str:
-        return pulumi.get(self, "prefix")
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
 
     @property
     @pulumi.getter
@@ -12726,7 +13025,12 @@ class SqlQueryParameterEnumMultiple(dict):
 
     @property
     @pulumi.getter
-    def suffix(self) -> str:
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
         return pulumi.get(self, "suffix")
 
 
@@ -12810,17 +13114,14 @@ class SqlQueryParameterQuery(dict):
 @pulumi.output_type
 class SqlQueryParameterQueryMultiple(dict):
     def __init__(__self__, *,
-                 prefix: str,
                  separator: str,
-                 suffix: str):
-        pulumi.set(__self__, "prefix", prefix)
+                 prefix: Optional[str] = None,
+                 suffix: Optional[str] = None):
         pulumi.set(__self__, "separator", separator)
-        pulumi.set(__self__, "suffix", suffix)
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> str:
-        return pulumi.get(self, "prefix")
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
 
     @property
     @pulumi.getter
@@ -12829,7 +13130,12 @@ class SqlQueryParameterQueryMultiple(dict):
 
     @property
     @pulumi.getter
-    def suffix(self) -> str:
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
         return pulumi.get(self, "suffix")
 
 
@@ -13221,6 +13527,10 @@ class StorageCredentialAwsIamRole(dict):
         suggest = None
         if key == "roleArn":
             suggest = "role_arn"
+        elif key == "externalId":
+            suggest = "external_id"
+        elif key == "unityCatalogIamArn":
+            suggest = "unity_catalog_iam_arn"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StorageCredentialAwsIamRole. Access the value via the '{suggest}' property getter instead.")
@@ -13234,23 +13544,47 @@ class StorageCredentialAwsIamRole(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 role_arn: str):
+                 role_arn: str,
+                 external_id: Optional[str] = None,
+                 unity_catalog_iam_arn: Optional[str] = None):
         """
         :param str role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        :param str external_id: The external ID used in role assumption to prevent confused deputy problem.
+        :param str unity_catalog_iam_arn: The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
                
                `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
         pulumi.set(__self__, "role_arn", role_arn)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if unity_catalog_iam_arn is not None:
+            pulumi.set(__self__, "unity_catalog_iam_arn", unity_catalog_iam_arn)
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> str:
         """
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        The external ID used in role assumption to prevent confused deputy problem.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="unityCatalogIamArn")
+    def unity_catalog_iam_arn(self) -> Optional[str]:
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 
         `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
-        return pulumi.get(self, "role_arn")
+        return pulumi.get(self, "unity_catalog_iam_arn")
 
 
 @pulumi.output_type
@@ -13401,6 +13735,8 @@ class StorageCredentialDatabricksGcpServiceAccount(dict):
                  email: Optional[str] = None):
         """
         :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -13417,6 +13753,8 @@ class StorageCredentialDatabricksGcpServiceAccount(dict):
     def email(self) -> Optional[str]:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "email")
 
@@ -13448,6 +13786,8 @@ class StorageCredentialGcpServiceAccountKey(dict):
                  private_key_id: str):
         """
         :param str email: The email of the GCP service account created, to be granted access to relevant buckets.
+               
+               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "private_key", private_key)
@@ -13458,6 +13798,8 @@ class StorageCredentialGcpServiceAccountKey(dict):
     def email(self) -> str:
         """
         The email of the GCP service account created, to be granted access to relevant buckets.
+
+        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "email")
 
@@ -15165,6 +15507,57 @@ class GetInstancePoolPoolInfoStatsResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceProfilesInstanceProfileResult(dict):
+    def __init__(__self__, *,
+                 arn: str,
+                 is_meta: bool,
+                 name: str,
+                 role_arn: str):
+        """
+        :param str arn: ARN of the instance profile.
+        :param bool is_meta: Whether the instance profile is a meta instance profile or not.
+        :param str name: Name of the instance profile.
+        :param str role_arn: ARN of the role attached to the instance profile.
+        """
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "is_meta", is_meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> str:
+        """
+        ARN of the instance profile.
+        """
+        return pulumi.get(self, "arn")
+
+    @property
+    @pulumi.getter(name="isMeta")
+    def is_meta(self) -> bool:
+        """
+        Whether the instance profile is a meta instance profile or not.
+        """
+        return pulumi.get(self, "is_meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the instance profile.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> str:
+        """
+        ARN of the role attached to the instance profile.
+        """
+        return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
 class GetJobJobSettingsResult(dict):
     def __init__(__self__, *,
                  run_as_user_name: str,
@@ -15212,10 +15605,13 @@ class GetJobJobSettingsResult(dict):
 class GetJobJobSettingsSettingsResult(dict):
     def __init__(__self__, *,
                  format: str,
+                 run_as: 'outputs.GetJobJobSettingsSettingsRunAsResult',
                  computes: Optional[Sequence['outputs.GetJobJobSettingsSettingsComputeResult']] = None,
                  continuous: Optional['outputs.GetJobJobSettingsSettingsContinuousResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsDbtTaskResult'] = None,
                  deployment: Optional['outputs.GetJobJobSettingsSettingsDeploymentResult'] = None,
+                 description: Optional[str] = None,
+                 edit_mode: Optional[str] = None,
                  email_notifications: Optional['outputs.GetJobJobSettingsSettingsEmailNotificationsResult'] = None,
                  existing_cluster_id: Optional[str] = None,
                  git_source: Optional['outputs.GetJobJobSettingsSettingsGitSourceResult'] = None,
@@ -15234,7 +15630,6 @@ class GetJobJobSettingsSettingsResult(dict):
                  python_wheel_task: Optional['outputs.GetJobJobSettingsSettingsPythonWheelTaskResult'] = None,
                  queue: Optional['outputs.GetJobJobSettingsSettingsQueueResult'] = None,
                  retry_on_timeout: Optional[bool] = None,
-                 run_as: Optional['outputs.GetJobJobSettingsSettingsRunAsResult'] = None,
                  run_job_task: Optional['outputs.GetJobJobSettingsSettingsRunJobTaskResult'] = None,
                  schedule: Optional['outputs.GetJobJobSettingsSettingsScheduleResult'] = None,
                  spark_jar_task: Optional['outputs.GetJobJobSettingsSettingsSparkJarTaskResult'] = None,
@@ -15249,6 +15644,7 @@ class GetJobJobSettingsSettingsResult(dict):
         :param str name: the job name of Job if the resource was matched by id.
         """
         pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "run_as", run_as)
         if computes is not None:
             pulumi.set(__self__, "computes", computes)
         if continuous is not None:
@@ -15257,6 +15653,10 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "dbt_task", dbt_task)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if edit_mode is not None:
+            pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -15293,8 +15693,6 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "queue", queue)
         if retry_on_timeout is not None:
             pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
-        if run_as is not None:
-            pulumi.set(__self__, "run_as", run_as)
         if run_job_task is not None:
             pulumi.set(__self__, "run_job_task", run_job_task)
         if schedule is not None:
@@ -15322,6 +15720,11 @@ class GetJobJobSettingsSettingsResult(dict):
         return pulumi.get(self, "format")
 
     @property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> 'outputs.GetJobJobSettingsSettingsRunAsResult':
+        return pulumi.get(self, "run_as")
+
+    @property
     @pulumi.getter
     def computes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsComputeResult']]:
         return pulumi.get(self, "computes")
@@ -15340,6 +15743,16 @@ class GetJobJobSettingsSettingsResult(dict):
     @pulumi.getter
     def deployment(self) -> Optional['outputs.GetJobJobSettingsSettingsDeploymentResult']:
         return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="editMode")
+    def edit_mode(self) -> Optional[str]:
+        return pulumi.get(self, "edit_mode")
 
     @property
     @pulumi.getter(name="emailNotifications")
@@ -15433,11 +15846,6 @@ class GetJobJobSettingsSettingsResult(dict):
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[bool]:
         return pulumi.get(self, "retry_on_timeout")
-
-    @property
-    @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional['outputs.GetJobJobSettingsSettingsRunAsResult']:
-        return pulumi.get(self, "run_as")
 
     @property
     @pulumi.getter(name="runJobTask")
@@ -15612,14 +16020,11 @@ class GetJobJobSettingsSettingsDeploymentResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
     def __init__(__self__, *,
-                 alert_on_last_attempt: Optional[bool] = None,
                  no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
-        if alert_on_last_attempt is not None:
-            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -15630,11 +16035,6 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
-
-    @property
-    @pulumi.getter(name="alertOnLastAttempt")
-    def alert_on_last_attempt(self) -> Optional[bool]:
-        return pulumi.get(self, "alert_on_last_attempt")
 
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
@@ -17875,7 +18275,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
                  spark_submit_task: Optional['outputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskResult'] = None,
                  sql_task: Optional['outputs.GetJobJobSettingsSettingsTaskSqlTaskResult'] = None,
                  task_key: Optional[str] = None,
-                 timeout_seconds: Optional[int] = None):
+                 timeout_seconds: Optional[int] = None,
+                 webhook_notifications: Optional['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult'] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
         if compute_key is not None:
             pulumi.set(__self__, "compute_key", compute_key)
@@ -17927,6 +18328,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
             pulumi.set(__self__, "task_key", task_key)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+        if webhook_notifications is not None:
+            pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
     @pulumi.getter(name="retryOnTimeout")
@@ -18058,6 +18461,11 @@ class GetJobJobSettingsSettingsTaskResult(dict):
     def timeout_seconds(self) -> Optional[int]:
         return pulumi.get(self, "timeout_seconds")
 
+    @property
+    @pulumi.getter(name="webhookNotifications")
+    def webhook_notifications(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult']:
+        return pulumi.get(self, "webhook_notifications")
+
 
 @pulumi.output_type
 class GetJobJobSettingsSettingsTaskConditionTaskResult(dict):
@@ -18163,16 +18571,10 @@ class GetJobJobSettingsSettingsTaskDependsOnResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
     def __init__(__self__, *,
-                 alert_on_last_attempt: Optional[bool] = None,
-                 no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
-        if alert_on_last_attempt is not None:
-            pulumi.set(__self__, "alert_on_last_attempt", alert_on_last_attempt)
-        if no_alert_for_skipped_runs is not None:
-            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -18181,16 +18583,6 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsResult(dict):
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
-
-    @property
-    @pulumi.getter(name="alertOnLastAttempt")
-    def alert_on_last_attempt(self) -> Optional[bool]:
-        return pulumi.get(self, "alert_on_last_attempt")
-
-    @property
-    @pulumi.getter(name="noAlertForSkippedRuns")
-    def no_alert_for_skipped_runs(self) -> Optional[bool]:
-        return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -19582,6 +19974,119 @@ class GetJobJobSettingsSettingsTaskSqlTaskQueryResult(dict):
 
 
 @pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsResult(dict):
+    def __init__(__self__, *,
+                 on_duration_warning_threshold_exceededs: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult']] = None,
+                 on_failures: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult']] = None,
+                 on_starts: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult']] = None,
+                 on_successes: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult']] = None):
+        if on_duration_warning_threshold_exceededs is not None:
+            pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
+        if on_failures is not None:
+            pulumi.set(__self__, "on_failures", on_failures)
+        if on_starts is not None:
+            pulumi.set(__self__, "on_starts", on_starts)
+        if on_successes is not None:
+            pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="onDurationWarningThresholdExceededs")
+    def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult']]:
+        return pulumi.get(self, "on_duration_warning_threshold_exceededs")
+
+    @property
+    @pulumi.getter(name="onFailures")
+    def on_failures(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult']]:
+        return pulumi.get(self, "on_failures")
+
+    @property
+    @pulumi.getter(name="onStarts")
+    def on_starts(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult']]:
+        return pulumi.get(self, "on_starts")
+
+    @property
+    @pulumi.getter(name="onSuccesses")
+    def on_successes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult']]:
+        return pulumi.get(self, "on_successes")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None):
+        """
+        :param str id: the id of Job if the resource was matched by name.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        the id of Job if the resource was matched by name.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetJobJobSettingsSettingsTriggerResult(dict):
     def __init__(__self__, *,
                  file_arrival: 'outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult',
@@ -19669,15 +20174,16 @@ class GetJobJobSettingsSettingsWebhookNotificationsResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         the id of Job if the resource was matched by name.
         """
@@ -19687,15 +20193,16 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExc
 @pulumi.output_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         the id of Job if the resource was matched by name.
         """
@@ -19705,15 +20212,16 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnFailureResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         the id of Job if the resource was matched by name.
         """
@@ -19723,15 +20231,16 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnStartResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessResult(dict):
     def __init__(__self__, *,
-                 id: str):
+                 id: Optional[str] = None):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        pulumi.set(__self__, "id", id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
         """
         the id of Job if the resource was matched by name.
         """
@@ -19915,6 +20424,175 @@ class GetMetastoreMetastoreInfoResult(dict):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[str]:
         return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class GetMlflowModelLatestVersionResult(dict):
+    def __init__(__self__, *,
+                 creation_timestamp: Optional[int] = None,
+                 current_stage: Optional[str] = None,
+                 description: Optional[str] = None,
+                 last_updated_timestamp: Optional[int] = None,
+                 name: Optional[str] = None,
+                 run_id: Optional[str] = None,
+                 run_link: Optional[str] = None,
+                 source: Optional[str] = None,
+                 status: Optional[str] = None,
+                 status_message: Optional[str] = None,
+                 tags: Optional[Sequence['outputs.GetMlflowModelLatestVersionTagResult']] = None,
+                 user_id: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str description: User-specified description for the object.
+        :param str name: Name of the registered model.
+        :param Sequence['GetMlflowModelLatestVersionTagArgs'] tags: Array of tags associated with the model.
+        :param str user_id: The username of the user that created the object.
+        """
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if current_stage is not None:
+            pulumi.set(__self__, "current_stage", current_stage)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if last_updated_timestamp is not None:
+            pulumi.set(__self__, "last_updated_timestamp", last_updated_timestamp)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if run_id is not None:
+            pulumi.set(__self__, "run_id", run_id)
+        if run_link is not None:
+            pulumi.set(__self__, "run_link", run_link)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if status_message is not None:
+            pulumi.set(__self__, "status_message", status_message)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[int]:
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="currentStage")
+    def current_stage(self) -> Optional[str]:
+        return pulumi.get(self, "current_stage")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        User-specified description for the object.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lastUpdatedTimestamp")
+    def last_updated_timestamp(self) -> Optional[int]:
+        return pulumi.get(self, "last_updated_timestamp")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the registered model.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="runId")
+    def run_id(self) -> Optional[str]:
+        return pulumi.get(self, "run_id")
+
+    @property
+    @pulumi.getter(name="runLink")
+    def run_link(self) -> Optional[str]:
+        return pulumi.get(self, "run_link")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> Optional[str]:
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.GetMlflowModelLatestVersionTagResult']]:
+        """
+        Array of tags associated with the model.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        """
+        The username of the user that created the object.
+        """
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetMlflowModelLatestVersionTagResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetMlflowModelTagResult(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

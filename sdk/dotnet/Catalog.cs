@@ -36,9 +36,9 @@ namespace Pulumi.Databricks
     /// 
     /// The following resources are used in the same context:
     /// 
-    /// * databricks.Table data to list tables within Unity Catalog.
-    /// * databricks.Schema data to list schemas within Unity Catalog.
-    /// * databricks.Catalog data to list catalogs within Unity Catalog.
+    /// * databricks.getTables data to list tables within Unity Catalog.
+    /// * databricks.getSchemas data to list schemas within Unity Catalog.
+    /// * databricks.getCatalogs data to list catalogs within Unity Catalog.
     /// 
     /// ## Import
     /// 
@@ -75,6 +75,9 @@ namespace Pulumi.Databricks
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
 
+        /// <summary>
+        /// ID of the metastore.
+        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -190,6 +193,9 @@ namespace Pulumi.Databricks
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
 
+        /// <summary>
+        /// ID of the metastore.
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -279,6 +285,9 @@ namespace Pulumi.Databricks
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
 
+        /// <summary>
+        /// ID of the metastore.
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 

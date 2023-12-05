@@ -6,22 +6,24 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlQueryParameterQueryMultiple {
-    private String prefix;
+    private @Nullable String prefix;
     private String separator;
-    private String suffix;
+    private @Nullable String suffix;
 
     private SqlQueryParameterQueryMultiple() {}
-    public String prefix() {
-        return this.prefix;
+    public Optional<String> prefix() {
+        return Optional.ofNullable(this.prefix);
     }
     public String separator() {
         return this.separator;
     }
-    public String suffix() {
-        return this.suffix;
+    public Optional<String> suffix() {
+        return Optional.ofNullable(this.suffix);
     }
 
     public static Builder builder() {
@@ -33,9 +35,9 @@ public final class SqlQueryParameterQueryMultiple {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String prefix;
+        private @Nullable String prefix;
         private String separator;
-        private String suffix;
+        private @Nullable String suffix;
         public Builder() {}
         public Builder(SqlQueryParameterQueryMultiple defaults) {
     	      Objects.requireNonNull(defaults);
@@ -45,8 +47,8 @@ public final class SqlQueryParameterQueryMultiple {
         }
 
         @CustomType.Setter
-        public Builder prefix(String prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+        public Builder prefix(@Nullable String prefix) {
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
@@ -55,8 +57,8 @@ public final class SqlQueryParameterQueryMultiple {
             return this;
         }
         @CustomType.Setter
-        public Builder suffix(String suffix) {
-            this.suffix = Objects.requireNonNull(suffix);
+        public Builder suffix(@Nullable String suffix) {
+            this.suffix = suffix;
             return this;
         }
         public SqlQueryParameterQueryMultiple build() {

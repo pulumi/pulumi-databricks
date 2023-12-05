@@ -36,8 +36,6 @@ class StorageCredentialArgs:
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-               
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -171,8 +169,6 @@ class StorageCredentialArgs:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
-
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 
@@ -204,8 +200,6 @@ class _StorageCredentialState:
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-               
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -339,8 +333,6 @@ class _StorageCredentialState:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
-
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 
@@ -444,8 +436,6 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-               
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         ...
     @overload
@@ -603,8 +593,6 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
-               
-               `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -692,8 +680,6 @@ class StorageCredential(pulumi.CustomResource):
     def read_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
-
-        `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
         """
         return pulumi.get(self, "read_only")
 

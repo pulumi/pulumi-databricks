@@ -111,28 +111,28 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Required when authentication_type is DATABRICKS.
+     * Required when `authentication_type` is `DATABRICKS`.
      * 
      */
     @Export(name="dataRecipientGlobalMetastoreId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataRecipientGlobalMetastoreId;
 
     /**
-     * @return Required when authentication_type is DATABRICKS.
+     * @return Required when `authentication_type` is `DATABRICKS`.
      * 
      */
     public Output<Optional<String>> dataRecipientGlobalMetastoreId() {
         return Codegen.optional(this.dataRecipientGlobalMetastoreId);
     }
     /**
-     * The one-time sharing code provided by the data recipient.
+     * Recipient IP access list.
      * 
      */
     @Export(name="ipAccessList", refs={RecipientIpAccessList.class}, tree="[0]")
     private Output</* @Nullable */ RecipientIpAccessList> ipAccessList;
 
     /**
-     * @return The one-time sharing code provided by the data recipient.
+     * @return Recipient IP access list.
      * 
      */
     public Output<Optional<RecipientIpAccessList>> ipAccessList() {
@@ -151,6 +151,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
+    @Export(name="owner", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
+    public Output<Optional<String>> owner() {
+        return Codegen.optional(this.owner);
     }
     /**
      * The one-time sharing code provided by the data recipient.

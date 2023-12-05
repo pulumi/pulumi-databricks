@@ -49,14 +49,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when authentication_type is DATABRICKS.
+     * Required when `authentication_type` is `DATABRICKS`.
      * 
      */
     @Import(name="dataRecipientGlobalMetastoreId")
     private @Nullable Output<String> dataRecipientGlobalMetastoreId;
 
     /**
-     * @return Required when authentication_type is DATABRICKS.
+     * @return Required when `authentication_type` is `DATABRICKS`.
      * 
      */
     public Optional<Output<String>> dataRecipientGlobalMetastoreId() {
@@ -64,14 +64,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The one-time sharing code provided by the data recipient.
+     * Recipient IP access list.
      * 
      */
     @Import(name="ipAccessList")
     private @Nullable Output<RecipientIpAccessListArgs> ipAccessList;
 
     /**
-     * @return The one-time sharing code provided by the data recipient.
+     * @return Recipient IP access list.
      * 
      */
     public Optional<Output<RecipientIpAccessListArgs>> ipAccessList() {
@@ -91,6 +91,21 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return Username/groupname/sp application_id of the recipient owner.
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
     }
 
     /**
@@ -131,6 +146,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         this.dataRecipientGlobalMetastoreId = $.dataRecipientGlobalMetastoreId;
         this.ipAccessList = $.ipAccessList;
         this.name = $.name;
+        this.owner = $.owner;
         this.sharingCode = $.sharingCode;
         this.tokens = $.tokens;
     }
@@ -196,7 +212,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataRecipientGlobalMetastoreId Required when authentication_type is DATABRICKS.
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -207,7 +223,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataRecipientGlobalMetastoreId Required when authentication_type is DATABRICKS.
+         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -217,7 +233,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAccessList The one-time sharing code provided by the data recipient.
+         * @param ipAccessList Recipient IP access list.
          * 
          * @return builder
          * 
@@ -228,7 +244,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAccessList The one-time sharing code provided by the data recipient.
+         * @param ipAccessList Recipient IP access list.
          * 
          * @return builder
          * 
@@ -256,6 +272,27 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
         }
 
         /**

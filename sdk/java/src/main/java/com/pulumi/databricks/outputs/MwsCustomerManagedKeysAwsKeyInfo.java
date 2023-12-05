@@ -15,7 +15,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
      * @return The AWS KMS key alias.
      * 
      */
-    private String keyAlias;
+    private @Nullable String keyAlias;
     /**
      * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
      * 
@@ -32,8 +32,8 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
      * @return The AWS KMS key alias.
      * 
      */
-    public String keyAlias() {
-        return this.keyAlias;
+    public Optional<String> keyAlias() {
+        return Optional.ofNullable(this.keyAlias);
     }
     /**
      * @return The AWS KMS key&#39;s Amazon Resource Name (ARN).
@@ -59,7 +59,7 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String keyAlias;
+        private @Nullable String keyAlias;
         private String keyArn;
         private @Nullable String keyRegion;
         public Builder() {}
@@ -71,8 +71,8 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
         }
 
         @CustomType.Setter
-        public Builder keyAlias(String keyAlias) {
-            this.keyAlias = Objects.requireNonNull(keyAlias);
+        public Builder keyAlias(@Nullable String keyAlias) {
+            this.keyAlias = keyAlias;
             return this;
         }
         @CustomType.Setter

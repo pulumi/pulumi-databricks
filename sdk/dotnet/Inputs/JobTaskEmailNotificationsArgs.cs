@@ -12,18 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskEmailNotificationsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-        /// </summary>
-        [Input("alertOnLastAttempt")]
-        public Input<bool>? AlertOnLastAttempt { get; set; }
-
-        /// <summary>
-        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        /// </summary>
-        [Input("noAlertForSkippedRuns")]
-        public Input<bool>? NoAlertForSkippedRuns { get; set; }
-
         [Input("onDurationWarningThresholdExceededs")]
         private InputList<string>? _onDurationWarningThresholdExceededs;
 

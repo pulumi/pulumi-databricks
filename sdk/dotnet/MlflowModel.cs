@@ -72,17 +72,11 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/mlflowModel:MlflowModel")]
     public partial class MlflowModel : global::Pulumi.CustomResource
     {
-        [Output("creationTimestamp")]
-        public Output<int?> CreationTimestamp { get; private set; } = null!;
-
         /// <summary>
         /// The description of the MLflow model.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
-
-        [Output("lastUpdatedTimestamp")]
-        public Output<int?> LastUpdatedTimestamp { get; private set; } = null!;
 
         /// <summary>
         /// Name of MLflow model. Change of name triggers new resource.
@@ -98,9 +92,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MlflowModelTag>> Tags { get; private set; } = null!;
-
-        [Output("userId")]
-        public Output<string?> UserId { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,17 +139,11 @@ namespace Pulumi.Databricks
 
     public sealed class MlflowModelArgs : global::Pulumi.ResourceArgs
     {
-        [Input("creationTimestamp")]
-        public Input<int>? CreationTimestamp { get; set; }
-
         /// <summary>
         /// The description of the MLflow model.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("lastUpdatedTimestamp")]
-        public Input<int>? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Name of MLflow model. Change of name triggers new resource.
@@ -178,9 +163,6 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
-
         public MlflowModelArgs()
         {
         }
@@ -189,17 +171,11 @@ namespace Pulumi.Databricks
 
     public sealed class MlflowModelState : global::Pulumi.ResourceArgs
     {
-        [Input("creationTimestamp")]
-        public Input<int>? CreationTimestamp { get; set; }
-
         /// <summary>
         /// The description of the MLflow model.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("lastUpdatedTimestamp")]
-        public Input<int>? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Name of MLflow model. Change of name triggers new resource.
@@ -221,9 +197,6 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<Inputs.MlflowModelTagGetArgs>());
             set => _tags = value;
         }
-
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
 
         public MlflowModelState()
         {

@@ -21,15 +21,17 @@ class RecipientArgs:
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
                  ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
         The set of arguments for constructing a Recipient resource.
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when authentication_type is DATABRICKS.
-        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -42,6 +44,8 @@ class RecipientArgs:
             pulumi.set(__self__, "ip_access_list", ip_access_list)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if sharing_code is not None:
             pulumi.set(__self__, "sharing_code", sharing_code)
         if tokens is not None:
@@ -75,7 +79,7 @@ class RecipientArgs:
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required when authentication_type is DATABRICKS.
+        Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
@@ -87,7 +91,7 @@ class RecipientArgs:
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
         """
-        The one-time sharing code provided by the data recipient.
+        Recipient IP access list.
         """
         return pulumi.get(self, "ip_access_list")
 
@@ -106,6 +110,18 @@ class RecipientArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the recipient owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
 
     @property
     @pulumi.getter(name="sharingCode")
@@ -140,15 +156,17 @@ class _RecipientState:
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
                  ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
         Input properties used for looking up and filtering Recipient resources.
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when authentication_type is DATABRICKS.
-        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input['RecipientIpAccessListArgs'] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -162,6 +180,8 @@ class _RecipientState:
             pulumi.set(__self__, "ip_access_list", ip_access_list)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if sharing_code is not None:
             pulumi.set(__self__, "sharing_code", sharing_code)
         if tokens is not None:
@@ -195,7 +215,7 @@ class _RecipientState:
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required when authentication_type is DATABRICKS.
+        Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
@@ -207,7 +227,7 @@ class _RecipientState:
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
         """
-        The one-time sharing code provided by the data recipient.
+        Recipient IP access list.
         """
         return pulumi.get(self, "ip_access_list")
 
@@ -226,6 +246,18 @@ class _RecipientState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username/groupname/sp application_id of the recipient owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
 
     @property
     @pulumi.getter(name="sharingCode")
@@ -262,6 +294,7 @@ class Recipient(pulumi.CustomResource):
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
                  ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
                  __props__=None):
@@ -305,9 +338,10 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when authentication_type is DATABRICKS.
-        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -373,6 +407,7 @@ class Recipient(pulumi.CustomResource):
                  data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
                  ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  sharing_code: Optional[pulumi.Input[str]] = None,
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
                  __props__=None):
@@ -391,6 +426,7 @@ class Recipient(pulumi.CustomResource):
             __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
             __props__.__dict__["ip_access_list"] = ip_access_list
             __props__.__dict__["name"] = name
+            __props__.__dict__["owner"] = owner
             __props__.__dict__["sharing_code"] = None if sharing_code is None else pulumi.Output.secret(sharing_code)
             __props__.__dict__["tokens"] = tokens
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharingCode"])
@@ -410,6 +446,7 @@ class Recipient(pulumi.CustomResource):
             data_recipient_global_metastore_id: Optional[pulumi.Input[str]] = None,
             ip_access_list: Optional[pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[str]] = None,
             sharing_code: Optional[pulumi.Input[str]] = None,
             tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None) -> 'Recipient':
         """
@@ -421,9 +458,10 @@ class Recipient(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication_type: The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         :param pulumi.Input[str] comment: Description about the recipient.
-        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when authentication_type is DATABRICKS.
-        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: The one-time sharing code provided by the data recipient.
+        :param pulumi.Input[str] data_recipient_global_metastore_id: Required when `authentication_type` is `DATABRICKS`.
+        :param pulumi.Input[pulumi.InputType['RecipientIpAccessListArgs']] ip_access_list: Recipient IP access list.
         :param pulumi.Input[str] name: Name of recipient. Change forces creation of a new resource.
+        :param pulumi.Input[str] owner: Username/groupname/sp application_id of the recipient owner.
         :param pulumi.Input[str] sharing_code: The one-time sharing code provided by the data recipient.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]] tokens: List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
@@ -436,6 +474,7 @@ class Recipient(pulumi.CustomResource):
         __props__.__dict__["data_recipient_global_metastore_id"] = data_recipient_global_metastore_id
         __props__.__dict__["ip_access_list"] = ip_access_list
         __props__.__dict__["name"] = name
+        __props__.__dict__["owner"] = owner
         __props__.__dict__["sharing_code"] = sharing_code
         __props__.__dict__["tokens"] = tokens
         return Recipient(resource_name, opts=opts, __props__=__props__)
@@ -460,7 +499,7 @@ class Recipient(pulumi.CustomResource):
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
     def data_recipient_global_metastore_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Required when authentication_type is DATABRICKS.
+        Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
@@ -468,7 +507,7 @@ class Recipient(pulumi.CustomResource):
     @pulumi.getter(name="ipAccessList")
     def ip_access_list(self) -> pulumi.Output[Optional['outputs.RecipientIpAccessList']]:
         """
-        The one-time sharing code provided by the data recipient.
+        Recipient IP access list.
         """
         return pulumi.get(self, "ip_access_list")
 
@@ -479,6 +518,14 @@ class Recipient(pulumi.CustomResource):
         Name of recipient. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[Optional[str]]:
+        """
+        Username/groupname/sp application_id of the recipient owner.
+        """
+        return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="sharingCode")

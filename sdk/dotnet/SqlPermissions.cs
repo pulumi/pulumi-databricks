@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
         public Output<bool?> AnonymousFunction { get; private set; } = null!;
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// If this access control for reading/writing any file. Defaults to `false`.
         /// </summary>
         [Output("anyFile")]
         public Output<bool?> AnyFile { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AnonymousFunction { get; set; }
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// If this access control for reading/writing any file. Defaults to `false`.
         /// </summary>
         [Input("anyFile")]
         public Input<bool>? AnyFile { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AnonymousFunction { get; set; }
 
         /// <summary>
-        /// If this access control for reading any file. Defaults to `false`.
+        /// If this access control for reading/writing any file. Defaults to `false`.
         /// </summary>
         [Input("anyFile")]
         public Input<bool>? AnyFile { get; set; }

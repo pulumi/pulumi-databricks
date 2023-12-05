@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * > **Note** To assign account level users to workspace use databricks_mws_permission_assignment.
  *
+ * > **Note** Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
+ *
  * To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
  *
  * ## Example Usage

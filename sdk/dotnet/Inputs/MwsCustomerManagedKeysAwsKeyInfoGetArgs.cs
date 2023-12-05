@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The AWS KMS key alias.
         /// </summary>
-        [Input("keyAlias", required: true)]
-        public Input<string> KeyAlias { get; set; } = null!;
+        [Input("keyAlias")]
+        public Input<string>? KeyAlias { get; set; }
 
         /// <summary>
         /// The AWS KMS key's Amazon Resource Name (ARN).

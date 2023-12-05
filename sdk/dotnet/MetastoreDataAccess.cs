@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// Each databricks.Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `databricks.MetastoreDataAccess` defines this
+    /// Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
     /// 
     /// ## Import
     /// 
@@ -38,35 +38,24 @@ namespace Pulumi.Databricks
         [Output("databricksGcpServiceAccount")]
         public Output<Outputs.MetastoreDataAccessDatabricksGcpServiceAccount> DatabricksGcpServiceAccount { get; private set; } = null!;
 
-        /// <summary>
-        /// Delete the data access configuration regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
-        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.MetastoreDataAccessGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
+        /// <summary>
+        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
+        /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
-        /// <summary>
-        /// Unique identifier of the parent Metastore
-        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Username/groupname/sp application_id of the data access configuration owner.
-        /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
@@ -81,7 +70,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public MetastoreDataAccess(string name, MetastoreDataAccessArgs args, CustomResourceOptions? options = null)
+        public MetastoreDataAccess(string name, MetastoreDataAccessArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/metastoreDataAccess:MetastoreDataAccess", name, args ?? new MetastoreDataAccessArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -134,35 +123,24 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.MetastoreDataAccessDatabricksGcpServiceAccountArgs>? DatabricksGcpServiceAccount { get; set; }
 
-        /// <summary>
-        /// Delete the data access configuration regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
+        /// <summary>
+        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
-        /// <summary>
-        /// Unique identifier of the parent Metastore
-        /// </summary>
-        [Input("metastoreId", required: true)]
-        public Input<string> MetastoreId { get; set; } = null!;
+        [Input("metastoreId")]
+        public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Username/groupname/sp application_id of the data access configuration owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
@@ -192,35 +170,24 @@ namespace Pulumi.Databricks
         [Input("databricksGcpServiceAccount")]
         public Input<Inputs.MetastoreDataAccessDatabricksGcpServiceAccountGetArgs>? DatabricksGcpServiceAccount { get; set; }
 
-        /// <summary>
-        /// Delete the data access configuration regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.MetastoreDataAccessGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
+        /// <summary>
+        /// whether to set this credential as the default for the metastore. In practice, this should always be true.
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
-        /// <summary>
-        /// Unique identifier of the parent Metastore
-        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
-        /// <summary>
-        /// Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Username/groupname/sp application_id of the data access configuration owner.
-        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 

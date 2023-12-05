@@ -65,7 +65,7 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
         [Output("connectionType")]
         public Output<string> ConnectionType { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
         [Input("connectionType", required: true)]
         public Input<string> ConnectionType { get; set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        /// Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }

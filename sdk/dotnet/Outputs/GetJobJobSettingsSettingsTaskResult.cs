@@ -39,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsTaskSqlTaskResult? SqlTask;
         public readonly string? TaskKey;
         public readonly int? TimeoutSeconds;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult? WebhookNotifications;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskResult(
@@ -92,7 +93,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? taskKey,
 
-            int? timeoutSeconds)
+            int? timeoutSeconds,
+
+            Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult? webhookNotifications)
         {
             ComputeKey = computeKey;
             ConditionTask = conditionTask;
@@ -120,6 +123,7 @@ namespace Pulumi.Databricks.Outputs
             SqlTask = sqlTask;
             TaskKey = taskKey;
             TimeoutSeconds = timeoutSeconds;
+            WebhookNotifications = webhookNotifications;
         }
     }
 }

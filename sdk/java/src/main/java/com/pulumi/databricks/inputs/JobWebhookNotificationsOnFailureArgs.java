@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobWebhookNotificationsOnFailureArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,15 +19,15 @@ public final class JobWebhookNotificationsOnFailureArgs extends com.pulumi.resou
      * ID of the job
      * 
      */
-    @Import(name="id", required=true)
-    private Output<String> id;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
      * @return ID of the job
      * 
      */
-    public Output<String> id() {
-        return this.id;
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private JobWebhookNotificationsOnFailureArgs() {}
@@ -58,7 +60,7 @@ public final class JobWebhookNotificationsOnFailureArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder id(Output<String> id) {
+        public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
@@ -74,7 +76,6 @@ public final class JobWebhookNotificationsOnFailureArgs extends com.pulumi.resou
         }
 
         public JobWebhookNotificationsOnFailureArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             return $;
         }
     }

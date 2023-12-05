@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,36 +15,6 @@ import javax.annotation.Nullable;
 public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskEmailNotificationsArgs Empty = new JobTaskEmailNotificationsArgs();
-
-    /**
-     * (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    @Import(name="alertOnLastAttempt")
-    private @Nullable Output<Boolean> alertOnLastAttempt;
-
-    /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    public Optional<Output<Boolean>> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
-
-    /**
-     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
-     * 
-     */
-    @Import(name="noAlertForSkippedRuns")
-    private @Nullable Output<Boolean> noAlertForSkippedRuns;
-
-    /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
-     * 
-     */
-    public Optional<Output<Boolean>> noAlertForSkippedRuns() {
-        return Optional.ofNullable(this.noAlertForSkippedRuns);
-    }
 
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -110,8 +79,6 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
     private JobTaskEmailNotificationsArgs() {}
 
     private JobTaskEmailNotificationsArgs(JobTaskEmailNotificationsArgs $) {
-        this.alertOnLastAttempt = $.alertOnLastAttempt;
-        this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
@@ -134,48 +101,6 @@ public final class JobTaskEmailNotificationsArgs extends com.pulumi.resources.Re
 
         public Builder(JobTaskEmailNotificationsArgs defaults) {
             $ = new JobTaskEmailNotificationsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder alertOnLastAttempt(@Nullable Output<Boolean> alertOnLastAttempt) {
-            $.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
-
-        /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder alertOnLastAttempt(Boolean alertOnLastAttempt) {
-            return alertOnLastAttempt(Output.of(alertOnLastAttempt));
-        }
-
-        /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noAlertForSkippedRuns(@Nullable Output<Boolean> noAlertForSkippedRuns) {
-            $.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return this;
-        }
-
-        /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
-            return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
         }
 
         /**

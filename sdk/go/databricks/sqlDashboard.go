@@ -113,6 +113,7 @@ type SqlDashboard struct {
 	DashboardFiltersEnabled pulumi.BoolPtrOutput     `pulumi:"dashboardFiltersEnabled"`
 	Name                    pulumi.StringOutput      `pulumi:"name"`
 	Parent                  pulumi.StringPtrOutput   `pulumi:"parent"`
+	RunAsRole               pulumi.StringPtrOutput   `pulumi:"runAsRole"`
 	Tags                    pulumi.StringArrayOutput `pulumi:"tags"`
 	UpdatedAt               pulumi.StringOutput      `pulumi:"updatedAt"`
 }
@@ -151,6 +152,7 @@ type sqlDashboardState struct {
 	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
 	Name                    *string  `pulumi:"name"`
 	Parent                  *string  `pulumi:"parent"`
+	RunAsRole               *string  `pulumi:"runAsRole"`
 	Tags                    []string `pulumi:"tags"`
 	UpdatedAt               *string  `pulumi:"updatedAt"`
 }
@@ -160,6 +162,7 @@ type SqlDashboardState struct {
 	DashboardFiltersEnabled pulumi.BoolPtrInput
 	Name                    pulumi.StringPtrInput
 	Parent                  pulumi.StringPtrInput
+	RunAsRole               pulumi.StringPtrInput
 	Tags                    pulumi.StringArrayInput
 	UpdatedAt               pulumi.StringPtrInput
 }
@@ -173,6 +176,7 @@ type sqlDashboardArgs struct {
 	DashboardFiltersEnabled *bool    `pulumi:"dashboardFiltersEnabled"`
 	Name                    *string  `pulumi:"name"`
 	Parent                  *string  `pulumi:"parent"`
+	RunAsRole               *string  `pulumi:"runAsRole"`
 	Tags                    []string `pulumi:"tags"`
 	UpdatedAt               *string  `pulumi:"updatedAt"`
 }
@@ -183,6 +187,7 @@ type SqlDashboardArgs struct {
 	DashboardFiltersEnabled pulumi.BoolPtrInput
 	Name                    pulumi.StringPtrInput
 	Parent                  pulumi.StringPtrInput
+	RunAsRole               pulumi.StringPtrInput
 	Tags                    pulumi.StringArrayInput
 	UpdatedAt               pulumi.StringPtrInput
 }
@@ -288,6 +293,10 @@ func (o SqlDashboardOutput) Name() pulumi.StringOutput {
 
 func (o SqlDashboardOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlDashboard) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlDashboardOutput) RunAsRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDashboard) pulumi.StringPtrOutput { return v.RunAsRole }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlDashboardOutput) Tags() pulumi.StringArrayOutput {

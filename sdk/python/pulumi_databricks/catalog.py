@@ -32,6 +32,7 @@ class CatalogArgs:
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] metastore_id: ID of the metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -116,6 +117,9 @@ class CatalogArgs:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the metastore.
+        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -228,6 +232,7 @@ class _CatalogState:
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] metastore_id: ID of the metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -312,6 +317,9 @@ class _CatalogState:
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the metastore.
+        """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
@@ -439,9 +447,9 @@ class Catalog(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
 
         ## Import
 
@@ -457,6 +465,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] metastore_id: ID of the metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -489,9 +498,9 @@ class Catalog(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
 
         ## Import
 
@@ -582,6 +591,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
+        :param pulumi.Input[str] metastore_id: ID of the metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -643,6 +653,9 @@ class Catalog(pulumi.CustomResource):
     @property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
+        """
+        ID of the metastore.
+        """
         return pulumi.get(self, "metastore_id")
 
     @property

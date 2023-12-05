@@ -17,7 +17,7 @@ public final class JobParameter {
      */
     private @Nullable String default_;
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
     private @Nullable String name;
@@ -31,7 +31,7 @@ public final class JobParameter {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return An optional name for the job. The default value is Untitled.
+     * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
     public Optional<String> name() {

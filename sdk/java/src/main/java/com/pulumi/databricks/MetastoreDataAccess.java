@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Each databricks.Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `databricks.MetastoreDataAccess` defines this
+ * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  * 
  * ## Import
  * 
@@ -64,21 +64,9 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<MetastoreDataAccessDatabricksGcpServiceAccount> databricksGcpServiceAccount() {
         return this.databricksGcpServiceAccount;
     }
-    /**
-     * Delete the data access configuration regardless of its dependencies.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
-     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
-    /**
-     * @return Delete the data access configuration regardless of its dependencies.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
-     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
@@ -88,51 +76,35 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
     public Output<Optional<MetastoreDataAccessGcpServiceAccountKey>> gcpServiceAccountKey() {
         return Codegen.optional(this.gcpServiceAccountKey);
     }
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
+    /**
+     * @return whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     public Output<Optional<Boolean>> isDefault() {
         return Codegen.optional(this.isDefault);
     }
-    /**
-     * Unique identifier of the parent Metastore
-     * 
-     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
-    /**
-     * @return Unique identifier of the parent Metastore
-     * 
-     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
-    /**
-     * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Username/groupname/sp application_id of the data access configuration owner.
-     * 
-     */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the data access configuration owner.
-     * 
-     */
     public Output<String> owner() {
         return this.owner;
     }
@@ -155,7 +127,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetastoreDataAccess(String name, MetastoreDataAccessArgs args) {
+    public MetastoreDataAccess(String name, @Nullable MetastoreDataAccessArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,7 +136,7 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetastoreDataAccess(String name, MetastoreDataAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public MetastoreDataAccess(String name, @Nullable MetastoreDataAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/metastoreDataAccess:MetastoreDataAccess", name, args == null ? MetastoreDataAccessArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

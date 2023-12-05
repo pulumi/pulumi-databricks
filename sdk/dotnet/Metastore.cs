@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
     /// 
     /// Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
     /// 
+    /// A Unity Catalog metastore can be created without a root location &amp; credential to maintain strict separation of storage across catalogs or environments.
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by IDbash
@@ -86,10 +88,10 @@ namespace Pulumi.Databricks
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         /// </summary>
         [Output("storageRoot")]
-        public Output<string> StorageRoot { get; private set; } = null!;
+        public Output<string?> StorageRoot { get; private set; } = null!;
 
         [Output("storageRootCredentialId")]
         public Output<string?> StorageRootCredentialId { get; private set; } = null!;
@@ -108,7 +110,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Metastore(string name, MetastoreArgs args, CustomResourceOptions? options = null)
+        public Metastore(string name, MetastoreArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/metastore:Metastore", name, args ?? new MetastoreArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -207,10 +209,10 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         /// </summary>
-        [Input("storageRoot", required: true)]
-        public Input<string> StorageRoot { get; set; } = null!;
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
 
         [Input("storageRootCredentialId")]
         public Input<string>? StorageRootCredentialId { get; set; }
@@ -290,7 +292,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }

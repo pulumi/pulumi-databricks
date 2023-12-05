@@ -78,9 +78,17 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.isolationMode);
     }
 
+    /**
+     * ID of the metastore.
+     * 
+     */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
+    /**
+     * @return ID of the metastore.
+     * 
+     */
     public Optional<Output<String>> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
@@ -309,11 +317,23 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
             return isolationMode(Output.of(isolationMode));
         }
 
+        /**
+         * @param metastoreId ID of the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
+        /**
+         * @param metastoreId ID of the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }

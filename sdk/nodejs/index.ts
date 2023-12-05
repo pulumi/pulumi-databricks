@@ -45,6 +45,11 @@ export type DbfsFile = import("./dbfsFile").DbfsFile;
 export const DbfsFile: typeof import("./dbfsFile").DbfsFile = null as any;
 utilities.lazyLoad(exports, ["DbfsFile"], () => require("./dbfsFile"));
 
+export { DefaultNamespaceSettingArgs, DefaultNamespaceSettingState } from "./defaultNamespaceSetting";
+export type DefaultNamespaceSetting = import("./defaultNamespaceSetting").DefaultNamespaceSetting;
+export const DefaultNamespaceSetting: typeof import("./defaultNamespaceSetting").DefaultNamespaceSetting = null as any;
+utilities.lazyLoad(exports, ["DefaultNamespaceSetting"], () => require("./defaultNamespaceSetting"));
+
 export { DirectoryArgs, DirectoryState } from "./directory";
 export type Directory = import("./directory").Directory;
 export const Directory: typeof import("./directory").Directory = null as any;
@@ -95,6 +100,11 @@ export const getClusters: typeof import("./getClusters").getClusters = null as a
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
 utilities.lazyLoad(exports, ["getClusters","getClustersOutput"], () => require("./getClusters"));
 
+export { GetCurrentConfigArgs, GetCurrentConfigResult, GetCurrentConfigOutputArgs } from "./getCurrentConfig";
+export const getCurrentConfig: typeof import("./getCurrentConfig").getCurrentConfig = null as any;
+export const getCurrentConfigOutput: typeof import("./getCurrentConfig").getCurrentConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentConfig","getCurrentConfigOutput"], () => require("./getCurrentConfig"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
@@ -125,6 +135,11 @@ export const getInstancePool: typeof import("./getInstancePool").getInstancePool
 export const getInstancePoolOutput: typeof import("./getInstancePool").getInstancePoolOutput = null as any;
 utilities.lazyLoad(exports, ["getInstancePool","getInstancePoolOutput"], () => require("./getInstancePool"));
 
+export { GetInstanceProfilesArgs, GetInstanceProfilesResult, GetInstanceProfilesOutputArgs } from "./getInstanceProfiles";
+export const getInstanceProfiles: typeof import("./getInstanceProfiles").getInstanceProfiles = null as any;
+export const getInstanceProfilesOutput: typeof import("./getInstanceProfiles").getInstanceProfilesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceProfiles","getInstanceProfilesOutput"], () => require("./getInstanceProfiles"));
+
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
@@ -144,6 +159,11 @@ export { GetMetastoresArgs, GetMetastoresResult, GetMetastoresOutputArgs } from 
 export const getMetastores: typeof import("./getMetastores").getMetastores = null as any;
 export const getMetastoresOutput: typeof import("./getMetastores").getMetastoresOutput = null as any;
 utilities.lazyLoad(exports, ["getMetastores","getMetastoresOutput"], () => require("./getMetastores"));
+
+export { GetMlflowModelArgs, GetMlflowModelResult, GetMlflowModelOutputArgs } from "./getMlflowModel";
+export const getMlflowModel: typeof import("./getMlflowModel").getMlflowModel = null as any;
+export const getMlflowModelOutput: typeof import("./getMlflowModel").getMlflowModelOutput = null as any;
+utilities.lazyLoad(exports, ["getMlflowModel","getMlflowModelOutput"], () => require("./getMlflowModel"));
 
 export { GetMwsCredentialsArgs, GetMwsCredentialsResult, GetMwsCredentialsOutputArgs } from "./getMwsCredentials";
 export const getMwsCredentials: typeof import("./getMwsCredentials").getMwsCredentials = null as any;
@@ -595,6 +615,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "databricks:index/dbfsFile:DbfsFile":
                 return new DbfsFile(name, <any>undefined, { urn })
+            case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
+                return new DefaultNamespaceSetting(name, <any>undefined, { urn })
             case "databricks:index/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
             case "databricks:index/entitlements:Entitlements":
@@ -744,6 +766,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/clusterPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/connection", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/dbfsFile", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)

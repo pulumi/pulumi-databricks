@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "databricks:index/dbfsFile:DbfsFile":
 		r = &DbfsFile{}
+	case "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting":
+		r = &DefaultNamespaceSetting{}
 	case "databricks:index/directory:Directory":
 		r = &Directory{}
 	case "databricks:index/entitlements:Entitlements":
@@ -242,6 +244,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/dbfsFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/defaultNamespaceSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

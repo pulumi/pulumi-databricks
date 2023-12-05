@@ -13,11 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MetastoreDataAccessGcpServiceAccountKey
     {
-        /// <summary>
-        /// The email of the GCP service account created, to be granted access to relevant buckets.
-        /// 
-        /// `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-        /// </summary>
         public readonly string Email;
         public readonly string PrivateKey;
         public readonly string PrivateKeyId;

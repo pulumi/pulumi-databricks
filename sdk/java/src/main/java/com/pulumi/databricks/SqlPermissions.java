@@ -102,14 +102,14 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.anonymousFunction);
     }
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * If this access control for reading/writing any file. Defaults to `false`.
      * 
      */
     @Export(name="anyFile", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> anyFile;
 
     /**
-     * @return If this access control for reading any file. Defaults to `false`.
+     * @return If this access control for reading/writing any file. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> anyFile() {

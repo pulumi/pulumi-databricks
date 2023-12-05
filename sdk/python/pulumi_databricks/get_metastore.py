@@ -74,6 +74,7 @@ def get_metastore(metastore_id: Optional[str] = None,
     ## Related Resources
 
     The following resources are used in the same context:
+
     * get_metastores to get mapping of name to id of all metastores.
     * Metastore to manage Metastores within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.
@@ -102,6 +103,7 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[str]] = None,
     ## Related Resources
 
     The following resources are used in the same context:
+
     * get_metastores to get mapping of name to id of all metastores.
     * Metastore to manage Metastores within Unity Catalog.
     * Catalog to manage catalogs within Unity Catalog.

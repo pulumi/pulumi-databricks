@@ -7,35 +7,41 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MetastoreDataAccessAwsIamRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreDataAccessAwsIamRoleArgs Empty = new MetastoreDataAccessAwsIamRoleArgs();
 
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-     * 
-     */
+    @Import(name="externalId")
+    private @Nullable Output<String> externalId;
+
+    public Optional<Output<String>> externalId() {
+        return Optional.ofNullable(this.externalId);
+    }
+
     @Import(name="roleArn", required=true)
     private Output<String> roleArn;
 
-    /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-     * 
-     */
     public Output<String> roleArn() {
         return this.roleArn;
+    }
+
+    @Import(name="unityCatalogIamArn")
+    private @Nullable Output<String> unityCatalogIamArn;
+
+    public Optional<Output<String>> unityCatalogIamArn() {
+        return Optional.ofNullable(this.unityCatalogIamArn);
     }
 
     private MetastoreDataAccessAwsIamRoleArgs() {}
 
     private MetastoreDataAccessAwsIamRoleArgs(MetastoreDataAccessAwsIamRoleArgs $) {
+        this.externalId = $.externalId;
         this.roleArn = $.roleArn;
+        this.unityCatalogIamArn = $.unityCatalogIamArn;
     }
 
     public static Builder builder() {
@@ -56,29 +62,31 @@ public final class MetastoreDataAccessAwsIamRoleArgs extends com.pulumi.resource
             $ = new MetastoreDataAccessAwsIamRoleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-         * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-         * 
-         * @return builder
-         * 
-         */
+        public Builder externalId(@Nullable Output<String> externalId) {
+            $.externalId = externalId;
+            return this;
+        }
+
+        public Builder externalId(String externalId) {
+            return externalId(Output.of(externalId));
+        }
+
         public Builder roleArn(Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
-        /**
-         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-         * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-         * 
-         * @return builder
-         * 
-         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
+        }
+
+        public Builder unityCatalogIamArn(@Nullable Output<String> unityCatalogIamArn) {
+            $.unityCatalogIamArn = unityCatalogIamArn;
+            return this;
+        }
+
+        public Builder unityCatalogIamArn(String unityCatalogIamArn) {
+            return unityCatalogIamArn(Output.of(unityCatalogIamArn));
         }
 
         public MetastoreDataAccessAwsIamRoleArgs build() {

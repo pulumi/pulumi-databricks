@@ -13,17 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlQueryParameterEnumMultiple
     {
-        public readonly string Prefix;
+        public readonly string? Prefix;
         public readonly string Separator;
-        public readonly string Suffix;
+        public readonly string? Suffix;
 
         [OutputConstructor]
         private SqlQueryParameterEnumMultiple(
-            string prefix,
+            string? prefix,
 
             string separator,
 
-            string suffix)
+            string? suffix)
         {
             Prefix = prefix;
             Separator = separator;
