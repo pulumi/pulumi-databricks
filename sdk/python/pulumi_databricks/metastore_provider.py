@@ -191,9 +191,9 @@ class MetastoreProvider(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -236,9 +236,9 @@ class MetastoreProvider(pulumi.CustomResource):
 
         The following resources are used in the same context:
 
-        * Table data to list tables within Unity Catalog.
-        * Schema data to list schemas within Unity Catalog.
-        * Catalog data to list catalogs within Unity Catalog.
+        * get_tables data to list tables within Unity Catalog.
+        * get_schemas data to list schemas within Unity Catalog.
+        * get_catalogs data to list catalogs within Unity Catalog.
 
         :param str resource_name: The name of the resource.
         :param MetastoreProviderArgs args: The arguments to use to populate this resource's properties.

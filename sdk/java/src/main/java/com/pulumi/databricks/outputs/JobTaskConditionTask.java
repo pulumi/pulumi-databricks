@@ -11,25 +11,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskConditionTask {
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     private @Nullable String left;
     /**
-     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     private @Nullable String op;
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     private @Nullable String right;
 
     private JobTaskConditionTask() {}
+    /**
+     * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     * 
+     */
     public Optional<String> left() {
         return Optional.ofNullable(this.left);
     }
     /**
-     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     public Optional<String> op() {
         return Optional.ofNullable(this.op);
     }
+    /**
+     * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     * 
+     */
     public Optional<String> right() {
         return Optional.ofNullable(this.right);
     }

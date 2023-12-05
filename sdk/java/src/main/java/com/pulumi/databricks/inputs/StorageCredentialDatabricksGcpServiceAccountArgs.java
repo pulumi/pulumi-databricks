@@ -25,12 +25,16 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
      * @return The email of the GCP service account created, to be granted access to relevant buckets.
+     * 
+     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public Optional<Output<String>> email() {
@@ -74,6 +78,8 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
         /**
          * @param email The email of the GCP service account created, to be granted access to relevant buckets.
          * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+         * 
          * @return builder
          * 
          */
@@ -84,6 +90,8 @@ public final class StorageCredentialDatabricksGcpServiceAccountArgs extends com.
 
         /**
          * @param email The email of the GCP service account created, to be granted access to relevant buckets.
+         * 
+         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 

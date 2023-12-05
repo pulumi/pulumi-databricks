@@ -81,17 +81,21 @@ export class Recipient extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Required when authenticationType is DATABRICKS.
+     * Required when `authenticationType` is `DATABRICKS`.
      */
     public readonly dataRecipientGlobalMetastoreId!: pulumi.Output<string | undefined>;
     /**
-     * The one-time sharing code provided by the data recipient.
+     * Recipient IP access list.
      */
     public readonly ipAccessList!: pulumi.Output<outputs.RecipientIpAccessList | undefined>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Username/groupname/sp applicationId of the recipient owner.
+     */
+    public readonly owner!: pulumi.Output<string | undefined>;
     /**
      * The one-time sharing code provided by the data recipient.
      */
@@ -119,6 +123,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["dataRecipientGlobalMetastoreId"] = state ? state.dataRecipientGlobalMetastoreId : undefined;
             resourceInputs["ipAccessList"] = state ? state.ipAccessList : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["sharingCode"] = state ? state.sharingCode : undefined;
             resourceInputs["tokens"] = state ? state.tokens : undefined;
         } else {
@@ -131,6 +136,7 @@ export class Recipient extends pulumi.CustomResource {
             resourceInputs["dataRecipientGlobalMetastoreId"] = args ? args.dataRecipientGlobalMetastoreId : undefined;
             resourceInputs["ipAccessList"] = args ? args.ipAccessList : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["sharingCode"] = args?.sharingCode ? pulumi.secret(args.sharingCode) : undefined;
             resourceInputs["tokens"] = args ? args.tokens : undefined;
         }
@@ -154,17 +160,21 @@ export interface RecipientState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Required when authenticationType is DATABRICKS.
+     * Required when `authenticationType` is `DATABRICKS`.
      */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
     /**
-     * The one-time sharing code provided by the data recipient.
+     * Recipient IP access list.
      */
     ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the recipient owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * The one-time sharing code provided by the data recipient.
      */
@@ -188,17 +198,21 @@ export interface RecipientArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Required when authenticationType is DATABRICKS.
+     * Required when `authenticationType` is `DATABRICKS`.
      */
     dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
     /**
-     * The one-time sharing code provided by the data recipient.
+     * Recipient IP access list.
      */
     ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the recipient owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * The one-time sharing code provided by the data recipient.
      */

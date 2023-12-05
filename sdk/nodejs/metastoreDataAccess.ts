@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Each databricks.Metastore requires an IAM role that will be assumed by Unity Catalog to access data. `databricks.MetastoreDataAccess` defines this
+ * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  *
  * ## Import
  *
@@ -50,25 +50,14 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly azureServicePrincipal!: pulumi.Output<outputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    /**
-     * Delete the data access configuration regardless of its dependencies.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     */
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
-    /**
-     * Unique identifier of the parent Metastore
-     */
     public readonly metastoreId!: pulumi.Output<string>;
-    /**
-     * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Username/groupname/sp applicationId of the data access configuration owner.
-     */
     public readonly owner!: pulumi.Output<string>;
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
 
@@ -79,7 +68,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: MetastoreDataAccessArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: MetastoreDataAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetastoreDataAccessArgs | MetastoreDataAccessState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -99,9 +88,6 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
         } else {
             const args = argsOrState as MetastoreDataAccessArgs | undefined;
-            if ((!args || args.metastoreId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metastoreId'");
-            }
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
             resourceInputs["azureManagedIdentity"] = args ? args.azureManagedIdentity : undefined;
             resourceInputs["azureServicePrincipal"] = args ? args.azureServicePrincipal : undefined;
@@ -129,25 +115,14 @@ export interface MetastoreDataAccessState {
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    /**
-     * Delete the data access configuration regardless of its dependencies.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     */
     isDefault?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier of the parent Metastore
-     */
     metastoreId?: pulumi.Input<string>;
-    /**
-     * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the data access configuration owner.
-     */
     owner?: pulumi.Input<string>;
     readOnly?: pulumi.Input<boolean>;
 }
@@ -161,25 +136,14 @@ export interface MetastoreDataAccessArgs {
     azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    /**
-     * Delete the data access configuration regardless of its dependencies.
-     *
-     * `awsIamRole` optional configuration block for credential details for AWS:
-     */
     forceDestroy?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     */
     isDefault?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier of the parent Metastore
-     */
-    metastoreId: pulumi.Input<string>;
-    /**
-     * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     */
+    metastoreId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-    /**
-     * Username/groupname/sp applicationId of the data access configuration owner.
-     */
     owner?: pulumi.Input<string>;
     readOnly?: pulumi.Input<boolean>;
 }

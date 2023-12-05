@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * ## Related Resources
  *
  * The following resources are used in the same context:
+ *
  * * databricks.getMetastores to get mapping of name to id of all metastores.
  * * databricks.Metastore to manage Metastores within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
@@ -55,6 +56,7 @@ export interface GetMetastoreResult {
  * ## Related Resources
  *
  * The following resources are used in the same context:
+ *
  * * databricks.getMetastores to get mapping of name to id of all metastores.
  * * databricks.Metastore to manage Metastores within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.

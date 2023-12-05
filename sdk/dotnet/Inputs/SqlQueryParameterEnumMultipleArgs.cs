@@ -12,14 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlQueryParameterEnumMultipleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
 
         [Input("separator", required: true)]
         public Input<string> Separator { get; set; } = null!;
 
-        [Input("suffix", required: true)]
-        public Input<string> Suffix { get; set; } = null!;
+        [Input("suffix")]
+        public Input<string>? Suffix { get; set; }
 
         public SqlQueryParameterEnumMultipleArgs()
         {

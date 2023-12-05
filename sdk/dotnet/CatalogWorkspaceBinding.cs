@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var sandboxCatalogWorkspaceBinding = new Databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", new()
     ///     {
-    ///         CatalogName = sandboxCatalog.Name,
+    ///         SecurableName = sandboxCatalog.Name,
     ///         WorkspaceId = databricks_mws_workspaces.Other.Workspace_id,
     ///     });
     /// 
@@ -42,16 +42,31 @@ namespace Pulumi.Databricks
     public partial class CatalogWorkspaceBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of Catalog. Change forces creation of a new resource.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
         /// </summary>
+        [Output("bindingType")]
+        public Output<string?> BindingType { get; private set; } = null!;
+
         [Output("catalogName")]
-        public Output<string> CatalogName { get; private set; } = null!;
+        public Output<string?> CatalogName { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of securable. Change forces creation of a new resource.
+        /// </summary>
+        [Output("securableName")]
+        public Output<string?> SecurableName { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// </summary>
+        [Output("securableType")]
+        public Output<string?> SecurableType { get; private set; } = null!;
 
         /// <summary>
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Output("workspaceId")]
-        public Output<string> WorkspaceId { get; private set; } = null!;
+        public Output<int?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -61,7 +76,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CatalogWorkspaceBinding(string name, CatalogWorkspaceBindingArgs args, CustomResourceOptions? options = null)
+        public CatalogWorkspaceBinding(string name, CatalogWorkspaceBindingArgs? args = null, CustomResourceOptions? options = null)
             : base("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding", name, args ?? new CatalogWorkspaceBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -100,16 +115,31 @@ namespace Pulumi.Databricks
     public sealed class CatalogWorkspaceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of Catalog. Change forces creation of a new resource.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
         /// </summary>
-        [Input("catalogName", required: true)]
-        public Input<string> CatalogName { get; set; } = null!;
+        [Input("bindingType")]
+        public Input<string>? BindingType { get; set; }
+
+        [Input("catalogName")]
+        public Input<string>? CatalogName { get; set; }
+
+        /// <summary>
+        /// Name of securable. Change forces creation of a new resource.
+        /// </summary>
+        [Input("securableName")]
+        public Input<string>? SecurableName { get; set; }
+
+        /// <summary>
+        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// </summary>
+        [Input("securableType")]
+        public Input<string>? SecurableType { get; set; }
 
         /// <summary>
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("workspaceId")]
+        public Input<int>? WorkspaceId { get; set; }
 
         public CatalogWorkspaceBindingArgs()
         {
@@ -120,16 +150,31 @@ namespace Pulumi.Databricks
     public sealed class CatalogWorkspaceBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of Catalog. Change forces creation of a new resource.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
         /// </summary>
+        [Input("bindingType")]
+        public Input<string>? BindingType { get; set; }
+
         [Input("catalogName")]
         public Input<string>? CatalogName { get; set; }
+
+        /// <summary>
+        /// Name of securable. Change forces creation of a new resource.
+        /// </summary>
+        [Input("securableName")]
+        public Input<string>? SecurableName { get; set; }
+
+        /// <summary>
+        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// </summary>
+        [Input("securableType")]
+        public Input<string>? SecurableType { get; set; }
 
         /// <summary>
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
         [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        public Input<int>? WorkspaceId { get; set; }
 
         public CatalogWorkspaceBindingState()
         {

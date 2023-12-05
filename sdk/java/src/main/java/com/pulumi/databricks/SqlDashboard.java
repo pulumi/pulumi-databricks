@@ -140,6 +140,12 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> parent() {
         return Codegen.optional(this.parent);
     }
+    @Export(name="runAsRole", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> runAsRole;
+
+    public Output<Optional<String>> runAsRole() {
+        return Codegen.optional(this.runAsRole);
+    }
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 

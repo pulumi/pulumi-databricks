@@ -76,12 +76,14 @@ type Recipient struct {
 	AuthenticationType pulumi.StringOutput `pulumi:"authenticationType"`
 	// Description about the recipient.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Required when authenticationType is DATABRICKS.
+	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrOutput `pulumi:"dataRecipientGlobalMetastoreId"`
-	// The one-time sharing code provided by the data recipient.
+	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrOutput `pulumi:"ipAccessList"`
 	// Name of recipient. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Username/groupname/sp applicationId of the recipient owner.
+	Owner pulumi.StringPtrOutput `pulumi:"owner"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrOutput `pulumi:"sharingCode"`
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -132,12 +134,14 @@ type recipientState struct {
 	AuthenticationType *string `pulumi:"authenticationType"`
 	// Description about the recipient.
 	Comment *string `pulumi:"comment"`
-	// Required when authenticationType is DATABRICKS.
+	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId *string `pulumi:"dataRecipientGlobalMetastoreId"`
-	// The one-time sharing code provided by the data recipient.
+	// Recipient IP access list.
 	IpAccessList *RecipientIpAccessList `pulumi:"ipAccessList"`
 	// Name of recipient. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the recipient owner.
+	Owner *string `pulumi:"owner"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -149,12 +153,14 @@ type RecipientState struct {
 	AuthenticationType pulumi.StringPtrInput
 	// Description about the recipient.
 	Comment pulumi.StringPtrInput
-	// Required when authenticationType is DATABRICKS.
+	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrInput
-	// The one-time sharing code provided by the data recipient.
+	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrInput
 	// Name of recipient. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the recipient owner.
+	Owner pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -170,12 +176,14 @@ type recipientArgs struct {
 	AuthenticationType string `pulumi:"authenticationType"`
 	// Description about the recipient.
 	Comment *string `pulumi:"comment"`
-	// Required when authenticationType is DATABRICKS.
+	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId *string `pulumi:"dataRecipientGlobalMetastoreId"`
-	// The one-time sharing code provided by the data recipient.
+	// Recipient IP access list.
 	IpAccessList *RecipientIpAccessList `pulumi:"ipAccessList"`
 	// Name of recipient. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
+	// Username/groupname/sp applicationId of the recipient owner.
+	Owner *string `pulumi:"owner"`
 	// The one-time sharing code provided by the data recipient.
 	SharingCode *string `pulumi:"sharingCode"`
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -188,12 +196,14 @@ type RecipientArgs struct {
 	AuthenticationType pulumi.StringInput
 	// Description about the recipient.
 	Comment pulumi.StringPtrInput
-	// Required when authenticationType is DATABRICKS.
+	// Required when `authenticationType` is `DATABRICKS`.
 	DataRecipientGlobalMetastoreId pulumi.StringPtrInput
-	// The one-time sharing code provided by the data recipient.
+	// Recipient IP access list.
 	IpAccessList RecipientIpAccessListPtrInput
 	// Name of recipient. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
+	// Username/groupname/sp applicationId of the recipient owner.
+	Owner pulumi.StringPtrInput
 	// The one-time sharing code provided by the data recipient.
 	SharingCode pulumi.StringPtrInput
 	// List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
@@ -297,12 +307,12 @@ func (o RecipientOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Required when authenticationType is DATABRICKS.
+// Required when `authenticationType` is `DATABRICKS`.
 func (o RecipientOutput) DataRecipientGlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.DataRecipientGlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
 
-// The one-time sharing code provided by the data recipient.
+// Recipient IP access list.
 func (o RecipientOutput) IpAccessList() RecipientIpAccessListPtrOutput {
 	return o.ApplyT(func(v *Recipient) RecipientIpAccessListPtrOutput { return v.IpAccessList }).(RecipientIpAccessListPtrOutput)
 }
@@ -310,6 +320,11 @@ func (o RecipientOutput) IpAccessList() RecipientIpAccessListPtrOutput {
 // Name of recipient. Change forces creation of a new resource.
 func (o RecipientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Recipient) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Username/groupname/sp applicationId of the recipient owner.
+func (o RecipientOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Recipient) pulumi.StringPtrOutput { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
 // The one-time sharing code provided by the data recipient.

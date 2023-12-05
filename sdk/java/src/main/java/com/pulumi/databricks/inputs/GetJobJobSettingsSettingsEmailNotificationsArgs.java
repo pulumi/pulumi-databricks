@@ -17,13 +17,6 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
 
     public static final GetJobJobSettingsSettingsEmailNotificationsArgs Empty = new GetJobJobSettingsSettingsEmailNotificationsArgs();
 
-    @Import(name="alertOnLastAttempt")
-    private @Nullable Output<Boolean> alertOnLastAttempt;
-
-    public Optional<Output<Boolean>> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
-
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
@@ -62,7 +55,6 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
     private GetJobJobSettingsSettingsEmailNotificationsArgs() {}
 
     private GetJobJobSettingsSettingsEmailNotificationsArgs(GetJobJobSettingsSettingsEmailNotificationsArgs $) {
-        this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
@@ -86,15 +78,6 @@ public final class GetJobJobSettingsSettingsEmailNotificationsArgs extends com.p
 
         public Builder(GetJobJobSettingsSettingsEmailNotificationsArgs defaults) {
             $ = new GetJobJobSettingsSettingsEmailNotificationsArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder alertOnLastAttempt(@Nullable Output<Boolean> alertOnLastAttempt) {
-            $.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
-
-        public Builder alertOnLastAttempt(Boolean alertOnLastAttempt) {
-            return alertOnLastAttempt(Output.of(alertOnLastAttempt));
         }
 
         public Builder noAlertForSkippedRuns(@Nullable Output<Boolean> noAlertForSkippedRuns) {

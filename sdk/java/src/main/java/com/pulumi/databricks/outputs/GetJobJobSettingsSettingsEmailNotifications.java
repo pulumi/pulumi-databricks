@@ -13,7 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsEmailNotifications {
-    private @Nullable Boolean alertOnLastAttempt;
     private @Nullable Boolean noAlertForSkippedRuns;
     private @Nullable List<String> onDurationWarningThresholdExceededs;
     private @Nullable List<String> onFailures;
@@ -21,9 +20,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     private @Nullable List<String> onSuccesses;
 
     private GetJobJobSettingsSettingsEmailNotifications() {}
-    public Optional<Boolean> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
     public Optional<Boolean> noAlertForSkippedRuns() {
         return Optional.ofNullable(this.noAlertForSkippedRuns);
     }
@@ -49,7 +45,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean alertOnLastAttempt;
         private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
@@ -58,7 +53,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEmailNotifications defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.alertOnLastAttempt = defaults.alertOnLastAttempt;
     	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
@@ -66,11 +60,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
-        @CustomType.Setter
-        public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
-            this.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
         @CustomType.Setter
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
@@ -110,7 +99,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications {
         }
         public GetJobJobSettingsSettingsEmailNotifications build() {
             final var _resultValue = new GetJobJobSettingsSettingsEmailNotifications();
-            _resultValue.alertOnLastAttempt = alertOnLastAttempt;
             _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;

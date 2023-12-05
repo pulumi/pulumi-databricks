@@ -17,6 +17,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsContinuousResult? Continuous;
         public readonly Outputs.GetJobJobSettingsSettingsDbtTaskResult? DbtTask;
         public readonly Outputs.GetJobJobSettingsSettingsDeploymentResult? Deployment;
+        public readonly string? Description;
+        public readonly string? EditMode;
         public readonly Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? EmailNotifications;
         public readonly string? ExistingClusterId;
         public readonly string Format;
@@ -39,7 +41,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetJobJobSettingsSettingsPythonWheelTaskResult? PythonWheelTask;
         public readonly Outputs.GetJobJobSettingsSettingsQueueResult? Queue;
         public readonly bool? RetryOnTimeout;
-        public readonly Outputs.GetJobJobSettingsSettingsRunAsResult? RunAs;
+        public readonly Outputs.GetJobJobSettingsSettingsRunAsResult RunAs;
         public readonly Outputs.GetJobJobSettingsSettingsRunJobTaskResult? RunJobTask;
         public readonly Outputs.GetJobJobSettingsSettingsScheduleResult? Schedule;
         public readonly Outputs.GetJobJobSettingsSettingsSparkJarTaskResult? SparkJarTask;
@@ -60,6 +62,10 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsDbtTaskResult? dbtTask,
 
             Outputs.GetJobJobSettingsSettingsDeploymentResult? deployment,
+
+            string? description,
+
+            string? editMode,
 
             Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? emailNotifications,
 
@@ -99,7 +105,7 @@ namespace Pulumi.Databricks.Outputs
 
             bool? retryOnTimeout,
 
-            Outputs.GetJobJobSettingsSettingsRunAsResult? runAs,
+            Outputs.GetJobJobSettingsSettingsRunAsResult runAs,
 
             Outputs.GetJobJobSettingsSettingsRunJobTaskResult? runJobTask,
 
@@ -125,6 +131,8 @@ namespace Pulumi.Databricks.Outputs
             Continuous = continuous;
             DbtTask = dbtTask;
             Deployment = deployment;
+            Description = description;
+            EditMode = editMode;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
             Format = format;

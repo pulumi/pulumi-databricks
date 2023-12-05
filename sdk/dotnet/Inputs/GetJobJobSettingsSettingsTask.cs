@@ -100,6 +100,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("timeoutSeconds")]
         public int? TimeoutSeconds { get; set; }
 
+        [Input("webhookNotifications")]
+        public Inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsArgs? WebhookNotifications { get; set; }
+
         public GetJobJobSettingsSettingsTaskArgs()
         {
         }

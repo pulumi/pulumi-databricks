@@ -45,6 +45,13 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parent);
     }
 
+    @Import(name="runAsRole")
+    private @Nullable Output<String> runAsRole;
+
+    public Optional<Output<String>> runAsRole() {
+        return Optional.ofNullable(this.runAsRole);
+    }
+
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
@@ -66,6 +73,7 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
         this.dashboardFiltersEnabled = $.dashboardFiltersEnabled;
         this.name = $.name;
         this.parent = $.parent;
+        this.runAsRole = $.runAsRole;
         this.tags = $.tags;
         this.updatedAt = $.updatedAt;
     }
@@ -122,6 +130,15 @@ public final class SqlDashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        public Builder runAsRole(@Nullable Output<String> runAsRole) {
+            $.runAsRole = runAsRole;
+            return this;
+        }
+
+        public Builder runAsRole(String runAsRole) {
+            return runAsRole(Output.of(runAsRole));
         }
 
         public Builder tags(@Nullable Output<List<String>> tags) {

@@ -44,9 +44,9 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * Table data to list tables within Unity Catalog.
-// * Schema data to list schemas within Unity Catalog.
-// * Catalog data to list catalogs within Unity Catalog.
+// * getTables data to list tables within Unity Catalog.
+// * getSchemas data to list schemas within Unity Catalog.
+// * getCatalogs data to list catalogs within Unity Catalog.
 //
 // ## Import
 //
@@ -68,7 +68,8 @@ type Catalog struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
-	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
+	// ID of the metastore.
+	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
@@ -123,7 +124,8 @@ type catalogState struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
-	MetastoreId   *string `pulumi:"metastoreId"`
+	// ID of the metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
@@ -149,7 +151,8 @@ type CatalogState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
-	MetastoreId   pulumi.StringPtrInput
+	// ID of the metastore.
+	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
@@ -179,7 +182,8 @@ type catalogArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
-	MetastoreId   *string `pulumi:"metastoreId"`
+	// ID of the metastore.
+	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
@@ -206,7 +210,8 @@ type CatalogArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
-	MetastoreId   pulumi.StringPtrInput
+	// ID of the metastore.
+	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
@@ -330,6 +335,7 @@ func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
 
+// ID of the metastore.
 func (o CatalogOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

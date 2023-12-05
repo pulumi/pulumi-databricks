@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const sandboxCatalog = new databricks.Catalog("sandboxCatalog", {isolationMode: "ISOLATED"});
  * const sandboxCatalogWorkspaceBinding = new databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", {
- *     catalogName: sandboxCatalog.name,
+ *     securableName: sandboxCatalog.name,
  *     workspaceId: databricks_mws_workspaces.other.workspace_id,
  * });
  * ```
@@ -51,13 +51,25 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Name of Catalog. Change forces creation of a new resource.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      */
-    public readonly catalogName!: pulumi.Output<string>;
+    public readonly bindingType!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Please use 'securable_name' and 'securable_type instead.
+     */
+    public readonly catalogName!: pulumi.Output<string | undefined>;
+    /**
+     * Name of securable. Change forces creation of a new resource.
+     */
+    public readonly securableName!: pulumi.Output<string | undefined>;
+    /**
+     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     */
+    public readonly securableType!: pulumi.Output<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    public readonly workspaceId!: pulumi.Output<string>;
+    public readonly workspaceId!: pulumi.Output<number | undefined>;
 
     /**
      * Create a CatalogWorkspaceBinding resource with the given unique name, arguments, and options.
@@ -66,23 +78,23 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CatalogWorkspaceBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: CatalogWorkspaceBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogWorkspaceBindingArgs | CatalogWorkspaceBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogWorkspaceBindingState | undefined;
+            resourceInputs["bindingType"] = state ? state.bindingType : undefined;
             resourceInputs["catalogName"] = state ? state.catalogName : undefined;
+            resourceInputs["securableName"] = state ? state.securableName : undefined;
+            resourceInputs["securableType"] = state ? state.securableType : undefined;
             resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
         } else {
             const args = argsOrState as CatalogWorkspaceBindingArgs | undefined;
-            if ((!args || args.catalogName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'catalogName'");
-            }
-            if ((!args || args.workspaceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workspaceId'");
-            }
+            resourceInputs["bindingType"] = args ? args.bindingType : undefined;
             resourceInputs["catalogName"] = args ? args.catalogName : undefined;
+            resourceInputs["securableName"] = args ? args.securableName : undefined;
+            resourceInputs["securableType"] = args ? args.securableType : undefined;
             resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -95,13 +107,25 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
  */
 export interface CatalogWorkspaceBindingState {
     /**
-     * Name of Catalog. Change forces creation of a new resource.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+     */
+    bindingType?: pulumi.Input<string>;
+    /**
+     * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     catalogName?: pulumi.Input<string>;
     /**
+     * Name of securable. Change forces creation of a new resource.
+     */
+    securableName?: pulumi.Input<string>;
+    /**
+     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     */
+    securableType?: pulumi.Input<string>;
+    /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<number>;
 }
 
 /**
@@ -109,11 +133,23 @@ export interface CatalogWorkspaceBindingState {
  */
 export interface CatalogWorkspaceBindingArgs {
     /**
-     * Name of Catalog. Change forces creation of a new resource.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      */
-    catalogName: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string>;
+    /**
+     * @deprecated Please use 'securable_name' and 'securable_type instead.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * Name of securable. Change forces creation of a new resource.
+     */
+    securableName?: pulumi.Input<string>;
+    /**
+     * Type of securable. Default to `catalog`. Change forces creation of a new resource.
+     */
+    securableType?: pulumi.Input<string>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<number>;
 }

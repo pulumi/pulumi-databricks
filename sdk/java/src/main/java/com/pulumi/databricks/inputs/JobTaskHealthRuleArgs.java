@@ -32,14 +32,18 @@ public final class JobTaskHealthRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     @Import(name="op")
     private @Nullable Output<String> op;
 
     /**
-     * @return string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     * 
+     * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
     public Optional<Output<String>> op() {
@@ -109,7 +113,9 @@ public final class JobTaskHealthRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
          * 
          * @return builder
          * 
@@ -120,7 +126,9 @@ public final class JobTaskHealthRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param op string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+         * @param op The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+         * 
+         * This task does not require a cluster to execute and does not support retries or notifications.
          * 
          * @return builder
          * 

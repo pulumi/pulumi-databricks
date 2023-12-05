@@ -22,21 +22,9 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccountArgs extends co
         return Optional.ofNullable(this.credentialId);
     }
 
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-     * 
-     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
-    /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-     * 
-     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
@@ -75,27 +63,11 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccountArgs extends co
             return credentialId(Output.of(credentialId));
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

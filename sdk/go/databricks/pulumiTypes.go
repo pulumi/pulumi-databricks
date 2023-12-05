@@ -3707,6 +3707,589 @@ func (o ClusterLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterPolicyLibrary struct {
+	Cran  *ClusterPolicyLibraryCran  `pulumi:"cran"`
+	Egg   *string                    `pulumi:"egg"`
+	Jar   *string                    `pulumi:"jar"`
+	Maven *ClusterPolicyLibraryMaven `pulumi:"maven"`
+	Pypi  *ClusterPolicyLibraryPypi  `pulumi:"pypi"`
+	Whl   *string                    `pulumi:"whl"`
+}
+
+// ClusterPolicyLibraryInput is an input type that accepts ClusterPolicyLibraryArgs and ClusterPolicyLibraryOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryInput` via:
+//
+//	ClusterPolicyLibraryArgs{...}
+type ClusterPolicyLibraryInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryOutput() ClusterPolicyLibraryOutput
+	ToClusterPolicyLibraryOutputWithContext(context.Context) ClusterPolicyLibraryOutput
+}
+
+type ClusterPolicyLibraryArgs struct {
+	Cran  ClusterPolicyLibraryCranPtrInput  `pulumi:"cran"`
+	Egg   pulumi.StringPtrInput             `pulumi:"egg"`
+	Jar   pulumi.StringPtrInput             `pulumi:"jar"`
+	Maven ClusterPolicyLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi  ClusterPolicyLibraryPypiPtrInput  `pulumi:"pypi"`
+	Whl   pulumi.StringPtrInput             `pulumi:"whl"`
+}
+
+func (ClusterPolicyLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibrary)(nil)).Elem()
+}
+
+func (i ClusterPolicyLibraryArgs) ToClusterPolicyLibraryOutput() ClusterPolicyLibraryOutput {
+	return i.ToClusterPolicyLibraryOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryArgs) ToClusterPolicyLibraryOutputWithContext(ctx context.Context) ClusterPolicyLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryOutput)
+}
+
+// ClusterPolicyLibraryArrayInput is an input type that accepts ClusterPolicyLibraryArray and ClusterPolicyLibraryArrayOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryArrayInput` via:
+//
+//	ClusterPolicyLibraryArray{ ClusterPolicyLibraryArgs{...} }
+type ClusterPolicyLibraryArrayInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryArrayOutput() ClusterPolicyLibraryArrayOutput
+	ToClusterPolicyLibraryArrayOutputWithContext(context.Context) ClusterPolicyLibraryArrayOutput
+}
+
+type ClusterPolicyLibraryArray []ClusterPolicyLibraryInput
+
+func (ClusterPolicyLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPolicyLibrary)(nil)).Elem()
+}
+
+func (i ClusterPolicyLibraryArray) ToClusterPolicyLibraryArrayOutput() ClusterPolicyLibraryArrayOutput {
+	return i.ToClusterPolicyLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryArray) ToClusterPolicyLibraryArrayOutputWithContext(ctx context.Context) ClusterPolicyLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryArrayOutput)
+}
+
+type ClusterPolicyLibraryOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibrary)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryOutput) ToClusterPolicyLibraryOutput() ClusterPolicyLibraryOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryOutput) ToClusterPolicyLibraryOutputWithContext(ctx context.Context) ClusterPolicyLibraryOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryOutput) Cran() ClusterPolicyLibraryCranPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *ClusterPolicyLibraryCran { return v.Cran }).(ClusterPolicyLibraryCranPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Maven() ClusterPolicyLibraryMavenPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *ClusterPolicyLibraryMaven { return v.Maven }).(ClusterPolicyLibraryMavenPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Pypi() ClusterPolicyLibraryPypiPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *ClusterPolicyLibraryPypi { return v.Pypi }).(ClusterPolicyLibraryPypiPtrOutput)
+}
+
+func (o ClusterPolicyLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPolicyLibrary)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryArrayOutput) ToClusterPolicyLibraryArrayOutput() ClusterPolicyLibraryArrayOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryArrayOutput) ToClusterPolicyLibraryArrayOutputWithContext(ctx context.Context) ClusterPolicyLibraryArrayOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryArrayOutput) Index(i pulumi.IntInput) ClusterPolicyLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPolicyLibrary {
+		return vs[0].([]ClusterPolicyLibrary)[vs[1].(int)]
+	}).(ClusterPolicyLibraryOutput)
+}
+
+type ClusterPolicyLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// ClusterPolicyLibraryCranInput is an input type that accepts ClusterPolicyLibraryCranArgs and ClusterPolicyLibraryCranOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryCranInput` via:
+//
+//	ClusterPolicyLibraryCranArgs{...}
+type ClusterPolicyLibraryCranInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryCranOutput() ClusterPolicyLibraryCranOutput
+	ToClusterPolicyLibraryCranOutputWithContext(context.Context) ClusterPolicyLibraryCranOutput
+}
+
+type ClusterPolicyLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (ClusterPolicyLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryCran)(nil)).Elem()
+}
+
+func (i ClusterPolicyLibraryCranArgs) ToClusterPolicyLibraryCranOutput() ClusterPolicyLibraryCranOutput {
+	return i.ToClusterPolicyLibraryCranOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryCranArgs) ToClusterPolicyLibraryCranOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryCranOutput)
+}
+
+func (i ClusterPolicyLibraryCranArgs) ToClusterPolicyLibraryCranPtrOutput() ClusterPolicyLibraryCranPtrOutput {
+	return i.ToClusterPolicyLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryCranArgs) ToClusterPolicyLibraryCranPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryCranOutput).ToClusterPolicyLibraryCranPtrOutputWithContext(ctx)
+}
+
+// ClusterPolicyLibraryCranPtrInput is an input type that accepts ClusterPolicyLibraryCranArgs, ClusterPolicyLibraryCranPtr and ClusterPolicyLibraryCranPtrOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryCranPtrInput` via:
+//
+//	        ClusterPolicyLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPolicyLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryCranPtrOutput() ClusterPolicyLibraryCranPtrOutput
+	ToClusterPolicyLibraryCranPtrOutputWithContext(context.Context) ClusterPolicyLibraryCranPtrOutput
+}
+
+type clusterPolicyLibraryCranPtrType ClusterPolicyLibraryCranArgs
+
+func ClusterPolicyLibraryCranPtr(v *ClusterPolicyLibraryCranArgs) ClusterPolicyLibraryCranPtrInput {
+	return (*clusterPolicyLibraryCranPtrType)(v)
+}
+
+func (*clusterPolicyLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryCran)(nil)).Elem()
+}
+
+func (i *clusterPolicyLibraryCranPtrType) ToClusterPolicyLibraryCranPtrOutput() ClusterPolicyLibraryCranPtrOutput {
+	return i.ToClusterPolicyLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPolicyLibraryCranPtrType) ToClusterPolicyLibraryCranPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryCranPtrOutput)
+}
+
+type ClusterPolicyLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryCran)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryCranOutput) ToClusterPolicyLibraryCranOutput() ClusterPolicyLibraryCranOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryCranOutput) ToClusterPolicyLibraryCranOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryCranOutput) ToClusterPolicyLibraryCranPtrOutput() ClusterPolicyLibraryCranPtrOutput {
+	return o.ToClusterPolicyLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPolicyLibraryCranOutput) ToClusterPolicyLibraryCranPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPolicyLibraryCran) *ClusterPolicyLibraryCran {
+		return &v
+	}).(ClusterPolicyLibraryCranPtrOutput)
+}
+
+func (o ClusterPolicyLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o ClusterPolicyLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryCran)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryCranPtrOutput) ToClusterPolicyLibraryCranPtrOutput() ClusterPolicyLibraryCranPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryCranPtrOutput) ToClusterPolicyLibraryCranPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryCranPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryCranPtrOutput) Elem() ClusterPolicyLibraryCranOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryCran) ClusterPolicyLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPolicyLibraryCran
+		return ret
+	}).(ClusterPolicyLibraryCranOutput)
+}
+
+func (o ClusterPolicyLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterPolicyLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryMaven struct {
+	Coordinates string   `pulumi:"coordinates"`
+	Exclusions  []string `pulumi:"exclusions"`
+	Repo        *string  `pulumi:"repo"`
+}
+
+// ClusterPolicyLibraryMavenInput is an input type that accepts ClusterPolicyLibraryMavenArgs and ClusterPolicyLibraryMavenOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryMavenInput` via:
+//
+//	ClusterPolicyLibraryMavenArgs{...}
+type ClusterPolicyLibraryMavenInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryMavenOutput() ClusterPolicyLibraryMavenOutput
+	ToClusterPolicyLibraryMavenOutputWithContext(context.Context) ClusterPolicyLibraryMavenOutput
+}
+
+type ClusterPolicyLibraryMavenArgs struct {
+	Coordinates pulumi.StringInput      `pulumi:"coordinates"`
+	Exclusions  pulumi.StringArrayInput `pulumi:"exclusions"`
+	Repo        pulumi.StringPtrInput   `pulumi:"repo"`
+}
+
+func (ClusterPolicyLibraryMavenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryMaven)(nil)).Elem()
+}
+
+func (i ClusterPolicyLibraryMavenArgs) ToClusterPolicyLibraryMavenOutput() ClusterPolicyLibraryMavenOutput {
+	return i.ToClusterPolicyLibraryMavenOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryMavenArgs) ToClusterPolicyLibraryMavenOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryMavenOutput)
+}
+
+func (i ClusterPolicyLibraryMavenArgs) ToClusterPolicyLibraryMavenPtrOutput() ClusterPolicyLibraryMavenPtrOutput {
+	return i.ToClusterPolicyLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryMavenArgs) ToClusterPolicyLibraryMavenPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryMavenOutput).ToClusterPolicyLibraryMavenPtrOutputWithContext(ctx)
+}
+
+// ClusterPolicyLibraryMavenPtrInput is an input type that accepts ClusterPolicyLibraryMavenArgs, ClusterPolicyLibraryMavenPtr and ClusterPolicyLibraryMavenPtrOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryMavenPtrInput` via:
+//
+//	        ClusterPolicyLibraryMavenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPolicyLibraryMavenPtrInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryMavenPtrOutput() ClusterPolicyLibraryMavenPtrOutput
+	ToClusterPolicyLibraryMavenPtrOutputWithContext(context.Context) ClusterPolicyLibraryMavenPtrOutput
+}
+
+type clusterPolicyLibraryMavenPtrType ClusterPolicyLibraryMavenArgs
+
+func ClusterPolicyLibraryMavenPtr(v *ClusterPolicyLibraryMavenArgs) ClusterPolicyLibraryMavenPtrInput {
+	return (*clusterPolicyLibraryMavenPtrType)(v)
+}
+
+func (*clusterPolicyLibraryMavenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryMaven)(nil)).Elem()
+}
+
+func (i *clusterPolicyLibraryMavenPtrType) ToClusterPolicyLibraryMavenPtrOutput() ClusterPolicyLibraryMavenPtrOutput {
+	return i.ToClusterPolicyLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPolicyLibraryMavenPtrType) ToClusterPolicyLibraryMavenPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryMavenPtrOutput)
+}
+
+type ClusterPolicyLibraryMavenOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryMavenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryMaven)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryMavenOutput) ToClusterPolicyLibraryMavenOutput() ClusterPolicyLibraryMavenOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryMavenOutput) ToClusterPolicyLibraryMavenOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryMavenOutput) ToClusterPolicyLibraryMavenPtrOutput() ClusterPolicyLibraryMavenPtrOutput {
+	return o.ToClusterPolicyLibraryMavenPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPolicyLibraryMavenOutput) ToClusterPolicyLibraryMavenPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPolicyLibraryMaven) *ClusterPolicyLibraryMaven {
+		return &v
+	}).(ClusterPolicyLibraryMavenPtrOutput)
+}
+
+func (o ClusterPolicyLibraryMavenOutput) Coordinates() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryMaven) string { return v.Coordinates }).(pulumi.StringOutput)
+}
+
+func (o ClusterPolicyLibraryMavenOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryMaven) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterPolicyLibraryMavenOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryMaven) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryMavenPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryMavenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryMaven)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) ToClusterPolicyLibraryMavenPtrOutput() ClusterPolicyLibraryMavenPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) ToClusterPolicyLibraryMavenPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryMavenPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) Elem() ClusterPolicyLibraryMavenOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryMaven) ClusterPolicyLibraryMaven {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPolicyLibraryMaven
+		return ret
+	}).(ClusterPolicyLibraryMavenOutput)
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) Coordinates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Coordinates
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryMaven) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterPolicyLibraryMavenPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryMaven) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryPypi struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// ClusterPolicyLibraryPypiInput is an input type that accepts ClusterPolicyLibraryPypiArgs and ClusterPolicyLibraryPypiOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryPypiInput` via:
+//
+//	ClusterPolicyLibraryPypiArgs{...}
+type ClusterPolicyLibraryPypiInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryPypiOutput() ClusterPolicyLibraryPypiOutput
+	ToClusterPolicyLibraryPypiOutputWithContext(context.Context) ClusterPolicyLibraryPypiOutput
+}
+
+type ClusterPolicyLibraryPypiArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (ClusterPolicyLibraryPypiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryPypi)(nil)).Elem()
+}
+
+func (i ClusterPolicyLibraryPypiArgs) ToClusterPolicyLibraryPypiOutput() ClusterPolicyLibraryPypiOutput {
+	return i.ToClusterPolicyLibraryPypiOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryPypiArgs) ToClusterPolicyLibraryPypiOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryPypiOutput)
+}
+
+func (i ClusterPolicyLibraryPypiArgs) ToClusterPolicyLibraryPypiPtrOutput() ClusterPolicyLibraryPypiPtrOutput {
+	return i.ToClusterPolicyLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPolicyLibraryPypiArgs) ToClusterPolicyLibraryPypiPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryPypiOutput).ToClusterPolicyLibraryPypiPtrOutputWithContext(ctx)
+}
+
+// ClusterPolicyLibraryPypiPtrInput is an input type that accepts ClusterPolicyLibraryPypiArgs, ClusterPolicyLibraryPypiPtr and ClusterPolicyLibraryPypiPtrOutput values.
+// You can construct a concrete instance of `ClusterPolicyLibraryPypiPtrInput` via:
+//
+//	        ClusterPolicyLibraryPypiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPolicyLibraryPypiPtrInput interface {
+	pulumi.Input
+
+	ToClusterPolicyLibraryPypiPtrOutput() ClusterPolicyLibraryPypiPtrOutput
+	ToClusterPolicyLibraryPypiPtrOutputWithContext(context.Context) ClusterPolicyLibraryPypiPtrOutput
+}
+
+type clusterPolicyLibraryPypiPtrType ClusterPolicyLibraryPypiArgs
+
+func ClusterPolicyLibraryPypiPtr(v *ClusterPolicyLibraryPypiArgs) ClusterPolicyLibraryPypiPtrInput {
+	return (*clusterPolicyLibraryPypiPtrType)(v)
+}
+
+func (*clusterPolicyLibraryPypiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryPypi)(nil)).Elem()
+}
+
+func (i *clusterPolicyLibraryPypiPtrType) ToClusterPolicyLibraryPypiPtrOutput() ClusterPolicyLibraryPypiPtrOutput {
+	return i.ToClusterPolicyLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPolicyLibraryPypiPtrType) ToClusterPolicyLibraryPypiPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPolicyLibraryPypiPtrOutput)
+}
+
+type ClusterPolicyLibraryPypiOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryPypiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPolicyLibraryPypi)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryPypiOutput) ToClusterPolicyLibraryPypiOutput() ClusterPolicyLibraryPypiOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryPypiOutput) ToClusterPolicyLibraryPypiOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryPypiOutput) ToClusterPolicyLibraryPypiPtrOutput() ClusterPolicyLibraryPypiPtrOutput {
+	return o.ToClusterPolicyLibraryPypiPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPolicyLibraryPypiOutput) ToClusterPolicyLibraryPypiPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPolicyLibraryPypi) *ClusterPolicyLibraryPypi {
+		return &v
+	}).(ClusterPolicyLibraryPypiPtrOutput)
+}
+
+func (o ClusterPolicyLibraryPypiOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryPypi) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o ClusterPolicyLibraryPypiOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPolicyLibraryPypi) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPolicyLibraryPypiPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPolicyLibraryPypiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPolicyLibraryPypi)(nil)).Elem()
+}
+
+func (o ClusterPolicyLibraryPypiPtrOutput) ToClusterPolicyLibraryPypiPtrOutput() ClusterPolicyLibraryPypiPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryPypiPtrOutput) ToClusterPolicyLibraryPypiPtrOutputWithContext(ctx context.Context) ClusterPolicyLibraryPypiPtrOutput {
+	return o
+}
+
+func (o ClusterPolicyLibraryPypiPtrOutput) Elem() ClusterPolicyLibraryPypiOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryPypi) ClusterPolicyLibraryPypi {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPolicyLibraryPypi
+		return ret
+	}).(ClusterPolicyLibraryPypiOutput)
+}
+
+func (o ClusterPolicyLibraryPypiPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterPolicyLibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPolicyLibraryPypi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterWorkloadType struct {
 	Clients ClusterWorkloadTypeClients `pulumi:"clients"`
 }
@@ -3986,6 +4569,143 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
 		}
 		return v.Notebooks
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DefaultNamespaceSettingNamespace struct {
+	// The value for the setting.
+	Value *string `pulumi:"value"`
+}
+
+// DefaultNamespaceSettingNamespaceInput is an input type that accepts DefaultNamespaceSettingNamespaceArgs and DefaultNamespaceSettingNamespaceOutput values.
+// You can construct a concrete instance of `DefaultNamespaceSettingNamespaceInput` via:
+//
+//	DefaultNamespaceSettingNamespaceArgs{...}
+type DefaultNamespaceSettingNamespaceInput interface {
+	pulumi.Input
+
+	ToDefaultNamespaceSettingNamespaceOutput() DefaultNamespaceSettingNamespaceOutput
+	ToDefaultNamespaceSettingNamespaceOutputWithContext(context.Context) DefaultNamespaceSettingNamespaceOutput
+}
+
+type DefaultNamespaceSettingNamespaceArgs struct {
+	// The value for the setting.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DefaultNamespaceSettingNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultNamespaceSettingNamespace)(nil)).Elem()
+}
+
+func (i DefaultNamespaceSettingNamespaceArgs) ToDefaultNamespaceSettingNamespaceOutput() DefaultNamespaceSettingNamespaceOutput {
+	return i.ToDefaultNamespaceSettingNamespaceOutputWithContext(context.Background())
+}
+
+func (i DefaultNamespaceSettingNamespaceArgs) ToDefaultNamespaceSettingNamespaceOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultNamespaceSettingNamespaceOutput)
+}
+
+func (i DefaultNamespaceSettingNamespaceArgs) ToDefaultNamespaceSettingNamespacePtrOutput() DefaultNamespaceSettingNamespacePtrOutput {
+	return i.ToDefaultNamespaceSettingNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i DefaultNamespaceSettingNamespaceArgs) ToDefaultNamespaceSettingNamespacePtrOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultNamespaceSettingNamespaceOutput).ToDefaultNamespaceSettingNamespacePtrOutputWithContext(ctx)
+}
+
+// DefaultNamespaceSettingNamespacePtrInput is an input type that accepts DefaultNamespaceSettingNamespaceArgs, DefaultNamespaceSettingNamespacePtr and DefaultNamespaceSettingNamespacePtrOutput values.
+// You can construct a concrete instance of `DefaultNamespaceSettingNamespacePtrInput` via:
+//
+//	        DefaultNamespaceSettingNamespaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefaultNamespaceSettingNamespacePtrInput interface {
+	pulumi.Input
+
+	ToDefaultNamespaceSettingNamespacePtrOutput() DefaultNamespaceSettingNamespacePtrOutput
+	ToDefaultNamespaceSettingNamespacePtrOutputWithContext(context.Context) DefaultNamespaceSettingNamespacePtrOutput
+}
+
+type defaultNamespaceSettingNamespacePtrType DefaultNamespaceSettingNamespaceArgs
+
+func DefaultNamespaceSettingNamespacePtr(v *DefaultNamespaceSettingNamespaceArgs) DefaultNamespaceSettingNamespacePtrInput {
+	return (*defaultNamespaceSettingNamespacePtrType)(v)
+}
+
+func (*defaultNamespaceSettingNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultNamespaceSettingNamespace)(nil)).Elem()
+}
+
+func (i *defaultNamespaceSettingNamespacePtrType) ToDefaultNamespaceSettingNamespacePtrOutput() DefaultNamespaceSettingNamespacePtrOutput {
+	return i.ToDefaultNamespaceSettingNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *defaultNamespaceSettingNamespacePtrType) ToDefaultNamespaceSettingNamespacePtrOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultNamespaceSettingNamespacePtrOutput)
+}
+
+type DefaultNamespaceSettingNamespaceOutput struct{ *pulumi.OutputState }
+
+func (DefaultNamespaceSettingNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultNamespaceSettingNamespace)(nil)).Elem()
+}
+
+func (o DefaultNamespaceSettingNamespaceOutput) ToDefaultNamespaceSettingNamespaceOutput() DefaultNamespaceSettingNamespaceOutput {
+	return o
+}
+
+func (o DefaultNamespaceSettingNamespaceOutput) ToDefaultNamespaceSettingNamespaceOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespaceOutput {
+	return o
+}
+
+func (o DefaultNamespaceSettingNamespaceOutput) ToDefaultNamespaceSettingNamespacePtrOutput() DefaultNamespaceSettingNamespacePtrOutput {
+	return o.ToDefaultNamespaceSettingNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o DefaultNamespaceSettingNamespaceOutput) ToDefaultNamespaceSettingNamespacePtrOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultNamespaceSettingNamespace) *DefaultNamespaceSettingNamespace {
+		return &v
+	}).(DefaultNamespaceSettingNamespacePtrOutput)
+}
+
+// The value for the setting.
+func (o DefaultNamespaceSettingNamespaceOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefaultNamespaceSettingNamespace) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DefaultNamespaceSettingNamespacePtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultNamespaceSettingNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultNamespaceSettingNamespace)(nil)).Elem()
+}
+
+func (o DefaultNamespaceSettingNamespacePtrOutput) ToDefaultNamespaceSettingNamespacePtrOutput() DefaultNamespaceSettingNamespacePtrOutput {
+	return o
+}
+
+func (o DefaultNamespaceSettingNamespacePtrOutput) ToDefaultNamespaceSettingNamespacePtrOutputWithContext(ctx context.Context) DefaultNamespaceSettingNamespacePtrOutput {
+	return o
+}
+
+func (o DefaultNamespaceSettingNamespacePtrOutput) Elem() DefaultNamespaceSettingNamespaceOutput {
+	return o.ApplyT(func(v *DefaultNamespaceSettingNamespace) DefaultNamespaceSettingNamespace {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultNamespaceSettingNamespace
+		return ret
+	}).(DefaultNamespaceSettingNamespaceOutput)
+}
+
+// The value for the setting.
+func (o DefaultNamespaceSettingNamespacePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefaultNamespaceSettingNamespace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type ExternalLocationEncryptionDetails struct {
@@ -6755,8 +7475,6 @@ func (o JobDeploymentPtrOutput) MetadataFilePath() pulumi.StringPtrOutput {
 }
 
 type JobEmailNotifications struct {
-	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -6781,8 +7499,6 @@ type JobEmailNotificationsInput interface {
 }
 
 type JobEmailNotificationsArgs struct {
-	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
 	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -6872,11 +7588,6 @@ func (o JobEmailNotificationsOutput) ToJobEmailNotificationsPtrOutputWithContext
 	}).(JobEmailNotificationsPtrOutput)
 }
 
-// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-func (o JobEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
-}
-
 // (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
 func (o JobEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
@@ -6924,16 +7635,6 @@ func (o JobEmailNotificationsPtrOutput) Elem() JobEmailNotificationsOutput {
 		var ret JobEmailNotifications
 		return ret
 	}).(JobEmailNotificationsOutput)
-}
-
-// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-func (o JobEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AlertOnLastAttempt
-	}).(pulumi.BoolPtrOutput)
 }
 
 // (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
@@ -7517,7 +8218,9 @@ func (o JobHealthPtrOutput) Rules() JobHealthRuleArrayOutput {
 type JobHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric *string `pulumi:"metric"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
 	Op *string `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value *int `pulumi:"value"`
@@ -7537,7 +8240,9 @@ type JobHealthRuleInput interface {
 type JobHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
 	Op pulumi.StringPtrInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value pulumi.IntPtrInput `pulumi:"value"`
@@ -7599,7 +8304,9 @@ func (o JobHealthRuleOutput) Metric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
-// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+//
+// This task does not require a cluster to execute and does not support retries or notifications.
 func (o JobHealthRuleOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -16492,7 +17199,7 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 type JobParameter struct {
 	// Default value of the parameter.
 	Default *string `pulumi:"default"`
-	// An optional name for the job. The default value is Untitled.
+	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
 	Name *string `pulumi:"name"`
 }
 
@@ -16510,7 +17217,7 @@ type JobParameterInput interface {
 type JobParameterArgs struct {
 	// Default value of the parameter.
 	Default pulumi.StringPtrInput `pulumi:"default"`
-	// An optional name for the job. The default value is Untitled.
+	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -16570,7 +17277,7 @@ func (o JobParameterOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
-// An optional name for the job. The default value is Untitled.
+// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
 func (o JobParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -16954,6 +17661,7 @@ func (o JobPythonWheelTaskPtrOutput) Parameters() pulumi.StringArrayOutput {
 }
 
 type JobQueue struct {
+	// If true, enable queueing for the job.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -16969,6 +17677,7 @@ type JobQueueInput interface {
 }
 
 type JobQueueArgs struct {
+	// If true, enable queueing for the job.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -17049,6 +17758,7 @@ func (o JobQueueOutput) ToJobQueuePtrOutputWithContext(ctx context.Context) JobQ
 	}).(JobQueuePtrOutput)
 }
 
+// If true, enable queueing for the job.
 func (o JobQueueOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v JobQueue) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -17077,6 +17787,7 @@ func (o JobQueuePtrOutput) Elem() JobQueueOutput {
 	}).(JobQueueOutput)
 }
 
+// If true, enable queueing for the job.
 func (o JobQueuePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobQueue) *bool {
 		if v == nil {
@@ -18167,9 +18878,10 @@ type JobTask struct {
 	ConditionTask *JobTaskConditionTask `pulumi:"conditionTask"`
 	DbtTask       *JobTaskDbtTask       `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
-	DependsOns  []JobTaskDependsOn `pulumi:"dependsOns"`
-	Description *string            `pulumi:"description"`
-	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+	DependsOns []JobTaskDependsOn `pulumi:"dependsOns"`
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description *string `pulumi:"description"`
+	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobTaskEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId  *string                    `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
@@ -18203,6 +18915,8 @@ type JobTask struct {
 	TaskKey *string `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+	WebhookNotifications *JobTaskWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
 // JobTaskInput is an input type that accepts JobTaskArgs and JobTaskOutput values.
@@ -18221,9 +18935,10 @@ type JobTaskArgs struct {
 	ConditionTask JobTaskConditionTaskPtrInput `pulumi:"conditionTask"`
 	DbtTask       JobTaskDbtTaskPtrInput       `pulumi:"dbtTask"`
 	// block specifying dependency(-ies) for a given task.
-	DependsOns  JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
-	Description pulumi.StringPtrInput      `pulumi:"description"`
-	// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+	DependsOns JobTaskDependsOnArrayInput `pulumi:"dependsOns"`
+	// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobTaskEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId  pulumi.StringPtrInput             `pulumi:"existingClusterId"`
 	// block described below that specifies health conditions for a given task.
@@ -18257,6 +18972,8 @@ type JobTaskArgs struct {
 	TaskKey pulumi.StringPtrInput `pulumi:"taskKey"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+	// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+	WebhookNotifications JobTaskWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
 
 func (JobTaskArgs) ElementType() reflect.Type {
@@ -18327,11 +19044,12 @@ func (o JobTaskOutput) DependsOns() JobTaskDependsOnArrayOutput {
 	return o.ApplyT(func(v JobTask) []JobTaskDependsOn { return v.DependsOns }).(JobTaskDependsOnArrayOutput)
 }
 
+// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
 func (o JobTaskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTask) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 func (o JobTaskOutput) EmailNotifications() JobTaskEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v JobTask) *JobTaskEmailNotifications { return v.EmailNotifications }).(JobTaskEmailNotificationsPtrOutput)
 }
@@ -18428,6 +19146,11 @@ func (o JobTaskOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTask) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
+// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+func (o JobTaskOutput) WebhookNotifications() JobTaskWebhookNotificationsPtrOutput {
+	return o.ApplyT(func(v JobTask) *JobTaskWebhookNotifications { return v.WebhookNotifications }).(JobTaskWebhookNotificationsPtrOutput)
+}
+
 type JobTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (JobTaskArrayOutput) ElementType() reflect.Type {
@@ -18449,9 +19172,13 @@ func (o JobTaskArrayOutput) Index(i pulumi.IntInput) JobTaskOutput {
 }
 
 type JobTaskConditionTask struct {
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left *string `pulumi:"left"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op    *string `pulumi:"op"`
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
+	Op *string `pulumi:"op"`
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right *string `pulumi:"right"`
 }
 
@@ -18467,9 +19194,13 @@ type JobTaskConditionTaskInput interface {
 }
 
 type JobTaskConditionTaskArgs struct {
+	// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 	Left pulumi.StringPtrInput `pulumi:"left"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
-	Op    pulumi.StringPtrInput `pulumi:"op"`
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 	Right pulumi.StringPtrInput `pulumi:"right"`
 }
 
@@ -18550,15 +19281,19 @@ func (o JobTaskConditionTaskOutput) ToJobTaskConditionTaskPtrOutputWithContext(c
 	}).(JobTaskConditionTaskPtrOutput)
 }
 
+// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 func (o JobTaskConditionTaskOutput) Left() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Left }).(pulumi.StringPtrOutput)
 }
 
-// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+//
+// This task does not require a cluster to execute and does not support retries or notifications.
 func (o JobTaskConditionTaskOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
 
+// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 func (o JobTaskConditionTaskOutput) Right() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskConditionTask) *string { return v.Right }).(pulumi.StringPtrOutput)
 }
@@ -18587,6 +19322,7 @@ func (o JobTaskConditionTaskPtrOutput) Elem() JobTaskConditionTaskOutput {
 	}).(JobTaskConditionTaskOutput)
 }
 
+// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
 func (o JobTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskConditionTask) *string {
 		if v == nil {
@@ -18596,7 +19332,9 @@ func (o JobTaskConditionTaskPtrOutput) Left() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+//
+// This task does not require a cluster to execute and does not support retries or notifications.
 func (o JobTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskConditionTask) *string {
 		if v == nil {
@@ -18606,6 +19344,7 @@ func (o JobTaskConditionTaskPtrOutput) Op() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The right operand of the condition task. It could be a string value, job state, or parameter reference.
 func (o JobTaskConditionTaskPtrOutput) Right() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskConditionTask) *string {
 		if v == nil {
@@ -18856,6 +19595,7 @@ func (o JobTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
 }
 
 type JobTaskDependsOn struct {
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome *string `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey string `pulumi:"taskKey"`
@@ -18873,6 +19613,7 @@ type JobTaskDependsOnInput interface {
 }
 
 type JobTaskDependsOnArgs struct {
+	// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
 	// The name of the task this task depends on.
 	TaskKey pulumi.StringInput `pulumi:"taskKey"`
@@ -18929,6 +19670,7 @@ func (o JobTaskDependsOnOutput) ToJobTaskDependsOnOutputWithContext(ctx context.
 	return o
 }
 
+// Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
 func (o JobTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
 }
@@ -18959,10 +19701,6 @@ func (o JobTaskDependsOnArrayOutput) Index(i pulumi.IntInput) JobTaskDependsOnOu
 }
 
 type JobTaskEmailNotifications struct {
-	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-	AlertOnLastAttempt *bool `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns *bool `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
@@ -18985,10 +19723,6 @@ type JobTaskEmailNotificationsInput interface {
 }
 
 type JobTaskEmailNotificationsArgs struct {
-	// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-	AlertOnLastAttempt pulumi.BoolPtrInput `pulumi:"alertOnLastAttempt"`
-	// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-	NoAlertForSkippedRuns pulumi.BoolPtrInput `pulumi:"noAlertForSkippedRuns"`
 	// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of emails to notify when the run fails.
@@ -19076,16 +19810,6 @@ func (o JobTaskEmailNotificationsOutput) ToJobTaskEmailNotificationsPtrOutputWit
 	}).(JobTaskEmailNotificationsPtrOutput)
 }
 
-// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-func (o JobTaskEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
-}
-
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-func (o JobTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v JobTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
-}
-
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
 func (o JobTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTaskEmailNotifications) []string { return v.OnDurationWarningThresholdExceededs }).(pulumi.StringArrayOutput)
@@ -19128,26 +19852,6 @@ func (o JobTaskEmailNotificationsPtrOutput) Elem() JobTaskEmailNotificationsOutp
 		var ret JobTaskEmailNotifications
 		return ret
 	}).(JobTaskEmailNotificationsOutput)
-}
-
-// (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-func (o JobTaskEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AlertOnLastAttempt
-	}).(pulumi.BoolPtrOutput)
-}
-
-// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-func (o JobTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *JobTaskEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoAlertForSkippedRuns
-	}).(pulumi.BoolPtrOutput)
 }
 
 // (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -19330,7 +20034,9 @@ func (o JobTaskHealthPtrOutput) Rules() JobTaskHealthRuleArrayOutput {
 type JobTaskHealthRule struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric *string `pulumi:"metric"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
 	Op *string `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value *int `pulumi:"value"`
@@ -19350,7 +20056,9 @@ type JobTaskHealthRuleInput interface {
 type JobTaskHealthRuleArgs struct {
 	// string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+	// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+	//
+	// This task does not require a cluster to execute and does not support retries or notifications.
 	Op pulumi.StringPtrInput `pulumi:"op"`
 	// integer value used to compare to the given metric.
 	Value pulumi.IntPtrInput `pulumi:"value"`
@@ -19412,7 +20120,9 @@ func (o JobTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
-// string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+//
+// This task does not require a cluster to execute and does not support retries or notifications.
 func (o JobTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
 }
@@ -26611,6 +27321,668 @@ func (o JobTaskSqlTaskQueryPtrOutput) QueryId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobTaskWebhookNotifications struct {
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	OnDurationWarningThresholdExceededs []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	OnFailures []JobTaskWebhookNotificationsOnFailure `pulumi:"onFailures"`
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+	OnStarts []JobTaskWebhookNotificationsOnStart `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+	OnSuccesses []JobTaskWebhookNotificationsOnSuccess `pulumi:"onSuccesses"`
+}
+
+// JobTaskWebhookNotificationsInput is an input type that accepts JobTaskWebhookNotificationsArgs and JobTaskWebhookNotificationsOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsInput` via:
+//
+//	JobTaskWebhookNotificationsArgs{...}
+type JobTaskWebhookNotificationsInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOutput() JobTaskWebhookNotificationsOutput
+	ToJobTaskWebhookNotificationsOutputWithContext(context.Context) JobTaskWebhookNotificationsOutput
+}
+
+type JobTaskWebhookNotificationsArgs struct {
+	// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+	//
+	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+	//
+	// Example
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	OnDurationWarningThresholdExceededs JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+	OnFailures JobTaskWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
+	// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+	OnStarts JobTaskWebhookNotificationsOnStartArrayInput `pulumi:"onStarts"`
+	// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+	OnSuccesses JobTaskWebhookNotificationsOnSuccessArrayInput `pulumi:"onSuccesses"`
+}
+
+func (JobTaskWebhookNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsArgs) ToJobTaskWebhookNotificationsOutput() JobTaskWebhookNotificationsOutput {
+	return i.ToJobTaskWebhookNotificationsOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsArgs) ToJobTaskWebhookNotificationsOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOutput)
+}
+
+func (i JobTaskWebhookNotificationsArgs) ToJobTaskWebhookNotificationsPtrOutput() JobTaskWebhookNotificationsPtrOutput {
+	return i.ToJobTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsArgs) ToJobTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOutput).ToJobTaskWebhookNotificationsPtrOutputWithContext(ctx)
+}
+
+// JobTaskWebhookNotificationsPtrInput is an input type that accepts JobTaskWebhookNotificationsArgs, JobTaskWebhookNotificationsPtr and JobTaskWebhookNotificationsPtrOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsPtrInput` via:
+//
+//	        JobTaskWebhookNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTaskWebhookNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsPtrOutput() JobTaskWebhookNotificationsPtrOutput
+	ToJobTaskWebhookNotificationsPtrOutputWithContext(context.Context) JobTaskWebhookNotificationsPtrOutput
+}
+
+type jobTaskWebhookNotificationsPtrType JobTaskWebhookNotificationsArgs
+
+func JobTaskWebhookNotificationsPtr(v *JobTaskWebhookNotificationsArgs) JobTaskWebhookNotificationsPtrInput {
+	return (*jobTaskWebhookNotificationsPtrType)(v)
+}
+
+func (*jobTaskWebhookNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (i *jobTaskWebhookNotificationsPtrType) ToJobTaskWebhookNotificationsPtrOutput() JobTaskWebhookNotificationsPtrOutput {
+	return i.ToJobTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTaskWebhookNotificationsPtrType) ToJobTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsPtrOutput)
+}
+
+type JobTaskWebhookNotificationsOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsOutput() JobTaskWebhookNotificationsOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsPtrOutput() JobTaskWebhookNotificationsPtrOutput {
+	return o.ToJobTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTaskWebhookNotifications) *JobTaskWebhookNotifications {
+		return &v
+	}).(JobTaskWebhookNotificationsPtrOutput)
+}
+
+// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o JobTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return v.OnDurationWarningThresholdExceededs
+	}).(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsOutput) OnFailures() JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnFailure { return v.OnFailures }).(JobTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsOutput) OnStarts() JobTaskWebhookNotificationsOnStartArrayOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnStart { return v.OnStarts }).(JobTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsOutput) OnSuccesses() JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnSuccess { return v.OnSuccesses }).(JobTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type JobTaskWebhookNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsPtrOutput) ToJobTaskWebhookNotificationsPtrOutput() JobTaskWebhookNotificationsPtrOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsPtrOutput) ToJobTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsPtrOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsPtrOutput) Elem() JobTaskWebhookNotificationsOutput {
+	return o.ApplyT(func(v *JobTaskWebhookNotifications) JobTaskWebhookNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret JobTaskWebhookNotifications
+		return ret
+	}).(JobTaskWebhookNotificationsOutput)
+}
+
+// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+//
+// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+//
+// # Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o JobTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsPtrOutput) OnFailures() JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailures
+	}).(JobTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsPtrOutput) OnStarts() JobTaskWebhookNotificationsOnStartArrayOutput {
+	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnStart {
+		if v == nil {
+			return nil
+		}
+		return v.OnStarts
+	}).(JobTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+// (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+func (o JobTaskWebhookNotificationsPtrOutput) OnSuccesses() JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnSuccess {
+		if v == nil {
+			return nil
+		}
+		return v.OnSuccesses
+	}).(JobTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// ID of the job
+	Id *string `pulumi:"id"`
+}
+
+// JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs and JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput` via:
+//
+//	JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{...}
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput
+	ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput
+}
+
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// ID of the job
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return i.ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+// JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput is an input type that accepts JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray and JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput` via:
+//
+//	JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray{ JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{...} }
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+	ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+}
+
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray []JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput
+
+func (JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return i.ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+// ID of the job
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToJobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) Index(i pulumi.IntInput) JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return vs[0].([]JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded)[vs[1].(int)]
+	}).(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+type JobTaskWebhookNotificationsOnFailure struct {
+	// ID of the job
+	Id *string `pulumi:"id"`
+}
+
+// JobTaskWebhookNotificationsOnFailureInput is an input type that accepts JobTaskWebhookNotificationsOnFailureArgs and JobTaskWebhookNotificationsOnFailureOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnFailureInput` via:
+//
+//	JobTaskWebhookNotificationsOnFailureArgs{...}
+type JobTaskWebhookNotificationsOnFailureInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnFailureOutput() JobTaskWebhookNotificationsOnFailureOutput
+	ToJobTaskWebhookNotificationsOnFailureOutputWithContext(context.Context) JobTaskWebhookNotificationsOnFailureOutput
+}
+
+type JobTaskWebhookNotificationsOnFailureArgs struct {
+	// ID of the job
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (JobTaskWebhookNotificationsOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnFailureArgs) ToJobTaskWebhookNotificationsOnFailureOutput() JobTaskWebhookNotificationsOnFailureOutput {
+	return i.ToJobTaskWebhookNotificationsOnFailureOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnFailureArgs) ToJobTaskWebhookNotificationsOnFailureOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnFailureOutput)
+}
+
+// JobTaskWebhookNotificationsOnFailureArrayInput is an input type that accepts JobTaskWebhookNotificationsOnFailureArray and JobTaskWebhookNotificationsOnFailureArrayOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnFailureArrayInput` via:
+//
+//	JobTaskWebhookNotificationsOnFailureArray{ JobTaskWebhookNotificationsOnFailureArgs{...} }
+type JobTaskWebhookNotificationsOnFailureArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnFailureArrayOutput() JobTaskWebhookNotificationsOnFailureArrayOutput
+	ToJobTaskWebhookNotificationsOnFailureArrayOutputWithContext(context.Context) JobTaskWebhookNotificationsOnFailureArrayOutput
+}
+
+type JobTaskWebhookNotificationsOnFailureArray []JobTaskWebhookNotificationsOnFailureInput
+
+func (JobTaskWebhookNotificationsOnFailureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnFailureArray) ToJobTaskWebhookNotificationsOnFailureArrayOutput() JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return i.ToJobTaskWebhookNotificationsOnFailureArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnFailureArray) ToJobTaskWebhookNotificationsOnFailureArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+type JobTaskWebhookNotificationsOnFailureOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnFailureOutput) ToJobTaskWebhookNotificationsOnFailureOutput() JobTaskWebhookNotificationsOnFailureOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnFailureOutput) ToJobTaskWebhookNotificationsOnFailureOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnFailureOutput {
+	return o
+}
+
+// ID of the job
+func (o JobTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskWebhookNotificationsOnFailureArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnFailureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnFailureArrayOutput) ToJobTaskWebhookNotificationsOnFailureArrayOutput() JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnFailureArrayOutput) ToJobTaskWebhookNotificationsOnFailureArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnFailureArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) JobTaskWebhookNotificationsOnFailureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskWebhookNotificationsOnFailure {
+		return vs[0].([]JobTaskWebhookNotificationsOnFailure)[vs[1].(int)]
+	}).(JobTaskWebhookNotificationsOnFailureOutput)
+}
+
+type JobTaskWebhookNotificationsOnStart struct {
+	// ID of the job
+	Id *string `pulumi:"id"`
+}
+
+// JobTaskWebhookNotificationsOnStartInput is an input type that accepts JobTaskWebhookNotificationsOnStartArgs and JobTaskWebhookNotificationsOnStartOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnStartInput` via:
+//
+//	JobTaskWebhookNotificationsOnStartArgs{...}
+type JobTaskWebhookNotificationsOnStartInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnStartOutput() JobTaskWebhookNotificationsOnStartOutput
+	ToJobTaskWebhookNotificationsOnStartOutputWithContext(context.Context) JobTaskWebhookNotificationsOnStartOutput
+}
+
+type JobTaskWebhookNotificationsOnStartArgs struct {
+	// ID of the job
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (JobTaskWebhookNotificationsOnStartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnStartArgs) ToJobTaskWebhookNotificationsOnStartOutput() JobTaskWebhookNotificationsOnStartOutput {
+	return i.ToJobTaskWebhookNotificationsOnStartOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnStartArgs) ToJobTaskWebhookNotificationsOnStartOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnStartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnStartOutput)
+}
+
+// JobTaskWebhookNotificationsOnStartArrayInput is an input type that accepts JobTaskWebhookNotificationsOnStartArray and JobTaskWebhookNotificationsOnStartArrayOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnStartArrayInput` via:
+//
+//	JobTaskWebhookNotificationsOnStartArray{ JobTaskWebhookNotificationsOnStartArgs{...} }
+type JobTaskWebhookNotificationsOnStartArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnStartArrayOutput() JobTaskWebhookNotificationsOnStartArrayOutput
+	ToJobTaskWebhookNotificationsOnStartArrayOutputWithContext(context.Context) JobTaskWebhookNotificationsOnStartArrayOutput
+}
+
+type JobTaskWebhookNotificationsOnStartArray []JobTaskWebhookNotificationsOnStartInput
+
+func (JobTaskWebhookNotificationsOnStartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnStartArray) ToJobTaskWebhookNotificationsOnStartArrayOutput() JobTaskWebhookNotificationsOnStartArrayOutput {
+	return i.ToJobTaskWebhookNotificationsOnStartArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnStartArray) ToJobTaskWebhookNotificationsOnStartArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnStartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+type JobTaskWebhookNotificationsOnStartOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnStartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnStartOutput) ToJobTaskWebhookNotificationsOnStartOutput() JobTaskWebhookNotificationsOnStartOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnStartOutput) ToJobTaskWebhookNotificationsOnStartOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnStartOutput {
+	return o
+}
+
+// ID of the job
+func (o JobTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskWebhookNotificationsOnStartArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnStartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnStartArrayOutput) ToJobTaskWebhookNotificationsOnStartArrayOutput() JobTaskWebhookNotificationsOnStartArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnStartArrayOutput) ToJobTaskWebhookNotificationsOnStartArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnStartArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobTaskWebhookNotificationsOnStartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskWebhookNotificationsOnStart {
+		return vs[0].([]JobTaskWebhookNotificationsOnStart)[vs[1].(int)]
+	}).(JobTaskWebhookNotificationsOnStartOutput)
+}
+
+type JobTaskWebhookNotificationsOnSuccess struct {
+	// ID of the job
+	Id *string `pulumi:"id"`
+}
+
+// JobTaskWebhookNotificationsOnSuccessInput is an input type that accepts JobTaskWebhookNotificationsOnSuccessArgs and JobTaskWebhookNotificationsOnSuccessOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnSuccessInput` via:
+//
+//	JobTaskWebhookNotificationsOnSuccessArgs{...}
+type JobTaskWebhookNotificationsOnSuccessInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnSuccessOutput() JobTaskWebhookNotificationsOnSuccessOutput
+	ToJobTaskWebhookNotificationsOnSuccessOutputWithContext(context.Context) JobTaskWebhookNotificationsOnSuccessOutput
+}
+
+type JobTaskWebhookNotificationsOnSuccessArgs struct {
+	// ID of the job
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (JobTaskWebhookNotificationsOnSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnSuccessArgs) ToJobTaskWebhookNotificationsOnSuccessOutput() JobTaskWebhookNotificationsOnSuccessOutput {
+	return i.ToJobTaskWebhookNotificationsOnSuccessOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnSuccessArgs) ToJobTaskWebhookNotificationsOnSuccessOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnSuccessOutput)
+}
+
+// JobTaskWebhookNotificationsOnSuccessArrayInput is an input type that accepts JobTaskWebhookNotificationsOnSuccessArray and JobTaskWebhookNotificationsOnSuccessArrayOutput values.
+// You can construct a concrete instance of `JobTaskWebhookNotificationsOnSuccessArrayInput` via:
+//
+//	JobTaskWebhookNotificationsOnSuccessArray{ JobTaskWebhookNotificationsOnSuccessArgs{...} }
+type JobTaskWebhookNotificationsOnSuccessArrayInput interface {
+	pulumi.Input
+
+	ToJobTaskWebhookNotificationsOnSuccessArrayOutput() JobTaskWebhookNotificationsOnSuccessArrayOutput
+	ToJobTaskWebhookNotificationsOnSuccessArrayOutputWithContext(context.Context) JobTaskWebhookNotificationsOnSuccessArrayOutput
+}
+
+type JobTaskWebhookNotificationsOnSuccessArray []JobTaskWebhookNotificationsOnSuccessInput
+
+func (JobTaskWebhookNotificationsOnSuccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (i JobTaskWebhookNotificationsOnSuccessArray) ToJobTaskWebhookNotificationsOnSuccessArrayOutput() JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return i.ToJobTaskWebhookNotificationsOnSuccessArrayOutputWithContext(context.Background())
+}
+
+func (i JobTaskWebhookNotificationsOnSuccessArray) ToJobTaskWebhookNotificationsOnSuccessArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type JobTaskWebhookNotificationsOnSuccessOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnSuccessOutput) ToJobTaskWebhookNotificationsOnSuccessOutput() JobTaskWebhookNotificationsOnSuccessOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnSuccessOutput) ToJobTaskWebhookNotificationsOnSuccessOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnSuccessOutput {
+	return o
+}
+
+// ID of the job
+func (o JobTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTaskWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type JobTaskWebhookNotificationsOnSuccessArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTaskWebhookNotificationsOnSuccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (o JobTaskWebhookNotificationsOnSuccessArrayOutput) ToJobTaskWebhookNotificationsOnSuccessArrayOutput() JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnSuccessArrayOutput) ToJobTaskWebhookNotificationsOnSuccessArrayOutputWithContext(ctx context.Context) JobTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o
+}
+
+func (o JobTaskWebhookNotificationsOnSuccessArrayOutput) Index(i pulumi.IntInput) JobTaskWebhookNotificationsOnSuccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTaskWebhookNotificationsOnSuccess {
+		return vs[0].([]JobTaskWebhookNotificationsOnSuccess)[vs[1].(int)]
+	}).(JobTaskWebhookNotificationsOnSuccessOutput)
+}
+
 type JobTrigger struct {
 	// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
 	FileArrival JobTriggerFileArrival `pulumi:"fileArrival"`
@@ -27218,7 +28590,7 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceeded struct {
 	// ID of the job
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // JobWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts JobWebhookNotificationsOnDurationWarningThresholdExceededArgs and JobWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
@@ -27234,7 +28606,7 @@ type JobWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
 	// ID of the job
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (JobWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
@@ -27289,8 +28661,8 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobWe
 }
 
 // ID of the job
-func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) string { return v.Id }).(pulumi.StringOutput)
+func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
@@ -27315,7 +28687,7 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) In
 
 type JobWebhookNotificationsOnFailure struct {
 	// ID of the job
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // JobWebhookNotificationsOnFailureInput is an input type that accepts JobWebhookNotificationsOnFailureArgs and JobWebhookNotificationsOnFailureOutput values.
@@ -27331,7 +28703,7 @@ type JobWebhookNotificationsOnFailureInput interface {
 
 type JobWebhookNotificationsOnFailureArgs struct {
 	// ID of the job
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (JobWebhookNotificationsOnFailureArgs) ElementType() reflect.Type {
@@ -27386,8 +28758,8 @@ func (o JobWebhookNotificationsOnFailureOutput) ToJobWebhookNotificationsOnFailu
 }
 
 // ID of the job
-func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
+func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type JobWebhookNotificationsOnFailureArrayOutput struct{ *pulumi.OutputState }
@@ -27412,7 +28784,7 @@ func (o JobWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) Jo
 
 type JobWebhookNotificationsOnStart struct {
 	// ID of the job
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // JobWebhookNotificationsOnStartInput is an input type that accepts JobWebhookNotificationsOnStartArgs and JobWebhookNotificationsOnStartOutput values.
@@ -27428,7 +28800,7 @@ type JobWebhookNotificationsOnStartInput interface {
 
 type JobWebhookNotificationsOnStartArgs struct {
 	// ID of the job
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (JobWebhookNotificationsOnStartArgs) ElementType() reflect.Type {
@@ -27483,8 +28855,8 @@ func (o JobWebhookNotificationsOnStartOutput) ToJobWebhookNotificationsOnStartOu
 }
 
 // ID of the job
-func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
+func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type JobWebhookNotificationsOnStartArrayOutput struct{ *pulumi.OutputState }
@@ -27509,7 +28881,7 @@ func (o JobWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobW
 
 type JobWebhookNotificationsOnSuccess struct {
 	// ID of the job
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // JobWebhookNotificationsOnSuccessInput is an input type that accepts JobWebhookNotificationsOnSuccessArgs and JobWebhookNotificationsOnSuccessOutput values.
@@ -27525,7 +28897,7 @@ type JobWebhookNotificationsOnSuccessInput interface {
 
 type JobWebhookNotificationsOnSuccessArgs struct {
 	// ID of the job
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (JobWebhookNotificationsOnSuccessArgs) ElementType() reflect.Type {
@@ -27580,8 +28952,8 @@ func (o JobWebhookNotificationsOnSuccessOutput) ToJobWebhookNotificationsOnSucce
 }
 
 // ID of the job
-func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
+func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type JobWebhookNotificationsOnSuccessArrayOutput struct{ *pulumi.OutputState }
@@ -28064,10 +29436,9 @@ func (o LibraryPypiPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 type MetastoreDataAccessAwsIamRole struct {
-	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-	RoleArn string `pulumi:"roleArn"`
+	ExternalId         *string `pulumi:"externalId"`
+	RoleArn            string  `pulumi:"roleArn"`
+	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
 }
 
 // MetastoreDataAccessAwsIamRoleInput is an input type that accepts MetastoreDataAccessAwsIamRoleArgs and MetastoreDataAccessAwsIamRoleOutput values.
@@ -28082,10 +29453,9 @@ type MetastoreDataAccessAwsIamRoleInput interface {
 }
 
 type MetastoreDataAccessAwsIamRoleArgs struct {
-	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-	//
-	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	ExternalId         pulumi.StringPtrInput `pulumi:"externalId"`
+	RoleArn            pulumi.StringInput    `pulumi:"roleArn"`
+	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
 }
 
 func (MetastoreDataAccessAwsIamRoleArgs) ElementType() reflect.Type {
@@ -28165,11 +29535,16 @@ func (o MetastoreDataAccessAwsIamRoleOutput) ToMetastoreDataAccessAwsIamRolePtrO
 	}).(MetastoreDataAccessAwsIamRolePtrOutput)
 }
 
-// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
+func (o MetastoreDataAccessAwsIamRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDataAccessAwsIamRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 func (o MetastoreDataAccessAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+func (o MetastoreDataAccessAwsIamRoleOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreDataAccessAwsIamRole) *string { return v.UnityCatalogIamArn }).(pulumi.StringPtrOutput)
 }
 
 type MetastoreDataAccessAwsIamRolePtrOutput struct{ *pulumi.OutputState }
@@ -28196,9 +29571,15 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) Elem() MetastoreDataAccessAwsIam
 	}).(MetastoreDataAccessAwsIamRoleOutput)
 }
 
-// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
+func (o MetastoreDataAccessAwsIamRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAwsIamRole) *string {
 		if v == nil {
@@ -28208,13 +29589,18 @@ func (o MetastoreDataAccessAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o MetastoreDataAccessAwsIamRolePtrOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccessAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogIamArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type MetastoreDataAccessAzureManagedIdentity struct {
-	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 	AccessConnectorId string  `pulumi:"accessConnectorId"`
 	CredentialId      *string `pulumi:"credentialId"`
-	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ManagedIdentityId *string `pulumi:"managedIdentityId"`
 }
 
@@ -28230,12 +29616,8 @@ type MetastoreDataAccessAzureManagedIdentityInput interface {
 }
 
 type MetastoreDataAccessAzureManagedIdentityArgs struct {
-	// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 	AccessConnectorId pulumi.StringInput    `pulumi:"accessConnectorId"`
 	CredentialId      pulumi.StringPtrInput `pulumi:"credentialId"`
-	// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-	//
-	// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 	ManagedIdentityId pulumi.StringPtrInput `pulumi:"managedIdentityId"`
 }
 
@@ -28316,7 +29698,6 @@ func (o MetastoreDataAccessAzureManagedIdentityOutput) ToMetastoreDataAccessAzur
 	}).(MetastoreDataAccessAzureManagedIdentityPtrOutput)
 }
 
-// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 func (o MetastoreDataAccessAzureManagedIdentityOutput) AccessConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureManagedIdentity) string { return v.AccessConnectorId }).(pulumi.StringOutput)
 }
@@ -28325,9 +29706,6 @@ func (o MetastoreDataAccessAzureManagedIdentityOutput) CredentialId() pulumi.Str
 	return o.ApplyT(func(v MetastoreDataAccessAzureManagedIdentity) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
 }
 
-// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o MetastoreDataAccessAzureManagedIdentityOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureManagedIdentity) *string { return v.ManagedIdentityId }).(pulumi.StringPtrOutput)
 }
@@ -28356,7 +29734,6 @@ func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) Elem() MetastoreDataAc
 	}).(MetastoreDataAccessAzureManagedIdentityOutput)
 }
 
-// The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
 func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) AccessConnectorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureManagedIdentity) *string {
 		if v == nil {
@@ -28375,9 +29752,6 @@ func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) CredentialId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-//
-// `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
 func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) ManagedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureManagedIdentity) *string {
 		if v == nil {
@@ -28388,12 +29762,9 @@ func (o MetastoreDataAccessAzureManagedIdentityPtrOutput) ManagedIdentityId() pu
 }
 
 type MetastoreDataAccessAzureServicePrincipal struct {
-	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId string `pulumi:"applicationId"`
-	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	ClientSecret string `pulumi:"clientSecret"`
-	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-	DirectoryId string `pulumi:"directoryId"`
+	ClientSecret  string `pulumi:"clientSecret"`
+	DirectoryId   string `pulumi:"directoryId"`
 }
 
 // MetastoreDataAccessAzureServicePrincipalInput is an input type that accepts MetastoreDataAccessAzureServicePrincipalArgs and MetastoreDataAccessAzureServicePrincipalOutput values.
@@ -28408,12 +29779,9 @@ type MetastoreDataAccessAzureServicePrincipalInput interface {
 }
 
 type MetastoreDataAccessAzureServicePrincipalArgs struct {
-	// The application ID of the application registration within the referenced AAD tenant
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// The client secret generated for the above app ID in AAD. **This field is redacted on output**
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	ClientSecret  pulumi.StringInput `pulumi:"clientSecret"`
+	DirectoryId   pulumi.StringInput `pulumi:"directoryId"`
 }
 
 func (MetastoreDataAccessAzureServicePrincipalArgs) ElementType() reflect.Type {
@@ -28493,17 +29861,14 @@ func (o MetastoreDataAccessAzureServicePrincipalOutput) ToMetastoreDataAccessAzu
 	}).(MetastoreDataAccessAzureServicePrincipalPtrOutput)
 }
 
-// The application ID of the application registration within the referenced AAD tenant
 func (o MetastoreDataAccessAzureServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// The client secret generated for the above app ID in AAD. **This field is redacted on output**
 func (o MetastoreDataAccessAzureServicePrincipalOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureServicePrincipal) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 func (o MetastoreDataAccessAzureServicePrincipalOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessAzureServicePrincipal) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -28532,7 +29897,6 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) Elem() MetastoreDataA
 	}).(MetastoreDataAccessAzureServicePrincipalOutput)
 }
 
-// The application ID of the application registration within the referenced AAD tenant
 func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureServicePrincipal) *string {
 		if v == nil {
@@ -28542,7 +29906,6 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ApplicationId() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// The client secret generated for the above app ID in AAD. **This field is redacted on output**
 func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureServicePrincipal) *string {
 		if v == nil {
@@ -28552,7 +29915,6 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) ClientSecret() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
 func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) DirectoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessAzureServicePrincipal) *string {
 		if v == nil {
@@ -28564,10 +29926,7 @@ func (o MetastoreDataAccessAzureServicePrincipalPtrOutput) DirectoryId() pulumi.
 
 type MetastoreDataAccessDatabricksGcpServiceAccount struct {
 	CredentialId *string `pulumi:"credentialId"`
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-	Email *string `pulumi:"email"`
+	Email        *string `pulumi:"email"`
 }
 
 // MetastoreDataAccessDatabricksGcpServiceAccountInput is an input type that accepts MetastoreDataAccessDatabricksGcpServiceAccountArgs and MetastoreDataAccessDatabricksGcpServiceAccountOutput values.
@@ -28583,10 +29942,7 @@ type MetastoreDataAccessDatabricksGcpServiceAccountInput interface {
 
 type MetastoreDataAccessDatabricksGcpServiceAccountArgs struct {
 	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-	Email pulumi.StringPtrInput `pulumi:"email"`
+	Email        pulumi.StringPtrInput `pulumi:"email"`
 }
 
 func (MetastoreDataAccessDatabricksGcpServiceAccountArgs) ElementType() reflect.Type {
@@ -28670,9 +30026,6 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) CredentialId() pul
 	return o.ApplyT(func(v MetastoreDataAccessDatabricksGcpServiceAccount) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
 }
 
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreDataAccessDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -28710,9 +30063,6 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) CredentialId() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessDatabricksGcpServiceAccount) *string {
 		if v == nil {
@@ -28723,9 +30073,6 @@ func (o MetastoreDataAccessDatabricksGcpServiceAccountPtrOutput) Email() pulumi.
 }
 
 type MetastoreDataAccessGcpServiceAccountKey struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email        string `pulumi:"email"`
 	PrivateKey   string `pulumi:"privateKey"`
 	PrivateKeyId string `pulumi:"privateKeyId"`
@@ -28743,9 +30090,6 @@ type MetastoreDataAccessGcpServiceAccountKeyInput interface {
 }
 
 type MetastoreDataAccessGcpServiceAccountKeyArgs struct {
-	// The email of the GCP service account created, to be granted access to relevant buckets.
-	//
-	// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 	Email        pulumi.StringInput `pulumi:"email"`
 	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
 	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
@@ -28828,9 +30172,6 @@ func (o MetastoreDataAccessGcpServiceAccountKeyOutput) ToMetastoreDataAccessGcpS
 	}).(MetastoreDataAccessGcpServiceAccountKeyPtrOutput)
 }
 
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreDataAccessGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -28867,9 +30208,6 @@ func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Elem() MetastoreDataAc
 	}).(MetastoreDataAccessGcpServiceAccountKeyOutput)
 }
 
-// The email of the GCP service account created, to be granted access to relevant buckets.
-//
-// `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
 func (o MetastoreDataAccessGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccessGcpServiceAccountKey) *string {
 		if v == nil {
@@ -30992,7 +32330,7 @@ func (o MountWasbPtrOutput) TokenSecretScope() pulumi.StringPtrOutput {
 
 type MwsCustomerManagedKeysAwsKeyInfo struct {
 	// The AWS KMS key alias.
-	KeyAlias string `pulumi:"keyAlias"`
+	KeyAlias *string `pulumi:"keyAlias"`
 	// The AWS KMS key's Amazon Resource Name (ARN).
 	KeyArn string `pulumi:"keyArn"`
 	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
@@ -31012,7 +32350,7 @@ type MwsCustomerManagedKeysAwsKeyInfoInput interface {
 
 type MwsCustomerManagedKeysAwsKeyInfoArgs struct {
 	// The AWS KMS key alias.
-	KeyAlias pulumi.StringInput `pulumi:"keyAlias"`
+	KeyAlias pulumi.StringPtrInput `pulumi:"keyAlias"`
 	// The AWS KMS key's Amazon Resource Name (ARN).
 	KeyArn pulumi.StringInput `pulumi:"keyArn"`
 	// (Computed) The AWS region in which KMS key is deployed to. This is not required.
@@ -31097,8 +32435,8 @@ func (o MwsCustomerManagedKeysAwsKeyInfoOutput) ToMwsCustomerManagedKeysAwsKeyIn
 }
 
 // The AWS KMS key alias.
-func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyAlias() pulumi.StringOutput {
-	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) string { return v.KeyAlias }).(pulumi.StringOutput)
+func (o MwsCustomerManagedKeysAwsKeyInfoOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MwsCustomerManagedKeysAwsKeyInfo) *string { return v.KeyAlias }).(pulumi.StringPtrOutput)
 }
 
 // The AWS KMS key's Amazon Resource Name (ARN).
@@ -31141,7 +32479,7 @@ func (o MwsCustomerManagedKeysAwsKeyInfoPtrOutput) KeyAlias() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return &v.KeyAlias
+		return v.KeyAlias
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40050,9 +41388,9 @@ func (o SqlQueryParameterEnumPtrOutput) Values() pulumi.StringArrayOutput {
 }
 
 type SqlQueryParameterEnumMultiple struct {
-	Prefix    string `pulumi:"prefix"`
-	Separator string `pulumi:"separator"`
-	Suffix    string `pulumi:"suffix"`
+	Prefix    *string `pulumi:"prefix"`
+	Separator string  `pulumi:"separator"`
+	Suffix    *string `pulumi:"suffix"`
 }
 
 // SqlQueryParameterEnumMultipleInput is an input type that accepts SqlQueryParameterEnumMultipleArgs and SqlQueryParameterEnumMultipleOutput values.
@@ -40067,9 +41405,9 @@ type SqlQueryParameterEnumMultipleInput interface {
 }
 
 type SqlQueryParameterEnumMultipleArgs struct {
-	Prefix    pulumi.StringInput `pulumi:"prefix"`
-	Separator pulumi.StringInput `pulumi:"separator"`
-	Suffix    pulumi.StringInput `pulumi:"suffix"`
+	Prefix    pulumi.StringPtrInput `pulumi:"prefix"`
+	Separator pulumi.StringInput    `pulumi:"separator"`
+	Suffix    pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
 func (SqlQueryParameterEnumMultipleArgs) ElementType() reflect.Type {
@@ -40149,16 +41487,16 @@ func (o SqlQueryParameterEnumMultipleOutput) ToSqlQueryParameterEnumMultiplePtrO
 	}).(SqlQueryParameterEnumMultiplePtrOutput)
 }
 
-func (o SqlQueryParameterEnumMultipleOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) string { return v.Prefix }).(pulumi.StringOutput)
+func (o SqlQueryParameterEnumMultipleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlQueryParameterEnumMultipleOutput) Separator() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) string { return v.Separator }).(pulumi.StringOutput)
 }
 
-func (o SqlQueryParameterEnumMultipleOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) string { return v.Suffix }).(pulumi.StringOutput)
+func (o SqlQueryParameterEnumMultipleOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterEnumMultiple) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
 
 type SqlQueryParameterEnumMultiplePtrOutput struct{ *pulumi.OutputState }
@@ -40190,7 +41528,7 @@ func (o SqlQueryParameterEnumMultiplePtrOutput) Prefix() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Prefix
+		return v.Prefix
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40208,7 +41546,7 @@ func (o SqlQueryParameterEnumMultiplePtrOutput) Suffix() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Suffix
+		return v.Suffix
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40532,9 +41870,9 @@ func (o SqlQueryParameterQueryPtrOutput) Values() pulumi.StringArrayOutput {
 }
 
 type SqlQueryParameterQueryMultiple struct {
-	Prefix    string `pulumi:"prefix"`
-	Separator string `pulumi:"separator"`
-	Suffix    string `pulumi:"suffix"`
+	Prefix    *string `pulumi:"prefix"`
+	Separator string  `pulumi:"separator"`
+	Suffix    *string `pulumi:"suffix"`
 }
 
 // SqlQueryParameterQueryMultipleInput is an input type that accepts SqlQueryParameterQueryMultipleArgs and SqlQueryParameterQueryMultipleOutput values.
@@ -40549,9 +41887,9 @@ type SqlQueryParameterQueryMultipleInput interface {
 }
 
 type SqlQueryParameterQueryMultipleArgs struct {
-	Prefix    pulumi.StringInput `pulumi:"prefix"`
-	Separator pulumi.StringInput `pulumi:"separator"`
-	Suffix    pulumi.StringInput `pulumi:"suffix"`
+	Prefix    pulumi.StringPtrInput `pulumi:"prefix"`
+	Separator pulumi.StringInput    `pulumi:"separator"`
+	Suffix    pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
 func (SqlQueryParameterQueryMultipleArgs) ElementType() reflect.Type {
@@ -40631,16 +41969,16 @@ func (o SqlQueryParameterQueryMultipleOutput) ToSqlQueryParameterQueryMultiplePt
 	}).(SqlQueryParameterQueryMultiplePtrOutput)
 }
 
-func (o SqlQueryParameterQueryMultipleOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) string { return v.Prefix }).(pulumi.StringOutput)
+func (o SqlQueryParameterQueryMultipleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
 func (o SqlQueryParameterQueryMultipleOutput) Separator() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) string { return v.Separator }).(pulumi.StringOutput)
 }
 
-func (o SqlQueryParameterQueryMultipleOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) string { return v.Suffix }).(pulumi.StringOutput)
+func (o SqlQueryParameterQueryMultipleOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlQueryParameterQueryMultiple) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
 
 type SqlQueryParameterQueryMultiplePtrOutput struct{ *pulumi.OutputState }
@@ -40672,7 +42010,7 @@ func (o SqlQueryParameterQueryMultiplePtrOutput) Prefix() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.Prefix
+		return v.Prefix
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40690,7 +42028,7 @@ func (o SqlQueryParameterQueryMultiplePtrOutput) Suffix() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.Suffix
+		return v.Suffix
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41925,10 +43263,14 @@ func (o SqlWidgetPositionPtrOutput) SizeY() pulumi.IntPtrOutput {
 }
 
 type StorageCredentialAwsIamRole struct {
+	// The external ID used in role assumption to prevent confused deputy problem.
+	ExternalId *string `pulumi:"externalId"`
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	RoleArn string `pulumi:"roleArn"`
+	// The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 	//
 	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-	RoleArn string `pulumi:"roleArn"`
+	UnityCatalogIamArn *string `pulumi:"unityCatalogIamArn"`
 }
 
 // StorageCredentialAwsIamRoleInput is an input type that accepts StorageCredentialAwsIamRoleArgs and StorageCredentialAwsIamRoleOutput values.
@@ -41943,10 +43285,14 @@ type StorageCredentialAwsIamRoleInput interface {
 }
 
 type StorageCredentialAwsIamRoleArgs struct {
+	// The external ID used in role assumption to prevent confused deputy problem.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
 	//
 	// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	UnityCatalogIamArn pulumi.StringPtrInput `pulumi:"unityCatalogIamArn"`
 }
 
 func (StorageCredentialAwsIamRoleArgs) ElementType() reflect.Type {
@@ -42026,11 +43372,21 @@ func (o StorageCredentialAwsIamRoleOutput) ToStorageCredentialAwsIamRolePtrOutpu
 	}).(StorageCredentialAwsIamRolePtrOutput)
 }
 
+// The external ID used in role assumption to prevent confused deputy problem.
+func (o StorageCredentialAwsIamRoleOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 func (o StorageCredentialAwsIamRoleOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialAwsIamRole) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+func (o StorageCredentialAwsIamRoleOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageCredentialAwsIamRole) *string { return v.UnityCatalogIamArn }).(pulumi.StringPtrOutput)
 }
 
 type StorageCredentialAwsIamRolePtrOutput struct{ *pulumi.OutputState }
@@ -42057,15 +43413,35 @@ func (o StorageCredentialAwsIamRolePtrOutput) Elem() StorageCredentialAwsIamRole
 	}).(StorageCredentialAwsIamRoleOutput)
 }
 
+// The external ID used in role assumption to prevent confused deputy problem.
+func (o StorageCredentialAwsIamRolePtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-//
-// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
 func (o StorageCredentialAwsIamRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+//
+// `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+func (o StorageCredentialAwsIamRolePtrOutput) UnityCatalogIamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageCredentialAwsIamRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogIamArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -42426,6 +43802,8 @@ func (o StorageCredentialAzureServicePrincipalPtrOutput) DirectoryId() pulumi.St
 type StorageCredentialDatabricksGcpServiceAccount struct {
 	CredentialId *string `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	Email *string `pulumi:"email"`
 }
 
@@ -42443,6 +43821,8 @@ type StorageCredentialDatabricksGcpServiceAccountInput interface {
 type StorageCredentialDatabricksGcpServiceAccountArgs struct {
 	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	Email pulumi.StringPtrInput `pulumi:"email"`
 }
 
@@ -42528,6 +43908,8 @@ func (o StorageCredentialDatabricksGcpServiceAccountOutput) CredentialId() pulum
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialDatabricksGcpServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageCredentialDatabricksGcpServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -42566,6 +43948,8 @@ func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) CredentialId() pu
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialDatabricksGcpServiceAccount) *string {
 		if v == nil {
@@ -42577,6 +43961,8 @@ func (o StorageCredentialDatabricksGcpServiceAccountPtrOutput) Email() pulumi.St
 
 type StorageCredentialGcpServiceAccountKey struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	Email        string `pulumi:"email"`
 	PrivateKey   string `pulumi:"privateKey"`
 	PrivateKeyId string `pulumi:"privateKeyId"`
@@ -42595,6 +43981,8 @@ type StorageCredentialGcpServiceAccountKeyInput interface {
 
 type StorageCredentialGcpServiceAccountKeyArgs struct {
 	// The email of the GCP service account created, to be granted access to relevant buckets.
+	//
+	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	Email        pulumi.StringInput `pulumi:"email"`
 	PrivateKey   pulumi.StringInput `pulumi:"privateKey"`
 	PrivateKeyId pulumi.StringInput `pulumi:"privateKeyId"`
@@ -42678,6 +44066,8 @@ func (o StorageCredentialGcpServiceAccountKeyOutput) ToStorageCredentialGcpServi
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialGcpServiceAccountKeyOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageCredentialGcpServiceAccountKey) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -42715,6 +44105,8 @@ func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Elem() StorageCredential
 }
 
 // The email of the GCP service account created, to be granted access to relevant buckets.
+//
+// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialGcpServiceAccountKeyPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageCredentialGcpServiceAccountKey) *string {
 		if v == nil {
@@ -49588,6 +50980,130 @@ func (o GetInstancePoolPoolInfoStatsPtrOutput) UsedCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetInstanceProfilesInstanceProfile struct {
+	// ARN of the instance profile.
+	Arn string `pulumi:"arn"`
+	// Whether the instance profile is a meta instance profile or not.
+	IsMeta bool `pulumi:"isMeta"`
+	// Name of the instance profile.
+	Name string `pulumi:"name"`
+	// ARN of the role attached to the instance profile.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+// GetInstanceProfilesInstanceProfileInput is an input type that accepts GetInstanceProfilesInstanceProfileArgs and GetInstanceProfilesInstanceProfileOutput values.
+// You can construct a concrete instance of `GetInstanceProfilesInstanceProfileInput` via:
+//
+//	GetInstanceProfilesInstanceProfileArgs{...}
+type GetInstanceProfilesInstanceProfileInput interface {
+	pulumi.Input
+
+	ToGetInstanceProfilesInstanceProfileOutput() GetInstanceProfilesInstanceProfileOutput
+	ToGetInstanceProfilesInstanceProfileOutputWithContext(context.Context) GetInstanceProfilesInstanceProfileOutput
+}
+
+type GetInstanceProfilesInstanceProfileArgs struct {
+	// ARN of the instance profile.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// Whether the instance profile is a meta instance profile or not.
+	IsMeta pulumi.BoolInput `pulumi:"isMeta"`
+	// Name of the instance profile.
+	Name pulumi.StringInput `pulumi:"name"`
+	// ARN of the role attached to the instance profile.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (GetInstanceProfilesInstanceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceProfilesInstanceProfile)(nil)).Elem()
+}
+
+func (i GetInstanceProfilesInstanceProfileArgs) ToGetInstanceProfilesInstanceProfileOutput() GetInstanceProfilesInstanceProfileOutput {
+	return i.ToGetInstanceProfilesInstanceProfileOutputWithContext(context.Background())
+}
+
+func (i GetInstanceProfilesInstanceProfileArgs) ToGetInstanceProfilesInstanceProfileOutputWithContext(ctx context.Context) GetInstanceProfilesInstanceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceProfilesInstanceProfileOutput)
+}
+
+// GetInstanceProfilesInstanceProfileArrayInput is an input type that accepts GetInstanceProfilesInstanceProfileArray and GetInstanceProfilesInstanceProfileArrayOutput values.
+// You can construct a concrete instance of `GetInstanceProfilesInstanceProfileArrayInput` via:
+//
+//	GetInstanceProfilesInstanceProfileArray{ GetInstanceProfilesInstanceProfileArgs{...} }
+type GetInstanceProfilesInstanceProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceProfilesInstanceProfileArrayOutput() GetInstanceProfilesInstanceProfileArrayOutput
+	ToGetInstanceProfilesInstanceProfileArrayOutputWithContext(context.Context) GetInstanceProfilesInstanceProfileArrayOutput
+}
+
+type GetInstanceProfilesInstanceProfileArray []GetInstanceProfilesInstanceProfileInput
+
+func (GetInstanceProfilesInstanceProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceProfilesInstanceProfile)(nil)).Elem()
+}
+
+func (i GetInstanceProfilesInstanceProfileArray) ToGetInstanceProfilesInstanceProfileArrayOutput() GetInstanceProfilesInstanceProfileArrayOutput {
+	return i.ToGetInstanceProfilesInstanceProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceProfilesInstanceProfileArray) ToGetInstanceProfilesInstanceProfileArrayOutputWithContext(ctx context.Context) GetInstanceProfilesInstanceProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceProfilesInstanceProfileArrayOutput)
+}
+
+type GetInstanceProfilesInstanceProfileOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceProfilesInstanceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceProfilesInstanceProfile)(nil)).Elem()
+}
+
+func (o GetInstanceProfilesInstanceProfileOutput) ToGetInstanceProfilesInstanceProfileOutput() GetInstanceProfilesInstanceProfileOutput {
+	return o
+}
+
+func (o GetInstanceProfilesInstanceProfileOutput) ToGetInstanceProfilesInstanceProfileOutputWithContext(ctx context.Context) GetInstanceProfilesInstanceProfileOutput {
+	return o
+}
+
+// ARN of the instance profile.
+func (o GetInstanceProfilesInstanceProfileOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Whether the instance profile is a meta instance profile or not.
+func (o GetInstanceProfilesInstanceProfileOutput) IsMeta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) bool { return v.IsMeta }).(pulumi.BoolOutput)
+}
+
+// Name of the instance profile.
+func (o GetInstanceProfilesInstanceProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ARN of the role attached to the instance profile.
+func (o GetInstanceProfilesInstanceProfileOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceProfilesInstanceProfile) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type GetInstanceProfilesInstanceProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceProfilesInstanceProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceProfilesInstanceProfile)(nil)).Elem()
+}
+
+func (o GetInstanceProfilesInstanceProfileArrayOutput) ToGetInstanceProfilesInstanceProfileArrayOutput() GetInstanceProfilesInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetInstanceProfilesInstanceProfileArrayOutput) ToGetInstanceProfilesInstanceProfileArrayOutputWithContext(ctx context.Context) GetInstanceProfilesInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetInstanceProfilesInstanceProfileArrayOutput) Index(i pulumi.IntInput) GetInstanceProfilesInstanceProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceProfilesInstanceProfile {
+		return vs[0].([]GetInstanceProfilesInstanceProfile)[vs[1].(int)]
+	}).(GetInstanceProfilesInstanceProfileOutput)
+}
+
 type GetJobJobSettings struct {
 	CreatedTime     *int                       `pulumi:"createdTime"`
 	CreatorUserName *string                    `pulumi:"creatorUserName"`
@@ -49786,6 +51302,8 @@ type GetJobJobSettingsSettings struct {
 	Continuous             *GetJobJobSettingsSettingsContinuous         `pulumi:"continuous"`
 	DbtTask                *GetJobJobSettingsSettingsDbtTask            `pulumi:"dbtTask"`
 	Deployment             *GetJobJobSettingsSettingsDeployment         `pulumi:"deployment"`
+	Description            *string                                      `pulumi:"description"`
+	EditMode               *string                                      `pulumi:"editMode"`
 	EmailNotifications     *GetJobJobSettingsSettingsEmailNotifications `pulumi:"emailNotifications"`
 	ExistingClusterId      *string                                      `pulumi:"existingClusterId"`
 	Format                 string                                       `pulumi:"format"`
@@ -49806,7 +51324,7 @@ type GetJobJobSettingsSettings struct {
 	PythonWheelTask      *GetJobJobSettingsSettingsPythonWheelTask      `pulumi:"pythonWheelTask"`
 	Queue                *GetJobJobSettingsSettingsQueue                `pulumi:"queue"`
 	RetryOnTimeout       *bool                                          `pulumi:"retryOnTimeout"`
-	RunAs                *GetJobJobSettingsSettingsRunAs                `pulumi:"runAs"`
+	RunAs                GetJobJobSettingsSettingsRunAs                 `pulumi:"runAs"`
 	RunJobTask           *GetJobJobSettingsSettingsRunJobTask           `pulumi:"runJobTask"`
 	Schedule             *GetJobJobSettingsSettingsSchedule             `pulumi:"schedule"`
 	SparkJarTask         *GetJobJobSettingsSettingsSparkJarTask         `pulumi:"sparkJarTask"`
@@ -49835,6 +51353,8 @@ type GetJobJobSettingsSettingsArgs struct {
 	Continuous             GetJobJobSettingsSettingsContinuousPtrInput         `pulumi:"continuous"`
 	DbtTask                GetJobJobSettingsSettingsDbtTaskPtrInput            `pulumi:"dbtTask"`
 	Deployment             GetJobJobSettingsSettingsDeploymentPtrInput         `pulumi:"deployment"`
+	Description            pulumi.StringPtrInput                               `pulumi:"description"`
+	EditMode               pulumi.StringPtrInput                               `pulumi:"editMode"`
 	EmailNotifications     GetJobJobSettingsSettingsEmailNotificationsPtrInput `pulumi:"emailNotifications"`
 	ExistingClusterId      pulumi.StringPtrInput                               `pulumi:"existingClusterId"`
 	Format                 pulumi.StringInput                                  `pulumi:"format"`
@@ -49855,7 +51375,7 @@ type GetJobJobSettingsSettingsArgs struct {
 	PythonWheelTask      GetJobJobSettingsSettingsPythonWheelTaskPtrInput      `pulumi:"pythonWheelTask"`
 	Queue                GetJobJobSettingsSettingsQueuePtrInput                `pulumi:"queue"`
 	RetryOnTimeout       pulumi.BoolPtrInput                                   `pulumi:"retryOnTimeout"`
-	RunAs                GetJobJobSettingsSettingsRunAsPtrInput                `pulumi:"runAs"`
+	RunAs                GetJobJobSettingsSettingsRunAsInput                   `pulumi:"runAs"`
 	RunJobTask           GetJobJobSettingsSettingsRunJobTaskPtrInput           `pulumi:"runJobTask"`
 	Schedule             GetJobJobSettingsSettingsSchedulePtrInput             `pulumi:"schedule"`
 	SparkJarTask         GetJobJobSettingsSettingsSparkJarTaskPtrInput         `pulumi:"sparkJarTask"`
@@ -49961,6 +51481,14 @@ func (o GetJobJobSettingsSettingsOutput) Deployment() GetJobJobSettingsSettingsD
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsDeployment { return v.Deployment }).(GetJobJobSettingsSettingsDeploymentPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsOutput) EditMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) *string { return v.EditMode }).(pulumi.StringPtrOutput)
+}
+
 func (o GetJobJobSettingsSettingsOutput) EmailNotifications() GetJobJobSettingsSettingsEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsEmailNotifications {
 		return v.EmailNotifications
@@ -50042,8 +51570,8 @@ func (o GetJobJobSettingsSettingsOutput) RetryOnTimeout() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettings) *bool { return v.RetryOnTimeout }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsOutput) RunAs() GetJobJobSettingsSettingsRunAsPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettings) *GetJobJobSettingsSettingsRunAs { return v.RunAs }).(GetJobJobSettingsSettingsRunAsPtrOutput)
+func (o GetJobJobSettingsSettingsOutput) RunAs() GetJobJobSettingsSettingsRunAsOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettings) GetJobJobSettingsSettingsRunAs { return v.RunAs }).(GetJobJobSettingsSettingsRunAsOutput)
 }
 
 func (o GetJobJobSettingsSettingsOutput) RunJobTask() GetJobJobSettingsSettingsRunJobTaskPtrOutput {
@@ -50146,6 +51674,24 @@ func (o GetJobJobSettingsSettingsPtrOutput) Deployment() GetJobJobSettingsSettin
 		}
 		return v.Deployment
 	}).(GetJobJobSettingsSettingsDeploymentPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsPtrOutput) EditMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EditMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsPtrOutput) EmailNotifications() GetJobJobSettingsSettingsEmailNotificationsPtrOutput {
@@ -50325,7 +51871,7 @@ func (o GetJobJobSettingsSettingsPtrOutput) RunAs() GetJobJobSettingsSettingsRun
 		if v == nil {
 			return nil
 		}
-		return v.RunAs
+		return &v.RunAs
 	}).(GetJobJobSettingsSettingsRunAsPtrOutput)
 }
 
@@ -51142,7 +52688,6 @@ func (o GetJobJobSettingsSettingsDeploymentPtrOutput) MetadataFilePath() pulumi.
 }
 
 type GetJobJobSettingsSettingsEmailNotifications struct {
-	AlertOnLastAttempt                  *bool    `pulumi:"alertOnLastAttempt"`
 	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []string `pulumi:"onFailures"`
@@ -51162,7 +52707,6 @@ type GetJobJobSettingsSettingsEmailNotificationsInput interface {
 }
 
 type GetJobJobSettingsSettingsEmailNotificationsArgs struct {
-	AlertOnLastAttempt                  pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
 	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
@@ -51247,10 +52791,6 @@ func (o GetJobJobSettingsSettingsEmailNotificationsOutput) ToGetJobJobSettingsSe
 	}).(GetJobJobSettingsSettingsEmailNotificationsPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
-}
-
 func (o GetJobJobSettingsSettingsEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
 }
@@ -51295,15 +52835,6 @@ func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) Elem() GetJobJobSe
 		var ret GetJobJobSettingsSettingsEmailNotifications
 		return ret
 	}).(GetJobJobSettingsSettingsEmailNotificationsOutput)
-}
-
-func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AlertOnLastAttempt
-	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
@@ -62006,6 +63537,7 @@ type GetJobJobSettingsSettingsTask struct {
 	SqlTask                *GetJobJobSettingsSettingsTaskSqlTask              `pulumi:"sqlTask"`
 	TaskKey                *string                                            `pulumi:"taskKey"`
 	TimeoutSeconds         *int                                               `pulumi:"timeoutSeconds"`
+	WebhookNotifications   *GetJobJobSettingsSettingsTaskWebhookNotifications `pulumi:"webhookNotifications"`
 }
 
 // GetJobJobSettingsSettingsTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskArgs and GetJobJobSettingsSettingsTaskOutput values.
@@ -62046,6 +63578,7 @@ type GetJobJobSettingsSettingsTaskArgs struct {
 	SqlTask                GetJobJobSettingsSettingsTaskSqlTaskPtrInput              `pulumi:"sqlTask"`
 	TaskKey                pulumi.StringPtrInput                                     `pulumi:"taskKey"`
 	TimeoutSeconds         pulumi.IntPtrInput                                        `pulumi:"timeoutSeconds"`
+	WebhookNotifications   GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput `pulumi:"webhookNotifications"`
 }
 
 func (GetJobJobSettingsSettingsTaskArgs) ElementType() reflect.Type {
@@ -62219,6 +63752,12 @@ func (o GetJobJobSettingsSettingsTaskOutput) TaskKey() pulumi.StringPtrOutput {
 
 func (o GetJobJobSettingsSettingsTaskOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskOutput) WebhookNotifications() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTask) *GetJobJobSettingsSettingsTaskWebhookNotifications {
+		return v.WebhookNotifications
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput)
 }
 
 type GetJobJobSettingsSettingsTaskArrayOutput struct{ *pulumi.OutputState }
@@ -62713,8 +64252,6 @@ func (o GetJobJobSettingsSettingsTaskDependsOnArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetJobJobSettingsSettingsTaskEmailNotifications struct {
-	AlertOnLastAttempt                  *bool    `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          []string `pulumi:"onFailures"`
 	OnStarts                            []string `pulumi:"onStarts"`
@@ -62733,8 +64270,6 @@ type GetJobJobSettingsSettingsTaskEmailNotificationsInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskEmailNotificationsArgs struct {
-	AlertOnLastAttempt                  pulumi.BoolPtrInput     `pulumi:"alertOnLastAttempt"`
-	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
 	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
 	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
@@ -62818,14 +64353,6 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) ToGetJobJobSettin
 	}).(GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) *bool { return v.AlertOnLastAttempt }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) *bool { return v.NoAlertForSkippedRuns }).(pulumi.BoolPtrOutput)
-}
-
 func (o GetJobJobSettingsSettingsTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskEmailNotifications) []string {
 		return v.OnDurationWarningThresholdExceededs
@@ -62866,24 +64393,6 @@ func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) Elem() GetJobJ
 		var ret GetJobJobSettingsSettingsTaskEmailNotifications
 		return ret
 	}).(GetJobJobSettingsSettingsTaskEmailNotificationsOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) AlertOnLastAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AlertOnLastAttempt
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskEmailNotifications) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.NoAlertForSkippedRuns
-	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetJobJobSettingsSettingsTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
@@ -69794,6 +71303,582 @@ func (o GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput) QueryId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetJobJobSettingsSettingsTaskWebhookNotifications struct {
+	OnDurationWarningThresholdExceededs []GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          []GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure                          `pulumi:"onFailures"`
+	OnStarts                            []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart                            `pulumi:"onStarts"`
+	OnSuccesses                         []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess                          `pulumi:"onSuccesses"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsArgs struct {
+	OnDurationWarningThresholdExceededs GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput                          `pulumi:"onFailures"`
+	OnStarts                            GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput                            `pulumi:"onStarts"`
+	OnSuccesses                         GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput                          `pulumi:"onSuccesses"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOutput).ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsArgs, GetJobJobSettingsSettingsTaskWebhookNotificationsPtr and GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskWebhookNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskWebhookNotificationsPtrType GetJobJobSettingsSettingsTaskWebhookNotificationsArgs
+
+func GetJobJobSettingsSettingsTaskWebhookNotificationsPtr(v *GetJobJobSettingsSettingsTaskWebhookNotificationsArgs) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput {
+	return (*getJobJobSettingsSettingsTaskWebhookNotificationsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskWebhookNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskWebhookNotificationsPtrType) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskWebhookNotificationsPtrType) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskWebhookNotifications) *GetJobJobSettingsSettingsTaskWebhookNotifications {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return v.OnDurationWarningThresholdExceededs
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnFailures() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+		return v.OnFailures
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnStarts() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+		return v.OnStarts
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOutput) OnSuccesses() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
+		return v.OnSuccesses
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskWebhookNotifications)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) Elem() GetJobJobSettingsSettingsTaskWebhookNotificationsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) GetJobJobSettingsSettingsTaskWebhookNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskWebhookNotifications
+		return ret
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnFailures() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailures
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnStarts() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+		if v == nil {
+			return nil
+		}
+		return v.OnStarts
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput) OnSuccesses() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskWebhookNotifications) []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
+		if v == nil {
+			return nil
+		}
+		return v.OnSuccesses
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
+	// the id of Job if the resource was matched by name.
+	Id *string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray and GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray{ GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{...} }
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray []GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededInput
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded) *string {
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure struct {
+	// the id of Job if the resource was matched by name.
+	Id *string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray and GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray{ GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs{...} }
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray []GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart struct {
+	// the id of Job if the resource was matched by name.
+	Id *string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray and GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray{ GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs{...} }
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray []GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess struct {
+	// the id of Job if the resource was matched by name.
+	Id *string `pulumi:"id"`
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs and GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs{...}
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs struct {
+	// the id of Job if the resource was matched by name.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput)
+}
+
+// GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray and GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray{ GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs{...} }
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput
+	ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray []GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput {
+	return o
+}
+
+// the id of Job if the resource was matched by name.
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput() GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput) ToGetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
+		return vs[0].([]GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput)
+}
+
 type GetJobJobSettingsSettingsTrigger struct {
 	FileArrival GetJobJobSettingsSettingsTriggerFileArrival `pulumi:"fileArrival"`
 	PauseStatus *string                                     `pulumi:"pauseStatus"`
@@ -70295,7 +72380,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsPtrOutput) OnSuccesses() Ge
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded struct {
 	// the id of Job if the resource was matched by name.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs and GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput values.
@@ -70311,7 +72396,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExce
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
 	// the id of Job if the resource was matched by name.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs) ElementType() reflect.Type {
@@ -70366,10 +72451,10 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdE
 }
 
 // the id of Job if the resource was matched by name.
-func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded) string {
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded) *string {
 		return v.Id
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput struct{ *pulumi.OutputState }
@@ -70394,7 +72479,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdE
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailure struct {
 	// the id of Job if the resource was matched by name.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // GetJobJobSettingsSettingsWebhookNotificationsOnFailureInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs and GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput values.
@@ -70410,7 +72495,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnFailureInput interface {
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs struct {
 	// the id of Job if the resource was matched by name.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs) ElementType() reflect.Type {
@@ -70465,8 +72550,8 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput) ToGetJobJo
 }
 
 // the id of Job if the resource was matched by name.
-func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnFailure) string { return v.Id }).(pulumi.StringOutput)
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput struct{ *pulumi.OutputState }
@@ -70491,7 +72576,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnFailureArrayOutput) Index
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStart struct {
 	// the id of Job if the resource was matched by name.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // GetJobJobSettingsSettingsWebhookNotificationsOnStartInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs and GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput values.
@@ -70507,7 +72592,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnStartInput interface {
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs struct {
 	// the id of Job if the resource was matched by name.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs) ElementType() reflect.Type {
@@ -70562,8 +72647,8 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput) ToGetJobJobS
 }
 
 // the id of Job if the resource was matched by name.
-func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnStart) string { return v.Id }).(pulumi.StringOutput)
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput struct{ *pulumi.OutputState }
@@ -70588,7 +72673,7 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnStartArrayOutput) Index(i
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccess struct {
 	// the id of Job if the resource was matched by name.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
 // GetJobJobSettingsSettingsWebhookNotificationsOnSuccessInput is an input type that accepts GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs and GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput values.
@@ -70604,7 +72689,7 @@ type GetJobJobSettingsSettingsWebhookNotificationsOnSuccessInput interface {
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs struct {
 	// the id of Job if the resource was matched by name.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs) ElementType() reflect.Type {
@@ -70659,8 +72744,8 @@ func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput) ToGetJobJo
 }
 
 // the id of Job if the resource was matched by name.
-func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnSuccess) string { return v.Id }).(pulumi.StringOutput)
+func (o GetJobJobSettingsSettingsWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput struct{ *pulumi.OutputState }
@@ -71097,6 +73182,384 @@ func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 		}
 		return v.UpdatedBy
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetMlflowModelLatestVersion struct {
+	CreationTimestamp *int    `pulumi:"creationTimestamp"`
+	CurrentStage      *string `pulumi:"currentStage"`
+	// User-specified description for the object.
+	Description          *string `pulumi:"description"`
+	LastUpdatedTimestamp *int    `pulumi:"lastUpdatedTimestamp"`
+	// Name of the registered model.
+	Name          *string `pulumi:"name"`
+	RunId         *string `pulumi:"runId"`
+	RunLink       *string `pulumi:"runLink"`
+	Source        *string `pulumi:"source"`
+	Status        *string `pulumi:"status"`
+	StatusMessage *string `pulumi:"statusMessage"`
+	// Array of tags associated with the model.
+	Tags []GetMlflowModelLatestVersionTag `pulumi:"tags"`
+	// The username of the user that created the object.
+	UserId  *string `pulumi:"userId"`
+	Version *string `pulumi:"version"`
+}
+
+// GetMlflowModelLatestVersionInput is an input type that accepts GetMlflowModelLatestVersionArgs and GetMlflowModelLatestVersionOutput values.
+// You can construct a concrete instance of `GetMlflowModelLatestVersionInput` via:
+//
+//	GetMlflowModelLatestVersionArgs{...}
+type GetMlflowModelLatestVersionInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelLatestVersionOutput() GetMlflowModelLatestVersionOutput
+	ToGetMlflowModelLatestVersionOutputWithContext(context.Context) GetMlflowModelLatestVersionOutput
+}
+
+type GetMlflowModelLatestVersionArgs struct {
+	CreationTimestamp pulumi.IntPtrInput    `pulumi:"creationTimestamp"`
+	CurrentStage      pulumi.StringPtrInput `pulumi:"currentStage"`
+	// User-specified description for the object.
+	Description          pulumi.StringPtrInput `pulumi:"description"`
+	LastUpdatedTimestamp pulumi.IntPtrInput    `pulumi:"lastUpdatedTimestamp"`
+	// Name of the registered model.
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	RunId         pulumi.StringPtrInput `pulumi:"runId"`
+	RunLink       pulumi.StringPtrInput `pulumi:"runLink"`
+	Source        pulumi.StringPtrInput `pulumi:"source"`
+	Status        pulumi.StringPtrInput `pulumi:"status"`
+	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
+	// Array of tags associated with the model.
+	Tags GetMlflowModelLatestVersionTagArrayInput `pulumi:"tags"`
+	// The username of the user that created the object.
+	UserId  pulumi.StringPtrInput `pulumi:"userId"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GetMlflowModelLatestVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelLatestVersion)(nil)).Elem()
+}
+
+func (i GetMlflowModelLatestVersionArgs) ToGetMlflowModelLatestVersionOutput() GetMlflowModelLatestVersionOutput {
+	return i.ToGetMlflowModelLatestVersionOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelLatestVersionArgs) ToGetMlflowModelLatestVersionOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelLatestVersionOutput)
+}
+
+// GetMlflowModelLatestVersionArrayInput is an input type that accepts GetMlflowModelLatestVersionArray and GetMlflowModelLatestVersionArrayOutput values.
+// You can construct a concrete instance of `GetMlflowModelLatestVersionArrayInput` via:
+//
+//	GetMlflowModelLatestVersionArray{ GetMlflowModelLatestVersionArgs{...} }
+type GetMlflowModelLatestVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelLatestVersionArrayOutput() GetMlflowModelLatestVersionArrayOutput
+	ToGetMlflowModelLatestVersionArrayOutputWithContext(context.Context) GetMlflowModelLatestVersionArrayOutput
+}
+
+type GetMlflowModelLatestVersionArray []GetMlflowModelLatestVersionInput
+
+func (GetMlflowModelLatestVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelLatestVersion)(nil)).Elem()
+}
+
+func (i GetMlflowModelLatestVersionArray) ToGetMlflowModelLatestVersionArrayOutput() GetMlflowModelLatestVersionArrayOutput {
+	return i.ToGetMlflowModelLatestVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelLatestVersionArray) ToGetMlflowModelLatestVersionArrayOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelLatestVersionArrayOutput)
+}
+
+type GetMlflowModelLatestVersionOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelLatestVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelLatestVersion)(nil)).Elem()
+}
+
+func (o GetMlflowModelLatestVersionOutput) ToGetMlflowModelLatestVersionOutput() GetMlflowModelLatestVersionOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionOutput) ToGetMlflowModelLatestVersionOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionOutput) CreationTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *int { return v.CreationTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) CurrentStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.CurrentStage }).(pulumi.StringPtrOutput)
+}
+
+// User-specified description for the object.
+func (o GetMlflowModelLatestVersionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) LastUpdatedTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *int { return v.LastUpdatedTimestamp }).(pulumi.IntPtrOutput)
+}
+
+// Name of the registered model.
+func (o GetMlflowModelLatestVersionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) RunId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.RunId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) RunLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.RunLink }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) StatusMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
+}
+
+// Array of tags associated with the model.
+func (o GetMlflowModelLatestVersionOutput) Tags() GetMlflowModelLatestVersionTagArrayOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) []GetMlflowModelLatestVersionTag { return v.Tags }).(GetMlflowModelLatestVersionTagArrayOutput)
+}
+
+// The username of the user that created the object.
+func (o GetMlflowModelLatestVersionOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GetMlflowModelLatestVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelLatestVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelLatestVersion)(nil)).Elem()
+}
+
+func (o GetMlflowModelLatestVersionArrayOutput) ToGetMlflowModelLatestVersionArrayOutput() GetMlflowModelLatestVersionArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionArrayOutput) ToGetMlflowModelLatestVersionArrayOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionArrayOutput) Index(i pulumi.IntInput) GetMlflowModelLatestVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMlflowModelLatestVersion {
+		return vs[0].([]GetMlflowModelLatestVersion)[vs[1].(int)]
+	}).(GetMlflowModelLatestVersionOutput)
+}
+
+type GetMlflowModelLatestVersionTag struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetMlflowModelLatestVersionTagInput is an input type that accepts GetMlflowModelLatestVersionTagArgs and GetMlflowModelLatestVersionTagOutput values.
+// You can construct a concrete instance of `GetMlflowModelLatestVersionTagInput` via:
+//
+//	GetMlflowModelLatestVersionTagArgs{...}
+type GetMlflowModelLatestVersionTagInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelLatestVersionTagOutput() GetMlflowModelLatestVersionTagOutput
+	ToGetMlflowModelLatestVersionTagOutputWithContext(context.Context) GetMlflowModelLatestVersionTagOutput
+}
+
+type GetMlflowModelLatestVersionTagArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetMlflowModelLatestVersionTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelLatestVersionTag)(nil)).Elem()
+}
+
+func (i GetMlflowModelLatestVersionTagArgs) ToGetMlflowModelLatestVersionTagOutput() GetMlflowModelLatestVersionTagOutput {
+	return i.ToGetMlflowModelLatestVersionTagOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelLatestVersionTagArgs) ToGetMlflowModelLatestVersionTagOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelLatestVersionTagOutput)
+}
+
+// GetMlflowModelLatestVersionTagArrayInput is an input type that accepts GetMlflowModelLatestVersionTagArray and GetMlflowModelLatestVersionTagArrayOutput values.
+// You can construct a concrete instance of `GetMlflowModelLatestVersionTagArrayInput` via:
+//
+//	GetMlflowModelLatestVersionTagArray{ GetMlflowModelLatestVersionTagArgs{...} }
+type GetMlflowModelLatestVersionTagArrayInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelLatestVersionTagArrayOutput() GetMlflowModelLatestVersionTagArrayOutput
+	ToGetMlflowModelLatestVersionTagArrayOutputWithContext(context.Context) GetMlflowModelLatestVersionTagArrayOutput
+}
+
+type GetMlflowModelLatestVersionTagArray []GetMlflowModelLatestVersionTagInput
+
+func (GetMlflowModelLatestVersionTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelLatestVersionTag)(nil)).Elem()
+}
+
+func (i GetMlflowModelLatestVersionTagArray) ToGetMlflowModelLatestVersionTagArrayOutput() GetMlflowModelLatestVersionTagArrayOutput {
+	return i.ToGetMlflowModelLatestVersionTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelLatestVersionTagArray) ToGetMlflowModelLatestVersionTagArrayOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelLatestVersionTagArrayOutput)
+}
+
+type GetMlflowModelLatestVersionTagOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelLatestVersionTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelLatestVersionTag)(nil)).Elem()
+}
+
+func (o GetMlflowModelLatestVersionTagOutput) ToGetMlflowModelLatestVersionTagOutput() GetMlflowModelLatestVersionTagOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionTagOutput) ToGetMlflowModelLatestVersionTagOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionTagOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersionTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelLatestVersionTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelLatestVersionTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetMlflowModelLatestVersionTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelLatestVersionTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelLatestVersionTag)(nil)).Elem()
+}
+
+func (o GetMlflowModelLatestVersionTagArrayOutput) ToGetMlflowModelLatestVersionTagArrayOutput() GetMlflowModelLatestVersionTagArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionTagArrayOutput) ToGetMlflowModelLatestVersionTagArrayOutputWithContext(ctx context.Context) GetMlflowModelLatestVersionTagArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelLatestVersionTagArrayOutput) Index(i pulumi.IntInput) GetMlflowModelLatestVersionTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMlflowModelLatestVersionTag {
+		return vs[0].([]GetMlflowModelLatestVersionTag)[vs[1].(int)]
+	}).(GetMlflowModelLatestVersionTagOutput)
+}
+
+type GetMlflowModelTag struct {
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// GetMlflowModelTagInput is an input type that accepts GetMlflowModelTagArgs and GetMlflowModelTagOutput values.
+// You can construct a concrete instance of `GetMlflowModelTagInput` via:
+//
+//	GetMlflowModelTagArgs{...}
+type GetMlflowModelTagInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelTagOutput() GetMlflowModelTagOutput
+	ToGetMlflowModelTagOutputWithContext(context.Context) GetMlflowModelTagOutput
+}
+
+type GetMlflowModelTagArgs struct {
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetMlflowModelTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelTag)(nil)).Elem()
+}
+
+func (i GetMlflowModelTagArgs) ToGetMlflowModelTagOutput() GetMlflowModelTagOutput {
+	return i.ToGetMlflowModelTagOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelTagArgs) ToGetMlflowModelTagOutputWithContext(ctx context.Context) GetMlflowModelTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelTagOutput)
+}
+
+// GetMlflowModelTagArrayInput is an input type that accepts GetMlflowModelTagArray and GetMlflowModelTagArrayOutput values.
+// You can construct a concrete instance of `GetMlflowModelTagArrayInput` via:
+//
+//	GetMlflowModelTagArray{ GetMlflowModelTagArgs{...} }
+type GetMlflowModelTagArrayInput interface {
+	pulumi.Input
+
+	ToGetMlflowModelTagArrayOutput() GetMlflowModelTagArrayOutput
+	ToGetMlflowModelTagArrayOutputWithContext(context.Context) GetMlflowModelTagArrayOutput
+}
+
+type GetMlflowModelTagArray []GetMlflowModelTagInput
+
+func (GetMlflowModelTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelTag)(nil)).Elem()
+}
+
+func (i GetMlflowModelTagArray) ToGetMlflowModelTagArrayOutput() GetMlflowModelTagArrayOutput {
+	return i.ToGetMlflowModelTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetMlflowModelTagArray) ToGetMlflowModelTagArrayOutputWithContext(ctx context.Context) GetMlflowModelTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMlflowModelTagArrayOutput)
+}
+
+type GetMlflowModelTagOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMlflowModelTag)(nil)).Elem()
+}
+
+func (o GetMlflowModelTagOutput) ToGetMlflowModelTagOutput() GetMlflowModelTagOutput {
+	return o
+}
+
+func (o GetMlflowModelTagOutput) ToGetMlflowModelTagOutputWithContext(ctx context.Context) GetMlflowModelTagOutput {
+	return o
+}
+
+func (o GetMlflowModelTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMlflowModelTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetMlflowModelTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMlflowModelTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMlflowModelTag)(nil)).Elem()
+}
+
+func (o GetMlflowModelTagArrayOutput) ToGetMlflowModelTagArrayOutput() GetMlflowModelTagArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelTagArrayOutput) ToGetMlflowModelTagArrayOutputWithContext(ctx context.Context) GetMlflowModelTagArrayOutput {
+	return o
+}
+
+func (o GetMlflowModelTagArrayOutput) Index(i pulumi.IntInput) GetMlflowModelTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMlflowModelTag {
+		return vs[0].([]GetMlflowModelTag)[vs[1].(int)]
+	}).(GetMlflowModelTagOutput)
 }
 
 type GetNotebookPathsNotebookPathList struct {
@@ -72187,10 +74650,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryMavenPtrInput)(nil)).Elem(), ClusterLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryPypiInput)(nil)).Elem(), ClusterLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLibraryPypiPtrInput)(nil)).Elem(), ClusterLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryInput)(nil)).Elem(), ClusterPolicyLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryArrayInput)(nil)).Elem(), ClusterPolicyLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryCranInput)(nil)).Elem(), ClusterPolicyLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryCranPtrInput)(nil)).Elem(), ClusterPolicyLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryMavenInput)(nil)).Elem(), ClusterPolicyLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryMavenPtrInput)(nil)).Elem(), ClusterPolicyLibraryMavenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryPypiInput)(nil)).Elem(), ClusterPolicyLibraryPypiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPolicyLibraryPypiPtrInput)(nil)).Elem(), ClusterPolicyLibraryPypiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeInput)(nil)).Elem(), ClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypePtrInput)(nil)).Elem(), ClusterWorkloadTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadTypeClientsPtrInput)(nil)).Elem(), ClusterWorkloadTypeClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingNamespaceInput)(nil)).Elem(), DefaultNamespaceSettingNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefaultNamespaceSettingNamespacePtrInput)(nil)).Elem(), DefaultNamespaceSettingNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsPtrInput)(nil)).Elem(), ExternalLocationEncryptionDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLocationEncryptionDetailsSseEncryptionDetailsInput)(nil)).Elem(), ExternalLocationEncryptionDetailsSseEncryptionDetailsArgs{})
@@ -72454,6 +74927,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskFilePtrInput)(nil)).Elem(), JobTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskSqlTaskQueryPtrInput)(nil)).Elem(), JobTaskSqlTaskQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsInput)(nil)).Elem(), JobTaskWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsPtrInput)(nil)).Elem(), JobTaskWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput)(nil)).Elem(), JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput)(nil)).Elem(), JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnFailureInput)(nil)).Elem(), JobTaskWebhookNotificationsOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), JobTaskWebhookNotificationsOnFailureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnStartInput)(nil)).Elem(), JobTaskWebhookNotificationsOnStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnStartArrayInput)(nil)).Elem(), JobTaskWebhookNotificationsOnStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnSuccessInput)(nil)).Elem(), JobTaskWebhookNotificationsOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTaskWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), JobTaskWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerInput)(nil)).Elem(), JobTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerPtrInput)(nil)).Elem(), JobTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerFileArrivalInput)(nil)).Elem(), JobTriggerFileArrivalArgs{})
@@ -72740,6 +75223,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoStatsInput)(nil)).Elem(), GetInstancePoolPoolInfoStatsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoStatsPtrInput)(nil)).Elem(), GetInstancePoolPoolInfoStatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProfilesInstanceProfileInput)(nil)).Elem(), GetInstanceProfilesInstanceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceProfilesInstanceProfileArrayInput)(nil)).Elem(), GetInstanceProfilesInstanceProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsInput)(nil)).Elem(), GetJobJobSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsPtrInput)(nil)).Elem(), GetJobJobSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsInput)(nil)).Elem(), GetJobJobSettingsSettingsArgs{})
@@ -72979,6 +75464,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskFilePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskSqlTaskQueryPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskSqlTaskQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTriggerFileArrivalInput)(nil)).Elem(), GetJobJobSettingsSettingsTriggerFileArrivalArgs{})
@@ -72995,6 +75490,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreMetastoreInfoInput)(nil)).Elem(), GetMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelLatestVersionInput)(nil)).Elem(), GetMlflowModelLatestVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelLatestVersionArrayInput)(nil)).Elem(), GetMlflowModelLatestVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelLatestVersionTagInput)(nil)).Elem(), GetMlflowModelLatestVersionTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelLatestVersionTagArrayInput)(nil)).Elem(), GetMlflowModelLatestVersionTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelTagInput)(nil)).Elem(), GetMlflowModelTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMlflowModelTagArrayInput)(nil)).Elem(), GetMlflowModelTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListArrayInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectInput)(nil)).Elem(), GetShareObjectArgs{})
@@ -73060,10 +75561,20 @@ func init() {
 	pulumi.RegisterOutputType(ClusterLibraryMavenPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLibraryPypiOutput{})
 	pulumi.RegisterOutputType(ClusterLibraryPypiPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryArrayOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryCranOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryCranPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryMavenOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryMavenPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryPypiOutput{})
+	pulumi.RegisterOutputType(ClusterPolicyLibraryPypiPtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadTypeClientsPtrOutput{})
+	pulumi.RegisterOutputType(DefaultNamespaceSettingNamespaceOutput{})
+	pulumi.RegisterOutputType(DefaultNamespaceSettingNamespacePtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(ExternalLocationEncryptionDetailsSseEncryptionDetailsOutput{})
@@ -73327,6 +75838,16 @@ func init() {
 	pulumi.RegisterOutputType(JobTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(JobTaskSqlTaskQueryPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnFailureOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnFailureArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnStartOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnStartArrayOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnSuccessOutput{})
+	pulumi.RegisterOutputType(JobTaskWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(JobTriggerOutput{})
 	pulumi.RegisterOutputType(JobTriggerPtrOutput{})
 	pulumi.RegisterOutputType(JobTriggerFileArrivalOutput{})
@@ -73613,6 +76134,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoStatsOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoStatsPtrOutput{})
+	pulumi.RegisterOutputType(GetInstanceProfilesInstanceProfileOutput{})
+	pulumi.RegisterOutputType(GetInstanceProfilesInstanceProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsOutput{})
@@ -73852,6 +76375,16 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskSqlTaskQueryPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTriggerFileArrivalOutput{})
@@ -73868,6 +76401,12 @@ func init() {
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreMetastoreInfoOutput{})
 	pulumi.RegisterOutputType(GetMetastoreMetastoreInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelLatestVersionOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelLatestVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelLatestVersionTagOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelLatestVersionTagArrayOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelTagOutput{})
+	pulumi.RegisterOutputType(GetMlflowModelTagArrayOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetShareObjectOutput{})

@@ -14,6 +14,7 @@ import (
 // ## Related Resources
 //
 // The following resources are used in the same context:
+//
 // * getMetastores to get mapping of name to id of all metastores.
 // * Metastore to manage Metastores within Unity Catalog.
 // * Catalog to manage catalogs within Unity Catalog.

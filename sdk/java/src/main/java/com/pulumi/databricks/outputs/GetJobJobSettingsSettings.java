@@ -45,6 +45,8 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsContinuous continuous;
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
     private @Nullable GetJobJobSettingsSettingsDeployment deployment;
+    private @Nullable String description;
+    private @Nullable String editMode;
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
     private String format;
@@ -68,7 +70,7 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
     private @Nullable GetJobJobSettingsSettingsQueue queue;
     private @Nullable Boolean retryOnTimeout;
-    private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+    private GetJobJobSettingsSettingsRunAs runAs;
     private @Nullable GetJobJobSettingsSettingsRunJobTask runJobTask;
     private @Nullable GetJobJobSettingsSettingsSchedule schedule;
     private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
@@ -92,6 +94,12 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsDeployment> deployment() {
         return Optional.ofNullable(this.deployment);
+    }
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+    public Optional<String> editMode() {
+        return Optional.ofNullable(this.editMode);
     }
     public Optional<GetJobJobSettingsSettingsEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
@@ -154,8 +162,8 @@ public final class GetJobJobSettingsSettings {
     public Optional<Boolean> retryOnTimeout() {
         return Optional.ofNullable(this.retryOnTimeout);
     }
-    public Optional<GetJobJobSettingsSettingsRunAs> runAs() {
-        return Optional.ofNullable(this.runAs);
+    public GetJobJobSettingsSettingsRunAs runAs() {
+        return this.runAs;
     }
     public Optional<GetJobJobSettingsSettingsRunJobTask> runJobTask() {
         return Optional.ofNullable(this.runJobTask);
@@ -201,6 +209,8 @@ public final class GetJobJobSettingsSettings {
         private @Nullable GetJobJobSettingsSettingsContinuous continuous;
         private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
         private @Nullable GetJobJobSettingsSettingsDeployment deployment;
+        private @Nullable String description;
+        private @Nullable String editMode;
         private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
         private String format;
@@ -220,7 +230,7 @@ public final class GetJobJobSettingsSettings {
         private @Nullable GetJobJobSettingsSettingsPythonWheelTask pythonWheelTask;
         private @Nullable GetJobJobSettingsSettingsQueue queue;
         private @Nullable Boolean retryOnTimeout;
-        private @Nullable GetJobJobSettingsSettingsRunAs runAs;
+        private GetJobJobSettingsSettingsRunAs runAs;
         private @Nullable GetJobJobSettingsSettingsRunJobTask runJobTask;
         private @Nullable GetJobJobSettingsSettingsSchedule schedule;
         private @Nullable GetJobJobSettingsSettingsSparkJarTask sparkJarTask;
@@ -238,6 +248,8 @@ public final class GetJobJobSettingsSettings {
     	      this.continuous = defaults.continuous;
     	      this.dbtTask = defaults.dbtTask;
     	      this.deployment = defaults.deployment;
+    	      this.description = defaults.description;
+    	      this.editMode = defaults.editMode;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.format = defaults.format;
@@ -291,6 +303,16 @@ public final class GetJobJobSettingsSettings {
         @CustomType.Setter
         public Builder deployment(@Nullable GetJobJobSettingsSettingsDeployment deployment) {
             this.deployment = deployment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder editMode(@Nullable String editMode) {
+            this.editMode = editMode;
             return this;
         }
         @CustomType.Setter
@@ -398,8 +420,8 @@ public final class GetJobJobSettingsSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder runAs(@Nullable GetJobJobSettingsSettingsRunAs runAs) {
-            this.runAs = runAs;
+        public Builder runAs(GetJobJobSettingsSettingsRunAs runAs) {
+            this.runAs = Objects.requireNonNull(runAs);
             return this;
         }
         @CustomType.Setter
@@ -461,6 +483,8 @@ public final class GetJobJobSettingsSettings {
             _resultValue.continuous = continuous;
             _resultValue.dbtTask = dbtTask;
             _resultValue.deployment = deployment;
+            _resultValue.description = description;
+            _resultValue.editMode = editMode;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.format = format;

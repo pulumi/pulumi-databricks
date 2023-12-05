@@ -84,12 +84,10 @@ export class MlflowModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === MlflowModel.__pulumiType;
     }
 
-    public readonly creationTimestamp!: pulumi.Output<number | undefined>;
     /**
      * The description of the MLflow model.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly lastUpdatedTimestamp!: pulumi.Output<number | undefined>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
@@ -99,7 +97,6 @@ export class MlflowModel extends pulumi.CustomResource {
      * Tags for the MLflow model.
      */
     public readonly tags!: pulumi.Output<outputs.MlflowModelTag[] | undefined>;
-    public readonly userId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a MlflowModel resource with the given unique name, arguments, and options.
@@ -114,21 +111,15 @@ export class MlflowModel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MlflowModelState | undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lastUpdatedTimestamp"] = state ? state.lastUpdatedTimestamp : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["registeredModelId"] = state ? state.registeredModelId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as MlflowModelArgs | undefined;
-            resourceInputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lastUpdatedTimestamp"] = args ? args.lastUpdatedTimestamp : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["registeredModelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -140,12 +131,10 @@ export class MlflowModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MlflowModel resources.
  */
 export interface MlflowModelState {
-    creationTimestamp?: pulumi.Input<number>;
     /**
      * The description of the MLflow model.
      */
     description?: pulumi.Input<string>;
-    lastUpdatedTimestamp?: pulumi.Input<number>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
@@ -155,19 +144,16 @@ export interface MlflowModelState {
      * Tags for the MLflow model.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
-    userId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a MlflowModel resource.
  */
 export interface MlflowModelArgs {
-    creationTimestamp?: pulumi.Input<number>;
     /**
      * The description of the MLflow model.
      */
     description?: pulumi.Input<string>;
-    lastUpdatedTimestamp?: pulumi.Input<number>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
@@ -176,5 +162,4 @@ export interface MlflowModelArgs {
      * Tags for the MLflow model.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
-    userId?: pulumi.Input<string>;
 }

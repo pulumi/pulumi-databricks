@@ -16,13 +16,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
 
     public static final GetJobJobSettingsSettingsEmailNotifications Empty = new GetJobJobSettingsSettingsEmailNotifications();
 
-    @Import(name="alertOnLastAttempt")
-    private @Nullable Boolean alertOnLastAttempt;
-
-    public Optional<Boolean> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
-
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Boolean noAlertForSkippedRuns;
 
@@ -61,7 +54,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
     private GetJobJobSettingsSettingsEmailNotifications() {}
 
     private GetJobJobSettingsSettingsEmailNotifications(GetJobJobSettingsSettingsEmailNotifications $) {
-        this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
@@ -85,11 +77,6 @@ public final class GetJobJobSettingsSettingsEmailNotifications extends com.pulum
 
         public Builder(GetJobJobSettingsSettingsEmailNotifications defaults) {
             $ = new GetJobJobSettingsSettingsEmailNotifications(Objects.requireNonNull(defaults));
-        }
-
-        public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
-            $.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
         }
 
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {

@@ -165,14 +165,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
      * 
      */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
      * 
      */
     public Optional<Output<String>> storageRoot() {
@@ -442,7 +442,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
          * 
          * @return builder
          * 

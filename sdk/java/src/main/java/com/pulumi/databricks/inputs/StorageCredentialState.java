@@ -130,16 +130,12 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Indicates whether the storage credential is only usable for read operations.
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-     * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
      * @return Indicates whether the storage credential is only usable for read operations.
-     * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -325,8 +321,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param readOnly Indicates whether the storage credential is only usable for read operations.
          * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
-         * 
          * @return builder
          * 
          */
@@ -337,8 +331,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
         /**
          * @param readOnly Indicates whether the storage credential is only usable for read operations.
-         * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 

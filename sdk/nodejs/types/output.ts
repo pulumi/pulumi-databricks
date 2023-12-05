@@ -180,6 +180,31 @@ export interface ClusterLibraryPypi {
     repo?: string;
 }
 
+export interface ClusterPolicyLibrary {
+    cran?: outputs.ClusterPolicyLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.ClusterPolicyLibraryMaven;
+    pypi?: outputs.ClusterPolicyLibraryPypi;
+    whl?: string;
+}
+
+export interface ClusterPolicyLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface ClusterPolicyLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface ClusterPolicyLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
 export interface ClusterWorkloadType {
     clients: outputs.ClusterWorkloadTypeClients;
 }
@@ -187,6 +212,13 @@ export interface ClusterWorkloadType {
 export interface ClusterWorkloadTypeClients {
     jobs?: boolean;
     notebooks?: boolean;
+}
+
+export interface DefaultNamespaceSettingNamespace {
+    /**
+     * The value for the setting.
+     */
+    value?: string;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -535,6 +567,25 @@ export interface GetInstancePoolPoolInfoStats {
     usedCount?: number;
 }
 
+export interface GetInstanceProfilesInstanceProfile {
+    /**
+     * ARN of the instance profile.
+     */
+    arn: string;
+    /**
+     * Whether the instance profile is a meta instance profile or not.
+     */
+    isMeta: boolean;
+    /**
+     * Name of the instance profile.
+     */
+    name: string;
+    /**
+     * ARN of the role attached to the instance profile.
+     */
+    roleArn: string;
+}
+
 export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
@@ -548,6 +599,8 @@ export interface GetJobJobSettingsSettings {
     continuous?: outputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
     deployment?: outputs.GetJobJobSettingsSettingsDeployment;
+    description?: string;
+    editMode?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
     format: string;
@@ -570,7 +623,7 @@ export interface GetJobJobSettingsSettings {
     pythonWheelTask?: outputs.GetJobJobSettingsSettingsPythonWheelTask;
     queue?: outputs.GetJobJobSettingsSettingsQueue;
     retryOnTimeout?: boolean;
-    runAs?: outputs.GetJobJobSettingsSettingsRunAs;
+    runAs: outputs.GetJobJobSettingsSettingsRunAs;
     runJobTask?: outputs.GetJobJobSettingsSettingsRunJobTask;
     schedule?: outputs.GetJobJobSettingsSettingsSchedule;
     sparkJarTask?: outputs.GetJobJobSettingsSettingsSparkJarTask;
@@ -611,7 +664,6 @@ export interface GetJobJobSettingsSettingsDeployment {
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
-    alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
@@ -1082,6 +1134,7 @@ export interface GetJobJobSettingsSettingsTask {
     sqlTask?: outputs.GetJobJobSettingsSettingsTaskSqlTask;
     taskKey?: string;
     timeoutSeconds?: number;
+    webhookNotifications?: outputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTask {
@@ -1105,8 +1158,6 @@ export interface GetJobJobSettingsSettingsTaskDependsOn {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
-    alertOnLastAttempt?: boolean;
-    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -1390,6 +1441,41 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
     queryId: string;
 }
 
+export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
+    onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    onFailures?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
+    onStarts?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
+    onSuccesses?: outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
 export interface GetJobJobSettingsSettingsTrigger {
     fileArrival: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
@@ -1412,28 +1498,28 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningT
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -1476,6 +1562,44 @@ export interface GetMetastoreMetastoreInfo {
     storageRootCredentialName?: string;
     updatedAt?: number;
     updatedBy?: string;
+}
+
+export interface GetMlflowModelLatestVersion {
+    creationTimestamp?: number;
+    currentStage?: string;
+    /**
+     * User-specified description for the object.
+     */
+    description?: string;
+    lastUpdatedTimestamp?: number;
+    /**
+     * Name of the registered model.
+     */
+    name?: string;
+    runId?: string;
+    runLink?: string;
+    source?: string;
+    status?: string;
+    statusMessage?: string;
+    /**
+     * Array of tags associated with the model.
+     */
+    tags?: outputs.GetMlflowModelLatestVersionTag[];
+    /**
+     * The username of the user that created the object.
+     */
+    userId?: string;
+    version?: string;
+}
+
+export interface GetMlflowModelLatestVersionTag {
+    key?: string;
+    value?: string;
+}
+
+export interface GetMlflowModelTag {
+    key?: string;
+    value?: string;
 }
 
 export interface GetNotebookPathsNotebookPathList {
@@ -1689,10 +1813,6 @@ export interface JobDeployment {
 
 export interface JobEmailNotifications {
     /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
-    alertOnLastAttempt?: boolean;
-    /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: boolean;
@@ -1757,7 +1877,9 @@ export interface JobHealthRule {
      */
     metric?: string;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: string;
     /**
@@ -2252,7 +2374,7 @@ export interface JobParameter {
      */
     default?: string;
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      */
     name?: string;
 }
@@ -2290,6 +2412,9 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+    /**
+     * If true, enable queueing for the job.
+     */
     enabled: boolean;
 }
 
@@ -2383,9 +2508,12 @@ export interface JobTask {
      * block specifying dependency(-ies) for a given task.
      */
     dependsOns?: outputs.JobTaskDependsOn[];
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
     description?: string;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
     existingClusterId?: string;
@@ -2442,14 +2570,26 @@ export interface JobTask {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: number;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
+    webhookNotifications?: outputs.JobTaskWebhookNotifications;
 }
 
 export interface JobTaskConditionTask {
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     */
     left?: string;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: string;
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     */
     right?: string;
 }
 
@@ -2483,6 +2623,9 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
+    /**
+     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+     */
     outcome?: string;
     /**
      * The name of the task this task depends on.
@@ -2491,14 +2634,6 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
-    /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
-    alertOnLastAttempt?: boolean;
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
-    noAlertForSkippedRuns?: boolean;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -2530,7 +2665,9 @@ export interface JobTaskHealthRule {
      */
     metric?: string;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: string;
     /**
@@ -3008,6 +3145,61 @@ export interface JobTaskSqlTaskQuery {
     queryId: string;
 }
 
+export interface JobTaskWebhookNotifications {
+    /**
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     */
+    onDurationWarningThresholdExceededs?: outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     */
+    onFailures?: outputs.JobTaskWebhookNotificationsOnFailure[];
+    /**
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+     */
+    onStarts?: outputs.JobTaskWebhookNotificationsOnStart[];
+    /**
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+     */
+    onSuccesses?: outputs.JobTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the job
+     */
+    id?: string;
+}
+
+export interface JobTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id?: string;
+}
+
+export interface JobTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id?: string;
+}
+
+export interface JobTaskWebhookNotificationsOnSuccess {
+    /**
+     * ID of the job
+     */
+    id?: string;
+}
+
 export interface JobTrigger {
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
@@ -3065,28 +3257,28 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
      * ID of the job
      */
-    id: string;
+    id?: string;
 }
 
 export interface JobWebhookNotificationsOnFailure {
     /**
      * ID of the job
      */
-    id: string;
+    id?: string;
 }
 
 export interface JobWebhookNotificationsOnStart {
     /**
      * ID of the job
      */
-    id: string;
+    id?: string;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
     /**
      * ID of the job
      */
-    id: string;
+    id?: string;
 }
 
 export interface LibraryCran {
@@ -3106,59 +3298,29 @@ export interface LibraryPypi {
 }
 
 export interface MetastoreDataAccessAwsIamRole {
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     *
-     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-     */
+    externalId: string;
     roleArn: string;
+    unityCatalogIamArn: string;
 }
 
 export interface MetastoreDataAccessAzureManagedIdentity {
-    /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     */
     accessConnectorId: string;
     credentialId: string;
-    /**
-     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-     */
     managedIdentityId?: string;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     */
     applicationId: string;
-    /**
-     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     */
     clientSecret: string;
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     */
     directoryId: string;
 }
 
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     credentialId: string;
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-     */
     email: string;
 }
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-     */
     email: string;
     privateKey: string;
     privateKeyId: string;
@@ -3316,7 +3478,7 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     /**
      * The AWS KMS key alias.
      */
-    keyAlias: string;
+    keyAlias?: string;
     /**
      * The AWS KMS key's Amazon Resource Name (ARN).
      */
@@ -3901,9 +4063,9 @@ export interface SqlQueryParameterEnum {
 }
 
 export interface SqlQueryParameterEnumMultiple {
-    prefix: string;
+    prefix?: string;
     separator: string;
-    suffix: string;
+    suffix?: string;
 }
 
 export interface SqlQueryParameterNumber {
@@ -3924,9 +4086,9 @@ export interface SqlQueryParameterQuery {
 }
 
 export interface SqlQueryParameterQueryMultiple {
-    prefix: string;
+    prefix?: string;
     separator: string;
-    suffix: string;
+    suffix?: string;
 }
 
 export interface SqlQueryParameterText {
@@ -3998,11 +4160,19 @@ export interface SqlWidgetPosition {
 
 export interface StorageCredentialAwsIamRole {
     /**
+     * The external ID used in role assumption to prevent confused deputy problem.
+     */
+    externalId: string;
+    /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     */
+    roleArn: string;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
-    roleArn: string;
+    unityCatalogIamArn: string;
 }
 
 export interface StorageCredentialAzureManagedIdentity {
@@ -4038,6 +4208,8 @@ export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId: string;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     email: string;
 }
@@ -4045,6 +4217,8 @@ export interface StorageCredentialDatabricksGcpServiceAccount {
 export interface StorageCredentialGcpServiceAccountKey {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     email: string;
     privateKey: string;

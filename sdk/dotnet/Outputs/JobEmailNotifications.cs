@@ -14,10 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobEmailNotifications
     {
         /// <summary>
-        /// (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-        /// </summary>
-        public readonly bool? AlertOnLastAttempt;
-        /// <summary>
         /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
@@ -40,8 +36,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobEmailNotifications(
-            bool? alertOnLastAttempt,
-
             bool? noAlertForSkippedRuns,
 
             ImmutableArray<string> onDurationWarningThresholdExceededs,
@@ -52,7 +46,6 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> onSuccesses)
         {
-            AlertOnLastAttempt = alertOnLastAttempt;
             NoAlertForSkippedRuns = noAlertForSkippedRuns;
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;

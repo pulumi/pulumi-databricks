@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ClusterPolicyArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ClusterPolicyState;
+import com.pulumi.databricks.outputs.ClusterPolicyLibrary;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,6 +33,49 @@ import javax.annotation.Nullable;
  * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
  * * A user that has access to only cluster policies, can select the policies they have access to.
  * 
+ * ## Example Usage
+ * ### Overriding the built-in cluster policies
+ * 
+ * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
+ * 
+ * * `name` - the name of the built-in cluster policy.
+ * * `policy_family_id` - the ID of the cluster policy family used for built-in cluster policy.
+ * * `policy_family_definition_overrides` - settings to override in the built-in cluster policy.
+ * 
+ * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ClusterPolicy;
+ * import com.pulumi.databricks.ClusterPolicyArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var personalVmOverride = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var personalVm = new ClusterPolicy(&#34;personalVm&#34;, ClusterPolicyArgs.builder()        
+ *             .policyFamilyId(&#34;personal-vm&#34;)
+ *             .policyFamilyDefinitionOverrides(serializeJson(
+ *                 personal_vm_override))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -67,14 +112,14 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="definition", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> definition;
+    private Output<String> definition;
 
     /**
      * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
      * 
      */
-    public Output<Optional<String>> definition() {
-        return Codegen.optional(this.definition);
+    public Output<String> definition() {
+        return this.definition;
     }
     /**
      * Additional human-readable description of the cluster policy.
@@ -89,6 +134,20 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+     * 
+     */
+    @Export(name="libraries", refs={List.class,ClusterPolicyLibrary.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterPolicyLibrary>> libraries;
+
+    /**
+     * @return blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+     * 
+     */
+    public Output<Optional<List<ClusterPolicyLibrary>>> libraries() {
+        return Codegen.optional(this.libraries);
     }
     /**
      * Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.

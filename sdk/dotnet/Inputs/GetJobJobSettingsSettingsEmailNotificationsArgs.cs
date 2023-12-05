@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsEmailNotificationsInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("alertOnLastAttempt")]
-        public Input<bool>? AlertOnLastAttempt { get; set; }
-
         [Input("noAlertForSkippedRuns")]
         public Input<bool>? NoAlertForSkippedRuns { get; set; }
 

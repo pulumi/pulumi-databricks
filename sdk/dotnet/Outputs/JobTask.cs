@@ -20,9 +20,12 @@ namespace Pulumi.Databricks.Outputs
         /// block specifying dependency(-ies) for a given task.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskDependsOn> DependsOns;
+        /// <summary>
+        /// An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
         public readonly string? ExistingClusterId;
@@ -79,6 +82,10 @@ namespace Pulumi.Databricks.Outputs
         /// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         /// </summary>
         public readonly int? TimeoutSeconds;
+        /// <summary>
+        /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        /// </summary>
+        public readonly Outputs.JobTaskWebhookNotifications? WebhookNotifications;
 
         [OutputConstructor]
         private JobTask(
@@ -132,7 +139,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? taskKey,
 
-            int? timeoutSeconds)
+            int? timeoutSeconds,
+
+            Outputs.JobTaskWebhookNotifications? webhookNotifications)
         {
             ComputeKey = computeKey;
             ConditionTask = conditionTask;
@@ -160,6 +169,7 @@ namespace Pulumi.Databricks.Outputs
             SqlTask = sqlTask;
             TaskKey = taskKey;
             TimeoutSeconds = timeoutSeconds;
+            WebhookNotifications = webhookNotifications;
         }
     }
 }

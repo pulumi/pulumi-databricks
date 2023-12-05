@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  *
  * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
  *
+ * A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
+ *
  * ## Import
  *
  * This resource can be imported by IDbash
@@ -80,9 +82,9 @@ export class Metastore extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
-    public readonly storageRoot!: pulumi.Output<string>;
+    public readonly storageRoot!: pulumi.Output<string | undefined>;
     public readonly storageRootCredentialId!: pulumi.Output<string | undefined>;
     public readonly updatedAt!: pulumi.Output<number>;
     public readonly updatedBy!: pulumi.Output<string>;
@@ -94,7 +96,7 @@ export class Metastore extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: MetastoreArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: MetastoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetastoreArgs | MetastoreState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -119,9 +121,6 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
         } else {
             const args = argsOrState as MetastoreArgs | undefined;
-            if ((!args || args.storageRoot === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'storageRoot'");
-            }
             resourceInputs["cloud"] = args ? args.cloud : undefined;
             resourceInputs["createdAt"] = args ? args.createdAt : undefined;
             resourceInputs["createdBy"] = args ? args.createdBy : undefined;
@@ -184,7 +183,7 @@ export interface MetastoreState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
     storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;
@@ -231,9 +230,9 @@ export interface MetastoreArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
-    storageRoot: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;

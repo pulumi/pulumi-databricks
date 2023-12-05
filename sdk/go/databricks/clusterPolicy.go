@@ -26,6 +26,59 @@ import (
 // * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
 // * A user that has access to only cluster policies, can select the policies they have access to.
 //
+// ## Example Usage
+// ### Overriding the built-in cluster policies
+//
+// You can override built-in cluster policies by creating a `ClusterPolicy` resource with following attributes:
+//
+// * `name` - the name of the built-in cluster policy.
+// * `policyFamilyId` - the ID of the cluster policy family used for built-in cluster policy.
+// * `policyFamilyDefinitionOverrides` - settings to override in the built-in cluster policy.
+//
+// You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_ := map[string]interface{}{
+//				"autotermination_minutes": map[string]interface{}{
+//					"type":   "fixed",
+//					"value":  220,
+//					"hidden": true,
+//				},
+//				"custom_tags.Team": map[string]interface{}{
+//					"type":  "fixed",
+//					"value": _var.Team,
+//				},
+//			}
+//			tmpJSON0, err := json.Marshal(personal_vm_override)
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = databricks.NewClusterPolicy(ctx, "personalVm", &databricks.ClusterPolicyArgs{
+//				PolicyFamilyId:                  pulumi.String("personal-vm"),
+//				PolicyFamilyDefinitionOverrides: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -59,9 +112,11 @@ type ClusterPolicy struct {
 	pulumi.CustomResourceState
 
 	// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
-	Definition pulumi.StringPtrOutput `pulumi:"definition"`
+	Definition pulumi.StringOutput `pulumi:"definition"`
 	// Additional human-readable description of the cluster policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+	Libraries ClusterPolicyLibraryArrayOutput `pulumi:"libraries"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrOutput `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -108,6 +163,8 @@ type clusterPolicyState struct {
 	Definition *string `pulumi:"definition"`
 	// Additional human-readable description of the cluster policy.
 	Description *string `pulumi:"description"`
+	// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+	Libraries []ClusterPolicyLibrary `pulumi:"libraries"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -125,6 +182,8 @@ type ClusterPolicyState struct {
 	Definition pulumi.StringPtrInput
 	// Additional human-readable description of the cluster policy.
 	Description pulumi.StringPtrInput
+	// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+	Libraries ClusterPolicyLibraryArrayInput
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -146,6 +205,8 @@ type clusterPolicyArgs struct {
 	Definition *string `pulumi:"definition"`
 	// Additional human-readable description of the cluster policy.
 	Description *string `pulumi:"description"`
+	// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+	Libraries []ClusterPolicyLibrary `pulumi:"libraries"`
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser *int `pulumi:"maxClustersPerUser"`
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -162,6 +223,8 @@ type ClusterPolicyArgs struct {
 	Definition pulumi.StringPtrInput
 	// Additional human-readable description of the cluster policy.
 	Description pulumi.StringPtrInput
+	// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+	Libraries ClusterPolicyLibraryArrayInput
 	// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
 	MaxClustersPerUser pulumi.IntPtrInput
 	// Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
@@ -260,13 +323,18 @@ func (o ClusterPolicyOutput) ToClusterPolicyOutputWithContext(ctx context.Contex
 }
 
 // Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
-func (o ClusterPolicyOutput) Definition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.Definition }).(pulumi.StringPtrOutput)
+func (o ClusterPolicyOutput) Definition() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
 }
 
 // Additional human-readable description of the cluster policy.
 func (o ClusterPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See Cluster for more details about supported library types.
+func (o ClusterPolicyOutput) Libraries() ClusterPolicyLibraryArrayOutput {
+	return o.ApplyT(func(v *ClusterPolicy) ClusterPolicyLibraryArrayOutput { return v.Libraries }).(ClusterPolicyLibraryArrayOutput)
 }
 
 // Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.

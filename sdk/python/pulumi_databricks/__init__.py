@@ -13,6 +13,7 @@ from .cluster import *
 from .cluster_policy import *
 from .connection import *
 from .dbfs_file import *
+from .default_namespace_setting import *
 from .directory import *
 from .entitlements import *
 from .external_location import *
@@ -23,16 +24,19 @@ from .get_catalogs import *
 from .get_cluster import *
 from .get_cluster_policy import *
 from .get_clusters import *
+from .get_current_config import *
 from .get_current_user import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
 from .get_group import *
 from .get_instance_pool import *
+from .get_instance_profiles import *
 from .get_job import *
 from .get_jobs import *
 from .get_metastore import *
 from .get_metastores import *
+from .get_mlflow_model import *
 from .get_mws_credentials import *
 from .get_mws_workspaces import *
 from .get_node_type import *
@@ -192,6 +196,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/dbfsFile:DbfsFile": "DbfsFile"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/defaultNamespaceSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": "DefaultNamespaceSetting"
   }
  },
  {

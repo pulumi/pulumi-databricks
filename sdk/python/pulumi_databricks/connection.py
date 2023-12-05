@@ -24,7 +24,7 @@ class ConnectionArgs:
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[str] connection_type: Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Connection.
@@ -50,7 +50,7 @@ class ConnectionArgs:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[str]:
         """
-        Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         """
         return pulumi.get(self, "connection_type")
 
@@ -151,7 +151,7 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -190,7 +190,7 @@ class _ConnectionState:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         """
         return pulumi.get(self, "connection_type")
 
@@ -318,7 +318,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -438,7 +438,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Free-form text.
-        :param pulumi.Input[str] connection_type: Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -470,7 +470,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[str]:
         """
-        Connection type. `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
+        Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         """
         return pulumi.get(self, "connection_type")
 

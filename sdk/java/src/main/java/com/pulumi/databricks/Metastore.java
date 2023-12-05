@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * 
  * Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
  * 
+ * A Unity Catalog metastore can be created without a root location &amp; credential to maintain strict separation of storage across catalogs or environments.
+ * 
  * ## Import
  * 
  * This resource can be imported by IDbash
@@ -167,18 +169,18 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
      * 
      */
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
-    private Output<String> storageRoot;
+    private Output</* @Nullable */ String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
      * 
      */
-    public Output<String> storageRoot() {
-        return this.storageRoot;
+    public Output<Optional<String>> storageRoot() {
+        return Codegen.optional(this.storageRoot);
     }
     @Export(name="storageRootCredentialId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRootCredentialId;
@@ -211,7 +213,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Metastore(String name, MetastoreArgs args) {
+    public Metastore(String name, @Nullable MetastoreArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,7 +222,7 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Metastore(String name, MetastoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Metastore(String name, @Nullable MetastoreArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/metastore:Metastore", name, args == null ? MetastoreArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

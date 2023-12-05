@@ -180,6 +180,31 @@ export interface ClusterLibraryPypi {
     repo?: pulumi.Input<string>;
 }
 
+export interface ClusterPolicyLibrary {
+    cran?: pulumi.Input<inputs.ClusterPolicyLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven>;
+    pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface ClusterPolicyLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface ClusterPolicyLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface ClusterPolicyLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
 export interface ClusterWorkloadType {
     clients: pulumi.Input<inputs.ClusterWorkloadTypeClients>;
 }
@@ -187,6 +212,13 @@ export interface ClusterWorkloadType {
 export interface ClusterWorkloadTypeClients {
     jobs?: pulumi.Input<boolean>;
     notebooks?: pulumi.Input<boolean>;
+}
+
+export interface DefaultNamespaceSettingNamespace {
+    /**
+     * The value for the setting.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface ExternalLocationEncryptionDetails {
@@ -856,6 +888,44 @@ export interface GetInstancePoolPoolInfoStatsArgs {
     usedCount?: pulumi.Input<number>;
 }
 
+export interface GetInstanceProfilesInstanceProfile {
+    /**
+     * ARN of the instance profile.
+     */
+    arn?: string;
+    /**
+     * Whether the instance profile is a meta instance profile or not.
+     */
+    isMeta?: boolean;
+    /**
+     * Name of the instance profile.
+     */
+    name?: string;
+    /**
+     * ARN of the role attached to the instance profile.
+     */
+    roleArn?: string;
+}
+
+export interface GetInstanceProfilesInstanceProfileArgs {
+    /**
+     * ARN of the instance profile.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * Whether the instance profile is a meta instance profile or not.
+     */
+    isMeta?: pulumi.Input<boolean>;
+    /**
+     * Name of the instance profile.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ARN of the role attached to the instance profile.
+     */
+    roleArn?: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettings {
     createdTime?: number;
     creatorUserName?: string;
@@ -877,6 +947,8 @@ export interface GetJobJobSettingsSettings {
     continuous?: inputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: inputs.GetJobJobSettingsSettingsDbtTask;
     deployment?: inputs.GetJobJobSettingsSettingsDeployment;
+    description?: string;
+    editMode?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsEmailNotifications;
     existingClusterId?: string;
     format?: string;
@@ -917,6 +989,8 @@ export interface GetJobJobSettingsSettingsArgs {
     continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
     deployment?: pulumi.Input<inputs.GetJobJobSettingsSettingsDeploymentArgs>;
+    description?: pulumi.Input<string>;
+    editMode?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
@@ -1007,7 +1081,6 @@ export interface GetJobJobSettingsSettingsDeploymentArgs {
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
-    alertOnLastAttempt?: boolean;
     noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
@@ -1016,7 +1089,6 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
 }
 
 export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
-    alertOnLastAttempt?: pulumi.Input<boolean>;
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1923,6 +1995,7 @@ export interface GetJobJobSettingsSettingsTask {
     sqlTask?: inputs.GetJobJobSettingsSettingsTaskSqlTask;
     taskKey?: string;
     timeoutSeconds?: number;
+    webhookNotifications?: inputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
 }
 
 export interface GetJobJobSettingsSettingsTaskArgs {
@@ -1952,6 +2025,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs>;
     taskKey?: pulumi.Input<string>;
     timeoutSeconds?: pulumi.Input<number>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsArgs>;
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTask {
@@ -1995,8 +2069,6 @@ export interface GetJobJobSettingsSettingsTaskDependsOnArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
-    alertOnLastAttempt?: boolean;
-    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -2004,8 +2076,6 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
-    alertOnLastAttempt?: pulumi.Input<boolean>;
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2566,6 +2636,76 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskQueryArgs {
     queryId: pulumi.Input<string>;
 }
 
+export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
+    onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    onFailures?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure[];
+    onStarts?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart[];
+    onSuccesses?: inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsArgs {
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
 export interface GetJobJobSettingsSettingsTrigger {
     fileArrival: inputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
@@ -2606,56 +2746,56 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningT
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: string;
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -2740,6 +2880,82 @@ export interface GetMetastoreMetastoreInfoArgs {
     storageRootCredentialName?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
     updatedBy?: pulumi.Input<string>;
+}
+
+export interface GetMlflowModelLatestVersion {
+    creationTimestamp?: number;
+    currentStage?: string;
+    /**
+     * User-specified description for the object.
+     */
+    description?: string;
+    lastUpdatedTimestamp?: number;
+    /**
+     * Name of the registered model.
+     */
+    name?: string;
+    runId?: string;
+    runLink?: string;
+    source?: string;
+    status?: string;
+    statusMessage?: string;
+    /**
+     * Array of tags associated with the model.
+     */
+    tags?: inputs.GetMlflowModelLatestVersionTag[];
+    /**
+     * The username of the user that created the object.
+     */
+    userId?: string;
+    version?: string;
+}
+
+export interface GetMlflowModelLatestVersionArgs {
+    creationTimestamp?: pulumi.Input<number>;
+    currentStage?: pulumi.Input<string>;
+    /**
+     * User-specified description for the object.
+     */
+    description?: pulumi.Input<string>;
+    lastUpdatedTimestamp?: pulumi.Input<number>;
+    /**
+     * Name of the registered model.
+     */
+    name?: pulumi.Input<string>;
+    runId?: pulumi.Input<string>;
+    runLink?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string>;
+    /**
+     * Array of tags associated with the model.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionTagArgs>[]>;
+    /**
+     * The username of the user that created the object.
+     */
+    userId?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+}
+
+export interface GetMlflowModelLatestVersionTag {
+    key?: string;
+    value?: string;
+}
+
+export interface GetMlflowModelLatestVersionTagArgs {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GetMlflowModelTag {
+    key?: string;
+    value?: string;
+}
+
+export interface GetMlflowModelTagArgs {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetShareObject {
@@ -3006,10 +3222,6 @@ export interface JobDeployment {
 
 export interface JobEmailNotifications {
     /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
-    alertOnLastAttempt?: pulumi.Input<boolean>;
-    /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
     noAlertForSkippedRuns?: pulumi.Input<boolean>;
@@ -3074,7 +3286,9 @@ export interface JobHealthRule {
      */
     metric?: pulumi.Input<string>;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: pulumi.Input<string>;
     /**
@@ -3569,7 +3783,7 @@ export interface JobParameter {
      */
     default?: pulumi.Input<string>;
     /**
-     * An optional name for the job. The default value is Untitled.
+     * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      */
     name?: pulumi.Input<string>;
 }
@@ -3607,6 +3821,9 @@ export interface JobPythonWheelTask {
 }
 
 export interface JobQueue {
+    /**
+     * If true, enable queueing for the job.
+     */
     enabled: pulumi.Input<boolean>;
 }
 
@@ -3700,9 +3917,12 @@ export interface JobTask {
      * block specifying dependency(-ies) for a given task.
      */
     dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
     description?: pulumi.Input<string>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
     existingClusterId?: pulumi.Input<string>;
@@ -3759,14 +3979,26 @@ export interface JobTask {
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
     timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
+    webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
 }
 
 export interface JobTaskConditionTask {
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     */
     left?: pulumi.Input<string>;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: pulumi.Input<string>;
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     */
     right?: pulumi.Input<string>;
 }
 
@@ -3800,6 +4032,9 @@ export interface JobTaskDbtTask {
 }
 
 export interface JobTaskDependsOn {
+    /**
+     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+     */
     outcome?: pulumi.Input<string>;
     /**
      * The name of the task this task depends on.
@@ -3808,14 +4043,6 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
-    /**
-     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
-     */
-    alertOnLastAttempt?: pulumi.Input<boolean>;
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -3847,7 +4074,9 @@ export interface JobTaskHealthRule {
      */
     metric?: pulumi.Input<string>;
     /**
-     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
      */
     op?: pulumi.Input<string>;
     /**
@@ -4325,6 +4554,61 @@ export interface JobTaskSqlTaskQuery {
     queryId: pulumi.Input<string>;
 }
 
+export interface JobTaskWebhookNotifications {
+    /**
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     */
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnFailure>[]>;
+    /**
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+     */
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+     */
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnSuccess>[]>;
+}
+
+export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the job
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the job
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the job
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskWebhookNotificationsOnSuccess {
+    /**
+     * ID of the job
+     */
+    id?: pulumi.Input<string>;
+}
+
 export interface JobTrigger {
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
@@ -4382,28 +4666,28 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
      * ID of the job
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnFailure {
     /**
      * ID of the job
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStart {
     /**
      * ID of the job
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
     /**
      * ID of the job
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
 }
 
 export interface LibraryCran {
@@ -4423,59 +4707,29 @@ export interface LibraryPypi {
 }
 
 export interface MetastoreDataAccessAwsIamRole {
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     *
-     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (Recommended):
-     */
+    externalId?: pulumi.Input<string>;
     roleArn: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string>;
 }
 
 export interface MetastoreDataAccessAzureManagedIdentity {
-    /**
-     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
-     */
     accessConnectorId: pulumi.Input<string>;
     credentialId?: pulumi.Input<string>;
-    /**
-     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
-     *
-     * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
-     */
     managedIdentityId?: pulumi.Input<string>;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
-    /**
-     * The application ID of the application registration within the referenced AAD tenant
-     */
     applicationId: pulumi.Input<string>;
-    /**
-     * The client secret generated for the above app ID in AAD. **This field is redacted on output**
-     */
     clientSecret: pulumi.Input<string>;
-    /**
-     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
-     */
     directoryId: pulumi.Input<string>;
 }
 
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
     credentialId?: pulumi.Input<string>;
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-     */
     email?: pulumi.Input<string>;
 }
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     *
-     * `azureServicePrincipal` optional configuration block for credential details for Azure (Legacy):
-     */
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;
     privateKeyId: pulumi.Input<string>;
@@ -4633,7 +4887,7 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     /**
      * The AWS KMS key alias.
      */
-    keyAlias: pulumi.Input<string>;
+    keyAlias?: pulumi.Input<string>;
     /**
      * The AWS KMS key's Amazon Resource Name (ARN).
      */
@@ -5218,9 +5472,9 @@ export interface SqlQueryParameterEnum {
 }
 
 export interface SqlQueryParameterEnumMultiple {
-    prefix: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
     separator: pulumi.Input<string>;
-    suffix: pulumi.Input<string>;
+    suffix?: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterNumber {
@@ -5241,9 +5495,9 @@ export interface SqlQueryParameterQuery {
 }
 
 export interface SqlQueryParameterQueryMultiple {
-    prefix: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
     separator: pulumi.Input<string>;
-    suffix: pulumi.Input<string>;
+    suffix?: pulumi.Input<string>;
 }
 
 export interface SqlQueryParameterText {
@@ -5315,11 +5569,19 @@ export interface SqlWidgetPosition {
 
 export interface StorageCredentialAwsIamRole {
     /**
+     * The external ID used in role assumption to prevent confused deputy problem.
+     */
+    externalId?: pulumi.Input<string>;
+    /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     */
+    roleArn: pulumi.Input<string>;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
-    roleArn: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string>;
 }
 
 export interface StorageCredentialAzureManagedIdentity {
@@ -5355,6 +5617,8 @@ export interface StorageCredentialDatabricksGcpServiceAccount {
     credentialId?: pulumi.Input<string>;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     email?: pulumi.Input<string>;
 }
@@ -5362,6 +5626,8 @@ export interface StorageCredentialDatabricksGcpServiceAccount {
 export interface StorageCredentialGcpServiceAccountKey {
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
+     *
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      */
     email: pulumi.Input<string>;
     privateKey: pulumi.Input<string>;

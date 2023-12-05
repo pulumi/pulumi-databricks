@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// ID of the job
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
 
         [OutputConstructor]
-        private JobWebhookNotificationsOnDurationWarningThresholdExceeded(string id)
+        private JobWebhookNotificationsOnDurationWarningThresholdExceeded(string? id)
         {
             Id = id;
         }

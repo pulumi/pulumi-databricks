@@ -13,21 +13,9 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
 
     public static final MetastoreDataAccessGcpServiceAccountKeyArgs Empty = new MetastoreDataAccessGcpServiceAccountKeyArgs();
 
-    /**
-     * The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-     * 
-     */
     @Import(name="email", required=true)
     private Output<String> email;
 
-    /**
-     * @return The email of the GCP service account created, to be granted access to relevant buckets.
-     * 
-     * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-     * 
-     */
     public Output<String> email() {
         return this.email;
     }
@@ -72,27 +60,11 @@ public final class MetastoreDataAccessGcpServiceAccountKeyArgs extends com.pulum
             $ = new MetastoreDataAccessGcpServiceAccountKeyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(Output<String> email) {
             $.email = email;
             return this;
         }
 
-        /**
-         * @param email The email of the GCP service account created, to be granted access to relevant buckets.
-         * 
-         * `azure_service_principal` optional configuration block for credential details for Azure (Legacy):
-         * 
-         * @return builder
-         * 
-         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

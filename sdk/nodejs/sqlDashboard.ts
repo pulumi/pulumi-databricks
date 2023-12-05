@@ -90,6 +90,7 @@ export class SqlDashboard extends pulumi.CustomResource {
     public readonly dashboardFiltersEnabled!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly parent!: pulumi.Output<string | undefined>;
+    public readonly runAsRole!: pulumi.Output<string | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
     public readonly updatedAt!: pulumi.Output<string>;
 
@@ -110,6 +111,7 @@ export class SqlDashboard extends pulumi.CustomResource {
             resourceInputs["dashboardFiltersEnabled"] = state ? state.dashboardFiltersEnabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["runAsRole"] = state ? state.runAsRole : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
@@ -118,6 +120,7 @@ export class SqlDashboard extends pulumi.CustomResource {
             resourceInputs["dashboardFiltersEnabled"] = args ? args.dashboardFiltersEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["runAsRole"] = args ? args.runAsRole : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
         }
@@ -134,6 +137,7 @@ export interface SqlDashboardState {
     dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
+    runAsRole?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -146,6 +150,7 @@ export interface SqlDashboardArgs {
     dashboardFiltersEnabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     parent?: pulumi.Input<string>;
+    runAsRole?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     updatedAt?: pulumi.Input<string>;
 }

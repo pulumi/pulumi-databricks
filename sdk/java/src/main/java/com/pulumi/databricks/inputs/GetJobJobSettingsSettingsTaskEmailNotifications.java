@@ -4,7 +4,6 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,20 +14,6 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskEmailNotifications extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskEmailNotifications Empty = new GetJobJobSettingsSettingsTaskEmailNotifications();
-
-    @Import(name="alertOnLastAttempt")
-    private @Nullable Boolean alertOnLastAttempt;
-
-    public Optional<Boolean> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
-
-    @Import(name="noAlertForSkippedRuns")
-    private @Nullable Boolean noAlertForSkippedRuns;
-
-    public Optional<Boolean> noAlertForSkippedRuns() {
-        return Optional.ofNullable(this.noAlertForSkippedRuns);
-    }
 
     @Import(name="onDurationWarningThresholdExceededs")
     private @Nullable List<String> onDurationWarningThresholdExceededs;
@@ -61,8 +46,6 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications extends com.p
     private GetJobJobSettingsSettingsTaskEmailNotifications() {}
 
     private GetJobJobSettingsSettingsTaskEmailNotifications(GetJobJobSettingsSettingsTaskEmailNotifications $) {
-        this.alertOnLastAttempt = $.alertOnLastAttempt;
-        this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
@@ -85,16 +68,6 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications extends com.p
 
         public Builder(GetJobJobSettingsSettingsTaskEmailNotifications defaults) {
             $ = new GetJobJobSettingsSettingsTaskEmailNotifications(Objects.requireNonNull(defaults));
-        }
-
-        public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
-            $.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
-
-        public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
-            $.noAlertForSkippedRuns = noAlertForSkippedRuns;
-            return this;
         }
 
         public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {

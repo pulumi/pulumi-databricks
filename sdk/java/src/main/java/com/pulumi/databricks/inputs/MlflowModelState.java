@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MlflowModelTagArgs;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,13 +16,6 @@ import javax.annotation.Nullable;
 public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
 
     public static final MlflowModelState Empty = new MlflowModelState();
-
-    @Import(name="creationTimestamp")
-    private @Nullable Output<Integer> creationTimestamp;
-
-    public Optional<Output<Integer>> creationTimestamp() {
-        return Optional.ofNullable(this.creationTimestamp);
-    }
 
     /**
      * The description of the MLflow model.
@@ -38,13 +30,6 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
-    }
-
-    @Import(name="lastUpdatedTimestamp")
-    private @Nullable Output<Integer> lastUpdatedTimestamp;
-
-    public Optional<Output<Integer>> lastUpdatedTimestamp() {
-        return Optional.ofNullable(this.lastUpdatedTimestamp);
     }
 
     /**
@@ -84,23 +69,13 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    @Import(name="userId")
-    private @Nullable Output<String> userId;
-
-    public Optional<Output<String>> userId() {
-        return Optional.ofNullable(this.userId);
-    }
-
     private MlflowModelState() {}
 
     private MlflowModelState(MlflowModelState $) {
-        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
-        this.lastUpdatedTimestamp = $.lastUpdatedTimestamp;
         this.name = $.name;
         this.registeredModelId = $.registeredModelId;
         this.tags = $.tags;
-        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -119,15 +94,6 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(MlflowModelState defaults) {
             $ = new MlflowModelState(Objects.requireNonNull(defaults));
-        }
-
-        public Builder creationTimestamp(@Nullable Output<Integer> creationTimestamp) {
-            $.creationTimestamp = creationTimestamp;
-            return this;
-        }
-
-        public Builder creationTimestamp(Integer creationTimestamp) {
-            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**
@@ -149,15 +115,6 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        public Builder lastUpdatedTimestamp(@Nullable Output<Integer> lastUpdatedTimestamp) {
-            $.lastUpdatedTimestamp = lastUpdatedTimestamp;
-            return this;
-        }
-
-        public Builder lastUpdatedTimestamp(Integer lastUpdatedTimestamp) {
-            return lastUpdatedTimestamp(Output.of(lastUpdatedTimestamp));
         }
 
         /**
@@ -219,15 +176,6 @@ public final class MlflowModelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(MlflowModelTagArgs... tags) {
             return tags(List.of(tags));
-        }
-
-        public Builder userId(@Nullable Output<String> userId) {
-            $.userId = userId;
-            return this;
-        }
-
-        public Builder userId(String userId) {
-            return userId(Output.of(userId));
         }
 
         public MlflowModelState build() {

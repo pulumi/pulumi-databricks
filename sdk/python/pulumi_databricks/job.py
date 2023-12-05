@@ -22,6 +22,8 @@ class JobArgs:
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  deployment: Optional[pulumi.Input['JobDeploymentArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -58,15 +60,17 @@ class JobArgs:
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+               
                ```python
                import pulumi
                ```
-        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
@@ -74,7 +78,7 @@ class JobArgs:
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
@@ -91,6 +95,10 @@ class JobArgs:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if edit_mode is not None:
+            pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -192,6 +200,7 @@ class JobArgs:
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+
         ```python
         import pulumi
         ```
@@ -221,10 +230,31 @@ class JobArgs:
         pulumi.set(self, "deployment", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="editMode")
+    def edit_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edit_mode")
+
+    @edit_mode.setter
+    def edit_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edit_mode", value)
+
+    @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobEmailNotificationsArgs']]:
         """
-        (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -311,7 +341,7 @@ class JobArgs:
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         """
         return pulumi.get(self, "max_retries")
 
@@ -524,7 +554,7 @@ class JobArgs:
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
         """
-        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -542,6 +572,8 @@ class _JobState:
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
                  deployment: Optional[pulumi.Input['JobDeploymentArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -579,15 +611,17 @@ class _JobState:
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+               
                ```python
                import pulumi
                ```
-        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
@@ -596,7 +630,7 @@ class _JobState:
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the job on the given workspace
-        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
             warnings.warn("""always_running will be replaced by control_run_state in the next major release.""", DeprecationWarning)
@@ -613,6 +647,10 @@ class _JobState:
             pulumi.set(__self__, "dbt_task", dbt_task)
         if deployment is not None:
             pulumi.set(__self__, "deployment", deployment)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if edit_mode is not None:
+            pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if existing_cluster_id is not None:
@@ -716,6 +754,7 @@ class _JobState:
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+
         ```python
         import pulumi
         ```
@@ -745,10 +784,31 @@ class _JobState:
         pulumi.set(self, "deployment", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="editMode")
+    def edit_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edit_mode")
+
+    @edit_mode.setter
+    def edit_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edit_mode", value)
+
+    @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional[pulumi.Input['JobEmailNotificationsArgs']]:
         """
-        (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -835,7 +895,7 @@ class _JobState:
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         """
         return pulumi.get(self, "max_retries")
 
@@ -1060,7 +1120,7 @@ class _JobState:
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> Optional[pulumi.Input['JobWebhookNotificationsArgs']]:
         """
-        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         return pulumi.get(self, "webhook_notifications")
 
@@ -1080,6 +1140,8 @@ class Job(pulumi.CustomResource):
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -1126,15 +1188,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+               
                ```python
                import pulumi
                ```
-        :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
@@ -1142,7 +1206,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         ...
     @overload
@@ -1180,6 +1244,8 @@ class Job(pulumi.CustomResource):
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
                  deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -1225,6 +1291,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["control_run_state"] = control_run_state
             __props__.__dict__["dbt_task"] = dbt_task
             __props__.__dict__["deployment"] = deployment
+            __props__.__dict__["description"] = description
+            __props__.__dict__["edit_mode"] = edit_mode
             __props__.__dict__["email_notifications"] = email_notifications
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
@@ -1272,6 +1340,8 @@ class Job(pulumi.CustomResource):
             control_run_state: Optional[pulumi.Input[bool]] = None,
             dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
             deployment: Optional[pulumi.Input[pulumi.InputType['JobDeploymentArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            edit_mode: Optional[pulumi.Input[str]] = None,
             email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
             existing_cluster_id: Optional[pulumi.Input[str]] = None,
             format: Optional[pulumi.Input[str]] = None,
@@ -1314,15 +1384,17 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+               
                ```python
                import pulumi
                ```
-        :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
         :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
@@ -1331,7 +1403,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the job on the given workspace
-        :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1343,6 +1415,8 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["control_run_state"] = control_run_state
         __props__.__dict__["dbt_task"] = dbt_task
         __props__.__dict__["deployment"] = deployment
+        __props__.__dict__["description"] = description
+        __props__.__dict__["edit_mode"] = edit_mode
         __props__.__dict__["email_notifications"] = email_notifications
         __props__.__dict__["existing_cluster_id"] = existing_cluster_id
         __props__.__dict__["format"] = format
@@ -1404,6 +1478,7 @@ class Job(pulumi.CustomResource):
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+
         ```python
         import pulumi
         ```
@@ -1421,10 +1496,23 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "deployment")
 
     @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="editMode")
+    def edit_mode(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "edit_mode")
+
+    @property
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> pulumi.Output[Optional['outputs.JobEmailNotifications']]:
         """
-        (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+        (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
 
@@ -1479,7 +1567,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> pulumi.Output[Optional[int]]:
         """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         """
         return pulumi.get(self, "max_retries")
 
@@ -1550,7 +1638,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> pulumi.Output[Optional['outputs.JobRunAs']]:
+    def run_as(self) -> pulumi.Output['outputs.JobRunAs']:
         return pulumi.get(self, "run_as")
 
     @property
@@ -1616,7 +1704,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="webhookNotifications")
     def webhook_notifications(self) -> pulumi.Output[Optional['outputs.JobWebhookNotifications']]:
         """
-        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+        (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         return pulumi.get(self, "webhook_notifications")
 

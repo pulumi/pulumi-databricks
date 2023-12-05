@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -15,6 +14,8 @@ import (
 // A metastore is the top-level container of objects in Unity Catalog. It stores data assets (tables and views) and the permissions that govern access to them. Databricks account admins can create metastores and assign them to Databricks workspaces in order to control which workloads use each metastore.
 //
 // Unity Catalog offers a new metastore with built in security and auditing. This is distinct to the metastore used in previous versions of Databricks (based on the Hive Metastore).
+//
+// A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
 //
 // ## Import
 //
@@ -48,8 +49,8 @@ type Metastore struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// The region of the metastore
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
-	StorageRoot             pulumi.StringOutput    `pulumi:"storageRoot"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             pulumi.StringPtrOutput `pulumi:"storageRoot"`
 	StorageRootCredentialId pulumi.StringPtrOutput `pulumi:"storageRootCredentialId"`
 	UpdatedAt               pulumi.IntOutput       `pulumi:"updatedAt"`
 	UpdatedBy               pulumi.StringOutput    `pulumi:"updatedBy"`
@@ -59,12 +60,9 @@ type Metastore struct {
 func NewMetastore(ctx *pulumi.Context,
 	name string, args *MetastoreArgs, opts ...pulumi.ResourceOption) (*Metastore, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &MetastoreArgs{}
 	}
 
-	if args.StorageRoot == nil {
-		return nil, errors.New("invalid value for required argument 'StorageRoot'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Metastore
 	err := ctx.RegisterResource("databricks:index/metastore:Metastore", name, args, &resource, opts...)
@@ -108,7 +106,7 @@ type metastoreState struct {
 	Owner *string `pulumi:"owner"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             *string `pulumi:"storageRoot"`
 	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
 	UpdatedAt               *int    `pulumi:"updatedAt"`
@@ -136,7 +134,7 @@ type MetastoreState struct {
 	Owner pulumi.StringPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             pulumi.StringPtrInput
 	StorageRootCredentialId pulumi.StringPtrInput
 	UpdatedAt               pulumi.IntPtrInput
@@ -168,8 +166,8 @@ type metastoreArgs struct {
 	Owner *string `pulumi:"owner"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
-	StorageRoot             string  `pulumi:"storageRoot"`
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             *string `pulumi:"storageRoot"`
 	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
 	UpdatedAt               *int    `pulumi:"updatedAt"`
 	UpdatedBy               *string `pulumi:"updatedBy"`
@@ -197,8 +195,8 @@ type MetastoreArgs struct {
 	Owner pulumi.StringPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
-	StorageRoot             pulumi.StringInput
+	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	StorageRoot             pulumi.StringPtrInput
 	StorageRootCredentialId pulumi.StringPtrInput
 	UpdatedAt               pulumi.IntPtrInput
 	UpdatedBy               pulumi.StringPtrInput
@@ -350,9 +348,9 @@ func (o MetastoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
-func (o MetastoreOutput) StorageRoot() pulumi.StringOutput {
-	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.StorageRoot }).(pulumi.StringOutput)
+// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+func (o MetastoreOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
 func (o MetastoreOutput) StorageRootCredentialId() pulumi.StringPtrOutput {

@@ -88,7 +88,7 @@ export class SqlPermissions extends pulumi.CustomResource {
      */
     public readonly anonymousFunction!: pulumi.Output<boolean | undefined>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * If this access control for reading/writing any file. Defaults to `false`.
      */
     public readonly anyFile!: pulumi.Output<boolean | undefined>;
     /**
@@ -156,7 +156,7 @@ export interface SqlPermissionsState {
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * If this access control for reading/writing any file. Defaults to `false`.
      */
     anyFile?: pulumi.Input<boolean>;
     /**
@@ -188,7 +188,7 @@ export interface SqlPermissionsArgs {
      */
     anonymousFunction?: pulumi.Input<boolean>;
     /**
-     * If this access control for reading any file. Defaults to `false`.
+     * If this access control for reading/writing any file. Defaults to `false`.
      */
     anyFile?: pulumi.Input<boolean>;
     /**

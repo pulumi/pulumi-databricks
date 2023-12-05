@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobEmailNotifications {
     /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    private @Nullable Boolean alertOnLastAttempt;
-    /**
      * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
@@ -45,13 +40,6 @@ public final class JobEmailNotifications {
     private @Nullable List<String> onSuccesses;
 
     private JobEmailNotifications() {}
-    /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    public Optional<Boolean> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
     /**
      * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
@@ -97,7 +85,6 @@ public final class JobEmailNotifications {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean alertOnLastAttempt;
         private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
@@ -106,7 +93,6 @@ public final class JobEmailNotifications {
         public Builder() {}
         public Builder(JobEmailNotifications defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.alertOnLastAttempt = defaults.alertOnLastAttempt;
     	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
@@ -114,11 +100,6 @@ public final class JobEmailNotifications {
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
-        @CustomType.Setter
-        public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
-            this.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
         @CustomType.Setter
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
@@ -158,7 +139,6 @@ public final class JobEmailNotifications {
         }
         public JobEmailNotifications build() {
             final var _resultValue = new JobEmailNotifications();
-            _resultValue.alertOnLastAttempt = alertOnLastAttempt;
             _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;

@@ -14,62 +14,50 @@ __all__ = ['CatalogWorkspaceBindingArgs', 'CatalogWorkspaceBinding']
 @pulumi.input_type
 class CatalogWorkspaceBindingArgs:
     def __init__(__self__, *,
-                 catalog_name: pulumi.Input[str],
-                 workspace_id: pulumi.Input[str]):
+                 binding_type: Optional[pulumi.Input[str]] = None,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 securable_name: Optional[pulumi.Input[str]] = None,
+                 securable_type: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a CatalogWorkspaceBinding resource.
-        :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
+        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[int] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "workspace_id", workspace_id)
-
-    @property
-    @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> pulumi.Input[str]:
-        """
-        Name of Catalog. Change forces creation of a new resource.
-        """
-        return pulumi.get(self, "catalog_name")
-
-    @catalog_name.setter
-    def catalog_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "catalog_name", value)
-
-    @property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Input[str]:
-        """
-        ID of the workspace. Change forces creation of a new resource.
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workspace_id", value)
-
-
-@pulumi.input_type
-class _CatalogWorkspaceBindingState:
-    def __init__(__self__, *,
-                 catalog_name: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[str]] = None):
-        """
-        Input properties used for looking up and filtering CatalogWorkspaceBinding resources.
-        :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
-        """
+        if binding_type is not None:
+            pulumi.set(__self__, "binding_type", binding_type)
+        if catalog_name is not None:
+            warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
+            pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
+        if securable_name is not None:
+            pulumi.set(__self__, "securable_name", securable_name)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
         if workspace_id is not None:
             pulumi.set(__self__, "workspace_id", workspace_id)
 
     @property
+    @pulumi.getter(name="bindingType")
+    def binding_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        """
+        return pulumi.get(self, "binding_type")
+
+    @binding_type.setter
+    def binding_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binding_type", value)
+
+    @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of Catalog. Change forces creation of a new resource.
-        """
+        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
+        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
+
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -77,15 +65,129 @@ class _CatalogWorkspaceBindingState:
         pulumi.set(self, "catalog_name", value)
 
     @property
+    @pulumi.getter(name="securableName")
+    def securable_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of securable. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_name")
+
+    @securable_name.setter
+    def securable_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securable_name", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securable_type", value)
+
+    @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[str]]:
+    def workspace_id(self) -> Optional[pulumi.Input[int]]:
         """
         ID of the workspace. Change forces creation of a new resource.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[str]]):
+    def workspace_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+@pulumi.input_type
+class _CatalogWorkspaceBindingState:
+    def __init__(__self__, *,
+                 binding_type: Optional[pulumi.Input[str]] = None,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 securable_name: Optional[pulumi.Input[str]] = None,
+                 securable_type: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering CatalogWorkspaceBinding resources.
+        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[int] workspace_id: ID of the workspace. Change forces creation of a new resource.
+        """
+        if binding_type is not None:
+            pulumi.set(__self__, "binding_type", binding_type)
+        if catalog_name is not None:
+            warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
+            pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if securable_name is not None:
+            pulumi.set(__self__, "securable_name", securable_name)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="bindingType")
+    def binding_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        """
+        return pulumi.get(self, "binding_type")
+
+    @binding_type.setter
+    def binding_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "binding_type", value)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
+        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
+
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter(name="securableName")
+    def securable_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of securable. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_name")
+
+    @securable_name.setter
+    def securable_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securable_name", value)
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securable_type", value)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        ID of the workspace. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -94,8 +196,11 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 binding_type: Optional[pulumi.Input[str]] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[str]] = None,
+                 securable_name: Optional[pulumi.Input[str]] = None,
+                 securable_type: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -106,7 +211,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
         sandbox_catalog = databricks.Catalog("sandboxCatalog", isolation_mode="ISOLATED")
         sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding",
-            catalog_name=sandbox_catalog.name,
+            securable_name=sandbox_catalog.name,
             workspace_id=databricks_mws_workspaces["other"]["workspace_id"])
         ```
 
@@ -116,14 +221,16 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
+        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[int] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CatalogWorkspaceBindingArgs,
+                 args: Optional[CatalogWorkspaceBindingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -134,7 +241,7 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
 
         sandbox_catalog = databricks.Catalog("sandboxCatalog", isolation_mode="ISOLATED")
         sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding",
-            catalog_name=sandbox_catalog.name,
+            securable_name=sandbox_catalog.name,
             workspace_id=databricks_mws_workspaces["other"]["workspace_id"])
         ```
 
@@ -157,8 +264,11 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 binding_type: Optional[pulumi.Input[str]] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
-                 workspace_id: Optional[pulumi.Input[str]] = None,
+                 securable_name: Optional[pulumi.Input[str]] = None,
+                 securable_type: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -168,11 +278,10 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CatalogWorkspaceBindingArgs.__new__(CatalogWorkspaceBindingArgs)
 
-            if catalog_name is None and not opts.urn:
-                raise TypeError("Missing required property 'catalog_name'")
+            __props__.__dict__["binding_type"] = binding_type
             __props__.__dict__["catalog_name"] = catalog_name
-            if workspace_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workspace_id'")
+            __props__.__dict__["securable_name"] = securable_name
+            __props__.__dict__["securable_type"] = securable_type
             __props__.__dict__["workspace_id"] = workspace_id
         super(CatalogWorkspaceBinding, __self__).__init__(
             'databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding',
@@ -184,8 +293,11 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            binding_type: Optional[pulumi.Input[str]] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
-            workspace_id: Optional[pulumi.Input[str]] = None) -> 'CatalogWorkspaceBinding':
+            securable_name: Optional[pulumi.Input[str]] = None,
+            securable_type: Optional[pulumi.Input[str]] = None,
+            workspace_id: Optional[pulumi.Input[int]] = None) -> 'CatalogWorkspaceBinding':
         """
         Get an existing CatalogWorkspaceBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,28 +305,57 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: Name of Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[str] workspace_id: ID of the workspace. Change forces creation of a new resource.
+        :param pulumi.Input[str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        :param pulumi.Input[str] securable_name: Name of securable. Change forces creation of a new resource.
+        :param pulumi.Input[str] securable_type: Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        :param pulumi.Input[int] workspace_id: ID of the workspace. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CatalogWorkspaceBindingState.__new__(_CatalogWorkspaceBindingState)
 
+        __props__.__dict__["binding_type"] = binding_type
         __props__.__dict__["catalog_name"] = catalog_name
+        __props__.__dict__["securable_name"] = securable_name
+        __props__.__dict__["securable_type"] = securable_type
         __props__.__dict__["workspace_id"] = workspace_id
         return CatalogWorkspaceBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="bindingType")
+    def binding_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
+        """
+        return pulumi.get(self, "binding_type")
+
+    @property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> pulumi.Output[str]:
-        """
-        Name of Catalog. Change forces creation of a new resource.
-        """
+    def catalog_name(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Please use 'securable_name' and 'securable_type instead.""", DeprecationWarning)
+        pulumi.log.warn("""catalog_name is deprecated: Please use 'securable_name' and 'securable_type instead.""")
+
         return pulumi.get(self, "catalog_name")
 
     @property
+    @pulumi.getter(name="securableName")
+    def securable_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        Name of securable. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_name")
+
+    @property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        """
+        return pulumi.get(self, "securable_type")
+
+    @property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[str]:
+    def workspace_id(self) -> pulumi.Output[Optional[int]]:
         """
         ID of the workspace. Change forces creation of a new resource.
         """

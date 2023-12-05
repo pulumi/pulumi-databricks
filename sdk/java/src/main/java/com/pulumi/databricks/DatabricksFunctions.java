@@ -20,6 +20,8 @@ import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
 import com.pulumi.databricks.inputs.GetClusterPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetClustersArgs;
 import com.pulumi.databricks.inputs.GetClustersPlainArgs;
+import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+import com.pulumi.databricks.inputs.GetCurrentConfigPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
@@ -30,6 +32,8 @@ import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPlainArgs;
+import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+import com.pulumi.databricks.inputs.GetInstanceProfilesPlainArgs;
 import com.pulumi.databricks.inputs.GetJobArgs;
 import com.pulumi.databricks.inputs.GetJobPlainArgs;
 import com.pulumi.databricks.inputs.GetJobsArgs;
@@ -38,6 +42,8 @@ import com.pulumi.databricks.inputs.GetMetastoreArgs;
 import com.pulumi.databricks.inputs.GetMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoresArgs;
 import com.pulumi.databricks.inputs.GetMetastoresPlainArgs;
+import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+import com.pulumi.databricks.inputs.GetMlflowModelPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
 import com.pulumi.databricks.inputs.GetMwsCredentialsPlainArgs;
 import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
@@ -79,16 +85,19 @@ import com.pulumi.databricks.outputs.GetCatalogsResult;
 import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
 import com.pulumi.databricks.outputs.GetClustersResult;
+import com.pulumi.databricks.outputs.GetCurrentConfigResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
+import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
 import com.pulumi.databricks.outputs.GetJobResult;
 import com.pulumi.databricks.outputs.GetJobsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
 import com.pulumi.databricks.outputs.GetMetastoresResult;
+import com.pulumi.databricks.outputs.GetMlflowModelResult;
 import com.pulumi.databricks.outputs.GetMwsCredentialsResult;
 import com.pulumi.databricks.outputs.GetMwsWorkspacesResult;
 import com.pulumi.databricks.outputs.GetNodeTypeResult;
@@ -506,8 +515,6 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", TypeShape.of(GetAwsBucketPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -553,8 +560,6 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -600,8 +605,6 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(GetAwsCrossAccountPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -647,8 +650,6 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -694,8 +695,6 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -741,8 +740,6 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
-     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -1910,6 +1907,402 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static Output<GetCurrentConfigResult> getCurrentConfig() {
+        return getCurrentConfig(GetCurrentConfigArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain() {
+        return getCurrentConfigPlain(GetCurrentConfigPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static Output<GetCurrentConfigResult> getCurrentConfig(GetCurrentConfigArgs args) {
+        return getCurrentConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain(GetCurrentConfigPlainArgs args) {
+        return getCurrentConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static Output<GetCurrentConfigResult> getCurrentConfig(GetCurrentConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCurrentConfig:getCurrentConfig", TypeShape.of(GetCurrentConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
+     * import com.pulumi.databricks.StorageCredential;
+     * import com.pulumi.databricks.StorageCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentConfig();
+     * 
+     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+     *             .dynamic(            
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .comment(&#34;Managed by TF&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `is_account` - Whether the provider is configured at account-level
+     * * `account_id` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloud_type` - Cloud type specified in the provider
+     * * `auth_type` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
+     */
+    public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain(GetCurrentConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getCurrentConfig:getCurrentConfig", TypeShape.of(GetCurrentConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -3064,6 +3457,234 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getInstancePool:getInstancePool", TypeShape.of(GetInstancePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceProfilesResult> getInstanceProfiles() {
+        return getInstanceProfiles(GetInstanceProfilesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain() {
+        return getInstanceProfilesPlain(GetInstanceProfilesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceProfilesResult> getInstanceProfiles(GetInstanceProfilesArgs args) {
+        return getInstanceProfiles(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain(GetInstanceProfilesPlainArgs args) {
+        return getInstanceProfilesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceProfilesResult> getInstanceProfiles(GetInstanceProfilesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getInstanceProfiles:getInstanceProfiles", TypeShape.of(GetInstanceProfilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Lists all available databricks_instance_profiles.
+     * 
+     * ## Example Usage
+     * 
+     * Get all instance profiles:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getInstanceProfiles();
+     * 
+     *         ctx.export(&#34;allInstanceProfiles&#34;, all.applyValue(getInstanceProfilesResult -&gt; getInstanceProfilesResult.instanceProfiles()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain(GetInstanceProfilesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getInstanceProfiles:getInstanceProfiles", TypeShape.of(GetInstanceProfilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
@@ -3895,6 +4516,7 @@ public final class DatabricksFunctions {
      * ## Related Resources
      * 
      * The following resources are used in the same context:
+     * 
      * * databricks.getMetastores to get mapping of name to id of all metastores.
      * * databricks.Metastore to manage Metastores within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
@@ -3907,6 +4529,7 @@ public final class DatabricksFunctions {
      * ## Related Resources
      * 
      * The following resources are used in the same context:
+     * 
      * * databricks.getMetastores to get mapping of name to id of all metastores.
      * * databricks.Metastore to manage Metastores within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
@@ -3919,6 +4542,7 @@ public final class DatabricksFunctions {
      * ## Related Resources
      * 
      * The following resources are used in the same context:
+     * 
      * * databricks.getMetastores to get mapping of name to id of all metastores.
      * * databricks.Metastore to manage Metastores within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
@@ -3931,6 +4555,7 @@ public final class DatabricksFunctions {
      * ## Related Resources
      * 
      * The following resources are used in the same context:
+     * 
      * * databricks.getMetastores to get mapping of name to id of all metastores.
      * * databricks.Metastore to manage Metastores within Unity Catalog.
      * * databricks.Catalog to manage catalogs within Unity Catalog.
@@ -4196,6 +4821,42 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetMetastoresResult> getMetastoresPlain(GetMetastoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMetastores:getMetastores", TypeShape.of(GetMetastoresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     */
+    public static Output<GetMlflowModelResult> getMlflowModel(GetMlflowModelArgs args) {
+        return getMlflowModel(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     */
+    public static CompletableFuture<GetMlflowModelResult> getMlflowModelPlain(GetMlflowModelPlainArgs args) {
+        return getMlflowModelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     */
+    public static Output<GetMlflowModelResult> getMlflowModel(GetMlflowModelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
+     * 
+     * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     */
+    public static CompletableFuture<GetMlflowModelResult> getMlflowModelPlain(GetMlflowModelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.

@@ -25,6 +25,49 @@ namespace Pulumi.Databricks
     /// * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
     /// * A user that has access to only cluster policies, can select the policies they have access to.
     /// 
+    /// ## Example Usage
+    /// ### Overriding the built-in cluster policies
+    /// 
+    /// You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
+    /// 
+    /// * `name` - the name of the built-in cluster policy.
+    /// * `policy_family_id` - the ID of the cluster policy family used for built-in cluster policy.
+    /// * `policy_family_definition_overrides` - settings to override in the built-in cluster policy.
+    /// 
+    /// You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var personalVmOverride = 
+    ///     {
+    ///         { "autotermination_minutes", 
+    ///         {
+    ///             { "type", "fixed" },
+    ///             { "value", 220 },
+    ///             { "hidden", true },
+    ///         } },
+    ///         { "custom_tags.Team", 
+    ///         {
+    ///             { "type", "fixed" },
+    ///             { "value", @var.Team },
+    ///         } },
+    ///     };
+    /// 
+    ///     var personalVm = new Databricks.ClusterPolicy("personalVm", new()
+    ///     {
+    ///         PolicyFamilyId = "personal-vm",
+    ///         PolicyFamilyDefinitionOverrides = JsonSerializer.Serialize(personal_vm_override),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -60,13 +103,19 @@ namespace Pulumi.Databricks
         /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         /// </summary>
         [Output("definition")]
-        public Output<string?> Definition { get; private set; } = null!;
+        public Output<string> Definition { get; private set; } = null!;
 
         /// <summary>
         /// Additional human-readable description of the cluster policy.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+        /// </summary>
+        [Output("libraries")]
+        public Output<ImmutableArray<Outputs.ClusterPolicyLibrary>> Libraries { get; private set; } = null!;
 
         /// <summary>
         /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
@@ -156,6 +205,18 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("libraries")]
+        private InputList<Inputs.ClusterPolicyLibraryArgs>? _libraries;
+
+        /// <summary>
+        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+        /// </summary>
+        public InputList<Inputs.ClusterPolicyLibraryArgs> Libraries
+        {
+            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterPolicyLibraryArgs>());
+            set => _libraries = value;
+        }
+
         /// <summary>
         /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         /// </summary>
@@ -199,6 +260,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("libraries")]
+        private InputList<Inputs.ClusterPolicyLibraryGetArgs>? _libraries;
+
+        /// <summary>
+        /// blocks defining individual libraries that will be installed on the cluster that uses a given cluster policy. See databricks.Cluster for more details about supported library types.
+        /// </summary>
+        public InputList<Inputs.ClusterPolicyLibraryGetArgs> Libraries
+        {
+            get => _libraries ?? (_libraries = new InputList<Inputs.ClusterPolicyLibraryGetArgs>());
+            set => _libraries = value;
+        }
 
         /// <summary>
         /// Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.

@@ -18,21 +18,6 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     public static final JobEmailNotificationsArgs Empty = new JobEmailNotificationsArgs();
 
     /**
-     * (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    @Import(name="alertOnLastAttempt")
-    private @Nullable Output<Boolean> alertOnLastAttempt;
-
-    /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-     * 
-     */
-    public Optional<Output<Boolean>> alertOnLastAttempt() {
-        return Optional.ofNullable(this.alertOnLastAttempt);
-    }
-
-    /**
      * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
      * 
      */
@@ -110,7 +95,6 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
     private JobEmailNotificationsArgs() {}
 
     private JobEmailNotificationsArgs(JobEmailNotificationsArgs $) {
-        this.alertOnLastAttempt = $.alertOnLastAttempt;
         this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
@@ -134,27 +118,6 @@ public final class JobEmailNotificationsArgs extends com.pulumi.resources.Resour
 
         public Builder(JobEmailNotificationsArgs defaults) {
             $ = new JobEmailNotificationsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder alertOnLastAttempt(@Nullable Output<Boolean> alertOnLastAttempt) {
-            $.alertOnLastAttempt = alertOnLastAttempt;
-            return this;
-        }
-
-        /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder alertOnLastAttempt(Boolean alertOnLastAttempt) {
-            return alertOnLastAttempt(Output.of(alertOnLastAttempt));
         }
 
         /**

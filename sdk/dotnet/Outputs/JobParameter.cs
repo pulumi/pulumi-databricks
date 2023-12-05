@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Default;
         /// <summary>
-        /// An optional name for the job. The default value is Untitled.
+        /// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         /// </summary>
         public readonly string? Name;
 

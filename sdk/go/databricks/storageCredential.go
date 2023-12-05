@@ -173,8 +173,6 @@ type StorageCredential struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 }
 
@@ -225,8 +223,6 @@ type storageCredentialState struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -248,8 +244,6 @@ type StorageCredentialState struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrInput
 }
 
@@ -275,8 +269,6 @@ type storageCredentialArgs struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -299,8 +291,6 @@ type StorageCredentialArgs struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
-	//
-	// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 	ReadOnly pulumi.BoolPtrInput
 }
 
@@ -446,8 +436,6 @@ func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 }
 
 // Indicates whether the storage credential is only usable for read operations.
-//
-// `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
 func (o StorageCredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }

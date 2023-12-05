@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The AWS KMS key alias.
         /// </summary>
-        public readonly string KeyAlias;
+        public readonly string? KeyAlias;
         /// <summary>
         /// The AWS KMS key's Amazon Resource Name (ARN).
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private MwsCustomerManagedKeysAwsKeyInfo(
-            string keyAlias,
+            string? keyAlias,
 
             string keyArn,
 

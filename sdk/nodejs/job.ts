@@ -55,6 +55,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -63,7 +64,12 @@ export class Job extends pulumi.CustomResource {
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     public readonly deployment!: pulumi.Output<outputs.JobDeployment | undefined>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly editMode!: pulumi.Output<string | undefined>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     public readonly emailNotifications!: pulumi.Output<outputs.JobEmailNotifications | undefined>;
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
@@ -86,7 +92,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
@@ -114,7 +120,7 @@ export class Job extends pulumi.CustomResource {
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
-    public readonly runAs!: pulumi.Output<outputs.JobRunAs | undefined>;
+    public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
     public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
@@ -135,7 +141,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     public readonly webhookNotifications!: pulumi.Output<outputs.JobWebhookNotifications | undefined>;
 
@@ -158,6 +164,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["controlRunState"] = state ? state.controlRunState : undefined;
             resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
             resourceInputs["deployment"] = state ? state.deployment : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["editMode"] = state ? state.editMode : undefined;
             resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = state ? state.existingClusterId : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
@@ -197,6 +205,8 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["controlRunState"] = args ? args.controlRunState : undefined;
             resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
             resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["editMode"] = args ? args.editMode : undefined;
             resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
             resourceInputs["existingClusterId"] = args ? args.existingClusterId : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
@@ -250,6 +260,7 @@ export interface JobState {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -258,7 +269,12 @@ export interface JobState {
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: pulumi.Input<string>;
+    editMode?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
     existingClusterId?: pulumi.Input<string>;
@@ -281,7 +297,7 @@ export interface JobState {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -330,7 +346,7 @@ export interface JobState {
      */
     url?: pulumi.Input<string>;
     /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }
@@ -351,6 +367,7 @@ export interface JobArgs {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -359,7 +376,12 @@ export interface JobArgs {
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
-     * (List) An optional set of email addresses notified when runs of this job begins, completes and fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: pulumi.Input<string>;
+    editMode?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
     existingClusterId?: pulumi.Input<string>;
@@ -382,7 +404,7 @@ export interface JobArgs {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry.
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
     maxRetries?: pulumi.Input<number>;
     /**
@@ -427,7 +449,7 @@ export interface JobArgs {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
-     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes and fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobWebhookNotifications>;
 }

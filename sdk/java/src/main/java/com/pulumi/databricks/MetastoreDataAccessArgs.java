@@ -56,21 +56,9 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.databricksGcpServiceAccount);
     }
 
-    /**
-     * Delete the data access configuration regardless of its dependencies.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
-     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
-    /**
-     * @return Delete the data access configuration regardless of its dependencies.
-     * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
-     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -82,54 +70,38 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.gcpServiceAccountKey);
     }
 
+    /**
+     * whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
+    /**
+     * @return whether to set this credential as the default for the metastore. In practice, this should always be true.
+     * 
+     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
 
-    /**
-     * Unique identifier of the parent Metastore
-     * 
-     */
-    @Import(name="metastoreId", required=true)
-    private Output<String> metastoreId;
+    @Import(name="metastoreId")
+    private @Nullable Output<String> metastoreId;
 
-    /**
-     * @return Unique identifier of the parent Metastore
-     * 
-     */
-    public Output<String> metastoreId() {
-        return this.metastoreId;
+    public Optional<Output<String>> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
     }
 
-    /**
-     * Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Username/groupname/sp application_id of the data access configuration owner.
-     * 
-     */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
-    /**
-     * @return Username/groupname/sp application_id of the data access configuration owner.
-     * 
-     */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
     }
@@ -221,27 +193,11 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
             return databricksGcpServiceAccount(Output.of(databricksGcpServiceAccount));
         }
 
-        /**
-         * @param forceDestroy Delete the data access configuration regardless of its dependencies.
-         * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
-        /**
-         * @param forceDestroy Delete the data access configuration regardless of its dependencies.
-         * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }
@@ -255,74 +211,50 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
             return gcpServiceAccountKey(Output.of(gcpServiceAccountKey));
         }
 
+        /**
+         * @param isDefault whether to set this credential as the default for the metastore. In practice, this should always be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
+        /**
+         * @param isDefault whether to set this credential as the default for the metastore. In practice, this should always be true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }
 
-        /**
-         * @param metastoreId Unique identifier of the parent Metastore
-         * 
-         * @return builder
-         * 
-         */
-        public Builder metastoreId(Output<String> metastoreId) {
+        public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
-        /**
-         * @param metastoreId Unique identifier of the parent Metastore
-         * 
-         * @return builder
-         * 
-         */
         public Builder metastoreId(String metastoreId) {
             return metastoreId(Output.of(metastoreId));
         }
 
-        /**
-         * @param name Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of Data Access Configuration, which must be unique within the databricks_metastore. Change forces creation of a new resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the data access configuration owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(@Nullable Output<String> owner) {
             $.owner = owner;
             return this;
         }
 
-        /**
-         * @param owner Username/groupname/sp application_id of the data access configuration owner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
         }
@@ -337,7 +269,6 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         }
 
         public MetastoreDataAccessArgs build() {
-            $.metastoreId = Objects.requireNonNull($.metastoreId, "expected parameter 'metastoreId' to be non-null");
             return $;
         }
     }
