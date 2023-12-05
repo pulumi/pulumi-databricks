@@ -92,6 +92,12 @@ func Provider() tfbridge.ProviderInfo {
 			"databricks_azure_blob_mount",
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"databricks_default_namespace_setting": {
+				Docs: &tfbridge.DocInfo{
+					Source: "default_namespace_settings.md",
+				},
+			},
+
 			"databricks_catalog":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Catalog")},
 			"databricks_cluster":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
 			"databricks_cluster_policy":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterPolicy")},

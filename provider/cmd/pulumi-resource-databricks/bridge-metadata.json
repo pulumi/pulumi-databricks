@@ -151,7 +151,32 @@
             },
             "databricks_cluster_policy": {
                 "current": "databricks:index/clusterPolicy:ClusterPolicy",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "libraries": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "cran": {
+                                    "maxItemsOne": true
+                                },
+                                "maven": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exclusions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pypi": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "databricks_connection": {
                 "current": "databricks:index/connection:Connection",
@@ -160,6 +185,15 @@
             "databricks_dbfs_file": {
                 "current": "databricks:index/dbfsFile:DbfsFile",
                 "majorVersion": 1
+            },
+            "databricks_default_namespace_setting": {
+                "current": "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "namespace": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_directory": {
                 "current": "databricks:index/directory:Directory",
@@ -887,6 +921,25 @@
                                             },
                                             "query": {
                                                 "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "webhook_notifications": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "on_duration_warning_threshold_exceeded": {
+                                                "maxItemsOne": false
+                                            },
+                                            "on_failure": {
+                                                "maxItemsOne": false
+                                            },
+                                            "on_start": {
+                                                "maxItemsOne": false
+                                            },
+                                            "on_success": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -1827,6 +1880,10 @@
                     }
                 }
             },
+            "databricks_current_config": {
+                "current": "databricks:index/getCurrentConfig:getCurrentConfig",
+                "majorVersion": 1
+            },
             "databricks_current_user": {
                 "current": "databricks:index/getCurrentUser:getCurrentUser",
                 "majorVersion": 1
@@ -1933,6 +1990,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_instance_profiles": {
+                "current": "databricks:index/getInstanceProfiles:getInstanceProfiles",
+                "majorVersion": 1,
+                "fields": {
+                    "instance_profiles": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2542,6 +2608,25 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "webhook_notifications": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "on_duration_warning_threshold_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_failure": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_success": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -2599,6 +2684,25 @@
             "databricks_metastores": {
                 "current": "databricks:index/getMetastores:getMetastores",
                 "majorVersion": 1
+            },
+            "databricks_mlflow_model": {
+                "current": "databricks:index/getMlflowModel:getMlflowModel",
+                "majorVersion": 1,
+                "fields": {
+                    "latest_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_mws_credentials": {
                 "current": "databricks:index/getMwsCredentials:getMwsCredentials",
@@ -2766,6 +2870,7 @@
             "databricks:index/clusterPolicy:ClusterPolicy": "databricks_cluster_policy",
             "databricks:index/connection:Connection": "databricks_connection",
             "databricks:index/dbfsFile:DbfsFile": "databricks_dbfs_file",
+            "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": "databricks_default_namespace_setting",
             "databricks:index/directory:Directory": "databricks_directory",
             "databricks:index/entitlements:Entitlements": "databricks_entitlements",
             "databricks:index/externalLocation:ExternalLocation": "databricks_external_location",
@@ -2843,16 +2948,19 @@
             "databricks:index/getCluster:getCluster": "databricks_cluster",
             "databricks:index/getClusterPolicy:getClusterPolicy": "databricks_cluster_policy",
             "databricks:index/getClusters:getClusters": "databricks_clusters",
+            "databricks:index/getCurrentConfig:getCurrentConfig": "databricks_current_config",
             "databricks:index/getCurrentUser:getCurrentUser": "databricks_current_user",
             "databricks:index/getDbfsFile:getDbfsFile": "databricks_dbfs_file",
             "databricks:index/getDbfsFilePaths:getDbfsFilePaths": "databricks_dbfs_file_paths",
             "databricks:index/getDirectory:getDirectory": "databricks_directory",
             "databricks:index/getGroup:getGroup": "databricks_group",
             "databricks:index/getInstancePool:getInstancePool": "databricks_instance_pool",
+            "databricks:index/getInstanceProfiles:getInstanceProfiles": "databricks_instance_profiles",
             "databricks:index/getJob:getJob": "databricks_job",
             "databricks:index/getJobs:getJobs": "databricks_jobs",
             "databricks:index/getMetastore:getMetastore": "databricks_metastore",
             "databricks:index/getMetastores:getMetastores": "databricks_metastores",
+            "databricks:index/getMlflowModel:getMlflowModel": "databricks_mlflow_model",
             "databricks:index/getMwsCredentials:getMwsCredentials": "databricks_mws_credentials",
             "databricks:index/getMwsWorkspaces:getMwsWorkspaces": "databricks_mws_workspaces",
             "databricks:index/getNodeType:getNodeType": "databricks_node_type",
@@ -2985,7 +3093,6 @@
                 "metadataFilePath": "metadata_file_path"
             },
             "databricks:index/JobEmailNotifications:JobEmailNotifications": {
-                "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
@@ -3223,7 +3330,8 @@
                 "sparkSubmitTask": "spark_submit_task",
                 "sqlTask": "sql_task",
                 "taskKey": "task_key",
-                "timeoutSeconds": "timeout_seconds"
+                "timeoutSeconds": "timeout_seconds",
+                "webhookNotifications": "webhook_notifications"
             },
             "databricks:index/JobTaskDbtTask:JobTaskDbtTask": {
                 "profilesDirectory": "profiles_directory",
@@ -3234,8 +3342,6 @@
                 "taskKey": "task_key"
             },
             "databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications": {
-                "alertOnLastAttempt": "alert_on_last_attempt",
-                "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
@@ -3372,6 +3478,12 @@
             "databricks:index/JobTaskSqlTaskQuery:JobTaskSqlTaskQuery": {
                 "queryId": "query_id"
             },
+            "databricks:index/JobTaskWebhookNotifications:JobTaskWebhookNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
             "databricks:index/JobTrigger:JobTrigger": {
                 "fileArrival": "file_arrival",
                 "pauseStatus": "pause_status"
@@ -3387,7 +3499,9 @@
                 "onSuccesses": "on_success"
             },
             "databricks:index/MetastoreDataAccessAwsIamRole:MetastoreDataAccessAwsIamRole": {
-                "roleArn": "role_arn"
+                "externalId": "external_id",
+                "roleArn": "role_arn",
+                "unityCatalogIamArn": "unity_catalog_iam_arn"
             },
             "databricks:index/MetastoreDataAccessAzureManagedIdentity:MetastoreDataAccessAzureManagedIdentity": {
                 "accessConnectorId": "access_connector_id",
@@ -3655,7 +3769,9 @@
                 "sizeY": "size_y"
             },
             "databricks:index/StorageCredentialAwsIamRole:StorageCredentialAwsIamRole": {
-                "roleArn": "role_arn"
+                "externalId": "external_id",
+                "roleArn": "role_arn",
+                "unityCatalogIamArn": "unity_catalog_iam_arn"
             },
             "databricks:index/StorageCredentialAzureManagedIdentity:StorageCredentialAzureManagedIdentity": {
                 "accessConnectorId": "access_connector_id",
@@ -3703,7 +3819,10 @@
                 "storageRoot": "storage_root"
             },
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": {
+                "bindingType": "binding_type",
                 "catalogName": "catalog_name",
+                "securableName": "securable_name",
+                "securableType": "securable_type",
                 "workspaceId": "workspace_id"
             },
             "databricks:index/cluster:Cluster": {
@@ -3755,6 +3874,9 @@
                 "contentBase64": "content_base64",
                 "dbfsPath": "dbfs_path",
                 "fileSize": "file_size"
+            },
+            "databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting": {
+                "settingName": "setting_name"
             },
             "databricks:index/directory:Directory": {
                 "deleteRecursive": "delete_recursive",
@@ -3914,6 +4036,12 @@
             "databricks:index/getClusters:getClusters": {
                 "clusterNameContains": "cluster_name_contains"
             },
+            "databricks:index/getCurrentConfig:getCurrentConfig": {
+                "accountId": "account_id",
+                "authType": "auth_type",
+                "cloudType": "cloud_type",
+                "isAccount": "is_account"
+            },
             "databricks:index/getCurrentUser:getCurrentUser": {
                 "aclPrincipalId": "acl_principal_id",
                 "externalId": "external_id",
@@ -4012,6 +4140,13 @@
                 "pendingUsedCount": "pending_used_count",
                 "usedCount": "used_count"
             },
+            "databricks:index/getInstanceProfiles:getInstanceProfiles": {
+                "instanceProfiles": "instance_profiles"
+            },
+            "databricks:index/getInstanceProfilesInstanceProfile:getInstanceProfilesInstanceProfile": {
+                "isMeta": "is_meta",
+                "roleArn": "role_arn"
+            },
             "databricks:index/getJob:getJob": {
                 "jobId": "job_id",
                 "jobName": "job_name",
@@ -4026,6 +4161,7 @@
             "databricks:index/getJobJobSettingsSettings:getJobJobSettingsSettings": {
                 "computes": "compute",
                 "dbtTask": "dbt_task",
+                "editMode": "edit_mode",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
                 "gitSource": "git_source",
@@ -4065,7 +4201,6 @@
                 "metadataFilePath": "metadata_file_path"
             },
             "databricks:index/getJobJobSettingsSettingsEmailNotifications:getJobJobSettingsSettingsEmailNotifications": {
-                "alertOnLastAttempt": "alert_on_last_attempt",
                 "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
@@ -4303,7 +4438,8 @@
                 "sparkSubmitTask": "spark_submit_task",
                 "sqlTask": "sql_task",
                 "taskKey": "task_key",
-                "timeoutSeconds": "timeout_seconds"
+                "timeoutSeconds": "timeout_seconds",
+                "webhookNotifications": "webhook_notifications"
             },
             "databricks:index/getJobJobSettingsSettingsTaskDbtTask:getJobJobSettingsSettingsTaskDbtTask": {
                 "profilesDirectory": "profiles_directory",
@@ -4314,8 +4450,6 @@
                 "taskKey": "task_key"
             },
             "databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications": {
-                "alertOnLastAttempt": "alert_on_last_attempt",
-                "noAlertForSkippedRuns": "no_alert_for_skipped_runs",
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
@@ -4452,6 +4586,12 @@
             "databricks:index/getJobJobSettingsSettingsTaskSqlTaskQuery:getJobJobSettingsSettingsTaskSqlTaskQuery": {
                 "queryId": "query_id"
             },
+            "databricks:index/getJobJobSettingsSettingsTaskWebhookNotifications:getJobJobSettingsSettingsTaskWebhookNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
             "databricks:index/getJobJobSettingsSettingsTrigger:getJobJobSettingsSettingsTrigger": {
                 "fileArrival": "file_arrival",
                 "pauseStatus": "pause_status"
@@ -4485,6 +4625,20 @@
                 "storageRootCredentialName": "storage_root_credential_name",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
+            },
+            "databricks:index/getMlflowModel:getMlflowModel": {
+                "latestVersions": "latest_versions",
+                "permissionLevel": "permission_level",
+                "userId": "user_id"
+            },
+            "databricks:index/getMlflowModelLatestVersion:getMlflowModelLatestVersion": {
+                "creationTimestamp": "creation_timestamp",
+                "currentStage": "current_stage",
+                "lastUpdatedTimestamp": "last_updated_timestamp",
+                "runId": "run_id",
+                "runLink": "run_link",
+                "statusMessage": "status_message",
+                "userId": "user_id"
             },
             "databricks:index/getNodeType:getNodeType": {
                 "gbPerCore": "gb_per_core",
@@ -4653,6 +4807,7 @@
                 "computes": "compute",
                 "controlRunState": "control_run_state",
                 "dbtTask": "dbt_task",
+                "editMode": "edit_mode",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
                 "gitSource": "git_source",
@@ -4723,10 +4878,7 @@
                 "lifecycleStage": "lifecycle_stage"
             },
             "databricks:index/mlflowModel:MlflowModel": {
-                "creationTimestamp": "creation_timestamp",
-                "lastUpdatedTimestamp": "last_updated_timestamp",
-                "registeredModelId": "registered_model_id",
-                "userId": "user_id"
+                "registeredModelId": "registered_model_id"
             },
             "databricks:index/mlflowWebhook:MlflowWebhook": {
                 "httpUrlSpec": "http_url_spec",
@@ -4944,6 +5096,7 @@
             "databricks:index/sqlDashboard:SqlDashboard": {
                 "createdAt": "created_at",
                 "dashboardFiltersEnabled": "dashboard_filters_enabled",
+                "runAsRole": "run_as_role",
                 "updatedAt": "updated_at"
             },
             "databricks:index/sqlEndpoint:SqlEndpoint": {
