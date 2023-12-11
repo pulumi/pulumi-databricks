@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/databricks/databricks-sdk-go v0.26.1
 	github.com/databricks/terraform-provider-databricks v1.31.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.1-0.20231211175349-e9f3e15aa2e2
 )
 
 require (
