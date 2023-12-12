@@ -5220,7 +5220,8 @@
             },
             "databricks:index/workspaceFile:WorkspaceFile": {
                 "contentBase64": "content_base64",
-                "objectId": "object_id"
+                "objectId": "object_id",
+                "workspacePath": "workspace_path"
             },
             "databricks:index:Provider": {
                 "accountId": "account_id",
