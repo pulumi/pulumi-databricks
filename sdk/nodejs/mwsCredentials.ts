@@ -47,7 +47,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * This resource can be imported by the combination of its identifier and the account idbash
+ *
+ * ```sh
+ *  $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+ * ```
  */
 export class MwsCredentials extends pulumi.CustomResource {
     /**
@@ -78,22 +82,22 @@ export class MwsCredentials extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * (Integer) time of credentials registration
      */
-    public /*out*/ readonly creationTime!: pulumi.Output<number>;
+    public readonly creationTime!: pulumi.Output<number>;
     /**
      * (String) identifier of credentials
      */
-    public /*out*/ readonly credentialsId!: pulumi.Output<string>;
+    public readonly credentialsId!: pulumi.Output<string>;
     /**
      * name of credentials to register
      */
     public readonly credentialsName!: pulumi.Output<string>;
-    public /*out*/ readonly externalId!: pulumi.Output<string>;
+    public readonly externalId!: pulumi.Output<string>;
     /**
      * ARN of cross-account role
      */
@@ -120,25 +124,20 @@ export class MwsCredentials extends pulumi.CustomResource {
             resourceInputs["roleArn"] = state ? state.roleArn : undefined;
         } else {
             const args = argsOrState as MwsCredentialsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.credentialsName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'credentialsName'");
             }
             if ((!args || args.roleArn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleArn'");
             }
-            resourceInputs["accountId"] = args?.accountId ? pulumi.secret(args.accountId) : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
+            resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
             resourceInputs["credentialsName"] = args ? args.credentialsName : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
-            resourceInputs["creationTime"] = undefined /*out*/;
-            resourceInputs["credentialsId"] = undefined /*out*/;
-            resourceInputs["externalId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountId"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MwsCredentials.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -148,7 +147,7 @@ export class MwsCredentials extends pulumi.CustomResource {
  */
 export interface MwsCredentialsState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -175,13 +174,22 @@ export interface MwsCredentialsState {
  */
 export interface MwsCredentialsArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * (Integer) time of credentials registration
+     */
+    creationTime?: pulumi.Input<number>;
+    /**
+     * (String) identifier of credentials
+     */
+    credentialsId?: pulumi.Input<string>;
     /**
      * name of credentials to register
      */
     credentialsName: pulumi.Input<string>;
+    externalId?: pulumi.Input<string>;
     /**
      * ARN of cross-account role
      */

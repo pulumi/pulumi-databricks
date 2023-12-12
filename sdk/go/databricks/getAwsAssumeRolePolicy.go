@@ -98,7 +98,7 @@ func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArg
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyArgs struct {
 	DatabricksAccountId *string `pulumi:"databricksAccountId"`
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	ExternalId string `pulumi:"externalId"`
 	// Either or not this assume role policy should be created for usage log delivery. Defaults to false.
 	ForLogDelivery *bool `pulumi:"forLogDelivery"`
@@ -131,7 +131,7 @@ func GetAwsAssumeRolePolicyOutput(ctx *pulumi.Context, args GetAwsAssumeRolePoli
 // A collection of arguments for invoking getAwsAssumeRolePolicy.
 type GetAwsAssumeRolePolicyOutputArgs struct {
 	DatabricksAccountId pulumi.StringPtrInput `pulumi:"databricksAccountId"`
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
 	// Either or not this assume role policy should be created for usage log delivery. Defaults to false.
 	ForLogDelivery pulumi.BoolPtrInput `pulumi:"forLogDelivery"`

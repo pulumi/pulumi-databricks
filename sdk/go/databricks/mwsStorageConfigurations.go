@@ -78,7 +78,7 @@ import (
 type MwsStorageConfigurations struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// name of AWS S3 bucket
 	BucketName   pulumi.StringOutput `pulumi:"bucketName"`
@@ -135,7 +135,7 @@ func GetMwsStorageConfigurations(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsStorageConfigurations resources.
 type mwsStorageConfigurationsState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId *string `pulumi:"accountId"`
 	// name of AWS S3 bucket
 	BucketName   *string `pulumi:"bucketName"`
@@ -147,7 +147,7 @@ type mwsStorageConfigurationsState struct {
 }
 
 type MwsStorageConfigurationsState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringPtrInput
 	// name of AWS S3 bucket
 	BucketName   pulumi.StringPtrInput
@@ -163,7 +163,7 @@ func (MwsStorageConfigurationsState) ElementType() reflect.Type {
 }
 
 type mwsStorageConfigurationsArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId string `pulumi:"accountId"`
 	// name of AWS S3 bucket
 	BucketName string `pulumi:"bucketName"`
@@ -173,7 +173,7 @@ type mwsStorageConfigurationsArgs struct {
 
 // The set of arguments for constructing a MwsStorageConfigurations resource.
 type MwsStorageConfigurationsArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringInput
 	// name of AWS S3 bucket
 	BucketName pulumi.StringInput
@@ -268,7 +268,7 @@ func (o MwsStorageConfigurationsOutput) ToMwsStorageConfigurationsOutputWithCont
 	return o
 }
 
-// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 func (o MwsStorageConfigurationsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsStorageConfigurations) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

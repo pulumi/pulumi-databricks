@@ -21,14 +21,14 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
     public static final MwsNetworksArgs Empty = new MwsNetworksArgs();
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     public Output<String> accountId() {
@@ -220,7 +220,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 

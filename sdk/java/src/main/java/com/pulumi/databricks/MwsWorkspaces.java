@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsWorkspaces:MwsWorkspaces")
 public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
     public Output<String> accountId() {

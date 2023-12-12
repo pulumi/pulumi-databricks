@@ -105,7 +105,7 @@ import (
 type MwsLogDelivery struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Databricks log delivery configuration ID.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
@@ -174,7 +174,7 @@ func GetMwsLogDelivery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsLogDelivery resources.
 type mwsLogDeliveryState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId *string `pulumi:"accountId"`
 	// Databricks log delivery configuration ID.
 	ConfigId *string `pulumi:"configId"`
@@ -199,7 +199,7 @@ type mwsLogDeliveryState struct {
 }
 
 type MwsLogDeliveryState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringPtrInput
 	// Databricks log delivery configuration ID.
 	ConfigId pulumi.StringPtrInput
@@ -228,7 +228,7 @@ func (MwsLogDeliveryState) ElementType() reflect.Type {
 }
 
 type mwsLogDeliveryArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`
 	// Databricks log delivery configuration ID.
 	ConfigId *string `pulumi:"configId"`
@@ -254,7 +254,7 @@ type mwsLogDeliveryArgs struct {
 
 // The set of arguments for constructing a MwsLogDelivery resource.
 type MwsLogDeliveryArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringInput
 	// Databricks log delivery configuration ID.
 	ConfigId pulumi.StringPtrInput
@@ -365,7 +365,7 @@ func (o MwsLogDeliveryOutput) ToMwsLogDeliveryOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 func (o MwsLogDeliveryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsLogDelivery) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

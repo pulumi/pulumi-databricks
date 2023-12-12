@@ -257,7 +257,7 @@ import (
 type MwsNetworks struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId     pulumi.StringOutput                `pulumi:"accountId"`
 	CreationTime  pulumi.IntOutput                   `pulumi:"creationTime"`
 	ErrorMessages MwsNetworksErrorMessageArrayOutput `pulumi:"errorMessages"`
@@ -324,7 +324,7 @@ func GetMwsNetworks(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsNetworks resources.
 type mwsNetworksState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId     *string                   `pulumi:"accountId"`
 	CreationTime  *int                      `pulumi:"creationTime"`
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
@@ -349,7 +349,7 @@ type mwsNetworksState struct {
 }
 
 type MwsNetworksState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId     pulumi.StringPtrInput
 	CreationTime  pulumi.IntPtrInput
 	ErrorMessages MwsNetworksErrorMessageArrayInput
@@ -378,7 +378,7 @@ func (MwsNetworksState) ElementType() reflect.Type {
 }
 
 type mwsNetworksArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId     string                    `pulumi:"accountId"`
 	CreationTime  *int                      `pulumi:"creationTime"`
 	ErrorMessages []MwsNetworksErrorMessage `pulumi:"errorMessages"`
@@ -404,7 +404,7 @@ type mwsNetworksArgs struct {
 
 // The set of arguments for constructing a MwsNetworks resource.
 type MwsNetworksArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId     pulumi.StringInput
 	CreationTime  pulumi.IntPtrInput
 	ErrorMessages MwsNetworksErrorMessageArrayInput
@@ -515,7 +515,7 @@ func (o MwsNetworksOutput) ToMwsNetworksOutputWithContext(ctx context.Context) M
 	return o
 }
 
-// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 func (o MwsNetworksOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsNetworks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

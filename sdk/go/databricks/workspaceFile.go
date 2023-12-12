@@ -34,6 +34,8 @@ type WorkspaceFile struct {
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Routable URL of the workspace file
 	Url pulumi.StringOutput `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
 
 // NewWorkspaceFile registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +81,8 @@ type workspaceFileState struct {
 	Source *string `pulumi:"source"`
 	// Routable URL of the workspace file
 	Url *string `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type WorkspaceFileState struct {
@@ -92,6 +96,8 @@ type WorkspaceFileState struct {
 	Source pulumi.StringPtrInput
 	// Routable URL of the workspace file
 	Url pulumi.StringPtrInput
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringPtrInput
 }
 
 func (WorkspaceFileState) ElementType() reflect.Type {
@@ -234,6 +240,11 @@ func (o WorkspaceFileOutput) Source() pulumi.StringPtrOutput {
 // Routable URL of the workspace file
 func (o WorkspaceFileOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o WorkspaceFileOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceFile) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 type WorkspaceFileArrayOutput struct{ *pulumi.OutputState }

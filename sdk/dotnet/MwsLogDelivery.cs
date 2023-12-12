@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
     public partial class MwsLogDelivery : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
     public sealed class MwsLogDeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.Databricks
     public sealed class MwsLogDeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

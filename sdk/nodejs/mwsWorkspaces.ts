@@ -40,7 +40,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
  */
 export interface MwsWorkspacesState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -288,7 +288,7 @@ export interface MwsWorkspacesState {
  */
 export interface MwsWorkspacesArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     accountId: pulumi.Input<string>;
     /**

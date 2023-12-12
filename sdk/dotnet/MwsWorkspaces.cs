@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     public partial class MwsWorkspaces : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         private Input<string>? _accountId;
 
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         public Input<string>? AccountId
         {
@@ -341,7 +341,7 @@ namespace Pulumi.Databricks
         private Input<string>? _accountId;
 
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         public Input<string>? AccountId
         {

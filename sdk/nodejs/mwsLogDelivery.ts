@@ -95,7 +95,7 @@ export class MwsLogDelivery extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -202,7 +202,7 @@ export class MwsLogDelivery extends pulumi.CustomResource {
  */
 export interface MwsLogDeliveryState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -252,7 +252,7 @@ export interface MwsLogDeliveryState {
  */
 export interface MwsLogDeliveryArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     accountId: pulumi.Input<string>;
     /**

@@ -27,7 +27,7 @@ class MwsLogDeliveryArgs:
                  workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a MwsLogDelivery resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] credentials_id: The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
         :param pulumi.Input[str] log_type: The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
         :param pulumi.Input[str] output_format: The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.
@@ -61,7 +61,7 @@ class MwsLogDeliveryArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
@@ -206,7 +206,7 @@ class _MwsLogDeliveryState:
                  workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         Input properties used for looking up and filtering MwsLogDelivery resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] config_id: Databricks log delivery configuration ID.
         :param pulumi.Input[str] config_name: The optional human-readable name of the log delivery configuration. Defaults to empty.
         :param pulumi.Input[str] credentials_id: The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
@@ -245,7 +245,7 @@ class _MwsLogDeliveryState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
@@ -453,7 +453,7 @@ class MwsLogDelivery(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] config_id: Databricks log delivery configuration ID.
         :param pulumi.Input[str] config_name: The optional human-readable name of the log delivery configuration. Defaults to empty.
         :param pulumi.Input[str] credentials_id: The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
@@ -615,7 +615,7 @@ class MwsLogDelivery(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] config_id: Databricks log delivery configuration ID.
         :param pulumi.Input[str] config_name: The optional human-readable name of the log delivery configuration. Defaults to empty.
         :param pulumi.Input[str] credentials_id: The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
@@ -648,7 +648,7 @@ class MwsLogDelivery(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 

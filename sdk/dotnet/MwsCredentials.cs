@@ -67,16 +67,20 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// This resource can be imported by the combination of its identifier and the account idbash
+    /// 
+    /// ```sh
+    ///  $ pulumi import databricks:index/mwsCredentials:MwsCredentials this &lt;account_id&gt;/&lt;credentials_id&gt;
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsCredentials:MwsCredentials")]
     public partial class MwsCredentials : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// (Integer) time of credentials registration
@@ -128,10 +132,6 @@ namespace Pulumi.Databricks
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "accountId",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -155,27 +155,32 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        private Input<string>? _accountId;
+        /// <summary>
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// (Integer) time of credentials registration
         /// </summary>
-        public Input<string>? AccountId
-        {
-            get => _accountId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("creationTime")]
+        public Input<int>? CreationTime { get; set; }
+
+        /// <summary>
+        /// (String) identifier of credentials
+        /// </summary>
+        [Input("credentialsId")]
+        public Input<string>? CredentialsId { get; set; }
 
         /// <summary>
         /// name of credentials to register
         /// </summary>
         [Input("credentialsName", required: true)]
         public Input<string> CredentialsName { get; set; } = null!;
+
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
 
         /// <summary>
         /// ARN of cross-account role
@@ -191,21 +196,11 @@ namespace Pulumi.Databricks
 
     public sealed class MwsCredentialsState : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        private Input<string>? _accountId;
-
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         /// </summary>
-        public Input<string>? AccountId
-        {
-            get => _accountId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accountId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// (Integer) time of credentials registration

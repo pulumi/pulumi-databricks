@@ -74,7 +74,7 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export class MwsStorageConfigurations extends pulumi.CustomResource {
  */
 export interface MwsStorageConfigurationsState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface MwsStorageConfigurationsState {
  */
 export interface MwsStorageConfigurationsArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId: pulumi.Input<string>;
     /**

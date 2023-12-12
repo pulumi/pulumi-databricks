@@ -12,7 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.MwsCredentialsState;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -88,24 +88,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * This resource can be imported by the combination of its identifier and the account idbash
+ * 
+ * ```sh
+ *  $ pulumi import databricks:index/mwsCredentials:MwsCredentials this &lt;account_id&gt;/&lt;credentials_id&gt;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/mwsCredentials:MwsCredentials")
 public class MwsCredentials extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * (Integer) time of credentials registration
@@ -202,9 +206,6 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "accountId"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         public string? DatabricksAccountId { get; set; }
 
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Input("externalId", required: true)]
         public string ExternalId { get; set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Databricks
         public Input<string>? DatabricksAccountId { get; set; }
 
         /// <summary>
-        /// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         /// </summary>
         [Input("externalId", required: true)]
         public Input<string> ExternalId { get; set; } = null!;
