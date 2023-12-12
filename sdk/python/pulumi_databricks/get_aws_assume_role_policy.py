@@ -126,7 +126,7 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
-    :param str external_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     __args__ = dict()
@@ -188,7 +188,7 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
     * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
-    :param str external_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+    :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
     :param bool for_log_delivery: Either or not this assume role policy should be created for usage log delivery. Defaults to false.
     """
     ...

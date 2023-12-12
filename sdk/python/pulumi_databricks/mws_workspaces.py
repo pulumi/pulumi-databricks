@@ -43,7 +43,7 @@ class MwsWorkspacesArgs:
                  workspace_url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsWorkspaces resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] workspace_name: name of the workspace, will appear on UI.
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
@@ -117,7 +117,7 @@ class MwsWorkspacesArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
@@ -423,7 +423,7 @@ class _MwsWorkspacesState:
                  workspace_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input['MwsWorkspacesCloudResourceContainerArgs'] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
@@ -499,7 +499,7 @@ class _MwsWorkspacesState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
@@ -813,7 +813,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
@@ -964,7 +964,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         :param pulumi.Input[str] aws_region: region of VPC.
         :param pulumi.Input[pulumi.InputType['MwsWorkspacesCloudResourceContainerArgs']] cloud_resource_container: A block that specifies GCP workspace configurations, consisting of following blocks:
         :param pulumi.Input[int] creation_time: (Integer) time when workspace was created
@@ -1017,7 +1017,7 @@ class MwsWorkspaces(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 

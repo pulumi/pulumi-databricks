@@ -14,30 +14,30 @@ __all__ = ['MwsCredentialsArgs', 'MwsCredentials']
 @pulumi.input_type
 class MwsCredentialsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  credentials_name: pulumi.Input[str],
-                 role_arn: pulumi.Input[str]):
+                 role_arn: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 creation_time: Optional[pulumi.Input[int]] = None,
+                 credentials_id: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MwsCredentials resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] credentials_name: name of credentials to register
         :param pulumi.Input[str] role_arn: ARN of cross-account role
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "credentials_name", credentials_name)
         pulumi.set(__self__, "role_arn", role_arn)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if credentials_id is not None:
+            pulumi.set(__self__, "credentials_id", credentials_id)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
 
     @property
     @pulumi.getter(name="credentialsName")
@@ -63,6 +63,51 @@ class MwsCredentialsArgs:
     def role_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "role_arn", value)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Integer) time of credentials registration
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter(name="credentialsId")
+    def credentials_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (String) identifier of credentials
+        """
+        return pulumi.get(self, "credentials_id")
+
+    @credentials_id.setter
+    def credentials_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credentials_id", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
 
 @pulumi.input_type
 class _MwsCredentialsState:
@@ -75,7 +120,7 @@ class _MwsCredentialsState:
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsCredentials resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
@@ -98,7 +143,7 @@ class _MwsCredentialsState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -170,7 +215,10 @@ class MwsCredentials(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 creation_time: Optional[pulumi.Input[int]] = None,
+                 credentials_id: Optional[pulumi.Input[str]] = None,
                  credentials_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -210,11 +258,17 @@ class MwsCredentials(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        This resource can be imported by the combination of its identifier and the account idbash
+
+        ```sh
+         $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
+        :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
         :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
@@ -261,7 +315,11 @@ class MwsCredentials(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        This resource can be imported by the combination of its identifier and the account idbash
+
+        ```sh
+         $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param MwsCredentialsArgs args: The arguments to use to populate this resource's properties.
@@ -279,7 +337,10 @@ class MwsCredentials(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 creation_time: Optional[pulumi.Input[int]] = None,
+                 credentials_id: Optional[pulumi.Input[str]] = None,
                  credentials_name: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -290,20 +351,16 @@ class MwsCredentials(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MwsCredentialsArgs.__new__(MwsCredentialsArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
-            __props__.__dict__["account_id"] = None if account_id is None else pulumi.Output.secret(account_id)
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["creation_time"] = creation_time
+            __props__.__dict__["credentials_id"] = credentials_id
             if credentials_name is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials_name'")
             __props__.__dict__["credentials_name"] = credentials_name
+            __props__.__dict__["external_id"] = external_id
             if role_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'role_arn'")
             __props__.__dict__["role_arn"] = role_arn
-            __props__.__dict__["creation_time"] = None
-            __props__.__dict__["credentials_id"] = None
-            __props__.__dict__["external_id"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountId"])
-        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MwsCredentials, __self__).__init__(
             'databricks:index/mwsCredentials:MwsCredentials',
             resource_name,
@@ -327,7 +384,7 @@ class MwsCredentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[int] creation_time: (Integer) time of credentials registration
         :param pulumi.Input[str] credentials_id: (String) identifier of credentials
         :param pulumi.Input[str] credentials_name: name of credentials to register
@@ -347,9 +404,9 @@ class MwsCredentials(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 

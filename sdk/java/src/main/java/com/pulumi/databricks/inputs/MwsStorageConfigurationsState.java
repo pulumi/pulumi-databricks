@@ -17,14 +17,14 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
     public static final MwsStorageConfigurationsState Empty = new MwsStorageConfigurationsState();
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -112,7 +112,7 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 

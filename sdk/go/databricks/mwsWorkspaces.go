@@ -18,7 +18,7 @@ import (
 type MwsWorkspaces struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// region of VPC.
 	AwsRegion pulumi.StringPtrOutput `pulumi:"awsRegion"`
@@ -106,7 +106,7 @@ func GetMwsWorkspaces(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsWorkspaces resources.
 type mwsWorkspacesState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId *string `pulumi:"accountId"`
 	// region of VPC.
 	AwsRegion *string `pulumi:"awsRegion"`
@@ -152,7 +152,7 @@ type mwsWorkspacesState struct {
 }
 
 type MwsWorkspacesState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringPtrInput
 	// region of VPC.
 	AwsRegion pulumi.StringPtrInput
@@ -202,7 +202,7 @@ func (MwsWorkspacesState) ElementType() reflect.Type {
 }
 
 type mwsWorkspacesArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId string `pulumi:"accountId"`
 	// region of VPC.
 	AwsRegion *string `pulumi:"awsRegion"`
@@ -249,7 +249,7 @@ type mwsWorkspacesArgs struct {
 
 // The set of arguments for constructing a MwsWorkspaces resource.
 type MwsWorkspacesArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 	AccountId pulumi.StringInput
 	// region of VPC.
 	AwsRegion pulumi.StringPtrInput
@@ -381,7 +381,7 @@ func (o MwsWorkspacesOutput) ToMwsWorkspacesOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
 func (o MwsWorkspacesOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

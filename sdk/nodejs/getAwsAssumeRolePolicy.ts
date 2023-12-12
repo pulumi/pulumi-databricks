@@ -64,7 +64,7 @@ export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: 
 export interface GetAwsAssumeRolePolicyArgs {
     databricksAccountId?: string;
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     externalId: string;
     /**
@@ -143,7 +143,7 @@ export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputA
 export interface GetAwsAssumeRolePolicyOutputArgs {
     databricksAccountId?: pulumi.Input<string>;
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
     externalId: pulumi.Input<string>;
     /**

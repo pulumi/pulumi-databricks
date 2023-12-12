@@ -30,7 +30,7 @@ class MwsNetworksArgs:
                  workspace_id: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MwsNetworks resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] network_name: name under which this network is registered
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
@@ -68,7 +68,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -220,7 +220,7 @@ class _MwsNetworksState:
                  workspace_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering MwsNetworks resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input['MwsNetworksGcpNetworkInfoArgs'] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
@@ -260,7 +260,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -557,7 +557,7 @@ class MwsNetworks(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
@@ -799,7 +799,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[pulumi.InputType['MwsNetworksGcpNetworkInfoArgs']] gcp_network_info: a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         :param pulumi.Input[str] network_id: (String) id of network to be used for MwsWorkspaces resource.
         :param pulumi.Input[str] network_name: name under which this network is registered
@@ -832,7 +832,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 

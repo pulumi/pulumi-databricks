@@ -5,8 +5,11 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,18 +17,48 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
     public static final MwsCredentialsArgs Empty = new MwsCredentialsArgs();
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * (Integer) time of credentials registration
+     * 
+     */
+    @Import(name="creationTime")
+    private @Nullable Output<Integer> creationTime;
+
+    /**
+     * @return (Integer) time of credentials registration
+     * 
+     */
+    public Optional<Output<Integer>> creationTime() {
+        return Optional.ofNullable(this.creationTime);
+    }
+
+    /**
+     * (String) identifier of credentials
+     * 
+     */
+    @Import(name="credentialsId")
+    private @Nullable Output<String> credentialsId;
+
+    /**
+     * @return (String) identifier of credentials
+     * 
+     */
+    public Optional<Output<String>> credentialsId() {
+        return Optional.ofNullable(this.credentialsId);
     }
 
     /**
@@ -41,6 +74,13 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> credentialsName() {
         return this.credentialsName;
+    }
+
+    @Import(name="externalId")
+    private @Nullable Output<String> externalId;
+
+    public Optional<Output<String>> externalId() {
+        return Optional.ofNullable(this.externalId);
     }
 
     /**
@@ -62,7 +102,10 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
 
     private MwsCredentialsArgs(MwsCredentialsArgs $) {
         this.accountId = $.accountId;
+        this.creationTime = $.creationTime;
+        this.credentialsId = $.credentialsId;
         this.credentialsName = $.credentialsName;
+        this.externalId = $.externalId;
         this.roleArn = $.roleArn;
     }
 
@@ -85,24 +128,66 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param creationTime (Integer) time of credentials registration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTime(@Nullable Output<Integer> creationTime) {
+            $.creationTime = creationTime;
+            return this;
+        }
+
+        /**
+         * @param creationTime (Integer) time of credentials registration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTime(Integer creationTime) {
+            return creationTime(Output.of(creationTime));
+        }
+
+        /**
+         * @param credentialsId (String) identifier of credentials
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsId(@Nullable Output<String> credentialsId) {
+            $.credentialsId = credentialsId;
+            return this;
+        }
+
+        /**
+         * @param credentialsId (String) identifier of credentials
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialsId(String credentialsId) {
+            return credentialsId(Output.of(credentialsId));
         }
 
         /**
@@ -124,6 +209,15 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder credentialsName(String credentialsName) {
             return credentialsName(Output.of(credentialsName));
+        }
+
+        public Builder externalId(@Nullable Output<String> externalId) {
+            $.externalId = externalId;
+            return this;
+        }
+
+        public Builder externalId(String externalId) {
+            return externalId(Output.of(externalId));
         }
 
         /**
@@ -148,7 +242,6 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MwsCredentialsArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
             $.credentialsName = Objects.requireNonNull($.credentialsName, "expected parameter 'credentialsName' to be non-null");
             $.roleArn = Objects.requireNonNull($.roleArn, "expected parameter 'roleArn' to be non-null");
             return $;

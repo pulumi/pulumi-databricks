@@ -23,14 +23,14 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
     @Import(name="externalId", required=true)
     private String externalId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      * 
      */
     public String externalId() {
@@ -84,7 +84,7 @@ public final class GetAwsAssumeRolePolicyPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param externalId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/).
+         * @param externalId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
          * 
          * @return builder
          * 

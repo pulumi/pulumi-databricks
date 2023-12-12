@@ -19,7 +19,7 @@ class MwsStorageConfigurationsArgs:
                  storage_configuration_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a MwsStorageConfigurations resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
@@ -31,7 +31,7 @@ class MwsStorageConfigurationsArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -74,7 +74,7 @@ class _MwsStorageConfigurationsState:
                  storage_configuration_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsStorageConfigurations resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_id: (String) id of storage config to be used for `databricks_mws_workspace` resource.
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
@@ -94,7 +94,7 @@ class _MwsStorageConfigurationsState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -197,7 +197,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
         """
@@ -307,7 +307,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[str] bucket_name: name of AWS S3 bucket
         :param pulumi.Input[str] storage_configuration_id: (String) id of storage config to be used for `databricks_mws_workspace` resource.
         :param pulumi.Input[str] storage_configuration_name: name under which this storage configuration is stored
@@ -327,7 +327,7 @@ class MwsStorageConfigurations(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 

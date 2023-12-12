@@ -233,7 +233,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -301,7 +301,7 @@ export class MwsCustomerManagedKeys extends pulumi.CustomResource {
  */
 export interface MwsCustomerManagedKeysState {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -331,7 +331,7 @@ export interface MwsCustomerManagedKeysState {
  */
 export interface MwsCustomerManagedKeysArgs {
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId: pulumi.Input<string>;
     /**

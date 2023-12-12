@@ -17,14 +17,14 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
     public static final MwsCredentialsState Empty = new MwsCredentialsState();
 
     /**
-     * Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -128,7 +128,7 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+         * @param accountId Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
          * 
          * @return builder
          * 

@@ -95,6 +95,20 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    @Export(name="workspacePath", refs={String.class}, tree="[0]")
+    private Output<String> workspacePath;
+
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public Output<String> workspacePath() {
+        return this.workspacePath;
+    }
 
     /**
      *

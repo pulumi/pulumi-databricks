@@ -24,7 +24,7 @@ class MwsCustomerManagedKeysArgs:
                  gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None):
         """
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] use_cases: *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
@@ -46,7 +46,7 @@ class MwsCustomerManagedKeysArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -126,7 +126,7 @@ class _MwsCustomerManagedKeysState:
                  use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs'] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
@@ -150,7 +150,7 @@ class _MwsCustomerManagedKeysState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
@@ -423,7 +423,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
@@ -689,7 +689,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        :param pulumi.Input[str] account_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         :param pulumi.Input[pulumi.InputType['MwsCustomerManagedKeysAwsKeyInfoArgs']] aws_key_info: This field is a block and is documented below. This conflicts with `gcp_key_info`
         :param pulumi.Input[int] creation_time: (Integer) Time in epoch milliseconds when the customer key was created.
         :param pulumi.Input[str] customer_managed_key_id: (String) ID of the encryption key configuration object.
@@ -712,7 +712,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+        Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 

@@ -59,6 +59,10 @@ export class WorkspaceFile extends pulumi.CustomResource {
      * Routable URL of the workspace file
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
 
     /**
      * Create a WorkspaceFile resource with the given unique name, arguments, and options.
@@ -79,6 +83,7 @@ export class WorkspaceFile extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
         } else {
             const args = argsOrState as WorkspaceFileArgs | undefined;
             if ((!args || args.path === undefined) && !opts.urn) {
@@ -90,6 +95,7 @@ export class WorkspaceFile extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["url"] = undefined /*out*/;
+            resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkspaceFile.__pulumiType, name, resourceInputs, opts);
@@ -118,6 +124,10 @@ export interface WorkspaceFileState {
      * Routable URL of the workspace file
      */
     url?: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    workspacePath?: pulumi.Input<string>;
 }
 
 /**

@@ -359,7 +359,7 @@ import (
 type MwsCustomerManagedKeys struct {
 	pulumi.CustomResourceState
 
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrOutput `pulumi:"awsKeyInfo"`
@@ -409,7 +409,7 @@ func GetMwsCustomerManagedKeys(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
 type mwsCustomerManagedKeysState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId *string `pulumi:"accountId"`
 	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo *MwsCustomerManagedKeysAwsKeyInfo `pulumi:"awsKeyInfo"`
@@ -424,7 +424,7 @@ type mwsCustomerManagedKeysState struct {
 }
 
 type MwsCustomerManagedKeysState struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringPtrInput
 	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrInput
@@ -443,7 +443,7 @@ func (MwsCustomerManagedKeysState) ElementType() reflect.Type {
 }
 
 type mwsCustomerManagedKeysArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId string `pulumi:"accountId"`
 	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo *MwsCustomerManagedKeysAwsKeyInfo `pulumi:"awsKeyInfo"`
@@ -459,7 +459,7 @@ type mwsCustomerManagedKeysArgs struct {
 
 // The set of arguments for constructing a MwsCustomerManagedKeys resource.
 type MwsCustomerManagedKeysArgs struct {
-	// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+	// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 	AccountId pulumi.StringInput
 	// This field is a block and is documented below. This conflicts with `gcpKeyInfo`
 	AwsKeyInfo MwsCustomerManagedKeysAwsKeyInfoPtrInput
@@ -560,7 +560,7 @@ func (o MwsCustomerManagedKeysOutput) ToMwsCustomerManagedKeysOutputWithContext(
 	return o
 }
 
-// Account Id that could be found in the bottom left corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
 func (o MwsCustomerManagedKeysOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsCustomerManagedKeys) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
