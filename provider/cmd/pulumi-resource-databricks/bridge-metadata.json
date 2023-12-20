@@ -2860,6 +2860,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": "databricks_access_control_rule_set",
