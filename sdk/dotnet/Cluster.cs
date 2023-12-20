@@ -10,6 +10,72 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+    /// 
+    /// &gt; **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     {
+    ///         LocalDisk = true,
+    ///     });
+    /// 
+    ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
+    ///     {
+    ///         LongTermSupport = true,
+    ///     });
+    /// 
+    ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+    ///     {
+    ///         ClusterName = "Shared Autoscaling",
+    ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+    ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+    ///         AutoterminationMinutes = 20,
+    ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
+    ///         {
+    ///             MinWorkers = 1,
+    ///             MaxWorkers = 50,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Access Control
+    /// 
+    /// * databricks.Group and databricks.User can control which groups or individual users can create clusters.
+    /// * databricks.ClusterPolicy can control which kinds of clusters users can create.
+    /// * Users, who have access to Cluster Policy, but do not have an `allow_cluster_create` argument set would still be able to create clusters, but within the boundary of the policy.
+    /// * databricks.Permissions can control which groups or individual users can *Manage*, *Restart* or *Attach to* individual clusters.
+    /// * `instance_profile_arn` *(AWS only)* can control which data a given cluster can access through cloud-native controls.
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * Dynamic Passthrough Clusters for a Group guide.
+    /// * End to end workspace management guide.
+    /// * databricks.getClusters data to retrieve a list of databricks.Cluster ids.
+    /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+    /// * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+    /// * databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+    /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+    /// * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+    /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+    /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+    /// * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+    /// * databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.
+    /// * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+    /// * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+    /// * databricks.getZones data to fetch all available AWS availability zones on your workspace on AWS.
+    /// 
     /// ## Import
     /// 
     /// The resource cluster can be imported using cluster id. bash
@@ -58,7 +124,37 @@ namespace Pulumi.Databricks
         public Output<string?> ClusterName { get; private set; } = null!;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+        /// should have tag `ResourceClass` set to value `Serverless`
+        /// 
+        /// For example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     {
+        ///         ClusterName = "Shared High-Concurrency",
+        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
+        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         AutoterminationMinutes = 20,
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.repl.allowedLanguages", "python,sql" },
+        ///             { "spark.databricks.cluster.profile", "serverless" },
+        ///         },
+        ///         CustomTags = 
+        ///         {
+        ///             { "ResourceClass", "Serverless" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
@@ -199,7 +295,9 @@ namespace Pulumi.Databricks
         public Output<string?> SingleUserName { get; private set; } = null!;
 
         /// <summary>
-        /// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+        /// should have following items:
+        /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+        /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
         [Output("sparkConf")]
         public Output<ImmutableDictionary<string, object>?> SparkConf { get; private set; } = null!;
@@ -228,6 +326,9 @@ namespace Pulumi.Databricks
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// URL for the Docker image
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -325,7 +426,37 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+        /// should have tag `ResourceClass` set to value `Serverless`
+        /// 
+        /// For example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     {
+        ///         ClusterName = "Shared High-Concurrency",
+        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
+        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         AutoterminationMinutes = 20,
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.repl.allowedLanguages", "python,sql" },
+        ///             { "spark.databricks.cluster.profile", "serverless" },
+        ///         },
+        ///         CustomTags = 
+        ///         {
+        ///             { "ResourceClass", "Serverless" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -476,7 +607,9 @@ namespace Pulumi.Databricks
         private InputMap<object>? _sparkConf;
 
         /// <summary>
-        /// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+        /// should have following items:
+        /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+        /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
         public InputMap<object> SparkConf
         {
@@ -570,7 +703,37 @@ namespace Pulumi.Databricks
         private InputMap<object>? _customTags;
 
         /// <summary>
-        /// Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+        /// should have tag `ResourceClass` set to value `Serverless`
+        /// 
+        /// For example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     {
+        ///         ClusterName = "Shared High-Concurrency",
+        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
+        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         AutoterminationMinutes = 20,
+        ///         SparkConf = 
+        ///         {
+        ///             { "spark.databricks.repl.allowedLanguages", "python,sql" },
+        ///             { "spark.databricks.cluster.profile", "serverless" },
+        ///         },
+        ///         CustomTags = 
+        ///         {
+        ///             { "ResourceClass", "Serverless" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -733,7 +896,9 @@ namespace Pulumi.Databricks
         private InputMap<object>? _sparkConf;
 
         /// <summary>
-        /// Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+        /// should have following items:
+        /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+        /// * `spark.databricks.cluster.profile` set to `serverless`
         /// </summary>
         public InputMap<object> SparkConf
         {
@@ -777,6 +942,9 @@ namespace Pulumi.Databricks
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// URL for the Docker image
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

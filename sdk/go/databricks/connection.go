@@ -21,6 +21,8 @@ import (
 //
 // ## Example Usage
 //
+// # Create a connection to a MySQL database
+//
 // ```go
 // package main
 //
@@ -55,6 +57,58 @@ import (
 //
 // ```
 //
+// # Create a connection to a BigQuery database
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type":                        "service_account",
+//				"project_id":                  "PROJECT_ID",
+//				"private_key_id":              "KEY_ID",
+//				"private_key":                 "-----BEGIN PRIVATE KEY-----\nPRIVATE_KEY\n-----END PRIVATE KEY-----\n",
+//				"client_email":                "SERVICE_ACCOUNT_EMAIL",
+//				"client_id":                   "CLIENT_ID",
+//				"auth_uri":                    "https://accounts.google.com/o/oauth2/auth",
+//				"token_uri":                   "https://accounts.google.com/o/oauth2/token",
+//				"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+//				"client_x509_cert_url":        "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+//				"universe_domain":             "googleapis.com",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = databricks.NewConnection(ctx, "bigquery", &databricks.ConnectionArgs{
+//				ConnectionType: pulumi.String("BIGQUERY"),
+//				Comment:        pulumi.String("this is a connection to BQ"),
+//				Options: pulumi.Map{
+//					"GoogleServiceAccountKeyJson": pulumi.String(json0),
+//				},
+//				Properties: pulumi.Map{
+//					"purpose": pulumi.Any("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # This resource can be imported by `id`bash
@@ -74,7 +128,7 @@ type Connection struct {
 	MetastoreId    pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of the Connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options pulumi.MapOutput `pulumi:"options"`
 	// Name of the connection owner.
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
@@ -133,7 +187,7 @@ type connectionState struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options map[string]interface{} `pulumi:"options"`
 	// Name of the connection owner.
 	Owner *string `pulumi:"owner"`
@@ -150,7 +204,7 @@ type ConnectionState struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
-	// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options pulumi.MapInput
 	// Name of the connection owner.
 	Owner pulumi.StringPtrInput
@@ -171,7 +225,7 @@ type connectionArgs struct {
 	MetastoreId    *string `pulumi:"metastoreId"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options map[string]interface{} `pulumi:"options"`
 	// Name of the connection owner.
 	Owner *string `pulumi:"owner"`
@@ -189,7 +243,7 @@ type ConnectionArgs struct {
 	MetastoreId    pulumi.StringPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
-	// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options pulumi.MapInput
 	// Name of the connection owner.
 	Owner pulumi.StringPtrInput
@@ -304,7 +358,7 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 func (o ConnectionOutput) Options() pulumi.MapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.Options }).(pulumi.MapOutput)
 }

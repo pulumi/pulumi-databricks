@@ -199,9 +199,11 @@ __all__ = [
     'MlflowWebhookHttpUrlSpecArgs',
     'MlflowWebhookJobSpecArgs',
     'ModelServingConfigArgs',
+    'ModelServingConfigAutoCaptureConfigArgs',
     'ModelServingConfigServedModelArgs',
     'ModelServingConfigTrafficConfigArgs',
     'ModelServingConfigTrafficConfigRouteArgs',
+    'ModelServingRateLimitArgs',
     'ModelServingTagArgs',
     'MountAbfsArgs',
     'MountAdlArgs',
@@ -563,6 +565,41 @@ class ClusterAutoscaleArgs:
     def __init__(__self__, *,
                  max_workers: Optional[pulumi.Input[int]] = None,
                  min_workers: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_workers: The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+               
+               When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+               
+               * `spark.master` must have prefix `local`, like `local[*]`
+               * `spark.databricks.cluster.profile` must have value `singleNode`
+               
+               and also `custom_tag` entry:
+               
+               * `"ResourceClass" = "SingleNode"`
+               
+               The following example demonstrates how to create an single node cluster:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               single_node = databricks.Cluster("singleNode",
+                   cluster_name="Single Node",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   spark_conf={
+                       "spark.databricks.cluster.profile": "singleNode",
+                       "spark.master": "local[*]",
+                   },
+                   custom_tags={
+                       "ResourceClass": "SingleNode",
+                   })
+               ```
+        :param pulumi.Input[int] min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+        """
         if max_workers is not None:
             pulumi.set(__self__, "max_workers", max_workers)
         if min_workers is not None:
@@ -571,6 +608,40 @@ class ClusterAutoscaleArgs:
     @property
     @pulumi.getter(name="maxWorkers")
     def max_workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+
+        When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `num_workers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `num_workers` is `0`, provider checks for presence of the required Spark configurations:
+
+        * `spark.master` must have prefix `local`, like `local[*]`
+        * `spark.databricks.cluster.profile` must have value `singleNode`
+
+        and also `custom_tag` entry:
+
+        * `"ResourceClass" = "SingleNode"`
+
+        The following example demonstrates how to create an single node cluster:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        single_node = databricks.Cluster("singleNode",
+            cluster_name="Single Node",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            spark_conf={
+                "spark.databricks.cluster.profile": "singleNode",
+                "spark.master": "local[*]",
+            },
+            custom_tags={
+                "ResourceClass": "SingleNode",
+            })
+        ```
+        """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
@@ -580,6 +651,9 @@ class ClusterAutoscaleArgs:
     @property
     @pulumi.getter(name="minWorkers")
     def min_workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+        """
         return pulumi.get(self, "min_workers")
 
     @min_workers.setter
@@ -598,6 +672,15 @@ class ClusterAwsAttributesArgs:
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
                  spot_bid_price_percent: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+        :param pulumi.Input[int] ebs_volume_count: The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+        :param pulumi.Input[int] ebs_volume_size: The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+        :param pulumi.Input[str] ebs_volume_type: The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+        :param pulumi.Input[int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        :param pulumi.Input[int] spot_bid_price_percent: The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+        :param pulumi.Input[str] zone_id: Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+        """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
@@ -618,6 +701,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter
     def availability(self) -> Optional[pulumi.Input[str]]:
+        """
+        Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+        """
         return pulumi.get(self, "availability")
 
     @availability.setter
@@ -627,6 +713,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="ebsVolumeCount")
     def ebs_volume_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+        """
         return pulumi.get(self, "ebs_volume_count")
 
     @ebs_volume_count.setter
@@ -636,6 +725,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+        """
         return pulumi.get(self, "ebs_volume_size")
 
     @ebs_volume_size.setter
@@ -645,6 +737,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="ebsVolumeType")
     def ebs_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+        """
         return pulumi.get(self, "ebs_volume_type")
 
     @ebs_volume_type.setter
@@ -654,6 +749,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="firstOnDemand")
     def first_on_demand(self) -> Optional[pulumi.Input[int]]:
+        """
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+        """
         return pulumi.get(self, "first_on_demand")
 
     @first_on_demand.setter
@@ -672,6 +770,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="spotBidPricePercent")
     def spot_bid_price_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+        """
         return pulumi.get(self, "spot_bid_price_percent")
 
     @spot_bid_price_percent.setter
@@ -681,6 +782,9 @@ class ClusterAwsAttributesArgs:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -694,6 +798,11 @@ class ClusterAzureAttributesArgs:
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
+        :param pulumi.Input[int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+        :param pulumi.Input[float] spot_bid_max_price: The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
@@ -704,6 +813,9 @@ class ClusterAzureAttributesArgs:
     @property
     @pulumi.getter
     def availability(self) -> Optional[pulumi.Input[str]]:
+        """
+        Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
+        """
         return pulumi.get(self, "availability")
 
     @availability.setter
@@ -713,6 +825,9 @@ class ClusterAzureAttributesArgs:
     @property
     @pulumi.getter(name="firstOnDemand")
     def first_on_demand(self) -> Optional[pulumi.Input[int]]:
+        """
+        The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+        """
         return pulumi.get(self, "first_on_demand")
 
     @first_on_demand.setter
@@ -722,6 +837,9 @@ class ClusterAzureAttributesArgs:
     @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
+        """
+        The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+        """
         return pulumi.get(self, "spot_bid_max_price")
 
     @spot_bid_max_price.setter
@@ -762,11 +880,17 @@ class ClusterClusterLogConfArgs:
 class ClusterClusterLogConfDbfsArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -784,6 +908,15 @@ class ClusterClusterLogConfS3Args:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        :param pulumi.Input[str] canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        :param pulumi.Input[bool] enable_encryption: Enable server-side encryption, false by default.
+        :param pulumi.Input[str] encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        :param pulumi.Input[str] endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        :param pulumi.Input[str] kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        :param pulumi.Input[str] region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -801,6 +934,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -810,6 +946,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
         return pulumi.get(self, "canned_acl")
 
     @canned_acl.setter
@@ -819,6 +958,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable server-side encryption, false by default.
+        """
         return pulumi.get(self, "enable_encryption")
 
     @enable_encryption.setter
@@ -828,6 +970,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
@@ -837,6 +982,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -846,6 +994,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
@@ -855,6 +1006,9 @@ class ClusterClusterLogConfS3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -868,6 +1022,29 @@ class ClusterClusterMountInfoArgs:
                  local_mount_dir_path: pulumi.Input[str],
                  network_filesystem_info: pulumi.Input['ClusterClusterMountInfoNetworkFilesystemInfoArgs'],
                  remote_mount_dir_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] local_mount_dir_path: path inside the Spark container.
+               
+               For example, you can mount Azure Data Lake Storage container using the following code:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               storage_account = "ewfw3ggwegwg"
+               storage_container = "test"
+               with_nfs = databricks.Cluster("withNfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
+                   local_mount_dir_path="/mnt/nfs-test",
+                   network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
+                       mount_options="sec=sys,vers=3,nolock,proto=tcp",
+                       server_address=f"{storage_account}.blob.core.windows.net",
+                   ),
+                   remote_mount_dir_path=f"{storage_account}/{storage_container}",
+               )])
+               ```
+        :param pulumi.Input['ClusterClusterMountInfoNetworkFilesystemInfoArgs'] network_filesystem_info: block specifying connection. It consists of:
+        :param pulumi.Input[str] remote_mount_dir_path: string specifying path to mount on the remote service.
+        """
         pulumi.set(__self__, "local_mount_dir_path", local_mount_dir_path)
         pulumi.set(__self__, "network_filesystem_info", network_filesystem_info)
         if remote_mount_dir_path is not None:
@@ -876,6 +1053,27 @@ class ClusterClusterMountInfoArgs:
     @property
     @pulumi.getter(name="localMountDirPath")
     def local_mount_dir_path(self) -> pulumi.Input[str]:
+        """
+        path inside the Spark container.
+
+        For example, you can mount Azure Data Lake Storage container using the following code:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        storage_account = "ewfw3ggwegwg"
+        storage_container = "test"
+        with_nfs = databricks.Cluster("withNfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
+            local_mount_dir_path="/mnt/nfs-test",
+            network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
+                mount_options="sec=sys,vers=3,nolock,proto=tcp",
+                server_address=f"{storage_account}.blob.core.windows.net",
+            ),
+            remote_mount_dir_path=f"{storage_account}/{storage_container}",
+        )])
+        ```
+        """
         return pulumi.get(self, "local_mount_dir_path")
 
     @local_mount_dir_path.setter
@@ -885,6 +1083,9 @@ class ClusterClusterMountInfoArgs:
     @property
     @pulumi.getter(name="networkFilesystemInfo")
     def network_filesystem_info(self) -> pulumi.Input['ClusterClusterMountInfoNetworkFilesystemInfoArgs']:
+        """
+        block specifying connection. It consists of:
+        """
         return pulumi.get(self, "network_filesystem_info")
 
     @network_filesystem_info.setter
@@ -894,6 +1095,9 @@ class ClusterClusterMountInfoArgs:
     @property
     @pulumi.getter(name="remoteMountDirPath")
     def remote_mount_dir_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        string specifying path to mount on the remote service.
+        """
         return pulumi.get(self, "remote_mount_dir_path")
 
     @remote_mount_dir_path.setter
@@ -906,6 +1110,10 @@ class ClusterClusterMountInfoNetworkFilesystemInfoArgs:
     def __init__(__self__, *,
                  server_address: pulumi.Input[str],
                  mount_options: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] server_address: host name.
+        :param pulumi.Input[str] mount_options: string that will be passed as options passed to the `mount` command.
+        """
         pulumi.set(__self__, "server_address", server_address)
         if mount_options is not None:
             pulumi.set(__self__, "mount_options", mount_options)
@@ -913,6 +1121,9 @@ class ClusterClusterMountInfoNetworkFilesystemInfoArgs:
     @property
     @pulumi.getter(name="serverAddress")
     def server_address(self) -> pulumi.Input[str]:
+        """
+        host name.
+        """
         return pulumi.get(self, "server_address")
 
     @server_address.setter
@@ -922,6 +1133,9 @@ class ClusterClusterMountInfoNetworkFilesystemInfoArgs:
     @property
     @pulumi.getter(name="mountOptions")
     def mount_options(self) -> Optional[pulumi.Input[str]]:
+        """
+        string that will be passed as options passed to the `mount` command.
+        """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
@@ -934,6 +1148,29 @@ class ClusterDockerImageArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['ClusterDockerImageBasicAuthArgs']] = None):
+        """
+        :param pulumi.Input[str] url: URL for the Docker image
+        :param pulumi.Input['ClusterDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+               
+               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               import pulumi_docker as docker
+               
+               thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+                   name=f{azurerm_container_registry.this.login_server}/sample:latest,
+                   build=[{}])
+               this_cluster = databricks.Cluster("thisCluster", docker_image=databricks.ClusterDockerImageArgs(
+                   url=thisdocker_registry_image["name"],
+                   basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
+                       username=azurerm_container_registry["this"]["admin_username"],
+                       password=azurerm_container_registry["this"]["admin_password"],
+                   ),
+               ))
+               ```
+        """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
             pulumi.set(__self__, "basic_auth", basic_auth)
@@ -941,6 +1178,9 @@ class ClusterDockerImageArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        URL for the Docker image
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -950,6 +1190,28 @@ class ClusterDockerImageArgs:
     @property
     @pulumi.getter(name="basicAuth")
     def basic_auth(self) -> Optional[pulumi.Input['ClusterDockerImageBasicAuthArgs']]:
+        """
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+            name=f{azurerm_container_registry.this.login_server}/sample:latest,
+            build=[{}])
+        this_cluster = databricks.Cluster("thisCluster", docker_image=databricks.ClusterDockerImageArgs(
+            url=thisdocker_registry_image["name"],
+            basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
+                username=azurerm_container_registry["this"]["admin_username"],
+                password=azurerm_container_registry["this"]["admin_password"],
+            ),
+        ))
+        ```
+        """
         return pulumi.get(self, "basic_auth")
 
     @basic_auth.setter
@@ -993,6 +1255,14 @@ class ClusterGcpAttributesArgs:
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  use_preemptible_executors: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        :param pulumi.Input[int] boot_disk_size: Boot disk size in GB
+        :param pulumi.Input[str] google_service_account: Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
+        :param pulumi.Input[int] local_ssd_count: Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        :param pulumi.Input[bool] use_preemptible_executors: if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+        :param pulumi.Input[str] zone_id: Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
         if boot_disk_size is not None:
@@ -1012,6 +1282,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter
     def availability(self) -> Optional[pulumi.Input[str]]:
+        """
+        Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+        """
         return pulumi.get(self, "availability")
 
     @availability.setter
@@ -1021,6 +1294,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter(name="bootDiskSize")
     def boot_disk_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Boot disk size in GB
+        """
         return pulumi.get(self, "boot_disk_size")
 
     @boot_disk_size.setter
@@ -1030,6 +1306,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter(name="googleServiceAccount")
     def google_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
+        """
         return pulumi.get(self, "google_service_account")
 
     @google_service_account.setter
@@ -1039,6 +1318,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        """
         return pulumi.get(self, "local_ssd_count")
 
     @local_ssd_count.setter
@@ -1048,6 +1330,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter(name="usePreemptibleExecutors")
     def use_preemptible_executors(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+        """
         warnings.warn("""Please use 'availability' instead.""", DeprecationWarning)
         pulumi.log.warn("""use_preemptible_executors is deprecated: Please use 'availability' instead.""")
 
@@ -1060,6 +1345,9 @@ class ClusterGcpAttributesArgs:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for the availability zone in which the cluster resides. This can be one of the following:
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -1166,12 +1454,18 @@ class ClusterInitScriptArgs:
 class ClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1183,11 +1477,17 @@ class ClusterInitScriptAbfssArgs:
 class ClusterInitScriptDbfsArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1199,12 +1499,18 @@ class ClusterInitScriptDbfsArgs:
 class ClusterInitScriptFileArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1216,12 +1522,18 @@ class ClusterInitScriptFileArgs:
 class ClusterInitScriptGcsArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1239,6 +1551,15 @@ class ClusterInitScriptS3Args:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        :param pulumi.Input[str] canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        :param pulumi.Input[bool] enable_encryption: Enable server-side encryption, false by default.
+        :param pulumi.Input[str] encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        :param pulumi.Input[str] endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        :param pulumi.Input[str] kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        :param pulumi.Input[str] region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -1256,6 +1577,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1265,6 +1589,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        """
         return pulumi.get(self, "canned_acl")
 
     @canned_acl.setter
@@ -1274,6 +1601,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable server-side encryption, false by default.
+        """
         return pulumi.get(self, "enable_encryption")
 
     @enable_encryption.setter
@@ -1283,6 +1613,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+        """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
@@ -1292,6 +1625,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -1301,6 +1637,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+        """
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
@@ -1310,6 +1649,9 @@ class ClusterInitScriptS3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1321,12 +1663,18 @@ class ClusterInitScriptS3Args:
 class ClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1338,12 +1686,18 @@ class ClusterInitScriptVolumesArgs:
 class ClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -1718,6 +2072,22 @@ class ClusterWorkloadTypeClientsArgs:
     def __init__(__self__, *,
                  jobs: Optional[pulumi.Input[bool]] = None,
                  notebooks: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] jobs: boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               with_nfs = databricks.Cluster("withNfs", workload_type=databricks.ClusterWorkloadTypeArgs(
+                   clients=databricks.ClusterWorkloadTypeClientsArgs(
+                       jobs=False,
+                       notebooks=True,
+                   ),
+               ))
+               ```
+        :param pulumi.Input[bool] notebooks: boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+        """
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if notebooks is not None:
@@ -1726,6 +2096,21 @@ class ClusterWorkloadTypeClientsArgs:
     @property
     @pulumi.getter
     def jobs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        with_nfs = databricks.Cluster("withNfs", workload_type=databricks.ClusterWorkloadTypeArgs(
+            clients=databricks.ClusterWorkloadTypeClientsArgs(
+                jobs=False,
+                notebooks=True,
+            ),
+        ))
+        ```
+        """
         return pulumi.get(self, "jobs")
 
     @jobs.setter
@@ -1735,6 +2120,9 @@ class ClusterWorkloadTypeClientsArgs:
     @property
     @pulumi.getter
     def notebooks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+        """
         return pulumi.get(self, "notebooks")
 
     @notebooks.setter
@@ -2179,6 +2567,29 @@ class InstancePoolPreloadedDockerImageArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs']] = None):
+        """
+        :param pulumi.Input[str] url: URL for the Docker image
+        :param pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+               
+               Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               import pulumi_docker as docker
+               
+               thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+                   name=f{azurerm_container_registry.this.login_server}/sample:latest,
+                   build=[{}])
+               this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+                   url=thisdocker_registry_image["name"],
+                   basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
+                       username=azurerm_container_registry["this"]["admin_username"],
+                       password=azurerm_container_registry["this"]["admin_password"],
+                   ),
+               )])
+               ```
+        """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
             pulumi.set(__self__, "basic_auth", basic_auth)
@@ -2186,6 +2597,9 @@ class InstancePoolPreloadedDockerImageArgs:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
+        """
+        URL for the Docker image
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -2195,6 +2609,28 @@ class InstancePoolPreloadedDockerImageArgs:
     @property
     @pulumi.getter(name="basicAuth")
     def basic_auth(self) -> Optional[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs']]:
+        """
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+
+        Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
+            name=f{azurerm_container_registry.this.login_server}/sample:latest,
+            build=[{}])
+        this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+            url=thisdocker_registry_image["name"],
+            basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
+                username=azurerm_container_registry["this"]["admin_username"],
+                password=azurerm_container_registry["this"]["admin_password"],
+            ),
+        )])
+        ```
+        """
         return pulumi.get(self, "basic_auth")
 
     @basic_auth.setter
@@ -3517,7 +3953,7 @@ class JobJobClusterNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobJobClusterNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[str] url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -3527,7 +3963,7 @@ class JobJobClusterNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -4984,7 +5420,7 @@ class JobNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[str] url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -4994,7 +5430,7 @@ class JobNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -7746,7 +8182,7 @@ class JobTaskNewClusterDockerImageArgs:
                  url: pulumi.Input[str],
                  basic_auth: Optional[pulumi.Input['JobTaskNewClusterDockerImageBasicAuthArgs']] = None):
         """
-        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[str] url: URL of the Git repository to use.
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -7756,7 +8192,7 @@ class JobTaskNewClusterDockerImageArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -9193,7 +9629,9 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9202,7 +9640,9 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9216,7 +9656,9 @@ class JobTaskWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9225,7 +9667,9 @@ class JobTaskWebhookNotificationsOnFailureArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9239,7 +9683,9 @@ class JobTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9248,7 +9694,9 @@ class JobTaskWebhookNotificationsOnStartArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9262,7 +9710,9 @@ class JobTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9271,7 +9721,9 @@ class JobTaskWebhookNotificationsOnSuccessArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9325,7 +9777,7 @@ class JobTriggerFileArrivalArgs:
                  min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
                  wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] url: URL of the job on the given workspace
+        :param pulumi.Input[str] url: URL of the Git repository to use.
         :param pulumi.Input[int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
@@ -9339,7 +9791,7 @@ class JobTriggerFileArrivalArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL of the job on the given workspace
+        URL of the Git repository to use.
         """
         return pulumi.get(self, "url")
 
@@ -9464,7 +9916,9 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9473,7 +9927,9 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9487,7 +9943,9 @@ class JobWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9496,7 +9954,9 @@ class JobWebhookNotificationsOnFailureArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9510,7 +9970,9 @@ class JobWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9519,7 +9981,9 @@ class JobWebhookNotificationsOnStartArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9533,7 +9997,9 @@ class JobWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: ID of the job
+        :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+               
+               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -9542,7 +10008,9 @@ class JobWebhookNotificationsOnSuccessArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the job
+        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+
+        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
         return pulumi.get(self, "id")
 
@@ -9987,26 +10455,39 @@ class MlflowWebhookJobSpecArgs:
 @pulumi.input_type
 class ModelServingConfigArgs:
     def __init__(__self__, *,
-                 served_models: pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]],
+                 auto_capture_config: Optional[pulumi.Input['ModelServingConfigAutoCaptureConfigArgs']] = None,
+                 served_models: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]] = None,
                  traffic_config: Optional[pulumi.Input['ModelServingConfigTrafficConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]] served_models: Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         :param pulumi.Input['ModelServingConfigTrafficConfigArgs'] traffic_config: A single block represents the traffic split configuration amongst the served models.
         """
-        pulumi.set(__self__, "served_models", served_models)
+        if auto_capture_config is not None:
+            pulumi.set(__self__, "auto_capture_config", auto_capture_config)
+        if served_models is not None:
+            pulumi.set(__self__, "served_models", served_models)
         if traffic_config is not None:
             pulumi.set(__self__, "traffic_config", traffic_config)
 
     @property
+    @pulumi.getter(name="autoCaptureConfig")
+    def auto_capture_config(self) -> Optional[pulumi.Input['ModelServingConfigAutoCaptureConfigArgs']]:
+        return pulumi.get(self, "auto_capture_config")
+
+    @auto_capture_config.setter
+    def auto_capture_config(self, value: Optional[pulumi.Input['ModelServingConfigAutoCaptureConfigArgs']]):
+        pulumi.set(self, "auto_capture_config", value)
+
+    @property
     @pulumi.getter(name="servedModels")
-    def served_models(self) -> pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]:
+    def served_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]]:
         """
         Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         """
         return pulumi.get(self, "served_models")
 
     @served_models.setter
-    def served_models(self, value: pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]):
+    def served_models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]]):
         pulumi.set(self, "served_models", value)
 
     @property
@@ -10020,6 +10501,59 @@ class ModelServingConfigArgs:
     @traffic_config.setter
     def traffic_config(self, value: Optional[pulumi.Input['ModelServingConfigTrafficConfigArgs']]):
         pulumi.set(self, "traffic_config", value)
+
+
+@pulumi.input_type
+class ModelServingConfigAutoCaptureConfigArgs:
+    def __init__(__self__, *,
+                 catalog_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 schema_name: Optional[pulumi.Input[str]] = None,
+                 table_name_prefix: Optional[pulumi.Input[str]] = None):
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if table_name_prefix is not None:
+            pulumi.set(__self__, "table_name_prefix", table_name_prefix)
+
+    @property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_name", value)
+
+    @property
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "table_name_prefix")
+
+    @table_name_prefix.setter
+    def table_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_name_prefix", value)
 
 
 @pulumi.input_type
@@ -10212,6 +10746,45 @@ class ModelServingConfigTrafficConfigRouteArgs:
     @traffic_percentage.setter
     def traffic_percentage(self, value: pulumi.Input[int]):
         pulumi.set(self, "traffic_percentage", value)
+
+
+@pulumi.input_type
+class ModelServingRateLimitArgs:
+    def __init__(__self__, *,
+                 calls: pulumi.Input[int],
+                 renewal_period: pulumi.Input[str],
+                 key: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "calls", calls)
+        pulumi.set(__self__, "renewal_period", renewal_period)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def calls(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "calls")
+
+    @calls.setter
+    def calls(self, value: pulumi.Input[int]):
+        pulumi.set(self, "calls", value)
+
+    @property
+    @pulumi.getter(name="renewalPeriod")
+    def renewal_period(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "renewal_period")
+
+    @renewal_period.setter
+    def renewal_period(self, value: pulumi.Input[str]):
+        pulumi.set(self, "renewal_period", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
 
 
 @pulumi.input_type
@@ -12400,11 +12973,21 @@ class RecipientTokenArgs:
 class RepoSparseCheckoutArgs:
     def __init__(__self__, *,
                  patterns: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] patterns: array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+               
+               Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+        """
         pulumi.set(__self__, "patterns", patterns)
 
     @property
     @pulumi.getter
     def patterns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+
+        Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
+        """
         return pulumi.get(self, "patterns")
 
     @patterns.setter

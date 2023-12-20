@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * Create a connection to a MySQL database
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -26,6 +28,39 @@ import * as utilities from "./utilities";
  *         password: "password",
  *         port: "3306",
  *         user: "user",
+ *     },
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * ```
+ *
+ * Create a connection to a BigQuery database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const bigquery = new databricks.Connection("bigquery", {
+ *     connectionType: "BIGQUERY",
+ *     comment: "this is a connection to BQ",
+ *     options: {
+ *         GoogleServiceAccountKeyJson: JSON.stringify({
+ *             type: "service_account",
+ *             project_id: "PROJECT_ID",
+ *             private_key_id: "KEY_ID",
+ *             private_key: `-----BEGIN PRIVATE KEY-----
+ * PRIVATE_KEY
+ * -----END PRIVATE KEY-----
+ * `,
+ *             client_email: "SERVICE_ACCOUNT_EMAIL",
+ *             client_id: "CLIENT_ID",
+ *             auth_uri: "https://accounts.google.com/o/oauth2/auth",
+ *             token_uri: "https://accounts.google.com/o/oauth2/token",
+ *             auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+ *             client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+ *             universe_domain: "googleapis.com",
+ *         }),
  *     },
  *     properties: {
  *         purpose: "testing",
@@ -83,7 +118,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
     public readonly options!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -159,7 +194,7 @@ export interface ConnectionState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
     options?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -191,7 +226,7 @@ export interface ConnectionArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
     options: pulumi.Input<{[key: string]: any}>;
     /**

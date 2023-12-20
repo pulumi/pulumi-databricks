@@ -83,14 +83,14 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Unique identifier of the parent Metastore
+     * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Unique identifier of the parent Metastore
+     * @return Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -256,7 +256,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metastoreId Unique identifier of the parent Metastore
+         * @param metastoreId Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param metastoreId Unique identifier of the parent Metastore
+         * @param metastoreId Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
          * 
          * @return builder
          * 

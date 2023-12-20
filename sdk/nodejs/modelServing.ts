@@ -106,6 +106,7 @@ export class ModelServing extends pulumi.CustomResource {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
@@ -127,6 +128,7 @@ export class ModelServing extends pulumi.CustomResource {
             const state = argsOrState as ModelServingState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["rateLimits"] = state ? state.rateLimits : undefined;
             resourceInputs["servingEndpointId"] = state ? state.servingEndpointId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -136,6 +138,7 @@ export class ModelServing extends pulumi.CustomResource {
             }
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["rateLimits"] = args ? args.rateLimits : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
@@ -156,6 +159,7 @@ export interface ModelServingState {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
@@ -175,5 +179,6 @@ export interface ModelServingArgs {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
 }

@@ -16,6 +16,44 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.SecretScope;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new SecretScope(&#34;this&#34;);
+ * 
+ *     }
+ * }
+ * ```
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * 
  * ## Import
  * 
  * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won&#39;t be imported, because the underlying API doesn&#39;t include it in the response. bash

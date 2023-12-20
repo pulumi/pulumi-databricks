@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: databricks_metastore["this"].id,
  *     comment: "this catalog is managed by terraform",
  *     properties: {
  *         purpose: "testing",
@@ -80,7 +79,7 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly isolationMode!: pulumi.Output<string>;
     /**
-     * ID of the metastore.
+     * ID of the parent metastore.
      */
     public readonly metastoreId!: pulumi.Output<string>;
     /**
@@ -178,7 +177,7 @@ export interface CatalogState {
      */
     isolationMode?: pulumi.Input<string>;
     /**
-     * ID of the metastore.
+     * ID of the parent metastore.
      */
     metastoreId?: pulumi.Input<string>;
     /**
@@ -232,7 +231,7 @@ export interface CatalogArgs {
      */
     isolationMode?: pulumi.Input<string>;
     /**
-     * ID of the metastore.
+     * ID of the parent metastore.
      */
     metastoreId?: pulumi.Input<string>;
     /**

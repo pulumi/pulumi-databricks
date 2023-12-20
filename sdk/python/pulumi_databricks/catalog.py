@@ -32,7 +32,7 @@ class CatalogArgs:
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-        :param pulumi.Input[str] metastore_id: ID of the metastore.
+        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -118,7 +118,7 @@ class CatalogArgs:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the metastore.
+        ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -232,7 +232,7 @@ class _CatalogState:
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-        :param pulumi.Input[str] metastore_id: ID of the metastore.
+        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -318,7 +318,7 @@ class _CatalogState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the metastore.
+        ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -437,7 +437,6 @@ class Catalog(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
@@ -465,7 +464,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-        :param pulumi.Input[str] metastore_id: ID of the metastore.
+        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -488,7 +487,6 @@ class Catalog(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
@@ -591,7 +589,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
-        :param pulumi.Input[str] metastore_id: ID of the metastore.
+        :param pulumi.Input[str] metastore_id: ID of the parent metastore.
         :param pulumi.Input[str] name: Name of Catalog relative to parent metastore.
         :param pulumi.Input[Mapping[str, Any]] options: For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the catalog owner.
@@ -654,7 +652,7 @@ class Catalog(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
         """
-        ID of the metastore.
+        ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 

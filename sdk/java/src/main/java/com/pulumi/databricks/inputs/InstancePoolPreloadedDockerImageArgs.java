@@ -16,16 +16,122 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
 
     public static final InstancePoolPreloadedDockerImageArgs Empty = new InstancePoolPreloadedDockerImageArgs();
 
+    /**
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * 
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.docker.docker_registry_image;
+     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.databricks.InstancePool;
+     * import com.pulumi.databricks.InstancePoolArgs;
+     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *             .build()
+     *             .build());
+     * 
+     *         var thisInstancePool = new InstancePool(&#34;thisInstancePool&#34;, InstancePoolArgs.builder()        
+     *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
+     *                 .url(thisdocker_registry_image.name())
+     *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
+     *                     .username(azurerm_container_registry.this().admin_username())
+     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     @Import(name="basicAuth")
     private @Nullable Output<InstancePoolPreloadedDockerImageBasicAuthArgs> basicAuth;
 
+    /**
+     * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * 
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.docker.docker_registry_image;
+     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.databricks.InstancePool;
+     * import com.pulumi.databricks.InstancePoolArgs;
+     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *             .build()
+     *             .build());
+     * 
+     *         var thisInstancePool = new InstancePool(&#34;thisInstancePool&#34;, InstancePoolArgs.builder()        
+     *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
+     *                 .url(thisdocker_registry_image.name())
+     *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
+     *                     .username(azurerm_container_registry.this().admin_username())
+     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public Optional<Output<InstancePoolPreloadedDockerImageBasicAuthArgs>> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
 
+    /**
+     * URL for the Docker image
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return URL for the Docker image
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -55,20 +161,134 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
             $ = new InstancePoolPreloadedDockerImageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+         * 
+         * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.docker.docker_registry_image;
+         * import com.pulumi.docker.Docker_registry_imageArgs;
+         * import com.pulumi.databricks.InstancePool;
+         * import com.pulumi.databricks.InstancePoolArgs;
+         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+         *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+         *             .build()
+         *             .build());
+         * 
+         *         var thisInstancePool = new InstancePool(&#34;thisInstancePool&#34;, InstancePoolArgs.builder()        
+         *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
+         *                 .url(thisdocker_registry_image.name())
+         *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
+         *                     .username(azurerm_container_registry.this().admin_username())
+         *                     .password(azurerm_container_registry.this().admin_password())
+         *                     .build())
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuth(@Nullable Output<InstancePoolPreloadedDockerImageBasicAuthArgs> basicAuth) {
             $.basicAuth = basicAuth;
             return this;
         }
 
+        /**
+         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+         * 
+         * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.docker.docker_registry_image;
+         * import com.pulumi.docker.Docker_registry_imageArgs;
+         * import com.pulumi.databricks.InstancePool;
+         * import com.pulumi.databricks.InstancePoolArgs;
+         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+         *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+         *             .build()
+         *             .build());
+         * 
+         *         var thisInstancePool = new InstancePool(&#34;thisInstancePool&#34;, InstancePoolArgs.builder()        
+         *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
+         *                 .url(thisdocker_registry_image.name())
+         *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
+         *                     .username(azurerm_container_registry.this().admin_username())
+         *                     .password(azurerm_container_registry.this().admin_password())
+         *                     .build())
+         *                 .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs basicAuth) {
             return basicAuth(Output.of(basicAuth));
         }
 
+        /**
+         * @param url URL for the Docker image
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url URL for the Docker image
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

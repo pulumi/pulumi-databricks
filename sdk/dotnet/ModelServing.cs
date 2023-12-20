@@ -105,6 +105,9 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("rateLimits")]
+        public Output<ImmutableArray<Outputs.ModelServingRateLimit>> RateLimits { get; private set; } = null!;
+
         /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
         /// </summary>
@@ -172,6 +175,14 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("rateLimits")]
+        private InputList<Inputs.ModelServingRateLimitArgs>? _rateLimits;
+        public InputList<Inputs.ModelServingRateLimitArgs> RateLimits
+        {
+            get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitArgs>());
+            set => _rateLimits = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.ModelServingTagArgs>? _tags;
         public InputList<Inputs.ModelServingTagArgs> Tags
@@ -199,6 +210,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("rateLimits")]
+        private InputList<Inputs.ModelServingRateLimitGetArgs>? _rateLimits;
+        public InputList<Inputs.ModelServingRateLimitGetArgs> RateLimits
+        {
+            get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitGetArgs>());
+            set => _rateLimits = value;
+        }
 
         /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

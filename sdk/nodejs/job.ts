@@ -61,6 +61,9 @@ export class Job extends pulumi.CustomResource {
      * ```
      */
     public readonly controlRunState!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly dbtTask!: pulumi.Output<outputs.JobDbtTask | undefined>;
     public readonly deployment!: pulumi.Output<outputs.JobDeployment | undefined>;
     /**
@@ -93,10 +96,14 @@ export class Job extends pulumi.CustomResource {
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly minRetryIntervalMillis!: pulumi.Output<number | undefined>;
     /**
@@ -107,27 +114,50 @@ export class Job extends pulumi.CustomResource {
      * Same set of parameters as for databricks.Cluster resource.
      */
     public readonly newCluster!: pulumi.Output<outputs.JobNewCluster | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly notebookTask!: pulumi.Output<outputs.JobNotebookTask | undefined>;
     /**
      * An optional block controlling the notification settings on the job level (described below).
      */
     public readonly notificationSettings!: pulumi.Output<outputs.JobNotificationSettings | undefined>;
     public readonly parameters!: pulumi.Output<outputs.JobParameter[] | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly pipelineTask!: pulumi.Output<outputs.JobPipelineTask | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
     public readonly runAs!: pulumi.Output<outputs.JobRunAs>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly runJobTask!: pulumi.Output<outputs.JobRunJobTask | undefined>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
     public readonly schedule!: pulumi.Output<outputs.JobSchedule | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly sparkJarTask!: pulumi.Output<outputs.JobSparkJarTask | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly sparkPythonTask!: pulumi.Output<outputs.JobSparkPythonTask | undefined>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
@@ -137,7 +167,7 @@ export class Job extends pulumi.CustomResource {
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -266,6 +296,9 @@ export interface JobState {
      * ```
      */
     controlRunState?: pulumi.Input<boolean>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
@@ -298,10 +331,14 @@ export interface JobState {
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
     /**
@@ -312,27 +349,50 @@ export interface JobState {
      * Same set of parameters as for databricks.Cluster resource.
      */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     /**
      * An optional block controlling the notification settings on the job level (described below).
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     runAs?: pulumi.Input<inputs.JobRunAs>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
     schedule?: pulumi.Input<inputs.JobSchedule>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
@@ -342,7 +402,7 @@ export interface JobState {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url?: pulumi.Input<string>;
     /**
@@ -373,6 +433,9 @@ export interface JobArgs {
      * ```
      */
     controlRunState?: pulumi.Input<boolean>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     dbtTask?: pulumi.Input<inputs.JobDbtTask>;
     deployment?: pulumi.Input<inputs.JobDeployment>;
     /**
@@ -405,10 +468,14 @@ export interface JobArgs {
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     minRetryIntervalMillis?: pulumi.Input<number>;
     /**
@@ -419,27 +486,50 @@ export interface JobArgs {
      * Same set of parameters as for databricks.Cluster resource.
      */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     notebookTask?: pulumi.Input<inputs.JobNotebookTask>;
     /**
      * An optional block controlling the notification settings on the job level (described below).
      */
     notificationSettings?: pulumi.Input<inputs.JobNotificationSettings>;
     parameters?: pulumi.Input<pulumi.Input<inputs.JobParameter>[]>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+     *
+     * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
     runAs?: pulumi.Input<inputs.JobRunAs>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     runJobTask?: pulumi.Input<inputs.JobRunJobTask>;
     /**
      * (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
      */
     schedule?: pulumi.Input<inputs.JobSchedule>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkJarTask?: pulumi.Input<inputs.JobSparkJarTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkPythonTask?: pulumi.Input<inputs.JobSparkPythonTask>;
+    /**
+     * @deprecated should be used inside a task block and not inside a job block
+     */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;

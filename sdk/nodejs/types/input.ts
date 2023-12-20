@@ -35,24 +35,96 @@ export interface ArtifactAllowlistArtifactMatcher {
 }
 
 export interface ClusterAutoscale {
+    /**
+     * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
+     *
+     * When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
+     *
+     * * `spark.master` must have prefix `local`, like `local[*]`
+     * * `spark.databricks.cluster.profile` must have value `singleNode`
+     *
+     * and also `customTag` entry:
+     *
+     * * `"ResourceClass" = "SingleNode"`
+     *
+     * The following example demonstrates how to create an single node cluster:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const singleNode = new databricks.Cluster("singleNode", {
+     *     clusterName: "Single Node",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     sparkConf: {
+     *         "spark.databricks.cluster.profile": "singleNode",
+     *         "spark.master": "local[*]",
+     *     },
+     *     customTags: {
+     *         ResourceClass: "SingleNode",
+     *     },
+     * });
+     * ```
+     */
     maxWorkers?: pulumi.Input<number>;
+    /**
+     * The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
+     */
     minWorkers?: pulumi.Input<number>;
 }
 
 export interface ClusterAwsAttributes {
+    /**
+     * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+     */
     availability?: pulumi.Input<string>;
+    /**
+     * The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+     */
     ebsVolumeCount?: pulumi.Input<number>;
+    /**
+     * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+     */
     ebsVolumeSize?: pulumi.Input<number>;
+    /**
+     * The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+     */
     ebsVolumeType?: pulumi.Input<string>;
+    /**
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+     */
     firstOnDemand?: pulumi.Input<number>;
     instanceProfileArn?: pulumi.Input<string>;
+    /**
+     * The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+     */
     spotBidPricePercent?: pulumi.Input<number>;
+    /**
+     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+     */
     zoneId?: pulumi.Input<string>;
 }
 
 export interface ClusterAzureAttributes {
+    /**
+     * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
+     */
     availability?: pulumi.Input<string>;
+    /**
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+     */
     firstOnDemand?: pulumi.Input<number>;
+    /**
+     * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
+     */
     spotBidMaxPrice?: pulumi.Input<number>;
 }
 
@@ -62,32 +134,115 @@ export interface ClusterClusterLogConf {
 }
 
 export interface ClusterClusterLogConfDbfs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterClusterLogConfS3 {
+    /**
+     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     */
     cannedAcl?: pulumi.Input<string>;
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
+    /**
+     * Enable server-side encryption, false by default.
+     */
     enableEncryption?: pulumi.Input<boolean>;
+    /**
+     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     */
     encryptionType?: pulumi.Input<string>;
+    /**
+     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     */
     endpoint?: pulumi.Input<string>;
+    /**
+     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     */
     region?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterMountInfo {
+    /**
+     * path inside the Spark container.
+     *
+     * For example, you can mount Azure Data Lake Storage container using the following code:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const storageAccount = "ewfw3ggwegwg";
+     * const storageContainer = "test";
+     * const withNfs = new databricks.Cluster("withNfs", {clusterMountInfos: [{
+     *     localMountDirPath: "/mnt/nfs-test",
+     *     networkFilesystemInfo: {
+     *         mountOptions: "sec=sys,vers=3,nolock,proto=tcp",
+     *         serverAddress: `${storageAccount}.blob.core.windows.net`,
+     *     },
+     *     remoteMountDirPath: `${storageAccount}/${storageContainer}`,
+     * }]});
+     * ```
+     */
     localMountDirPath: pulumi.Input<string>;
+    /**
+     * block specifying connection. It consists of:
+     */
     networkFilesystemInfo: pulumi.Input<inputs.ClusterClusterMountInfoNetworkFilesystemInfo>;
+    /**
+     * string specifying path to mount on the remote service.
+     */
     remoteMountDirPath?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterMountInfoNetworkFilesystemInfo {
+    /**
+     * string that will be passed as options passed to the `mount` command.
+     */
     mountOptions?: pulumi.Input<string>;
+    /**
+     * host name.
+     */
     serverAddress: pulumi.Input<string>;
 }
 
 export interface ClusterDockerImage {
+    /**
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     *
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     * import * as docker from "@pulumi/docker";
+     *
+     * const thisdocker_registry_image = new docker.index.Docker_registry_image("thisdocker_registry_image", {
+     *     name: `${azurerm_container_registry["this"].login_server}/sample:latest`,
+     *     build: [{}],
+     * });
+     * const thisCluster = new databricks.Cluster("thisCluster", {dockerImage: {
+     *     url: thisdocker_registry_image.name,
+     *     basicAuth: {
+     *         username: azurerm_container_registry["this"].admin_username,
+     *         password: azurerm_container_registry["this"].admin_password,
+     *     },
+     * }});
+     * ```
+     */
     basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth>;
+    /**
+     * URL for the Docker image
+     */
     url: pulumi.Input<string>;
 }
 
@@ -97,14 +252,31 @@ export interface ClusterDockerImageBasicAuth {
 }
 
 export interface ClusterGcpAttributes {
+    /**
+     * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+     */
     availability?: pulumi.Input<string>;
+    /**
+     * Boot disk size in GB
+     */
     bootDiskSize?: pulumi.Input<number>;
+    /**
+     * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
+     */
     googleServiceAccount?: pulumi.Input<string>;
+    /**
+     * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+     */
     localSsdCount?: pulumi.Input<number>;
     /**
+     * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+     *
      * @deprecated Please use 'availability' instead.
      */
     usePreemptibleExecutors?: pulumi.Input<boolean>;
+    /**
+     * Identifier for the availability zone in which the cluster resides. This can be one of the following:
+     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -122,36 +294,75 @@ export interface ClusterInitScript {
 }
 
 export interface ClusterInitScriptAbfss {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptDbfs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptFile {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptGcs {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptS3 {
+    /**
+     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+     */
     cannedAcl?: pulumi.Input<string>;
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination: pulumi.Input<string>;
+    /**
+     * Enable server-side encryption, false by default.
+     */
     enableEncryption?: pulumi.Input<boolean>;
+    /**
+     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+     */
     encryptionType?: pulumi.Input<string>;
+    /**
+     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+     */
     endpoint?: pulumi.Input<string>;
+    /**
+     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+     */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+     */
     region?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptVolumes {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination?: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptWorkspace {
+    /**
+     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     */
     destination?: pulumi.Input<string>;
 }
 
@@ -210,7 +421,25 @@ export interface ClusterWorkloadType {
 }
 
 export interface ClusterWorkloadTypeClients {
+    /**
+     * boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const withNfs = new databricks.Cluster("withNfs", {workloadType: {
+     *     clients: {
+     *         jobs: false,
+     *         notebooks: true,
+     *     },
+     * }});
+     * ```
+     */
     jobs?: pulumi.Input<boolean>;
+    /**
+     * boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+     */
     notebooks?: pulumi.Input<boolean>;
 }
 
@@ -3161,7 +3390,33 @@ export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
 }
 
 export interface InstancePoolPreloadedDockerImage {
+    /**
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     *
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     * import * as docker from "@pulumi/docker";
+     *
+     * const thisdocker_registry_image = new docker.index.Docker_registry_image("thisdocker_registry_image", {
+     *     name: `${azurerm_container_registry["this"].login_server}/sample:latest`,
+     *     build: [{}],
+     * });
+     * const thisInstancePool = new databricks.InstancePool("thisInstancePool", {preloadedDockerImages: [{
+     *     url: thisdocker_registry_image.name,
+     *     basicAuth: {
+     *         username: azurerm_container_registry["this"].admin_username,
+     *         password: azurerm_container_registry["this"].admin_password,
+     *     },
+     * }]});
+     * ```
+     */
     basicAuth?: pulumi.Input<inputs.InstancePoolPreloadedDockerImageBasicAuth>;
+    /**
+     * URL for the Docker image
+     */
     url: pulumi.Input<string>;
 }
 
@@ -3396,7 +3651,7 @@ export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -3630,7 +3885,7 @@ export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -4198,7 +4453,7 @@ export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: pulumi.Input<inputs.JobTaskNewClusterDockerImageBasicAuth>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
 }
@@ -4583,28 +4838,36 @@ export interface JobTaskWebhookNotifications {
 
 export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnStart {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnSuccess {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
@@ -4626,7 +4889,7 @@ export interface JobTriggerFileArrival {
      */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
     /**
@@ -4664,28 +4927,36 @@ export interface JobWebhookNotifications {
 
 export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnFailure {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStart {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
     id?: pulumi.Input<string>;
 }
@@ -4775,14 +5046,22 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingConfig {
+    autoCaptureConfig?: pulumi.Input<inputs.ModelServingConfigAutoCaptureConfig>;
     /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      */
-    servedModels: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[]>;
+    servedModels?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[]>;
     /**
      * A single block represents the traffic split configuration amongst the served models.
      */
     trafficConfig?: pulumi.Input<inputs.ModelServingConfigTrafficConfig>;
+}
+
+export interface ModelServingConfigAutoCaptureConfig {
+    catalogName?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    schemaName?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedModel {
@@ -4836,6 +5115,12 @@ export interface ModelServingConfigTrafficConfigRoute {
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
     trafficPercentage: pulumi.Input<number>;
+}
+
+export interface ModelServingRateLimit {
+    calls: pulumi.Input<number>;
+    key?: pulumi.Input<string>;
+    renewalPeriod: pulumi.Input<string>;
 }
 
 export interface ModelServingTag {
@@ -5232,6 +5517,11 @@ export interface RecipientToken {
 }
 
 export interface RepoSparseCheckout {
+    /**
+     * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+     *
+     * Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
+     */
     patterns: pulumi.Input<pulumi.Input<string>[]>;
 }
 

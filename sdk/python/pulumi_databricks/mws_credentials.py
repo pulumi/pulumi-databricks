@@ -31,6 +31,9 @@ class MwsCredentialsArgs:
         pulumi.set(__self__, "credentials_name", credentials_name)
         pulumi.set(__self__, "role_arn", role_arn)
         if account_id is not None:
+            warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
@@ -69,6 +72,9 @@ class MwsCredentialsArgs:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
+        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
+
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -127,6 +133,9 @@ class _MwsCredentialsState:
         :param pulumi.Input[str] role_arn: ARN of cross-account role
         """
         if account_id is not None:
+            warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
@@ -145,6 +154,9 @@ class _MwsCredentialsState:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
+        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
+
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -408,6 +420,9 @@ class MwsCredentials(pulumi.CustomResource):
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
+        warnings.warn("""`account_id` should be set as part of the Databricks Config, not in the resource.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.""")
+
         return pulumi.get(self, "account_id")
 
     @property

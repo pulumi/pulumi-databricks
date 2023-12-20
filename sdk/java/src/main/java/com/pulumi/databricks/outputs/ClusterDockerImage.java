@@ -12,13 +12,119 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterDockerImage {
+    /**
+     * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * 
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.docker.docker_registry_image;
+     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
+     * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *             .build()
+     *             .build());
+     * 
+     *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+     *             .dockerImage(ClusterDockerImageArgs.builder()
+     *                 .url(thisdocker_registry_image.name())
+     *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
+     *                     .username(azurerm_container_registry.this().admin_username())
+     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     private @Nullable ClusterDockerImageBasicAuth basicAuth;
+    /**
+     * @return URL for the Docker image
+     * 
+     */
     private String url;
 
     private ClusterDockerImage() {}
+    /**
+     * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * 
+     * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.docker.docker_registry_image;
+     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
+     * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
+     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *             .build()
+     *             .build());
+     * 
+     *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
+     *             .dockerImage(ClusterDockerImageArgs.builder()
+     *                 .url(thisdocker_registry_image.name())
+     *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
+     *                     .username(azurerm_container_registry.this().admin_username())
+     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public Optional<ClusterDockerImageBasicAuth> basicAuth() {
         return Optional.ofNullable(this.basicAuth);
     }
+    /**
+     * @return URL for the Docker image
+     * 
+     */
     public String url() {
         return this.url;
     }

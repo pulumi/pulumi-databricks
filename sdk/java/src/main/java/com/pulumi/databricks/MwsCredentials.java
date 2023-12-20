@@ -100,7 +100,11 @@ public class MwsCredentials extends com.pulumi.resources.CustomResource {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
+     * @deprecated
+     * `account_id` should be set as part of the Databricks Config, not in the resource.
+     * 
      */
+    @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 

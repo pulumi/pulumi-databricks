@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfig
     {
+        public readonly Outputs.ModelServingConfigAutoCaptureConfig? AutoCaptureConfig;
         /// <summary>
         /// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         /// </summary>
@@ -24,10 +25,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private ModelServingConfig(
+            Outputs.ModelServingConfigAutoCaptureConfig? autoCaptureConfig,
+
             ImmutableArray<Outputs.ModelServingConfigServedModel> servedModels,
 
             Outputs.ModelServingConfigTrafficConfig? trafficConfig)
         {
+            AutoCaptureConfig = autoCaptureConfig;
             ServedModels = servedModels;
             TrafficConfig = trafficConfig;
         }

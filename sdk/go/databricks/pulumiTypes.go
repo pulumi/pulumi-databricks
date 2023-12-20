@@ -247,7 +247,63 @@ func (o ArtifactAllowlistArtifactMatcherArrayOutput) Index(i pulumi.IntInput) Ar
 }
 
 type ClusterAutoscale struct {
+	// The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
+	//
+	// When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
+	//
+	// * `spark.master` must have prefix `local`, like `local[*]`
+	// * `spark.databricks.cluster.profile` must have value `singleNode`
+	//
+	// and also `customTag` entry:
+	//
+	// * `"ResourceClass" = "SingleNode"`
+	//
+	// The following example demonstrates how to create an single node cluster:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Single Node"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			SparkConf: pulumi.Map{
+	// 				"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
+	// 				"spark.master":                     pulumi.Any("local[*]"),
+	// 			},
+	// 			CustomTags: pulumi.Map{
+	// 				"ResourceClass": pulumi.Any("SingleNode"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	MaxWorkers *int `pulumi:"maxWorkers"`
+	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers *int `pulumi:"minWorkers"`
 }
 
@@ -263,7 +319,63 @@ type ClusterAutoscaleInput interface {
 }
 
 type ClusterAutoscaleArgs struct {
+	// The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
+	//
+	// When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
+	//
+	// * `spark.master` must have prefix `local`, like `local[*]`
+	// * `spark.databricks.cluster.profile` must have value `singleNode`
+	//
+	// and also `customTag` entry:
+	//
+	// * `"ResourceClass" = "SingleNode"`
+	//
+	// The following example demonstrates how to create an single node cluster:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+	// 			LocalDisk: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+	// 			LongTermSupport: pulumi.BoolRef(true),
+	// 		}, nil)
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+	// 			ClusterName:            pulumi.String("Single Node"),
+	// 			SparkVersion:           *pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			AutoterminationMinutes: pulumi.Int(20),
+	// 			SparkConf: pulumi.Map{
+	// 				"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
+	// 				"spark.master":                     pulumi.Any("local[*]"),
+	// 			},
+	// 			CustomTags: pulumi.Map{
+	// 				"ResourceClass": pulumi.Any("SingleNode"),
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
+	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
 }
 
@@ -344,10 +456,69 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 	}).(ClusterAutoscalePtrOutput)
 }
 
+// The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
+//
+// When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
+//
+// * `spark.master` must have prefix `local`, like `local[*]`
+// * `spark.databricks.cluster.profile` must have value `singleNode`
+//
+// and also `customTag` entry:
+//
+// * `"ResourceClass" = "SingleNode"`
+//
+// The following example demonstrates how to create an single node cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+//				LongTermSupport: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Single Node"),
+//				SparkVersion:           *pulumi.String(latestLts.Id),
+//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				SparkConf: pulumi.Map{
+//					"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
+//					"spark.master":                     pulumi.Any("local[*]"),
+//				},
+//				CustomTags: pulumi.Map{
+//					"ResourceClass": pulumi.Any("SingleNode"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterAutoscaleOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutoscale) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 func (o ClusterAutoscaleOutput) MinWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutoscale) *int { return v.MinWorkers }).(pulumi.IntPtrOutput)
 }
@@ -376,6 +547,64 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 	}).(ClusterAutoscaleOutput)
 }
 
+// The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
+//
+// When using a [Single Node cluster](https://docs.databricks.com/clusters/single-node.html), `numWorkers` needs to be `0`. It can be set to `0` explicitly, or simply not specified, as it defaults to `0`.  When `numWorkers` is `0`, provider checks for presence of the required Spark configurations:
+//
+// * `spark.master` must have prefix `local`, like `local[*]`
+// * `spark.databricks.cluster.profile` must have value `singleNode`
+//
+// and also `customTag` entry:
+//
+// * `"ResourceClass" = "SingleNode"`
+//
+// The following example demonstrates how to create an single node cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
+//				LongTermSupport: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+//				ClusterName:            pulumi.String("Single Node"),
+//				SparkVersion:           *pulumi.String(latestLts.Id),
+//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				AutoterminationMinutes: pulumi.Int(20),
+//				SparkConf: pulumi.Map{
+//					"spark.databricks.cluster.profile": pulumi.Any("singleNode"),
+//					"spark.master":                     pulumi.Any("local[*]"),
+//				},
+//				CustomTags: pulumi.Map{
+//					"ResourceClass": pulumi.Any("SingleNode"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAutoscale) *int {
 		if v == nil {
@@ -385,6 +614,7 @@ func (o ClusterAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 func (o ClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAutoscale) *int {
 		if v == nil {
@@ -395,14 +625,21 @@ func (o ClusterAutoscalePtrOutput) MinWorkers() pulumi.IntPtrOutput {
 }
 
 type ClusterAwsAttributes struct {
-	Availability        *string `pulumi:"availability"`
-	EbsVolumeCount      *int    `pulumi:"ebsVolumeCount"`
-	EbsVolumeSize       *int    `pulumi:"ebsVolumeSize"`
-	EbsVolumeType       *string `pulumi:"ebsVolumeType"`
-	FirstOnDemand       *int    `pulumi:"firstOnDemand"`
-	InstanceProfileArn  *string `pulumi:"instanceProfileArn"`
-	SpotBidPricePercent *int    `pulumi:"spotBidPricePercent"`
-	ZoneId              *string `pulumi:"zoneId"`
+	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+	Availability *string `pulumi:"availability"`
+	// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+	EbsVolumeCount *int `pulumi:"ebsVolumeCount"`
+	// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+	EbsVolumeSize *int `pulumi:"ebsVolumeSize"`
+	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+	EbsVolumeType *string `pulumi:"ebsVolumeType"`
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+	FirstOnDemand      *int    `pulumi:"firstOnDemand"`
+	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
+	// The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+	SpotBidPricePercent *int `pulumi:"spotBidPricePercent"`
+	// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // ClusterAwsAttributesInput is an input type that accepts ClusterAwsAttributesArgs and ClusterAwsAttributesOutput values.
@@ -417,14 +654,21 @@ type ClusterAwsAttributesInput interface {
 }
 
 type ClusterAwsAttributesArgs struct {
-	Availability        pulumi.StringPtrInput `pulumi:"availability"`
-	EbsVolumeCount      pulumi.IntPtrInput    `pulumi:"ebsVolumeCount"`
-	EbsVolumeSize       pulumi.IntPtrInput    `pulumi:"ebsVolumeSize"`
-	EbsVolumeType       pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
-	FirstOnDemand       pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
-	InstanceProfileArn  pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
-	SpotBidPricePercent pulumi.IntPtrInput    `pulumi:"spotBidPricePercent"`
-	ZoneId              pulumi.StringPtrInput `pulumi:"zoneId"`
+	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
+	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+	EbsVolumeCount pulumi.IntPtrInput `pulumi:"ebsVolumeCount"`
+	// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+	EbsVolumeSize pulumi.IntPtrInput `pulumi:"ebsVolumeSize"`
+	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
+	EbsVolumeType pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
+	FirstOnDemand      pulumi.IntPtrInput    `pulumi:"firstOnDemand"`
+	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
+	// The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
+	SpotBidPricePercent pulumi.IntPtrInput `pulumi:"spotBidPricePercent"`
+	// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (ClusterAwsAttributesArgs) ElementType() reflect.Type {
@@ -504,22 +748,27 @@ func (o ClusterAwsAttributesOutput) ToClusterAwsAttributesPtrOutputWithContext(c
 	}).(ClusterAwsAttributesPtrOutput)
 }
 
+// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
 func (o ClusterAwsAttributesOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
 }
 
+// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
 func (o ClusterAwsAttributesOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
 func (o ClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
 }
 
+// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 func (o ClusterAwsAttributesOutput) EbsVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *string { return v.EbsVolumeType }).(pulumi.StringPtrOutput)
 }
 
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
 func (o ClusterAwsAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
@@ -528,10 +777,12 @@ func (o ClusterAwsAttributesOutput) InstanceProfileArn() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ClusterAwsAttributes) *string { return v.InstanceProfileArn }).(pulumi.StringPtrOutput)
 }
 
+// The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
 func (o ClusterAwsAttributesOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.SpotBidPricePercent }).(pulumi.IntPtrOutput)
 }
 
+// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
 func (o ClusterAwsAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -560,6 +811,7 @@ func (o ClusterAwsAttributesPtrOutput) Elem() ClusterAwsAttributesOutput {
 	}).(ClusterAwsAttributesOutput)
 }
 
+// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
 func (o ClusterAwsAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *string {
 		if v == nil {
@@ -569,6 +821,7 @@ func (o ClusterAwsAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
 func (o ClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
 		if v == nil {
@@ -578,6 +831,7 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
 func (o ClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
 		if v == nil {
@@ -587,6 +841,7 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 func (o ClusterAwsAttributesPtrOutput) EbsVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *string {
 		if v == nil {
@@ -596,6 +851,7 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
 func (o ClusterAwsAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
 		if v == nil {
@@ -614,6 +870,7 @@ func (o ClusterAwsAttributesPtrOutput) InstanceProfileArn() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
 func (o ClusterAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
 		if v == nil {
@@ -623,6 +880,7 @@ func (o ClusterAwsAttributesPtrOutput) SpotBidPricePercent() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
 func (o ClusterAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *string {
 		if v == nil {
@@ -633,8 +891,11 @@ func (o ClusterAwsAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 }
 
 type ClusterAzureAttributes struct {
-	Availability    *string  `pulumi:"availability"`
-	FirstOnDemand   *int     `pulumi:"firstOnDemand"`
+	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
+	Availability *string `pulumi:"availability"`
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+	FirstOnDemand *int `pulumi:"firstOnDemand"`
+	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
 }
 
@@ -650,8 +911,11 @@ type ClusterAzureAttributesInput interface {
 }
 
 type ClusterAzureAttributesArgs struct {
-	Availability    pulumi.StringPtrInput  `pulumi:"availability"`
-	FirstOnDemand   pulumi.IntPtrInput     `pulumi:"firstOnDemand"`
+	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
+	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+	FirstOnDemand pulumi.IntPtrInput `pulumi:"firstOnDemand"`
+	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
 }
 
@@ -732,14 +996,17 @@ func (o ClusterAzureAttributesOutput) ToClusterAzureAttributesPtrOutputWithConte
 	}).(ClusterAzureAttributesPtrOutput)
 }
 
+// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
 func (o ClusterAzureAttributesOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAzureAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
 }
 
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
 func (o ClusterAzureAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o ClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
 }
@@ -768,6 +1035,7 @@ func (o ClusterAzureAttributesPtrOutput) Elem() ClusterAzureAttributesOutput {
 	}).(ClusterAzureAttributesOutput)
 }
 
+// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
 func (o ClusterAzureAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAzureAttributes) *string {
 		if v == nil {
@@ -777,6 +1045,7 @@ func (o ClusterAzureAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
 func (o ClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAzureAttributes) *int {
 		if v == nil {
@@ -786,6 +1055,7 @@ func (o ClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o ClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ClusterAzureAttributes) *float64 {
 		if v == nil {
@@ -944,6 +1214,7 @@ func (o ClusterClusterLogConfPtrOutput) S3() ClusterClusterLogConfS3PtrOutput {
 }
 
 type ClusterClusterLogConfDbfs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -959,6 +1230,7 @@ type ClusterClusterLogConfDbfsInput interface {
 }
 
 type ClusterClusterLogConfDbfsArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -1039,6 +1311,7 @@ func (o ClusterClusterLogConfDbfsOutput) ToClusterClusterLogConfDbfsPtrOutputWit
 	}).(ClusterClusterLogConfDbfsPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfDbfsOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfDbfs) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -1067,6 +1340,7 @@ func (o ClusterClusterLogConfDbfsPtrOutput) Elem() ClusterClusterLogConfDbfsOutp
 	}).(ClusterClusterLogConfDbfsOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfDbfs) *string {
 		if v == nil {
@@ -1077,13 +1351,20 @@ func (o ClusterClusterLogConfDbfsPtrOutput) Destination() pulumi.StringPtrOutput
 }
 
 type ClusterClusterLogConfS3 struct {
-	CannedAcl        *string `pulumi:"cannedAcl"`
-	Destination      string  `pulumi:"destination"`
-	EnableEncryption *bool   `pulumi:"enableEncryption"`
-	EncryptionType   *string `pulumi:"encryptionType"`
-	Endpoint         *string `pulumi:"endpoint"`
-	KmsKey           *string `pulumi:"kmsKey"`
-	Region           *string `pulumi:"region"`
+	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+	CannedAcl *string `pulumi:"cannedAcl"`
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+	Destination string `pulumi:"destination"`
+	// Enable server-side encryption, false by default.
+	EnableEncryption *bool `pulumi:"enableEncryption"`
+	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+	Endpoint *string `pulumi:"endpoint"`
+	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+	KmsKey *string `pulumi:"kmsKey"`
+	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+	Region *string `pulumi:"region"`
 }
 
 // ClusterClusterLogConfS3Input is an input type that accepts ClusterClusterLogConfS3Args and ClusterClusterLogConfS3Output values.
@@ -1098,13 +1379,20 @@ type ClusterClusterLogConfS3Input interface {
 }
 
 type ClusterClusterLogConfS3Args struct {
-	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	Destination      pulumi.StringInput    `pulumi:"destination"`
-	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
-	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
-	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
-	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
-	Region           pulumi.StringPtrInput `pulumi:"region"`
+	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+	CannedAcl pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Enable server-side encryption, false by default.
+	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
+	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ClusterClusterLogConfS3Args) ElementType() reflect.Type {
@@ -1184,30 +1472,37 @@ func (o ClusterClusterLogConfS3Output) ToClusterClusterLogConfS3PtrOutputWithCon
 	}).(ClusterClusterLogConfS3PtrOutput)
 }
 
+// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterClusterLogConfS3Output) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfS3Output) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) string { return v.Destination }).(pulumi.StringOutput)
 }
 
+// Enable server-side encryption, false by default.
 func (o ClusterClusterLogConfS3Output) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterClusterLogConfS3Output) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
+// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3Output) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterClusterLogConfS3Output) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
+// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3Output) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterLogConfS3) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -1236,6 +1531,7 @@ func (o ClusterClusterLogConfS3PtrOutput) Elem() ClusterClusterLogConfS3Output {
 	}).(ClusterClusterLogConfS3Output)
 }
 
+// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1245,6 +1541,7 @@ func (o ClusterClusterLogConfS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1254,6 +1551,7 @@ func (o ClusterClusterLogConfS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable server-side encryption, false by default.
 func (o ClusterClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *bool {
 		if v == nil {
@@ -1263,6 +1561,7 @@ func (o ClusterClusterLogConfS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1272,6 +1571,7 @@ func (o ClusterClusterLogConfS3PtrOutput) EncryptionType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1281,6 +1581,7 @@ func (o ClusterClusterLogConfS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1290,6 +1591,7 @@ func (o ClusterClusterLogConfS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterLogConfS3) *string {
 		if v == nil {
@@ -1300,9 +1602,48 @@ func (o ClusterClusterLogConfS3PtrOutput) Region() pulumi.StringPtrOutput {
 }
 
 type ClusterClusterMountInfo struct {
-	LocalMountDirPath     string                                       `pulumi:"localMountDirPath"`
+	// path inside the Spark container.
+	//
+	// For example, you can mount Azure Data Lake Storage container using the following code:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		storageAccount := "ewfw3ggwegwg"
+	// 		storageContainer := "test"
+	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
+	// 				&databricks.ClusterClusterMountInfoArgs{
+	// 					LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
+	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
+	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
+	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 					},
+	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	LocalMountDirPath string `pulumi:"localMountDirPath"`
+	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfo `pulumi:"networkFilesystemInfo"`
-	RemoteMountDirPath    *string                                      `pulumi:"remoteMountDirPath"`
+	// string specifying path to mount on the remote service.
+	RemoteMountDirPath *string `pulumi:"remoteMountDirPath"`
 }
 
 // ClusterClusterMountInfoInput is an input type that accepts ClusterClusterMountInfoArgs and ClusterClusterMountInfoOutput values.
@@ -1317,9 +1658,48 @@ type ClusterClusterMountInfoInput interface {
 }
 
 type ClusterClusterMountInfoArgs struct {
-	LocalMountDirPath     pulumi.StringInput                                `pulumi:"localMountDirPath"`
+	// path inside the Spark container.
+	//
+	// For example, you can mount Azure Data Lake Storage container using the following code:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		storageAccount := "ewfw3ggwegwg"
+	// 		storageContainer := "test"
+	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
+	// 				&databricks.ClusterClusterMountInfoArgs{
+	// 					LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
+	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
+	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
+	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 					},
+	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	LocalMountDirPath pulumi.StringInput `pulumi:"localMountDirPath"`
+	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfoInput `pulumi:"networkFilesystemInfo"`
-	RemoteMountDirPath    pulumi.StringPtrInput                             `pulumi:"remoteMountDirPath"`
+	// string specifying path to mount on the remote service.
+	RemoteMountDirPath pulumi.StringPtrInput `pulumi:"remoteMountDirPath"`
 }
 
 func (ClusterClusterMountInfoArgs) ElementType() reflect.Type {
@@ -1373,16 +1753,58 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 	return o
 }
 
+// path inside the Spark container.
+//
+// For example, you can mount Azure Data Lake Storage container using the following code:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			storageAccount := "ewfw3ggwegwg"
+//			storageContainer := "test"
+//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//				ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
+//					&databricks.ClusterClusterMountInfoArgs{
+//						LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
+//						NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
+//							MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
+//							ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+//						},
+//						RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterClusterMountInfoOutput) LocalMountDirPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfo) string { return v.LocalMountDirPath }).(pulumi.StringOutput)
 }
 
+// block specifying connection. It consists of:
 func (o ClusterClusterMountInfoOutput) NetworkFilesystemInfo() ClusterClusterMountInfoNetworkFilesystemInfoOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfo) ClusterClusterMountInfoNetworkFilesystemInfo {
 		return v.NetworkFilesystemInfo
 	}).(ClusterClusterMountInfoNetworkFilesystemInfoOutput)
 }
 
+// string specifying path to mount on the remote service.
 func (o ClusterClusterMountInfoOutput) RemoteMountDirPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfo) *string { return v.RemoteMountDirPath }).(pulumi.StringPtrOutput)
 }
@@ -1408,8 +1830,10 @@ func (o ClusterClusterMountInfoArrayOutput) Index(i pulumi.IntInput) ClusterClus
 }
 
 type ClusterClusterMountInfoNetworkFilesystemInfo struct {
-	MountOptions  *string `pulumi:"mountOptions"`
-	ServerAddress string  `pulumi:"serverAddress"`
+	// string that will be passed as options passed to the `mount` command.
+	MountOptions *string `pulumi:"mountOptions"`
+	// host name.
+	ServerAddress string `pulumi:"serverAddress"`
 }
 
 // ClusterClusterMountInfoNetworkFilesystemInfoInput is an input type that accepts ClusterClusterMountInfoNetworkFilesystemInfoArgs and ClusterClusterMountInfoNetworkFilesystemInfoOutput values.
@@ -1424,8 +1848,10 @@ type ClusterClusterMountInfoNetworkFilesystemInfoInput interface {
 }
 
 type ClusterClusterMountInfoNetworkFilesystemInfoArgs struct {
-	MountOptions  pulumi.StringPtrInput `pulumi:"mountOptions"`
-	ServerAddress pulumi.StringInput    `pulumi:"serverAddress"`
+	// string that will be passed as options passed to the `mount` command.
+	MountOptions pulumi.StringPtrInput `pulumi:"mountOptions"`
+	// host name.
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
 }
 
 func (ClusterClusterMountInfoNetworkFilesystemInfoArgs) ElementType() reflect.Type {
@@ -1454,17 +1880,62 @@ func (o ClusterClusterMountInfoNetworkFilesystemInfoOutput) ToClusterClusterMoun
 	return o
 }
 
+// string that will be passed as options passed to the `mount` command.
 func (o ClusterClusterMountInfoNetworkFilesystemInfoOutput) MountOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfoNetworkFilesystemInfo) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
 }
 
+// host name.
 func (o ClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfoNetworkFilesystemInfo) string { return v.ServerAddress }).(pulumi.StringOutput)
 }
 
 type ClusterDockerImage struct {
+	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+	//
+	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 			Build: []map[string]interface{}{
+	// 				nil,
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+	// 			DockerImage: &databricks.ClusterDockerImageArgs{
+	// 				Url: thisdocker_registry_image.Name,
+	// 				BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
+	// 					Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+	// 					Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BasicAuth *ClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	Url       string                       `pulumi:"url"`
+	// URL for the Docker image
+	Url string `pulumi:"url"`
 }
 
 // ClusterDockerImageInput is an input type that accepts ClusterDockerImageArgs and ClusterDockerImageOutput values.
@@ -1479,8 +1950,51 @@ type ClusterDockerImageInput interface {
 }
 
 type ClusterDockerImageArgs struct {
+	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+	//
+	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 			Build: []map[string]interface{}{
+	// 				nil,
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+	// 			DockerImage: &databricks.ClusterDockerImageArgs{
+	// 				Url: thisdocker_registry_image.Name,
+	// 				BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
+	// 					Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+	// 					Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BasicAuth ClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	Url       pulumi.StringInput                  `pulumi:"url"`
+	// URL for the Docker image
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (ClusterDockerImageArgs) ElementType() reflect.Type {
@@ -1560,10 +2074,56 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 	}).(ClusterDockerImagePtrOutput)
 }
 
+// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+//
+// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//				Build: []map[string]interface{}{
+//					nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+//				DockerImage: &databricks.ClusterDockerImageArgs{
+//					Url: thisdocker_registry_image.Name,
+//					BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
+//						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+//						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterDockerImageOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v ClusterDockerImage) *ClusterDockerImageBasicAuth { return v.BasicAuth }).(ClusterDockerImageBasicAuthPtrOutput)
 }
 
+// URL for the Docker image
 func (o ClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -1592,6 +2152,51 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 	}).(ClusterDockerImageOutput)
 }
 
+// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+//
+// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//				Build: []map[string]interface{}{
+//					nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+//				DockerImage: &databricks.ClusterDockerImageArgs{
+//					Url: thisdocker_registry_image.Name,
+//					BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
+//						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+//						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterDockerImagePtrOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v *ClusterDockerImage) *ClusterDockerImageBasicAuth {
 		if v == nil {
@@ -1601,6 +2206,7 @@ func (o ClusterDockerImagePtrOutput) BasicAuth() ClusterDockerImageBasicAuthPtrO
 	}).(ClusterDockerImageBasicAuthPtrOutput)
 }
 
+// URL for the Docker image
 func (o ClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDockerImage) *string {
 		if v == nil {
@@ -1759,13 +2365,20 @@ func (o ClusterDockerImageBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 }
 
 type ClusterGcpAttributes struct {
-	Availability         *string `pulumi:"availability"`
-	BootDiskSize         *int    `pulumi:"bootDiskSize"`
+	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+	Availability *string `pulumi:"availability"`
+	// Boot disk size in GB
+	BootDiskSize *int `pulumi:"bootDiskSize"`
+	// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
 	GoogleServiceAccount *string `pulumi:"googleServiceAccount"`
-	LocalSsdCount        *int    `pulumi:"localSsdCount"`
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+	//
 	// Deprecated: Please use 'availability' instead.
-	UsePreemptibleExecutors *bool   `pulumi:"usePreemptibleExecutors"`
-	ZoneId                  *string `pulumi:"zoneId"`
+	UsePreemptibleExecutors *bool `pulumi:"usePreemptibleExecutors"`
+	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // ClusterGcpAttributesInput is an input type that accepts ClusterGcpAttributesArgs and ClusterGcpAttributesOutput values.
@@ -1780,13 +2393,20 @@ type ClusterGcpAttributesInput interface {
 }
 
 type ClusterGcpAttributesArgs struct {
-	Availability         pulumi.StringPtrInput `pulumi:"availability"`
-	BootDiskSize         pulumi.IntPtrInput    `pulumi:"bootDiskSize"`
+	// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
+	Availability pulumi.StringPtrInput `pulumi:"availability"`
+	// Boot disk size in GB
+	BootDiskSize pulumi.IntPtrInput `pulumi:"bootDiskSize"`
+	// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
 	GoogleServiceAccount pulumi.StringPtrInput `pulumi:"googleServiceAccount"`
-	LocalSsdCount        pulumi.IntPtrInput    `pulumi:"localSsdCount"`
+	// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+	//
 	// Deprecated: Please use 'availability' instead.
-	UsePreemptibleExecutors pulumi.BoolPtrInput   `pulumi:"usePreemptibleExecutors"`
-	ZoneId                  pulumi.StringPtrInput `pulumi:"zoneId"`
+	UsePreemptibleExecutors pulumi.BoolPtrInput `pulumi:"usePreemptibleExecutors"`
+	// Identifier for the availability zone in which the cluster resides. This can be one of the following:
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (ClusterGcpAttributesArgs) ElementType() reflect.Type {
@@ -1866,27 +2486,34 @@ func (o ClusterGcpAttributesOutput) ToClusterGcpAttributesPtrOutputWithContext(c
 	}).(ClusterGcpAttributesPtrOutput)
 }
 
+// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 func (o ClusterGcpAttributesOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.Availability }).(pulumi.StringPtrOutput)
 }
 
+// Boot disk size in GB
 func (o ClusterGcpAttributesOutput) BootDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *int { return v.BootDiskSize }).(pulumi.IntPtrOutput)
 }
 
+// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
 func (o ClusterGcpAttributesOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.GoogleServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
 func (o ClusterGcpAttributesOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
 
+// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+//
 // Deprecated: Please use 'availability' instead.
 func (o ClusterGcpAttributesOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *bool { return v.UsePreemptibleExecutors }).(pulumi.BoolPtrOutput)
 }
 
+// Identifier for the availability zone in which the cluster resides. This can be one of the following:
 func (o ClusterGcpAttributesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterGcpAttributes) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
@@ -1915,6 +2542,7 @@ func (o ClusterGcpAttributesPtrOutput) Elem() ClusterGcpAttributesOutput {
 	}).(ClusterGcpAttributesOutput)
 }
 
+// Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
 func (o ClusterGcpAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *string {
 		if v == nil {
@@ -1924,6 +2552,7 @@ func (o ClusterGcpAttributesPtrOutput) Availability() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Boot disk size in GB
 func (o ClusterGcpAttributesPtrOutput) BootDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *int {
 		if v == nil {
@@ -1933,6 +2562,7 @@ func (o ClusterGcpAttributesPtrOutput) BootDiskSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
 func (o ClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *string {
 		if v == nil {
@@ -1942,6 +2572,7 @@ func (o ClusterGcpAttributesPtrOutput) GoogleServiceAccount() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
 func (o ClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *int {
 		if v == nil {
@@ -1951,6 +2582,8 @@ func (o ClusterGcpAttributesPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
+//
 // Deprecated: Please use 'availability' instead.
 func (o ClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *bool {
@@ -1961,6 +2594,7 @@ func (o ClusterGcpAttributesPtrOutput) UsePreemptibleExecutors() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Identifier for the availability zone in which the cluster resides. This can be one of the following:
 func (o ClusterGcpAttributesPtrOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGcpAttributes) *string {
 		if v == nil {
@@ -2104,6 +2738,7 @@ func (o ClusterInitScriptArrayOutput) Index(i pulumi.IntInput) ClusterInitScript
 }
 
 type ClusterInitScriptAbfss struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination *string `pulumi:"destination"`
 }
 
@@ -2119,6 +2754,7 @@ type ClusterInitScriptAbfssInput interface {
 }
 
 type ClusterInitScriptAbfssArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -2199,6 +2835,7 @@ func (o ClusterInitScriptAbfssOutput) ToClusterInitScriptAbfssPtrOutputWithConte
 	}).(ClusterInitScriptAbfssPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -2227,6 +2864,7 @@ func (o ClusterInitScriptAbfssPtrOutput) Elem() ClusterInitScriptAbfssOutput {
 	}).(ClusterInitScriptAbfssOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptAbfss) *string {
 		if v == nil {
@@ -2237,6 +2875,7 @@ func (o ClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptDbfs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination string `pulumi:"destination"`
 }
 
@@ -2252,6 +2891,7 @@ type ClusterInitScriptDbfsInput interface {
 }
 
 type ClusterInitScriptDbfsArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -2332,6 +2972,7 @@ func (o ClusterInitScriptDbfsOutput) ToClusterInitScriptDbfsPtrOutputWithContext
 	}).(ClusterInitScriptDbfsPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptDbfsOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptDbfs) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -2360,6 +3001,7 @@ func (o ClusterInitScriptDbfsPtrOutput) Elem() ClusterInitScriptDbfsOutput {
 	}).(ClusterInitScriptDbfsOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptDbfs) *string {
 		if v == nil {
@@ -2370,6 +3012,7 @@ func (o ClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptFile struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination *string `pulumi:"destination"`
 }
 
@@ -2385,6 +3028,7 @@ type ClusterInitScriptFileInput interface {
 }
 
 type ClusterInitScriptFileArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -2465,6 +3109,7 @@ func (o ClusterInitScriptFileOutput) ToClusterInitScriptFilePtrOutputWithContext
 	}).(ClusterInitScriptFilePtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -2493,6 +3138,7 @@ func (o ClusterInitScriptFilePtrOutput) Elem() ClusterInitScriptFileOutput {
 	}).(ClusterInitScriptFileOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptFile) *string {
 		if v == nil {
@@ -2503,6 +3149,7 @@ func (o ClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptGcs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination *string `pulumi:"destination"`
 }
 
@@ -2518,6 +3165,7 @@ type ClusterInitScriptGcsInput interface {
 }
 
 type ClusterInitScriptGcsArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -2598,6 +3246,7 @@ func (o ClusterInitScriptGcsOutput) ToClusterInitScriptGcsPtrOutputWithContext(c
 	}).(ClusterInitScriptGcsPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -2626,6 +3275,7 @@ func (o ClusterInitScriptGcsPtrOutput) Elem() ClusterInitScriptGcsOutput {
 	}).(ClusterInitScriptGcsOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptGcs) *string {
 		if v == nil {
@@ -2636,13 +3286,20 @@ func (o ClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptS3 struct {
-	CannedAcl        *string `pulumi:"cannedAcl"`
-	Destination      string  `pulumi:"destination"`
-	EnableEncryption *bool   `pulumi:"enableEncryption"`
-	EncryptionType   *string `pulumi:"encryptionType"`
-	Endpoint         *string `pulumi:"endpoint"`
-	KmsKey           *string `pulumi:"kmsKey"`
-	Region           *string `pulumi:"region"`
+	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+	CannedAcl *string `pulumi:"cannedAcl"`
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+	Destination string `pulumi:"destination"`
+	// Enable server-side encryption, false by default.
+	EnableEncryption *bool `pulumi:"enableEncryption"`
+	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+	Endpoint *string `pulumi:"endpoint"`
+	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+	KmsKey *string `pulumi:"kmsKey"`
+	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+	Region *string `pulumi:"region"`
 }
 
 // ClusterInitScriptS3Input is an input type that accepts ClusterInitScriptS3Args and ClusterInitScriptS3Output values.
@@ -2657,13 +3314,20 @@ type ClusterInitScriptS3Input interface {
 }
 
 type ClusterInitScriptS3Args struct {
-	CannedAcl        pulumi.StringPtrInput `pulumi:"cannedAcl"`
-	Destination      pulumi.StringInput    `pulumi:"destination"`
-	EnableEncryption pulumi.BoolPtrInput   `pulumi:"enableEncryption"`
-	EncryptionType   pulumi.StringPtrInput `pulumi:"encryptionType"`
-	Endpoint         pulumi.StringPtrInput `pulumi:"endpoint"`
-	KmsKey           pulumi.StringPtrInput `pulumi:"kmsKey"`
-	Region           pulumi.StringPtrInput `pulumi:"region"`
+	// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+	CannedAcl pulumi.StringPtrInput `pulumi:"cannedAcl"`
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Enable server-side encryption, false by default.
+	EnableEncryption pulumi.BoolPtrInput `pulumi:"enableEncryption"`
+	// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (ClusterInitScriptS3Args) ElementType() reflect.Type {
@@ -2743,30 +3407,37 @@ func (o ClusterInitScriptS3Output) ToClusterInitScriptS3PtrOutputWithContext(ctx
 	}).(ClusterInitScriptS3PtrOutput)
 }
 
+// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterInitScriptS3Output) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.CannedAcl }).(pulumi.StringPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptS3Output) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) string { return v.Destination }).(pulumi.StringOutput)
 }
 
+// Enable server-side encryption, false by default.
 func (o ClusterInitScriptS3Output) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *bool { return v.EnableEncryption }).(pulumi.BoolPtrOutput)
 }
 
+// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterInitScriptS3Output) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
+// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3Output) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterInitScriptS3Output) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
+// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3Output) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptS3) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -2795,6 +3466,7 @@ func (o ClusterInitScriptS3PtrOutput) Elem() ClusterInitScriptS3Output {
 	}).(ClusterInitScriptS3Output)
 }
 
+// Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
 func (o ClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2804,6 +3476,7 @@ func (o ClusterInitScriptS3PtrOutput) CannedAcl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2813,6 +3486,7 @@ func (o ClusterInitScriptS3PtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enable server-side encryption, false by default.
 func (o ClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *bool {
 		if v == nil {
@@ -2822,6 +3496,7 @@ func (o ClusterInitScriptS3PtrOutput) EnableEncryption() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
 func (o ClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2831,6 +3506,7 @@ func (o ClusterInitScriptS3PtrOutput) EncryptionType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2840,6 +3516,7 @@ func (o ClusterInitScriptS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
 func (o ClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2849,6 +3526,7 @@ func (o ClusterInitScriptS3PtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
 func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptS3) *string {
 		if v == nil {
@@ -2859,6 +3537,7 @@ func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 }
 
 type ClusterInitScriptVolumes struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination *string `pulumi:"destination"`
 }
 
@@ -2874,6 +3553,7 @@ type ClusterInitScriptVolumesInput interface {
 }
 
 type ClusterInitScriptVolumesArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -2954,6 +3634,7 @@ func (o ClusterInitScriptVolumesOutput) ToClusterInitScriptVolumesPtrOutputWithC
 	}).(ClusterInitScriptVolumesPtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptVolumesOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptVolumes) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -2982,6 +3663,7 @@ func (o ClusterInitScriptVolumesPtrOutput) Elem() ClusterInitScriptVolumesOutput
 	}).(ClusterInitScriptVolumesOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptVolumes) *string {
 		if v == nil {
@@ -2992,6 +3674,7 @@ func (o ClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput 
 }
 
 type ClusterInitScriptWorkspace struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination *string `pulumi:"destination"`
 }
 
@@ -3007,6 +3690,7 @@ type ClusterInitScriptWorkspaceInput interface {
 }
 
 type ClusterInitScriptWorkspaceArgs struct {
+	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -3087,6 +3771,7 @@ func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspacePtrOutputW
 	}).(ClusterInitScriptWorkspacePtrOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -3115,6 +3800,7 @@ func (o ClusterInitScriptWorkspacePtrOutput) Elem() ClusterInitScriptWorkspaceOu
 	}).(ClusterInitScriptWorkspaceOutput)
 }
 
+// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
 func (o ClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterInitScriptWorkspace) *string {
 		if v == nil {
@@ -4424,7 +5110,35 @@ func (o ClusterWorkloadTypePtrOutput) Clients() ClusterWorkloadTypeClientsPtrOut
 }
 
 type ClusterWorkloadTypeClients struct {
-	Jobs      *bool `pulumi:"jobs"`
+	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 			WorkloadType: &databricks.ClusterWorkloadTypeArgs{
+	// 				Clients: &databricks.ClusterWorkloadTypeClientsArgs{
+	// 					Jobs:      pulumi.Bool(false),
+	// 					Notebooks: pulumi.Bool(true),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Jobs *bool `pulumi:"jobs"`
+	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks *bool `pulumi:"notebooks"`
 }
 
@@ -4440,7 +5154,35 @@ type ClusterWorkloadTypeClientsInput interface {
 }
 
 type ClusterWorkloadTypeClientsArgs struct {
-	Jobs      pulumi.BoolPtrInput `pulumi:"jobs"`
+	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 			WorkloadType: &databricks.ClusterWorkloadTypeArgs{
+	// 				Clients: &databricks.ClusterWorkloadTypeClientsArgs{
+	// 					Jobs:      pulumi.Bool(false),
+	// 					Notebooks: pulumi.Bool(true),
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	Jobs pulumi.BoolPtrInput `pulumi:"jobs"`
+	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
 }
 
@@ -4521,10 +5263,41 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 	}).(ClusterWorkloadTypeClientsPtrOutput)
 }
 
+// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//				WorkloadType: &databricks.ClusterWorkloadTypeArgs{
+//					Clients: &databricks.ClusterWorkloadTypeClientsArgs{
+//						Jobs:      pulumi.Bool(false),
+//						Notebooks: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
 }
 
+// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 func (o ClusterWorkloadTypeClientsOutput) Notebooks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadTypeClients) *bool { return v.Notebooks }).(pulumi.BoolPtrOutput)
 }
@@ -4553,6 +5326,36 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 	}).(ClusterWorkloadTypeClientsOutput)
 }
 
+// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//				WorkloadType: &databricks.ClusterWorkloadTypeArgs{
+//					Clients: &databricks.ClusterWorkloadTypeClientsArgs{
+//						Jobs:      pulumi.Bool(false),
+//						Notebooks: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadTypeClients) *bool {
 		if v == nil {
@@ -4562,6 +5365,7 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 func (o ClusterWorkloadTypeClientsPtrOutput) Notebooks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadTypeClients) *bool {
 		if v == nil {
@@ -6467,8 +7271,53 @@ func (o InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArrayOutput
 }
 
 type InstancePoolPreloadedDockerImage struct {
+	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+	//
+	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 			Build: []map[string]interface{}{
+	// 				nil,
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+	// 			PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
+	// 				&databricks.InstancePoolPreloadedDockerImageArgs{
+	// 					Url: thisdocker_registry_image.Name,
+	// 					BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
+	// 						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+	// 						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BasicAuth *InstancePoolPreloadedDockerImageBasicAuth `pulumi:"basicAuth"`
-	Url       string                                     `pulumi:"url"`
+	// URL for the Docker image
+	Url string `pulumi:"url"`
 }
 
 // InstancePoolPreloadedDockerImageInput is an input type that accepts InstancePoolPreloadedDockerImageArgs and InstancePoolPreloadedDockerImageOutput values.
@@ -6483,8 +7332,53 @@ type InstancePoolPreloadedDockerImageInput interface {
 }
 
 type InstancePoolPreloadedDockerImageArgs struct {
+	// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+	//
+	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"fmt"
+	//
+	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+	// 	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 			Build: []map[string]interface{}{
+	// 				nil,
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+	// 			PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
+	// 				&databricks.InstancePoolPreloadedDockerImageArgs{
+	// 					Url: thisdocker_registry_image.Name,
+	// 					BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
+	// 						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+	// 						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 					},
+	// 				},
+	// 			},
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BasicAuth InstancePoolPreloadedDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	Url       pulumi.StringInput                                `pulumi:"url"`
+	// URL for the Docker image
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (InstancePoolPreloadedDockerImageArgs) ElementType() reflect.Type {
@@ -6538,12 +7432,60 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 	return o
 }
 
+// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+//
+// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-docker/sdk/v4/go/docker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
+//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//				Build: []map[string]interface{}{
+//					nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+//				PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
+//					&databricks.InstancePoolPreloadedDockerImageArgs{
+//						Url: thisdocker_registry_image.Name,
+//						BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
+//							Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
+//							Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o InstancePoolPreloadedDockerImageOutput) BasicAuth() InstancePoolPreloadedDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v InstancePoolPreloadedDockerImage) *InstancePoolPreloadedDockerImageBasicAuth {
 		return v.BasicAuth
 	}).(InstancePoolPreloadedDockerImageBasicAuthPtrOutput)
 }
 
+// URL for the Docker image
 func (o InstancePoolPreloadedDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePoolPreloadedDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -10230,7 +11172,7 @@ func (o JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoOutput) Serv
 
 type JobJobClusterNewClusterDockerImage struct {
 	BasicAuth *JobJobClusterNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url string `pulumi:"url"`
 }
 
@@ -10247,7 +11189,7 @@ type JobJobClusterNewClusterDockerImageInput interface {
 
 type JobJobClusterNewClusterDockerImageArgs struct {
 	BasicAuth JobJobClusterNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -10334,7 +11276,7 @@ func (o JobJobClusterNewClusterDockerImageOutput) BasicAuth() JobJobClusterNewCl
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobJobClusterNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobJobClusterNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -10372,7 +11314,7 @@ func (o JobJobClusterNewClusterDockerImagePtrOutput) BasicAuth() JobJobClusterNe
 	}).(JobJobClusterNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobJobClusterNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobJobClusterNewClusterDockerImage) *string {
 		if v == nil {
@@ -14735,7 +15677,7 @@ func (o JobNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddress(
 
 type JobNewClusterDockerImage struct {
 	BasicAuth *JobNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url string `pulumi:"url"`
 }
 
@@ -14752,7 +15694,7 @@ type JobNewClusterDockerImageInput interface {
 
 type JobNewClusterDockerImageArgs struct {
 	BasicAuth JobNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -14837,7 +15779,7 @@ func (o JobNewClusterDockerImageOutput) BasicAuth() JobNewClusterDockerImageBasi
 	return o.ApplyT(func(v JobNewClusterDockerImage) *JobNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -14875,7 +15817,7 @@ func (o JobNewClusterDockerImagePtrOutput) BasicAuth() JobNewClusterDockerImageB
 	}).(JobNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobNewClusterDockerImage) *string {
 		if v == nil {
@@ -22521,7 +23463,7 @@ func (o JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoOutput) ServerAddr
 
 type JobTaskNewClusterDockerImage struct {
 	BasicAuth *JobTaskNewClusterDockerImageBasicAuth `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url string `pulumi:"url"`
 }
 
@@ -22538,7 +23480,7 @@ type JobTaskNewClusterDockerImageInput interface {
 
 type JobTaskNewClusterDockerImageArgs struct {
 	BasicAuth JobTaskNewClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -22623,7 +23565,7 @@ func (o JobTaskNewClusterDockerImageOutput) BasicAuth() JobTaskNewClusterDockerI
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) *JobTaskNewClusterDockerImageBasicAuth { return v.BasicAuth }).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobTaskNewClusterDockerImageOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskNewClusterDockerImage) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -22661,7 +23603,7 @@ func (o JobTaskNewClusterDockerImagePtrOutput) BasicAuth() JobTaskNewClusterDock
 	}).(JobTaskNewClusterDockerImageBasicAuthPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobTaskNewClusterDockerImagePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskNewClusterDockerImage) *string {
 		if v == nil {
@@ -27596,7 +28538,9 @@ func (o JobTaskWebhookNotificationsPtrOutput) OnSuccesses() JobTaskWebhookNotifi
 }
 
 type JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -27612,7 +28556,9 @@ type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededInput interfac
 }
 
 type JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -27667,7 +28613,9 @@ func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJ
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -27693,7 +28641,9 @@ func (o JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput
 }
 
 type JobTaskWebhookNotificationsOnFailure struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -27709,7 +28659,9 @@ type JobTaskWebhookNotificationsOnFailureInput interface {
 }
 
 type JobTaskWebhookNotificationsOnFailureArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -27764,7 +28716,9 @@ func (o JobTaskWebhookNotificationsOnFailureOutput) ToJobTaskWebhookNotification
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobTaskWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -27790,7 +28744,9 @@ func (o JobTaskWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput
 }
 
 type JobTaskWebhookNotificationsOnStart struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -27806,7 +28762,9 @@ type JobTaskWebhookNotificationsOnStartInput interface {
 }
 
 type JobTaskWebhookNotificationsOnStartArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -27861,7 +28819,9 @@ func (o JobTaskWebhookNotificationsOnStartOutput) ToJobTaskWebhookNotificationsO
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobTaskWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -27887,7 +28847,9 @@ func (o JobTaskWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type JobTaskWebhookNotificationsOnSuccess struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -27903,7 +28865,9 @@ type JobTaskWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobTaskWebhookNotificationsOnSuccessArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -27958,7 +28922,9 @@ func (o JobTaskWebhookNotificationsOnSuccessOutput) ToJobTaskWebhookNotification
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobTaskWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -28142,7 +29108,7 @@ func (o JobTriggerPtrOutput) PauseStatus() pulumi.StringPtrOutput {
 type JobTriggerFileArrival struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds *int `pulumi:"minTimeBetweenTriggersSeconds"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url string `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds *int `pulumi:"waitAfterLastChangeSeconds"`
@@ -28162,7 +29128,7 @@ type JobTriggerFileArrivalInput interface {
 type JobTriggerFileArrivalArgs struct {
 	// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
 	MinTimeBetweenTriggersSeconds pulumi.IntPtrInput `pulumi:"minTimeBetweenTriggersSeconds"`
-	// URL of the job on the given workspace
+	// URL of the Git repository to use.
 	Url pulumi.StringInput `pulumi:"url"`
 	// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
 	WaitAfterLastChangeSeconds pulumi.IntPtrInput `pulumi:"waitAfterLastChangeSeconds"`
@@ -28250,7 +29216,7 @@ func (o JobTriggerFileArrivalOutput) MinTimeBetweenTriggersSeconds() pulumi.IntP
 	return o.ApplyT(func(v JobTriggerFileArrival) *int { return v.MinTimeBetweenTriggersSeconds }).(pulumi.IntPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobTriggerFileArrivalOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTriggerFileArrival) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -28294,7 +29260,7 @@ func (o JobTriggerFileArrivalPtrOutput) MinTimeBetweenTriggersSeconds() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// URL of the job on the given workspace
+// URL of the Git repository to use.
 func (o JobTriggerFileArrivalPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTriggerFileArrival) *string {
 		if v == nil {
@@ -28589,7 +29555,9 @@ func (o JobWebhookNotificationsPtrOutput) OnSuccesses() JobWebhookNotificationsO
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceeded struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -28605,7 +29573,9 @@ type JobWebhookNotificationsOnDurationWarningThresholdExceededInput interface {
 }
 
 type JobWebhookNotificationsOnDurationWarningThresholdExceededArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -28660,7 +29630,9 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) ToJobWe
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnDurationWarningThresholdExceededOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnDurationWarningThresholdExceeded) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -28686,7 +29658,9 @@ func (o JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput) In
 }
 
 type JobWebhookNotificationsOnFailure struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -28702,7 +29676,9 @@ type JobWebhookNotificationsOnFailureInput interface {
 }
 
 type JobWebhookNotificationsOnFailureArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -28757,7 +29733,9 @@ func (o JobWebhookNotificationsOnFailureOutput) ToJobWebhookNotificationsOnFailu
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnFailureOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnFailure) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -28783,7 +29761,9 @@ func (o JobWebhookNotificationsOnFailureArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobWebhookNotificationsOnStart struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -28799,7 +29779,9 @@ type JobWebhookNotificationsOnStartInput interface {
 }
 
 type JobWebhookNotificationsOnStartArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -28854,7 +29836,9 @@ func (o JobWebhookNotificationsOnStartOutput) ToJobWebhookNotificationsOnStartOu
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnStartOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnStart) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -28880,7 +29864,9 @@ func (o JobWebhookNotificationsOnStartArrayOutput) Index(i pulumi.IntInput) JobW
 }
 
 type JobWebhookNotificationsOnSuccess struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id *string `pulumi:"id"`
 }
 
@@ -28896,7 +29882,9 @@ type JobWebhookNotificationsOnSuccessInput interface {
 }
 
 type JobWebhookNotificationsOnSuccessArgs struct {
-	// ID of the job
+	// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+	//
+	// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -28951,7 +29939,9 @@ func (o JobWebhookNotificationsOnSuccessOutput) ToJobWebhookNotificationsOnSucce
 	return o
 }
 
-// ID of the job
+// ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+//
+// > **Note** The following configuration blocks can be standalone or nested inside a `task` block
 func (o JobWebhookNotificationsOnSuccessOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobWebhookNotificationsOnSuccess) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -30705,6 +31695,7 @@ func (o MlflowWebhookJobSpecPtrOutput) WorkspaceUrl() pulumi.StringPtrOutput {
 }
 
 type ModelServingConfig struct {
+	AutoCaptureConfig *ModelServingConfigAutoCaptureConfig `pulumi:"autoCaptureConfig"`
 	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
 	ServedModels []ModelServingConfigServedModel `pulumi:"servedModels"`
 	// A single block represents the traffic split configuration amongst the served models.
@@ -30723,6 +31714,7 @@ type ModelServingConfigInput interface {
 }
 
 type ModelServingConfigArgs struct {
+	AutoCaptureConfig ModelServingConfigAutoCaptureConfigPtrInput `pulumi:"autoCaptureConfig"`
 	// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
 	ServedModels ModelServingConfigServedModelArrayInput `pulumi:"servedModels"`
 	// A single block represents the traffic split configuration amongst the served models.
@@ -30806,6 +31798,10 @@ func (o ModelServingConfigOutput) ToModelServingConfigPtrOutputWithContext(ctx c
 	}).(ModelServingConfigPtrOutput)
 }
 
+func (o ModelServingConfigOutput) AutoCaptureConfig() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o.ApplyT(func(v ModelServingConfig) *ModelServingConfigAutoCaptureConfig { return v.AutoCaptureConfig }).(ModelServingConfigAutoCaptureConfigPtrOutput)
+}
+
 // Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
 func (o ModelServingConfigOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
 	return o.ApplyT(func(v ModelServingConfig) []ModelServingConfigServedModel { return v.ServedModels }).(ModelServingConfigServedModelArrayOutput)
@@ -30840,6 +31836,15 @@ func (o ModelServingConfigPtrOutput) Elem() ModelServingConfigOutput {
 	}).(ModelServingConfigOutput)
 }
 
+func (o ModelServingConfigPtrOutput) AutoCaptureConfig() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfig) *ModelServingConfigAutoCaptureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoCaptureConfig
+	}).(ModelServingConfigAutoCaptureConfigPtrOutput)
+}
+
 // Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
 func (o ModelServingConfigPtrOutput) ServedModels() ModelServingConfigServedModelArrayOutput {
 	return o.ApplyT(func(v *ModelServingConfig) []ModelServingConfigServedModel {
@@ -30858,6 +31863,184 @@ func (o ModelServingConfigPtrOutput) TrafficConfig() ModelServingConfigTrafficCo
 		}
 		return v.TrafficConfig
 	}).(ModelServingConfigTrafficConfigPtrOutput)
+}
+
+type ModelServingConfigAutoCaptureConfig struct {
+	CatalogName     *string `pulumi:"catalogName"`
+	Enabled         *bool   `pulumi:"enabled"`
+	SchemaName      *string `pulumi:"schemaName"`
+	TableNamePrefix *string `pulumi:"tableNamePrefix"`
+}
+
+// ModelServingConfigAutoCaptureConfigInput is an input type that accepts ModelServingConfigAutoCaptureConfigArgs and ModelServingConfigAutoCaptureConfigOutput values.
+// You can construct a concrete instance of `ModelServingConfigAutoCaptureConfigInput` via:
+//
+//	ModelServingConfigAutoCaptureConfigArgs{...}
+type ModelServingConfigAutoCaptureConfigInput interface {
+	pulumi.Input
+
+	ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput
+	ToModelServingConfigAutoCaptureConfigOutputWithContext(context.Context) ModelServingConfigAutoCaptureConfigOutput
+}
+
+type ModelServingConfigAutoCaptureConfigArgs struct {
+	CatalogName     pulumi.StringPtrInput `pulumi:"catalogName"`
+	Enabled         pulumi.BoolPtrInput   `pulumi:"enabled"`
+	SchemaName      pulumi.StringPtrInput `pulumi:"schemaName"`
+	TableNamePrefix pulumi.StringPtrInput `pulumi:"tableNamePrefix"`
+}
+
+func (ModelServingConfigAutoCaptureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigAutoCaptureConfig)(nil)).Elem()
+}
+
+func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput {
+	return i.ToModelServingConfigAutoCaptureConfigOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigOutput)
+}
+
+func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return i.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ModelServingConfigAutoCaptureConfigArgs) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigOutput).ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx)
+}
+
+// ModelServingConfigAutoCaptureConfigPtrInput is an input type that accepts ModelServingConfigAutoCaptureConfigArgs, ModelServingConfigAutoCaptureConfigPtr and ModelServingConfigAutoCaptureConfigPtrOutput values.
+// You can construct a concrete instance of `ModelServingConfigAutoCaptureConfigPtrInput` via:
+//
+//	        ModelServingConfigAutoCaptureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ModelServingConfigAutoCaptureConfigPtrInput interface {
+	pulumi.Input
+
+	ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput
+	ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Context) ModelServingConfigAutoCaptureConfigPtrOutput
+}
+
+type modelServingConfigAutoCaptureConfigPtrType ModelServingConfigAutoCaptureConfigArgs
+
+func ModelServingConfigAutoCaptureConfigPtr(v *ModelServingConfigAutoCaptureConfigArgs) ModelServingConfigAutoCaptureConfigPtrInput {
+	return (*modelServingConfigAutoCaptureConfigPtrType)(v)
+}
+
+func (*modelServingConfigAutoCaptureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigAutoCaptureConfig)(nil)).Elem()
+}
+
+func (i *modelServingConfigAutoCaptureConfigPtrType) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return i.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *modelServingConfigAutoCaptureConfigPtrType) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingConfigAutoCaptureConfigPtrOutput)
+}
+
+type ModelServingConfigAutoCaptureConfigOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigAutoCaptureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingConfigAutoCaptureConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigOutput() ModelServingConfigAutoCaptureConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigOutput {
+	return o
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o.ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelServingConfigAutoCaptureConfig) *ModelServingConfigAutoCaptureConfig {
+		return &v
+	}).(ModelServingConfigAutoCaptureConfigPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigOutput) TableNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingConfigAutoCaptureConfig) *string { return v.TableNamePrefix }).(pulumi.StringPtrOutput)
+}
+
+type ModelServingConfigAutoCaptureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelServingConfigAutoCaptureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelServingConfigAutoCaptureConfig)(nil)).Elem()
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) ToModelServingConfigAutoCaptureConfigPtrOutput() ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) ToModelServingConfigAutoCaptureConfigPtrOutputWithContext(ctx context.Context) ModelServingConfigAutoCaptureConfigPtrOutput {
+	return o
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) Elem() ModelServingConfigAutoCaptureConfigOutput {
+	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) ModelServingConfigAutoCaptureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ModelServingConfigAutoCaptureConfig
+		return ret
+	}).(ModelServingConfigAutoCaptureConfigOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingConfigAutoCaptureConfigPtrOutput) TableNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelServingConfigAutoCaptureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableNamePrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type ModelServingConfigServedModel struct {
@@ -31261,6 +32444,112 @@ func (o ModelServingConfigTrafficConfigRouteArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingConfigTrafficConfigRoute {
 		return vs[0].([]ModelServingConfigTrafficConfigRoute)[vs[1].(int)]
 	}).(ModelServingConfigTrafficConfigRouteOutput)
+}
+
+type ModelServingRateLimit struct {
+	Calls         int     `pulumi:"calls"`
+	Key           *string `pulumi:"key"`
+	RenewalPeriod string  `pulumi:"renewalPeriod"`
+}
+
+// ModelServingRateLimitInput is an input type that accepts ModelServingRateLimitArgs and ModelServingRateLimitOutput values.
+// You can construct a concrete instance of `ModelServingRateLimitInput` via:
+//
+//	ModelServingRateLimitArgs{...}
+type ModelServingRateLimitInput interface {
+	pulumi.Input
+
+	ToModelServingRateLimitOutput() ModelServingRateLimitOutput
+	ToModelServingRateLimitOutputWithContext(context.Context) ModelServingRateLimitOutput
+}
+
+type ModelServingRateLimitArgs struct {
+	Calls         pulumi.IntInput       `pulumi:"calls"`
+	Key           pulumi.StringPtrInput `pulumi:"key"`
+	RenewalPeriod pulumi.StringInput    `pulumi:"renewalPeriod"`
+}
+
+func (ModelServingRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
+}
+
+func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
+	return i.ToModelServingRateLimitOutputWithContext(context.Background())
+}
+
+func (i ModelServingRateLimitArgs) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitOutput)
+}
+
+// ModelServingRateLimitArrayInput is an input type that accepts ModelServingRateLimitArray and ModelServingRateLimitArrayOutput values.
+// You can construct a concrete instance of `ModelServingRateLimitArrayInput` via:
+//
+//	ModelServingRateLimitArray{ ModelServingRateLimitArgs{...} }
+type ModelServingRateLimitArrayInput interface {
+	pulumi.Input
+
+	ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput
+	ToModelServingRateLimitArrayOutputWithContext(context.Context) ModelServingRateLimitArrayOutput
+}
+
+type ModelServingRateLimitArray []ModelServingRateLimitInput
+
+func (ModelServingRateLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
+}
+
+func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
+	return i.ToModelServingRateLimitArrayOutputWithContext(context.Background())
+}
+
+func (i ModelServingRateLimitArray) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelServingRateLimitArrayOutput)
+}
+
+type ModelServingRateLimitOutput struct{ *pulumi.OutputState }
+
+func (ModelServingRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelServingRateLimit)(nil)).Elem()
+}
+
+func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutput() ModelServingRateLimitOutput {
+	return o
+}
+
+func (o ModelServingRateLimitOutput) ToModelServingRateLimitOutputWithContext(ctx context.Context) ModelServingRateLimitOutput {
+	return o
+}
+
+func (o ModelServingRateLimitOutput) Calls() pulumi.IntOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) int { return v.Calls }).(pulumi.IntOutput)
+}
+
+func (o ModelServingRateLimitOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o ModelServingRateLimitOutput) RenewalPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelServingRateLimit) string { return v.RenewalPeriod }).(pulumi.StringOutput)
+}
+
+type ModelServingRateLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelServingRateLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelServingRateLimit)(nil)).Elem()
+}
+
+func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutput() ModelServingRateLimitArrayOutput {
+	return o
+}
+
+func (o ModelServingRateLimitArrayOutput) ToModelServingRateLimitArrayOutputWithContext(ctx context.Context) ModelServingRateLimitArrayOutput {
+	return o
+}
+
+func (o ModelServingRateLimitArrayOutput) Index(i pulumi.IntInput) ModelServingRateLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelServingRateLimit {
+		return vs[0].([]ModelServingRateLimit)[vs[1].(int)]
+	}).(ModelServingRateLimitOutput)
 }
 
 type ModelServingTag struct {
@@ -38105,6 +39394,9 @@ func (o RecipientTokenArrayOutput) Index(i pulumi.IntInput) RecipientTokenOutput
 }
 
 type RepoSparseCheckout struct {
+	// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+	//
+	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
 	Patterns []string `pulumi:"patterns"`
 }
 
@@ -38120,6 +39412,9 @@ type RepoSparseCheckoutInput interface {
 }
 
 type RepoSparseCheckoutArgs struct {
+	// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+	//
+	// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
 	Patterns pulumi.StringArrayInput `pulumi:"patterns"`
 }
 
@@ -38200,6 +39495,9 @@ func (o RepoSparseCheckoutOutput) ToRepoSparseCheckoutPtrOutputWithContext(ctx c
 	}).(RepoSparseCheckoutPtrOutput)
 }
 
+// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+//
+// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
 func (o RepoSparseCheckoutOutput) Patterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepoSparseCheckout) []string { return v.Patterns }).(pulumi.StringArrayOutput)
 }
@@ -38228,6 +39526,9 @@ func (o RepoSparseCheckoutPtrOutput) Elem() RepoSparseCheckoutOutput {
 	}).(RepoSparseCheckoutOutput)
 }
 
+// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
+//
+// Addition or removal of the `sparseCheckout` configuration block will lead to recreation of the repo.
 func (o RepoSparseCheckoutPtrOutput) Patterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepoSparseCheckout) []string {
 		if v == nil {
@@ -74975,12 +76276,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MlflowWebhookJobSpecPtrInput)(nil)).Elem(), MlflowWebhookJobSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigInput)(nil)).Elem(), ModelServingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigPtrInput)(nil)).Elem(), ModelServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigAutoCaptureConfigInput)(nil)).Elem(), ModelServingConfigAutoCaptureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigAutoCaptureConfigPtrInput)(nil)).Elem(), ModelServingConfigAutoCaptureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelInput)(nil)).Elem(), ModelServingConfigServedModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigServedModelArrayInput)(nil)).Elem(), ModelServingConfigServedModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigPtrInput)(nil)).Elem(), ModelServingConfigTrafficConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingConfigTrafficConfigRouteArrayInput)(nil)).Elem(), ModelServingConfigTrafficConfigRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitInput)(nil)).Elem(), ModelServingRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingRateLimitArrayInput)(nil)).Elem(), ModelServingRateLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagInput)(nil)).Elem(), ModelServingTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelServingTagArrayInput)(nil)).Elem(), ModelServingTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MountAbfsInput)(nil)).Elem(), MountAbfsArgs{})
@@ -75886,12 +77191,16 @@ func init() {
 	pulumi.RegisterOutputType(MlflowWebhookJobSpecPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigAutoCaptureConfigOutput{})
+	pulumi.RegisterOutputType(ModelServingConfigAutoCaptureConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedModelOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigServedModelArrayOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigPtrOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteOutput{})
 	pulumi.RegisterOutputType(ModelServingConfigTrafficConfigRouteArrayOutput{})
+	pulumi.RegisterOutputType(ModelServingRateLimitOutput{})
+	pulumi.RegisterOutputType(ModelServingRateLimitArrayOutput{})
 	pulumi.RegisterOutputType(ModelServingTagOutput{})
 	pulumi.RegisterOutputType(ModelServingTagArrayOutput{})
 	pulumi.RegisterOutputType(MountAbfsOutput{})

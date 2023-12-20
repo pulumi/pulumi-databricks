@@ -19,6 +19,8 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// Create a connection to a MySQL database
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,6 +39,50 @@ namespace Pulumi.Databricks
     ///             { "password", "password" },
     ///             { "port", "3306" },
     ///             { "user", "user" },
+    ///         },
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a connection to a BigQuery database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bigquery = new Databricks.Connection("bigquery", new()
+    ///     {
+    ///         ConnectionType = "BIGQUERY",
+    ///         Comment = "this is a connection to BQ",
+    ///         Options = 
+    ///         {
+    ///             { "GoogleServiceAccountKeyJson", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "service_account",
+    ///                 ["project_id"] = "PROJECT_ID",
+    ///                 ["private_key_id"] = "KEY_ID",
+    ///                 ["private_key"] = @"-----BEGIN PRIVATE KEY-----
+    /// PRIVATE_KEY
+    /// -----END PRIVATE KEY-----
+    /// ",
+    ///                 ["client_email"] = "SERVICE_ACCOUNT_EMAIL",
+    ///                 ["client_id"] = "CLIENT_ID",
+    ///                 ["auth_uri"] = "https://accounts.google.com/o/oauth2/auth",
+    ///                 ["token_uri"] = "https://accounts.google.com/o/oauth2/token",
+    ///                 ["auth_provider_x509_cert_url"] = "https://www.googleapis.com/oauth2/v1/certs",
+    ///                 ["client_x509_cert_url"] = "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+    ///                 ["universe_domain"] = "googleapis.com",
+    ///             }) },
     ///         },
     ///         Properties = 
     ///         {
@@ -80,7 +126,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, object>> Options { get; private set; } = null!;
@@ -175,7 +221,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         public InputMap<object> Options
         {
@@ -241,7 +287,7 @@ namespace Pulumi.Databricks
         private InputMap<object>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         public InputMap<object> Options
         {

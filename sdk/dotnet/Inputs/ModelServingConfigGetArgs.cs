@@ -12,7 +12,10 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("servedModels", required: true)]
+        [Input("autoCaptureConfig")]
+        public Input<Inputs.ModelServingConfigAutoCaptureConfigGetArgs>? AutoCaptureConfig { get; set; }
+
+        [Input("servedModels")]
         private InputList<Inputs.ModelServingConfigServedModelGetArgs>? _servedModels;
 
         /// <summary>

@@ -82,60 +82,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## preloaded_docker_image sub_block
- * 
- * [Databricks Container Services](https://docs.databricks.com/clusters/custom-containers.html) lets you specify a Docker image when you create a cluster.  You need to enable Container Services in *Admin Console /  Advanced* page in the user interface. By enabling this feature, you acknowledge and agree that your usage of this feature is subject to the [applicable additional terms](http://www.databricks.com/product-specific-terms). You can instruct the instance pool to pre-download the Docker image onto the instances so when node is acquired for a cluster that requires a custom Docker image the setup process will be faster.
- * 
- * `preloaded_docker_image` configuration block has the following attributes:
- * 
- * * `url` - URL for the Docker image
- * * `basic_auth` - (Optional) `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
- * 
- * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.docker.docker_registry_image;
- * import com.pulumi.docker.Docker_registry_imageArgs;
- * import com.pulumi.databricks.InstancePool;
- * import com.pulumi.databricks.InstancePoolArgs;
- * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
- * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
- *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
- *             .build()
- *             .build());
- * 
- *         var thisInstancePool = new InstancePool(&#34;thisInstancePool&#34;, InstancePoolArgs.builder()        
- *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
- *                 .url(thisdocker_registry_image.name())
- *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
- *                     .username(azurerm_container_registry.this().admin_username())
- *                     .password(azurerm_container_registry.this().admin_password())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Access Control
  * 
  * * databricks.Group and databricks.User can control which groups or individual users can create instance pools.

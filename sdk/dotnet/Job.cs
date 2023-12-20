@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -671,7 +671,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

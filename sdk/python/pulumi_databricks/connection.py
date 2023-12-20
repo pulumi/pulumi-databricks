@@ -25,7 +25,7 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] name: Name of the Connection.
         :param pulumi.Input[str] owner: Name of the connection owner.
@@ -62,7 +62,7 @@ class ConnectionArgs:
     @pulumi.getter
     def options(self) -> pulumi.Input[Mapping[str, Any]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
@@ -153,7 +153,7 @@ class _ConnectionState:
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
         """
@@ -223,7 +223,7 @@ class _ConnectionState:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
@@ -289,6 +289,8 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        Create a connection to a MySQL database
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -301,6 +303,39 @@ class Connection(pulumi.CustomResource):
                 "password": "password",
                 "port": "3306",
                 "user": "user",
+            },
+            properties={
+                "purpose": "testing",
+            })
+        ```
+
+        Create a connection to a BigQuery database
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+
+        bigquery = databricks.Connection("bigquery",
+            connection_type="BIGQUERY",
+            comment="this is a connection to BQ",
+            options={
+                "GoogleServiceAccountKeyJson": json.dumps({
+                    "type": "service_account",
+                    "project_id": "PROJECT_ID",
+                    "private_key_id": "KEY_ID",
+                    "private_key": \"\"\"-----BEGIN PRIVATE KEY-----
+        PRIVATE_KEY
+        -----END PRIVATE KEY-----
+        \"\"\",
+                    "client_email": "SERVICE_ACCOUNT_EMAIL",
+                    "client_id": "CLIENT_ID",
+                    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                    "token_uri": "https://accounts.google.com/o/oauth2/token",
+                    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+                    "universe_domain": "googleapis.com",
+                }),
             },
             properties={
                 "purpose": "testing",
@@ -320,7 +355,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
         """
@@ -340,6 +375,8 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
+        Create a connection to a MySQL database
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -352,6 +389,39 @@ class Connection(pulumi.CustomResource):
                 "password": "password",
                 "port": "3306",
                 "user": "user",
+            },
+            properties={
+                "purpose": "testing",
+            })
+        ```
+
+        Create a connection to a BigQuery database
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+
+        bigquery = databricks.Connection("bigquery",
+            connection_type="BIGQUERY",
+            comment="this is a connection to BQ",
+            options={
+                "GoogleServiceAccountKeyJson": json.dumps({
+                    "type": "service_account",
+                    "project_id": "PROJECT_ID",
+                    "private_key_id": "KEY_ID",
+                    "private_key": \"\"\"-----BEGIN PRIVATE KEY-----
+        PRIVATE_KEY
+        -----END PRIVATE KEY-----
+        \"\"\",
+                    "client_email": "SERVICE_ACCOUNT_EMAIL",
+                    "client_id": "CLIENT_ID",
+                    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                    "token_uri": "https://accounts.google.com/o/oauth2/token",
+                    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL",
+                    "universe_domain": "googleapis.com",
+                }),
             },
             properties={
                 "purpose": "testing",
@@ -440,7 +510,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Free-form text.
         :param pulumi.Input[str] connection_type: Connection type. `BIGQUERY` `MYSQL` `POSTGRESQL` `SNOWFLAKE` `REDSHIFT` `SQLDW` `SQLSERVER` or `DATABRICKS` are supported. [Up-to-date list of connection type supported](https://docs.databricks.com/query-federation/index.html#supported-data-sources)
         :param pulumi.Input[str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        :param pulumi.Input[Mapping[str, Any]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         :param pulumi.Input[str] owner: Name of the connection owner.
         :param pulumi.Input[Mapping[str, Any]] properties: Free-form connection properties.
         """
@@ -491,7 +561,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 

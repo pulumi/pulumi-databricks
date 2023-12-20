@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ModelServingConfigAutoCaptureConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
 import com.pulumi.databricks.inputs.ModelServingConfigTrafficConfigArgs;
 import java.util.List;
@@ -17,19 +18,26 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
 
     public static final ModelServingConfigArgs Empty = new ModelServingConfigArgs();
 
+    @Import(name="autoCaptureConfig")
+    private @Nullable Output<ModelServingConfigAutoCaptureConfigArgs> autoCaptureConfig;
+
+    public Optional<Output<ModelServingConfigAutoCaptureConfigArgs>> autoCaptureConfig() {
+        return Optional.ofNullable(this.autoCaptureConfig);
+    }
+
     /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
      */
-    @Import(name="servedModels", required=true)
-    private Output<List<ModelServingConfigServedModelArgs>> servedModels;
+    @Import(name="servedModels")
+    private @Nullable Output<List<ModelServingConfigServedModelArgs>> servedModels;
 
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
      */
-    public Output<List<ModelServingConfigServedModelArgs>> servedModels() {
-        return this.servedModels;
+    public Optional<Output<List<ModelServingConfigServedModelArgs>>> servedModels() {
+        return Optional.ofNullable(this.servedModels);
     }
 
     /**
@@ -50,6 +58,7 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
     private ModelServingConfigArgs() {}
 
     private ModelServingConfigArgs(ModelServingConfigArgs $) {
+        this.autoCaptureConfig = $.autoCaptureConfig;
         this.servedModels = $.servedModels;
         this.trafficConfig = $.trafficConfig;
     }
@@ -72,13 +81,22 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
             $ = new ModelServingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder autoCaptureConfig(@Nullable Output<ModelServingConfigAutoCaptureConfigArgs> autoCaptureConfig) {
+            $.autoCaptureConfig = autoCaptureConfig;
+            return this;
+        }
+
+        public Builder autoCaptureConfig(ModelServingConfigAutoCaptureConfigArgs autoCaptureConfig) {
+            return autoCaptureConfig(Output.of(autoCaptureConfig));
+        }
+
         /**
          * @param servedModels Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
          * 
          * @return builder
          * 
          */
-        public Builder servedModels(Output<List<ModelServingConfigServedModelArgs>> servedModels) {
+        public Builder servedModels(@Nullable Output<List<ModelServingConfigServedModelArgs>> servedModels) {
             $.servedModels = servedModels;
             return this;
         }
@@ -125,7 +143,6 @@ public final class ModelServingConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public ModelServingConfigArgs build() {
-            $.servedModels = Objects.requireNonNull($.servedModels, "expected parameter 'servedModels' to be non-null");
             return $;
         }
     }

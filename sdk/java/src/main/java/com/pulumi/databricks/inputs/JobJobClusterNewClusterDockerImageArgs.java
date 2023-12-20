@@ -24,14 +24,14 @@ public final class JobJobClusterNewClusterDockerImageArgs extends com.pulumi.res
     }
 
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public Output<String> url() {
@@ -73,7 +73,7 @@ public final class JobJobClusterNewClusterDockerImageArgs extends com.pulumi.res
         }
 
         /**
-         * @param url URL of the job on the given workspace
+         * @param url URL of the Git repository to use.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class JobJobClusterNewClusterDockerImageArgs extends com.pulumi.res
         }
 
         /**
-         * @param url URL of the job on the given workspace
+         * @param url URL of the Git repository to use.
          * 
          * @return builder
          * 

@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobWebhookNotificationsOnStart {
     /**
-     * @return ID of the job
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     private @Nullable String id;
 
     private JobWebhookNotificationsOnStart() {}
     /**
-     * @return ID of the job
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     public Optional<String> id() {

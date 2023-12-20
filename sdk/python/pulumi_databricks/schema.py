@@ -300,7 +300,6 @@ class Schema(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
@@ -356,7 +355,6 @@ class Schema(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
-            metastore_id=databricks_metastore["this"]["id"],
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",

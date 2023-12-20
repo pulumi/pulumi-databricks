@@ -34,7 +34,6 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
- *     metastoreId: databricks_metastore["this"].id,
  *     comment: "this catalog is managed by terraform",
  *     properties: {
  *         purpose: "testing",

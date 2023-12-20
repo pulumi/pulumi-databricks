@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScriptVolumes {
+    /**
+     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     private @Nullable String destination;
 
     private ClusterInitScriptVolumes() {}
+    /**
+     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
+     * 
+     */
     public Optional<String> destination() {
         return Optional.ofNullable(this.destination);
     }
