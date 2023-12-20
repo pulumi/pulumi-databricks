@@ -1065,6 +1065,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "auto_capture_config": {
+                                    "maxItemsOne": true
+                                },
                                 "served_models": {
                                     "maxItemsOne": false
                                 },
@@ -1080,6 +1083,9 @@
                                 }
                             }
                         }
+                    },
+                    "rate_limits": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -3530,8 +3536,14 @@
                 "workspaceUrl": "workspace_url"
             },
             "databricks:index/ModelServingConfig:ModelServingConfig": {
+                "autoCaptureConfig": "auto_capture_config",
                 "servedModels": "served_models",
                 "trafficConfig": "traffic_config"
+            },
+            "databricks:index/ModelServingConfigAutoCaptureConfig:ModelServingConfigAutoCaptureConfig": {
+                "catalogName": "catalog_name",
+                "schemaName": "schema_name",
+                "tableNamePrefix": "table_name_prefix"
             },
             "databricks:index/ModelServingConfigServedModel:ModelServingConfigServedModel": {
                 "environmentVars": "environment_vars",
@@ -3545,6 +3557,9 @@
             "databricks:index/ModelServingConfigTrafficConfigRoute:ModelServingConfigTrafficConfigRoute": {
                 "servedModelName": "served_model_name",
                 "trafficPercentage": "traffic_percentage"
+            },
+            "databricks:index/ModelServingRateLimit:ModelServingRateLimit": {
+                "renewalPeriod": "renewal_period"
             },
             "databricks:index/MountAbfs:MountAbfs": {
                 "clientId": "client_id",
@@ -4887,6 +4902,7 @@
                 "modelName": "model_name"
             },
             "databricks:index/modelServing:ModelServing": {
+                "rateLimits": "rate_limits",
                 "servingEndpointId": "serving_endpoint_id"
             },
             "databricks:index/mount:Mount": {
