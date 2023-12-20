@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
 import java.lang.String;
 import java.util.List;
@@ -48,6 +49,13 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="rateLimits")
+    private @Nullable Output<List<ModelServingRateLimitArgs>> rateLimits;
+
+    public Optional<Output<List<ModelServingRateLimitArgs>>> rateLimits() {
+        return Optional.ofNullable(this.rateLimits);
+    }
+
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      * 
@@ -75,6 +83,7 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
     private ModelServingState(ModelServingState $) {
         this.config = $.config;
         this.name = $.name;
+        this.rateLimits = $.rateLimits;
         this.servingEndpointId = $.servingEndpointId;
         this.tags = $.tags;
     }
@@ -137,6 +146,19 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder rateLimits(@Nullable Output<List<ModelServingRateLimitArgs>> rateLimits) {
+            $.rateLimits = rateLimits;
+            return this;
+        }
+
+        public Builder rateLimits(List<ModelServingRateLimitArgs> rateLimits) {
+            return rateLimits(Output.of(rateLimits));
+        }
+
+        public Builder rateLimits(ModelServingRateLimitArgs... rateLimits) {
+            return rateLimits(List.of(rateLimits));
         }
 
         /**

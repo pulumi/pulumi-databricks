@@ -79,14 +79,14 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the metastore.
+     * ID of the parent metastore.
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return ID of the metastore.
+     * @return ID of the parent metastore.
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -318,7 +318,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId ID of the metastore.
+         * @param metastoreId ID of the parent metastore.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId ID of the metastore.
+         * @param metastoreId ID of the parent metastore.
          * 
          * @return builder
          * 

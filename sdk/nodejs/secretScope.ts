@@ -7,6 +7,26 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.SecretScope("this", {});
+ * ```
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+ * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ *
  * ## Import
  *
  * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash

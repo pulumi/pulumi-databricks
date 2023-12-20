@@ -160,6 +160,26 @@ class SecretScope(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.SecretScope("this")
+        ```
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+
         ## Import
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash
@@ -181,6 +201,26 @@ class SecretScope(pulumi.CustomResource):
                  args: Optional[SecretScopeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.SecretScope("this")
+        ```
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+        * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * SecretAcl to manage access to [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+
         ## Import
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash

@@ -18,7 +18,7 @@ public final class JobTriggerFileArrival {
      */
     private @Nullable Integer minTimeBetweenTriggersSeconds;
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     private String url;
@@ -37,7 +37,7 @@ public final class JobTriggerFileArrival {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public String url() {

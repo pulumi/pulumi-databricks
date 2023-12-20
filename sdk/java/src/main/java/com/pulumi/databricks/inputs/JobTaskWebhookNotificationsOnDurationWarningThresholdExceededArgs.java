@@ -16,14 +16,18 @@ public final class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded
     public static final JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs Empty = new JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs();
 
     /**
-     * ID of the job
+     * ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of the job
+     * @return ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+     * 
+     * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
     public Optional<Output<String>> id() {
@@ -55,7 +59,9 @@ public final class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded
         }
 
         /**
-         * @param id ID of the job
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
          * 
          * @return builder
          * 
@@ -66,7 +72,9 @@ public final class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded
         }
 
         /**
-         * @param id ID of the job
+         * @param id ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
+         * 
+         * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
          * 
          * @return builder
          * 

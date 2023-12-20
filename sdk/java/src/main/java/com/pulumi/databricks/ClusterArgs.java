@@ -118,14 +118,90 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+     * should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *             ))
+     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<Map<String,Object>> customTags;
 
     /**
-     * @return Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+     * @return should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *             ))
+     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Map<String,Object>>> customTags() {
@@ -456,14 +532,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+     * should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
     @Import(name="sparkConf")
     private @Nullable Output<Map<String,Object>> sparkConf;
 
     /**
-     * @return Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+     * @return should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
     public Optional<Output<Map<String,Object>>> sparkConf() {
@@ -699,7 +779,45 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+         * @param customTags should have tag `ResourceClass` set to value `Serverless`
+         * 
+         * For example:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+         *             .clusterName(&#34;Shared High-Concurrency&#34;)
+         *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+         *             .nodeTypeId(data.databricks_node_type().smallest().id())
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+         *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+         *             ))
+         *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -710,7 +828,45 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+         * @param customTags should have tag `ResourceClass` set to value `Serverless`
+         * 
+         * For example:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Cluster;
+         * import com.pulumi.databricks.ClusterArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+         *             .clusterName(&#34;Shared High-Concurrency&#34;)
+         *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+         *             .nodeTypeId(data.databricks_node_type().smallest().id())
+         *             .autoterminationMinutes(20)
+         *             .sparkConf(Map.ofEntries(
+         *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+         *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+         *             ))
+         *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -1133,7 +1289,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparkConf Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+         * @param sparkConf should have following items:
+         * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+         * * `spark.databricks.cluster.profile` set to `serverless`
          * 
          * @return builder
          * 
@@ -1144,7 +1302,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sparkConf Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+         * @param sparkConf should have following items:
+         * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+         * * `spark.databricks.cluster.profile` set to `serverless`
          * 
          * @return builder
          * 

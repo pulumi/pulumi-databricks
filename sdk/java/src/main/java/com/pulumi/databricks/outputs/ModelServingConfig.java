@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.ModelServingConfigAutoCaptureConfig;
 import com.pulumi.databricks.outputs.ModelServingConfigServedModel;
 import com.pulumi.databricks.outputs.ModelServingConfigTrafficConfig;
 import java.util.List;
@@ -13,11 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfig {
+    private @Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig;
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
      */
-    private List<ModelServingConfigServedModel> servedModels;
+    private @Nullable List<ModelServingConfigServedModel> servedModels;
     /**
      * @return A single block represents the traffic split configuration amongst the served models.
      * 
@@ -25,12 +27,15 @@ public final class ModelServingConfig {
     private @Nullable ModelServingConfigTrafficConfig trafficConfig;
 
     private ModelServingConfig() {}
+    public Optional<ModelServingConfigAutoCaptureConfig> autoCaptureConfig() {
+        return Optional.ofNullable(this.autoCaptureConfig);
+    }
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
      */
     public List<ModelServingConfigServedModel> servedModels() {
-        return this.servedModels;
+        return this.servedModels == null ? List.of() : this.servedModels;
     }
     /**
      * @return A single block represents the traffic split configuration amongst the served models.
@@ -49,18 +54,25 @@ public final class ModelServingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<ModelServingConfigServedModel> servedModels;
+        private @Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig;
+        private @Nullable List<ModelServingConfigServedModel> servedModels;
         private @Nullable ModelServingConfigTrafficConfig trafficConfig;
         public Builder() {}
         public Builder(ModelServingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoCaptureConfig = defaults.autoCaptureConfig;
     	      this.servedModels = defaults.servedModels;
     	      this.trafficConfig = defaults.trafficConfig;
         }
 
         @CustomType.Setter
-        public Builder servedModels(List<ModelServingConfigServedModel> servedModels) {
-            this.servedModels = Objects.requireNonNull(servedModels);
+        public Builder autoCaptureConfig(@Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig) {
+            this.autoCaptureConfig = autoCaptureConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder servedModels(@Nullable List<ModelServingConfigServedModel> servedModels) {
+            this.servedModels = servedModels;
             return this;
         }
         public Builder servedModels(ModelServingConfigServedModel... servedModels) {
@@ -73,6 +85,7 @@ public final class ModelServingConfig {
         }
         public ModelServingConfig build() {
             final var _resultValue = new ModelServingConfig();
+            _resultValue.autoCaptureConfig = autoCaptureConfig;
             _resultValue.servedModels = servedModels;
             _resultValue.trafficConfig = trafficConfig;
             return _resultValue;

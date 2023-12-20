@@ -32,7 +32,7 @@ class StorageCredentialArgs:
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
@@ -132,7 +132,7 @@ class StorageCredentialArgs:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the parent Metastore
+        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -196,7 +196,7 @@ class _StorageCredentialState:
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
@@ -296,7 +296,7 @@ class _StorageCredentialState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the parent Metastore
+        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -432,7 +432,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
@@ -589,7 +589,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore
+        :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
@@ -655,7 +655,7 @@ class StorageCredential(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the parent Metastore
+        Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         """
         return pulumi.get(self, "metastore_id")
 

@@ -75,7 +75,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetNodeTypeArgs {
     /**
-     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
      * * `General Purpose` (all clouds)
      * * `General Purpose (HDD)` (Azure)
      * * `Compute Optimized` (all clouds)
@@ -214,7 +214,7 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
  */
 export interface GetNodeTypeOutputArgs {
     /**
-     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
      * * `General Purpose` (all clouds)
      * * `General Purpose (HDD)` (Azure)
      * * `Compute Optimized` (all clouds)

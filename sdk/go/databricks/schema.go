@@ -31,8 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
-//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
 //				},

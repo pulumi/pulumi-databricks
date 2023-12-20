@@ -44,7 +44,6 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         MetastoreId = databricks_metastore.This.Id,
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 
     ///         {

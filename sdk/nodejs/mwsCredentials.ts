@@ -83,6 +83,8 @@ export class MwsCredentials extends pulumi.CustomResource {
 
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     *
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -148,6 +150,8 @@ export class MwsCredentials extends pulumi.CustomResource {
 export interface MwsCredentialsState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     *
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -175,6 +179,8 @@ export interface MwsCredentialsState {
 export interface MwsCredentialsArgs {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+     *
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
     /**

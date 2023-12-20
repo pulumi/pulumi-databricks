@@ -226,14 +226,14 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gcpServiceAccountKey);
     }
     /**
-     * Unique identifier of the parent Metastore
+     * Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return Unique identifier of the parent Metastore
+     * @return Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
      * 
      */
     public Output<String> metastoreId() {

@@ -26,8 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
-//				MetastoreId: pulumi.Any(databricks_metastore.This.Id),
-//				Comment:     pulumi.String("this catalog is managed by terraform"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
 //				},
@@ -68,7 +67,7 @@ type Catalog struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
-	// ID of the metastore.
+	// ID of the parent metastore.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -124,7 +123,7 @@ type catalogState struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
-	// ID of the metastore.
+	// ID of the parent metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
@@ -151,7 +150,7 @@ type CatalogState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
-	// ID of the metastore.
+	// ID of the parent metastore.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
@@ -182,7 +181,7 @@ type catalogArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode *string `pulumi:"isolationMode"`
-	// ID of the metastore.
+	// ID of the parent metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Catalog relative to parent metastore.
 	Name *string `pulumi:"name"`
@@ -210,7 +209,7 @@ type CatalogArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
 	IsolationMode pulumi.StringPtrInput
-	// ID of the metastore.
+	// ID of the parent metastore.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Catalog relative to parent metastore.
 	Name pulumi.StringPtrInput
@@ -335,7 +334,7 @@ func (o CatalogOutput) IsolationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.IsolationMode }).(pulumi.StringOutput)
 }
 
-// ID of the metastore.
+// ID of the parent metastore.
 func (o CatalogOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

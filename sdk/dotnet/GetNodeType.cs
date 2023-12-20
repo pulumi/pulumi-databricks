@@ -142,7 +142,7 @@ namespace Pulumi.Databricks
     public sealed class GetNodeTypeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+        /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
         /// * `General Purpose` (all clouds)
         /// * `General Purpose (HDD)` (Azure)
         /// * `Compute Optimized` (all clouds)
@@ -241,7 +241,7 @@ namespace Pulumi.Databricks
     public sealed class GetNodeTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+        /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
         /// * `General Purpose` (all clouds)
         /// * `General Purpose (HDD)` (Azure)
         /// * `Compute Optimized` (all clouds)

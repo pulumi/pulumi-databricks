@@ -18,7 +18,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNodeTypeArgs Empty = new GetNodeTypeArgs();
 
     /**
-     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
+     * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
      * * `General Purpose` (all clouds)
      * * `General Purpose (HDD)` (Azure)
      * * `Compute Optimized` (all clouds)
@@ -32,7 +32,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> category;
 
     /**
-     * @return Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
+     * @return Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
      * * `General Purpose` (all clouds)
      * * `General Purpose (HDD)` (Azure)
      * * `Compute Optimized` (all clouds)
@@ -279,7 +279,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
+         * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
          * * `General Purpose` (all clouds)
          * * `General Purpose (HDD)` (Azure)
          * * `Compute Optimized` (all clouds)
@@ -297,7 +297,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
+         * @param category Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
          * * `General Purpose` (all clouds)
          * * `General Purpose (HDD)` (Azure)
          * * `Compute Optimized` (all clouds)

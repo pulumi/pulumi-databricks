@@ -99,7 +99,8 @@ type ModelServing struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigOutput `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput              `pulumi:"name"`
+	RateLimits ModelServingRateLimitArrayOutput `pulumi:"rateLimits"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringOutput        `pulumi:"servingEndpointId"`
 	Tags              ModelServingTagArrayOutput `pulumi:"tags"`
@@ -141,7 +142,8 @@ type modelServingState struct {
 	// The model serving endpoint configuration.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name *string `pulumi:"name"`
+	Name       *string                 `pulumi:"name"`
+	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId *string           `pulumi:"servingEndpointId"`
 	Tags              []ModelServingTag `pulumi:"tags"`
@@ -151,7 +153,8 @@ type ModelServingState struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
+	RateLimits ModelServingRateLimitArrayInput
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringPtrInput
 	Tags              ModelServingTagArrayInput
@@ -165,8 +168,9 @@ type modelServingArgs struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name *string           `pulumi:"name"`
-	Tags []ModelServingTag `pulumi:"tags"`
+	Name       *string                 `pulumi:"name"`
+	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
+	Tags       []ModelServingTag       `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ModelServing resource.
@@ -174,8 +178,9 @@ type ModelServingArgs struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name pulumi.StringPtrInput
-	Tags ModelServingTagArrayInput
+	Name       pulumi.StringPtrInput
+	RateLimits ModelServingRateLimitArrayInput
+	Tags       ModelServingTagArrayInput
 }
 
 func (ModelServingArgs) ElementType() reflect.Type {
@@ -273,6 +278,10 @@ func (o ModelServingOutput) Config() ModelServingConfigOutput {
 // The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
 func (o ModelServingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ModelServingOutput) RateLimits() ModelServingRateLimitArrayOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingRateLimitArrayOutput { return v.RateLimits }).(ModelServingRateLimitArrayOutput)
 }
 
 // Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

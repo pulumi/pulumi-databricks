@@ -22,7 +22,6 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
-    ///         MetastoreId = databricks_metastore.This.Id,
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 
     ///         {
@@ -76,7 +75,7 @@ namespace Pulumi.Databricks
         public Output<string> IsolationMode { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the metastore.
+        /// ID of the parent metastore.
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -194,7 +193,7 @@ namespace Pulumi.Databricks
         public Input<string>? IsolationMode { get; set; }
 
         /// <summary>
-        /// ID of the metastore.
+        /// ID of the parent metastore.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -286,7 +285,7 @@ namespace Pulumi.Databricks
         public Input<string>? IsolationMode { get; set; }
 
         /// <summary>
-        /// ID of the metastore.
+        /// ID of the parent metastore.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

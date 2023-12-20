@@ -11,6 +11,7 @@ import com.pulumi.databricks.ModelServingArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ModelServingState;
 import com.pulumi.databricks.outputs.ModelServingConfig;
+import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
 import java.lang.String;
 import java.util.List;
@@ -132,6 +133,12 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="rateLimits", refs={List.class,ModelServingRateLimit.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ModelServingRateLimit>> rateLimits;
+
+    public Output<Optional<List<ModelServingRateLimit>>> rateLimits() {
+        return Codegen.optional(this.rateLimits);
     }
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

@@ -166,7 +166,7 @@ type StorageCredential struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrOutput                           `pulumi:"forceDestroy"`
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
-	// Unique identifier of the parent Metastore
+	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -216,7 +216,7 @@ type storageCredentialState struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
-	// Unique identifier of the parent Metastore
+	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -237,7 +237,7 @@ type StorageCredentialState struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
-	// Unique identifier of the parent Metastore
+	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -262,7 +262,7 @@ type storageCredentialArgs struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
-	// Unique identifier of the parent Metastore
+	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name *string `pulumi:"name"`
@@ -284,7 +284,7 @@ type StorageCredentialArgs struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
-	// Unique identifier of the parent Metastore
+	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
 	// Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringPtrInput
@@ -420,7 +420,7 @@ func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServ
 	}).(StorageCredentialGcpServiceAccountKeyPtrOutput)
 }
 
-// Unique identifier of the parent Metastore
+// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 func (o StorageCredentialOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }

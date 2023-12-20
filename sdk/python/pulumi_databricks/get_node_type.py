@@ -216,7 +216,7 @@ def get_node_type(category: Optional[str] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
            * `General Purpose` (all clouds)
            * `General Purpose (HDD)` (Azure)
            * `Compute Optimized` (all clouds)
@@ -329,7 +329,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
-    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+    :param str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
            * `General Purpose` (all clouds)
            * `General Purpose (HDD)` (Azure)
            * `Compute Optimized` (all clouds)

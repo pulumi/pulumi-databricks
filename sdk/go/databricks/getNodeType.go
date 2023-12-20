@@ -86,7 +86,7 @@ func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeArgs struct {
-	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
 	// * `General Purpose` (all clouds)
 	// * `General Purpose (HDD)` (Azure)
 	// * `Compute Optimized` (all clouds)
@@ -157,7 +157,7 @@ func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeOutputArgs struct {
-	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types|jq '.node_types[]|.category'|sort |uniq`):
+	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
 	// * `General Purpose` (all clouds)
 	// * `General Purpose (HDD)` (Azure)
 	// * `Compute Optimized` (all clouds)

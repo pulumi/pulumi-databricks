@@ -41,7 +41,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
- *             .metastoreId(databricks_metastore.this().id())
  *             .comment(&#34;this catalog is managed by terraform&#34;)
  *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
  *             .build());
@@ -125,14 +124,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return this.isolationMode;
     }
     /**
-     * ID of the metastore.
+     * ID of the parent metastore.
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return ID of the metastore.
+     * @return ID of the parent metastore.
      * 
      */
     public Output<String> metastoreId() {

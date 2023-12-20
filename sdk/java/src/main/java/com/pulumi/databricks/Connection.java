@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * This resource manages connections in Unity Catalog
  * 
  * ## Example Usage
+ * 
+ * Create a connection to a MySQL database
  * ```java
  * package generated_program;
  * 
@@ -57,6 +59,57 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;port&#34;, &#34;3306&#34;),
  *                 Map.entry(&#34;user&#34;, &#34;user&#34;)
  *             ))
+ *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a connection to a BigQuery database
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Connection;
+ * import com.pulumi.databricks.ConnectionArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bigquery = new Connection(&#34;bigquery&#34;, ConnectionArgs.builder()        
+ *             .connectionType(&#34;BIGQUERY&#34;)
+ *             .comment(&#34;this is a connection to BQ&#34;)
+ *             .options(Map.of(&#34;GoogleServiceAccountKeyJson&#34;, serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;type&#34;, &#34;service_account&#34;),
+ *                     jsonProperty(&#34;project_id&#34;, &#34;PROJECT_ID&#34;),
+ *                     jsonProperty(&#34;private_key_id&#34;, &#34;KEY_ID&#34;),
+ *                     jsonProperty(&#34;private_key&#34;, &#34;&#34;&#34;
+ * -----BEGIN PRIVATE KEY-----
+ * PRIVATE_KEY
+ * -----END PRIVATE KEY-----
+ *                     &#34;&#34;&#34;),
+ *                     jsonProperty(&#34;client_email&#34;, &#34;SERVICE_ACCOUNT_EMAIL&#34;),
+ *                     jsonProperty(&#34;client_id&#34;, &#34;CLIENT_ID&#34;),
+ *                     jsonProperty(&#34;auth_uri&#34;, &#34;https://accounts.google.com/o/oauth2/auth&#34;),
+ *                     jsonProperty(&#34;token_uri&#34;, &#34;https://accounts.google.com/o/oauth2/token&#34;),
+ *                     jsonProperty(&#34;auth_provider_x509_cert_url&#34;, &#34;https://www.googleapis.com/oauth2/v1/certs&#34;),
+ *                     jsonProperty(&#34;client_x509_cert_url&#34;, &#34;https://www.googleapis.com/robot/v1/metadata/x509/SERVICE_ACCOUNT_EMAIL&#34;),
+ *                     jsonProperty(&#34;universe_domain&#34;, &#34;googleapis.com&#34;)
+ *                 ))))
  *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
  *             .build());
  * 
@@ -124,14 +177,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     @Export(name="options", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user` and `password`.
+     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     public Output<Map<String,Object>> options() {

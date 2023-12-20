@@ -30,6 +30,85 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * 
+ * &gt; **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+ * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+ * import com.pulumi.databricks.Cluster;
+ * import com.pulumi.databricks.ClusterArgs;
+ * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+ *             .localDisk(true)
+ *             .build());
+ * 
+ *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
+ *             .longTermSupport(true)
+ *             .build());
+ * 
+ *         var sharedAutoscaling = new Cluster(&#34;sharedAutoscaling&#34;, ClusterArgs.builder()        
+ *             .clusterName(&#34;Shared Autoscaling&#34;)
+ *             .sparkVersion(latestLts.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *             .autoterminationMinutes(20)
+ *             .autoscale(ClusterAutoscaleArgs.builder()
+ *                 .minWorkers(1)
+ *                 .maxWorkers(50)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Access Control
+ * 
+ * * databricks.Group and databricks.User can control which groups or individual users can create clusters.
+ * * databricks.ClusterPolicy can control which kinds of clusters users can create.
+ * * Users, who have access to Cluster Policy, but do not have an `allow_cluster_create` argument set would still be able to create clusters, but within the boundary of the policy.
+ * * databricks.Permissions can control which groups or individual users can *Manage*, *Restart* or *Attach to* individual clusters.
+ * * `instance_profile_arn` *(AWS only)* can control which data a given cluster can access through cloud-native controls.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * Dynamic Passthrough Clusters for a Group guide.
+ * * End to end workspace management guide.
+ * * databricks.getClusters data to retrieve a list of databricks.Cluster ids.
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * * databricks.GlobalInitScript to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all databricks.Cluster and databricks_job.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+ * * databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.
+ * * databricks.Pipeline to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
+ * * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+ * * databricks.getZones data to fetch all available AWS availability zones on your workspace on AWS.
+ * 
  * ## Import
  * 
  * The resource cluster can be imported using cluster id. bash
@@ -120,14 +199,90 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterName);
     }
     /**
-     * Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+     * should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *             ))
+     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> customTags;
 
     /**
-     * @return Additional tags for cluster resources. Databricks will tag all cluster resources (e.g., AWS EC2 instances and EBS volumes) with these tags in addition to `default_tags`. If a custom cluster tag has the same name as a default cluster tag, the custom tag is prefixed with an `x_` when it is propagated.
+     * @return should have tag `ResourceClass` set to value `Serverless`
+     * 
+     * For example:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Cluster;
+     * import com.pulumi.databricks.ClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
+     *             .clusterName(&#34;Shared High-Concurrency&#34;)
+     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
+     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .autoterminationMinutes(20)
+     *             .sparkConf(Map.ofEntries(
+     *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+     *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;)
+     *             ))
+     *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public Output<Optional<Map<String,Object>>> customTags() {
@@ -454,14 +609,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.singleUserName);
     }
     /**
-     * Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+     * should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
     @Export(name="sparkConf", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> sparkConf;
 
     /**
-     * @return Map with key-value pairs to fine-tune Spark clusters, where you can provide custom [Spark configuration properties](https://spark.apache.org/docs/latest/configuration.html) in a cluster configuration.
+     * @return should have following items:
+     * * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
+     * * `spark.databricks.cluster.profile` set to `serverless`
      * 
      */
     public Output<Optional<Map<String,Object>>> sparkConf() {
@@ -523,9 +682,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * URL for the Docker image
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return URL for the Docker image
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }

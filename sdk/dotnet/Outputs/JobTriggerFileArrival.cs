@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MinTimeBetweenTriggersSeconds;
         /// <summary>
-        /// URL of the job on the given workspace
+        /// URL of the Git repository to use.
         /// </summary>
         public readonly string Url;
         /// <summary>

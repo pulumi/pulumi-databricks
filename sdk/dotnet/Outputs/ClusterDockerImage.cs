@@ -13,7 +13,49 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ClusterDockerImage
     {
+        /// <summary>
+        /// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        /// 
+        /// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Docker = Pulumi.Docker;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisdocker_registry_image = new Docker.Index.Docker_registry_image("thisdocker_registry_image", new()
+        ///     {
+        ///         Name = $"{azurerm_container_registry.This.Login_server}/sample:latest",
+        ///         Build = new[]
+        ///         {
+        ///             null,
+        ///         },
+        ///     });
+        /// 
+        ///     var thisCluster = new Databricks.Cluster("thisCluster", new()
+        ///     {
+        ///         DockerImage = new Databricks.Inputs.ClusterDockerImageArgs
+        ///         {
+        ///             Url = thisdocker_registry_image.Name,
+        ///             BasicAuth = new Databricks.Inputs.ClusterDockerImageBasicAuthArgs
+        ///             {
+        ///                 Username = azurerm_container_registry.This.Admin_username,
+        ///                 Password = azurerm_container_registry.This.Admin_password,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public readonly Outputs.ClusterDockerImageBasicAuth? BasicAuth;
+        /// <summary>
+        /// URL for the Docker image
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

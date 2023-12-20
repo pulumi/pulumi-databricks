@@ -18,6 +18,7 @@ class ModelServingArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['ModelServingConfigArgs'],
                  name: Optional[pulumi.Input[str]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
         The set of arguments for constructing a ModelServing resource.
@@ -27,6 +28,8 @@ class ModelServingArgs:
         pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rate_limits is not None:
+            pulumi.set(__self__, "rate_limits", rate_limits)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -55,6 +58,15 @@ class ModelServingArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
+        return pulumi.get(self, "rate_limits")
+
+    @rate_limits.setter
+    def rate_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]):
+        pulumi.set(self, "rate_limits", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
         return pulumi.get(self, "tags")
@@ -69,6 +81,7 @@ class _ModelServingState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['ModelServingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  serving_endpoint_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
         """
@@ -81,6 +94,8 @@ class _ModelServingState:
             pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if rate_limits is not None:
+            pulumi.set(__self__, "rate_limits", rate_limits)
         if serving_endpoint_id is not None:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if tags is not None:
@@ -111,6 +126,15 @@ class _ModelServingState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
+        return pulumi.get(self, "rate_limits")
+
+    @rate_limits.setter
+    def rate_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]):
+        pulumi.set(self, "rate_limits", value)
+
+    @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -139,6 +163,7 @@ class ModelServing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         """
@@ -297,6 +322,7 @@ class ModelServing(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -311,6 +337,7 @@ class ModelServing(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["name"] = name
+            __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["tags"] = tags
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
@@ -325,6 +352,7 @@ class ModelServing(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[pulumi.InputType['ModelServingConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            rate_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]]] = None,
             serving_endpoint_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]]] = None) -> 'ModelServing':
         """
@@ -344,6 +372,7 @@ class ModelServing(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
+        __props__.__dict__["rate_limits"] = rate_limits
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
         return ModelServing(resource_name, opts=opts, __props__=__props__)
@@ -363,6 +392,11 @@ class ModelServing(pulumi.CustomResource):
         The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingRateLimit']]]:
+        return pulumi.get(self, "rate_limits")
 
     @property
     @pulumi.getter(name="servingEndpointId")

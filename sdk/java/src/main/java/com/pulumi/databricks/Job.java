@@ -148,6 +148,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> controlRunState() {
         return Codegen.optional(this.controlRunState);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="dbtTask", refs={JobDbtTask.class}, tree="[0]")
     private Output</* @Nullable */ JobDbtTask> dbtTask;
 
@@ -271,7 +277,11 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      * 
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
      */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxRetries;
 
@@ -285,7 +295,11 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      * 
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
      */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="minRetryIntervalMillis", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minRetryIntervalMillis;
 
@@ -324,6 +338,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobNewCluster>> newCluster() {
         return Codegen.optional(this.newCluster);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="notebookTask", refs={JobNotebookTask.class}, tree="[0]")
     private Output</* @Nullable */ JobNotebookTask> notebookTask;
 
@@ -350,12 +370,24 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<JobParameter>>> parameters() {
         return Codegen.optional(this.parameters);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="pipelineTask", refs={JobPipelineTask.class}, tree="[0]")
     private Output</* @Nullable */ JobPipelineTask> pipelineTask;
 
     public Output<Optional<JobPipelineTask>> pipelineTask() {
         return Codegen.optional(this.pipelineTask);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="pythonWheelTask", refs={JobPythonWheelTask.class}, tree="[0]")
     private Output</* @Nullable */ JobPythonWheelTask> pythonWheelTask;
 
@@ -371,7 +403,11 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      * 
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
      */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="retryOnTimeout", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retryOnTimeout;
 
@@ -388,6 +424,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<JobRunAs> runAs() {
         return this.runAs;
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="runJobTask", refs={JobRunJobTask.class}, tree="[0]")
     private Output</* @Nullable */ JobRunJobTask> runJobTask;
 
@@ -408,18 +450,36 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobSchedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="sparkJarTask", refs={JobSparkJarTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkJarTask> sparkJarTask;
 
     public Output<Optional<JobSparkJarTask>> sparkJarTask() {
         return Codegen.optional(this.sparkJarTask);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="sparkPythonTask", refs={JobSparkPythonTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkPythonTask> sparkPythonTask;
 
     public Output<Optional<JobSparkPythonTask>> sparkPythonTask() {
         return Codegen.optional(this.sparkPythonTask);
     }
+    /**
+     * @deprecated
+     * should be used inside a task block and not inside a job block
+     * 
+     */
+    @Deprecated /* should be used inside a task block and not inside a job block */
     @Export(name="sparkSubmitTask", refs={JobSparkSubmitTask.class}, tree="[0]")
     private Output</* @Nullable */ JobSparkSubmitTask> sparkSubmitTask;
 
@@ -459,14 +519,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trigger);
     }
     /**
-     * URL of the job on the given workspace
+     * URL of the Git repository to use.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the job on the given workspace
+     * @return URL of the Git repository to use.
      * 
      */
     public Output<String> url() {

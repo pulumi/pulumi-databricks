@@ -15,16 +15,32 @@ public final class ClusterClusterMountInfoNetworkFilesystemInfoArgs extends com.
 
     public static final ClusterClusterMountInfoNetworkFilesystemInfoArgs Empty = new ClusterClusterMountInfoNetworkFilesystemInfoArgs();
 
+    /**
+     * string that will be passed as options passed to the `mount` command.
+     * 
+     */
     @Import(name="mountOptions")
     private @Nullable Output<String> mountOptions;
 
+    /**
+     * @return string that will be passed as options passed to the `mount` command.
+     * 
+     */
     public Optional<Output<String>> mountOptions() {
         return Optional.ofNullable(this.mountOptions);
     }
 
+    /**
+     * host name.
+     * 
+     */
     @Import(name="serverAddress", required=true)
     private Output<String> serverAddress;
 
+    /**
+     * @return host name.
+     * 
+     */
     public Output<String> serverAddress() {
         return this.serverAddress;
     }
@@ -54,20 +70,44 @@ public final class ClusterClusterMountInfoNetworkFilesystemInfoArgs extends com.
             $ = new ClusterClusterMountInfoNetworkFilesystemInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mountOptions string that will be passed as options passed to the `mount` command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mountOptions(@Nullable Output<String> mountOptions) {
             $.mountOptions = mountOptions;
             return this;
         }
 
+        /**
+         * @param mountOptions string that will be passed as options passed to the `mount` command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mountOptions(String mountOptions) {
             return mountOptions(Output.of(mountOptions));
         }
 
+        /**
+         * @param serverAddress host name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverAddress(Output<String> serverAddress) {
             $.serverAddress = serverAddress;
             return this;
         }
 
+        /**
+         * @param serverAddress host name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverAddress(String serverAddress) {
             return serverAddress(Output.of(serverAddress));
         }

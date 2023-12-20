@@ -165,7 +165,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the parent Metastore
+        /// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
         /// <summary>
-        /// Unique identifier of the parent Metastore
+        /// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }
 
         /// <summary>
-        /// Unique identifier of the parent Metastore
+        /// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }

@@ -19,14 +19,22 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
+     * @deprecated
+     * `account_id` should be set as part of the Databricks Config, not in the resource.
+     * 
      */
+    @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      * 
+     * @deprecated
+     * `account_id` should be set as part of the Databricks Config, not in the resource.
+     * 
      */
+    @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -132,7 +140,11 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * `account_id` should be set as part of the Databricks Config, not in the resource.
+         * 
          */
+        @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -143,7 +155,11 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * `account_id` should be set as part of the Databricks Config, not in the resource.
+         * 
          */
+        @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
