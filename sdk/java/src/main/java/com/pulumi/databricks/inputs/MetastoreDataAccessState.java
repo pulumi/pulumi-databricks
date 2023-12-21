@@ -63,6 +63,13 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    @Import(name="forceUpdate")
+    private @Nullable Output<Boolean> forceUpdate;
+
+    public Optional<Output<Boolean>> forceUpdate() {
+        return Optional.ofNullable(this.forceUpdate);
+    }
+
     @Import(name="gcpServiceAccountKey")
     private @Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey;
 
@@ -122,6 +129,7 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
         this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.forceDestroy = $.forceDestroy;
+        this.forceUpdate = $.forceUpdate;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.isDefault = $.isDefault;
         this.metastoreId = $.metastoreId;
@@ -200,6 +208,15 @@ public final class MetastoreDataAccessState extends com.pulumi.resources.Resourc
 
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
+            $.forceUpdate = forceUpdate;
+            return this;
+        }
+
+        public Builder forceUpdate(Boolean forceUpdate) {
+            return forceUpdate(Output.of(forceUpdate));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<MetastoreDataAccessGcpServiceAccountKeyArgs> gcpServiceAccountKey) {

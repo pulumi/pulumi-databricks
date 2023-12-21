@@ -219,6 +219,12 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceUpdate;
+
+    public Output<Optional<Boolean>> forceUpdate() {
+        return Codegen.optional(this.forceUpdate);
+    }
     @Export(name="gcpServiceAccountKey", refs={StorageCredentialGcpServiceAccountKey.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialGcpServiceAccountKey> gcpServiceAccountKey;
 

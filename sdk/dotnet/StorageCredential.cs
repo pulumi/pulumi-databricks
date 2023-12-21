@@ -161,6 +161,9 @@ namespace Pulumi.Databricks
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
+        [Output("forceUpdate")]
+        public Output<bool?> ForceUpdate { get; private set; } = null!;
+
         [Output("gcpServiceAccountKey")]
         public Output<Outputs.StorageCredentialGcpServiceAccountKey?> GcpServiceAccountKey { get; private set; } = null!;
 
@@ -257,6 +260,9 @@ namespace Pulumi.Databricks
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
+
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyArgs>? GcpServiceAccountKey { get; set; }
 
@@ -314,6 +320,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         [Input("gcpServiceAccountKey")]
         public Input<Inputs.StorageCredentialGcpServiceAccountKeyGetArgs>? GcpServiceAccountKey { get; set; }

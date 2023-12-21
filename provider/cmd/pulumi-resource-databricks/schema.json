@@ -13250,6 +13250,9 @@
                 "forceDestroy": {
                     "type": "boolean"
                 },
+                "forceUpdate": {
+                    "type": "boolean"
+                },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey"
                 },
@@ -13300,6 +13303,10 @@
                     "type": "boolean",
                     "willReplaceOnChanges": true
                 },
+                "forceUpdate": {
+                    "type": "boolean",
+                    "willReplaceOnChanges": true
+                },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/MetastoreDataAccessGcpServiceAccountKey:MetastoreDataAccessGcpServiceAccountKey",
                     "willReplaceOnChanges": true
@@ -13347,6 +13354,10 @@
                         "$ref": "#/types/databricks:index/MetastoreDataAccessDatabricksGcpServiceAccount:MetastoreDataAccessDatabricksGcpServiceAccount"
                     },
                     "forceDestroy": {
+                        "type": "boolean",
+                        "willReplaceOnChanges": true
+                    },
+                    "forceUpdate": {
                         "type": "boolean",
                         "willReplaceOnChanges": true
                     },
@@ -18541,6 +18552,9 @@
                     "type": "boolean",
                     "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
+                "forceUpdate": {
+                    "type": "boolean"
+                },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
                 },
@@ -18587,6 +18601,9 @@
                     "type": "boolean",
                     "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
+                "forceUpdate": {
+                    "type": "boolean"
+                },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
                 },
@@ -18629,6 +18646,9 @@
                     "forceDestroy": {
                         "type": "boolean",
                         "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    },
+                    "forceUpdate": {
+                        "type": "boolean"
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
