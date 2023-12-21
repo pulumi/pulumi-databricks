@@ -75,6 +75,13 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    @Import(name="forceUpdate")
+    private @Nullable Output<Boolean> forceUpdate;
+
+    public Optional<Output<Boolean>> forceUpdate() {
+        return Optional.ofNullable(this.forceUpdate);
+    }
+
     @Import(name="gcpServiceAccountKey")
     private @Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey;
 
@@ -151,6 +158,7 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         this.comment = $.comment;
         this.databricksGcpServiceAccount = $.databricksGcpServiceAccount;
         this.forceDestroy = $.forceDestroy;
+        this.forceUpdate = $.forceUpdate;
         this.gcpServiceAccountKey = $.gcpServiceAccountKey;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -244,6 +252,15 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
          */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
+            $.forceUpdate = forceUpdate;
+            return this;
+        }
+
+        public Builder forceUpdate(Boolean forceUpdate) {
+            return forceUpdate(Output.of(forceUpdate));
         }
 
         public Builder gcpServiceAccountKey(@Nullable Output<StorageCredentialGcpServiceAccountKeyArgs> gcpServiceAccountKey) {

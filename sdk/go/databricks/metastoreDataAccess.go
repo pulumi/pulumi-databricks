@@ -31,6 +31,7 @@ type MetastoreDataAccess struct {
 	Comment                     pulumi.StringPtrOutput                               `pulumi:"comment"`
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountOutput `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                pulumi.BoolPtrOutput                                 `pulumi:"forceDestroy"`
+	ForceUpdate                 pulumi.BoolPtrOutput                                 `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrOutput     `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault   pulumi.BoolPtrOutput `pulumi:"isDefault"`
@@ -76,6 +77,7 @@ type metastoreDataAccessState struct {
 	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
+	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault   *bool   `pulumi:"isDefault"`
@@ -92,6 +94,7 @@ type MetastoreDataAccessState struct {
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
+	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault   pulumi.BoolPtrInput
@@ -112,6 +115,7 @@ type metastoreDataAccessArgs struct {
 	Comment                     *string                                         `pulumi:"comment"`
 	DatabricksGcpServiceAccount *MetastoreDataAccessDatabricksGcpServiceAccount `pulumi:"databricksGcpServiceAccount"`
 	ForceDestroy                *bool                                           `pulumi:"forceDestroy"`
+	ForceUpdate                 *bool                                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey        *MetastoreDataAccessGcpServiceAccountKey        `pulumi:"gcpServiceAccountKey"`
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault   *bool   `pulumi:"isDefault"`
@@ -129,6 +133,7 @@ type MetastoreDataAccessArgs struct {
 	Comment                     pulumi.StringPtrInput
 	DatabricksGcpServiceAccount MetastoreDataAccessDatabricksGcpServiceAccountPtrInput
 	ForceDestroy                pulumi.BoolPtrInput
+	ForceUpdate                 pulumi.BoolPtrInput
 	GcpServiceAccountKey        MetastoreDataAccessGcpServiceAccountKeyPtrInput
 	// whether to set this credential as the default for the metastore. In practice, this should always be true.
 	IsDefault   pulumi.BoolPtrInput
@@ -253,6 +258,10 @@ func (o MetastoreDataAccessOutput) DatabricksGcpServiceAccount() MetastoreDataAc
 
 func (o MetastoreDataAccessOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetastoreDataAccessOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
 func (o MetastoreDataAccessOutput) GcpServiceAccountKey() MetastoreDataAccessGcpServiceAccountKeyPtrOutput {

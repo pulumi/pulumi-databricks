@@ -51,6 +51,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly comment!: pulumi.Output<string | undefined>;
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
@@ -80,6 +81,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = state ? state.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = state ? state.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
@@ -94,6 +96,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["databricksGcpServiceAccount"] = args ? args.databricksGcpServiceAccount : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["gcpServiceAccountKey"] = args ? args.gcpServiceAccountKey : undefined;
             resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
@@ -116,6 +119,7 @@ export interface MetastoreDataAccessState {
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
@@ -137,6 +141,7 @@ export interface MetastoreDataAccessArgs {
     comment?: pulumi.Input<string>;
     databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
     forceDestroy?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.

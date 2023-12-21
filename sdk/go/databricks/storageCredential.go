@@ -165,6 +165,7 @@ type StorageCredential struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrOutput                           `pulumi:"forceDestroy"`
+	ForceUpdate          pulumi.BoolPtrOutput                           `pulumi:"forceUpdate"`
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrOutput `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
@@ -215,6 +216,7 @@ type storageCredentialState struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
+	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -236,6 +238,7 @@ type StorageCredentialState struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrInput
+	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
@@ -261,6 +264,7 @@ type storageCredentialArgs struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         *bool                                  `pulumi:"forceDestroy"`
+	ForceUpdate          *bool                                  `pulumi:"forceUpdate"`
 	GcpServiceAccountKey *StorageCredentialGcpServiceAccountKey `pulumi:"gcpServiceAccountKey"`
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId *string `pulumi:"metastoreId"`
@@ -283,6 +287,7 @@ type StorageCredentialArgs struct {
 	//
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	ForceDestroy         pulumi.BoolPtrInput
+	ForceUpdate          pulumi.BoolPtrInput
 	GcpServiceAccountKey StorageCredentialGcpServiceAccountKeyPtrInput
 	// Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
 	MetastoreId pulumi.StringPtrInput
@@ -412,6 +417,10 @@ func (o StorageCredentialOutput) DatabricksGcpServiceAccount() StorageCredential
 // `awsIamRole` optional configuration block for credential details for AWS:
 func (o StorageCredentialOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+func (o StorageCredentialOutput) ForceUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
 func (o StorageCredentialOutput) GcpServiceAccountKey() StorageCredentialGcpServiceAccountKeyPtrOutput {

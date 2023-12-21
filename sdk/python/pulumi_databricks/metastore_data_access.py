@@ -22,6 +22,7 @@ class MetastoreDataAccessArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,8 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
@@ -110,6 +113,15 @@ class MetastoreDataAccessArgs:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_update", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -178,6 +190,7 @@ class _MetastoreDataAccessState:
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input['MetastoreDataAccessDatabricksGcpServiceAccountArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input['MetastoreDataAccessGcpServiceAccountKeyArgs']] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -200,6 +213,8 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "databricks_gcp_service_account", databricks_gcp_service_account)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if force_update is not None:
+            pulumi.set(__self__, "force_update", force_update)
         if gcp_service_account_key is not None:
             pulumi.set(__self__, "gcp_service_account_key", gcp_service_account_key)
         if is_default is not None:
@@ -266,6 +281,15 @@ class _MetastoreDataAccessState:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "force_update")
+
+    @force_update.setter
+    def force_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_update", value)
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
@@ -336,6 +360,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -396,6 +421,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[str]] = None,
                  databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 force_update: Optional[pulumi.Input[bool]] = None,
                  gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -417,6 +443,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["comment"] = comment
             __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
             __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["force_update"] = force_update
             __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
             __props__.__dict__["is_default"] = is_default
             __props__.__dict__["metastore_id"] = metastore_id
@@ -439,6 +466,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             comment: Optional[pulumi.Input[str]] = None,
             databricks_gcp_service_account: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessDatabricksGcpServiceAccountArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
+            force_update: Optional[pulumi.Input[bool]] = None,
             gcp_service_account_key: Optional[pulumi.Input[pulumi.InputType['MetastoreDataAccessGcpServiceAccountKeyArgs']]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
@@ -464,6 +492,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["comment"] = comment
         __props__.__dict__["databricks_gcp_service_account"] = databricks_gcp_service_account
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["force_update"] = force_update
         __props__.__dict__["gcp_service_account_key"] = gcp_service_account_key
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["metastore_id"] = metastore_id
@@ -501,6 +530,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="forceUpdate")
+    def force_update(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "force_update")
 
     @property
     @pulumi.getter(name="gcpServiceAccountKey")
