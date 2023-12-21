@@ -4877,6 +4877,7 @@
                 "azureServicePrincipal": "azure_service_principal",
                 "databricksGcpServiceAccount": "databricks_gcp_service_account",
                 "forceDestroy": "force_destroy",
+                "forceUpdate": "force_update",
                 "gcpServiceAccountKey": "gcp_service_account_key",
                 "isDefault": "is_default",
                 "metastoreId": "metastore_id",
@@ -5182,6 +5183,7 @@
                 "azureServicePrincipal": "azure_service_principal",
                 "databricksGcpServiceAccount": "databricks_gcp_service_account",
                 "forceDestroy": "force_destroy",
+                "forceUpdate": "force_update",
                 "gcpServiceAccountKey": "gcp_service_account_key",
                 "metastoreId": "metastore_id",
                 "readOnly": "read_only"
