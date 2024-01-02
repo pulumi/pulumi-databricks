@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -174,8 +175,12 @@ public final class GetNotebookPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetNotebookPlainArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("GetNotebookPlainArgs", "format");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetNotebookPlainArgs", "path");
+            }
             return $;
         }
     }

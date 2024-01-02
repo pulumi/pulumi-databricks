@@ -69,31 +69,37 @@ public final class JobTaskLibrary {
 
         @CustomType.Setter
         public Builder cran(@Nullable JobTaskLibraryCran cran) {
+
             this.cran = cran;
             return this;
         }
         @CustomType.Setter
         public Builder egg(@Nullable String egg) {
+
             this.egg = egg;
             return this;
         }
         @CustomType.Setter
         public Builder jar(@Nullable String jar) {
+
             this.jar = jar;
             return this;
         }
         @CustomType.Setter
         public Builder maven(@Nullable JobTaskLibraryMaven maven) {
+
             this.maven = maven;
             return this;
         }
         @CustomType.Setter
         public Builder pypi(@Nullable JobTaskLibraryPypi pypi) {
+
             this.pypi = pypi;
             return this;
         }
         @CustomType.Setter
         public Builder whl(@Nullable String whl) {
+
             this.whl = whl;
             return this;
         }

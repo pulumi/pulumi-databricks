@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -139,47 +140,74 @@ public final class GetServicePrincipalResult {
 
         @CustomType.Setter
         public Builder aclPrincipalId(String aclPrincipalId) {
-            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            if (aclPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "aclPrincipalId");
+            }
+            this.aclPrincipalId = aclPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder active(Boolean active) {
-            this.active = Objects.requireNonNull(active);
+            if (active == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "active");
+            }
+            this.active = active;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder home(String home) {
-            this.home = Objects.requireNonNull(home);
+            if (home == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "home");
+            }
+            this.home = home;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder repos(String repos) {
-            this.repos = Objects.requireNonNull(repos);
+            if (repos == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "repos");
+            }
+            this.repos = repos;
             return this;
         }
         @CustomType.Setter
         public Builder spId(String spId) {
-            this.spId = Objects.requireNonNull(spId);
+            if (spId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "spId");
+            }
+            this.spId = spId;
             return this;
         }
         public GetServicePrincipalResult build() {

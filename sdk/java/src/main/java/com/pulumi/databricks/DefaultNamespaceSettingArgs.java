@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DefaultNamespaceSettingNamespaceArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -111,7 +112,9 @@ public final class DefaultNamespaceSettingArgs extends com.pulumi.resources.Reso
         }
 
         public DefaultNamespaceSettingArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("DefaultNamespaceSettingArgs", "namespace");
+            }
             return $;
         }
     }

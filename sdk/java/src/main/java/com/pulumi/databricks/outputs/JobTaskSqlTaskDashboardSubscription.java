@@ -50,11 +50,13 @@ public final class JobTaskSqlTaskDashboardSubscription {
 
         @CustomType.Setter
         public Builder destinationId(@Nullable String destinationId) {
+
             this.destinationId = destinationId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class MetastoreDataAccessGcpServiceAccountKey {
 
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("MetastoreDataAccessGcpServiceAccountKey", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(String privateKey) {
-            this.privateKey = Objects.requireNonNull(privateKey);
+            if (privateKey == null) {
+              throw new MissingRequiredPropertyException("MetastoreDataAccessGcpServiceAccountKey", "privateKey");
+            }
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyId(String privateKeyId) {
-            this.privateKeyId = Objects.requireNonNull(privateKeyId);
+            if (privateKeyId == null) {
+              throw new MissingRequiredPropertyException("MetastoreDataAccessGcpServiceAccountKey", "privateKeyId");
+            }
+            this.privateKeyId = privateKeyId;
             return this;
         }
         public MetastoreDataAccessGcpServiceAccountKey build() {

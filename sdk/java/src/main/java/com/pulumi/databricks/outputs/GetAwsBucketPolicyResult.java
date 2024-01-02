@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,32 +83,44 @@ public final class GetAwsBucketPolicyResult {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetAwsBucketPolicyResult", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
+
             this.databricksAccountId = databricksAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder databricksE2AccountId(@Nullable String databricksE2AccountId) {
+
             this.databricksE2AccountId = databricksE2AccountId;
             return this;
         }
         @CustomType.Setter
         public Builder fullAccessRole(@Nullable String fullAccessRole) {
+
             this.fullAccessRole = fullAccessRole;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAwsBucketPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder json(String json) {
-            this.json = Objects.requireNonNull(json);
+            if (json == null) {
+              throw new MissingRequiredPropertyException("GetAwsBucketPolicyResult", "json");
+            }
+            this.json = json;
             return this;
         }
         public GetAwsBucketPolicyResult build() {

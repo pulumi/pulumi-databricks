@@ -48,16 +48,19 @@ public final class GetJobJobSettingsSettingsTaskNotificationSettings {
 
         @CustomType.Setter
         public Builder alertOnLastAttempt(@Nullable Boolean alertOnLastAttempt) {
+
             this.alertOnLastAttempt = alertOnLastAttempt;
             return this;
         }
         @CustomType.Setter
         public Builder noAlertForCanceledRuns(@Nullable Boolean noAlertForCanceledRuns) {
+
             this.noAlertForCanceledRuns = noAlertForCanceledRuns;
             return this;
         }
         @CustomType.Setter
         public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
+
             this.noAlertForSkippedRuns = noAlertForSkippedRuns;
             return this;
         }

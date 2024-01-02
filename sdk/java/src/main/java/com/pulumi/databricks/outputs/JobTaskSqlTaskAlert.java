@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskAlertSubscription;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -75,17 +76,24 @@ public final class JobTaskSqlTaskAlert {
 
         @CustomType.Setter
         public Builder alertId(String alertId) {
-            this.alertId = Objects.requireNonNull(alertId);
+            if (alertId == null) {
+              throw new MissingRequiredPropertyException("JobTaskSqlTaskAlert", "alertId");
+            }
+            this.alertId = alertId;
             return this;
         }
         @CustomType.Setter
         public Builder pauseSubscriptions(@Nullable Boolean pauseSubscriptions) {
+
             this.pauseSubscriptions = pauseSubscriptions;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptions(List<JobTaskSqlTaskAlertSubscription> subscriptions) {
-            this.subscriptions = Objects.requireNonNull(subscriptions);
+            if (subscriptions == null) {
+              throw new MissingRequiredPropertyException("JobTaskSqlTaskAlert", "subscriptions");
+            }
+            this.subscriptions = subscriptions;
             return this;
         }
         public Builder subscriptions(JobTaskSqlTaskAlertSubscription... subscriptions) {

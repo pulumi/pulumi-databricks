@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.JobNewClusterDockerImageArgs;
 import com.pulumi.databricks.inputs.JobNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.JobNewClusterWorkloadTypeArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -575,7 +576,9 @@ public final class JobNewClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobNewClusterArgs build() {
-            $.sparkVersion = Objects.requireNonNull($.sparkVersion, "expected parameter 'sparkVersion' to be non-null");
+            if ($.sparkVersion == null) {
+                throw new MissingRequiredPropertyException("JobNewClusterArgs", "sparkVersion");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -98,57 +99,76 @@ public final class TableColumn {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("TableColumn", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nullable(@Nullable Boolean nullable) {
+
             this.nullable = nullable;
             return this;
         }
         @CustomType.Setter
         public Builder partitionIndex(@Nullable Integer partitionIndex) {
+
             this.partitionIndex = partitionIndex;
             return this;
         }
         @CustomType.Setter
         public Builder position(Integer position) {
-            this.position = Objects.requireNonNull(position);
+            if (position == null) {
+              throw new MissingRequiredPropertyException("TableColumn", "position");
+            }
+            this.position = position;
             return this;
         }
         @CustomType.Setter
         public Builder typeIntervalType(@Nullable String typeIntervalType) {
+
             this.typeIntervalType = typeIntervalType;
             return this;
         }
         @CustomType.Setter
         public Builder typeJson(@Nullable String typeJson) {
+
             this.typeJson = typeJson;
             return this;
         }
         @CustomType.Setter
         public Builder typeName(String typeName) {
-            this.typeName = Objects.requireNonNull(typeName);
+            if (typeName == null) {
+              throw new MissingRequiredPropertyException("TableColumn", "typeName");
+            }
+            this.typeName = typeName;
             return this;
         }
         @CustomType.Setter
         public Builder typePrecision(@Nullable Integer typePrecision) {
+
             this.typePrecision = typePrecision;
             return this;
         }
         @CustomType.Setter
         public Builder typeScale(@Nullable Integer typeScale) {
+
             this.typeScale = typeScale;
             return this;
         }
         @CustomType.Setter
         public Builder typeText(String typeText) {
-            this.typeText = Objects.requireNonNull(typeText);
+            if (typeText == null) {
+              throw new MissingRequiredPropertyException("TableColumn", "typeText");
+            }
+            this.typeText = typeText;
             return this;
         }
         public TableColumn build() {

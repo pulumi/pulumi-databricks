@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobNewClusterWorkloadTypeClientsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -54,7 +55,9 @@ public final class JobNewClusterWorkloadTypeArgs extends com.pulumi.resources.Re
         }
 
         public JobNewClusterWorkloadTypeArgs build() {
-            $.clients = Objects.requireNonNull($.clients, "expected parameter 'clients' to be non-null");
+            if ($.clients == null) {
+                throw new MissingRequiredPropertyException("JobNewClusterWorkloadTypeArgs", "clients");
+            }
             return $;
         }
     }

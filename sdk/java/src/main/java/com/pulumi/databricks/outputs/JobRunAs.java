@@ -124,11 +124,13 @@ public final class JobRunAs {
 
         @CustomType.Setter
         public Builder servicePrincipalName(@Nullable String servicePrincipalName) {
+
             this.servicePrincipalName = servicePrincipalName;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }

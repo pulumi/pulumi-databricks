@@ -43,11 +43,13 @@ public final class PipelineClusterClusterLogConf {
 
         @CustomType.Setter
         public Builder dbfs(@Nullable PipelineClusterClusterLogConfDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable PipelineClusterClusterLogConfS3 s3) {
+
             this.s3 = s3;
             return this;
         }

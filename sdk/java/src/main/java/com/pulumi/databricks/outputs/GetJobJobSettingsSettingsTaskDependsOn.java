@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,12 +43,16 @@ public final class GetJobJobSettingsSettingsTaskDependsOn {
 
         @CustomType.Setter
         public Builder outcome(@Nullable String outcome) {
+
             this.outcome = outcome;
             return this;
         }
         @CustomType.Setter
         public Builder taskKey(String taskKey) {
-            this.taskKey = Objects.requireNonNull(taskKey);
+            if (taskKey == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskDependsOn", "taskKey");
+            }
+            this.taskKey = taskKey;
             return this;
         }
         public GetJobJobSettingsSettingsTaskDependsOn build() {

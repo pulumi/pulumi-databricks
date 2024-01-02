@@ -74,36 +74,43 @@ public final class GetClusterClusterInfoExecutor {
 
         @CustomType.Setter
         public Builder hostPrivateIp(@Nullable String hostPrivateIp) {
+
             this.hostPrivateIp = hostPrivateIp;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeAwsAttributes(@Nullable GetClusterClusterInfoExecutorNodeAwsAttributes nodeAwsAttributes) {
+
             this.nodeAwsAttributes = nodeAwsAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
+
             this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
+
             this.privateIp = privateIp;
             return this;
         }
         @CustomType.Setter
         public Builder publicDns(@Nullable String publicDns) {
+
             this.publicDns = publicDns;
             return this;
         }
         @CustomType.Setter
         public Builder startTimestamp(@Nullable Integer startTimestamp) {
+
             this.startTimestamp = startTimestamp;
             return this;
         }

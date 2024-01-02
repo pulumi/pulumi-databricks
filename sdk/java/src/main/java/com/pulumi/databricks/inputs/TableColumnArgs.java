@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -228,10 +229,18 @@ public final class TableColumnArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableColumnArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.position = Objects.requireNonNull($.position, "expected parameter 'position' to be non-null");
-            $.typeName = Objects.requireNonNull($.typeName, "expected parameter 'typeName' to be non-null");
-            $.typeText = Objects.requireNonNull($.typeText, "expected parameter 'typeText' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("TableColumnArgs", "name");
+            }
+            if ($.position == null) {
+                throw new MissingRequiredPropertyException("TableColumnArgs", "position");
+            }
+            if ($.typeName == null) {
+                throw new MissingRequiredPropertyException("TableColumnArgs", "typeName");
+            }
+            if ($.typeText == null) {
+                throw new MissingRequiredPropertyException("TableColumnArgs", "typeText");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,9 +159,15 @@ public final class MountAdlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MountAdlArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecretKey = Objects.requireNonNull($.clientSecretKey, "expected parameter 'clientSecretKey' to be non-null");
-            $.clientSecretScope = Objects.requireNonNull($.clientSecretScope, "expected parameter 'clientSecretScope' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("MountAdlArgs", "clientId");
+            }
+            if ($.clientSecretKey == null) {
+                throw new MissingRequiredPropertyException("MountAdlArgs", "clientSecretKey");
+            }
+            if ($.clientSecretScope == null) {
+                throw new MissingRequiredPropertyException("MountAdlArgs", "clientSecretScope");
+            }
             return $;
         }
     }

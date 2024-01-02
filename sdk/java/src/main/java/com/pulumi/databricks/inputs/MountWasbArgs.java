@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -141,9 +142,15 @@ public final class MountWasbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MountWasbArgs build() {
-            $.authType = Objects.requireNonNull($.authType, "expected parameter 'authType' to be non-null");
-            $.tokenSecretKey = Objects.requireNonNull($.tokenSecretKey, "expected parameter 'tokenSecretKey' to be non-null");
-            $.tokenSecretScope = Objects.requireNonNull($.tokenSecretScope, "expected parameter 'tokenSecretScope' to be non-null");
+            if ($.authType == null) {
+                throw new MissingRequiredPropertyException("MountWasbArgs", "authType");
+            }
+            if ($.tokenSecretKey == null) {
+                throw new MissingRequiredPropertyException("MountWasbArgs", "tokenSecretKey");
+            }
+            if ($.tokenSecretScope == null) {
+                throw new MissingRequiredPropertyException("MountWasbArgs", "tokenSecretScope");
+            }
             return $;
         }
     }

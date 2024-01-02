@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -65,7 +66,10 @@ public final class PipelineNotification {
 
         @CustomType.Setter
         public Builder alerts(List<String> alerts) {
-            this.alerts = Objects.requireNonNull(alerts);
+            if (alerts == null) {
+              throw new MissingRequiredPropertyException("PipelineNotification", "alerts");
+            }
+            this.alerts = alerts;
             return this;
         }
         public Builder alerts(String... alerts) {
@@ -73,7 +77,10 @@ public final class PipelineNotification {
         }
         @CustomType.Setter
         public Builder emailRecipients(List<String> emailRecipients) {
-            this.emailRecipients = Objects.requireNonNull(emailRecipients);
+            if (emailRecipients == null) {
+              throw new MissingRequiredPropertyException("PipelineNotification", "emailRecipients");
+            }
+            this.emailRecipients = emailRecipients;
             return this;
         }
         public Builder emailRecipients(String... emailRecipients) {

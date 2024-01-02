@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class UserInstanceProfileArgs extends com.pulumi.resources.Resource
         }
 
         public UserInstanceProfileArgs build() {
-            $.instanceProfileId = Objects.requireNonNull($.instanceProfileId, "expected parameter 'instanceProfileId' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.instanceProfileId == null) {
+                throw new MissingRequiredPropertyException("UserInstanceProfileArgs", "instanceProfileId");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserInstanceProfileArgs", "userId");
+            }
             return $;
         }
     }

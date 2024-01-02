@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,24 @@ public final class GetJobJobSettingsSettingsGitSourceJobSource {
 
         @CustomType.Setter
         public Builder dirtyState(@Nullable String dirtyState) {
+
             this.dirtyState = dirtyState;
             return this;
         }
         @CustomType.Setter
         public Builder importFromGitBranch(String importFromGitBranch) {
-            this.importFromGitBranch = Objects.requireNonNull(importFromGitBranch);
+            if (importFromGitBranch == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsGitSourceJobSource", "importFromGitBranch");
+            }
+            this.importFromGitBranch = importFromGitBranch;
             return this;
         }
         @CustomType.Setter
         public Builder jobConfigPath(String jobConfigPath) {
-            this.jobConfigPath = Objects.requireNonNull(jobConfigPath);
+            if (jobConfigPath == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsGitSourceJobSource", "jobConfigPath");
+            }
+            this.jobConfigPath = jobConfigPath;
             return this;
         }
         public GetJobJobSettingsSettingsGitSourceJobSource build() {

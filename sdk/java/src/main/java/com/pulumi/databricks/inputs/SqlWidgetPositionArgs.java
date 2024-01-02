@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -125,8 +126,12 @@ public final class SqlWidgetPositionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SqlWidgetPositionArgs build() {
-            $.sizeX = Objects.requireNonNull($.sizeX, "expected parameter 'sizeX' to be non-null");
-            $.sizeY = Objects.requireNonNull($.sizeY, "expected parameter 'sizeY' to be non-null");
+            if ($.sizeX == null) {
+                throw new MissingRequiredPropertyException("SqlWidgetPositionArgs", "sizeX");
+            }
+            if ($.sizeY == null) {
+                throw new MissingRequiredPropertyException("SqlWidgetPositionArgs", "sizeY");
+            }
             return $;
         }
     }

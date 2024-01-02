@@ -234,36 +234,43 @@ public final class JobJobClusterNewClusterInitScript {
 
         @CustomType.Setter
         public Builder abfss(@Nullable JobJobClusterNewClusterInitScriptAbfss abfss) {
+
             this.abfss = abfss;
             return this;
         }
         @CustomType.Setter
         public Builder dbfs(@Nullable JobJobClusterNewClusterInitScriptDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable JobJobClusterNewClusterInitScriptFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder gcs(@Nullable JobJobClusterNewClusterInitScriptGcs gcs) {
+
             this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable JobJobClusterNewClusterInitScriptS3 s3) {
+
             this.s3 = s3;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable JobJobClusterNewClusterInitScriptVolumes volumes) {
+
             this.volumes = volumes;
             return this;
         }
         @CustomType.Setter
         public Builder workspace(@Nullable JobJobClusterNewClusterInitScriptWorkspace workspace) {
+
             this.workspace = workspace;
             return this;
         }

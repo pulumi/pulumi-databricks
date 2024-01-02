@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -204,8 +205,12 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RegisteredModelArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.schemaName = Objects.requireNonNull($.schemaName, "expected parameter 'schemaName' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("RegisteredModelArgs", "catalogName");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("RegisteredModelArgs", "schemaName");
+            }
             return $;
         }
     }

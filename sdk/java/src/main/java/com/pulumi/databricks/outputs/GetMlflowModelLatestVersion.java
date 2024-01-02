@@ -143,56 +143,67 @@ public final class GetMlflowModelLatestVersion {
 
         @CustomType.Setter
         public Builder creationTimestamp(@Nullable Integer creationTimestamp) {
+
             this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder currentStage(@Nullable String currentStage) {
+
             this.currentStage = currentStage;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdatedTimestamp(@Nullable Integer lastUpdatedTimestamp) {
+
             this.lastUpdatedTimestamp = lastUpdatedTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder runId(@Nullable String runId) {
+
             this.runId = runId;
             return this;
         }
         @CustomType.Setter
         public Builder runLink(@Nullable String runLink) {
+
             this.runLink = runLink;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder statusMessage(@Nullable String statusMessage) {
+
             this.statusMessage = statusMessage;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<GetMlflowModelLatestVersionTag> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -201,11 +212,13 @@ public final class GetMlflowModelLatestVersion {
         }
         @CustomType.Setter
         public Builder userId(@Nullable String userId) {
+
             this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

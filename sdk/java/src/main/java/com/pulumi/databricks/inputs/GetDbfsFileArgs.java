@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetDbfsFileArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDbfsFileArgs build() {
-            $.limitFileSize = Objects.requireNonNull($.limitFileSize, "expected parameter 'limitFileSize' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.limitFileSize == null) {
+                throw new MissingRequiredPropertyException("GetDbfsFileArgs", "limitFileSize");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetDbfsFileArgs", "path");
+            }
             return $;
         }
     }

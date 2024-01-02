@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class MwsWorkspacesExternalCustomerInfo {
 
         @CustomType.Setter
         public Builder authoritativeUserEmail(String authoritativeUserEmail) {
-            this.authoritativeUserEmail = Objects.requireNonNull(authoritativeUserEmail);
+            if (authoritativeUserEmail == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfo", "authoritativeUserEmail");
+            }
+            this.authoritativeUserEmail = authoritativeUserEmail;
             return this;
         }
         @CustomType.Setter
         public Builder authoritativeUserFullName(String authoritativeUserFullName) {
-            this.authoritativeUserFullName = Objects.requireNonNull(authoritativeUserFullName);
+            if (authoritativeUserFullName == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfo", "authoritativeUserFullName");
+            }
+            this.authoritativeUserFullName = authoritativeUserFullName;
             return this;
         }
         @CustomType.Setter
         public Builder customerName(String customerName) {
-            this.customerName = Objects.requireNonNull(customerName);
+            if (customerName == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfo", "customerName");
+            }
+            this.customerName = customerName;
             return this;
         }
         public MwsWorkspacesExternalCustomerInfo build() {

@@ -12,6 +12,7 @@ import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoGcpAttributesArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoStatsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -369,10 +370,18 @@ public final class GetInstancePoolPoolInfoArgs extends com.pulumi.resources.Reso
         }
 
         public GetInstancePoolPoolInfoArgs build() {
-            $.defaultTags = Objects.requireNonNull($.defaultTags, "expected parameter 'defaultTags' to be non-null");
-            $.idleInstanceAutoterminationMinutes = Objects.requireNonNull($.idleInstanceAutoterminationMinutes, "expected parameter 'idleInstanceAutoterminationMinutes' to be non-null");
-            $.instancePoolId = Objects.requireNonNull($.instancePoolId, "expected parameter 'instancePoolId' to be non-null");
-            $.instancePoolName = Objects.requireNonNull($.instancePoolName, "expected parameter 'instancePoolName' to be non-null");
+            if ($.defaultTags == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoArgs", "defaultTags");
+            }
+            if ($.idleInstanceAutoterminationMinutes == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoArgs", "idleInstanceAutoterminationMinutes");
+            }
+            if ($.instancePoolId == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoArgs", "instancePoolId");
+            }
+            if ($.instancePoolName == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoArgs", "instancePoolName");
+            }
             return $;
         }
     }

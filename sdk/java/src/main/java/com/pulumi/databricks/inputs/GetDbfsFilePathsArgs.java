@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class GetDbfsFilePathsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetDbfsFilePathsArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.recursive = Objects.requireNonNull($.recursive, "expected parameter 'recursive' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetDbfsFilePathsArgs", "path");
+            }
+            if ($.recursive == null) {
+                throw new MissingRequiredPropertyException("GetDbfsFilePathsArgs", "recursive");
+            }
             return $;
         }
     }

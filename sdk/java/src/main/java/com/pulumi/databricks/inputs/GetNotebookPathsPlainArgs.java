@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class GetNotebookPathsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetNotebookPathsPlainArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.recursive = Objects.requireNonNull($.recursive, "expected parameter 'recursive' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetNotebookPathsPlainArgs", "path");
+            }
+            if ($.recursive == null) {
+                throw new MissingRequiredPropertyException("GetNotebookPathsPlainArgs", "recursive");
+            }
             return $;
         }
     }

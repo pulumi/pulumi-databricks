@@ -49,16 +49,19 @@ public final class GetInstancePoolPoolInfoDiskSpec {
 
         @CustomType.Setter
         public Builder diskCount(@Nullable Integer diskCount) {
+
             this.diskCount = diskCount;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable GetInstancePoolPoolInfoDiskSpecDiskType diskType) {
+
             this.diskType = diskType;
             return this;
         }

@@ -72,31 +72,37 @@ public final class GetJobJobSettingsSettingsTaskSqlTask {
 
         @CustomType.Setter
         public Builder alert(@Nullable GetJobJobSettingsSettingsTaskSqlTaskAlert alert) {
+
             this.alert = alert;
             return this;
         }
         @CustomType.Setter
         public Builder dashboard(@Nullable GetJobJobSettingsSettingsTaskSqlTaskDashboard dashboard) {
+
             this.dashboard = dashboard;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable GetJobJobSettingsSettingsTaskSqlTaskFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,Object> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable GetJobJobSettingsSettingsTaskSqlTaskQuery query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
+
             this.warehouseId = warehouseId;
             return this;
         }

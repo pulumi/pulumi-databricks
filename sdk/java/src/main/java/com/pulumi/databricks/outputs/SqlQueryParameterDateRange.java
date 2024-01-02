@@ -51,11 +51,13 @@ public final class SqlQueryParameterDateRange {
 
         @CustomType.Setter
         public Builder range(@Nullable SqlQueryParameterDateRangeRange range) {
+
             this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

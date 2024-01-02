@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption;
 import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption;
 import com.pulumi.databricks.outputs.InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,17 +52,22 @@ public final class InstancePoolInstancePoolFleetAttributes {
 
         @CustomType.Setter
         public Builder fleetOnDemandOption(@Nullable InstancePoolInstancePoolFleetAttributesFleetOnDemandOption fleetOnDemandOption) {
+
             this.fleetOnDemandOption = fleetOnDemandOption;
             return this;
         }
         @CustomType.Setter
         public Builder fleetSpotOption(@Nullable InstancePoolInstancePoolFleetAttributesFleetSpotOption fleetSpotOption) {
+
             this.fleetSpotOption = fleetSpotOption;
             return this;
         }
         @CustomType.Setter
         public Builder launchTemplateOverrides(List<InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride> launchTemplateOverrides) {
-            this.launchTemplateOverrides = Objects.requireNonNull(launchTemplateOverrides);
+            if (launchTemplateOverrides == null) {
+              throw new MissingRequiredPropertyException("InstancePoolInstancePoolFleetAttributes", "launchTemplateOverrides");
+            }
+            this.launchTemplateOverrides = launchTemplateOverrides;
             return this;
         }
         public Builder launchTemplateOverrides(InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride... launchTemplateOverrides) {

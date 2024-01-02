@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -152,8 +153,12 @@ public final class PipelineNotificationArgs extends com.pulumi.resources.Resourc
         }
 
         public PipelineNotificationArgs build() {
-            $.alerts = Objects.requireNonNull($.alerts, "expected parameter 'alerts' to be non-null");
-            $.emailRecipients = Objects.requireNonNull($.emailRecipients, "expected parameter 'emailRecipients' to be non-null");
+            if ($.alerts == null) {
+                throw new MissingRequiredPropertyException("PipelineNotificationArgs", "alerts");
+            }
+            if ($.emailRecipients == null) {
+                throw new MissingRequiredPropertyException("PipelineNotificationArgs", "emailRecipients");
+            }
             return $;
         }
     }

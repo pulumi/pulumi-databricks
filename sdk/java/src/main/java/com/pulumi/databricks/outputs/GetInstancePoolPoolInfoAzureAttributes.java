@@ -43,11 +43,13 @@ public final class GetInstancePoolPoolInfoAzureAttributes {
 
         @CustomType.Setter
         public Builder availability(@Nullable String availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
+
             this.spotBidMaxPrice = spotBidMaxPrice;
             return this;
         }

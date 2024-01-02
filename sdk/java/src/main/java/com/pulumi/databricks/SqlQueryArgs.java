@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlQueryParameterArgs;
 import com.pulumi.databricks.inputs.SqlQueryScheduleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -385,8 +386,12 @@ public final class SqlQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SqlQueryArgs build() {
-            $.dataSourceId = Objects.requireNonNull($.dataSourceId, "expected parameter 'dataSourceId' to be non-null");
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
+            if ($.dataSourceId == null) {
+                throw new MissingRequiredPropertyException("SqlQueryArgs", "dataSourceId");
+            }
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("SqlQueryArgs", "query");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -294,7 +295,9 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
         }
 
         public InstancePoolPreloadedDockerImageArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("InstancePoolPreloadedDockerImageArgs", "url");
+            }
             return $;
         }
     }

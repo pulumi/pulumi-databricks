@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMlflowModelLatestVersion;
 import com.pulumi.databricks.outputs.GetMlflowModelTag;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -129,17 +130,26 @@ public final class GetMlflowModelResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latestVersions(List<GetMlflowModelLatestVersion> latestVersions) {
-            this.latestVersions = Objects.requireNonNull(latestVersions);
+            if (latestVersions == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "latestVersions");
+            }
+            this.latestVersions = latestVersions;
             return this;
         }
         public Builder latestVersions(GetMlflowModelLatestVersion... latestVersions) {
@@ -147,17 +157,26 @@ public final class GetMlflowModelResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder permissionLevel(String permissionLevel) {
-            this.permissionLevel = Objects.requireNonNull(permissionLevel);
+            if (permissionLevel == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "permissionLevel");
+            }
+            this.permissionLevel = permissionLevel;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetMlflowModelTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetMlflowModelTag... tags) {
@@ -165,7 +184,10 @@ public final class GetMlflowModelResult {
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         public GetMlflowModelResult build() {

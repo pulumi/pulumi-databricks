@@ -21,6 +21,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkPythonTas
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskSqlTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -212,21 +213,25 @@ public final class GetJobJobSettingsSettingsTask {
 
         @CustomType.Setter
         public Builder computeKey(@Nullable String computeKey) {
+
             this.computeKey = computeKey;
             return this;
         }
         @CustomType.Setter
         public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask) {
+
             this.conditionTask = conditionTask;
             return this;
         }
         @CustomType.Setter
         public Builder dbtTask(@Nullable GetJobJobSettingsSettingsTaskDbtTask dbtTask) {
+
             this.dbtTask = dbtTask;
             return this;
         }
         @CustomType.Setter
         public Builder dependsOns(@Nullable List<GetJobJobSettingsSettingsTaskDependsOn> dependsOns) {
+
             this.dependsOns = dependsOns;
             return this;
         }
@@ -235,31 +240,37 @@ public final class GetJobJobSettingsSettingsTask {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder emailNotifications(@Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications) {
+
             this.emailNotifications = emailNotifications;
             return this;
         }
         @CustomType.Setter
         public Builder existingClusterId(@Nullable String existingClusterId) {
+
             this.existingClusterId = existingClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder health(@Nullable GetJobJobSettingsSettingsTaskHealth health) {
+
             this.health = health;
             return this;
         }
         @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
+
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
         public Builder libraries(@Nullable List<GetJobJobSettingsSettingsTaskLibrary> libraries) {
+
             this.libraries = libraries;
             return this;
         }
@@ -268,86 +279,105 @@ public final class GetJobJobSettingsSettingsTask {
         }
         @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
+
             this.maxRetries = maxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder minRetryIntervalMillis(@Nullable Integer minRetryIntervalMillis) {
+
             this.minRetryIntervalMillis = minRetryIntervalMillis;
             return this;
         }
         @CustomType.Setter
         public Builder newCluster(@Nullable GetJobJobSettingsSettingsTaskNewCluster newCluster) {
+
             this.newCluster = newCluster;
             return this;
         }
         @CustomType.Setter
         public Builder notebookTask(@Nullable GetJobJobSettingsSettingsTaskNotebookTask notebookTask) {
+
             this.notebookTask = notebookTask;
             return this;
         }
         @CustomType.Setter
         public Builder notificationSettings(@Nullable GetJobJobSettingsSettingsTaskNotificationSettings notificationSettings) {
+
             this.notificationSettings = notificationSettings;
             return this;
         }
         @CustomType.Setter
         public Builder pipelineTask(@Nullable GetJobJobSettingsSettingsTaskPipelineTask pipelineTask) {
+
             this.pipelineTask = pipelineTask;
             return this;
         }
         @CustomType.Setter
         public Builder pythonWheelTask(@Nullable GetJobJobSettingsSettingsTaskPythonWheelTask pythonWheelTask) {
+
             this.pythonWheelTask = pythonWheelTask;
             return this;
         }
         @CustomType.Setter
         public Builder retryOnTimeout(Boolean retryOnTimeout) {
-            this.retryOnTimeout = Objects.requireNonNull(retryOnTimeout);
+            if (retryOnTimeout == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTask", "retryOnTimeout");
+            }
+            this.retryOnTimeout = retryOnTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder runIf(@Nullable String runIf) {
+
             this.runIf = runIf;
             return this;
         }
         @CustomType.Setter
         public Builder runJobTask(@Nullable GetJobJobSettingsSettingsTaskRunJobTask runJobTask) {
+
             this.runJobTask = runJobTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkJarTask(@Nullable GetJobJobSettingsSettingsTaskSparkJarTask sparkJarTask) {
+
             this.sparkJarTask = sparkJarTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkPythonTask(@Nullable GetJobJobSettingsSettingsTaskSparkPythonTask sparkPythonTask) {
+
             this.sparkPythonTask = sparkPythonTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkSubmitTask(@Nullable GetJobJobSettingsSettingsTaskSparkSubmitTask sparkSubmitTask) {
+
             this.sparkSubmitTask = sparkSubmitTask;
             return this;
         }
         @CustomType.Setter
         public Builder sqlTask(@Nullable GetJobJobSettingsSettingsTaskSqlTask sqlTask) {
+
             this.sqlTask = sqlTask;
             return this;
         }
         @CustomType.Setter
         public Builder taskKey(@Nullable String taskKey) {
+
             this.taskKey = taskKey;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder webhookNotifications(@Nullable GetJobJobSettingsSettingsTaskWebhookNotifications webhookNotifications) {
+
             this.webhookNotifications = webhookNotifications;
             return this;
         }

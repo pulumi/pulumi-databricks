@@ -43,11 +43,13 @@ public final class GetClusterClusterInfoClusterLogConf {
 
         @CustomType.Setter
         public Builder dbfs(@Nullable GetClusterClusterInfoClusterLogConfDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable GetClusterClusterInfoClusterLogConfS3 s3) {
+
             this.s3 = s3;
             return this;
         }

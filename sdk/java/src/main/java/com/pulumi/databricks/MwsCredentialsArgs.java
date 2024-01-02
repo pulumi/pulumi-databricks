@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -258,8 +259,12 @@ public final class MwsCredentialsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MwsCredentialsArgs build() {
-            $.credentialsName = Objects.requireNonNull($.credentialsName, "expected parameter 'credentialsName' to be non-null");
-            $.roleArn = Objects.requireNonNull($.roleArn, "expected parameter 'roleArn' to be non-null");
+            if ($.credentialsName == null) {
+                throw new MissingRequiredPropertyException("MwsCredentialsArgs", "credentialsName");
+            }
+            if ($.roleArn == null) {
+                throw new MissingRequiredPropertyException("MwsCredentialsArgs", "roleArn");
+            }
             return $;
         }
     }

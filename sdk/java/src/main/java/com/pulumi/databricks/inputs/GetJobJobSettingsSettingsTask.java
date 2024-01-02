@@ -21,6 +21,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkPythonTask
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSparkSubmitTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskWebhookNotifications;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -417,7 +418,9 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         }
 
         public GetJobJobSettingsSettingsTask build() {
-            $.retryOnTimeout = Objects.requireNonNull($.retryOnTimeout, "expected parameter 'retryOnTimeout' to be non-null");
+            if ($.retryOnTimeout == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTask", "retryOnTimeout");
+            }
             return $;
         }
     }

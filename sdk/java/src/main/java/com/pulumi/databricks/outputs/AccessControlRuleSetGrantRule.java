@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,7 @@ public final class AccessControlRuleSetGrantRule {
 
         @CustomType.Setter
         public Builder principals(@Nullable List<String> principals) {
+
             this.principals = principals;
             return this;
         }
@@ -80,7 +82,10 @@ public final class AccessControlRuleSetGrantRule {
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("AccessControlRuleSetGrantRule", "role");
+            }
+            this.role = role;
             return this;
         }
         public AccessControlRuleSetGrantRule build() {

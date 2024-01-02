@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class SqlQueryScheduleContinuousArgs extends com.pulumi.resources.R
         }
 
         public SqlQueryScheduleContinuousArgs build() {
-            $.intervalSeconds = Objects.requireNonNull($.intervalSeconds, "expected parameter 'intervalSeconds' to be non-null");
+            if ($.intervalSeconds == null) {
+                throw new MissingRequiredPropertyException("SqlQueryScheduleContinuousArgs", "intervalSeconds");
+            }
             return $;
         }
     }

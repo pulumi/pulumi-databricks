@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -145,41 +146,55 @@ public final class ModelServingConfigServedModel {
 
         @CustomType.Setter
         public Builder environmentVars(@Nullable Map<String,Object> environmentVars) {
+
             this.environmentVars = environmentVars;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+
             this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
         public Builder modelName(String modelName) {
-            this.modelName = Objects.requireNonNull(modelName);
+            if (modelName == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigServedModel", "modelName");
+            }
+            this.modelName = modelName;
             return this;
         }
         @CustomType.Setter
         public Builder modelVersion(String modelVersion) {
-            this.modelVersion = Objects.requireNonNull(modelVersion);
+            if (modelVersion == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigServedModel", "modelVersion");
+            }
+            this.modelVersion = modelVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder scaleToZeroEnabled(@Nullable Boolean scaleToZeroEnabled) {
+
             this.scaleToZeroEnabled = scaleToZeroEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder workloadSize(String workloadSize) {
-            this.workloadSize = Objects.requireNonNull(workloadSize);
+            if (workloadSize == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigServedModel", "workloadSize");
+            }
+            this.workloadSize = workloadSize;
             return this;
         }
         @CustomType.Setter
         public Builder workloadType(@Nullable String workloadType) {
+
             this.workloadType = workloadType;
             return this;
         }

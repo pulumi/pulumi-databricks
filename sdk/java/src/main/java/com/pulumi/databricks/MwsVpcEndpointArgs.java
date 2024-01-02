@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -370,7 +371,9 @@ public final class MwsVpcEndpointArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MwsVpcEndpointArgs build() {
-            $.vpcEndpointName = Objects.requireNonNull($.vpcEndpointName, "expected parameter 'vpcEndpointName' to be non-null");
+            if ($.vpcEndpointName == null) {
+                throw new MissingRequiredPropertyException("MwsVpcEndpointArgs", "vpcEndpointName");
+            }
             return $;
         }
     }

@@ -78,36 +78,43 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
 
         @CustomType.Setter
         public Builder abfss(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss abfss) {
+
             this.abfss = abfss;
             return this;
         }
         @CustomType.Setter
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder gcs(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs gcs) {
+
             this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 s3) {
+
             this.s3 = s3;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes volumes) {
+
             this.volumes = volumes;
             return this;
         }
         @CustomType.Setter
         public Builder workspace(@Nullable GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace workspace) {
+
             this.workspace = workspace;
             return this;
         }

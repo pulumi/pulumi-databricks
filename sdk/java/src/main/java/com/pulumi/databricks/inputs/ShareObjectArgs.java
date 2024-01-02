@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ShareObjectPartitionArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -402,8 +403,12 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ShareObjectArgs build() {
-            $.dataObjectType = Objects.requireNonNull($.dataObjectType, "expected parameter 'dataObjectType' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.dataObjectType == null) {
+                throw new MissingRequiredPropertyException("ShareObjectArgs", "dataObjectType");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ShareObjectArgs", "name");
+            }
             return $;
         }
     }

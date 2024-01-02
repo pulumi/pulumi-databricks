@@ -74,16 +74,19 @@ public final class ClusterAzureAttributes {
 
         @CustomType.Setter
         public Builder availability(@Nullable String availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
+
             this.firstOnDemand = firstOnDemand;
             return this;
         }
         @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
+
             this.spotBidMaxPrice = spotBidMaxPrice;
             return this;
         }

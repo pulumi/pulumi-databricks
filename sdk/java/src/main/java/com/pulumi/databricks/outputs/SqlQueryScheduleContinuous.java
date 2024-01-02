@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class SqlQueryScheduleContinuous {
 
         @CustomType.Setter
         public Builder intervalSeconds(Integer intervalSeconds) {
-            this.intervalSeconds = Objects.requireNonNull(intervalSeconds);
+            if (intervalSeconds == null) {
+              throw new MissingRequiredPropertyException("SqlQueryScheduleContinuous", "intervalSeconds");
+            }
+            this.intervalSeconds = intervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder untilDate(@Nullable String untilDate) {
+
             this.untilDate = untilDate;
             return this;
         }

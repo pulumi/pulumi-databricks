@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuth;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -65,7 +66,9 @@ public final class GetJobJobSettingsSettingsTaskNewClusterDockerImage extends co
         }
 
         public GetJobJobSettingsSettingsTaskNewClusterDockerImage build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskNewClusterDockerImage", "url");
+            }
             return $;
         }
     }

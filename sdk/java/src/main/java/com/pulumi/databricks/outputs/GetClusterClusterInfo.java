@@ -15,6 +15,7 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoExecutor;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoGcpAttributes;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoInitScript;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoTerminationReason;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -449,111 +450,137 @@ public final class GetClusterClusterInfo {
 
         @CustomType.Setter
         public Builder autoscale(@Nullable GetClusterClusterInfoAutoscale autoscale) {
+
             this.autoscale = autoscale;
             return this;
         }
         @CustomType.Setter
         public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
+
             this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder awsAttributes(@Nullable GetClusterClusterInfoAwsAttributes awsAttributes) {
+
             this.awsAttributes = awsAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder azureAttributes(@Nullable GetClusterClusterInfoAzureAttributes azureAttributes) {
+
             this.azureAttributes = azureAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCores(@Nullable Double clusterCores) {
+
             this.clusterCores = clusterCores;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterLogConf(@Nullable GetClusterClusterInfoClusterLogConf clusterLogConf) {
+
             this.clusterLogConf = clusterLogConf;
             return this;
         }
         @CustomType.Setter
         public Builder clusterLogStatus(@Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus) {
+
             this.clusterLogStatus = clusterLogStatus;
             return this;
         }
         @CustomType.Setter
         public Builder clusterMemoryMb(@Nullable Integer clusterMemoryMb) {
+
             this.clusterMemoryMb = clusterMemoryMb;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
+
             this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSource(@Nullable String clusterSource) {
+
             this.clusterSource = clusterSource;
             return this;
         }
         @CustomType.Setter
         public Builder creatorUserName(@Nullable String creatorUserName) {
+
             this.creatorUserName = creatorUserName;
             return this;
         }
         @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
+
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
+
             this.dataSecurityMode = dataSecurityMode;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTags(Map<String,Object> defaultTags) {
-            this.defaultTags = Objects.requireNonNull(defaultTags);
+            if (defaultTags == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "defaultTags");
+            }
+            this.defaultTags = defaultTags;
             return this;
         }
         @CustomType.Setter
         public Builder dockerImage(@Nullable GetClusterClusterInfoDockerImage dockerImage) {
+
             this.dockerImage = dockerImage;
             return this;
         }
         @CustomType.Setter
         public Builder driver(@Nullable GetClusterClusterInfoDriver driver) {
+
             this.driver = driver;
             return this;
         }
         @CustomType.Setter
         public Builder driverInstancePoolId(String driverInstancePoolId) {
-            this.driverInstancePoolId = Objects.requireNonNull(driverInstancePoolId);
+            if (driverInstancePoolId == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "driverInstancePoolId");
+            }
+            this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
+
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
+
             this.enableElasticDisk = enableElasticDisk;
             return this;
         }
         @CustomType.Setter
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
+
             this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder executors(@Nullable List<GetClusterClusterInfoExecutor> executors) {
+
             this.executors = executors;
             return this;
         }
@@ -562,11 +589,13 @@ public final class GetClusterClusterInfo {
         }
         @CustomType.Setter
         public Builder gcpAttributes(@Nullable GetClusterClusterInfoGcpAttributes gcpAttributes) {
+
             this.gcpAttributes = gcpAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder initScripts(@Nullable List<GetClusterClusterInfoInitScript> initScripts) {
+
             this.initScripts = initScripts;
             return this;
         }
@@ -575,71 +604,87 @@ public final class GetClusterClusterInfo {
         }
         @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
+
             this.instancePoolId = instancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder jdbcPort(@Nullable Integer jdbcPort) {
+
             this.jdbcPort = jdbcPort;
             return this;
         }
         @CustomType.Setter
         public Builder lastActivityTime(@Nullable Integer lastActivityTime) {
+
             this.lastActivityTime = lastActivityTime;
             return this;
         }
         @CustomType.Setter
         public Builder lastStateLossTime(@Nullable Integer lastStateLossTime) {
+
             this.lastStateLossTime = lastStateLossTime;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
+
             this.nodeTypeId = nodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
+
             this.numWorkers = numWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
+
             this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder runtimeEngine(@Nullable String runtimeEngine) {
+
             this.runtimeEngine = runtimeEngine;
             return this;
         }
         @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
+
             this.singleUserName = singleUserName;
             return this;
         }
         @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+
             this.sparkConf = sparkConf;
             return this;
         }
         @CustomType.Setter
         public Builder sparkContextId(@Nullable Integer sparkContextId) {
+
             this.sparkContextId = sparkContextId;
             return this;
         }
         @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
         @CustomType.Setter
         public Builder sparkVersion(String sparkVersion) {
-            this.sparkVersion = Objects.requireNonNull(sparkVersion);
+            if (sparkVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "sparkVersion");
+            }
+            this.sparkVersion = sparkVersion;
             return this;
         }
         @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
+
             this.sshPublicKeys = sshPublicKeys;
             return this;
         }
@@ -648,26 +693,33 @@ public final class GetClusterClusterInfo {
         }
         @CustomType.Setter
         public Builder startTime(@Nullable Integer startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateMessage(@Nullable String stateMessage) {
+
             this.stateMessage = stateMessage;
             return this;
         }
         @CustomType.Setter
         public Builder terminateTime(@Nullable Integer terminateTime) {
+
             this.terminateTime = terminateTime;
             return this;
         }
         @CustomType.Setter
         public Builder terminationReason(@Nullable GetClusterClusterInfoTerminationReason terminationReason) {
+
             this.terminationReason = terminationReason;
             return this;
         }

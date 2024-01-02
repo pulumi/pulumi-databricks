@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -214,22 +215,30 @@ public final class GetGroupResult {
 
         @CustomType.Setter
         public Builder aclPrincipalId(String aclPrincipalId) {
-            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            if (aclPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "aclPrincipalId");
+            }
+            this.aclPrincipalId = aclPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder allowClusterCreate(@Nullable Boolean allowClusterCreate) {
+
             this.allowClusterCreate = allowClusterCreate;
             return this;
         }
         @CustomType.Setter
         public Builder allowInstancePoolCreate(@Nullable Boolean allowInstancePoolCreate) {
+
             this.allowInstancePoolCreate = allowInstancePoolCreate;
             return this;
         }
         @CustomType.Setter
         public Builder childGroups(List<String> childGroups) {
-            this.childGroups = Objects.requireNonNull(childGroups);
+            if (childGroups == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "childGroups");
+            }
+            this.childGroups = childGroups;
             return this;
         }
         public Builder childGroups(String... childGroups) {
@@ -237,22 +246,32 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder databricksSqlAccess(@Nullable Boolean databricksSqlAccess) {
+
             this.databricksSqlAccess = databricksSqlAccess;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder groups(List<String> groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         public Builder groups(String... groups) {
@@ -260,12 +279,18 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProfiles(List<String> instanceProfiles) {
-            this.instanceProfiles = Objects.requireNonNull(instanceProfiles);
+            if (instanceProfiles == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "instanceProfiles");
+            }
+            this.instanceProfiles = instanceProfiles;
             return this;
         }
         public Builder instanceProfiles(String... instanceProfiles) {
@@ -273,7 +298,10 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {
@@ -281,12 +309,16 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder recursive(@Nullable Boolean recursive) {
+
             this.recursive = recursive;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipals(List<String> servicePrincipals) {
-            this.servicePrincipals = Objects.requireNonNull(servicePrincipals);
+            if (servicePrincipals == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "servicePrincipals");
+            }
+            this.servicePrincipals = servicePrincipals;
             return this;
         }
         public Builder servicePrincipals(String... servicePrincipals) {
@@ -294,7 +326,10 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder users(List<String> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(String... users) {
@@ -302,6 +337,7 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder workspaceAccess(@Nullable Boolean workspaceAccess) {
+
             this.workspaceAccess = workspaceAccess;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,7 +189,9 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GitCredentialArgs build() {
-            $.gitProvider = Objects.requireNonNull($.gitProvider, "expected parameter 'gitProvider' to be non-null");
+            if ($.gitProvider == null) {
+                throw new MissingRequiredPropertyException("GitCredentialArgs", "gitProvider");
+            }
             return $;
         }
     }

@@ -42,11 +42,13 @@ public final class MetastoreDataAccessDatabricksGcpServiceAccount {
 
         @CustomType.Setter
         public Builder credentialId(@Nullable String credentialId) {
+
             this.credentialId = credentialId;
             return this;
         }
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }

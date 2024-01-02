@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSqlWarehouseChannel;
 import com.pulumi.databricks.outputs.GetSqlWarehouseOdbcParams;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTags;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -247,87 +248,138 @@ public final class GetSqlWarehouseResult {
 
         @CustomType.Setter
         public Builder autoStopMins(Integer autoStopMins) {
-            this.autoStopMins = Objects.requireNonNull(autoStopMins);
+            if (autoStopMins == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "autoStopMins");
+            }
+            this.autoStopMins = autoStopMins;
             return this;
         }
         @CustomType.Setter
         public Builder channel(GetSqlWarehouseChannel channel) {
-            this.channel = Objects.requireNonNull(channel);
+            if (channel == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "channel");
+            }
+            this.channel = channel;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSize(String clusterSize) {
-            this.clusterSize = Objects.requireNonNull(clusterSize);
+            if (clusterSize == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "clusterSize");
+            }
+            this.clusterSize = clusterSize;
             return this;
         }
         @CustomType.Setter
         public Builder dataSourceId(String dataSourceId) {
-            this.dataSourceId = Objects.requireNonNull(dataSourceId);
+            if (dataSourceId == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "dataSourceId");
+            }
+            this.dataSourceId = dataSourceId;
             return this;
         }
         @CustomType.Setter
         public Builder enablePhoton(Boolean enablePhoton) {
-            this.enablePhoton = Objects.requireNonNull(enablePhoton);
+            if (enablePhoton == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "enablePhoton");
+            }
+            this.enablePhoton = enablePhoton;
             return this;
         }
         @CustomType.Setter
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
-            this.enableServerlessCompute = Objects.requireNonNull(enableServerlessCompute);
+            if (enableServerlessCompute == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "enableServerlessCompute");
+            }
+            this.enableServerlessCompute = enableServerlessCompute;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProfileArn(String instanceProfileArn) {
-            this.instanceProfileArn = Objects.requireNonNull(instanceProfileArn);
+            if (instanceProfileArn == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "instanceProfileArn");
+            }
+            this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
         public Builder jdbcUrl(String jdbcUrl) {
-            this.jdbcUrl = Objects.requireNonNull(jdbcUrl);
+            if (jdbcUrl == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "jdbcUrl");
+            }
+            this.jdbcUrl = jdbcUrl;
             return this;
         }
         @CustomType.Setter
         public Builder maxNumClusters(Integer maxNumClusters) {
-            this.maxNumClusters = Objects.requireNonNull(maxNumClusters);
+            if (maxNumClusters == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "maxNumClusters");
+            }
+            this.maxNumClusters = maxNumClusters;
             return this;
         }
         @CustomType.Setter
         public Builder minNumClusters(Integer minNumClusters) {
-            this.minNumClusters = Objects.requireNonNull(minNumClusters);
+            if (minNumClusters == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "minNumClusters");
+            }
+            this.minNumClusters = minNumClusters;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder numClusters(Integer numClusters) {
-            this.numClusters = Objects.requireNonNull(numClusters);
+            if (numClusters == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "numClusters");
+            }
+            this.numClusters = numClusters;
             return this;
         }
         @CustomType.Setter
         public Builder odbcParams(GetSqlWarehouseOdbcParams odbcParams) {
-            this.odbcParams = Objects.requireNonNull(odbcParams);
+            if (odbcParams == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "odbcParams");
+            }
+            this.odbcParams = odbcParams;
             return this;
         }
         @CustomType.Setter
         public Builder spotInstancePolicy(String spotInstancePolicy) {
-            this.spotInstancePolicy = Objects.requireNonNull(spotInstancePolicy);
+            if (spotInstancePolicy == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "spotInstancePolicy");
+            }
+            this.spotInstancePolicy = spotInstancePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder tags(GetSqlWarehouseTags tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetSqlWarehouseResult build() {

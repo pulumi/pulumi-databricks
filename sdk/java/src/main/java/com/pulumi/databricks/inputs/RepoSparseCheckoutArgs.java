@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class RepoSparseCheckoutArgs extends com.pulumi.resources.ResourceA
         }
 
         public RepoSparseCheckoutArgs build() {
-            $.patterns = Objects.requireNonNull($.patterns, "expected parameter 'patterns' to be non-null");
+            if ($.patterns == null) {
+                throw new MissingRequiredPropertyException("RepoSparseCheckoutArgs", "patterns");
+            }
             return $;
         }
     }

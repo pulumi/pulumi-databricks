@@ -256,31 +256,37 @@ public final class JobTaskSqlTask {
 
         @CustomType.Setter
         public Builder alert(@Nullable JobTaskSqlTaskAlert alert) {
+
             this.alert = alert;
             return this;
         }
         @CustomType.Setter
         public Builder dashboard(@Nullable JobTaskSqlTaskDashboard dashboard) {
+
             this.dashboard = dashboard;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable JobTaskSqlTaskFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,Object> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable JobTaskSqlTaskQuery query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
+
             this.warehouseId = warehouseId;
             return this;
         }

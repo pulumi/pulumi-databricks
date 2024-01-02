@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsPathList;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -71,17 +72,26 @@ public final class GetDbfsFilePathsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder pathLists(List<GetDbfsFilePathsPathList> pathLists) {
-            this.pathLists = Objects.requireNonNull(pathLists);
+            if (pathLists == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "pathLists");
+            }
+            this.pathLists = pathLists;
             return this;
         }
         public Builder pathLists(GetDbfsFilePathsPathList... pathLists) {
@@ -89,7 +99,10 @@ public final class GetDbfsFilePathsResult {
         }
         @CustomType.Setter
         public Builder recursive(Boolean recursive) {
-            this.recursive = Objects.requireNonNull(recursive);
+            if (recursive == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "recursive");
+            }
+            this.recursive = recursive;
             return this;
         }
         public GetDbfsFilePathsResult build() {

@@ -36,6 +36,7 @@ public final class JobJobClusterNewClusterInitScriptWorkspace {
 
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }

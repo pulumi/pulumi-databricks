@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -134,42 +135,66 @@ public final class GetClusterPolicyResult {
 
         @CustomType.Setter
         public Builder definition(String definition) {
-            this.definition = Objects.requireNonNull(definition);
+            if (definition == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "definition");
+            }
+            this.definition = definition;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder maxClustersPerUser(Integer maxClustersPerUser) {
-            this.maxClustersPerUser = Objects.requireNonNull(maxClustersPerUser);
+            if (maxClustersPerUser == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "maxClustersPerUser");
+            }
+            this.maxClustersPerUser = maxClustersPerUser;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder policyFamilyDefinitionOverrides(String policyFamilyDefinitionOverrides) {
-            this.policyFamilyDefinitionOverrides = Objects.requireNonNull(policyFamilyDefinitionOverrides);
+            if (policyFamilyDefinitionOverrides == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "policyFamilyDefinitionOverrides");
+            }
+            this.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
             return this;
         }
         @CustomType.Setter
         public Builder policyFamilyId(String policyFamilyId) {
-            this.policyFamilyId = Objects.requireNonNull(policyFamilyId);
+            if (policyFamilyId == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "policyFamilyId");
+            }
+            this.policyFamilyId = policyFamilyId;
             return this;
         }
         public GetClusterPolicyResult build() {

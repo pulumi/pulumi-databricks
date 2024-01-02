@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ModelServingConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,7 +160,9 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ModelServingArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("ModelServingArgs", "config");
+            }
             return $;
         }
     }

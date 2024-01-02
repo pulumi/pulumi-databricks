@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -125,9 +126,15 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
         }
 
         public SqlEndpointOdbcParamsArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "path");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "port");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "protocol");
+            }
             return $;
         }
     }

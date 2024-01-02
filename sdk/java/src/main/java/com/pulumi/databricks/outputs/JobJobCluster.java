@@ -59,11 +59,13 @@ public final class JobJobCluster {
 
         @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
+
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
         public Builder newCluster(@Nullable JobJobClusterNewCluster newCluster) {
+
             this.newCluster = newCluster;
             return this;
         }

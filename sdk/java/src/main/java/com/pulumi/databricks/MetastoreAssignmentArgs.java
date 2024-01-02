@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class MetastoreAssignmentArgs extends com.pulumi.resources.Resource
         }
 
         public MetastoreAssignmentArgs build() {
-            $.metastoreId = Objects.requireNonNull($.metastoreId, "expected parameter 'metastoreId' to be non-null");
-            $.workspaceId = Objects.requireNonNull($.workspaceId, "expected parameter 'workspaceId' to be non-null");
+            if ($.metastoreId == null) {
+                throw new MissingRequiredPropertyException("MetastoreAssignmentArgs", "metastoreId");
+            }
+            if ($.workspaceId == null) {
+                throw new MissingRequiredPropertyException("MetastoreAssignmentArgs", "workspaceId");
+            }
             return $;
         }
     }

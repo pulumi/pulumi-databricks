@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -59,11 +60,15 @@ public final class JobTrigger {
 
         @CustomType.Setter
         public Builder fileArrival(JobTriggerFileArrival fileArrival) {
-            this.fileArrival = Objects.requireNonNull(fileArrival);
+            if (fileArrival == null) {
+              throw new MissingRequiredPropertyException("JobTrigger", "fileArrival");
+            }
+            this.fileArrival = fileArrival;
             return this;
         }
         @CustomType.Setter
         public Builder pauseStatus(@Nullable String pauseStatus) {
+
             this.pauseStatus = pauseStatus;
             return this;
         }

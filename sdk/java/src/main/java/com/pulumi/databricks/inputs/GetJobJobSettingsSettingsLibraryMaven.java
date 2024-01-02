@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,7 +83,9 @@ public final class GetJobJobSettingsSettingsLibraryMaven extends com.pulumi.reso
         }
 
         public GetJobJobSettingsSettingsLibraryMaven build() {
-            $.coordinates = Objects.requireNonNull($.coordinates, "expected parameter 'coordinates' to be non-null");
+            if ($.coordinates == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsLibraryMaven", "coordinates");
+            }
             return $;
         }
     }

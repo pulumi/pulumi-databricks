@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -338,9 +339,15 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         public ModelServingConfigServedModelArgs build() {
-            $.modelName = Objects.requireNonNull($.modelName, "expected parameter 'modelName' to be non-null");
-            $.modelVersion = Objects.requireNonNull($.modelVersion, "expected parameter 'modelVersion' to be non-null");
-            $.workloadSize = Objects.requireNonNull($.workloadSize, "expected parameter 'workloadSize' to be non-null");
+            if ($.modelName == null) {
+                throw new MissingRequiredPropertyException("ModelServingConfigServedModelArgs", "modelName");
+            }
+            if ($.modelVersion == null) {
+                throw new MissingRequiredPropertyException("ModelServingConfigServedModelArgs", "modelVersion");
+            }
+            if ($.workloadSize == null) {
+                throw new MissingRequiredPropertyException("ModelServingConfigServedModelArgs", "workloadSize");
+            }
             return $;
         }
     }

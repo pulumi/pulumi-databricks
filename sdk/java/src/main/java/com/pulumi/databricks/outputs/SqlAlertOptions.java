@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,37 +130,50 @@ public final class SqlAlertOptions {
 
         @CustomType.Setter
         public Builder column(String column) {
-            this.column = Objects.requireNonNull(column);
+            if (column == null) {
+              throw new MissingRequiredPropertyException("SqlAlertOptions", "column");
+            }
+            this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder customBody(@Nullable String customBody) {
+
             this.customBody = customBody;
             return this;
         }
         @CustomType.Setter
         public Builder customSubject(@Nullable String customSubject) {
+
             this.customSubject = customSubject;
             return this;
         }
         @CustomType.Setter
         public Builder emptyResultState(@Nullable String emptyResultState) {
+
             this.emptyResultState = emptyResultState;
             return this;
         }
         @CustomType.Setter
         public Builder muted(@Nullable Boolean muted) {
+
             this.muted = muted;
             return this;
         }
         @CustomType.Setter
         public Builder op(String op) {
-            this.op = Objects.requireNonNull(op);
+            if (op == null) {
+              throw new MissingRequiredPropertyException("SqlAlertOptions", "op");
+            }
+            this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("SqlAlertOptions", "value");
+            }
+            this.value = value;
             return this;
         }
         public SqlAlertOptions build() {

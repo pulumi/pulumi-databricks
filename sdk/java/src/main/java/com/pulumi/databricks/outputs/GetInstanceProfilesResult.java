@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetInstanceProfilesInstanceProfile;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class GetInstanceProfilesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProfiles(List<GetInstanceProfilesInstanceProfile> instanceProfiles) {
-            this.instanceProfiles = Objects.requireNonNull(instanceProfiles);
+            if (instanceProfiles == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesResult", "instanceProfiles");
+            }
+            this.instanceProfiles = instanceProfiles;
             return this;
         }
         public Builder instanceProfiles(GetInstanceProfilesInstanceProfile... instanceProfiles) {

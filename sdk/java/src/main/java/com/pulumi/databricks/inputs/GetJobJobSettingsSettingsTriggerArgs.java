@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,7 +75,9 @@ public final class GetJobJobSettingsSettingsTriggerArgs extends com.pulumi.resou
         }
 
         public GetJobJobSettingsSettingsTriggerArgs build() {
-            $.fileArrival = Objects.requireNonNull($.fileArrival, "expected parameter 'fileArrival' to be non-null");
+            if ($.fileArrival == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTriggerArgs", "fileArrival");
+            }
             return $;
         }
     }

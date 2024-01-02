@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class ClusterClusterMountInfoNetworkFilesystemInfo {
 
         @CustomType.Setter
         public Builder mountOptions(@Nullable String mountOptions) {
+
             this.mountOptions = mountOptions;
             return this;
         }
         @CustomType.Setter
         public Builder serverAddress(String serverAddress) {
-            this.serverAddress = Objects.requireNonNull(serverAddress);
+            if (serverAddress == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterMountInfoNetworkFilesystemInfo", "serverAddress");
+            }
+            this.serverAddress = serverAddress;
             return this;
         }
         public ClusterClusterMountInfoNetworkFilesystemInfo build() {

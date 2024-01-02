@@ -49,16 +49,19 @@ public final class PipelineClusterAutoscale {
 
         @CustomType.Setter
         public Builder maxWorkers(@Nullable Integer maxWorkers) {
+
             this.maxWorkers = maxWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder minWorkers(@Nullable Integer minWorkers) {
+
             this.minWorkers = minWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }

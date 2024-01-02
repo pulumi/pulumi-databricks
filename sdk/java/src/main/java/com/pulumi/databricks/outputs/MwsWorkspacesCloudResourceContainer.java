@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.MwsWorkspacesCloudResourceContainerGcp;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
@@ -42,7 +43,10 @@ public final class MwsWorkspacesCloudResourceContainer {
 
         @CustomType.Setter
         public Builder gcp(MwsWorkspacesCloudResourceContainerGcp gcp) {
-            this.gcp = Objects.requireNonNull(gcp);
+            if (gcp == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesCloudResourceContainer", "gcp");
+            }
+            this.gcp = gcp;
             return this;
         }
         public MwsWorkspacesCloudResourceContainer build() {

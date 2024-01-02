@@ -155,56 +155,67 @@ public final class PipelineCluster {
 
         @CustomType.Setter
         public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
+
             this.applyPolicyDefaultValues = applyPolicyDefaultValues;
             return this;
         }
         @CustomType.Setter
         public Builder autoscale(@Nullable PipelineClusterAutoscale autoscale) {
+
             this.autoscale = autoscale;
             return this;
         }
         @CustomType.Setter
         public Builder awsAttributes(@Nullable PipelineClusterAwsAttributes awsAttributes) {
+
             this.awsAttributes = awsAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder azureAttributes(@Nullable PipelineClusterAzureAttributes azureAttributes) {
+
             this.azureAttributes = azureAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder clusterLogConf(@Nullable PipelineClusterClusterLogConf clusterLogConf) {
+
             this.clusterLogConf = clusterLogConf;
             return this;
         }
         @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
+
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
+
             this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
+
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
+
             this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder gcpAttributes(@Nullable PipelineClusterGcpAttributes gcpAttributes) {
+
             this.gcpAttributes = gcpAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder initScripts(@Nullable List<PipelineClusterInitScript> initScripts) {
+
             this.initScripts = initScripts;
             return this;
         }
@@ -213,41 +224,49 @@ public final class PipelineCluster {
         }
         @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
+
             this.instancePoolId = instancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
+
             this.nodeTypeId = nodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
+
             this.numWorkers = numWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
+
             this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+
             this.sparkConf = sparkConf;
             return this;
         }
         @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
         @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
+
             this.sshPublicKeys = sshPublicKeys;
             return this;
         }

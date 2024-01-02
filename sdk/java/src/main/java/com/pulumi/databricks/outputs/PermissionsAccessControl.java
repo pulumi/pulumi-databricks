@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,21 +91,27 @@ public final class PermissionsAccessControl {
 
         @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
+
             this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder permissionLevel(String permissionLevel) {
-            this.permissionLevel = Objects.requireNonNull(permissionLevel);
+            if (permissionLevel == null) {
+              throw new MissingRequiredPropertyException("PermissionsAccessControl", "permissionLevel");
+            }
+            this.permissionLevel = permissionLevel;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipalName(@Nullable String servicePrincipalName) {
+
             this.servicePrincipalName = servicePrincipalName;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }

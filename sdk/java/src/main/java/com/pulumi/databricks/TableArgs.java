@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.TableColumnArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -251,11 +252,21 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.columns = Objects.requireNonNull($.columns, "expected parameter 'columns' to be non-null");
-            $.dataSourceFormat = Objects.requireNonNull($.dataSourceFormat, "expected parameter 'dataSourceFormat' to be non-null");
-            $.schemaName = Objects.requireNonNull($.schemaName, "expected parameter 'schemaName' to be non-null");
-            $.tableType = Objects.requireNonNull($.tableType, "expected parameter 'tableType' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "catalogName");
+            }
+            if ($.columns == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "columns");
+            }
+            if ($.dataSourceFormat == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "dataSourceFormat");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "schemaName");
+            }
+            if ($.tableType == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "tableType");
+            }
             return $;
         }
     }

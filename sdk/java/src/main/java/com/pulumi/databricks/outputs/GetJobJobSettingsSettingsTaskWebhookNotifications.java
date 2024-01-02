@@ -57,6 +57,7 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications {
 
         @CustomType.Setter
         public Builder onDurationWarningThresholdExceededs(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs) {
+
             this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             return this;
         }
@@ -65,6 +66,7 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure> onFailures) {
+
             this.onFailures = onFailures;
             return this;
         }
@@ -73,6 +75,7 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart> onStarts) {
+
             this.onStarts = onStarts;
             return this;
         }
@@ -81,6 +84,7 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onSuccesses(@Nullable List<GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess> onSuccesses) {
+
             this.onSuccesses = onSuccesses;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -63,12 +64,16 @@ public final class JobTaskPipelineTask {
 
         @CustomType.Setter
         public Builder fullRefresh(@Nullable Boolean fullRefresh) {
+
             this.fullRefresh = fullRefresh;
             return this;
         }
         @CustomType.Setter
         public Builder pipelineId(String pipelineId) {
-            this.pipelineId = Objects.requireNonNull(pipelineId);
+            if (pipelineId == null) {
+              throw new MissingRequiredPropertyException("JobTaskPipelineTask", "pipelineId");
+            }
+            this.pipelineId = pipelineId;
             return this;
         }
         public JobTaskPipelineTask build() {

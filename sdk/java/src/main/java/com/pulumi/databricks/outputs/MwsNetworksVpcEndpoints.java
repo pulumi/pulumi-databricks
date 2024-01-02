@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class MwsNetworksVpcEndpoints {
 
         @CustomType.Setter
         public Builder dataplaneRelays(List<String> dataplaneRelays) {
-            this.dataplaneRelays = Objects.requireNonNull(dataplaneRelays);
+            if (dataplaneRelays == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksVpcEndpoints", "dataplaneRelays");
+            }
+            this.dataplaneRelays = dataplaneRelays;
             return this;
         }
         public Builder dataplaneRelays(String... dataplaneRelays) {
@@ -49,7 +53,10 @@ public final class MwsNetworksVpcEndpoints {
         }
         @CustomType.Setter
         public Builder restApis(List<String> restApis) {
-            this.restApis = Objects.requireNonNull(restApis);
+            if (restApis == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksVpcEndpoints", "restApis");
+            }
+            this.restApis = restApis;
             return this;
         }
         public Builder restApis(String... restApis) {
