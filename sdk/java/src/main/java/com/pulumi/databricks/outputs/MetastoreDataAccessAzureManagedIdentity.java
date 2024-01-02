@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,16 +49,21 @@ public final class MetastoreDataAccessAzureManagedIdentity {
 
         @CustomType.Setter
         public Builder accessConnectorId(String accessConnectorId) {
-            this.accessConnectorId = Objects.requireNonNull(accessConnectorId);
+            if (accessConnectorId == null) {
+              throw new MissingRequiredPropertyException("MetastoreDataAccessAzureManagedIdentity", "accessConnectorId");
+            }
+            this.accessConnectorId = accessConnectorId;
             return this;
         }
         @CustomType.Setter
         public Builder credentialId(@Nullable String credentialId) {
+
             this.credentialId = credentialId;
             return this;
         }
         @CustomType.Setter
         public Builder managedIdentityId(@Nullable String managedIdentityId) {
+
             this.managedIdentityId = managedIdentityId;
             return this;
         }

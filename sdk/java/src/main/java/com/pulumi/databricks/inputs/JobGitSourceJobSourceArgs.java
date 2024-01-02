@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class JobGitSourceJobSourceArgs extends com.pulumi.resources.Resour
         }
 
         public JobGitSourceJobSourceArgs build() {
-            $.importFromGitBranch = Objects.requireNonNull($.importFromGitBranch, "expected parameter 'importFromGitBranch' to be non-null");
-            $.jobConfigPath = Objects.requireNonNull($.jobConfigPath, "expected parameter 'jobConfigPath' to be non-null");
+            if ($.importFromGitBranch == null) {
+                throw new MissingRequiredPropertyException("JobGitSourceJobSourceArgs", "importFromGitBranch");
+            }
+            if ($.jobConfigPath == null) {
+                throw new MissingRequiredPropertyException("JobGitSourceJobSourceArgs", "jobConfigPath");
+            }
             return $;
         }
     }

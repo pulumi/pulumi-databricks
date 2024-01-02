@@ -128,11 +128,13 @@ public final class ClusterWorkloadTypeClients {
 
         @CustomType.Setter
         public Builder jobs(@Nullable Boolean jobs) {
+
             this.jobs = jobs;
             return this;
         }
         @CustomType.Setter
         public Builder notebooks(@Nullable Boolean notebooks) {
+
             this.notebooks = notebooks;
             return this;
         }

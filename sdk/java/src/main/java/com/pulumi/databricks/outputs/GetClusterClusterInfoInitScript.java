@@ -78,36 +78,43 @@ public final class GetClusterClusterInfoInitScript {
 
         @CustomType.Setter
         public Builder abfss(@Nullable GetClusterClusterInfoInitScriptAbfss abfss) {
+
             this.abfss = abfss;
             return this;
         }
         @CustomType.Setter
         public Builder dbfs(@Nullable GetClusterClusterInfoInitScriptDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable GetClusterClusterInfoInitScriptFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder gcs(@Nullable GetClusterClusterInfoInitScriptGcs gcs) {
+
             this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable GetClusterClusterInfoInitScriptS3 s3) {
+
             this.s3 = s3;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable GetClusterClusterInfoInitScriptVolumes volumes) {
+
             this.volumes = volumes;
             return this;
         }
         @CustomType.Setter
         public Builder workspace(@Nullable GetClusterClusterInfoInitScriptWorkspace workspace) {
+
             this.workspace = workspace;
             return this;
         }

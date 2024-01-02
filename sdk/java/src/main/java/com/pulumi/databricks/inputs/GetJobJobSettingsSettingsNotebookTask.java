@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -79,7 +80,9 @@ public final class GetJobJobSettingsSettingsNotebookTask extends com.pulumi.reso
         }
 
         public GetJobJobSettingsSettingsNotebookTask build() {
-            $.notebookPath = Objects.requireNonNull($.notebookPath, "expected parameter 'notebookPath' to be non-null");
+            if ($.notebookPath == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsNotebookTask", "notebookPath");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFile extends com.pulumi.r
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskFile build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskFile", "path");
+            }
             return $;
         }
     }

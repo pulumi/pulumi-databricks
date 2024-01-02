@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class ClusterPolicyLibraryCranArgs extends com.pulumi.resources.Res
         }
 
         public ClusterPolicyLibraryCranArgs build() {
-            $.package_ = Objects.requireNonNull($.package_, "expected parameter 'package' to be non-null");
+            if ($.package_ == null) {
+                throw new MissingRequiredPropertyException("ClusterPolicyLibraryCranArgs", "package_");
+            }
             return $;
         }
     }

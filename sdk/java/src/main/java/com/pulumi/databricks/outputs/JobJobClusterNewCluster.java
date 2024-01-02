@@ -13,6 +13,7 @@ import com.pulumi.databricks.outputs.JobJobClusterNewClusterDockerImage;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterInitScript;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterWorkloadType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -224,41 +225,49 @@ public final class JobJobClusterNewCluster {
 
         @CustomType.Setter
         public Builder applyPolicyDefaultValues(@Nullable Boolean applyPolicyDefaultValues) {
+
             this.applyPolicyDefaultValues = applyPolicyDefaultValues;
             return this;
         }
         @CustomType.Setter
         public Builder autoscale(@Nullable JobJobClusterNewClusterAutoscale autoscale) {
+
             this.autoscale = autoscale;
             return this;
         }
         @CustomType.Setter
         public Builder autoterminationMinutes(@Nullable Integer autoterminationMinutes) {
+
             this.autoterminationMinutes = autoterminationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder awsAttributes(@Nullable JobJobClusterNewClusterAwsAttributes awsAttributes) {
+
             this.awsAttributes = awsAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder azureAttributes(@Nullable JobJobClusterNewClusterAzureAttributes azureAttributes) {
+
             this.azureAttributes = azureAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder clusterLogConf(@Nullable JobJobClusterNewClusterClusterLogConf clusterLogConf) {
+
             this.clusterLogConf = clusterLogConf;
             return this;
         }
         @CustomType.Setter
         public Builder clusterMountInfos(@Nullable List<JobJobClusterNewClusterClusterMountInfo> clusterMountInfos) {
+
             this.clusterMountInfos = clusterMountInfos;
             return this;
         }
@@ -267,56 +276,67 @@ public final class JobJobClusterNewCluster {
         }
         @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
+
             this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
+
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
         public Builder dataSecurityMode(@Nullable String dataSecurityMode) {
+
             this.dataSecurityMode = dataSecurityMode;
             return this;
         }
         @CustomType.Setter
         public Builder dockerImage(@Nullable JobJobClusterNewClusterDockerImage dockerImage) {
+
             this.dockerImage = dockerImage;
             return this;
         }
         @CustomType.Setter
         public Builder driverInstancePoolId(@Nullable String driverInstancePoolId) {
+
             this.driverInstancePoolId = driverInstancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder driverNodeTypeId(@Nullable String driverNodeTypeId) {
+
             this.driverNodeTypeId = driverNodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
+
             this.enableElasticDisk = enableElasticDisk;
             return this;
         }
         @CustomType.Setter
         public Builder enableLocalDiskEncryption(@Nullable Boolean enableLocalDiskEncryption) {
+
             this.enableLocalDiskEncryption = enableLocalDiskEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder gcpAttributes(@Nullable JobJobClusterNewClusterGcpAttributes gcpAttributes) {
+
             this.gcpAttributes = gcpAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder idempotencyToken(@Nullable String idempotencyToken) {
+
             this.idempotencyToken = idempotencyToken;
             return this;
         }
         @CustomType.Setter
         public Builder initScripts(@Nullable List<JobJobClusterNewClusterInitScript> initScripts) {
+
             this.initScripts = initScripts;
             return this;
         }
@@ -325,51 +345,63 @@ public final class JobJobClusterNewCluster {
         }
         @CustomType.Setter
         public Builder instancePoolId(@Nullable String instancePoolId) {
+
             this.instancePoolId = instancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
+
             this.nodeTypeId = nodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder numWorkers(@Nullable Integer numWorkers) {
+
             this.numWorkers = numWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
+
             this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder runtimeEngine(@Nullable String runtimeEngine) {
+
             this.runtimeEngine = runtimeEngine;
             return this;
         }
         @CustomType.Setter
         public Builder singleUserName(@Nullable String singleUserName) {
+
             this.singleUserName = singleUserName;
             return this;
         }
         @CustomType.Setter
         public Builder sparkConf(@Nullable Map<String,Object> sparkConf) {
+
             this.sparkConf = sparkConf;
             return this;
         }
         @CustomType.Setter
         public Builder sparkEnvVars(@Nullable Map<String,Object> sparkEnvVars) {
+
             this.sparkEnvVars = sparkEnvVars;
             return this;
         }
         @CustomType.Setter
         public Builder sparkVersion(String sparkVersion) {
-            this.sparkVersion = Objects.requireNonNull(sparkVersion);
+            if (sparkVersion == null) {
+              throw new MissingRequiredPropertyException("JobJobClusterNewCluster", "sparkVersion");
+            }
+            this.sparkVersion = sparkVersion;
             return this;
         }
         @CustomType.Setter
         public Builder sshPublicKeys(@Nullable List<String> sshPublicKeys) {
+
             this.sshPublicKeys = sshPublicKeys;
             return this;
         }
@@ -378,6 +410,7 @@ public final class JobJobClusterNewCluster {
         }
         @CustomType.Setter
         public Builder workloadType(@Nullable JobJobClusterNewClusterWorkloadType workloadType) {
+
             this.workloadType = workloadType;
             return this;
         }

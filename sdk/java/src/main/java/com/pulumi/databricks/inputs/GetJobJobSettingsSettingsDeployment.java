@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetJobJobSettingsSettingsDeployment extends com.pulumi.resour
         }
 
         public GetJobJobSettingsSettingsDeployment build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsDeployment", "kind");
+            }
             return $;
         }
     }

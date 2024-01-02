@@ -63,21 +63,25 @@ public final class MwsWorkspacesToken {
 
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder lifetimeSeconds(@Nullable Integer lifetimeSeconds) {
+
             this.lifetimeSeconds = lifetimeSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder tokenId(@Nullable String tokenId) {
+
             this.tokenId = tokenId;
             return this;
         }
         @CustomType.Setter
         public Builder tokenValue(@Nullable String tokenValue) {
+
             this.tokenValue = tokenValue;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.SqlEndpointTagsCustomTag;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class SqlEndpointTags {
 
         @CustomType.Setter
         public Builder customTags(List<SqlEndpointTagsCustomTag> customTags) {
-            this.customTags = Objects.requireNonNull(customTags);
+            if (customTags == null) {
+              throw new MissingRequiredPropertyException("SqlEndpointTags", "customTags");
+            }
+            this.customTags = customTags;
             return this;
         }
         public Builder customTags(SqlEndpointTagsCustomTag... customTags) {

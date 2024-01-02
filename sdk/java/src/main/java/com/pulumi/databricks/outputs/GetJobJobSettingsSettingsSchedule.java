@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,24 @@ public final class GetJobJobSettingsSettingsSchedule {
 
         @CustomType.Setter
         public Builder pauseStatus(@Nullable String pauseStatus) {
+
             this.pauseStatus = pauseStatus;
             return this;
         }
         @CustomType.Setter
         public Builder quartzCronExpression(String quartzCronExpression) {
-            this.quartzCronExpression = Objects.requireNonNull(quartzCronExpression);
+            if (quartzCronExpression == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsSchedule", "quartzCronExpression");
+            }
+            this.quartzCronExpression = quartzCronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder timezoneId(String timezoneId) {
-            this.timezoneId = Objects.requireNonNull(timezoneId);
+            if (timezoneId == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsSchedule", "timezoneId");
+            }
+            this.timezoneId = timezoneId;
             return this;
         }
         public GetJobJobSettingsSettingsSchedule build() {

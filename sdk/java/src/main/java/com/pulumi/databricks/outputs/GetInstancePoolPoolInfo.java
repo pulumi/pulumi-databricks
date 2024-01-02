@@ -11,6 +11,7 @@ import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoGcpAttributes;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoInstancePoolFleetAttribute;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoPreloadedDockerImage;
 import com.pulumi.databricks.outputs.GetInstancePoolPoolInfoStats;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -150,46 +151,59 @@ public final class GetInstancePoolPoolInfo {
 
         @CustomType.Setter
         public Builder awsAttributes(@Nullable GetInstancePoolPoolInfoAwsAttributes awsAttributes) {
+
             this.awsAttributes = awsAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder azureAttributes(@Nullable GetInstancePoolPoolInfoAzureAttributes azureAttributes) {
+
             this.azureAttributes = azureAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder customTags(@Nullable Map<String,Object> customTags) {
+
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTags(Map<String,Object> defaultTags) {
-            this.defaultTags = Objects.requireNonNull(defaultTags);
+            if (defaultTags == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfo", "defaultTags");
+            }
+            this.defaultTags = defaultTags;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpec(@Nullable GetInstancePoolPoolInfoDiskSpec diskSpec) {
+
             this.diskSpec = diskSpec;
             return this;
         }
         @CustomType.Setter
         public Builder enableElasticDisk(@Nullable Boolean enableElasticDisk) {
+
             this.enableElasticDisk = enableElasticDisk;
             return this;
         }
         @CustomType.Setter
         public Builder gcpAttributes(@Nullable GetInstancePoolPoolInfoGcpAttributes gcpAttributes) {
+
             this.gcpAttributes = gcpAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder idleInstanceAutoterminationMinutes(Integer idleInstanceAutoterminationMinutes) {
-            this.idleInstanceAutoterminationMinutes = Objects.requireNonNull(idleInstanceAutoterminationMinutes);
+            if (idleInstanceAutoterminationMinutes == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfo", "idleInstanceAutoterminationMinutes");
+            }
+            this.idleInstanceAutoterminationMinutes = idleInstanceAutoterminationMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder instancePoolFleetAttributes(@Nullable List<GetInstancePoolPoolInfoInstancePoolFleetAttribute> instancePoolFleetAttributes) {
+
             this.instancePoolFleetAttributes = instancePoolFleetAttributes;
             return this;
         }
@@ -198,31 +212,41 @@ public final class GetInstancePoolPoolInfo {
         }
         @CustomType.Setter
         public Builder instancePoolId(String instancePoolId) {
-            this.instancePoolId = Objects.requireNonNull(instancePoolId);
+            if (instancePoolId == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfo", "instancePoolId");
+            }
+            this.instancePoolId = instancePoolId;
             return this;
         }
         @CustomType.Setter
         public Builder instancePoolName(String instancePoolName) {
-            this.instancePoolName = Objects.requireNonNull(instancePoolName);
+            if (instancePoolName == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfo", "instancePoolName");
+            }
+            this.instancePoolName = instancePoolName;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacity(@Nullable Integer maxCapacity) {
+
             this.maxCapacity = maxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
+
             this.minIdleInstances = minIdleInstances;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeId(@Nullable String nodeTypeId) {
+
             this.nodeTypeId = nodeTypeId;
             return this;
         }
         @CustomType.Setter
         public Builder preloadedDockerImages(@Nullable List<GetInstancePoolPoolInfoPreloadedDockerImage> preloadedDockerImages) {
+
             this.preloadedDockerImages = preloadedDockerImages;
             return this;
         }
@@ -231,6 +255,7 @@ public final class GetInstancePoolPoolInfo {
         }
         @CustomType.Setter
         public Builder preloadedSparkVersions(@Nullable List<String> preloadedSparkVersions) {
+
             this.preloadedSparkVersions = preloadedSparkVersions;
             return this;
         }
@@ -239,11 +264,13 @@ public final class GetInstancePoolPoolInfo {
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stats(@Nullable GetInstancePoolPoolInfoStats stats) {
+
             this.stats = stats;
             return this;
         }

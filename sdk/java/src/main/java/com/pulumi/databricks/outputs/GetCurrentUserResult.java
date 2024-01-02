@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,42 +85,66 @@ public final class GetCurrentUserResult {
 
         @CustomType.Setter
         public Builder aclPrincipalId(String aclPrincipalId) {
-            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            if (aclPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "aclPrincipalId");
+            }
+            this.aclPrincipalId = aclPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
-            this.alphanumeric = Objects.requireNonNull(alphanumeric);
+            if (alphanumeric == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "alphanumeric");
+            }
+            this.alphanumeric = alphanumeric;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder home(String home) {
-            this.home = Objects.requireNonNull(home);
+            if (home == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "home");
+            }
+            this.home = home;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder repos(String repos) {
-            this.repos = Objects.requireNonNull(repos);
+            if (repos == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "repos");
+            }
+            this.repos = repos;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         @CustomType.Setter
         public Builder workspaceUrl(String workspaceUrl) {
-            this.workspaceUrl = Objects.requireNonNull(workspaceUrl);
+            if (workspaceUrl == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "workspaceUrl");
+            }
+            this.workspaceUrl = workspaceUrl;
             return this;
         }
         public GetCurrentUserResult build() {

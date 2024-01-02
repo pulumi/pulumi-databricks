@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class JobDeploymentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobDeploymentArgs build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("JobDeploymentArgs", "kind");
+            }
             return $;
         }
     }

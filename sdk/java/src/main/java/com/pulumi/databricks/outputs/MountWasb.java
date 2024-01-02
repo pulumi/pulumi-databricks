@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,32 +67,44 @@ public final class MountWasb {
 
         @CustomType.Setter
         public Builder authType(String authType) {
-            this.authType = Objects.requireNonNull(authType);
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("MountWasb", "authType");
+            }
+            this.authType = authType;
             return this;
         }
         @CustomType.Setter
         public Builder containerName(@Nullable String containerName) {
+
             this.containerName = containerName;
             return this;
         }
         @CustomType.Setter
         public Builder directory(@Nullable String directory) {
+
             this.directory = directory;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccountName(@Nullable String storageAccountName) {
+
             this.storageAccountName = storageAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder tokenSecretKey(String tokenSecretKey) {
-            this.tokenSecretKey = Objects.requireNonNull(tokenSecretKey);
+            if (tokenSecretKey == null) {
+              throw new MissingRequiredPropertyException("MountWasb", "tokenSecretKey");
+            }
+            this.tokenSecretKey = tokenSecretKey;
             return this;
         }
         @CustomType.Setter
         public Builder tokenSecretScope(String tokenSecretScope) {
-            this.tokenSecretScope = Objects.requireNonNull(tokenSecretScope);
+            if (tokenSecretScope == null) {
+              throw new MissingRequiredPropertyException("MountWasb", "tokenSecretScope");
+            }
+            this.tokenSecretScope = tokenSecretScope;
             return this;
         }
         public MountWasb build() {

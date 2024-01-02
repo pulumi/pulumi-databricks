@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -145,10 +146,18 @@ public final class GetInstanceProfilesInstanceProfile extends com.pulumi.resourc
         }
 
         public GetInstanceProfilesInstanceProfile build() {
-            $.arn = Objects.requireNonNull($.arn, "expected parameter 'arn' to be non-null");
-            $.isMeta = Objects.requireNonNull($.isMeta, "expected parameter 'isMeta' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.roleArn = Objects.requireNonNull($.roleArn, "expected parameter 'roleArn' to be non-null");
+            if ($.arn == null) {
+                throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "arn");
+            }
+            if ($.isMeta == null) {
+                throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "isMeta");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "name");
+            }
+            if ($.roleArn == null) {
+                throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "roleArn");
+            }
             return $;
         }
     }

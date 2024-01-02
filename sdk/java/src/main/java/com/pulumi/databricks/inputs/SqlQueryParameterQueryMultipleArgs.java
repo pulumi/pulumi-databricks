@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,7 +91,9 @@ public final class SqlQueryParameterQueryMultipleArgs extends com.pulumi.resourc
         }
 
         public SqlQueryParameterQueryMultipleArgs build() {
-            $.separator = Objects.requireNonNull($.separator, "expected parameter 'separator' to be non-null");
+            if ($.separator == null) {
+                throw new MissingRequiredPropertyException("SqlQueryParameterQueryMultipleArgs", "separator");
+            }
             return $;
         }
     }

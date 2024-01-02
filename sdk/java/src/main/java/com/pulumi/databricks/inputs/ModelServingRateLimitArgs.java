@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class ModelServingRateLimitArgs extends com.pulumi.resources.Resour
         }
 
         public ModelServingRateLimitArgs build() {
-            $.calls = Objects.requireNonNull($.calls, "expected parameter 'calls' to be non-null");
-            $.renewalPeriod = Objects.requireNonNull($.renewalPeriod, "expected parameter 'renewalPeriod' to be non-null");
+            if ($.calls == null) {
+                throw new MissingRequiredPropertyException("ModelServingRateLimitArgs", "calls");
+            }
+            if ($.renewalPeriod == null) {
+                throw new MissingRequiredPropertyException("ModelServingRateLimitArgs", "renewalPeriod");
+            }
             return $;
         }
     }

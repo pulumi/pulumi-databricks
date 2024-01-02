@@ -51,11 +51,13 @@ public final class GetDbfsFilePathsPathList {
 
         @CustomType.Setter
         public Builder fileSize(@Nullable Integer fileSize) {
+
             this.fileSize = fileSize;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

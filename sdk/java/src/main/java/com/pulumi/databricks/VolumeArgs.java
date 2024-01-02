@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,9 +299,15 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VolumeArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.schemaName = Objects.requireNonNull($.schemaName, "expected parameter 'schemaName' to be non-null");
-            $.volumeType = Objects.requireNonNull($.volumeType, "expected parameter 'volumeType' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("VolumeArgs", "catalogName");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("VolumeArgs", "schemaName");
+            }
+            if ($.volumeType == null) {
+                throw new MissingRequiredPropertyException("VolumeArgs", "volumeType");
+            }
             return $;
         }
     }

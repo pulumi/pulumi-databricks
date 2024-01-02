@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,28 @@ public final class MlflowWebhookHttpUrlSpec {
 
         @CustomType.Setter
         public Builder authorization(@Nullable String authorization) {
+
             this.authorization = authorization;
             return this;
         }
         @CustomType.Setter
         public Builder enableSslVerification(@Nullable Boolean enableSslVerification) {
+
             this.enableSslVerification = enableSslVerification;
             return this;
         }
         @CustomType.Setter
         public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("MlflowWebhookHttpUrlSpec", "url");
+            }
+            this.url = url;
             return this;
         }
         public MlflowWebhookHttpUrlSpec build() {

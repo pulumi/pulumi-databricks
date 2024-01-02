@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -836,7 +837,9 @@ public final class PermissionsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PermissionsArgs build() {
-            $.accessControls = Objects.requireNonNull($.accessControls, "expected parameter 'accessControls' to be non-null");
+            if ($.accessControls == null) {
+                throw new MissingRequiredPropertyException("PermissionsArgs", "accessControls");
+            }
             return $;
         }
     }

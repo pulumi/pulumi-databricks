@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class MwsStorageConfigurationsArgs extends com.pulumi.resources.Res
         }
 
         public MwsStorageConfigurationsArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
-            $.storageConfigurationName = Objects.requireNonNull($.storageConfigurationName, "expected parameter 'storageConfigurationName' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MwsStorageConfigurationsArgs", "accountId");
+            }
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("MwsStorageConfigurationsArgs", "bucketName");
+            }
+            if ($.storageConfigurationName == null) {
+                throw new MissingRequiredPropertyException("MwsStorageConfigurationsArgs", "storageConfigurationName");
+            }
             return $;
         }
     }

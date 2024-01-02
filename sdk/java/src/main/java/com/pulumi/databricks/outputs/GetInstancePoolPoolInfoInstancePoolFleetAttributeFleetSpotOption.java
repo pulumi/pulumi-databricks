@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOpt
 
         @CustomType.Setter
         public Builder allocationStrategy(String allocationStrategy) {
-            this.allocationStrategy = Objects.requireNonNull(allocationStrategy);
+            if (allocationStrategy == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption", "allocationStrategy");
+            }
+            this.allocationStrategy = allocationStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder instancePoolsToUseCount(@Nullable Integer instancePoolsToUseCount) {
+
             this.instancePoolsToUseCount = instancePoolsToUseCount;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,17 +70,26 @@ public final class GetViewsResult {
 
         @CustomType.Setter
         public Builder catalogName(String catalogName) {
-            this.catalogName = Objects.requireNonNull(catalogName);
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetViewsResult", "catalogName");
+            }
+            this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetViewsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetViewsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -87,7 +97,10 @@ public final class GetViewsResult {
         }
         @CustomType.Setter
         public Builder schemaName(String schemaName) {
-            this.schemaName = Objects.requireNonNull(schemaName);
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetViewsResult", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         public GetViewsResult build() {

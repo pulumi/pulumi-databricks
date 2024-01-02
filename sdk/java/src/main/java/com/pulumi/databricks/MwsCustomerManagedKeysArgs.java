@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsCustomerManagedKeysAwsKeyInfoArgs;
 import com.pulumi.databricks.inputs.MwsCustomerManagedKeysGcpKeyInfoArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -275,8 +276,12 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         public MwsCustomerManagedKeysArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.useCases = Objects.requireNonNull($.useCases, "expected parameter 'useCases' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MwsCustomerManagedKeysArgs", "accountId");
+            }
+            if ($.useCases == null) {
+                throw new MissingRequiredPropertyException("MwsCustomerManagedKeysArgs", "useCases");
+            }
             return $;
         }
     }

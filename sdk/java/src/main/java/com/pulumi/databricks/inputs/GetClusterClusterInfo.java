@@ -15,6 +15,7 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoExecutor;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoGcpAttributes;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoInitScript;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoTerminationReason;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -884,10 +885,18 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         }
 
         public GetClusterClusterInfo build() {
-            $.defaultTags = Objects.requireNonNull($.defaultTags, "expected parameter 'defaultTags' to be non-null");
-            $.driverInstancePoolId = Objects.requireNonNull($.driverInstancePoolId, "expected parameter 'driverInstancePoolId' to be non-null");
-            $.sparkVersion = Objects.requireNonNull($.sparkVersion, "expected parameter 'sparkVersion' to be non-null");
-            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
+            if ($.defaultTags == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfo", "defaultTags");
+            }
+            if ($.driverInstancePoolId == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfo", "driverInstancePoolId");
+            }
+            if ($.sparkVersion == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfo", "sparkVersion");
+            }
+            if ($.state == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfo", "state");
+            }
             return $;
         }
     }

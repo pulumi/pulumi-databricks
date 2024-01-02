@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -62,8 +63,12 @@ public final class GetSqlWarehouseTagsCustomTag extends com.pulumi.resources.Inv
         }
 
         public GetSqlWarehouseTagsCustomTag build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTag", "key");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTag", "value");
+            }
             return $;
         }
     }

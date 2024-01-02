@@ -43,11 +43,13 @@ public final class GetJobJobSettingsSettingsJobCluster {
 
         @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
+
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
         public Builder newCluster(@Nullable GetJobJobSettingsSettingsJobClusterNewCluster newCluster) {
+
             this.newCluster = newCluster;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ClusterClusterMountInfoNetworkFilesystemInfo;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -159,16 +160,23 @@ public final class ClusterClusterMountInfo {
 
         @CustomType.Setter
         public Builder localMountDirPath(String localMountDirPath) {
-            this.localMountDirPath = Objects.requireNonNull(localMountDirPath);
+            if (localMountDirPath == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterMountInfo", "localMountDirPath");
+            }
+            this.localMountDirPath = localMountDirPath;
             return this;
         }
         @CustomType.Setter
         public Builder networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfo networkFilesystemInfo) {
-            this.networkFilesystemInfo = Objects.requireNonNull(networkFilesystemInfo);
+            if (networkFilesystemInfo == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterMountInfo", "networkFilesystemInfo");
+            }
+            this.networkFilesystemInfo = networkFilesystemInfo;
             return this;
         }
         @CustomType.Setter
         public Builder remoteMountDirPath(@Nullable String remoteMountDirPath) {
+
             this.remoteMountDirPath = remoteMountDirPath;
             return this;
         }

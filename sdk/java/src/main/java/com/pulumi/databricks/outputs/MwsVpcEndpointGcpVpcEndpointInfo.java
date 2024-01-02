@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,26 +101,37 @@ public final class MwsVpcEndpointGcpVpcEndpointInfo {
 
         @CustomType.Setter
         public Builder endpointRegion(String endpointRegion) {
-            this.endpointRegion = Objects.requireNonNull(endpointRegion);
+            if (endpointRegion == null) {
+              throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfo", "endpointRegion");
+            }
+            this.endpointRegion = endpointRegion;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfo", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder pscConnectionId(@Nullable String pscConnectionId) {
+
             this.pscConnectionId = pscConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder pscEndpointName(String pscEndpointName) {
-            this.pscEndpointName = Objects.requireNonNull(pscEndpointName);
+            if (pscEndpointName == null) {
+              throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfo", "pscEndpointName");
+            }
+            this.pscEndpointName = pscEndpointName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAttachmentId(@Nullable String serviceAttachmentId) {
+
             this.serviceAttachmentId = serviceAttachmentId;
             return this;
         }

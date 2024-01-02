@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -78,7 +79,9 @@ public final class GetInstancePoolPoolInfoAwsAttributes extends com.pulumi.resou
         }
 
         public GetInstancePoolPoolInfoAwsAttributes build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoAwsAttributes", "zoneId");
+            }
             return $;
         }
     }

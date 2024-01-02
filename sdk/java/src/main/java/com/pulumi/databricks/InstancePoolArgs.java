@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.InstancePoolDiskSpecArgs;
 import com.pulumi.databricks.inputs.InstancePoolGcpAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolInstancePoolFleetAttributesArgs;
 import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -479,8 +480,12 @@ public final class InstancePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstancePoolArgs build() {
-            $.idleInstanceAutoterminationMinutes = Objects.requireNonNull($.idleInstanceAutoterminationMinutes, "expected parameter 'idleInstanceAutoterminationMinutes' to be non-null");
-            $.instancePoolName = Objects.requireNonNull($.instancePoolName, "expected parameter 'instancePoolName' to be non-null");
+            if ($.idleInstanceAutoterminationMinutes == null) {
+                throw new MissingRequiredPropertyException("InstancePoolArgs", "idleInstanceAutoterminationMinutes");
+            }
+            if ($.instancePoolName == null) {
+                throw new MissingRequiredPropertyException("InstancePoolArgs", "instancePoolName");
+            }
             return $;
         }
     }

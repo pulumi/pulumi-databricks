@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.SqlQueryParameterEnum;
 import com.pulumi.databricks.outputs.SqlQueryParameterNumber;
 import com.pulumi.databricks.outputs.SqlQueryParameterQuery;
 import com.pulumi.databricks.outputs.SqlQueryParameterText;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,61 +143,75 @@ public final class SqlQueryParameter {
 
         @CustomType.Setter
         public Builder date(@Nullable SqlQueryParameterDate date) {
+
             this.date = date;
             return this;
         }
         @CustomType.Setter
         public Builder dateRange(@Nullable SqlQueryParameterDateRange dateRange) {
+
             this.dateRange = dateRange;
             return this;
         }
         @CustomType.Setter
         public Builder datetime(@Nullable SqlQueryParameterDatetime datetime) {
+
             this.datetime = datetime;
             return this;
         }
         @CustomType.Setter
         public Builder datetimeRange(@Nullable SqlQueryParameterDatetimeRange datetimeRange) {
+
             this.datetimeRange = datetimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder datetimesec(@Nullable SqlQueryParameterDatetimesec datetimesec) {
+
             this.datetimesec = datetimesec;
             return this;
         }
         @CustomType.Setter
         public Builder datetimesecRange(@Nullable SqlQueryParameterDatetimesecRange datetimesecRange) {
+
             this.datetimesecRange = datetimesecRange;
             return this;
         }
         @CustomType.Setter("enum")
         public Builder enum_(@Nullable SqlQueryParameterEnum enum_) {
+
             this.enum_ = enum_;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("SqlQueryParameter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder number(@Nullable SqlQueryParameterNumber number) {
+
             this.number = number;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable SqlQueryParameterQuery query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable SqlQueryParameterText text) {
+
             this.text = text;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

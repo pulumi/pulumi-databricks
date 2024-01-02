@@ -44,6 +44,7 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }

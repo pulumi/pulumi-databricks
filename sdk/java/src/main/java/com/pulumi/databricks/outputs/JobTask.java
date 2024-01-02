@@ -334,21 +334,25 @@ public final class JobTask {
 
         @CustomType.Setter
         public Builder computeKey(@Nullable String computeKey) {
+
             this.computeKey = computeKey;
             return this;
         }
         @CustomType.Setter
         public Builder conditionTask(@Nullable JobTaskConditionTask conditionTask) {
+
             this.conditionTask = conditionTask;
             return this;
         }
         @CustomType.Setter
         public Builder dbtTask(@Nullable JobTaskDbtTask dbtTask) {
+
             this.dbtTask = dbtTask;
             return this;
         }
         @CustomType.Setter
         public Builder dependsOns(@Nullable List<JobTaskDependsOn> dependsOns) {
+
             this.dependsOns = dependsOns;
             return this;
         }
@@ -357,31 +361,37 @@ public final class JobTask {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder emailNotifications(@Nullable JobTaskEmailNotifications emailNotifications) {
+
             this.emailNotifications = emailNotifications;
             return this;
         }
         @CustomType.Setter
         public Builder existingClusterId(@Nullable String existingClusterId) {
+
             this.existingClusterId = existingClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder health(@Nullable JobTaskHealth health) {
+
             this.health = health;
             return this;
         }
         @CustomType.Setter
         public Builder jobClusterKey(@Nullable String jobClusterKey) {
+
             this.jobClusterKey = jobClusterKey;
             return this;
         }
         @CustomType.Setter
         public Builder libraries(@Nullable List<JobTaskLibrary> libraries) {
+
             this.libraries = libraries;
             return this;
         }
@@ -390,86 +400,103 @@ public final class JobTask {
         }
         @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
+
             this.maxRetries = maxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder minRetryIntervalMillis(@Nullable Integer minRetryIntervalMillis) {
+
             this.minRetryIntervalMillis = minRetryIntervalMillis;
             return this;
         }
         @CustomType.Setter
         public Builder newCluster(@Nullable JobTaskNewCluster newCluster) {
+
             this.newCluster = newCluster;
             return this;
         }
         @CustomType.Setter
         public Builder notebookTask(@Nullable JobTaskNotebookTask notebookTask) {
+
             this.notebookTask = notebookTask;
             return this;
         }
         @CustomType.Setter
         public Builder notificationSettings(@Nullable JobTaskNotificationSettings notificationSettings) {
+
             this.notificationSettings = notificationSettings;
             return this;
         }
         @CustomType.Setter
         public Builder pipelineTask(@Nullable JobTaskPipelineTask pipelineTask) {
+
             this.pipelineTask = pipelineTask;
             return this;
         }
         @CustomType.Setter
         public Builder pythonWheelTask(@Nullable JobTaskPythonWheelTask pythonWheelTask) {
+
             this.pythonWheelTask = pythonWheelTask;
             return this;
         }
         @CustomType.Setter
         public Builder retryOnTimeout(@Nullable Boolean retryOnTimeout) {
+
             this.retryOnTimeout = retryOnTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder runIf(@Nullable String runIf) {
+
             this.runIf = runIf;
             return this;
         }
         @CustomType.Setter
         public Builder runJobTask(@Nullable JobTaskRunJobTask runJobTask) {
+
             this.runJobTask = runJobTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkJarTask(@Nullable JobTaskSparkJarTask sparkJarTask) {
+
             this.sparkJarTask = sparkJarTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkPythonTask(@Nullable JobTaskSparkPythonTask sparkPythonTask) {
+
             this.sparkPythonTask = sparkPythonTask;
             return this;
         }
         @CustomType.Setter
         public Builder sparkSubmitTask(@Nullable JobTaskSparkSubmitTask sparkSubmitTask) {
+
             this.sparkSubmitTask = sparkSubmitTask;
             return this;
         }
         @CustomType.Setter
         public Builder sqlTask(@Nullable JobTaskSqlTask sqlTask) {
+
             this.sqlTask = sqlTask;
             return this;
         }
         @CustomType.Setter
         public Builder taskKey(@Nullable String taskKey) {
+
             this.taskKey = taskKey;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder webhookNotifications(@Nullable JobTaskWebhookNotifications webhookNotifications) {
+
             this.webhookNotifications = webhookNotifications;
             return this;
         }

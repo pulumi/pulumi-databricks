@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ServicePrincipalRoleArgs extends com.pulumi.resources.Resourc
         }
 
         public ServicePrincipalRoleArgs build() {
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.servicePrincipalId = Objects.requireNonNull($.servicePrincipalId, "expected parameter 'servicePrincipalId' to be non-null");
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalRoleArgs", "role");
+            }
+            if ($.servicePrincipalId == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalRoleArgs", "servicePrincipalId");
+            }
             return $;
         }
     }

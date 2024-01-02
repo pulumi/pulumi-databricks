@@ -67,11 +67,13 @@ public final class ModelServingConfig {
 
         @CustomType.Setter
         public Builder autoCaptureConfig(@Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig) {
+
             this.autoCaptureConfig = autoCaptureConfig;
             return this;
         }
         @CustomType.Setter
         public Builder servedModels(@Nullable List<ModelServingConfigServedModel> servedModels) {
+
             this.servedModels = servedModels;
             return this;
         }
@@ -80,6 +82,7 @@ public final class ModelServingConfig {
         }
         @CustomType.Setter
         public Builder trafficConfig(@Nullable ModelServingConfigTrafficConfig trafficConfig) {
+
             this.trafficConfig = trafficConfig;
             return this;
         }

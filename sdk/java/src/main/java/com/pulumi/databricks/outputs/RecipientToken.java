@@ -129,36 +129,43 @@ public final class RecipientToken {
 
         @CustomType.Setter
         public Builder activationUrl(@Nullable String activationUrl) {
+
             this.activationUrl = activationUrl;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(@Nullable Integer createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
+
             this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder expirationTime(@Nullable Integer expirationTime) {
+
             this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable Integer updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(@Nullable String updatedBy) {
+
             this.updatedBy = updatedBy;
             return this;
         }

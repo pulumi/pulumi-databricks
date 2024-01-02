@@ -42,11 +42,13 @@ public final class GetInstancePoolPoolInfoDiskSpecDiskType {
 
         @CustomType.Setter
         public Builder azureDiskVolumeType(@Nullable String azureDiskVolumeType) {
+
             this.azureDiskVolumeType = azureDiskVolumeType;
             return this;
         }
         @CustomType.Setter
         public Builder ebsVolumeType(@Nullable String ebsVolumeType) {
+
             this.ebsVolumeType = ebsVolumeType;
             return this;
         }

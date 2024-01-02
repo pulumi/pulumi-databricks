@@ -89,21 +89,25 @@ public final class JobTaskPythonWheelTask {
 
         @CustomType.Setter
         public Builder entryPoint(@Nullable String entryPoint) {
+
             this.entryPoint = entryPoint;
             return this;
         }
         @CustomType.Setter
         public Builder namedParameters(@Nullable Map<String,Object> namedParameters) {
+
             this.namedParameters = namedParameters;
             return this;
         }
         @CustomType.Setter
         public Builder packageName(@Nullable String packageName) {
+
             this.packageName = packageName;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
+
             this.parameters = parameters;
             return this;
         }

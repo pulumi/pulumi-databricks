@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -114,7 +115,9 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs extends com
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs build() {
-            $.dashboardId = Objects.requireNonNull($.dashboardId, "expected parameter 'dashboardId' to be non-null");
+            if ($.dashboardId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs", "dashboardId");
+            }
             return $;
         }
     }

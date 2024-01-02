@@ -15,6 +15,7 @@ import com.pulumi.databricks.inputs.ClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.ClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.ClusterLibraryArgs;
 import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1396,7 +1397,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.sparkVersion = Objects.requireNonNull($.sparkVersion, "expected parameter 'sparkVersion' to be non-null");
+            if ($.sparkVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "sparkVersion");
+            }
             return $;
         }
     }

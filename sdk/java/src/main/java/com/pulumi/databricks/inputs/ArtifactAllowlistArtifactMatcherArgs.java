@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ArtifactAllowlistArtifactMatcherArgs extends com.pulumi.resou
         }
 
         public ArtifactAllowlistArtifactMatcherArgs build() {
-            $.artifact = Objects.requireNonNull($.artifact, "expected parameter 'artifact' to be non-null");
-            $.matchType = Objects.requireNonNull($.matchType, "expected parameter 'matchType' to be non-null");
+            if ($.artifact == null) {
+                throw new MissingRequiredPropertyException("ArtifactAllowlistArtifactMatcherArgs", "artifact");
+            }
+            if ($.matchType == null) {
+                throw new MissingRequiredPropertyException("ArtifactAllowlistArtifactMatcherArgs", "matchType");
+            }
             return $;
         }
     }

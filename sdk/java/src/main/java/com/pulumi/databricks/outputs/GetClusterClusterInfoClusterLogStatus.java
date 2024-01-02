@@ -43,11 +43,13 @@ public final class GetClusterClusterInfoClusterLogStatus {
 
         @CustomType.Setter
         public Builder lastAttempted(@Nullable Integer lastAttempted) {
+
             this.lastAttempted = lastAttempted;
             return this;
         }
         @CustomType.Setter
         public Builder lastException(@Nullable String lastException) {
+
             this.lastException = lastException;
             return this;
         }

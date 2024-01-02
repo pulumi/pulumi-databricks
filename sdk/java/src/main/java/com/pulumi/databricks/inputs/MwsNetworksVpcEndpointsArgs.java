@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,8 +81,12 @@ public final class MwsNetworksVpcEndpointsArgs extends com.pulumi.resources.Reso
         }
 
         public MwsNetworksVpcEndpointsArgs build() {
-            $.dataplaneRelays = Objects.requireNonNull($.dataplaneRelays, "expected parameter 'dataplaneRelays' to be non-null");
-            $.restApis = Objects.requireNonNull($.restApis, "expected parameter 'restApis' to be non-null");
+            if ($.dataplaneRelays == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksVpcEndpointsArgs", "dataplaneRelays");
+            }
+            if ($.restApis == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksVpcEndpointsArgs", "restApis");
+            }
             return $;
         }
     }

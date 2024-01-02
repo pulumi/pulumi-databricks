@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -67,12 +68,16 @@ public final class GetJobJobSettingsSettingsDbtTask {
 
         @CustomType.Setter
         public Builder catalog(@Nullable String catalog) {
+
             this.catalog = catalog;
             return this;
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
-            this.commands = Objects.requireNonNull(commands);
+            if (commands == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsDbtTask", "commands");
+            }
+            this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
@@ -80,21 +85,25 @@ public final class GetJobJobSettingsSettingsDbtTask {
         }
         @CustomType.Setter
         public Builder profilesDirectory(@Nullable String profilesDirectory) {
+
             this.profilesDirectory = profilesDirectory;
             return this;
         }
         @CustomType.Setter
         public Builder projectDirectory(@Nullable String projectDirectory) {
+
             this.projectDirectory = projectDirectory;
             return this;
         }
         @CustomType.Setter
         public Builder schema(@Nullable String schema) {
+
             this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
+
             this.warehouseId = warehouseId;
             return this;
         }

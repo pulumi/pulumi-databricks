@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlAlertOptionsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -260,8 +261,12 @@ public final class SqlAlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SqlAlertArgs build() {
-            $.options = Objects.requireNonNull($.options, "expected parameter 'options' to be non-null");
-            $.queryId = Objects.requireNonNull($.queryId, "expected parameter 'queryId' to be non-null");
+            if ($.options == null) {
+                throw new MissingRequiredPropertyException("SqlAlertArgs", "options");
+            }
+            if ($.queryId == null) {
+                throw new MissingRequiredPropertyException("SqlAlertArgs", "queryId");
+            }
             return $;
         }
     }

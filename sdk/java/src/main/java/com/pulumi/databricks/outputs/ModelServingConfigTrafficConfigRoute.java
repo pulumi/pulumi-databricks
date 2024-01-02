@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class ModelServingConfigTrafficConfigRoute {
 
         @CustomType.Setter
         public Builder servedModelName(String servedModelName) {
-            this.servedModelName = Objects.requireNonNull(servedModelName);
+            if (servedModelName == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRoute", "servedModelName");
+            }
+            this.servedModelName = servedModelName;
             return this;
         }
         @CustomType.Setter
         public Builder trafficPercentage(Integer trafficPercentage) {
-            this.trafficPercentage = Objects.requireNonNull(trafficPercentage);
+            if (trafficPercentage == null) {
+              throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRoute", "trafficPercentage");
+            }
+            this.trafficPercentage = trafficPercentage;
             return this;
         }
         public ModelServingConfigTrafficConfigRoute build() {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -49,17 +50,24 @@ public final class ModelServingRateLimit {
 
         @CustomType.Setter
         public Builder calls(Integer calls) {
-            this.calls = Objects.requireNonNull(calls);
+            if (calls == null) {
+              throw new MissingRequiredPropertyException("ModelServingRateLimit", "calls");
+            }
+            this.calls = calls;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder renewalPeriod(String renewalPeriod) {
-            this.renewalPeriod = Objects.requireNonNull(renewalPeriod);
+            if (renewalPeriod == null) {
+              throw new MissingRequiredPropertyException("ModelServingRateLimit", "renewalPeriod");
+            }
+            this.renewalPeriod = renewalPeriod;
             return this;
         }
         public ModelServingRateLimit build() {

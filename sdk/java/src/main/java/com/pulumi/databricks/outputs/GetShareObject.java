@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetShareObjectPartition;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -124,41 +125,57 @@ public final class GetShareObject {
 
         @CustomType.Setter
         public Builder addedAt(Integer addedAt) {
-            this.addedAt = Objects.requireNonNull(addedAt);
+            if (addedAt == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "addedAt");
+            }
+            this.addedAt = addedAt;
             return this;
         }
         @CustomType.Setter
         public Builder addedBy(String addedBy) {
-            this.addedBy = Objects.requireNonNull(addedBy);
+            if (addedBy == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "addedBy");
+            }
+            this.addedBy = addedBy;
             return this;
         }
         @CustomType.Setter
         public Builder cdfEnabled(@Nullable Boolean cdfEnabled) {
+
             this.cdfEnabled = cdfEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder dataObjectType(String dataObjectType) {
-            this.dataObjectType = Objects.requireNonNull(dataObjectType);
+            if (dataObjectType == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "dataObjectType");
+            }
+            this.dataObjectType = dataObjectType;
             return this;
         }
         @CustomType.Setter
         public Builder historyDataSharingStatus(@Nullable String historyDataSharingStatus) {
+
             this.historyDataSharingStatus = historyDataSharingStatus;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(@Nullable List<GetShareObjectPartition> partitions) {
+
             this.partitions = partitions;
             return this;
         }
@@ -167,17 +184,22 @@ public final class GetShareObject {
         }
         @CustomType.Setter
         public Builder sharedAs(@Nullable String sharedAs) {
+
             this.sharedAs = sharedAs;
             return this;
         }
         @CustomType.Setter
         public Builder startVersion(@Nullable Integer startVersion) {
+
             this.startVersion = startVersion;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetShareObject build() {

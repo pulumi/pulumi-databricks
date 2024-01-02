@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class MwsWorkspacesGkeConfig {
 
         @CustomType.Setter
         public Builder connectivityType(String connectivityType) {
-            this.connectivityType = Objects.requireNonNull(connectivityType);
+            if (connectivityType == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfig", "connectivityType");
+            }
+            this.connectivityType = connectivityType;
             return this;
         }
         @CustomType.Setter
         public Builder masterIpRange(String masterIpRange) {
-            this.masterIpRange = Objects.requireNonNull(masterIpRange);
+            if (masterIpRange == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesGkeConfig", "masterIpRange");
+            }
+            this.masterIpRange = masterIpRange;
             return this;
         }
         public MwsWorkspacesGkeConfig build() {

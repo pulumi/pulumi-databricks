@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,36 +130,45 @@ public final class ClusterInitScriptS3 {
 
         @CustomType.Setter
         public Builder cannedAcl(@Nullable String cannedAcl) {
+
             this.cannedAcl = cannedAcl;
             return this;
         }
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("ClusterInitScriptS3", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder enableEncryption(@Nullable Boolean enableEncryption) {
+
             this.enableEncryption = enableEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionType(@Nullable String encryptionType) {
+
             this.encryptionType = encryptionType;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
+
             this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }

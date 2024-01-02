@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,9 +171,15 @@ public final class MwsPermissionAssignmentArgs extends com.pulumi.resources.Reso
         }
 
         public MwsPermissionAssignmentArgs build() {
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.principalId = Objects.requireNonNull($.principalId, "expected parameter 'principalId' to be non-null");
-            $.workspaceId = Objects.requireNonNull($.workspaceId, "expected parameter 'workspaceId' to be non-null");
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("MwsPermissionAssignmentArgs", "permissions");
+            }
+            if ($.principalId == null) {
+                throw new MissingRequiredPropertyException("MwsPermissionAssignmentArgs", "principalId");
+            }
+            if ($.workspaceId == null) {
+                throw new MissingRequiredPropertyException("MwsPermissionAssignmentArgs", "workspaceId");
+            }
             return $;
         }
     }

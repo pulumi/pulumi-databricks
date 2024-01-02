@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetShareObjectPartitionArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -294,11 +295,21 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GetShareObjectArgs build() {
-            $.addedAt = Objects.requireNonNull($.addedAt, "expected parameter 'addedAt' to be non-null");
-            $.addedBy = Objects.requireNonNull($.addedBy, "expected parameter 'addedBy' to be non-null");
-            $.dataObjectType = Objects.requireNonNull($.dataObjectType, "expected parameter 'dataObjectType' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.addedAt == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "addedAt");
+            }
+            if ($.addedBy == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "addedBy");
+            }
+            if ($.dataObjectType == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "dataObjectType");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "name");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "status");
+            }
             return $;
         }
     }

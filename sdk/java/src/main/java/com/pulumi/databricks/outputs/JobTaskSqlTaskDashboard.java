@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskSqlTaskDashboardSubscription;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -89,21 +90,27 @@ public final class JobTaskSqlTaskDashboard {
 
         @CustomType.Setter
         public Builder customSubject(@Nullable String customSubject) {
+
             this.customSubject = customSubject;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
-            this.dashboardId = Objects.requireNonNull(dashboardId);
+            if (dashboardId == null) {
+              throw new MissingRequiredPropertyException("JobTaskSqlTaskDashboard", "dashboardId");
+            }
+            this.dashboardId = dashboardId;
             return this;
         }
         @CustomType.Setter
         public Builder pauseSubscriptions(@Nullable Boolean pauseSubscriptions) {
+
             this.pauseSubscriptions = pauseSubscriptions;
             return this;
         }
         @CustomType.Setter
         public Builder subscriptions(@Nullable List<JobTaskSqlTaskDashboardSubscription> subscriptions) {
+
             this.subscriptions = subscriptions;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 exten
         }
 
         public GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3", "destination");
+            }
             return $;
         }
     }

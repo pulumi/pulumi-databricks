@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride
         }
 
         public InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs build() {
-            $.availabilityZone = Objects.requireNonNull($.availabilityZone, "expected parameter 'availabilityZone' to be non-null");
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
+            if ($.availabilityZone == null) {
+                throw new MissingRequiredPropertyException("InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs", "availabilityZone");
+            }
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("InstancePoolInstancePoolFleetAttributesLaunchTemplateOverrideArgs", "instanceType");
+            }
             return $;
         }
     }

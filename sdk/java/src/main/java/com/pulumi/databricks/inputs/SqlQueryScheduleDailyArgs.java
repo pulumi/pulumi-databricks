@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class SqlQueryScheduleDailyArgs extends com.pulumi.resources.Resour
         }
 
         public SqlQueryScheduleDailyArgs build() {
-            $.intervalDays = Objects.requireNonNull($.intervalDays, "expected parameter 'intervalDays' to be non-null");
-            $.timeOfDay = Objects.requireNonNull($.timeOfDay, "expected parameter 'timeOfDay' to be non-null");
+            if ($.intervalDays == null) {
+                throw new MissingRequiredPropertyException("SqlQueryScheduleDailyArgs", "intervalDays");
+            }
+            if ($.timeOfDay == null) {
+                throw new MissingRequiredPropertyException("SqlQueryScheduleDailyArgs", "timeOfDay");
+            }
             return $;
         }
     }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MlflowWebhookHttpUrlSpecArgs;
 import com.pulumi.databricks.inputs.MlflowWebhookJobSpecArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -244,7 +245,9 @@ public final class MlflowWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MlflowWebhookArgs build() {
-            $.events = Objects.requireNonNull($.events, "expected parameter 'events' to be non-null");
+            if ($.events == null) {
+                throw new MissingRequiredPropertyException("MlflowWebhookArgs", "events");
+            }
             return $;
         }
     }

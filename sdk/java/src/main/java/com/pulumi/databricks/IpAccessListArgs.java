@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -199,9 +200,15 @@ public final class IpAccessListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpAccessListArgs build() {
-            $.ipAddresses = Objects.requireNonNull($.ipAddresses, "expected parameter 'ipAddresses' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.listType = Objects.requireNonNull($.listType, "expected parameter 'listType' to be non-null");
+            if ($.ipAddresses == null) {
+                throw new MissingRequiredPropertyException("IpAccessListArgs", "ipAddresses");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("IpAccessListArgs", "label");
+            }
+            if ($.listType == null) {
+                throw new MissingRequiredPropertyException("IpAccessListArgs", "listType");
+            }
             return $;
         }
     }

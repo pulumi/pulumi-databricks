@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetwor
         }
 
         public GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo build() {
-            $.serverAddress = Objects.requireNonNull($.serverAddress, "expected parameter 'serverAddress' to be non-null");
+            if ($.serverAddress == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo", "serverAddress");
+            }
             return $;
         }
     }

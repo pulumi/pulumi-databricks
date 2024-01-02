@@ -73,16 +73,19 @@ public final class InstancePoolAwsAttributes {
 
         @CustomType.Setter
         public Builder availability(@Nullable String availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder spotBidPricePercent(@Nullable Integer spotBidPricePercent) {
+
             this.spotBidPricePercent = spotBidPricePercent;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,9 +89,15 @@ public final class MwsWorkspacesExternalCustomerInfoArgs extends com.pulumi.reso
         }
 
         public MwsWorkspacesExternalCustomerInfoArgs build() {
-            $.authoritativeUserEmail = Objects.requireNonNull($.authoritativeUserEmail, "expected parameter 'authoritativeUserEmail' to be non-null");
-            $.authoritativeUserFullName = Objects.requireNonNull($.authoritativeUserFullName, "expected parameter 'authoritativeUserFullName' to be non-null");
-            $.customerName = Objects.requireNonNull($.customerName, "expected parameter 'customerName' to be non-null");
+            if ($.authoritativeUserEmail == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfoArgs", "authoritativeUserEmail");
+            }
+            if ($.authoritativeUserFullName == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfoArgs", "authoritativeUserFullName");
+            }
+            if ($.customerName == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesExternalCustomerInfoArgs", "customerName");
+            }
             return $;
         }
     }

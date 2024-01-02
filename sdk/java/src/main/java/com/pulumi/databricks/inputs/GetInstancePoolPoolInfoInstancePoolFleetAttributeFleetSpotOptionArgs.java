@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOpt
         }
 
         public GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs build() {
-            $.allocationStrategy = Objects.requireNonNull($.allocationStrategy, "expected parameter 'allocationStrategy' to be non-null");
+            if ($.allocationStrategy == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs", "allocationStrategy");
+            }
             return $;
         }
     }

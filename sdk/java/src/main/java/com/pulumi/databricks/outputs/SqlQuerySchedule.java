@@ -50,16 +50,19 @@ public final class SqlQuerySchedule {
 
         @CustomType.Setter
         public Builder continuous(@Nullable SqlQueryScheduleContinuous continuous) {
+
             this.continuous = continuous;
             return this;
         }
         @CustomType.Setter
         public Builder daily(@Nullable SqlQueryScheduleDaily daily) {
+
             this.daily = daily;
             return this;
         }
         @CustomType.Setter
         public Builder weekly(@Nullable SqlQueryScheduleWeekly weekly) {
+
             this.weekly = weekly;
             return this;
         }

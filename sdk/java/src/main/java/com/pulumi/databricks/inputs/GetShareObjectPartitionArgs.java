@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetShareObjectPartitionValueArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,7 +60,9 @@ public final class GetShareObjectPartitionArgs extends com.pulumi.resources.Reso
         }
 
         public GetShareObjectPartitionArgs build() {
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectPartitionArgs", "values");
+            }
             return $;
         }
     }

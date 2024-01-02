@@ -36,6 +36,7 @@ public final class JobNewClusterInitScriptGcs {
 
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }

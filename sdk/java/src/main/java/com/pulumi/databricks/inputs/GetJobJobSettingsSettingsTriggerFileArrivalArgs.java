@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,7 +92,9 @@ public final class GetJobJobSettingsSettingsTriggerFileArrivalArgs extends com.p
         }
 
         public GetJobJobSettingsSettingsTriggerFileArrivalArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTriggerFileArrivalArgs", "url");
+            }
             return $;
         }
     }

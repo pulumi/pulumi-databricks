@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -44,11 +45,15 @@ public final class GetJobJobSettingsSettingsTaskRunJobTask {
 
         @CustomType.Setter
         public Builder jobId(Integer jobId) {
-            this.jobId = Objects.requireNonNull(jobId);
+            if (jobId == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskRunJobTask", "jobId");
+            }
+            this.jobId = jobId;
             return this;
         }
         @CustomType.Setter
         public Builder jobParameters(@Nullable Map<String,Object> jobParameters) {
+
             this.jobParameters = jobParameters;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class MwsCustomerManagedKeysGcpKeyInfoArgs extends com.pulumi.resou
         }
 
         public MwsCustomerManagedKeysGcpKeyInfoArgs build() {
-            $.kmsKeyId = Objects.requireNonNull($.kmsKeyId, "expected parameter 'kmsKeyId' to be non-null");
+            if ($.kmsKeyId == null) {
+                throw new MissingRequiredPropertyException("MwsCustomerManagedKeysGcpKeyInfoArgs", "kmsKeyId");
+            }
             return $;
         }
     }

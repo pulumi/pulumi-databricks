@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewCluste
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -575,13 +576,27 @@ public final class GetJobJobSettingsSettingsJobClusterNewClusterArgs extends com
         }
 
         public GetJobJobSettingsSettingsJobClusterNewClusterArgs build() {
-            $.driverInstancePoolId = Objects.requireNonNull($.driverInstancePoolId, "expected parameter 'driverInstancePoolId' to be non-null");
-            $.driverNodeTypeId = Objects.requireNonNull($.driverNodeTypeId, "expected parameter 'driverNodeTypeId' to be non-null");
-            $.enableElasticDisk = Objects.requireNonNull($.enableElasticDisk, "expected parameter 'enableElasticDisk' to be non-null");
-            $.enableLocalDiskEncryption = Objects.requireNonNull($.enableLocalDiskEncryption, "expected parameter 'enableLocalDiskEncryption' to be non-null");
-            $.nodeTypeId = Objects.requireNonNull($.nodeTypeId, "expected parameter 'nodeTypeId' to be non-null");
-            $.numWorkers = Objects.requireNonNull($.numWorkers, "expected parameter 'numWorkers' to be non-null");
-            $.sparkVersion = Objects.requireNonNull($.sparkVersion, "expected parameter 'sparkVersion' to be non-null");
+            if ($.driverInstancePoolId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "driverInstancePoolId");
+            }
+            if ($.driverNodeTypeId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "driverNodeTypeId");
+            }
+            if ($.enableElasticDisk == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "enableElasticDisk");
+            }
+            if ($.enableLocalDiskEncryption == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "enableLocalDiskEncryption");
+            }
+            if ($.nodeTypeId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "nodeTypeId");
+            }
+            if ($.numWorkers == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "numWorkers");
+            }
+            if ($.sparkVersion == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsJobClusterNewClusterArgs", "sparkVersion");
+            }
             return $;
         }
     }

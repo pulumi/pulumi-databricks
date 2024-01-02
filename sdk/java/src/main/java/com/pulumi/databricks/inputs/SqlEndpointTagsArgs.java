@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlEndpointTagsCustomTagArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,7 +60,9 @@ public final class SqlEndpointTagsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SqlEndpointTagsArgs build() {
-            $.customTags = Objects.requireNonNull($.customTags, "expected parameter 'customTags' to be non-null");
+            if ($.customTags == null) {
+                throw new MissingRequiredPropertyException("SqlEndpointTagsArgs", "customTags");
+            }
             return $;
         }
     }

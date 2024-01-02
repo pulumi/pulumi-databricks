@@ -42,11 +42,13 @@ public final class ExternalLocationEncryptionDetailsSseEncryptionDetails {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder awsKmsKeyArn(@Nullable String awsKmsKeyArn) {
+
             this.awsKmsKeyArn = awsKmsKeyArn;
             return this;
         }

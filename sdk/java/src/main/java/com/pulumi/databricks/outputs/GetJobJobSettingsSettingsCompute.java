@@ -43,11 +43,13 @@ public final class GetJobJobSettingsSettingsCompute {
 
         @CustomType.Setter
         public Builder computeKey(@Nullable String computeKey) {
+
             this.computeKey = computeKey;
             return this;
         }
         @CustomType.Setter
         public Builder spec(@Nullable GetJobJobSettingsSettingsComputeSpec spec) {
+
             this.spec = spec;
             return this;
         }

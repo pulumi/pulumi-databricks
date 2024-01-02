@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,8 +92,12 @@ public final class JobTaskNewClusterClusterMountInfoArgs extends com.pulumi.reso
         }
 
         public JobTaskNewClusterClusterMountInfoArgs build() {
-            $.localMountDirPath = Objects.requireNonNull($.localMountDirPath, "expected parameter 'localMountDirPath' to be non-null");
-            $.networkFilesystemInfo = Objects.requireNonNull($.networkFilesystemInfo, "expected parameter 'networkFilesystemInfo' to be non-null");
+            if ($.localMountDirPath == null) {
+                throw new MissingRequiredPropertyException("JobTaskNewClusterClusterMountInfoArgs", "localMountDirPath");
+            }
+            if ($.networkFilesystemInfo == null) {
+                throw new MissingRequiredPropertyException("JobTaskNewClusterClusterMountInfoArgs", "networkFilesystemInfo");
+            }
             return $;
         }
     }

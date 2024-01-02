@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ShareObjectPartition;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -168,41 +169,53 @@ public final class ShareObject {
 
         @CustomType.Setter
         public Builder addedAt(@Nullable Integer addedAt) {
+
             this.addedAt = addedAt;
             return this;
         }
         @CustomType.Setter
         public Builder addedBy(@Nullable String addedBy) {
+
             this.addedBy = addedBy;
             return this;
         }
         @CustomType.Setter
         public Builder cdfEnabled(@Nullable Boolean cdfEnabled) {
+
             this.cdfEnabled = cdfEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder dataObjectType(String dataObjectType) {
-            this.dataObjectType = Objects.requireNonNull(dataObjectType);
+            if (dataObjectType == null) {
+              throw new MissingRequiredPropertyException("ShareObject", "dataObjectType");
+            }
+            this.dataObjectType = dataObjectType;
             return this;
         }
         @CustomType.Setter
         public Builder historyDataSharingStatus(@Nullable String historyDataSharingStatus) {
+
             this.historyDataSharingStatus = historyDataSharingStatus;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ShareObject", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(@Nullable List<ShareObjectPartition> partitions) {
+
             this.partitions = partitions;
             return this;
         }
@@ -211,16 +224,19 @@ public final class ShareObject {
         }
         @CustomType.Setter
         public Builder sharedAs(@Nullable String sharedAs) {
+
             this.sharedAs = sharedAs;
             return this;
         }
         @CustomType.Setter
         public Builder startVersion(@Nullable Integer startVersion) {
+
             this.startVersion = startVersion;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

@@ -36,6 +36,7 @@ public final class GetJobJobSettingsSettingsTaskSparkSubmitTask {
 
         @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
+
             this.parameters = parameters;
             return this;
         }

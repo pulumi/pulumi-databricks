@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -259,12 +260,24 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
         }
 
         public MwsNetworksGcpNetworkInfoArgs build() {
-            $.networkProjectId = Objects.requireNonNull($.networkProjectId, "expected parameter 'networkProjectId' to be non-null");
-            $.podIpRangeName = Objects.requireNonNull($.podIpRangeName, "expected parameter 'podIpRangeName' to be non-null");
-            $.serviceIpRangeName = Objects.requireNonNull($.serviceIpRangeName, "expected parameter 'serviceIpRangeName' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
-            $.subnetRegion = Objects.requireNonNull($.subnetRegion, "expected parameter 'subnetRegion' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.networkProjectId == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "networkProjectId");
+            }
+            if ($.podIpRangeName == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "podIpRangeName");
+            }
+            if ($.serviceIpRangeName == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "serviceIpRangeName");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "subnetId");
+            }
+            if ($.subnetRegion == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "subnetRegion");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfoArgs", "vpcId");
+            }
             return $;
         }
     }

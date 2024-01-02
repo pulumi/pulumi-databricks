@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class MlflowWebhookJobSpecArgs extends com.pulumi.resources.Resourc
         }
 
         public MlflowWebhookJobSpecArgs build() {
-            $.accessToken = Objects.requireNonNull($.accessToken, "expected parameter 'accessToken' to be non-null");
-            $.jobId = Objects.requireNonNull($.jobId, "expected parameter 'jobId' to be non-null");
+            if ($.accessToken == null) {
+                throw new MissingRequiredPropertyException("MlflowWebhookJobSpecArgs", "accessToken");
+            }
+            if ($.jobId == null) {
+                throw new MissingRequiredPropertyException("MlflowWebhookJobSpecArgs", "jobId");
+            }
             return $;
         }
     }

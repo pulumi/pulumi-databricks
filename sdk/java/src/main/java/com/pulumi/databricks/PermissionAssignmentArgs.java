@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -77,8 +78,12 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         public PermissionAssignmentArgs build() {
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.principalId = Objects.requireNonNull($.principalId, "expected parameter 'principalId' to be non-null");
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("PermissionAssignmentArgs", "permissions");
+            }
+            if ($.principalId == null) {
+                throw new MissingRequiredPropertyException("PermissionAssignmentArgs", "principalId");
+            }
             return $;
         }
     }

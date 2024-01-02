@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealthRule;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class GetJobJobSettingsSettingsHealth extends com.pulumi.resources.
         }
 
         public GetJobJobSettingsSettingsHealth build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsHealth", "rules");
+            }
             return $;
         }
     }

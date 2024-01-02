@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,16 +49,21 @@ public final class SqlQueryParameterQueryMultiple {
 
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder separator(String separator) {
-            this.separator = Objects.requireNonNull(separator);
+            if (separator == null) {
+              throw new MissingRequiredPropertyException("SqlQueryParameterQueryMultiple", "separator");
+            }
+            this.separator = separator;
             return this;
         }
         @CustomType.Setter
         public Builder suffix(@Nullable String suffix) {
+
             this.suffix = suffix;
             return this;
         }
