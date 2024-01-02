@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class MwsVpcEndpointGcpVpcEndpointInfoArgs extends com.pulumi.resou
         }
 
         public MwsVpcEndpointGcpVpcEndpointInfoArgs build() {
-            $.endpointRegion = Objects.requireNonNull($.endpointRegion, "expected parameter 'endpointRegion' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.pscEndpointName = Objects.requireNonNull($.pscEndpointName, "expected parameter 'pscEndpointName' to be non-null");
+            if ($.endpointRegion == null) {
+                throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfoArgs", "endpointRegion");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfoArgs", "projectId");
+            }
+            if ($.pscEndpointName == null) {
+                throw new MissingRequiredPropertyException("MwsVpcEndpointGcpVpcEndpointInfoArgs", "pscEndpointName");
+            }
             return $;
         }
     }

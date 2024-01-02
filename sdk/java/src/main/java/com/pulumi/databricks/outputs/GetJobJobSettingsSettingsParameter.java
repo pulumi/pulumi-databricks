@@ -50,11 +50,13 @@ public final class GetJobJobSettingsSettingsParameter {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable String default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

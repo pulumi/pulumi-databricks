@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -85,22 +86,34 @@ public final class GetInstanceProfilesInstanceProfile {
 
         @CustomType.Setter
         public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+            if (arn == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "arn");
+            }
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder isMeta(Boolean isMeta) {
-            this.isMeta = Objects.requireNonNull(isMeta);
+            if (isMeta == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "isMeta");
+            }
+            this.isMeta = isMeta;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(String roleArn) {
-            this.roleArn = Objects.requireNonNull(roleArn);
+            if (roleArn == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesInstanceProfile", "roleArn");
+            }
+            this.roleArn = roleArn;
             return this;
         }
         public GetInstanceProfilesInstanceProfile build() {

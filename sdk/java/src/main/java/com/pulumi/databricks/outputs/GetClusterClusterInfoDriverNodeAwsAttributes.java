@@ -36,6 +36,7 @@ public final class GetClusterClusterInfoDriverNodeAwsAttributes {
 
         @CustomType.Setter
         public Builder isSpot(@Nullable Boolean isSpot) {
+
             this.isSpot = isSpot;
             return this;
         }

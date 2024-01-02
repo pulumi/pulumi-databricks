@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -458,11 +459,21 @@ public final class MwsLogDeliveryArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MwsLogDeliveryArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.credentialsId = Objects.requireNonNull($.credentialsId, "expected parameter 'credentialsId' to be non-null");
-            $.logType = Objects.requireNonNull($.logType, "expected parameter 'logType' to be non-null");
-            $.outputFormat = Objects.requireNonNull($.outputFormat, "expected parameter 'outputFormat' to be non-null");
-            $.storageConfigurationId = Objects.requireNonNull($.storageConfigurationId, "expected parameter 'storageConfigurationId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MwsLogDeliveryArgs", "accountId");
+            }
+            if ($.credentialsId == null) {
+                throw new MissingRequiredPropertyException("MwsLogDeliveryArgs", "credentialsId");
+            }
+            if ($.logType == null) {
+                throw new MissingRequiredPropertyException("MwsLogDeliveryArgs", "logType");
+            }
+            if ($.outputFormat == null) {
+                throw new MissingRequiredPropertyException("MwsLogDeliveryArgs", "outputFormat");
+            }
+            if ($.storageConfigurationId == null) {
+                throw new MissingRequiredPropertyException("MwsLogDeliveryArgs", "storageConfigurationId");
+            }
             return $;
         }
     }

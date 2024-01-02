@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class MwsWorkspacesGcpManagedNetworkConfig {
 
         @CustomType.Setter
         public Builder gkeClusterPodIpRange(String gkeClusterPodIpRange) {
-            this.gkeClusterPodIpRange = Objects.requireNonNull(gkeClusterPodIpRange);
+            if (gkeClusterPodIpRange == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfig", "gkeClusterPodIpRange");
+            }
+            this.gkeClusterPodIpRange = gkeClusterPodIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder gkeClusterServiceIpRange(String gkeClusterServiceIpRange) {
-            this.gkeClusterServiceIpRange = Objects.requireNonNull(gkeClusterServiceIpRange);
+            if (gkeClusterServiceIpRange == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfig", "gkeClusterServiceIpRange");
+            }
+            this.gkeClusterServiceIpRange = gkeClusterServiceIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder subnetCidr(String subnetCidr) {
-            this.subnetCidr = Objects.requireNonNull(subnetCidr);
+            if (subnetCidr == null) {
+              throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfig", "subnetCidr");
+            }
+            this.subnetCidr = subnetCidr;
             return this;
         }
         public MwsWorkspacesGcpManagedNetworkConfig build() {

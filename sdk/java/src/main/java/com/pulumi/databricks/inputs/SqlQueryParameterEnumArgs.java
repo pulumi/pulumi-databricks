@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlQueryParameterEnumMultipleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -137,7 +138,9 @@ public final class SqlQueryParameterEnumArgs extends com.pulumi.resources.Resour
         }
 
         public SqlQueryParameterEnumArgs build() {
-            $.options = Objects.requireNonNull($.options, "expected parameter 'options' to be non-null");
+            if ($.options == null) {
+                throw new MissingRequiredPropertyException("SqlQueryParameterEnumArgs", "options");
+            }
             return $;
         }
     }

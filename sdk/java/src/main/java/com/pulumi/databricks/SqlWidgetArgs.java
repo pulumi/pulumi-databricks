@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlWidgetParameterArgs;
 import com.pulumi.databricks.inputs.SqlWidgetPositionArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -182,7 +183,9 @@ public final class SqlWidgetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SqlWidgetArgs build() {
-            $.dashboardId = Objects.requireNonNull($.dashboardId, "expected parameter 'dashboardId' to be non-null");
+            if ($.dashboardId == null) {
+                throw new MissingRequiredPropertyException("SqlWidgetArgs", "dashboardId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetShareObjectPartitionValue;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class GetShareObjectPartition {
 
         @CustomType.Setter
         public Builder values(List<GetShareObjectPartitionValue> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetShareObjectPartition", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(GetShareObjectPartitionValue... values) {

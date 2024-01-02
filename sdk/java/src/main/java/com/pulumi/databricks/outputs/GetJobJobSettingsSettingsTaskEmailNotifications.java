@@ -54,6 +54,7 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications {
 
         @CustomType.Setter
         public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
+
             this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             return this;
         }
@@ -62,6 +63,7 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications {
         }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<String> onFailures) {
+
             this.onFailures = onFailures;
             return this;
         }
@@ -70,6 +72,7 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications {
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<String> onStarts) {
+
             this.onStarts = onStarts;
             return this;
         }
@@ -78,6 +81,7 @@ public final class GetJobJobSettingsSettingsTaskEmailNotifications {
         }
         @CustomType.Setter
         public Builder onSuccesses(@Nullable List<String> onSuccesses) {
+
             this.onSuccesses = onSuccesses;
             return this;
         }

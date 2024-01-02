@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetJobJobSettingsSettingsTaskLibraryCran extends com.pulumi.r
         }
 
         public GetJobJobSettingsSettingsTaskLibraryCran build() {
-            $.package_ = Objects.requireNonNull($.package_, "expected parameter 'package' to be non-null");
+            if ($.package_ == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskLibraryCran", "package_");
+            }
             return $;
         }
     }

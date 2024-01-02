@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,6 +74,7 @@ public final class JobTaskSparkPythonTask {
 
         @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
+
             this.parameters = parameters;
             return this;
         }
@@ -81,11 +83,15 @@ public final class JobTaskSparkPythonTask {
         }
         @CustomType.Setter
         public Builder pythonFile(String pythonFile) {
-            this.pythonFile = Objects.requireNonNull(pythonFile);
+            if (pythonFile == null) {
+              throw new MissingRequiredPropertyException("JobTaskSparkPythonTask", "pythonFile");
+            }
+            this.pythonFile = pythonFile;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }

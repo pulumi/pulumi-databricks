@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecretArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.stringValue = Objects.requireNonNull($.stringValue, "expected parameter 'stringValue' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "key");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "scope");
+            }
+            if ($.stringValue == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "stringValue");
+            }
             return $;
         }
     }

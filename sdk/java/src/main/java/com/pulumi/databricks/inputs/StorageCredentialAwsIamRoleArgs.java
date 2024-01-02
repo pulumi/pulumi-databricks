@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,7 +159,9 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
         }
 
         public StorageCredentialAwsIamRoleArgs build() {
-            $.roleArn = Objects.requireNonNull($.roleArn, "expected parameter 'roleArn' to be non-null");
+            if ($.roleArn == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialAwsIamRoleArgs", "roleArn");
+            }
             return $;
         }
     }

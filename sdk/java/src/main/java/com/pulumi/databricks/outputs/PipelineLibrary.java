@@ -63,26 +63,31 @@ public final class PipelineLibrary {
 
         @CustomType.Setter
         public Builder file(@Nullable PipelineLibraryFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder jar(@Nullable String jar) {
+
             this.jar = jar;
             return this;
         }
         @CustomType.Setter
         public Builder maven(@Nullable PipelineLibraryMaven maven) {
+
             this.maven = maven;
             return this;
         }
         @CustomType.Setter
         public Builder notebook(@Nullable PipelineLibraryNotebook notebook) {
+
             this.notebook = notebook;
             return this;
         }
         @CustomType.Setter
         public Builder whl(@Nullable String whl) {
+
             this.whl = whl;
             return this;
         }

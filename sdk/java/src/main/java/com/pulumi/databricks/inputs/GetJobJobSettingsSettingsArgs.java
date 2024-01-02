@@ -30,6 +30,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -721,8 +722,12 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
         }
 
         public GetJobJobSettingsSettingsArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
-            $.runAs = Objects.requireNonNull($.runAs, "expected parameter 'runAs' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsArgs", "format");
+            }
+            if ($.runAs == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsArgs", "runAs");
+            }
             return $;
         }
     }

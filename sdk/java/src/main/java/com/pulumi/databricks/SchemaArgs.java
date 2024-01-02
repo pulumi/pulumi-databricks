@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -318,7 +319,9 @@ public final class SchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SchemaArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("SchemaArgs", "catalogName");
+            }
             return $;
         }
     }

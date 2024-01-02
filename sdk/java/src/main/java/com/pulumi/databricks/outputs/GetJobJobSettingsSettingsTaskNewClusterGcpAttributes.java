@@ -68,31 +68,37 @@ public final class GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
 
         @CustomType.Setter
         public Builder availability(@Nullable String availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
+
             this.bootDiskSize = bootDiskSize;
             return this;
         }
         @CustomType.Setter
         public Builder googleServiceAccount(@Nullable String googleServiceAccount) {
+
             this.googleServiceAccount = googleServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder usePreemptibleExecutors(@Nullable Boolean usePreemptibleExecutors) {
+
             this.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

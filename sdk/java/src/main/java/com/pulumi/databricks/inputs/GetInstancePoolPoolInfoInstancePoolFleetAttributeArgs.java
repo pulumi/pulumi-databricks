@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -97,7 +98,9 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs extends
         }
 
         public GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs build() {
-            $.launchTemplateOverrides = Objects.requireNonNull($.launchTemplateOverrides, "expected parameter 'launchTemplateOverrides' to be non-null");
+            if ($.launchTemplateOverrides == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs", "launchTemplateOverrides");
+            }
             return $;
         }
     }

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsNetworksErrorMessageArgs;
 import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
 import com.pulumi.databricks.inputs.MwsNetworksVpcEndpointsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -472,8 +473,12 @@ public final class MwsNetworksArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MwsNetworksArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.networkName = Objects.requireNonNull($.networkName, "expected parameter 'networkName' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksArgs", "accountId");
+            }
+            if ($.networkName == null) {
+                throw new MissingRequiredPropertyException("MwsNetworksArgs", "networkName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +64,10 @@ public final class GetServicePrincipalsResult {
 
         @CustomType.Setter
         public Builder applicationIds(List<String> applicationIds) {
-            this.applicationIds = Objects.requireNonNull(applicationIds);
+            if (applicationIds == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "applicationIds");
+            }
+            this.applicationIds = applicationIds;
             return this;
         }
         public Builder applicationIds(String... applicationIds) {
@@ -71,12 +75,18 @@ public final class GetServicePrincipalsResult {
         }
         @CustomType.Setter
         public Builder displayNameContains(String displayNameContains) {
-            this.displayNameContains = Objects.requireNonNull(displayNameContains);
+            if (displayNameContains == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "displayNameContains");
+            }
+            this.displayNameContains = displayNameContains;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetServicePrincipalsResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,11 +50,15 @@ public final class GetJobJobSettingsSettingsLibraryMaven {
 
         @CustomType.Setter
         public Builder coordinates(String coordinates) {
-            this.coordinates = Objects.requireNonNull(coordinates);
+            if (coordinates == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsLibraryMaven", "coordinates");
+            }
+            this.coordinates = coordinates;
             return this;
         }
         @CustomType.Setter
         public Builder exclusions(@Nullable List<String> exclusions) {
+
             this.exclusions = exclusions;
             return this;
         }
@@ -62,6 +67,7 @@ public final class GetJobJobSettingsSettingsLibraryMaven {
         }
         @CustomType.Setter
         public Builder repo(@Nullable String repo) {
+
             this.repo = repo;
             return this;
         }

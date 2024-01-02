@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.MwsWorkspacesExternalCustomerInfoArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesGcpManagedNetworkConfigArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
 import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -839,8 +840,12 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MwsWorkspacesArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.workspaceName = Objects.requireNonNull($.workspaceName, "expected parameter 'workspaceName' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesArgs", "accountId");
+            }
+            if ($.workspaceName == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesArgs", "workspaceName");
+            }
             return $;
         }
     }

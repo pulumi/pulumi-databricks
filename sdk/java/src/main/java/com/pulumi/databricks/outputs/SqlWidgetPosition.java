@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -61,27 +62,36 @@ public final class SqlWidgetPosition {
 
         @CustomType.Setter
         public Builder autoHeight(@Nullable Boolean autoHeight) {
+
             this.autoHeight = autoHeight;
             return this;
         }
         @CustomType.Setter
         public Builder posX(@Nullable Integer posX) {
+
             this.posX = posX;
             return this;
         }
         @CustomType.Setter
         public Builder posY(@Nullable Integer posY) {
+
             this.posY = posY;
             return this;
         }
         @CustomType.Setter
         public Builder sizeX(Integer sizeX) {
-            this.sizeX = Objects.requireNonNull(sizeX);
+            if (sizeX == null) {
+              throw new MissingRequiredPropertyException("SqlWidgetPosition", "sizeX");
+            }
+            this.sizeX = sizeX;
             return this;
         }
         @CustomType.Setter
         public Builder sizeY(Integer sizeY) {
-            this.sizeY = Objects.requireNonNull(sizeY);
+            if (sizeY == null) {
+              throw new MissingRequiredPropertyException("SqlWidgetPosition", "sizeY");
+            }
+            this.sizeY = sizeY;
             return this;
         }
         public SqlWidgetPosition build() {

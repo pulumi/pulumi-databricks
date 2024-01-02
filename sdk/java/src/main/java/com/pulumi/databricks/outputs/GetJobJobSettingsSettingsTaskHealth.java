@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskHealthRule;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class GetJobJobSettingsSettingsTaskHealth {
 
         @CustomType.Setter
         public Builder rules(List<GetJobJobSettingsSettingsTaskHealthRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskHealth", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetJobJobSettingsSettingsTaskHealthRule... rules) {

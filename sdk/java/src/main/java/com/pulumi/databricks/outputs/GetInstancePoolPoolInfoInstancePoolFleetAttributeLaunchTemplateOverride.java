@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTempla
 
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         public GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride build() {

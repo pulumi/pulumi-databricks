@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMetastoreMetastoreInfo;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,17 +64,26 @@ public final class GetMetastoreResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metastoreId(String metastoreId) {
-            this.metastoreId = Objects.requireNonNull(metastoreId);
+            if (metastoreId == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreResult", "metastoreId");
+            }
+            this.metastoreId = metastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder metastoreInfo(GetMetastoreMetastoreInfo metastoreInfo) {
-            this.metastoreInfo = Objects.requireNonNull(metastoreInfo);
+            if (metastoreInfo == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreResult", "metastoreInfo");
+            }
+            this.metastoreInfo = metastoreInfo;
             return this;
         }
         public GetMetastoreResult build() {

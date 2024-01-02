@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.SqlQueryParameterEnumMultiple;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,12 +65,16 @@ public final class SqlQueryParameterEnum {
 
         @CustomType.Setter
         public Builder multiple(@Nullable SqlQueryParameterEnumMultiple multiple) {
+
             this.multiple = multiple;
             return this;
         }
         @CustomType.Setter
         public Builder options(List<String> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("SqlQueryParameterEnum", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(String... options) {
@@ -77,11 +82,13 @@ public final class SqlQueryParameterEnum {
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

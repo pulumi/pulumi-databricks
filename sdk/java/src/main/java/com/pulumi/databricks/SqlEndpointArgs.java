@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlEndpointChannelArgs;
 import com.pulumi.databricks.inputs.SqlEndpointOdbcParamsArgs;
 import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -629,7 +630,9 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SqlEndpointArgs build() {
-            $.clusterSize = Objects.requireNonNull($.clusterSize, "expected parameter 'clusterSize' to be non-null");
+            if ($.clusterSize == null) {
+                throw new MissingRequiredPropertyException("SqlEndpointArgs", "clusterSize");
+            }
             return $;
         }
     }

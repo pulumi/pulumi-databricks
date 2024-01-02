@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupMemberArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.memberId = Objects.requireNonNull($.memberId, "expected parameter 'memberId' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("GroupMemberArgs", "groupId");
+            }
+            if ($.memberId == null) {
+                throw new MissingRequiredPropertyException("GroupMemberArgs", "memberId");
+            }
             return $;
         }
     }

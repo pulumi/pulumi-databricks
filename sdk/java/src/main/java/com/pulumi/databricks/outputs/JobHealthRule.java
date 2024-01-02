@@ -77,16 +77,19 @@ public final class JobHealthRule {
 
         @CustomType.Setter
         public Builder metric(@Nullable String metric) {
+
             this.metric = metric;
             return this;
         }
         @CustomType.Setter
         public Builder op(@Nullable String op) {
+
             this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable Integer value) {
+
             this.value = value;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
@@ -34,7 +35,10 @@ public final class GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
 
         @CustomType.Setter
         public Builder clients(GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients clients) {
-            this.clients = Objects.requireNonNull(clients);
+            if (clients == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskNewClusterWorkloadType", "clients");
+            }
+            this.clients = clients;
             return this;
         }
         public GetJobJobSettingsSettingsTaskNewClusterWorkloadType build() {

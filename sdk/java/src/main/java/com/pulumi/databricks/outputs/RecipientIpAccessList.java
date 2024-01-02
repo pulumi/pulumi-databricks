@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class RecipientIpAccessList {
 
         @CustomType.Setter
         public Builder allowedIpAddresses(List<String> allowedIpAddresses) {
-            this.allowedIpAddresses = Objects.requireNonNull(allowedIpAddresses);
+            if (allowedIpAddresses == null) {
+              throw new MissingRequiredPropertyException("RecipientIpAccessList", "allowedIpAddresses");
+            }
+            this.allowedIpAddresses = allowedIpAddresses;
             return this;
         }
         public Builder allowedIpAddresses(String... allowedIpAddresses) {

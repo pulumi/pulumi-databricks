@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -116,9 +117,15 @@ public final class StorageCredentialGcpServiceAccountKeyArgs extends com.pulumi.
         }
 
         public StorageCredentialGcpServiceAccountKeyArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
-            $.privateKeyId = Objects.requireNonNull($.privateKeyId, "expected parameter 'privateKeyId' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialGcpServiceAccountKeyArgs", "email");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialGcpServiceAccountKeyArgs", "privateKey");
+            }
+            if ($.privateKeyId == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialGcpServiceAccountKeyArgs", "privateKeyId");
+            }
             return $;
         }
     }

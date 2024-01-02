@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class ArtifactAllowlistArtifactMatcher {
 
         @CustomType.Setter
         public Builder artifact(String artifact) {
-            this.artifact = Objects.requireNonNull(artifact);
+            if (artifact == null) {
+              throw new MissingRequiredPropertyException("ArtifactAllowlistArtifactMatcher", "artifact");
+            }
+            this.artifact = artifact;
             return this;
         }
         @CustomType.Setter
         public Builder matchType(String matchType) {
-            this.matchType = Objects.requireNonNull(matchType);
+            if (matchType == null) {
+              throw new MissingRequiredPropertyException("ArtifactAllowlistArtifactMatcher", "matchType");
+            }
+            this.matchType = matchType;
             return this;
         }
         public ArtifactAllowlistArtifactMatcher build() {

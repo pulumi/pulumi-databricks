@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -124,71 +125,87 @@ public final class GetNodeTypeResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder fleet(@Nullable Boolean fleet) {
+
             this.fleet = fleet;
             return this;
         }
         @CustomType.Setter
         public Builder gbPerCore(@Nullable Integer gbPerCore) {
+
             this.gbPerCore = gbPerCore;
             return this;
         }
         @CustomType.Setter
         public Builder graviton(@Nullable Boolean graviton) {
+
             this.graviton = graviton;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeTypeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isIoCacheEnabled(@Nullable Boolean isIoCacheEnabled) {
+
             this.isIoCacheEnabled = isIoCacheEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder localDisk(@Nullable Boolean localDisk) {
+
             this.localDisk = localDisk;
             return this;
         }
         @CustomType.Setter
         public Builder localDiskMinSize(@Nullable Integer localDiskMinSize) {
+
             this.localDiskMinSize = localDiskMinSize;
             return this;
         }
         @CustomType.Setter
         public Builder minCores(@Nullable Integer minCores) {
+
             this.minCores = minCores;
             return this;
         }
         @CustomType.Setter
         public Builder minGpus(@Nullable Integer minGpus) {
+
             this.minGpus = minGpus;
             return this;
         }
         @CustomType.Setter
         public Builder minMemoryGb(@Nullable Integer minMemoryGb) {
+
             this.minMemoryGb = minMemoryGb;
             return this;
         }
         @CustomType.Setter
         public Builder photonDriverCapable(@Nullable Boolean photonDriverCapable) {
+
             this.photonDriverCapable = photonDriverCapable;
             return this;
         }
         @CustomType.Setter
         public Builder photonWorkerCapable(@Nullable Boolean photonWorkerCapable) {
+
             this.photonWorkerCapable = photonWorkerCapable;
             return this;
         }
         @CustomType.Setter
         public Builder supportPortForwarding(@Nullable Boolean supportPortForwarding) {
+
             this.supportPortForwarding = supportPortForwarding;
             return this;
         }

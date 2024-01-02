@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettings;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -62,26 +63,33 @@ public final class GetJobJobSettings {
 
         @CustomType.Setter
         public Builder createdTime(@Nullable Integer createdTime) {
+
             this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
         public Builder creatorUserName(@Nullable String creatorUserName) {
+
             this.creatorUserName = creatorUserName;
             return this;
         }
         @CustomType.Setter
         public Builder jobId(@Nullable Integer jobId) {
+
             this.jobId = jobId;
             return this;
         }
         @CustomType.Setter
         public Builder runAsUserName(String runAsUserName) {
-            this.runAsUserName = Objects.requireNonNull(runAsUserName);
+            if (runAsUserName == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettings", "runAsUserName");
+            }
+            this.runAsUserName = runAsUserName;
             return this;
         }
         @CustomType.Setter
         public Builder settings(@Nullable GetJobJobSettingsSettings settings) {
+
             this.settings = settings;
             return this;
         }

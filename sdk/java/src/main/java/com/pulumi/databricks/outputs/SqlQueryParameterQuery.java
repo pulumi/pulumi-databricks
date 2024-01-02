@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.SqlQueryParameterQueryMultiple;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,21 +65,27 @@ public final class SqlQueryParameterQuery {
 
         @CustomType.Setter
         public Builder multiple(@Nullable SqlQueryParameterQueryMultiple multiple) {
+
             this.multiple = multiple;
             return this;
         }
         @CustomType.Setter
         public Builder queryId(String queryId) {
-            this.queryId = Objects.requireNonNull(queryId);
+            if (queryId == null) {
+              throw new MissingRequiredPropertyException("SqlQueryParameterQuery", "queryId");
+            }
+            this.queryId = queryId;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

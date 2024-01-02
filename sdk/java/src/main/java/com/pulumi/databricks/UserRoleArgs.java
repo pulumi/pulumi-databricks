@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class UserRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserRoleArgs build() {
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("UserRoleArgs", "role");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserRoleArgs", "userId");
+            }
             return $;
         }
     }

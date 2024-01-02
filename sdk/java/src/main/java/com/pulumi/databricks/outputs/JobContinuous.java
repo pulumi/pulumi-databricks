@@ -44,6 +44,7 @@ public final class JobContinuous {
 
         @CustomType.Setter
         public Builder pauseStatus(@Nullable String pauseStatus) {
+
             this.pauseStatus = pauseStatus;
             return this;
         }

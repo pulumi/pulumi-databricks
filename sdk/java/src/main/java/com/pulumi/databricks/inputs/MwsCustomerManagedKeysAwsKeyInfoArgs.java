@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class MwsCustomerManagedKeysAwsKeyInfoArgs extends com.pulumi.resou
         }
 
         public MwsCustomerManagedKeysAwsKeyInfoArgs build() {
-            $.keyArn = Objects.requireNonNull($.keyArn, "expected parameter 'keyArn' to be non-null");
+            if ($.keyArn == null) {
+                throw new MissingRequiredPropertyException("MwsCustomerManagedKeysAwsKeyInfoArgs", "keyArn");
+            }
             return $;
         }
     }

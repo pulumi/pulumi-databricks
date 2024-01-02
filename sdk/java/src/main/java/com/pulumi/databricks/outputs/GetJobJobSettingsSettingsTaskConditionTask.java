@@ -48,16 +48,19 @@ public final class GetJobJobSettingsSettingsTaskConditionTask {
 
         @CustomType.Setter
         public Builder left(@Nullable String left) {
+
             this.left = left;
             return this;
         }
         @CustomType.Setter
         public Builder op(@Nullable String op) {
+
             this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder right(@Nullable String right) {
+
             this.right = right;
             return this;
         }

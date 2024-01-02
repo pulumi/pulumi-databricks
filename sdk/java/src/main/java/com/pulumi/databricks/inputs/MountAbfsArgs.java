@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -176,10 +177,18 @@ public final class MountAbfsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MountAbfsArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecretKey = Objects.requireNonNull($.clientSecretKey, "expected parameter 'clientSecretKey' to be non-null");
-            $.clientSecretScope = Objects.requireNonNull($.clientSecretScope, "expected parameter 'clientSecretScope' to be non-null");
-            $.initializeFileSystem = Objects.requireNonNull($.initializeFileSystem, "expected parameter 'initializeFileSystem' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("MountAbfsArgs", "clientId");
+            }
+            if ($.clientSecretKey == null) {
+                throw new MissingRequiredPropertyException("MountAbfsArgs", "clientSecretKey");
+            }
+            if ($.clientSecretScope == null) {
+                throw new MissingRequiredPropertyException("MountAbfsArgs", "clientSecretScope");
+            }
+            if ($.initializeFileSystem == null) {
+                throw new MissingRequiredPropertyException("MountAbfsArgs", "initializeFileSystem");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -84,27 +85,42 @@ public final class GetDbfsFileResult {
 
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder fileSize(Integer fileSize) {
-            this.fileSize = Objects.requireNonNull(fileSize);
+            if (fileSize == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "fileSize");
+            }
+            this.fileSize = fileSize;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder limitFileSize(Boolean limitFileSize) {
-            this.limitFileSize = Objects.requireNonNull(limitFileSize);
+            if (limitFileSize == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "limitFileSize");
+            }
+            this.limitFileSize = limitFileSize;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "path");
+            }
+            this.path = path;
             return this;
         }
         public GetDbfsFileResult build() {

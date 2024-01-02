@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -84,8 +85,12 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskAlert extends com.pulumi.
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskAlert build() {
-            $.alertId = Objects.requireNonNull($.alertId, "expected parameter 'alertId' to be non-null");
-            $.subscriptions = Objects.requireNonNull($.subscriptions, "expected parameter 'subscriptions' to be non-null");
+            if ($.alertId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskAlert", "alertId");
+            }
+            if ($.subscriptions == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskAlert", "subscriptions");
+            }
             return $;
         }
     }

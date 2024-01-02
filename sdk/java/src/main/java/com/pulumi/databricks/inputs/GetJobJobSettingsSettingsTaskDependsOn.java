@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetJobJobSettingsSettingsTaskDependsOn extends com.pulumi.res
         }
 
         public GetJobJobSettingsSettingsTaskDependsOn build() {
-            $.taskKey = Objects.requireNonNull($.taskKey, "expected parameter 'taskKey' to be non-null");
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskDependsOn", "taskKey");
+            }
             return $;
         }
     }

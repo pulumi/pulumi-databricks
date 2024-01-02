@@ -49,16 +49,19 @@ public final class GetJobJobSettingsSettingsSparkJarTask {
 
         @CustomType.Setter
         public Builder jarUri(@Nullable String jarUri) {
+
             this.jarUri = jarUri;
             return this;
         }
         @CustomType.Setter
         public Builder mainClassName(@Nullable String mainClassName) {
+
             this.mainClassName = mainClassName;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable List<String> parameters) {
+
             this.parameters = parameters;
             return this;
         }

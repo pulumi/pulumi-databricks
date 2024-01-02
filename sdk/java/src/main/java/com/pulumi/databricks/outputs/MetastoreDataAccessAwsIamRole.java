@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,16 +49,21 @@ public final class MetastoreDataAccessAwsIamRole {
 
         @CustomType.Setter
         public Builder externalId(@Nullable String externalId) {
+
             this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(String roleArn) {
-            this.roleArn = Objects.requireNonNull(roleArn);
+            if (roleArn == null) {
+              throw new MissingRequiredPropertyException("MetastoreDataAccessAwsIamRole", "roleArn");
+            }
+            this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder unityCatalogIamArn(@Nullable String unityCatalogIamArn) {
+
             this.unityCatalogIamArn = unityCatalogIamArn;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ClusterDockerImageBasicAuth;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -149,12 +150,16 @@ public final class ClusterDockerImage {
 
         @CustomType.Setter
         public Builder basicAuth(@Nullable ClusterDockerImageBasicAuth basicAuth) {
+
             this.basicAuth = basicAuth;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("ClusterDockerImage", "url");
+            }
+            this.url = url;
             return this;
         }
         public ClusterDockerImage build() {

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -126,7 +127,9 @@ public final class GetJobJobSettingsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GetJobJobSettingsArgs build() {
-            $.runAsUserName = Objects.requireNonNull($.runAsUserName, "expected parameter 'runAsUserName' to be non-null");
+            if ($.runAsUserName == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsArgs", "runAsUserName");
+            }
             return $;
         }
     }

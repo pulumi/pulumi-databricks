@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,36 +73,49 @@ public final class MountAdl {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("MountAdl", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecretKey(String clientSecretKey) {
-            this.clientSecretKey = Objects.requireNonNull(clientSecretKey);
+            if (clientSecretKey == null) {
+              throw new MissingRequiredPropertyException("MountAdl", "clientSecretKey");
+            }
+            this.clientSecretKey = clientSecretKey;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecretScope(String clientSecretScope) {
-            this.clientSecretScope = Objects.requireNonNull(clientSecretScope);
+            if (clientSecretScope == null) {
+              throw new MissingRequiredPropertyException("MountAdl", "clientSecretScope");
+            }
+            this.clientSecretScope = clientSecretScope;
             return this;
         }
         @CustomType.Setter
         public Builder directory(@Nullable String directory) {
+
             this.directory = directory;
             return this;
         }
         @CustomType.Setter
         public Builder sparkConfPrefix(@Nullable String sparkConfPrefix) {
+
             this.sparkConfPrefix = sparkConfPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder storageResourceName(@Nullable String storageResourceName) {
+
             this.storageResourceName = storageResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

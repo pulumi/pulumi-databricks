@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class GetJobJobSettingsSettingsScheduleArgs extends com.pulumi.reso
         }
 
         public GetJobJobSettingsSettingsScheduleArgs build() {
-            $.quartzCronExpression = Objects.requireNonNull($.quartzCronExpression, "expected parameter 'quartzCronExpression' to be non-null");
-            $.timezoneId = Objects.requireNonNull($.timezoneId, "expected parameter 'timezoneId' to be non-null");
+            if ($.quartzCronExpression == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsScheduleArgs", "quartzCronExpression");
+            }
+            if ($.timezoneId == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsScheduleArgs", "timezoneId");
+            }
             return $;
         }
     }

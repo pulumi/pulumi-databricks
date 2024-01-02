@@ -50,16 +50,19 @@ public final class GetClusterClusterInfoTerminationReason {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,Object> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

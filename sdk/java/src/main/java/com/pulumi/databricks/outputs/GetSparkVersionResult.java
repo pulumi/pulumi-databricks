@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,56 +130,69 @@ public final class GetSparkVersionResult {
 
         @CustomType.Setter
         public Builder beta(@Nullable Boolean beta) {
+
             this.beta = beta;
             return this;
         }
         @CustomType.Setter
         public Builder genomics(@Nullable Boolean genomics) {
+
             this.genomics = genomics;
             return this;
         }
         @CustomType.Setter
         public Builder gpu(@Nullable Boolean gpu) {
+
             this.gpu = gpu;
             return this;
         }
         @CustomType.Setter
         public Builder graviton(@Nullable Boolean graviton) {
+
             this.graviton = graviton;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSparkVersionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latest(@Nullable Boolean latest) {
+
             this.latest = latest;
             return this;
         }
         @CustomType.Setter
         public Builder longTermSupport(@Nullable Boolean longTermSupport) {
+
             this.longTermSupport = longTermSupport;
             return this;
         }
         @CustomType.Setter
         public Builder ml(@Nullable Boolean ml) {
+
             this.ml = ml;
             return this;
         }
         @CustomType.Setter
         public Builder photon(@Nullable Boolean photon) {
+
             this.photon = photon;
             return this;
         }
         @CustomType.Setter
         public Builder scala(@Nullable String scala) {
+
             this.scala = scala;
             return this;
         }
         @CustomType.Setter
         public Builder sparkVersion(@Nullable String sparkVersion) {
+
             this.sparkVersion = sparkVersion;
             return this;
         }

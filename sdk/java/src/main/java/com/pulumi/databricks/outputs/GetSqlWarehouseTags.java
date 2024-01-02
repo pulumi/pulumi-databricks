@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTagsCustomTag;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,10 @@ public final class GetSqlWarehouseTags {
 
         @CustomType.Setter
         public Builder customTags(List<GetSqlWarehouseTagsCustomTag> customTags) {
-            this.customTags = Objects.requireNonNull(customTags);
+            if (customTags == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseTags", "customTags");
+            }
+            this.customTags = customTags;
             return this;
         }
         public Builder customTags(GetSqlWarehouseTagsCustomTag... customTags) {

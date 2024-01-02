@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertSubscriptionArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -163,8 +164,12 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
         }
 
         public JobTaskSqlTaskAlertArgs build() {
-            $.alertId = Objects.requireNonNull($.alertId, "expected parameter 'alertId' to be non-null");
-            $.subscriptions = Objects.requireNonNull($.subscriptions, "expected parameter 'subscriptions' to be non-null");
+            if ($.alertId == null) {
+                throw new MissingRequiredPropertyException("JobTaskSqlTaskAlertArgs", "alertId");
+            }
+            if ($.subscriptions == null) {
+                throw new MissingRequiredPropertyException("JobTaskSqlTaskAlertArgs", "subscriptions");
+            }
             return $;
         }
     }

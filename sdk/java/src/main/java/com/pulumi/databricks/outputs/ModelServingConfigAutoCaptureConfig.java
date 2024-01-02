@@ -55,21 +55,25 @@ public final class ModelServingConfigAutoCaptureConfig {
 
         @CustomType.Setter
         public Builder catalogName(@Nullable String catalogName) {
+
             this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder schemaName(@Nullable String schemaName) {
+
             this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
         public Builder tableNamePrefix(@Nullable String tableNamePrefix) {
+
             this.tableNamePrefix = tableNamePrefix;
             return this;
         }

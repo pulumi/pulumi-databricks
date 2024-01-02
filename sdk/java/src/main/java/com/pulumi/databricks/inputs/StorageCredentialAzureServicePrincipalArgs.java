@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class StorageCredentialAzureServicePrincipalArgs extends com.pulumi
         }
 
         public StorageCredentialAzureServicePrincipalArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.directoryId = Objects.requireNonNull($.directoryId, "expected parameter 'directoryId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialAzureServicePrincipalArgs", "applicationId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialAzureServicePrincipalArgs", "clientSecret");
+            }
+            if ($.directoryId == null) {
+                throw new MissingRequiredPropertyException("StorageCredentialAzureServicePrincipalArgs", "directoryId");
+            }
             return $;
         }
     }

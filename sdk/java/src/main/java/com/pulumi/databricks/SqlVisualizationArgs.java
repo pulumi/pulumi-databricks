@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,9 +159,15 @@ public final class SqlVisualizationArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SqlVisualizationArgs build() {
-            $.options = Objects.requireNonNull($.options, "expected parameter 'options' to be non-null");
-            $.queryId = Objects.requireNonNull($.queryId, "expected parameter 'queryId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.options == null) {
+                throw new MissingRequiredPropertyException("SqlVisualizationArgs", "options");
+            }
+            if ($.queryId == null) {
+                throw new MissingRequiredPropertyException("SqlVisualizationArgs", "queryId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("SqlVisualizationArgs", "type");
+            }
             return $;
         }
     }

@@ -42,11 +42,13 @@ public final class MwsNetworksErrorMessage {
 
         @CustomType.Setter
         public Builder errorMessage(@Nullable String errorMessage) {
+
             this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
         public Builder errorType(@Nullable String errorType) {
+
             this.errorType = errorType;
             return this;
         }

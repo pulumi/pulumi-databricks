@@ -43,11 +43,13 @@ public final class GetJobJobSettingsSettingsTaskNewClusterClusterLogConf {
 
         @CustomType.Setter
         public Builder dbfs(@Nullable GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs dbfs) {
+
             this.dbfs = dbfs;
             return this;
         }
         @CustomType.Setter
         public Builder s3(@Nullable GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 s3) {
+
             this.s3 = s3;
             return this;
         }

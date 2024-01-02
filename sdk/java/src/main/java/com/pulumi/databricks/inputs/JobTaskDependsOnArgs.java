@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class JobTaskDependsOnArgs extends com.pulumi.resources.ResourceArg
         }
 
         public JobTaskDependsOnArgs build() {
-            $.taskKey = Objects.requireNonNull($.taskKey, "expected parameter 'taskKey' to be non-null");
+            if ($.taskKey == null) {
+                throw new MissingRequiredPropertyException("JobTaskDependsOnArgs", "taskKey");
+            }
             return $;
         }
     }

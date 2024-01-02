@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,16 +73,21 @@ public final class MwsCustomerManagedKeysAwsKeyInfo {
 
         @CustomType.Setter
         public Builder keyAlias(@Nullable String keyAlias) {
+
             this.keyAlias = keyAlias;
             return this;
         }
         @CustomType.Setter
         public Builder keyArn(String keyArn) {
-            this.keyArn = Objects.requireNonNull(keyArn);
+            if (keyArn == null) {
+              throw new MissingRequiredPropertyException("MwsCustomerManagedKeysAwsKeyInfo", "keyArn");
+            }
+            this.keyArn = keyArn;
             return this;
         }
         @CustomType.Setter
         public Builder keyRegion(@Nullable String keyRegion) {
+
             this.keyRegion = keyRegion;
             return this;
         }

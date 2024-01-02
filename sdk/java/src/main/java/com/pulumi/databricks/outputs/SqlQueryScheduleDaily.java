@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,23 @@ public final class SqlQueryScheduleDaily {
 
         @CustomType.Setter
         public Builder intervalDays(Integer intervalDays) {
-            this.intervalDays = Objects.requireNonNull(intervalDays);
+            if (intervalDays == null) {
+              throw new MissingRequiredPropertyException("SqlQueryScheduleDaily", "intervalDays");
+            }
+            this.intervalDays = intervalDays;
             return this;
         }
         @CustomType.Setter
         public Builder timeOfDay(String timeOfDay) {
-            this.timeOfDay = Objects.requireNonNull(timeOfDay);
+            if (timeOfDay == null) {
+              throw new MissingRequiredPropertyException("SqlQueryScheduleDaily", "timeOfDay");
+            }
+            this.timeOfDay = timeOfDay;
             return this;
         }
         @CustomType.Setter
         public Builder untilDate(@Nullable String untilDate) {
+
             this.untilDate = untilDate;
             return this;
         }

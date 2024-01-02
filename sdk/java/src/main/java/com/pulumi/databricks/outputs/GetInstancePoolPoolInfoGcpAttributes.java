@@ -43,11 +43,13 @@ public final class GetInstancePoolPoolInfoGcpAttributes {
 
         @CustomType.Setter
         public Builder gcpAvailability(@Nullable String gcpAvailability) {
+
             this.gcpAvailability = gcpAvailability;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }

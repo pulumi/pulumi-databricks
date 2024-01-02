@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetInstancePoolPoolInfo;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -93,7 +94,9 @@ public final class GetInstancePoolPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetInstancePoolPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPlainArgs", "name");
+            }
             return $;
         }
     }

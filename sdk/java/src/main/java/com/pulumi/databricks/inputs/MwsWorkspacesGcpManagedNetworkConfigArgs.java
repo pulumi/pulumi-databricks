@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,9 +89,15 @@ public final class MwsWorkspacesGcpManagedNetworkConfigArgs extends com.pulumi.r
         }
 
         public MwsWorkspacesGcpManagedNetworkConfigArgs build() {
-            $.gkeClusterPodIpRange = Objects.requireNonNull($.gkeClusterPodIpRange, "expected parameter 'gkeClusterPodIpRange' to be non-null");
-            $.gkeClusterServiceIpRange = Objects.requireNonNull($.gkeClusterServiceIpRange, "expected parameter 'gkeClusterServiceIpRange' to be non-null");
-            $.subnetCidr = Objects.requireNonNull($.subnetCidr, "expected parameter 'subnetCidr' to be non-null");
+            if ($.gkeClusterPodIpRange == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "gkeClusterPodIpRange");
+            }
+            if ($.gkeClusterServiceIpRange == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "gkeClusterServiceIpRange");
+            }
+            if ($.subnetCidr == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesGcpManagedNetworkConfigArgs", "subnetCidr");
+            }
             return $;
         }
     }

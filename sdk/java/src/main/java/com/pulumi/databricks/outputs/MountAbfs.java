@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -79,41 +80,57 @@ public final class MountAbfs {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("MountAbfs", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecretKey(String clientSecretKey) {
-            this.clientSecretKey = Objects.requireNonNull(clientSecretKey);
+            if (clientSecretKey == null) {
+              throw new MissingRequiredPropertyException("MountAbfs", "clientSecretKey");
+            }
+            this.clientSecretKey = clientSecretKey;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecretScope(String clientSecretScope) {
-            this.clientSecretScope = Objects.requireNonNull(clientSecretScope);
+            if (clientSecretScope == null) {
+              throw new MissingRequiredPropertyException("MountAbfs", "clientSecretScope");
+            }
+            this.clientSecretScope = clientSecretScope;
             return this;
         }
         @CustomType.Setter
         public Builder containerName(@Nullable String containerName) {
+
             this.containerName = containerName;
             return this;
         }
         @CustomType.Setter
         public Builder directory(@Nullable String directory) {
+
             this.directory = directory;
             return this;
         }
         @CustomType.Setter
         public Builder initializeFileSystem(Boolean initializeFileSystem) {
-            this.initializeFileSystem = Objects.requireNonNull(initializeFileSystem);
+            if (initializeFileSystem == null) {
+              throw new MissingRequiredPropertyException("MountAbfs", "initializeFileSystem");
+            }
+            this.initializeFileSystem = initializeFileSystem;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccountName(@Nullable String storageAccountName) {
+
             this.storageAccountName = storageAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

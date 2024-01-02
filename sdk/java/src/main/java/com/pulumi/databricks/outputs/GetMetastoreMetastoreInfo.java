@@ -195,91 +195,109 @@ public final class GetMetastoreMetastoreInfo {
 
         @CustomType.Setter
         public Builder cloud(@Nullable String cloud) {
+
             this.cloud = cloud;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(@Nullable Integer createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
+
             this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDataAccessConfigId(@Nullable String defaultDataAccessConfigId) {
+
             this.defaultDataAccessConfigId = defaultDataAccessConfigId;
             return this;
         }
         @CustomType.Setter
         public Builder deltaSharingOrganizationName(@Nullable String deltaSharingOrganizationName) {
+
             this.deltaSharingOrganizationName = deltaSharingOrganizationName;
             return this;
         }
         @CustomType.Setter
         public Builder deltaSharingRecipientTokenLifetimeInSeconds(@Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds) {
+
             this.deltaSharingRecipientTokenLifetimeInSeconds = deltaSharingRecipientTokenLifetimeInSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder deltaSharingScope(@Nullable String deltaSharingScope) {
+
             this.deltaSharingScope = deltaSharingScope;
             return this;
         }
         @CustomType.Setter
         public Builder globalMetastoreId(@Nullable String globalMetastoreId) {
+
             this.globalMetastoreId = globalMetastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder metastoreId(@Nullable String metastoreId) {
+
             this.metastoreId = metastoreId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder privilegeModelVersion(@Nullable String privilegeModelVersion) {
+
             this.privilegeModelVersion = privilegeModelVersion;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder storageRoot(@Nullable String storageRoot) {
+
             this.storageRoot = storageRoot;
             return this;
         }
         @CustomType.Setter
         public Builder storageRootCredentialId(@Nullable String storageRootCredentialId) {
+
             this.storageRootCredentialId = storageRootCredentialId;
             return this;
         }
         @CustomType.Setter
         public Builder storageRootCredentialName(@Nullable String storageRootCredentialName) {
+
             this.storageRootCredentialName = storageRootCredentialName;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable Integer updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder updatedBy(@Nullable String updatedBy) {
+
             this.updatedBy = updatedBy;
             return this;
         }

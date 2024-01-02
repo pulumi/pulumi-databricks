@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class OboTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OboTokenArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("OboTokenArgs", "applicationId");
+            }
             return $;
         }
     }

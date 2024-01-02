@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,27 +78,38 @@ public final class GetAwsAssumeRolePolicyResult {
 
         @CustomType.Setter
         public Builder databricksAccountId(@Nullable String databricksAccountId) {
+
             this.databricksAccountId = databricksAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetAwsAssumeRolePolicyResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder forLogDelivery(@Nullable Boolean forLogDelivery) {
+
             this.forLogDelivery = forLogDelivery;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAwsAssumeRolePolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder json(String json) {
-            this.json = Objects.requireNonNull(json);
+            if (json == null) {
+              throw new MissingRequiredPropertyException("GetAwsAssumeRolePolicyResult", "json");
+            }
+            this.json = json;
             return this;
         }
         public GetAwsAssumeRolePolicyResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,21 @@ public final class GetJobJobSettingsSettingsTriggerFileArrival {
 
         @CustomType.Setter
         public Builder minTimeBetweenTriggersSeconds(@Nullable Integer minTimeBetweenTriggersSeconds) {
+
             this.minTimeBetweenTriggersSeconds = minTimeBetweenTriggersSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTriggerFileArrival", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder waitAfterLastChangeSeconds(@Nullable Integer waitAfterLastChangeSeconds) {
+
             this.waitAfterLastChangeSeconds = waitAfterLastChangeSeconds;
             return this;
         }

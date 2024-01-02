@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -121,7 +122,9 @@ public final class GetJobJobSettingsSettingsDbtTask extends com.pulumi.resources
         }
 
         public GetJobJobSettingsSettingsDbtTask build() {
-            $.commands = Objects.requireNonNull($.commands, "expected parameter 'commands' to be non-null");
+            if ($.commands == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsDbtTask", "commands");
+            }
             return $;
         }
     }

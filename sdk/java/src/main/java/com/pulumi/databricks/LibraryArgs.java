@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.LibraryCranArgs;
 import com.pulumi.databricks.inputs.LibraryMavenArgs;
 import com.pulumi.databricks.inputs.LibraryPypiArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -161,7 +162,9 @@ public final class LibraryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LibraryArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("LibraryArgs", "clusterId");
+            }
             return $;
         }
     }

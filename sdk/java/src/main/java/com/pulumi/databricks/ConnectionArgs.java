@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -298,8 +299,12 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.connectionType = Objects.requireNonNull($.connectionType, "expected parameter 'connectionType' to be non-null");
-            $.options = Objects.requireNonNull($.options, "expected parameter 'options' to be non-null");
+            if ($.connectionType == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "connectionType");
+            }
+            if ($.options == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "options");
+            }
             return $;
         }
     }

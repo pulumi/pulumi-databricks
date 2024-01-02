@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -74,7 +75,9 @@ public final class MwsWorkspacesCloudResourceContainerArgs extends com.pulumi.re
         }
 
         public MwsWorkspacesCloudResourceContainerArgs build() {
-            $.gcp = Objects.requireNonNull($.gcp, "expected parameter 'gcp' to be non-null");
+            if ($.gcp == null) {
+                throw new MissingRequiredPropertyException("MwsWorkspacesCloudResourceContainerArgs", "gcp");
+            }
             return $;
         }
     }

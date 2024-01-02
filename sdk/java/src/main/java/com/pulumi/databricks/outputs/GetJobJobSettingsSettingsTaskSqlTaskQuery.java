@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskQuery {
 
         @CustomType.Setter
         public Builder queryId(String queryId) {
-            this.queryId = Objects.requireNonNull(queryId);
+            if (queryId == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskSqlTaskQuery", "queryId");
+            }
+            this.queryId = queryId;
             return this;
         }
         public GetJobJobSettingsSettingsTaskSqlTaskQuery build() {

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceJobSourceArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,7 +143,9 @@ public final class GetJobJobSettingsSettingsGitSourceArgs extends com.pulumi.res
         }
 
         public GetJobJobSettingsSettingsGitSourceArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsGitSourceArgs", "url");
+            }
             return $;
         }
     }

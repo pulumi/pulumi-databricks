@@ -44,6 +44,7 @@ public final class ModelServingConfigTrafficConfig {
 
         @CustomType.Setter
         public Builder routes(@Nullable List<ModelServingConfigTrafficConfigRoute> routes) {
+
             this.routes = routes;
             return this;
         }

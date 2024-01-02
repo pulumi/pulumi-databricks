@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,51 +155,77 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder aclPrincipalId(String aclPrincipalId) {
-            this.aclPrincipalId = Objects.requireNonNull(aclPrincipalId);
+            if (aclPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "aclPrincipalId");
+            }
+            this.aclPrincipalId = aclPrincipalId;
             return this;
         }
         @CustomType.Setter
         public Builder alphanumeric(String alphanumeric) {
-            this.alphanumeric = Objects.requireNonNull(alphanumeric);
+            if (alphanumeric == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "alphanumeric");
+            }
+            this.alphanumeric = alphanumeric;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder home(String home) {
-            this.home = Objects.requireNonNull(home);
+            if (home == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "home");
+            }
+            this.home = home;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder repos(String repos) {
-            this.repos = Objects.requireNonNull(repos);
+            if (repos == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "repos");
+            }
+            this.repos = repos;
             return this;
         }
         @CustomType.Setter
         public Builder userId(@Nullable String userId) {
+
             this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }

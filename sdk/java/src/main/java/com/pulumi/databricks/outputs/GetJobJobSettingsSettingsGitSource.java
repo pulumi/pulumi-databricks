@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSourceJobSource;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,32 +68,40 @@ public final class GetJobJobSettingsSettingsGitSource {
 
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
+
             this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder commit(@Nullable String commit) {
+
             this.commit = commit;
             return this;
         }
         @CustomType.Setter
         public Builder jobSource(@Nullable GetJobJobSettingsSettingsGitSourceJobSource jobSource) {
+
             this.jobSource = jobSource;
             return this;
         }
         @CustomType.Setter
         public Builder provider(@Nullable String provider) {
+
             this.provider = provider;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsGitSource", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetJobJobSettingsSettingsGitSource build() {

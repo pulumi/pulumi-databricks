@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
 import com.pulumi.databricks.inputs.RecipientTokenArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -348,7 +349,9 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RecipientArgs build() {
-            $.authenticationType = Objects.requireNonNull($.authenticationType, "expected parameter 'authenticationType' to be non-null");
+            if ($.authenticationType == null) {
+                throw new MissingRequiredPropertyException("RecipientArgs", "authenticationType");
+            }
             return $;
         }
     }

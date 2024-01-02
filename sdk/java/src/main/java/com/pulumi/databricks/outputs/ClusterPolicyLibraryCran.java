@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,11 +43,15 @@ public final class ClusterPolicyLibraryCran {
 
         @CustomType.Setter("package")
         public Builder package_(String package_) {
-            this.package_ = Objects.requireNonNull(package_);
+            if (package_ == null) {
+              throw new MissingRequiredPropertyException("ClusterPolicyLibraryCran", "package_");
+            }
+            this.package_ = package_;
             return this;
         }
         @CustomType.Setter
         public Builder repo(@Nullable String repo) {
+
             this.repo = repo;
             return this;
         }

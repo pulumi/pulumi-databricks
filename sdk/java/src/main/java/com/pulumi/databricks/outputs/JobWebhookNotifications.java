@@ -141,6 +141,7 @@ public final class JobWebhookNotifications {
 
         @CustomType.Setter
         public Builder onDurationWarningThresholdExceededs(@Nullable List<JobWebhookNotificationsOnDurationWarningThresholdExceeded> onDurationWarningThresholdExceededs) {
+
             this.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             return this;
         }
@@ -149,6 +150,7 @@ public final class JobWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onFailures(@Nullable List<JobWebhookNotificationsOnFailure> onFailures) {
+
             this.onFailures = onFailures;
             return this;
         }
@@ -157,6 +159,7 @@ public final class JobWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onStarts(@Nullable List<JobWebhookNotificationsOnStart> onStarts) {
+
             this.onStarts = onStarts;
             return this;
         }
@@ -165,6 +168,7 @@ public final class JobWebhookNotifications {
         }
         @CustomType.Setter
         public Builder onSuccesses(@Nullable List<JobWebhookNotificationsOnSuccess> onSuccesses) {
+
             this.onSuccesses = onSuccesses;
             return this;
         }

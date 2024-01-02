@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GrantsGrantArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -283,7 +284,9 @@ public final class GrantsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GrantsArgs build() {
-            $.grants = Objects.requireNonNull($.grants, "expected parameter 'grants' to be non-null");
+            if ($.grants == null) {
+                throw new MissingRequiredPropertyException("GrantsArgs", "grants");
+            }
             return $;
         }
     }

@@ -48,6 +48,7 @@ public final class JobWebhookNotificationsOnSuccess {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }

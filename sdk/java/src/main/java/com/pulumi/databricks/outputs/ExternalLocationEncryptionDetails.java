@@ -36,6 +36,7 @@ public final class ExternalLocationEncryptionDetails {
 
         @CustomType.Setter
         public Builder sseEncryptionDetails(@Nullable ExternalLocationEncryptionDetailsSseEncryptionDetails sseEncryptionDetails) {
+
             this.sseEncryptionDetails = sseEncryptionDetails;
             return this;
         }

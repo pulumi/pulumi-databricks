@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetNotebookPathsNotebookPathList;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -71,12 +72,18 @@ public final class GetNotebookPathsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNotebookPathsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder notebookPathLists(List<GetNotebookPathsNotebookPathList> notebookPathLists) {
-            this.notebookPathLists = Objects.requireNonNull(notebookPathLists);
+            if (notebookPathLists == null) {
+              throw new MissingRequiredPropertyException("GetNotebookPathsResult", "notebookPathLists");
+            }
+            this.notebookPathLists = notebookPathLists;
             return this;
         }
         public Builder notebookPathLists(GetNotebookPathsNotebookPathList... notebookPathLists) {
@@ -84,12 +91,18 @@ public final class GetNotebookPathsResult {
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetNotebookPathsResult", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder recursive(Boolean recursive) {
-            this.recursive = Objects.requireNonNull(recursive);
+            if (recursive == null) {
+              throw new MissingRequiredPropertyException("GetNotebookPathsResult", "recursive");
+            }
+            this.recursive = recursive;
             return this;
         }
         public GetNotebookPathsResult build() {

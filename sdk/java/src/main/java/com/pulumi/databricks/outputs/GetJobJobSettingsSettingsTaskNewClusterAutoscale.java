@@ -42,11 +42,13 @@ public final class GetJobJobSettingsSettingsTaskNewClusterAutoscale {
 
         @CustomType.Setter
         public Builder maxWorkers(@Nullable Integer maxWorkers) {
+
             this.maxWorkers = maxWorkers;
             return this;
         }
         @CustomType.Setter
         public Builder minWorkers(@Nullable Integer minWorkers) {
+
             this.minWorkers = minWorkers;
             return this;
         }

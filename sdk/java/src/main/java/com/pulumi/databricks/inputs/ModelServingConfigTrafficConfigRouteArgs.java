@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
         }
 
         public ModelServingConfigTrafficConfigRouteArgs build() {
-            $.servedModelName = Objects.requireNonNull($.servedModelName, "expected parameter 'servedModelName' to be non-null");
-            $.trafficPercentage = Objects.requireNonNull($.trafficPercentage, "expected parameter 'trafficPercentage' to be non-null");
+            if ($.servedModelName == null) {
+                throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRouteArgs", "servedModelName");
+            }
+            if ($.trafficPercentage == null) {
+                throw new MissingRequiredPropertyException("ModelServingConfigTrafficConfigRouteArgs", "trafficPercentage");
+            }
             return $;
         }
     }

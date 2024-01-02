@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class MwsNetworksGcpNetworkInfo {
 
         @CustomType.Setter
         public Builder networkProjectId(String networkProjectId) {
-            this.networkProjectId = Objects.requireNonNull(networkProjectId);
+            if (networkProjectId == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "networkProjectId");
+            }
+            this.networkProjectId = networkProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder podIpRangeName(String podIpRangeName) {
-            this.podIpRangeName = Objects.requireNonNull(podIpRangeName);
+            if (podIpRangeName == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "podIpRangeName");
+            }
+            this.podIpRangeName = podIpRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceIpRangeName(String serviceIpRangeName) {
-            this.serviceIpRangeName = Objects.requireNonNull(serviceIpRangeName);
+            if (serviceIpRangeName == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "serviceIpRangeName");
+            }
+            this.serviceIpRangeName = serviceIpRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder subnetRegion(String subnetRegion) {
-            this.subnetRegion = Objects.requireNonNull(subnetRegion);
+            if (subnetRegion == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "subnetRegion");
+            }
+            this.subnetRegion = subnetRegion;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("MwsNetworksGcpNetworkInfo", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public MwsNetworksGcpNetworkInfo build() {

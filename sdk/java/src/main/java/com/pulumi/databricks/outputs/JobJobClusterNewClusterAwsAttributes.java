@@ -79,41 +79,49 @@ public final class JobJobClusterNewClusterAwsAttributes {
 
         @CustomType.Setter
         public Builder availability(@Nullable String availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder ebsVolumeCount(@Nullable Integer ebsVolumeCount) {
+
             this.ebsVolumeCount = ebsVolumeCount;
             return this;
         }
         @CustomType.Setter
         public Builder ebsVolumeSize(@Nullable Integer ebsVolumeSize) {
+
             this.ebsVolumeSize = ebsVolumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder ebsVolumeType(@Nullable String ebsVolumeType) {
+
             this.ebsVolumeType = ebsVolumeType;
             return this;
         }
         @CustomType.Setter
         public Builder firstOnDemand(@Nullable Integer firstOnDemand) {
+
             this.firstOnDemand = firstOnDemand;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+
             this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
         public Builder spotBidPricePercent(@Nullable Integer spotBidPricePercent) {
+
             this.spotBidPricePercent = spotBidPricePercent;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

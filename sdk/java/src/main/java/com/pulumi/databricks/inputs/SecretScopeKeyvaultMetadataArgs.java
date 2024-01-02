@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class SecretScopeKeyvaultMetadataArgs extends com.pulumi.resources.
         }
 
         public SecretScopeKeyvaultMetadataArgs build() {
-            $.dnsName = Objects.requireNonNull($.dnsName, "expected parameter 'dnsName' to be non-null");
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
+            if ($.dnsName == null) {
+                throw new MissingRequiredPropertyException("SecretScopeKeyvaultMetadataArgs", "dnsName");
+            }
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("SecretScopeKeyvaultMetadataArgs", "resourceId");
+            }
             return $;
         }
     }

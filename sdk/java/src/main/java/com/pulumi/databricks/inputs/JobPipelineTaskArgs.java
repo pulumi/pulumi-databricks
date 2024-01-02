@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -122,7 +123,9 @@ public final class JobPipelineTaskArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public JobPipelineTaskArgs build() {
-            $.pipelineId = Objects.requireNonNull($.pipelineId, "expected parameter 'pipelineId' to be non-null");
+            if ($.pipelineId == null) {
+                throw new MissingRequiredPropertyException("JobPipelineTaskArgs", "pipelineId");
+            }
             return $;
         }
     }

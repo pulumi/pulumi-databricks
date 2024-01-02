@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ExternalLocationEncryptionDetailsArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -465,8 +466,12 @@ public final class ExternalLocationArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ExternalLocationArgs build() {
-            $.credentialName = Objects.requireNonNull($.credentialName, "expected parameter 'credentialName' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.credentialName == null) {
+                throw new MissingRequiredPropertyException("ExternalLocationArgs", "credentialName");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("ExternalLocationArgs", "url");
+            }
             return $;
         }
     }

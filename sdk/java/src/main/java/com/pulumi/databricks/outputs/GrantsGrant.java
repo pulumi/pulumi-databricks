@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GrantsGrant {
 
         @CustomType.Setter
         public Builder principal(String principal) {
-            this.principal = Objects.requireNonNull(principal);
+            if (principal == null) {
+              throw new MissingRequiredPropertyException("GrantsGrant", "principal");
+            }
+            this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder privileges(List<String> privileges) {
-            this.privileges = Objects.requireNonNull(privileges);
+            if (privileges == null) {
+              throw new MissingRequiredPropertyException("GrantsGrant", "privileges");
+            }
+            this.privileges = privileges;
             return this;
         }
         public Builder privileges(String... privileges) {

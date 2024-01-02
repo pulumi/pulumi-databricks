@@ -54,21 +54,25 @@ public final class GetInstancePoolPoolInfoStats {
 
         @CustomType.Setter
         public Builder idleCount(@Nullable Integer idleCount) {
+
             this.idleCount = idleCount;
             return this;
         }
         @CustomType.Setter
         public Builder pendingIdleCount(@Nullable Integer pendingIdleCount) {
+
             this.pendingIdleCount = pendingIdleCount;
             return this;
         }
         @CustomType.Setter
         public Builder pendingUsedCount(@Nullable Integer pendingUsedCount) {
+
             this.pendingUsedCount = pendingUsedCount;
             return this;
         }
         @CustomType.Setter
         public Builder usedCount(@Nullable Integer usedCount) {
+
             this.usedCount = usedCount;
             return this;
         }

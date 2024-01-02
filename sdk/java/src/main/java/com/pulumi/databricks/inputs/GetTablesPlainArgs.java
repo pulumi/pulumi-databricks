@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,8 +131,12 @@ public final class GetTablesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTablesPlainArgs build() {
-            $.catalogName = Objects.requireNonNull($.catalogName, "expected parameter 'catalogName' to be non-null");
-            $.schemaName = Objects.requireNonNull($.schemaName, "expected parameter 'schemaName' to be non-null");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("GetTablesPlainArgs", "catalogName");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("GetTablesPlainArgs", "schemaName");
+            }
             return $;
         }
     }
