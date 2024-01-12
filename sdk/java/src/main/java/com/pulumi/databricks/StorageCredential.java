@@ -21,6 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note** This resource could be used with account or workspace-level provider.
+ * 
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
  * 
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -286,6 +288,20 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> readOnly() {
         return Codegen.optional(this.readOnly);
+    }
+    /**
+     * Suppress validation errors if any &amp; force save the storage credential.
+     * 
+     */
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipValidation;
+
+    /**
+     * @return Suppress validation errors if any &amp; force save the storage credential.
+     * 
+     */
+    public Output<Optional<Boolean>> skipValidation() {
+        return Codegen.optional(this.skipValidation);
     }
 
     /**

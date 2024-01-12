@@ -53,20 +53,24 @@ export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.Invoke
         "autoStopMins": args.autoStopMins,
         "channel": args.channel,
         "clusterSize": args.clusterSize,
+        "creatorName": args.creatorName,
         "dataSourceId": args.dataSourceId,
         "enablePhoton": args.enablePhoton,
         "enableServerlessCompute": args.enableServerlessCompute,
+        "health": args.health,
         "id": args.id,
         "instanceProfileArn": args.instanceProfileArn,
         "jdbcUrl": args.jdbcUrl,
         "maxNumClusters": args.maxNumClusters,
         "minNumClusters": args.minNumClusters,
         "name": args.name,
+        "numActiveSessions": args.numActiveSessions,
         "numClusters": args.numClusters,
         "odbcParams": args.odbcParams,
         "spotInstancePolicy": args.spotInstancePolicy,
         "state": args.state,
         "tags": args.tags,
+        "warehouseType": args.warehouseType,
     }, opts);
 }
 
@@ -87,6 +91,10 @@ export interface GetSqlWarehouseArgs {
      */
     clusterSize?: string;
     /**
+     * The username of the user who created the endpoint.
+     */
+    creatorName?: string;
+    /**
      * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     dataSourceId?: string;
@@ -98,6 +106,10 @@ export interface GetSqlWarehouseArgs {
      * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     enableServerlessCompute?: boolean;
+    /**
+     * Health status of the endpoint.
+     */
+    health?: inputs.GetSqlWarehouseHealth;
     /**
      * The ID of the SQL warehouse.
      */
@@ -119,6 +131,13 @@ export interface GetSqlWarehouseArgs {
      * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: string;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
+    numActiveSessions?: number;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
     numClusters?: number;
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -128,11 +147,18 @@ export interface GetSqlWarehouseArgs {
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
     spotInstancePolicy?: string;
+    /**
+     * The current state of the endpoint.
+     */
     state?: string;
     /**
      * tags used for SQL warehouse resources.
      */
     tags?: inputs.GetSqlWarehouseTags;
+    /**
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     */
+    warehouseType?: string;
 }
 
 /**
@@ -152,6 +178,10 @@ export interface GetSqlWarehouseResult {
      */
     readonly clusterSize: string;
     /**
+     * The username of the user who created the endpoint.
+     */
+    readonly creatorName: string;
+    /**
      * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     readonly dataSourceId: string;
@@ -163,6 +193,10 @@ export interface GetSqlWarehouseResult {
      * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     readonly enableServerlessCompute: boolean;
+    /**
+     * Health status of the endpoint.
+     */
+    readonly health: outputs.GetSqlWarehouseHealth;
     /**
      * The ID of the SQL warehouse.
      */
@@ -184,6 +218,13 @@ export interface GetSqlWarehouseResult {
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      */
     readonly name: string;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
+    readonly numActiveSessions: number;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
     readonly numClusters: number;
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -193,11 +234,18 @@ export interface GetSqlWarehouseResult {
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
     readonly spotInstancePolicy: string;
+    /**
+     * The current state of the endpoint.
+     */
     readonly state: string;
     /**
      * tags used for SQL warehouse resources.
      */
     readonly tags: outputs.GetSqlWarehouseTags;
+    /**
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     */
+    readonly warehouseType: string;
 }
 /**
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -259,6 +307,10 @@ export interface GetSqlWarehouseOutputArgs {
      */
     clusterSize?: pulumi.Input<string>;
     /**
+     * The username of the user who created the endpoint.
+     */
+    creatorName?: pulumi.Input<string>;
+    /**
      * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
     dataSourceId?: pulumi.Input<string>;
@@ -270,6 +322,10 @@ export interface GetSqlWarehouseOutputArgs {
      * Whether this SQL warehouse is a serverless SQL warehouse.
      */
     enableServerlessCompute?: pulumi.Input<boolean>;
+    /**
+     * Health status of the endpoint.
+     */
+    health?: pulumi.Input<inputs.GetSqlWarehouseHealthArgs>;
     /**
      * The ID of the SQL warehouse.
      */
@@ -291,6 +347,13 @@ export interface GetSqlWarehouseOutputArgs {
      * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: pulumi.Input<string>;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
+    numActiveSessions?: pulumi.Input<number>;
+    /**
+     * The current number of clusters used by the endpoint.
+     */
     numClusters?: pulumi.Input<number>;
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -300,9 +363,16 @@ export interface GetSqlWarehouseOutputArgs {
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
     spotInstancePolicy?: pulumi.Input<string>;
+    /**
+     * The current state of the endpoint.
+     */
     state?: pulumi.Input<string>;
     /**
      * tags used for SQL warehouse resources.
      */
     tags?: pulumi.Input<inputs.GetSqlWarehouseTagsArgs>;
+    /**
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     */
+    warehouseType?: pulumi.Input<string>;
 }

@@ -299,6 +299,8 @@ class Recipient(pulumi.CustomResource):
                  tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RecipientTokenArgs']]]]] = None,
                  __props__=None):
         """
+        > **Note** This resource could be only used with workspace-level provider!
+
         Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
 
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
@@ -352,6 +354,8 @@ class Recipient(pulumi.CustomResource):
                  args: RecipientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** This resource could be only used with workspace-level provider!
+
         Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
 
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.

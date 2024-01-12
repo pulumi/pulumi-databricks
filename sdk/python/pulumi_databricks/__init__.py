@@ -25,6 +25,7 @@ from .get_cluster import *
 from .get_cluster_policy import *
 from .get_clusters import *
 from .get_current_config import *
+from .get_current_metastore import *
 from .get_current_user import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
@@ -57,6 +58,7 @@ from .get_views import *
 from .get_zones import *
 from .git_credential import *
 from .global_init_script import *
+from .grant import *
 from .grants import *
 from .group import *
 from .group_instance_profile import *
@@ -244,6 +246,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/globalInitScript:GlobalInitScript": "GlobalInitScript"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/grant",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/grant:Grant": "Grant"
   }
  },
  {

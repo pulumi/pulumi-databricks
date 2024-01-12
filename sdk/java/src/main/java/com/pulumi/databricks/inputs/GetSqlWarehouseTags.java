@@ -5,20 +5,21 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSqlWarehouseTagsCustomTag;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSqlWarehouseTags extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSqlWarehouseTags Empty = new GetSqlWarehouseTags();
 
-    @Import(name="customTags", required=true)
-    private List<GetSqlWarehouseTagsCustomTag> customTags;
+    @Import(name="customTags")
+    private @Nullable List<GetSqlWarehouseTagsCustomTag> customTags;
 
-    public List<GetSqlWarehouseTagsCustomTag> customTags() {
-        return this.customTags;
+    public Optional<List<GetSqlWarehouseTagsCustomTag>> customTags() {
+        return Optional.ofNullable(this.customTags);
     }
 
     private GetSqlWarehouseTags() {}
@@ -45,7 +46,7 @@ public final class GetSqlWarehouseTags extends com.pulumi.resources.InvokeArgs {
             $ = new GetSqlWarehouseTags(Objects.requireNonNull(defaults));
         }
 
-        public Builder customTags(List<GetSqlWarehouseTagsCustomTag> customTags) {
+        public Builder customTags(@Nullable List<GetSqlWarehouseTagsCustomTag> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -55,9 +56,6 @@ public final class GetSqlWarehouseTags extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetSqlWarehouseTags build() {
-            if ($.customTags == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseTags", "customTags");
-            }
             return $;
         }
     }

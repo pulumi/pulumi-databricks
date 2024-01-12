@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note** This resource could be only used with workspace-level provider!
+    /// 
     /// The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
     /// Setting the default catalog for the workspace determines the catalog that is used when queries do not reference
     /// a fully qualified 3 level name. For example, if the default catalog is set to 'retail_prod' then a query

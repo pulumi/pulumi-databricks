@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSqlWarehouseChannel;
+import com.pulumi.databricks.outputs.GetSqlWarehouseHealth;
 import com.pulumi.databricks.outputs.GetSqlWarehouseOdbcParams;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTags;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -31,6 +32,11 @@ public final class GetSqlWarehouseResult {
      */
     private String clusterSize;
     /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
+    private String creatorName;
+    /**
      * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
@@ -45,6 +51,11 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private Boolean enableServerlessCompute;
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
+    private GetSqlWarehouseHealth health;
     /**
      * @return The ID of the SQL warehouse.
      * 
@@ -71,6 +82,15 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String name;
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
+    private Integer numActiveSessions;
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     private Integer numClusters;
     /**
      * @return ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -82,12 +102,21 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private String spotInstancePolicy;
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     private String state;
     /**
      * @return tags used for SQL warehouse resources.
      * 
      */
     private GetSqlWarehouseTags tags;
+    /**
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
+    private String warehouseType;
 
     private GetSqlWarehouseResult() {}
     /**
@@ -112,6 +141,13 @@ public final class GetSqlWarehouseResult {
         return this.clusterSize;
     }
     /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
+    public String creatorName() {
+        return this.creatorName;
+    }
+    /**
      * @return ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
@@ -131,6 +167,13 @@ public final class GetSqlWarehouseResult {
      */
     public Boolean enableServerlessCompute() {
         return this.enableServerlessCompute;
+    }
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
+    public GetSqlWarehouseHealth health() {
+        return this.health;
     }
     /**
      * @return The ID of the SQL warehouse.
@@ -170,6 +213,17 @@ public final class GetSqlWarehouseResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
+    public Integer numActiveSessions() {
+        return this.numActiveSessions;
+    }
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     public Integer numClusters() {
         return this.numClusters;
     }
@@ -187,6 +241,10 @@ public final class GetSqlWarehouseResult {
     public String spotInstancePolicy() {
         return this.spotInstancePolicy;
     }
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     public String state() {
         return this.state;
     }
@@ -196,6 +254,13 @@ public final class GetSqlWarehouseResult {
      */
     public GetSqlWarehouseTags tags() {
         return this.tags;
+    }
+    /**
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
+    public String warehouseType() {
+        return this.warehouseType;
     }
 
     public static Builder builder() {
@@ -210,40 +275,48 @@ public final class GetSqlWarehouseResult {
         private Integer autoStopMins;
         private GetSqlWarehouseChannel channel;
         private String clusterSize;
+        private String creatorName;
         private String dataSourceId;
         private Boolean enablePhoton;
         private Boolean enableServerlessCompute;
+        private GetSqlWarehouseHealth health;
         private String id;
         private String instanceProfileArn;
         private String jdbcUrl;
         private Integer maxNumClusters;
         private Integer minNumClusters;
         private String name;
+        private Integer numActiveSessions;
         private Integer numClusters;
         private GetSqlWarehouseOdbcParams odbcParams;
         private String spotInstancePolicy;
         private String state;
         private GetSqlWarehouseTags tags;
+        private String warehouseType;
         public Builder() {}
         public Builder(GetSqlWarehouseResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoStopMins = defaults.autoStopMins;
     	      this.channel = defaults.channel;
     	      this.clusterSize = defaults.clusterSize;
+    	      this.creatorName = defaults.creatorName;
     	      this.dataSourceId = defaults.dataSourceId;
     	      this.enablePhoton = defaults.enablePhoton;
     	      this.enableServerlessCompute = defaults.enableServerlessCompute;
+    	      this.health = defaults.health;
     	      this.id = defaults.id;
     	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.jdbcUrl = defaults.jdbcUrl;
     	      this.maxNumClusters = defaults.maxNumClusters;
     	      this.minNumClusters = defaults.minNumClusters;
     	      this.name = defaults.name;
+    	      this.numActiveSessions = defaults.numActiveSessions;
     	      this.numClusters = defaults.numClusters;
     	      this.odbcParams = defaults.odbcParams;
     	      this.spotInstancePolicy = defaults.spotInstancePolicy;
     	      this.state = defaults.state;
     	      this.tags = defaults.tags;
+    	      this.warehouseType = defaults.warehouseType;
         }
 
         @CustomType.Setter
@@ -271,6 +344,14 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder creatorName(String creatorName) {
+            if (creatorName == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "creatorName");
+            }
+            this.creatorName = creatorName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dataSourceId(String dataSourceId) {
             if (dataSourceId == null) {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "dataSourceId");
@@ -292,6 +373,14 @@ public final class GetSqlWarehouseResult {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "enableServerlessCompute");
             }
             this.enableServerlessCompute = enableServerlessCompute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder health(GetSqlWarehouseHealth health) {
+            if (health == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "health");
+            }
+            this.health = health;
             return this;
         }
         @CustomType.Setter
@@ -343,6 +432,14 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder numActiveSessions(Integer numActiveSessions) {
+            if (numActiveSessions == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "numActiveSessions");
+            }
+            this.numActiveSessions = numActiveSessions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder numClusters(Integer numClusters) {
             if (numClusters == null) {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "numClusters");
@@ -382,25 +479,37 @@ public final class GetSqlWarehouseResult {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
+        public Builder warehouseType(String warehouseType) {
+            if (warehouseType == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "warehouseType");
+            }
+            this.warehouseType = warehouseType;
+            return this;
+        }
         public GetSqlWarehouseResult build() {
             final var _resultValue = new GetSqlWarehouseResult();
             _resultValue.autoStopMins = autoStopMins;
             _resultValue.channel = channel;
             _resultValue.clusterSize = clusterSize;
+            _resultValue.creatorName = creatorName;
             _resultValue.dataSourceId = dataSourceId;
             _resultValue.enablePhoton = enablePhoton;
             _resultValue.enableServerlessCompute = enableServerlessCompute;
+            _resultValue.health = health;
             _resultValue.id = id;
             _resultValue.instanceProfileArn = instanceProfileArn;
             _resultValue.jdbcUrl = jdbcUrl;
             _resultValue.maxNumClusters = maxNumClusters;
             _resultValue.minNumClusters = minNumClusters;
             _resultValue.name = name;
+            _resultValue.numActiveSessions = numActiveSessions;
             _resultValue.numClusters = numClusters;
             _resultValue.odbcParams = odbcParams;
             _resultValue.spotInstancePolicy = spotInstancePolicy;
             _resultValue.state = state;
             _resultValue.tags = tags;
+            _resultValue.warehouseType = warehouseType;
             return _resultValue;
         }
     }

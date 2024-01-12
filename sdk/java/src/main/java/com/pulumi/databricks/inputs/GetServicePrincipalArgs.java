@@ -62,14 +62,14 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Display name of the service principal, e.g. `Foo SPN`.
+     * Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Display name of the service principal, e.g. `Foo SPN`.
+     * @return Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -239,7 +239,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param displayName Display name of the service principal, e.g. `Foo SPN`.
+         * @param displayName Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param displayName Display name of the service principal, e.g. `Foo SPN`.
+         * @param displayName Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
          * 
          * @return builder
          * 

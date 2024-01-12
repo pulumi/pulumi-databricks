@@ -4,21 +4,22 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseTagsCustomTag {
-    private String key;
-    private String value;
+    private @Nullable String key;
+    private @Nullable String value;
 
     private GetSqlWarehouseTagsCustomTag() {}
-    public String key() {
-        return this.key;
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
     }
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -30,8 +31,8 @@ public final class GetSqlWarehouseTagsCustomTag {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String key;
-        private String value;
+        private @Nullable String key;
+        private @Nullable String value;
         public Builder() {}
         public Builder(GetSqlWarehouseTagsCustomTag defaults) {
     	      Objects.requireNonNull(defaults);
@@ -40,18 +41,14 @@ public final class GetSqlWarehouseTagsCustomTag {
         }
 
         @CustomType.Setter
-        public Builder key(String key) {
-            if (key == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTag", "key");
-            }
+        public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTag", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

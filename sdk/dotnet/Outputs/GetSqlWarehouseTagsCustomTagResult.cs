@@ -13,14 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetSqlWarehouseTagsCustomTagResult
     {
-        public readonly string Key;
-        public readonly string Value;
+        public readonly string? Key;
+        public readonly string? Value;
 
         [OutputConstructor]
         private GetSqlWarehouseTagsCustomTagResult(
-            string key,
+            string? key,
 
-            string value)
+            string? value)
         {
             Key = key;
             Value = value;

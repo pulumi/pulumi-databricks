@@ -945,6 +945,150 @@ export interface GetClusterClusterInfoTerminationReasonArgs {
     type?: pulumi.Input<string>;
 }
 
+export interface GetCurrentMetastoreMetastoreInfo {
+    cloud?: string;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was created.
+     */
+    createdAt?: number;
+    /**
+     * the ID of the identity that created the current metastore.
+     */
+    createdBy?: string;
+    /**
+     * the ID of the default data access configuration.
+     */
+    defaultDataAccessConfigId?: string;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: string;
+    /**
+     * the expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: number;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: string;
+    /**
+     * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+     */
+    globalMetastoreId?: string;
+    /**
+     * Metastore ID.
+     */
+    metastoreId?: string;
+    /**
+     * Name of metastore.
+     */
+    name?: string;
+    /**
+     * Username/group name/sp applicationId of the metastore owner.
+     */
+    owner?: string;
+    /**
+     * the version of the privilege model used by the metastore.
+     */
+    privilegeModelVersion?: string;
+    /**
+     * (Mandatory for account-level) The region of the metastore.
+     */
+    region?: string;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
+     */
+    storageRoot?: string;
+    /**
+     * ID of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialId?: string;
+    /**
+     * Name of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialName?: string;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was updated.
+     */
+    updatedAt?: number;
+    /**
+     * the ID of the identity that updated the current metastore.
+     */
+    updatedBy?: string;
+}
+
+export interface GetCurrentMetastoreMetastoreInfoArgs {
+    cloud?: pulumi.Input<string>;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was created.
+     */
+    createdAt?: pulumi.Input<number>;
+    /**
+     * the ID of the identity that created the current metastore.
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * the ID of the default data access configuration.
+     */
+    defaultDataAccessConfigId?: pulumi.Input<string>;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: pulumi.Input<string>;
+    /**
+     * the expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: pulumi.Input<string>;
+    /**
+     * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+     */
+    globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Metastore ID.
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * Name of metastore.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Username/group name/sp applicationId of the metastore owner.
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * the version of the privilege model used by the metastore.
+     */
+    privilegeModelVersion?: pulumi.Input<string>;
+    /**
+     * (Mandatory for account-level) The region of the metastore.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
+     */
+    storageRoot?: pulumi.Input<string>;
+    /**
+     * ID of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialId?: pulumi.Input<string>;
+    /**
+     * Name of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialName?: pulumi.Input<string>;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was updated.
+     */
+    updatedAt?: pulumi.Input<number>;
+    /**
+     * the ID of the identity that updated the current metastore.
+     */
+    updatedBy?: pulumi.Input<string>;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -3060,7 +3204,7 @@ export interface GetMetastoreMetastoreInfo {
     privilegeModelVersion?: string;
     region?: string;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
     storageRoot?: string;
     storageRootCredentialId?: string;
@@ -3102,7 +3246,7 @@ export interface GetMetastoreMetastoreInfoArgs {
     privilegeModelVersion?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
     storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;
@@ -3262,6 +3406,7 @@ export interface GetShareObjectPartitionValueArgs {
 }
 
 export interface GetSqlWarehouseChannel {
+    dbsqlVersion?: string;
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      */
@@ -3269,44 +3414,71 @@ export interface GetSqlWarehouseChannel {
 }
 
 export interface GetSqlWarehouseChannelArgs {
+    dbsqlVersion?: pulumi.Input<string>;
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: pulumi.Input<string>;
 }
 
+export interface GetSqlWarehouseHealth {
+    details?: string;
+    failureReason?: inputs.GetSqlWarehouseHealthFailureReason;
+    message?: string;
+    status?: string;
+    summary?: string;
+}
+
+export interface GetSqlWarehouseHealthArgs {
+    details?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<inputs.GetSqlWarehouseHealthFailureReasonArgs>;
+    message?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    summary?: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehouseHealthFailureReason {
+    code?: string;
+    parameters?: {[key: string]: any};
+    type?: string;
+}
+
+export interface GetSqlWarehouseHealthFailureReasonArgs {
+    code?: pulumi.Input<string>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+}
+
 export interface GetSqlWarehouseOdbcParams {
-    host?: string;
     hostname?: string;
-    path: string;
-    port: number;
-    protocol: string;
+    path?: string;
+    port?: number;
+    protocol?: string;
 }
 
 export interface GetSqlWarehouseOdbcParamsArgs {
-    host?: pulumi.Input<string>;
     hostname?: pulumi.Input<string>;
-    path: pulumi.Input<string>;
-    port: pulumi.Input<number>;
-    protocol: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    protocol?: pulumi.Input<string>;
 }
 
 export interface GetSqlWarehouseTags {
-    customTags: inputs.GetSqlWarehouseTagsCustomTag[];
+    customTags?: inputs.GetSqlWarehouseTagsCustomTag[];
 }
 
 export interface GetSqlWarehouseTagsArgs {
-    customTags: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[]>;
 }
 
 export interface GetSqlWarehouseTagsCustomTag {
-    key: string;
-    value: string;
+    key?: string;
+    value?: string;
 }
 
 export interface GetSqlWarehouseTagsCustomTagArgs {
-    key: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GrantsGrant {
@@ -5628,22 +5800,36 @@ export interface SqlAlertOptions {
 }
 
 export interface SqlEndpointChannel {
+    dbsqlVersion?: pulumi.Input<string>;
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      */
     name?: pulumi.Input<string>;
 }
 
+export interface SqlEndpointHealth {
+    details?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<inputs.SqlEndpointHealthFailureReason>;
+    message?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    summary?: pulumi.Input<string>;
+}
+
+export interface SqlEndpointHealthFailureReason {
+    code?: pulumi.Input<string>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
+    type?: pulumi.Input<string>;
+}
+
 export interface SqlEndpointOdbcParams {
-    host?: pulumi.Input<string>;
     hostname?: pulumi.Input<string>;
-    path: pulumi.Input<string>;
-    port: pulumi.Input<number>;
-    protocol: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    protocol?: pulumi.Input<string>;
 }
 
 export interface SqlEndpointTags {
-    customTags: pulumi.Input<pulumi.Input<inputs.SqlEndpointTagsCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.SqlEndpointTagsCustomTag>[]>;
 }
 
 export interface SqlEndpointTagsCustomTag {

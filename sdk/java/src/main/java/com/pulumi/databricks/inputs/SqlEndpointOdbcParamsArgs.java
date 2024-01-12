@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,13 +16,6 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
 
     public static final SqlEndpointOdbcParamsArgs Empty = new SqlEndpointOdbcParamsArgs();
 
-    @Import(name="host")
-    private @Nullable Output<String> host;
-
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
-    }
-
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
@@ -31,31 +23,30 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.hostname);
     }
 
-    @Import(name="path", required=true)
-    private Output<String> path;
+    @Import(name="path")
+    private @Nullable Output<String> path;
 
-    public Output<String> path() {
-        return this.path;
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
     }
 
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
-    @Import(name="protocol", required=true)
-    private Output<String> protocol;
+    @Import(name="protocol")
+    private @Nullable Output<String> protocol;
 
-    public Output<String> protocol() {
-        return this.protocol;
+    public Optional<Output<String>> protocol() {
+        return Optional.ofNullable(this.protocol);
     }
 
     private SqlEndpointOdbcParamsArgs() {}
 
     private SqlEndpointOdbcParamsArgs(SqlEndpointOdbcParamsArgs $) {
-        this.host = $.host;
         this.hostname = $.hostname;
         this.path = $.path;
         this.port = $.port;
@@ -80,15 +71,6 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
             $ = new SqlEndpointOdbcParamsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder host(@Nullable Output<String> host) {
-            $.host = host;
-            return this;
-        }
-
-        public Builder host(String host) {
-            return host(Output.of(host));
-        }
-
         public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
@@ -98,7 +80,7 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
             return hostname(Output.of(hostname));
         }
 
-        public Builder path(Output<String> path) {
+        public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
@@ -107,7 +89,7 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
             return path(Output.of(path));
         }
 
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -116,7 +98,7 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
             return port(Output.of(port));
         }
 
-        public Builder protocol(Output<String> protocol) {
+        public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
@@ -126,15 +108,6 @@ public final class SqlEndpointOdbcParamsArgs extends com.pulumi.resources.Resour
         }
 
         public SqlEndpointOdbcParamsArgs build() {
-            if ($.path == null) {
-                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "path");
-            }
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "port");
-            }
-            if ($.protocol == null) {
-                throw new MissingRequiredPropertyException("SqlEndpointOdbcParamsArgs", "protocol");
-            }
             return $;
         }
     }

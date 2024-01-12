@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This resource could be only used with workspace-level provider!
+//
 // Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
 //
 // A `MetastoreProvider` is contained within Metastore and can contain a list of shares that have been shared with you.

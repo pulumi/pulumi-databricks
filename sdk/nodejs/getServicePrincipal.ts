@@ -75,7 +75,7 @@ export interface GetServicePrincipalArgs {
      */
     applicationId?: string;
     /**
-     * Display name of the service principal, e.g. `Foo SPN`.
+     * Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
      */
     displayName?: string;
     /**
@@ -190,7 +190,7 @@ export interface GetServicePrincipalOutputArgs {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Display name of the service principal, e.g. `Foo SPN`.
+     * Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
      */
     displayName?: pulumi.Input<string>;
     /**

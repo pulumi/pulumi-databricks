@@ -15,6 +15,13 @@ public final class SqlEndpointChannelArgs extends com.pulumi.resources.ResourceA
 
     public static final SqlEndpointChannelArgs Empty = new SqlEndpointChannelArgs();
 
+    @Import(name="dbsqlVersion")
+    private @Nullable Output<String> dbsqlVersion;
+
+    public Optional<Output<String>> dbsqlVersion() {
+        return Optional.ofNullable(this.dbsqlVersion);
+    }
+
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
@@ -33,6 +40,7 @@ public final class SqlEndpointChannelArgs extends com.pulumi.resources.ResourceA
     private SqlEndpointChannelArgs() {}
 
     private SqlEndpointChannelArgs(SqlEndpointChannelArgs $) {
+        this.dbsqlVersion = $.dbsqlVersion;
         this.name = $.name;
     }
 
@@ -52,6 +60,15 @@ public final class SqlEndpointChannelArgs extends com.pulumi.resources.ResourceA
 
         public Builder(SqlEndpointChannelArgs defaults) {
             $ = new SqlEndpointChannelArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dbsqlVersion(@Nullable Output<String> dbsqlVersion) {
+            $.dbsqlVersion = dbsqlVersion;
+            return this;
+        }
+
+        public Builder dbsqlVersion(String dbsqlVersion) {
+            return dbsqlVersion(Output.of(dbsqlVersion));
         }
 
         /**

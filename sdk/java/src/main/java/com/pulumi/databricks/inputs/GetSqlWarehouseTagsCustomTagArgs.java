@@ -5,27 +5,28 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetSqlWarehouseTagsCustomTagArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetSqlWarehouseTagsCustomTagArgs Empty = new GetSqlWarehouseTagsCustomTagArgs();
 
-    @Import(name="key", required=true)
-    private Output<String> key;
+    @Import(name="key")
+    private @Nullable Output<String> key;
 
-    public Output<String> key() {
-        return this.key;
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
     }
 
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private GetSqlWarehouseTagsCustomTagArgs() {}
@@ -53,7 +54,7 @@ public final class GetSqlWarehouseTagsCustomTagArgs extends com.pulumi.resources
             $ = new GetSqlWarehouseTagsCustomTagArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder key(Output<String> key) {
+        public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
@@ -62,7 +63,7 @@ public final class GetSqlWarehouseTagsCustomTagArgs extends com.pulumi.resources
             return key(Output.of(key));
         }
 
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -72,12 +73,6 @@ public final class GetSqlWarehouseTagsCustomTagArgs extends com.pulumi.resources
         }
 
         public GetSqlWarehouseTagsCustomTagArgs build() {
-            if ($.key == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTagArgs", "key");
-            }
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseTagsCustomTagArgs", "value");
-            }
             return $;
         }
     }

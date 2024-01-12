@@ -6,7 +6,6 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlEndpointChannelArgs;
-import com.pulumi.databricks.inputs.SqlEndpointOdbcParamsArgs;
 import com.pulumi.databricks.inputs.SqlEndpointTagsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -127,21 +126,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * JDBC connection string.
-     * 
-     */
-    @Import(name="jdbcUrl")
-    private @Nullable Output<String> jdbcUrl;
-
-    /**
-     * @return JDBC connection string.
-     * 
-     */
-    public Optional<Output<String>> jdbcUrl() {
-        return Optional.ofNullable(this.jdbcUrl);
-    }
-
-    /**
      * Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
      * 
      */
@@ -186,28 +170,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="numClusters")
-    private @Nullable Output<Integer> numClusters;
-
-    public Optional<Output<Integer>> numClusters() {
-        return Optional.ofNullable(this.numClusters);
-    }
-
-    /**
-     * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-     * 
-     */
-    @Import(name="odbcParams")
-    private @Nullable Output<SqlEndpointOdbcParamsArgs> odbcParams;
-
-    /**
-     * @return ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-     * 
-     */
-    public Optional<Output<SqlEndpointOdbcParamsArgs>> odbcParams() {
-        return Optional.ofNullable(this.odbcParams);
-    }
-
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      * 
@@ -221,13 +183,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> spotInstancePolicy() {
         return Optional.ofNullable(this.spotInstancePolicy);
-    }
-
-    @Import(name="state")
-    private @Nullable Output<String> state;
-
-    public Optional<Output<String>> state() {
-        return Optional.ofNullable(this.state);
     }
 
     /**
@@ -246,14 +201,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      * 
      */
     @Import(name="warehouseType")
     private @Nullable Output<String> warehouseType;
 
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      * 
      */
     public Optional<Output<String>> warehouseType() {
@@ -270,14 +225,10 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.enablePhoton = $.enablePhoton;
         this.enableServerlessCompute = $.enableServerlessCompute;
         this.instanceProfileArn = $.instanceProfileArn;
-        this.jdbcUrl = $.jdbcUrl;
         this.maxNumClusters = $.maxNumClusters;
         this.minNumClusters = $.minNumClusters;
         this.name = $.name;
-        this.numClusters = $.numClusters;
-        this.odbcParams = $.odbcParams;
         this.spotInstancePolicy = $.spotInstancePolicy;
-        this.state = $.state;
         this.tags = $.tags;
         this.warehouseType = $.warehouseType;
     }
@@ -444,27 +395,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jdbcUrl JDBC connection string.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder jdbcUrl(@Nullable Output<String> jdbcUrl) {
-            $.jdbcUrl = jdbcUrl;
-            return this;
-        }
-
-        /**
-         * @param jdbcUrl JDBC connection string.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder jdbcUrl(String jdbcUrl) {
-            return jdbcUrl(Output.of(jdbcUrl));
-        }
-
-        /**
          * @param maxNumClusters Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
          * 
          * @return builder
@@ -527,36 +457,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        public Builder numClusters(@Nullable Output<Integer> numClusters) {
-            $.numClusters = numClusters;
-            return this;
-        }
-
-        public Builder numClusters(Integer numClusters) {
-            return numClusters(Output.of(numClusters));
-        }
-
-        /**
-         * @param odbcParams ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder odbcParams(@Nullable Output<SqlEndpointOdbcParamsArgs> odbcParams) {
-            $.odbcParams = odbcParams;
-            return this;
-        }
-
-        /**
-         * @param odbcParams ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder odbcParams(SqlEndpointOdbcParamsArgs odbcParams) {
-            return odbcParams(Output.of(odbcParams));
-        }
-
         /**
          * @param spotInstancePolicy The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
          * 
@@ -576,15 +476,6 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotInstancePolicy(String spotInstancePolicy) {
             return spotInstancePolicy(Output.of(spotInstancePolicy));
-        }
-
-        public Builder state(@Nullable Output<String> state) {
-            $.state = state;
-            return this;
-        }
-
-        public Builder state(String state) {
-            return state(Output.of(state));
         }
 
         /**
@@ -609,7 +500,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
          * 
          * @return builder
          * 
@@ -620,7 +511,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
          * 
          * @return builder
          * 

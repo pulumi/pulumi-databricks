@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This resource could be used with account or workspace-level provider.
+ *
  * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  *
  * ## Import
@@ -61,6 +63,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly owner!: pulumi.Output<string>;
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a MetastoreDataAccess resource with the given unique name, arguments, and options.
@@ -88,6 +91,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
+            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
         } else {
             const args = argsOrState as MetastoreDataAccessArgs | undefined;
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
@@ -103,6 +107,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
+            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MetastoreDataAccess.__pulumiType, name, resourceInputs, opts);
@@ -129,6 +134,7 @@ export interface MetastoreDataAccessState {
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
     readOnly?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean>;
 }
 
 /**
@@ -151,4 +157,5 @@ export interface MetastoreDataAccessArgs {
     name?: pulumi.Input<string>;
     owner?: pulumi.Input<string>;
     readOnly?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean>;
 }

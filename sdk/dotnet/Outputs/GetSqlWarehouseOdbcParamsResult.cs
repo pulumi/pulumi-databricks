@@ -13,25 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetSqlWarehouseOdbcParamsResult
     {
-        public readonly string? Host;
         public readonly string? Hostname;
-        public readonly string Path;
-        public readonly int Port;
-        public readonly string Protocol;
+        public readonly string? Path;
+        public readonly int? Port;
+        public readonly string? Protocol;
 
         [OutputConstructor]
         private GetSqlWarehouseOdbcParamsResult(
-            string? host,
-
             string? hostname,
 
-            string path,
+            string? path,
 
-            int port,
+            int? port,
 
-            string protocol)
+            string? protocol)
         {
-            Host = host;
             Hostname = hostname;
             Path = path;
             Port = port;

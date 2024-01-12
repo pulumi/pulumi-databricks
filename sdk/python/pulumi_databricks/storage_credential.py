@@ -27,7 +27,8 @@ class StorageCredentialArgs:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
@@ -37,6 +38,7 @@ class StorageCredentialArgs:
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -62,6 +64,8 @@ class StorageCredentialArgs:
             pulumi.set(__self__, "owner", owner)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if skip_validation is not None:
+            pulumi.set(__self__, "skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -187,6 +191,18 @@ class StorageCredentialArgs:
     @read_only.setter
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppress validation errors if any & force save the storage credential.
+        """
+        return pulumi.get(self, "skip_validation")
+
+    @skip_validation.setter
+    def skip_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_validation", value)
 
 
 @pulumi.input_type
@@ -203,7 +219,8 @@ class _StorageCredentialState:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
@@ -213,6 +230,7 @@ class _StorageCredentialState:
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         if aws_iam_role is not None:
             pulumi.set(__self__, "aws_iam_role", aws_iam_role)
@@ -238,6 +256,8 @@ class _StorageCredentialState:
             pulumi.set(__self__, "owner", owner)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if skip_validation is not None:
+            pulumi.set(__self__, "skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -363,6 +383,18 @@ class _StorageCredentialState:
     @read_only.setter
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Suppress validation errors if any & force save the storage credential.
+        """
+        return pulumi.get(self, "skip_validation")
+
+    @skip_validation.setter
+    def skip_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_validation", value)
 
 
 class StorageCredential(pulumi.CustomResource):
@@ -382,8 +414,11 @@ class StorageCredential(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -461,6 +496,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         ...
     @overload
@@ -469,6 +505,8 @@ class StorageCredential(pulumi.CustomResource):
                  args: Optional[StorageCredentialArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -564,6 +602,7 @@ class StorageCredential(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,6 +624,7 @@ class StorageCredential(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["read_only"] = read_only
+            __props__.__dict__["skip_validation"] = skip_validation
         super(StorageCredential, __self__).__init__(
             'databricks:index/storageCredential:StorageCredential',
             resource_name,
@@ -606,7 +646,8 @@ class StorageCredential(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            read_only: Optional[pulumi.Input[bool]] = None) -> 'StorageCredential':
+            read_only: Optional[pulumi.Input[bool]] = None,
+            skip_validation: Optional[pulumi.Input[bool]] = None) -> 'StorageCredential':
         """
         Get an existing StorageCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -621,6 +662,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the storage credential owner.
         :param pulumi.Input[bool] read_only: Indicates whether the storage credential is only usable for read operations.
+        :param pulumi.Input[bool] skip_validation: Suppress validation errors if any & force save the storage credential.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -638,6 +680,7 @@ class StorageCredential(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["read_only"] = read_only
+        __props__.__dict__["skip_validation"] = skip_validation
         return StorageCredential(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -716,4 +759,12 @@ class StorageCredential(pulumi.CustomResource):
         Indicates whether the storage credential is only usable for read operations.
         """
         return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Suppress validation errors if any & force save the storage credential.
+        """
+        return pulumi.get(self, "skip_validation")
 

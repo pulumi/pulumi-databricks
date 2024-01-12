@@ -40343,6 +40343,7 @@ func (o SqlAlertOptionsPtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type SqlEndpointChannel struct {
+	DbsqlVersion *string `pulumi:"dbsqlVersion"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
 	Name *string `pulumi:"name"`
 }
@@ -40359,6 +40360,7 @@ type SqlEndpointChannelInput interface {
 }
 
 type SqlEndpointChannelArgs struct {
+	DbsqlVersion pulumi.StringPtrInput `pulumi:"dbsqlVersion"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -40440,6 +40442,10 @@ func (o SqlEndpointChannelOutput) ToSqlEndpointChannelPtrOutputWithContext(ctx c
 	}).(SqlEndpointChannelPtrOutput)
 }
 
+func (o SqlEndpointChannelOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointChannel) *string { return v.DbsqlVersion }).(pulumi.StringPtrOutput)
+}
+
 // Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
 func (o SqlEndpointChannelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlEndpointChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -40469,6 +40475,15 @@ func (o SqlEndpointChannelPtrOutput) Elem() SqlEndpointChannelOutput {
 	}).(SqlEndpointChannelOutput)
 }
 
+func (o SqlEndpointChannelPtrOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlEndpointChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbsqlVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
 func (o SqlEndpointChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpointChannel) *string {
@@ -40479,12 +40494,292 @@ func (o SqlEndpointChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SqlEndpointHealth struct {
+	Details       *string                         `pulumi:"details"`
+	FailureReason *SqlEndpointHealthFailureReason `pulumi:"failureReason"`
+	Message       *string                         `pulumi:"message"`
+	Status        *string                         `pulumi:"status"`
+	Summary       *string                         `pulumi:"summary"`
+}
+
+// SqlEndpointHealthInput is an input type that accepts SqlEndpointHealthArgs and SqlEndpointHealthOutput values.
+// You can construct a concrete instance of `SqlEndpointHealthInput` via:
+//
+//	SqlEndpointHealthArgs{...}
+type SqlEndpointHealthInput interface {
+	pulumi.Input
+
+	ToSqlEndpointHealthOutput() SqlEndpointHealthOutput
+	ToSqlEndpointHealthOutputWithContext(context.Context) SqlEndpointHealthOutput
+}
+
+type SqlEndpointHealthArgs struct {
+	Details       pulumi.StringPtrInput                  `pulumi:"details"`
+	FailureReason SqlEndpointHealthFailureReasonPtrInput `pulumi:"failureReason"`
+	Message       pulumi.StringPtrInput                  `pulumi:"message"`
+	Status        pulumi.StringPtrInput                  `pulumi:"status"`
+	Summary       pulumi.StringPtrInput                  `pulumi:"summary"`
+}
+
+func (SqlEndpointHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlEndpointHealth)(nil)).Elem()
+}
+
+func (i SqlEndpointHealthArgs) ToSqlEndpointHealthOutput() SqlEndpointHealthOutput {
+	return i.ToSqlEndpointHealthOutputWithContext(context.Background())
+}
+
+func (i SqlEndpointHealthArgs) ToSqlEndpointHealthOutputWithContext(ctx context.Context) SqlEndpointHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthOutput)
+}
+
+// SqlEndpointHealthArrayInput is an input type that accepts SqlEndpointHealthArray and SqlEndpointHealthArrayOutput values.
+// You can construct a concrete instance of `SqlEndpointHealthArrayInput` via:
+//
+//	SqlEndpointHealthArray{ SqlEndpointHealthArgs{...} }
+type SqlEndpointHealthArrayInput interface {
+	pulumi.Input
+
+	ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput
+	ToSqlEndpointHealthArrayOutputWithContext(context.Context) SqlEndpointHealthArrayOutput
+}
+
+type SqlEndpointHealthArray []SqlEndpointHealthInput
+
+func (SqlEndpointHealthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlEndpointHealth)(nil)).Elem()
+}
+
+func (i SqlEndpointHealthArray) ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput {
+	return i.ToSqlEndpointHealthArrayOutputWithContext(context.Background())
+}
+
+func (i SqlEndpointHealthArray) ToSqlEndpointHealthArrayOutputWithContext(ctx context.Context) SqlEndpointHealthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthArrayOutput)
+}
+
+type SqlEndpointHealthOutput struct{ *pulumi.OutputState }
+
+func (SqlEndpointHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlEndpointHealth)(nil)).Elem()
+}
+
+func (o SqlEndpointHealthOutput) ToSqlEndpointHealthOutput() SqlEndpointHealthOutput {
+	return o
+}
+
+func (o SqlEndpointHealthOutput) ToSqlEndpointHealthOutputWithContext(ctx context.Context) SqlEndpointHealthOutput {
+	return o
+}
+
+func (o SqlEndpointHealthOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlEndpointHealthOutput) FailureReason() SqlEndpointHealthFailureReasonPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealth) *SqlEndpointHealthFailureReason { return v.FailureReason }).(SqlEndpointHealthFailureReasonPtrOutput)
+}
+
+func (o SqlEndpointHealthOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlEndpointHealthOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlEndpointHealthOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealth) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+type SqlEndpointHealthArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlEndpointHealthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlEndpointHealth)(nil)).Elem()
+}
+
+func (o SqlEndpointHealthArrayOutput) ToSqlEndpointHealthArrayOutput() SqlEndpointHealthArrayOutput {
+	return o
+}
+
+func (o SqlEndpointHealthArrayOutput) ToSqlEndpointHealthArrayOutputWithContext(ctx context.Context) SqlEndpointHealthArrayOutput {
+	return o
+}
+
+func (o SqlEndpointHealthArrayOutput) Index(i pulumi.IntInput) SqlEndpointHealthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlEndpointHealth {
+		return vs[0].([]SqlEndpointHealth)[vs[1].(int)]
+	}).(SqlEndpointHealthOutput)
+}
+
+type SqlEndpointHealthFailureReason struct {
+	Code       *string                `pulumi:"code"`
+	Parameters map[string]interface{} `pulumi:"parameters"`
+	Type       *string                `pulumi:"type"`
+}
+
+// SqlEndpointHealthFailureReasonInput is an input type that accepts SqlEndpointHealthFailureReasonArgs and SqlEndpointHealthFailureReasonOutput values.
+// You can construct a concrete instance of `SqlEndpointHealthFailureReasonInput` via:
+//
+//	SqlEndpointHealthFailureReasonArgs{...}
+type SqlEndpointHealthFailureReasonInput interface {
+	pulumi.Input
+
+	ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput
+	ToSqlEndpointHealthFailureReasonOutputWithContext(context.Context) SqlEndpointHealthFailureReasonOutput
+}
+
+type SqlEndpointHealthFailureReasonArgs struct {
+	Code       pulumi.StringPtrInput `pulumi:"code"`
+	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SqlEndpointHealthFailureReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlEndpointHealthFailureReason)(nil)).Elem()
+}
+
+func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput {
+	return i.ToSqlEndpointHealthFailureReasonOutputWithContext(context.Background())
+}
+
+func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonOutput)
+}
+
+func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
+	return i.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i SqlEndpointHealthFailureReasonArgs) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonOutput).ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx)
+}
+
+// SqlEndpointHealthFailureReasonPtrInput is an input type that accepts SqlEndpointHealthFailureReasonArgs, SqlEndpointHealthFailureReasonPtr and SqlEndpointHealthFailureReasonPtrOutput values.
+// You can construct a concrete instance of `SqlEndpointHealthFailureReasonPtrInput` via:
+//
+//	        SqlEndpointHealthFailureReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlEndpointHealthFailureReasonPtrInput interface {
+	pulumi.Input
+
+	ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput
+	ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Context) SqlEndpointHealthFailureReasonPtrOutput
+}
+
+type sqlEndpointHealthFailureReasonPtrType SqlEndpointHealthFailureReasonArgs
+
+func SqlEndpointHealthFailureReasonPtr(v *SqlEndpointHealthFailureReasonArgs) SqlEndpointHealthFailureReasonPtrInput {
+	return (*sqlEndpointHealthFailureReasonPtrType)(v)
+}
+
+func (*sqlEndpointHealthFailureReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlEndpointHealthFailureReason)(nil)).Elem()
+}
+
+func (i *sqlEndpointHealthFailureReasonPtrType) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
+	return i.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlEndpointHealthFailureReasonPtrType) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlEndpointHealthFailureReasonPtrOutput)
+}
+
+type SqlEndpointHealthFailureReasonOutput struct{ *pulumi.OutputState }
+
+func (SqlEndpointHealthFailureReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlEndpointHealthFailureReason)(nil)).Elem()
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonOutput() SqlEndpointHealthFailureReasonOutput {
+	return o
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonOutput {
+	return o
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
+	return o.ToSqlEndpointHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlEndpointHealthFailureReason) *SqlEndpointHealthFailureReason {
+		return &v
+	}).(SqlEndpointHealthFailureReasonPtrOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v SqlEndpointHealthFailureReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointHealthFailureReason) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SqlEndpointHealthFailureReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlEndpointHealthFailureReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlEndpointHealthFailureReason)(nil)).Elem()
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) ToSqlEndpointHealthFailureReasonPtrOutput() SqlEndpointHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) ToSqlEndpointHealthFailureReasonPtrOutputWithContext(ctx context.Context) SqlEndpointHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) Elem() SqlEndpointHealthFailureReasonOutput {
+	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) SqlEndpointHealthFailureReason {
+		if v != nil {
+			return *v
+		}
+		var ret SqlEndpointHealthFailureReason
+		return ret
+	}).(SqlEndpointHealthFailureReasonOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+func (o SqlEndpointHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlEndpointHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type SqlEndpointOdbcParams struct {
-	Host     *string `pulumi:"host"`
 	Hostname *string `pulumi:"hostname"`
-	Path     string  `pulumi:"path"`
-	Port     int     `pulumi:"port"`
-	Protocol string  `pulumi:"protocol"`
+	Path     *string `pulumi:"path"`
+	Port     *int    `pulumi:"port"`
+	Protocol *string `pulumi:"protocol"`
 }
 
 // SqlEndpointOdbcParamsInput is an input type that accepts SqlEndpointOdbcParamsArgs and SqlEndpointOdbcParamsOutput values.
@@ -40499,11 +40794,10 @@ type SqlEndpointOdbcParamsInput interface {
 }
 
 type SqlEndpointOdbcParamsArgs struct {
-	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	Path     pulumi.StringInput    `pulumi:"path"`
-	Port     pulumi.IntInput       `pulumi:"port"`
-	Protocol pulumi.StringInput    `pulumi:"protocol"`
+	Path     pulumi.StringPtrInput `pulumi:"path"`
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (SqlEndpointOdbcParamsArgs) ElementType() reflect.Type {
@@ -40583,24 +40877,20 @@ func (o SqlEndpointOdbcParamsOutput) ToSqlEndpointOdbcParamsPtrOutputWithContext
 	}).(SqlEndpointOdbcParamsPtrOutput)
 }
 
-func (o SqlEndpointOdbcParamsOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
 func (o SqlEndpointOdbcParamsOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-func (o SqlEndpointOdbcParamsOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) string { return v.Path }).(pulumi.StringOutput)
+func (o SqlEndpointOdbcParamsOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-func (o SqlEndpointOdbcParamsOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) int { return v.Port }).(pulumi.IntOutput)
+func (o SqlEndpointOdbcParamsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlEndpointOdbcParams) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o SqlEndpointOdbcParamsOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v SqlEndpointOdbcParams) string { return v.Protocol }).(pulumi.StringOutput)
+func (o SqlEndpointOdbcParamsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlEndpointOdbcParams) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 type SqlEndpointOdbcParamsPtrOutput struct{ *pulumi.OutputState }
@@ -40627,15 +40917,6 @@ func (o SqlEndpointOdbcParamsPtrOutput) Elem() SqlEndpointOdbcParamsOutput {
 	}).(SqlEndpointOdbcParamsOutput)
 }
 
-func (o SqlEndpointOdbcParamsPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlEndpointOdbcParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o SqlEndpointOdbcParamsPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpointOdbcParams) *string {
 		if v == nil {
@@ -40650,7 +40931,7 @@ func (o SqlEndpointOdbcParamsPtrOutput) Path() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Path
+		return v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40659,7 +40940,7 @@ func (o SqlEndpointOdbcParamsPtrOutput) Port() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -40668,7 +40949,7 @@ func (o SqlEndpointOdbcParamsPtrOutput) Protocol() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Protocol
+		return v.Protocol
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50065,6 +50346,462 @@ func (o GetClusterClusterInfoTerminationReasonPtrOutput) Type() pulumi.StringPtr
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfo struct {
+	Cloud *string `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt *int `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy *string `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId *string `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name *string `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner *string `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region *string `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetCurrentMetastoreMetastoreInfoInput is an input type that accepts GetCurrentMetastoreMetastoreInfoArgs and GetCurrentMetastoreMetastoreInfoOutput values.
+// You can construct a concrete instance of `GetCurrentMetastoreMetastoreInfoInput` via:
+//
+//	GetCurrentMetastoreMetastoreInfoArgs{...}
+type GetCurrentMetastoreMetastoreInfoInput interface {
+	pulumi.Input
+
+	ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput
+	ToGetCurrentMetastoreMetastoreInfoOutputWithContext(context.Context) GetCurrentMetastoreMetastoreInfoOutput
+}
+
+type GetCurrentMetastoreMetastoreInfoArgs struct {
+	Cloud pulumi.StringPtrInput `pulumi:"cloud"`
+	// Timestamp (in milliseconds) when the current metastore was created.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the ID of the identity that created the current metastore.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// the ID of the default data access configuration.
+	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
+	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
+	// the expiration duration in seconds on recipient data access tokens.
+	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	// Metastore ID.
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// Name of metastore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Username/group name/sp applicationId of the metastore owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// the version of the privilege model used by the metastore.
+	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
+	// (Mandatory for account-level) The region of the metastore.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Path on cloud storage account, where managed `Table` are stored.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// ID of a storage credential used for the `storageRoot`.
+	StorageRootCredentialId pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	// Name of a storage credential used for the `storageRoot`.
+	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
+	// Timestamp (in milliseconds) when the current metastore was updated.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the ID of the identity that updated the current metastore.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetCurrentMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoOutputWithContext(context.Background())
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoOutput)
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetCurrentMetastoreMetastoreInfoArgs) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoOutput).ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx)
+}
+
+// GetCurrentMetastoreMetastoreInfoPtrInput is an input type that accepts GetCurrentMetastoreMetastoreInfoArgs, GetCurrentMetastoreMetastoreInfoPtr and GetCurrentMetastoreMetastoreInfoPtrOutput values.
+// You can construct a concrete instance of `GetCurrentMetastoreMetastoreInfoPtrInput` via:
+//
+//	        GetCurrentMetastoreMetastoreInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCurrentMetastoreMetastoreInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput
+	ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput
+}
+
+type getCurrentMetastoreMetastoreInfoPtrType GetCurrentMetastoreMetastoreInfoArgs
+
+func GetCurrentMetastoreMetastoreInfoPtr(v *GetCurrentMetastoreMetastoreInfoArgs) GetCurrentMetastoreMetastoreInfoPtrInput {
+	return (*getCurrentMetastoreMetastoreInfoPtrType)(v)
+}
+
+func (*getCurrentMetastoreMetastoreInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (i *getCurrentMetastoreMetastoreInfoPtrType) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return i.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getCurrentMetastoreMetastoreInfoPtrType) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCurrentMetastoreMetastoreInfoPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfoOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentMetastoreMetastoreInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoOutput() GetCurrentMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o.ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCurrentMetastoreMetastoreInfo) *GetCurrentMetastoreMetastoreInfo {
+		return &v
+	}).(GetCurrentMetastoreMetastoreInfoPtrOutput)
+}
+
+func (o GetCurrentMetastoreMetastoreInfoOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was created.
+func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that created the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// the ID of the default data access configuration.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingOrganizationName }).(pulumi.StringPtrOutput)
+}
+
+// the expiration duration in seconds on recipient data access tokens.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+func (o GetCurrentMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
+}
+
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+func (o GetCurrentMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Metastore ID.
+func (o GetCurrentMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Username/group name/sp applicationId of the metastore owner.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// the version of the privilege model used by the metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Mandatory for account-level) The region of the metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+// ID of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialId }).(pulumi.StringPtrOutput)
+}
+
+// Name of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.StorageRootCredentialName }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was updated.
+func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that updated the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreMetastoreInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetCurrentMetastoreMetastoreInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCurrentMetastoreMetastoreInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCurrentMetastoreMetastoreInfo)(nil)).Elem()
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutput() GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) ToGetCurrentMetastoreMetastoreInfoPtrOutputWithContext(ctx context.Context) GetCurrentMetastoreMetastoreInfoPtrOutput {
+	return o
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Elem() GetCurrentMetastoreMetastoreInfoOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) GetCurrentMetastoreMetastoreInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetCurrentMetastoreMetastoreInfo
+		return ret
+	}).(GetCurrentMetastoreMetastoreInfoOutput)
+}
+
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was created.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that created the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// the ID of the default data access configuration.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDataAccessConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingOrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingOrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the expiration duration in seconds on recipient data access tokens.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingRecipientTokenLifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeltaSharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalMetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metastore ID.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username/group name/sp applicationId of the metastore owner.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// the version of the privilege model used by the metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegeModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Mandatory for account-level) The region of the metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path on cloud storage account, where managed `Table` are stored.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of a storage credential used for the `storageRoot`.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRootCredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp (in milliseconds) when the current metastore was updated.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the ID of the identity that updated the current metastore.
+func (o GetCurrentMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCurrentMetastoreMetastoreInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74089,7 +74826,7 @@ type GetMetastoreMetastoreInfo struct {
 	Owner                 *string `pulumi:"owner"`
 	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
 	Region                *string `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored.
 	StorageRoot               *string `pulumi:"storageRoot"`
 	StorageRootCredentialId   *string `pulumi:"storageRootCredentialId"`
 	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
@@ -74128,7 +74865,7 @@ type GetMetastoreMetastoreInfoArgs struct {
 	Owner                 pulumi.StringPtrInput `pulumi:"owner"`
 	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
 	Region                pulumi.StringPtrInput `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+	// Path on cloud storage account, where managed `Table` are stored.
 	StorageRoot               pulumi.StringPtrInput `pulumi:"storageRoot"`
 	StorageRootCredentialId   pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
 	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
@@ -74271,7 +75008,7 @@ func (o GetMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
@@ -74439,7 +75176,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+// Path on cloud storage account, where managed `Table` are stored.
 func (o GetMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -75339,6 +76076,7 @@ func (o GetShareObjectPartitionValueArrayOutput) Index(i pulumi.IntInput) GetSha
 }
 
 type GetSqlWarehouseChannel struct {
+	DbsqlVersion *string `pulumi:"dbsqlVersion"`
 	// Name of the SQL warehouse to search (case-sensitive).
 	Name *string `pulumi:"name"`
 }
@@ -75355,6 +76093,7 @@ type GetSqlWarehouseChannelInput interface {
 }
 
 type GetSqlWarehouseChannelArgs struct {
+	DbsqlVersion pulumi.StringPtrInput `pulumi:"dbsqlVersion"`
 	// Name of the SQL warehouse to search (case-sensitive).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -75436,6 +76175,10 @@ func (o GetSqlWarehouseChannelOutput) ToGetSqlWarehouseChannelPtrOutputWithConte
 	}).(GetSqlWarehouseChannelPtrOutput)
 }
 
+func (o GetSqlWarehouseChannelOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.DbsqlVersion }).(pulumi.StringPtrOutput)
+}
+
 // Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSqlWarehouseChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -75465,6 +76208,15 @@ func (o GetSqlWarehouseChannelPtrOutput) Elem() GetSqlWarehouseChannelOutput {
 	}).(GetSqlWarehouseChannelOutput)
 }
 
+func (o GetSqlWarehouseChannelPtrOutput) DbsqlVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbsqlVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Name of the SQL warehouse to search (case-sensitive).
 func (o GetSqlWarehouseChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSqlWarehouseChannel) *string {
@@ -75475,12 +76227,367 @@ func (o GetSqlWarehouseChannelPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSqlWarehouseHealth struct {
+	Details       *string                             `pulumi:"details"`
+	FailureReason *GetSqlWarehouseHealthFailureReason `pulumi:"failureReason"`
+	Message       *string                             `pulumi:"message"`
+	Status        *string                             `pulumi:"status"`
+	Summary       *string                             `pulumi:"summary"`
+}
+
+// GetSqlWarehouseHealthInput is an input type that accepts GetSqlWarehouseHealthArgs and GetSqlWarehouseHealthOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthInput` via:
+//
+//	GetSqlWarehouseHealthArgs{...}
+type GetSqlWarehouseHealthInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput
+	ToGetSqlWarehouseHealthOutputWithContext(context.Context) GetSqlWarehouseHealthOutput
+}
+
+type GetSqlWarehouseHealthArgs struct {
+	Details       pulumi.StringPtrInput                      `pulumi:"details"`
+	FailureReason GetSqlWarehouseHealthFailureReasonPtrInput `pulumi:"failureReason"`
+	Message       pulumi.StringPtrInput                      `pulumi:"message"`
+	Status        pulumi.StringPtrInput                      `pulumi:"status"`
+	Summary       pulumi.StringPtrInput                      `pulumi:"summary"`
+}
+
+func (GetSqlWarehouseHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput {
+	return i.ToGetSqlWarehouseHealthOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthOutputWithContext(ctx context.Context) GetSqlWarehouseHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthOutput)
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return i.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthArgs) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthOutput).ToGetSqlWarehouseHealthPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseHealthPtrInput is an input type that accepts GetSqlWarehouseHealthArgs, GetSqlWarehouseHealthPtr and GetSqlWarehouseHealthPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthPtrInput` via:
+//
+//	        GetSqlWarehouseHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseHealthPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput
+	ToGetSqlWarehouseHealthPtrOutputWithContext(context.Context) GetSqlWarehouseHealthPtrOutput
+}
+
+type getSqlWarehouseHealthPtrType GetSqlWarehouseHealthArgs
+
+func GetSqlWarehouseHealthPtr(v *GetSqlWarehouseHealthArgs) GetSqlWarehouseHealthPtrInput {
+	return (*getSqlWarehouseHealthPtrType)(v)
+}
+
+func (*getSqlWarehouseHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseHealthPtrType) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return i.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseHealthPtrType) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthPtrOutput)
+}
+
+type GetSqlWarehouseHealthOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthOutput() GetSqlWarehouseHealthOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthOutputWithContext(ctx context.Context) GetSqlWarehouseHealthOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return o.ToGetSqlWarehouseHealthPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseHealthOutput) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseHealth) *GetSqlWarehouseHealth {
+		return &v
+	}).(GetSqlWarehouseHealthPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) FailureReason() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *GetSqlWarehouseHealthFailureReason { return v.FailureReason }).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealth) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealth)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) ToGetSqlWarehouseHealthPtrOutput() GetSqlWarehouseHealthPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) ToGetSqlWarehouseHealthPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Elem() GetSqlWarehouseHealthOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) GetSqlWarehouseHealth {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseHealth
+		return ret
+	}).(GetSqlWarehouseHealthOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) FailureReason() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *GetSqlWarehouseHealthFailureReason {
+		if v == nil {
+			return nil
+		}
+		return v.FailureReason
+	}).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthPtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReason struct {
+	Code       *string                `pulumi:"code"`
+	Parameters map[string]interface{} `pulumi:"parameters"`
+	Type       *string                `pulumi:"type"`
+}
+
+// GetSqlWarehouseHealthFailureReasonInput is an input type that accepts GetSqlWarehouseHealthFailureReasonArgs and GetSqlWarehouseHealthFailureReasonOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthFailureReasonInput` via:
+//
+//	GetSqlWarehouseHealthFailureReasonArgs{...}
+type GetSqlWarehouseHealthFailureReasonInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput
+	ToGetSqlWarehouseHealthFailureReasonOutputWithContext(context.Context) GetSqlWarehouseHealthFailureReasonOutput
+}
+
+type GetSqlWarehouseHealthFailureReasonArgs struct {
+	Code       pulumi.StringPtrInput `pulumi:"code"`
+	Parameters pulumi.MapInput       `pulumi:"parameters"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetSqlWarehouseHealthFailureReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonOutput)
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlWarehouseHealthFailureReasonArgs) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonOutput).ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx)
+}
+
+// GetSqlWarehouseHealthFailureReasonPtrInput is an input type that accepts GetSqlWarehouseHealthFailureReasonArgs, GetSqlWarehouseHealthFailureReasonPtr and GetSqlWarehouseHealthFailureReasonPtrOutput values.
+// You can construct a concrete instance of `GetSqlWarehouseHealthFailureReasonPtrInput` via:
+//
+//	        GetSqlWarehouseHealthFailureReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlWarehouseHealthFailureReasonPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput
+	ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput
+}
+
+type getSqlWarehouseHealthFailureReasonPtrType GetSqlWarehouseHealthFailureReasonArgs
+
+func GetSqlWarehouseHealthFailureReasonPtr(v *GetSqlWarehouseHealthFailureReasonArgs) GetSqlWarehouseHealthFailureReasonPtrInput {
+	return (*getSqlWarehouseHealthFailureReasonPtrType)(v)
+}
+
+func (*getSqlWarehouseHealthFailureReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (i *getSqlWarehouseHealthFailureReasonPtrType) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return i.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlWarehouseHealthFailureReasonPtrType) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReasonOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthFailureReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonOutput() GetSqlWarehouseHealthFailureReasonOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlWarehouseHealthFailureReason) *GetSqlWarehouseHealthFailureReason {
+		return &v
+	}).(GetSqlWarehouseHealthFailureReasonPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseHealthFailureReason) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlWarehouseHealthFailureReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlWarehouseHealthFailureReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlWarehouseHealthFailureReason)(nil)).Elem()
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutput() GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) ToGetSqlWarehouseHealthFailureReasonPtrOutputWithContext(ctx context.Context) GetSqlWarehouseHealthFailureReasonPtrOutput {
+	return o
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Elem() GetSqlWarehouseHealthFailureReasonOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) GetSqlWarehouseHealthFailureReason {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlWarehouseHealthFailureReason
+		return ret
+	}).(GetSqlWarehouseHealthFailureReasonOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+func (o GetSqlWarehouseHealthFailureReasonPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlWarehouseHealthFailureReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSqlWarehouseOdbcParams struct {
-	Host     *string `pulumi:"host"`
 	Hostname *string `pulumi:"hostname"`
-	Path     string  `pulumi:"path"`
-	Port     int     `pulumi:"port"`
-	Protocol string  `pulumi:"protocol"`
+	Path     *string `pulumi:"path"`
+	Port     *int    `pulumi:"port"`
+	Protocol *string `pulumi:"protocol"`
 }
 
 // GetSqlWarehouseOdbcParamsInput is an input type that accepts GetSqlWarehouseOdbcParamsArgs and GetSqlWarehouseOdbcParamsOutput values.
@@ -75495,11 +76602,10 @@ type GetSqlWarehouseOdbcParamsInput interface {
 }
 
 type GetSqlWarehouseOdbcParamsArgs struct {
-	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	Path     pulumi.StringInput    `pulumi:"path"`
-	Port     pulumi.IntInput       `pulumi:"port"`
-	Protocol pulumi.StringInput    `pulumi:"protocol"`
+	Path     pulumi.StringPtrInput `pulumi:"path"`
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (GetSqlWarehouseOdbcParamsArgs) ElementType() reflect.Type {
@@ -75579,24 +76685,20 @@ func (o GetSqlWarehouseOdbcParamsOutput) ToGetSqlWarehouseOdbcParamsPtrOutputWit
 	}).(GetSqlWarehouseOdbcParamsPtrOutput)
 }
 
-func (o GetSqlWarehouseOdbcParamsOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
 func (o GetSqlWarehouseOdbcParamsOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSqlWarehouseOdbcParamsOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) string { return v.Path }).(pulumi.StringOutput)
+func (o GetSqlWarehouseOdbcParamsOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSqlWarehouseOdbcParamsOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) int { return v.Port }).(pulumi.IntOutput)
+func (o GetSqlWarehouseOdbcParamsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetSqlWarehouseOdbcParamsOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) string { return v.Protocol }).(pulumi.StringOutput)
+func (o GetSqlWarehouseOdbcParamsOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseOdbcParams) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 type GetSqlWarehouseOdbcParamsPtrOutput struct{ *pulumi.OutputState }
@@ -75623,15 +76725,6 @@ func (o GetSqlWarehouseOdbcParamsPtrOutput) Elem() GetSqlWarehouseOdbcParamsOutp
 	}).(GetSqlWarehouseOdbcParamsOutput)
 }
 
-func (o GetSqlWarehouseOdbcParamsPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o GetSqlWarehouseOdbcParamsPtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetSqlWarehouseOdbcParams) *string {
 		if v == nil {
@@ -75646,7 +76739,7 @@ func (o GetSqlWarehouseOdbcParamsPtrOutput) Path() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Path
+		return v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75655,7 +76748,7 @@ func (o GetSqlWarehouseOdbcParamsPtrOutput) Port() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -75664,7 +76757,7 @@ func (o GetSqlWarehouseOdbcParamsPtrOutput) Protocol() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Protocol
+		return v.Protocol
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -75802,8 +76895,8 @@ func (o GetSqlWarehouseTagsPtrOutput) CustomTags() GetSqlWarehouseTagsCustomTagA
 }
 
 type GetSqlWarehouseTagsCustomTag struct {
-	Key   string `pulumi:"key"`
-	Value string `pulumi:"value"`
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
 }
 
 // GetSqlWarehouseTagsCustomTagInput is an input type that accepts GetSqlWarehouseTagsCustomTagArgs and GetSqlWarehouseTagsCustomTagOutput values.
@@ -75818,8 +76911,8 @@ type GetSqlWarehouseTagsCustomTagInput interface {
 }
 
 type GetSqlWarehouseTagsCustomTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
-	Value pulumi.StringInput `pulumi:"value"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetSqlWarehouseTagsCustomTagArgs) ElementType() reflect.Type {
@@ -75873,12 +76966,12 @@ func (o GetSqlWarehouseTagsCustomTagOutput) ToGetSqlWarehouseTagsCustomTagOutput
 	return o
 }
 
-func (o GetSqlWarehouseTagsCustomTagOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) string { return v.Key }).(pulumi.StringOutput)
+func (o GetSqlWarehouseTagsCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o GetSqlWarehouseTagsCustomTagOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) string { return v.Value }).(pulumi.StringOutput)
+func (o GetSqlWarehouseTagsCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseTagsCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetSqlWarehouseTagsCustomTagArrayOutput struct{ *pulumi.OutputState }
@@ -76386,6 +77479,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAlertOptionsPtrInput)(nil)).Elem(), SqlAlertOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelInput)(nil)).Elem(), SqlEndpointChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointChannelPtrInput)(nil)).Elem(), SqlEndpointChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthInput)(nil)).Elem(), SqlEndpointHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthArrayInput)(nil)).Elem(), SqlEndpointHealthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthFailureReasonInput)(nil)).Elem(), SqlEndpointHealthFailureReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointHealthFailureReasonPtrInput)(nil)).Elem(), SqlEndpointHealthFailureReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointOdbcParamsPtrInput)(nil)).Elem(), SqlEndpointOdbcParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlEndpointTagsInput)(nil)).Elem(), SqlEndpointTagsArgs{})
@@ -76500,6 +77597,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoInitScriptWorkspacePtrInput)(nil)).Elem(), GetClusterClusterInfoInitScriptWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterInfoTerminationReasonPtrInput)(nil)).Elem(), GetClusterClusterInfoTerminationReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCurrentMetastoreMetastoreInfoPtrInput)(nil)).Elem(), GetCurrentMetastoreMetastoreInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListInput)(nil)).Elem(), GetDbfsFilePathsPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbfsFilePathsPathListArrayInput)(nil)).Elem(), GetDbfsFilePathsPathListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePoolPoolInfoInput)(nil)).Elem(), GetInstancePoolPoolInfoArgs{})
@@ -76811,6 +77910,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectPartitionValueArrayInput)(nil)).Elem(), GetShareObjectPartitionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseChannelPtrInput)(nil)).Elem(), GetSqlWarehouseChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthInput)(nil)).Elem(), GetSqlWarehouseHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthPtrInput)(nil)).Elem(), GetSqlWarehouseHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthFailureReasonInput)(nil)).Elem(), GetSqlWarehouseHealthFailureReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseHealthFailureReasonPtrInput)(nil)).Elem(), GetSqlWarehouseHealthFailureReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseOdbcParamsInput)(nil)).Elem(), GetSqlWarehouseOdbcParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseOdbcParamsPtrInput)(nil)).Elem(), GetSqlWarehouseOdbcParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlWarehouseTagsInput)(nil)).Elem(), GetSqlWarehouseTagsArgs{})
@@ -77301,6 +78404,10 @@ func init() {
 	pulumi.RegisterOutputType(SqlAlertOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelOutput{})
 	pulumi.RegisterOutputType(SqlEndpointChannelPtrOutput{})
+	pulumi.RegisterOutputType(SqlEndpointHealthOutput{})
+	pulumi.RegisterOutputType(SqlEndpointHealthArrayOutput{})
+	pulumi.RegisterOutputType(SqlEndpointHealthFailureReasonOutput{})
+	pulumi.RegisterOutputType(SqlEndpointHealthFailureReasonPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointOdbcParamsOutput{})
 	pulumi.RegisterOutputType(SqlEndpointOdbcParamsPtrOutput{})
 	pulumi.RegisterOutputType(SqlEndpointTagsOutput{})
@@ -77415,6 +78522,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterInfoInitScriptWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterInfoTerminationReasonPtrOutput{})
+	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoOutput{})
+	pulumi.RegisterOutputType(GetCurrentMetastoreMetastoreInfoPtrOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListOutput{})
 	pulumi.RegisterOutputType(GetDbfsFilePathsPathListArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancePoolPoolInfoOutput{})
@@ -77726,6 +78835,10 @@ func init() {
 	pulumi.RegisterOutputType(GetShareObjectPartitionValueArrayOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseChannelOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseChannelPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthFailureReasonOutput{})
+	pulumi.RegisterOutputType(GetSqlWarehouseHealthFailureReasonPtrOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseOdbcParamsOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseOdbcParamsPtrOutput{})
 	pulumi.RegisterOutputType(GetSqlWarehouseTagsOutput{})

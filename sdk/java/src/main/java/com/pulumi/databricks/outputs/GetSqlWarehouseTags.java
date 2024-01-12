@@ -5,17 +5,17 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTagsCustomTag;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseTags {
-    private List<GetSqlWarehouseTagsCustomTag> customTags;
+    private @Nullable List<GetSqlWarehouseTagsCustomTag> customTags;
 
     private GetSqlWarehouseTags() {}
     public List<GetSqlWarehouseTagsCustomTag> customTags() {
-        return this.customTags;
+        return this.customTags == null ? List.of() : this.customTags;
     }
 
     public static Builder builder() {
@@ -27,7 +27,7 @@ public final class GetSqlWarehouseTags {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetSqlWarehouseTagsCustomTag> customTags;
+        private @Nullable List<GetSqlWarehouseTagsCustomTag> customTags;
         public Builder() {}
         public Builder(GetSqlWarehouseTags defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,10 +35,8 @@ public final class GetSqlWarehouseTags {
         }
 
         @CustomType.Setter
-        public Builder customTags(List<GetSqlWarehouseTagsCustomTag> customTags) {
-            if (customTags == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseTags", "customTags");
-            }
+        public Builder customTags(@Nullable List<GetSqlWarehouseTagsCustomTag> customTags) {
+
             this.customTags = customTags;
             return this;
         }

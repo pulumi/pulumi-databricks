@@ -22,6 +22,8 @@ import com.pulumi.databricks.inputs.GetClustersArgs;
 import com.pulumi.databricks.inputs.GetClustersPlainArgs;
 import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
 import com.pulumi.databricks.inputs.GetCurrentConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+import com.pulumi.databricks.inputs.GetCurrentMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
@@ -86,6 +88,7 @@ import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
 import com.pulumi.databricks.outputs.GetClustersResult;
 import com.pulumi.databricks.outputs.GetCurrentConfigResult;
+import com.pulumi.databricks.outputs.GetCurrentMetastoreResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
@@ -2301,6 +2304,306 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain(GetCurrentConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentConfig:getCurrentConfig", TypeShape.of(GetCurrentConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetCurrentMetastoreResult> getCurrentMetastore() {
+        return getCurrentMetastore(GetCurrentMetastoreArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetCurrentMetastoreResult> getCurrentMetastorePlain() {
+        return getCurrentMetastorePlain(GetCurrentMetastorePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetCurrentMetastoreResult> getCurrentMetastore(GetCurrentMetastoreArgs args) {
+        return getCurrentMetastore(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetCurrentMetastoreResult> getCurrentMetastorePlain(GetCurrentMetastorePlainArgs args) {
+        return getCurrentMetastorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetCurrentMetastoreResult> getCurrentMetastore(GetCurrentMetastoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getCurrentMetastore:getCurrentMetastore", TypeShape.of(GetCurrentMetastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about metastore attached to a given workspace.
+     * 
+     * &gt; **Note** This is the workspace-level data source.
+     * 
+     * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
+     * 
+     * ## Example Usage
+     * 
+     * MetastoreSummary response for a metastore attached to the current workspace.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getCurrentMetastore();
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Metastore to get information for a metastore with a given ID.
+     * * databricks.getMetastores to get a mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetCurrentMetastoreResult> getCurrentMetastorePlain(GetCurrentMetastorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getCurrentMetastore:getCurrentMetastore", TypeShape.of(GetCurrentMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Exported attributes

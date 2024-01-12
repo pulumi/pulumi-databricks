@@ -21,7 +21,7 @@ class GetDirectoryResult:
     """
     A collection of values returned by getDirectory.
     """
-    def __init__(__self__, id=None, object_id=None, path=None):
+    def __init__(__self__, id=None, object_id=None, path=None, workspace_path=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -31,6 +31,9 @@ class GetDirectoryResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if workspace_path and not isinstance(workspace_path, str):
+            raise TypeError("Expected argument 'workspace_path' to be a str")
+        pulumi.set(__self__, "workspace_path", workspace_path)
 
     @property
     @pulumi.getter
@@ -53,6 +56,14 @@ class GetDirectoryResult:
     def path(self) -> str:
         return pulumi.get(self, "path")
 
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> str:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
+
 
 class AwaitableGetDirectoryResult(GetDirectoryResult):
     # pylint: disable=using-constant-test
@@ -62,7 +73,8 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
         return GetDirectoryResult(
             id=self.id,
             object_id=self.object_id,
-            path=self.path)
+            path=self.path,
+            workspace_path=self.workspace_path)
 
 
 def get_directory(object_id: Optional[int] = None,
@@ -95,7 +107,8 @@ def get_directory(object_id: Optional[int] = None,
     return AwaitableGetDirectoryResult(
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
-        path=pulumi.get(__ret__, 'path'))
+        path=pulumi.get(__ret__, 'path'),
+        workspace_path=pulumi.get(__ret__, 'workspace_path'))
 
 
 @_utilities.lift_output_func(get_directory)

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetSqlWarehouseChannelInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dbsqlVersion")]
+        public Input<string>? DbsqlVersion { get; set; }
+
         /// <summary>
         /// Name of the SQL warehouse to search (case-sensitive).
         /// </summary>

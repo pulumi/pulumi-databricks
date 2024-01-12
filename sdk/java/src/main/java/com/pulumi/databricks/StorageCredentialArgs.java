@@ -149,6 +149,21 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Suppress validation errors if any &amp; force save the storage credential.
+     * 
+     */
+    @Import(name="skipValidation")
+    private @Nullable Output<Boolean> skipValidation;
+
+    /**
+     * @return Suppress validation errors if any &amp; force save the storage credential.
+     * 
+     */
+    public Optional<Output<Boolean>> skipValidation() {
+        return Optional.ofNullable(this.skipValidation);
+    }
+
     private StorageCredentialArgs() {}
 
     private StorageCredentialArgs(StorageCredentialArgs $) {
@@ -164,6 +179,7 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.owner = $.owner;
         this.readOnly = $.readOnly;
+        this.skipValidation = $.skipValidation;
     }
 
     public static Builder builder() {
@@ -354,6 +370,27 @@ public final class StorageCredentialArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
+        }
+
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipValidation(@Nullable Output<Boolean> skipValidation) {
+            $.skipValidation = skipValidation;
+            return this;
+        }
+
+        /**
+         * @param skipValidation Suppress validation errors if any &amp; force save the storage credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipValidation(Boolean skipValidation) {
+            return skipValidation(Output.of(skipValidation));
         }
 
         public StorageCredentialArgs build() {

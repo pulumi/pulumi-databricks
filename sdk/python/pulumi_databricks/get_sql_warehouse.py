@@ -23,7 +23,7 @@ class GetSqlWarehouseResult:
     """
     A collection of values returned by getSqlWarehouse.
     """
-    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, id=None, instance_profile_arn=None, jdbc_url=None, max_num_clusters=None, min_num_clusters=None, name=None, num_clusters=None, odbc_params=None, spot_instance_policy=None, state=None, tags=None):
+    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, creator_name=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, health=None, id=None, instance_profile_arn=None, jdbc_url=None, max_num_clusters=None, min_num_clusters=None, name=None, num_active_sessions=None, num_clusters=None, odbc_params=None, spot_instance_policy=None, state=None, tags=None, warehouse_type=None):
         if auto_stop_mins and not isinstance(auto_stop_mins, int):
             raise TypeError("Expected argument 'auto_stop_mins' to be a int")
         pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
@@ -33,6 +33,9 @@ class GetSqlWarehouseResult:
         if cluster_size and not isinstance(cluster_size, str):
             raise TypeError("Expected argument 'cluster_size' to be a str")
         pulumi.set(__self__, "cluster_size", cluster_size)
+        if creator_name and not isinstance(creator_name, str):
+            raise TypeError("Expected argument 'creator_name' to be a str")
+        pulumi.set(__self__, "creator_name", creator_name)
         if data_source_id and not isinstance(data_source_id, str):
             raise TypeError("Expected argument 'data_source_id' to be a str")
         pulumi.set(__self__, "data_source_id", data_source_id)
@@ -42,6 +45,9 @@ class GetSqlWarehouseResult:
         if enable_serverless_compute and not isinstance(enable_serverless_compute, bool):
             raise TypeError("Expected argument 'enable_serverless_compute' to be a bool")
         pulumi.set(__self__, "enable_serverless_compute", enable_serverless_compute)
+        if health and not isinstance(health, dict):
+            raise TypeError("Expected argument 'health' to be a dict")
+        pulumi.set(__self__, "health", health)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -60,6 +66,9 @@ class GetSqlWarehouseResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if num_active_sessions and not isinstance(num_active_sessions, int):
+            raise TypeError("Expected argument 'num_active_sessions' to be a int")
+        pulumi.set(__self__, "num_active_sessions", num_active_sessions)
         if num_clusters and not isinstance(num_clusters, int):
             raise TypeError("Expected argument 'num_clusters' to be a int")
         pulumi.set(__self__, "num_clusters", num_clusters)
@@ -75,6 +84,9 @@ class GetSqlWarehouseResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if warehouse_type and not isinstance(warehouse_type, str):
+            raise TypeError("Expected argument 'warehouse_type' to be a str")
+        pulumi.set(__self__, "warehouse_type", warehouse_type)
 
     @property
     @pulumi.getter(name="autoStopMins")
@@ -101,6 +113,14 @@ class GetSqlWarehouseResult:
         return pulumi.get(self, "cluster_size")
 
     @property
+    @pulumi.getter(name="creatorName")
+    def creator_name(self) -> str:
+        """
+        The username of the user who created the endpoint.
+        """
+        return pulumi.get(self, "creator_name")
+
+    @property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> str:
         """
@@ -123,6 +143,14 @@ class GetSqlWarehouseResult:
         Whether this SQL warehouse is a serverless SQL warehouse.
         """
         return pulumi.get(self, "enable_serverless_compute")
+
+    @property
+    @pulumi.getter
+    def health(self) -> 'outputs.GetSqlWarehouseHealthResult':
+        """
+        Health status of the endpoint.
+        """
+        return pulumi.get(self, "health")
 
     @property
     @pulumi.getter
@@ -170,8 +198,19 @@ class GetSqlWarehouseResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="numActiveSessions")
+    def num_active_sessions(self) -> int:
+        """
+        The current number of clusters used by the endpoint.
+        """
+        return pulumi.get(self, "num_active_sessions")
+
+    @property
     @pulumi.getter(name="numClusters")
     def num_clusters(self) -> int:
+        """
+        The current number of clusters used by the endpoint.
+        """
         return pulumi.get(self, "num_clusters")
 
     @property
@@ -193,6 +232,9 @@ class GetSqlWarehouseResult:
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The current state of the endpoint.
+        """
         return pulumi.get(self, "state")
 
     @property
@@ -202,6 +244,14 @@ class GetSqlWarehouseResult:
         tags used for SQL warehouse resources.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="warehouseType")
+    def warehouse_type(self) -> str:
+        """
+        SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        """
+        return pulumi.get(self, "warehouse_type")
 
 
 class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
@@ -213,39 +263,47 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
             auto_stop_mins=self.auto_stop_mins,
             channel=self.channel,
             cluster_size=self.cluster_size,
+            creator_name=self.creator_name,
             data_source_id=self.data_source_id,
             enable_photon=self.enable_photon,
             enable_serverless_compute=self.enable_serverless_compute,
+            health=self.health,
             id=self.id,
             instance_profile_arn=self.instance_profile_arn,
             jdbc_url=self.jdbc_url,
             max_num_clusters=self.max_num_clusters,
             min_num_clusters=self.min_num_clusters,
             name=self.name,
+            num_active_sessions=self.num_active_sessions,
             num_clusters=self.num_clusters,
             odbc_params=self.odbc_params,
             spot_instance_policy=self.spot_instance_policy,
             state=self.state,
-            tags=self.tags)
+            tags=self.tags,
+            warehouse_type=self.warehouse_type)
 
 
 def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
                       channel: Optional[pulumi.InputType['GetSqlWarehouseChannelArgs']] = None,
                       cluster_size: Optional[str] = None,
+                      creator_name: Optional[str] = None,
                       data_source_id: Optional[str] = None,
                       enable_photon: Optional[bool] = None,
                       enable_serverless_compute: Optional[bool] = None,
+                      health: Optional[pulumi.InputType['GetSqlWarehouseHealthArgs']] = None,
                       id: Optional[str] = None,
                       instance_profile_arn: Optional[str] = None,
                       jdbc_url: Optional[str] = None,
                       max_num_clusters: Optional[int] = None,
                       min_num_clusters: Optional[int] = None,
                       name: Optional[str] = None,
+                      num_active_sessions: Optional[int] = None,
                       num_clusters: Optional[int] = None,
                       odbc_params: Optional[pulumi.InputType['GetSqlWarehouseOdbcParamsArgs']] = None,
                       spot_instance_policy: Optional[str] = None,
                       state: Optional[str] = None,
                       tags: Optional[pulumi.InputType['GetSqlWarehouseTagsArgs']] = None,
+                      warehouse_type: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehouseResult:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -286,36 +344,46 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
     :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param str creator_name: The username of the user who created the endpoint.
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param pulumi.InputType['GetSqlWarehouseHealthArgs'] health: Health status of the endpoint.
     :param str id: The ID of the SQL warehouse.
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
     :param str name: Name of the SQL warehouse to search (case-sensitive).
+    :param int num_active_sessions: The current number of clusters used by the endpoint.
+    :param int num_clusters: The current number of clusters used by the endpoint.
     :param pulumi.InputType['GetSqlWarehouseOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+    :param str state: The current state of the endpoint.
     :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: tags used for SQL warehouse resources.
+    :param str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
     """
     __args__ = dict()
     __args__['autoStopMins'] = auto_stop_mins
     __args__['channel'] = channel
     __args__['clusterSize'] = cluster_size
+    __args__['creatorName'] = creator_name
     __args__['dataSourceId'] = data_source_id
     __args__['enablePhoton'] = enable_photon
     __args__['enableServerlessCompute'] = enable_serverless_compute
+    __args__['health'] = health
     __args__['id'] = id
     __args__['instanceProfileArn'] = instance_profile_arn
     __args__['jdbcUrl'] = jdbc_url
     __args__['maxNumClusters'] = max_num_clusters
     __args__['minNumClusters'] = min_num_clusters
     __args__['name'] = name
+    __args__['numActiveSessions'] = num_active_sessions
     __args__['numClusters'] = num_clusters
     __args__['odbcParams'] = odbc_params
     __args__['spotInstancePolicy'] = spot_instance_policy
     __args__['state'] = state
     __args__['tags'] = tags
+    __args__['warehouseType'] = warehouse_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getSqlWarehouse:getSqlWarehouse', __args__, opts=opts, typ=GetSqlWarehouseResult).value
 
@@ -323,40 +391,48 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
         auto_stop_mins=pulumi.get(__ret__, 'auto_stop_mins'),
         channel=pulumi.get(__ret__, 'channel'),
         cluster_size=pulumi.get(__ret__, 'cluster_size'),
+        creator_name=pulumi.get(__ret__, 'creator_name'),
         data_source_id=pulumi.get(__ret__, 'data_source_id'),
         enable_photon=pulumi.get(__ret__, 'enable_photon'),
         enable_serverless_compute=pulumi.get(__ret__, 'enable_serverless_compute'),
+        health=pulumi.get(__ret__, 'health'),
         id=pulumi.get(__ret__, 'id'),
         instance_profile_arn=pulumi.get(__ret__, 'instance_profile_arn'),
         jdbc_url=pulumi.get(__ret__, 'jdbc_url'),
         max_num_clusters=pulumi.get(__ret__, 'max_num_clusters'),
         min_num_clusters=pulumi.get(__ret__, 'min_num_clusters'),
         name=pulumi.get(__ret__, 'name'),
+        num_active_sessions=pulumi.get(__ret__, 'num_active_sessions'),
         num_clusters=pulumi.get(__ret__, 'num_clusters'),
         odbc_params=pulumi.get(__ret__, 'odbc_params'),
         spot_instance_policy=pulumi.get(__ret__, 'spot_instance_policy'),
         state=pulumi.get(__ret__, 'state'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        warehouse_type=pulumi.get(__ret__, 'warehouse_type'))
 
 
 @_utilities.lift_output_func(get_sql_warehouse)
 def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]]] = None,
                              channel: Optional[pulumi.Input[Optional[pulumi.InputType['GetSqlWarehouseChannelArgs']]]] = None,
                              cluster_size: Optional[pulumi.Input[Optional[str]]] = None,
+                             creator_name: Optional[pulumi.Input[Optional[str]]] = None,
                              data_source_id: Optional[pulumi.Input[Optional[str]]] = None,
                              enable_photon: Optional[pulumi.Input[Optional[bool]]] = None,
                              enable_serverless_compute: Optional[pulumi.Input[Optional[bool]]] = None,
+                             health: Optional[pulumi.Input[Optional[pulumi.InputType['GetSqlWarehouseHealthArgs']]]] = None,
                              id: Optional[pulumi.Input[Optional[str]]] = None,
                              instance_profile_arn: Optional[pulumi.Input[Optional[str]]] = None,
                              jdbc_url: Optional[pulumi.Input[Optional[str]]] = None,
                              max_num_clusters: Optional[pulumi.Input[Optional[int]]] = None,
                              min_num_clusters: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
+                             num_active_sessions: Optional[pulumi.Input[Optional[int]]] = None,
                              num_clusters: Optional[pulumi.Input[Optional[int]]] = None,
                              odbc_params: Optional[pulumi.Input[Optional[pulumi.InputType['GetSqlWarehouseOdbcParamsArgs']]]] = None,
                              spot_instance_policy: Optional[pulumi.Input[Optional[str]]] = None,
                              state: Optional[pulumi.Input[Optional[str]]] = None,
                              tags: Optional[pulumi.Input[Optional[pulumi.InputType['GetSqlWarehouseTagsArgs']]]] = None,
+                             warehouse_type: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSqlWarehouseResult]:
     """
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
@@ -397,16 +473,22 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     :param int auto_stop_mins: Time in minutes until an idle SQL warehouse terminates all clusters and stops.
     :param pulumi.InputType['GetSqlWarehouseChannelArgs'] channel: block, consisting of following fields:
     :param str cluster_size: The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
+    :param str creator_name: The username of the user who created the endpoint.
     :param str data_source_id: ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
     :param bool enable_photon: Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
     :param bool enable_serverless_compute: Whether this SQL warehouse is a serverless SQL warehouse.
+    :param pulumi.InputType['GetSqlWarehouseHealthArgs'] health: Health status of the endpoint.
     :param str id: The ID of the SQL warehouse.
     :param str jdbc_url: JDBC connection string.
     :param int max_num_clusters: Maximum number of clusters available when a SQL warehouse is running.
     :param int min_num_clusters: Minimum number of clusters available when a SQL warehouse is running.
     :param str name: Name of the SQL warehouse to search (case-sensitive).
+    :param int num_active_sessions: The current number of clusters used by the endpoint.
+    :param int num_clusters: The current number of clusters used by the endpoint.
     :param pulumi.InputType['GetSqlWarehouseOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
     :param str spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
+    :param str state: The current state of the endpoint.
     :param pulumi.InputType['GetSqlWarehouseTagsArgs'] tags: tags used for SQL warehouse resources.
+    :param str warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
     """
     ...

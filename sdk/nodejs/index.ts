@@ -105,6 +105,11 @@ export const getCurrentConfig: typeof import("./getCurrentConfig").getCurrentCon
 export const getCurrentConfigOutput: typeof import("./getCurrentConfig").getCurrentConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentConfig","getCurrentConfigOutput"], () => require("./getCurrentConfig"));
 
+export { GetCurrentMetastoreArgs, GetCurrentMetastoreResult, GetCurrentMetastoreOutputArgs } from "./getCurrentMetastore";
+export const getCurrentMetastore: typeof import("./getCurrentMetastore").getCurrentMetastore = null as any;
+export const getCurrentMetastoreOutput: typeof import("./getCurrentMetastore").getCurrentMetastoreOutput = null as any;
+utilities.lazyLoad(exports, ["getCurrentMetastore","getCurrentMetastoreOutput"], () => require("./getCurrentMetastore"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
@@ -264,6 +269,11 @@ export { GlobalInitScriptArgs, GlobalInitScriptState } from "./globalInitScript"
 export type GlobalInitScript = import("./globalInitScript").GlobalInitScript;
 export const GlobalInitScript: typeof import("./globalInitScript").GlobalInitScript = null as any;
 utilities.lazyLoad(exports, ["GlobalInitScript"], () => require("./globalInitScript"));
+
+export { GrantArgs, GrantState } from "./grant";
+export type Grant = import("./grant").Grant;
+export const Grant: typeof import("./grant").Grant = null as any;
+utilities.lazyLoad(exports, ["Grant"], () => require("./grant"));
 
 export { GrantsArgs, GrantsState } from "./grants";
 export type Grants = import("./grants").Grants;
@@ -627,6 +637,8 @@ const _module = {
                 return new GitCredential(name, <any>undefined, { urn })
             case "databricks:index/globalInitScript:GlobalInitScript":
                 return new GlobalInitScript(name, <any>undefined, { urn })
+            case "databricks:index/grant:Grant":
+                return new Grant(name, <any>undefined, { urn })
             case "databricks:index/grants:Grants":
                 return new Grants(name, <any>undefined, { urn })
             case "databricks:index/group:Group":
@@ -772,6 +784,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _modul
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/grant", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/grants", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/group", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/groupInstanceProfile", _module)

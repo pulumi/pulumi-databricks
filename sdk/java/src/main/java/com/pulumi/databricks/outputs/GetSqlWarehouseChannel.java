@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseChannel {
+    private @Nullable String dbsqlVersion;
     /**
      * @return Name of the SQL warehouse to search (case-sensitive).
      * 
@@ -18,6 +19,9 @@ public final class GetSqlWarehouseChannel {
     private @Nullable String name;
 
     private GetSqlWarehouseChannel() {}
+    public Optional<String> dbsqlVersion() {
+        return Optional.ofNullable(this.dbsqlVersion);
+    }
     /**
      * @return Name of the SQL warehouse to search (case-sensitive).
      * 
@@ -35,13 +39,21 @@ public final class GetSqlWarehouseChannel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dbsqlVersion;
         private @Nullable String name;
         public Builder() {}
         public Builder(GetSqlWarehouseChannel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dbsqlVersion = defaults.dbsqlVersion;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder dbsqlVersion(@Nullable String dbsqlVersion) {
+
+            this.dbsqlVersion = dbsqlVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
 
@@ -50,6 +62,7 @@ public final class GetSqlWarehouseChannel {
         }
         public GetSqlWarehouseChannel build() {
             final var _resultValue = new GetSqlWarehouseChannel();
+            _resultValue.dbsqlVersion = dbsqlVersion;
             _resultValue.name = name;
             return _resultValue;
         }

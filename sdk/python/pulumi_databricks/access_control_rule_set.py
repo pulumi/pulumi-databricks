@@ -134,6 +134,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
         > **Note** Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.
@@ -277,6 +279,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  args: Optional[AccessControlRuleSetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
         > **Note** Currently, we only support managing access rules on service principal, group and account resources through `AccessControlRuleSet`.

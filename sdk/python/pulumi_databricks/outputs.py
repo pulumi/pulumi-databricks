@@ -255,6 +255,8 @@ __all__ = [
     'ShareObjectPartitionValue',
     'SqlAlertOptions',
     'SqlEndpointChannel',
+    'SqlEndpointHealth',
+    'SqlEndpointHealthFailureReason',
     'SqlEndpointOdbcParams',
     'SqlEndpointTags',
     'SqlEndpointTagsCustomTag',
@@ -312,6 +314,7 @@ __all__ = [
     'GetClusterClusterInfoInitScriptVolumesResult',
     'GetClusterClusterInfoInitScriptWorkspaceResult',
     'GetClusterClusterInfoTerminationReasonResult',
+    'GetCurrentMetastoreMetastoreInfoResult',
     'GetDbfsFilePathsPathListResult',
     'GetInstancePoolPoolInfoResult',
     'GetInstancePoolPoolInfoAwsAttributesResult',
@@ -469,6 +472,8 @@ __all__ = [
     'GetShareObjectPartitionResult',
     'GetShareObjectPartitionValueResult',
     'GetSqlWarehouseChannelResult',
+    'GetSqlWarehouseHealthResult',
+    'GetSqlWarehouseHealthFailureReasonResult',
     'GetSqlWarehouseOdbcParamsResult',
     'GetSqlWarehouseTagsResult',
     'GetSqlWarehouseTagsCustomTagResult',
@@ -13082,13 +13087,38 @@ class SqlAlertOptions(dict):
 
 @pulumi.output_type
 class SqlEndpointChannel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dbsqlVersion":
+            suggest = "dbsql_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlEndpointChannel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlEndpointChannel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlEndpointChannel.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 dbsql_version: Optional[str] = None,
                  name: Optional[str] = None):
         """
         :param str name: Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         """
+        if dbsql_version is not None:
+            pulumi.set(__self__, "dbsql_version", dbsql_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dbsqlVersion")
+    def dbsql_version(self) -> Optional[str]:
+        return pulumi.get(self, "dbsql_version")
 
     @property
     @pulumi.getter
@@ -13100,45 +13130,131 @@ class SqlEndpointChannel(dict):
 
 
 @pulumi.output_type
+class SqlEndpointHealth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureReason":
+            suggest = "failure_reason"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlEndpointHealth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlEndpointHealth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlEndpointHealth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 details: Optional[str] = None,
+                 failure_reason: Optional['outputs.SqlEndpointHealthFailureReason'] = None,
+                 message: Optional[str] = None,
+                 status: Optional[str] = None,
+                 summary: Optional[str] = None):
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if failure_reason is not None:
+            pulumi.set(__self__, "failure_reason", failure_reason)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if summary is not None:
+            pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[str]:
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> Optional['outputs.SqlEndpointHealthFailureReason']:
+        return pulumi.get(self, "failure_reason")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def summary(self) -> Optional[str]:
+        return pulumi.get(self, "summary")
+
+
+@pulumi.output_type
+class SqlEndpointHealthFailureReason(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 parameters: Optional[Mapping[str, Any]] = None,
+                 type: Optional[str] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class SqlEndpointOdbcParams(dict):
     def __init__(__self__, *,
-                 path: str,
-                 port: int,
-                 protocol: str,
-                 host: Optional[str] = None,
-                 hostname: Optional[str] = None):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
+                 hostname: Optional[str] = None,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
-
-    @property
-    @pulumi.getter
-    def path(self) -> str:
-        return pulumi.get(self, "path")
-
-    @property
-    @pulumi.getter
-    def port(self) -> int:
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> str:
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[str]:
-        return pulumi.get(self, "host")
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        return pulumi.get(self, "protocol")
 
 
 @pulumi.output_type
@@ -13161,12 +13277,13 @@ class SqlEndpointTags(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_tags: Sequence['outputs.SqlEndpointTagsCustomTag']):
-        pulumi.set(__self__, "custom_tags", custom_tags)
+                 custom_tags: Optional[Sequence['outputs.SqlEndpointTagsCustomTag']] = None):
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Sequence['outputs.SqlEndpointTagsCustomTag']:
+    def custom_tags(self) -> Optional[Sequence['outputs.SqlEndpointTagsCustomTag']]:
         return pulumi.get(self, "custom_tags")
 
 
@@ -15640,6 +15757,225 @@ class GetClusterClusterInfoTerminationReasonResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCurrentMetastoreMetastoreInfoResult(dict):
+    def __init__(__self__, *,
+                 cloud: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 default_data_access_config_id: Optional[str] = None,
+                 delta_sharing_organization_name: Optional[str] = None,
+                 delta_sharing_recipient_token_lifetime_in_seconds: Optional[int] = None,
+                 delta_sharing_scope: Optional[str] = None,
+                 global_metastore_id: Optional[str] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 privilege_model_version: Optional[str] = None,
+                 region: Optional[str] = None,
+                 storage_root: Optional[str] = None,
+                 storage_root_credential_id: Optional[str] = None,
+                 storage_root_credential_name: Optional[str] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None):
+        """
+        :param int created_at: Timestamp (in milliseconds) when the current metastore was created.
+        :param str created_by: the ID of the identity that created the current metastore.
+        :param str default_data_access_config_id: the ID of the default data access configuration.
+        :param str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        :param int delta_sharing_recipient_token_lifetime_in_seconds: the expiration duration in seconds on recipient data access tokens.
+        :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        :param str global_metastore_id: Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+        :param str metastore_id: Metastore ID.
+        :param str name: Name of metastore.
+        :param str owner: Username/group name/sp application_id of the metastore owner.
+        :param str privilege_model_version: the version of the privilege model used by the metastore.
+        :param str region: (Mandatory for account-level) The region of the metastore.
+        :param str storage_root: Path on cloud storage account, where managed `Table` are stored.
+        :param str storage_root_credential_id: ID of a storage credential used for the `storage_root`.
+        :param str storage_root_credential_name: Name of a storage credential used for the `storage_root`.
+        :param int updated_at: Timestamp (in milliseconds) when the current metastore was updated.
+        :param str updated_by: the ID of the identity that updated the current metastore.
+        """
+        if cloud is not None:
+            pulumi.set(__self__, "cloud", cloud)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if default_data_access_config_id is not None:
+            pulumi.set(__self__, "default_data_access_config_id", default_data_access_config_id)
+        if delta_sharing_organization_name is not None:
+            pulumi.set(__self__, "delta_sharing_organization_name", delta_sharing_organization_name)
+        if delta_sharing_recipient_token_lifetime_in_seconds is not None:
+            pulumi.set(__self__, "delta_sharing_recipient_token_lifetime_in_seconds", delta_sharing_recipient_token_lifetime_in_seconds)
+        if delta_sharing_scope is not None:
+            pulumi.set(__self__, "delta_sharing_scope", delta_sharing_scope)
+        if global_metastore_id is not None:
+            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if privilege_model_version is not None:
+            pulumi.set(__self__, "privilege_model_version", privilege_model_version)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if storage_root is not None:
+            pulumi.set(__self__, "storage_root", storage_root)
+        if storage_root_credential_id is not None:
+            pulumi.set(__self__, "storage_root_credential_id", storage_root_credential_id)
+        if storage_root_credential_name is not None:
+            pulumi.set(__self__, "storage_root_credential_name", storage_root_credential_name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter
+    def cloud(self) -> Optional[str]:
+        return pulumi.get(self, "cloud")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        """
+        Timestamp (in milliseconds) when the current metastore was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        """
+        the ID of the identity that created the current metastore.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="defaultDataAccessConfigId")
+    def default_data_access_config_id(self) -> Optional[str]:
+        """
+        the ID of the default data access configuration.
+        """
+        return pulumi.get(self, "default_data_access_config_id")
+
+    @property
+    @pulumi.getter(name="deltaSharingOrganizationName")
+    def delta_sharing_organization_name(self) -> Optional[str]:
+        """
+        The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+        """
+        return pulumi.get(self, "delta_sharing_organization_name")
+
+    @property
+    @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
+    def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[int]:
+        """
+        the expiration duration in seconds on recipient data access tokens.
+        """
+        return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
+
+    @property
+    @pulumi.getter(name="deltaSharingScope")
+    def delta_sharing_scope(self) -> Optional[str]:
+        """
+        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        """
+        return pulumi.get(self, "delta_sharing_scope")
+
+    @property
+    @pulumi.getter(name="globalMetastoreId")
+    def global_metastore_id(self) -> Optional[str]:
+        """
+        Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+        """
+        return pulumi.get(self, "global_metastore_id")
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        """
+        Metastore ID.
+        """
+        return pulumi.get(self, "metastore_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of metastore.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Username/group name/sp application_id of the metastore owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="privilegeModelVersion")
+    def privilege_model_version(self) -> Optional[str]:
+        """
+        the version of the privilege model used by the metastore.
+        """
+        return pulumi.get(self, "privilege_model_version")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        (Mandatory for account-level) The region of the metastore.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="storageRoot")
+    def storage_root(self) -> Optional[str]:
+        """
+        Path on cloud storage account, where managed `Table` are stored.
+        """
+        return pulumi.get(self, "storage_root")
+
+    @property
+    @pulumi.getter(name="storageRootCredentialId")
+    def storage_root_credential_id(self) -> Optional[str]:
+        """
+        ID of a storage credential used for the `storage_root`.
+        """
+        return pulumi.get(self, "storage_root_credential_id")
+
+    @property
+    @pulumi.getter(name="storageRootCredentialName")
+    def storage_root_credential_name(self) -> Optional[str]:
+        """
+        Name of a storage credential used for the `storage_root`.
+        """
+        return pulumi.get(self, "storage_root_credential_name")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        """
+        Timestamp (in milliseconds) when the current metastore was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        """
+        the ID of the identity that updated the current metastore.
+        """
+        return pulumi.get(self, "updated_by")
 
 
 @pulumi.output_type
@@ -20866,7 +21202,7 @@ class GetMetastoreMetastoreInfoResult(dict):
         :param str metastore_id: Id of the metastore to be fetched
         :param str name: Name of metastore.
         :param str owner: Username/groupname/sp application_id of the metastore owner.
-        :param str storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+        :param str storage_root: Path on cloud storage account, where managed `Table` are stored.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -20992,7 +21328,7 @@ class GetMetastoreMetastoreInfoResult(dict):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[str]:
         """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource.
+        Path on cloud storage account, where managed `Table` are stored.
         """
         return pulumi.get(self, "storage_root")
 
@@ -21371,12 +21707,20 @@ class GetShareObjectPartitionValueResult(dict):
 @pulumi.output_type
 class GetSqlWarehouseChannelResult(dict):
     def __init__(__self__, *,
+                 dbsql_version: Optional[str] = None,
                  name: Optional[str] = None):
         """
         :param str name: Name of the SQL warehouse to search (case-sensitive).
         """
+        if dbsql_version is not None:
+            pulumi.set(__self__, "dbsql_version", dbsql_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dbsqlVersion")
+    def dbsql_version(self) -> Optional[str]:
+        return pulumi.get(self, "dbsql_version")
 
     @property
     @pulumi.getter
@@ -21388,75 +21732,147 @@ class GetSqlWarehouseChannelResult(dict):
 
 
 @pulumi.output_type
+class GetSqlWarehouseHealthResult(dict):
+    def __init__(__self__, *,
+                 details: Optional[str] = None,
+                 failure_reason: Optional['outputs.GetSqlWarehouseHealthFailureReasonResult'] = None,
+                 message: Optional[str] = None,
+                 status: Optional[str] = None,
+                 summary: Optional[str] = None):
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if failure_reason is not None:
+            pulumi.set(__self__, "failure_reason", failure_reason)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if summary is not None:
+            pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[str]:
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> Optional['outputs.GetSqlWarehouseHealthFailureReasonResult']:
+        return pulumi.get(self, "failure_reason")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def summary(self) -> Optional[str]:
+        return pulumi.get(self, "summary")
+
+
+@pulumi.output_type
+class GetSqlWarehouseHealthFailureReasonResult(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 parameters: Optional[Mapping[str, Any]] = None,
+                 type: Optional[str] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetSqlWarehouseOdbcParamsResult(dict):
     def __init__(__self__, *,
-                 path: str,
-                 port: int,
-                 protocol: str,
-                 host: Optional[str] = None,
-                 hostname: Optional[str] = None):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
+                 hostname: Optional[str] = None,
+                 path: Optional[str] = None,
+                 port: Optional[int] = None,
+                 protocol: Optional[str] = None):
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
-
-    @property
-    @pulumi.getter
-    def path(self) -> str:
-        return pulumi.get(self, "path")
-
-    @property
-    @pulumi.getter
-    def port(self) -> int:
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> str:
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[str]:
-        return pulumi.get(self, "host")
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         return pulumi.get(self, "hostname")
 
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        return pulumi.get(self, "protocol")
+
 
 @pulumi.output_type
 class GetSqlWarehouseTagsResult(dict):
     def __init__(__self__, *,
-                 custom_tags: Sequence['outputs.GetSqlWarehouseTagsCustomTagResult']):
-        pulumi.set(__self__, "custom_tags", custom_tags)
+                 custom_tags: Optional[Sequence['outputs.GetSqlWarehouseTagsCustomTagResult']] = None):
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
 
     @property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Sequence['outputs.GetSqlWarehouseTagsCustomTagResult']:
+    def custom_tags(self) -> Optional[Sequence['outputs.GetSqlWarehouseTagsCustomTagResult']]:
         return pulumi.get(self, "custom_tags")
 
 
 @pulumi.output_type
 class GetSqlWarehouseTagsCustomTagResult(dict):
     def __init__(__self__, *,
-                 key: str,
-                 value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> Optional[str]:
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
 

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This resource could be used with account or workspace-level provider.
+ *
  * To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
  *
  * - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -137,6 +139,10 @@ export class StorageCredential extends pulumi.CustomResource {
      * Indicates whether the storage credential is only usable for read operations.
      */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    /**
+     * Suppress validation errors if any & force save the storage credential.
+     */
+    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -163,6 +169,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
+            resourceInputs["skipValidation"] = state ? state.skipValidation : undefined;
         } else {
             const args = argsOrState as StorageCredentialArgs | undefined;
             resourceInputs["awsIamRole"] = args ? args.awsIamRole : undefined;
@@ -177,6 +184,7 @@ export class StorageCredential extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
+            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StorageCredential.__pulumiType, name, resourceInputs, opts);
@@ -216,6 +224,10 @@ export interface StorageCredentialState {
      * Indicates whether the storage credential is only usable for read operations.
      */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Suppress validation errors if any & force save the storage credential.
+     */
+    skipValidation?: pulumi.Input<boolean>;
 }
 
 /**
@@ -251,4 +263,8 @@ export interface StorageCredentialArgs {
      * Indicates whether the storage credential is only usable for read operations.
      */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Suppress validation errors if any & force save the storage credential.
+     */
+    skipValidation?: pulumi.Input<boolean>;
 }

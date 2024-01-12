@@ -56,6 +56,10 @@ export interface GetDirectoryResult {
      */
     readonly objectId: number;
     readonly path: string;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    readonly workspacePath: string;
 }
 /**
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
