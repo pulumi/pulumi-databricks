@@ -15,6 +15,13 @@ public final class GetSqlWarehouseChannelArgs extends com.pulumi.resources.Resou
 
     public static final GetSqlWarehouseChannelArgs Empty = new GetSqlWarehouseChannelArgs();
 
+    @Import(name="dbsqlVersion")
+    private @Nullable Output<String> dbsqlVersion;
+
+    public Optional<Output<String>> dbsqlVersion() {
+        return Optional.ofNullable(this.dbsqlVersion);
+    }
+
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      * 
@@ -33,6 +40,7 @@ public final class GetSqlWarehouseChannelArgs extends com.pulumi.resources.Resou
     private GetSqlWarehouseChannelArgs() {}
 
     private GetSqlWarehouseChannelArgs(GetSqlWarehouseChannelArgs $) {
+        this.dbsqlVersion = $.dbsqlVersion;
         this.name = $.name;
     }
 
@@ -52,6 +60,15 @@ public final class GetSqlWarehouseChannelArgs extends com.pulumi.resources.Resou
 
         public Builder(GetSqlWarehouseChannelArgs defaults) {
             $ = new GetSqlWarehouseChannelArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dbsqlVersion(@Nullable Output<String> dbsqlVersion) {
+            $.dbsqlVersion = dbsqlVersion;
+            return this;
+        }
+
+        public Builder dbsqlVersion(String dbsqlVersion) {
+            return dbsqlVersion(Output.of(dbsqlVersion));
         }
 
         /**

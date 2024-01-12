@@ -11,11 +11,13 @@ import com.pulumi.databricks.SqlEndpointArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SqlEndpointState;
 import com.pulumi.databricks.outputs.SqlEndpointChannel;
+import com.pulumi.databricks.outputs.SqlEndpointHealth;
 import com.pulumi.databricks.outputs.SqlEndpointOdbcParams;
 import com.pulumi.databricks.outputs.SqlEndpointTags;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -131,6 +133,20 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return this.clusterSize;
     }
     /**
+     * The username of the user who created the endpoint.
+     * 
+     */
+    @Export(name="creatorName", refs={String.class}, tree="[0]")
+    private Output<String> creatorName;
+
+    /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
+    public Output<String> creatorName() {
+        return this.creatorName;
+    }
+    /**
      * ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
      * 
      */
@@ -179,6 +195,20 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableServerlessCompute() {
         return Codegen.optional(this.enableServerlessCompute);
+    }
+    /**
+     * Health status of the endpoint.
+     * 
+     */
+    @Export(name="healths", refs={List.class,SqlEndpointHealth.class}, tree="[0,1]")
+    private Output<List<SqlEndpointHealth>> healths;
+
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
+    public Output<List<SqlEndpointHealth>> healths() {
+        return this.healths;
     }
     @Export(name="instanceProfileArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceProfileArn;
@@ -242,11 +272,33 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="numClusters", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> numClusters;
+    /**
+     * The current number of clusters used by the endpoint.
+     * 
+     */
+    @Export(name="numActiveSessions", refs={Integer.class}, tree="[0]")
+    private Output<Integer> numActiveSessions;
 
-    public Output<Optional<Integer>> numClusters() {
-        return Codegen.optional(this.numClusters);
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
+    public Output<Integer> numActiveSessions() {
+        return this.numActiveSessions;
+    }
+    /**
+     * The current number of clusters used by the endpoint.
+     * 
+     */
+    @Export(name="numClusters", refs={Integer.class}, tree="[0]")
+    private Output<Integer> numClusters;
+
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
+    public Output<Integer> numClusters() {
+        return this.numClusters;
     }
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -276,9 +328,17 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> spotInstancePolicy() {
         return Codegen.optional(this.spotInstancePolicy);
     }
+    /**
+     * The current state of the endpoint.
+     * 
+     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     public Output<String> state() {
         return this.state;
     }
@@ -297,14 +357,14 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      * 
      */
     @Export(name="warehouseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseType;
 
     /**
-     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
      * 
      */
     public Output<Optional<String>> warehouseType() {

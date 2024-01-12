@@ -12,20 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlEndpointOdbcParamsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
+        [Input("path")]
+        public Input<string>? Path { get; set; }
 
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
 
         public SqlEndpointOdbcParamsArgs()
         {

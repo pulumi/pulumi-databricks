@@ -12,11 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetSqlWarehouseTagsCustomTagArgs : global::Pulumi.InvokeArgs
     {
-        [Input("key", required: true)]
-        public string Key { get; set; } = null!;
+        [Input("key")]
+        public string? Key { get; set; }
 
-        [Input("value", required: true)]
-        public string Value { get; set; } = null!;
+        [Input("value")]
+        public string? Value { get; set; }
 
         public GetSqlWarehouseTagsCustomTagArgs()
         {

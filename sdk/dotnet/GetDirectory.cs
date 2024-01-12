@@ -126,6 +126,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int ObjectId;
         public readonly string Path;
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        public readonly string WorkspacePath;
 
         [OutputConstructor]
         private GetDirectoryResult(
@@ -133,11 +137,14 @@ namespace Pulumi.Databricks
 
             int objectId,
 
-            string path)
+            string path,
+
+            string workspacePath)
         {
             Id = id;
             ObjectId = objectId;
             Path = path;
+            WorkspacePath = workspacePath;
         }
     }
 }

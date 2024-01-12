@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note** This resource could be used with account or workspace-level provider.
+    /// 
     /// Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
     /// 
     /// ## Import
@@ -64,6 +66,9 @@ namespace Pulumi.Databricks
 
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
+
+        [Output("skipValidation")]
+        public Output<bool?> SkipValidation { get; private set; } = null!;
 
 
         /// <summary>
@@ -153,6 +158,9 @@ namespace Pulumi.Databricks
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
+
         public MetastoreDataAccessArgs()
         {
         }
@@ -202,6 +210,9 @@ namespace Pulumi.Databricks
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
+
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
 
         public MetastoreDataAccessState()
         {

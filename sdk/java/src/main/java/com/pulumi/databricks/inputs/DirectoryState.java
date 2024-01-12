@@ -54,12 +54,28 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    @Import(name="workspacePath")
+    private @Nullable Output<String> workspacePath;
+
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public Optional<Output<String>> workspacePath() {
+        return Optional.ofNullable(this.workspacePath);
+    }
+
     private DirectoryState() {}
 
     private DirectoryState(DirectoryState $) {
         this.deleteRecursive = $.deleteRecursive;
         this.objectId = $.objectId;
         this.path = $.path;
+        this.workspacePath = $.workspacePath;
     }
 
     public static Builder builder() {
@@ -129,6 +145,27 @@ public final class DirectoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(@Nullable Output<String> workspacePath) {
+            $.workspacePath = workspacePath;
+            return this;
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(String workspacePath) {
+            return workspacePath(Output.of(workspacePath));
         }
 
         public DirectoryState build() {

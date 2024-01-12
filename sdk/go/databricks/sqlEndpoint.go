@@ -85,6 +85,8 @@ type SqlEndpoint struct {
 	Channel SqlEndpointChannelPtrOutput `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringOutput `pulumi:"clusterSize"`
+	// The username of the user who created the endpoint.
+	CreatorName pulumi.StringOutput `pulumi:"creatorName"`
 	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -94,8 +96,10 @@ type SqlEndpoint struct {
 	// - **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
 	//
 	// - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
-	EnableServerlessCompute pulumi.BoolPtrOutput   `pulumi:"enableServerlessCompute"`
-	InstanceProfileArn      pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
+	EnableServerlessCompute pulumi.BoolPtrOutput `pulumi:"enableServerlessCompute"`
+	// Health status of the endpoint.
+	Healths            SqlEndpointHealthArrayOutput `pulumi:"healths"`
+	InstanceProfileArn pulumi.StringPtrOutput       `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl pulumi.StringOutput `pulumi:"jdbcUrl"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -103,16 +107,20 @@ type SqlEndpoint struct {
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrOutput `pulumi:"minNumClusters"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        pulumi.StringOutput `pulumi:"name"`
-	NumClusters pulumi.IntPtrOutput `pulumi:"numClusters"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions pulumi.IntOutput `pulumi:"numActiveSessions"`
+	// The current number of clusters used by the endpoint.
+	NumClusters pulumi.IntOutput `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsOutput `pulumi:"odbcParams"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrOutput `pulumi:"spotInstancePolicy"`
-	State              pulumi.StringOutput    `pulumi:"state"`
+	// The current state of the endpoint.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrOutput `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 	WarehouseType pulumi.StringPtrOutput `pulumi:"warehouseType"`
 }
 
@@ -155,6 +163,8 @@ type sqlEndpointState struct {
 	Channel *SqlEndpointChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
+	// The username of the user who created the endpoint.
+	CreatorName *string `pulumi:"creatorName"`
 	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -164,8 +174,10 @@ type sqlEndpointState struct {
 	// - **For AWS**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between September 1, 2022 and April 30, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. If your account needs updated [terms of use](https://docs.databricks.com/sql/admin/serverless.html#accept-terms), workspace admins are prompted in the Databricks SQL UI. A workspace must meet the [requirements](https://docs.databricks.com/sql/admin/serverless.html#requirements) and might require an update to its instance profile role to [add a trust relationship](https://docs.databricks.com/sql/admin/serverless.html#aws-instance-profile-setup).
 	//
 	// - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
-	EnableServerlessCompute *bool   `pulumi:"enableServerlessCompute"`
-	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
+	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
+	// Health status of the endpoint.
+	Healths            []SqlEndpointHealth `pulumi:"healths"`
+	InstanceProfileArn *string             `pulumi:"instanceProfileArn"`
 	// JDBC connection string.
 	JdbcUrl *string `pulumi:"jdbcUrl"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -173,16 +185,20 @@ type sqlEndpointState struct {
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters *int `pulumi:"minNumClusters"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        *string `pulumi:"name"`
-	NumClusters *int    `pulumi:"numClusters"`
+	Name *string `pulumi:"name"`
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions *int `pulumi:"numActiveSessions"`
+	// The current number of clusters used by the endpoint.
+	NumClusters *int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams *SqlEndpointOdbcParams `pulumi:"odbcParams"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
-	State              *string `pulumi:"state"`
+	// The current state of the endpoint.
+	State *string `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 	WarehouseType *string `pulumi:"warehouseType"`
 }
 
@@ -193,6 +209,8 @@ type SqlEndpointState struct {
 	Channel SqlEndpointChannelPtrInput
 	// The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringPtrInput
+	// The username of the user who created the endpoint.
+	CreatorName pulumi.StringPtrInput
 	// ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 	DataSourceId pulumi.StringPtrInput
 	// Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
@@ -203,7 +221,9 @@ type SqlEndpointState struct {
 	//
 	// - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
 	EnableServerlessCompute pulumi.BoolPtrInput
-	InstanceProfileArn      pulumi.StringPtrInput
+	// Health status of the endpoint.
+	Healths            SqlEndpointHealthArrayInput
+	InstanceProfileArn pulumi.StringPtrInput
 	// JDBC connection string.
 	JdbcUrl pulumi.StringPtrInput
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
@@ -211,16 +231,20 @@ type SqlEndpointState struct {
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrInput
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions pulumi.IntPtrInput
+	// The current number of clusters used by the endpoint.
 	NumClusters pulumi.IntPtrInput
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
-	State              pulumi.StringPtrInput
+	// The current state of the endpoint.
+	State pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 	WarehouseType pulumi.StringPtrInput
 }
 
@@ -246,23 +270,17 @@ type sqlEndpointArgs struct {
 	// - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
 	EnableServerlessCompute *bool   `pulumi:"enableServerlessCompute"`
 	InstanceProfileArn      *string `pulumi:"instanceProfileArn"`
-	// JDBC connection string.
-	JdbcUrl *string `pulumi:"jdbcUrl"`
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters *int `pulumi:"minNumClusters"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        *string `pulumi:"name"`
-	NumClusters *int    `pulumi:"numClusters"`
-	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams *SqlEndpointOdbcParams `pulumi:"odbcParams"`
+	Name *string `pulumi:"name"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
-	State              *string `pulumi:"state"`
 	// Databricks tags all endpoint resources with these tags.
 	Tags *SqlEndpointTags `pulumi:"tags"`
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 	WarehouseType *string `pulumi:"warehouseType"`
 }
 
@@ -285,23 +303,17 @@ type SqlEndpointArgs struct {
 	// - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
 	EnableServerlessCompute pulumi.BoolPtrInput
 	InstanceProfileArn      pulumi.StringPtrInput
-	// JDBC connection string.
-	JdbcUrl pulumi.StringPtrInput
 	// Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
 	MaxNumClusters pulumi.IntPtrInput
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrInput
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        pulumi.StringPtrInput
-	NumClusters pulumi.IntPtrInput
-	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams SqlEndpointOdbcParamsPtrInput
+	Name pulumi.StringPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
-	State              pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
 	Tags SqlEndpointTagsPtrInput
-	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 	WarehouseType pulumi.StringPtrInput
 }
 
@@ -407,6 +419,11 @@ func (o SqlEndpointOutput) ClusterSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.ClusterSize }).(pulumi.StringOutput)
 }
 
+// The username of the user who created the endpoint.
+func (o SqlEndpointOutput) CreatorName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.CreatorName }).(pulumi.StringOutput)
+}
+
 // ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
 func (o SqlEndpointOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
@@ -424,6 +441,11 @@ func (o SqlEndpointOutput) EnablePhoton() pulumi.BoolPtrOutput {
 // - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
 func (o SqlEndpointOutput) EnableServerlessCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.BoolPtrOutput { return v.EnableServerlessCompute }).(pulumi.BoolPtrOutput)
+}
+
+// Health status of the endpoint.
+func (o SqlEndpointOutput) Healths() SqlEndpointHealthArrayOutput {
+	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointHealthArrayOutput { return v.Healths }).(SqlEndpointHealthArrayOutput)
 }
 
 func (o SqlEndpointOutput) InstanceProfileArn() pulumi.StringPtrOutput {
@@ -450,8 +472,14 @@ func (o SqlEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o SqlEndpointOutput) NumClusters() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntPtrOutput { return v.NumClusters }).(pulumi.IntPtrOutput)
+// The current number of clusters used by the endpoint.
+func (o SqlEndpointOutput) NumActiveSessions() pulumi.IntOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntOutput { return v.NumActiveSessions }).(pulumi.IntOutput)
+}
+
+// The current number of clusters used by the endpoint.
+func (o SqlEndpointOutput) NumClusters() pulumi.IntOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntOutput { return v.NumClusters }).(pulumi.IntOutput)
 }
 
 // ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -464,6 +492,7 @@ func (o SqlEndpointOutput) SpotInstancePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.SpotInstancePolicy }).(pulumi.StringPtrOutput)
 }
 
+// The current state of the endpoint.
 func (o SqlEndpointOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -473,7 +502,7 @@ func (o SqlEndpointOutput) Tags() SqlEndpointTagsPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointTagsPtrOutput { return v.Tags }).(SqlEndpointTagsPtrOutput)
 }
 
-// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`.  If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
+// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enableServerlessCompute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
 func (o SqlEndpointOutput) WarehouseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringPtrOutput { return v.WarehouseType }).(pulumi.StringPtrOutput)
 }

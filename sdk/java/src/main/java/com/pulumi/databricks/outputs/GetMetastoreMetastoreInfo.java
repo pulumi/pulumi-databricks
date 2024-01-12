@@ -50,7 +50,7 @@ public final class GetMetastoreMetastoreInfo {
     private @Nullable String privilegeModelVersion;
     private @Nullable String region;
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
      * 
      */
     private @Nullable String storageRoot;
@@ -124,7 +124,7 @@ public final class GetMetastoreMetastoreInfo {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.
      * 
      */
     public Optional<String> storageRoot() {

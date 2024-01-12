@@ -28,7 +28,8 @@ class MetastoreDataAccessArgs:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MetastoreDataAccess resource.
         :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
@@ -59,6 +60,8 @@ class MetastoreDataAccessArgs:
             pulumi.set(__self__, "owner", owner)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if skip_validation is not None:
+            pulumi.set(__self__, "skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -180,6 +183,15 @@ class MetastoreDataAccessArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "skip_validation")
+
+    @skip_validation.setter
+    def skip_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_validation", value)
+
 
 @pulumi.input_type
 class _MetastoreDataAccessState:
@@ -196,7 +208,8 @@ class _MetastoreDataAccessState:
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MetastoreDataAccess resources.
         :param pulumi.Input[bool] is_default: whether to set this credential as the default for the metastore. In practice, this should always be true.
@@ -227,6 +240,8 @@ class _MetastoreDataAccessState:
             pulumi.set(__self__, "owner", owner)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if skip_validation is not None:
+            pulumi.set(__self__, "skip_validation", skip_validation)
 
     @property
     @pulumi.getter(name="awsIamRole")
@@ -348,6 +363,15 @@ class _MetastoreDataAccessState:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "skip_validation")
+
+    @skip_validation.setter
+    def skip_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_validation", value)
+
 
 class MetastoreDataAccess(pulumi.CustomResource):
     @overload
@@ -367,8 +391,11 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 
         ## Import
@@ -390,6 +417,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  args: Optional[MetastoreDataAccessArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note** This resource could be used with account or workspace-level provider.
+
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 
         ## Import
@@ -428,6 +457,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -450,6 +480,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["read_only"] = read_only
+            __props__.__dict__["skip_validation"] = skip_validation
         super(MetastoreDataAccess, __self__).__init__(
             'databricks:index/metastoreDataAccess:MetastoreDataAccess',
             resource_name,
@@ -472,7 +503,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            read_only: Optional[pulumi.Input[bool]] = None) -> 'MetastoreDataAccess':
+            read_only: Optional[pulumi.Input[bool]] = None,
+            skip_validation: Optional[pulumi.Input[bool]] = None) -> 'MetastoreDataAccess':
         """
         Get an existing MetastoreDataAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -499,6 +531,7 @@ class MetastoreDataAccess(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["read_only"] = read_only
+        __props__.__dict__["skip_validation"] = skip_validation
         return MetastoreDataAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -568,4 +601,9 @@ class MetastoreDataAccess(pulumi.CustomResource):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "skip_validation")
 

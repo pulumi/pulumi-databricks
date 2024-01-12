@@ -137,7 +137,8 @@ class _RepoState:
                  path: Optional[pulumi.Input[str]] = None,
                  sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
                  tag: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 url: Optional[pulumi.Input[str]] = None,
+                 workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
         :param pulumi.Input[str] branch: name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
@@ -146,6 +147,7 @@ class _RepoState:
         :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
@@ -161,6 +163,8 @@ class _RepoState:
             pulumi.set(__self__, "tag", tag)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if workspace_path is not None:
+            pulumi.set(__self__, "workspace_path", workspace_path)
 
     @property
     @pulumi.getter
@@ -242,6 +246,18 @@ class _RepoState:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
+
+    @workspace_path.setter
+    def workspace_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_path", value)
 
 
 class Repo(pulumi.CustomResource):
@@ -330,6 +346,7 @@ class Repo(pulumi.CustomResource):
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            __props__.__dict__["workspace_path"] = None
         super(Repo, __self__).__init__(
             'databricks:index/repo:Repo',
             resource_name,
@@ -346,7 +363,8 @@ class Repo(pulumi.CustomResource):
             path: Optional[pulumi.Input[str]] = None,
             sparse_checkout: Optional[pulumi.Input[pulumi.InputType['RepoSparseCheckoutArgs']]] = None,
             tag: Optional[pulumi.Input[str]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'Repo':
+            url: Optional[pulumi.Input[str]] = None,
+            workspace_path: Optional[pulumi.Input[str]] = None) -> 'Repo':
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -360,6 +378,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] path: path to put the checked out Repo. If not specified, then repo will be created in the user's repo directory (`/Repos/<username>/...`).  If the value changes, repo is re-created.
         :param pulumi.Input[str] tag: name of the tag for initial checkout.  Conflicts with `branch`.
         :param pulumi.Input[str] url: The URL of the Git Repository to clone from. If the value changes, repo is re-created.
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,6 +391,7 @@ class Repo(pulumi.CustomResource):
         __props__.__dict__["sparse_checkout"] = sparse_checkout
         __props__.__dict__["tag"] = tag
         __props__.__dict__["url"] = url
+        __props__.__dict__["workspace_path"] = workspace_path
         return Repo(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -426,4 +446,12 @@ class Repo(pulumi.CustomResource):
         The URL of the Git Repository to clone from. If the value changes, repo is re-created.
         """
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
 

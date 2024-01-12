@@ -45,7 +45,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? PrivilegeModelVersion;
         public readonly string? Region;
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.
         /// </summary>
         public readonly string? StorageRoot;
         public readonly string? StorageRootCredentialId;

@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -13,27 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseOdbcParams {
-    private @Nullable String host;
     private @Nullable String hostname;
-    private String path;
-    private Integer port;
-    private String protocol;
+    private @Nullable String path;
+    private @Nullable Integer port;
+    private @Nullable String protocol;
 
     private GetSqlWarehouseOdbcParams() {}
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
-    }
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
-    public String path() {
-        return this.path;
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
-    public String protocol() {
-        return this.protocol;
+    public Optional<String> protocol() {
+        return Optional.ofNullable(this.protocol);
     }
 
     public static Builder builder() {
@@ -45,15 +40,13 @@ public final class GetSqlWarehouseOdbcParams {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String host;
         private @Nullable String hostname;
-        private String path;
-        private Integer port;
-        private String protocol;
+        private @Nullable String path;
+        private @Nullable Integer port;
+        private @Nullable String protocol;
         public Builder() {}
         public Builder(GetSqlWarehouseOdbcParams defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.host = defaults.host;
     	      this.hostname = defaults.hostname;
     	      this.path = defaults.path;
     	      this.port = defaults.port;
@@ -61,44 +54,31 @@ public final class GetSqlWarehouseOdbcParams {
         }
 
         @CustomType.Setter
-        public Builder host(@Nullable String host) {
-
-            this.host = host;
-            return this;
-        }
-        @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
 
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
-        public Builder path(String path) {
-            if (path == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "path");
-            }
+        public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "port");
-            }
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
-        public Builder protocol(String protocol) {
-            if (protocol == null) {
-              throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "protocol");
-            }
+        public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }
         public GetSqlWarehouseOdbcParams build() {
             final var _resultValue = new GetSqlWarehouseOdbcParams();
-            _resultValue.host = host;
             _resultValue.hostname = hostname;
             _resultValue.path = path;
             _resultValue.port = port;

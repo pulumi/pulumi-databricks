@@ -29,6 +29,8 @@ type Directory struct {
 	ObjectId pulumi.IntOutput `pulumi:"objectId"`
 	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringOutput `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
 
 // NewDirectory registers a new resource with the given unique name, arguments, and options.
@@ -69,6 +71,8 @@ type directoryState struct {
 	ObjectId *int `pulumi:"objectId"`
 	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
 	Path *string `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type DirectoryState struct {
@@ -77,6 +81,8 @@ type DirectoryState struct {
 	ObjectId pulumi.IntPtrInput
 	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringPtrInput
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringPtrInput
 }
 
 func (DirectoryState) ElementType() reflect.Type {
@@ -199,6 +205,11 @@ func (o DirectoryOutput) ObjectId() pulumi.IntOutput {
 // The absolute path of the directory, beginning with "/", e.g. "/Demo".
 func (o DirectoryOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o DirectoryOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 type DirectoryArrayOutput struct{ *pulumi.OutputState }

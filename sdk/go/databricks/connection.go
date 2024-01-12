@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This resource could be only used with workspace-level provider!
+//
 // Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
 //
 // - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.

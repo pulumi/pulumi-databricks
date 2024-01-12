@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlEndpointChannel {
+    private @Nullable String dbsqlVersion;
     /**
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
@@ -18,6 +19,9 @@ public final class SqlEndpointChannel {
     private @Nullable String name;
 
     private SqlEndpointChannel() {}
+    public Optional<String> dbsqlVersion() {
+        return Optional.ofNullable(this.dbsqlVersion);
+    }
     /**
      * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      * 
@@ -35,13 +39,21 @@ public final class SqlEndpointChannel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dbsqlVersion;
         private @Nullable String name;
         public Builder() {}
         public Builder(SqlEndpointChannel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dbsqlVersion = defaults.dbsqlVersion;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder dbsqlVersion(@Nullable String dbsqlVersion) {
+
+            this.dbsqlVersion = dbsqlVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
 
@@ -50,6 +62,7 @@ public final class SqlEndpointChannel {
         }
         public SqlEndpointChannel build() {
             final var _resultValue = new SqlEndpointChannel();
+            _resultValue.dbsqlVersion = dbsqlVersion;
             _resultValue.name = name;
             return _resultValue;
         }

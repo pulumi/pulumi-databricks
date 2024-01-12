@@ -12,20 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetSqlWarehouseOdbcParamsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("host")]
-        public string? Host { get; set; }
-
         [Input("hostname")]
         public string? Hostname { get; set; }
 
-        [Input("path", required: true)]
-        public string Path { get; set; } = null!;
+        [Input("path")]
+        public string? Path { get; set; }
 
-        [Input("port", required: true)]
-        public int Port { get; set; }
+        [Input("port")]
+        public int? Port { get; set; }
 
-        [Input("protocol", required: true)]
-        public string Protocol { get; set; } = null!;
+        [Input("protocol")]
+        public string? Protocol { get; set; }
 
         public GetSqlWarehouseOdbcParamsArgs()
         {

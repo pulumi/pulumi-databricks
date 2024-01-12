@@ -37,6 +37,8 @@ type Repo struct {
 	Tag pulumi.StringPtrOutput `pulumi:"tag"`
 	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url pulumi.StringOutput `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
 
 // NewRepo registers a new resource with the given unique name, arguments, and options.
@@ -85,6 +87,8 @@ type repoState struct {
 	Tag *string `pulumi:"tag"`
 	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url *string `pulumi:"url"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath *string `pulumi:"workspacePath"`
 }
 
 type RepoState struct {
@@ -101,6 +105,8 @@ type RepoState struct {
 	Tag pulumi.StringPtrInput
 	// The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 	Url pulumi.StringPtrInput
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath pulumi.StringPtrInput
 }
 
 func (RepoState) ElementType() reflect.Type {
@@ -259,6 +265,11 @@ func (o RepoOutput) Tag() pulumi.StringPtrOutput {
 // The URL of the Git Repository to clone from. If the value changes, repo is re-created.
 func (o RepoOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o RepoOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 type RepoArrayOutput struct{ *pulumi.OutputState }

@@ -21,6 +21,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note** This resource could be used with account or workspace-level provider.
+ * 
  * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  * 
  * ## Import
@@ -119,6 +121,12 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> readOnly() {
         return Codegen.optional(this.readOnly);
+    }
+    @Export(name="skipValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipValidation;
+
+    public Output<Optional<Boolean>> skipValidation() {
+        return Codegen.optional(this.skipValidation);
     }
 
     /**

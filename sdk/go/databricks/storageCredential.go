@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note** This resource could be used with account or workspace-level provider.
+//
 // To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 //
 // - `StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -175,6 +177,8 @@ type StorageCredential struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the storage credential.
+	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
 }
 
 // NewStorageCredential registers a new resource with the given unique name, arguments, and options.
@@ -226,6 +230,8 @@ type storageCredentialState struct {
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the storage credential.
+	SkipValidation *bool `pulumi:"skipValidation"`
 }
 
 type StorageCredentialState struct {
@@ -248,6 +254,8 @@ type StorageCredentialState struct {
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the storage credential.
+	SkipValidation pulumi.BoolPtrInput
 }
 
 func (StorageCredentialState) ElementType() reflect.Type {
@@ -274,6 +282,8 @@ type storageCredentialArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly *bool `pulumi:"readOnly"`
+	// Suppress validation errors if any & force save the storage credential.
+	SkipValidation *bool `pulumi:"skipValidation"`
 }
 
 // The set of arguments for constructing a StorageCredential resource.
@@ -297,6 +307,8 @@ type StorageCredentialArgs struct {
 	Owner pulumi.StringPtrInput
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrInput
+	// Suppress validation errors if any & force save the storage credential.
+	SkipValidation pulumi.BoolPtrInput
 }
 
 func (StorageCredentialArgs) ElementType() reflect.Type {
@@ -447,6 +459,11 @@ func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 // Indicates whether the storage credential is only usable for read operations.
 func (o StorageCredentialOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Suppress validation errors if any & force save the storage credential.
+func (o StorageCredentialOutput) SkipValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageCredential) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }
 
 type StorageCredentialArrayOutput struct{ *pulumi.OutputState }

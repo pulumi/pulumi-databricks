@@ -22,6 +22,11 @@ public final class GetDirectoryResult {
      */
     private Integer objectId;
     private String path;
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    private String workspacePath;
 
     private GetDirectoryResult() {}
     /**
@@ -41,6 +46,13 @@ public final class GetDirectoryResult {
     public String path() {
         return this.path;
     }
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public String workspacePath() {
+        return this.workspacePath;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,12 +66,14 @@ public final class GetDirectoryResult {
         private String id;
         private Integer objectId;
         private String path;
+        private String workspacePath;
         public Builder() {}
         public Builder(GetDirectoryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.path = defaults.path;
+    	      this.workspacePath = defaults.workspacePath;
         }
 
         @CustomType.Setter
@@ -86,11 +100,20 @@ public final class GetDirectoryResult {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspacePath(String workspacePath) {
+            if (workspacePath == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryResult", "workspacePath");
+            }
+            this.workspacePath = workspacePath;
+            return this;
+        }
         public GetDirectoryResult build() {
             final var _resultValue = new GetDirectoryResult();
             _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.path = path;
+            _resultValue.workspacePath = workspacePath;
             return _resultValue;
         }
     }

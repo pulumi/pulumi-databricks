@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitCredential{}
 	case "databricks:index/globalInitScript:GlobalInitScript":
 		r = &GlobalInitScript{}
+	case "databricks:index/grant:Grant":
+		r = &Grant{}
 	case "databricks:index/grants:Grants":
 		r = &Grants{}
 	case "databricks:index/group:Group":
@@ -274,6 +276,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/globalInitScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/grant",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

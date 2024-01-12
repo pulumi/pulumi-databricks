@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Note** This resource could be only used with workspace-level provider!
+ *
  * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
  *
  * A `databricks.Schema` is contained within databricks.Catalog and can contain tables & views.

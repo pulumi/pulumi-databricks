@@ -94,12 +94,16 @@ type GetSqlWarehouseArgs struct {
 	Channel *GetSqlWarehouseChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize *string `pulumi:"clusterSize"`
+	// The username of the user who created the endpoint.
+	CreatorName *string `pulumi:"creatorName"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId *string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton *bool `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a serverless SQL warehouse.
 	EnableServerlessCompute *bool `pulumi:"enableServerlessCompute"`
+	// Health status of the endpoint.
+	Health *GetSqlWarehouseHealth `pulumi:"health"`
 	// The ID of the SQL warehouse.
 	Id                 *string `pulumi:"id"`
 	InstanceProfileArn *string `pulumi:"instanceProfileArn"`
@@ -110,15 +114,21 @@ type GetSqlWarehouseArgs struct {
 	// Minimum number of clusters available when a SQL warehouse is running.
 	MinNumClusters *int `pulumi:"minNumClusters"`
 	// Name of the SQL warehouse to search (case-sensitive).
-	Name        *string `pulumi:"name"`
-	NumClusters *int    `pulumi:"numClusters"`
+	Name *string `pulumi:"name"`
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions *int `pulumi:"numActiveSessions"`
+	// The current number of clusters used by the endpoint.
+	NumClusters *int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams *GetSqlWarehouseOdbcParams `pulumi:"odbcParams"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
-	State              *string `pulumi:"state"`
+	// The current state of the endpoint.
+	State *string `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	WarehouseType *string `pulumi:"warehouseType"`
 }
 
 // A collection of values returned by getSqlWarehouse.
@@ -129,12 +139,16 @@ type GetSqlWarehouseResult struct {
 	Channel GetSqlWarehouseChannel `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize string `pulumi:"clusterSize"`
+	// The username of the user who created the endpoint.
+	CreatorName string `pulumi:"creatorName"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId string `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton bool `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a serverless SQL warehouse.
 	EnableServerlessCompute bool `pulumi:"enableServerlessCompute"`
+	// Health status of the endpoint.
+	Health GetSqlWarehouseHealth `pulumi:"health"`
 	// The ID of the SQL warehouse.
 	Id                 string `pulumi:"id"`
 	InstanceProfileArn string `pulumi:"instanceProfileArn"`
@@ -145,15 +159,21 @@ type GetSqlWarehouseResult struct {
 	// Minimum number of clusters available when a SQL warehouse is running.
 	MinNumClusters int `pulumi:"minNumClusters"`
 	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
-	Name        string `pulumi:"name"`
-	NumClusters int    `pulumi:"numClusters"`
+	Name string `pulumi:"name"`
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions int `pulumi:"numActiveSessions"`
+	// The current number of clusters used by the endpoint.
+	NumClusters int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams GetSqlWarehouseOdbcParams `pulumi:"odbcParams"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
-	State              string `pulumi:"state"`
+	// The current state of the endpoint.
+	State string `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	WarehouseType string `pulumi:"warehouseType"`
 }
 
 func GetSqlWarehouseOutput(ctx *pulumi.Context, args GetSqlWarehouseOutputArgs, opts ...pulumi.InvokeOption) GetSqlWarehouseResultOutput {
@@ -177,12 +197,16 @@ type GetSqlWarehouseOutputArgs struct {
 	Channel GetSqlWarehouseChannelPtrInput `pulumi:"channel"`
 	// The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large".
 	ClusterSize pulumi.StringPtrInput `pulumi:"clusterSize"`
+	// The username of the user who created the endpoint.
+	CreatorName pulumi.StringPtrInput `pulumi:"creatorName"`
 	// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 	DataSourceId pulumi.StringPtrInput `pulumi:"dataSourceId"`
 	// Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
 	EnablePhoton pulumi.BoolPtrInput `pulumi:"enablePhoton"`
 	// Whether this SQL warehouse is a serverless SQL warehouse.
 	EnableServerlessCompute pulumi.BoolPtrInput `pulumi:"enableServerlessCompute"`
+	// Health status of the endpoint.
+	Health GetSqlWarehouseHealthPtrInput `pulumi:"health"`
 	// The ID of the SQL warehouse.
 	Id                 pulumi.StringPtrInput `pulumi:"id"`
 	InstanceProfileArn pulumi.StringPtrInput `pulumi:"instanceProfileArn"`
@@ -193,15 +217,21 @@ type GetSqlWarehouseOutputArgs struct {
 	// Minimum number of clusters available when a SQL warehouse is running.
 	MinNumClusters pulumi.IntPtrInput `pulumi:"minNumClusters"`
 	// Name of the SQL warehouse to search (case-sensitive).
-	Name        pulumi.StringPtrInput `pulumi:"name"`
-	NumClusters pulumi.IntPtrInput    `pulumi:"numClusters"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The current number of clusters used by the endpoint.
+	NumActiveSessions pulumi.IntPtrInput `pulumi:"numActiveSessions"`
+	// The current number of clusters used by the endpoint.
+	NumClusters pulumi.IntPtrInput `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams GetSqlWarehouseOdbcParamsPtrInput `pulumi:"odbcParams"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
-	State              pulumi.StringPtrInput `pulumi:"state"`
+	// The current state of the endpoint.
+	State pulumi.StringPtrInput `pulumi:"state"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
+	// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+	WarehouseType pulumi.StringPtrInput `pulumi:"warehouseType"`
 }
 
 func (GetSqlWarehouseOutputArgs) ElementType() reflect.Type {
@@ -238,6 +268,11 @@ func (o GetSqlWarehouseResultOutput) ClusterSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.ClusterSize }).(pulumi.StringOutput)
 }
 
+// The username of the user who created the endpoint.
+func (o GetSqlWarehouseResultOutput) CreatorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.CreatorName }).(pulumi.StringOutput)
+}
+
 // ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
 func (o GetSqlWarehouseResultOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.DataSourceId }).(pulumi.StringOutput)
@@ -251,6 +286,11 @@ func (o GetSqlWarehouseResultOutput) EnablePhoton() pulumi.BoolOutput {
 // Whether this SQL warehouse is a serverless SQL warehouse.
 func (o GetSqlWarehouseResultOutput) EnableServerlessCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) bool { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
+}
+
+// Health status of the endpoint.
+func (o GetSqlWarehouseResultOutput) Health() GetSqlWarehouseHealthOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseHealth { return v.Health }).(GetSqlWarehouseHealthOutput)
 }
 
 // The ID of the SQL warehouse.
@@ -282,6 +322,12 @@ func (o GetSqlWarehouseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current number of clusters used by the endpoint.
+func (o GetSqlWarehouseResultOutput) NumActiveSessions() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.NumActiveSessions }).(pulumi.IntOutput)
+}
+
+// The current number of clusters used by the endpoint.
 func (o GetSqlWarehouseResultOutput) NumClusters() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.NumClusters }).(pulumi.IntOutput)
 }
@@ -296,6 +342,7 @@ func (o GetSqlWarehouseResultOutput) SpotInstancePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.SpotInstancePolicy }).(pulumi.StringOutput)
 }
 
+// The current state of the endpoint.
 func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -303,6 +350,11 @@ func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 // tags used for SQL warehouse resources.
 func (o GetSqlWarehouseResultOutput) Tags() GetSqlWarehouseTagsOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseTags { return v.Tags }).(GetSqlWarehouseTagsOutput)
+}
+
+// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+func (o GetSqlWarehouseResultOutput) WarehouseType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.WarehouseType }).(pulumi.StringOutput)
 }
 
 func init() {

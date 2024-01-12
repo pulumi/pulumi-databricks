@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSqlWarehouseChannelArgs;
+import com.pulumi.databricks.inputs.GetSqlWarehouseHealthArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseOdbcParamsArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseTagsArgs;
 import java.lang.Boolean;
@@ -66,6 +67,21 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The username of the user who created the endpoint.
+     * 
+     */
+    @Import(name="creatorName")
+    private @Nullable Output<String> creatorName;
+
+    /**
+     * @return The username of the user who created the endpoint.
+     * 
+     */
+    public Optional<Output<String>> creatorName() {
+        return Optional.ofNullable(this.creatorName);
+    }
+
+    /**
      * ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      * 
      */
@@ -108,6 +124,21 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<Boolean>> enableServerlessCompute() {
         return Optional.ofNullable(this.enableServerlessCompute);
+    }
+
+    /**
+     * Health status of the endpoint.
+     * 
+     */
+    @Import(name="health")
+    private @Nullable Output<GetSqlWarehouseHealthArgs> health;
+
+    /**
+     * @return Health status of the endpoint.
+     * 
+     */
+    public Optional<Output<GetSqlWarehouseHealthArgs>> health() {
+        return Optional.ofNullable(this.health);
     }
 
     /**
@@ -192,9 +223,32 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The current number of clusters used by the endpoint.
+     * 
+     */
+    @Import(name="numActiveSessions")
+    private @Nullable Output<Integer> numActiveSessions;
+
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
+    public Optional<Output<Integer>> numActiveSessions() {
+        return Optional.ofNullable(this.numActiveSessions);
+    }
+
+    /**
+     * The current number of clusters used by the endpoint.
+     * 
+     */
     @Import(name="numClusters")
     private @Nullable Output<Integer> numClusters;
 
+    /**
+     * @return The current number of clusters used by the endpoint.
+     * 
+     */
     public Optional<Output<Integer>> numClusters() {
         return Optional.ofNullable(this.numClusters);
     }
@@ -229,9 +283,17 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.spotInstancePolicy);
     }
 
+    /**
+     * The current state of the endpoint.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return The current state of the endpoint.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -251,26 +313,45 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
+    @Import(name="warehouseType")
+    private @Nullable Output<String> warehouseType;
+
+    /**
+     * @return SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+     * 
+     */
+    public Optional<Output<String>> warehouseType() {
+        return Optional.ofNullable(this.warehouseType);
+    }
+
     private GetSqlWarehouseArgs() {}
 
     private GetSqlWarehouseArgs(GetSqlWarehouseArgs $) {
         this.autoStopMins = $.autoStopMins;
         this.channel = $.channel;
         this.clusterSize = $.clusterSize;
+        this.creatorName = $.creatorName;
         this.dataSourceId = $.dataSourceId;
         this.enablePhoton = $.enablePhoton;
         this.enableServerlessCompute = $.enableServerlessCompute;
+        this.health = $.health;
         this.id = $.id;
         this.instanceProfileArn = $.instanceProfileArn;
         this.jdbcUrl = $.jdbcUrl;
         this.maxNumClusters = $.maxNumClusters;
         this.minNumClusters = $.minNumClusters;
         this.name = $.name;
+        this.numActiveSessions = $.numActiveSessions;
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
         this.tags = $.tags;
+        this.warehouseType = $.warehouseType;
     }
 
     public static Builder builder() {
@@ -355,6 +436,27 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param creatorName The username of the user who created the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creatorName(@Nullable Output<String> creatorName) {
+            $.creatorName = creatorName;
+            return this;
+        }
+
+        /**
+         * @param creatorName The username of the user who created the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creatorName(String creatorName) {
+            return creatorName(Output.of(creatorName));
+        }
+
+        /**
          * @param dataSourceId ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
          * 
          * @return builder
@@ -415,6 +517,27 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder enableServerlessCompute(Boolean enableServerlessCompute) {
             return enableServerlessCompute(Output.of(enableServerlessCompute));
+        }
+
+        /**
+         * @param health Health status of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder health(@Nullable Output<GetSqlWarehouseHealthArgs> health) {
+            $.health = health;
+            return this;
+        }
+
+        /**
+         * @param health Health status of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder health(GetSqlWarehouseHealthArgs health) {
+            return health(Output.of(health));
         }
 
         /**
@@ -531,11 +654,44 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param numActiveSessions The current number of clusters used by the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numActiveSessions(@Nullable Output<Integer> numActiveSessions) {
+            $.numActiveSessions = numActiveSessions;
+            return this;
+        }
+
+        /**
+         * @param numActiveSessions The current number of clusters used by the endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numActiveSessions(Integer numActiveSessions) {
+            return numActiveSessions(Output.of(numActiveSessions));
+        }
+
+        /**
+         * @param numClusters The current number of clusters used by the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numClusters(@Nullable Output<Integer> numClusters) {
             $.numClusters = numClusters;
             return this;
         }
 
+        /**
+         * @param numClusters The current number of clusters used by the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder numClusters(Integer numClusters) {
             return numClusters(Output.of(numClusters));
         }
@@ -582,11 +738,23 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
             return spotInstancePolicy(Output.of(spotInstancePolicy));
         }
 
+        /**
+         * @param state The current state of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state The current state of the endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
@@ -610,6 +778,27 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder tags(GetSqlWarehouseTagsArgs tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseType(@Nullable Output<String> warehouseType) {
+            $.warehouseType = warehouseType;
+            return this;
+        }
+
+        /**
+         * @param warehouseType SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseType(String warehouseType) {
+            return warehouseType(Output.of(warehouseType));
         }
 
         public GetSqlWarehouseArgs build() {

@@ -702,6 +702,78 @@ export interface GetClusterClusterInfoTerminationReason {
     type?: string;
 }
 
+export interface GetCurrentMetastoreMetastoreInfo {
+    cloud?: string;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was created.
+     */
+    createdAt?: number;
+    /**
+     * the ID of the identity that created the current metastore.
+     */
+    createdBy?: string;
+    /**
+     * the ID of the default data access configuration.
+     */
+    defaultDataAccessConfigId?: string;
+    /**
+     * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
+     */
+    deltaSharingOrganizationName?: string;
+    /**
+     * the expiration duration in seconds on recipient data access tokens.
+     */
+    deltaSharingRecipientTokenLifetimeInSeconds?: number;
+    /**
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     */
+    deltaSharingScope?: string;
+    /**
+     * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
+     */
+    globalMetastoreId?: string;
+    /**
+     * Metastore ID.
+     */
+    metastoreId?: string;
+    /**
+     * Name of metastore.
+     */
+    name?: string;
+    /**
+     * Username/group name/sp applicationId of the metastore owner.
+     */
+    owner?: string;
+    /**
+     * the version of the privilege model used by the metastore.
+     */
+    privilegeModelVersion?: string;
+    /**
+     * (Mandatory for account-level) The region of the metastore.
+     */
+    region?: string;
+    /**
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
+     */
+    storageRoot?: string;
+    /**
+     * ID of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialId?: string;
+    /**
+     * Name of a storage credential used for the `storageRoot`.
+     */
+    storageRootCredentialName?: string;
+    /**
+     * Timestamp (in milliseconds) when the current metastore was updated.
+     */
+    updatedAt?: number;
+    /**
+     * the ID of the identity that updated the current metastore.
+     */
+    updatedBy?: string;
+}
+
 export interface GetDbfsFilePathsPathList {
     fileSize?: number;
     /**
@@ -1784,7 +1856,7 @@ export interface GetMetastoreMetastoreInfo {
     privilegeModelVersion?: string;
     region?: string;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
     storageRoot?: string;
     storageRootCredentialId?: string;
@@ -1877,27 +1949,41 @@ export interface GetShareObjectPartitionValue {
 }
 
 export interface GetSqlWarehouseChannel {
+    dbsqlVersion?: string;
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      */
     name?: string;
 }
 
+export interface GetSqlWarehouseHealth {
+    details?: string;
+    failureReason?: outputs.GetSqlWarehouseHealthFailureReason;
+    message?: string;
+    status?: string;
+    summary?: string;
+}
+
+export interface GetSqlWarehouseHealthFailureReason {
+    code?: string;
+    parameters?: {[key: string]: any};
+    type?: string;
+}
+
 export interface GetSqlWarehouseOdbcParams {
-    host?: string;
     hostname?: string;
-    path: string;
-    port: number;
-    protocol: string;
+    path?: string;
+    port?: number;
+    protocol?: string;
 }
 
 export interface GetSqlWarehouseTags {
-    customTags: outputs.GetSqlWarehouseTagsCustomTag[];
+    customTags?: outputs.GetSqlWarehouseTagsCustomTag[];
 }
 
 export interface GetSqlWarehouseTagsCustomTag {
-    key: string;
-    value: string;
+    key?: string;
+    value?: string;
 }
 
 export interface GrantsGrant {
@@ -4219,22 +4305,36 @@ export interface SqlAlertOptions {
 }
 
 export interface SqlEndpointChannel {
+    dbsqlVersion?: string;
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      */
     name?: string;
 }
 
+export interface SqlEndpointHealth {
+    details?: string;
+    failureReason?: outputs.SqlEndpointHealthFailureReason;
+    message?: string;
+    status?: string;
+    summary?: string;
+}
+
+export interface SqlEndpointHealthFailureReason {
+    code?: string;
+    parameters?: {[key: string]: any};
+    type?: string;
+}
+
 export interface SqlEndpointOdbcParams {
-    host?: string;
     hostname?: string;
-    path: string;
-    port: number;
-    protocol: string;
+    path?: string;
+    port?: number;
+    protocol?: string;
 }
 
 export interface SqlEndpointTags {
-    customTags: outputs.SqlEndpointTagsCustomTag[];
+    customTags?: outputs.SqlEndpointTagsCustomTag[];
 }
 
 export interface SqlEndpointTagsCustomTag {

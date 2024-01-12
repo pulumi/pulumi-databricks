@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// &gt; **Note** This resource could be used with account or workspace-level provider.
+    /// 
     /// To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
     /// 
     /// - `databricks.StorageCredential` represents authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal/managed identity for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -191,6 +193,12 @@ namespace Pulumi.Databricks
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the storage credential.
+        /// </summary>
+        [Output("skipValidation")]
+        public Output<bool?> SkipValidation { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a StorageCredential resource with the given unique name, arguments, and options.
@@ -290,6 +298,12 @@ namespace Pulumi.Databricks
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the storage credential.
+        /// </summary>
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
+
         public StorageCredentialArgs()
         {
         }
@@ -350,6 +364,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
+
+        /// <summary>
+        /// Suppress validation errors if any &amp; force save the storage credential.
+        /// </summary>
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
 
         public StorageCredentialState()
         {

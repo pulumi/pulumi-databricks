@@ -85,7 +85,7 @@ type LookupServicePrincipalArgs struct {
 	Active *bool `pulumi:"active"`
 	// ID of the service principal. The service principal must exist before this resource can be retrieved.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Display name of the service principal, e.g. `Foo SPN`.
+	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
 	DisplayName *string `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
 	ExternalId *string `pulumi:"externalId"`
@@ -139,7 +139,7 @@ type LookupServicePrincipalOutputArgs struct {
 	Active pulumi.BoolPtrInput `pulumi:"active"`
 	// ID of the service principal. The service principal must exist before this resource can be retrieved.
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
-	// Display name of the service principal, e.g. `Foo SPN`.
+	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// ID of the service principal in an external identity provider.
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`

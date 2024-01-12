@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note** This resource could be only used with workspace-level provider!
+ * 
  * Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
  * 
  * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.

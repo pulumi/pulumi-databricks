@@ -4,7 +4,6 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,13 +15,6 @@ public final class GetSqlWarehouseOdbcParams extends com.pulumi.resources.Invoke
 
     public static final GetSqlWarehouseOdbcParams Empty = new GetSqlWarehouseOdbcParams();
 
-    @Import(name="host")
-    private @Nullable String host;
-
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
-    }
-
     @Import(name="hostname")
     private @Nullable String hostname;
 
@@ -30,31 +22,30 @@ public final class GetSqlWarehouseOdbcParams extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.hostname);
     }
 
-    @Import(name="path", required=true)
-    private String path;
+    @Import(name="path")
+    private @Nullable String path;
 
-    public String path() {
-        return this.path;
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
     }
 
-    @Import(name="port", required=true)
-    private Integer port;
+    @Import(name="port")
+    private @Nullable Integer port;
 
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
-    @Import(name="protocol", required=true)
-    private String protocol;
+    @Import(name="protocol")
+    private @Nullable String protocol;
 
-    public String protocol() {
-        return this.protocol;
+    public Optional<String> protocol() {
+        return Optional.ofNullable(this.protocol);
     }
 
     private GetSqlWarehouseOdbcParams() {}
 
     private GetSqlWarehouseOdbcParams(GetSqlWarehouseOdbcParams $) {
-        this.host = $.host;
         this.hostname = $.hostname;
         this.path = $.path;
         this.port = $.port;
@@ -79,41 +70,27 @@ public final class GetSqlWarehouseOdbcParams extends com.pulumi.resources.Invoke
             $ = new GetSqlWarehouseOdbcParams(Objects.requireNonNull(defaults));
         }
 
-        public Builder host(@Nullable String host) {
-            $.host = host;
-            return this;
-        }
-
         public Builder hostname(@Nullable String hostname) {
             $.hostname = hostname;
             return this;
         }
 
-        public Builder path(String path) {
+        public Builder path(@Nullable String path) {
             $.path = path;
             return this;
         }
 
-        public Builder port(Integer port) {
+        public Builder port(@Nullable Integer port) {
             $.port = port;
             return this;
         }
 
-        public Builder protocol(String protocol) {
+        public Builder protocol(@Nullable String protocol) {
             $.protocol = protocol;
             return this;
         }
 
         public GetSqlWarehouseOdbcParams build() {
-            if ($.path == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "path");
-            }
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "port");
-            }
-            if ($.protocol == null) {
-                throw new MissingRequiredPropertyException("GetSqlWarehouseOdbcParams", "protocol");
-            }
             return $;
         }
     }

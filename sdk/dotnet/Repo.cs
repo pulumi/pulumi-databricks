@@ -60,6 +60,12 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        [Output("workspacePath")]
+        public Output<string> WorkspacePath { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Repo resource with the given unique name, arguments, and options.
@@ -191,6 +197,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// </summary>
+        [Input("workspacePath")]
+        public Input<string>? WorkspacePath { get; set; }
 
         public RepoState()
         {

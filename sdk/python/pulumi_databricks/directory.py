@@ -67,11 +67,13 @@ class _DirectoryState:
     def __init__(__self__, *,
                  delete_recursive: Optional[pulumi.Input[bool]] = None,
                  object_id: Optional[pulumi.Input[int]] = None,
-                 path: Optional[pulumi.Input[str]] = None):
+                 path: Optional[pulumi.Input[str]] = None,
+                 workspace_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
         :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         if delete_recursive is not None:
             pulumi.set(__self__, "delete_recursive", delete_recursive)
@@ -79,6 +81,8 @@ class _DirectoryState:
             pulumi.set(__self__, "object_id", object_id)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if workspace_path is not None:
+            pulumi.set(__self__, "workspace_path", workspace_path)
 
     @property
     @pulumi.getter(name="deleteRecursive")
@@ -112,6 +116,18 @@ class _DirectoryState:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
+
+    @workspace_path.setter
+    def workspace_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_path", value)
 
 
 class Directory(pulumi.CustomResource):
@@ -184,6 +200,7 @@ class Directory(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["workspace_path"] = None
         super(Directory, __self__).__init__(
             'databricks:index/directory:Directory',
             resource_name,
@@ -196,7 +213,8 @@ class Directory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             delete_recursive: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[int]] = None,
-            path: Optional[pulumi.Input[str]] = None) -> 'Directory':
+            path: Optional[pulumi.Input[str]] = None,
+            workspace_path: Optional[pulumi.Input[str]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -206,6 +224,7 @@ class Directory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] object_id: Unique identifier for a DIRECTORY
         :param pulumi.Input[str] path: The absolute path of the directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -214,6 +233,7 @@ class Directory(pulumi.CustomResource):
         __props__.__dict__["delete_recursive"] = delete_recursive
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["path"] = path
+        __props__.__dict__["workspace_path"] = workspace_path
         return Directory(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -236,4 +256,12 @@ class Directory(pulumi.CustomResource):
         The absolute path of the directory, beginning with "/", e.g. "/Demo".
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="workspacePath")
+    def workspace_path(self) -> pulumi.Output[str]:
+        """
+        path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        """
+        return pulumi.get(self, "workspace_path")
 

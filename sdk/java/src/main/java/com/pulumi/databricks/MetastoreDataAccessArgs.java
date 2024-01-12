@@ -120,6 +120,13 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.readOnly);
     }
 
+    @Import(name="skipValidation")
+    private @Nullable Output<Boolean> skipValidation;
+
+    public Optional<Output<Boolean>> skipValidation() {
+        return Optional.ofNullable(this.skipValidation);
+    }
+
     private MetastoreDataAccessArgs() {}
 
     private MetastoreDataAccessArgs(MetastoreDataAccessArgs $) {
@@ -136,6 +143,7 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
         this.name = $.name;
         this.owner = $.owner;
         this.readOnly = $.readOnly;
+        this.skipValidation = $.skipValidation;
     }
 
     public static Builder builder() {
@@ -283,6 +291,15 @@ public final class MetastoreDataAccessArgs extends com.pulumi.resources.Resource
 
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
+        }
+
+        public Builder skipValidation(@Nullable Output<Boolean> skipValidation) {
+            $.skipValidation = skipValidation;
+            return this;
+        }
+
+        public Builder skipValidation(Boolean skipValidation) {
+            return skipValidation(Output.of(skipValidation));
         }
 
         public MetastoreDataAccessArgs build() {

@@ -113,6 +113,21 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    @Import(name="workspacePath")
+    private @Nullable Output<String> workspacePath;
+
+    /**
+     * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     * 
+     */
+    public Optional<Output<String>> workspacePath() {
+        return Optional.ofNullable(this.workspacePath);
+    }
+
     private RepoState() {}
 
     private RepoState(RepoState $) {
@@ -123,6 +138,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         this.sparseCheckout = $.sparseCheckout;
         this.tag = $.tag;
         this.url = $.url;
+        this.workspacePath = $.workspacePath;
     }
 
     public static Builder builder() {
@@ -276,6 +292,27 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(@Nullable Output<String> workspacePath) {
+            $.workspacePath = workspacePath;
+            return this;
+        }
+
+        /**
+         * @param workspacePath path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspacePath(String workspacePath) {
+            return workspacePath(Output.of(workspacePath));
         }
 
         public RepoState build() {

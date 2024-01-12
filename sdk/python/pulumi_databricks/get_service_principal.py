@@ -180,7 +180,7 @@ def get_service_principal(acl_principal_id: Optional[str] = None,
     :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param bool active: Whether service principal is active or not.
     :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
-    :param str display_name: Display name of the service principal, e.g. `Foo SPN`.
+    :param str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param str external_id: ID of the service principal in an external identity provider.
     :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param str id: The id of the service principal.
@@ -258,7 +258,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
     :param str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
     :param bool active: Whether service principal is active or not.
     :param str application_id: ID of the service principal. The service principal must exist before this resource can be retrieved.
-    :param str display_name: Display name of the service principal, e.g. `Foo SPN`.
+    :param str display_name: Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
     :param str external_id: ID of the service principal in an external identity provider.
     :param str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
     :param str id: The id of the service principal.

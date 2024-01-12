@@ -162,6 +162,12 @@ namespace Pulumi.Databricks
         public string? ClusterSize { get; set; }
 
         /// <summary>
+        /// The username of the user who created the endpoint.
+        /// </summary>
+        [Input("creatorName")]
+        public string? CreatorName { get; set; }
+
+        /// <summary>
         /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         [Input("dataSourceId")]
@@ -178,6 +184,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("enableServerlessCompute")]
         public bool? EnableServerlessCompute { get; set; }
+
+        /// <summary>
+        /// Health status of the endpoint.
+        /// </summary>
+        [Input("health")]
+        public Inputs.GetSqlWarehouseHealthArgs? Health { get; set; }
 
         /// <summary>
         /// The ID of the SQL warehouse.
@@ -212,6 +224,15 @@ namespace Pulumi.Databricks
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
+        [Input("numActiveSessions")]
+        public int? NumActiveSessions { get; set; }
+
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
         [Input("numClusters")]
         public int? NumClusters { get; set; }
 
@@ -227,6 +248,9 @@ namespace Pulumi.Databricks
         [Input("spotInstancePolicy")]
         public string? SpotInstancePolicy { get; set; }
 
+        /// <summary>
+        /// The current state of the endpoint.
+        /// </summary>
         [Input("state")]
         public string? State { get; set; }
 
@@ -235,6 +259,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tags")]
         public Inputs.GetSqlWarehouseTagsArgs? Tags { get; set; }
+
+        /// <summary>
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// </summary>
+        [Input("warehouseType")]
+        public string? WarehouseType { get; set; }
 
         public GetSqlWarehouseArgs()
         {
@@ -263,6 +293,12 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterSize { get; set; }
 
         /// <summary>
+        /// The username of the user who created the endpoint.
+        /// </summary>
+        [Input("creatorName")]
+        public Input<string>? CreatorName { get; set; }
+
+        /// <summary>
         /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         [Input("dataSourceId")]
@@ -279,6 +315,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("enableServerlessCompute")]
         public Input<bool>? EnableServerlessCompute { get; set; }
+
+        /// <summary>
+        /// Health status of the endpoint.
+        /// </summary>
+        [Input("health")]
+        public Input<Inputs.GetSqlWarehouseHealthInputArgs>? Health { get; set; }
 
         /// <summary>
         /// The ID of the SQL warehouse.
@@ -313,6 +355,15 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
+        [Input("numActiveSessions")]
+        public Input<int>? NumActiveSessions { get; set; }
+
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
         [Input("numClusters")]
         public Input<int>? NumClusters { get; set; }
 
@@ -328,6 +379,9 @@ namespace Pulumi.Databricks
         [Input("spotInstancePolicy")]
         public Input<string>? SpotInstancePolicy { get; set; }
 
+        /// <summary>
+        /// The current state of the endpoint.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
@@ -336,6 +390,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tags")]
         public Input<Inputs.GetSqlWarehouseTagsInputArgs>? Tags { get; set; }
+
+        /// <summary>
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// </summary>
+        [Input("warehouseType")]
+        public Input<string>? WarehouseType { get; set; }
 
         public GetSqlWarehouseInvokeArgs()
         {
@@ -360,6 +420,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ClusterSize;
         /// <summary>
+        /// The username of the user who created the endpoint.
+        /// </summary>
+        public readonly string CreatorName;
+        /// <summary>
         /// ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
         /// </summary>
         public readonly string DataSourceId;
@@ -371,6 +435,10 @@ namespace Pulumi.Databricks
         /// Whether this SQL warehouse is a serverless SQL warehouse.
         /// </summary>
         public readonly bool EnableServerlessCompute;
+        /// <summary>
+        /// Health status of the endpoint.
+        /// </summary>
+        public readonly Outputs.GetSqlWarehouseHealthResult Health;
         /// <summary>
         /// The ID of the SQL warehouse.
         /// </summary>
@@ -392,6 +460,13 @@ namespace Pulumi.Databricks
         /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
+        public readonly int NumActiveSessions;
+        /// <summary>
+        /// The current number of clusters used by the endpoint.
+        /// </summary>
         public readonly int NumClusters;
         /// <summary>
         /// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -401,11 +476,18 @@ namespace Pulumi.Databricks
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
         public readonly string SpotInstancePolicy;
+        /// <summary>
+        /// The current state of the endpoint.
+        /// </summary>
         public readonly string State;
         /// <summary>
         /// tags used for SQL warehouse resources.
         /// </summary>
         public readonly Outputs.GetSqlWarehouseTagsResult Tags;
+        /// <summary>
+        /// SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/index.html#warehouse-types) or [Azure](https://learn.microsoft.com/azure/databricks/sql/#warehouse-types).
+        /// </summary>
+        public readonly string WarehouseType;
 
         [OutputConstructor]
         private GetSqlWarehouseResult(
@@ -415,11 +497,15 @@ namespace Pulumi.Databricks
 
             string clusterSize,
 
+            string creatorName,
+
             string dataSourceId,
 
             bool enablePhoton,
 
             bool enableServerlessCompute,
+
+            Outputs.GetSqlWarehouseHealthResult health,
 
             string id,
 
@@ -433,6 +519,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            int numActiveSessions,
+
             int numClusters,
 
             Outputs.GetSqlWarehouseOdbcParamsResult odbcParams,
@@ -441,25 +529,31 @@ namespace Pulumi.Databricks
 
             string state,
 
-            Outputs.GetSqlWarehouseTagsResult tags)
+            Outputs.GetSqlWarehouseTagsResult tags,
+
+            string warehouseType)
         {
             AutoStopMins = autoStopMins;
             Channel = channel;
             ClusterSize = clusterSize;
+            CreatorName = creatorName;
             DataSourceId = dataSourceId;
             EnablePhoton = enablePhoton;
             EnableServerlessCompute = enableServerlessCompute;
+            Health = health;
             Id = id;
             InstanceProfileArn = instanceProfileArn;
             JdbcUrl = jdbcUrl;
             MaxNumClusters = maxNumClusters;
             MinNumClusters = minNumClusters;
             Name = name;
+            NumActiveSessions = numActiveSessions;
             NumClusters = numClusters;
             OdbcParams = odbcParams;
             SpotInstancePolicy = spotInstancePolicy;
             State = state;
             Tags = tags;
+            WarehouseType = warehouseType;
         }
     }
 }

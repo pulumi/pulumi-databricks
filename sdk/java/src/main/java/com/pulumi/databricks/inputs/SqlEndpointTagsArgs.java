@@ -6,20 +6,21 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.SqlEndpointTagsCustomTagArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SqlEndpointTagsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SqlEndpointTagsArgs Empty = new SqlEndpointTagsArgs();
 
-    @Import(name="customTags", required=true)
-    private Output<List<SqlEndpointTagsCustomTagArgs>> customTags;
+    @Import(name="customTags")
+    private @Nullable Output<List<SqlEndpointTagsCustomTagArgs>> customTags;
 
-    public Output<List<SqlEndpointTagsCustomTagArgs>> customTags() {
-        return this.customTags;
+    public Optional<Output<List<SqlEndpointTagsCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
     }
 
     private SqlEndpointTagsArgs() {}
@@ -46,7 +47,7 @@ public final class SqlEndpointTagsArgs extends com.pulumi.resources.ResourceArgs
             $ = new SqlEndpointTagsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder customTags(Output<List<SqlEndpointTagsCustomTagArgs>> customTags) {
+        public Builder customTags(@Nullable Output<List<SqlEndpointTagsCustomTagArgs>> customTags) {
             $.customTags = customTags;
             return this;
         }
@@ -60,9 +61,6 @@ public final class SqlEndpointTagsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SqlEndpointTagsArgs build() {
-            if ($.customTags == null) {
-                throw new MissingRequiredPropertyException("SqlEndpointTagsArgs", "customTags");
-            }
             return $;
         }
     }

@@ -65,6 +65,8 @@ type LookupDirectoryResult struct {
 	// directory object ID
 	ObjectId int    `pulumi:"objectId"`
 	Path     string `pulumi:"path"`
+	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+	WorkspacePath string `pulumi:"workspacePath"`
 }
 
 func LookupDirectoryOutput(ctx *pulumi.Context, args LookupDirectoryOutputArgs, opts ...pulumi.InvokeOption) LookupDirectoryResultOutput {
@@ -119,6 +121,11 @@ func (o LookupDirectoryResultOutput) ObjectId() pulumi.IntOutput {
 
 func (o LookupDirectoryResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+func (o LookupDirectoryResultOutput) WorkspacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDirectoryResult) string { return v.WorkspacePath }).(pulumi.StringOutput)
 }
 
 func init() {

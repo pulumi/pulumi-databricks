@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class SqlEndpointTagsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("customTags", required: true)]
+        [Input("customTags")]
         private InputList<Inputs.SqlEndpointTagsCustomTagArgs>? _customTags;
         public InputList<Inputs.SqlEndpointTagsCustomTagArgs> CustomTags
         {

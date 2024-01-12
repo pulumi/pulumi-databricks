@@ -68,6 +68,10 @@ export class Repo extends pulumi.CustomResource {
      * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      */
     public readonly url!: pulumi.Output<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    public /*out*/ readonly workspacePath!: pulumi.Output<string>;
 
     /**
      * Create a Repo resource with the given unique name, arguments, and options.
@@ -89,6 +93,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["sparseCheckout"] = state ? state.sparseCheckout : undefined;
             resourceInputs["tag"] = state ? state.tag : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["workspacePath"] = state ? state.workspacePath : undefined;
         } else {
             const args = argsOrState as RepoArgs | undefined;
             if ((!args || args.url === undefined) && !opts.urn) {
@@ -101,6 +106,7 @@ export class Repo extends pulumi.CustomResource {
             resourceInputs["sparseCheckout"] = args ? args.sparseCheckout : undefined;
             resourceInputs["tag"] = args ? args.tag : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["workspacePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Repo.__pulumiType, name, resourceInputs, opts);
@@ -136,6 +142,10 @@ export interface RepoState {
      * The URL of the Git Repository to clone from. If the value changes, repo is re-created.
      */
     url?: pulumi.Input<string>;
+    /**
+     * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+     */
+    workspacePath?: pulumi.Input<string>;
 }
 
 /**
