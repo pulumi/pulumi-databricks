@@ -15,18 +15,21 @@
 package databricks
 
 import (
-	// embed package is not used directly
-	_ "embed"
 	"fmt"
 	"path/filepath"
 	"strings"
 
+	// embed package is not used directly
+	_ "embed"
+
 	"github.com/databricks/databricks-sdk-go/useragent"
 	databricksProv "github.com/databricks/terraform-provider-databricks/provider"
-	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+
+	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-databricks/bridge-metadata.json
