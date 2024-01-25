@@ -12,6 +12,334 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Creating a Databricks on AWS workspace
+//
+// !Simplest multiworkspace
+//
+// To get workspace running, you have to configure a couple of things:
+//
+// * MwsCredentials - You can share a credentials (cross-account IAM role) configuration ID with multiple workspaces. It is not required to create a new one for each workspace.
+// * MwsStorageConfigurations - You can share a root S3 bucket with multiple workspaces in a single account. You do not have to create new ones for each workspace. If you share a root S3 bucket for multiple workspaces in an account, data on the root S3 bucket is partitioned into separate directories by workspace.
+// * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets or security groups with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+// * MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
+//				Host: pulumi.String("https://accounts.cloud.databricks.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", _var.Prefix)),
+//				RoleArn:         pulumi.Any(_var.Crossaccount_arn),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "thisMwsStorageConfigurations", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", _var.Prefix)),
+//				BucketName:               pulumi.Any(_var.Root_bucket),
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
+//				VpcId:       pulumi.Any(_var.Vpc_id),
+//				SubnetIds:   pulumi.Any(_var.Subnets_private),
+//				SecurityGroupIds: pulumi.StringArray{
+//					_var.Security_group,
+//				},
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				WorkspaceName:          pulumi.Any(_var.Prefix),
+//				AwsRegion:              pulumi.Any(_var.Region),
+//				CredentialsId:          thisMwsCredentials.CredentialsId,
+//				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
+//				NetworkId:              thisMwsNetworks.NetworkId,
+//				Token:                  nil,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+//
+// ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+//
+// By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			naming, err := random.NewRandomString(ctx, "naming", &random.RandomStringArgs{
+//				Special: pulumi.Bool(false),
+//				Upper:   pulumi.Bool(false),
+//				Length:  pulumi.Int(6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prefix := naming.Result.ApplyT(func(result string) (string, error) {
+//				return fmt.Sprintf("dltp%v", result), nil
+//			}).(pulumi.StringOutput)
+//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//				ExternalId: databricksAccountId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
+//				AssumeRolePolicy: *pulumi.String(thisAwsAssumeRolePolicy.Json),
+//				Tags:             pulumi.Any(_var.Tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicy(ctx, "thisRolePolicy", &iam.RolePolicyArgs{
+//				Role:   crossAccountRole.ID(),
+//				Policy: *pulumi.String(thisAwsCrossAccountPolicy.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				RoleArn:         crossAccountRole.Arn,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			rootStorageBucketBucketV2, err := s3.NewBucketV2(ctx, "rootStorageBucketBucketV2", &s3.BucketV2Args{
+//				Acl:          pulumi.String("private"),
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags:         pulumi.Any(_var.Tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketVersioningV2(ctx, "rootVersioning", &s3.BucketVersioningV2Args{
+//				Bucket: rootStorageBucketBucketV2.ID(),
+//				VersioningConfiguration: &s3.BucketVersioningV2VersioningConfigurationArgs{
+//					Status: pulumi.String("Disabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketServerSideEncryptionConfigurationV2(ctx, "rootStorageBucketBucketServerSideEncryptionConfigurationV2", &s3.BucketServerSideEncryptionConfigurationV2Args{
+//				Bucket: rootStorageBucketBucketV2.Bucket,
+//				Rules: s3.BucketServerSideEncryptionConfigurationV2RuleArray{
+//					&s3.BucketServerSideEncryptionConfigurationV2RuleArgs{
+//						ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs{
+//							SseAlgorithm: pulumi.String("AES256"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "rootStorageBucketBucketPublicAccessBlock", &s3.BucketPublicAccessBlockArgs{
+//				Bucket:                rootStorageBucketBucketV2.ID(),
+//				BlockPublicAcls:       pulumi.Bool(true),
+//				BlockPublicPolicy:     pulumi.Bool(true),
+//				IgnorePublicAcls:      pulumi.Bool(true),
+//				RestrictPublicBuckets: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootStorageBucketBucketV2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			thisAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//				Bucket: rootStorageBucketBucketV2.Bucket,
+//			}, nil)
+//			_, err = s3.NewBucketPolicy(ctx, "rootBucketPolicy", &s3.BucketPolicyArgs{
+//				Bucket: rootStorageBucketBucketV2.ID(),
+//				Policy: thisAwsBucketPolicy.ApplyT(func(thisAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &thisAwsBucketPolicy.Json, nil
+//				}).(pulumi.StringPtrOutput),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				rootStorageBucketBucketPublicAccessBlock,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "thisMwsStorageConfigurations", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", prefix)),
+//				BucketName:               rootStorageBucketBucketV2.Bucket,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				WorkspaceName:          pulumi.String(prefix),
+//				AwsRegion:              pulumi.String("us-east-1"),
+//				CredentialsId:          thisMwsCredentials.CredentialsId,
+//				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
+//				Token:                  nil,
+//			}, pulumi.Provider(databricks.Mws))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+// ### Creating a Databricks on GCP workspace
+//
+// To get workspace running, you have to configure a network object:
+//
+// * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			databricksGoogleServiceAccount := cfg.RequireObject("databricksGoogleServiceAccount")
+//			googleProject := cfg.RequireObject("googleProject")
+//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
+//				Host: pulumi.String("https://accounts.gcp.databricks.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
+//				AccountId:   pulumi.Any(databricksAccountId),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
+//				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
+//					NetworkProjectId:   pulumi.Any(googleProject),
+//					VpcId:              pulumi.Any(_var.Vpc_id),
+//					SubnetId:           pulumi.Any(_var.Subnet_id),
+//					SubnetRegion:       pulumi.Any(_var.Subnet_region),
+//					PodIpRangeName:     pulumi.String("pods"),
+//					ServiceIpRangeName: pulumi.String("svc"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//				AccountId:     pulumi.Any(databricksAccountId),
+//				WorkspaceName: pulumi.Any(_var.Prefix),
+//				Location:      pulumi.Any(_var.Subnet_region),
+//				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
+//					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
+//						ProjectId: pulumi.Any(googleProject),
+//					},
+//				},
+//				NetworkId: thisMwsNetworks.NetworkId,
+//				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
+//					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
+//					MasterIpRange:    pulumi.String("10.3.0.0/28"),
+//				},
+//				Token: nil,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksToken", thisMwsWorkspaces.Token.ApplyT(func(token databricks.MwsWorkspacesToken) (*string, error) {
+//				return &token.TokenValue, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Provisioning Databricks on AWS guide.
+// * Provisioning Databricks on AWS with PrivateLink guide.
+// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+// * Provisioning Databricks on GCP guide.
+// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+// * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+// * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+// * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+// * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+// * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+//
 // ## Import
 //
 // -> **Note** Importing this resource is not currently supported.

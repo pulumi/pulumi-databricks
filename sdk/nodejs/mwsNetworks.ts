@@ -7,52 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- * ### Creating a Databricks on AWS workspace
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const available = aws.getAvailabilityZones({});
- * const _this = new databricks.MwsNetworks("this", {
- *     accountId: databricksAccountId,
- *     networkName: `${local.prefix}-network`,
- *     securityGroupIds: [module.vpc.default_security_group_id],
- *     subnetIds: module.vpc.private_subnets,
- *     vpcId: module.vpc.vpc_id,
- * }, {
- *     provider: databricks.mws,
- * });
- * ```
- *
- * In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpcEndpointId` Attributes from mwsVpcEndpoint resources into the databricks.MwsNetworks resource. For example:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const _this = new databricks.MwsNetworks("this", {
- *     accountId: _var.databricks_account_id,
- *     networkName: `${local.prefix}-network`,
- *     securityGroupIds: [module.vpc.default_security_group_id],
- *     subnetIds: module.vpc.private_subnets,
- *     vpcId: module.vpc.vpc_id,
- *     vpcEndpoints: {
- *         dataplaneRelays: [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id],
- *         restApis: [databricks_mws_vpc_endpoint.workspace.vpc_endpoint_id],
- *     },
- * }, {
- *     provider: databricks.mws,
- *     dependsOn: [
- *         aws_vpc_endpoint.workspace,
- *         aws_vpc_endpoint.relay,
- *     ],
- * });
- * ```
+ * ## Databricks on AWS usage
  * ### Creating a Databricks on GCP workspace
  *
  * ```typescript
@@ -133,6 +88,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
  * ## Modifying networks on running workspaces (AWS only)
  *
  * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted & added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:

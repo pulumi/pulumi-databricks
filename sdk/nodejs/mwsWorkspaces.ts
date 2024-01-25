@@ -7,6 +7,227 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * ### Creating a Databricks on AWS workspace
+ *
+ * !Simplest multiworkspace
+ *
+ * To get workspace running, you have to configure a couple of things:
+ *
+ * * databricks.MwsCredentials - You can share a credentials (cross-account IAM role) configuration ID with multiple workspaces. It is not required to create a new one for each workspace.
+ * * databricks.MwsStorageConfigurations - You can share a root S3 bucket with multiple workspaces in a single account. You do not have to create new ones for each workspace. If you share a root S3 bucket for multiple workspaces in an account, data on the root S3 bucket is partitioned into separate directories by workspace.
+ * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets or security groups with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+ * * databricks.MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const mws = new databricks.Provider("mws", {host: "https://accounts.cloud.databricks.com"});
+ * // register cross-account ARN
+ * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ *     accountId: databricksAccountId,
+ *     credentialsName: `${_var.prefix}-creds`,
+ *     roleArn: _var.crossaccount_arn,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * // register root bucket
+ * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${_var.prefix}-storage`,
+ *     bucketName: _var.root_bucket,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * // register VPC
+ * const thisMwsNetworks = new databricks.MwsNetworks("thisMwsNetworks", {
+ *     accountId: databricksAccountId,
+ *     networkName: `${_var.prefix}-network`,
+ *     vpcId: _var.vpc_id,
+ *     subnetIds: _var.subnets_private,
+ *     securityGroupIds: [_var.security_group],
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * // create workspace in given VPC with DBFS on root bucket
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ *     accountId: databricksAccountId,
+ *     workspaceName: _var.prefix,
+ *     awsRegion: _var.region,
+ *     credentialsId: thisMwsCredentials.credentialsId,
+ *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
+ *     networkId: thisMwsNetworks.networkId,
+ *     token: {},
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
+ * ```
+ * ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
+ *
+ * ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
+ *
+ * By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with databricks.MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const naming = new random.RandomString("naming", {
+ *     special: false,
+ *     upper: false,
+ *     length: 6,
+ * });
+ * const prefix = pulumi.interpolate`dltp${naming.result}`;
+ * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
+ *     externalId: databricksAccountId,
+ * });
+ * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
+ *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
+ *     tags: _var.tags,
+ * });
+ * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
+ * const thisRolePolicy = new aws.iam.RolePolicy("thisRolePolicy", {
+ *     role: crossAccountRole.id,
+ *     policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json),
+ * });
+ * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ *     accountId: databricksAccountId,
+ *     credentialsName: `${prefix}-creds`,
+ *     roleArn: crossAccountRole.arn,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * const rootStorageBucketBucketV2 = new aws.s3.BucketV2("rootStorageBucketBucketV2", {
+ *     acl: "private",
+ *     forceDestroy: true,
+ *     tags: _var.tags,
+ * });
+ * const rootVersioning = new aws.s3.BucketVersioningV2("rootVersioning", {
+ *     bucket: rootStorageBucketBucketV2.id,
+ *     versioningConfiguration: {
+ *         status: "Disabled",
+ *     },
+ * });
+ * const rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new aws.s3.BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", {
+ *     bucket: rootStorageBucketBucketV2.bucket,
+ *     rules: [{
+ *         applyServerSideEncryptionByDefault: {
+ *             sseAlgorithm: "AES256",
+ *         },
+ *     }],
+ * });
+ * const rootStorageBucketBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", {
+ *     bucket: rootStorageBucketBucketV2.id,
+ *     blockPublicAcls: true,
+ *     blockPublicPolicy: true,
+ *     ignorePublicAcls: true,
+ *     restrictPublicBuckets: true,
+ * }, {
+ *     dependsOn: [rootStorageBucketBucketV2],
+ * });
+ * const thisAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
+ *     bucket: rootStorageBucketBucketV2.bucket,
+ * });
+ * const rootBucketPolicy = new aws.s3.BucketPolicy("rootBucketPolicy", {
+ *     bucket: rootStorageBucketBucketV2.id,
+ *     policy: thisAwsBucketPolicy.apply(thisAwsBucketPolicy => thisAwsBucketPolicy.json),
+ * }, {
+ *     dependsOn: [rootStorageBucketBucketPublicAccessBlock],
+ * });
+ * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: `${prefix}-storage`,
+ *     bucketName: rootStorageBucketBucketV2.bucket,
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ *     accountId: databricksAccountId,
+ *     workspaceName: prefix,
+ *     awsRegion: "us-east-1",
+ *     credentialsId: thisMwsCredentials.credentialsId,
+ *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
+ *     token: {},
+ * }, {
+ *     provider: databricks.mws,
+ * });
+ * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
+ * ```
+ *
+ * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+ * ### Creating a Databricks on GCP workspace
+ *
+ * To get workspace running, you have to configure a network object:
+ *
+ * * databricks.MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks databricks.MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount");
+ * const googleProject = config.requireObject("googleProject");
+ * const mws = new databricks.Provider("mws", {host: "https://accounts.gcp.databricks.com"});
+ * // register VPC
+ * const thisMwsNetworks = new databricks.MwsNetworks("thisMwsNetworks", {
+ *     accountId: databricksAccountId,
+ *     networkName: `${_var.prefix}-network`,
+ *     gcpNetworkInfo: {
+ *         networkProjectId: googleProject,
+ *         vpcId: _var.vpc_id,
+ *         subnetId: _var.subnet_id,
+ *         subnetRegion: _var.subnet_region,
+ *         podIpRangeName: "pods",
+ *         serviceIpRangeName: "svc",
+ *     },
+ * });
+ * // create workspace in given VPC
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ *     accountId: databricksAccountId,
+ *     workspaceName: _var.prefix,
+ *     location: _var.subnet_region,
+ *     cloudResourceContainer: {
+ *         gcp: {
+ *             projectId: googleProject,
+ *         },
+ *     },
+ *     networkId: thisMwsNetworks.networkId,
+ *     gkeConfig: {
+ *         connectivityType: "PRIVATE_NODE_PUBLIC_MASTER",
+ *         masterIpRange: "10.3.0.0/28",
+ *     },
+ *     token: {},
+ * });
+ * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
+ * ```
+ *
+ * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with PrivateLink guide.
+ * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks on GCP guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
+ * * databricks.MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
+ * * databricks.MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
+ * * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
+ * * databricks.MwsStorageConfigurations to configure root bucket new workspaces within AWS.
+ * * databricks.MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
+ *
  * ## Import
  *
  * -> **Note** Importing this resource is not currently supported.
