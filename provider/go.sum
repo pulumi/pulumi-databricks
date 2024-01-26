@@ -1151,10 +1151,10 @@ github.com/d2g/dhcp4 v0.0.0-20170904100407-a1d1b6c41b1c/go.mod h1:Ct2BUK8SB0YC1S
 github.com/d2g/dhcp4client v1.0.0/go.mod h1:j0hNfjhrt2SxUOw55nL0ATM/z4Yt3t2Kd1mW34z5W5s=
 github.com/d2g/dhcp4server v0.0.0-20181031114812-7d4a0a7f59a5/go.mod h1:Eo87+Kg/IX2hfWJfwxMzLyuSZyxSoAug2nGa1G2QAi8=
 github.com/d2g/hardwareaddr v0.0.0-20190221164911-e7d9fbe030e4/go.mod h1:bMl4RjIciD2oAxI7DmWRx6gbeqrkoLqv3MV0vzNad+I=
-github.com/databricks/databricks-sdk-go v0.29.0 h1:p53y3IvYjNvWve3ALXdsJx67RPk/M4rt0JBgweq5s2Y=
-github.com/databricks/databricks-sdk-go v0.29.0/go.mod h1:4Iy1e1XZiMC15BfWMQVrtr6va8wSEkiUXv0ZRMfgo3w=
-github.com/databricks/terraform-provider-databricks v1.34.0 h1:EFVGTHivjCMUFtbhza+JSiQpC6SvMmiVL5D4uDbUK34=
-github.com/databricks/terraform-provider-databricks v1.34.0/go.mod h1:1/6tWlnHIAsJDjwGI4ASDdLJdq4Hxh/KH+ic9gwELLs=
+github.com/databricks/databricks-sdk-go v0.30.0 h1:nwJcnvW7NfV0oLrXmGcBDcefOZn4DIEByK0FFTkXCF0=
+github.com/databricks/databricks-sdk-go v0.30.0/go.mod h1:QB64wT8EmR9T4ZPqeTRKjfIF4tPZuP9M9kM8Hcr019Q=
+github.com/databricks/terraform-provider-databricks v1.35.0 h1:ROcPhB03BhBO10apnPKEifLEiAk1DmNdP4NgqXDSf9k=
+github.com/databricks/terraform-provider-databricks v1.35.0/go.mod h1:2oUyM86z9+AbVzVRvl4EHYS2O94NWDiBkkjeavQaN0o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
