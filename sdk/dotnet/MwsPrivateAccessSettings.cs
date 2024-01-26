@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         public Output<string> PrivateAccessSettingsName { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Output("publicAccessEnabled")]
         public Output<bool?> PublicAccessEnabled { get; private set; } = null!;
@@ -176,12 +176,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// (AWS only) Status of Private Access Settings
-        /// </summary>
-        [Output("status")]
-        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -266,7 +260,7 @@ namespace Pulumi.Databricks
         public Input<string> PrivateAccessSettingsName { get; set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }
@@ -276,12 +270,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// (AWS only) Status of Private Access Settings
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
 
         public MwsPrivateAccessSettingsArgs()
         {
@@ -328,7 +316,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsName { get; set; }
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.
+        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }
@@ -338,12 +326,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// (AWS only) Status of Private Access Settings
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
 
         public MwsPrivateAccessSettingsState()
         {

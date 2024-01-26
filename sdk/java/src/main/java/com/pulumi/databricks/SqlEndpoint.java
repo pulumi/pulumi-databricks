@@ -183,7 +183,7 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableServerlessCompute", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableServerlessCompute;
+    private Output<Boolean> enableServerlessCompute;
 
     /**
      * @return Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
@@ -193,8 +193,8 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
      * - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
      * 
      */
-    public Output<Optional<Boolean>> enableServerlessCompute() {
-        return Codegen.optional(this.enableServerlessCompute);
+    public Output<Boolean> enableServerlessCompute() {
+        return this.enableServerlessCompute;
     }
     /**
      * Health status of the endpoint.

@@ -109,7 +109,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
      *
      * - **For Azure**, If omitted, the default is `false` for most workspaces. However, if this workspace used the SQL Warehouses API to create a warehouse between November 1, 2022 and May 19, 2023, the default remains the previous behavior which is default to `true` if the workspace is enabled for serverless and fits the requirements for serverless SQL warehouses. A workspace must meet the [requirements](https://learn.microsoft.com/azure/databricks/sql/admin/serverless) and might require an update to its [Azure storage firewall](https://learn.microsoft.com/azure/databricks/sql/admin/serverless-firewall).
      */
-    public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
+    public readonly enableServerlessCompute!: pulumi.Output<boolean>;
     /**
      * Health status of the endpoint.
      */

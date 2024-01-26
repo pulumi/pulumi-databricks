@@ -48,12 +48,6 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<List<GrantsGrant>> grants() {
         return this.grants;
     }
-    @Export(name="materializedView", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> materializedView;
-
-    public Output<Optional<String>> materializedView() {
-        return Codegen.optional(this.materializedView);
-    }
     @Export(name="metastore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metastore;
 
@@ -89,12 +83,6 @@ public class Grants extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> table() {
         return Codegen.optional(this.table);
-    }
-    @Export(name="view", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> view;
-
-    public Output<Optional<String>> view() {
-        return Codegen.optional(this.view);
     }
     @Export(name="volume", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volume;

@@ -133,7 +133,7 @@ type Connection struct {
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
 	Options pulumi.MapOutput `pulumi:"options"`
 	// Name of the connection owner.
-	Owner pulumi.StringPtrOutput `pulumi:"owner"`
+	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Free-form connection properties.
 	Properties pulumi.MapOutput  `pulumi:"properties"`
 	ReadOnly   pulumi.BoolOutput `pulumi:"readOnly"`
@@ -366,8 +366,8 @@ func (o ConnectionOutput) Options() pulumi.MapOutput {
 }
 
 // Name of the connection owner.
-func (o ConnectionOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Owner }).(pulumi.StringPtrOutput)
+func (o ConnectionOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
 // Free-form connection properties.

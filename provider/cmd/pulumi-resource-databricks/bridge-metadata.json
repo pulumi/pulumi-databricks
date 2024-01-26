@@ -4857,7 +4857,6 @@
                 "externalLocation": "external_location",
                 "foreignConnection": "foreign_connection",
                 "grants": "grant",
-                "materializedView": "materialized_view",
                 "storageCredential": "storage_credential"
             },
             "databricks:index/group:Group": {
@@ -5079,6 +5078,7 @@
                 "cloudResourceContainer": "cloud_resource_container",
                 "creationTime": "creation_time",
                 "credentialsId": "credentials_id",
+                "customTags": "custom_tags",
                 "customerManagedKeyId": "customer_managed_key_id",
                 "deploymentName": "deployment_name",
                 "externalCustomerInfo": "external_customer_info",

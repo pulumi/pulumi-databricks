@@ -5,8 +5,8 @@ go 1.21
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
 require (
-	github.com/databricks/databricks-sdk-go v0.29.0
-	github.com/databricks/terraform-provider-databricks v1.34.0
+	github.com/databricks/databricks-sdk-go v0.30.0
+	github.com/databricks/terraform-provider-databricks v1.35.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.71.0
 )
 

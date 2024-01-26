@@ -571,7 +571,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> pulumi.Output[Optional[str]]:
+    def owner(self) -> pulumi.Output[str]:
         """
         Name of the connection owner.
         """

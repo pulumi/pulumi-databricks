@@ -197,14 +197,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> owner;
+    private Output<String> owner;
 
     /**
      * @return Name of the connection owner.
      * 
      */
-    public Output<Optional<String>> owner() {
-        return Codegen.optional(this.owner);
+    public Output<String> owner() {
+        return this.owner;
     }
     /**
      * Free-form connection properties.

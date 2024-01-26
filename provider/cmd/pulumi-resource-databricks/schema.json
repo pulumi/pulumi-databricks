@@ -10937,6 +10937,7 @@
                 "metastoreId",
                 "name",
                 "options",
+                "owner",
                 "readOnly"
             ],
             "inputProperties": {
@@ -10967,8 +10968,7 @@
                 },
                 "owner": {
                     "type": "string",
-                    "description": "Name of the connection owner.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Name of the connection owner.\n"
                 },
                 "properties": {
                     "type": "object",
@@ -11017,8 +11017,7 @@
                     },
                     "owner": {
                         "type": "string",
-                        "description": "Name of the connection owner.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Name of the connection owner.\n"
                     },
                     "properties": {
                         "type": "object",
@@ -11875,9 +11874,6 @@
                         }
                     }
                 },
-                "materializedView": {
-                    "type": "string"
-                },
                 "metastore": {
                     "type": "string"
                 },
@@ -11894,9 +11890,6 @@
                     "type": "string"
                 },
                 "table": {
-                    "type": "string"
-                },
-                "view": {
                     "type": "string"
                 },
                 "volume": {
@@ -11934,10 +11927,6 @@
                         }
                     }
                 },
-                "materializedView": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
                 "metastore": {
                     "type": "string",
                     "willReplaceOnChanges": true
@@ -11959,10 +11948,6 @@
                     "willReplaceOnChanges": true
                 },
                 "table": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
-                "view": {
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
@@ -12004,10 +11989,6 @@
                             }
                         }
                     },
-                    "materializedView": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
                     "metastore": {
                         "type": "string",
                         "willReplaceOnChanges": true
@@ -12029,10 +12010,6 @@
                         "willReplaceOnChanges": true
                     },
                     "table": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "view": {
                         "type": "string",
                         "willReplaceOnChanges": true
                     },
@@ -15003,7 +14980,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n",
+                    "deprecationMessage": "Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead"
                 },
                 "allowedVpcEndpointIds": {
                     "type": "array",
@@ -15026,27 +15004,23 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "Region of AWS VPC or the Google Cloud VPC network\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "(AWS only) Status of Private Access Settings\n"
                 }
             },
             "required": [
                 "privateAccessSettingsId",
                 "privateAccessSettingsName",
-                "region",
-                "status"
+                "region"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
+                    "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n",
+                    "deprecationMessage": "Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead"
                 },
                 "allowedVpcEndpointIds": {
                     "type": "array",
@@ -15069,15 +15043,11 @@
                 },
                 "publicAccessEnabled": {
                     "type": "boolean",
-                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                    "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "Region of AWS VPC or the Google Cloud VPC network\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "(AWS only) Status of Private Access Settings\n"
                 }
             },
             "requiredInputs": [
@@ -15089,7 +15059,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n"
+                        "description": "Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)\n",
+                        "deprecationMessage": "Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead"
                     },
                     "allowedVpcEndpointIds": {
                         "type": "array",
@@ -15112,15 +15083,11 @@
                     },
                     "publicAccessEnabled": {
                         "type": "boolean",
-                        "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network.\n"
+                        "description": "If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.\n"
                     },
                     "region": {
                         "type": "string",
                         "description": "Region of AWS VPC or the Google Cloud VPC network\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "(AWS only) Status of Private Access Settings\n"
                     }
                 },
                 "type": "object"
@@ -15384,6 +15351,13 @@
                 "credentialsId": {
                     "type": "string"
                 },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.\n"
+                },
                 "customerManagedKeyId": {
                     "type": "string",
                     "deprecationMessage": "Use managed_services_customer_managed_key_id instead"
@@ -15493,6 +15467,13 @@
                 },
                 "credentialsId": {
                     "type": "string"
+                },
+                "customTags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.\n"
                 },
                 "customerManagedKeyId": {
                     "type": "string",
@@ -15607,6 +15588,13 @@
                     },
                     "credentialsId": {
                         "type": "string"
+                    },
+                    "customTags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.\n"
                     },
                     "customerManagedKeyId": {
                         "type": "string",
@@ -17883,6 +17871,7 @@
                 "clusterSize",
                 "creatorName",
                 "dataSourceId",
+                "enableServerlessCompute",
                 "healths",
                 "jdbcUrl",
                 "name",
@@ -22197,7 +22186,7 @@
             }
         },
         "databricks:index/getViews:getViews": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGranting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nexport = async () =\u003e {\n    const thingsViews = await databricks.getViews({\n        catalogName: \"sandbox\",\n        schemaName: \"things\",\n    });\n    const thingsGrants: databricks.Grants[] = [];\n    for (const range of thingsViews.ids.map((v, k) =\u003e ({key: k, value: v}))) {\n        thingsGrants.push(new databricks.Grants(`thingsGrants-${range.key}`, {\n            view: range.value,\n            grants: [{\n                principal: \"sensitive\",\n                privileges: [\n                    \"SELECT\",\n                    \"MODIFY\",\n                ],\n            }],\n        }));\n    }\n}\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthings_views = databricks.get_views(catalog_name=\"sandbox\",\n    schema_name=\"things\")\nthings_grants = []\nfor range in [{\"key\": k, \"value\": v} for [k, v] in enumerate(things_views.ids)]:\n    things_grants.append(databricks.Grants(f\"thingsGrants-{range['key']}\",\n        view=range[\"value\"],\n        grants=[databricks.GrantsGrantArgs(\n            principal=\"sensitive\",\n            privileges=[\n                \"SELECT\",\n                \"MODIFY\",\n            ],\n        )]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Threading.Tasks;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(async() =\u003e \n{\n    var thingsViews = await Databricks.GetViews.InvokeAsync(new()\n    {\n        CatalogName = \"sandbox\",\n        SchemaName = \"things\",\n    });\n\n    var thingsGrants = new List\u003cDatabricks.Grants\u003e();\n    foreach (var range in )\n    {\n        thingsGrants.Add(new Databricks.Grants($\"thingsGrants-{range.Key}\", new()\n        {\n            View = range.Value,\n            GrantDetails = new[]\n            {\n                new Databricks.Inputs.GrantsGrantArgs\n                {\n                    Principal = \"sensitive\",\n                    Privileges = new[]\n                    {\n                        \"SELECT\",\n                        \"MODIFY\",\n                    },\n                },\n            },\n        }));\n    }\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthingsViews, err := databricks.GetViews(ctx, \u0026databricks.GetViewsArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t\tSchemaName:  \"things\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tvar thingsGrants []*databricks.Grants\n\t\tfor key0, val0 := range thingsViews.Ids {\n\t\t\t__res, err := databricks.NewGrants(ctx, fmt.Sprintf(\"thingsGrants-%v\", key0), \u0026databricks.GrantsArgs{\n\t\t\t\tView: pulumi.String(val0),\n\t\t\t\tGrants: databricks.GrantsGrantArray{\n\t\t\t\t\t\u0026databricks.GrantsGrantArgs{\n\t\t\t\t\t\tPrincipal: pulumi.String(\"sensitive\"),\n\t\t\t\t\t\tPrivileges: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"SELECT\"),\n\t\t\t\t\t\t\tpulumi.String(\"MODIFY\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t})\n\t\t\tif err != nil {\n\t\t\t\treturn err\n\t\t\t}\n\t\t\tthingsGrants = append(thingsGrants, __res)\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetViewsArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        final var thingsGrants = thingsViews.applyValue(getViewsResult -\u003e {\n            final var resources = new ArrayList\u003cGrants\u003e();\n            for (var range : KeyedValue.of(getViewsResult.ids()) {\n                var resource = new Grants(\"thingsGrants-\" + range.key(), GrantsArgs.builder()                \n                    .view(range.value())\n                    .grants(GrantsGrantArgs.builder()\n                        .principal(\"sensitive\")\n                        .privileges(                        \n                            \"SELECT\",\n                            \"MODIFY\")\n                        .build())\n                    .build());\n\n                resources.add(resource);\n            }\n\n            return resources;\n        });\n\n    }\n}\n```\n```yaml\nresources:\n  thingsGrants:\n    type: databricks:Grants\n    properties:\n      view: ${range.value}\n      grants:\n        - principal: sensitive\n          privileges:\n            - SELECT\n            - MODIFY\n    options: {}\nvariables:\n  thingsViews:\n    fn::invoke:\n      Function: databricks:getViews\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGranting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetViewsArgs;\nimport com.pulumi.databricks.Grants;\nimport com.pulumi.databricks.GrantsArgs;\nimport com.pulumi.databricks.inputs.GrantsGrantArgs;\nimport com.pulumi.codegen.internal.KeyedValue;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        final var thingsGrants = thingsViews.applyValue(getViewsResult -\u003e {\n            final var resources = new ArrayList\u003cGrants\u003e();\n            for (var range : KeyedValue.of(getViewsResult.ids()) {\n                var resource = new Grants(\"thingsGrants-\" + range.key(), GrantsArgs.builder()                \n                    .view(range.value())\n                    .grants(GrantsGrantArgs.builder()\n                        .principal(\"sensitive\")\n                        .privileges(                        \n                            \"SELECT\",\n                            \"MODIFY\")\n                        .build())\n                    .build());\n\n                resources.add(resource);\n            }\n\n            return resources;\n        });\n\n    }\n}\n```\n```yaml\nresources:\n  thingsGrants:\n    type: databricks:Grants\n    properties:\n      view: ${range.value}\n      grants:\n        - principal: sensitive\n          privileges:\n            - SELECT\n            - MODIFY\n    options: {}\nvariables:\n  thingsViews:\n    fn::invoke:\n      Function: databricks:getViews\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getViews.\n",
                 "properties": {

@@ -137,7 +137,7 @@ namespace Pulumi.Databricks
         /// Name of the connection owner.
         /// </summary>
         [Output("owner")]
-        public Output<string?> Owner { get; private set; } = null!;
+        public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
         /// Free-form connection properties.
