@@ -890,7 +890,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableServerlessCompute")
-    def enable_serverless_compute(self) -> pulumi.Output[Optional[bool]]:
+    def enable_serverless_compute(self) -> pulumi.Output[bool]:
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 

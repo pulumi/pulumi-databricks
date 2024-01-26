@@ -10273,6 +10273,7 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * 
      * ```java
      * package generated_program;
      * 
@@ -10340,6 +10341,7 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * 
      * ```java
      * package generated_program;
      * 
@@ -10407,6 +10409,7 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * 
      * ```java
      * package generated_program;
      * 
@@ -10474,6 +10477,7 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+     * 
      * ```java
      * package generated_program;
      * 

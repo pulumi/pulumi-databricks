@@ -52,13 +52,6 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.grants);
     }
 
-    @Import(name="materializedView")
-    private @Nullable Output<String> materializedView;
-
-    public Optional<Output<String>> materializedView() {
-        return Optional.ofNullable(this.materializedView);
-    }
-
     @Import(name="metastore")
     private @Nullable Output<String> metastore;
 
@@ -101,13 +94,6 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.table);
     }
 
-    @Import(name="view")
-    private @Nullable Output<String> view;
-
-    public Optional<Output<String>> view() {
-        return Optional.ofNullable(this.view);
-    }
-
     @Import(name="volume")
     private @Nullable Output<String> volume;
 
@@ -123,14 +109,12 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         this.foreignConnection = $.foreignConnection;
         this.function = $.function;
         this.grants = $.grants;
-        this.materializedView = $.materializedView;
         this.metastore = $.metastore;
         this.model = $.model;
         this.schema = $.schema;
         this.share = $.share;
         this.storageCredential = $.storageCredential;
         this.table = $.table;
-        this.view = $.view;
         this.volume = $.volume;
     }
 
@@ -201,15 +185,6 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
             return grants(List.of(grants));
         }
 
-        public Builder materializedView(@Nullable Output<String> materializedView) {
-            $.materializedView = materializedView;
-            return this;
-        }
-
-        public Builder materializedView(String materializedView) {
-            return materializedView(Output.of(materializedView));
-        }
-
         public Builder metastore(@Nullable Output<String> metastore) {
             $.metastore = metastore;
             return this;
@@ -262,15 +237,6 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder table(String table) {
             return table(Output.of(table));
-        }
-
-        public Builder view(@Nullable Output<String> view) {
-            $.view = view;
-            return this;
-        }
-
-        public Builder view(String view) {
-            return view(Output.of(view));
         }
 
         public Builder volume(@Nullable Output<String> volume) {

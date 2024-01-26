@@ -20,14 +20,12 @@ type Grants struct {
 	ForeignConnection pulumi.StringPtrOutput `pulumi:"foreignConnection"`
 	Function          pulumi.StringPtrOutput `pulumi:"function"`
 	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
-	MaterializedView  pulumi.StringPtrOutput `pulumi:"materializedView"`
 	Metastore         pulumi.StringPtrOutput `pulumi:"metastore"`
 	Model             pulumi.StringPtrOutput `pulumi:"model"`
 	Schema            pulumi.StringPtrOutput `pulumi:"schema"`
 	Share             pulumi.StringPtrOutput `pulumi:"share"`
 	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
 	Table             pulumi.StringPtrOutput `pulumi:"table"`
-	View              pulumi.StringPtrOutput `pulumi:"view"`
 	Volume            pulumi.StringPtrOutput `pulumi:"volume"`
 }
 
@@ -69,14 +67,12 @@ type grantsState struct {
 	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
 	Grants            []GrantsGrant `pulumi:"grants"`
-	MaterializedView  *string       `pulumi:"materializedView"`
 	Metastore         *string       `pulumi:"metastore"`
 	Model             *string       `pulumi:"model"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
-	View              *string       `pulumi:"view"`
 	Volume            *string       `pulumi:"volume"`
 }
 
@@ -86,14 +82,12 @@ type GrantsState struct {
 	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
-	MaterializedView  pulumi.StringPtrInput
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
-	View              pulumi.StringPtrInput
 	Volume            pulumi.StringPtrInput
 }
 
@@ -107,14 +101,12 @@ type grantsArgs struct {
 	ForeignConnection *string       `pulumi:"foreignConnection"`
 	Function          *string       `pulumi:"function"`
 	Grants            []GrantsGrant `pulumi:"grants"`
-	MaterializedView  *string       `pulumi:"materializedView"`
 	Metastore         *string       `pulumi:"metastore"`
 	Model             *string       `pulumi:"model"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
 	Table             *string       `pulumi:"table"`
-	View              *string       `pulumi:"view"`
 	Volume            *string       `pulumi:"volume"`
 }
 
@@ -125,14 +117,12 @@ type GrantsArgs struct {
 	ForeignConnection pulumi.StringPtrInput
 	Function          pulumi.StringPtrInput
 	Grants            GrantsGrantArrayInput
-	MaterializedView  pulumi.StringPtrInput
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
 	Table             pulumi.StringPtrInput
-	View              pulumi.StringPtrInput
 	Volume            pulumi.StringPtrInput
 }
 
@@ -243,10 +233,6 @@ func (o GrantsOutput) Grants() GrantsGrantArrayOutput {
 	return o.ApplyT(func(v *Grants) GrantsGrantArrayOutput { return v.Grants }).(GrantsGrantArrayOutput)
 }
 
-func (o GrantsOutput) MaterializedView() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.MaterializedView }).(pulumi.StringPtrOutput)
-}
-
 func (o GrantsOutput) Metastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Metastore }).(pulumi.StringPtrOutput)
 }
@@ -269,10 +255,6 @@ func (o GrantsOutput) StorageCredential() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Table }).(pulumi.StringPtrOutput)
-}
-
-func (o GrantsOutput) View() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.View }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Volume() pulumi.StringPtrOutput {

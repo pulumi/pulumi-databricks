@@ -126,7 +126,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Name of the connection owner.
      */
-    public readonly owner!: pulumi.Output<string | undefined>;
+    public readonly owner!: pulumi.Output<string>;
     /**
      * Free-form connection properties.
      */

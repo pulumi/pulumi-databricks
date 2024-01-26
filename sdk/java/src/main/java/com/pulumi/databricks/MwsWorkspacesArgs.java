@@ -13,7 +13,9 @@ import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -95,6 +97,21 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> credentialsId() {
         return Optional.ofNullable(this.credentialsId);
+    }
+
+    /**
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * 
+     */
+    @Import(name="customTags")
+    private @Nullable Output<Map<String,Object>> customTags;
+
+    /**
+     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> customTags() {
+        return Optional.ofNullable(this.customTags);
     }
 
     /**
@@ -355,6 +372,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudResourceContainer = $.cloudResourceContainer;
         this.creationTime = $.creationTime;
         this.credentialsId = $.credentialsId;
+        this.customTags = $.customTags;
         this.customerManagedKeyId = $.customerManagedKeyId;
         this.deploymentName = $.deploymentName;
         this.externalCustomerInfo = $.externalCustomerInfo;
@@ -494,6 +512,27 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder credentialsId(String credentialsId) {
             return credentialsId(Output.of(credentialsId));
+        }
+
+        /**
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(@Nullable Output<Map<String,Object>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        /**
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(Map<String,Object> customTags) {
+            return customTags(Output.of(customTags));
         }
 
         /**

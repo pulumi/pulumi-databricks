@@ -58,6 +58,10 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     public readonly creationTime!: pulumi.Output<number>;
     public readonly credentialsId!: pulumi.Output<string | undefined>;
     /**
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     */
+    public readonly customTags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * @deprecated Use managed_services_customer_managed_key_id instead
      */
     public readonly customerManagedKeyId!: pulumi.Output<string | undefined>;
@@ -138,6 +142,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["cloudResourceContainer"] = state ? state.cloudResourceContainer : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["credentialsId"] = state ? state.credentialsId : undefined;
+            resourceInputs["customTags"] = state ? state.customTags : undefined;
             resourceInputs["customerManagedKeyId"] = state ? state.customerManagedKeyId : undefined;
             resourceInputs["deploymentName"] = state ? state.deploymentName : undefined;
             resourceInputs["externalCustomerInfo"] = state ? state.externalCustomerInfo : undefined;
@@ -171,6 +176,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["cloudResourceContainer"] = args ? args.cloudResourceContainer : undefined;
             resourceInputs["creationTime"] = args ? args.creationTime : undefined;
             resourceInputs["credentialsId"] = args ? args.credentialsId : undefined;
+            resourceInputs["customTags"] = args ? args.customTags : undefined;
             resourceInputs["customerManagedKeyId"] = args ? args.customerManagedKeyId : undefined;
             resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
             resourceInputs["externalCustomerInfo"] = args ? args.externalCustomerInfo : undefined;
@@ -220,6 +226,10 @@ export interface MwsWorkspacesState {
      */
     creationTime?: pulumi.Input<number>;
     credentialsId?: pulumi.Input<string>;
+    /**
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     */
+    customTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * @deprecated Use managed_services_customer_managed_key_id instead
      */
@@ -305,6 +315,10 @@ export interface MwsWorkspacesArgs {
      */
     creationTime?: pulumi.Input<number>;
     credentialsId?: pulumi.Input<string>;
+    /**
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     */
+    customTags?: pulumi.Input<{[key: string]: any}>;
     /**
      * @deprecated Use managed_services_customer_managed_key_id instead
      */

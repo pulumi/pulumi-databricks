@@ -27,9 +27,6 @@ namespace Pulumi.Databricks
         [Output("grants")]
         public Output<ImmutableArray<Outputs.GrantsGrant>> GrantDetails { get; private set; } = null!;
 
-        [Output("materializedView")]
-        public Output<string?> MaterializedView { get; private set; } = null!;
-
         [Output("metastore")]
         public Output<string?> Metastore { get; private set; } = null!;
 
@@ -47,9 +44,6 @@ namespace Pulumi.Databricks
 
         [Output("table")]
         public Output<string?> Table { get; private set; } = null!;
-
-        [Output("view")]
-        public Output<string?> View { get; private set; } = null!;
 
         [Output("volume")]
         public Output<string?> Volume { get; private set; } = null!;
@@ -120,9 +114,6 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
-        [Input("materializedView")]
-        public Input<string>? MaterializedView { get; set; }
-
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
@@ -140,9 +131,6 @@ namespace Pulumi.Databricks
 
         [Input("table")]
         public Input<string>? Table { get; set; }
-
-        [Input("view")]
-        public Input<string>? View { get; set; }
 
         [Input("volume")]
         public Input<string>? Volume { get; set; }
@@ -175,9 +163,6 @@ namespace Pulumi.Databricks
             set => _grants = value;
         }
 
-        [Input("materializedView")]
-        public Input<string>? MaterializedView { get; set; }
-
         [Input("metastore")]
         public Input<string>? Metastore { get; set; }
 
@@ -195,9 +180,6 @@ namespace Pulumi.Databricks
 
         [Input("table")]
         public Input<string>? Table { get; set; }
-
-        [Input("view")]
-        public Input<string>? View { get; set; }
 
         [Input("volume")]
         public Input<string>? Volume { get; set; }
