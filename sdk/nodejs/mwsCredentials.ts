@@ -5,35 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
+ * This resource to configure the cross-account role for creation of new workspaces within AWS.
  *
- * const config = new pulumi.Config();
- * const databricksAccountId = config.requireObject("databricksAccountId");
- * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
- *     externalId: databricksAccountId,
- * });
- * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
- *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
- *     tags: _var.tags,
- * });
- * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisRolePolicy = new aws.iam.RolePolicy("thisRolePolicy", {
- *     role: crossAccountRole.id,
- *     policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json),
- * });
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
- *     accountId: databricksAccountId,
- *     credentialsName: `${local.prefix}-creds`,
- *     roleArn: crossAccountRole.arn,
- * }, {
- *     provider: databricks.mws,
- * });
- * ```
+ * Please follow this complete runnable example Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
+ * * `credentialsName` - (Required) name of credentials to register
+ * * `roleArn` - (Required) ARN of cross-account role
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -82,8 +61,6 @@ export class MwsCredentials extends pulumi.CustomResource {
     }
 
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-     *
      * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
@@ -95,14 +72,8 @@ export class MwsCredentials extends pulumi.CustomResource {
      * (String) identifier of credentials
      */
     public readonly credentialsId!: pulumi.Output<string>;
-    /**
-     * name of credentials to register
-     */
     public readonly credentialsName!: pulumi.Output<string>;
     public readonly externalId!: pulumi.Output<string>;
-    /**
-     * ARN of cross-account role
-     */
     public readonly roleArn!: pulumi.Output<string>;
 
     /**
@@ -149,8 +120,6 @@ export class MwsCredentials extends pulumi.CustomResource {
  */
 export interface MwsCredentialsState {
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-     *
      * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
@@ -162,14 +131,8 @@ export interface MwsCredentialsState {
      * (String) identifier of credentials
      */
     credentialsId?: pulumi.Input<string>;
-    /**
-     * name of credentials to register
-     */
     credentialsName?: pulumi.Input<string>;
     externalId?: pulumi.Input<string>;
-    /**
-     * ARN of cross-account role
-     */
     roleArn?: pulumi.Input<string>;
 }
 
@@ -178,8 +141,6 @@ export interface MwsCredentialsState {
  */
 export interface MwsCredentialsArgs {
     /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-     *
      * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
@@ -191,13 +152,7 @@ export interface MwsCredentialsArgs {
      * (String) identifier of credentials
      */
     credentialsId?: pulumi.Input<string>;
-    /**
-     * name of credentials to register
-     */
     credentialsName: pulumi.Input<string>;
     externalId?: pulumi.Input<string>;
-    /**
-     * ARN of cross-account role
-     */
     roleArn: pulumi.Input<string>;
 }
