@@ -16,58 +16,15 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * ```java
- * package generated_program;
+ * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aws.s3.BucketV2;
- * import com.pulumi.aws.s3.BucketV2Args;
- * import com.pulumi.aws.s3.BucketVersioningV2;
- * import com.pulumi.aws.s3.BucketVersioningV2Args;
- * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
- * import com.pulumi.databricks.MwsStorageConfigurations;
- * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
+ * This resource to configure root bucket new workspaces within AWS.
  * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
+ * It is important to understand that this will require you to configure your provider separately for the multiple workspaces resources. This will point to &lt;https://accounts.cloud.databricks.com&gt; for the HOST and it will use basic auth as that is the only authentication method available for multiple workspaces api.
  * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
- *             .acl(&#34;private&#34;)
- *             .build());
+ * Please follow this complete runnable example
+ * * `storage_configuration_name` - name under which this storage configuration is stored
  * 
- *         var rootVersioning = new BucketVersioningV2(&#34;rootVersioning&#34;, BucketVersioningV2Args.builder()        
- *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
- *                 .status(&#34;Disabled&#34;)
- *                 .build())
- *             .build());
- * 
- *         var this_ = new MwsStorageConfigurations(&#34;this&#34;, MwsStorageConfigurationsArgs.builder()        
- *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, var_.prefix()))
- *             .bucketName(rootStorageBucket.bucket())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
- * 
- *     }
- * }
- * ```
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -87,31 +44,15 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/mwsStorageConfigurations:MwsStorageConfigurations")
 public class MwsStorageConfigurations extends com.pulumi.resources.CustomResource {
-    /**
-     * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * name of AWS S3 bucket
-     * 
-     */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
-    /**
-     * @return name of AWS S3 bucket
-     * 
-     */
     public Output<String> bucketName() {
         return this.bucketName;
     }
@@ -135,17 +76,9 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
     public Output<String> storageConfigurationId() {
         return this.storageConfigurationId;
     }
-    /**
-     * name under which this storage configuration is stored
-     * 
-     */
     @Export(name="storageConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationName;
 
-    /**
-     * @return name under which this storage configuration is stored
-     * 
-     */
     public Output<String> storageConfigurationName() {
         return this.storageConfigurationName;
     }
