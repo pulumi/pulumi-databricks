@@ -10,45 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// ## Example Usage
+    /// &gt; **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Databricks = Pulumi.Databricks;
+    /// This resource to configure root bucket new workspaces within AWS.
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var rootStorageBucket = new Aws.S3.BucketV2("rootStorageBucket", new()
-    ///     {
-    ///         Acl = "private",
-    ///     });
+    /// It is important to understand that this will require you to configure your provider separately for the multiple workspaces resources. This will point to &lt;https://accounts.cloud.databricks.com&gt; for the HOST and it will use basic auth as that is the only authentication method available for multiple workspaces api.
     /// 
-    ///     var rootVersioning = new Aws.S3.BucketVersioningV2("rootVersioning", new()
-    ///     {
-    ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningV2VersioningConfigurationArgs
-    ///         {
-    ///             Status = "Disabled",
-    ///         },
-    ///     });
+    /// Please follow this complete runnable example
+    /// * `storage_configuration_name` - name under which this storage configuration is stored
     /// 
-    ///     var @this = new Databricks.MwsStorageConfigurations("this", new()
-    ///     {
-    ///         AccountId = databricksAccountId,
-    ///         StorageConfigurationName = $"{@var.Prefix}-storage",
-    ///         BucketName = rootStorageBucket.Bucket,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -68,15 +38,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/mwsStorageConfigurations:MwsStorageConfigurations")]
     public partial class MwsStorageConfigurations : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        /// <summary>
-        /// name of AWS S3 bucket
-        /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
@@ -89,9 +53,6 @@ namespace Pulumi.Databricks
         [Output("storageConfigurationId")]
         public Output<string> StorageConfigurationId { get; private set; } = null!;
 
-        /// <summary>
-        /// name under which this storage configuration is stored
-        /// </summary>
         [Output("storageConfigurationName")]
         public Output<string> StorageConfigurationName { get; private set; } = null!;
 
@@ -147,10 +108,6 @@ namespace Pulumi.Databricks
     {
         [Input("accountId", required: true)]
         private Input<string>? _accountId;
-
-        /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        /// </summary>
         public Input<string>? AccountId
         {
             get => _accountId;
@@ -161,15 +118,9 @@ namespace Pulumi.Databricks
             }
         }
 
-        /// <summary>
-        /// name of AWS S3 bucket
-        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
-        /// <summary>
-        /// name under which this storage configuration is stored
-        /// </summary>
         [Input("storageConfigurationName", required: true)]
         public Input<string> StorageConfigurationName { get; set; } = null!;
 
@@ -183,10 +134,6 @@ namespace Pulumi.Databricks
     {
         [Input("accountId")]
         private Input<string>? _accountId;
-
-        /// <summary>
-        /// Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
-        /// </summary>
         public Input<string>? AccountId
         {
             get => _accountId;
@@ -197,9 +144,6 @@ namespace Pulumi.Databricks
             }
         }
 
-        /// <summary>
-        /// name of AWS S3 bucket
-        /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
@@ -212,9 +156,6 @@ namespace Pulumi.Databricks
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
 
-        /// <summary>
-        /// name under which this storage configuration is stored
-        /// </summary>
         [Input("storageConfigurationName")]
         public Input<string>? StorageConfigurationName { get; set; }
 

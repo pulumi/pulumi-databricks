@@ -20,94 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * ### Creating a Databricks on AWS workspace
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aws.AwsFunctions;
- * import com.pulumi.aws.inputs.GetAvailabilityZonesArgs;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         final var available = AwsFunctions.getAvailabilityZones();
- * 
- *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
- *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;%s-network&#34;, local.prefix()))
- *             .securityGroupIds(module.vpc().default_security_group_id())
- *             .subnetIds(module.vpc().private_subnets())
- *             .vpcId(module.vpc().vpc_id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
- * 
- *     }
- * }
- * ```
- * 
- * In order to create a VPC [that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.databricks.inputs.MwsNetworksVpcEndpointsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .networkName(String.format(&#34;%s-network&#34;, local.prefix()))
- *             .securityGroupIds(module.vpc().default_security_group_id())
- *             .subnetIds(module.vpc().private_subnets())
- *             .vpcId(module.vpc().vpc_id())
- *             .vpcEndpoints(MwsNetworksVpcEndpointsArgs.builder()
- *                 .dataplaneRelays(databricks_mws_vpc_endpoint.relay().vpc_endpoint_id())
- *                 .restApis(databricks_mws_vpc_endpoint.workspace().vpc_endpoint_id())
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .dependsOn(                
- *                     aws_vpc_endpoint.workspace(),
- *                     aws_vpc_endpoint.relay())
- *                 .build());
- * 
- *     }
- * }
- * ```
+ * ## Databricks on AWS usage
  * ### Creating a Databricks on GCP workspace
  * ```java
  * package generated_program;
@@ -233,6 +146,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * 
  * ## Modifying networks on running workspaces (AWS only)
  * 
  * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
