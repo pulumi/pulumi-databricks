@@ -7,6 +7,244 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource will mount your cloud storage
+ * * `gs` - to [mount Google Cloud Storage](https://docs.gcp.databricks.com/data/data-sources/google/gcs.html)
+ * * `abfs` - to [mount ADLS Gen2](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/adls-gen2/) using Azure Blob Filesystem (ABFS) driver
+ * * `adl` - to [mount ADLS Gen1](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-datalake) using Azure Data Lake (ADL) driver
+ * * `wasb`  - to [mount Azure Blob Storage](https://docs.microsoft.com/en-us/azure/databricks/data/data-sources/azure/azure-storage) using Windows Azure Storage Blob (WASB) driver
+ *
+ * 1. Use generic arguments - you have a responsibility for providing all necessary parameters that are required to mount specific storage. This is most flexible option
+ *
+ * ## Common arguments
+ *
+ * * `clusterId` - (Optional, String) Cluster to use for mounting. If no cluster is specified, a new cluster will be created and will mount the bucket for all of the clusters in this workspace. If the cluster is not running - it's going to be started, so be aware to set auto-termination rules on it.
+ * * `name` - (Optional, String) Name, under which mount will be accessible in `dbfs:/mnt/<MOUNT_NAME>`. If not specified, provider will try to infer it from depending on the resource type:
+ *   * `bucketName` for AWS S3 and Google Cloud Storage
+ *   * `containerName` for ADLS Gen2 and Azure Blob Storage
+ *   * `storageResourceName` for ADLS Gen1
+ * * `uri` - (Optional, String) the URI for accessing specific storage (`s3a://....`, `abfss://....`, `gs://....`, etc.)
+ * * `extraConfigs` - (Optional, String map) configuration parameters that are necessary for mounting of specific storage
+ * * `resourceId` - (Optional, String) resource ID for a given storage account. Could be used to fill defaults, such as storage account & container names on Azure.
+ * * `encryptionType` - (Optional, String) encryption type. Currently used only for [AWS S3 mounts](https://docs.databricks.com/data/data-sources/aws/amazon-s3.html#encrypt-data-in-s3-buckets)
+ *
+ * ### Example mounting ADLS Gen2 using uri and extraConfigs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const tenantId = "00000000-1111-2222-3333-444444444444";
+ * const clientId = "55555555-6666-7777-8888-999999999999";
+ * const secretScope = "some-kv";
+ * const secretKey = "some-sp-secret";
+ * const container = "test";
+ * const storageAcc = "lrs";
+ * const _this = new databricks.Mount("this", {
+ *     uri: `abfss://${container}@${storageAcc}.dfs.core.windows.net`,
+ *     extraConfigs: {
+ *         "fs.azure.account.auth.type": "OAuth",
+ *         "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+ *         "fs.azure.account.oauth2.client.id": clientId,
+ *         "fs.azure.account.oauth2.client.secret": `{{secrets/${secretScope}/${secretKey}}}`,
+ *         "fs.azure.account.oauth2.client.endpoint": `https://login.microsoftonline.com/${tenantId}/oauth2/token`,
+ *         "fs.azure.createRemoteFileSystemDuringInitialization": "false",
+ *     },
+ * });
+ * ```
+ *
+ * ## s3 block
+ *
+ * This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
+ *
+ * * `instanceProfile` - (Optional) (String) ARN of registered instance profile for data access.  If it's not specified, then the `clusterId` should be provided, and the cluster should have an instance profile attached to it. If both `clusterId` & `instanceProfile` are specified, then `clusterId` takes precedence.
+ * * `bucketName` - (Required) (String) S3 bucket name to be mounted.
+ *
+ * ### Example of mounting S3
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // now you can do `%fs ls /mnt/experiments` in notebooks
+ * const _this = new databricks.Mount("this", {s3: {
+ *     instanceProfile: databricks_instance_profile.ds.id,
+ *     bucketName: aws_s3_bucket["this"].bucket,
+ * }});
+ * ```
+ *
+ * ## abfs block
+ *
+ * This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `abfs` block:
+ *
+ * * `clientId` - (Required) (String) This is the clientId (Application Object ID) for the enterprise application for the service principal.
+ * * `tenantId` - (Optional) (String) This is your azure directory tenant id. It is required for creating the mount. (Could be omitted if Azure authentication is used, and we can extract `tenantId` from it).
+ * * `clientSecretKey` - (Required) (String) This is the secret key in which your service principal/enterprise app client secret will be stored.
+ * * `clientSecretScope` - (Required) (String) This is the secret scope in which your service principal/enterprise app client secret will be stored.
+ * * `containerName` - (Required) (String) ADLS gen2 container name. (Could be omitted if `resourceId` is provided)
+ * * `storageAccountName` - (Required) (String) The name of the storage resource in which the data is. (Could be omitted if `resourceId` is provided)
+ * * `directory` - (Computed) (String) This is optional if you don't want to add an additional directory that you wish to mount. This must start with a "/".
+ * * `initializeFileSystem` - (Required) (Bool) either or not initialize FS for the first use
+ *
+ * ### Creating mount for ADLS Gen2 using abfs block
+ *
+ * In this example, we're using Azure authentication, so we can omit some parameters (`tenantId`, `storageAccountName`, and `containerName`) that will be detected automatically.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azurerm from "@pulumi/azurerm";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const terraform = new databricks.SecretScope("terraform", {initialManagePrincipal: "users"});
+ * const servicePrincipalKey = new databricks.Secret("servicePrincipalKey", {
+ *     key: "service_principal_key",
+ *     stringValue: _var.ARM_CLIENT_SECRET,
+ *     scope: terraform.name,
+ * });
+ * const thisazurerm_storage_account = new azurerm.index.Azurerm_storage_account("thisazurerm_storage_account", {
+ *     name: `${_var.prefix}datalake`,
+ *     resourceGroupName: _var.resource_group_name,
+ *     location: _var.resource_group_location,
+ *     accountTier: "Standard",
+ *     accountReplicationType: "GRS",
+ *     accountKind: "StorageV2",
+ *     isHnsEnabled: true,
+ * });
+ * const thisazurerm_role_assignment = new azurerm.index.Azurerm_role_assignment("thisazurerm_role_assignment", {
+ *     scope: thisazurerm_storage_account.id,
+ *     roleDefinitionName: "Storage Blob Data Contributor",
+ *     principalId: data.azurerm_client_config.current.object_id,
+ * });
+ * const thisazurerm_storage_container = new azurerm.index.Azurerm_storage_container("thisazurerm_storage_container", {
+ *     name: "marketing",
+ *     storageAccountName: thisazurerm_storage_account.name,
+ *     containerAccessType: "private",
+ * });
+ * const marketing = new databricks.Mount("marketing", {
+ *     resourceId: thisazurerm_storage_container.resourceManagerId,
+ *     abfs: {
+ *         clientId: data.azurerm_client_config.current.client_id,
+ *         clientSecretScope: terraform.name,
+ *         clientSecretKey: servicePrincipalKey.key,
+ *         initializeFileSystem: true,
+ *     },
+ * });
+ * ```
+ *
+ * ## gs block
+ *
+ * This block allows specifying parameters for mounting of the Google Cloud Storage. The following arguments are required inside the `gs` block:
+ *
+ * * `serviceAccount` - (Optional) (String) email of registered [Google Service Account](https://docs.gcp.databricks.com/data/data-sources/google/gcs.html#step-1-set-up-google-cloud-service-account-using-google-cloud-console) for data access.  If it's not specified, then the `clusterId` should be provided, and the cluster should have a Google service account attached to it.
+ * * `bucketName` - (Required) (String) GCS bucket name to be mounted.
+ *
+ * ### Example mounting Google Cloud Storage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisGs = new databricks.Mount("thisGs", {gs: {
+ *     bucketName: "mybucket",
+ *     serviceAccount: "acc@company.iam.gserviceaccount.com",
+ * }});
+ * ```
+ *
+ * ## adl block
+ *
+ * This block allows specifying parameters for mounting of the ADLS Gen1. The following arguments are required inside the `adl` block:
+ *
+ * * `clientId` - (Required) (String) This is the clientId for the enterprise application for the service principal.
+ * * `tenantId` - (Optional) (String) This is your azure directory tenant id. It is required for creating the mount. (Could be omitted if Azure authentication is used, and we can extract `tenantId` from it)
+ * * `clientSecretKey` - (Required) (String) This is the secret key in which your service principal/enterprise app client secret will be stored.
+ * * `clientSecretScope` - (Required) (String) This is the secret scope in which your service principal/enterprise app client secret will be stored.
+ *
+ * * `storageResourceName` - (Required) (String) The name of the storage resource in which the data is for ADLS gen 1. This is what you are trying to mount. (Could be omitted if `resourceId` is provided)
+ * * `sparkConfPrefix` - (Optional) (String) This is the spark configuration prefix for adls gen 1 mount. The options are `fs.adl`, `dfs.adls`. Use `fs.adl` for runtime 6.0 and above for the clusters. Otherwise use `dfs.adls`. The default value is: `fs.adl`.
+ * * `directory` - (Computed) (String) This is optional if you don't want to add an additional directory that you wish to mount. This must start with a "/".
+ *
+ * ### Example mounting ADLS Gen1
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mount = new databricks.Mount("mount", {adl: {
+ *     storageResourceName: "{env.TEST_STORAGE_ACCOUNT_NAME}",
+ *     tenantId: data.azurerm_client_config.current.tenant_id,
+ *     clientId: data.azurerm_client_config.current.client_id,
+ *     clientSecretScope: databricks_secret_scope.terraform.name,
+ *     clientSecretKey: databricks_secret.service_principal_key.key,
+ *     sparkConfPrefix: "fs.adl",
+ * }});
+ * ```
+ *
+ * ## wasb block
+ *
+ * This block allows specifying parameters for mounting of the Azure Blob Storage. The following arguments are required inside the `wasb` block:
+ *
+ * * `authType` - (Required) (String) This is the auth type for blob storage. This can either be SAS tokens (`SAS`) or account access keys (`ACCESS_KEY`).
+ * * `tokenSecretScope` - (Required) (String) This is the secret scope in which your auth type token is stored.
+ * * `tokenSecretKey` - (Required) (String) This is the secret key in which your auth type token is stored.
+ * * `containerName` - (Required) (String) The container in which the data is. This is what you are trying to mount. (Could be omitted if `resourceId` is provided)
+ * * `storageAccountName` - (Required) (String) The name of the storage resource in which the data is. (Could be omitted if `resourceId` is provided)
+ * * `directory` - (Computed) (String) This is optional if you don't want to add an additional directory that you wish to mount. This must start with a "/".
+ *
+ * ### Example mounting Azure Blob Storage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azurerm from "@pulumi/azurerm";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const blobaccount = new azurerm.index.Azurerm_storage_account("blobaccount", {
+ *     name: `${_var.prefix}blob`,
+ *     resourceGroupName: _var.resource_group_name,
+ *     location: _var.resource_group_location,
+ *     accountTier: "Standard",
+ *     accountReplicationType: "LRS",
+ *     accountKind: "StorageV2",
+ * });
+ * const marketingazurerm_storage_container = new azurerm.index.Azurerm_storage_container("marketingazurerm_storage_container", {
+ *     name: "marketing",
+ *     storageAccountName: blobaccount.name,
+ *     containerAccessType: "private",
+ * });
+ * const terraform = new databricks.SecretScope("terraform", {initialManagePrincipal: "users"});
+ * const storageKey = new databricks.Secret("storageKey", {
+ *     key: "blob_storage_key",
+ *     stringValue: blobaccount.primaryAccessKey,
+ *     scope: terraform.name,
+ * });
+ * const marketingMount = new databricks.Mount("marketingMount", {wasb: {
+ *     containerName: marketingazurerm_storage_container.name,
+ *     storageAccountName: blobaccount.name,
+ *     authType: "ACCESS_KEY",
+ *     tokenSecretScope: terraform.name,
+ *     tokenSecretKey: storageKey.key,
+ * }});
+ * ```
+ *
+ * ## Migration from other mount resources
+ *
+ * Migration from the specific mount resource is straightforward:
+ *
+ * * rename `mountName` to `name`
+ * * wrap storage-specific settings (`containerName`, ...) into corresponding block (`adl`, `abfs`, `s3`, `wasbs`)
+ * * for S3 mounts, rename `s3BucketName` to `bucketName`
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.DbfsFile data to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.getDbfsFilePaths data to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.DbfsFile to manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
+ * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ *
  * ## Import
  *
  * -> **Note** Importing this resource is not currently supported.
