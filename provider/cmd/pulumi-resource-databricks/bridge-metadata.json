@@ -45,7 +45,14 @@
                         "maxItemsOne": true
                     },
                     "azure_attributes": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "log_analytics_info": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "cluster_log_conf": {
                         "maxItemsOne": true,
@@ -2893,6 +2900,15 @@
                     }
                 }
             },
+            "databricks_volumes": {
+                "current": "databricks:index/getVolumes:getVolumes",
+                "majorVersion": 1,
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_zones": {
                 "current": "databricks:index/getZones:getZones",
                 "majorVersion": 1,
@@ -3033,6 +3049,7 @@
             "databricks:index/getTables:getTables": "databricks_tables",
             "databricks:index/getUser:getUser": "databricks_user",
             "databricks:index/getViews:getViews": "databricks_views",
+            "databricks:index/getVolumes:getVolumes": "databricks_volumes",
             "databricks:index/getZones:getZones": "databricks_zones"
         },
         "renamedProperties": {
@@ -3045,7 +3062,9 @@
             },
             "databricks:index/ClusterAwsAttributes:ClusterAwsAttributes": {
                 "ebsVolumeCount": "ebs_volume_count",
+                "ebsVolumeIops": "ebs_volume_iops",
                 "ebsVolumeSize": "ebs_volume_size",
+                "ebsVolumeThroughput": "ebs_volume_throughput",
                 "ebsVolumeType": "ebs_volume_type",
                 "firstOnDemand": "first_on_demand",
                 "instanceProfileArn": "instance_profile_arn",
@@ -3054,7 +3073,12 @@
             },
             "databricks:index/ClusterAzureAttributes:ClusterAzureAttributes": {
                 "firstOnDemand": "first_on_demand",
+                "logAnalyticsInfo": "log_analytics_info",
                 "spotBidMaxPrice": "spot_bid_max_price"
+            },
+            "databricks:index/ClusterAzureAttributesLogAnalyticsInfo:ClusterAzureAttributesLogAnalyticsInfo": {
+                "logAnalyticsPrimaryKey": "log_analytics_primary_key",
+                "logAnalyticsWorkspaceId": "log_analytics_workspace_id"
             },
             "databricks:index/ClusterClusterLogConfS3:ClusterClusterLogConfS3": {
                 "cannedAcl": "canned_acl",
@@ -3904,6 +3928,7 @@
                 "clusterLogConf": "cluster_log_conf",
                 "clusterMountInfos": "cluster_mount_info",
                 "clusterName": "cluster_name",
+                "clusterSource": "cluster_source",
                 "customTags": "custom_tags",
                 "dataSecurityMode": "data_security_mode",
                 "defaultTags": "default_tags",
@@ -4834,6 +4859,10 @@
                 "userName": "user_name"
             },
             "databricks:index/getViews:getViews": {
+                "catalogName": "catalog_name",
+                "schemaName": "schema_name"
+            },
+            "databricks:index/getVolumes:getVolumes": {
                 "catalogName": "catalog_name",
                 "schemaName": "schema_name"
             },
