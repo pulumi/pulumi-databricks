@@ -12,14 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsParameterArgs : global::Pulumi.InvokeArgs
     {
-        [Input("default")]
-        public string? Default { get; set; }
+        [Input("default", required: true)]
+        public string Default { get; set; } = null!;
 
         /// <summary>
         /// the job name of databricks.Job if the resource was matched by id.
         /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         public GetJobJobSettingsSettingsParameterArgs()
         {

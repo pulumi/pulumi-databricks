@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         /// The exact name of the cluster to search
         /// </summary>
         public readonly string? ClusterName;
-        public readonly string? ClusterSource;
+        public readonly string ClusterSource;
         public readonly string? CreatorUserName;
         /// <summary>
         /// Additional tags for cluster resources.
@@ -133,7 +133,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? clusterName,
 
-            string? clusterSource,
+            string clusterSource,
 
             string? creatorUserName,
 

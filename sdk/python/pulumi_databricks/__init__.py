@@ -55,6 +55,7 @@ from .get_sql_warehouses import *
 from .get_tables import *
 from .get_user import *
 from .get_views import *
+from .get_volumes import *
 from .get_zones import *
 from .git_credential import *
 from .global_init_script import *

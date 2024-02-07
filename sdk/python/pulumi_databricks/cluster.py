@@ -588,6 +588,7 @@ class _ClusterState:
                  cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
                  cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
+                 cluster_source: Optional[pulumi.Input[str]] = None,
                  custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data_security_mode: Optional[pulumi.Input[str]] = None,
                  default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -704,6 +705,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_mount_infos", cluster_mount_infos)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
+        if cluster_source is not None:
+            pulumi.set(__self__, "cluster_source", cluster_source)
         if custom_tags is not None:
             pulumi.set(__self__, "custom_tags", custom_tags)
         if data_security_mode is not None:
@@ -846,6 +849,15 @@ class _ClusterState:
     @cluster_name.setter
     def cluster_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter(name="clusterSource")
+    def cluster_source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cluster_source")
+
+    @cluster_source.setter
+    def cluster_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_source", value)
 
     @property
     @pulumi.getter(name="customTags")
@@ -1507,6 +1519,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["spark_version"] = spark_version
             __props__.__dict__["ssh_public_keys"] = ssh_public_keys
             __props__.__dict__["workload_type"] = workload_type
+            __props__.__dict__["cluster_source"] = None
             __props__.__dict__["default_tags"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["url"] = None
@@ -1529,6 +1542,7 @@ class Cluster(pulumi.CustomResource):
             cluster_log_conf: Optional[pulumi.Input[pulumi.InputType['ClusterClusterLogConfArgs']]] = None,
             cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterClusterMountInfoArgs']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
+            cluster_source: Optional[pulumi.Input[str]] = None,
             custom_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             data_security_mode: Optional[pulumi.Input[str]] = None,
             default_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1645,6 +1659,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_log_conf"] = cluster_log_conf
         __props__.__dict__["cluster_mount_infos"] = cluster_mount_infos
         __props__.__dict__["cluster_name"] = cluster_name
+        __props__.__dict__["cluster_source"] = cluster_source
         __props__.__dict__["custom_tags"] = custom_tags
         __props__.__dict__["data_security_mode"] = data_security_mode
         __props__.__dict__["default_tags"] = default_tags
@@ -1726,6 +1741,11 @@ class Cluster(pulumi.CustomResource):
         Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
         """
         return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterSource")
+    def cluster_source(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "cluster_source")
 
     @property
     @pulumi.getter(name="customTags")

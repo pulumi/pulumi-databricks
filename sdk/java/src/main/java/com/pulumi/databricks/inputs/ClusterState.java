@@ -117,6 +117,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterName);
     }
 
+    @Import(name="clusterSource")
+    private @Nullable Output<String> clusterSource;
+
+    public Optional<Output<String>> clusterSource() {
+        return Optional.ofNullable(this.clusterSource);
+    }
+
     /**
      * should have tag `ResourceClass` set to value `Serverless`
      * 
@@ -659,6 +666,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.clusterLogConf = $.clusterLogConf;
         this.clusterMountInfos = $.clusterMountInfos;
         this.clusterName = $.clusterName;
+        this.clusterSource = $.clusterSource;
         this.customTags = $.customTags;
         this.dataSecurityMode = $.dataSecurityMode;
         this.defaultTags = $.defaultTags;
@@ -824,6 +832,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
+        }
+
+        public Builder clusterSource(@Nullable Output<String> clusterSource) {
+            $.clusterSource = clusterSource;
+            return this;
+        }
+
+        public Builder clusterSource(String clusterSource) {
+            return clusterSource(Output.of(clusterSource));
         }
 
         /**

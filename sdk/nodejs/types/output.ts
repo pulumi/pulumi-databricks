@@ -90,10 +90,12 @@ export interface ClusterAwsAttributes {
      * The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
      */
     ebsVolumeCount?: number;
+    ebsVolumeIops?: number;
     /**
      * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
      */
     ebsVolumeSize?: number;
+    ebsVolumeThroughput?: number;
     /**
      * The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
      */
@@ -122,10 +124,16 @@ export interface ClusterAzureAttributes {
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
     firstOnDemand?: number;
+    logAnalyticsInfo?: outputs.ClusterAzureAttributesLogAnalyticsInfo;
     /**
      * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      */
     spotBidMaxPrice?: number;
+}
+
+export interface ClusterAzureAttributesLogAnalyticsInfo {
+    logAnalyticsPrimaryKey?: string;
+    logAnalyticsWorkspaceId?: string;
 }
 
 export interface ClusterClusterLogConf {
@@ -356,14 +364,14 @@ export interface ClusterInitScriptVolumes {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: string;
+    destination: string;
 }
 
 export interface ClusterInitScriptWorkspace {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: string;
+    destination: string;
 }
 
 export interface ClusterLibrary {
@@ -479,7 +487,7 @@ export interface GetClusterClusterInfo {
      * The exact name of the cluster to search
      */
     clusterName?: string;
-    clusterSource?: string;
+    clusterSource: string;
     creatorUserName?: string;
     /**
      * Additional tags for cluster resources.
@@ -1353,11 +1361,11 @@ export interface GetJobJobSettingsSettingsNotificationSettings {
 }
 
 export interface GetJobJobSettingsSettingsParameter {
-    default?: string;
+    default: string;
     /**
      * the job name of databricks.Job if the resource was matched by id.
      */
-    name?: string;
+    name: string;
 }
 
 export interface GetJobJobSettingsSettingsPipelineTask {
@@ -2713,11 +2721,11 @@ export interface JobParameter {
     /**
      * Default value of the parameter.
      */
-    default?: string;
+    default: string;
     /**
      * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      */
-    name?: string;
+    name: string;
 }
 
 export interface JobPipelineTask {

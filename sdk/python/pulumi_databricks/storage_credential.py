@@ -32,6 +32,7 @@ class StorageCredentialArgs:
         """
         The set of arguments for constructing a StorageCredential resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -117,8 +118,6 @@ class StorageCredentialArgs:
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
         Delete storage credential regardless of its dependencies.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_destroy")
 
@@ -129,6 +128,11 @@ class StorageCredentialArgs:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Update storage credential regardless of its dependents.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -224,6 +228,7 @@ class _StorageCredentialState:
         """
         Input properties used for looking up and filtering StorageCredential resources.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -309,8 +314,6 @@ class _StorageCredentialState:
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
         Delete storage credential regardless of its dependencies.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_destroy")
 
@@ -321,6 +324,11 @@ class _StorageCredentialState:
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Update storage credential regardless of its dependents.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
@@ -490,6 +498,7 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -656,6 +665,7 @@ class StorageCredential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force_destroy: Delete storage credential regardless of its dependencies.
+        :param pulumi.Input[bool] force_update: Update storage credential regardless of its dependents.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
         :param pulumi.Input[str] metastore_id: Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
@@ -713,14 +723,17 @@ class StorageCredential(pulumi.CustomResource):
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
         Delete storage credential regardless of its dependencies.
-
-        `aws_iam_role` optional configuration block for credential details for AWS:
         """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="forceUpdate")
     def force_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Update storage credential regardless of its dependents.
+
+        `aws_iam_role` optional configuration block for credential details for AWS:
+        """
         return pulumi.get(self, "force_update")
 
     @property

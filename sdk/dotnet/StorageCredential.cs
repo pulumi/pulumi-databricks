@@ -157,12 +157,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Delete storage credential regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// Update storage credential regardless of its dependents.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Output("forceUpdate")]
         public Output<bool?> ForceUpdate { get; private set; } = null!;
 
@@ -262,12 +265,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Delete storage credential regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Update storage credential regardless of its dependents.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
 
@@ -329,12 +335,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Delete storage credential regardless of its dependencies.
-        /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Update storage credential regardless of its dependents.
+        /// 
+        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
 

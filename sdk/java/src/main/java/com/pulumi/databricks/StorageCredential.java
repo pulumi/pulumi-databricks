@@ -206,8 +206,6 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * Delete storage credential regardless of its dependencies.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
@@ -215,15 +213,25 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
     /**
      * @return Delete storage credential regardless of its dependencies.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
+    /**
+     * Update storage credential regardless of its dependents.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
+    /**
+     * @return Update storage credential regardless of its dependents.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Output<Optional<Boolean>> forceUpdate() {
         return Codegen.optional(this.forceUpdate);
     }

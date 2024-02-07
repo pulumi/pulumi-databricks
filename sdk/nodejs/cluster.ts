@@ -115,6 +115,7 @@ export class Cluster extends pulumi.CustomResource {
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
      */
     public readonly clusterName!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly clusterSource!: pulumi.Output<string>;
     /**
      * should have tag `ResourceClass` set to value `Serverless`
      *
@@ -276,6 +277,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterLogConf"] = state ? state.clusterLogConf : undefined;
             resourceInputs["clusterMountInfos"] = state ? state.clusterMountInfos : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["clusterSource"] = state ? state.clusterSource : undefined;
             resourceInputs["customTags"] = state ? state.customTags : undefined;
             resourceInputs["dataSecurityMode"] = state ? state.dataSecurityMode : undefined;
             resourceInputs["defaultTags"] = state ? state.defaultTags : undefined;
@@ -339,6 +341,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
             resourceInputs["workloadType"] = args ? args.workloadType : undefined;
+            resourceInputs["clusterSource"] = undefined /*out*/;
             resourceInputs["defaultTags"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
@@ -370,6 +373,7 @@ export interface ClusterState {
      * Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
      */
     clusterName?: pulumi.Input<string>;
+    clusterSource?: pulumi.Input<string>;
     /**
      * should have tag `ResourceClass` set to value `Serverless`
      *

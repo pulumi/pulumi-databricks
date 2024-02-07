@@ -80,6 +80,8 @@ import com.pulumi.databricks.inputs.GetUserArgs;
 import com.pulumi.databricks.inputs.GetUserPlainArgs;
 import com.pulumi.databricks.inputs.GetViewsArgs;
 import com.pulumi.databricks.inputs.GetViewsPlainArgs;
+import com.pulumi.databricks.inputs.GetVolumesArgs;
+import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -118,6 +120,7 @@ import com.pulumi.databricks.outputs.GetSqlWarehousesResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
 import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
+import com.pulumi.databricks.outputs.GetVolumesResult;
 import com.pulumi.databricks.outputs.GetZonesResult;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
@@ -10540,6 +10543,190 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetViewsResult> getViewsPlain(GetViewsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getViews:getViews", TypeShape.of(GetViewsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args) {
+        return getVolumes(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args) {
+        return getVolumesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetVolumesResult> getVolumes(GetVolumesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()
+     *             .catalogName(&#34;sandbox&#34;)
+     *             .schemaName(&#34;things&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;allVolumes&#34;, this_);
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetVolumesResult> getVolumesPlain(GetVolumesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.

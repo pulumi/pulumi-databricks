@@ -46,6 +46,13 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ebsVolumeCount);
     }
 
+    @Import(name="ebsVolumeIops")
+    private @Nullable Output<Integer> ebsVolumeIops;
+
+    public Optional<Output<Integer>> ebsVolumeIops() {
+        return Optional.ofNullable(this.ebsVolumeIops);
+    }
+
     /**
      * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
      * 
@@ -59,6 +66,13 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> ebsVolumeSize() {
         return Optional.ofNullable(this.ebsVolumeSize);
+    }
+
+    @Import(name="ebsVolumeThroughput")
+    private @Nullable Output<Integer> ebsVolumeThroughput;
+
+    public Optional<Output<Integer>> ebsVolumeThroughput() {
+        return Optional.ofNullable(this.ebsVolumeThroughput);
     }
 
     /**
@@ -133,7 +147,9 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
     private ClusterAwsAttributesArgs(ClusterAwsAttributesArgs $) {
         this.availability = $.availability;
         this.ebsVolumeCount = $.ebsVolumeCount;
+        this.ebsVolumeIops = $.ebsVolumeIops;
         this.ebsVolumeSize = $.ebsVolumeSize;
+        this.ebsVolumeThroughput = $.ebsVolumeThroughput;
         this.ebsVolumeType = $.ebsVolumeType;
         this.firstOnDemand = $.firstOnDemand;
         this.instanceProfileArn = $.instanceProfileArn;
@@ -201,6 +217,15 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
             return ebsVolumeCount(Output.of(ebsVolumeCount));
         }
 
+        public Builder ebsVolumeIops(@Nullable Output<Integer> ebsVolumeIops) {
+            $.ebsVolumeIops = ebsVolumeIops;
+            return this;
+        }
+
+        public Builder ebsVolumeIops(Integer ebsVolumeIops) {
+            return ebsVolumeIops(Output.of(ebsVolumeIops));
+        }
+
         /**
          * @param ebsVolumeSize The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
          * 
@@ -220,6 +245,15 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
          */
         public Builder ebsVolumeSize(Integer ebsVolumeSize) {
             return ebsVolumeSize(Output.of(ebsVolumeSize));
+        }
+
+        public Builder ebsVolumeThroughput(@Nullable Output<Integer> ebsVolumeThroughput) {
+            $.ebsVolumeThroughput = ebsVolumeThroughput;
+            return this;
+        }
+
+        public Builder ebsVolumeThroughput(Integer ebsVolumeThroughput) {
+            return ebsVolumeThroughput(Output.of(ebsVolumeThroughput));
         }
 
         /**

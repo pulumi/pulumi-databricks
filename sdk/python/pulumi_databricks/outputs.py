@@ -16,6 +16,7 @@ __all__ = [
     'ClusterAutoscale',
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
+    'ClusterAzureAttributesLogAnalyticsInfo',
     'ClusterClusterLogConf',
     'ClusterClusterLogConfDbfs',
     'ClusterClusterLogConfS3',
@@ -688,8 +689,12 @@ class ClusterAwsAttributes(dict):
         suggest = None
         if key == "ebsVolumeCount":
             suggest = "ebs_volume_count"
+        elif key == "ebsVolumeIops":
+            suggest = "ebs_volume_iops"
         elif key == "ebsVolumeSize":
             suggest = "ebs_volume_size"
+        elif key == "ebsVolumeThroughput":
+            suggest = "ebs_volume_throughput"
         elif key == "ebsVolumeType":
             suggest = "ebs_volume_type"
         elif key == "firstOnDemand":
@@ -715,7 +720,9 @@ class ClusterAwsAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  ebs_volume_count: Optional[int] = None,
+                 ebs_volume_iops: Optional[int] = None,
                  ebs_volume_size: Optional[int] = None,
+                 ebs_volume_throughput: Optional[int] = None,
                  ebs_volume_type: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
                  instance_profile_arn: Optional[str] = None,
@@ -734,8 +741,12 @@ class ClusterAwsAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -764,12 +775,22 @@ class ClusterAwsAttributes(dict):
         return pulumi.get(self, "ebs_volume_count")
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[int]:
         """
         The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         """
         return pulumi.get(self, "ebs_volume_size")
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "ebs_volume_throughput")
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -816,6 +837,8 @@ class ClusterAzureAttributes(dict):
         suggest = None
         if key == "firstOnDemand":
             suggest = "first_on_demand"
+        elif key == "logAnalyticsInfo":
+            suggest = "log_analytics_info"
         elif key == "spotBidMaxPrice":
             suggest = "spot_bid_max_price"
 
@@ -833,6 +856,7 @@ class ClusterAzureAttributes(dict):
     def __init__(__self__, *,
                  availability: Optional[str] = None,
                  first_on_demand: Optional[int] = None,
+                 log_analytics_info: Optional['outputs.ClusterAzureAttributesLogAnalyticsInfo'] = None,
                  spot_bid_max_price: Optional[float] = None):
         """
         :param str availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
@@ -843,6 +867,8 @@ class ClusterAzureAttributes(dict):
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -863,12 +889,57 @@ class ClusterAzureAttributes(dict):
         return pulumi.get(self, "first_on_demand")
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional['outputs.ClusterAzureAttributesLogAnalyticsInfo']:
+        return pulumi.get(self, "log_analytics_info")
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[float]:
         """
         The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         """
         return pulumi.get(self, "spot_bid_max_price")
+
+
+@pulumi.output_type
+class ClusterAzureAttributesLogAnalyticsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logAnalyticsPrimaryKey":
+            suggest = "log_analytics_primary_key"
+        elif key == "logAnalyticsWorkspaceId":
+            suggest = "log_analytics_workspace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAzureAttributesLogAnalyticsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAzureAttributesLogAnalyticsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[str] = None,
+                 log_analytics_workspace_id: Optional[str] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[str]:
+        return pulumi.get(self, "log_analytics_workspace_id")
 
 
 @pulumi.output_type
@@ -1636,16 +1707,15 @@ class ClusterInitScriptS3(dict):
 @pulumi.output_type
 class ClusterInitScriptVolumes(dict):
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
+                 destination: str):
         """
         :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
@@ -1655,16 +1725,15 @@ class ClusterInitScriptVolumes(dict):
 @pulumi.output_type
 class ClusterInitScriptWorkspace(dict):
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
+                 destination: str):
         """
         :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
@@ -5813,20 +5882,18 @@ class JobNotificationSettings(dict):
 @pulumi.output_type
 class JobParameter(dict):
     def __init__(__self__, *,
-                 default: Optional[str] = None,
-                 name: Optional[str] = None):
+                 default: str,
+                 name: str):
         """
         :param str default: Default value of the parameter.
         :param str name: The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[str]:
+    def default(self) -> str:
         """
         Default value of the parameter.
         """
@@ -5834,7 +5901,7 @@ class JobParameter(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
@@ -14643,6 +14710,7 @@ class TableColumn(dict):
 @pulumi.output_type
 class GetClusterClusterInfoResult(dict):
     def __init__(__self__, *,
+                 cluster_source: str,
                  default_tags: Mapping[str, Any],
                  driver_instance_pool_id: str,
                  spark_version: str,
@@ -14657,7 +14725,6 @@ class GetClusterClusterInfoResult(dict):
                  cluster_log_status: Optional['outputs.GetClusterClusterInfoClusterLogStatusResult'] = None,
                  cluster_memory_mb: Optional[int] = None,
                  cluster_name: Optional[str] = None,
-                 cluster_source: Optional[str] = None,
                  creator_user_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -14706,6 +14773,7 @@ class GetClusterClusterInfoResult(dict):
         :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
+        pulumi.set(__self__, "cluster_source", cluster_source)
         pulumi.set(__self__, "default_tags", default_tags)
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         pulumi.set(__self__, "spark_version", spark_version)
@@ -14730,8 +14798,6 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "cluster_memory_mb", cluster_memory_mb)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
-        if cluster_source is not None:
-            pulumi.set(__self__, "cluster_source", cluster_source)
         if creator_user_name is not None:
             pulumi.set(__self__, "creator_user_name", creator_user_name)
         if custom_tags is not None:
@@ -14788,6 +14854,11 @@ class GetClusterClusterInfoResult(dict):
             pulumi.set(__self__, "terminate_time", terminate_time)
         if termination_reason is not None:
             pulumi.set(__self__, "termination_reason", termination_reason)
+
+    @property
+    @pulumi.getter(name="clusterSource")
+    def cluster_source(self) -> str:
+        return pulumi.get(self, "cluster_source")
 
     @property
     @pulumi.getter(name="defaultTags")
@@ -14873,11 +14944,6 @@ class GetClusterClusterInfoResult(dict):
         The exact name of the cluster to search
         """
         return pulumi.get(self, "cluster_name")
-
-    @property
-    @pulumi.getter(name="clusterSource")
-    def cluster_source(self) -> Optional[str]:
-        return pulumi.get(self, "cluster_source")
 
     @property
     @pulumi.getter(name="creatorUserName")
@@ -18943,24 +19009,22 @@ class GetJobJobSettingsSettingsNotificationSettingsResult(dict):
 @pulumi.output_type
 class GetJobJobSettingsSettingsParameterResult(dict):
     def __init__(__self__, *,
-                 default: Optional[str] = None,
-                 name: Optional[str] = None):
+                 default: str,
+                 name: str):
         """
         :param str name: the job name of Job if the resource was matched by id.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[str]:
+    def default(self) -> str:
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         the job name of Job if the resource was matched by id.
         """
