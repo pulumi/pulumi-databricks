@@ -208,9 +208,15 @@
                     "type": "integer",
                     "description": "The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.\n"
                 },
+                "ebsVolumeIops": {
+                    "type": "integer"
+                },
                 "ebsVolumeSize": {
                     "type": "integer",
                     "description": "The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).\n"
+                },
+                "ebsVolumeThroughput": {
+                    "type": "integer"
                 },
                 "ebsVolumeType": {
                     "type": "string",
@@ -244,9 +250,23 @@
                     "type": "integer",
                     "description": "The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.\n"
                 },
+                "logAnalyticsInfo": {
+                    "$ref": "#/types/databricks:index/ClusterAzureAttributesLogAnalyticsInfo:ClusterAzureAttributesLogAnalyticsInfo"
+                },
                 "spotBidMaxPrice": {
                     "type": "number",
                     "description": "The max price for Azure spot instances.  Use `-1` to specify the lowest price.\n"
+                }
+            },
+            "type": "object"
+        },
+        "databricks:index/ClusterAzureAttributesLogAnalyticsInfo:ClusterAzureAttributesLogAnalyticsInfo": {
+            "properties": {
+                "logAnalyticsPrimaryKey": {
+                    "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -518,7 +538,10 @@
                     "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "destination"
+            ]
         },
         "databricks:index/ClusterInitScriptWorkspace:ClusterInitScriptWorkspace": {
             "properties": {
@@ -527,7 +550,10 @@
                     "description": "S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "destination"
+            ]
         },
         "databricks:index/ClusterLibrary:ClusterLibrary": {
             "properties": {
@@ -2158,7 +2184,11 @@
                     "description": "The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "default",
+                "name"
+            ]
         },
         "databricks:index/JobPipelineTask:JobPipelineTask": {
             "properties": {
@@ -5938,6 +5968,7 @@
             },
             "type": "object",
             "required": [
+                "clusterSource",
                 "defaultTags",
                 "driverInstancePoolId",
                 "sparkVersion",
@@ -8062,7 +8093,11 @@
                     "description": "the job name of databricks.Job if the resource was matched by id.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "default",
+                "name"
+            ]
         },
         "databricks:index/getJobJobSettingsSettingsPipelineTask:getJobJobSettingsSettingsPipelineTask": {
             "properties": {
@@ -10337,6 +10372,9 @@
                     "type": "string",
                     "description": "Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.\n"
                 },
+                "clusterSource": {
+                    "type": "string"
+                },
                 "customTags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10459,6 +10497,7 @@
             },
             "required": [
                 "clusterId",
+                "clusterSource",
                 "defaultTags",
                 "driverInstancePoolId",
                 "driverNodeTypeId",
@@ -10647,6 +10686,9 @@
                     "clusterName": {
                         "type": "string",
                         "description": "Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.\n"
+                    },
+                    "clusterSource": {
+                        "type": "string"
                     },
                     "customTags": {
                         "type": "object",
@@ -18896,10 +18938,11 @@
                 },
                 "forceDestroy": {
                     "type": "boolean",
-                    "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Delete storage credential regardless of its dependencies.\n"
                 },
                 "forceUpdate": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -18949,10 +18992,11 @@
                 },
                 "forceDestroy": {
                     "type": "boolean",
-                    "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                    "description": "Delete storage credential regardless of its dependencies.\n"
                 },
                 "forceUpdate": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                 },
                 "gcpServiceAccountKey": {
                     "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -18999,10 +19043,11 @@
                     },
                     "forceDestroy": {
                         "type": "boolean",
-                        "description": "Delete storage credential regardless of its dependencies.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
+                        "description": "Delete storage credential regardless of its dependencies.\n"
                     },
                     "forceUpdate": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Update storage credential regardless of its dependents.\n\n`aws_iam_role` optional configuration block for credential details for AWS:\n"
                     },
                     "gcpServiceAccountKey": {
                         "$ref": "#/types/databricks:index/StorageCredentialGcpServiceAccountKey:StorageCredentialGcpServiceAccountKey"
@@ -19876,15 +19921,18 @@
                 "description": "A collection of arguments for invoking getAwsAssumeRolePolicy.\n",
                 "properties": {
                     "databricksAccountId": {
-                        "type": "string"
+                        "type": "string",
+                        "willReplaceOnChanges": true
                     },
                     "externalId": {
                         "type": "string",
-                        "description": "Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).\n"
+                        "description": "Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).\n",
+                        "willReplaceOnChanges": true
                     },
                     "forLogDelivery": {
                         "type": "boolean",
-                        "description": "Either or not this assume role policy should be created for usage log delivery. Defaults to false.\n"
+                        "description": "Either or not this assume role policy should be created for usage log delivery. Defaults to false.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object",
@@ -19928,18 +19976,22 @@
                 "properties": {
                     "bucket": {
                         "type": "string",
-                        "description": "AWS S3 Bucket name for which to generate the policy document.\n"
+                        "description": "AWS S3 Bucket name for which to generate the policy document.\n",
+                        "willReplaceOnChanges": true
                     },
                     "databricksAccountId": {
-                        "type": "string"
+                        "type": "string",
+                        "willReplaceOnChanges": true
                     },
                     "databricksE2AccountId": {
                         "type": "string",
-                        "description": "Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket\n"
+                        "description": "Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket\n",
+                        "willReplaceOnChanges": true
                     },
                     "fullAccessRole": {
                         "type": "string",
-                        "description": "Data access role that can have full access for this bucket\n"
+                        "description": "Data access role that can have full access for this bucket\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object",
@@ -19989,7 +20041,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.\n"
+                        "description": "List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -20203,7 +20256,8 @@
                 "properties": {
                     "clusterNameContains": {
                         "type": "string",
-                        "description": "Only return databricks.Cluster ids that match the given name string.\n"
+                        "description": "Only return databricks.Cluster ids that match the given name string.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -20534,11 +20588,13 @@
                     },
                     "allowClusterCreate": {
                         "type": "boolean",
-                        "description": "True if group members can create clusters\n"
+                        "description": "True if group members can create clusters\n",
+                        "willReplaceOnChanges": true
                     },
                     "allowInstancePoolCreate": {
                         "type": "boolean",
-                        "description": "True if group members can create instance pools\n"
+                        "description": "True if group members can create instance pools\n",
+                        "willReplaceOnChanges": true
                     },
                     "childGroups": {
                         "type": "array",
@@ -20548,11 +20604,13 @@
                         "description": "Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.\n"
                     },
                     "databricksSqlAccess": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "willReplaceOnChanges": true
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "Display name of the group. The group must exist before this resource can be planned.\n"
+                        "description": "Display name of the group. The group must exist before this resource can be planned.\n",
+                        "willReplaceOnChanges": true
                     },
                     "externalId": {
                         "type": "string",
@@ -20581,7 +20639,8 @@
                     },
                     "recursive": {
                         "type": "boolean",
-                        "description": "Collect information for all nested groups. *Defaults to true.*\n"
+                        "description": "Collect information for all nested groups. *Defaults to true.*\n",
+                        "willReplaceOnChanges": true
                     },
                     "servicePrincipals": {
                         "type": "array",
@@ -20598,7 +20657,8 @@
                         "description": "Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.\n"
                     },
                     "workspaceAccess": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object",
@@ -20706,7 +20766,8 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Name of the instance pool. The instance pool must exist before this resource can be planned.\n"
+                        "description": "Name of the instance pool. The instance pool must exist before this resource can be planned.\n",
+                        "willReplaceOnChanges": true
                     },
                     "poolInfo": {
                         "$ref": "#/types/databricks:index/getInstancePoolPoolInfo:getInstancePoolPoolInfo",
@@ -20880,7 +20941,8 @@
                 "properties": {
                     "metastoreId": {
                         "type": "string",
-                        "description": "Id of the metastore to be fetched\n"
+                        "description": "Id of the metastore to be fetched\n",
+                        "willReplaceOnChanges": true
                     },
                     "metastoreInfo": {
                         "$ref": "#/types/databricks:index/getMetastoreMetastoreInfo:getMetastoreMetastoreInfo",
@@ -20970,7 +21032,8 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the registered model.\n"
+                        "description": "Name of the registered model.\n",
+                        "willReplaceOnChanges": true
                     },
                     "permissionLevel": {
                         "type": "string",
@@ -21124,19 +21187,23 @@
                 "properties": {
                     "category": {
                         "type": "string",
-                        "description": "Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):\n* `General Purpose` (all clouds)\n* `General Purpose (HDD)` (Azure)\n* `Compute Optimized` (all clouds)\n* `Memory Optimized` (all clouds)\n* `Memory Optimized (Remote HDD)` (Azure)\n* `Storage Optimized` (AWS, Azure)\n* `GPU Accelerated` (AWS, Azure)\n"
+                        "description": "Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):\n* `General Purpose` (all clouds)\n* `General Purpose (HDD)` (Azure)\n* `Compute Optimized` (all clouds)\n* `Memory Optimized` (all clouds)\n* `Memory Optimized (Remote HDD)` (Azure)\n* `Storage Optimized` (AWS, Azure)\n* `GPU Accelerated` (AWS, Azure)\n",
+                        "willReplaceOnChanges": true
                     },
                     "fleet": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.\n"
+                        "description": "if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "gbPerCore": {
                         "type": "integer",
-                        "description": "Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.\n"
+                        "description": "Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "graviton": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.\n"
+                        "description": "if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "id": {
                         "type": "string",
@@ -21144,39 +21211,48 @@
                     },
                     "isIoCacheEnabled": {
                         "type": "boolean",
-                        "description": ". Pick only nodes that have IO Cache. Defaults to *false*.\n"
+                        "description": ". Pick only nodes that have IO Cache. Defaults to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "localDisk": {
                         "type": "boolean",
-                        "description": "Pick only nodes with local storage. Defaults to *false*.\n"
+                        "description": "Pick only nodes with local storage. Defaults to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "localDiskMinSize": {
                         "type": "integer",
-                        "description": "Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.\n"
+                        "description": "Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "minCores": {
                         "type": "integer",
-                        "description": "Minimum number of CPU cores available on instance. Defaults to *0*.\n"
+                        "description": "Minimum number of CPU cores available on instance. Defaults to *0*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "minGpus": {
                         "type": "integer",
-                        "description": "Minimum number of GPU's attached to instance. Defaults to *0*.\n"
+                        "description": "Minimum number of GPU's attached to instance. Defaults to *0*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "minMemoryGb": {
                         "type": "integer",
-                        "description": "Minimum amount of memory per node in gigabytes. Defaults to *0*.\n"
+                        "description": "Minimum amount of memory per node in gigabytes. Defaults to *0*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "photonDriverCapable": {
                         "type": "boolean",
-                        "description": "Pick only nodes that can run Photon driver. Defaults to *false*.\n"
+                        "description": "Pick only nodes that can run Photon driver. Defaults to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "photonWorkerCapable": {
                         "type": "boolean",
-                        "description": "Pick only nodes that can run Photon workers. Defaults to *false*.\n"
+                        "description": "Pick only nodes that can run Photon workers. Defaults to *false*.\n",
+                        "willReplaceOnChanges": true
                     },
                     "supportPortForwarding": {
                         "type": "boolean",
-                        "description": "Pick only nodes that support port forwarding. Defaults to *false*.\n"
+                        "description": "Pick only nodes that support port forwarding. Defaults to *false*.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -21376,7 +21452,8 @@
                     },
                     "pipelineName": {
                         "type": "string",
-                        "description": "Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.\n"
+                        "description": "Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -21413,7 +21490,8 @@
                 "properties": {
                     "catalogName": {
                         "type": "string",
-                        "description": "Name of databricks_catalog\n"
+                        "description": "Name of databricks_catalog\n",
+                        "willReplaceOnChanges": true
                     },
                     "ids": {
                         "type": "array",
@@ -21702,45 +21780,55 @@
                 "properties": {
                     "beta": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to runtimes that are in Beta stage. Default to `false`.\n"
+                        "description": "if we should limit the search only to runtimes that are in Beta stage. Default to `false`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "genomics": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.\n"
+                        "description": "if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "gpu": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to runtimes that support GPUs. Default to `false`.\n"
+                        "description": "if we should limit the search only to runtimes that support GPUs. Default to `false`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "graviton": {
                         "type": "boolean",
                         "description": "if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*\n",
-                        "deprecationMessage": "Not required anymore - it's automatically enabled on the Graviton-based node types"
+                        "deprecationMessage": "Not required anymore - it's automatically enabled on the Graviton-based node types",
+                        "willReplaceOnChanges": true
                     },
                     "latest": {
                         "type": "boolean",
-                        "description": "if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.\n"
+                        "description": "if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.\n",
+                        "willReplaceOnChanges": true
                     },
                     "longTermSupport": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to LTS (long term support) \u0026 ESR (extended support) versions. Default to `false`.\n"
+                        "description": "if we should limit the search only to LTS (long term support) \u0026 ESR (extended support) versions. Default to `false`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "ml": {
                         "type": "boolean",
-                        "description": "if we should limit the search only to ML runtimes. Default to `false`.\n"
+                        "description": "if we should limit the search only to ML runtimes. Default to `false`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "photon": {
                         "type": "boolean",
                         "description": "if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\\"PHOTON\\\"` in the cluster configuration instead!*\n",
-                        "deprecationMessage": "Specify runtime_engine=\"PHOTON\" in the cluster configuration"
+                        "deprecationMessage": "Specify runtime_engine=\"PHOTON\" in the cluster configuration",
+                        "willReplaceOnChanges": true
                     },
                     "scala": {
                         "type": "string",
-                        "description": "if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.\n"
+                        "description": "if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "sparkVersion": {
                         "type": "string",
-                        "description": "if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.\n"
+                        "description": "if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -22009,7 +22097,8 @@
                     },
                     "warehouseNameContains": {
                         "type": "string",
-                        "description": "Only return databricks.SqlEndpoint ids that match the given name string.\n"
+                        "description": "Only return databricks.SqlEndpoint ids that match the given name string.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -22046,7 +22135,8 @@
                 "properties": {
                     "catalogName": {
                         "type": "string",
-                        "description": "Name of databricks_catalog\n"
+                        "description": "Name of databricks_catalog\n",
+                        "willReplaceOnChanges": true
                     },
                     "ids": {
                         "type": "array",
@@ -22057,7 +22147,8 @@
                     },
                     "schemaName": {
                         "type": "string",
-                        "description": "Name of databricks_schema\n"
+                        "description": "Name of databricks_schema\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object",
@@ -22103,11 +22194,13 @@
                 "properties": {
                     "userId": {
                         "type": "string",
-                        "description": "ID of the user.\n"
+                        "description": "ID of the user.\n",
+                        "willReplaceOnChanges": true
                     },
                     "userName": {
                         "type": "string",
-                        "description": "User name of the user. The user must exist before this resource can be planned.\n"
+                        "description": "User name of the user. The user must exist before this resource can be planned.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -22174,7 +22267,8 @@
                 "properties": {
                     "catalogName": {
                         "type": "string",
-                        "description": "Name of databricks_catalog\n"
+                        "description": "Name of databricks_catalog\n",
+                        "willReplaceOnChanges": true
                     },
                     "ids": {
                         "type": "array",
@@ -22185,7 +22279,8 @@
                     },
                     "schemaName": {
                         "type": "string",
-                        "description": "Name of databricks_schema\n"
+                        "description": "Name of databricks_schema\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object",
@@ -22210,6 +22305,65 @@
                             "type": "string"
                         },
                         "description": "set of databricks_view full names: *`catalog`.`schema`.`view`*\n"
+                    },
+                    "schemaName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "catalogName",
+                    "ids",
+                    "schemaName",
+                    "id"
+                ]
+            }
+        },
+        "databricks:index/getVolumes:getVolumes": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\nListing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst this = databricks.getVolumes({\n    catalogName: \"sandbox\",\n    schemaName: \"things\",\n});\nexport const allVolumes = _this;\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.get_volumes(catalog_name=\"sandbox\",\n    schema_name=\"things\")\npulumi.export(\"allVolumes\", this)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = Databricks.GetVolumes.Invoke(new()\n    {\n        CatalogName = \"sandbox\",\n        SchemaName = \"things\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allVolumes\"] = @this,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tthis, err := databricks.GetVolumes(ctx, \u0026databricks.GetVolumesArgs{\n\t\t\tCatalogName: \"sandbox\",\n\t\t\tSchemaName:  \"things\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allVolumes\", this)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.DatabricksFunctions;\nimport com.pulumi.databricks.inputs.GetVolumesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = DatabricksFunctions.getVolumes(GetVolumesArgs.builder()\n            .catalogName(\"sandbox\")\n            .schemaName(\"things\")\n            .build());\n\n        ctx.export(\"allVolumes\", this_);\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: databricks:getVolumes\n      Arguments:\n        catalogName: sandbox\n        schemaName: things\noutputs:\n  allVolumes: ${this}\n```\n{{% /example %}}\n{{% /examples %}}\n## Related Resources\n\nThe following resources are used in the same context:\n\n* databricks.Volume to manage volumes within Unity Catalog.\n* databricks.Schema to manage schemas within Unity Catalog.\n* databricks.Catalog to manage catalogs within Unity Catalog.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVolumes.\n",
+                "properties": {
+                    "catalogName": {
+                        "type": "string",
+                        "description": "Name of databricks_catalog\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*\n"
+                    },
+                    "schemaName": {
+                        "type": "string",
+                        "description": "Name of databricks_schema\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "catalogName",
+                    "schemaName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVolumes.\n",
+                "properties": {
+                    "catalogName": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*\n"
                     },
                     "schemaName": {
                         "type": "string"

@@ -117,10 +117,13 @@ export class StorageCredential extends pulumi.CustomResource {
     public readonly databricksGcpServiceAccount!: pulumi.Output<outputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
      * Delete storage credential regardless of its dependencies.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * Update storage credential regardless of its dependents.
      *
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly gcpServiceAccountKey!: pulumi.Output<outputs.StorageCredentialGcpServiceAccountKey | undefined>;
     /**
@@ -202,10 +205,13 @@ export interface StorageCredentialState {
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
      * Delete storage credential regardless of its dependencies.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update storage credential regardless of its dependents.
      *
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
-    forceDestroy?: pulumi.Input<boolean>;
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**
@@ -241,10 +247,13 @@ export interface StorageCredentialArgs {
     databricksGcpServiceAccount?: pulumi.Input<inputs.StorageCredentialDatabricksGcpServiceAccount>;
     /**
      * Delete storage credential regardless of its dependencies.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Update storage credential regardless of its dependents.
      *
      * `awsIamRole` optional configuration block for credential details for AWS:
      */
-    forceDestroy?: pulumi.Input<boolean>;
     forceUpdate?: pulumi.Input<boolean>;
     gcpServiceAccountKey?: pulumi.Input<inputs.StorageCredentialGcpServiceAccountKey>;
     /**

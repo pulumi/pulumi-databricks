@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ClusterAzureAttributesLogAnalyticsInfoArgs;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -47,6 +48,13 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.firstOnDemand);
     }
 
+    @Import(name="logAnalyticsInfo")
+    private @Nullable Output<ClusterAzureAttributesLogAnalyticsInfoArgs> logAnalyticsInfo;
+
+    public Optional<Output<ClusterAzureAttributesLogAnalyticsInfoArgs>> logAnalyticsInfo() {
+        return Optional.ofNullable(this.logAnalyticsInfo);
+    }
+
     /**
      * The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      * 
@@ -67,6 +75,7 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
     private ClusterAzureAttributesArgs(ClusterAzureAttributesArgs $) {
         this.availability = $.availability;
         this.firstOnDemand = $.firstOnDemand;
+        this.logAnalyticsInfo = $.logAnalyticsInfo;
         this.spotBidMaxPrice = $.spotBidMaxPrice;
     }
 
@@ -128,6 +137,15 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
          */
         public Builder firstOnDemand(Integer firstOnDemand) {
             return firstOnDemand(Output.of(firstOnDemand));
+        }
+
+        public Builder logAnalyticsInfo(@Nullable Output<ClusterAzureAttributesLogAnalyticsInfoArgs> logAnalyticsInfo) {
+            $.logAnalyticsInfo = logAnalyticsInfo;
+            return this;
+        }
+
+        public Builder logAnalyticsInfo(ClusterAzureAttributesLogAnalyticsInfoArgs logAnalyticsInfo) {
+            return logAnalyticsInfo(Output.of(logAnalyticsInfo));
         }
 
         /**

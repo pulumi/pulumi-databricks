@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("firstOnDemand")]
         public Input<int>? FirstOnDemand { get; set; }
 
+        [Input("logAnalyticsInfo")]
+        public Input<Inputs.ClusterAzureAttributesLogAnalyticsInfoGetArgs>? LogAnalyticsInfo { get; set; }
+
         /// <summary>
         /// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
         /// </summary>

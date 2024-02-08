@@ -16,17 +16,17 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Default value of the parameter.
         /// </summary>
-        public readonly string? Default;
+        public readonly string Default;
         /// <summary>
         /// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
         private JobParameter(
-            string? @default,
+            string @default,
 
-            string? name)
+            string name)
         {
             Default = @default;
             Name = name;

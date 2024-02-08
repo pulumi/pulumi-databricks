@@ -4,36 +4,35 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsParameter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsParameter Empty = new GetJobJobSettingsSettingsParameter();
 
-    @Import(name="default")
-    private @Nullable String default_;
+    @Import(name="default", required=true)
+    private String default_;
 
-    public Optional<String> default_() {
-        return Optional.ofNullable(this.default_);
+    public String default_() {
+        return this.default_;
     }
 
     /**
      * the job name of databricks.Job if the resource was matched by id.
      * 
      */
-    @Import(name="name")
-    private @Nullable String name;
+    @Import(name="name", required=true)
+    private String name;
 
     /**
      * @return the job name of databricks.Job if the resource was matched by id.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     private GetJobJobSettingsSettingsParameter() {}
@@ -61,7 +60,7 @@ public final class GetJobJobSettingsSettingsParameter extends com.pulumi.resourc
             $ = new GetJobJobSettingsSettingsParameter(Objects.requireNonNull(defaults));
         }
 
-        public Builder default_(@Nullable String default_) {
+        public Builder default_(String default_) {
             $.default_ = default_;
             return this;
         }
@@ -72,12 +71,18 @@ public final class GetJobJobSettingsSettingsParameter extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder name(@Nullable String name) {
+        public Builder name(String name) {
             $.name = name;
             return this;
         }
 
         public GetJobJobSettingsSettingsParameter build() {
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsParameter", "default_");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsParameter", "name");
+            }
             return $;
         }
     }

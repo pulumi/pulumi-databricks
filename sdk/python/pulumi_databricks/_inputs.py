@@ -15,6 +15,7 @@ __all__ = [
     'ClusterAutoscaleArgs',
     'ClusterAwsAttributesArgs',
     'ClusterAzureAttributesArgs',
+    'ClusterAzureAttributesLogAnalyticsInfoArgs',
     'ClusterClusterLogConfArgs',
     'ClusterClusterLogConfDbfsArgs',
     'ClusterClusterLogConfS3Args',
@@ -671,7 +672,9 @@ class ClusterAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  ebs_volume_count: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_iops: Optional[pulumi.Input[int]] = None,
                  ebs_volume_size: Optional[pulumi.Input[int]] = None,
+                 ebs_volume_throughput: Optional[pulumi.Input[int]] = None,
                  ebs_volume_type: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
                  instance_profile_arn: Optional[pulumi.Input[str]] = None,
@@ -690,8 +693,12 @@ class ClusterAwsAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if ebs_volume_count is not None:
             pulumi.set(__self__, "ebs_volume_count", ebs_volume_count)
+        if ebs_volume_iops is not None:
+            pulumi.set(__self__, "ebs_volume_iops", ebs_volume_iops)
         if ebs_volume_size is not None:
             pulumi.set(__self__, "ebs_volume_size", ebs_volume_size)
+        if ebs_volume_throughput is not None:
+            pulumi.set(__self__, "ebs_volume_throughput", ebs_volume_throughput)
         if ebs_volume_type is not None:
             pulumi.set(__self__, "ebs_volume_type", ebs_volume_type)
         if first_on_demand is not None:
@@ -728,6 +735,15 @@ class ClusterAwsAttributesArgs:
         pulumi.set(self, "ebs_volume_count", value)
 
     @property
+    @pulumi.getter(name="ebsVolumeIops")
+    def ebs_volume_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_iops")
+
+    @ebs_volume_iops.setter
+    def ebs_volume_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_iops", value)
+
+    @property
     @pulumi.getter(name="ebsVolumeSize")
     def ebs_volume_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -738,6 +754,15 @@ class ClusterAwsAttributesArgs:
     @ebs_volume_size.setter
     def ebs_volume_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ebs_volume_size", value)
+
+    @property
+    @pulumi.getter(name="ebsVolumeThroughput")
+    def ebs_volume_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ebs_volume_throughput")
+
+    @ebs_volume_throughput.setter
+    def ebs_volume_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ebs_volume_throughput", value)
 
     @property
     @pulumi.getter(name="ebsVolumeType")
@@ -802,6 +827,7 @@ class ClusterAzureAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[str]] = None,
                  first_on_demand: Optional[pulumi.Input[int]] = None,
+                 log_analytics_info: Optional[pulumi.Input['ClusterAzureAttributesLogAnalyticsInfoArgs']] = None,
                  spot_bid_max_price: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster.
@@ -812,6 +838,8 @@ class ClusterAzureAttributesArgs:
             pulumi.set(__self__, "availability", availability)
         if first_on_demand is not None:
             pulumi.set(__self__, "first_on_demand", first_on_demand)
+        if log_analytics_info is not None:
+            pulumi.set(__self__, "log_analytics_info", log_analytics_info)
         if spot_bid_max_price is not None:
             pulumi.set(__self__, "spot_bid_max_price", spot_bid_max_price)
 
@@ -840,6 +868,15 @@ class ClusterAzureAttributesArgs:
         pulumi.set(self, "first_on_demand", value)
 
     @property
+    @pulumi.getter(name="logAnalyticsInfo")
+    def log_analytics_info(self) -> Optional[pulumi.Input['ClusterAzureAttributesLogAnalyticsInfoArgs']]:
+        return pulumi.get(self, "log_analytics_info")
+
+    @log_analytics_info.setter
+    def log_analytics_info(self, value: Optional[pulumi.Input['ClusterAzureAttributesLogAnalyticsInfoArgs']]):
+        pulumi.set(self, "log_analytics_info", value)
+
+    @property
     @pulumi.getter(name="spotBidMaxPrice")
     def spot_bid_max_price(self) -> Optional[pulumi.Input[float]]:
         """
@@ -850,6 +887,35 @@ class ClusterAzureAttributesArgs:
     @spot_bid_max_price.setter
     def spot_bid_max_price(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "spot_bid_max_price", value)
+
+
+@pulumi.input_type
+class ClusterAzureAttributesLogAnalyticsInfoArgs:
+    def __init__(__self__, *,
+                 log_analytics_primary_key: Optional[pulumi.Input[str]] = None,
+                 log_analytics_workspace_id: Optional[pulumi.Input[str]] = None):
+        if log_analytics_primary_key is not None:
+            pulumi.set(__self__, "log_analytics_primary_key", log_analytics_primary_key)
+        if log_analytics_workspace_id is not None:
+            pulumi.set(__self__, "log_analytics_workspace_id", log_analytics_workspace_id)
+
+    @property
+    @pulumi.getter(name="logAnalyticsPrimaryKey")
+    def log_analytics_primary_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_primary_key")
+
+    @log_analytics_primary_key.setter
+    def log_analytics_primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_primary_key", value)
+
+    @property
+    @pulumi.getter(name="logAnalyticsWorkspaceId")
+    def log_analytics_workspace_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_analytics_workspace_id")
+
+    @log_analytics_workspace_id.setter
+    def log_analytics_workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_analytics_workspace_id", value)
 
 
 @pulumi.input_type
@@ -1667,46 +1733,44 @@ class ClusterInitScriptS3Args:
 @pulumi.input_type
 class ClusterInitScriptVolumesArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
+                 destination: pulumi.Input[str]):
         """
         :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class ClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
+                 destination: pulumi.Input[str]):
         """
         :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -6074,39 +6138,37 @@ class JobNotificationSettingsArgs:
 @pulumi.input_type
 class JobParameterArgs:
     def __init__(__self__, *,
-                 default: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 default: pulumi.Input[str],
+                 name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] default: Default value of the parameter.
         :param pulumi.Input[str] name: The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[str]]:
+    def default(self) -> pulumi.Input[str]:
         """
         Default value of the parameter.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[str]]):
+    def default(self, value: pulumi.Input[str]):
         pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
@@ -15099,6 +15161,7 @@ class TableColumnArgs:
 @pulumi.input_type
 class GetClusterClusterInfoArgs:
     def __init__(__self__, *,
+                 cluster_source: str,
                  default_tags: Mapping[str, Any],
                  driver_instance_pool_id: str,
                  spark_version: str,
@@ -15113,7 +15176,6 @@ class GetClusterClusterInfoArgs:
                  cluster_log_status: Optional['GetClusterClusterInfoClusterLogStatusArgs'] = None,
                  cluster_memory_mb: Optional[int] = None,
                  cluster_name: Optional[str] = None,
-                 cluster_source: Optional[str] = None,
                  creator_user_name: Optional[str] = None,
                  custom_tags: Optional[Mapping[str, Any]] = None,
                  data_security_mode: Optional[str] = None,
@@ -15162,6 +15224,7 @@ class GetClusterClusterInfoArgs:
         :param Mapping[str, Any] spark_env_vars: Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         :param Sequence[str] ssh_public_keys: SSH public key contents that will be added to each Spark node in this cluster.
         """
+        pulumi.set(__self__, "cluster_source", cluster_source)
         pulumi.set(__self__, "default_tags", default_tags)
         pulumi.set(__self__, "driver_instance_pool_id", driver_instance_pool_id)
         pulumi.set(__self__, "spark_version", spark_version)
@@ -15186,8 +15249,6 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "cluster_memory_mb", cluster_memory_mb)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
-        if cluster_source is not None:
-            pulumi.set(__self__, "cluster_source", cluster_source)
         if creator_user_name is not None:
             pulumi.set(__self__, "creator_user_name", creator_user_name)
         if custom_tags is not None:
@@ -15244,6 +15305,15 @@ class GetClusterClusterInfoArgs:
             pulumi.set(__self__, "terminate_time", terminate_time)
         if termination_reason is not None:
             pulumi.set(__self__, "termination_reason", termination_reason)
+
+    @property
+    @pulumi.getter(name="clusterSource")
+    def cluster_source(self) -> str:
+        return pulumi.get(self, "cluster_source")
+
+    @cluster_source.setter
+    def cluster_source(self, value: str):
+        pulumi.set(self, "cluster_source", value)
 
     @property
     @pulumi.getter(name="defaultTags")
@@ -15385,15 +15455,6 @@ class GetClusterClusterInfoArgs:
     @cluster_name.setter
     def cluster_name(self, value: Optional[str]):
         pulumi.set(self, "cluster_name", value)
-
-    @property
-    @pulumi.getter(name="clusterSource")
-    def cluster_source(self) -> Optional[str]:
-        return pulumi.get(self, "cluster_source")
-
-    @cluster_source.setter
-    def cluster_source(self, value: Optional[str]):
-        pulumi.set(self, "cluster_source", value)
 
     @property
     @pulumi.getter(name="creatorUserName")
@@ -21208,35 +21269,33 @@ class GetJobJobSettingsSettingsNotificationSettingsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsParameterArgs:
     def __init__(__self__, *,
-                 default: Optional[str] = None,
-                 name: Optional[str] = None):
+                 default: str,
+                 name: str):
         """
         :param str name: the job name of Job if the resource was matched by id.
         """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def default(self) -> Optional[str]:
+    def default(self) -> str:
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[str]):
+    def default(self, value: str):
         pulumi.set(self, "default", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         the job name of Job if the resource was matched by id.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[str]):
+    def name(self, value: str):
         pulumi.set(self, "name", value)
 
 

@@ -51,7 +51,7 @@ public final class GetClusterClusterInfo {
      * 
      */
     private @Nullable String clusterName;
-    private @Nullable String clusterSource;
+    private String clusterSource;
     private @Nullable String creatorUserName;
     /**
      * @return Additional tags for cluster resources.
@@ -188,8 +188,8 @@ public final class GetClusterClusterInfo {
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
-    public Optional<String> clusterSource() {
-        return Optional.ofNullable(this.clusterSource);
+    public String clusterSource() {
+        return this.clusterSource;
     }
     public Optional<String> creatorUserName() {
         return Optional.ofNullable(this.creatorUserName);
@@ -367,7 +367,7 @@ public final class GetClusterClusterInfo {
         private @Nullable GetClusterClusterInfoClusterLogStatus clusterLogStatus;
         private @Nullable Integer clusterMemoryMb;
         private @Nullable String clusterName;
-        private @Nullable String clusterSource;
+        private String clusterSource;
         private @Nullable String creatorUserName;
         private @Nullable Map<String,Object> customTags;
         private @Nullable String dataSecurityMode;
@@ -509,8 +509,10 @@ public final class GetClusterClusterInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder clusterSource(@Nullable String clusterSource) {
-
+        public Builder clusterSource(String clusterSource) {
+            if (clusterSource == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfo", "clusterSource");
+            }
             this.clusterSource = clusterSource;
             return this;
         }

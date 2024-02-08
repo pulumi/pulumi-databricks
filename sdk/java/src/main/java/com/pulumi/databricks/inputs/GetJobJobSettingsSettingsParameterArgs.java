@@ -5,36 +5,35 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsParameterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsParameterArgs Empty = new GetJobJobSettingsSettingsParameterArgs();
 
-    @Import(name="default")
-    private @Nullable Output<String> default_;
+    @Import(name="default", required=true)
+    private Output<String> default_;
 
-    public Optional<Output<String>> default_() {
-        return Optional.ofNullable(this.default_);
+    public Output<String> default_() {
+        return this.default_;
     }
 
     /**
      * the job name of databricks.Job if the resource was matched by id.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return the job name of databricks.Job if the resource was matched by id.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private GetJobJobSettingsSettingsParameterArgs() {}
@@ -62,7 +61,7 @@ public final class GetJobJobSettingsSettingsParameterArgs extends com.pulumi.res
             $ = new GetJobJobSettingsSettingsParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder default_(@Nullable Output<String> default_) {
+        public Builder default_(Output<String> default_) {
             $.default_ = default_;
             return this;
         }
@@ -77,7 +76,7 @@ public final class GetJobJobSettingsSettingsParameterArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -93,6 +92,12 @@ public final class GetJobJobSettingsSettingsParameterArgs extends com.pulumi.res
         }
 
         public GetJobJobSettingsSettingsParameterArgs build() {
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsParameterArgs", "default_");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsParameterArgs", "name");
+            }
             return $;
         }
     }

@@ -5,10 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,30 +18,30 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
      * Default value of the parameter.
      * 
      */
-    @Import(name="default")
-    private @Nullable Output<String> default_;
+    @Import(name="default", required=true)
+    private Output<String> default_;
 
     /**
      * @return Default value of the parameter.
      * 
      */
-    public Optional<Output<String>> default_() {
-        return Optional.ofNullable(this.default_);
+    public Output<String> default_() {
+        return this.default_;
     }
 
     /**
      * The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private JobParameterArgs() {}
@@ -76,7 +75,7 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder default_(@Nullable Output<String> default_) {
+        public Builder default_(Output<String> default_) {
             $.default_ = default_;
             return this;
         }
@@ -97,7 +96,7 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -113,6 +112,12 @@ public final class JobParameterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobParameterArgs build() {
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("JobParameterArgs", "default_");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("JobParameterArgs", "name");
+            }
             return $;
         }
     }

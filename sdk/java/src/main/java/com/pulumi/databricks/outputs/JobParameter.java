@@ -4,10 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobParameter {
@@ -15,27 +14,27 @@ public final class JobParameter {
      * @return Default value of the parameter.
      * 
      */
-    private @Nullable String default_;
+    private String default_;
     /**
      * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
-    private @Nullable String name;
+    private String name;
 
     private JobParameter() {}
     /**
      * @return Default value of the parameter.
      * 
      */
-    public Optional<String> default_() {
-        return Optional.ofNullable(this.default_);
+    public String default_() {
+        return this.default_;
     }
     /**
      * @return The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class JobParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String default_;
-        private @Nullable String name;
+        private String default_;
+        private String name;
         public Builder() {}
         public Builder(JobParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class JobParameter {
         }
 
         @CustomType.Setter("default")
-        public Builder default_(@Nullable String default_) {
-
+        public Builder default_(String default_) {
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("JobParameter", "default_");
+            }
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("JobParameter", "name");
+            }
             this.name = name;
             return this;
         }

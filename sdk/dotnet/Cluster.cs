@@ -123,6 +123,9 @@ namespace Pulumi.Databricks
         [Output("clusterName")]
         public Output<string?> ClusterName { get; private set; } = null!;
 
+        [Output("clusterSource")]
+        public Output<string> ClusterSource { get; private set; } = null!;
+
         /// <summary>
         /// should have tag `ResourceClass` set to value `Serverless`
         /// 
@@ -698,6 +701,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
+
+        [Input("clusterSource")]
+        public Input<string>? ClusterSource { get; set; }
 
         [Input("customTags")]
         private InputMap<object>? _customTags;

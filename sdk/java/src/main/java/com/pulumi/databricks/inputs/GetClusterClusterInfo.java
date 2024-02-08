@@ -126,11 +126,11 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.clusterName);
     }
 
-    @Import(name="clusterSource")
-    private @Nullable String clusterSource;
+    @Import(name="clusterSource", required=true)
+    private String clusterSource;
 
-    public Optional<String> clusterSource() {
-        return Optional.ofNullable(this.clusterSource);
+    public String clusterSource() {
+        return this.clusterSource;
     }
 
     @Import(name="creatorUserName")
@@ -611,7 +611,7 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        public Builder clusterSource(@Nullable String clusterSource) {
+        public Builder clusterSource(String clusterSource) {
             $.clusterSource = clusterSource;
             return this;
         }
@@ -885,6 +885,9 @@ public final class GetClusterClusterInfo extends com.pulumi.resources.InvokeArgs
         }
 
         public GetClusterClusterInfo build() {
+            if ($.clusterSource == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfo", "clusterSource");
+            }
             if ($.defaultTags == null) {
                 throw new MissingRequiredPropertyException("GetClusterClusterInfo", "defaultTags");
             }

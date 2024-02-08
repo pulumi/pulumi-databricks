@@ -15,14 +15,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Default value of the parameter.
         /// </summary>
-        [Input("default")]
-        public Input<string>? Default { get; set; }
+        [Input("default", required: true)]
+        public Input<string> Default { get; set; } = null!;
 
         /// <summary>
         /// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public JobParameterArgs()
         {

@@ -5,10 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ClusterInitScriptVolumesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +18,15 @@ public final class ClusterInitScriptVolumesArgs extends com.pulumi.resources.Res
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      * 
      */
-    @Import(name="destination")
-    private @Nullable Output<String> destination;
+    @Import(name="destination", required=true)
+    private Output<String> destination;
 
     /**
      * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      * 
      */
-    public Optional<Output<String>> destination() {
-        return Optional.ofNullable(this.destination);
+    public Output<String> destination() {
+        return this.destination;
     }
 
     private ClusterInitScriptVolumesArgs() {}
@@ -60,7 +59,7 @@ public final class ClusterInitScriptVolumesArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder destination(@Nullable Output<String> destination) {
+        public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
@@ -76,6 +75,9 @@ public final class ClusterInitScriptVolumesArgs extends com.pulumi.resources.Res
         }
 
         public ClusterInitScriptVolumesArgs build() {
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("ClusterInitScriptVolumesArgs", "destination");
+            }
             return $;
         }
     }
