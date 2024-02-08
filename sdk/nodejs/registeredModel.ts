@@ -36,10 +36,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The registered model resource can be imported using the full (3-level) name of the model. bash
+ * The registered model resource can be imported using the full (3-level) name of the model.
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+ * $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
  * ```
  */
 export class RegisteredModel extends pulumi.CustomResource {

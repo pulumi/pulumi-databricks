@@ -77,10 +77,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The databricks_ip_access_list can be imported using idbash
+ * The databricks_ip_access_list can be imported using id:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;
+ * $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;
  * ```
  * 
  */

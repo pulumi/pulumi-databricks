@@ -142,10 +142,12 @@ class Directory(pulumi.CustomResource):
         """
         ## Import
 
-        The resource directory can be imported using directory pathbash
+        The resource directory can be imported using directory path:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/directory:Directory this /path/to/directory
+        $ pulumi import databricks:index/directory:Directory this /path/to/directory
         ```
 
         :param str resource_name: The name of the resource.
@@ -162,10 +164,12 @@ class Directory(pulumi.CustomResource):
         """
         ## Import
 
-        The resource directory can be imported using directory pathbash
+        The resource directory can be imported using directory path:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/directory:Directory this /path/to/directory
+        $ pulumi import databricks:index/directory:Directory this /path/to/directory
         ```
 
         :param str resource_name: The name of the resource.

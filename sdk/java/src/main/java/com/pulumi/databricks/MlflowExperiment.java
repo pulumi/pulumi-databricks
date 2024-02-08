@@ -69,10 +69,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The experiment resource can be imported using the id of the experiment bash
+ * The experiment resource can be imported using the id of the experiment
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &lt;experiment-id&gt;
+ * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &lt;experiment-id&gt;
  * ```
  * 
  */

@@ -27,10 +27,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by IDbash
+ * This resource can be imported by ID:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
+ * $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
  * ```
  * 
  */

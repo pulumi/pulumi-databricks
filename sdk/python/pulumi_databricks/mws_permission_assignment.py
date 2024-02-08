@@ -191,10 +191,12 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         ## Import
 
-        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id bash
+        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
+        $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -265,10 +267,12 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         ## Import
 
-        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id bash
+        The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
+        $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"
         ```
 
         :param str resource_name: The name of the resource.

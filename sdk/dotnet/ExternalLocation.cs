@@ -19,10 +19,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by `name`bash
+    /// This resource can be imported by `name`:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/externalLocation:ExternalLocation this &lt;name&gt;
+    /// $ pulumi import databricks:index/externalLocation:ExternalLocation this &lt;name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/externalLocation:ExternalLocation")]

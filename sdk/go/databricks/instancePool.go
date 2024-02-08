@@ -68,12 +68,12 @@ import (
 //
 // ## Import
 //
-// # The resource instance pool can be imported using it's idbash
+// The resource instance pool can be imported using it's id:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
-//
+// $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
 // ```
 type InstancePool struct {
 	pulumi.CustomResourceState

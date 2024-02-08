@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// # The resource dbfs file can be imported using the path of the filebash
+// The resource dbfs file can be imported using the path of the file:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
-//
+// $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
 // ```
 type DbfsFile struct {
 	pulumi.CustomResourceState

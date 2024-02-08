@@ -278,10 +278,12 @@ class SqlWidget(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_sql_widget` resource with ID like the followingbash
+        You can import a `databricks_sql_widget` resource with ID like the following:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
+        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -337,10 +339,12 @@ class SqlWidget(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_sql_widget` resource with ID like the followingbash
+        You can import a `databricks_sql_widget` resource with ID like the following:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
+        $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
         ```
 
         :param str resource_name: The name of the resource.

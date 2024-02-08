@@ -12,10 +12,12 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource Repo can be imported using the Repo ID (obtained via UI or using API) bash
+    /// The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/repo:Repo this repo_id
+    /// $ pulumi import databricks:index/repo:Repo this repo_id
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/repo:Repo")]

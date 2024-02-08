@@ -30,10 +30,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by namebash
+ * This resource can be imported by name:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+ * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
  * ```
  */
 export class ArtifactAllowlist extends pulumi.CustomResource {

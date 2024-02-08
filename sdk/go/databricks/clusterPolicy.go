@@ -101,12 +101,12 @@ import (
 //
 // ## Import
 //
-// # The resource cluster policy can be imported using the policy idbash
+// The resource cluster policy can be imported using the policy id:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
-//
+// $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
 // ```
 type ClusterPolicy struct {
 	pulumi.CustomResourceState

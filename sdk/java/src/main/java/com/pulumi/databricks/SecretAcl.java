@@ -76,10 +76,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource secret acl can be imported using `scopeName|||principalName` combination. bash
+ * The resource secret acl can be imported using `scopeName|||principalName` combination.
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
+ * $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
  * ```
  * 
  */

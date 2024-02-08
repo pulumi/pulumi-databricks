@@ -1308,10 +1308,12 @@ class Job(pulumi.CustomResource):
         """
         ## Import
 
-        The resource job can be imported using the id of the job bash
+        The resource job can be imported using the id of the job
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/job:Job this <job-id>
+        $ pulumi import databricks:index/job:Job this <job-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1349,10 +1351,12 @@ class Job(pulumi.CustomResource):
         """
         ## Import
 
-        The resource job can be imported using the id of the job bash
+        The resource job can be imported using the id of the job
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/job:Job this <job-id>
+        $ pulumi import databricks:index/job:Job this <job-id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -48,10 +48,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The registered model resource can be imported using the full (3-level) name of the model. bash
+    /// The registered model resource can be imported using the full (3-level) name of the model.
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;
+    /// $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/registeredModel:RegisteredModel")]

@@ -97,10 +97,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by `id`bash
+    /// This resource can be imported by `id`:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/connection:Connection this '&lt;metastore_id&gt;|&lt;name&gt;'
+    /// $ pulumi import databricks:index/connection:Connection this '&lt;metastore_id&gt;|&lt;name&gt;'
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/connection:Connection")]

@@ -47,12 +47,12 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by the metastore id and schema name bash
+// This resource can be imported by the metastore id and schema name
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
-//
+// $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
 // ```
 type SystemSchema struct {
 	pulumi.CustomResourceState

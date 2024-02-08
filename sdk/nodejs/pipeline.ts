@@ -80,10 +80,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource job can be imported using the id of the pipeline bash
+ * The resource job can be imported using the id of the pipeline
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+ * $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
  * ```
  */
 export class Pipeline extends pulumi.CustomResource {

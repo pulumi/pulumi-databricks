@@ -192,10 +192,12 @@ class Secret(pulumi.CustomResource):
 
         ## Import
 
-        The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.** bash
+        The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+        $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
         ```
 
         :param str resource_name: The name of the resource.
@@ -241,10 +243,12 @@ class Secret(pulumi.CustomResource):
 
         ## Import
 
-        The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.** bash
+        The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+        $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
         ```
 
         :param str resource_name: The name of the resource.
