@@ -51,8 +51,8 @@ namespace Pulumi.Databricks.Inputs
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
-        [Input("clusterSource")]
-        public Input<string>? ClusterSource { get; set; }
+        [Input("clusterSource", required: true)]
+        public Input<string> ClusterSource { get; set; } = null!;
 
         [Input("creatorUserName")]
         public Input<string>? CreatorUserName { get; set; }

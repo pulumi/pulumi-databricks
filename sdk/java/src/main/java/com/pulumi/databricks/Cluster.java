@@ -198,6 +198,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> clusterName() {
         return Codegen.optional(this.clusterName);
     }
+    @Export(name="clusterSource", refs={String.class}, tree="[0]")
+    private Output<String> clusterSource;
+
+    public Output<String> clusterSource() {
+        return this.clusterSource;
+    }
     /**
      * should have tag `ResourceClass` set to value `Serverless`
      * 

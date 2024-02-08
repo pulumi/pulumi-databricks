@@ -24,11 +24,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("ebsVolumeCount")]
         public Input<int>? EbsVolumeCount { get; set; }
 
+        [Input("ebsVolumeIops")]
+        public Input<int>? EbsVolumeIops { get; set; }
+
         /// <summary>
         /// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         /// </summary>
         [Input("ebsVolumeSize")]
         public Input<int>? EbsVolumeSize { get; set; }
+
+        [Input("ebsVolumeThroughput")]
+        public Input<int>? EbsVolumeThroughput { get; set; }
 
         /// <summary>
         /// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.

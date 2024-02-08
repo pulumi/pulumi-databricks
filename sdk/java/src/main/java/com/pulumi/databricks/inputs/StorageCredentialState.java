@@ -59,8 +59,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * Delete storage credential regardless of its dependencies.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
@@ -68,16 +66,26 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
     /**
      * @return Delete storage credential regardless of its dependencies.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
-     * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
 
+    /**
+     * Update storage credential regardless of its dependents.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     @Import(name="forceUpdate")
     private @Nullable Output<Boolean> forceUpdate;
 
+    /**
+     * @return Update storage credential regardless of its dependents.
+     * 
+     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * 
+     */
     public Optional<Output<Boolean>> forceUpdate() {
         return Optional.ofNullable(this.forceUpdate);
     }
@@ -248,8 +256,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param forceDestroy Delete storage credential regardless of its dependencies.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -261,8 +267,6 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
         /**
          * @param forceDestroy Delete storage credential regardless of its dependencies.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
-         * 
          * @return builder
          * 
          */
@@ -270,11 +274,27 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
             return forceDestroy(Output.of(forceDestroy));
         }
 
+        /**
+         * @param forceUpdate Update storage credential regardless of its dependents.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(@Nullable Output<Boolean> forceUpdate) {
             $.forceUpdate = forceUpdate;
             return this;
         }
 
+        /**
+         * @param forceUpdate Update storage credential regardless of its dependents.
+         * 
+         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
         }

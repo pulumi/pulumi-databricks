@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.ClusterAzureAttributesLogAnalyticsInfo;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -23,6 +24,7 @@ public final class ClusterAzureAttributes {
      * 
      */
     private @Nullable Integer firstOnDemand;
+    private @Nullable ClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
     /**
      * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      * 
@@ -44,6 +46,9 @@ public final class ClusterAzureAttributes {
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
     }
+    public Optional<ClusterAzureAttributesLogAnalyticsInfo> logAnalyticsInfo() {
+        return Optional.ofNullable(this.logAnalyticsInfo);
+    }
     /**
      * @return The max price for Azure spot instances.  Use `-1` to specify the lowest price.
      * 
@@ -63,12 +68,14 @@ public final class ClusterAzureAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer firstOnDemand;
+        private @Nullable ClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
         private @Nullable Double spotBidMaxPrice;
         public Builder() {}
         public Builder(ClusterAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.firstOnDemand = defaults.firstOnDemand;
+    	      this.logAnalyticsInfo = defaults.logAnalyticsInfo;
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
         }
 
@@ -85,6 +92,12 @@ public final class ClusterAzureAttributes {
             return this;
         }
         @CustomType.Setter
+        public Builder logAnalyticsInfo(@Nullable ClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo) {
+
+            this.logAnalyticsInfo = logAnalyticsInfo;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spotBidMaxPrice(@Nullable Double spotBidMaxPrice) {
 
             this.spotBidMaxPrice = spotBidMaxPrice;
@@ -94,6 +107,7 @@ public final class ClusterAzureAttributes {
             final var _resultValue = new ClusterAzureAttributes();
             _resultValue.availability = availability;
             _resultValue.firstOnDemand = firstOnDemand;
+            _resultValue.logAnalyticsInfo = logAnalyticsInfo;
             _resultValue.spotBidMaxPrice = spotBidMaxPrice;
             return _resultValue;
         }

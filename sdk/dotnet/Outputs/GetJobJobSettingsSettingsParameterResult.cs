@@ -13,17 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsParameterResult
     {
-        public readonly string? Default;
+        public readonly string Default;
         /// <summary>
         /// the job name of databricks.Job if the resource was matched by id.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsParameterResult(
-            string? @default,
+            string @default,
 
-            string? name)
+            string name)
         {
             Default = @default;
             Name = name;

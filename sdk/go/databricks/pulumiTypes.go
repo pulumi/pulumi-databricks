@@ -629,8 +629,10 @@ type ClusterAwsAttributes struct {
 	Availability *string `pulumi:"availability"`
 	// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
 	EbsVolumeCount *int `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops  *int `pulumi:"ebsVolumeIops"`
 	// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
-	EbsVolumeSize *int `pulumi:"ebsVolumeSize"`
+	EbsVolumeSize       *int `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput *int `pulumi:"ebsVolumeThroughput"`
 	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 	EbsVolumeType *string `pulumi:"ebsVolumeType"`
 	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
@@ -658,8 +660,10 @@ type ClusterAwsAttributesArgs struct {
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
 	// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
 	EbsVolumeCount pulumi.IntPtrInput `pulumi:"ebsVolumeCount"`
+	EbsVolumeIops  pulumi.IntPtrInput `pulumi:"ebsVolumeIops"`
 	// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
-	EbsVolumeSize pulumi.IntPtrInput `pulumi:"ebsVolumeSize"`
+	EbsVolumeSize       pulumi.IntPtrInput `pulumi:"ebsVolumeSize"`
+	EbsVolumeThroughput pulumi.IntPtrInput `pulumi:"ebsVolumeThroughput"`
 	// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
 	EbsVolumeType pulumi.StringPtrInput `pulumi:"ebsVolumeType"`
 	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. Backend default value is `1` and could change in the future
@@ -758,9 +762,17 @@ func (o ClusterAwsAttributesOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeCount }).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterAwsAttributesOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeIops }).(pulumi.IntPtrOutput)
+}
+
 // The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
 func (o ClusterAwsAttributesOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterAwsAttributesOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAwsAttributes) *int { return v.EbsVolumeThroughput }).(pulumi.IntPtrOutput)
 }
 
 // The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
@@ -831,6 +843,15 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterAwsAttributesPtrOutput) EbsVolumeIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeIops
+	}).(pulumi.IntPtrOutput)
+}
+
 // The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
 func (o ClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
@@ -838,6 +859,15 @@ func (o ClusterAwsAttributesPtrOutput) EbsVolumeSize() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.EbsVolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterAwsAttributesPtrOutput) EbsVolumeThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAwsAttributes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EbsVolumeThroughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -894,7 +924,8 @@ type ClusterAzureAttributes struct {
 	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
 	Availability *string `pulumi:"availability"`
 	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-	FirstOnDemand *int `pulumi:"firstOnDemand"`
+	FirstOnDemand    *int                                    `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo *ClusterAzureAttributesLogAnalyticsInfo `pulumi:"logAnalyticsInfo"`
 	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice *float64 `pulumi:"spotBidMaxPrice"`
 }
@@ -914,7 +945,8 @@ type ClusterAzureAttributesArgs struct {
 	// Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
 	Availability pulumi.StringPtrInput `pulumi:"availability"`
 	// The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
-	FirstOnDemand pulumi.IntPtrInput `pulumi:"firstOnDemand"`
+	FirstOnDemand    pulumi.IntPtrInput                             `pulumi:"firstOnDemand"`
+	LogAnalyticsInfo ClusterAzureAttributesLogAnalyticsInfoPtrInput `pulumi:"logAnalyticsInfo"`
 	// The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 	SpotBidMaxPrice pulumi.Float64PtrInput `pulumi:"spotBidMaxPrice"`
 }
@@ -1006,6 +1038,10 @@ func (o ClusterAzureAttributesOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAzureAttributes) *int { return v.FirstOnDemand }).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterAzureAttributesOutput) LogAnalyticsInfo() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v ClusterAzureAttributes) *ClusterAzureAttributesLogAnalyticsInfo { return v.LogAnalyticsInfo }).(ClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 // The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o ClusterAzureAttributesOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterAzureAttributes) *float64 { return v.SpotBidMaxPrice }).(pulumi.Float64PtrOutput)
@@ -1055,6 +1091,15 @@ func (o ClusterAzureAttributesPtrOutput) FirstOnDemand() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ClusterAzureAttributesPtrOutput) LogAnalyticsInfo() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyT(func(v *ClusterAzureAttributes) *ClusterAzureAttributesLogAnalyticsInfo {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsInfo
+	}).(ClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
 // The max price for Azure spot instances.  Use `-1` to specify the lowest price.
 func (o ClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ClusterAzureAttributes) *float64 {
@@ -1063,6 +1108,154 @@ func (o ClusterAzureAttributesPtrOutput) SpotBidMaxPrice() pulumi.Float64PtrOutp
 		}
 		return v.SpotBidMaxPrice
 	}).(pulumi.Float64PtrOutput)
+}
+
+type ClusterAzureAttributesLogAnalyticsInfo struct {
+	LogAnalyticsPrimaryKey  *string `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId *string `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+// ClusterAzureAttributesLogAnalyticsInfoInput is an input type that accepts ClusterAzureAttributesLogAnalyticsInfoArgs and ClusterAzureAttributesLogAnalyticsInfoOutput values.
+// You can construct a concrete instance of `ClusterAzureAttributesLogAnalyticsInfoInput` via:
+//
+//	ClusterAzureAttributesLogAnalyticsInfoArgs{...}
+type ClusterAzureAttributesLogAnalyticsInfoInput interface {
+	pulumi.Input
+
+	ToClusterAzureAttributesLogAnalyticsInfoOutput() ClusterAzureAttributesLogAnalyticsInfoOutput
+	ToClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Context) ClusterAzureAttributesLogAnalyticsInfoOutput
+}
+
+type ClusterAzureAttributesLogAnalyticsInfoArgs struct {
+	LogAnalyticsPrimaryKey  pulumi.StringPtrInput `pulumi:"logAnalyticsPrimaryKey"`
+	LogAnalyticsWorkspaceId pulumi.StringPtrInput `pulumi:"logAnalyticsWorkspaceId"`
+}
+
+func (ClusterAzureAttributesLogAnalyticsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i ClusterAzureAttributesLogAnalyticsInfoArgs) ToClusterAzureAttributesLogAnalyticsInfoOutput() ClusterAzureAttributesLogAnalyticsInfoOutput {
+	return i.ToClusterAzureAttributesLogAnalyticsInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterAzureAttributesLogAnalyticsInfoArgs) ToClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (i ClusterAzureAttributesLogAnalyticsInfoArgs) ToClusterAzureAttributesLogAnalyticsInfoPtrOutput() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAzureAttributesLogAnalyticsInfoArgs) ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureAttributesLogAnalyticsInfoOutput).ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx)
+}
+
+// ClusterAzureAttributesLogAnalyticsInfoPtrInput is an input type that accepts ClusterAzureAttributesLogAnalyticsInfoArgs, ClusterAzureAttributesLogAnalyticsInfoPtr and ClusterAzureAttributesLogAnalyticsInfoPtrOutput values.
+// You can construct a concrete instance of `ClusterAzureAttributesLogAnalyticsInfoPtrInput` via:
+//
+//	        ClusterAzureAttributesLogAnalyticsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAzureAttributesLogAnalyticsInfoPtrInput interface {
+	pulumi.Input
+
+	ToClusterAzureAttributesLogAnalyticsInfoPtrOutput() ClusterAzureAttributesLogAnalyticsInfoPtrOutput
+	ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Context) ClusterAzureAttributesLogAnalyticsInfoPtrOutput
+}
+
+type clusterAzureAttributesLogAnalyticsInfoPtrType ClusterAzureAttributesLogAnalyticsInfoArgs
+
+func ClusterAzureAttributesLogAnalyticsInfoPtr(v *ClusterAzureAttributesLogAnalyticsInfoArgs) ClusterAzureAttributesLogAnalyticsInfoPtrInput {
+	return (*clusterAzureAttributesLogAnalyticsInfoPtrType)(v)
+}
+
+func (*clusterAzureAttributesLogAnalyticsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (i *clusterAzureAttributesLogAnalyticsInfoPtrType) ToClusterAzureAttributesLogAnalyticsInfoPtrOutput() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return i.ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAzureAttributesLogAnalyticsInfoPtrType) ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+type ClusterAzureAttributesLogAnalyticsInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterAzureAttributesLogAnalyticsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) ToClusterAzureAttributesLogAnalyticsInfoOutput() ClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) ToClusterAzureAttributesLogAnalyticsInfoOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) ToClusterAzureAttributesLogAnalyticsInfoPtrOutput() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAzureAttributesLogAnalyticsInfo) *ClusterAzureAttributesLogAnalyticsInfo {
+		return &v
+	}).(ClusterAzureAttributesLogAnalyticsInfoPtrOutput)
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsPrimaryKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAzureAttributesLogAnalyticsInfo) *string { return v.LogAnalyticsWorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAzureAttributesLogAnalyticsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAzureAttributesLogAnalyticsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAzureAttributesLogAnalyticsInfo)(nil)).Elem()
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToClusterAzureAttributesLogAnalyticsInfoPtrOutput() ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoPtrOutput) ToClusterAzureAttributesLogAnalyticsInfoPtrOutputWithContext(ctx context.Context) ClusterAzureAttributesLogAnalyticsInfoPtrOutput {
+	return o
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoPtrOutput) Elem() ClusterAzureAttributesLogAnalyticsInfoOutput {
+	return o.ApplyT(func(v *ClusterAzureAttributesLogAnalyticsInfo) ClusterAzureAttributesLogAnalyticsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAzureAttributesLogAnalyticsInfo
+		return ret
+	}).(ClusterAzureAttributesLogAnalyticsInfoOutput)
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsPrimaryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsPrimaryKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterAzureAttributesLogAnalyticsInfoPtrOutput) LogAnalyticsWorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAzureAttributesLogAnalyticsInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogAnalyticsWorkspaceId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterLogConf struct {
@@ -3538,7 +3731,7 @@ func (o ClusterInitScriptS3PtrOutput) Region() pulumi.StringPtrOutput {
 
 type ClusterInitScriptVolumes struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // ClusterInitScriptVolumesInput is an input type that accepts ClusterInitScriptVolumesArgs and ClusterInitScriptVolumesOutput values.
@@ -3554,7 +3747,7 @@ type ClusterInitScriptVolumesInput interface {
 
 type ClusterInitScriptVolumesArgs struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (ClusterInitScriptVolumesArgs) ElementType() reflect.Type {
@@ -3635,8 +3828,8 @@ func (o ClusterInitScriptVolumesOutput) ToClusterInitScriptVolumesPtrOutputWithC
 }
 
 // S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-func (o ClusterInitScriptVolumesOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterInitScriptVolumes) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o ClusterInitScriptVolumesOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInitScriptVolumes) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type ClusterInitScriptVolumesPtrOutput struct{ *pulumi.OutputState }
@@ -3669,13 +3862,13 @@ func (o ClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterInitScriptWorkspace struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // ClusterInitScriptWorkspaceInput is an input type that accepts ClusterInitScriptWorkspaceArgs and ClusterInitScriptWorkspaceOutput values.
@@ -3691,7 +3884,7 @@ type ClusterInitScriptWorkspaceInput interface {
 
 type ClusterInitScriptWorkspaceArgs struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (ClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -3772,8 +3965,8 @@ func (o ClusterInitScriptWorkspaceOutput) ToClusterInitScriptWorkspacePtrOutputW
 }
 
 // S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-func (o ClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o ClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type ClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -3806,7 +3999,7 @@ func (o ClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18140,9 +18333,9 @@ func (o JobNotificationSettingsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtr
 
 type JobParameter struct {
 	// Default value of the parameter.
-	Default *string `pulumi:"default"`
+	Default string `pulumi:"default"`
 	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 // JobParameterInput is an input type that accepts JobParameterArgs and JobParameterOutput values.
@@ -18158,9 +18351,9 @@ type JobParameterInput interface {
 
 type JobParameterArgs struct {
 	// Default value of the parameter.
-	Default pulumi.StringPtrInput `pulumi:"default"`
+	Default pulumi.StringInput `pulumi:"default"`
 	// The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (JobParameterArgs) ElementType() reflect.Type {
@@ -18215,13 +18408,13 @@ func (o JobParameterOutput) ToJobParameterOutputWithContext(ctx context.Context)
 }
 
 // Default value of the parameter.
-func (o JobParameterOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o JobParameterOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v JobParameter) string { return v.Default }).(pulumi.StringOutput)
 }
 
 // The name of the defined parameter. May only contain alphanumeric characters, `_`, `-`, and `.`.
-func (o JobParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o JobParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JobParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type JobParameterArrayOutput struct{ *pulumi.OutputState }
@@ -45884,7 +46077,7 @@ type GetClusterClusterInfo struct {
 	ClusterMemoryMb  *int                                   `pulumi:"clusterMemoryMb"`
 	// The exact name of the cluster to search
 	ClusterName     *string `pulumi:"clusterName"`
-	ClusterSource   *string `pulumi:"clusterSource"`
+	ClusterSource   string  `pulumi:"clusterSource"`
 	CreatorUserName *string `pulumi:"creatorUserName"`
 	// Additional tags for cluster resources.
 	CustomTags map[string]interface{} `pulumi:"customTags"`
@@ -45959,7 +46152,7 @@ type GetClusterClusterInfoArgs struct {
 	ClusterMemoryMb  pulumi.IntPtrInput                            `pulumi:"clusterMemoryMb"`
 	// The exact name of the cluster to search
 	ClusterName     pulumi.StringPtrInput `pulumi:"clusterName"`
-	ClusterSource   pulumi.StringPtrInput `pulumi:"clusterSource"`
+	ClusterSource   pulumi.StringInput    `pulumi:"clusterSource"`
 	CreatorUserName pulumi.StringPtrInput `pulumi:"creatorUserName"`
 	// Additional tags for cluster resources.
 	CustomTags pulumi.MapInput `pulumi:"customTags"`
@@ -46129,8 +46322,8 @@ func (o GetClusterClusterInfoOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetClusterClusterInfoOutput) ClusterSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfo) *string { return v.ClusterSource }).(pulumi.StringPtrOutput)
+func (o GetClusterClusterInfoOutput) ClusterSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfo) string { return v.ClusterSource }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterInfoOutput) CreatorUserName() pulumi.StringPtrOutput {
@@ -46398,7 +46591,7 @@ func (o GetClusterClusterInfoPtrOutput) ClusterSource() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.ClusterSource
+		return &v.ClusterSource
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -64069,9 +64262,9 @@ func (o GetJobJobSettingsSettingsNotificationSettingsPtrOutput) NoAlertForSkippe
 }
 
 type GetJobJobSettingsSettingsParameter struct {
-	Default *string `pulumi:"default"`
+	Default string `pulumi:"default"`
 	// the job name of Job if the resource was matched by id.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 // GetJobJobSettingsSettingsParameterInput is an input type that accepts GetJobJobSettingsSettingsParameterArgs and GetJobJobSettingsSettingsParameterOutput values.
@@ -64086,9 +64279,9 @@ type GetJobJobSettingsSettingsParameterInput interface {
 }
 
 type GetJobJobSettingsSettingsParameterArgs struct {
-	Default pulumi.StringPtrInput `pulumi:"default"`
+	Default pulumi.StringInput `pulumi:"default"`
 	// the job name of Job if the resource was matched by id.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetJobJobSettingsSettingsParameterArgs) ElementType() reflect.Type {
@@ -64142,13 +64335,13 @@ func (o GetJobJobSettingsSettingsParameterOutput) ToGetJobJobSettingsSettingsPar
 	return o
 }
 
-func (o GetJobJobSettingsSettingsParameterOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsParameterOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Default }).(pulumi.StringOutput)
 }
 
 // the job name of Job if the resource was matched by id.
-func (o GetJobJobSettingsSettingsParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsParameterArrayOutput struct{ *pulumi.OutputState }
@@ -77005,6 +77198,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAwsAttributesPtrInput)(nil)).Elem(), ClusterAwsAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAzureAttributesInput)(nil)).Elem(), ClusterAzureAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAzureAttributesPtrInput)(nil)).Elem(), ClusterAzureAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAzureAttributesLogAnalyticsInfoInput)(nil)).Elem(), ClusterAzureAttributesLogAnalyticsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAzureAttributesLogAnalyticsInfoPtrInput)(nil)).Elem(), ClusterAzureAttributesLogAnalyticsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterLogConfInput)(nil)).Elem(), ClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterLogConfPtrInput)(nil)).Elem(), ClusterClusterLogConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterLogConfDbfsInput)(nil)).Elem(), ClusterClusterLogConfDbfsArgs{})
@@ -77930,6 +78125,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAwsAttributesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAzureAttributesOutput{})
 	pulumi.RegisterOutputType(ClusterAzureAttributesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAzureAttributesLogAnalyticsInfoOutput{})
+	pulumi.RegisterOutputType(ClusterAzureAttributesLogAnalyticsInfoPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterLogConfOutput{})
 	pulumi.RegisterOutputType(ClusterClusterLogConfPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterLogConfDbfsOutput{})

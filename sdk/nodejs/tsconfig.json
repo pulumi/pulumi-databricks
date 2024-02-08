@@ -65,6 +65,7 @@
         "getTables.ts",
         "getUser.ts",
         "getViews.ts",
+        "getVolumes.ts",
         "getZones.ts",
         "gitCredential.ts",
         "globalInitScript.ts",

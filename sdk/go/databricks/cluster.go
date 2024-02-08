@@ -110,7 +110,8 @@ type Cluster struct {
 	ClusterLogConf         ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos      ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
+	ClusterName   pulumi.StringPtrOutput `pulumi:"clusterName"`
+	ClusterSource pulumi.StringOutput    `pulumi:"clusterSource"`
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -285,7 +286,8 @@ type clusterState struct {
 	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName *string `pulumi:"clusterName"`
+	ClusterName   *string `pulumi:"clusterName"`
+	ClusterSource *string `pulumi:"clusterSource"`
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -428,7 +430,8 @@ type ClusterState struct {
 	ClusterLogConf         ClusterClusterLogConfPtrInput
 	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
-	ClusterName pulumi.StringPtrInput
+	ClusterName   pulumi.StringPtrInput
+	ClusterSource pulumi.StringPtrInput
 	// should have tag `ResourceClass` set to value `Serverless`
 	//
 	// For example:
@@ -962,6 +965,10 @@ func (o ClusterOutput) ClusterMountInfos() ClusterClusterMountInfoArrayOutput {
 // Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
 func (o ClusterOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterOutput) ClusterSource() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSource }).(pulumi.StringOutput)
 }
 
 // should have tag `ResourceClass` set to value `Serverless`
