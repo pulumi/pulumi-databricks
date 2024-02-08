@@ -616,10 +616,12 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        The resource job can be imported using the id of the pipeline bash
+        The resource job can be imported using the id of the pipeline
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+        $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -716,10 +718,12 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        The resource job can be imported using the id of the pipeline bash
+        The resource job can be imported using the id of the pipeline
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
+        $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
         ```
 
         :param str resource_name: The name of the resource.

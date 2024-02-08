@@ -75,10 +75,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource cluster policy can be imported using the policy idbash
+ * The resource cluster policy can be imported using the policy id:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
+ * $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
  * ```
  */
 export class ClusterPolicy extends pulumi.CustomResource {

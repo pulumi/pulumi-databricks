@@ -70,12 +70,12 @@ import (
 //
 // ## Import
 //
-// The databricks_ip_access_list can be imported using idbash
+// The databricks_ip_access_list can be imported using id:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
-//
+// $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
 // ```
 type IpAccessList struct {
 	pulumi.CustomResourceState

@@ -90,10 +90,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource cluster policy can be imported using the policy idbash
+    /// The resource cluster policy can be imported using the policy id:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
+    /// $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/clusterPolicy:ClusterPolicy")]

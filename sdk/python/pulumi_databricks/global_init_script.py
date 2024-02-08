@@ -218,10 +218,12 @@ class GlobalInitScript(pulumi.CustomResource):
         """
         ## Import
 
-        The resource global init script can be imported using script IDbash
+        The resource global init script can be imported using script ID:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -240,10 +242,12 @@ class GlobalInitScript(pulumi.CustomResource):
         """
         ## Import
 
-        The resource global init script can be imported using script IDbash
+        The resource global init script can be imported using script ID:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+        $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
         ```
 
         :param str resource_name: The name of the resource.

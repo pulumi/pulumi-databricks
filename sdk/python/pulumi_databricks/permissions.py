@@ -772,13 +772,23 @@ class Permissions(pulumi.CustomResource):
         """
         ## Import
 
-        ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
+        ### Import Example
+
+         Configuration file:
+
+         hcl
+
+         resource "databricks_mlflow_model" "model" {
 
          name
 
         = "example_model"
 
-         description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+         description = "MLflow registered model"
+
+         }
+
+         resource "databricks_permissions" "model_usage" {
 
          registered_model_id = databricks_mlflow_model.model.registered_model_id
 
@@ -790,10 +800,16 @@ class Permissions(pulumi.CustomResource):
 
          permission_level = "CAN_READ"
 
-         } } Import commandbash
+         }
+
+         }
+
+         Import command:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
+        $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -828,13 +844,23 @@ class Permissions(pulumi.CustomResource):
         """
         ## Import
 
-        ### Import Example Configuration filehcl resource "databricks_mlflow_model" "model" {
+        ### Import Example
+
+         Configuration file:
+
+         hcl
+
+         resource "databricks_mlflow_model" "model" {
 
          name
 
         = "example_model"
 
-         description = "MLflow registered model" } resource "databricks_permissions" "model_usage" {
+         description = "MLflow registered model"
+
+         }
+
+         resource "databricks_permissions" "model_usage" {
 
          registered_model_id = databricks_mlflow_model.model.registered_model_id
 
@@ -846,10 +872,16 @@ class Permissions(pulumi.CustomResource):
 
          permission_level = "CAN_READ"
 
-         } } Import commandbash
+         }
+
+         }
+
+         Import command:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
+        $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>
         ```
 
         :param str resource_name: The name of the resource.

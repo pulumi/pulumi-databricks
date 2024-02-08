@@ -59,10 +59,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource instance pool can be imported using it's idbash
+    /// The resource instance pool can be imported using it's id:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/instancePool:InstancePool this &lt;instance-pool-id&gt;
+    /// $ pulumi import databricks:index/instancePool:InstancePool this &lt;instance-pool-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/instancePool:InstancePool")]

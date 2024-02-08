@@ -26,10 +26,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by the combination of its identifier and the account idbash
+ * This resource can be imported by the combination of its identifier and the account id:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
+ * $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
  * ```
  */
 export class MwsCredentials extends pulumi.CustomResource {

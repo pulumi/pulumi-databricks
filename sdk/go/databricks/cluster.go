@@ -89,12 +89,12 @@ import (
 //
 // ## Import
 //
-// The resource cluster can be imported using cluster id. bash
+// The resource cluster can be imported using cluster id.
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/cluster:Cluster this <cluster-id>
-//
+// $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState

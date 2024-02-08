@@ -15,10 +15,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by IDbash
+ * This resource can be imported by ID:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/metastore:Metastore this <id>
+ * $ pulumi import databricks:index/metastore:Metastore this <id>
  * ```
  */
 export class Metastore extends pulumi.CustomResource {

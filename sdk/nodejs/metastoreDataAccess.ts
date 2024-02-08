@@ -13,10 +13,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by combination of metastore id and the data access name. bash
+ * This resource can be imported by combination of metastore id and the data access name.
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
+ * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
  * ```
  */
 export class MetastoreDataAccess extends pulumi.CustomResource {

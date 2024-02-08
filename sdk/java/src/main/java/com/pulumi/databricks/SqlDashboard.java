@@ -107,10 +107,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * You can import a `databricks_sql_dashboard` resource with ID like the followingbash
+ * You can import a `databricks_sql_dashboard` resource with ID like the following:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &lt;dashboard-id&gt;
+ * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &lt;dashboard-id&gt;
  * ```
  * 
  */

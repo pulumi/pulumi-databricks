@@ -7,10 +7,12 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource dbfs file can be imported using the path of the filebash
+ * The resource dbfs file can be imported using the path of the file:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
+ * $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
  * ```
  */
 export class DbfsFile extends pulumi.CustomResource {

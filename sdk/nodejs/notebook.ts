@@ -7,10 +7,12 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource notebook can be imported using notebook path bash
+ * The resource notebook can be imported using notebook path
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
+ * $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
  * ```
  */
 export class Notebook extends pulumi.CustomResource {

@@ -481,10 +481,12 @@ class StorageCredential(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -569,10 +571,12 @@ class StorageCredential(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
         ```
 
         :param str resource_name: The name of the resource.

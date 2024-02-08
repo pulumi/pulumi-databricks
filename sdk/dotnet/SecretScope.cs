@@ -38,10 +38,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash
+    /// The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;
+    /// $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/secretScope:SecretScope")]
