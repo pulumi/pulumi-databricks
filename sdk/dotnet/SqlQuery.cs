@@ -142,10 +142,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// You can import a `databricks_sql_query` resource with ID like the followingbash
+    /// You can import a `databricks_sql_query` resource with ID like the following:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
+    /// $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlQuery:SqlQuery")]

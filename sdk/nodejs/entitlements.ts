@@ -72,10 +72,18 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are* `user/user_id` - user `user_id`. * `group/group_id` - group `group_id`. * `spn/spn_id` - service principal `spn_id`. bash
+ * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
+ *
+ *  * `user/user_id` - user `user_id`.
+ *
+ *  * `group/group_id` - group `group_id`.
+ *
+ *  * `spn/spn_id` - service principal `spn_id`.
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
+ * $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
  * ```
  */
 export class Entitlements extends pulumi.CustomResource {

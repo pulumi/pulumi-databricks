@@ -153,10 +153,12 @@ class MetastoreAssignment(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by combination of workspace id and metastore idbash
+        This resource can be imported by combination of workspace id and metastore id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+        $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -194,10 +196,12 @@ class MetastoreAssignment(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by combination of workspace id and metastore idbash
+        This resource can be imported by combination of workspace id and metastore id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
+        $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
         ```
 
         :param str resource_name: The name of the resource.

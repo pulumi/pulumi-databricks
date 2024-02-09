@@ -107,10 +107,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource scim user can be imported using idbash
+ * The resource scim user can be imported using id:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/user:User me <user-id>
+ * $ pulumi import databricks:index/user:User me <user-id>
  * ```
  */
 export class User extends pulumi.CustomResource {

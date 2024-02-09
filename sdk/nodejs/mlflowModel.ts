@@ -50,10 +50,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The model resource can be imported using the name bash
+ * The model resource can be imported using the name
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+ * $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
  * ```
  */
 export class MlflowModel extends pulumi.CustomResource {

@@ -604,10 +604,12 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        The resource scim user can be imported using idbash
+        The resource scim user can be imported using id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/user:User me <user-id>
+        $ pulumi import databricks:index/user:User me <user-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -725,10 +727,12 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        The resource scim user can be imported using idbash
+        The resource scim user can be imported using id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/user:User me <user-id>
+        $ pulumi import databricks:index/user:User me <user-id>
         ```
 
         :param str resource_name: The name of the resource.

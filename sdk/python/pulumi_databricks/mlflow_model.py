@@ -189,10 +189,12 @@ class MlflowModel(pulumi.CustomResource):
 
         ## Import
 
-        The model resource can be imported using the name bash
+        The model resource can be imported using the name
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -250,10 +252,12 @@ class MlflowModel(pulumi.CustomResource):
 
         ## Import
 
-        The model resource can be imported using the name bash
+        The model resource can be imported using the name
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
+        $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
         ```
 
         :param str resource_name: The name of the resource.

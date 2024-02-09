@@ -17,10 +17,12 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * You can import a `databricks_sql_visualization` resource with ID like the followingbash
+ * You can import a `databricks_sql_visualization` resource with ID like the following:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
+ * $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;
  * ```
  * 
  */

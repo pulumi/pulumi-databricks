@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// You can import a `databricks_sql_visualization` resource with ID like the followingbash
+// You can import a `databricks_sql_visualization` resource with ID like the following:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
-//
+// $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>
 // ```
 type SqlVisualization struct {
 	pulumi.CustomResourceState

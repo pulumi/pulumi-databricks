@@ -60,10 +60,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by namebash
+ * This resource can be imported by name:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this &lt;metastore_id&gt;|&lt;artifact_type&gt;
+ * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this &lt;metastore_id&gt;|&lt;artifact_type&gt;
  * ```
  * 
  */

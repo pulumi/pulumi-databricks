@@ -37,10 +37,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by the combination of its identifier and the account idbash
+ * This resource can be imported by the combination of its identifier and the account id:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/mwsCredentials:MwsCredentials this &lt;account_id&gt;/&lt;credentials_id&gt;
+ * $ pulumi import databricks:index/mwsCredentials:MwsCredentials this &lt;account_id&gt;/&lt;credentials_id&gt;
  * ```
  * 
  */

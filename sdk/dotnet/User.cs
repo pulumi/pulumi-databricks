@@ -161,10 +161,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource scim user can be imported using idbash
+    /// The resource scim user can be imported using id:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/user:User me &lt;user-id&gt;
+    /// $ pulumi import databricks:index/user:User me &lt;user-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/user:User")]

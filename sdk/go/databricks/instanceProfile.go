@@ -292,12 +292,12 @@ import (
 //
 // ## Import
 //
-// # The resource instance profile can be imported using the ARN of it bash
+// The resource instance profile can be imported using the ARN of it
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
-//
+// $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>
 // ```
 type InstanceProfile struct {
 	pulumi.CustomResourceState

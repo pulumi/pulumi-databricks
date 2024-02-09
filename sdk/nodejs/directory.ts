@@ -7,10 +7,12 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource directory can be imported using directory pathbash
+ * The resource directory can be imported using directory path:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/directory:Directory this /path/to/directory
+ * $ pulumi import databricks:index/directory:Directory this /path/to/directory
  * ```
  */
 export class Directory extends pulumi.CustomResource {

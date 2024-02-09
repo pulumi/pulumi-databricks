@@ -72,10 +72,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by `id`bash
+ * This resource can be imported by `id`:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
+ * $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
  * ```
  */
 export class Connection extends pulumi.CustomResource {

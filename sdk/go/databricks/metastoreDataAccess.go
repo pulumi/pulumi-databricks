@@ -17,12 +17,12 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by combination of metastore id and the data access name. bash
+// This resource can be imported by combination of metastore id and the data access name.
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
-//
+// $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
 // ```
 type MetastoreDataAccess struct {
 	pulumi.CustomResourceState

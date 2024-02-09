@@ -319,10 +319,12 @@ class Volume(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
+        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
+        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -399,10 +401,12 @@ class Volume(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by `full_name` which is the 3-level Volume identifier`<catalog>.<schema>.<name>` bash
+        This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
+        $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>
         ```
 
         :param str resource_name: The name of the resource.

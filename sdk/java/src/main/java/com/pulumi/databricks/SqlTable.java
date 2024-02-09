@@ -27,10 +27,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by its full namebash
+ * This resource can be imported by its full name:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
+ * $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
  * ```
  * 
  */

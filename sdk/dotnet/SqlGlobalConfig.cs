@@ -78,10 +78,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID)bash
+    /// You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
+    /// $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlGlobalConfig:SqlGlobalConfig")]

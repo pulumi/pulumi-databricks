@@ -452,10 +452,12 @@ class Catalog(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/catalog:Catalog this <name>
+        $ pulumi import databricks:index/catalog:Catalog this <name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -502,10 +504,12 @@ class Catalog(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/catalog:Catalog this <name>
+        $ pulumi import databricks:index/catalog:Catalog this <name>
         ```
 
         :param str resource_name: The name of the resource.

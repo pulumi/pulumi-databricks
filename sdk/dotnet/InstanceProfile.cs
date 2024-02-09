@@ -260,10 +260,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource instance profile can be imported using the ARN of it bash
+    /// The resource instance profile can be imported using the ARN of it
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/instanceProfile:InstanceProfile this &lt;instance-profile-arn&gt;
+    /// $ pulumi import databricks:index/instanceProfile:InstanceProfile this &lt;instance-profile-arn&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/instanceProfile:InstanceProfile")]

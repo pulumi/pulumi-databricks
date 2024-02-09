@@ -254,10 +254,12 @@ class SqlDashboard(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_sql_dashboard` resource with ID like the followingbash
+        You can import a `databricks_sql_dashboard` resource with ID like the following:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
+        $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -315,10 +317,12 @@ class SqlDashboard(pulumi.CustomResource):
 
         ## Import
 
-        You can import a `databricks_sql_dashboard` resource with ID like the followingbash
+        You can import a `databricks_sql_dashboard` resource with ID like the following:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
+        $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>
         ```
 
         :param str resource_name: The name of the resource.
