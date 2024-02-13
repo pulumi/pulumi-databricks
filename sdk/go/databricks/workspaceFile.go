@@ -14,12 +14,12 @@ import (
 
 // ## Import
 //
-// # The workspace file resource can be imported using workspace file path bash
+// The workspace file resource can be imported using workspace file path
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
-//
+// $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file
 // ```
 type WorkspaceFile struct {
 	pulumi.CustomResourceState

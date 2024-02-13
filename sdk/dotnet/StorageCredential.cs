@@ -131,10 +131,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by namebash
+    /// This resource can be imported by name:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;name&gt;
+    /// $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/storageCredential:StorageCredential")]

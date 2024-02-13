@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs : global::Pulumi.InvokeArgs
     {
-        [Input("destination")]
-        public string? Destination { get; set; }
+        [Input("destination", required: true)]
+        public string Destination { get; set; } = null!;
 
         public GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs()
         {

@@ -62,10 +62,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by combination of workspace id and metastore idbash
+ * This resource can be imported by combination of workspace id and metastore id:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#39;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#39;
+ * $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#39;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#39;
  * ```
  * 
  */

@@ -1524,23 +1524,22 @@ class ClusterInitScriptArgs:
 @pulumi.input_type
 class ClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
+                 destination: pulumi.Input[str]):
         """
         :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -1592,23 +1591,22 @@ class ClusterInitScriptFileArgs:
 @pulumi.input_type
 class ClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
+                 destination: pulumi.Input[str]):
         """
         :param pulumi.Input[str] destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         """
         S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -4344,17 +4342,16 @@ class JobJobClusterNewClusterInitScriptArgs:
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -4377,34 +4374,32 @@ class JobJobClusterNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -4516,17 +4511,16 @@ class JobJobClusterNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class JobJobClusterNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -5811,17 +5805,16 @@ class JobNewClusterInitScriptArgs:
 @pulumi.input_type
 class JobNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -5844,34 +5837,32 @@ class JobNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class JobNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class JobNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -5983,17 +5974,16 @@ class JobNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class JobNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -8571,17 +8561,16 @@ class JobTaskNewClusterInitScriptArgs:
 @pulumi.input_type
 class JobTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -8604,34 +8593,32 @@ class JobTaskNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class JobTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class JobTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -8743,17 +8730,16 @@ class JobTaskNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class JobTaskNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -12498,17 +12484,16 @@ class PipelineClusterInitScriptArgs:
 @pulumi.input_type
 class PipelineClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -12531,34 +12516,32 @@ class PipelineClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class PipelineClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class PipelineClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -12670,17 +12653,16 @@ class PipelineClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class PipelineClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[str]] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: pulumi.Input[str]):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
 
@@ -16517,17 +16499,16 @@ class GetClusterClusterInfoInitScriptArgs:
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -16550,34 +16531,32 @@ class GetClusterClusterInfoInitScriptDbfsArgs:
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -16689,17 +16668,16 @@ class GetClusterClusterInfoInitScriptVolumesArgs:
 @pulumi.input_type
 class GetClusterClusterInfoInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -19609,17 +19587,16 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -19642,34 +19619,32 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -19781,17 +19756,16 @@ class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -20966,17 +20940,16 @@ class GetJobJobSettingsSettingsNewClusterInitScriptArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -20999,34 +20972,32 @@ class GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -21138,17 +21109,16 @@ class GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -23299,17 +23269,16 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -23332,34 +23301,32 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 
@@ -23471,17 +23438,16 @@ class GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs:
     def __init__(__self__, *,
-                 destination: Optional[str] = None):
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+                 destination: str):
+        pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[str]:
+    def destination(self) -> str:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[str]):
+    def destination(self, value: str):
         pulumi.set(self, "destination", value)
 
 

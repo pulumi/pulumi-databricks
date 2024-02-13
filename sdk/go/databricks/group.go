@@ -161,12 +161,12 @@ import (
 //
 // ## Import
 //
-// You can import a `databricks_group` resource with the name `my_group` like the followingbash
+// You can import a `databricks_group` resource with the name `my_group` like the following:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/group:Group my_group <group_id>
-//
+// $ pulumi import databricks:index/group:Group my_group <group_id>
 // ```
 type Group struct {
 	pulumi.CustomResourceState

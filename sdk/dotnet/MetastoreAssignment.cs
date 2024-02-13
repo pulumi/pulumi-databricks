@@ -43,10 +43,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by combination of workspace id and metastore idbash
+    /// This resource can be imported by combination of workspace id and metastore id:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '&lt;workspace_id&gt;|&lt;metastore_id&gt;'
+    /// $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '&lt;workspace_id&gt;|&lt;metastore_id&gt;'
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastoreAssignment:MetastoreAssignment")]

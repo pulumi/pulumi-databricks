@@ -533,10 +533,12 @@ class Metastore(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by IDbash
+        This resource can be imported by ID:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/metastore:Metastore this <id>
+        $ pulumi import databricks:index/metastore:Metastore this <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -567,10 +569,12 @@ class Metastore(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by IDbash
+        This resource can be imported by ID:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/metastore:Metastore this <id>
+        $ pulumi import databricks:index/metastore:Metastore this <id>
         ```
 
         :param str resource_name: The name of the resource.

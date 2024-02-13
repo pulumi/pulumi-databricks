@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobJobClusterNewClusterInitScriptAbfssGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("destination")]
-        public Input<string>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<string> Destination { get; set; } = null!;
 
         public JobJobClusterNewClusterInitScriptAbfssGetArgs()
         {

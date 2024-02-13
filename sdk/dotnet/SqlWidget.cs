@@ -66,10 +66,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// You can import a `databricks_sql_widget` resource with ID like the followingbash
+    /// You can import a `databricks_sql_widget` resource with ID like the following:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/sqlWidget:SqlWidget this &lt;dashboard-id&gt;/&lt;widget-id&gt;
+    /// $ pulumi import databricks:index/sqlWidget:SqlWidget this &lt;dashboard-id&gt;/&lt;widget-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlWidget:SqlWidget")]

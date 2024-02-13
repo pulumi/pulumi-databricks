@@ -49,12 +49,12 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by namebash
+// This resource can be imported by name:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/catalog:Catalog this <name>
-//
+// $ pulumi import databricks:index/catalog:Catalog this <name>
 // ```
 type Catalog struct {
 	pulumi.CustomResourceState

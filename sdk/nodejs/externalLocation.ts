@@ -16,10 +16,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by `name`bash
+ * This resource can be imported by `name`:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
+ * $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
  * ```
  */
 export class ExternalLocation extends pulumi.CustomResource {

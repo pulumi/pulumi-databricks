@@ -325,10 +325,24 @@ class SqlPermissions(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are* `table/default.foo` - table `foo` in a `default` database. Database is always mandatory. * `view/bar.foo` - view `foo` in `bar` database. * `database/bar` - `bar` database. * `catalog/` - entire catalog. `/` suffix is mandatory. * `any file/` - direct access to any file. `/` suffix is mandatory. * `anonymous function/` - anonymous function. `/` suffix is mandatory. bash
+        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
+
+         * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+
+         * `view/bar.foo` - view `foo` in `bar` database.
+
+         * `database/bar` - `bar` database.
+
+         * `catalog/` - entire catalog. `/` suffix is mandatory.
+
+         * `any file/` - direct access to any file. `/` suffix is mandatory.
+
+         * `anonymous function/` - anonymous function. `/` suffix is mandatory.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
+        $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -388,10 +402,24 @@ class SqlPermissions(pulumi.CustomResource):
 
         ## Import
 
-        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are* `table/default.foo` - table `foo` in a `default` database. Database is always mandatory. * `view/bar.foo` - view `foo` in `bar` database. * `database/bar` - `bar` database. * `catalog/` - entire catalog. `/` suffix is mandatory. * `any file/` - direct access to any file. `/` suffix is mandatory. * `anonymous function/` - anonymous function. `/` suffix is mandatory. bash
+        The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
+
+         * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+
+         * `view/bar.foo` - view `foo` in `bar` database.
+
+         * `database/bar` - `bar` database.
+
+         * `catalog/` - entire catalog. `/` suffix is mandatory.
+
+         * `any file/` - direct access to any file. `/` suffix is mandatory.
+
+         * `anonymous function/` - anonymous function. `/` suffix is mandatory.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
+        $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>
         ```
 
         :param str resource_name: The name of the resource.

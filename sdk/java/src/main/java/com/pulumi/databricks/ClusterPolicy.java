@@ -98,10 +98,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource cluster policy can be imported using the policy idbash
+ * The resource cluster policy can be imported using the policy id:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
+ * $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this &lt;cluster-policy-id&gt;
  * ```
  * 
  */

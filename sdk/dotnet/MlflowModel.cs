@@ -63,10 +63,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The model resource can be imported using the name bash
+    /// The model resource can be imported using the name
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/mlflowModel:MlflowModel this &lt;name&gt;
+    /// $ pulumi import databricks:index/mlflowModel:MlflowModel this &lt;name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/mlflowModel:MlflowModel")]

@@ -20,10 +20,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by IDbash
+    /// This resource can be imported by ID:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
+    /// $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/metastore:Metastore")]

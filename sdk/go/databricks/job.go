@@ -13,12 +13,12 @@ import (
 
 // ## Import
 //
-// # The resource job can be imported using the id of the job bash
+// The resource job can be imported using the id of the job
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/job:Job this <job-id>
-//
+// $ pulumi import databricks:index/job:Job this <job-id>
 // ```
 type Job struct {
 	pulumi.CustomResourceState

@@ -78,10 +78,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// The resource cluster can be imported using cluster id. bash
+    /// The resource cluster can be imported using cluster id.
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/cluster:Cluster this &lt;cluster-id&gt;
+    /// $ pulumi import databricks:index/cluster:Cluster this &lt;cluster-id&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/cluster:Cluster")]

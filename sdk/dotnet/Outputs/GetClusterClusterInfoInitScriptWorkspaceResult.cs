@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetClusterClusterInfoInitScriptWorkspaceResult
     {
-        public readonly string? Destination;
+        public readonly string Destination;
 
         [OutputConstructor]
-        private GetClusterClusterInfoInitScriptWorkspaceResult(string? destination)
+        private GetClusterClusterInfoInitScriptWorkspaceResult(string destination)
         {
             Destination = destination;
         }

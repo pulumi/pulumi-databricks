@@ -182,10 +182,12 @@ class SecretScope(pulumi.CustomResource):
 
         ## Import
 
-        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash
+        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+        $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
         ```
 
         :param str resource_name: The name of the resource.
@@ -223,10 +225,12 @@ class SecretScope(pulumi.CustomResource):
 
         ## Import
 
-        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response. bash
+        The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
+        $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
         ```
 
         :param str resource_name: The name of the resource.

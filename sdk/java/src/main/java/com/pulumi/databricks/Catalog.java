@@ -58,10 +58,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by namebash
+ * This resource can be imported by name:
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/catalog:Catalog this &lt;name&gt;
+ * $ pulumi import databricks:index/catalog:Catalog this &lt;name&gt;
  * ```
  * 
  */

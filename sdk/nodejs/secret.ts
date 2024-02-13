@@ -36,10 +36,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.** bash
+ * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
+ * $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
  * ```
  */
 export class Secret extends pulumi.CustomResource {

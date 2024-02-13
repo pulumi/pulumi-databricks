@@ -20,6 +20,7 @@ from .external_location import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
+from .get_aws_unity_catalog_policy import *
 from .get_catalogs import *
 from .get_cluster import *
 from .get_cluster_policy import *

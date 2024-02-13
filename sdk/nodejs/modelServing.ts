@@ -64,10 +64,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The model serving resource can be imported using the name of the endpoint. bash
+ * The model serving resource can be imported using the name of the endpoint.
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
+ * $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
  * ```
  */
 export class ModelServing extends pulumi.CustomResource {

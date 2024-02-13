@@ -305,7 +305,7 @@ export interface ClusterInitScriptAbfss {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: string;
+    destination: string;
 }
 
 export interface ClusterInitScriptDbfs {
@@ -326,7 +326,7 @@ export interface ClusterInitScriptGcs {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: string;
+    destination: string;
 }
 
 export interface ClusterInitScriptS3 {
@@ -671,7 +671,7 @@ export interface GetClusterClusterInfoInitScript {
 }
 
 export interface GetClusterClusterInfoInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptDbfs {
@@ -679,11 +679,11 @@ export interface GetClusterClusterInfoInitScriptDbfs {
 }
 
 export interface GetClusterClusterInfoInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptS3 {
@@ -701,7 +701,7 @@ export interface GetClusterClusterInfoInitScriptVolumes {
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoTerminationReason {
@@ -1125,7 +1125,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
@@ -1133,11 +1133,11 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
@@ -1155,7 +1155,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes 
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
@@ -1307,7 +1307,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
@@ -1315,11 +1315,11 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
@@ -1337,7 +1337,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterWorkloadType {
@@ -1623,7 +1623,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
@@ -1631,11 +1631,11 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
@@ -1653,7 +1653,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
@@ -2415,7 +2415,7 @@ export interface JobJobClusterNewClusterInitScript {
 }
 
 export interface JobJobClusterNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptDbfs {
@@ -2423,11 +2423,11 @@ export interface JobJobClusterNewClusterInitScriptDbfs {
 }
 
 export interface JobJobClusterNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptS3 {
@@ -2445,7 +2445,7 @@ export interface JobJobClusterNewClusterInitScriptVolumes {
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -2649,7 +2649,7 @@ export interface JobNewClusterInitScript {
 }
 
 export interface JobNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobNewClusterInitScriptDbfs {
@@ -2657,11 +2657,11 @@ export interface JobNewClusterInitScriptDbfs {
 }
 
 export interface JobNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobNewClusterInitScriptS3 {
@@ -2679,7 +2679,7 @@ export interface JobNewClusterInitScriptVolumes {
 }
 
 export interface JobNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -3217,7 +3217,7 @@ export interface JobTaskNewClusterInitScript {
 }
 
 export interface JobTaskNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobTaskNewClusterInitScriptDbfs {
@@ -3225,11 +3225,11 @@ export interface JobTaskNewClusterInitScriptDbfs {
 }
 
 export interface JobTaskNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobTaskNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobTaskNewClusterInitScriptS3 {
@@ -3247,7 +3247,7 @@ export interface JobTaskNewClusterInitScriptVolumes {
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -4088,7 +4088,7 @@ export interface PipelineClusterInitScript {
 }
 
 export interface PipelineClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface PipelineClusterInitScriptDbfs {
@@ -4096,11 +4096,11 @@ export interface PipelineClusterInitScriptDbfs {
 }
 
 export interface PipelineClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface PipelineClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface PipelineClusterInitScriptS3 {
@@ -4118,7 +4118,7 @@ export interface PipelineClusterInitScriptVolumes {
 }
 
 export interface PipelineClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface PipelineFilters {

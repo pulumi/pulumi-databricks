@@ -12,10 +12,12 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource dbfs file can be imported using the path of the filebash
+    /// The resource dbfs file can be imported using the path of the file:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
+    /// $ pulumi import databricks:index/dbfsFile:DbfsFile this &lt;path&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/dbfsFile:DbfsFile")]

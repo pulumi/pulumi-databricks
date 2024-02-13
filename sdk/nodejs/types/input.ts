@@ -305,7 +305,7 @@ export interface ClusterInitScriptAbfss {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptDbfs {
@@ -326,7 +326,7 @@ export interface ClusterInitScriptGcs {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptS3 {
@@ -874,11 +874,11 @@ export interface GetClusterClusterInfoInitScriptArgs {
 }
 
 export interface GetClusterClusterInfoInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptAbfssArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptDbfs {
@@ -890,19 +890,19 @@ export interface GetClusterClusterInfoInitScriptDbfsArgs {
 }
 
 export interface GetClusterClusterInfoInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptFileArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptGcsArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptS3 {
@@ -934,11 +934,11 @@ export interface GetClusterClusterInfoInitScriptVolumesArgs {
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspaceArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoTerminationReason {
@@ -1766,11 +1766,11 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfs {
@@ -1782,19 +1782,19 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
@@ -1826,11 +1826,11 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesA
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadType {
@@ -2130,11 +2130,11 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfs {
@@ -2146,19 +2146,19 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptFileArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
@@ -2190,11 +2190,11 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterWorkloadType {
@@ -2762,11 +2762,11 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfs {
@@ -2778,19 +2778,19 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptFile {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
@@ -2822,11 +2822,11 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadType {
@@ -3910,7 +3910,7 @@ export interface JobJobClusterNewClusterInitScript {
 }
 
 export interface JobJobClusterNewClusterInitScriptAbfss {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptDbfs {
@@ -3918,11 +3918,11 @@ export interface JobJobClusterNewClusterInitScriptDbfs {
 }
 
 export interface JobJobClusterNewClusterInitScriptFile {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptGcs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptS3 {
@@ -3940,7 +3940,7 @@ export interface JobJobClusterNewClusterInitScriptVolumes {
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -4144,7 +4144,7 @@ export interface JobNewClusterInitScript {
 }
 
 export interface JobNewClusterInitScriptAbfss {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptDbfs {
@@ -4152,11 +4152,11 @@ export interface JobNewClusterInitScriptDbfs {
 }
 
 export interface JobNewClusterInitScriptFile {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptGcs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptS3 {
@@ -4174,7 +4174,7 @@ export interface JobNewClusterInitScriptVolumes {
 }
 
 export interface JobNewClusterInitScriptWorkspace {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -4712,7 +4712,7 @@ export interface JobTaskNewClusterInitScript {
 }
 
 export interface JobTaskNewClusterInitScriptAbfss {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptDbfs {
@@ -4720,11 +4720,11 @@ export interface JobTaskNewClusterInitScriptDbfs {
 }
 
 export interface JobTaskNewClusterInitScriptFile {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptGcs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptS3 {
@@ -4742,7 +4742,7 @@ export interface JobTaskNewClusterInitScriptVolumes {
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -5583,7 +5583,7 @@ export interface PipelineClusterInitScript {
 }
 
 export interface PipelineClusterInitScriptAbfss {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptDbfs {
@@ -5591,11 +5591,11 @@ export interface PipelineClusterInitScriptDbfs {
 }
 
 export interface PipelineClusterInitScriptFile {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptGcs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptS3 {
@@ -5613,7 +5613,7 @@ export interface PipelineClusterInitScriptVolumes {
 }
 
 export interface PipelineClusterInitScriptWorkspace {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineFilters {

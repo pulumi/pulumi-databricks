@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobNewClusterInitScriptWorkspace
     {
-        public readonly string? Destination;
+        public readonly string Destination;
 
         [OutputConstructor]
-        private JobNewClusterInitScriptWorkspace(string? destination)
+        private JobNewClusterInitScriptWorkspace(string destination)
         {
             Destination = destination;
         }

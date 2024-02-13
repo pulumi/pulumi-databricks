@@ -4,10 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterInitScriptAbfss {
@@ -15,15 +14,15 @@ public final class ClusterInitScriptAbfss {
      * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      * 
      */
-    private @Nullable String destination;
+    private String destination;
 
     private ClusterInitScriptAbfss() {}
     /**
      * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      * 
      */
-    public Optional<String> destination() {
-        return Optional.ofNullable(this.destination);
+    public String destination() {
+        return this.destination;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class ClusterInitScriptAbfss {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String destination;
+        private String destination;
         public Builder() {}
         public Builder(ClusterInitScriptAbfss defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class ClusterInitScriptAbfss {
         }
 
         @CustomType.Setter
-        public Builder destination(@Nullable String destination) {
-
+        public Builder destination(String destination) {
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("ClusterInitScriptAbfss", "destination");
+            }
             this.destination = destination;
             return this;
         }
