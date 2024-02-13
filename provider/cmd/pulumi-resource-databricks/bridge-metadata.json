@@ -1785,6 +1785,10 @@
                     }
                 }
             },
+            "databricks_aws_unity_catalog_policy": {
+                "current": "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy",
+                "majorVersion": 1
+            },
             "databricks_catalogs": {
                 "current": "databricks:index/getCatalogs:getCatalogs",
                 "majorVersion": 1,
@@ -3014,6 +3018,7 @@
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": "databricks_aws_assume_role_policy",
             "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy": "databricks_aws_bucket_policy",
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": "databricks_aws_crossaccount_policy",
+            "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy": "databricks_aws_unity_catalog_policy",
             "databricks:index/getCatalogs:getCatalogs": "databricks_catalogs",
             "databricks:index/getCluster:getCluster": "databricks_cluster",
             "databricks:index/getClusterPolicy:getClusterPolicy": "databricks_cluster_policy",
@@ -4009,6 +4014,12 @@
             },
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": {
                 "passRoles": "pass_roles"
+            },
+            "databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy": {
+                "awsAccountId": "aws_account_id",
+                "bucketName": "bucket_name",
+                "kmsName": "kms_name",
+                "roleName": "role_name"
             },
             "databricks:index/getCluster:getCluster": {
                 "clusterId": "cluster_id",
