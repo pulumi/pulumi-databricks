@@ -80,6 +80,11 @@ export const getAwsCrossAccountPolicy: typeof import("./getAwsCrossAccountPolicy
 export const getAwsCrossAccountPolicyOutput: typeof import("./getAwsCrossAccountPolicy").getAwsCrossAccountPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAwsCrossAccountPolicy","getAwsCrossAccountPolicyOutput"], () => require("./getAwsCrossAccountPolicy"));
 
+export { GetAwsUnityCatalogPolicyArgs, GetAwsUnityCatalogPolicyResult, GetAwsUnityCatalogPolicyOutputArgs } from "./getAwsUnityCatalogPolicy";
+export const getAwsUnityCatalogPolicy: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicy = null as any;
+export const getAwsUnityCatalogPolicyOutput: typeof import("./getAwsUnityCatalogPolicy").getAwsUnityCatalogPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsUnityCatalogPolicy","getAwsUnityCatalogPolicyOutput"], () => require("./getAwsUnityCatalogPolicy"));
+
 export { GetCatalogsArgs, GetCatalogsResult, GetCatalogsOutputArgs } from "./getCatalogs";
 export const getCatalogs: typeof import("./getCatalogs").getCatalogs = null as any;
 export const getCatalogsOutput: typeof import("./getCatalogs").getCatalogsOutput = null as any;

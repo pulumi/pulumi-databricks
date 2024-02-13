@@ -213,10 +213,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
         ```
 
         :param str resource_name: The name of the resource.
@@ -255,10 +257,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by namebash
+        This resource can be imported by name:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
         ```
 
         :param str resource_name: The name of the resource.

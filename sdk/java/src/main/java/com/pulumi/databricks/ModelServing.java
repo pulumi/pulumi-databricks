@@ -97,10 +97,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The model serving resource can be imported using the name of the endpoint. bash
+ * The model serving resource can be imported using the name of the endpoint.
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/modelServing:ModelServing this &lt;model-serving-endpoint-name&gt;
+ * $ pulumi import databricks:index/modelServing:ModelServing this &lt;model-serving-endpoint-name&gt;
  * ```
  * 
  */

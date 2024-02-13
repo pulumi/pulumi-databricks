@@ -219,10 +219,12 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Import
 
-        The registered model resource can be imported using the full (3-level) name of the model. bash
+        The registered model resource can be imported using the full (3-level) name of the model.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+        $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -269,10 +271,12 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Import
 
-        The registered model resource can be imported using the full (3-level) name of the model. bash
+        The registered model resource can be imported using the full (3-level) name of the model.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
+        $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
         ```
 
         :param str resource_name: The name of the resource.

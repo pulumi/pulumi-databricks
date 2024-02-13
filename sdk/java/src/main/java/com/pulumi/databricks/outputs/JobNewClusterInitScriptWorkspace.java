@@ -4,18 +4,17 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobNewClusterInitScriptWorkspace {
-    private @Nullable String destination;
+    private String destination;
 
     private JobNewClusterInitScriptWorkspace() {}
-    public Optional<String> destination() {
-        return Optional.ofNullable(this.destination);
+    public String destination() {
+        return this.destination;
     }
 
     public static Builder builder() {
@@ -27,7 +26,7 @@ public final class JobNewClusterInitScriptWorkspace {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String destination;
+        private String destination;
         public Builder() {}
         public Builder(JobNewClusterInitScriptWorkspace defaults) {
     	      Objects.requireNonNull(defaults);
@@ -35,8 +34,10 @@ public final class JobNewClusterInitScriptWorkspace {
         }
 
         @CustomType.Setter
-        public Builder destination(@Nullable String destination) {
-
+        public Builder destination(String destination) {
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("JobNewClusterInitScriptWorkspace", "destination");
+            }
             this.destination = destination;
             return this;
         }

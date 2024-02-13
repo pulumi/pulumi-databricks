@@ -276,10 +276,12 @@ class Repo(pulumi.CustomResource):
         """
         ## Import
 
-        The resource Repo can be imported using the Repo ID (obtained via UI or using API) bash
+        The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/repo:Repo this repo_id
+        $ pulumi import databricks:index/repo:Repo this repo_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -300,10 +302,12 @@ class Repo(pulumi.CustomResource):
         """
         ## Import
 
-        The resource Repo can be imported using the Repo ID (obtained via UI or using API) bash
+        The resource Repo can be imported using the Repo ID (obtained via UI or using API)
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/repo:Repo this repo_id
+        $ pulumi import databricks:index/repo:Repo this repo_id
         ```
 
         :param str resource_name: The name of the resource.

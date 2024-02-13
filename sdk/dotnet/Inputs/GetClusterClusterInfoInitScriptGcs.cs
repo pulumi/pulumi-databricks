@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetClusterClusterInfoInitScriptGcsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("destination")]
-        public string? Destination { get; set; }
+        [Input("destination", required: true)]
+        public string Destination { get; set; } = null!;
 
         public GetClusterClusterInfoInitScriptGcsArgs()
         {

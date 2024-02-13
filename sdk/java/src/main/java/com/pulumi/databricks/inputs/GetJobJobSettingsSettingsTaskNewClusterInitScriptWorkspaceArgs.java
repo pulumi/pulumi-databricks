@@ -5,21 +5,20 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs Empty = new GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs();
 
-    @Import(name="destination")
-    private @Nullable Output<String> destination;
+    @Import(name="destination", required=true)
+    private Output<String> destination;
 
-    public Optional<Output<String>> destination() {
-        return Optional.ofNullable(this.destination);
+    public Output<String> destination() {
+        return this.destination;
     }
 
     private GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs() {}
@@ -46,7 +45,7 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArg
             $ = new GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder destination(@Nullable Output<String> destination) {
+        public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
@@ -56,6 +55,9 @@ public final class GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArg
         }
 
         public GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs build() {
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs", "destination");
+            }
             return $;
         }
     }

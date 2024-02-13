@@ -114,10 +114,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The resource job can be imported using the id of the pipeline bash
+ * The resource job can be imported using the id of the pipeline
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;
+ * $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;
  * ```
  * 
  */

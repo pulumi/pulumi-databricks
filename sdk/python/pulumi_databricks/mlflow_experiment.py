@@ -264,10 +264,12 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Import
 
-        The experiment resource can be imported using the id of the experiment bash
+        The experiment resource can be imported using the id of the experiment
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -314,10 +316,12 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Import
 
-        The experiment resource can be imported using the id of the experiment bash
+        The experiment resource can be imported using the id of the experiment
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
+        $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
         ```
 
         :param str resource_name: The name of the resource.

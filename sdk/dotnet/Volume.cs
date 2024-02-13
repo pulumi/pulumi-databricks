@@ -91,10 +91,12 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by `full_name` which is the 3-level Volume identifier`&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;` bash
+    /// This resource can be imported by `full_name` which is the 3-level Volume identifier: `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
+    /// $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/volume:Volume")]

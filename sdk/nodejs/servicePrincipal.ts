@@ -100,10 +100,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals). bash
+ * The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
+ * $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
  * ```
  */
 export class ServicePrincipal extends pulumi.CustomResource {

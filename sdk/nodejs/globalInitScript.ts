@@ -7,10 +7,12 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * The resource global init script can be imported using script IDbash
+ * The resource global init script can be imported using script ID:
+ *
+ *  bash
  *
  * ```sh
- *  $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+ * $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
  * ```
  */
 export class GlobalInitScript extends pulumi.CustomResource {

@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineClusterInitScriptGcs
     {
-        public readonly string? Destination;
+        public readonly string Destination;
 
         [OutputConstructor]
-        private PipelineClusterInitScriptGcs(string? destination)
+        private PipelineClusterInitScriptGcs(string destination)
         {
             Destination = destination;
         }

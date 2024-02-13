@@ -55,10 +55,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by the metastore id and schema name bash
+ * This resource can be imported by the metastore id and schema name
+ * 
+ *  bash
  * 
  * ```sh
- *  $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;
+ * $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;
  * ```
  * 
  */

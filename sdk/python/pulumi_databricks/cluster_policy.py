@@ -351,10 +351,12 @@ class ClusterPolicy(pulumi.CustomResource):
 
         ## Import
 
-        The resource cluster policy can be imported using the policy idbash
+        The resource cluster policy can be imported using the policy id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
+        $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -442,10 +444,12 @@ class ClusterPolicy(pulumi.CustomResource):
 
         ## Import
 
-        The resource cluster policy can be imported using the policy idbash
+        The resource cluster policy can be imported using the policy id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
+        $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
         ```
 
         :param str resource_name: The name of the resource.

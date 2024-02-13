@@ -30,6 +30,7 @@
         "getAwsAssumeRolePolicy.ts",
         "getAwsBucketPolicy.ts",
         "getAwsCrossAccountPolicy.ts",
+        "getAwsUnityCatalogPolicy.ts",
         "getCatalogs.ts",
         "getCluster.ts",
         "getClusterPolicy.ts",

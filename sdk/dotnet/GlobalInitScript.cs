@@ -12,10 +12,12 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Import
     /// 
-    /// The resource global init script can be imported using script IDbash
+    /// The resource global init script can be imported using script ID:
+    /// 
+    ///  bash
     /// 
     /// ```sh
-    ///  $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
+    /// $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/globalInitScript:GlobalInitScript")]

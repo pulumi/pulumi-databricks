@@ -20,12 +20,12 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by its full namebash
+// This resource can be imported by its full name:
+//
+//	bash
 //
 // ```sh
-//
-//	$ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
-//
+// $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>
 // ```
 type SqlTable struct {
 	pulumi.CustomResourceState

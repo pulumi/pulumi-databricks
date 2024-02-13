@@ -2932,7 +2932,7 @@ func (o ClusterInitScriptArrayOutput) Index(i pulumi.IntInput) ClusterInitScript
 
 type ClusterInitScriptAbfss struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // ClusterInitScriptAbfssInput is an input type that accepts ClusterInitScriptAbfssArgs and ClusterInitScriptAbfssOutput values.
@@ -2948,7 +2948,7 @@ type ClusterInitScriptAbfssInput interface {
 
 type ClusterInitScriptAbfssArgs struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (ClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -3029,8 +3029,8 @@ func (o ClusterInitScriptAbfssOutput) ToClusterInitScriptAbfssPtrOutputWithConte
 }
 
 // S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-func (o ClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o ClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type ClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -3063,7 +3063,7 @@ func (o ClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3343,7 +3343,7 @@ func (o ClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutput {
 
 type ClusterInitScriptGcs struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // ClusterInitScriptGcsInput is an input type that accepts ClusterInitScriptGcsArgs and ClusterInitScriptGcsOutput values.
@@ -3359,7 +3359,7 @@ type ClusterInitScriptGcsInput interface {
 
 type ClusterInitScriptGcsArgs struct {
 	// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (ClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -3440,8 +3440,8 @@ func (o ClusterInitScriptGcsOutput) ToClusterInitScriptGcsPtrOutputWithContext(c
 }
 
 // S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-func (o ClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o ClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type ClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -3474,7 +3474,7 @@ func (o ClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12198,7 +12198,7 @@ func (o JobJobClusterNewClusterInitScriptArrayOutput) Index(i pulumi.IntInput) J
 }
 
 type JobJobClusterNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobJobClusterNewClusterInitScriptAbfssInput is an input type that accepts JobJobClusterNewClusterInitScriptAbfssArgs and JobJobClusterNewClusterInitScriptAbfssOutput values.
@@ -12213,7 +12213,7 @@ type JobJobClusterNewClusterInitScriptAbfssInput interface {
 }
 
 type JobJobClusterNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobJobClusterNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -12293,8 +12293,8 @@ func (o JobJobClusterNewClusterInitScriptAbfssOutput) ToJobJobClusterNewClusterI
 	}).(JobJobClusterNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o JobJobClusterNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobJobClusterNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobJobClusterNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -12326,7 +12326,7 @@ func (o JobJobClusterNewClusterInitScriptAbfssPtrOutput) Destination() pulumi.St
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12464,7 +12464,7 @@ func (o JobJobClusterNewClusterInitScriptDbfsPtrOutput) Destination() pulumi.Str
 }
 
 type JobJobClusterNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobJobClusterNewClusterInitScriptFileInput is an input type that accepts JobJobClusterNewClusterInitScriptFileArgs and JobJobClusterNewClusterInitScriptFileOutput values.
@@ -12479,7 +12479,7 @@ type JobJobClusterNewClusterInitScriptFileInput interface {
 }
 
 type JobJobClusterNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobJobClusterNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -12559,8 +12559,8 @@ func (o JobJobClusterNewClusterInitScriptFileOutput) ToJobJobClusterNewClusterIn
 	}).(JobJobClusterNewClusterInitScriptFilePtrOutput)
 }
 
-func (o JobJobClusterNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobJobClusterNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobJobClusterNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -12592,12 +12592,12 @@ func (o JobJobClusterNewClusterInitScriptFilePtrOutput) Destination() pulumi.Str
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type JobJobClusterNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobJobClusterNewClusterInitScriptGcsInput is an input type that accepts JobJobClusterNewClusterInitScriptGcsArgs and JobJobClusterNewClusterInitScriptGcsOutput values.
@@ -12612,7 +12612,7 @@ type JobJobClusterNewClusterInitScriptGcsInput interface {
 }
 
 type JobJobClusterNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobJobClusterNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -12692,8 +12692,8 @@ func (o JobJobClusterNewClusterInitScriptGcsOutput) ToJobJobClusterNewClusterIni
 	}).(JobJobClusterNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o JobJobClusterNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobJobClusterNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobJobClusterNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -12725,7 +12725,7 @@ func (o JobJobClusterNewClusterInitScriptGcsPtrOutput) Destination() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13086,7 +13086,7 @@ func (o JobJobClusterNewClusterInitScriptVolumesPtrOutput) Destination() pulumi.
 }
 
 type JobJobClusterNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobJobClusterNewClusterInitScriptWorkspaceInput is an input type that accepts JobJobClusterNewClusterInitScriptWorkspaceArgs and JobJobClusterNewClusterInitScriptWorkspaceOutput values.
@@ -13101,7 +13101,7 @@ type JobJobClusterNewClusterInitScriptWorkspaceInput interface {
 }
 
 type JobJobClusterNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobJobClusterNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -13181,8 +13181,8 @@ func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) ToJobJobClusterNewClus
 	}).(JobJobClusterNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobJobClusterNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobJobClusterNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -13214,7 +13214,7 @@ func (o JobJobClusterNewClusterInitScriptWorkspacePtrOutput) Destination() pulum
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16699,7 +16699,7 @@ func (o JobNewClusterInitScriptArrayOutput) Index(i pulumi.IntInput) JobNewClust
 }
 
 type JobNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobNewClusterInitScriptAbfssInput is an input type that accepts JobNewClusterInitScriptAbfssArgs and JobNewClusterInitScriptAbfssOutput values.
@@ -16714,7 +16714,7 @@ type JobNewClusterInitScriptAbfssInput interface {
 }
 
 type JobNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -16794,8 +16794,8 @@ func (o JobNewClusterInitScriptAbfssOutput) ToJobNewClusterInitScriptAbfssPtrOut
 	}).(JobNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o JobNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -16827,7 +16827,7 @@ func (o JobNewClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16965,7 +16965,7 @@ func (o JobNewClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOutp
 }
 
 type JobNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobNewClusterInitScriptFileInput is an input type that accepts JobNewClusterInitScriptFileArgs and JobNewClusterInitScriptFileOutput values.
@@ -16980,7 +16980,7 @@ type JobNewClusterInitScriptFileInput interface {
 }
 
 type JobNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -17060,8 +17060,8 @@ func (o JobNewClusterInitScriptFileOutput) ToJobNewClusterInitScriptFilePtrOutpu
 	}).(JobNewClusterInitScriptFilePtrOutput)
 }
 
-func (o JobNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -17093,12 +17093,12 @@ func (o JobNewClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type JobNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobNewClusterInitScriptGcsInput is an input type that accepts JobNewClusterInitScriptGcsArgs and JobNewClusterInitScriptGcsOutput values.
@@ -17113,7 +17113,7 @@ type JobNewClusterInitScriptGcsInput interface {
 }
 
 type JobNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -17193,8 +17193,8 @@ func (o JobNewClusterInitScriptGcsOutput) ToJobNewClusterInitScriptGcsPtrOutputW
 	}).(JobNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o JobNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -17226,7 +17226,7 @@ func (o JobNewClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOutpu
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17587,7 +17587,7 @@ func (o JobNewClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPtrO
 }
 
 type JobNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobNewClusterInitScriptWorkspaceInput is an input type that accepts JobNewClusterInitScriptWorkspaceArgs and JobNewClusterInitScriptWorkspaceOutput values.
@@ -17602,7 +17602,7 @@ type JobNewClusterInitScriptWorkspaceInput interface {
 }
 
 type JobNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -17682,8 +17682,8 @@ func (o JobNewClusterInitScriptWorkspaceOutput) ToJobNewClusterInitScriptWorkspa
 	}).(JobNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o JobNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -17715,7 +17715,7 @@ func (o JobNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24485,7 +24485,7 @@ func (o JobTaskNewClusterInitScriptArrayOutput) Index(i pulumi.IntInput) JobTask
 }
 
 type JobTaskNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobTaskNewClusterInitScriptAbfssInput is an input type that accepts JobTaskNewClusterInitScriptAbfssArgs and JobTaskNewClusterInitScriptAbfssOutput values.
@@ -24500,7 +24500,7 @@ type JobTaskNewClusterInitScriptAbfssInput interface {
 }
 
 type JobTaskNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobTaskNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -24580,8 +24580,8 @@ func (o JobTaskNewClusterInitScriptAbfssOutput) ToJobTaskNewClusterInitScriptAbf
 	}).(JobTaskNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o JobTaskNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobTaskNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobTaskNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -24613,7 +24613,7 @@ func (o JobTaskNewClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24751,7 +24751,7 @@ func (o JobTaskNewClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtr
 }
 
 type JobTaskNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobTaskNewClusterInitScriptFileInput is an input type that accepts JobTaskNewClusterInitScriptFileArgs and JobTaskNewClusterInitScriptFileOutput values.
@@ -24766,7 +24766,7 @@ type JobTaskNewClusterInitScriptFileInput interface {
 }
 
 type JobTaskNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobTaskNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -24846,8 +24846,8 @@ func (o JobTaskNewClusterInitScriptFileOutput) ToJobTaskNewClusterInitScriptFile
 	}).(JobTaskNewClusterInitScriptFilePtrOutput)
 }
 
-func (o JobTaskNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobTaskNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobTaskNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -24879,12 +24879,12 @@ func (o JobTaskNewClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type JobTaskNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobTaskNewClusterInitScriptGcsInput is an input type that accepts JobTaskNewClusterInitScriptGcsArgs and JobTaskNewClusterInitScriptGcsOutput values.
@@ -24899,7 +24899,7 @@ type JobTaskNewClusterInitScriptGcsInput interface {
 }
 
 type JobTaskNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobTaskNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -24979,8 +24979,8 @@ func (o JobTaskNewClusterInitScriptGcsOutput) ToJobTaskNewClusterInitScriptGcsPt
 	}).(JobTaskNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o JobTaskNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobTaskNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobTaskNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -25012,7 +25012,7 @@ func (o JobTaskNewClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25373,7 +25373,7 @@ func (o JobTaskNewClusterInitScriptVolumesPtrOutput) Destination() pulumi.String
 }
 
 type JobTaskNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // JobTaskNewClusterInitScriptWorkspaceInput is an input type that accepts JobTaskNewClusterInitScriptWorkspaceArgs and JobTaskNewClusterInitScriptWorkspaceOutput values.
@@ -25388,7 +25388,7 @@ type JobTaskNewClusterInitScriptWorkspaceInput interface {
 }
 
 type JobTaskNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (JobTaskNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -25468,8 +25468,8 @@ func (o JobTaskNewClusterInitScriptWorkspaceOutput) ToJobTaskNewClusterInitScrip
 	}).(JobTaskNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o JobTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobTaskNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o JobTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v JobTaskNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type JobTaskNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -25501,7 +25501,7 @@ func (o JobTaskNewClusterInitScriptWorkspacePtrOutput) Destination() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37465,7 +37465,7 @@ func (o PipelineClusterInitScriptArrayOutput) Index(i pulumi.IntInput) PipelineC
 }
 
 type PipelineClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // PipelineClusterInitScriptAbfssInput is an input type that accepts PipelineClusterInitScriptAbfssArgs and PipelineClusterInitScriptAbfssOutput values.
@@ -37480,7 +37480,7 @@ type PipelineClusterInitScriptAbfssInput interface {
 }
 
 type PipelineClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (PipelineClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -37560,8 +37560,8 @@ func (o PipelineClusterInitScriptAbfssOutput) ToPipelineClusterInitScriptAbfssPt
 	}).(PipelineClusterInitScriptAbfssPtrOutput)
 }
 
-func (o PipelineClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o PipelineClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type PipelineClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -37593,7 +37593,7 @@ func (o PipelineClusterInitScriptAbfssPtrOutput) Destination() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37731,7 +37731,7 @@ func (o PipelineClusterInitScriptDbfsPtrOutput) Destination() pulumi.StringPtrOu
 }
 
 type PipelineClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // PipelineClusterInitScriptFileInput is an input type that accepts PipelineClusterInitScriptFileArgs and PipelineClusterInitScriptFileOutput values.
@@ -37746,7 +37746,7 @@ type PipelineClusterInitScriptFileInput interface {
 }
 
 type PipelineClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (PipelineClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -37826,8 +37826,8 @@ func (o PipelineClusterInitScriptFileOutput) ToPipelineClusterInitScriptFilePtrO
 	}).(PipelineClusterInitScriptFilePtrOutput)
 }
 
-func (o PipelineClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o PipelineClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type PipelineClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -37859,12 +37859,12 @@ func (o PipelineClusterInitScriptFilePtrOutput) Destination() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type PipelineClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // PipelineClusterInitScriptGcsInput is an input type that accepts PipelineClusterInitScriptGcsArgs and PipelineClusterInitScriptGcsOutput values.
@@ -37879,7 +37879,7 @@ type PipelineClusterInitScriptGcsInput interface {
 }
 
 type PipelineClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (PipelineClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -37959,8 +37959,8 @@ func (o PipelineClusterInitScriptGcsOutput) ToPipelineClusterInitScriptGcsPtrOut
 	}).(PipelineClusterInitScriptGcsPtrOutput)
 }
 
-func (o PipelineClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o PipelineClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type PipelineClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -37992,7 +37992,7 @@ func (o PipelineClusterInitScriptGcsPtrOutput) Destination() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38353,7 +38353,7 @@ func (o PipelineClusterInitScriptVolumesPtrOutput) Destination() pulumi.StringPt
 }
 
 type PipelineClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // PipelineClusterInitScriptWorkspaceInput is an input type that accepts PipelineClusterInitScriptWorkspaceArgs and PipelineClusterInitScriptWorkspaceOutput values.
@@ -38368,7 +38368,7 @@ type PipelineClusterInitScriptWorkspaceInput interface {
 }
 
 type PipelineClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (PipelineClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -38448,8 +38448,8 @@ func (o PipelineClusterInitScriptWorkspaceOutput) ToPipelineClusterInitScriptWor
 	}).(PipelineClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o PipelineClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o PipelineClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type PipelineClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -38481,7 +38481,7 @@ func (o PipelineClusterInitScriptWorkspacePtrOutput) Destination() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -49359,7 +49359,7 @@ func (o GetClusterClusterInfoInitScriptArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterClusterInfoInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetClusterClusterInfoInitScriptAbfssInput is an input type that accepts GetClusterClusterInfoInitScriptAbfssArgs and GetClusterClusterInfoInitScriptAbfssOutput values.
@@ -49374,7 +49374,7 @@ type GetClusterClusterInfoInitScriptAbfssInput interface {
 }
 
 type GetClusterClusterInfoInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetClusterClusterInfoInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -49454,8 +49454,8 @@ func (o GetClusterClusterInfoInitScriptAbfssOutput) ToGetClusterClusterInfoInitS
 	}).(GetClusterClusterInfoInitScriptAbfssPtrOutput)
 }
 
-func (o GetClusterClusterInfoInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetClusterClusterInfoInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetClusterClusterInfoInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -49487,7 +49487,7 @@ func (o GetClusterClusterInfoInitScriptAbfssPtrOutput) Destination() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -49625,7 +49625,7 @@ func (o GetClusterClusterInfoInitScriptDbfsPtrOutput) Destination() pulumi.Strin
 }
 
 type GetClusterClusterInfoInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetClusterClusterInfoInitScriptFileInput is an input type that accepts GetClusterClusterInfoInitScriptFileArgs and GetClusterClusterInfoInitScriptFileOutput values.
@@ -49640,7 +49640,7 @@ type GetClusterClusterInfoInitScriptFileInput interface {
 }
 
 type GetClusterClusterInfoInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetClusterClusterInfoInitScriptFileArgs) ElementType() reflect.Type {
@@ -49720,8 +49720,8 @@ func (o GetClusterClusterInfoInitScriptFileOutput) ToGetClusterClusterInfoInitSc
 	}).(GetClusterClusterInfoInitScriptFilePtrOutput)
 }
 
-func (o GetClusterClusterInfoInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetClusterClusterInfoInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetClusterClusterInfoInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -49753,12 +49753,12 @@ func (o GetClusterClusterInfoInitScriptFilePtrOutput) Destination() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type GetClusterClusterInfoInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetClusterClusterInfoInitScriptGcsInput is an input type that accepts GetClusterClusterInfoInitScriptGcsArgs and GetClusterClusterInfoInitScriptGcsOutput values.
@@ -49773,7 +49773,7 @@ type GetClusterClusterInfoInitScriptGcsInput interface {
 }
 
 type GetClusterClusterInfoInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetClusterClusterInfoInitScriptGcsArgs) ElementType() reflect.Type {
@@ -49853,8 +49853,8 @@ func (o GetClusterClusterInfoInitScriptGcsOutput) ToGetClusterClusterInfoInitScr
 	}).(GetClusterClusterInfoInitScriptGcsPtrOutput)
 }
 
-func (o GetClusterClusterInfoInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetClusterClusterInfoInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetClusterClusterInfoInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -49886,7 +49886,7 @@ func (o GetClusterClusterInfoInitScriptGcsPtrOutput) Destination() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50247,7 +50247,7 @@ func (o GetClusterClusterInfoInitScriptVolumesPtrOutput) Destination() pulumi.St
 }
 
 type GetClusterClusterInfoInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetClusterClusterInfoInitScriptWorkspaceInput is an input type that accepts GetClusterClusterInfoInitScriptWorkspaceArgs and GetClusterClusterInfoInitScriptWorkspaceOutput values.
@@ -50262,7 +50262,7 @@ type GetClusterClusterInfoInitScriptWorkspaceInput interface {
 }
 
 type GetClusterClusterInfoInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetClusterClusterInfoInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -50342,8 +50342,8 @@ func (o GetClusterClusterInfoInitScriptWorkspaceOutput) ToGetClusterClusterInfoI
 	}).(GetClusterClusterInfoInitScriptWorkspacePtrOutput)
 }
 
-func (o GetClusterClusterInfoInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClusterClusterInfoInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetClusterClusterInfoInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterInfoInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetClusterClusterInfoInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -50375,7 +50375,7 @@ func (o GetClusterClusterInfoInitScriptWorkspacePtrOutput) Destination() pulumi.
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58300,7 +58300,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArrayOutput) Inde
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssOutput values.
@@ -58315,7 +58315,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssInput interface
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -58395,8 +58395,8 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssOutput) ToGe
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -58428,7 +58428,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssPtrOutput) D
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58566,7 +58566,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsPtrOutput) De
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileOutput values.
@@ -58581,7 +58581,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileInput interface 
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -58661,8 +58661,8 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileOutput) ToGet
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -58694,12 +58694,12 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFilePtrOutput) De
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput values.
@@ -58714,7 +58714,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsInput interface {
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -58794,8 +58794,8 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) ToGetJ
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -58827,7 +58827,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsPtrOutput) Des
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -59188,7 +59188,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesPtrOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput values.
@@ -59203,7 +59203,7 @@ type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceInput inter
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -59283,8 +59283,8 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) 
 	}).(GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -59316,7 +59316,7 @@ func (o GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspacePtrOutpu
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62647,7 +62647,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptArrayOutput) Index(i pulumi
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs and GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput values.
@@ -62662,7 +62662,7 @@ type GetJobJobSettingsSettingsNewClusterInitScriptAbfssInput interface {
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -62742,8 +62742,8 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) ToGetJobJobSet
 	}).(GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -62775,7 +62775,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptAbfssPtrOutput) Destination
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62913,7 +62913,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptDbfsPtrOutput) Destination(
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsNewClusterInitScriptFileInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptFileArgs and GetJobJobSettingsSettingsNewClusterInitScriptFileOutput values.
@@ -62928,7 +62928,7 @@ type GetJobJobSettingsSettingsNewClusterInitScriptFileInput interface {
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -63008,8 +63008,8 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) ToGetJobJobSett
 	}).(GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -63041,12 +63041,12 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptFilePtrOutput) Destination(
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsNewClusterInitScriptGcsInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs and GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput values.
@@ -63061,7 +63061,7 @@ type GetJobJobSettingsSettingsNewClusterInitScriptGcsInput interface {
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -63141,8 +63141,8 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) ToGetJobJobSetti
 	}).(GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -63174,7 +63174,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptGcsPtrOutput) Destination()
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -63535,7 +63535,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptVolumesPtrOutput) Destinati
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput values.
@@ -63550,7 +63550,7 @@ type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceInput interface {
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -63630,8 +63630,8 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) ToGetJobJo
 	}).(GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -63663,7 +63663,7 @@ func (o GetJobJobSettingsSettingsNewClusterInitScriptWorkspacePtrOutput) Destina
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -69947,7 +69947,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptArrayOutput) Index(i pu
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssOutput values.
@@ -69962,7 +69962,7 @@ type GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs) ElementType() reflect.Type {
@@ -70042,8 +70042,8 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssOutput) ToGetJobJo
 	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssPtrOutput struct{ *pulumi.OutputState }
@@ -70075,7 +70075,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssPtrOutput) Destina
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -70213,7 +70213,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsPtrOutput) Destinat
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptFile struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsTaskNewClusterInitScriptFileInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptFileOutput values.
@@ -70228,7 +70228,7 @@ type GetJobJobSettingsSettingsTaskNewClusterInitScriptFileInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs) ElementType() reflect.Type {
@@ -70308,8 +70308,8 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptFileOutput) ToGetJobJob
 	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptFilePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptFilePtrOutput struct{ *pulumi.OutputState }
@@ -70341,12 +70341,12 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptFilePtrOutput) Destinat
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsOutput values.
@@ -70361,7 +70361,7 @@ type GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs) ElementType() reflect.Type {
@@ -70441,8 +70441,8 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsOutput) ToGetJobJobS
 	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptGcs) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrOutput struct{ *pulumi.OutputState }
@@ -70474,7 +70474,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsPtrOutput) Destinati
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -70835,7 +70835,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesPtrOutput) Desti
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace struct {
-	Destination *string `pulumi:"destination"`
+	Destination string `pulumi:"destination"`
 }
 
 // GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput is an input type that accepts GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs and GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput values.
@@ -70850,7 +70850,7 @@ type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceInput interface {
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs struct {
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
 func (GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs) ElementType() reflect.Type {
@@ -70930,8 +70930,8 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) ToGetJ
 	}).(GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput)
 }
 
-func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) *string { return v.Destination }).(pulumi.StringPtrOutput)
+func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput struct{ *pulumi.OutputState }
@@ -70963,7 +70963,7 @@ func (o GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspacePtrOutput) Des
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 

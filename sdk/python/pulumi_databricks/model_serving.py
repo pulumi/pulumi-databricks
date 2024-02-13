@@ -224,10 +224,12 @@ class ModelServing(pulumi.CustomResource):
 
         ## Import
 
-        The model serving resource can be imported using the name of the endpoint. bash
+        The model serving resource can be imported using the name of the endpoint.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
+        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -299,10 +301,12 @@ class ModelServing(pulumi.CustomResource):
 
         ## Import
 
-        The model serving resource can be imported using the name of the endpoint. bash
+        The model serving resource can be imported using the name of the endpoint.
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
+        $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
         ```
 
         :param str resource_name: The name of the resource.

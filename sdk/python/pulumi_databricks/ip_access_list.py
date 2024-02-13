@@ -199,10 +199,12 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Import
 
-        The databricks_ip_access_list can be imported using idbash
+        The databricks_ip_access_list can be imported using id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
+        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -255,10 +257,12 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Import
 
-        The databricks_ip_access_list can be imported using idbash
+        The databricks_ip_access_list can be imported using id:
+
+         bash
 
         ```sh
-         $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
+        $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
         ```
 
         :param str resource_name: The name of the resource.

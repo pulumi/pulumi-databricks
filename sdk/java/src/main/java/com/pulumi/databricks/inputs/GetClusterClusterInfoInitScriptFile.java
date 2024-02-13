@@ -4,21 +4,20 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetClusterClusterInfoInitScriptFile extends com.pulumi.resources.InvokeArgs {
 
     public static final GetClusterClusterInfoInitScriptFile Empty = new GetClusterClusterInfoInitScriptFile();
 
-    @Import(name="destination")
-    private @Nullable String destination;
+    @Import(name="destination", required=true)
+    private String destination;
 
-    public Optional<String> destination() {
-        return Optional.ofNullable(this.destination);
+    public String destination() {
+        return this.destination;
     }
 
     private GetClusterClusterInfoInitScriptFile() {}
@@ -45,12 +44,15 @@ public final class GetClusterClusterInfoInitScriptFile extends com.pulumi.resour
             $ = new GetClusterClusterInfoInitScriptFile(Objects.requireNonNull(defaults));
         }
 
-        public Builder destination(@Nullable String destination) {
+        public Builder destination(String destination) {
             $.destination = destination;
             return this;
         }
 
         public GetClusterClusterInfoInitScriptFile build() {
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfoInitScriptFile", "destination");
+            }
             return $;
         }
     }
