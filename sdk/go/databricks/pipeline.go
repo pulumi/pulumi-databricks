@@ -147,7 +147,8 @@ type Pipeline struct {
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
-	Url    pulumi.StringOutput    `pulumi:"url"`
+	// URL of the DLT pipeline on the given workspace.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewPipeline registers a new resource with the given unique name, arguments, and options.
@@ -208,7 +209,8 @@ type pipelineState struct {
 	Storage *string `pulumi:"storage"`
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target *string `pulumi:"target"`
-	Url    *string `pulumi:"url"`
+	// URL of the DLT pipeline on the given workspace.
+	Url *string `pulumi:"url"`
 }
 
 type PipelineState struct {
@@ -240,7 +242,8 @@ type PipelineState struct {
 	Storage pulumi.StringPtrInput
 	// The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
 	Target pulumi.StringPtrInput
-	Url    pulumi.StringPtrInput
+	// URL of the DLT pipeline on the given workspace.
+	Url pulumi.StringPtrInput
 }
 
 func (PipelineState) ElementType() reflect.Type {
@@ -473,6 +476,7 @@ func (o PipelineOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+// URL of the DLT pipeline on the given workspace.
 func (o PipelineOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

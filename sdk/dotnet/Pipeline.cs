@@ -204,6 +204,9 @@ namespace Pulumi.Databricks
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
 
+        /// <summary>
+        /// URL of the DLT pipeline on the given workspace.
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -475,6 +478,9 @@ namespace Pulumi.Databricks
         [Input("target")]
         public Input<string>? Target { get; set; }
 
+        /// <summary>
+        /// URL of the DLT pipeline on the given workspace.
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

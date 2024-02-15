@@ -12,6 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
+//
+//	bash
+//
+// ```sh
+// $ pulumi import databricks:index/grants:Grants this catalog/abc
+// ```
 type Grants struct {
 	pulumi.CustomResourceState
 

@@ -168,6 +168,9 @@ export class Pipeline extends pulumi.CustomResource {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     public readonly target!: pulumi.Output<string | undefined>;
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
@@ -281,6 +284,9 @@ export interface PipelineState {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     target?: pulumi.Input<string>;
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     */
     url?: pulumi.Input<string>;
 }
 

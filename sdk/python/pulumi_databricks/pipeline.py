@@ -295,6 +295,7 @@ class _PipelineState:
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] url: URL of the DLT pipeline on the given workspace.
         """
         if allow_duplicate_names is not None:
             pulumi.set(__self__, "allow_duplicate_names", allow_duplicate_names)
@@ -514,6 +515,9 @@ class _PipelineState:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the DLT pipeline on the given workspace.
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -829,6 +833,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[bool] photon: A flag indicating whether to use Photon engine. The default value is `false`.
         :param pulumi.Input[str] storage: A location on DBFS or cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         :param pulumi.Input[str] target: The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
+        :param pulumi.Input[str] url: URL of the DLT pipeline on the given workspace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -972,5 +977,8 @@ class Pipeline(pulumi.CustomResource):
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
+        """
+        URL of the DLT pipeline on the given workspace.
+        """
         return pulumi.get(self, "url")
 

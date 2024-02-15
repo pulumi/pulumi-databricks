@@ -57,7 +57,7 @@ import (
 //	bash
 //
 // ```sh
-// $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+// $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
 // ```
 type ArtifactAllowlist struct {
 	pulumi.CustomResourceState

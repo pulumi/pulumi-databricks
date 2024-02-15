@@ -407,7 +407,16 @@ class Grant(pulumi.CustomResource):
                  volume: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Grant resource with the given unique name, props, and options.
+        ## Import
+
+        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
+
+         bash
+
+        ```sh
+        $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -418,7 +427,16 @@ class Grant(pulumi.CustomResource):
                  args: GrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Grant resource with the given unique name, props, and options.
+        ## Import
+
+        The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
+
+         bash
+
+        ```sh
+        $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
