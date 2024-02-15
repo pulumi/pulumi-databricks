@@ -218,7 +218,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
          bash
 
         ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -262,7 +262,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
          bash
 
         ```sh
-        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+        $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
         ```
 
         :param str resource_name: The name of the resource.

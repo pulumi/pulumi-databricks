@@ -1116,8 +1116,8 @@ github.com/d2g/dhcp4server v0.0.0-20181031114812-7d4a0a7f59a5/go.mod h1:Eo87+Kg/
 github.com/d2g/hardwareaddr v0.0.0-20190221164911-e7d9fbe030e4/go.mod h1:bMl4RjIciD2oAxI7DmWRx6gbeqrkoLqv3MV0vzNad+I=
 github.com/databricks/databricks-sdk-go v0.30.0 h1:nwJcnvW7NfV0oLrXmGcBDcefOZn4DIEByK0FFTkXCF0=
 github.com/databricks/databricks-sdk-go v0.30.0/go.mod h1:QB64wT8EmR9T4ZPqeTRKjfIF4tPZuP9M9kM8Hcr019Q=
-github.com/databricks/terraform-provider-databricks v1.36.2 h1:4qZ+R4bRLc/RqncbJySW9IeaI+TY8qt2esI9q4UqkzI=
-github.com/databricks/terraform-provider-databricks v1.36.2/go.mod h1:isGyg1NIGkabTfpjvQwI+HbUhtfnhM+9zNR0m2FVBgE=
+github.com/databricks/terraform-provider-databricks v1.36.3 h1:gSppk9UZemz+HgdeL+XKIhJfgxqnF7dnqBMzwOhPMZo=
+github.com/databricks/terraform-provider-databricks v1.36.3/go.mod h1:isGyg1NIGkabTfpjvQwI+HbUhtfnhM+9zNR0m2FVBgE=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
+ *
+ *  bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+ * ```
+ */
 export class Grant extends pulumi.CustomResource {
     /**
      * Get an existing Grant resource's state with the given name, ID, and optional extra

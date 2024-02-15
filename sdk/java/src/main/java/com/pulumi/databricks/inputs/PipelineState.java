@@ -231,9 +231,17 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.target);
     }
 
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return URL of the DLT pipeline on the given workspace.
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -590,11 +598,23 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
             return target(Output.of(target));
         }
 
+        /**
+         * @param url URL of the DLT pipeline on the given workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url URL of the DLT pipeline on the given workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
+    /// 
+    ///  bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/grants:Grants this catalog/abc
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/grants:Grants")]
     public partial class Grants : global::Pulumi.CustomResource
     {

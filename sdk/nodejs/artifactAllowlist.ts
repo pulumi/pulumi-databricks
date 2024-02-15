@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *  bash
  *
  * ```sh
- * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this <metastore_id>|<artifact_type>
+ * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
  * ```
  */
 export class ArtifactAllowlist extends pulumi.CustomResource {

@@ -317,9 +317,17 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
     }
+    /**
+     * URL of the DLT pipeline on the given workspace.
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return URL of the DLT pipeline on the given workspace.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }

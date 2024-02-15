@@ -15,6 +15,18 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it&#39;s name and `principal`:
+ * 
+ *  bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name
+ * ```
+ * 
+ */
 @ResourceType(type="databricks:index/grant:Grant")
 public class Grant extends com.pulumi.resources.CustomResource {
     @Export(name="catalog", refs={String.class}, tree="[0]")
