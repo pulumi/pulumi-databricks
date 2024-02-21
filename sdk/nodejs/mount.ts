@@ -52,6 +52,58 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Example mounting ADLS Gen2 with AAD passthrough
+ *
+ * > **Note** AAD passthrough is considered a legacy data access pattern. Use Unity Catalog for fine-grained data access control.
+ *
+ * > **Note** Mounts using AAD passthrough cannot be created using a service principal.
+ *
+ * To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azure from "@pulumi/azure";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * const resourceGroup = config.require("resourceGroup");
+ * const workspaceName = config.require("workspaceName");
+ * const this = azure.databricks.getWorkspace({
+ *     name: workspaceName,
+ *     resourceGroupName: resourceGroup,
+ * });
+ * const smallest = databricks.getNodeType({
+ *     localDisk: true,
+ * });
+ * const latest = databricks.getSparkVersion({});
+ * const sharedPassthrough = new databricks.Cluster("sharedPassthrough", {
+ *     clusterName: "Shared Passthrough for mount",
+ *     sparkVersion: latest.then(latest => latest.id),
+ *     nodeTypeId: smallest.then(smallest => smallest.id),
+ *     autoterminationMinutes: 10,
+ *     numWorkers: 1,
+ *     sparkConf: {
+ *         "spark.databricks.cluster.profile": "serverless",
+ *         "spark.databricks.repl.allowedLanguages": "python,sql",
+ *         "spark.databricks.passthrough.enabled": "true",
+ *         "spark.databricks.pyspark.enableProcessIsolation": "true",
+ *     },
+ *     customTags: {
+ *         ResourceClass: "Serverless",
+ *     },
+ * });
+ * const storageAcc = config.require("storageAcc");
+ * const container = config.require("container");
+ * const passthrough = new databricks.Mount("passthrough", {
+ *     clusterId: sharedPassthrough.id,
+ *     uri: `abfss://${container}@${storageAcc}.dfs.core.windows.net`,
+ *     extraConfigs: {
+ *         "fs.azure.account.auth.type": "CustomAccessToken",
+ *         "fs.azure.account.custom.token.provider.class": "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}",
+ *     },
+ * });
+ * ```
+ *
  * ## s3 block
  *
  * This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
@@ -91,7 +143,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azurerm from "@pulumi/azurerm";
+ * import * as azure from "@pulumi/azure";
  * import * as databricks from "@pulumi/databricks";
  *
  * const terraform = new databricks.SecretScope("terraform", {initialManagePrincipal: "users"});
@@ -100,8 +152,7 @@ import * as utilities from "./utilities";
  *     stringValue: _var.ARM_CLIENT_SECRET,
  *     scope: terraform.name,
  * });
- * const thisazurerm_storage_account = new azurerm.index.Azurerm_storage_account("thisazurerm_storage_account", {
- *     name: `${_var.prefix}datalake`,
+ * const thisAccount = new azure.storage.Account("thisAccount", {
  *     resourceGroupName: _var.resource_group_name,
  *     location: _var.resource_group_location,
  *     accountTier: "Standard",
@@ -109,18 +160,17 @@ import * as utilities from "./utilities";
  *     accountKind: "StorageV2",
  *     isHnsEnabled: true,
  * });
- * const thisazurerm_role_assignment = new azurerm.index.Azurerm_role_assignment("thisazurerm_role_assignment", {
- *     scope: thisazurerm_storage_account.id,
+ * const thisAssignment = new azure.authorization.Assignment("thisAssignment", {
+ *     scope: thisAccount.id,
  *     roleDefinitionName: "Storage Blob Data Contributor",
  *     principalId: data.azurerm_client_config.current.object_id,
  * });
- * const thisazurerm_storage_container = new azurerm.index.Azurerm_storage_container("thisazurerm_storage_container", {
- *     name: "marketing",
- *     storageAccountName: thisazurerm_storage_account.name,
+ * const thisContainer = new azure.storage.Container("thisContainer", {
+ *     storageAccountName: thisAccount.name,
  *     containerAccessType: "private",
  * });
  * const marketing = new databricks.Mount("marketing", {
- *     resourceId: thisazurerm_storage_container.resourceManagerId,
+ *     resourceId: thisContainer.resourceManagerId,
  *     abfs: {
  *         clientId: data.azurerm_client_config.current.client_id,
  *         clientSecretScope: terraform.name,
@@ -193,19 +243,17 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azurerm from "@pulumi/azurerm";
+ * import * as azure from "@pulumi/azure";
  * import * as databricks from "@pulumi/databricks";
  *
- * const blobaccount = new azurerm.index.Azurerm_storage_account("blobaccount", {
- *     name: `${_var.prefix}blob`,
+ * const blobaccount = new azure.storage.Account("blobaccount", {
  *     resourceGroupName: _var.resource_group_name,
  *     location: _var.resource_group_location,
  *     accountTier: "Standard",
  *     accountReplicationType: "LRS",
  *     accountKind: "StorageV2",
  * });
- * const marketingazurerm_storage_container = new azurerm.index.Azurerm_storage_container("marketingazurerm_storage_container", {
- *     name: "marketing",
+ * const marketingContainer = new azure.storage.Container("marketingContainer", {
  *     storageAccountName: blobaccount.name,
  *     containerAccessType: "private",
  * });
@@ -216,7 +264,7 @@ import * as utilities from "./utilities";
  *     scope: terraform.name,
  * });
  * const marketingMount = new databricks.Mount("marketingMount", {wasb: {
- *     containerName: marketingazurerm_storage_container.name,
+ *     containerName: marketingContainer.name,
  *     storageAccountName: blobaccount.name,
  *     authType: "ACCESS_KEY",
  *     tokenSecretScope: terraform.name,

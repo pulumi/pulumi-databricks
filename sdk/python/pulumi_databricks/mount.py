@@ -371,6 +371,52 @@ class Mount(pulumi.CustomResource):
             })
         ```
 
+        ### Example mounting ADLS Gen2 with AAD passthrough
+
+        > **Note** AAD passthrough is considered a legacy data access pattern. Use Unity Catalog for fine-grained data access control.
+
+        > **Note** Mounts using AAD passthrough cannot be created using a service principal.
+
+        To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        resource_group = config.require("resourceGroup")
+        workspace_name = config.require("workspaceName")
+        this = azure.databricks.get_workspace(name=workspace_name,
+            resource_group_name=resource_group)
+        smallest = databricks.get_node_type(local_disk=True)
+        latest = databricks.get_spark_version()
+        shared_passthrough = databricks.Cluster("sharedPassthrough",
+            cluster_name="Shared Passthrough for mount",
+            spark_version=latest.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=10,
+            num_workers=1,
+            spark_conf={
+                "spark.databricks.cluster.profile": "serverless",
+                "spark.databricks.repl.allowedLanguages": "python,sql",
+                "spark.databricks.passthrough.enabled": "true",
+                "spark.databricks.pyspark.enableProcessIsolation": "true",
+            },
+            custom_tags={
+                "ResourceClass": "Serverless",
+            })
+        storage_acc = config.require("storageAcc")
+        container = config.require("container")
+        passthrough = databricks.Mount("passthrough",
+            cluster_id=shared_passthrough.id,
+            uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
+            extra_configs={
+                "fs.azure.account.auth.type": "CustomAccessToken",
+                "fs.azure.account.custom.token.provider.class": "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}",
+            })
+        ```
+
         ## s3 block
 
         This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
@@ -410,7 +456,7 @@ class Mount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azurerm as azurerm
+        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
         terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
@@ -418,24 +464,22 @@ class Mount(pulumi.CustomResource):
             key="service_principal_key",
             string_value=var["ARM_CLIENT_SECRET"],
             scope=terraform.name)
-        thisazurerm_storage_account = azurerm.index.Azurerm_storage_account("thisazurerm_storage_account",
-            name=f{var.prefix}datalake,
-            resource_group_name=var.resource_group_name,
-            location=var.resource_group_location,
-            account_tier=Standard,
-            account_replication_type=GRS,
-            account_kind=StorageV2,
+        this_account = azure.storage.Account("thisAccount",
+            resource_group_name=var["resource_group_name"],
+            location=var["resource_group_location"],
+            account_tier="Standard",
+            account_replication_type="GRS",
+            account_kind="StorageV2",
             is_hns_enabled=True)
-        thisazurerm_role_assignment = azurerm.index.Azurerm_role_assignment("thisazurerm_role_assignment",
-            scope=thisazurerm_storage_account.id,
-            role_definition_name=Storage Blob Data Contributor,
-            principal_id=data.azurerm_client_config.current.object_id)
-        thisazurerm_storage_container = azurerm.index.Azurerm_storage_container("thisazurerm_storage_container",
-            name=marketing,
-            storage_account_name=thisazurerm_storage_account.name,
-            container_access_type=private)
+        this_assignment = azure.authorization.Assignment("thisAssignment",
+            scope=this_account.id,
+            role_definition_name="Storage Blob Data Contributor",
+            principal_id=data["azurerm_client_config"]["current"]["object_id"])
+        this_container = azure.storage.Container("thisContainer",
+            storage_account_name=this_account.name,
+            container_access_type="private")
         marketing = databricks.Mount("marketing",
-            resource_id=thisazurerm_storage_container["resourceManagerId"],
+            resource_id=this_container.resource_manager_id,
             abfs=databricks.MountAbfsArgs(
                 client_id=data["azurerm_client_config"]["current"]["client_id"],
                 client_secret_scope=terraform.name,
@@ -507,28 +551,26 @@ class Mount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azurerm as azurerm
+        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        blobaccount = azurerm.index.Azurerm_storage_account("blobaccount",
-            name=f{var.prefix}blob,
-            resource_group_name=var.resource_group_name,
-            location=var.resource_group_location,
-            account_tier=Standard,
-            account_replication_type=LRS,
-            account_kind=StorageV2)
-        marketingazurerm_storage_container = azurerm.index.Azurerm_storage_container("marketingazurerm_storage_container",
-            name=marketing,
+        blobaccount = azure.storage.Account("blobaccount",
+            resource_group_name=var["resource_group_name"],
+            location=var["resource_group_location"],
+            account_tier="Standard",
+            account_replication_type="LRS",
+            account_kind="StorageV2")
+        marketing_container = azure.storage.Container("marketingContainer",
             storage_account_name=blobaccount.name,
-            container_access_type=private)
+            container_access_type="private")
         terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
         storage_key = databricks.Secret("storageKey",
             key="blob_storage_key",
-            string_value=blobaccount["primaryAccessKey"],
+            string_value=blobaccount.primary_access_key,
             scope=terraform.name)
         marketing_mount = databricks.Mount("marketingMount", wasb=databricks.MountWasbArgs(
-            container_name=marketingazurerm_storage_container["name"],
-            storage_account_name=blobaccount["name"],
+            container_name=marketing_container.name,
+            storage_account_name=blobaccount.name,
             auth_type="ACCESS_KEY",
             token_secret_scope=terraform.name,
             token_secret_key=storage_key.key,
@@ -614,6 +656,52 @@ class Mount(pulumi.CustomResource):
             })
         ```
 
+        ### Example mounting ADLS Gen2 with AAD passthrough
+
+        > **Note** AAD passthrough is considered a legacy data access pattern. Use Unity Catalog for fine-grained data access control.
+
+        > **Note** Mounts using AAD passthrough cannot be created using a service principal.
+
+        To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_databricks as databricks
+
+        config = pulumi.Config()
+        resource_group = config.require("resourceGroup")
+        workspace_name = config.require("workspaceName")
+        this = azure.databricks.get_workspace(name=workspace_name,
+            resource_group_name=resource_group)
+        smallest = databricks.get_node_type(local_disk=True)
+        latest = databricks.get_spark_version()
+        shared_passthrough = databricks.Cluster("sharedPassthrough",
+            cluster_name="Shared Passthrough for mount",
+            spark_version=latest.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=10,
+            num_workers=1,
+            spark_conf={
+                "spark.databricks.cluster.profile": "serverless",
+                "spark.databricks.repl.allowedLanguages": "python,sql",
+                "spark.databricks.passthrough.enabled": "true",
+                "spark.databricks.pyspark.enableProcessIsolation": "true",
+            },
+            custom_tags={
+                "ResourceClass": "Serverless",
+            })
+        storage_acc = config.require("storageAcc")
+        container = config.require("container")
+        passthrough = databricks.Mount("passthrough",
+            cluster_id=shared_passthrough.id,
+            uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
+            extra_configs={
+                "fs.azure.account.auth.type": "CustomAccessToken",
+                "fs.azure.account.custom.token.provider.class": "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}",
+            })
+        ```
+
         ## s3 block
 
         This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
@@ -653,7 +741,7 @@ class Mount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azurerm as azurerm
+        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
         terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
@@ -661,24 +749,22 @@ class Mount(pulumi.CustomResource):
             key="service_principal_key",
             string_value=var["ARM_CLIENT_SECRET"],
             scope=terraform.name)
-        thisazurerm_storage_account = azurerm.index.Azurerm_storage_account("thisazurerm_storage_account",
-            name=f{var.prefix}datalake,
-            resource_group_name=var.resource_group_name,
-            location=var.resource_group_location,
-            account_tier=Standard,
-            account_replication_type=GRS,
-            account_kind=StorageV2,
+        this_account = azure.storage.Account("thisAccount",
+            resource_group_name=var["resource_group_name"],
+            location=var["resource_group_location"],
+            account_tier="Standard",
+            account_replication_type="GRS",
+            account_kind="StorageV2",
             is_hns_enabled=True)
-        thisazurerm_role_assignment = azurerm.index.Azurerm_role_assignment("thisazurerm_role_assignment",
-            scope=thisazurerm_storage_account.id,
-            role_definition_name=Storage Blob Data Contributor,
-            principal_id=data.azurerm_client_config.current.object_id)
-        thisazurerm_storage_container = azurerm.index.Azurerm_storage_container("thisazurerm_storage_container",
-            name=marketing,
-            storage_account_name=thisazurerm_storage_account.name,
-            container_access_type=private)
+        this_assignment = azure.authorization.Assignment("thisAssignment",
+            scope=this_account.id,
+            role_definition_name="Storage Blob Data Contributor",
+            principal_id=data["azurerm_client_config"]["current"]["object_id"])
+        this_container = azure.storage.Container("thisContainer",
+            storage_account_name=this_account.name,
+            container_access_type="private")
         marketing = databricks.Mount("marketing",
-            resource_id=thisazurerm_storage_container["resourceManagerId"],
+            resource_id=this_container.resource_manager_id,
             abfs=databricks.MountAbfsArgs(
                 client_id=data["azurerm_client_config"]["current"]["client_id"],
                 client_secret_scope=terraform.name,
@@ -750,28 +836,26 @@ class Mount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_azurerm as azurerm
+        import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        blobaccount = azurerm.index.Azurerm_storage_account("blobaccount",
-            name=f{var.prefix}blob,
-            resource_group_name=var.resource_group_name,
-            location=var.resource_group_location,
-            account_tier=Standard,
-            account_replication_type=LRS,
-            account_kind=StorageV2)
-        marketingazurerm_storage_container = azurerm.index.Azurerm_storage_container("marketingazurerm_storage_container",
-            name=marketing,
+        blobaccount = azure.storage.Account("blobaccount",
+            resource_group_name=var["resource_group_name"],
+            location=var["resource_group_location"],
+            account_tier="Standard",
+            account_replication_type="LRS",
+            account_kind="StorageV2")
+        marketing_container = azure.storage.Container("marketingContainer",
             storage_account_name=blobaccount.name,
-            container_access_type=private)
+            container_access_type="private")
         terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
         storage_key = databricks.Secret("storageKey",
             key="blob_storage_key",
-            string_value=blobaccount["primaryAccessKey"],
+            string_value=blobaccount.primary_access_key,
             scope=terraform.name)
         marketing_mount = databricks.Mount("marketingMount", wasb=databricks.MountWasbArgs(
-            container_name=marketingazurerm_storage_container["name"],
-            storage_account_name=blobaccount["name"],
+            container_name=marketing_container.name,
+            storage_account_name=blobaccount.name,
             auth_type="ACCESS_KEY",
             token_secret_scope=terraform.name,
             token_secret_key=storage_key.key,

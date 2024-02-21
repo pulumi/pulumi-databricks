@@ -97,6 +97,8 @@ install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource random 4.8.2
 	.pulumi/bin/pulumi plugin install resource aws 5.18.0
 	.pulumi/bin/pulumi plugin install resource time 0.0.13
+	.pulumi/bin/pulumi plugin install resource azure 5.66.1
+	.pulumi/bin/pulumi plugin install resource docker 4.5.1
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
