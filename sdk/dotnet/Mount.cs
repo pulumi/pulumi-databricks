@@ -69,6 +69,75 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Example mounting ADLS Gen2 with AAD passthrough
+    /// 
+    /// &gt; **Note** AAD passthrough is considered a legacy data access pattern. Use Unity Catalog for fine-grained data access control.
+    /// 
+    /// &gt; **Note** Mounts using AAD passthrough cannot be created using a service principal.
+    /// 
+    /// To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough &amp; provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var resourceGroup = config.Require("resourceGroup");
+    ///     var workspaceName = config.Require("workspaceName");
+    ///     var @this = Azure.DataBricks.GetWorkspace.Invoke(new()
+    ///     {
+    ///         Name = workspaceName,
+    ///         ResourceGroupName = resourceGroup,
+    ///     });
+    /// 
+    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     {
+    ///         LocalDisk = true,
+    ///     });
+    /// 
+    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    /// 
+    ///     var sharedPassthrough = new Databricks.Cluster("sharedPassthrough", new()
+    ///     {
+    ///         ClusterName = "Shared Passthrough for mount",
+    ///         SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+    ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+    ///         AutoterminationMinutes = 10,
+    ///         NumWorkers = 1,
+    ///         SparkConf = 
+    ///         {
+    ///             { "spark.databricks.cluster.profile", "serverless" },
+    ///             { "spark.databricks.repl.allowedLanguages", "python,sql" },
+    ///             { "spark.databricks.passthrough.enabled", "true" },
+    ///             { "spark.databricks.pyspark.enableProcessIsolation", "true" },
+    ///         },
+    ///         CustomTags = 
+    ///         {
+    ///             { "ResourceClass", "Serverless" },
+    ///         },
+    ///     });
+    /// 
+    ///     var storageAcc = config.Require("storageAcc");
+    ///     var container = config.Require("container");
+    ///     var passthrough = new Databricks.Mount("passthrough", new()
+    ///     {
+    ///         ClusterId = sharedPassthrough.Id,
+    ///         Uri = $"abfss://{container}@{storageAcc}.dfs.core.windows.net",
+    ///         ExtraConfigs = 
+    ///         {
+    ///             { "fs.azure.account.auth.type", "CustomAccessToken" },
+    ///             { "fs.azure.account.custom.token.provider.class", "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## s3 block
     /// 
     /// This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
@@ -120,7 +189,7 @@ namespace Pulumi.Databricks
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azurerm = Pulumi.Azurerm;
+    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -137,9 +206,8 @@ namespace Pulumi.Databricks
     ///         Scope = terraform.Name,
     ///     });
     /// 
-    ///     var thisazurerm_storage_account = new Azurerm.Index.Azurerm_storage_account("thisazurerm_storage_account", new()
+    ///     var thisAccount = new Azure.Storage.Account("thisAccount", new()
     ///     {
-    ///         Name = $"{@var.Prefix}datalake",
     ///         ResourceGroupName = @var.Resource_group_name,
     ///         Location = @var.Resource_group_location,
     ///         AccountTier = "Standard",
@@ -148,23 +216,22 @@ namespace Pulumi.Databricks
     ///         IsHnsEnabled = true,
     ///     });
     /// 
-    ///     var thisazurerm_role_assignment = new Azurerm.Index.Azurerm_role_assignment("thisazurerm_role_assignment", new()
+    ///     var thisAssignment = new Azure.Authorization.Assignment("thisAssignment", new()
     ///     {
-    ///         Scope = thisazurerm_storage_account.Id,
+    ///         Scope = thisAccount.Id,
     ///         RoleDefinitionName = "Storage Blob Data Contributor",
     ///         PrincipalId = data.Azurerm_client_config.Current.Object_id,
     ///     });
     /// 
-    ///     var thisazurerm_storage_container = new Azurerm.Index.Azurerm_storage_container("thisazurerm_storage_container", new()
+    ///     var thisContainer = new Azure.Storage.Container("thisContainer", new()
     ///     {
-    ///         Name = "marketing",
-    ///         StorageAccountName = thisazurerm_storage_account.Name,
+    ///         StorageAccountName = thisAccount.Name,
     ///         ContainerAccessType = "private",
     ///     });
     /// 
     ///     var marketing = new Databricks.Mount("marketing", new()
     ///     {
-    ///         ResourceId = thisazurerm_storage_container.ResourceManagerId,
+    ///         ResourceId = thisContainer.ResourceManagerId,
     ///         Abfs = new Databricks.Inputs.MountAbfsArgs
     ///         {
     ///             ClientId = data.Azurerm_client_config.Current.Client_id,
@@ -262,14 +329,13 @@ namespace Pulumi.Databricks
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azurerm = Pulumi.Azurerm;
+    /// using Azure = Pulumi.Azure;
     /// using Databricks = Pulumi.Databricks;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var blobaccount = new Azurerm.Index.Azurerm_storage_account("blobaccount", new()
+    ///     var blobaccount = new Azure.Storage.Account("blobaccount", new()
     ///     {
-    ///         Name = $"{@var.Prefix}blob",
     ///         ResourceGroupName = @var.Resource_group_name,
     ///         Location = @var.Resource_group_location,
     ///         AccountTier = "Standard",
@@ -277,9 +343,8 @@ namespace Pulumi.Databricks
     ///         AccountKind = "StorageV2",
     ///     });
     /// 
-    ///     var marketingazurerm_storage_container = new Azurerm.Index.Azurerm_storage_container("marketingazurerm_storage_container", new()
+    ///     var marketingContainer = new Azure.Storage.Container("marketingContainer", new()
     ///     {
-    ///         Name = "marketing",
     ///         StorageAccountName = blobaccount.Name,
     ///         ContainerAccessType = "private",
     ///     });
@@ -300,7 +365,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         Wasb = new Databricks.Inputs.MountWasbArgs
     ///         {
-    ///             ContainerName = marketingazurerm_storage_container.Name,
+    ///             ContainerName = marketingContainer.Name,
     ///             StorageAccountName = blobaccount.Name,
     ///             AuthType = "ACCESS_KEY",
     ///             TokenSecretScope = terraform.Name,

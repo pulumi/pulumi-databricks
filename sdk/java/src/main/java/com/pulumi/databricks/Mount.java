@@ -92,6 +92,85 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ### Example mounting ADLS Gen2 with AAD passthrough
+ * 
+ * &gt; **Note** AAD passthrough is considered a legacy data access pattern. Use Unity Catalog for fine-grained data access control.
+ * 
+ * &gt; **Note** Mounts using AAD passthrough cannot be created using a service principal.
+ * 
+ * To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough &amp; provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azure.databricks.DatabricksFunctions;
+ * import com.pulumi.azure.databricks.inputs.GetWorkspaceArgs;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+ * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+ * import com.pulumi.databricks.Cluster;
+ * import com.pulumi.databricks.ClusterArgs;
+ * import com.pulumi.databricks.Mount;
+ * import com.pulumi.databricks.MountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var resourceGroup = config.get(&#34;resourceGroup&#34;);
+ *         final var workspaceName = config.get(&#34;workspaceName&#34;);
+ *         final var this = DatabricksFunctions.getWorkspace(GetWorkspaceArgs.builder()
+ *             .name(workspaceName)
+ *             .resourceGroupName(resourceGroup)
+ *             .build());
+ * 
+ *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+ *             .localDisk(true)
+ *             .build());
+ * 
+ *         final var latest = DatabricksFunctions.getSparkVersion();
+ * 
+ *         var sharedPassthrough = new Cluster(&#34;sharedPassthrough&#34;, ClusterArgs.builder()        
+ *             .clusterName(&#34;Shared Passthrough for mount&#34;)
+ *             .sparkVersion(latest.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+ *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *             .autoterminationMinutes(10)
+ *             .numWorkers(1)
+ *             .sparkConf(Map.ofEntries(
+ *                 Map.entry(&#34;spark.databricks.cluster.profile&#34;, &#34;serverless&#34;),
+ *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
+ *                 Map.entry(&#34;spark.databricks.passthrough.enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;spark.databricks.pyspark.enableProcessIsolation&#34;, &#34;true&#34;)
+ *             ))
+ *             .customTags(Map.of(&#34;ResourceClass&#34;, &#34;Serverless&#34;))
+ *             .build());
+ * 
+ *         final var storageAcc = config.get(&#34;storageAcc&#34;);
+ *         final var container = config.get(&#34;container&#34;);
+ *         var passthrough = new Mount(&#34;passthrough&#34;, MountArgs.builder()        
+ *             .clusterId(sharedPassthrough.id())
+ *             .uri(String.format(&#34;abfss://%s@%s.dfs.core.windows.net&#34;, container,storageAcc))
+ *             .extraConfigs(Map.ofEntries(
+ *                 Map.entry(&#34;fs.azure.account.auth.type&#34;, &#34;CustomAccessToken&#34;),
+ *                 Map.entry(&#34;fs.azure.account.custom.token.provider.class&#34;, &#34;{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## s3 block
  * 
  * This block allows specifying parameters for mounting of the ADLS Gen2. The following arguments are required inside the `s3` block:
@@ -159,12 +238,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.Secret;
  * import com.pulumi.databricks.SecretArgs;
- * import com.pulumi.azurerm.azurerm_storage_account;
- * import com.pulumi.azurerm.Azurerm_storage_accountArgs;
- * import com.pulumi.azurerm.azurerm_role_assignment;
- * import com.pulumi.azurerm.Azurerm_role_assignmentArgs;
- * import com.pulumi.azurerm.azurerm_storage_container;
- * import com.pulumi.azurerm.Azurerm_storage_containerArgs;
+ * import com.pulumi.azure.storage.Account;
+ * import com.pulumi.azure.storage.AccountArgs;
+ * import com.pulumi.azure.authorization.Assignment;
+ * import com.pulumi.azure.authorization.AssignmentArgs;
+ * import com.pulumi.azure.storage.Container;
+ * import com.pulumi.azure.storage.ContainerArgs;
  * import com.pulumi.databricks.Mount;
  * import com.pulumi.databricks.MountArgs;
  * import com.pulumi.databricks.inputs.MountAbfsArgs;
@@ -191,8 +270,7 @@ import javax.annotation.Nullable;
  *             .scope(terraform.name())
  *             .build());
  * 
- *         var thisazurerm_storage_account = new Azurerm_storage_account(&#34;thisazurerm_storage_account&#34;, Azurerm_storage_accountArgs.builder()        
- *             .name(String.format(&#34;%sdatalake&#34;, var_.prefix()))
+ *         var thisAccount = new Account(&#34;thisAccount&#34;, AccountArgs.builder()        
  *             .resourceGroupName(var_.resource_group_name())
  *             .location(var_.resource_group_location())
  *             .accountTier(&#34;Standard&#34;)
@@ -201,20 +279,19 @@ import javax.annotation.Nullable;
  *             .isHnsEnabled(true)
  *             .build());
  * 
- *         var thisazurerm_role_assignment = new Azurerm_role_assignment(&#34;thisazurerm_role_assignment&#34;, Azurerm_role_assignmentArgs.builder()        
- *             .scope(thisazurerm_storage_account.id())
+ *         var thisAssignment = new Assignment(&#34;thisAssignment&#34;, AssignmentArgs.builder()        
+ *             .scope(thisAccount.id())
  *             .roleDefinitionName(&#34;Storage Blob Data Contributor&#34;)
  *             .principalId(data.azurerm_client_config().current().object_id())
  *             .build());
  * 
- *         var thisazurerm_storage_container = new Azurerm_storage_container(&#34;thisazurerm_storage_container&#34;, Azurerm_storage_containerArgs.builder()        
- *             .name(&#34;marketing&#34;)
- *             .storageAccountName(thisazurerm_storage_account.name())
+ *         var thisContainer = new Container(&#34;thisContainer&#34;, ContainerArgs.builder()        
+ *             .storageAccountName(thisAccount.name())
  *             .containerAccessType(&#34;private&#34;)
  *             .build());
  * 
  *         var marketing = new Mount(&#34;marketing&#34;, MountArgs.builder()        
- *             .resourceId(thisazurerm_storage_container.resourceManagerId())
+ *             .resourceId(thisContainer.resourceManagerId())
  *             .abfs(MountAbfsArgs.builder()
  *                 .clientId(data.azurerm_client_config().current().client_id())
  *                 .clientSecretScope(terraform.name())
@@ -337,10 +414,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azurerm.azurerm_storage_account;
- * import com.pulumi.azurerm.Azurerm_storage_accountArgs;
- * import com.pulumi.azurerm.azurerm_storage_container;
- * import com.pulumi.azurerm.Azurerm_storage_containerArgs;
+ * import com.pulumi.azure.storage.Account;
+ * import com.pulumi.azure.storage.AccountArgs;
+ * import com.pulumi.azure.storage.Container;
+ * import com.pulumi.azure.storage.ContainerArgs;
  * import com.pulumi.databricks.SecretScope;
  * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.Secret;
@@ -361,8 +438,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var blobaccount = new Azurerm_storage_account(&#34;blobaccount&#34;, Azurerm_storage_accountArgs.builder()        
- *             .name(String.format(&#34;%sblob&#34;, var_.prefix()))
+ *         var blobaccount = new Account(&#34;blobaccount&#34;, AccountArgs.builder()        
  *             .resourceGroupName(var_.resource_group_name())
  *             .location(var_.resource_group_location())
  *             .accountTier(&#34;Standard&#34;)
@@ -370,8 +446,7 @@ import javax.annotation.Nullable;
  *             .accountKind(&#34;StorageV2&#34;)
  *             .build());
  * 
- *         var marketingazurerm_storage_container = new Azurerm_storage_container(&#34;marketingazurerm_storage_container&#34;, Azurerm_storage_containerArgs.builder()        
- *             .name(&#34;marketing&#34;)
+ *         var marketingContainer = new Container(&#34;marketingContainer&#34;, ContainerArgs.builder()        
  *             .storageAccountName(blobaccount.name())
  *             .containerAccessType(&#34;private&#34;)
  *             .build());
@@ -388,7 +463,7 @@ import javax.annotation.Nullable;
  * 
  *         var marketingMount = new Mount(&#34;marketingMount&#34;, MountArgs.builder()        
  *             .wasb(MountWasbArgs.builder()
- *                 .containerName(marketingazurerm_storage_container.name())
+ *                 .containerName(marketingContainer.name())
  *                 .storageAccountName(blobaccount.name())
  *                 .authType(&#34;ACCESS_KEY&#34;)
  *                 .tokenSecretScope(terraform.name())
