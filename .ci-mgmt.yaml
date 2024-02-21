@@ -14,4 +14,7 @@ plugins:
     version: "5.18.0"
   - name: time
     version: "0.0.13"
-team: ecosystem
+  - name: azure
+    version: "5.66.1"
+  - name: docker
+    version: "4.5.1"
