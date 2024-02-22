@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
         /// </summary>
-        public readonly string? Destination;
+        public readonly string Destination;
 
         [OutputConstructor]
-        private ClusterInitScriptFile(string? destination)
+        private ClusterInitScriptFile(string destination)
         {
             Destination = destination;
         }

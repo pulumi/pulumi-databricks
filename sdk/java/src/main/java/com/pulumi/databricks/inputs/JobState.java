@@ -579,9 +579,17 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Task to run against the `inputs` list.
+     * 
+     */
     @Import(name="tasks")
     private @Nullable Output<List<JobTaskArgs>> tasks;
 
+    /**
+     * @return Task to run against the `inputs` list.
+     * 
+     */
     public Optional<Output<List<JobTaskArgs>>> tasks() {
         return Optional.ofNullable(this.tasks);
     }
@@ -1422,15 +1430,33 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tasks Task to run against the `inputs` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(@Nullable Output<List<JobTaskArgs>> tasks) {
             $.tasks = tasks;
             return this;
         }
 
+        /**
+         * @param tasks Task to run against the `inputs` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(List<JobTaskArgs> tasks) {
             return tasks(Output.of(tasks));
         }
 
+        /**
+         * @param tasks Task to run against the `inputs` list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasks(JobTaskArgs... tasks) {
             return tasks(List.of(tasks));
         }

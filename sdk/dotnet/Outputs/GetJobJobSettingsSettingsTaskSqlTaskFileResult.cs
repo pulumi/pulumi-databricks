@@ -14,11 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetJobJobSettingsSettingsTaskSqlTaskFileResult
     {
         public readonly string Path;
+        public readonly string? Source;
 
         [OutputConstructor]
-        private GetJobJobSettingsSettingsTaskSqlTaskFileResult(string path)
+        private GetJobJobSettingsSettingsTaskSqlTaskFileResult(
+            string path,
+
+            string? source)
         {
             Path = path;
+            Source = source;
         }
     }
 }

@@ -104,7 +104,8 @@ type Job struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrOutput `pulumi:"sparkSubmitTask"`
 	Tags            pulumi.MapOutput            `pulumi:"tags"`
-	Tasks           JobTaskArrayOutput          `pulumi:"tasks"`
+	// Task to run against the `inputs` list.
+	Tasks JobTaskArrayOutput `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrOutput `pulumi:"timeoutSeconds"`
 	Trigger        JobTriggerPtrOutput `pulumi:"trigger"`
@@ -225,7 +226,8 @@ type jobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
 	Tags            map[string]interface{} `pulumi:"tags"`
-	Tasks           []JobTask              `pulumi:"tasks"`
+	// Task to run against the `inputs` list.
+	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
@@ -317,7 +319,8 @@ type JobState struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	Tags            pulumi.MapInput
-	Tasks           JobTaskArrayInput
+	// Task to run against the `inputs` list.
+	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
@@ -413,7 +416,8 @@ type jobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask *JobSparkSubmitTask    `pulumi:"sparkSubmitTask"`
 	Tags            map[string]interface{} `pulumi:"tags"`
-	Tasks           []JobTask              `pulumi:"tasks"`
+	// Task to run against the `inputs` list.
+	Tasks []JobTask `pulumi:"tasks"`
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds *int        `pulumi:"timeoutSeconds"`
 	Trigger        *JobTrigger `pulumi:"trigger"`
@@ -504,7 +508,8 @@ type JobArgs struct {
 	// Deprecated: should be used inside a task block and not inside a job block
 	SparkSubmitTask JobSparkSubmitTaskPtrInput
 	Tags            pulumi.MapInput
-	Tasks           JobTaskArrayInput
+	// Task to run against the `inputs` list.
+	Tasks JobTaskArrayInput
 	// (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
 	TimeoutSeconds pulumi.IntPtrInput
 	Trigger        JobTriggerPtrInput
@@ -785,6 +790,7 @@ func (o JobOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
+// Task to run against the `inputs` list.
 func (o JobOutput) Tasks() JobTaskArrayOutput {
 	return o.ApplyT(func(v *Job) JobTaskArrayOutput { return v.Tasks }).(JobTaskArrayOutput)
 }

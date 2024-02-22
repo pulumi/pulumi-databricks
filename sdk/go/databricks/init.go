@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entitlements{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
+	case "databricks:index/file:File":
+		r = &File{}
 	case "databricks:index/gitCredential:GitCredential":
 		r = &GitCredential{}
 	case "databricks:index/globalInitScript:GlobalInitScript":
@@ -171,6 +173,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserInstanceProfile{}
 	case "databricks:index/userRole:UserRole":
 		r = &UserRole{}
+	case "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint":
+		r = &VectorSearchEndpoint{}
 	case "databricks:index/volume:Volume":
 		r = &Volume{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
@@ -266,6 +270,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/externalLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/file",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -581,6 +590,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/userRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/vectorSearchEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

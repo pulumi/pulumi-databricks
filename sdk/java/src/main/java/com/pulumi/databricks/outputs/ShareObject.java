@@ -29,7 +29,7 @@ public final class ShareObject {
      */
     private @Nullable String comment;
     /**
-     * @return Type of the object, currently only `TABLE` is allowed.
+     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      * 
      */
     private String dataObjectType;
@@ -84,7 +84,7 @@ public final class ShareObject {
         return Optional.ofNullable(this.comment);
     }
     /**
-     * @return Type of the object, currently only `TABLE` is allowed.
+     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      * 
      */
     public String dataObjectType() {

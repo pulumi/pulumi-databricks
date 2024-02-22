@@ -28,75 +28,7 @@ public final class JobTaskSqlTask {
      */
     private @Nullable JobTaskSqlTaskDashboard dashboard;
     /**
-     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
-     * 
-     * Example
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.Job;
-     * import com.pulumi.databricks.JobArgs;
-     * import com.pulumi.databricks.inputs.JobTaskArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .tasks(            
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_agg_query&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .query(JobTaskSqlTaskQueryArgs.builder()
-     *                             .queryId(databricks_sql_query.agg_query().id())
-     *                             .build())
-     *                         .build())
-     *                     .build(),
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_dashboard&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
-     *                             .dashboardId(databricks_sql_dashboard.dash().id())
-     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
-     *                                 .build())
-     *                             .build())
-     *                         .build())
-     *                     .build(),
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_alert&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
-     *                             .alertId(databricks_sql_alert.alert().id())
-     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
-     *                                 .build())
-     *                             .build())
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * @return block consisting of single string fields:
      * 
      */
     private @Nullable JobTaskSqlTaskFile file;
@@ -132,75 +64,7 @@ public final class JobTaskSqlTask {
         return Optional.ofNullable(this.dashboard);
     }
     /**
-     * @return block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
-     * 
-     * Example
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.Job;
-     * import com.pulumi.databricks.JobArgs;
-     * import com.pulumi.databricks.inputs.JobTaskArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
-     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
-     *             .tasks(            
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_agg_query&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .query(JobTaskSqlTaskQueryArgs.builder()
-     *                             .queryId(databricks_sql_query.agg_query().id())
-     *                             .build())
-     *                         .build())
-     *                     .build(),
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_dashboard&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
-     *                             .dashboardId(databricks_sql_dashboard.dash().id())
-     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
-     *                                 .build())
-     *                             .build())
-     *                         .build())
-     *                     .build(),
-     *                 JobTaskArgs.builder()
-     *                     .taskKey(&#34;run_alert&#34;)
-     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
-     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
-     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
-     *                             .alertId(databricks_sql_alert.alert().id())
-     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
-     *                                 .userName(&#34;user@domain.com&#34;)
-     *                                 .build())
-     *                             .build())
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
+     * @return block consisting of single string fields:
      * 
      */
     public Optional<JobTaskSqlTaskFile> file() {

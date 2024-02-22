@@ -52,6 +52,13 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
         return Optional.ofNullable(this.schema);
     }
 
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
@@ -67,6 +74,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
         this.profilesDirectory = $.profilesDirectory;
         this.projectDirectory = $.projectDirectory;
         this.schema = $.schema;
+        this.source = $.source;
         this.warehouseId = $.warehouseId;
     }
 
@@ -135,6 +143,15 @@ public final class GetJobJobSettingsSettingsTaskDbtTaskArgs extends com.pulumi.r
 
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         public Builder warehouseId(@Nullable Output<String> warehouseId) {

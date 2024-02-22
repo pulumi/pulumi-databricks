@@ -65,14 +65,14 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the object, currently only `TABLE` is allowed.
+     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      * 
      */
     @Import(name="dataObjectType", required=true)
     private Output<String> dataObjectType;
 
     /**
-     * @return Type of the object, currently only `TABLE` is allowed.
+     * @return Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      * 
      */
     public Output<String> dataObjectType() {
@@ -260,7 +260,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataObjectType Type of the object, currently only `TABLE` is allowed.
+         * @param dataObjectType Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataObjectType Type of the object, currently only `TABLE` is allowed.
+         * @param dataObjectType Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
          * 
          * @return builder
          * 

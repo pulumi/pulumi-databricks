@@ -494,9 +494,17 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Task to run against the `inputs` list.
+     * 
+     */
     @Export(name="tasks", refs={List.class,JobTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobTask>> tasks;
 
+    /**
+     * @return Task to run against the `inputs` list.
+     * 
+     */
     public Output<Optional<List<JobTask>>> tasks() {
         return Codegen.optional(this.tasks);
     }

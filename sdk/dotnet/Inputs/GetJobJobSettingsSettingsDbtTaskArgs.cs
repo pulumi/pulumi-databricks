@@ -32,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
 

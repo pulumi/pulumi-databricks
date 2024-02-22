@@ -76,6 +76,10 @@ import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehousePlainArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehousesPlainArgs;
+import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
+import com.pulumi.databricks.inputs.GetStorageCredentialPlainArgs;
+import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+import com.pulumi.databricks.inputs.GetStorageCredentialsPlainArgs;
 import com.pulumi.databricks.inputs.GetTablesArgs;
 import com.pulumi.databricks.inputs.GetTablesPlainArgs;
 import com.pulumi.databricks.inputs.GetUserArgs;
@@ -120,6 +124,8 @@ import com.pulumi.databricks.outputs.GetSharesResult;
 import com.pulumi.databricks.outputs.GetSparkVersionResult;
 import com.pulumi.databricks.outputs.GetSqlWarehouseResult;
 import com.pulumi.databricks.outputs.GetSqlWarehousesResult;
+import com.pulumi.databricks.outputs.GetStorageCredentialResult;
+import com.pulumi.databricks.outputs.GetStorageCredentialsResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
 import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
@@ -9962,6 +9968,306 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetSqlWarehousesResult> getSqlWarehousesPlain(GetSqlWarehousesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args) {
+        return getStorageCredential(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args) {
+        return getStorageCredentialPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getStorageCredentials to get names of all credentials
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static Output<GetStorageCredentialsResult> getStorageCredentials() {
+        return getStorageCredentials(GetStorageCredentialsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetStorageCredentialsResult> getStorageCredentialsPlain() {
+        return getStorageCredentialsPlain(GetStorageCredentialsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static Output<GetStorageCredentialsResult> getStorageCredentials(GetStorageCredentialsArgs args) {
+        return getStorageCredentials(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetStorageCredentialsResult> getStorageCredentialsPlain(GetStorageCredentialsPlainArgs args) {
+        return getStorageCredentialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static Output<GetStorageCredentialsResult> getStorageCredentials(GetStorageCredentialsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all storage credentials in the metastore
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getStorageCredentials();
+     * 
+     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *     }
+     * }
+     * ```
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.StorageCredential to get information about a single credential
+     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetStorageCredentialsResult> getStorageCredentialsPlain(GetStorageCredentialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

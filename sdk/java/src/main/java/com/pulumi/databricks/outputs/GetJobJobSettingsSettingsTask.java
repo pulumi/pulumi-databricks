@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskHealth;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskLibrary;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskNewCluster;
@@ -39,6 +40,7 @@ public final class GetJobJobSettingsSettingsTask {
     private @Nullable String description;
     private @Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTask forEachTask;
     private @Nullable GetJobJobSettingsSettingsTaskHealth health;
     private @Nullable String jobClusterKey;
     private @Nullable List<GetJobJobSettingsSettingsTaskLibrary> libraries;
@@ -81,6 +83,9 @@ public final class GetJobJobSettingsSettingsTask {
     }
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+    public Optional<GetJobJobSettingsSettingsTaskForEachTask> forEachTask() {
+        return Optional.ofNullable(this.forEachTask);
     }
     public Optional<GetJobJobSettingsSettingsTaskHealth> health() {
         return Optional.ofNullable(this.health);
@@ -159,6 +164,7 @@ public final class GetJobJobSettingsSettingsTask {
         private @Nullable String description;
         private @Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
+        private @Nullable GetJobJobSettingsSettingsTaskForEachTask forEachTask;
         private @Nullable GetJobJobSettingsSettingsTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<GetJobJobSettingsSettingsTaskLibrary> libraries;
@@ -189,6 +195,7 @@ public final class GetJobJobSettingsSettingsTask {
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
+    	      this.forEachTask = defaults.forEachTask;
     	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
@@ -254,6 +261,12 @@ public final class GetJobJobSettingsSettingsTask {
         public Builder existingClusterId(@Nullable String existingClusterId) {
 
             this.existingClusterId = existingClusterId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forEachTask(@Nullable GetJobJobSettingsSettingsTaskForEachTask forEachTask) {
+
+            this.forEachTask = forEachTask;
             return this;
         }
         @CustomType.Setter
@@ -390,6 +403,7 @@ public final class GetJobJobSettingsSettingsTask {
             _resultValue.description = description;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.existingClusterId = existingClusterId;
+            _resultValue.forEachTask = forEachTask;
             _resultValue.health = health;
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.libraries = libraries;

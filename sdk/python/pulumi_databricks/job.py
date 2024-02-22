@@ -77,6 +77,7 @@ class JobArgs:
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -589,6 +590,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
+        """
+        Task to run against the `inputs` list.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -694,6 +698,7 @@ class _JobState:
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the Git repository to use.
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -1209,6 +1214,9 @@ class _JobState:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
+        """
+        Task to run against the `inputs` list.
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -1339,6 +1347,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']] notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -1537,6 +1546,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']] notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[str] url: URL of the Git repository to use.
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
@@ -1846,6 +1856,9 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tasks(self) -> pulumi.Output[Optional[Sequence['outputs.JobTask']]]:
+        """
+        Task to run against the `inputs` list.
+        """
         return pulumi.get(self, "tasks")
 
     @property

@@ -162,6 +162,9 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * Task to run against the `inputs` list.
+     */
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -397,6 +400,9 @@ export interface JobState {
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Task to run against the `inputs` list.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -534,6 +540,9 @@ export interface JobArgs {
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Task to run against the `inputs` list.
+     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.

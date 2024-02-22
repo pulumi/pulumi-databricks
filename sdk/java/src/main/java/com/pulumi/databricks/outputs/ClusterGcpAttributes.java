@@ -36,11 +36,7 @@ public final class ClusterGcpAttributes {
     /**
      * @return if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
      * 
-     * @deprecated
-     * Please use &#39;availability&#39; instead.
-     * 
      */
-    @Deprecated /* Please use 'availability' instead. */
     private @Nullable Boolean usePreemptibleExecutors;
     /**
      * @return Identifier for the availability zone in which the cluster resides. This can be one of the following:
@@ -80,11 +76,7 @@ public final class ClusterGcpAttributes {
     /**
      * @return if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
      * 
-     * @deprecated
-     * Please use &#39;availability&#39; instead.
-     * 
      */
-    @Deprecated /* Please use 'availability' instead. */
     public Optional<Boolean> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
     }

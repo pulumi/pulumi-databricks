@@ -65,6 +65,11 @@ export type ExternalLocation = import("./externalLocation").ExternalLocation;
 export const ExternalLocation: typeof import("./externalLocation").ExternalLocation = null as any;
 utilities.lazyLoad(exports, ["ExternalLocation"], () => require("./externalLocation"));
 
+export { FileArgs, FileState } from "./file";
+export type File = import("./file").File;
+export const File: typeof import("./file").File = null as any;
+utilities.lazyLoad(exports, ["File"], () => require("./file"));
+
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
 export const getAwsAssumeRolePolicyOutput: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicyOutput = null as any;
@@ -244,6 +249,16 @@ export { GetSqlWarehousesArgs, GetSqlWarehousesResult, GetSqlWarehousesOutputArg
 export const getSqlWarehouses: typeof import("./getSqlWarehouses").getSqlWarehouses = null as any;
 export const getSqlWarehousesOutput: typeof import("./getSqlWarehouses").getSqlWarehousesOutput = null as any;
 utilities.lazyLoad(exports, ["getSqlWarehouses","getSqlWarehousesOutput"], () => require("./getSqlWarehouses"));
+
+export { GetStorageCredentialArgs, GetStorageCredentialResult, GetStorageCredentialOutputArgs } from "./getStorageCredential";
+export const getStorageCredential: typeof import("./getStorageCredential").getStorageCredential = null as any;
+export const getStorageCredentialOutput: typeof import("./getStorageCredential").getStorageCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageCredential","getStorageCredentialOutput"], () => require("./getStorageCredential"));
+
+export { GetStorageCredentialsArgs, GetStorageCredentialsResult, GetStorageCredentialsOutputArgs } from "./getStorageCredentials";
+export const getStorageCredentials: typeof import("./getStorageCredentials").getStorageCredentials = null as any;
+export const getStorageCredentialsOutput: typeof import("./getStorageCredentials").getStorageCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getStorageCredentials","getStorageCredentialsOutput"], () => require("./getStorageCredentials"));
 
 export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
 export const getTables: typeof import("./getTables").getTables = null as any;
@@ -590,6 +605,11 @@ export type UserRole = import("./userRole").UserRole;
 export const UserRole: typeof import("./userRole").UserRole = null as any;
 utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
 
+export { VectorSearchEndpointArgs, VectorSearchEndpointState } from "./vectorSearchEndpoint";
+export type VectorSearchEndpoint = import("./vectorSearchEndpoint").VectorSearchEndpoint;
+export const VectorSearchEndpoint: typeof import("./vectorSearchEndpoint").VectorSearchEndpoint = null as any;
+utilities.lazyLoad(exports, ["VectorSearchEndpoint"], () => require("./vectorSearchEndpoint"));
+
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
@@ -643,6 +663,8 @@ const _module = {
                 return new Entitlements(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
                 return new ExternalLocation(name, <any>undefined, { urn })
+            case "databricks:index/file:File":
+                return new File(name, <any>undefined, { urn })
             case "databricks:index/gitCredential:GitCredential":
                 return new GitCredential(name, <any>undefined, { urn })
             case "databricks:index/globalInitScript:GlobalInitScript":
@@ -769,6 +791,8 @@ const _module = {
                 return new UserInstanceProfile(name, <any>undefined, { urn })
             case "databricks:index/userRole:UserRole":
                 return new UserRole(name, <any>undefined, { urn })
+            case "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint":
+                return new VectorSearchEndpoint(name, <any>undefined, { urn })
             case "databricks:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
@@ -792,6 +816,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/defaultNamespaceSetti
 pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/globalInitScript", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/grant", _module)
@@ -855,6 +880,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/token", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/user", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userInstanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)

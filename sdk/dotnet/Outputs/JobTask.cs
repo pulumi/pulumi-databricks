@@ -29,6 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
         public readonly string? ExistingClusterId;
+        public readonly Outputs.JobTaskForEachTask? ForEachTask;
         /// <summary>
         /// block described below that specifies health conditions for a given task.
         /// </summary>
@@ -103,6 +104,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? existingClusterId,
 
+            Outputs.JobTaskForEachTask? forEachTask,
+
             Outputs.JobTaskHealth? health,
 
             string? jobClusterKey,
@@ -150,6 +153,7 @@ namespace Pulumi.Databricks.Outputs
             Description = description;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
+            ForEachTask = forEachTask;
             Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;

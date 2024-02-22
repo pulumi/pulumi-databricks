@@ -8,23 +8,185 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskSqlTaskFileArgs Empty = new JobTaskSqlTaskFileArgs();
 
+    /**
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * 
+     * Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Job;
+     * import com.pulumi.databricks.JobArgs;
+     * import com.pulumi.databricks.inputs.JobTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+     *             .tasks(            
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .query(JobTaskSqlTaskQueryArgs.builder()
+     *                             .queryId(databricks_sql_query.agg_query().id())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+     *                             .dashboardId(databricks_sql_dashboard.dash().id())
+     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+     *                             .alertId(databricks_sql_alert.alert().id())
+     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     @Import(name="path", required=true)
     private Output<String> path;
 
+    /**
+     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * 
+     * Example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Job;
+     * import com.pulumi.databricks.JobArgs;
+     * import com.pulumi.databricks.inputs.JobTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+     *             .tasks(            
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_agg_query&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .query(JobTaskSqlTaskQueryArgs.builder()
+     *                             .queryId(databricks_sql_query.agg_query().id())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_dashboard&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+     *                             .dashboardId(databricks_sql_dashboard.dash().id())
+     *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build(),
+     *                 JobTaskArgs.builder()
+     *                     .taskKey(&#34;run_alert&#34;)
+     *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+     *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+     *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+     *                             .alertId(databricks_sql_alert.alert().id())
+     *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+     *                                 .userName(&#34;user@domain.com&#34;)
+     *                                 .build())
+     *                             .build())
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public Output<String> path() {
         return this.path;
+    }
+
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private JobTaskSqlTaskFileArgs() {}
 
     private JobTaskSqlTaskFileArgs(JobTaskSqlTaskFileArgs $) {
         this.path = $.path;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -45,13 +207,182 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
             $ = new JobTaskSqlTaskFileArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+         * 
+         * Example
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Job;
+         * import com.pulumi.databricks.JobArgs;
+         * import com.pulumi.databricks.inputs.JobTaskArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+         *             .tasks(            
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .query(JobTaskSqlTaskQueryArgs.builder()
+         *                             .queryId(databricks_sql_query.agg_query().id())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+         *                             .dashboardId(databricks_sql_dashboard.dash().id())
+         *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+         *                             .alertId(databricks_sql_alert.alert().id())
+         *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+         * 
+         * Example
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.databricks.Job;
+         * import com.pulumi.databricks.JobArgs;
+         * import com.pulumi.databricks.inputs.JobTaskArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+         * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var sqlAggregationJob = new Job(&#34;sqlAggregationJob&#34;, JobArgs.builder()        
+         *             .tasks(            
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_agg_query&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .query(JobTaskSqlTaskQueryArgs.builder()
+         *                             .queryId(databricks_sql_query.agg_query().id())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_dashboard&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .dashboard(JobTaskSqlTaskDashboardArgs.builder()
+         *                             .dashboardId(databricks_sql_dashboard.dash().id())
+         *                             .subscriptions(JobTaskSqlTaskDashboardSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build(),
+         *                 JobTaskArgs.builder()
+         *                     .taskKey(&#34;run_alert&#34;)
+         *                     .sqlTask(JobTaskSqlTaskArgs.builder()
+         *                         .warehouseId(databricks_sql_endpoint.sql_job_warehouse().id())
+         *                         .alert(JobTaskSqlTaskAlertArgs.builder()
+         *                             .alertId(databricks_sql_alert.alert().id())
+         *                             .subscriptions(JobTaskSqlTaskAlertSubscriptionArgs.builder()
+         *                                 .userName(&#34;user@domain.com&#34;)
+         *                                 .build())
+         *                             .build())
+         *                         .build())
+         *                     .build())
+         *             .build());
+         * 
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         public JobTaskSqlTaskFileArgs build() {

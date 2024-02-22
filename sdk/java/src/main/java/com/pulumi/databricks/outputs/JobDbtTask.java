@@ -29,7 +29,9 @@ public final class JobDbtTask {
      */
     private @Nullable String profilesDirectory;
     /**
-     * @return The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
     private @Nullable String projectDirectory;
@@ -38,6 +40,11 @@ public final class JobDbtTask {
      * 
      */
     private @Nullable String schema;
+    /**
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
+    private @Nullable String source;
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
      * 
@@ -69,7 +76,9 @@ public final class JobDbtTask {
         return Optional.ofNullable(this.profilesDirectory);
     }
     /**
-     * @return The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
     public Optional<String> projectDirectory() {
@@ -81,6 +90,13 @@ public final class JobDbtTask {
      */
     public Optional<String> schema() {
         return Optional.ofNullable(this.schema);
+    }
+    /**
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * 
+     */
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
@@ -106,6 +122,7 @@ public final class JobDbtTask {
         private @Nullable String profilesDirectory;
         private @Nullable String projectDirectory;
         private @Nullable String schema;
+        private @Nullable String source;
         private @Nullable String warehouseId;
         public Builder() {}
         public Builder(JobDbtTask defaults) {
@@ -115,6 +132,7 @@ public final class JobDbtTask {
     	      this.profilesDirectory = defaults.profilesDirectory;
     	      this.projectDirectory = defaults.projectDirectory;
     	      this.schema = defaults.schema;
+    	      this.source = defaults.source;
     	      this.warehouseId = defaults.warehouseId;
         }
 
@@ -154,6 +172,12 @@ public final class JobDbtTask {
             return this;
         }
         @CustomType.Setter
+        public Builder source(@Nullable String source) {
+
+            this.source = source;
+            return this;
+        }
+        @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
 
             this.warehouseId = warehouseId;
@@ -166,6 +190,7 @@ public final class JobDbtTask {
             _resultValue.profilesDirectory = profilesDirectory;
             _resultValue.projectDirectory = projectDirectory;
             _resultValue.schema = schema;
+            _resultValue.source = source;
             _resultValue.warehouseId = warehouseId;
             return _resultValue;
         }

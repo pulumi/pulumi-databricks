@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOn;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskHealth;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibrary;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewCluster;
@@ -82,6 +83,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+
+    @Import(name="forEachTask")
+    private @Nullable GetJobJobSettingsSettingsTaskForEachTask forEachTask;
+
+    public Optional<GetJobJobSettingsSettingsTaskForEachTask> forEachTask() {
+        return Optional.ofNullable(this.forEachTask);
     }
 
     @Import(name="health")
@@ -234,6 +242,7 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.forEachTask = $.forEachTask;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
@@ -310,6 +319,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder existingClusterId(@Nullable String existingClusterId) {
             $.existingClusterId = existingClusterId;
+            return this;
+        }
+
+        public Builder forEachTask(@Nullable GetJobJobSettingsSettingsTaskForEachTask forEachTask) {
+            $.forEachTask = forEachTask;
             return this;
         }
 

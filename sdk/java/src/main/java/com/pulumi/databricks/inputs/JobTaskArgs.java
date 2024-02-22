@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.JobTaskConditionTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.JobTaskEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskHealthArgs;
 import com.pulumi.databricks.inputs.JobTaskLibraryArgs;
 import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
@@ -106,6 +107,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+
+    @Import(name="forEachTask")
+    private @Nullable Output<JobTaskForEachTaskArgs> forEachTask;
+
+    public Optional<Output<JobTaskForEachTaskArgs>> forEachTask() {
+        return Optional.ofNullable(this.forEachTask);
     }
 
     /**
@@ -356,6 +364,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.forEachTask = $.forEachTask;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
@@ -503,6 +512,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
+        }
+
+        public Builder forEachTask(@Nullable Output<JobTaskForEachTaskArgs> forEachTask) {
+            $.forEachTask = forEachTask;
+            return this;
+        }
+
+        public Builder forEachTask(JobTaskForEachTaskArgs forEachTask) {
+            return forEachTask(Output.of(forEachTask));
         }
 
         /**

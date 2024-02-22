@@ -38,6 +38,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("existingClusterId")]
         public string? ExistingClusterId { get; set; }
 
+        [Input("forEachTask")]
+        public Inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs? ForEachTask { get; set; }
+
         [Input("health")]
         public Inputs.GetJobJobSettingsSettingsTaskHealthArgs? Health { get; set; }
 

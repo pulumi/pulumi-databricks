@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.JobTaskConditionTask;
 import com.pulumi.databricks.outputs.JobTaskDbtTask;
 import com.pulumi.databricks.outputs.JobTaskDependsOn;
 import com.pulumi.databricks.outputs.JobTaskEmailNotifications;
+import com.pulumi.databricks.outputs.JobTaskForEachTask;
 import com.pulumi.databricks.outputs.JobTaskHealth;
 import com.pulumi.databricks.outputs.JobTaskLibrary;
 import com.pulumi.databricks.outputs.JobTaskNewCluster;
@@ -50,6 +51,7 @@ public final class JobTask {
      */
     private @Nullable JobTaskEmailNotifications emailNotifications;
     private @Nullable String existingClusterId;
+    private @Nullable JobTaskForEachTask forEachTask;
     /**
      * @return block described below that specifies health conditions for a given task.
      * 
@@ -153,6 +155,9 @@ public final class JobTask {
     }
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+    public Optional<JobTaskForEachTask> forEachTask() {
+        return Optional.ofNullable(this.forEachTask);
     }
     /**
      * @return block described below that specifies health conditions for a given task.
@@ -280,6 +285,7 @@ public final class JobTask {
         private @Nullable String description;
         private @Nullable JobTaskEmailNotifications emailNotifications;
         private @Nullable String existingClusterId;
+        private @Nullable JobTaskForEachTask forEachTask;
         private @Nullable JobTaskHealth health;
         private @Nullable String jobClusterKey;
         private @Nullable List<JobTaskLibrary> libraries;
@@ -310,6 +316,7 @@ public final class JobTask {
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.existingClusterId = defaults.existingClusterId;
+    	      this.forEachTask = defaults.forEachTask;
     	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
     	      this.libraries = defaults.libraries;
@@ -375,6 +382,12 @@ public final class JobTask {
         public Builder existingClusterId(@Nullable String existingClusterId) {
 
             this.existingClusterId = existingClusterId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forEachTask(@Nullable JobTaskForEachTask forEachTask) {
+
+            this.forEachTask = forEachTask;
             return this;
         }
         @CustomType.Setter
@@ -509,6 +522,7 @@ public final class JobTask {
             _resultValue.description = description;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.existingClusterId = existingClusterId;
+            _resultValue.forEachTask = forEachTask;
             _resultValue.health = health;
             _resultValue.jobClusterKey = jobClusterKey;
             _resultValue.libraries = libraries;

@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskConditionTaskAr
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskDependsOnArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskHealthArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskNewClusterArgs;
@@ -83,6 +84,13 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
     public Optional<Output<String>> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
+    }
+
+    @Import(name="forEachTask")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskArgs> forEachTask;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskForEachTaskArgs>> forEachTask() {
+        return Optional.ofNullable(this.forEachTask);
     }
 
     @Import(name="health")
@@ -235,6 +243,7 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
         this.existingClusterId = $.existingClusterId;
+        this.forEachTask = $.forEachTask;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
         this.libraries = $.libraries;
@@ -340,6 +349,15 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder existingClusterId(String existingClusterId) {
             return existingClusterId(Output.of(existingClusterId));
+        }
+
+        public Builder forEachTask(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskArgs> forEachTask) {
+            $.forEachTask = forEachTask;
+            return this;
+        }
+
+        public Builder forEachTask(GetJobJobSettingsSettingsTaskForEachTaskArgs forEachTask) {
+            return forEachTask(Output.of(forEachTask));
         }
 
         public Builder health(@Nullable Output<GetJobJobSettingsSettingsTaskHealthArgs> health) {
