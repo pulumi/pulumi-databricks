@@ -226,6 +226,10 @@
                     }
                 }
             },
+            "databricks_file": {
+                "current": "databricks:index/file:File",
+                "majorVersion": 1
+            },
             "databricks_git_credential": {
                 "current": "databricks:index/gitCredential:GitCredential",
                 "majorVersion": 1
@@ -726,6 +730,285 @@
                                             },
                                             "on_success": {
                                                 "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "for_each_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "task": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "condition_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "dbt_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "commands": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "depends_on": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "email_notifications": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "on_duration_warning_threshold_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_failure": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_success": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "health": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "rules": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "library": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "cran": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "maven": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "exclusions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "pypi": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "new_cluster": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "autoscale": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "aws_attributes": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "azure_attributes": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "cluster_log_conf": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "dbfs": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "s3": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "cluster_mount_info": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "network_filesystem_info": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "docker_image": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "basic_auth": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "gcp_attributes": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "init_scripts": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "abfss": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "dbfs": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "file": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "gcs": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "s3": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "volumes": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "workspace": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "ssh_public_keys": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "workload_type": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "clients": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "notebook_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "notification_settings": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "pipeline_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "python_wheel_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "run_job_task": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "spark_jar_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "spark_python_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "spark_submit_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "sql_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "alert": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscriptions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "dashboard": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "subscriptions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "file": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "query": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "webhook_notifications": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "on_duration_warning_threshold_exceeded": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_failure": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_start": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "on_success": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -1754,6 +2037,15 @@
                 "current": "databricks:index/userRole:UserRole",
                 "majorVersion": 1
             },
+            "databricks_vector_search_endpoint": {
+                "current": "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint",
+                "majorVersion": 1,
+                "fields": {
+                    "endpoint_status": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_volume": {
                 "current": "databricks:index/volume:Volume",
                 "majorVersion": 1
@@ -2443,6 +2735,285 @@
                                                                 }
                                                             }
                                                         },
+                                                        "for_each_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "task": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "condition_task": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "dbt_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "commands": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "depends_on": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "email_notifications": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "on_duration_warning_threshold_exceeded": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_failure": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_start": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_success": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "health": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "rules": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "library": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cran": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "maven": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "exclusions": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "pypi": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "new_cluster": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "autoscale": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "aws_attributes": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "azure_attributes": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "cluster_log_conf": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "dbfs": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "s3": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "cluster_mount_info": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "network_filesystem_info": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "docker_image": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "basic_auth": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "gcp_attributes": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "init_scripts": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "abfss": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "dbfs": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "file": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "gcs": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "s3": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "volumes": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        },
+                                                                                                        "workspace": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "ssh_public_keys": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "workload_type": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "clients": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "notebook_task": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "notification_settings": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "pipeline_task": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "python_wheel_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "parameters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "run_job_task": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "spark_jar_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "parameters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "spark_python_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "parameters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "spark_submit_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "parameters": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "sql_task": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "alert": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "subscriptions": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "dashboard": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "subscriptions": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "file": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "query": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "webhook_notifications": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "on_duration_warning_threshold_exceeded": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_failure": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_start": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "on_success": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "health": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -2882,6 +3453,43 @@
                     }
                 }
             },
+            "databricks_storage_credential": {
+                "current": "databricks:index/getStorageCredential:getStorageCredential",
+                "majorVersion": 1,
+                "fields": {
+                    "storage_credential_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "aws_iam_role": {
+                                    "maxItemsOne": true
+                                },
+                                "azure_managed_identity": {
+                                    "maxItemsOne": true
+                                },
+                                "azure_service_principal": {
+                                    "maxItemsOne": true
+                                },
+                                "cloudflare_api_token": {
+                                    "maxItemsOne": true
+                                },
+                                "databricks_gcp_service_account": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_storage_credentials": {
+                "current": "databricks:index/getStorageCredentials:getStorageCredentials",
+                "majorVersion": 1,
+                "fields": {
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_tables": {
                 "current": "databricks:index/getTables:getTables",
                 "majorVersion": 1,
@@ -2947,6 +3555,7 @@
             "databricks:index/directory:Directory": "databricks_directory",
             "databricks:index/entitlements:Entitlements": "databricks_entitlements",
             "databricks:index/externalLocation:ExternalLocation": "databricks_external_location",
+            "databricks:index/file:File": "databricks_file",
             "databricks:index/gitCredential:GitCredential": "databricks_git_credential",
             "databricks:index/globalInitScript:GlobalInitScript": "databricks_global_init_script",
             "databricks:index/grant:Grant": "databricks_grant",
@@ -3010,6 +3619,7 @@
             "databricks:index/user:User": "databricks_user",
             "databricks:index/userInstanceProfile:UserInstanceProfile": "databricks_user_instance_profile",
             "databricks:index/userRole:UserRole": "databricks_user_role",
+            "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint": "databricks_vector_search_endpoint",
             "databricks:index/volume:Volume": "databricks_volume",
             "databricks:index/workspaceConf:WorkspaceConf": "databricks_workspace_conf",
             "databricks:index/workspaceFile:WorkspaceFile": "databricks_workspace_file"
@@ -3051,6 +3661,8 @@
             "databricks:index/getSparkVersion:getSparkVersion": "databricks_spark_version",
             "databricks:index/getSqlWarehouse:getSqlWarehouse": "databricks_sql_warehouse",
             "databricks:index/getSqlWarehouses:getSqlWarehouses": "databricks_sql_warehouses",
+            "databricks:index/getStorageCredential:getStorageCredential": "databricks_storage_credential",
+            "databricks:index/getStorageCredentials:getStorageCredentials": "databricks_storage_credentials",
             "databricks:index/getTables:getTables": "databricks_tables",
             "databricks:index/getUser:getUser": "databricks_user",
             "databricks:index/getViews:getViews": "databricks_views",
@@ -3397,6 +4009,7 @@
                 "dependsOns": "depends_on",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
+                "forEachTask": "for_each_task",
                 "jobClusterKey": "job_cluster_key",
                 "libraries": "library",
                 "maxRetries": "max_retries",
@@ -3426,6 +4039,184 @@
                 "taskKey": "task_key"
             },
             "databricks:index/JobTaskEmailNotifications:JobTaskEmailNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
+            "databricks:index/JobTaskForEachTaskTask:JobTaskForEachTaskTask": {
+                "computeKey": "compute_key",
+                "conditionTask": "condition_task",
+                "dbtTask": "dbt_task",
+                "dependsOns": "depends_on",
+                "emailNotifications": "email_notifications",
+                "existingClusterId": "existing_cluster_id",
+                "jobClusterKey": "job_cluster_key",
+                "libraries": "library",
+                "maxRetries": "max_retries",
+                "minRetryIntervalMillis": "min_retry_interval_millis",
+                "newCluster": "new_cluster",
+                "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
+                "pipelineTask": "pipeline_task",
+                "pythonWheelTask": "python_wheel_task",
+                "retryOnTimeout": "retry_on_timeout",
+                "runIf": "run_if",
+                "runJobTask": "run_job_task",
+                "sparkJarTask": "spark_jar_task",
+                "sparkPythonTask": "spark_python_task",
+                "sparkSubmitTask": "spark_submit_task",
+                "sqlTask": "sql_task",
+                "taskKey": "task_key",
+                "timeoutSeconds": "timeout_seconds",
+                "webhookNotifications": "webhook_notifications"
+            },
+            "databricks:index/JobTaskForEachTaskTaskDbtTask:JobTaskForEachTaskTaskDbtTask": {
+                "profilesDirectory": "profiles_directory",
+                "projectDirectory": "project_directory",
+                "warehouseId": "warehouse_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskDependsOn:JobTaskForEachTaskTaskDependsOn": {
+                "taskKey": "task_key"
+            },
+            "databricks:index/JobTaskForEachTaskTaskEmailNotifications:JobTaskForEachTaskTaskEmailNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewCluster:JobTaskForEachTaskTaskNewCluster": {
+                "applyPolicyDefaultValues": "apply_policy_default_values",
+                "autoterminationMinutes": "autotermination_minutes",
+                "awsAttributes": "aws_attributes",
+                "azureAttributes": "azure_attributes",
+                "clusterId": "cluster_id",
+                "clusterLogConf": "cluster_log_conf",
+                "clusterMountInfos": "cluster_mount_info",
+                "clusterName": "cluster_name",
+                "customTags": "custom_tags",
+                "dataSecurityMode": "data_security_mode",
+                "dockerImage": "docker_image",
+                "driverInstancePoolId": "driver_instance_pool_id",
+                "driverNodeTypeId": "driver_node_type_id",
+                "enableElasticDisk": "enable_elastic_disk",
+                "enableLocalDiskEncryption": "enable_local_disk_encryption",
+                "gcpAttributes": "gcp_attributes",
+                "idempotencyToken": "idempotency_token",
+                "initScripts": "init_scripts",
+                "instancePoolId": "instance_pool_id",
+                "nodeTypeId": "node_type_id",
+                "numWorkers": "num_workers",
+                "policyId": "policy_id",
+                "runtimeEngine": "runtime_engine",
+                "singleUserName": "single_user_name",
+                "sparkConf": "spark_conf",
+                "sparkEnvVars": "spark_env_vars",
+                "sparkVersion": "spark_version",
+                "sshPublicKeys": "ssh_public_keys",
+                "workloadType": "workload_type"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterAutoscale:JobTaskForEachTaskTaskNewClusterAutoscale": {
+                "maxWorkers": "max_workers",
+                "minWorkers": "min_workers"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterAwsAttributes:JobTaskForEachTaskTaskNewClusterAwsAttributes": {
+                "ebsVolumeCount": "ebs_volume_count",
+                "ebsVolumeSize": "ebs_volume_size",
+                "ebsVolumeType": "ebs_volume_type",
+                "firstOnDemand": "first_on_demand",
+                "instanceProfileArn": "instance_profile_arn",
+                "spotBidPricePercent": "spot_bid_price_percent",
+                "zoneId": "zone_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterAzureAttributes:JobTaskForEachTaskTaskNewClusterAzureAttributes": {
+                "firstOnDemand": "first_on_demand",
+                "spotBidMaxPrice": "spot_bid_max_price"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterClusterLogConfS3:JobTaskForEachTaskTaskNewClusterClusterLogConfS3": {
+                "cannedAcl": "canned_acl",
+                "enableEncryption": "enable_encryption",
+                "encryptionType": "encryption_type",
+                "kmsKey": "kms_key"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterClusterMountInfo:JobTaskForEachTaskTaskNewClusterClusterMountInfo": {
+                "localMountDirPath": "local_mount_dir_path",
+                "networkFilesystemInfo": "network_filesystem_info",
+                "remoteMountDirPath": "remote_mount_dir_path"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo:JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo": {
+                "mountOptions": "mount_options",
+                "serverAddress": "server_address"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterDockerImage:JobTaskForEachTaskTaskNewClusterDockerImage": {
+                "basicAuth": "basic_auth"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterGcpAttributes:JobTaskForEachTaskTaskNewClusterGcpAttributes": {
+                "bootDiskSize": "boot_disk_size",
+                "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
+                "usePreemptibleExecutors": "use_preemptible_executors",
+                "zoneId": "zone_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNewClusterInitScriptS3:JobTaskForEachTaskTaskNewClusterInitScriptS3": {
+                "cannedAcl": "canned_acl",
+                "enableEncryption": "enable_encryption",
+                "encryptionType": "encryption_type",
+                "kmsKey": "kms_key"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNotebookTask:JobTaskForEachTaskTaskNotebookTask": {
+                "baseParameters": "base_parameters",
+                "notebookPath": "notebook_path"
+            },
+            "databricks:index/JobTaskForEachTaskTaskNotificationSettings:JobTaskForEachTaskTaskNotificationSettings": {
+                "alertOnLastAttempt": "alert_on_last_attempt",
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
+            },
+            "databricks:index/JobTaskForEachTaskTaskPipelineTask:JobTaskForEachTaskTaskPipelineTask": {
+                "fullRefresh": "full_refresh",
+                "pipelineId": "pipeline_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskPythonWheelTask:JobTaskForEachTaskTaskPythonWheelTask": {
+                "entryPoint": "entry_point",
+                "namedParameters": "named_parameters",
+                "packageName": "package_name"
+            },
+            "databricks:index/JobTaskForEachTaskTaskRunJobTask:JobTaskForEachTaskTaskRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSparkJarTask:JobTaskForEachTaskTaskSparkJarTask": {
+                "jarUri": "jar_uri",
+                "mainClassName": "main_class_name"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSparkPythonTask:JobTaskForEachTaskTaskSparkPythonTask": {
+                "pythonFile": "python_file"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTask:JobTaskForEachTaskTaskSqlTask": {
+                "warehouseId": "warehouse_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTaskAlert:JobTaskForEachTaskTaskSqlTaskAlert": {
+                "alertId": "alert_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTaskAlertSubscription:JobTaskForEachTaskTaskSqlTaskAlertSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTaskDashboard:JobTaskForEachTaskTaskSqlTaskDashboard": {
+                "customSubject": "custom_subject",
+                "dashboardId": "dashboard_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTaskDashboardSubscription:JobTaskForEachTaskTaskSqlTaskDashboardSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
+            },
+            "databricks:index/JobTaskForEachTaskTaskSqlTaskQuery:JobTaskForEachTaskTaskSqlTaskQuery": {
+                "queryId": "query_id"
+            },
+            "databricks:index/JobTaskForEachTaskTaskWebhookNotifications:JobTaskForEachTaskTaskWebhookNotifications": {
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
@@ -4002,6 +4793,12 @@
                 "readOnly": "read_only",
                 "skipValidation": "skip_validation"
             },
+            "databricks:index/file:File": {
+                "contentBase64": "content_base64",
+                "fileSize": "file_size",
+                "modificationTime": "modification_time",
+                "remoteFileModified": "remote_file_modified"
+            },
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": {
                 "databricksAccountId": "databricks_account_id",
                 "externalId": "external_id",
@@ -4548,6 +5345,7 @@
                 "dependsOns": "depends_on",
                 "emailNotifications": "email_notifications",
                 "existingClusterId": "existing_cluster_id",
+                "forEachTask": "for_each_task",
                 "jobClusterKey": "job_cluster_key",
                 "libraries": "library",
                 "maxRetries": "max_retries",
@@ -4577,6 +5375,184 @@
                 "taskKey": "task_key"
             },
             "databricks:index/getJobJobSettingsSettingsTaskEmailNotifications:getJobJobSettingsSettingsTaskEmailNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTask:getJobJobSettingsSettingsTaskForEachTaskTask": {
+                "computeKey": "compute_key",
+                "conditionTask": "condition_task",
+                "dbtTask": "dbt_task",
+                "dependsOns": "depends_on",
+                "emailNotifications": "email_notifications",
+                "existingClusterId": "existing_cluster_id",
+                "jobClusterKey": "job_cluster_key",
+                "libraries": "library",
+                "maxRetries": "max_retries",
+                "minRetryIntervalMillis": "min_retry_interval_millis",
+                "newCluster": "new_cluster",
+                "notebookTask": "notebook_task",
+                "notificationSettings": "notification_settings",
+                "pipelineTask": "pipeline_task",
+                "pythonWheelTask": "python_wheel_task",
+                "retryOnTimeout": "retry_on_timeout",
+                "runIf": "run_if",
+                "runJobTask": "run_job_task",
+                "sparkJarTask": "spark_jar_task",
+                "sparkPythonTask": "spark_python_task",
+                "sparkSubmitTask": "spark_submit_task",
+                "sqlTask": "sql_task",
+                "taskKey": "task_key",
+                "timeoutSeconds": "timeout_seconds",
+                "webhookNotifications": "webhook_notifications"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskDbtTask:getJobJobSettingsSettingsTaskForEachTaskTaskDbtTask": {
+                "profilesDirectory": "profiles_directory",
+                "projectDirectory": "project_directory",
+                "warehouseId": "warehouse_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskDependsOn:getJobJobSettingsSettingsTaskForEachTaskTaskDependsOn": {
+                "taskKey": "task_key"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications:getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications": {
+                "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
+                "onFailures": "on_failure",
+                "onStarts": "on_start",
+                "onSuccesses": "on_success"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewCluster:getJobJobSettingsSettingsTaskForEachTaskTaskNewCluster": {
+                "applyPolicyDefaultValues": "apply_policy_default_values",
+                "autoterminationMinutes": "autotermination_minutes",
+                "awsAttributes": "aws_attributes",
+                "azureAttributes": "azure_attributes",
+                "clusterId": "cluster_id",
+                "clusterLogConf": "cluster_log_conf",
+                "clusterMountInfos": "cluster_mount_info",
+                "clusterName": "cluster_name",
+                "customTags": "custom_tags",
+                "dataSecurityMode": "data_security_mode",
+                "dockerImage": "docker_image",
+                "driverInstancePoolId": "driver_instance_pool_id",
+                "driverNodeTypeId": "driver_node_type_id",
+                "enableElasticDisk": "enable_elastic_disk",
+                "enableLocalDiskEncryption": "enable_local_disk_encryption",
+                "gcpAttributes": "gcp_attributes",
+                "idempotencyToken": "idempotency_token",
+                "initScripts": "init_scripts",
+                "instancePoolId": "instance_pool_id",
+                "nodeTypeId": "node_type_id",
+                "numWorkers": "num_workers",
+                "policyId": "policy_id",
+                "runtimeEngine": "runtime_engine",
+                "singleUserName": "single_user_name",
+                "sparkConf": "spark_conf",
+                "sparkEnvVars": "spark_env_vars",
+                "sparkVersion": "spark_version",
+                "sshPublicKeys": "ssh_public_keys",
+                "workloadType": "workload_type"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale": {
+                "maxWorkers": "max_workers",
+                "minWorkers": "min_workers"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes": {
+                "ebsVolumeCount": "ebs_volume_count",
+                "ebsVolumeSize": "ebs_volume_size",
+                "ebsVolumeType": "ebs_volume_type",
+                "firstOnDemand": "first_on_demand",
+                "instanceProfileArn": "instance_profile_arn",
+                "spotBidPricePercent": "spot_bid_price_percent",
+                "zoneId": "zone_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes": {
+                "firstOnDemand": "first_on_demand",
+                "spotBidMaxPrice": "spot_bid_max_price"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3": {
+                "cannedAcl": "canned_acl",
+                "enableEncryption": "enable_encryption",
+                "encryptionType": "encryption_type",
+                "kmsKey": "kms_key"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo": {
+                "localMountDirPath": "local_mount_dir_path",
+                "networkFilesystemInfo": "network_filesystem_info",
+                "remoteMountDirPath": "remote_mount_dir_path"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo": {
+                "mountOptions": "mount_options",
+                "serverAddress": "server_address"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage": {
+                "basicAuth": "basic_auth"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes": {
+                "bootDiskSize": "boot_disk_size",
+                "googleServiceAccount": "google_service_account",
+                "localSsdCount": "local_ssd_count",
+                "usePreemptibleExecutors": "use_preemptible_executors",
+                "zoneId": "zone_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3:getJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3": {
+                "cannedAcl": "canned_acl",
+                "enableEncryption": "enable_encryption",
+                "encryptionType": "encryption_type",
+                "kmsKey": "kms_key"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask:getJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask": {
+                "baseParameters": "base_parameters",
+                "notebookPath": "notebook_path"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings:getJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings": {
+                "alertOnLastAttempt": "alert_on_last_attempt",
+                "noAlertForCanceledRuns": "no_alert_for_canceled_runs",
+                "noAlertForSkippedRuns": "no_alert_for_skipped_runs"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask:getJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask": {
+                "fullRefresh": "full_refresh",
+                "pipelineId": "pipeline_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask:getJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask": {
+                "entryPoint": "entry_point",
+                "namedParameters": "named_parameters",
+                "packageName": "package_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask:getJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask": {
+                "jobId": "job_id",
+                "jobParameters": "job_parameters"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask:getJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask": {
+                "jarUri": "jar_uri",
+                "mainClassName": "main_class_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask:getJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask": {
+                "pythonFile": "python_file"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTask:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTask": {
+                "warehouseId": "warehouse_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert": {
+                "alertId": "alert_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard": {
+                "customSubject": "custom_subject",
+                "dashboardId": "dashboard_id",
+                "pauseSubscriptions": "pause_subscriptions"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription": {
+                "destinationId": "destination_id",
+                "userName": "user_name"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery:getJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery": {
+                "queryId": "query_id"
+            },
+            "databricks:index/getJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications:getJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications": {
                 "onDurationWarningThresholdExceededs": "on_duration_warning_threshold_exceeded",
                 "onFailures": "on_failure",
                 "onStarts": "on_start",
@@ -4856,6 +5832,46 @@
             },
             "databricks:index/getSqlWarehouses:getSqlWarehouses": {
                 "warehouseNameContains": "warehouse_name_contains"
+            },
+            "databricks:index/getStorageCredential:getStorageCredential": {
+                "storageCredentialInfo": "storage_credential_info"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfo:getStorageCredentialStorageCredentialInfo": {
+                "awsIamRole": "aws_iam_role",
+                "azureManagedIdentity": "azure_managed_identity",
+                "azureServicePrincipal": "azure_service_principal",
+                "cloudflareApiToken": "cloudflare_api_token",
+                "createdAt": "created_at",
+                "createdBy": "created_by",
+                "databricksGcpServiceAccount": "databricks_gcp_service_account",
+                "metastoreId": "metastore_id",
+                "readOnly": "read_only",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by",
+                "usedForManagedStorage": "used_for_managed_storage"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfoAwsIamRole:getStorageCredentialStorageCredentialInfoAwsIamRole": {
+                "externalId": "external_id",
+                "roleArn": "role_arn",
+                "unityCatalogIamArn": "unity_catalog_iam_arn"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfoAzureManagedIdentity:getStorageCredentialStorageCredentialInfoAzureManagedIdentity": {
+                "accessConnectorId": "access_connector_id",
+                "credentialId": "credential_id",
+                "managedIdentityId": "managed_identity_id"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfoAzureServicePrincipal:getStorageCredentialStorageCredentialInfoAzureServicePrincipal": {
+                "applicationId": "application_id",
+                "clientSecret": "client_secret",
+                "directoryId": "directory_id"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfoCloudflareApiToken:getStorageCredentialStorageCredentialInfoCloudflareApiToken": {
+                "accessKeyId": "access_key_id",
+                "accountId": "account_id",
+                "secretAccessKey": "secret_access_key"
+            },
+            "databricks:index/getStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount:getStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount": {
+                "credentialId": "credential_id"
             },
             "databricks:index/getTables:getTables": {
                 "catalogName": "catalog_name",
@@ -5363,10 +6379,20 @@
             "databricks:index/userRole:UserRole": {
                 "userId": "user_id"
             },
+            "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint": {
+                "creationTimestamp": "creation_timestamp",
+                "endpointId": "endpoint_id",
+                "endpointStatuses": "endpoint_status",
+                "endpointType": "endpoint_type",
+                "lastUpdatedTimestamp": "last_updated_timestamp",
+                "lastUpdatedUser": "last_updated_user",
+                "numIndexes": "num_indexes"
+            },
             "databricks:index/volume:Volume": {
                 "catalogName": "catalog_name",
                 "schemaName": "schema_name",
                 "storageLocation": "storage_location",
+                "volumePath": "volume_path",
                 "volumeType": "volume_type"
             },
             "databricks:index/workspaceConf:WorkspaceConf": {
