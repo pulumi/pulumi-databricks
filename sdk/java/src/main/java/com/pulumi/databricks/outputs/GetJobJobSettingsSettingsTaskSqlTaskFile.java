@@ -7,14 +7,20 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskSqlTaskFile {
     private String path;
+    private @Nullable String source;
 
     private GetJobJobSettingsSettingsTaskSqlTaskFile() {}
     public String path() {
         return this.path;
+    }
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -27,10 +33,12 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFile {
     @CustomType.Builder
     public static final class Builder {
         private String path;
+        private @Nullable String source;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskSqlTaskFile defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -41,9 +49,16 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFile {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder source(@Nullable String source) {
+
+            this.source = source;
+            return this;
+        }
         public GetJobJobSettingsSettingsTaskSqlTaskFile build() {
             final var _resultValue = new GetJobJobSettingsSettingsTaskSqlTaskFile();
             _resultValue.path = path;
+            _resultValue.source = source;
             return _resultValue;
         }
     }

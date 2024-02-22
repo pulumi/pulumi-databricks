@@ -19,77 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobNewClusterInitScriptDbfsGetArgs>? Dbfs { get; set; }
 
         /// <summary>
-        /// block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `git_source` configuration block*.
-        /// 
-        /// Example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var sqlAggregationJob = new Databricks.Job("sqlAggregationJob", new()
-        ///     {
-        ///         Tasks = new[]
-        ///         {
-        ///             new Databricks.Inputs.JobTaskArgs
-        ///             {
-        ///                 TaskKey = "run_agg_query",
-        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
-        ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
-        ///                     Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs
-        ///                     {
-        ///                         QueryId = databricks_sql_query.Agg_query.Id,
-        ///                     },
-        ///                 },
-        ///             },
-        ///             new Databricks.Inputs.JobTaskArgs
-        ///             {
-        ///                 TaskKey = "run_dashboard",
-        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
-        ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
-        ///                     Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs
-        ///                     {
-        ///                         DashboardId = databricks_sql_dashboard.Dash.Id,
-        ///                         Subscriptions = new[]
-        ///                         {
-        ///                             new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs
-        ///                             {
-        ///                                 UserName = "user@domain.com",
-        ///                             },
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             },
-        ///             new Databricks.Inputs.JobTaskArgs
-        ///             {
-        ///                 TaskKey = "run_alert",
-        ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
-        ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
-        ///                     Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs
-        ///                     {
-        ///                         AlertId = databricks_sql_alert.Alert.Id,
-        ///                         Subscriptions = new[]
-        ///                         {
-        ///                             new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs
-        ///                             {
-        ///                                 UserName = "user@domain.com",
-        ///                             },
-        ///                         },
-        ///                     },
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// block consisting of single string fields:
         /// </summary>
         [Input("file")]
         public Input<Inputs.JobNewClusterInitScriptFileGetArgs>? File { get; set; }

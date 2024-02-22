@@ -126,6 +126,8 @@ type Volume struct {
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath pulumi.StringOutput `pulumi:"volumePath"`
 	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 	VolumeType pulumi.StringOutput `pulumi:"volumeType"`
 }
@@ -181,6 +183,8 @@ type volumeState struct {
 	SchemaName *string `pulumi:"schemaName"`
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation *string `pulumi:"storageLocation"`
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath *string `pulumi:"volumePath"`
 	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 	VolumeType *string `pulumi:"volumeType"`
 }
@@ -198,6 +202,8 @@ type VolumeState struct {
 	SchemaName pulumi.StringPtrInput
 	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrInput
+	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+	VolumePath pulumi.StringPtrInput
 	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 	VolumeType pulumi.StringPtrInput
 }
@@ -356,6 +362,11 @@ func (o VolumeOutput) SchemaName() pulumi.StringOutput {
 // Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
 func (o VolumeOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+func (o VolumeOutput) VolumePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumePath }).(pulumi.StringOutput)
 }
 
 // Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.

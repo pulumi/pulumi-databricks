@@ -80,22 +80,14 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
     /**
      * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
      * 
-     * @deprecated
-     * Please use &#39;availability&#39; instead.
-     * 
      */
-    @Deprecated /* Please use 'availability' instead. */
     @Import(name="usePreemptibleExecutors")
     private @Nullable Output<Boolean> usePreemptibleExecutors;
 
     /**
      * @return if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
      * 
-     * @deprecated
-     * Please use &#39;availability&#39; instead.
-     * 
      */
-    @Deprecated /* Please use 'availability' instead. */
     public Optional<Output<Boolean>> usePreemptibleExecutors() {
         return Optional.ofNullable(this.usePreemptibleExecutors);
     }
@@ -233,11 +225,7 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;availability&#39; instead.
-         * 
          */
-        @Deprecated /* Please use 'availability' instead. */
         public Builder usePreemptibleExecutors(@Nullable Output<Boolean> usePreemptibleExecutors) {
             $.usePreemptibleExecutors = usePreemptibleExecutors;
             return this;
@@ -248,11 +236,7 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use &#39;availability&#39; instead.
-         * 
          */
-        @Deprecated /* Please use 'availability' instead. */
         public Builder usePreemptibleExecutors(Boolean usePreemptibleExecutors) {
             return usePreemptibleExecutors(Output.of(usePreemptibleExecutors));
         }

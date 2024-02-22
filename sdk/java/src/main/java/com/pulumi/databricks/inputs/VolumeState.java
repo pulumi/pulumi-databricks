@@ -106,6 +106,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+     * 
+     */
+    @Import(name="volumePath")
+    private @Nullable Output<String> volumePath;
+
+    /**
+     * @return base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+     * 
+     */
+    public Optional<Output<String>> volumePath() {
+        return Optional.ofNullable(this.volumePath);
+    }
+
+    /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */
@@ -129,6 +144,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.schemaName = $.schemaName;
         this.storageLocation = $.storageLocation;
+        this.volumePath = $.volumePath;
         this.volumeType = $.volumeType;
     }
 
@@ -274,6 +290,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
+        }
+
+        /**
+         * @param volumePath base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumePath(@Nullable Output<String> volumePath) {
+            $.volumePath = volumePath;
+            return this;
+        }
+
+        /**
+         * @param volumePath base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumePath(String volumePath) {
+            return volumePath(Output.of(volumePath));
         }
 
         /**

@@ -278,8 +278,6 @@ export interface ClusterGcpAttributes {
     localSsdCount?: number;
     /**
      * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-     *
-     * @deprecated Please use 'availability' instead.
      */
     usePreemptibleExecutors?: boolean;
     /**
@@ -319,7 +317,7 @@ export interface ClusterInitScriptFile {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: string;
+    destination: string;
 }
 
 export interface ClusterInitScriptGcs {
@@ -697,7 +695,7 @@ export interface GetClusterClusterInfoInitScriptS3 {
 }
 
 export interface GetClusterClusterInfoInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
@@ -964,6 +962,7 @@ export interface GetJobJobSettingsSettingsDbtTask {
     profilesDirectory?: string;
     projectDirectory?: string;
     schema?: string;
+    source?: string;
     warehouseId?: string;
 }
 
@@ -1151,7 +1150,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
@@ -1333,7 +1332,7 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
@@ -1424,6 +1423,7 @@ export interface GetJobJobSettingsSettingsTask {
     description?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
     existingClusterId?: string;
+    forEachTask?: outputs.GetJobJobSettingsSettingsTaskForEachTask;
     health?: outputs.GetJobJobSettingsSettingsTaskHealth;
     jobClusterKey?: string;
     libraries?: outputs.GetJobJobSettingsSettingsTaskLibrary[];
@@ -1458,6 +1458,7 @@ export interface GetJobJobSettingsSettingsTaskDbtTask {
     profilesDirectory?: string;
     projectDirectory?: string;
     schema?: string;
+    source?: string;
     warehouseId?: string;
 }
 
@@ -1471,6 +1472,383 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTask {
+    concurrency?: number;
+    inputs: string;
+    task: outputs.GetJobJobSettingsSettingsTaskForEachTaskTask;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
+    computeKey?: string;
+    conditionTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
+    dbtTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
+    dependsOns?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn[];
+    description?: string;
+    emailNotifications?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications;
+    existingClusterId?: string;
+    health?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealth;
+    jobClusterKey?: string;
+    libraries?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary[];
+    maxRetries?: number;
+    minRetryIntervalMillis?: number;
+    newCluster?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster;
+    notebookTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask;
+    notificationSettings?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings;
+    pipelineTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask;
+    pythonWheelTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask;
+    retryOnTimeout: boolean;
+    runIf?: string;
+    runJobTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask;
+    sparkJarTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask;
+    sparkPythonTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask;
+    sparkSubmitTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask;
+    sqlTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask;
+    taskKey?: string;
+    timeoutSeconds?: number;
+    webhookNotifications?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
+    left?: string;
+    op?: string;
+    right?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
+    catalog?: string;
+    commands: string[];
+    profilesDirectory?: string;
+    projectDirectory?: string;
+    schema?: string;
+    source?: string;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
+    outcome?: string;
+    taskKey: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+    onDurationWarningThresholdExceededs?: string[];
+    onFailures?: string[];
+    onStarts?: string[];
+    onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
+    rules: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
+    cran?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    pypi?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+    whl?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes;
+    azureAttributes?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo[];
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage;
+    driverInstancePoolId: string;
+    driverNodeTypeId: string;
+    enableElasticDisk: boolean;
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId: string;
+    numWorkers: number;
+    policyId?: string;
+    runtimeEngine?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf {
+    dbfs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfs;
+    s3?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage {
+    basicAuth?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    localSsdCount?: number;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScript {
+    abfss?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfss;
+    dbfs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfs;
+    file?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFile;
+    gcs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcs;
+    s3?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3;
+    volumes?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumes;
+    workspace?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspace;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfss {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFile {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumes {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspace {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType {
+    clients: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClients;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
+    baseParameters?: {[key: string]: any};
+    notebookPath: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings {
+    alertOnLastAttempt?: boolean;
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
+    fullRefresh?: boolean;
+    pipelineId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
+    entryPoint?: string;
+    namedParameters?: {[key: string]: any};
+    packageName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
+    jobId: number;
+    jobParameters?: {[key: string]: any};
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
+    jarUri?: string;
+    mainClassName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask {
+    parameters?: string[];
+    pythonFile: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask {
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
+    alert?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert;
+    dashboard?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
+    file?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
+    parameters?: {[key: string]: any};
+    query?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
+    alertId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard {
+    customSubject?: string;
+    dashboardId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile {
+    path: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery {
+    queryId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications {
+    onDurationWarningThresholdExceededs?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    onFailures?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    onStarts?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    onSuccesses?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskHealth {
@@ -1649,7 +2027,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
@@ -1744,6 +2122,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
     path: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
@@ -1994,6 +2373,90 @@ export interface GetSqlWarehouseTagsCustomTag {
     value?: string;
 }
 
+export interface GetStorageCredentialStorageCredentialInfo {
+    awsIamRole?: outputs.GetStorageCredentialStorageCredentialInfoAwsIamRole;
+    azureManagedIdentity?: outputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentity;
+    azureServicePrincipal?: outputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipal;
+    cloudflareApiToken?: outputs.GetStorageCredentialStorageCredentialInfoCloudflareApiToken;
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    databricksGcpServiceAccount?: outputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    id?: string;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
+    metastoreId?: string;
+    /**
+     * The name of the storage credential
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
+    owner?: string;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    readOnly?: boolean;
+    updatedAt?: number;
+    updatedBy?: string;
+    usedForManagedStorage?: boolean;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAwsIamRole {
+    /**
+     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
+     */
+    externalId?: string;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     */
+    roleArn: string;
+    /**
+     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     */
+    unityCatalogIamArn?: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: string;
+    credentialId?: string;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     */
+    managedIdentityId?: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     */
+    applicationId: string;
+    clientSecret: string;
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     */
+    directoryId: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoCloudflareApiToken {
+    accessKeyId: string;
+    accountId: string;
+    secretAccessKey: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
+    credentialId?: string;
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email?: string;
+}
+
 export interface GrantsGrant {
     principal: string;
     privileges: string[];
@@ -2140,13 +2603,19 @@ export interface JobDbtTask {
      */
     profilesDirectory?: string;
     /**
-     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
     projectDirectory?: string;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
     schema?: string;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: string;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
@@ -2362,50 +2831,7 @@ export interface JobJobClusterNewClusterInitScript {
      */
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
@@ -2441,7 +2867,7 @@ export interface JobJobClusterNewClusterInitScriptS3 {
 }
 
 export interface JobJobClusterNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
@@ -2596,50 +3022,7 @@ export interface JobNewClusterInitScript {
      */
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
@@ -2675,7 +3058,7 @@ export interface JobNewClusterInitScriptS3 {
 }
 
 export interface JobNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobNewClusterInitScriptWorkspace {
@@ -2866,6 +3249,7 @@ export interface JobTask {
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
     existingClusterId?: string;
+    forEachTask?: outputs.JobTaskForEachTask;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -2956,13 +3340,19 @@ export interface JobTaskDbtTask {
      */
     profilesDirectory?: string;
     /**
-     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
     projectDirectory?: string;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
     schema?: string;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: string;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
@@ -2999,6 +3389,696 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
+}
+
+export interface JobTaskForEachTask {
+    /**
+     * Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     */
+    concurrency?: number;
+    /**
+     * (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     */
+    inputs: string;
+    /**
+     * Task to run against the `inputs` list.
+     */
+    task: outputs.JobTaskForEachTaskTask;
+}
+
+export interface JobTaskForEachTaskTask {
+    computeKey?: string;
+    conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
+    dbtTask?: outputs.JobTaskForEachTaskTaskDbtTask;
+    /**
+     * block specifying dependency(-ies) for a given task.
+     */
+    dependsOns?: outputs.JobTaskForEachTaskTaskDependsOn[];
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: string;
+    /**
+     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     */
+    emailNotifications?: outputs.JobTaskForEachTaskTaskEmailNotifications;
+    existingClusterId?: string;
+    /**
+     * block described below that specifies health conditions for a given task.
+     */
+    health?: outputs.JobTaskForEachTaskTaskHealth;
+    /**
+     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+     */
+    jobClusterKey?: string;
+    /**
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     */
+    libraries?: outputs.JobTaskForEachTaskTaskLibrary[];
+    /**
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+     */
+    maxRetries?: number;
+    /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     */
+    minRetryIntervalMillis?: number;
+    /**
+     * Same set of parameters as for databricks.Cluster resource.
+     */
+    newCluster?: outputs.JobTaskForEachTaskTaskNewCluster;
+    notebookTask?: outputs.JobTaskForEachTaskTaskNotebookTask;
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     */
+    notificationSettings?: outputs.JobTaskForEachTaskTaskNotificationSettings;
+    pipelineTask?: outputs.JobTaskForEachTaskTaskPipelineTask;
+    pythonWheelTask?: outputs.JobTaskForEachTaskTaskPythonWheelTask;
+    /**
+     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+     */
+    retryOnTimeout: boolean;
+    /**
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     */
+    runIf?: string;
+    runJobTask?: outputs.JobTaskForEachTaskTaskRunJobTask;
+    sparkJarTask?: outputs.JobTaskForEachTaskTaskSparkJarTask;
+    sparkPythonTask?: outputs.JobTaskForEachTaskTaskSparkPythonTask;
+    sparkSubmitTask?: outputs.JobTaskForEachTaskTaskSparkSubmitTask;
+    sqlTask?: outputs.JobTaskForEachTaskTaskSqlTask;
+    /**
+     * string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     */
+    taskKey?: string;
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     */
+    timeoutSeconds?: number;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
+    webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface JobTaskForEachTaskTaskConditionTask {
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     */
+    left?: string;
+    /**
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     */
+    op?: string;
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     */
+    right?: string;
+}
+
+export interface JobTaskForEachTaskTaskDbtTask {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: string;
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
+    commands: string[];
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: string;
+    /**
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+     */
+    projectDirectory?: string;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: string;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: string;
+    /**
+     * The ID of the SQL warehouse that dbt should execute against.
+     *
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
+     */
+    warehouseId?: string;
+}
+
+export interface JobTaskForEachTaskTaskDependsOn {
+    /**
+     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+     */
+    outcome?: string;
+    /**
+     * The name of the task this task depends on.
+     */
+    taskKey: string;
+}
+
+export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: string[];
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
+    onFailures?: string[];
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
+    onStarts?: string[];
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
+    onSuccesses?: string[];
+}
+
+export interface JobTaskForEachTaskTaskHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: outputs.JobTaskForEachTaskTaskHealthRule[];
+}
+
+export interface JobTaskForEachTaskTaskHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: string;
+    /**
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     */
+    op?: string;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: number;
+}
+
+export interface JobTaskForEachTaskTaskLibrary {
+    cran?: outputs.JobTaskForEachTaskTaskLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: outputs.JobTaskForEachTaskTaskLibraryMaven;
+    pypi?: outputs.JobTaskForEachTaskTaskLibraryPypi;
+    whl?: string;
+}
+
+export interface JobTaskForEachTaskTaskLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: outputs.JobTaskForEachTaskTaskNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAwsAttributes;
+    azureAttributes?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConf;
+    clusterMountInfos?: outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo[];
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: outputs.JobTaskForEachTaskTaskNewClusterDockerImage;
+    driverInstancePoolId: string;
+    driverNodeTypeId: string;
+    enableElasticDisk: boolean;
+    enableLocalDiskEncryption: boolean;
+    gcpAttributes?: outputs.JobTaskForEachTaskTaskNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: outputs.JobTaskForEachTaskTaskNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId: string;
+    numWorkers: number;
+    policyId?: string;
+    runtimeEngine?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: outputs.JobTaskForEachTaskTaskNewClusterWorkloadType;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
+    dbfs?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs;
+    s3?: outputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: outputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDockerImage {
+    basicAuth?: outputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth;
+    /**
+     * URL of the Git repository to use.
+     */
+    url: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    localSsdCount?: number;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScript {
+    abfss?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss;
+    dbfs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs;
+    /**
+     * block consisting of single string fields:
+     */
+    file?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile;
+    gcs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs;
+    s3?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptS3;
+    volumes?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes;
+    workspace?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptAbfss {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptFile {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptGcs {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptVolumes {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptWorkspace {
+    destination: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
+    clients: outputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeClients;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface JobTaskForEachTaskTaskNotebookTask {
+    /**
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     */
+    baseParameters?: {[key: string]: any};
+    /**
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
+     */
+    notebookPath: string;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: string;
+}
+
+export interface JobTaskForEachTaskTaskNotificationSettings {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
+    alertOnLastAttempt?: boolean;
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: boolean;
+    /**
+     * (Bool) don't send alert for skipped runs.
+     */
+    noAlertForSkippedRuns?: boolean;
+}
+
+export interface JobTaskForEachTaskTaskPipelineTask {
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: boolean;
+    /**
+     * The pipeline's unique ID.
+     */
+    pipelineId: string;
+}
+
+export interface JobTaskForEachTaskTaskPythonWheelTask {
+    /**
+     * Python function as entry point for the task
+     */
+    entryPoint?: string;
+    /**
+     * Named parameters for the task
+     */
+    namedParameters?: {[key: string]: any};
+    /**
+     * Name of Python package
+     */
+    packageName?: string;
+    /**
+     * Parameters for the task
+     */
+    parameters?: string[];
+}
+
+export interface JobTaskForEachTaskTaskRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: number;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: {[key: string]: any};
+}
+
+export interface JobTaskForEachTaskTaskSparkJarTask {
+    jarUri?: string;
+    /**
+     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+     */
+    mainClassName?: string;
+    /**
+     * (List) Parameters passed to the main method.
+     */
+    parameters?: string[];
+}
+
+export interface JobTaskForEachTaskTaskSparkPythonTask {
+    /**
+     * (List) Command line parameters passed to the Python file.
+     */
+    parameters?: string[];
+    /**
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+     */
+    pythonFile: string;
+    /**
+     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     */
+    source?: string;
+}
+
+export interface JobTaskForEachTaskTaskSparkSubmitTask {
+    /**
+     * (List) Command-line parameters passed to spark submit.
+     */
+    parameters?: string[];
+}
+
+export interface JobTaskForEachTaskTaskSqlTask {
+    /**
+     * block consisting of following fields:
+     */
+    alert?: outputs.JobTaskForEachTaskTaskSqlTaskAlert;
+    /**
+     * block consisting of following fields:
+     */
+    dashboard?: outputs.JobTaskForEachTaskTaskSqlTaskDashboard;
+    /**
+     * block consisting of single string fields:
+     */
+    file?: outputs.JobTaskForEachTaskTaskSqlTaskFile;
+    /**
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     */
+    parameters?: {[key: string]: any};
+    /**
+     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     */
+    query?: outputs.JobTaskForEachTaskTaskSqlTaskQuery;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+     */
+    warehouseId?: string;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskAlert {
+    /**
+     * (String) identifier of the Databricks SQL Alert.
+     */
+    alertId: string;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: boolean;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions: outputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription[];
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskDashboard {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: string;
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId: string;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: boolean;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions?: outputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription[];
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: string;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskFile {
+    /**
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
+     * ```
+     */
+    path: string;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: string;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskQuery {
+    queryId: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotifications {
+    /**
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     */
+    onDurationWarningThresholdExceededs?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     */
+    onFailures?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    /**
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+     */
+    onStarts?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    /**
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+     */
+    onSuccesses?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: string;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: string;
 }
 
 export interface JobTaskHealth {
@@ -3164,50 +4244,7 @@ export interface JobTaskNewClusterInitScript {
      */
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
@@ -3243,7 +4280,7 @@ export interface JobTaskNewClusterInitScriptS3 {
 }
 
 export interface JobTaskNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
@@ -3376,50 +4413,7 @@ export interface JobTaskSqlTask {
      */
     dashboard?: outputs.JobTaskSqlTaskDashboard;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: outputs.JobTaskSqlTaskFile;
     /**
@@ -3487,7 +4481,57 @@ export interface JobTaskSqlTaskDashboardSubscription {
 }
 
 export interface JobTaskSqlTaskFile {
+    /**
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
+     * ```
+     */
     path: string;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: string;
 }
 
 export interface JobTaskSqlTaskQuery {
@@ -4114,7 +5158,7 @@ export interface PipelineClusterInitScriptS3 {
 }
 
 export interface PipelineClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface PipelineClusterInitScriptWorkspace {
@@ -4227,7 +5271,7 @@ export interface ShareObject {
      */
     comment?: string;
     /**
-     * Type of the object, currently only `TABLE` is allowed.
+     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      */
     dataObjectType: string;
     /**
@@ -4635,5 +5679,16 @@ export interface TableColumn {
     typePrecision?: number;
     typeScale?: number;
     typeText: string;
+}
+
+export interface VectorSearchEndpointEndpointStatus {
+    /**
+     * Additional status message.
+     */
+    message?: string;
+    /**
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     */
+    state?: string;
 }
 

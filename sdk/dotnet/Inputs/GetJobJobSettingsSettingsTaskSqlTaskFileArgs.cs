@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
         public GetJobJobSettingsSettingsTaskSqlTaskFileInputArgs()
         {
         }

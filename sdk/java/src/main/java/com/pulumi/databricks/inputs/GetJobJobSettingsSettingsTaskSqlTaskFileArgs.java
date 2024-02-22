@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,10 +23,18 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFileArgs extends com.pulu
         return this.path;
     }
 
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private GetJobJobSettingsSettingsTaskSqlTaskFileArgs() {}
 
     private GetJobJobSettingsSettingsTaskSqlTaskFileArgs(GetJobJobSettingsSettingsTaskSqlTaskFileArgs $) {
         this.path = $.path;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -52,6 +62,15 @@ public final class GetJobJobSettingsSettingsTaskSqlTaskFileArgs extends com.pulu
 
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(String source) {
+            return source(Output.of(source));
         }
 
         public GetJobJobSettingsSettingsTaskSqlTaskFileArgs build() {

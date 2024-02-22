@@ -139,6 +139,12 @@ namespace Pulumi.Databricks
         public Output<string?> StorageLocation { get; private set; } = null!;
 
         /// <summary>
+        /// base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+        /// </summary>
+        [Output("volumePath")]
+        public Output<string> VolumePath { get; private set; } = null!;
+
+        /// <summary>
         /// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         /// </summary>
         [Output("volumeType")]
@@ -275,6 +281,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
+
+        /// <summary>
+        /// base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+        /// </summary>
+        [Input("volumePath")]
+        public Input<string>? VolumePath { get; set; }
 
         /// <summary>
         /// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.

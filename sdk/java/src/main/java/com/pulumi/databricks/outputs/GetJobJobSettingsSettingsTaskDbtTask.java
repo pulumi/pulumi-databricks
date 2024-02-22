@@ -18,6 +18,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
     private @Nullable String profilesDirectory;
     private @Nullable String projectDirectory;
     private @Nullable String schema;
+    private @Nullable String source;
     private @Nullable String warehouseId;
 
     private GetJobJobSettingsSettingsTaskDbtTask() {}
@@ -35,6 +36,9 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
     }
     public Optional<String> schema() {
         return Optional.ofNullable(this.schema);
+    }
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
@@ -54,6 +58,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
         private @Nullable String profilesDirectory;
         private @Nullable String projectDirectory;
         private @Nullable String schema;
+        private @Nullable String source;
         private @Nullable String warehouseId;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskDbtTask defaults) {
@@ -63,6 +68,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
     	      this.profilesDirectory = defaults.profilesDirectory;
     	      this.projectDirectory = defaults.projectDirectory;
     	      this.schema = defaults.schema;
+    	      this.source = defaults.source;
     	      this.warehouseId = defaults.warehouseId;
         }
 
@@ -102,6 +108,12 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
             return this;
         }
         @CustomType.Setter
+        public Builder source(@Nullable String source) {
+
+            this.source = source;
+            return this;
+        }
+        @CustomType.Setter
         public Builder warehouseId(@Nullable String warehouseId) {
 
             this.warehouseId = warehouseId;
@@ -114,6 +126,7 @@ public final class GetJobJobSettingsSettingsTaskDbtTask {
             _resultValue.profilesDirectory = profilesDirectory;
             _resultValue.projectDirectory = projectDirectory;
             _resultValue.schema = schema;
+            _resultValue.source = source;
             _resultValue.warehouseId = warehouseId;
             return _resultValue;
         }

@@ -51,6 +51,13 @@ public final class GetJobJobSettingsSettingsDbtTask extends com.pulumi.resources
         return Optional.ofNullable(this.schema);
     }
 
+    @Import(name="source")
+    private @Nullable String source;
+
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     @Import(name="warehouseId")
     private @Nullable String warehouseId;
 
@@ -66,6 +73,7 @@ public final class GetJobJobSettingsSettingsDbtTask extends com.pulumi.resources
         this.profilesDirectory = $.profilesDirectory;
         this.projectDirectory = $.projectDirectory;
         this.schema = $.schema;
+        this.source = $.source;
         this.warehouseId = $.warehouseId;
     }
 
@@ -113,6 +121,11 @@ public final class GetJobJobSettingsSettingsDbtTask extends com.pulumi.resources
 
         public Builder schema(@Nullable String schema) {
             $.schema = schema;
+            return this;
+        }
+
+        public Builder source(@Nullable String source) {
+            $.source = source;
             return this;
         }
 

@@ -182,6 +182,9 @@ namespace Pulumi.Databricks
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Task to run against the `inputs` list.
+        /// </summary>
         [Output("tasks")]
         public Output<ImmutableArray<Outputs.JobTask>> Tasks { get; private set; } = null!;
 
@@ -440,6 +443,10 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskArgs>? _tasks;
+
+        /// <summary>
+        /// Task to run against the `inputs` list.
+        /// </summary>
         public InputList<Inputs.JobTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskArgs>());
@@ -657,6 +664,10 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskGetArgs>? _tasks;
+
+        /// <summary>
+        /// Task to run against the `inputs` list.
+        /// </summary>
         public InputList<Inputs.JobTaskGetArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskGetArgs>());

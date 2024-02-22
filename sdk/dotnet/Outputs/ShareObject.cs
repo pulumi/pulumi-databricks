@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// Type of the object, currently only `TABLE` is allowed.
+        /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
         /// </summary>
         public readonly string DataObjectType;
         /// <summary>

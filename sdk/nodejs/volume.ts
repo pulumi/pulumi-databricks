@@ -127,6 +127,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly storageLocation!: pulumi.Output<string | undefined>;
     /**
+     * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+     */
+    public /*out*/ readonly volumePath!: pulumi.Output<string>;
+    /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
     public readonly volumeType!: pulumi.Output<string>;
@@ -150,6 +154,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["schemaName"] = state ? state.schemaName : undefined;
             resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
+            resourceInputs["volumePath"] = state ? state.volumePath : undefined;
             resourceInputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
@@ -169,6 +174,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["schemaName"] = args ? args.schemaName : undefined;
             resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
             resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["volumePath"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Volume.__pulumiType, name, resourceInputs, opts);
@@ -203,6 +209,10 @@ export interface VolumeState {
      * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
      */
     storageLocation?: pulumi.Input<string>;
+    /**
+     * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+     */
+    volumePath?: pulumi.Input<string>;
     /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */

@@ -26,13 +26,19 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ProfilesDirectory;
         /// <summary>
-        /// The relative path to the directory in the repository specified in `git_source` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+        /// The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        /// * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
+        /// * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         /// </summary>
         public readonly string? ProjectDirectory;
         /// <summary>
         /// The name of the schema dbt should run in. Defaults to `default`.
         /// </summary>
         public readonly string? Schema;
+        /// <summary>
+        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        /// </summary>
+        public readonly string? Source;
         /// <summary>
         /// The ID of the SQL warehouse that dbt should execute against.
         /// 
@@ -52,6 +58,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? schema,
 
+            string? source,
+
             string? warehouseId)
         {
             Catalog = catalog;
@@ -59,6 +67,7 @@ namespace Pulumi.Databricks.Outputs
             ProfilesDirectory = profilesDirectory;
             ProjectDirectory = projectDirectory;
             Schema = schema;
+            Source = source;
             WarehouseId = warehouseId;
         }
     }

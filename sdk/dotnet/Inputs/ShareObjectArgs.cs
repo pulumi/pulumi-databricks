@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Type of the object, currently only `TABLE` is allowed.
+        /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
         /// </summary>
         [Input("dataObjectType", required: true)]
         public Input<string> DataObjectType { get; set; } = null!;

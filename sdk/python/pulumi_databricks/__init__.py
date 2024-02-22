@@ -17,6 +17,7 @@ from .default_namespace_setting import *
 from .directory import *
 from .entitlements import *
 from .external_location import *
+from .file import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -53,6 +54,8 @@ from .get_shares import *
 from .get_spark_version import *
 from .get_sql_warehouse import *
 from .get_sql_warehouses import *
+from .get_storage_credential import *
+from .get_storage_credentials import *
 from .get_tables import *
 from .get_user import *
 from .get_views import *
@@ -122,6 +125,7 @@ from .token import *
 from .user import *
 from .user_instance_profile import *
 from .user_role import *
+from .vector_search_endpoint import *
 from .volume import *
 from .workspace_conf import *
 from .workspace_file import *
@@ -232,6 +236,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/externalLocation:ExternalLocation": "ExternalLocation"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/file",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/file:File": "File"
   }
  },
  {
@@ -736,6 +748,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/userRole:UserRole": "UserRole"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/vectorSearchEndpoint",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint": "VectorSearchEndpoint"
   }
  },
  {

@@ -202,6 +202,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageLocation);
     }
     /**
+     * base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+     * 
+     */
+    @Export(name="volumePath", refs={String.class}, tree="[0]")
+    private Output<String> volumePath;
+
+    /**
+     * @return base file path for this Unity Catalog Volume in form of `/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;name&gt;`.
+     * 
+     */
+    public Output<String> volumePath() {
+        return this.volumePath;
+    }
+    /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      * 
      */

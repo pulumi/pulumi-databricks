@@ -278,8 +278,6 @@ export interface ClusterGcpAttributes {
     localSsdCount?: pulumi.Input<number>;
     /**
      * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
-     *
-     * @deprecated Please use 'availability' instead.
      */
     usePreemptibleExecutors?: pulumi.Input<boolean>;
     /**
@@ -319,7 +317,7 @@ export interface ClusterInitScriptFile {
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface ClusterInitScriptGcs {
@@ -926,11 +924,11 @@ export interface GetClusterClusterInfoInitScriptS3Args {
 }
 
 export interface GetClusterClusterInfoInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetClusterClusterInfoInitScriptVolumesArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoInitScriptWorkspace {
@@ -1439,6 +1437,7 @@ export interface GetJobJobSettingsSettingsDbtTask {
     profilesDirectory?: string;
     projectDirectory?: string;
     schema?: string;
+    source?: string;
     warehouseId?: string;
 }
 
@@ -1448,6 +1447,7 @@ export interface GetJobJobSettingsSettingsDbtTaskArgs {
     profilesDirectory?: pulumi.Input<string>;
     projectDirectory?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -1818,11 +1818,11 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspace {
@@ -2182,11 +2182,11 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3Args {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptWorkspace {
@@ -2357,6 +2357,7 @@ export interface GetJobJobSettingsSettingsTask {
     description?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
     existingClusterId?: string;
+    forEachTask?: inputs.GetJobJobSettingsSettingsTaskForEachTask;
     health?: inputs.GetJobJobSettingsSettingsTaskHealth;
     jobClusterKey?: string;
     libraries?: inputs.GetJobJobSettingsSettingsTaskLibrary[];
@@ -2387,6 +2388,7 @@ export interface GetJobJobSettingsSettingsTaskArgs {
     description?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
     existingClusterId?: pulumi.Input<string>;
+    forEachTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs>;
     health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthArgs>;
     jobClusterKey?: pulumi.Input<string>;
     libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[]>;
@@ -2427,6 +2429,7 @@ export interface GetJobJobSettingsSettingsTaskDbtTask {
     profilesDirectory?: string;
     projectDirectory?: string;
     schema?: string;
+    source?: string;
     warehouseId?: string;
 }
 
@@ -2436,6 +2439,7 @@ export interface GetJobJobSettingsSettingsTaskDbtTaskArgs {
     profilesDirectory?: pulumi.Input<string>;
     projectDirectory?: pulumi.Input<string>;
     schema?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
 }
 
@@ -2461,6 +2465,760 @@ export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTask {
+    concurrency?: number;
+    inputs: string;
+    task: inputs.GetJobJobSettingsSettingsTaskForEachTaskTask;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskArgs {
+    concurrency?: pulumi.Input<number>;
+    inputs: pulumi.Input<string>;
+    task: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskArgs>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
+    computeKey?: string;
+    conditionTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
+    dbtTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
+    dependsOns?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn[];
+    description?: string;
+    emailNotifications?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications;
+    existingClusterId?: string;
+    health?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealth;
+    jobClusterKey?: string;
+    libraries?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary[];
+    maxRetries?: number;
+    minRetryIntervalMillis?: number;
+    newCluster?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster;
+    notebookTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask;
+    notificationSettings?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings;
+    pipelineTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask;
+    pythonWheelTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask;
+    retryOnTimeout?: boolean;
+    runIf?: string;
+    runJobTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask;
+    sparkJarTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask;
+    sparkPythonTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask;
+    sparkSubmitTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask;
+    sqlTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask;
+    taskKey?: string;
+    timeoutSeconds?: number;
+    webhookNotifications?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
+    computeKey?: pulumi.Input<string>;
+    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs>;
+    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs>[]>;
+    description?: pulumi.Input<string>;
+    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs>;
+    existingClusterId?: pulumi.Input<string>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs>;
+    jobClusterKey?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs>[]>;
+    maxRetries?: pulumi.Input<number>;
+    minRetryIntervalMillis?: pulumi.Input<number>;
+    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs>;
+    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs>;
+    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs>;
+    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs>;
+    retryOnTimeout?: pulumi.Input<boolean>;
+    runIf?: pulumi.Input<string>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs>;
+    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs>;
+    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs>;
+    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs>;
+    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs>;
+    taskKey?: pulumi.Input<string>;
+    timeoutSeconds?: pulumi.Input<number>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
+    left?: string;
+    op?: string;
+    right?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs {
+    left?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    right?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
+    catalog?: string;
+    commands: string[];
+    profilesDirectory?: string;
+    projectDirectory?: string;
+    schema?: string;
+    source?: string;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs {
+    catalog?: pulumi.Input<string>;
+    commands: pulumi.Input<pulumi.Input<string>[]>;
+    profilesDirectory?: pulumi.Input<string>;
+    projectDirectory?: pulumi.Input<string>;
+    schema?: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
+    outcome?: string;
+    taskKey: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs {
+    outcome?: pulumi.Input<string>;
+    taskKey: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+    onDurationWarningThresholdExceededs?: string[];
+    onFailures?: string[];
+    onStarts?: string[];
+    onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs {
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
+    rules: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs {
+    rules: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
+    metric?: string;
+    op?: string;
+    value?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs {
+    metric?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
+    value?: pulumi.Input<number>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
+    cran?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran;
+    egg?: string;
+    jar?: string;
+    maven?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    pypi?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+    whl?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs {
+    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs>;
+    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
+    coordinates: string;
+    exclusions?: string[];
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
+    package: string;
+    repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
+    applyPolicyDefaultValues?: boolean;
+    autoscale?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale;
+    autoterminationMinutes?: number;
+    awsAttributes?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes;
+    azureAttributes?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes;
+    clusterId?: string;
+    clusterLogConf?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf;
+    clusterMountInfos?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo[];
+    clusterName?: string;
+    customTags?: {[key: string]: any};
+    dataSecurityMode?: string;
+    dockerImage?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage;
+    driverInstancePoolId?: string;
+    driverNodeTypeId?: string;
+    enableElasticDisk?: boolean;
+    enableLocalDiskEncryption?: boolean;
+    gcpAttributes?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes;
+    idempotencyToken?: string;
+    initScripts?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScript[];
+    instancePoolId?: string;
+    nodeTypeId?: string;
+    numWorkers: number;
+    policyId?: string;
+    runtimeEngine?: string;
+    singleUserName?: string;
+    sparkConf?: {[key: string]: any};
+    sparkEnvVars?: {[key: string]: any};
+    sparkVersion: string;
+    sshPublicKeys?: string[];
+    workloadType?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
+    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs>;
+    autoterminationMinutes?: pulumi.Input<number>;
+    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs>;
+    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs>;
+    clusterId?: pulumi.Input<string>;
+    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs>[]>;
+    clusterName?: pulumi.Input<string>;
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    dataSecurityMode?: pulumi.Input<string>;
+    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs>;
+    driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeId?: pulumi.Input<string>;
+    enableElasticDisk?: pulumi.Input<boolean>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
+    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs>;
+    idempotencyToken?: pulumi.Input<string>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs>[]>;
+    instancePoolId?: pulumi.Input<string>;
+    nodeTypeId?: pulumi.Input<string>;
+    numWorkers: pulumi.Input<number>;
+    policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
+    singleUserName?: pulumi.Input<string>;
+    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkVersion: pulumi.Input<string>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale {
+    maxWorkers?: number;
+    minWorkers?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs {
+    maxWorkers?: pulumi.Input<number>;
+    minWorkers?: pulumi.Input<number>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes {
+    availability?: string;
+    ebsVolumeCount?: number;
+    ebsVolumeSize?: number;
+    ebsVolumeType?: string;
+    firstOnDemand?: number;
+    instanceProfileArn?: string;
+    spotBidPricePercent?: number;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs {
+    availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes {
+    availability?: string;
+    firstOnDemand?: number;
+    spotBidMaxPrice?: number;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf {
+    dbfs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfs;
+    s3?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs {
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo {
+    localMountDirPath: string;
+    networkFilesystemInfo: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo;
+    remoteMountDirPath?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: string;
+    serverAddress: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImage {
+    basicAuth?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuth;
+    url: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs {
+    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs>;
+    url: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
+    password: string;
+    username: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributes {
+    availability?: string;
+    bootDiskSize?: number;
+    googleServiceAccount?: string;
+    localSsdCount?: number;
+    usePreemptibleExecutors?: boolean;
+    zoneId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs {
+    availability?: pulumi.Input<string>;
+    bootDiskSize?: pulumi.Input<number>;
+    googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
+    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScript {
+    abfss?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfss;
+    dbfs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfs;
+    file?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFile;
+    gcs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcs;
+    s3?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3;
+    volumes?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumes;
+    workspace?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspace;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs {
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfss {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFile {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcs {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3 {
+    cannedAcl?: string;
+    destination: string;
+    enableEncryption?: boolean;
+    encryptionType?: string;
+    endpoint?: string;
+    kmsKey?: string;
+    region?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumes {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspace {
+    destination: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs {
+    destination: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadType {
+    clients: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClients;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs {
+    clients: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClients {
+    jobs?: boolean;
+    notebooks?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
+    baseParameters?: {[key: string]: any};
+    notebookPath: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs {
+    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    notebookPath: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings {
+    alertOnLastAttempt?: boolean;
+    noAlertForCanceledRuns?: boolean;
+    noAlertForSkippedRuns?: boolean;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs {
+    alertOnLastAttempt?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
+    fullRefresh?: boolean;
+    pipelineId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs {
+    fullRefresh?: pulumi.Input<boolean>;
+    pipelineId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
+    entryPoint?: string;
+    namedParameters?: {[key: string]: any};
+    packageName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs {
+    entryPoint?: pulumi.Input<string>;
+    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    packageName?: pulumi.Input<string>;
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
+    jobId: number;
+    jobParameters?: {[key: string]: any};
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs {
+    jobId: pulumi.Input<number>;
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
+    jarUri?: string;
+    mainClassName?: string;
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs {
+    jarUri?: pulumi.Input<string>;
+    mainClassName?: pulumi.Input<string>;
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask {
+    parameters?: string[];
+    pythonFile: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs {
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    pythonFile: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask {
+    parameters?: string[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs {
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
+    alert?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert;
+    dashboard?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard;
+    file?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile;
+    parameters?: {[key: string]: any};
+    query?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery;
+    warehouseId?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
+    alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs>;
+    dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs>;
+    parameters?: pulumi.Input<{[key: string]: any}>;
+    query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs>;
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
+    alertId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs {
+    alertId: pulumi.Input<string>;
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    subscriptions: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard {
+    customSubject?: string;
+    dashboardId: string;
+    pauseSubscriptions?: boolean;
+    subscriptions?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs {
+    customSubject?: pulumi.Input<string>;
+    dashboardId: pulumi.Input<string>;
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription {
+    destinationId?: string;
+    userName?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs {
+    destinationId?: pulumi.Input<string>;
+    userName?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile {
+    path: string;
+    source?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs {
+    path: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery {
+    queryId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs {
+    queryId: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotifications {
+    onDurationWarningThresholdExceededs?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
+    onFailures?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure[];
+    onStarts?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart[];
+    onSuccesses?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess[];
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs {
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>[]>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs {
+    /**
+     * the id of databricks.Job if the resource was matched by name.
+     */
+    id?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskHealth {
@@ -2814,11 +3572,11 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
-    destination?: string;
+    destination: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspace {
@@ -3003,10 +3761,12 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
     path: string;
+    source?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFileArgs {
     path: pulumi.Input<string>;
+    source?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
@@ -3489,6 +4249,174 @@ export interface GetSqlWarehouseTagsCustomTagArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetStorageCredentialStorageCredentialInfo {
+    awsIamRole?: inputs.GetStorageCredentialStorageCredentialInfoAwsIamRole;
+    azureManagedIdentity?: inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentity;
+    azureServicePrincipal?: inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipal;
+    cloudflareApiToken?: inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiToken;
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    databricksGcpServiceAccount?: inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount;
+    id?: string;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
+    metastoreId?: string;
+    /**
+     * The name of the storage credential
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
+    owner?: string;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    readOnly?: boolean;
+    updatedAt?: number;
+    updatedBy?: string;
+    usedForManagedStorage?: boolean;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoArgs {
+    awsIamRole?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs>;
+    azureManagedIdentity?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs>;
+    azureServicePrincipal?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs>;
+    cloudflareApiToken?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs>;
+    comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>;
+    id?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the parent Metastore.
+     */
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * The name of the storage credential
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the storage credential owner.
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the storage credential is only usable for read operations.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
+    usedForManagedStorage?: pulumi.Input<boolean>;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAwsIamRole {
+    /**
+     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
+     */
+    externalId?: string;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     */
+    roleArn: string;
+    /**
+     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     */
+    unityCatalogIamArn?: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs {
+    /**
+     * (output only) - The external ID used in role assumption to prevent confused deputy problem.
+     */
+    externalId?: pulumi.Input<string>;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     */
+    roleArn: pulumi.Input<string>;
+    /**
+     * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     */
+    unityCatalogIamArn?: pulumi.Input<string>;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: string;
+    credentialId?: string;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     */
+    managedIdentityId?: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs {
+    /**
+     * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
+     */
+    accessConnectorId: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
+     */
+    managedIdentityId?: pulumi.Input<string>;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     */
+    applicationId: string;
+    clientSecret: string;
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     */
+    directoryId: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs {
+    /**
+     * The application ID of the application registration within the referenced AAD tenant
+     */
+    applicationId: pulumi.Input<string>;
+    clientSecret: pulumi.Input<string>;
+    /**
+     * The directory ID corresponding to the Azure Active Directory (AAD) tenant of the application
+     */
+    directoryId: pulumi.Input<string>;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoCloudflareApiToken {
+    accessKeyId: string;
+    accountId: string;
+    secretAccessKey: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs {
+    accessKeyId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
+    secretAccessKey: pulumi.Input<string>;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccount {
+    credentialId?: string;
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email?: string;
+}
+
+export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs {
+    credentialId?: pulumi.Input<string>;
+    /**
+     * The email of the GCP service account created, to be granted access to relevant buckets.
+     */
+    email?: pulumi.Input<string>;
+}
+
 export interface GrantsGrant {
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
@@ -3635,13 +4563,19 @@ export interface JobDbtTask {
      */
     profilesDirectory?: pulumi.Input<string>;
     /**
-     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
     projectDirectory?: pulumi.Input<string>;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: pulumi.Input<string>;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
@@ -3857,50 +4791,7 @@ export interface JobJobClusterNewClusterInitScript {
      */
     dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
@@ -3936,7 +4827,7 @@ export interface JobJobClusterNewClusterInitScriptS3 {
 }
 
 export interface JobJobClusterNewClusterInitScriptVolumes {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterInitScriptWorkspace {
@@ -4091,50 +4982,7 @@ export interface JobNewClusterInitScript {
      */
     dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
@@ -4170,7 +5018,7 @@ export interface JobNewClusterInitScriptS3 {
 }
 
 export interface JobNewClusterInitScriptVolumes {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobNewClusterInitScriptWorkspace {
@@ -4361,6 +5209,7 @@ export interface JobTask {
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
     existingClusterId?: pulumi.Input<string>;
+    forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
     /**
      * block described below that specifies health conditions for a given task.
      */
@@ -4451,13 +5300,19 @@ export interface JobTaskDbtTask {
      */
     profilesDirectory?: pulumi.Input<string>;
     /**
-     * The relative path to the directory in the repository specified in `gitSource` where dbt should look in for the `dbt_project.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--project-dir` to a dbt command.
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
     projectDirectory?: pulumi.Input<string>;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: pulumi.Input<string>;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
@@ -4494,6 +5349,696 @@ export interface JobTaskEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTask {
+    /**
+     * Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
+     */
+    concurrency?: pulumi.Input<number>;
+    /**
+     * (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
+     */
+    inputs: pulumi.Input<string>;
+    /**
+     * Task to run against the `inputs` list.
+     */
+    task: pulumi.Input<inputs.JobTaskForEachTaskTask>;
+}
+
+export interface JobTaskForEachTaskTask {
+    computeKey?: pulumi.Input<string>;
+    conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
+    dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
+    /**
+     * block specifying dependency(-ies) for a given task.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDependsOn>[]>;
+    /**
+     * An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
+     */
+    emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
+    existingClusterId?: pulumi.Input<string>;
+    /**
+     * block described below that specifies health conditions for a given task.
+     */
+    health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth>;
+    /**
+     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+     */
+    jobClusterKey?: pulumi.Input<string>;
+    /**
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     */
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskLibrary>[]>;
+    /**
+     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
+     */
+    maxRetries?: pulumi.Input<number>;
+    /**
+     * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
+     */
+    minRetryIntervalMillis?: pulumi.Input<number>;
+    /**
+     * Same set of parameters as for databricks.Cluster resource.
+     */
+    newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster>;
+    notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask>;
+    /**
+     * An optional block controlling the notification settings on the job level (described below).
+     */
+    notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings>;
+    pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask>;
+    pythonWheelTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPythonWheelTask>;
+    /**
+     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
+     */
+    retryOnTimeout?: pulumi.Input<boolean>;
+    /**
+     * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
+     */
+    runIf?: pulumi.Input<string>;
+    runJobTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTask>;
+    sparkJarTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkJarTask>;
+    sparkPythonTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkPythonTask>;
+    sparkSubmitTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkSubmitTask>;
+    sqlTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTask>;
+    /**
+     * string specifying an unique key for a given task.
+     * * `*_task` - (Required) one of the specific task blocks described below:
+     */
+    taskKey?: pulumi.Input<string>;
+    /**
+     * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
+     */
+    timeoutSeconds?: pulumi.Input<number>;
+    /**
+     * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
+     */
+    webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
+}
+
+export interface JobTaskForEachTaskTaskConditionTask {
+    /**
+     * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
+     */
+    left?: pulumi.Input<string>;
+    /**
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     */
+    op?: pulumi.Input<string>;
+    /**
+     * The right operand of the condition task. It could be a string value, job state, or parameter reference.
+     */
+    right?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDbtTask {
+    /**
+     * The name of the catalog to use inside Unity Catalog.
+     */
+    catalog?: pulumi.Input<string>;
+    /**
+     * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
+     */
+    commands: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     */
+    profilesDirectory?: pulumi.Input<string>;
+    /**
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
+     * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+     */
+    projectDirectory?: pulumi.Input<string>;
+    /**
+     * The name of the schema dbt should run in. Defaults to `default`.
+     */
+    schema?: pulumi.Input<string>;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * The ID of the SQL warehouse that dbt should execute against.
+     *
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
+     */
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskDependsOn {
+    /**
+     * Can only be specified on condition task dependencies. The outcome of the dependent task that must be met for this task to run. Possible values are `"true"` or `"false"`.
+     */
+    outcome?: pulumi.Input<string>;
+    /**
+     * The name of the task this task depends on.
+     */
+    taskKey: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run fails.
+     */
+    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run starts.
+     */
+    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (List) list of emails to notify when the run completes successfully.
+     */
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTaskTaskHealth {
+    /**
+     * list of rules that are represented as objects with the following attributes:
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskHealthRule>[]>;
+}
+
+export interface JobTaskForEachTaskTaskHealthRule {
+    /**
+     * string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     */
+    metric?: pulumi.Input<string>;
+    /**
+     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
+     *
+     * This task does not require a cluster to execute and does not support retries or notifications.
+     */
+    op?: pulumi.Input<string>;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: pulumi.Input<number>;
+}
+
+export interface JobTaskForEachTaskTaskLibrary {
+    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryCran>;
+    egg?: pulumi.Input<string>;
+    jar?: pulumi.Input<string>;
+    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryMaven>;
+    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryPypi>;
+    whl?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskLibraryCran {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskLibraryMaven {
+    coordinates: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskLibraryPypi {
+    package: pulumi.Input<string>;
+    repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewCluster {
+    applyPolicyDefaultValues?: pulumi.Input<boolean>;
+    autoscale?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAutoscale>;
+    autoterminationMinutes?: pulumi.Input<number>;
+    awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes>;
+    azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes>;
+    clusterId?: pulumi.Input<string>;
+    clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[]>;
+    clusterName?: pulumi.Input<string>;
+    customTags?: pulumi.Input<{[key: string]: any}>;
+    dataSecurityMode?: pulumi.Input<string>;
+    dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage>;
+    driverInstancePoolId?: pulumi.Input<string>;
+    driverNodeTypeId?: pulumi.Input<string>;
+    enableElasticDisk?: pulumi.Input<boolean>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean>;
+    gcpAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterGcpAttributes>;
+    idempotencyToken?: pulumi.Input<string>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
+    instancePoolId?: pulumi.Input<string>;
+    nodeTypeId?: pulumi.Input<string>;
+    numWorkers: pulumi.Input<number>;
+    policyId?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string>;
+    singleUserName?: pulumi.Input<string>;
+    sparkConf?: pulumi.Input<{[key: string]: any}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: any}>;
+    sparkVersion: pulumi.Input<string>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadType?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadType>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAutoscale {
+    maxWorkers?: pulumi.Input<number>;
+    minWorkers?: pulumi.Input<number>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
+    availability?: pulumi.Input<string>;
+    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeType?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    instanceProfileArn?: pulumi.Input<string>;
+    spotBidPricePercent?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
+    availability?: pulumi.Input<string>;
+    firstOnDemand?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
+    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs>;
+    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterLogConfS3 {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterMountInfo {
+    localMountDirPath: pulumi.Input<string>;
+    networkFilesystemInfo: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo>;
+    remoteMountDirPath?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
+    mountOptions?: pulumi.Input<string>;
+    serverAddress: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDockerImage {
+    basicAuth?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth>;
+    /**
+     * URL of the Git repository to use.
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
+    password: pulumi.Input<string>;
+    username: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
+    availability?: pulumi.Input<string>;
+    bootDiskSize?: pulumi.Input<number>;
+    googleServiceAccount?: pulumi.Input<string>;
+    localSsdCount?: pulumi.Input<number>;
+    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScript {
+    abfss?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss>;
+    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs>;
+    /**
+     * block consisting of single string fields:
+     */
+    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile>;
+    gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs>;
+    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptS3>;
+    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes>;
+    workspace?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptAbfss {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptDbfs {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptFile {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptGcs {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptS3 {
+    cannedAcl?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean>;
+    encryptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptVolumes {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterInitScriptWorkspace {
+    destination: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
+    clients: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeClients>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
+    jobs?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean>;
+}
+
+export interface JobTaskForEachTaskTaskNotebookTask {
+    /**
+     * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+     */
+    baseParameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
+     */
+    notebookPath: pulumi.Input<string>;
+    /**
+     * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNotificationSettings {
+    /**
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
+     */
+    alertOnLastAttempt?: pulumi.Input<boolean>;
+    /**
+     * (Bool) don't send alert for cancelled runs.
+     */
+    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    /**
+     * (Bool) don't send alert for skipped runs.
+     */
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+}
+
+export interface JobTaskForEachTaskTaskPipelineTask {
+    /**
+     * (Bool) Specifies if there should be full refresh of the pipeline.
+     *
+     * > **Note** The following configuration blocks are only supported inside a `task` block
+     */
+    fullRefresh?: pulumi.Input<boolean>;
+    /**
+     * The pipeline's unique ID.
+     */
+    pipelineId: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskPythonWheelTask {
+    /**
+     * Python function as entry point for the task
+     */
+    entryPoint?: pulumi.Input<string>;
+    /**
+     * Named parameters for the task
+     */
+    namedParameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Name of Python package
+     */
+    packageName?: pulumi.Input<string>;
+    /**
+     * Parameters for the task
+     */
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTaskTaskRunJobTask {
+    /**
+     * (String) ID of the job
+     */
+    jobId: pulumi.Input<number>;
+    /**
+     * (Map) Job parameters for the task
+     */
+    jobParameters?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface JobTaskForEachTaskTaskSparkJarTask {
+    jarUri?: pulumi.Input<string>;
+    /**
+     * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
+     */
+    mainClassName?: pulumi.Input<string>;
+    /**
+     * (List) Parameters passed to the main method.
+     */
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTaskTaskSparkPythonTask {
+    /**
+     * (List) Command line parameters passed to the Python file.
+     */
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The URI of the Python file to be executed. databricks_dbfs_file, cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/Repos`. For files stored in a remote repository, the path must be relative. This field is required.
+     */
+    pythonFile: pulumi.Input<string>;
+    /**
+     * Location type of the Python file, can only be `GIT`. When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskSparkSubmitTask {
+    /**
+     * (List) Command-line parameters passed to spark submit.
+     */
+    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTask {
+    /**
+     * block consisting of following fields:
+     */
+    alert?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlert>;
+    /**
+     * block consisting of following fields:
+     */
+    dashboard?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboard>;
+    /**
+     * block consisting of single string fields:
+     */
+    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskFile>;
+    /**
+     * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
+     */
+    parameters?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * block consisting of single string field: `queryId` - identifier of the Databricks SQL Query (databricks_sql_query).
+     */
+    query?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskQuery>;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
+     */
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskAlert {
+    /**
+     * (String) identifier of the Databricks SQL Alert.
+     */
+    alertId: pulumi.Input<string>;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[]>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskDashboard {
+    /**
+     * string specifying a custom subject of email sent.
+     */
+    customSubject?: pulumi.Input<string>;
+    /**
+     * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
+     */
+    dashboardId: pulumi.Input<string>;
+    /**
+     * flag that specifies if subscriptions are paused or not.
+     */
+    pauseSubscriptions?: pulumi.Input<boolean>;
+    /**
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
+     */
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription>[]>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Non-admin users can only set this field to their own email.
+     */
+    userName?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskFile {
+    /**
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
+     * ```
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskSqlTaskQuery {
+    queryId: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotifications {
+    /**
+     * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+     *
+     * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
+     */
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    /**
+     * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
+     */
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure>[]>;
+    /**
+     * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
+     */
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[]>;
+    /**
+     * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
+     */
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess>[]>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
+    /**
+     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
+     *
+     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     */
+    id?: pulumi.Input<string>;
 }
 
 export interface JobTaskHealth {
@@ -4659,50 +6204,7 @@ export interface JobTaskNewClusterInitScript {
      */
     dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
     gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
@@ -4738,7 +6240,7 @@ export interface JobTaskNewClusterInitScriptS3 {
 }
 
 export interface JobTaskNewClusterInitScriptVolumes {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterInitScriptWorkspace {
@@ -4871,50 +6373,7 @@ export interface JobTaskSqlTask {
      */
     dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard>;
     /**
-     * block consisting of single string field: `path` - a relative path to the file (inside the Git repository) with SQL commands to execute.  *Requires `gitSource` configuration block*.
-     *
-     * Example
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
-     *             },
-     *         },
-     *     },
-     * ]});
-     * ```
+     * block consisting of single string fields:
      */
     file?: pulumi.Input<inputs.JobTaskSqlTaskFile>;
     /**
@@ -4982,7 +6441,57 @@ export interface JobTaskSqlTaskDashboardSubscription {
 }
 
 export interface JobTaskSqlTaskFile {
+    /**
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     *
+     * Example
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
+     *     {
+     *         taskKey: "run_agg_query",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             query: {
+     *                 queryId: databricks_sql_query.agg_query.id,
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_dashboard",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             dashboard: {
+     *                 dashboardId: databricks_sql_dashboard.dash.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     *     {
+     *         taskKey: "run_alert",
+     *         sqlTask: {
+     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
+     *             alert: {
+     *                 alertId: databricks_sql_alert.alert.id,
+     *                 subscriptions: [{
+     *                     userName: "user@domain.com",
+     *                 }],
+     *             },
+     *         },
+     *     },
+     * ]});
+     * ```
+     */
     path: pulumi.Input<string>;
+    /**
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     */
+    source?: pulumi.Input<string>;
 }
 
 export interface JobTaskSqlTaskQuery {
@@ -5609,7 +7118,7 @@ export interface PipelineClusterInitScriptS3 {
 }
 
 export interface PipelineClusterInitScriptVolumes {
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
 }
 
 export interface PipelineClusterInitScriptWorkspace {
@@ -5722,7 +7231,7 @@ export interface ShareObject {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Type of the object, currently only `TABLE` is allowed.
+     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
      */
     dataObjectType: pulumi.Input<string>;
     /**
@@ -6130,4 +7639,15 @@ export interface TableColumn {
     typePrecision?: pulumi.Input<number>;
     typeScale?: pulumi.Input<number>;
     typeText: pulumi.Input<string>;
+}
+
+export interface VectorSearchEndpointEndpointStatus {
+    /**
+     * Additional status message.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     */
+    state?: pulumi.Input<string>;
 }

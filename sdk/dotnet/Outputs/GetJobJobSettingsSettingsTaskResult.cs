@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Description;
         public readonly Outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult? EmailNotifications;
         public readonly string? ExistingClusterId;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskResult? ForEachTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskHealthResult? Health;
         public readonly string? JobClusterKey;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskLibraryResult> Libraries;
@@ -56,6 +57,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult? emailNotifications,
 
             string? existingClusterId,
+
+            Outputs.GetJobJobSettingsSettingsTaskForEachTaskResult? forEachTask,
 
             Outputs.GetJobJobSettingsSettingsTaskHealthResult? health,
 
@@ -104,6 +107,7 @@ namespace Pulumi.Databricks.Outputs
             Description = description;
             EmailNotifications = emailNotifications;
             ExistingClusterId = existingClusterId;
+            ForEachTask = forEachTask;
             Health = health;
             JobClusterKey = jobClusterKey;
             Libraries = libraries;

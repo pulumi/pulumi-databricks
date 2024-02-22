@@ -137,6 +137,7 @@ class _VolumeState:
                  owner: Optional[pulumi.Input[str]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
+                 volume_path: Optional[pulumi.Input[str]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
@@ -146,6 +147,7 @@ class _VolumeState:
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         if catalog_name is not None:
@@ -160,6 +162,8 @@ class _VolumeState:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_location is not None:
             pulumi.set(__self__, "storage_location", storage_location)
+        if volume_path is not None:
+            pulumi.set(__self__, "volume_path", volume_path)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -234,6 +238,18 @@ class _VolumeState:
     @storage_location.setter
     def storage_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_location", value)
+
+    @property
+    @pulumi.getter(name="volumePath")
+    def volume_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        """
+        return pulumi.get(self, "volume_path")
+
+    @volume_path.setter
+    def volume_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_path", value)
 
     @property
     @pulumi.getter(name="volumeType")
@@ -453,6 +469,7 @@ class Volume(pulumi.CustomResource):
             if volume_type is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_type'")
             __props__.__dict__["volume_type"] = volume_type
+            __props__.__dict__["volume_path"] = None
         super(Volume, __self__).__init__(
             'databricks:index/volume:Volume',
             resource_name,
@@ -469,6 +486,7 @@ class Volume(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             schema_name: Optional[pulumi.Input[str]] = None,
             storage_location: Optional[pulumi.Input[str]] = None,
+            volume_path: Optional[pulumi.Input[str]] = None,
             volume_type: Optional[pulumi.Input[str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
@@ -483,6 +501,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] owner: Name of the volume owner.
         :param pulumi.Input[str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
         :param pulumi.Input[str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -495,6 +514,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_location"] = storage_location
+        __props__.__dict__["volume_path"] = volume_path
         __props__.__dict__["volume_type"] = volume_type
         return Volume(resource_name, opts=opts, __props__=__props__)
 
@@ -545,6 +565,14 @@ class Volume(pulumi.CustomResource):
         Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
+
+    @property
+    @pulumi.getter(name="volumePath")
+    def volume_path(self) -> pulumi.Output[str]:
+        """
+        base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
+        """
+        return pulumi.get(self, "volume_path")
 
     @property
     @pulumi.getter(name="volumeType")

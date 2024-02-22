@@ -48,6 +48,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
+        [Input("forEachTask")]
+        public Input<Inputs.JobTaskForEachTaskArgs>? ForEachTask { get; set; }
+
         /// <summary>
         /// block described below that specifies health conditions for a given task.
         /// </summary>

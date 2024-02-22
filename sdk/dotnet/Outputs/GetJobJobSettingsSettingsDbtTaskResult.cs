@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? ProfilesDirectory;
         public readonly string? ProjectDirectory;
         public readonly string? Schema;
+        public readonly string? Source;
         public readonly string? WarehouseId;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? schema,
 
+            string? source,
+
             string? warehouseId)
         {
             Catalog = catalog;
@@ -39,6 +42,7 @@ namespace Pulumi.Databricks.Outputs
             ProfilesDirectory = profilesDirectory;
             ProjectDirectory = projectDirectory;
             Schema = schema;
+            Source = source;
             WarehouseId = warehouseId;
         }
     }
