@@ -6194,6 +6194,18 @@
                 "patterns"
             ]
         },
+        "databricks:index/RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins:RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "The restrict workspace admins status for the workspace.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ]
+        },
         "databricks:index/SecretScopeKeyvaultMetadata:SecretScopeKeyvaultMetadata": {
             "properties": {
                 "dnsName": {
@@ -14589,6 +14601,12 @@
                 "model": {
                     "type": "string"
                 },
+                "pipeline": {
+                    "type": "string"
+                },
+                "recipient": {
+                    "type": "string"
+                },
                 "schema": {
                     "type": "string"
                 },
@@ -14641,6 +14659,14 @@
                     "willReplaceOnChanges": true
                 },
                 "model": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "pipeline": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "recipient": {
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
@@ -14703,6 +14729,14 @@
                         "willReplaceOnChanges": true
                     },
                     "model": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "pipeline": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "recipient": {
                         "type": "string",
                         "willReplaceOnChanges": true
                     },
@@ -19540,6 +19574,57 @@
                     "workspacePath": {
                         "type": "string",
                         "description": "path on Workspace File System (WSFS) in form of `/Workspace` + `path`\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": {
+            "description": "\u003e **Note** This resource could be only used with workspace-level provider!\n\nThe `databricks.RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins. \n\nWith the status set to `ALLOW_ALL`, workspace admins can:\n1. Create service principal personal access tokens on behalf of any service principal in their workspace. \n2. Change a job owner to any user in the workspace.\n3. Change the job run_as setting to any user in their workspace or a service principal on which they have the Service Principal User role.\n\nWith the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:\n1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.\n2. Only change a job owner to themselves.\n3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.\n\n\u003e **Note** Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as databricks from \"@pulumi/databricks\";\n\nconst _this = new databricks.RestrictWorkspaceAdminsSetting(\"this\", {restrictWorkspaceAdmins: {\n    status: \"RESTRICT_TOKENS_AND_JOB_RUN_AS\",\n}});\n```\n```python\nimport pulumi\nimport pulumi_databricks as databricks\n\nthis = databricks.RestrictWorkspaceAdminsSetting(\"this\", restrict_workspace_admins=databricks.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs(\n    status=\"RESTRICT_TOKENS_AND_JOB_RUN_AS\",\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Databricks = Pulumi.Databricks;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Databricks.RestrictWorkspaceAdminsSetting(\"this\", new()\n    {\n        RestrictWorkspaceAdmins = new Databricks.Inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs\n        {\n            Status = \"RESTRICT_TOKENS_AND_JOB_RUN_AS\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-databricks/sdk/go/databricks\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := databricks.NewRestrictWorkspaceAdminsSetting(ctx, \"this\", \u0026databricks.RestrictWorkspaceAdminsSettingArgs{\n\t\t\tRestrictWorkspaceAdmins: \u0026databricks.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs{\n\t\t\t\tStatus: pulumi.String(\"RESTRICT_TOKENS_AND_JOB_RUN_AS\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.databricks.RestrictWorkspaceAdminsSetting;\nimport com.pulumi.databricks.RestrictWorkspaceAdminsSettingArgs;\nimport com.pulumi.databricks.inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new RestrictWorkspaceAdminsSetting(\"this\", RestrictWorkspaceAdminsSettingArgs.builder()        \n            .restrictWorkspaceAdmins(RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs.builder()\n                .status(\"RESTRICT_TOKENS_AND_JOB_RUN_AS\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: databricks:RestrictWorkspaceAdminsSetting\n    properties:\n      restrictWorkspaceAdmins:\n        status: RESTRICT_TOKENS_AND_JOB_RUN_AS\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "restrictWorkspaceAdmins": {
+                    "$ref": "#/types/databricks:index/RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins:RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins",
+                    "description": "The configuration details.\n"
+                },
+                "settingName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "etag",
+                "restrictWorkspaceAdmins",
+                "settingName"
+            ],
+            "inputProperties": {
+                "etag": {
+                    "type": "string"
+                },
+                "restrictWorkspaceAdmins": {
+                    "$ref": "#/types/databricks:index/RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins:RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins",
+                    "description": "The configuration details.\n"
+                },
+                "settingName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "restrictWorkspaceAdmins"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.\n",
+                "properties": {
+                    "etag": {
+                        "type": "string"
+                    },
+                    "restrictWorkspaceAdmins": {
+                        "$ref": "#/types/databricks:index/RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins:RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins",
+                        "description": "The configuration details.\n"
+                    },
+                    "settingName": {
+                        "type": "string"
                     }
                 },
                 "type": "object"

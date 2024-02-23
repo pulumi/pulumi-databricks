@@ -1717,6 +1717,15 @@
                     }
                 }
             },
+            "databricks_restrict_workspace_admins_setting": {
+                "current": "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting",
+                "majorVersion": 1,
+                "fields": {
+                    "restrict_workspace_admins": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "databricks_schema": {
                 "current": "databricks:index/schema:Schema",
                 "majorVersion": 1
@@ -3595,6 +3604,7 @@
             "databricks:index/recipient:Recipient": "databricks_recipient",
             "databricks:index/registeredModel:RegisteredModel": "databricks_registered_model",
             "databricks:index/repo:Repo": "databricks_repo",
+            "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": "databricks_restrict_workspace_admins_setting",
             "databricks:index/schema:Schema": "databricks_schema",
             "databricks:index/secret:Secret": "databricks_secret",
             "databricks:index/secretAcl:SecretAcl": "databricks_secret_acl",
@@ -6212,6 +6222,10 @@
                 "gitProvider": "git_provider",
                 "sparseCheckout": "sparse_checkout",
                 "workspacePath": "workspace_path"
+            },
+            "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": {
+                "restrictWorkspaceAdmins": "restrict_workspace_admins",
+                "settingName": "setting_name"
             },
             "databricks:index/schema:Schema": {
                 "catalogName": "catalog_name",
