@@ -44,6 +44,12 @@ namespace Pulumi.Databricks
         [Output("model")]
         public Output<string?> Model { get; private set; } = null!;
 
+        [Output("pipeline")]
+        public Output<string?> Pipeline { get; private set; } = null!;
+
+        [Output("recipient")]
+        public Output<string?> Recipient { get; private set; } = null!;
+
         [Output("schema")]
         public Output<string?> Schema { get; private set; } = null!;
 
@@ -131,6 +137,12 @@ namespace Pulumi.Databricks
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        [Input("pipeline")]
+        public Input<string>? Pipeline { get; set; }
+
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
+
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
@@ -179,6 +191,12 @@ namespace Pulumi.Databricks
 
         [Input("model")]
         public Input<string>? Model { get; set; }
+
+        [Input("pipeline")]
+        public Input<string>? Pipeline { get; set; }
+
+        [Input("recipient")]
+        public Input<string>? Recipient { get; set; }
 
         [Input("schema")]
         public Input<string>? Schema { get; set; }

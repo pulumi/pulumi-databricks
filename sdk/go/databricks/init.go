@@ -125,6 +125,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegisteredModel{}
 	case "databricks:index/repo:Repo":
 		r = &Repo{}
+	case "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting":
+		r = &RestrictWorkspaceAdminsSetting{}
 	case "databricks:index/schema:Schema":
 		r = &Schema{}
 	case "databricks:index/secret:Secret":
@@ -470,6 +472,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/repo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/restrictWorkspaceAdminsSetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

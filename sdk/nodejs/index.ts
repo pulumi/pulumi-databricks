@@ -485,6 +485,11 @@ export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
 utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
 
+export { RestrictWorkspaceAdminsSettingArgs, RestrictWorkspaceAdminsSettingState } from "./restrictWorkspaceAdminsSetting";
+export type RestrictWorkspaceAdminsSetting = import("./restrictWorkspaceAdminsSetting").RestrictWorkspaceAdminsSetting;
+export const RestrictWorkspaceAdminsSetting: typeof import("./restrictWorkspaceAdminsSetting").RestrictWorkspaceAdminsSetting = null as any;
+utilities.lazyLoad(exports, ["RestrictWorkspaceAdminsSetting"], () => require("./restrictWorkspaceAdminsSetting"));
+
 export { SchemaArgs, SchemaState } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
@@ -743,6 +748,8 @@ const _module = {
                 return new RegisteredModel(name, <any>undefined, { urn })
             case "databricks:index/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
+            case "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting":
+                return new RestrictWorkspaceAdminsSetting(name, <any>undefined, { urn })
             case "databricks:index/schema:Schema":
                 return new Schema(name, <any>undefined, { urn })
             case "databricks:index/secret:Secret":
@@ -856,6 +863,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/recipient", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/registeredModel", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/repo", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/restrictWorkspaceAdminsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/schema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)

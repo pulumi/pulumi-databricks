@@ -13,6 +13,110 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription struct {
+	DestinationId *string `pulumi:"destinationId"`
+	UserName      *string `pulumi:"userName"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs struct {
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray and GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray{ GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs{...} }
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray []GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription) *string {
+		return v.DestinationId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription) *string {
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription {
+		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput)
+}
+
 type GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile struct {
 	Path   string  `pulumi:"path"`
 	Source *string `pulumi:"source"`
@@ -12633,6 +12737,8 @@ func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs{})
@@ -12796,6 +12902,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoCloudflareApiTokenPtrInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArrayOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFilePtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryOutput{})

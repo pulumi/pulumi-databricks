@@ -112,6 +112,7 @@
         "recipient.ts",
         "registeredModel.ts",
         "repo.ts",
+        "restrictWorkspaceAdminsSetting.ts",
         "schema.ts",
         "secret.ts",
         "secretAcl.ts",

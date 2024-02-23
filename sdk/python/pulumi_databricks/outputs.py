@@ -304,6 +304,7 @@ __all__ = [
     'RecipientIpAccessList',
     'RecipientToken',
     'RepoSparseCheckout',
+    'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins',
     'SecretScopeKeyvaultMetadata',
     'ShareObject',
     'ShareObjectPartition',
@@ -15707,6 +15708,24 @@ class RepoSparseCheckout(dict):
         Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the repo.
         """
         return pulumi.get(self, "patterns")
+
+
+@pulumi.output_type
+class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins(dict):
+    def __init__(__self__, *,
+                 status: str):
+        """
+        :param str status: The restrict workspace admins status for the workspace.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The restrict workspace admins status for the workspace.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

@@ -23,6 +23,8 @@ class GrantsArgs:
                  function: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
+                 pipeline: Optional[pulumi.Input[str]] = None,
+                 recipient: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -44,6 +46,10 @@ class GrantsArgs:
             pulumi.set(__self__, "metastore", metastore)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if pipeline is not None:
+            pulumi.set(__self__, "pipeline", pipeline)
+        if recipient is not None:
+            pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if share is not None:
@@ -120,6 +126,24 @@ class GrantsArgs:
 
     @property
     @pulumi.getter
+    def pipeline(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pipeline")
+
+    @pipeline.setter
+    def pipeline(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline", value)
+
+    @property
+    @pulumi.getter
+    def recipient(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recipient")
+
+    @recipient.setter
+    def recipient(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recipient", value)
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schema")
 
@@ -174,6 +198,8 @@ class _GrantsState:
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
+                 pipeline: Optional[pulumi.Input[str]] = None,
+                 recipient: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -196,6 +222,10 @@ class _GrantsState:
             pulumi.set(__self__, "metastore", metastore)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if pipeline is not None:
+            pulumi.set(__self__, "pipeline", pipeline)
+        if recipient is not None:
+            pulumi.set(__self__, "recipient", recipient)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if share is not None:
@@ -272,6 +302,24 @@ class _GrantsState:
 
     @property
     @pulumi.getter
+    def pipeline(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pipeline")
+
+    @pipeline.setter
+    def pipeline(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline", value)
+
+    @property
+    @pulumi.getter
+    def recipient(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recipient")
+
+    @recipient.setter
+    def recipient(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recipient", value)
+
+    @property
+    @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schema")
 
@@ -328,6 +376,8 @@ class Grants(pulumi.CustomResource):
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
+                 pipeline: Optional[pulumi.Input[str]] = None,
+                 recipient: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -387,6 +437,8 @@ class Grants(pulumi.CustomResource):
                  grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
                  metastore: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None,
+                 pipeline: Optional[pulumi.Input[str]] = None,
+                 recipient: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  share: Optional[pulumi.Input[str]] = None,
                  storage_credential: Optional[pulumi.Input[str]] = None,
@@ -410,6 +462,8 @@ class Grants(pulumi.CustomResource):
             __props__.__dict__["grants"] = grants
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["model"] = model
+            __props__.__dict__["pipeline"] = pipeline
+            __props__.__dict__["recipient"] = recipient
             __props__.__dict__["schema"] = schema
             __props__.__dict__["share"] = share
             __props__.__dict__["storage_credential"] = storage_credential
@@ -432,6 +486,8 @@ class Grants(pulumi.CustomResource):
             grants: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrantsGrantArgs']]]]] = None,
             metastore: Optional[pulumi.Input[str]] = None,
             model: Optional[pulumi.Input[str]] = None,
+            pipeline: Optional[pulumi.Input[str]] = None,
+            recipient: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             share: Optional[pulumi.Input[str]] = None,
             storage_credential: Optional[pulumi.Input[str]] = None,
@@ -456,6 +512,8 @@ class Grants(pulumi.CustomResource):
         __props__.__dict__["grants"] = grants
         __props__.__dict__["metastore"] = metastore
         __props__.__dict__["model"] = model
+        __props__.__dict__["pipeline"] = pipeline
+        __props__.__dict__["recipient"] = recipient
         __props__.__dict__["schema"] = schema
         __props__.__dict__["share"] = share
         __props__.__dict__["storage_credential"] = storage_credential
@@ -497,6 +555,16 @@ class Grants(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter
+    def pipeline(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "pipeline")
+
+    @property
+    @pulumi.getter
+    def recipient(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "recipient")
 
     @property
     @pulumi.getter

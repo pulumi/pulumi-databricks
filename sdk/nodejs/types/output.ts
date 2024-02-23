@@ -5254,6 +5254,13 @@ export interface RepoSparseCheckout {
     patterns: string[];
 }
 
+export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    /**
+     * The restrict workspace admins status for the workspace.
+     */
+    status: string;
+}
+
 export interface SecretScopeKeyvaultMetadata {
     dnsName: string;
     resourceId: string;
