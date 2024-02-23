@@ -72,6 +72,18 @@ public class Grants extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> model() {
         return Codegen.optional(this.model);
     }
+    @Export(name="pipeline", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pipeline;
+
+    public Output<Optional<String>> pipeline() {
+        return Codegen.optional(this.pipeline);
+    }
+    @Export(name="recipient", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> recipient;
+
+    public Output<Optional<String>> recipient() {
+        return Codegen.optional(this.recipient);
+    }
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schema;
 

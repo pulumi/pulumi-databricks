@@ -66,6 +66,20 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.model);
     }
 
+    @Import(name="pipeline")
+    private @Nullable Output<String> pipeline;
+
+    public Optional<Output<String>> pipeline() {
+        return Optional.ofNullable(this.pipeline);
+    }
+
+    @Import(name="recipient")
+    private @Nullable Output<String> recipient;
+
+    public Optional<Output<String>> recipient() {
+        return Optional.ofNullable(this.recipient);
+    }
+
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
@@ -111,6 +125,8 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
         this.grants = $.grants;
         this.metastore = $.metastore;
         this.model = $.model;
+        this.pipeline = $.pipeline;
+        this.recipient = $.recipient;
         this.schema = $.schema;
         this.share = $.share;
         this.storageCredential = $.storageCredential;
@@ -201,6 +217,24 @@ public final class GrantsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder model(String model) {
             return model(Output.of(model));
+        }
+
+        public Builder pipeline(@Nullable Output<String> pipeline) {
+            $.pipeline = pipeline;
+            return this;
+        }
+
+        public Builder pipeline(String pipeline) {
+            return pipeline(Output.of(pipeline));
+        }
+
+        public Builder recipient(@Nullable Output<String> recipient) {
+            $.recipient = recipient;
+            return this;
+        }
+
+        public Builder recipient(String recipient) {
+            return recipient(Output.of(recipient));
         }
 
         public Builder schema(@Nullable Output<String> schema) {

@@ -31,6 +31,8 @@ type Grants struct {
 	Grants            GrantsGrantArrayOutput `pulumi:"grants"`
 	Metastore         pulumi.StringPtrOutput `pulumi:"metastore"`
 	Model             pulumi.StringPtrOutput `pulumi:"model"`
+	Pipeline          pulumi.StringPtrOutput `pulumi:"pipeline"`
+	Recipient         pulumi.StringPtrOutput `pulumi:"recipient"`
 	Schema            pulumi.StringPtrOutput `pulumi:"schema"`
 	Share             pulumi.StringPtrOutput `pulumi:"share"`
 	StorageCredential pulumi.StringPtrOutput `pulumi:"storageCredential"`
@@ -78,6 +80,8 @@ type grantsState struct {
 	Grants            []GrantsGrant `pulumi:"grants"`
 	Metastore         *string       `pulumi:"metastore"`
 	Model             *string       `pulumi:"model"`
+	Pipeline          *string       `pulumi:"pipeline"`
+	Recipient         *string       `pulumi:"recipient"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
@@ -93,6 +97,8 @@ type GrantsState struct {
 	Grants            GrantsGrantArrayInput
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
+	Pipeline          pulumi.StringPtrInput
+	Recipient         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
@@ -112,6 +118,8 @@ type grantsArgs struct {
 	Grants            []GrantsGrant `pulumi:"grants"`
 	Metastore         *string       `pulumi:"metastore"`
 	Model             *string       `pulumi:"model"`
+	Pipeline          *string       `pulumi:"pipeline"`
+	Recipient         *string       `pulumi:"recipient"`
 	Schema            *string       `pulumi:"schema"`
 	Share             *string       `pulumi:"share"`
 	StorageCredential *string       `pulumi:"storageCredential"`
@@ -128,6 +136,8 @@ type GrantsArgs struct {
 	Grants            GrantsGrantArrayInput
 	Metastore         pulumi.StringPtrInput
 	Model             pulumi.StringPtrInput
+	Pipeline          pulumi.StringPtrInput
+	Recipient         pulumi.StringPtrInput
 	Schema            pulumi.StringPtrInput
 	Share             pulumi.StringPtrInput
 	StorageCredential pulumi.StringPtrInput
@@ -248,6 +258,14 @@ func (o GrantsOutput) Metastore() pulumi.StringPtrOutput {
 
 func (o GrantsOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Pipeline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Pipeline }).(pulumi.StringPtrOutput)
+}
+
+func (o GrantsOutput) Recipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grants) pulumi.StringPtrOutput { return v.Recipient }).(pulumi.StringPtrOutput)
 }
 
 func (o GrantsOutput) Schema() pulumi.StringPtrOutput {

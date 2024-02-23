@@ -6,7 +6,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/databricks/databricks-sdk-go v0.33.0
-	github.com/databricks/terraform-provider-databricks v1.37.0
+	github.com/databricks/terraform-provider-databricks v1.37.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
 )
 
@@ -123,11 +123,11 @@ require (
 	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-exec v0.19.0 // indirect
-	github.com/hashicorp/terraform-json v0.18.0 // indirect
+	github.com/hashicorp/terraform-exec v0.20.0 // indirect
+	github.com/hashicorp/terraform-json v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.32.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect

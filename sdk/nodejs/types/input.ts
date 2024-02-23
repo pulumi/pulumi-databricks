@@ -7214,6 +7214,13 @@ export interface RepoSparseCheckout {
     patterns: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
+    /**
+     * The restrict workspace admins status for the workspace.
+     */
+    status: pulumi.Input<string>;
+}
+
 export interface SecretScopeKeyvaultMetadata {
     dnsName: pulumi.Input<string>;
     resourceId: pulumi.Input<string>;

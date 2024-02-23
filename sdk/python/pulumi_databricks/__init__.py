@@ -101,6 +101,7 @@ from .provider import *
 from .recipient import *
 from .registered_model import *
 from .repo import *
+from .restrict_workspace_admins_setting import *
 from .schema import *
 from .secret import *
 from .secret_acl import *
@@ -556,6 +557,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/repo:Repo": "Repo"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/restrictWorkspaceAdminsSetting",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": "RestrictWorkspaceAdminsSetting"
   }
  },
  {

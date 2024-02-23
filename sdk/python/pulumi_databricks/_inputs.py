@@ -303,6 +303,7 @@ __all__ = [
     'RecipientIpAccessListArgs',
     'RecipientTokenArgs',
     'RepoSparseCheckoutArgs',
+    'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs',
     'SecretScopeKeyvaultMetadataArgs',
     'ShareObjectArgs',
     'ShareObjectPartitionArgs',
@@ -16171,6 +16172,28 @@ class RepoSparseCheckoutArgs:
     @patterns.setter
     def patterns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "patterns", value)
+
+
+@pulumi.input_type
+class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs:
+    def __init__(__self__, *,
+                 status: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] status: The restrict workspace admins status for the workspace.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        The restrict workspace admins status for the workspace.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
