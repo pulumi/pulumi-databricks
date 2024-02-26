@@ -108,6 +108,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// initialize provider at account-level
 //			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
 //				Host:         pulumi.String("https://accounts.cloud.databricks.com"),
 //				AccountId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -141,6 +142,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// initialize provider at Azure account-level
 //			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
 //				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
 //				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),

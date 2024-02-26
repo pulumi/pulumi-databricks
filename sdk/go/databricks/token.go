@@ -27,12 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// initialize provider in normal mode
 //			_, err := databricks.NewProvider(ctx, "createdWorkspace", &databricks.ProviderArgs{
 //				Host: pulumi.Any(databricks_mws_workspaces.This.Workspace_url),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// create PAT token to provision entities within workspace
 //			pat, err := databricks.NewToken(ctx, "pat", &databricks.TokenArgs{
 //				Comment:         pulumi.String("Terraform Provisioning"),
 //				LifetimeSeconds: pulumi.Int(8640000),
