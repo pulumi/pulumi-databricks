@@ -65,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// required only in case of multi-workspace setup
 //			_, err = databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
 //				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", _var.Prefix)),
