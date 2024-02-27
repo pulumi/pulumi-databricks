@@ -47,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// register cross-account ARN
 //			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
 //				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", _var.Prefix)),
@@ -55,6 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// register root bucket
 //			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "thisMwsStorageConfigurations", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
 //				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", _var.Prefix)),
@@ -63,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// register VPC
 //			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
 //				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
@@ -75,6 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// create workspace in given VPC with DBFS on root bucket
 //			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
 //				WorkspaceName:          pulumi.Any(_var.Prefix),
@@ -283,6 +287,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// register VPC
 //			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
 //				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
@@ -298,6 +303,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// create workspace in given VPC
 //			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
 //				AccountId:     pulumi.Any(databricksAccountId),
 //				WorkspaceName: pulumi.Any(_var.Prefix),
