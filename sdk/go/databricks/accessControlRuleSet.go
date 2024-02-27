@@ -82,6 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_ := "00000000-0000-0000-0000-000000000000"
+//			// account level group creation
 //			ds, err := databricks.NewGroup(ctx, "ds", nil)
 //			if err != nil {
 //				return err
@@ -126,6 +127,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_ := "00000000-0000-0000-0000-000000000000"
+//			// account level group creation
 //			ds, err := databricks.NewGroup(ctx, "ds", nil)
 //			if err != nil {
 //				return err
@@ -171,6 +173,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_ := "00000000-0000-0000-0000-000000000000"
+//			// account level group creation
 //			ds, err := databricks.NewGroup(ctx, "ds", nil)
 //			if err != nil {
 //				return err

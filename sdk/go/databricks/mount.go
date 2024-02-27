@@ -177,6 +177,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// now you can do `%fs ls /mnt/experiments` in notebooks
 //			_, err := databricks.NewMount(ctx, "this", &databricks.MountArgs{
 //				S3: &databricks.MountS3Args{
 //					InstanceProfile: pulumi.Any(databricks_instance_profile.Ds.Id),
