@@ -9335,7 +9335,7 @@ type GetMetastoreMetastoreInfo struct {
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
 	// Used to set expiration duration in seconds on recipient data access tokens.
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
 	// Id of the metastore to be fetched
@@ -9374,7 +9374,7 @@ type GetMetastoreMetastoreInfoArgs struct {
 	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
 	// Used to set expiration duration in seconds on recipient data access tokens.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
 	// Id of the metastore to be fetched
@@ -9496,7 +9496,7 @@ func (o GetMetastoreMetastoreInfoOutput) DeltaSharingRecipientTokenLifetimeInSec
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }
@@ -9629,7 +9629,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingRecipientTokenLifetimeIn
 	}).(pulumi.IntPtrOutput)
 }
 
-// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {

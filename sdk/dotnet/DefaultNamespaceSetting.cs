@@ -18,6 +18,7 @@ namespace Pulumi.Databricks
     /// 'SELECT * FROM myTable' would reference the object 'retail_prod.default.myTable'
     /// (the schema 'default' is always assumed).
     /// This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -37,6 +38,16 @@ namespace Pulumi.Databricks
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported by predefined name `global`:
+    /// 
+    ///  bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting")]

@@ -135,10 +135,10 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future */
     @Export(name="enableServerlessCompute", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableServerlessCompute;
+    private Output<Boolean> enableServerlessCompute;
 
-    public Output<Optional<Boolean>> enableServerlessCompute() {
-        return Codegen.optional(this.enableServerlessCompute);
+    public Output<Boolean> enableServerlessCompute() {
+        return this.enableServerlessCompute;
     }
     /**
      * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.

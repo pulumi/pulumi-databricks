@@ -21,10 +21,11 @@ class RegisteredModelArgs:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegisteredModel resource.
-        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside.
-        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
-        :param pulumi.Input[str] name: The name of the registered model.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -39,7 +40,7 @@ class RegisteredModelArgs:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[str]:
         """
-        The name of the catalog where the schema and the registered model reside.
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "catalog_name")
 
@@ -51,7 +52,7 @@ class RegisteredModelArgs:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[str]:
         """
-        The name of the schema where the registered model resides.
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "schema_name")
 
@@ -75,7 +76,7 @@ class RegisteredModelArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the registered model.
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "name")
 
@@ -86,6 +87,9 @@ class RegisteredModelArgs:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -103,10 +107,11 @@ class _RegisteredModelState:
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegisteredModel resources.
-        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
-        :param pulumi.Input[str] name: The name of the registered model.
-        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -123,7 +128,7 @@ class _RegisteredModelState:
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the catalog where the schema and the registered model reside.
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "catalog_name")
 
@@ -147,7 +152,7 @@ class _RegisteredModelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the registered model.
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +164,7 @@ class _RegisteredModelState:
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the schema where the registered model resides.
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "schema_name")
 
@@ -170,6 +175,9 @@ class _RegisteredModelState:
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -229,10 +237,11 @@ class RegisteredModel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
-        :param pulumi.Input[str] name: The name of the registered model.
-        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         ...
     @overload
@@ -339,10 +348,11 @@ class RegisteredModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
-        :param pulumi.Input[str] name: The name of the registered model.
-        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides.
+        :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -359,7 +369,7 @@ class RegisteredModel(pulumi.CustomResource):
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Output[str]:
         """
-        The name of the catalog where the schema and the registered model reside.
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "catalog_name")
 
@@ -375,7 +385,7 @@ class RegisteredModel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the registered model.
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "name")
 
@@ -383,12 +393,15 @@ class RegisteredModel(pulumi.CustomResource):
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Output[str]:
         """
-        The name of the schema where the registered model resides.
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "schema_name")
 
     @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[str]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
         return pulumi.get(self, "storage_location")
 

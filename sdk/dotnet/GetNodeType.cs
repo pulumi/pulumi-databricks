@@ -155,19 +155,19 @@ namespace Pulumi.Databricks
         public string? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
         /// </summary>
         [Input("fleet")]
         public bool? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
         /// </summary>
         [Input("gbPerCore")]
         public int? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -179,55 +179,55 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
-        /// . Pick only nodes that have IO Cache. Defaults to *false*.
+        /// . Pick only nodes that have IO Cache. Defaults to _false_.
         /// </summary>
         [Input("isIoCacheEnabled")]
         public bool? IsIoCacheEnabled { get; set; }
 
         /// <summary>
-        /// Pick only nodes with local storage. Defaults to *false*.
+        /// Pick only nodes with local storage. Defaults to _false_.
         /// </summary>
         [Input("localDisk")]
         public bool? LocalDisk { get; set; }
 
         /// <summary>
-        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
         /// </summary>
         [Input("localDiskMinSize")]
         public int? LocalDiskMinSize { get; set; }
 
         /// <summary>
-        /// Minimum number of CPU cores available on instance. Defaults to *0*.
+        /// Minimum number of CPU cores available on instance. Defaults to _0_.
         /// </summary>
         [Input("minCores")]
         public int? MinCores { get; set; }
 
         /// <summary>
-        /// Minimum number of GPU's attached to instance. Defaults to *0*.
+        /// Minimum number of GPU's attached to instance. Defaults to _0_.
         /// </summary>
         [Input("minGpus")]
         public int? MinGpus { get; set; }
 
         /// <summary>
-        /// Minimum amount of memory per node in gigabytes. Defaults to *0*.
+        /// Minimum amount of memory per node in gigabytes. Defaults to _0_.
         /// </summary>
         [Input("minMemoryGb")]
         public int? MinMemoryGb { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon driver. Defaults to *false*.
+        /// Pick only nodes that can run Photon driver. Defaults to _false_.
         /// </summary>
         [Input("photonDriverCapable")]
         public bool? PhotonDriverCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon workers. Defaults to *false*.
+        /// Pick only nodes that can run Photon workers. Defaults to _false_.
         /// </summary>
         [Input("photonWorkerCapable")]
         public bool? PhotonWorkerCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that support port forwarding. Defaults to *false*.
+        /// Pick only nodes that support port forwarding. Defaults to _false_.
         /// </summary>
         [Input("supportPortForwarding")]
         public bool? SupportPortForwarding { get; set; }
@@ -254,19 +254,19 @@ namespace Pulumi.Databricks
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+        /// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
         /// </summary>
         [Input("fleet")]
         public Input<bool>? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
         /// </summary>
         [Input("gbPerCore")]
         public Input<int>? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+        /// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
@@ -278,55 +278,55 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// . Pick only nodes that have IO Cache. Defaults to *false*.
+        /// . Pick only nodes that have IO Cache. Defaults to _false_.
         /// </summary>
         [Input("isIoCacheEnabled")]
         public Input<bool>? IsIoCacheEnabled { get; set; }
 
         /// <summary>
-        /// Pick only nodes with local storage. Defaults to *false*.
+        /// Pick only nodes with local storage. Defaults to _false_.
         /// </summary>
         [Input("localDisk")]
         public Input<bool>? LocalDisk { get; set; }
 
         /// <summary>
-        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+        /// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
         /// </summary>
         [Input("localDiskMinSize")]
         public Input<int>? LocalDiskMinSize { get; set; }
 
         /// <summary>
-        /// Minimum number of CPU cores available on instance. Defaults to *0*.
+        /// Minimum number of CPU cores available on instance. Defaults to _0_.
         /// </summary>
         [Input("minCores")]
         public Input<int>? MinCores { get; set; }
 
         /// <summary>
-        /// Minimum number of GPU's attached to instance. Defaults to *0*.
+        /// Minimum number of GPU's attached to instance. Defaults to _0_.
         /// </summary>
         [Input("minGpus")]
         public Input<int>? MinGpus { get; set; }
 
         /// <summary>
-        /// Minimum amount of memory per node in gigabytes. Defaults to *0*.
+        /// Minimum amount of memory per node in gigabytes. Defaults to _0_.
         /// </summary>
         [Input("minMemoryGb")]
         public Input<int>? MinMemoryGb { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon driver. Defaults to *false*.
+        /// Pick only nodes that can run Photon driver. Defaults to _false_.
         /// </summary>
         [Input("photonDriverCapable")]
         public Input<bool>? PhotonDriverCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that can run Photon workers. Defaults to *false*.
+        /// Pick only nodes that can run Photon workers. Defaults to _false_.
         /// </summary>
         [Input("photonWorkerCapable")]
         public Input<bool>? PhotonWorkerCapable { get; set; }
 
         /// <summary>
-        /// Pick only nodes that support port forwarding. Defaults to *false*.
+        /// Pick only nodes that support port forwarding. Defaults to _false_.
         /// </summary>
         [Input("supportPortForwarding")]
         public Input<bool>? SupportPortForwarding { get; set; }

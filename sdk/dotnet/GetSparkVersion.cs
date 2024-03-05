@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
         public bool? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }

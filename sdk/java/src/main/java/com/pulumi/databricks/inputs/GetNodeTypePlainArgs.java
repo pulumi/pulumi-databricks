@@ -46,14 +46,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
      * 
      */
     @Import(name="fleet")
     private @Nullable Boolean fleet;
 
     /**
-     * @return if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+     * @return if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
      * 
      */
     public Optional<Boolean> fleet() {
@@ -61,14 +61,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+     * Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
      * 
      */
     @Import(name="gbPerCore")
     private @Nullable Integer gbPerCore;
 
     /**
-     * @return Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+     * @return Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
      * 
      */
     public Optional<Integer> gbPerCore() {
@@ -76,14 +76,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
      * 
      */
     @Import(name="graviton")
     private @Nullable Boolean graviton;
 
     /**
-     * @return if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+     * @return if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
      * 
      */
     public Optional<Boolean> graviton() {
@@ -106,14 +106,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * . Pick only nodes that have IO Cache. Defaults to *false*.
+     * . Pick only nodes that have IO Cache. Defaults to _false_.
      * 
      */
     @Import(name="isIoCacheEnabled")
     private @Nullable Boolean isIoCacheEnabled;
 
     /**
-     * @return . Pick only nodes that have IO Cache. Defaults to *false*.
+     * @return . Pick only nodes that have IO Cache. Defaults to _false_.
      * 
      */
     public Optional<Boolean> isIoCacheEnabled() {
@@ -121,14 +121,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Pick only nodes with local storage. Defaults to *false*.
+     * Pick only nodes with local storage. Defaults to _false_.
      * 
      */
     @Import(name="localDisk")
     private @Nullable Boolean localDisk;
 
     /**
-     * @return Pick only nodes with local storage. Defaults to *false*.
+     * @return Pick only nodes with local storage. Defaults to _false_.
      * 
      */
     public Optional<Boolean> localDisk() {
@@ -136,14 +136,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
      * 
      */
     @Import(name="localDiskMinSize")
     private @Nullable Integer localDiskMinSize;
 
     /**
-     * @return Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+     * @return Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
      * 
      */
     public Optional<Integer> localDiskMinSize() {
@@ -151,14 +151,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Minimum number of CPU cores available on instance. Defaults to *0*.
+     * Minimum number of CPU cores available on instance. Defaults to _0_.
      * 
      */
     @Import(name="minCores")
     private @Nullable Integer minCores;
 
     /**
-     * @return Minimum number of CPU cores available on instance. Defaults to *0*.
+     * @return Minimum number of CPU cores available on instance. Defaults to _0_.
      * 
      */
     public Optional<Integer> minCores() {
@@ -166,14 +166,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Minimum number of GPU&#39;s attached to instance. Defaults to *0*.
+     * Minimum number of GPU&#39;s attached to instance. Defaults to _0_.
      * 
      */
     @Import(name="minGpus")
     private @Nullable Integer minGpus;
 
     /**
-     * @return Minimum number of GPU&#39;s attached to instance. Defaults to *0*.
+     * @return Minimum number of GPU&#39;s attached to instance. Defaults to _0_.
      * 
      */
     public Optional<Integer> minGpus() {
@@ -181,14 +181,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Minimum amount of memory per node in gigabytes. Defaults to *0*.
+     * Minimum amount of memory per node in gigabytes. Defaults to _0_.
      * 
      */
     @Import(name="minMemoryGb")
     private @Nullable Integer minMemoryGb;
 
     /**
-     * @return Minimum amount of memory per node in gigabytes. Defaults to *0*.
+     * @return Minimum amount of memory per node in gigabytes. Defaults to _0_.
      * 
      */
     public Optional<Integer> minMemoryGb() {
@@ -196,14 +196,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Pick only nodes that can run Photon driver. Defaults to *false*.
+     * Pick only nodes that can run Photon driver. Defaults to _false_.
      * 
      */
     @Import(name="photonDriverCapable")
     private @Nullable Boolean photonDriverCapable;
 
     /**
-     * @return Pick only nodes that can run Photon driver. Defaults to *false*.
+     * @return Pick only nodes that can run Photon driver. Defaults to _false_.
      * 
      */
     public Optional<Boolean> photonDriverCapable() {
@@ -211,14 +211,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Pick only nodes that can run Photon workers. Defaults to *false*.
+     * Pick only nodes that can run Photon workers. Defaults to _false_.
      * 
      */
     @Import(name="photonWorkerCapable")
     private @Nullable Boolean photonWorkerCapable;
 
     /**
-     * @return Pick only nodes that can run Photon workers. Defaults to *false*.
+     * @return Pick only nodes that can run Photon workers. Defaults to _false_.
      * 
      */
     public Optional<Boolean> photonWorkerCapable() {
@@ -226,14 +226,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Pick only nodes that support port forwarding. Defaults to *false*.
+     * Pick only nodes that support port forwarding. Defaults to _false_.
      * 
      */
     @Import(name="supportPortForwarding")
     private @Nullable Boolean supportPortForwarding;
 
     /**
-     * @return Pick only nodes that support port forwarding. Defaults to *false*.
+     * @return Pick only nodes that support port forwarding. Defaults to _false_.
      * 
      */
     public Optional<Boolean> supportPortForwarding() {
@@ -296,7 +296,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param fleet if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+         * @param fleet if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param gbPerCore Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to *0*.
+         * @param gbPerCore Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+         * @param graviton if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param isIoCacheEnabled . Pick only nodes that have IO Cache. Defaults to *false*.
+         * @param isIoCacheEnabled . Pick only nodes that have IO Cache. Defaults to _false_.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param localDisk Pick only nodes with local storage. Defaults to *false*.
+         * @param localDisk Pick only nodes with local storage. Defaults to _false_.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param localDiskMinSize Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+         * @param localDiskMinSize Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param minCores Minimum number of CPU cores available on instance. Defaults to *0*.
+         * @param minCores Minimum number of CPU cores available on instance. Defaults to _0_.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param minGpus Minimum number of GPU&#39;s attached to instance. Defaults to *0*.
+         * @param minGpus Minimum number of GPU&#39;s attached to instance. Defaults to _0_.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param minMemoryGb Minimum amount of memory per node in gigabytes. Defaults to *0*.
+         * @param minMemoryGb Minimum amount of memory per node in gigabytes. Defaults to _0_.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param photonDriverCapable Pick only nodes that can run Photon driver. Defaults to *false*.
+         * @param photonDriverCapable Pick only nodes that can run Photon driver. Defaults to _false_.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param photonWorkerCapable Pick only nodes that can run Photon workers. Defaults to *false*.
+         * @param photonWorkerCapable Pick only nodes that can run Photon workers. Defaults to _false_.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param supportPortForwarding Pick only nodes that support port forwarding. Defaults to *false*.
+         * @param supportPortForwarding Pick only nodes that support port forwarding. Defaults to _false_.
          * 
          * @return builder
          * 

@@ -2924,7 +2924,7 @@ class JobDbtTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         :param pulumi.Input[str] catalog: The name of the catalog to use inside Unity Catalog.
         :param pulumi.Input[str] profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
                * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
                * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         :param pulumi.Input[str] schema: The name of the schema dbt should run in. Defaults to `default`.
@@ -2987,7 +2987,7 @@ class JobDbtTaskArgs:
     @pulumi.getter(name="projectDirectory")
     def project_directory(self) -> Optional[pulumi.Input[str]]:
         """
-        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
         * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
         * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         """
@@ -7010,7 +7010,7 @@ class JobTaskDbtTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         :param pulumi.Input[str] catalog: The name of the catalog to use inside Unity Catalog.
         :param pulumi.Input[str] profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
                * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
                * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         :param pulumi.Input[str] schema: The name of the schema dbt should run in. Defaults to `default`.
@@ -7073,7 +7073,7 @@ class JobTaskDbtTaskArgs:
     @pulumi.getter(name="projectDirectory")
     def project_directory(self) -> Optional[pulumi.Input[str]]:
         """
-        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
         * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
         * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         """
@@ -7750,7 +7750,7 @@ class JobTaskForEachTaskTaskDbtTaskArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
         :param pulumi.Input[str] catalog: The name of the catalog to use inside Unity Catalog.
         :param pulumi.Input[str] profiles_directory: The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
-        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        :param pulumi.Input[str] project_directory: The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
                * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
                * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         :param pulumi.Input[str] schema: The name of the schema dbt should run in. Defaults to `default`.
@@ -7813,7 +7813,7 @@ class JobTaskForEachTaskTaskDbtTaskArgs:
     @pulumi.getter(name="projectDirectory")
     def project_directory(self) -> Optional[pulumi.Input[str]]:
         """
-        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
         * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
         * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         """
@@ -19939,7 +19939,7 @@ class GetCurrentMetastoreMetastoreInfoArgs:
         :param str default_data_access_config_id: the ID of the default data access configuration.
         :param str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
         :param int delta_sharing_recipient_token_lifetime_in_seconds: the expiration duration in seconds on recipient data access tokens.
-        :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         :param str global_metastore_id: Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
         :param str metastore_id: Metastore ID.
         :param str name: Name of metastore.
@@ -20062,7 +20062,7 @@ class GetCurrentMetastoreMetastoreInfoArgs:
     @pulumi.getter(name="deltaSharingScope")
     def delta_sharing_scope(self) -> Optional[str]:
         """
-        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
 
@@ -30348,7 +30348,7 @@ class GetMetastoreMetastoreInfoArgs:
         """
         :param str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
         :param int delta_sharing_recipient_token_lifetime_in_seconds: Used to set expiration duration in seconds on recipient data access tokens.
-        :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         :param str metastore_id: Id of the metastore to be fetched
         :param str name: Name of metastore.
         :param str owner: Username/groupname/sp application_id of the metastore owner.
@@ -30455,7 +30455,7 @@ class GetMetastoreMetastoreInfoArgs:
     @pulumi.getter(name="deltaSharingScope")
     def delta_sharing_scope(self) -> Optional[str]:
         """
-        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
 

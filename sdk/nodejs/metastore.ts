@@ -64,7 +64,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     public readonly deltaSharingRecipientTokenLifetimeInSeconds!: pulumi.Output<number | undefined>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     public readonly deltaSharingScope!: pulumi.Output<string | undefined>;
     /**
@@ -165,7 +165,7 @@ export interface MetastoreState {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface MetastoreArgs {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
     /**

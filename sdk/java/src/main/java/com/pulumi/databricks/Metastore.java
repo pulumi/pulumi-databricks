@@ -91,14 +91,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
     /**
-     * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     @Export(name="deltaSharingScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingScope;
 
     /**
-     * @return Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * @return Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     public Output<Optional<String>> deltaSharingScope() {

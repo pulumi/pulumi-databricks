@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
         /// <summary>
-        /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+        /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }

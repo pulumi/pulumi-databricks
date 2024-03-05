@@ -83,7 +83,7 @@ export interface GetSparkVersionArgs {
      */
     gpu?: boolean;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
      *
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */
@@ -206,7 +206,7 @@ export interface GetSparkVersionOutputArgs {
      */
     gpu?: pulumi.Input<boolean>;
     /**
-     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. *Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration.*
+     * if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
      *
      * @deprecated Not required anymore - it's automatically enabled on the Graviton-based node types
      */

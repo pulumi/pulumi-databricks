@@ -73,7 +73,7 @@ export class RegisteredModel extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the catalog where the schema and the registered model reside.
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
     public readonly catalogName!: pulumi.Output<string>;
     /**
@@ -81,13 +81,16 @@ export class RegisteredModel extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The name of the registered model.
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the schema where the registered model resides.
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
     public readonly schemaName!: pulumi.Output<string>;
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     */
     public readonly storageLocation!: pulumi.Output<string>;
 
     /**
@@ -132,7 +135,7 @@ export class RegisteredModel extends pulumi.CustomResource {
  */
 export interface RegisteredModelState {
     /**
-     * The name of the catalog where the schema and the registered model reside.
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
     catalogName?: pulumi.Input<string>;
     /**
@@ -140,13 +143,16 @@ export interface RegisteredModelState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * The name of the registered model.
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the schema where the registered model resides.
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
     schemaName?: pulumi.Input<string>;
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     */
     storageLocation?: pulumi.Input<string>;
 }
 
@@ -155,7 +161,7 @@ export interface RegisteredModelState {
  */
 export interface RegisteredModelArgs {
     /**
-     * The name of the catalog where the schema and the registered model reside.
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
     catalogName: pulumi.Input<string>;
     /**
@@ -163,12 +169,15 @@ export interface RegisteredModelArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * The name of the registered model.
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the schema where the registered model resides.
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
     schemaName: pulumi.Input<string>;
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     */
     storageLocation?: pulumi.Input<string>;
 }

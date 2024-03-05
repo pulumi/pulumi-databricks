@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ProfilesDirectory;
         /// <summary>
-        /// The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+        /// The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
         /// * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
         /// * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         /// </summary>

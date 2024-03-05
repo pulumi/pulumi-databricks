@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/registeredModel:RegisteredModel")
 public class RegisteredModel extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the catalog where the schema and the registered model reside.
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Export(name="catalogName", refs={String.class}, tree="[0]")
     private Output<String> catalogName;
 
     /**
-     * @return The name of the catalog where the schema and the registered model reside.
+     * @return The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Output<String> catalogName() {
@@ -105,36 +105,44 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * The name of the registered model.
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the registered model.
+     * @return The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the schema where the registered model resides.
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
-     * @return The name of the schema where the registered model resides.
+     * @return The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Output<String> schemaName() {
         return this.schemaName;
     }
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output<String> storageLocation;
 
+    /**
+     * @return The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Output<String> storageLocation() {
         return this.storageLocation;
     }

@@ -275,7 +275,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows you to create a [Private Access Setting]that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+        Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
 
         It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
 
@@ -375,7 +375,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  args: MwsPrivateAccessSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows you to create a [Private Access Setting]that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+        Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
 
         It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
 
@@ -547,7 +547,7 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[str]]:
+    def account_id(self) -> pulumi.Output[str]:
         """
         Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """

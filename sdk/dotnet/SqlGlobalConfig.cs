@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, object>?> DataAccessConfig { get; private set; } = null!;
 
         [Output("enableServerlessCompute")]
-        public Output<bool?> EnableServerlessCompute { get; private set; } = null!;
+        public Output<bool> EnableServerlessCompute { get; private set; } = null!;
 
         /// <summary>
         /// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.

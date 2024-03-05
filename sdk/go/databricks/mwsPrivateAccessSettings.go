@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows you to create a [Private Access Setting]that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
+// Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
 //
 // It is strongly recommended that customers read the [Enable AWS Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) [Enable GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation before trying to leverage this resource.
 //
@@ -149,7 +149,7 @@ type MwsPrivateAccessSettings struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
 	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds pulumi.StringArrayOutput `pulumi:"allowedVpcEndpointIds"`
 	// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
@@ -370,8 +370,8 @@ func (o MwsPrivateAccessSettingsOutput) ToMwsPrivateAccessSettingsOutputWithCont
 // Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 //
 // Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
-func (o MwsPrivateAccessSettingsOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsPrivateAccessSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MwsPrivateAccessSettingsOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsPrivateAccessSettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.

@@ -16,14 +16,14 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
     public static final RegisteredModelState Empty = new RegisteredModelState();
 
     /**
-     * The name of the catalog where the schema and the registered model reside.
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Import(name="catalogName")
     private @Nullable Output<String> catalogName;
 
     /**
-     * @return The name of the catalog where the schema and the registered model reside.
+     * @return The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Optional<Output<String>> catalogName() {
@@ -46,14 +46,14 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the registered model.
+     * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the registered model.
+     * @return The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,23 +61,31 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the schema where the registered model resides.
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Import(name="schemaName")
     private @Nullable Output<String> schemaName;
 
     /**
-     * @return The name of the schema where the registered model resides.
+     * @return The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Optional<Output<String>> schemaName() {
         return Optional.ofNullable(this.schemaName);
     }
 
+    /**
+     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
+    /**
+     * @return The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * 
+     */
     public Optional<Output<String>> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
@@ -111,7 +119,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * @param catalogName The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -122,7 +130,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * @param catalogName The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -153,7 +161,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the registered model.
+         * @param name The name of the registered model.  *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -164,7 +172,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the registered model.
+         * @param name The name of the registered model.  *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param schemaName The name of the schema where the registered model resides.
+         * @param schemaName The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -185,7 +193,7 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param schemaName The name of the schema where the registered model resides.
+         * @param schemaName The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -194,11 +202,23 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
             return schemaName(Output.of(schemaName));
         }
 
+        /**
+         * @param storageLocation The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(@Nullable Output<String> storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
+        /**
+         * @param storageLocation The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
         }
