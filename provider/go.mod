@@ -2,12 +2,12 @@ module github.com/pulumi/pulumi-databricks/provider
 
 go 1.21
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 
 require (
 	github.com/databricks/databricks-sdk-go v0.33.1-0.20240226115927-28be042ad6fc
 	github.com/databricks/terraform-provider-databricks v1.38.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.1-0.20240305125125-393cc55a76c4
 )
 
 require (
