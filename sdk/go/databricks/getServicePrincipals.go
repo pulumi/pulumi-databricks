@@ -19,14 +19,14 @@ import (
 //
 // The following resources are used in the same context:
 //
-// * End to end workspace management guide.
-// * getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-// * Group data to retrieve information about Group members, entitlements and instance profiles.
-// * GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-// * GroupMember to attach users and groups as group members.
-// * Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-// * databricksService principal to manage service principals
+// - End to end workspace management guide.
+// - getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+// - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+// - Group data to retrieve information about Group members, entitlements and instance profiles.
+// - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// - GroupMember to attach users and groups as group members.
+// - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+// - databricksService principal to manage service principals
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult

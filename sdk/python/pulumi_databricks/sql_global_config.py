@@ -452,7 +452,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableServerlessCompute")
-    def enable_serverless_compute(self) -> pulumi.Output[Optional[bool]]:
+    def enable_serverless_compute(self) -> pulumi.Output[bool]:
         warnings.warn("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""", DeprecationWarning)
         pulumi.log.warn("""enable_serverless_compute is deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
 

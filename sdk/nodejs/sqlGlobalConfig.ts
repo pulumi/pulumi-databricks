@@ -99,7 +99,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
-    public readonly enableServerlessCompute!: pulumi.Output<boolean | undefined>;
+    public readonly enableServerlessCompute!: pulumi.Output<boolean>;
     /**
      * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
      */

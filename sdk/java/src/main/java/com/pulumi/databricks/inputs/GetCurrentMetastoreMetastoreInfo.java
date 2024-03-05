@@ -98,14 +98,14 @@ public final class GetCurrentMetastoreMetastoreInfo extends com.pulumi.resources
     }
 
     /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     @Import(name="deltaSharingScope")
     private @Nullable String deltaSharingScope;
 
     /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     public Optional<String> deltaSharingScope() {
@@ -379,7 +379,7 @@ public final class GetCurrentMetastoreMetastoreInfo extends com.pulumi.resources
         }
 
         /**
-         * @param deltaSharingScope Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+         * @param deltaSharingScope Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
          * 
          * @return builder
          * 

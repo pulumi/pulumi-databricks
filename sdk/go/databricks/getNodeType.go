@@ -95,31 +95,31 @@ type GetNodeTypeArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category *string `pulumi:"category"`
-	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
 	Fleet *bool `pulumi:"fleet"`
-	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
+	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore *int `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
 	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id *string `pulumi:"id"`
-	// . Pick only nodes that have IO Cache. Defaults to *false*.
+	// . Pick only nodes that have IO Cache. Defaults to _false_.
 	IsIoCacheEnabled *bool `pulumi:"isIoCacheEnabled"`
-	// Pick only nodes with local storage. Defaults to *false*.
+	// Pick only nodes with local storage. Defaults to _false_.
 	LocalDisk *bool `pulumi:"localDisk"`
-	// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
 	LocalDiskMinSize *int `pulumi:"localDiskMinSize"`
-	// Minimum number of CPU cores available on instance. Defaults to *0*.
+	// Minimum number of CPU cores available on instance. Defaults to _0_.
 	MinCores *int `pulumi:"minCores"`
-	// Minimum number of GPU's attached to instance. Defaults to *0*.
+	// Minimum number of GPU's attached to instance. Defaults to _0_.
 	MinGpus *int `pulumi:"minGpus"`
-	// Minimum amount of memory per node in gigabytes. Defaults to *0*.
+	// Minimum amount of memory per node in gigabytes. Defaults to _0_.
 	MinMemoryGb *int `pulumi:"minMemoryGb"`
-	// Pick only nodes that can run Photon driver. Defaults to *false*.
+	// Pick only nodes that can run Photon driver. Defaults to _false_.
 	PhotonDriverCapable *bool `pulumi:"photonDriverCapable"`
-	// Pick only nodes that can run Photon workers. Defaults to *false*.
+	// Pick only nodes that can run Photon workers. Defaults to _false_.
 	PhotonWorkerCapable *bool `pulumi:"photonWorkerCapable"`
-	// Pick only nodes that support port forwarding. Defaults to *false*.
+	// Pick only nodes that support port forwarding. Defaults to _false_.
 	SupportPortForwarding *bool `pulumi:"supportPortForwarding"`
 }
 
@@ -166,31 +166,31 @@ type GetNodeTypeOutputArgs struct {
 	// * `Storage Optimized` (AWS, Azure)
 	// * `GPU Accelerated` (AWS, Azure)
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to *false*.
+	// if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
 	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
-	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to *0*.
+	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to *false*.
+	// if we should limit the search only to nodes with AWS Graviton CPUs. Default to _false_.
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// . Pick only nodes that have IO Cache. Defaults to *false*.
+	// . Pick only nodes that have IO Cache. Defaults to _false_.
 	IsIoCacheEnabled pulumi.BoolPtrInput `pulumi:"isIoCacheEnabled"`
-	// Pick only nodes with local storage. Defaults to *false*.
+	// Pick only nodes with local storage. Defaults to _false_.
 	LocalDisk pulumi.BoolPtrInput `pulumi:"localDisk"`
-	// Pick only nodes that have size local storage greater or equal to given value. Defaults to *0*.
+	// Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
 	LocalDiskMinSize pulumi.IntPtrInput `pulumi:"localDiskMinSize"`
-	// Minimum number of CPU cores available on instance. Defaults to *0*.
+	// Minimum number of CPU cores available on instance. Defaults to _0_.
 	MinCores pulumi.IntPtrInput `pulumi:"minCores"`
-	// Minimum number of GPU's attached to instance. Defaults to *0*.
+	// Minimum number of GPU's attached to instance. Defaults to _0_.
 	MinGpus pulumi.IntPtrInput `pulumi:"minGpus"`
-	// Minimum amount of memory per node in gigabytes. Defaults to *0*.
+	// Minimum amount of memory per node in gigabytes. Defaults to _0_.
 	MinMemoryGb pulumi.IntPtrInput `pulumi:"minMemoryGb"`
-	// Pick only nodes that can run Photon driver. Defaults to *false*.
+	// Pick only nodes that can run Photon driver. Defaults to _false_.
 	PhotonDriverCapable pulumi.BoolPtrInput `pulumi:"photonDriverCapable"`
-	// Pick only nodes that can run Photon workers. Defaults to *false*.
+	// Pick only nodes that can run Photon workers. Defaults to _false_.
 	PhotonWorkerCapable pulumi.BoolPtrInput `pulumi:"photonWorkerCapable"`
-	// Pick only nodes that support port forwarding. Defaults to *false*.
+	// Pick only nodes that support port forwarding. Defaults to _false_.
 	SupportPortForwarding pulumi.BoolPtrInput `pulumi:"supportPortForwarding"`
 }
 

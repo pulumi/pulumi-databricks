@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
  * &#39;SELECT * FROM myTable&#39; would reference the object &#39;retail_prod.default.myTable&#39;
  * (the schema &#39;default&#39; is always assumed).
  * This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -54,6 +55,16 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by predefined name `global`:
+ * 
+ *  bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
  * ```
  * 
  */

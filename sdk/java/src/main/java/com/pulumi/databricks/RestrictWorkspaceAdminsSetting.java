@@ -20,11 +20,13 @@ import javax.annotation.Nullable;
  * The `databricks.RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
  * 
  * With the status set to `ALLOW_ALL`, workspace admins can:
+ * 
  * 1. Create service principal personal access tokens on behalf of any service principal in their workspace.
  * 2. Change a job owner to any user in the workspace.
  * 3. Change the job run_as setting to any user in their workspace or a service principal on which they have the Service Principal User role.
  * 
  * With the status set to `RESTRICT_TOKENS_AND_JOB_RUN_AS`, workspace admins can:
+ * 
  * 1. Only create personal access tokens on behalf of service principals on which they have the Service Principal User role.
  * 2. Only change a job owner to themselves.
  * 3. Only change the job run_as setting to themselves a service principal on which they have the Service Principal User role.
@@ -62,6 +64,16 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * This resource can be imported by predefined name `global`:
+ * 
+ *  bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
  * ```
  * 
  */

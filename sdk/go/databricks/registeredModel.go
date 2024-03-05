@@ -68,14 +68,15 @@ import (
 type RegisteredModel struct {
 	pulumi.CustomResourceState
 
-	// The name of the catalog where the schema and the registered model reside.
+	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// The comment attached to the registered model.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The name of the registered model.
+	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the schema where the registered model resides.
-	SchemaName      pulumi.StringOutput `pulumi:"schemaName"`
+	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
 }
 
@@ -115,26 +116,28 @@ func GetRegisteredModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegisteredModel resources.
 type registeredModelState struct {
-	// The name of the catalog where the schema and the registered model reside.
+	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName *string `pulumi:"catalogName"`
 	// The comment attached to the registered model.
 	Comment *string `pulumi:"comment"`
-	// The name of the registered model.
+	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
-	// The name of the schema where the registered model resides.
-	SchemaName      *string `pulumi:"schemaName"`
+	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+	SchemaName *string `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
 }
 
 type RegisteredModelState struct {
-	// The name of the catalog where the schema and the registered model reside.
+	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName pulumi.StringPtrInput
 	// The comment attached to the registered model.
 	Comment pulumi.StringPtrInput
-	// The name of the registered model.
+	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
-	// The name of the schema where the registered model resides.
-	SchemaName      pulumi.StringPtrInput
+	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+	SchemaName pulumi.StringPtrInput
+	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
 }
 
@@ -143,27 +146,29 @@ func (RegisteredModelState) ElementType() reflect.Type {
 }
 
 type registeredModelArgs struct {
-	// The name of the catalog where the schema and the registered model reside.
+	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName string `pulumi:"catalogName"`
 	// The comment attached to the registered model.
 	Comment *string `pulumi:"comment"`
-	// The name of the registered model.
+	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
-	// The name of the schema where the registered model resides.
-	SchemaName      string  `pulumi:"schemaName"`
+	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+	SchemaName string `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
 }
 
 // The set of arguments for constructing a RegisteredModel resource.
 type RegisteredModelArgs struct {
-	// The name of the catalog where the schema and the registered model reside.
+	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName pulumi.StringInput
 	// The comment attached to the registered model.
 	Comment pulumi.StringPtrInput
-	// The name of the registered model.
+	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
-	// The name of the schema where the registered model resides.
-	SchemaName      pulumi.StringInput
+	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+	SchemaName pulumi.StringInput
+	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
 }
 
@@ -254,7 +259,7 @@ func (o RegisteredModelOutput) ToRegisteredModelOutputWithContext(ctx context.Co
 	return o
 }
 
-// The name of the catalog where the schema and the registered model reside.
+// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) CatalogName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
 }
@@ -264,16 +269,17 @@ func (o RegisteredModelOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The name of the registered model.
+// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the schema where the registered model resides.
+// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }
 
+// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) StorageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
 }

@@ -107,7 +107,7 @@ type SqlGlobalConfig struct {
 	// Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
 	DataAccessConfig pulumi.MapOutput `pulumi:"dataAccessConfig"`
 	// Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
-	EnableServerlessCompute pulumi.BoolPtrOutput `pulumi:"enableServerlessCompute"`
+	EnableServerlessCompute pulumi.BoolOutput `pulumi:"enableServerlessCompute"`
 	// used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
 	GoogleServiceAccount pulumi.StringPtrOutput `pulumi:"googleServiceAccount"`
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
@@ -305,8 +305,8 @@ func (o SqlGlobalConfigOutput) DataAccessConfig() pulumi.MapOutput {
 }
 
 // Deprecated: This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
-func (o SqlGlobalConfigOutput) EnableServerlessCompute() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.BoolPtrOutput { return v.EnableServerlessCompute }).(pulumi.BoolPtrOutput)
+func (o SqlGlobalConfigOutput) EnableServerlessCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SqlGlobalConfig) pulumi.BoolOutput { return v.EnableServerlessCompute }).(pulumi.BoolOutput)
 }
 
 // used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.

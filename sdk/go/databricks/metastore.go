@@ -39,7 +39,7 @@ type Metastore struct {
 	DeltaSharingOrganizationName pulumi.StringPtrOutput `pulumi:"deltaSharingOrganizationName"`
 	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrOutput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrOutput `pulumi:"deltaSharingScope"`
 	// Destroy metastore regardless of its contents.
 	ForceDestroy      pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
@@ -96,7 +96,7 @@ type metastoreState struct {
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
 	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
 	// Destroy metastore regardless of its contents.
 	ForceDestroy      *bool   `pulumi:"forceDestroy"`
@@ -124,7 +124,7 @@ type MetastoreState struct {
 	DeltaSharingOrganizationName pulumi.StringPtrInput
 	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
-	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput
 	// Destroy metastore regardless of its contents.
 	ForceDestroy      pulumi.BoolPtrInput
@@ -156,7 +156,7 @@ type metastoreArgs struct {
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
 	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
-	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
 	// Destroy metastore regardless of its contents.
 	ForceDestroy      *bool   `pulumi:"forceDestroy"`
@@ -185,7 +185,7 @@ type MetastoreArgs struct {
 	DeltaSharingOrganizationName pulumi.StringPtrInput
 	// Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput
-	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+	// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput
 	// Destroy metastore regardless of its contents.
 	ForceDestroy      pulumi.BoolPtrInput
@@ -317,7 +317,7 @@ func (o MetastoreOutput) DeltaSharingRecipientTokenLifetimeInSeconds() pulumi.In
 	return o.ApplyT(func(v *Metastore) pulumi.IntPtrOutput { return v.DeltaSharingRecipientTokenLifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+// Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 func (o MetastoreOutput) DeltaSharingScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }

@@ -731,7 +731,7 @@ export interface GetCurrentMetastoreMetastoreInfo {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: number;
     /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
     /**
@@ -2224,7 +2224,7 @@ export interface GetMetastoreMetastoreInfo {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: number;
     /**
-     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
     globalMetastoreId?: string;
@@ -2603,7 +2603,7 @@ export interface JobDbtTask {
      */
     profilesDirectory?: string;
     /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
@@ -3340,7 +3340,7 @@ export interface JobTaskDbtTask {
      */
     profilesDirectory?: string;
     /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
@@ -3513,7 +3513,7 @@ export interface JobTaskForEachTaskTaskDbtTask {
      */
     profilesDirectory?: string;
     /**
-     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI. 
+     * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */

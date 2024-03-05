@@ -39,7 +39,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
      */
     private @Nullable Integer deltaSharingRecipientTokenLifetimeInSeconds;
     /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     private @Nullable String deltaSharingScope;
@@ -139,7 +139,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
         return Optional.ofNullable(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
     /**
-     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.
+     * @return Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     public Optional<String> deltaSharingScope() {
