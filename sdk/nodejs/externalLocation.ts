@@ -14,11 +14,46 @@ import * as utilities from "./utilities";
  * - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  *
+ * ## Example Usage
+ *
+ * For AWS
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const external = new databricks.StorageCredential("external", {
+ *     awsIamRole: {
+ *         roleArn: aws_iam_role.external_data_access.arn,
+ *     },
+ *     comment: "Managed by TF",
+ * });
+ * const someExternalLocation = new databricks.ExternalLocation("someExternalLocation", {
+ *     url: `s3://${aws_s3_bucket.external.id}/some`,
+ *     credentialName: external.id,
+ *     comment: "Managed by TF",
+ * });
+ * const someGrants = new databricks.Grants("someGrants", {
+ *     externalLocation: someExternalLocation.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: [
+ *             "CREATE_EXTERNAL_TABLE",
+ *             "READ_FILES",
+ *         ],
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * For Azure
+ *
  * ## Import
  *
  * This resource can be imported by `name`:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>

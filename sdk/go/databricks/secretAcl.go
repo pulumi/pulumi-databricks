@@ -18,6 +18,7 @@ import (
 //
 // This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,6 +60,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -74,7 +77,7 @@ import (
 //
 // The resource secret acl can be imported using `scopeName|||principalName` combination.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`

@@ -23,6 +23,7 @@ namespace Pulumi.Databricks
     /// 
     /// Create a connection to a MySQL database
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,9 +51,11 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Create a connection to a BigQuery database
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,12 +97,13 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by `id`:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/connection:Connection this '&lt;metastore_id&gt;|&lt;name&gt;'

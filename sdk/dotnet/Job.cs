@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// The resource job can be imported using the id of the job
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/job:Job this &lt;job-id&gt;
@@ -40,6 +40,7 @@ namespace Pulumi.Databricks
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,6 +50,7 @@ namespace Pulumi.Databricks
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("controlRunState")]
         public Output<bool?> ControlRunState { get; private set; } = null!;
@@ -277,6 +279,7 @@ namespace Pulumi.Databricks
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -286,6 +289,7 @@ namespace Pulumi.Databricks
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }
@@ -498,6 +502,7 @@ namespace Pulumi.Databricks
         /// 
         /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -507,6 +512,7 @@ namespace Pulumi.Databricks
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }

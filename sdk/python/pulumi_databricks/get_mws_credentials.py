@@ -69,6 +69,7 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
 
     Listing all credentials in Databricks Account
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -76,6 +77,8 @@ def get_mws_credentials(ids: Optional[Mapping[str, Any]] = None,
     all = databricks.get_mws_credentials()
     pulumi.export("allMwsCredentials", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -114,6 +117,7 @@ def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, 
 
     Listing all credentials in Databricks Account
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -121,6 +125,8 @@ def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, 
     all = databricks.get_mws_credentials()
     pulumi.export("allMwsCredentials", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

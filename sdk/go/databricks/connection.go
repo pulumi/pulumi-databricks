@@ -25,6 +25,7 @@ import (
 //
 // # Create a connection to a MySQL database
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,9 +59,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # Create a connection to a BigQuery database
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,12 +113,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by `id`:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'

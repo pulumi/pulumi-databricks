@@ -17,15 +17,18 @@ import * as utilities from "./utilities";
  *
  * Creating regular user:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const me = new databricks.User("me", {userName: "me@example.com"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -39,9 +42,11 @@ import * as utilities from "./utilities";
  *     memberId: me.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating user with cluster create permissions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -52,9 +57,11 @@ import * as utilities from "./utilities";
  *     userName: "me@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating user in AWS Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -73,9 +80,11 @@ import * as utilities from "./utilities";
  *     provider: databricks.mws,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating user in Azure Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -93,6 +102,8 @@ import * as utilities from "./utilities";
  *     provider: databricks.azure_account,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -109,7 +120,7 @@ import * as utilities from "./utilities";
  *
  * The resource scim user can be imported using id:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/user:User me <user-id>

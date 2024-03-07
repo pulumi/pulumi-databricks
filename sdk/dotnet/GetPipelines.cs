@@ -16,12 +16,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get all Delta Live Tables pipelines:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,9 +37,11 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (exact match):
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,9 +61,11 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (wildcard search):
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,8 +85,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -102,12 +105,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves a list of all databricks.Pipeline ([Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get all Delta Live Tables pipelines:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -124,9 +126,11 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (exact match):
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -146,9 +150,11 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (wildcard search):
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -168,8 +174,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -200,7 +206,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public string? PipelineName { get; set; }
@@ -226,7 +232,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public Input<string>? PipelineName { get; set; }

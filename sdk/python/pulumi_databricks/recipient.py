@@ -306,11 +306,13 @@ class Recipient(pulumi.CustomResource):
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
+
         ### Databricks Sharing with non databricks recipient
 
         Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
         authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -328,13 +330,7 @@ class Recipient(pulumi.CustomResource):
                 allowed_ip_addresses=[],
             ))
         ```
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Share to create Delta Sharing shares.
-        * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -361,11 +357,13 @@ class Recipient(pulumi.CustomResource):
         A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 
         ## Example Usage
+
         ### Databricks Sharing with non databricks recipient
 
         Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
         authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -383,13 +381,7 @@ class Recipient(pulumi.CustomResource):
                 allowed_ip_addresses=[],
             ))
         ```
-        ## Related Resources
-
-        The following resources are often used in the same context:
-
-        * Share to create Delta Sharing shares.
-        * Grants to manage Delta Sharing permissions.
-        * get_shares to read existing Delta Sharing shares.
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.

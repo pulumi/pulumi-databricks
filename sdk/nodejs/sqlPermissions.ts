@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
  * * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -37,6 +38,8 @@ import * as utilities from "./utilities";
  *     table: "foo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -51,19 +54,19 @@ import * as utilities from "./utilities";
  *
  * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
  *
- *  * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
+ * * `table/default.foo` - table `foo` in a `default` database. Database is always mandatory.
  *
- *  * `view/bar.foo` - view `foo` in `bar` database.
+ * * `view/bar.foo` - view `foo` in `bar` database.
  *
- *  * `database/bar` - `bar` database.
+ * * `database/bar` - `bar` database.
  *
- *  * `catalog/` - entire catalog. `/` suffix is mandatory.
+ * * `catalog/` - entire catalog. `/` suffix is mandatory.
  *
- *  * `any file/` - direct access to any file. `/` suffix is mandatory.
+ * * `any file/` - direct access to any file. `/` suffix is mandatory.
  *
- *  * `anonymous function/` - anonymous function. `/` suffix is mandatory.
+ * * `anonymous function/` - anonymous function. `/` suffix is mandatory.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlPermissions:SqlPermissions foo /<object-type>/<object-name>

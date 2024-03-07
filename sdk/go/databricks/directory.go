@@ -16,7 +16,7 @@ import (
 //
 // The resource directory can be imported using directory path:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/directory:Directory this /path/to/directory

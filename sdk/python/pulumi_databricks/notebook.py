@@ -297,7 +297,7 @@ class Notebook(pulumi.CustomResource):
 
         The resource notebook can be imported using notebook path
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook
@@ -321,7 +321,7 @@ class Notebook(pulumi.CustomResource):
 
         The resource notebook can be imported using notebook path
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/notebook:Notebook this /path/to/notebook

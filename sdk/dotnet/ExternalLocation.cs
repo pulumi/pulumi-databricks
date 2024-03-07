@@ -17,11 +17,63 @@ namespace Pulumi.Databricks
     /// - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
     /// - `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
     /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     {
+    ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = aws_iam_role.External_data_access.Arn,
+    ///         },
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var someExternalLocation = new Databricks.ExternalLocation("someExternalLocation", new()
+    ///     {
+    ///         Url = $"s3://{aws_s3_bucket.External.Id}/some",
+    ///         CredentialName = external.Id,
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var someGrants = new Databricks.Grants("someGrants", new()
+    ///     {
+    ///         ExternalLocation = someExternalLocation.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_EXTERNAL_TABLE",
+    ///                     "READ_FILES",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// For Azure
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by `name`:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/externalLocation:ExternalLocation this &lt;name&gt;

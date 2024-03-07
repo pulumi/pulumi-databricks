@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,9 +57,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Example permission to share dashboard with all users:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,6 +91,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -101,7 +106,7 @@ import (
 //
 // You can import a `databricks_sql_dashboard` resource with ID like the following:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/gitCredential:GitCredential this &lt;git-credential-id&gt;

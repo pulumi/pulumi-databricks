@@ -16,6 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,6 +53,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Access Control
     /// 
     /// * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
@@ -61,7 +64,7 @@ namespace Pulumi.Databricks
     /// 
     /// The resource instance pool can be imported using it's id:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/instancePool:InstancePool this &lt;instance-pool-id&gt;

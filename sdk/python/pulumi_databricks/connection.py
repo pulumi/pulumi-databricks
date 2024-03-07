@@ -293,6 +293,7 @@ class Connection(pulumi.CustomResource):
 
         Create a connection to a MySQL database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -310,9 +311,11 @@ class Connection(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         Create a connection to a BigQuery database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -343,12 +346,13 @@ class Connection(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by `id`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'
@@ -383,6 +387,7 @@ class Connection(pulumi.CustomResource):
 
         Create a connection to a MySQL database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -400,9 +405,11 @@ class Connection(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         Create a connection to a BigQuery database
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -433,12 +440,13 @@ class Connection(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by `id`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'

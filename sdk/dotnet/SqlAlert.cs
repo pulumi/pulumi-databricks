@@ -13,15 +13,6 @@ namespace Pulumi.Databricks
     /// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
     /// 
     /// **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
-    /// 
-    /// ## Related Resources
-    /// 
-    /// The following resources are often used in the same context:
-    /// 
-    /// * End to end workspace management guide.
-    /// * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
-    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-    /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
     /// </summary>
     [DatabricksResourceType("databricks:index/sqlAlert:SqlAlert")]
     public partial class SqlAlert : global::Pulumi.CustomResource

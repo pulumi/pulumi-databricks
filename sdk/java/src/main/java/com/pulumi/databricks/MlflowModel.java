@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * **Note** This documentation covers the Workspace Model Registry. Databricks recommends using Models in Unity Catalog. Models in Unity Catalog provides centralized model governance, cross-workspace access, lineage, and deployment.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,6 +62,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
@@ -81,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * The model resource can be imported using the name
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/mlflowModel:MlflowModel this &lt;name&gt;

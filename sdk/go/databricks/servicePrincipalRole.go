@@ -18,6 +18,7 @@ import (
 //
 // # Granting a service principal access to an instance profile
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,6 +55,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:

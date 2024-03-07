@@ -72,6 +72,7 @@ def get_current_metastore(id: Optional[str] = None,
 
     MetastoreSummary response for a metastore attached to the current workspace.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -79,6 +80,8 @@ def get_current_metastore(id: Optional[str] = None,
     this = databricks.get_current_metastore()
     pulumi.export("someMetastore", data["databricks_metastore"]["this"]["metastore_info"])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -118,6 +121,7 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
 
     MetastoreSummary response for a metastore attached to the current workspace.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -125,6 +129,8 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     this = databricks.get_current_metastore()
     pulumi.export("someMetastore", data["databricks_metastore"]["this"]["metastore_info"])
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

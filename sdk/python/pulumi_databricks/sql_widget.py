@@ -243,6 +243,7 @@ class SqlWidget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -266,6 +267,8 @@ class SqlWidget(pulumi.CustomResource):
                 pos_y=0,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -280,7 +283,7 @@ class SqlWidget(pulumi.CustomResource):
 
         You can import a `databricks_sql_widget` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>
@@ -304,6 +307,7 @@ class SqlWidget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -327,6 +331,8 @@ class SqlWidget(pulumi.CustomResource):
                 pos_y=0,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -341,7 +347,7 @@ class SqlWidget(pulumi.CustomResource):
 
         You can import a `databricks_sql_widget` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>

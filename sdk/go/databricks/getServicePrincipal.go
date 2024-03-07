@@ -19,6 +19,7 @@ import (
 //
 // # Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

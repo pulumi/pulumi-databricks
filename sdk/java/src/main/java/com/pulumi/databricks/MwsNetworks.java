@@ -21,156 +21,49 @@ import javax.annotation.Nullable;
 
 /**
  * ## Databricks on AWS usage
- * ### Creating a Databricks on GCP workspace
- * ```java
- * package generated_program;
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.google.google_compute_network;
- * import com.pulumi.google.Google_compute_networkArgs;
- * import com.pulumi.google.google_compute_subnetwork;
- * import com.pulumi.google.Google_compute_subnetworkArgs;
- * import com.pulumi.google.google_compute_router;
- * import com.pulumi.google.Google_compute_routerArgs;
- * import com.pulumi.google.google_compute_router_nat;
- * import com.pulumi.google.Google_compute_router_natArgs;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
+ * &gt; **Note** Initialize provider with `alias = &#34;mws&#34;`, `host  = &#34;https://accounts.cloud.databricks.com&#34;` and use `provider = databricks.mws`
  * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
+ * Use this resource to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.
  * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         var dbxPrivateVpc = new Google_compute_network(&#34;dbxPrivateVpc&#34;, Google_compute_networkArgs.builder()        
- *             .project(var_.google_project())
- *             .name(String.format(&#34;tf-network-%s&#34;, random_string.suffix().result()))
- *             .autoCreateSubnetworks(false)
- *             .build());
+ * * Databricks must have access to at least two subnets for each workspace, with each subnet in a different Availability Zone. You cannot specify more than one Databricks workspace subnet per Availability Zone in the Create network configuration API call. You can have more than one subnet per Availability Zone as part of your network setup, but you can choose only one subnet per Availability Zone for the Databricks workspace.
+ * * Databricks assigns two IP addresses per node, one for management traffic and one for Spark applications. The total number of instances for each subnet is equal to half of the available IP addresses.
+ * * Each subnet must have a netmask between /17 and /25.
+ * * Subnets must be private.
+ * * Subnets must have outbound access to the public network using a aws_nat_gateway, or other similar customer-managed appliance infrastructure.
+ * * The NAT gateway must be set up in its subnet (public_subnets in the example below) that routes quad-zero (0.0.0.0/0) traffic to an internet gateway or other customer-managed appliance infrastructure.
  * 
- *         var network_with_private_secondary_ip_ranges = new Google_compute_subnetwork(&#34;network-with-private-secondary-ip-ranges&#34;, Google_compute_subnetworkArgs.builder()        
- *             .name(String.format(&#34;test-dbx-%s&#34;, random_string.suffix().result()))
- *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .network(dbxPrivateVpc.id())
- *             .secondaryIpRange(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .privateIpGoogleAccess(true)
- *             .build());
+ * &gt; **Note** The NAT gateway needs only one IP address per AZ. Hence, the public subnet only needs two IP addresses. In order to limit the number of IP addresses in the public subnet, you can specify a secondary CIDR block (cidr_block_public) using the argument secondary_cidr_blocks then pass it to the public_subnets argument. Please review the [IPv4 CIDR block association restrictions](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) when choosing the secondary cidr block.
  * 
- *         var router = new Google_compute_router(&#34;router&#34;, Google_compute_routerArgs.builder()        
- *             .name(String.format(&#34;my-router-%s&#34;, random_string.suffix().result()))
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .network(dbxPrivateVpc.id())
- *             .build());
+ * Please follow this complete runnable example &amp; subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.
  * 
- *         var nat = new Google_compute_router_nat(&#34;nat&#34;, Google_compute_router_natArgs.builder()        
- *             .name(String.format(&#34;my-router-nat-%s&#34;, random_string.suffix().result()))
- *             .router(router.name())
- *             .region(router.region())
- *             .natIpAllocateOption(&#34;AUTO_ONLY&#34;)
- *             .sourceSubnetworkIpRangesToNat(&#34;ALL_SUBNETWORKS_ALL_IP_RANGES&#34;)
- *             .build());
+ * * Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace’s GKE cluster nodes.
+ * * The subnet must have a netmask between /29 and /9.
+ * * Databricks must have access to 2 secondary IP ranges, one between /21 to /9 for workspace’s GKE cluster pods, and one between /27 to /16 for workspace’s GKE cluster services.
+ * * Subnet must have outbound access to the public network using a gcp_compute_router_nat or other similar customer-managed appliance infrastructure.
  * 
- *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
- *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;test-demo-%s&#34;, random_string.suffix().result()))
- *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
- *                 .networkProjectId(var_.google_project())
- *                 .vpcId(dbxPrivateVpc.name())
- *                 .subnetId(google_compute_subnetwork.network_with_private_secondary_ip_ranges().name())
- *                 .subnetRegion(google_compute_subnetwork.network_with_private_secondary_ip_ranges().region())
- *                 .podIpRangeName(&#34;pods&#34;)
- *                 .serviceIpRangeName(&#34;svc&#34;)
- *                 .build())
- *             .build());
+ * Please follow this complete runnable example]
+ *   private_subnets = [cidrsubnet(var.cidr_block, 3, 1),
+ *   cidrsubnet(var.cidr_block, 3, 2)]
  * 
- *     }
+ *   default_security_group_egress = [{
+ *     cidr_blocks = &#34;0.0.0.0/0&#34;
+ *   }]
+ * 
+ *   default_security_group_ingress = [{
+ *     description = &#34;Allow all internal TCP and UDP&#34;
+ *     self        = true
+ *   }]
  * }
- * ```
  * 
- * In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.MwsNetworks;
- * import com.pulumi.databricks.MwsNetworksArgs;
- * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
- * import com.pulumi.databricks.inputs.MwsNetworksVpcEndpointsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .networkName(String.format(&#34;test-demo-%s&#34;, random_string.suffix().result()))
- *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
- *                 .networkProjectId(var_.google_project())
- *                 .vpcId(google_compute_network.dbx_private_vpc().name())
- *                 .subnetId(google_compute_subnetwork.network_with_private_secondary_ip_ranges().name())
- *                 .subnetRegion(google_compute_subnetwork.network_with_private_secondary_ip_ranges().region())
- *                 .podIpRangeName(&#34;pods&#34;)
- *                 .serviceIpRangeName(&#34;svc&#34;)
- *                 .build())
- *             .vpcEndpoints(MwsNetworksVpcEndpointsArgs.builder()
- *                 .dataplaneRelays(databricks_mws_vpc_endpoint.relay().vpc_endpoint_id())
- *                 .restApis(databricks_mws_vpc_endpoint.workspace().vpc_endpoint_id())
- *                 .build())
- *             .build());
- * 
- *     }
+ * resource &#34;databricks.MwsNetworks&#34; &#34;this&#34; {
+ *   provider           = databricks.mws
+ *   account_id         = var.databricks_account_id
+ *   network_name       = &#34;${local.prefix}-network&#34;
+ *   security_group_ids = [module.vpc.default_security_group_id]
+ *   subnet_ids         = module.vpc.private_subnets
+ *   vpc_id             = module.vpc.vpc_id
  * }
- * ```
- * 
- * ## Modifying networks on running workspaces (AWS only)
- * 
- * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
- * 
- * 1. Create a new `databricks.MwsNetworks` resource.
- * 2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.
- * 3. Delete the old `databricks.MwsNetworks` resource.
- * 
- * ## Related Resources
- * 
- * The following resources are used in the same context:
- * 
- * * Provisioning Databricks on AWS guide.
- * * Provisioning Databricks on AWS with PrivateLink guide.
- * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
- * * Provisioning Databricks on GCP guide.
- * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
- * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
- * * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
- * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
- * 
- * ## Import
- * 
- * -&gt; **Note** Importing this resource is not currently supported.
  * 
  */
 @ResourceType(type="databricks:index/mwsNetworks:MwsNetworks")

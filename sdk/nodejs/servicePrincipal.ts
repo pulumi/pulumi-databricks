@@ -17,15 +17,18 @@ import * as utilities from "./utilities";
  *
  * Creating regular service principal:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -39,9 +42,11 @@ import * as utilities from "./utilities";
  *     memberId: sp.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating service principal with cluster create permissions:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -52,9 +57,11 @@ import * as utilities from "./utilities";
  *     displayName: "Example service principal",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating service principal in AWS Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -70,9 +77,11 @@ import * as utilities from "./utilities";
  *     provider: databricks.mws,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating service principal in Azure Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -87,6 +96,8 @@ import * as utilities from "./utilities";
  *     provider: databricks.azure_account,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -102,7 +113,7 @@ import * as utilities from "./utilities";
  *
  * The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>

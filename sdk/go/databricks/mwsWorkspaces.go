@@ -13,6 +13,7 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Creating a Databricks on AWS workspace
 //
 // !Simplest multiworkspace
@@ -24,6 +25,7 @@ import (
 // * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets or security groups with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
 // * MwsCustomerManagedKeys - You can share a customer-managed key across workspaces.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,12 +101,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Creating a Databricks on AWS workspace with Databricks-Managed VPC
 //
 // ![VPCs](https://docs.databricks.com/_images/customer-managed-vpc.png)
 //
 // By default, Databricks creates a VPC in your AWS account for each workspace. Databricks uses it for running clusters in the workspace. Optionally, you can use your VPC for the workspace, using the feature customer-managed VPC. Databricks recommends that you provide your VPC with MwsNetworks so that you can configure it according to your organization’s enterprise cloud standards while still conforming to Databricks requirements. You cannot migrate an existing workspace to your VPC. Please see the difference described through IAM policy actions [on this page](https://docs.databricks.com/administration-guide/account-api/iam-role.html).
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -254,14 +259,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
+//
 // ### Creating a Databricks on GCP workspace
 //
 // To get workspace running, you have to configure a network object:
 //
 // * MwsNetworks - (optional, but recommended) You can share one [customer-managed VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) with multiple workspaces in a single account. You do not have to create a new VPC for each workspace. However, you cannot reuse subnets with other resources, including other workspaces or non-Databricks resources. If you plan to share one VPC with multiple workspaces, be sure to size your VPC and subnets accordingly. Because a Databricks MwsNetworks encapsulates this information, you cannot reuse it across workspaces.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -331,27 +339,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning Databricks on AWS guide.
-// * Provisioning Databricks on AWS with PrivateLink guide.
-// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
-// * Provisioning Databricks on GCP guide.
-// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
-// * MwsCredentials to configure the cross-account role for creation of new workspaces within AWS.
-// * MwsCustomerManagedKeys to configure KMS keys for new workspaces within AWS.
-// * MwsLogDelivery to configure delivery of [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
-// * MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) & subnets for new workspaces within AWS.
-// * MwsStorageConfigurations to configure root bucket new workspaces within AWS.
-// * MwsPrivateAccessSettings to create a [Private Access Setting](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-5-create-a-private-access-settings-configuration-using-the-databricks-account-api) that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html).
-//
-// ## Import
-//
-// -> **Note** Importing this resource is not currently supported.
 type MwsWorkspaces struct {
 	pulumi.CustomResourceState
 

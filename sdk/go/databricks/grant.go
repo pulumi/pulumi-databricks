@@ -16,7 +16,7 @@ import (
 //
 // The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it's name and `principal`:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name

@@ -12,23 +12,17 @@ namespace Pulumi.Databricks
     public static class GetViews
     {
         /// <summary>
-        /// ## Related Resources
+        /// ## Example Usage
         /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Schema to manage schemas within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
         /// </summary>
         public static Task<GetViewsResult> InvokeAsync(GetViewsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Related Resources
+        /// ## Example Usage
         /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.Schema to manage schemas within Unity Catalog.
-        /// * databricks.Catalog to manage catalogs within Unity Catalog.
+        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
         /// </summary>
         public static Output<GetViewsResult> Invoke(GetViewsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetViewsResult>("databricks:index/getViews:getViews", args ?? new GetViewsInvokeArgs(), options.WithDefaults());

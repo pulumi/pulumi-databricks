@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,6 +38,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("jobs")]
         public Input<bool>? Jobs { get; set; }

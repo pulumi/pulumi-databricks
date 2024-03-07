@@ -12,6 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,6 +36,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -46,7 +49,7 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by name:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '&lt;metastore_id&gt;|&lt;artifact_type&gt;'

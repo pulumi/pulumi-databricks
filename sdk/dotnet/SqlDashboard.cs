@@ -18,6 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,9 +44,11 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Example permission to share dashboard with all users:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,6 +72,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -82,7 +87,7 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_sql_dashboard` resource with ID like the following:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/sqlDashboard:SqlDashboard this &lt;dashboard-id&gt;

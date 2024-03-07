@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Attach an instance profile to a group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,8 +59,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Attach account admin role to an account-level group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,6 +96,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

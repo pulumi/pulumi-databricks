@@ -479,6 +479,7 @@ class InstancePool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -503,6 +504,8 @@ class InstancePool(pulumi.CustomResource):
                 disk_count=1,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Group and User can control which groups or individual users can create instance pools.
@@ -512,7 +515,7 @@ class InstancePool(pulumi.CustomResource):
 
         The resource instance pool can be imported using it's id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>
@@ -542,6 +545,7 @@ class InstancePool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -566,6 +570,8 @@ class InstancePool(pulumi.CustomResource):
                 disk_count=1,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Group and User can control which groups or individual users can create instance pools.
@@ -575,7 +581,7 @@ class InstancePool(pulumi.CustomResource):
 
         The resource instance pool can be imported using it's id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>

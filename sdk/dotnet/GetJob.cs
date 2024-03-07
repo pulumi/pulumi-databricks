@@ -16,12 +16,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Getting the existing cluster id of specific databricks.Job by name or by id:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -58,12 +57,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Getting the existing cluster id of specific databricks.Job by name or by id:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +81,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

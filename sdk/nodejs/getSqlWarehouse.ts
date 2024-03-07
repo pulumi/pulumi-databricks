@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * * Retrieve attributes of each SQL warehouses in a workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,9 +25,11 @@ import * as utilities from "./utilities";
  *     id: __value,
  * })));
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * * Search for a specific SQL Warehouse by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -35,6 +38,8 @@ import * as utilities from "./utilities";
  *     name: "Starter Warehouse",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related resources
  *
  * The following resources are often used in the same context:
@@ -256,6 +261,7 @@ export interface GetSqlWarehouseResult {
  *
  * * Retrieve attributes of each SQL warehouses in a workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -265,9 +271,11 @@ export interface GetSqlWarehouseResult {
  *     id: __value,
  * })));
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * * Search for a specific SQL Warehouse by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -276,6 +284,8 @@ export interface GetSqlWarehouseResult {
  *     name: "Starter Warehouse",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related resources
  *
  * The following resources are often used in the same context:

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Get all instance profiles:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getInstanceProfiles({});
  * export const allInstanceProfiles = all.then(all => all.instanceProfiles);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceProfiles(args?: GetInstanceProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceProfilesResult> {
     args = args || {};
@@ -60,6 +62,7 @@ export interface GetInstanceProfilesResult {
  *
  * Get all instance profiles:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -67,6 +70,7 @@ export interface GetInstanceProfilesResult {
  * const all = databricks.getInstanceProfiles({});
  * export const allInstanceProfiles = all.then(all => all.instanceProfiles);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceProfilesOutput(args?: GetInstanceProfilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceProfilesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceProfiles(a, opts))

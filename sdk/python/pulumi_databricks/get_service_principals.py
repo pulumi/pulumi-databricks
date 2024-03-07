@@ -73,19 +73,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
 
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
 
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    - End to end workspace management guide.
-    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    - Group data to retrieve information about Group members, entitlements and instance profiles.
-    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    - GroupMember to attach users and groups as group members.
-    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-    - databricks_service principal to manage service principals
-
 
     :param Sequence[str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source
     :param str display_name_contains: Only return ServicePrincipal display name that match the given name string
@@ -110,19 +97,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    - End to end workspace management guide.
-    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
-    - Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-    - Group data to retrieve information about Group members, entitlements and instance profiles.
-    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
-    - GroupMember to attach users and groups as group members.
-    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-    - databricks_service principal to manage service principals
 
 
     :param Sequence[str] application_ids: List of `application_ids` of service principals Individual service principal can be retrieved using ServicePrincipal data source

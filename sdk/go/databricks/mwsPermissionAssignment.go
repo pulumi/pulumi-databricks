@@ -18,6 +18,7 @@ import (
 //
 // In account context, adding account-level group to a workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,9 +50,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // In account context, adding account-level user to a workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,9 +88,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // In account context, adding account-level service principal to a workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,6 +126,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -134,7 +141,7 @@ import (
 //
 // The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this "workspace_id|principal_id"

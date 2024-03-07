@@ -19,6 +19,7 @@ import (
 //
 // Getting the existing cluster id of specific Job by name or by id:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

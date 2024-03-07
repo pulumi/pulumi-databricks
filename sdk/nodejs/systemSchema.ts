@@ -15,18 +15,20 @@ import * as utilities from "./utilities";
  *
  * Enable the system schema `access`
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.SystemSchema("this", {schema: "access"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by the metastore id and schema name
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>

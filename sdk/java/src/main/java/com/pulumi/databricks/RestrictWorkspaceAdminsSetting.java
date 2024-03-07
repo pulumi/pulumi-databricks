@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Only account admins can update the setting. And the account admin must be part of the workspace to change the setting status.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,12 +67,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by predefined name `global`:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global

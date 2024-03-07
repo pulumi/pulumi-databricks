@@ -86,6 +86,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
      * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -108,6 +110,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="controlRunState")
@@ -117,6 +120,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
      * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +144,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> controlRunState() {
@@ -747,6 +753,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
          * 
          * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -769,6 +777,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -782,6 +791,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
          * 
          * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -804,6 +815,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,9 +94,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Example permission to share query with all users:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,6 +132,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Troubleshooting
 //
 // In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `dataSourceId`
@@ -150,7 +155,7 @@ import (
 //
 // You can import a `databricks_sql_query` resource with ID like the following:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>

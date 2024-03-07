@@ -79,12 +79,9 @@ def get_views(catalog_name: Optional[str] = None,
               schema_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetViewsResult:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
 
 
     :param str catalog_name: Name of databricks_catalog
@@ -111,12 +108,9 @@ def get_views_output(catalog_name: Optional[pulumi.Input[str]] = None,
                      schema_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetViewsResult]:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * Schema to manage schemas within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
+    Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
 
 
     :param str catalog_name: Name of databricks_catalog

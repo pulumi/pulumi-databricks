@@ -153,6 +153,7 @@ class MlflowModel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -170,6 +171,8 @@ class MlflowModel(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
@@ -191,7 +194,7 @@ class MlflowModel(pulumi.CustomResource):
 
         The model resource can be imported using the name
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>
@@ -216,6 +219,7 @@ class MlflowModel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -233,6 +237,8 @@ class MlflowModel(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
@@ -254,7 +260,7 @@ class MlflowModel(pulumi.CustomResource):
 
         The model resource can be imported using the name
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>

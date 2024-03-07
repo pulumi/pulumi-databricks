@@ -17,6 +17,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
 
     /**
      * boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="jobs")
@@ -59,6 +62,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
 
     /**
      * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -94,6 +99,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> jobs() {
@@ -142,6 +148,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
 
         /**
          * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -177,6 +185,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -188,6 +197,8 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
 
         /**
          * @param jobs boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -223,6 +234,7 @@ public final class ClusterWorkloadTypeClientsArgs extends com.pulumi.resources.R
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

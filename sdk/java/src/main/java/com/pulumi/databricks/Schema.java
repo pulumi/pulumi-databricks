@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * A `databricks.Schema` is contained within databricks.Catalog and can contain tables &amp; views.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,6 +64,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -74,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by its full name:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/schema:Schema this &lt;catalog_name&gt;.&lt;name&gt;

@@ -16,6 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,6 +53,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -67,7 +70,7 @@ namespace Pulumi.Databricks
     /// 
     /// The databricks_ip_access_list can be imported using id:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;

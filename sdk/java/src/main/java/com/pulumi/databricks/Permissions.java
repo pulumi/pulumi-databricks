@@ -21,39 +21,35 @@ import javax.annotation.Nullable;
  * 
  * ### Import Example
  * 
- *  Configuration file:
+ * Configuration file:
  * 
- *  hcl
+ * hcl
  * 
- *  resource &#34;databricks_mlflow_model&#34; &#34;model&#34; {
+ * resource &#34;databricks_mlflow_model&#34; &#34;model&#34; {
  * 
- *  name
+ *   name        = &#34;example_model&#34;
  * 
- * = &#34;example_model&#34;
+ *   description = &#34;MLflow registered model&#34;
  * 
- *  description = &#34;MLflow registered model&#34;
+ * }
  * 
- *  }
+ * resource &#34;databricks_permissions&#34; &#34;model_usage&#34; {
  * 
- *  resource &#34;databricks_permissions&#34; &#34;model_usage&#34; {
+ *   registered_model_id = databricks_mlflow_model.model.registered_model_id
  * 
- *  registered_model_id = databricks_mlflow_model.model.registered_model_id
+ *   access_control {
  * 
- *  access_control {
+ *     group_name       = &#34;users&#34;
+ *     
+ *     permission_level = &#34;CAN_READ&#34;
  * 
- *  group_name
+ *   }
  * 
- *  = &#34;users&#34;
+ * }
  * 
- *  permission_level = &#34;CAN_READ&#34;
+ * Import command:
  * 
- *  }
- * 
- *  }
- * 
- *  Import command:
- * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/&lt;registered_model_id&gt;

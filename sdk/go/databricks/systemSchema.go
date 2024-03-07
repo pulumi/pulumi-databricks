@@ -21,6 +21,7 @@ import (
 //
 // Enable the system schema `access`
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,12 +45,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by the metastore id and schema name
+// # This resource can be imported by the metastore id and schema name
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>

@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// This resource can be imported by its full name:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/sqlTable:SqlTable this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;

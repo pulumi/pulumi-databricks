@@ -29,6 +29,7 @@ import (
 //
 // # Creating some group
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,9 +54,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # Adding User as GroupMember of some group
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,9 +96,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating group in AWS Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -127,9 +132,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating group in Azure Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,12 +167,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // You can import a `databricks_group` resource with the name `my_group` like the following:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/group:Group my_group <group_id>

@@ -14,9 +14,9 @@ import (
 
 // ## Import
 //
-// The workspace file resource can be imported using workspace file path
+// # The workspace file resource can be imported using workspace file path
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file

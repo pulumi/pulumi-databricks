@@ -333,6 +333,7 @@ class Group(pulumi.CustomResource):
 
         Creating some group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -341,9 +342,11 @@ class Group(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Adding User as GroupMember of some group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -356,9 +359,11 @@ class Group(pulumi.CustomResource):
             group_id=this_group.id,
             member_id=this_user.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating group in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -371,9 +376,11 @@ class Group(pulumi.CustomResource):
             client_secret=var["client_secret"])
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating group in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -385,12 +392,13 @@ class Group(pulumi.CustomResource):
             auth_type="azure-cli")
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         You can import a `databricks_group` resource with the name `my_group` like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/group:Group my_group <group_id>
@@ -431,6 +439,7 @@ class Group(pulumi.CustomResource):
 
         Creating some group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -439,9 +448,11 @@ class Group(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Adding User as GroupMember of some group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -454,9 +465,11 @@ class Group(pulumi.CustomResource):
             group_id=this_group.id,
             member_id=this_user.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating group in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -469,9 +482,11 @@ class Group(pulumi.CustomResource):
             client_secret=var["client_secret"])
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating group in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -483,12 +498,13 @@ class Group(pulumi.CustomResource):
             auth_type="azure-cli")
         this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         You can import a `databricks_group` resource with the name `my_group` like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/group:Group my_group <group_id>

@@ -18,12 +18,11 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// MetastoreSummary response for a metastore attached to the current workspace.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -61,12 +60,11 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute to prevent _authentication is not configured for provider_ errors.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// MetastoreSummary response for a metastore attached to the current workspace.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +81,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

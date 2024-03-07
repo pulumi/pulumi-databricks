@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * With this resource you can insert a secret under the provided scope with the given name. If a secret already exists with the same name, this command overwrites the existing secret’s value. The server encrypts the secret using the secret scope’s encryption settings before storing it. You must have WRITE or MANAGE permission on the secret scope. The secret key must consist of alphanumeric characters, dashes, underscores, and periods, and cannot exceed 128 characters. The maximum allowed secret value size is 128 KB. The maximum number of secrets in a given scope is 1000. You can read a secret value only from within a command on a cluster (for example, through a notebook); there is no API to read a secret value outside of a cluster. The permission applied is based on who is invoking the command and you must have at least READ permission. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,6 +60,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -73,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`

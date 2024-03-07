@@ -12,12 +12,11 @@ namespace Pulumi.Databricks
     public static class GetStorageCredentials
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// List all storage credentials in the metastore
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -47,12 +46,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageCredentialsResult>("databricks:index/getStorageCredentials:getStorageCredentials", args ?? new GetStorageCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// List all storage credentials in the metastore
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +67,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

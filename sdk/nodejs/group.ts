@@ -23,6 +23,7 @@ import * as utilities from "./utilities";
  *
  * Creating some group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -32,9 +33,11 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Adding databricks.User as databricks.GroupMember of some group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -49,9 +52,11 @@ import * as utilities from "./utilities";
  *     memberId: thisUser.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating group in AWS Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -67,9 +72,11 @@ import * as utilities from "./utilities";
  *     provider: databricks.mws,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Creating group in Azure Databricks account:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -84,12 +91,13 @@ import * as utilities from "./utilities";
  *     provider: databricks.azure_account,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * You can import a `databricks_group` resource with the name `my_group` like the following:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/group:Group my_group <group_id>

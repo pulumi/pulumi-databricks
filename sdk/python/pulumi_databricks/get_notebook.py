@@ -123,6 +123,7 @@ def get_notebook(format: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -130,6 +131,7 @@ def get_notebook(format: Optional[str] = None,
     features = databricks.get_notebook(format="SOURCE",
         path="/Production/Features")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str format: Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.
@@ -171,6 +173,7 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -178,6 +181,7 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
     features = databricks.get_notebook(format="SOURCE",
         path="/Production/Features")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str format: Notebook format to export. Either `SOURCE`, `HTML`, `JUPYTER`, or `DBC`.

@@ -73,6 +73,7 @@ def get_schemas(catalog_name: Optional[str] = None,
 
     Listing all schemas in a _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -80,6 +81,8 @@ def get_schemas(catalog_name: Optional[str] = None,
     sandbox = databricks.get_schemas(catalog_name="sandbox")
     pulumi.export("allSandboxSchemas", sandbox)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -112,6 +115,7 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     Listing all schemas in a _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -119,6 +123,8 @@ def get_schemas_output(catalog_name: Optional[pulumi.Input[str]] = None,
     sandbox = databricks.get_schemas(catalog_name="sandbox")
     pulumi.export("allSandboxSchemas", sandbox)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

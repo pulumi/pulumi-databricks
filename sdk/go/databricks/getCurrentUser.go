@@ -11,27 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Exported attributes
+// ## Example Usage
 //
-// Data source exposes the following attributes:
-//
-// * `id` -  The id of the calling user.
-// * `externalId` - ID of the user in an external identity provider.
-// * `userName` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-// * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-// * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-// * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mrFoo`.
-// * `workspaceUrl` - URL of the current Databricks workspace.
-// * `aclPrincipalId` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * End to end workspace management guide
-// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-// * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-// * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+// Create personalized Job and databricks_notebook:
 func GetCurrentUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCurrentUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentUserResult

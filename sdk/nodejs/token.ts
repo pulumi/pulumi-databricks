@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,9 +25,11 @@ import * as utilities from "./utilities";
  * });
  * export const databricksToken = pat.tokenValue;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A token can be automatically rotated by taking a dependency on the `timeRotating` resource:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -38,6 +41,7 @@ import * as utilities from "./utilities";
  *     lifetimeSeconds: 60 * 24 * 60 * 60,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

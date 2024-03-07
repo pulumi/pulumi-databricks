@@ -524,15 +524,18 @@ class User(pulumi.CustomResource):
 
         Creating regular user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -543,9 +546,11 @@ class User(pulumi.CustomResource):
             group_id=admins.id,
             member_id=me.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user with cluster create permissions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -555,9 +560,11 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             user_name="me@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -573,9 +580,11 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -590,6 +599,8 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -606,7 +617,7 @@ class User(pulumi.CustomResource):
 
         The resource scim user can be imported using id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/user:User me <user-id>
@@ -647,15 +658,18 @@ class User(pulumi.CustomResource):
 
         Creating regular user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -666,9 +680,11 @@ class User(pulumi.CustomResource):
             group_id=admins.id,
             member_id=me.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user with cluster create permissions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -678,9 +694,11 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             user_name="me@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -696,9 +714,11 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating user in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -713,6 +733,8 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -729,7 +751,7 @@ class User(pulumi.CustomResource):
 
         The resource scim user can be imported using id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/user:User me <user-id>

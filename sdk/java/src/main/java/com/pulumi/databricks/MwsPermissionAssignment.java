@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * In account context, adding account-level group to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,8 +56,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In account context, adding account-level user to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -92,8 +97,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * In account context, adding account-level service principal to a workspace:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -130,6 +138,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -143,7 +153,7 @@ import javax.annotation.Nullable;
  * 
  * The resource `databricks_mws_permission_assignment` can be imported using the workspace id and principal id
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/mwsPermissionAssignment:MwsPermissionAssignment this &#34;workspace_id|principal_id&#34;

@@ -24,11 +24,73 @@ import javax.annotation.Nullable;
  * - databricks.StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
  * - `databricks.ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
  * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialAwsIamRoleArgs;
+ * import com.pulumi.databricks.ExternalLocation;
+ * import com.pulumi.databricks.ExternalLocationArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
+ *                 .roleArn(aws_iam_role.external_data_access().arn())
+ *                 .build())
+ *             .comment(&#34;Managed by TF&#34;)
+ *             .build());
+ * 
+ *         var someExternalLocation = new ExternalLocation(&#34;someExternalLocation&#34;, ExternalLocationArgs.builder()        
+ *             .url(String.format(&#34;s3://%s/some&#34;, aws_s3_bucket.external().id()))
+ *             .credentialName(external.id())
+ *             .comment(&#34;Managed by TF&#34;)
+ *             .build());
+ * 
+ *         var someGrants = new Grants(&#34;someGrants&#34;, GrantsArgs.builder()        
+ *             .externalLocation(someExternalLocation.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal(&#34;Data Engineers&#34;)
+ *                 .privileges(                
+ *                     &#34;CREATE_EXTERNAL_TABLE&#34;,
+ *                     &#34;READ_FILES&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For Azure
+ * 
  * ## Import
  * 
  * This resource can be imported by `name`:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/externalLocation:ExternalLocation this &lt;name&gt;

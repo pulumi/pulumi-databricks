@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Setting entitlements for a regular user:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -26,9 +27,11 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Setting entitlements for a service principal:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -42,9 +45,11 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -58,6 +63,8 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -74,13 +81,13 @@ import * as utilities from "./utilities";
  *
  * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
  *
- *  * `user/user_id` - user `user_id`.
+ * * `user/user_id` - user `user_id`.
  *
- *  * `group/group_id` - group `group_id`.
+ * * `group/group_id` - group `group_id`.
  *
- *  * `spn/spn_id` - service principal `spn_id`.
+ * * `spn/spn_id` - service principal `spn_id`.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>

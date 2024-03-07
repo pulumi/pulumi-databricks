@@ -32,6 +32,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,12 +58,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by predefined name `global`:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global

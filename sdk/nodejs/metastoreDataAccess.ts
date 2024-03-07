@@ -11,11 +11,38 @@ import * as utilities from "./utilities";
  *
  * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  *
+ * ## Example Usage
+ *
+ * For AWS
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMetastore = new databricks.Metastore("thisMetastore", {
+ *     storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,
+ *     owner: "uc admins",
+ *     region: "us-east-1",
+ *     forceDestroy: true,
+ * });
+ * const thisMetastoreDataAccess = new databricks.MetastoreDataAccess("thisMetastoreDataAccess", {
+ *     metastoreId: thisMetastore.id,
+ *     awsIamRole: {
+ *         roleArn: aws_iam_role.metastore_data_access.arn,
+ *     },
+ *     isDefault: true,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * For Azure using managed identity as credential (recommended)
+ *
  * ## Import
  *
  * This resource can be imported by combination of metastore id and the data access name.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'

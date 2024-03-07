@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,6 +51,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access Control
  * 
  * * databricks.Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
@@ -67,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * The registered model resource can be imported using the full (3-level) name of the model.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/registeredModel:RegisteredModel this &lt;catalog_name.schema_name.model_name&gt;

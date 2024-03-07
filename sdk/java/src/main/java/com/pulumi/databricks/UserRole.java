@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Adding AWS instance profile to a user
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,8 +62,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Adding user as administrator to Databricks Account
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -97,6 +102,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:

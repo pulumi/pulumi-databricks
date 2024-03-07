@@ -203,6 +203,7 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -211,6 +212,8 @@ class RegisteredModel(pulumi.CustomResource):
             catalog_name="main",
             schema_name="default")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
@@ -229,7 +232,7 @@ class RegisteredModel(pulumi.CustomResource):
 
         The registered model resource can be imported using the full (3-level) name of the model.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
@@ -256,6 +259,7 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -264,6 +268,8 @@ class RegisteredModel(pulumi.CustomResource):
             catalog_name="main",
             schema_name="default")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
@@ -282,7 +288,7 @@ class RegisteredModel(pulumi.CustomResource):
 
         The registered model resource can be imported using the full (3-level) name of the model.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>

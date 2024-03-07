@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,12 +54,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by combination of workspace id and metastore id:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'

@@ -34,10 +34,17 @@ import (
 //
 // The path to access files in volumes uses the following format:
 //
+// ```/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+//
+// Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+//
+// ```dbfs:/Volumes/<catalog>/<schema>/<volume>/<path>/<file_name>```
+//
 // This resource manages Volumes in Unity Catalog.
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,12 +108,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by `full_name` which is the 3-level Volume identifier: `<catalog>.<schema>.<name>`
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/volume:Volume this <catalog_name>.<schema_name>.<name>

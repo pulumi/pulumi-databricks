@@ -12,12 +12,11 @@ namespace Pulumi.Databricks
     public static class GetSchemas
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Listing all schemas in a _sandbox_ databricks_catalog:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -50,12 +49,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemasResult>("databricks:index/getSchemas:getSchemas", args ?? new GetSchemasArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Listing all schemas in a _sandbox_ databricks_catalog:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +73,8 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,6 +66,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access control
  * 
  * * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -83,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_endpoint` resource with ID like the following:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this &lt;endpoint-id&gt;

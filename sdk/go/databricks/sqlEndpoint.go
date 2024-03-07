@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access control
 //
 // * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -71,7 +74,7 @@ import (
 //
 // You can import a `databricks_sql_endpoint` resource with ID like the following:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>

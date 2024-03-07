@@ -20,6 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// Enable the system schema `access`
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,12 +36,13 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by the metastore id and schema name
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;

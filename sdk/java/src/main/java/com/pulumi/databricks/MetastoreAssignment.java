@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * A single databricks.Metastore can be shared across Databricks workspaces, and each linked workspace has a consistent view of the data and a single set of access policies. You can only create a single metastore for each region in which your organization operates.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,12 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by combination of workspace id and metastore id:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this &#39;&lt;workspace_id&gt;|&lt;metastore_id&gt;&#39;

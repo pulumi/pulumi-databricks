@@ -19,11 +19,13 @@ import (
 // A `Recipient` is contained within Metastore and can have permissions to `SELECT` from a list of shares.
 //
 // ## Example Usage
+//
 // ### Databricks Sharing with non databricks recipient
 //
 // Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
 // authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,13 +66,7 @@ import (
 //	}
 //
 // ```
-// ## Related Resources
-//
-// The following resources are often used in the same context:
-//
-// * Share to create Delta Sharing shares.
-// * Grants to manage Delta Sharing permissions.
-// * getShares to read existing Delta Sharing shares.
+// <!--End PulumiCodeChooser -->
 type Recipient struct {
 	pulumi.CustomResourceState
 

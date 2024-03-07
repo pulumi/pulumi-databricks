@@ -83,6 +83,7 @@ def get_tables(catalog_name: Optional[str] = None,
 
     Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -101,6 +102,8 @@ def get_tables(catalog_name: Optional[str] = None,
                 ],
             )]))
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -137,6 +140,7 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -155,6 +159,8 @@ def get_tables_output(catalog_name: Optional[pulumi.Input[str]] = None,
                 ],
             )]))
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
