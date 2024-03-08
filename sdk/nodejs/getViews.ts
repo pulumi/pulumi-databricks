@@ -5,12 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
  */
 export function getViews(args: GetViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetViewsResult> {
 
@@ -56,12 +53,9 @@ export interface GetViewsResult {
     readonly schemaName: string;
 }
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.Schema to manage schemas within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
+ * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
  */
 export function getViewsOutput(args: GetViewsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewsResult> {
     return pulumi.output(args).apply((a: any) => getViews(a, opts))

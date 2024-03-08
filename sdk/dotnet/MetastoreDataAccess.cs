@@ -14,11 +14,48 @@ namespace Pulumi.Databricks
     /// 
     /// Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
     /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisMetastore = new Databricks.Metastore("thisMetastore", new()
+    ///     {
+    ///         StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
+    ///         Owner = "uc admins",
+    ///         Region = "us-east-1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("thisMetastoreDataAccess", new()
+    ///     {
+    ///         MetastoreId = thisMetastore.Id,
+    ///         AwsIamRole = new Databricks.Inputs.MetastoreDataAccessAwsIamRoleArgs
+    ///         {
+    ///             RoleArn = aws_iam_role.Metastore_data_access.Arn,
+    ///         },
+    ///         IsDefault = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// For Azure using managed identity as credential (recommended)
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by combination of metastore id and the data access name.
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '&lt;metastore_id&gt;|&lt;name&gt;'

@@ -143,6 +143,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,13 +209,15 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args) {
@@ -225,6 +229,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -289,13 +295,15 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args) {
@@ -307,6 +315,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -371,13 +381,15 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args, InvokeOptions options) {
@@ -389,6 +401,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -453,13 +467,15 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args, InvokeOptions options) {
@@ -468,14 +484,54 @@ public final class DatabricksFunctions {
     /**
      * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * 
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *             .acl(&#34;private&#34;)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucketName(thisBucketV2.bucket())
+     *             .build());
+     * 
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *             .bucket(thisBucketV2.id())
+     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Bucket policy with full access:
      * 
      */
     public static Output<GetAwsBucketPolicyResult> getAwsBucketPolicy(GetAwsBucketPolicyArgs args) {
@@ -484,14 +540,54 @@ public final class DatabricksFunctions {
     /**
      * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * 
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *             .acl(&#34;private&#34;)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucketName(thisBucketV2.bucket())
+     *             .build());
+     * 
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *             .bucket(thisBucketV2.id())
+     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Bucket policy with full access:
      * 
      */
     public static CompletableFuture<GetAwsBucketPolicyResult> getAwsBucketPolicyPlain(GetAwsBucketPolicyPlainArgs args) {
@@ -500,14 +596,54 @@ public final class DatabricksFunctions {
     /**
      * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * 
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *             .acl(&#34;private&#34;)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucketName(thisBucketV2.bucket())
+     *             .build());
+     * 
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *             .bucket(thisBucketV2.id())
+     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Bucket policy with full access:
      * 
      */
     public static Output<GetAwsBucketPolicyResult> getAwsBucketPolicy(GetAwsBucketPolicyArgs args, InvokeOptions options) {
@@ -516,25 +652,67 @@ public final class DatabricksFunctions {
     /**
      * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
      * 
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
      * 
-     * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
-     * * End to end workspace management guide
-     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
-     * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *             .acl(&#34;private&#34;)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+     *             .bucketName(thisBucketV2.bucket())
+     *             .build());
+     * 
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
+     *             .bucket(thisBucketV2.id())
+     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Bucket policy with full access:
      * 
      */
     public static CompletableFuture<GetAwsBucketPolicyResult> getAwsBucketPolicyPlain(GetAwsBucketPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", TypeShape.of(GetAwsBucketPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -561,6 +739,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -575,11 +755,13 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -606,6 +788,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -620,11 +804,13 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(GetAwsCrossAccountPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -651,6 +837,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -665,11 +853,13 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -696,6 +886,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -710,11 +902,13 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -741,6 +935,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -755,11 +951,13 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
      * 
      * ## Example Usage
      * 
      * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -786,6 +984,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -800,11 +1000,13 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -882,17 +1084,20 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args) {
         return getAwsUnityCatalogPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -970,17 +1175,20 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args) {
         return getAwsUnityCatalogPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1058,17 +1266,20 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1146,6 +1357,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args, InvokeOptions options) {
@@ -1155,6 +1367,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1182,6 +1396,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1197,6 +1413,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1224,6 +1442,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1239,6 +1459,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1266,6 +1488,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1281,6 +1505,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1308,6 +1534,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1323,6 +1551,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1350,6 +1580,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1365,6 +1597,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all catalogs:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1392,6 +1626,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1409,6 +1645,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1431,6 +1673,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1453,6 +1701,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1475,6 +1729,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1497,6 +1757,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1519,6 +1785,12 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -1543,6 +1815,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1577,6 +1851,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterPolicyResult> getClusterPolicy() {
@@ -1590,6 +1865,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1624,6 +1901,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain() {
@@ -1637,6 +1915,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1671,6 +1951,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterPolicyResult> getClusterPolicy(GetClusterPolicyArgs args) {
@@ -1684,6 +1965,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1718,6 +2001,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain(GetClusterPolicyPlainArgs args) {
@@ -1731,6 +2015,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1765,6 +2051,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterPolicyResult> getClusterPolicy(GetClusterPolicyArgs args, InvokeOptions options) {
@@ -1778,6 +2065,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to a cluster policy by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1812,6 +2101,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterPolicyResult> getClusterPolicyPlain(GetClusterPolicyPlainArgs args, InvokeOptions options) {
@@ -1821,6 +2111,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1847,8 +2139,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1877,6 +2172,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1897,6 +2194,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1923,8 +2222,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1953,6 +2255,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -1973,6 +2277,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1999,8 +2305,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2029,6 +2338,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2049,6 +2360,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2075,8 +2388,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2105,6 +2421,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2125,6 +2443,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2151,8 +2471,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2181,6 +2504,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2201,6 +2526,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all clusters on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2227,8 +2554,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2257,6 +2587,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2280,6 +2612,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2316,6 +2649,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2346,6 +2681,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2382,6 +2718,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2412,6 +2750,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2448,6 +2787,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2478,6 +2819,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2514,6 +2856,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2544,6 +2888,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2580,6 +2925,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2610,6 +2957,7 @@ public final class DatabricksFunctions {
      * 
      * Create cloud-specific databricks_storage_credential:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2646,6 +2994,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Exported attributes
      * 
      * Data source exposes the following attributes:
@@ -2679,6 +3029,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2706,6 +3058,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2729,6 +3083,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2756,6 +3112,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2779,6 +3137,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2806,6 +3166,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2829,6 +3191,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2856,6 +3220,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2879,6 +3245,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2906,6 +3274,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2929,6 +3299,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreSummary response for a metastore attached to the current workspace.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2956,6 +3328,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -2970,162 +3344,54 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCurrentMetastore:getCurrentMetastore", TypeShape.of(GetCurrentMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser() {
         return getCurrentUser(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain() {
         return getCurrentUserPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args) {
         return getCurrentUser(args, InvokeOptions.Empty);
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args) {
         return getCurrentUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static Output<GetCurrentUserResult> getCurrentUser(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Exported attributes
+     * ## Example Usage
      * 
-     * Data source exposes the following attributes:
-     * 
-     * * `id` -  The id of the calling user.
-     * * `external_id` - ID of the user in an external identity provider.
-     * * `user_name` - Name of the user, e.g. `mr.foo@example.com`. If the currently logged-in identity is a service principal, returns the application ID, e.g. `11111111-2222-3333-4444-555666777888`
-     * * `home` - Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-     * * `repos` - Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-     * * `alphanumeric` - Alphanumeric representation of user local name. e.g. `mr_foo`.
-     * * `workspace_url` - URL of the current Databricks workspace.
-     * * `acl_principal_id` - identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com` if current user is user, or `servicePrincipals/00000000-0000-0000-0000-000000000000` if current user is service principal.
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * * End to end workspace management guide
-     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * Create personalized databricks.Job and databricks_notebook:
      * 
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
@@ -3137,6 +3403,8 @@ public final class DatabricksFunctions {
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3166,6 +3434,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3185,6 +3455,8 @@ public final class DatabricksFunctions {
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3214,6 +3486,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3233,6 +3507,8 @@ public final class DatabricksFunctions {
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3262,6 +3538,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3281,6 +3559,8 @@ public final class DatabricksFunctions {
      * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3310,6 +3590,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3329,6 +3611,8 @@ public final class DatabricksFunctions {
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3358,6 +3642,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3379,6 +3665,8 @@ public final class DatabricksFunctions {
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3408,6 +3696,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3429,6 +3719,8 @@ public final class DatabricksFunctions {
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3458,6 +3750,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3479,6 +3773,8 @@ public final class DatabricksFunctions {
      * This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3508,6 +3804,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3529,6 +3827,8 @@ public final class DatabricksFunctions {
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3557,6 +3857,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryResult> getDirectory(GetDirectoryArgs args) {
@@ -3568,6 +3869,8 @@ public final class DatabricksFunctions {
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3596,6 +3899,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args) {
@@ -3607,6 +3911,8 @@ public final class DatabricksFunctions {
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3635,6 +3941,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryResult> getDirectory(GetDirectoryArgs args, InvokeOptions options) {
@@ -3646,6 +3953,8 @@ public final class DatabricksFunctions {
      * This data source allows to get information about a directory in a Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3674,6 +3983,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args, InvokeOptions options) {
@@ -3687,6 +3997,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3728,6 +4040,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3751,6 +4065,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3792,6 +4108,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3815,6 +4133,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3856,6 +4176,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3879,6 +4201,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3920,6 +4244,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -3943,6 +4269,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3977,6 +4305,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancePoolResult> getInstancePool(GetInstancePoolArgs args) {
@@ -3990,6 +4319,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4024,6 +4355,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancePoolResult> getInstancePoolPlain(GetInstancePoolPlainArgs args) {
@@ -4037,6 +4369,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4071,6 +4405,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancePoolResult> getInstancePool(GetInstancePoolArgs args, InvokeOptions options) {
@@ -4084,6 +4419,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Referring to an instance pool by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4118,6 +4455,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancePoolResult> getInstancePoolPlain(GetInstancePoolPlainArgs args, InvokeOptions options) {
@@ -4129,6 +4467,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4156,6 +4496,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceProfilesResult> getInstanceProfiles() {
@@ -4167,6 +4508,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4194,6 +4537,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain() {
@@ -4205,6 +4549,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4232,6 +4578,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceProfilesResult> getInstanceProfiles(GetInstanceProfilesArgs args) {
@@ -4243,6 +4590,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4270,6 +4619,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain(GetInstanceProfilesPlainArgs args) {
@@ -4281,6 +4631,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4308,6 +4660,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceProfilesResult> getInstanceProfiles(GetInstanceProfilesArgs args, InvokeOptions options) {
@@ -4319,6 +4672,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all instance profiles:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4346,6 +4701,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceProfilesResult> getInstanceProfilesPlain(GetInstanceProfilesPlainArgs args, InvokeOptions options) {
@@ -4359,6 +4715,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4388,6 +4746,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4407,6 +4767,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4436,6 +4798,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4455,6 +4819,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4484,6 +4850,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4503,6 +4871,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4532,6 +4902,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4551,6 +4923,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4580,6 +4954,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4599,6 +4975,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting the existing cluster id of specific databricks.Job by name or by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4628,6 +5006,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4643,6 +5023,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4690,8 +5072,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4719,6 +5104,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4733,6 +5120,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4780,8 +5169,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4809,6 +5201,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4823,6 +5217,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4870,8 +5266,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4899,6 +5298,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -4913,6 +5314,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4960,8 +5363,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4989,6 +5395,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5003,6 +5411,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5050,8 +5460,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5079,6 +5492,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5093,6 +5508,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting view databricks.Permissions to all databricks.Job within the workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5140,8 +5557,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Getting ID of specific databricks.Job by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5169,6 +5589,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5180,52 +5602,36 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getMetastores to get mapping of name to id of all metastores.
-     * * databricks.Metastore to manage Metastores within Unity Catalog.
-     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * MetastoreInfo response for a given metastore id
      * 
      */
     public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args) {
         return getMetastore(args, InvokeOptions.Empty);
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getMetastores to get mapping of name to id of all metastores.
-     * * databricks.Metastore to manage Metastores within Unity Catalog.
-     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * MetastoreInfo response for a given metastore id
      * 
      */
     public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args) {
         return getMetastorePlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getMetastores to get mapping of name to id of all metastores.
-     * * databricks.Metastore to manage Metastores within Unity Catalog.
-     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * MetastoreInfo response for a given metastore id
      * 
      */
     public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getMetastores to get mapping of name to id of all metastores.
-     * * databricks.Metastore to manage Metastores within Unity Catalog.
-     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * MetastoreInfo response for a given metastore id
      * 
      */
     public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args, InvokeOptions options) {
@@ -5235,6 +5641,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5262,6 +5670,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5278,6 +5688,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5305,6 +5717,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5321,6 +5735,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5348,6 +5764,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5364,6 +5782,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5391,6 +5811,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5407,6 +5829,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5434,6 +5858,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5450,6 +5876,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Mapping of name to id of all metastores:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5477,6 +5905,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5535,6 +5965,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5562,6 +5994,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5587,6 +6021,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5614,6 +6050,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5639,6 +6077,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5666,6 +6106,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5691,6 +6133,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5718,6 +6162,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5743,6 +6189,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5770,6 +6218,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5795,6 +6245,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all credentials in Databricks Account
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5822,6 +6274,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5847,6 +6301,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5874,6 +6330,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5895,6 +6353,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5922,6 +6382,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5943,6 +6405,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5970,6 +6434,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -5991,6 +6457,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6018,6 +6486,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6039,6 +6509,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6066,6 +6538,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6087,6 +6561,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all workspaces in
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6114,6 +6590,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6133,6 +6611,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6184,6 +6664,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6206,6 +6688,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6257,6 +6741,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6279,6 +6765,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6330,6 +6818,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6352,6 +6842,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6403,6 +6895,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6425,6 +6919,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6476,6 +6972,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6498,6 +6996,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6549,6 +7049,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -6569,6 +7071,8 @@ public final class DatabricksFunctions {
      * This data source allows to export a notebook from Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6598,6 +7102,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotebookResult> getNotebook(GetNotebookArgs args) {
@@ -6609,6 +7114,8 @@ public final class DatabricksFunctions {
      * This data source allows to export a notebook from Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6638,6 +7145,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotebookResult> getNotebookPlain(GetNotebookPlainArgs args) {
@@ -6649,6 +7157,8 @@ public final class DatabricksFunctions {
      * This data source allows to export a notebook from Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6678,6 +7188,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotebookResult> getNotebook(GetNotebookArgs args, InvokeOptions options) {
@@ -6689,6 +7200,8 @@ public final class DatabricksFunctions {
      * This data source allows to export a notebook from Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6718,6 +7231,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotebookResult> getNotebookPlain(GetNotebookPlainArgs args, InvokeOptions options) {
@@ -6729,6 +7243,8 @@ public final class DatabricksFunctions {
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6758,6 +7274,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotebookPathsResult> getNotebookPaths(GetNotebookPathsArgs args) {
@@ -6769,6 +7286,8 @@ public final class DatabricksFunctions {
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6798,6 +7317,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotebookPathsResult> getNotebookPathsPlain(GetNotebookPathsPlainArgs args) {
@@ -6809,6 +7329,8 @@ public final class DatabricksFunctions {
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6838,6 +7360,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotebookPathsResult> getNotebookPaths(GetNotebookPathsArgs args, InvokeOptions options) {
@@ -6849,6 +7372,8 @@ public final class DatabricksFunctions {
      * This data source allows to list notebooks in the Databricks Workspace.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6878,6 +7403,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotebookPathsResult> getNotebookPathsPlain(GetNotebookPathsPlainArgs args, InvokeOptions options) {
@@ -6891,6 +7417,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6918,8 +7446,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6949,8 +7480,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6980,6 +7514,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7002,6 +7538,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7029,8 +7567,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7060,8 +7601,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7091,6 +7635,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7113,6 +7659,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7140,8 +7688,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7171,8 +7722,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7202,6 +7756,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7224,6 +7780,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7251,8 +7809,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7282,8 +7843,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7313,6 +7877,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7335,6 +7901,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7362,8 +7930,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7393,8 +7964,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7424,6 +7998,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7446,6 +8022,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Get all Delta Live Tables pipelines:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7473,8 +8051,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (exact match):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7504,8 +8085,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Filter Delta Live Tables pipelines by name (wildcard search):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7535,6 +8119,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7553,6 +8139,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7582,6 +8170,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7597,6 +8187,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7626,6 +8218,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7641,6 +8235,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7670,6 +8266,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7685,6 +8283,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all schemas in a _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7714,6 +8314,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7733,6 +8335,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7773,6 +8377,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7798,6 +8404,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7838,6 +8446,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7863,6 +8473,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7903,6 +8515,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7928,6 +8542,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7968,6 +8584,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -7993,6 +8611,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8033,6 +8653,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8058,6 +8680,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8098,6 +8722,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8120,19 +8746,6 @@ public final class DatabricksFunctions {
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals() {
         return getServicePrincipals(GetServicePrincipalsArgs.Empty, InvokeOptions.Empty);
@@ -8141,19 +8754,6 @@ public final class DatabricksFunctions {
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain() {
@@ -8164,19 +8764,6 @@ public final class DatabricksFunctions {
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args) {
         return getServicePrincipals(args, InvokeOptions.Empty);
@@ -8185,19 +8772,6 @@ public final class DatabricksFunctions {
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
-     * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args) {
@@ -8208,19 +8782,6 @@ public final class DatabricksFunctions {
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
@@ -8230,19 +8791,6 @@ public final class DatabricksFunctions {
      * 
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
      * 
-     * ## Related Resources
-     * 
-     * The following resources are used in the same context:
-     * 
-     * - End to end workspace management guide.
-     * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
-     * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
-     * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
-     * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
-     * - databricks.GroupMember to attach users and groups as group members.
-     * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
-     * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
@@ -8251,6 +8799,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8280,6 +8830,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8296,6 +8848,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8325,6 +8879,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8341,6 +8897,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8370,6 +8928,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8386,6 +8946,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8415,6 +8977,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8431,6 +8995,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8460,6 +9026,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8476,6 +9044,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8505,6 +9075,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8521,6 +9093,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8548,6 +9122,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8564,6 +9140,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8591,6 +9169,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8607,6 +9187,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8634,6 +9216,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8650,6 +9234,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8677,6 +9263,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8693,6 +9281,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8720,6 +9310,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8736,6 +9328,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8763,6 +9357,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8783,6 +9379,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8834,6 +9432,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8856,6 +9456,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8907,6 +9509,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -8929,6 +9533,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8980,6 +9586,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -9002,6 +9610,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9053,6 +9663,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -9075,6 +9687,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9126,6 +9740,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -9148,6 +9764,8 @@ public final class DatabricksFunctions {
      * &gt; **Note** This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. together `ml = true` and `genomics = true`, or something like), data source will throw an error.  Similarly, if search returns multiple results, and `latest = false`, data source will throw an error.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9199,6 +9817,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -9222,7 +9842,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9251,6 +9876,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9274,7 +9901,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9303,6 +9935,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9326,7 +9960,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9355,6 +9994,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9378,7 +10019,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9407,6 +10053,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9430,7 +10078,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9459,6 +10112,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9482,7 +10137,12 @@ public final class DatabricksFunctions {
      * 
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * * Search for a specific SQL Warehouse by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9511,6 +10171,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related resources
      * 
      * The following resources are often used in the same context:
@@ -9529,6 +10191,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9555,8 +10219,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9585,6 +10252,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9603,6 +10272,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9629,8 +10300,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9659,6 +10333,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9677,6 +10353,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9703,8 +10381,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9733,6 +10414,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9751,6 +10434,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9777,8 +10462,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9807,6 +10495,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9825,6 +10515,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9851,8 +10543,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9881,6 +10576,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9899,6 +10596,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Retrieve all SQL warehouses on this workspace on AWS or GCP:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9925,8 +10624,11 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * Retrieve all clusters with &#34;Shared&#34; in their cluster name on this Azure Databricks workspace:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9955,6 +10657,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are often used in the same context:
@@ -9970,48 +10674,36 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getSqlWarehouses:getSqlWarehouses", TypeShape.of(GetSqlWarehousesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getStorageCredentials to get names of all credentials
-     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * Getting details of an existing storage credential in the metastore
      * 
      */
     public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args) {
         return getStorageCredential(args, InvokeOptions.Empty);
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getStorageCredentials to get names of all credentials
-     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * Getting details of an existing storage credential in the metastore
      * 
      */
     public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args) {
         return getStorageCredentialPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getStorageCredentials to get names of all credentials
-     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * Getting details of an existing storage credential in the metastore
      * 
      */
     public static Output<GetStorageCredentialResult> getStorageCredential(GetStorageCredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getStorageCredential:getStorageCredential", TypeShape.of(GetStorageCredentialResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Related Resources
+     * ## Example Usage
      * 
-     * The following resources are used in the same context:
-     * 
-     * * databricks.getStorageCredentials to get names of all credentials
-     * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+     * Getting details of an existing storage credential in the metastore
      * 
      */
     public static CompletableFuture<GetStorageCredentialResult> getStorageCredentialPlain(GetStorageCredentialPlainArgs args, InvokeOptions options) {
@@ -10021,6 +10713,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10048,6 +10742,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10063,6 +10759,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10090,6 +10788,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10105,6 +10805,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10132,6 +10834,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10147,6 +10851,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10174,6 +10880,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10189,6 +10897,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10216,6 +10926,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10231,6 +10943,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * List all storage credentials in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10258,6 +10972,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10273,6 +10989,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10325,6 +11043,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10340,6 +11060,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10392,6 +11114,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10407,6 +11131,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10459,6 +11185,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10474,6 +11202,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10526,6 +11256,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10545,6 +11277,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10585,6 +11319,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10611,6 +11347,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10651,6 +11389,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10677,6 +11417,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10717,6 +11459,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10743,6 +11487,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10783,6 +11529,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10809,6 +11557,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10849,6 +11599,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10875,6 +11627,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Adding user to administrative group
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10915,6 +11669,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -10938,6 +11694,7 @@ public final class DatabricksFunctions {
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10990,6 +11747,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11006,6 +11765,7 @@ public final class DatabricksFunctions {
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11058,6 +11818,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11074,6 +11836,7 @@ public final class DatabricksFunctions {
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11126,6 +11889,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11142,6 +11907,7 @@ public final class DatabricksFunctions {
      * 
      * Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11194,6 +11960,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11209,6 +11977,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11239,6 +12009,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11255,6 +12027,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11285,6 +12059,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11301,6 +12077,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11331,6 +12109,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11347,6 +12127,8 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11377,6 +12159,8 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Related Resources
      * 
      * The following resources are used in the same context:
@@ -11395,6 +12179,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11420,6 +12206,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -11431,6 +12218,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11456,6 +12245,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -11467,6 +12257,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11492,6 +12284,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args) {
@@ -11503,6 +12296,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11528,6 +12323,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args) {
@@ -11539,6 +12335,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11564,6 +12362,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(InvokeArgs args, InvokeOptions options) {
@@ -11575,6 +12374,8 @@ public final class DatabricksFunctions {
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11600,6 +12401,7 @@ public final class DatabricksFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(InvokeArgs args, InvokeOptions options) {

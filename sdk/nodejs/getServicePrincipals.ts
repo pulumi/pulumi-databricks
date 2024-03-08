@@ -8,19 +8,6 @@ import * as utilities from "./utilities";
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * - End to end workspace management guide.
- * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
- * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * - databricks.GroupMember to attach users and groups as group members.
- * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * - databricksService principal to manage service principals
  */
 export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalsResult> {
     args = args || {};
@@ -64,19 +51,6 @@ export interface GetServicePrincipalsResult {
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * - End to end workspace management guide.
- * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
- * - databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
- * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
- * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
- * - databricks.GroupMember to attach users and groups as group members.
- * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * - databricksService principal to manage service principals
  */
 export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalsResult> {
     return pulumi.output(args).apply((a: any) => getServicePrincipals(a, opts))

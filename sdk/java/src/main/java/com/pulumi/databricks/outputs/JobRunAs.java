@@ -15,6 +15,8 @@ public final class JobRunAs {
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class JobRunAs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String servicePrincipalName;
@@ -60,6 +63,8 @@ public final class JobRunAs {
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -91,6 +96,7 @@ public final class JobRunAs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> servicePrincipalName() {

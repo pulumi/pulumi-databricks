@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * The resource global init script can be imported using script ID:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/globalInitScript:GlobalInitScript this script_id

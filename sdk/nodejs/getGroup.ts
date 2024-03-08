@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * Adding user to administrative group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -26,6 +27,8 @@ import * as utilities from "./utilities";
  *     memberId: me.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -176,6 +179,7 @@ export interface GetGroupResult {
  *
  * Adding user to administrative group
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -189,6 +193,8 @@ export interface GetGroupResult {
  *     memberId: me.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

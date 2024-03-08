@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -68,9 +69,11 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Example permission to share query with all users:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -89,6 +92,8 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Troubleshooting
  *
  * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `dataSourceId`
@@ -110,7 +115,7 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_query` resource with ID like the following:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>

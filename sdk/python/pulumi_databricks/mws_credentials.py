@@ -233,7 +233,7 @@ class MwsCredentials(pulumi.CustomResource):
 
         This resource can be imported by the combination of its identifier and the account id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>
@@ -274,7 +274,7 @@ class MwsCredentials(pulumi.CustomResource):
 
         This resource can be imported by the combination of its identifier and the account id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mwsCredentials:MwsCredentials this <account_id>/<credentials_id>

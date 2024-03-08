@@ -237,6 +237,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -246,6 +247,8 @@ class MlflowExperiment(pulumi.CustomResource):
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -266,7 +269,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         The experiment resource can be imported using the id of the experiment
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>
@@ -289,6 +292,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -298,6 +302,8 @@ class MlflowExperiment(pulumi.CustomResource):
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -318,7 +324,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         The experiment resource can be imported using the id of the experiment
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>

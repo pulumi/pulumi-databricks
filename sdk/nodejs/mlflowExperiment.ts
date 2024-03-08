@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -19,6 +20,8 @@ import * as utilities from "./utilities";
  *     description: "My MLflow experiment description",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Access Control
  *
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -39,7 +42,7 @@ import * as utilities from "./utilities";
  *
  * The experiment resource can be imported using the id of the experiment
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>

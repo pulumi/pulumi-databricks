@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,6 +69,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
@@ -88,7 +91,7 @@ import (
 //
 // The model serving resource can be imported using the name of the endpoint.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>

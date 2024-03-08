@@ -432,6 +432,7 @@ class Catalog(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -442,6 +443,8 @@ class Catalog(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -454,7 +457,7 @@ class Catalog(pulumi.CustomResource):
 
         This resource can be imported by name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/catalog:Catalog this <name>
@@ -484,6 +487,7 @@ class Catalog(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -494,6 +498,8 @@ class Catalog(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -506,7 +512,7 @@ class Catalog(pulumi.CustomResource):
 
         This resource can be imported by name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/catalog:Catalog this <name>

@@ -23,6 +23,7 @@ import (
 //
 // Creating regular service principal:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,9 +47,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,9 +88,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating service principal with cluster create permissions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,9 +118,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating service principal in AWS Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -149,9 +156,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating service principal in Azure Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,6 +193,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -199,7 +210,7 @@ import (
 //
 // The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>

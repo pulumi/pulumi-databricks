@@ -25,10 +25,13 @@ import javax.annotation.Nullable;
  * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
  * 
  * ## Example Usage
+ * 
  * ### Databricks Sharing with non databricks recipient
  * 
  * Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
  * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -73,13 +76,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * databricks.Share to create Delta Sharing shares.
- * * databricks.Grants to manage Delta Sharing permissions.
- * * databricks.getShares to read existing Delta Sharing shares.
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="databricks:index/recipient:Recipient")

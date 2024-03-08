@@ -13,18 +13,20 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.VectorSearchEndpoint("this", {endpointType: "STANDARD"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * The resource can be imported using the name of the Vector Search Endpoint
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>

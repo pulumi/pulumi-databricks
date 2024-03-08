@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,6 +62,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access Control
 //
 // * Group and User can control which groups or individual users can create instance pools.
@@ -70,7 +73,7 @@ import (
 //
 // The resource instance pool can be imported using it's id:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>

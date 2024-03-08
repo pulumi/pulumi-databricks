@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -26,9 +27,11 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Example permission to share dashboard with all users:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -41,6 +44,8 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -54,7 +59,7 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_dashboard` resource with ID like the following:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlDashboard:SqlDashboard this <dashboard-id>

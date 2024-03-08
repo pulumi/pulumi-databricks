@@ -19,6 +19,7 @@ import (
 //
 // Referring to a cluster policy by name:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupClusterPolicy(ctx *pulumi.Context, args *LookupClusterPolicyArgs, opts ...pulumi.InvokeOption) (*LookupClusterPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterPolicyResult

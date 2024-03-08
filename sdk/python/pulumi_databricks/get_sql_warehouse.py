@@ -314,6 +314,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
 
     * Retrieve attributes of each SQL warehouses in a workspace:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -321,15 +322,19 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     all_sql_warehouses = databricks.get_sql_warehouses()
     all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
     ```
+    <!--End PulumiCodeChooser -->
 
     * Search for a specific SQL Warehouse by name:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouse(name="Starter Warehouse")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related resources
 
     The following resources are often used in the same context:
@@ -443,6 +448,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
 
     * Retrieve attributes of each SQL warehouses in a workspace:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -450,15 +456,19 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     all_sql_warehouses = databricks.get_sql_warehouses()
     all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
     ```
+    <!--End PulumiCodeChooser -->
 
     * Search for a specific SQL Warehouse by name:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouse(name="Starter Warehouse")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related resources
 
     The following resources are often used in the same context:

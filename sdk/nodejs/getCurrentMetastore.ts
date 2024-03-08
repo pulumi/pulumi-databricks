@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *
  * MetastoreSummary response for a metastore attached to the current workspace.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,6 +25,8 @@ import * as utilities from "./utilities";
  * const this = databricks.getCurrentMetastore({});
  * export const someMetastore = data.databricks_metastore["this"].metastore_info[0];
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -81,6 +84,7 @@ export interface GetCurrentMetastoreResult {
  *
  * MetastoreSummary response for a metastore attached to the current workspace.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -88,6 +92,8 @@ export interface GetCurrentMetastoreResult {
  * const this = databricks.getCurrentMetastore({});
  * export const someMetastore = data.databricks_metastore["this"].metastore_info[0];
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

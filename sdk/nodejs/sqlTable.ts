@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by its full name:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlTable:SqlTable this <catalog_name>.<schema_name>.<name>

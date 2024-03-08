@@ -21,15 +21,6 @@ import javax.annotation.Nullable;
  * 
  * **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
- * ## Related Resources
- * 
- * The following resources are often used in the same context:
- * 
- * * End to end workspace management guide.
- * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
- * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
- * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * 
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {

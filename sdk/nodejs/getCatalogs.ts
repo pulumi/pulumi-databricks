@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Listing all catalogs:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -16,6 +17,8 @@ import * as utilities from "./utilities";
  * const all = databricks.getCatalogs({});
  * export const allCatalogs = all;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -60,6 +63,7 @@ export interface GetCatalogsResult {
  *
  * Listing all catalogs:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -67,6 +71,8 @@ export interface GetCatalogsResult {
  * const all = databricks.getCatalogs({});
  * export const allCatalogs = all;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

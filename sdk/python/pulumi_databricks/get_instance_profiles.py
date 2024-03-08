@@ -67,6 +67,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[pulumi.InputType[
 
     Get all instance profiles:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -74,6 +75,7 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[pulumi.InputType[
     all = databricks.get_instance_profiles()
     pulumi.export("allInstanceProfiles", all.instance_profiles)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
@@ -98,6 +100,7 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
 
     Get all instance profiles:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -105,6 +108,7 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
     all = databricks.get_instance_profiles()
     pulumi.export("allInstanceProfiles", all.instance_profiles)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetInstanceProfilesInstanceProfileArgs']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:

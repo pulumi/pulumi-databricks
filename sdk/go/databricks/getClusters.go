@@ -15,6 +15,7 @@ import (
 //
 // Retrieve all clusters on this workspace on AWS or GCP:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,9 +37,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,6 +65,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

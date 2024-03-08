@@ -17,6 +17,7 @@ import (
 //
 // End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,13 +80,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:
 //
 // * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
 // * getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-// * getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+// * getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
 func GetAwsAssumeRolePolicy(ctx *pulumi.Context, args *GetAwsAssumeRolePolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsAssumeRolePolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsAssumeRolePolicyResult

@@ -11,13 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Related Resources
+// ## Example Usage
 //
-// The following resources are used in the same context:
-//
-// * getMetastores to get mapping of name to id of all metastores.
-// * Metastore to manage Metastores within Unity Catalog.
-// * Catalog to manage catalogs within Unity Catalog.
+// MetastoreInfo response for a given metastore id
 func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreResult

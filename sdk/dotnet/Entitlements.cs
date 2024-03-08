@@ -18,6 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// Setting entitlements for a regular user:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,9 +41,11 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Setting entitlements for a service principal:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,9 +68,11 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,6 +95,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -106,13 +113,13 @@ namespace Pulumi.Databricks
     /// 
     /// The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
     /// 
-    ///  * `user/user_id` - user `user_id`.
+    /// * `user/user_id` - user `user_id`.
     /// 
-    ///  * `group/group_id` - group `group_id`.
+    /// * `group/group_id` - group `group_id`.
     /// 
-    ///  * `spn/spn_id` - service principal `spn_id`.
+    /// * `spn/spn_id` - service principal `spn_id`.
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/entitlements:Entitlements me user/&lt;user-id&gt;

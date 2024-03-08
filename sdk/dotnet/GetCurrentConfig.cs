@@ -13,50 +13,12 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
-        /// 
-        /// ## Exported attributes
-        /// 
-        /// Data source exposes the following attributes:
-        /// 
-        /// * `is_account` - Whether the provider is configured at account-level
-        /// * `account_id` - Account Id if provider is configured at account-level
-        /// * `host` - Host of the Databricks workspace or account console
-        /// * `cloud_type` - Cloud type specified in the provider
-        /// * `auth_type` - Auth type used by the provider
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * End to end workspace management guide
-        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         /// </summary>
         public static Task<GetCurrentConfigResult> InvokeAsync(GetCurrentConfigArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentConfigResult>("databricks:index/getCurrentConfig:getCurrentConfig", args ?? new GetCurrentConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
-        /// 
-        /// ## Exported attributes
-        /// 
-        /// Data source exposes the following attributes:
-        /// 
-        /// * `is_account` - Whether the provider is configured at account-level
-        /// * `account_id` - Account Id if provider is configured at account-level
-        /// * `host` - Host of the Databricks workspace or account console
-        /// * `cloud_type` - Cloud type specified in the provider
-        /// * `auth_type` - Auth type used by the provider
-        /// 
-        /// ## Related Resources
-        /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * End to end workspace management guide
-        /// * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
-        /// * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
-        /// * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
         /// </summary>
         public static Output<GetCurrentConfigResult> Invoke(GetCurrentConfigInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentConfigResult>("databricks:index/getCurrentConfig:getCurrentConfig", args ?? new GetCurrentConfigInvokeArgs(), options.WithDefaults());

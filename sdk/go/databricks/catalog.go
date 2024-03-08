@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -51,7 +54,7 @@ import (
 //
 // This resource can be imported by name:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/catalog:Catalog this <name>

@@ -19,6 +19,7 @@ import (
 //
 // Get all Delta Live Tables pipelines:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,9 +42,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Filter Delta Live Tables pipelines by name (exact match):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,9 +71,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Filter Delta Live Tables pipelines by name (wildcard search):
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,6 +100,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:
@@ -118,7 +125,7 @@ func GetPipelines(ctx *pulumi.Context, args *GetPipelinesArgs, opts ...pulumi.In
 type GetPipelinesArgs struct {
 	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
 	Ids []string `pulumi:"ids"`
-	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
 	PipelineName *string `pulumi:"pipelineName"`
 }
 
@@ -148,7 +155,7 @@ func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts .
 type GetPipelinesOutputArgs struct {
 	// List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+	// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
 	PipelineName pulumi.StringPtrInput `pulumi:"pipelineName"`
 }
 

@@ -6,15 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
- * * End to end workspace management guide
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getAwsBucketPolicy(args: GetAwsBucketPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsBucketPolicyResult> {
 
@@ -65,15 +56,6 @@ export interface GetAwsBucketPolicyResult {
 }
 /**
  * This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
- * * End to end workspace management guide
- * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
- * * databricks.Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
  */
 export function getAwsBucketPolicyOutput(args: GetAwsBucketPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsBucketPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAwsBucketPolicy(a, opts))

@@ -18,11 +18,44 @@ namespace Pulumi.Databricks
     /// 
     /// A Unity Catalog metastore can be created without a root location &amp; credential to maintain strict separation of storage across catalogs or environments.
     /// 
+    /// ## Example Usage
+    /// 
+    /// For AWS
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var thisMetastore = new Databricks.Metastore("thisMetastore", new()
+    ///     {
+    ///         StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
+    ///         Owner = "uc admins",
+    ///         Region = "us-east-1",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("thisMetastoreAssignment", new()
+    ///     {
+    ///         MetastoreId = thisMetastore.Id,
+    ///         WorkspaceId = local.Workspace_id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// For Azure
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by ID:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/metastore:Metastore this &lt;id&gt;

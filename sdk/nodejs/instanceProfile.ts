@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * > **Note** Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -69,11 +70,13 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Usage with Cluster Policies
  *
  * It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -85,11 +88,13 @@ import * as utilities from "./utilities";
  *     },
  * })});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Granting access to all users
  *
  * You can make instance profile available to all users by associating it with the special group called `users` through databricks.Group data source.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -103,11 +108,13 @@ import * as utilities from "./utilities";
  *     instanceProfileId: _this.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Usage with Databricks SQL serverless
  *
  * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -137,12 +144,13 @@ import * as utilities from "./utilities";
  *     iamRoleArn: thisRole.arn,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * The resource instance profile can be imported using the ARN of it
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/instanceProfile:InstanceProfile this <instance-profile-arn>

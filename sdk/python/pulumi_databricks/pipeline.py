@@ -552,6 +552,7 @@ class Pipeline(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -608,6 +609,8 @@ class Pipeline(pulumi.CustomResource):
                 ],
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -622,7 +625,7 @@ class Pipeline(pulumi.CustomResource):
 
         The resource job can be imported using the id of the pipeline
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>
@@ -654,6 +657,7 @@ class Pipeline(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -710,6 +714,8 @@ class Pipeline(pulumi.CustomResource):
                 ],
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -724,7 +730,7 @@ class Pipeline(pulumi.CustomResource):
 
         The resource job can be imported using the id of the pipeline
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>

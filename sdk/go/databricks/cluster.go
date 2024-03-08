@@ -16,6 +16,7 @@ import (
 //
 // > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,6 +59,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Access Control
 //
@@ -91,7 +93,7 @@ import (
 //
 // The resource cluster can be imported using cluster id.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
@@ -116,6 +118,7 @@ type Cluster struct {
 	//
 	// For example:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -146,6 +149,7 @@ type Cluster struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	CustomTags pulumi.MapOutput `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrOutput `pulumi:"dataSecurityMode"`
@@ -170,6 +174,7 @@ type Cluster struct {
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -214,6 +219,7 @@ type Cluster struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	IsPinned  pulumi.BoolPtrOutput      `pulumi:"isPinned"`
 	Libraries ClusterLibraryArrayOutput `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -292,6 +298,7 @@ type clusterState struct {
 	//
 	// For example:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -322,6 +329,7 @@ type clusterState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	CustomTags map[string]interface{} `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode *string `pulumi:"dataSecurityMode"`
@@ -346,6 +354,7 @@ type clusterState struct {
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -390,6 +399,7 @@ type clusterState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	IsPinned  *bool            `pulumi:"isPinned"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -436,6 +446,7 @@ type ClusterState struct {
 	//
 	// For example:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -466,6 +477,7 @@ type ClusterState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	CustomTags pulumi.MapInput
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrInput
@@ -490,6 +502,7 @@ type ClusterState struct {
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -534,6 +547,7 @@ type ClusterState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	IsPinned  pulumi.BoolPtrInput
 	Libraries ClusterLibraryArrayInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -583,6 +597,7 @@ type clusterArgs struct {
 	//
 	// For example:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -613,6 +628,7 @@ type clusterArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	CustomTags map[string]interface{} `pulumi:"customTags"`
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode *string             `pulumi:"dataSecurityMode"`
@@ -635,6 +651,7 @@ type clusterArgs struct {
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -679,6 +696,7 @@ type clusterArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	IsPinned  *bool            `pulumi:"isPinned"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -721,6 +739,7 @@ type ClusterArgs struct {
 	//
 	// For example:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -751,6 +770,7 @@ type ClusterArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	CustomTags pulumi.MapInput
 	// Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
 	DataSecurityMode pulumi.StringPtrInput
@@ -773,6 +793,7 @@ type ClusterArgs struct {
 	//
 	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -817,6 +838,7 @@ type ClusterArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	IsPinned  pulumi.BoolPtrInput
 	Libraries ClusterLibraryArrayInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
@@ -975,6 +997,7 @@ func (o ClusterOutput) ClusterSource() pulumi.StringOutput {
 //
 // For example:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1008,6 +1031,7 @@ func (o ClusterOutput) ClusterSource() pulumi.StringOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o ClusterOutput) CustomTags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.CustomTags }).(pulumi.MapOutput)
 }
@@ -1068,6 +1092,7 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //
 // The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1115,6 +1140,7 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o ClusterOutput) IsPinned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.IsPinned }).(pulumi.BoolPtrOutput)
 }

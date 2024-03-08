@@ -164,12 +164,15 @@ class SecretScope(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SecretScope("this")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -184,7 +187,7 @@ class SecretScope(pulumi.CustomResource):
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>
@@ -207,12 +210,15 @@ class SecretScope(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SecretScope("this")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -227,7 +233,7 @@ class SecretScope(pulumi.CustomResource):
 
         The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,6 +51,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
@@ -69,9 +72,9 @@ import (
 //
 // ## Import
 //
-// The model resource can be imported using the name
+// # The model resource can be imported using the name
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>

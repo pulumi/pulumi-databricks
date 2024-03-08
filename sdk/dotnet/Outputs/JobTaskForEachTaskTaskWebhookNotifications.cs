@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -29,6 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> OnDurationWarningThresholdExceededs;
         /// <summary>

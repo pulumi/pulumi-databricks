@@ -19,6 +19,7 @@ import (
 //
 // Setting entitlements for a regular user:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,9 +51,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Setting entitlements for a service principal:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,9 +87,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # Setting entitlements to all users in a workspace - referencing special `users` Group
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,6 +123,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -134,13 +141,13 @@ import (
 //
 // The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
 //
-//   - `user/user_id` - user `user_id`.
+// * `user/user_id` - user `user_id`.
 //
-//   - `group/group_id` - group `group_id`.
+// * `group/group_id` - group `group_id`.
 //
-//   - `spn/spn_id` - service principal `spn_id`.
+// * `spn/spn_id` - service principal `spn_id`.
 //
-//     bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>

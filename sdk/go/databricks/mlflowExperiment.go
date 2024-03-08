@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access Control
 //
 // * Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -61,9 +64,9 @@ import (
 //
 // ## Import
 //
-// The experiment resource can be imported using the id of the experiment
+// # The experiment resource can be imported using the id of the experiment
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this <experiment-id>

@@ -14,6 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,6 +27,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -40,7 +43,7 @@ namespace Pulumi.Databricks
     /// 
     /// The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;

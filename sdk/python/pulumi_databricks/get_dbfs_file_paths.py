@@ -85,6 +85,7 @@ def get_dbfs_file_paths(path: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -92,6 +93,8 @@ def get_dbfs_file_paths(path: Optional[str] = None,
     partitions = databricks.get_dbfs_file_paths(path="dbfs:/user/hive/default.db/table",
         recursive=False)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -131,6 +134,7 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -138,6 +142,8 @@ def get_dbfs_file_paths_output(path: Optional[pulumi.Input[str]] = None,
     partitions = databricks.get_dbfs_file_paths(path="dbfs:/user/hive/default.db/table",
         recursive=False)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

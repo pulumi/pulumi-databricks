@@ -31,14 +31,14 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     * Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
      * 
      */
     @Import(name="pipelineName")
     private @Nullable String pipelineName;
 
     /**
-     * @return Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+     * @return Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
      * 
      */
     public Optional<String> pipelineName() {
@@ -92,7 +92,7 @@ public final class GetPipelinesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param pipelineName Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
+         * @param pipelineName Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
          * 
          * @return builder
          * 

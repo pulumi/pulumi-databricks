@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * Create a connection to a MySQL database
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -36,9 +37,11 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Create a connection to a BigQuery database
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -69,12 +72,13 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by `id`:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/connection:Connection this '<metastore_id>|<name>'

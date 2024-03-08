@@ -85,6 +85,7 @@ def get_notebook_paths(path: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -92,6 +93,7 @@ def get_notebook_paths(path: Optional[str] = None,
     prod = databricks.get_notebook_paths(path="/Production",
         recursive=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str path: Path to workspace directory
@@ -121,6 +123,7 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -128,6 +131,7 @@ def get_notebook_paths_output(path: Optional[pulumi.Input[str]] = None,
     prod = databricks.get_notebook_paths(path="/Production",
         recursive=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str path: Path to workspace directory

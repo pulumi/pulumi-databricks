@@ -138,6 +138,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -146,12 +147,13 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             status="RESTRICT_TOKENS_AND_JOB_RUN_AS",
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by predefined name `global`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global
@@ -188,6 +190,7 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -196,12 +199,13 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
             status="RESTRICT_TOKENS_AND_JOB_RUN_AS",
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by predefined name `global`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global

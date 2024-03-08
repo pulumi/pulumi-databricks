@@ -20,6 +20,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +88,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="path", required=true)
@@ -95,6 +98,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -161,6 +166,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> path() {
@@ -211,6 +217,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
          * 
          * Example
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -277,6 +285,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -290,6 +299,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
          * 
          * Example
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -356,6 +367,7 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

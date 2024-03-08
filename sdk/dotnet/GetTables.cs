@@ -12,12 +12,11 @@ namespace Pulumi.Databricks
     public static class GetTables
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +54,8 @@ namespace Pulumi.Databricks
         ///     }
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:
@@ -68,12 +67,11 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("databricks:index/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ databricks.Schema from _sandbox_ databricks_catalog:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -111,8 +109,8 @@ namespace Pulumi.Databricks
         ///     }
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are used in the same context:

@@ -533,15 +533,18 @@ class ServicePrincipal(pulumi.CustomResource):
 
         Creating regular service principal:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -552,9 +555,11 @@ class ServicePrincipal(pulumi.CustomResource):
             group_id=admins.id,
             member_id=sp.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal with cluster create permissions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -564,9 +569,11 @@ class ServicePrincipal(pulumi.CustomResource):
             application_id="00000000-0000-0000-0000-000000000000",
             display_name="Example service principal")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -580,9 +587,11 @@ class ServicePrincipal(pulumi.CustomResource):
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -595,6 +604,8 @@ class ServicePrincipal(pulumi.CustomResource):
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
         opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -610,7 +621,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>
@@ -652,15 +663,18 @@ class ServicePrincipal(pulumi.CustomResource):
 
         Creating regular service principal:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -671,9 +685,11 @@ class ServicePrincipal(pulumi.CustomResource):
             group_id=admins.id,
             member_id=sp.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal with cluster create permissions:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -683,9 +699,11 @@ class ServicePrincipal(pulumi.CustomResource):
             application_id="00000000-0000-0000-0000-000000000000",
             display_name="Example service principal")
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal in AWS Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -699,9 +717,11 @@ class ServicePrincipal(pulumi.CustomResource):
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         Creating service principal in Azure Databricks account:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -714,6 +734,8 @@ class ServicePrincipal(pulumi.CustomResource):
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
         opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -729,7 +751,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         The resource scim service principal can be imported using its id, for example `2345678901234567`. To get the service principal ID, call [Get service principals](https://docs.databricks.com/dev-tools/api/latest/scim/scim-sp.html#get-service-principals).
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/servicePrincipal:ServicePrincipal me <service-principal-id>

@@ -18,6 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// For example, you can mount Azure Data Lake Storage container using the following code:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,6 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly string LocalMountDirPath;
         /// <summary>

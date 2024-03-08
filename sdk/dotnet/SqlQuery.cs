@@ -18,6 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -92,9 +93,11 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Example permission to share query with all users:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -123,6 +126,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Troubleshooting
     /// 
     /// In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
@@ -144,7 +149,7 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_sql_query` resource with ID like the following:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;

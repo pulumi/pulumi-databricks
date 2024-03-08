@@ -23,6 +23,7 @@ import (
 //
 // Through a Databricks workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,9 +67,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Through AWS Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,9 +114,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Through Azure Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,9 +162,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Through GCP Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -202,11 +209,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Group rule set usage
 //
 // Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -250,11 +259,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Account rule set usage
 //
 // Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -316,6 +327,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

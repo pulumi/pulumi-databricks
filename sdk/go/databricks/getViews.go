@@ -11,12 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Related Resources
+// ## Example Usage
 //
-// The following resources are used in the same context:
-//
-// * Schema to manage schemas within Unity Catalog.
-// * Catalog to manage catalogs within Unity Catalog.
+// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ Schema from _sandbox_ databricks_catalog.
 func GetViews(ctx *pulumi.Context, args *GetViewsArgs, opts ...pulumi.InvokeOption) (*GetViewsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetViewsResult

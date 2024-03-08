@@ -185,7 +185,7 @@ class DbfsFile(pulumi.CustomResource):
 
         The resource dbfs file can be imported using the path of the file:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>
@@ -207,7 +207,7 @@ class DbfsFile(pulumi.CustomResource):
 
         The resource dbfs file can be imported using the path of the file:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/dbfsFile:DbfsFile this <path>

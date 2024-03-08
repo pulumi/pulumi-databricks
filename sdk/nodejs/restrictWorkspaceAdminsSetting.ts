@@ -27,6 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -35,12 +36,13 @@ import * as utilities from "./utilities";
  *     status: "RESTRICT_TOKENS_AND_JOB_RUN_AS",
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by predefined name `global`:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting this global

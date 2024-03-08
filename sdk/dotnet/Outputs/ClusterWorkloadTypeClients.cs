@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly bool? Jobs;
         /// <summary>

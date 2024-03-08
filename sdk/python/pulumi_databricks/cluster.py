@@ -58,6 +58,7 @@ class ClusterArgs:
                
                For example:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -75,6 +76,7 @@ class ClusterArgs:
                        "ResourceClass": "Serverless",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
@@ -86,6 +88,7 @@ class ClusterArgs:
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -107,6 +110,7 @@ class ClusterArgs:
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
@@ -291,6 +295,7 @@ class ClusterArgs:
 
         For example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -308,6 +313,7 @@ class ClusterArgs:
                 "ResourceClass": "Serverless",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "custom_tags")
 
@@ -434,6 +440,7 @@ class ClusterArgs:
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -455,6 +462,7 @@ class ClusterArgs:
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "is_pinned")
 
@@ -624,6 +632,7 @@ class _ClusterState:
                
                For example:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -641,6 +650,7 @@ class _ClusterState:
                        "ResourceClass": "Serverless",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         :param pulumi.Input[Mapping[str, Any]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
@@ -653,6 +663,7 @@ class _ClusterState:
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -674,6 +685,7 @@ class _ClusterState:
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
@@ -867,6 +879,7 @@ class _ClusterState:
 
         For example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -884,6 +897,7 @@ class _ClusterState:
                 "ResourceClass": "Serverless",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "custom_tags")
 
@@ -1022,6 +1036,7 @@ class _ClusterState:
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1043,6 +1058,7 @@ class _ClusterState:
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "is_pinned")
 
@@ -1243,6 +1259,7 @@ class Cluster(pulumi.CustomResource):
 
         > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1259,6 +1276,7 @@ class Cluster(pulumi.CustomResource):
                 max_workers=50,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Access Control
 
@@ -1292,7 +1310,7 @@ class Cluster(pulumi.CustomResource):
 
         The resource cluster can be imported using cluster id.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
@@ -1307,6 +1325,7 @@ class Cluster(pulumi.CustomResource):
                
                For example:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1324,6 +1343,7 @@ class Cluster(pulumi.CustomResource):
                        "ResourceClass": "Serverless",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         :param pulumi.Input[str] driver_node_type_id: The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
@@ -1335,6 +1355,7 @@ class Cluster(pulumi.CustomResource):
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1356,6 +1377,7 @@ class Cluster(pulumi.CustomResource):
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
@@ -1378,6 +1400,7 @@ class Cluster(pulumi.CustomResource):
 
         > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1394,6 +1417,7 @@ class Cluster(pulumi.CustomResource):
                 max_workers=50,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Access Control
 
@@ -1427,7 +1451,7 @@ class Cluster(pulumi.CustomResource):
 
         The resource cluster can be imported using cluster id.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/cluster:Cluster this <cluster-id>
@@ -1587,6 +1611,7 @@ class Cluster(pulumi.CustomResource):
                
                For example:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1604,6 +1629,7 @@ class Cluster(pulumi.CustomResource):
                        "ResourceClass": "Serverless",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] data_security_mode: Select the security features of the cluster. [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, no security features are enabled. In the Databricks UI, this has been recently been renamed *Access Mode* and `USER_ISOLATION` has been renamed *Shared*, but use these terms here.
         :param pulumi.Input[Mapping[str, Any]] default_tags: (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         :param pulumi.Input[str] driver_instance_pool_id: similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
@@ -1616,6 +1642,7 @@ class Cluster(pulumi.CustomResource):
                
                The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1637,6 +1664,7 @@ class Cluster(pulumi.CustomResource):
                        "spark.databricks.io.cache.maxMetaDataCache": "1g",
                    })
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
@@ -1759,6 +1787,7 @@ class Cluster(pulumi.CustomResource):
 
         For example:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1776,6 +1805,7 @@ class Cluster(pulumi.CustomResource):
                 "ResourceClass": "Serverless",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "custom_tags")
 
@@ -1866,6 +1896,7 @@ class Cluster(pulumi.CustomResource):
 
         The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1887,6 +1918,7 @@ class Cluster(pulumi.CustomResource):
                 "spark.databricks.io.cache.maxMetaDataCache": "1g",
             })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "is_pinned")
 

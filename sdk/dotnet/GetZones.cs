@@ -16,10 +16,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,8 +31,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows you to fetch all available AWS availability zones on your workspace on AWS.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,8 +56,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZonesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("databricks:index/getZones:getZones", InvokeArgs.Empty, options.WithDefaults());

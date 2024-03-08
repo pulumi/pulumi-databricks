@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Access Control
 //
 // * Grants can be used to grant principals `ALL_PRIVILEGES`, `APPLY_TAG`, and `EXECUTE` privileges.
@@ -60,7 +63,7 @@ import (
 //
 // The registered model resource can be imported using the full (3-level) name of the model.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/registeredModel:RegisteredModel this <catalog_name.schema_name.model_name>
