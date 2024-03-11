@@ -87,12 +87,14 @@ def get_directory(object_id: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     prod = databricks.get_directory(path="/Production")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int object_id: directory object ID
@@ -122,12 +124,14 @@ def get_directory_output(object_id: Optional[pulumi.Input[Optional[int]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     prod = databricks.get_directory(path="/Production")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int object_id: directory object ID

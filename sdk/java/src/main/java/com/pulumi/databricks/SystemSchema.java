@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Enable the system schema `access`
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,12 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by the metastore id and schema name
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/systemSchema:SystemSchema this &lt;metastore_id&gt;|&lt;schema_name&gt;

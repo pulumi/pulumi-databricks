@@ -100,15 +100,6 @@ def get_aws_bucket_policy(bucket: Optional[str] = None,
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
 
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
-    * End to end workspace management guide
-    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
-
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.
     :param str databricks_e2_account_id: Your Databricks E2 account ID. Used to generate  restrictive IAM policies that will increase the security of your root bucket
@@ -139,15 +130,6 @@ def get_aws_bucket_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-
-    ## Related Resources
-
-    The following resources are used in the same context:
-
-    * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
-    * End to end workspace management guide
-    * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-    * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 
 
     :param str bucket: AWS S3 Bucket name for which to generate the policy document.

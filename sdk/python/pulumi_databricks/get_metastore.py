@@ -71,13 +71,9 @@ def get_metastore(metastore_id: Optional[str] = None,
                   metastore_info: Optional[pulumi.InputType['GetMetastoreMetastoreInfoArgs']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMetastoreResult:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * get_metastores to get mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
+    MetastoreInfo response for a given metastore id
 
 
     :param str metastore_id: Id of the metastore to be fetched
@@ -100,13 +96,9 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[str]] = None,
                          metastore_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetMetastoreMetastoreInfoArgs']]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreResult]:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * get_metastores to get mapping of name to id of all metastores.
-    * Metastore to manage Metastores within Unity Catalog.
-    * Catalog to manage catalogs within Unity Catalog.
+    MetastoreInfo response for a given metastore id
 
 
     :param str metastore_id: Id of the metastore to be fetched

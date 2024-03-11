@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  * The resource job can be imported using the id of the job
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/job:Job this &lt;job-id&gt;
@@ -92,6 +92,8 @@ public class Job extends com.pulumi.resources.CustomResource {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
      * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -114,6 +116,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="controlRunState", refs={Boolean.class}, tree="[0]")
@@ -123,6 +126,8 @@ public class Job extends com.pulumi.resources.CustomResource {
      * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
      * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -145,6 +150,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Boolean>> controlRunState() {

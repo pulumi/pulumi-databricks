@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// Example:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("servicePrincipalName")]
         public Input<string>? ServicePrincipalName { get; set; }

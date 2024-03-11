@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * 
  * &gt; **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,6 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Access Control
  * 
@@ -113,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  * The resource cluster can be imported using cluster id.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/cluster:Cluster this &lt;cluster-id&gt;
@@ -210,6 +213,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * should have tag `ResourceClass` set to value `Serverless`
      * 
      * For example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +251,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="customTags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -255,6 +261,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return should have tag `ResourceClass` set to value `Serverless`
      * 
      * For example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -291,6 +299,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Map<String,Object>>> customTags() {
@@ -430,6 +439,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      * 
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -482,6 +493,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="isPinned", refs={Boolean.class}, tree="[0]")
@@ -491,6 +503,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters&#39; maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
      * 
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -543,6 +557,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Boolean>> isPinned() {

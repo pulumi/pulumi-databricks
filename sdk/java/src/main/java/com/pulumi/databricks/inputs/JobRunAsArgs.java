@@ -19,6 +19,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -50,6 +52,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="servicePrincipalName")
@@ -59,6 +62,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> servicePrincipalName() {
@@ -140,6 +146,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
          * 
          * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -171,6 +179,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -184,6 +193,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * @param servicePrincipalName The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
          * 
          * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -215,6 +226,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -17,6 +17,8 @@ public final class InstancePoolPreloadedDockerImage {
      * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
      * 
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class InstancePoolPreloadedDockerImage {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable InstancePoolPreloadedDockerImageBasicAuth basicAuth;
@@ -74,6 +77,8 @@ public final class InstancePoolPreloadedDockerImage {
      * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
      * 
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class InstancePoolPreloadedDockerImage {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<InstancePoolPreloadedDockerImageBasicAuth> basicAuth() {

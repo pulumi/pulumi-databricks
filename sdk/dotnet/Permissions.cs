@@ -14,39 +14,35 @@ namespace Pulumi.Databricks
     /// 
     /// ### Import Example
     /// 
-    ///  Configuration file:
+    /// Configuration file:
     /// 
-    ///  hcl
+    /// hcl
     /// 
-    ///  resource "databricks_mlflow_model" "model" {
+    /// resource "databricks_mlflow_model" "model" {
     /// 
-    ///  name
+    ///   name        = "example_model"
     /// 
-    /// = "example_model"
+    ///   description = "MLflow registered model"
     /// 
-    ///  description = "MLflow registered model"
+    /// }
     /// 
-    ///  }
+    /// resource "databricks_permissions" "model_usage" {
     /// 
-    ///  resource "databricks_permissions" "model_usage" {
+    ///   registered_model_id = databricks_mlflow_model.model.registered_model_id
     /// 
-    ///  registered_model_id = databricks_mlflow_model.model.registered_model_id
+    ///   access_control {
     /// 
-    ///  access_control {
+    ///     group_name       = "users"
+    ///     
+    ///     permission_level = "CAN_READ"
     /// 
-    ///  group_name
+    ///   }
     /// 
-    ///  = "users"
+    /// }
     /// 
-    ///  permission_level = "CAN_READ"
+    /// Import command:
     /// 
-    ///  }
-    /// 
-    ///  }
-    /// 
-    ///  Import command:
-    /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/&lt;registered_model_id&gt;

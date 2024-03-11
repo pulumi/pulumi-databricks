@@ -68,18 +68,21 @@ class AwaitableGetAwsCrossAccountPolicyResult(GetAwsCrossAccountPolicyResult):
 def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsCrossAccountPolicyResult:
     """
-    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
 
     ## Example Usage
 
     For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     this = databricks.get_aws_cross_account_policy()
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -107,18 +110,21 @@ def get_aws_cross_account_policy(pass_roles: Optional[Sequence[str]] = None,
 def get_aws_cross_account_policy_output(pass_roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
     """
-    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+    This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
 
     ## Example Usage
 
     For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     this = databricks.get_aws_cross_account_policy()
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

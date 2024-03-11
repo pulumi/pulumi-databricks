@@ -22,6 +22,7 @@ import (
 //
 // # For AWS
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,9 +63,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # For Azure
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,9 +108,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # For GCP
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -145,12 +150,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by name:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/storageCredential:StorageCredential this <name>

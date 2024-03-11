@@ -129,6 +129,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -137,12 +138,13 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             value="namespace_value",
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by predefined name `global`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global
@@ -170,6 +172,7 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -178,12 +181,13 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             value="namespace_value",
         ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by predefined name `global`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global

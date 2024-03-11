@@ -104,6 +104,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -114,6 +115,8 @@ class GroupInstanceProfile(pulumi.CustomResource):
             group_id=my_group.id,
             instance_profile_id=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -150,6 +153,7 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -160,6 +164,8 @@ class GroupInstanceProfile(pulumi.CustomResource):
             group_id=my_group.id,
             instance_profile_id=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:

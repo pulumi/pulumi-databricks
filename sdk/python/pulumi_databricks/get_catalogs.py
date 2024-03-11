@@ -63,6 +63,7 @@ def get_catalogs(ids: Optional[Sequence[str]] = None,
 
     Listing all catalogs:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -70,6 +71,8 @@ def get_catalogs(ids: Optional[Sequence[str]] = None,
     all = databricks.get_catalogs()
     pulumi.export("allCatalogs", all)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -98,6 +101,7 @@ def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     Listing all catalogs:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -105,6 +109,8 @@ def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     all = databricks.get_catalogs()
     pulumi.export("allCatalogs", all)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

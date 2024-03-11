@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...) and it's name:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/grants:Grants this catalog/abc

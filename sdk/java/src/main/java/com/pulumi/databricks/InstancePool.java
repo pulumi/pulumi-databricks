@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -82,6 +84,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access Control
  * 
  * * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
@@ -91,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  * The resource instance pool can be imported using it&#39;s id:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/instancePool:InstancePool this &lt;instance-pool-id&gt;

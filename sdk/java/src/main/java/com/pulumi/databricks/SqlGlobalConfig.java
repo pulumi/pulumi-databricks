@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.SqlEndpoint of workspace. *Please note that changing parameters of this resource will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
  * 
  * ## Example Usage
+ * 
  * ### AWS example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,9 +55,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Azure example
  * 
  * For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,6 +98,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -105,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_global_config` resource with command like the following (you need to use `global` as ID):
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/sqlGlobalConfig:SqlGlobalConfig this global

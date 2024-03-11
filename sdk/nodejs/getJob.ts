@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Getting the existing cluster id of specific databricks.Job by name or by id:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,6 +25,8 @@ import * as utilities from "./utilities";
  * });
  * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -92,6 +95,7 @@ export interface GetJobResult {
  *
  * Getting the existing cluster id of specific databricks.Job by name or by id:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -101,6 +105,8 @@ export interface GetJobResult {
  * });
  * export const jobNumWorkers = _this.then(_this => _this.jobSettings?.settings?.newCluster?.numWorkers);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

@@ -15,11 +15,58 @@ import (
 //
 // Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 //
+// ## Example Usage
+//
+// # For AWS
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
+//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("us-east-1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreDataAccess(ctx, "thisMetastoreDataAccess", &databricks.MetastoreDataAccessArgs{
+//				MetastoreId: thisMetastore.ID(),
+//				AwsIamRole: &databricks.MetastoreDataAccessAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(aws_iam_role.Metastore_data_access.Arn),
+//				},
+//				IsDefault: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// For Azure using managed identity as credential (recommended)
+//
 // ## Import
 //
 // This resource can be imported by combination of metastore id and the data access name.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'

@@ -25,11 +25,62 @@ import javax.annotation.Nullable;
  * 
  * Optionally, each databricks.Metastore can have a default databricks.StorageCredential defined as `databricks.MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
  * 
+ * ## Example Usage
+ * 
+ * For AWS
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.databricks.MetastoreDataAccess;
+ * import com.pulumi.databricks.MetastoreDataAccessArgs;
+ * import com.pulumi.databricks.inputs.MetastoreDataAccessAwsIamRoleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+ *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, aws_s3_bucket.metastore().id()))
+ *             .owner(&#34;uc admins&#34;)
+ *             .region(&#34;us-east-1&#34;)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreDataAccess = new MetastoreDataAccess(&#34;thisMetastoreDataAccess&#34;, MetastoreDataAccessArgs.builder()        
+ *             .metastoreId(thisMetastore.id())
+ *             .awsIamRole(MetastoreDataAccessAwsIamRoleArgs.builder()
+ *                 .roleArn(aws_iam_role.metastore_data_access().arn())
+ *                 .build())
+ *             .isDefault(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * For Azure using managed identity as credential (recommended)
+ * 
  * ## Import
  * 
  * This resource can be imported by combination of metastore id and the data access name.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this &#39;&lt;metastore_id&gt;|&lt;name&gt;&#39;

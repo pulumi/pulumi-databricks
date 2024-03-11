@@ -171,6 +171,7 @@ class ModelServing(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -206,6 +207,8 @@ class ModelServing(pulumi.CustomResource):
             ),
         ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
@@ -226,7 +229,7 @@ class ModelServing(pulumi.CustomResource):
 
         The model serving resource can be imported using the name of the endpoint.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>
@@ -248,6 +251,7 @@ class ModelServing(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -283,6 +287,8 @@ class ModelServing(pulumi.CustomResource):
             ),
         ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access Control
 
         * Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
@@ -303,7 +309,7 @@ class ModelServing(pulumi.CustomResource):
 
         The model serving resource can be imported using the name of the endpoint.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/modelServing:ModelServing this <model-serving-endpoint-name>

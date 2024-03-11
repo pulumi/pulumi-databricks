@@ -104,6 +104,7 @@ class GroupRole(pulumi.CustomResource):
 
         Attach an instance profile to a group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -114,9 +115,11 @@ class GroupRole(pulumi.CustomResource):
             group_id=my_group.id,
             role=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Attach account admin role to an account-level group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -126,6 +129,8 @@ class GroupRole(pulumi.CustomResource):
             group_id=my_group.id,
             role="account_admin")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -162,6 +167,7 @@ class GroupRole(pulumi.CustomResource):
 
         Attach an instance profile to a group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -172,9 +178,11 @@ class GroupRole(pulumi.CustomResource):
             group_id=my_group.id,
             role=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         Attach account admin role to an account-level group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -184,6 +192,8 @@ class GroupRole(pulumi.CustomResource):
             group_id=my_group.id,
             role="account_admin")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:

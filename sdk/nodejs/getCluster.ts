@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Retrieve attributes of each SQL warehouses in a workspace
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,6 +25,8 @@ import * as utilities from "./utilities";
  *     clusterId: __value,
  * })));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -97,6 +100,7 @@ export interface GetClusterResult {
  *
  * Retrieve attributes of each SQL warehouses in a workspace
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -106,6 +110,8 @@ export interface GetClusterResult {
  *     clusterId: __value,
  * })));
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:

@@ -7,12 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.getStorageCredentials to get names of all credentials
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+ * Getting details of an existing storage credential in the metastore
  */
 export function getStorageCredential(args: GetStorageCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageCredentialResult> {
 
@@ -46,12 +43,9 @@ export interface GetStorageCredentialResult {
     readonly storageCredentialInfo: outputs.GetStorageCredentialStorageCredentialInfo;
 }
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.getStorageCredentials to get names of all credentials
- * * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+ * Getting details of an existing storage credential in the metastore
  */
 export function getStorageCredentialOutput(args: GetStorageCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageCredentialResult> {
     return pulumi.output(args).apply((a: any) => getStorageCredential(a, opts))

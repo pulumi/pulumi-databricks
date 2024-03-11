@@ -16,12 +16,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about databricks_cluster_policy.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Referring to a cluster policy by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.Databricks
         ///     // ...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterPolicyResult> InvokeAsync(GetClusterPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyArgs(), options.WithDefaults());
@@ -54,12 +52,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about databricks_cluster_policy.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Referring to a cluster policy by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.Databricks
         ///     // ...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterPolicyResult> Invoke(GetClusterPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterPolicyResult>("databricks:index/getClusterPolicy:getClusterPolicy", args ?? new GetClusterPolicyInvokeArgs(), options.WithDefaults());

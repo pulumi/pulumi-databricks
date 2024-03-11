@@ -219,18 +219,20 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.VectorSearchEndpoint("this", endpoint_type="STANDARD")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the name of the Vector Search Endpoint
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>
@@ -254,18 +256,20 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.VectorSearchEndpoint("this", endpoint_type="STANDARD")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The resource can be imported using the name of the Vector Search Endpoint
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>

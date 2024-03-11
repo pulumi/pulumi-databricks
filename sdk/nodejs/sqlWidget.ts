@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -40,6 +41,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -54,7 +57,7 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_widget` resource with ID like the following:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlWidget:SqlWidget this <dashboard-id>/<widget-id>

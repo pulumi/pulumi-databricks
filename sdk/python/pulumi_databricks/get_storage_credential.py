@@ -68,12 +68,9 @@ def get_storage_credential(name: Optional[str] = None,
                            storage_credential_info: Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * get_storage_credentials to get names of all credentials
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
+    Getting details of an existing storage credential in the metastore
 
 
     :param str name: The name of the storage credential
@@ -95,12 +92,9 @@ def get_storage_credential_output(name: Optional[pulumi.Input[str]] = None,
                                   storage_credential_info: Optional[pulumi.Input[Optional[pulumi.InputType['GetStorageCredentialStorageCredentialInfoArgs']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
-    ## Related Resources
+    ## Example Usage
 
-    The following resources are used in the same context:
-
-    * get_storage_credentials to get names of all credentials
-    * StorageCredential to manage Storage Credentials within Unity Catalog.
+    Getting details of an existing storage credential in the metastore
 
 
     :param str name: The name of the storage credential

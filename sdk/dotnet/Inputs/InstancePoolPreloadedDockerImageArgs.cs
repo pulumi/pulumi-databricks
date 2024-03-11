@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,6 +54,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("basicAuth")]
         public Input<Inputs.InstancePoolPreloadedDockerImageBasicAuthArgs>? BasicAuth { get; set; }

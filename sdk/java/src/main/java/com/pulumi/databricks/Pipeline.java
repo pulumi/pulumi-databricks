@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * Use `databricks.Pipeline` to deploy [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,6 +104,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -116,7 +120,7 @@ import javax.annotation.Nullable;
  * 
  * The resource job can be imported using the id of the pipeline
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/pipeline:Pipeline this &lt;pipeline-id&gt;

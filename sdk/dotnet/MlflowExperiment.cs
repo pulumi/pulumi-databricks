@@ -14,6 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Access Control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -52,7 +55,7 @@ namespace Pulumi.Databricks
     /// 
     /// The experiment resource can be imported using the id of the experiment
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &lt;experiment-id&gt;

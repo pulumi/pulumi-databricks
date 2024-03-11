@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * * `enableTokensConfig` - (boolean) Enable or disable personal access tokens for this workspace.
  * * `enableDeprecatedClusterNamedInitScripts` - (boolean) Enable or disable [legacy cluster-named init scripts](https://docs.databricks.com/clusters/init-scripts.html#disable-legacy-cluster-named-init-scripts-for-a-workspace) for this workspace.
  * * `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

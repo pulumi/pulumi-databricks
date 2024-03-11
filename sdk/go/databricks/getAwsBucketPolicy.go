@@ -12,15 +12,6 @@ import (
 )
 
 // This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide.
-// * End to end workspace management guide
-// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
-// * Mount to [mount your cloud storage](https://docs.databricks.com/data/databricks-file-system.html#mount-object-storage-to-dbfs) on `dbfs:/mnt/name`.
 func GetAwsBucketPolicy(ctx *pulumi.Context, args *GetAwsBucketPolicyArgs, opts ...pulumi.InvokeOption) (*GetAwsBucketPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAwsBucketPolicyResult

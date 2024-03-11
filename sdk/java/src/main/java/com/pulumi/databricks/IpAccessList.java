@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** The total number of IP addresses and CIDR scopes provided across all ACL Lists in a workspace can not exceed 1000.  Refer to the docs above for specifics.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,6 +66,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -79,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * The databricks_ip_access_list can be imported using id:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/ipAccessList:IpAccessList this &lt;list-id&gt;

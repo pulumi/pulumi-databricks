@@ -63,6 +63,7 @@ def get_metastores(ids: Optional[Mapping[str, Any]] = None,
 
     Mapping of name to id of all metastores:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -70,6 +71,8 @@ def get_metastores(ids: Optional[Mapping[str, Any]] = None,
     all = databricks.get_metastores()
     pulumi.export("allMetastores", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -99,6 +102,7 @@ def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]
 
     Mapping of name to id of all metastores:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -106,6 +110,8 @@ def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, Any]]
     all = databricks.get_metastores()
     pulumi.export("allMetastores", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

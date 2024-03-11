@@ -169,6 +169,7 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -186,6 +187,8 @@ class IpAccessList(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[this]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -201,7 +204,7 @@ class IpAccessList(pulumi.CustomResource):
 
         The databricks_ip_access_list can be imported using id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
@@ -227,6 +230,7 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -244,6 +248,8 @@ class IpAccessList(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[this]))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -259,7 +265,7 @@ class IpAccessList(pulumi.CustomResource):
 
         The databricks_ip_access_list can be imported using id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>

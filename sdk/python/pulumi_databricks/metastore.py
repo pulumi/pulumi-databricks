@@ -531,11 +531,33 @@ class Metastore(pulumi.CustomResource):
 
         A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_metastore = databricks.Metastore("thisMetastore",
+            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
+            metastore_id=this_metastore.id,
+            workspace_id=local["workspace_id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure
+
         ## Import
 
         This resource can be imported by ID:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastore:Metastore this <id>
@@ -567,11 +589,33 @@ class Metastore(pulumi.CustomResource):
 
         A Unity Catalog metastore can be created without a root location & credential to maintain strict separation of storage across catalogs or environments.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_metastore = databricks.Metastore("thisMetastore",
+            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
+            metastore_id=this_metastore.id,
+            workspace_id=local["workspace_id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure
+
         ## Import
 
         This resource can be imported by ID:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastore:Metastore this <id>

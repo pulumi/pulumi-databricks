@@ -377,6 +377,7 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -429,9 +430,11 @@ class SqlQuery(pulumi.CustomResource):
                 "t2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Example permission to share query with all users:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -449,6 +452,8 @@ class SqlQuery(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Troubleshooting
 
         In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
@@ -470,7 +475,7 @@ class SqlQuery(pulumi.CustomResource):
 
         You can import a `databricks_sql_query` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>
@@ -500,6 +505,7 @@ class SqlQuery(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -552,9 +558,11 @@ class SqlQuery(pulumi.CustomResource):
                 "t2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Example permission to share query with all users:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -572,6 +580,8 @@ class SqlQuery(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Troubleshooting
 
         In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
@@ -593,7 +603,7 @@ class SqlQuery(pulumi.CustomResource):
 
         You can import a `databricks_sql_query` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlQuery:SqlQuery this <query-id>

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,6 +98,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -109,9 +112,9 @@ import (
 //
 // ## Import
 //
-// The resource job can be imported using the id of the pipeline
+// # The resource job can be imported using the id of the pipeline
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>

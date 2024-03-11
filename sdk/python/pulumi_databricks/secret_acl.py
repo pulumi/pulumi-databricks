@@ -136,6 +136,7 @@ class SecretAcl(pulumi.CustomResource):
 
         This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -151,6 +152,8 @@ class SecretAcl(pulumi.CustomResource):
             string_value=data["azurerm_key_vault_secret"]["example"]["value"],
             scope=app.name)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -166,7 +169,7 @@ class SecretAcl(pulumi.CustomResource):
 
         The resource secret acl can be imported using `scopeName|||principalName` combination.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`
@@ -191,6 +194,7 @@ class SecretAcl(pulumi.CustomResource):
 
         This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -206,6 +210,8 @@ class SecretAcl(pulumi.CustomResource):
             string_value=data["azurerm_key_vault_secret"]["example"]["value"],
             scope=app.name)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -221,7 +227,7 @@ class SecretAcl(pulumi.CustomResource):
 
         The resource secret acl can be imported using `scopeName|||principalName` combination.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`

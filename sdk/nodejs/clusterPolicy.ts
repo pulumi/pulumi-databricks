@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
  * * A user that has access to only cluster policies, can select the policies they have access to.
  *
- * ## Example Usage
  * ### Overriding the built-in cluster policies
  *
  * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
@@ -33,6 +32,7 @@ import * as utilities from "./utilities";
  *
  * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -53,6 +53,8 @@ import * as utilities from "./utilities";
  *     policyFamilyDefinitionOverrides: JSON.stringify(personal_vm_override),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -77,7 +79,7 @@ import * as utilities from "./utilities";
  *
  * The resource cluster policy can be imported using the policy id:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>

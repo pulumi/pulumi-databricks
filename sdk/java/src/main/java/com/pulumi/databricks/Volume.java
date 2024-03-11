@@ -37,9 +37,17 @@ import javax.annotation.Nullable;
  * 
  * The path to access files in volumes uses the following format:
  * 
+ * ```/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;```
+ * 
+ * Databricks also supports an optional ```dbfs:/``` scheme, so the following path also works:
+ * 
+ * ```dbfs:/Volumes/&lt;catalog&gt;/&lt;schema&gt;/&lt;volume&gt;/&lt;path&gt;/&lt;file_name&gt;```
+ * 
  * This resource manages Volumes in Unity Catalog.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -103,12 +111,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by `full_name` which is the 3-level Volume identifier: `&lt;catalog&gt;.&lt;schema&gt;.&lt;name&gt;`
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/volume:Volume this &lt;catalog_name&gt;.&lt;schema_name&gt;.&lt;name&gt;

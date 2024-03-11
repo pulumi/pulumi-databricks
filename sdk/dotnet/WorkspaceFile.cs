@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// The workspace file resource can be imported using workspace file path
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file

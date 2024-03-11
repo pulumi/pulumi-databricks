@@ -16,10 +16,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows to list notebooks in the Databricks Workspace.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNotebookPathsResult> InvokeAsync(GetNotebookPathsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows to list notebooks in the Databricks Workspace.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNotebookPathsResult> Invoke(GetNotebookPathsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookPathsResult>("databricks:index/getNotebookPaths:getNotebookPaths", args ?? new GetNotebookPathsInvokeArgs(), options.WithDefaults());

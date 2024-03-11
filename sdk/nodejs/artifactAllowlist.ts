@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -21,6 +22,8 @@ import * as utilities from "./utilities";
  *     artifactType: "INIT_SCRIPT",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -32,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported by name:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'

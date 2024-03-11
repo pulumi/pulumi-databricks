@@ -76,12 +76,14 @@ def get_zones(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesR
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     zones = databricks.get_zones()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -102,11 +104,13 @@ def get_zones_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Outp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     zones = databricks.get_zones()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

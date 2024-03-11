@@ -224,6 +224,7 @@ def get_group(acl_principal_id: Optional[str] = None,
 
     Adding user to administrative group
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -234,6 +235,8 @@ def get_group(acl_principal_id: Optional[str] = None,
         group_id=admins.id,
         member_id=me.id)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -319,6 +322,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
 
     Adding user to administrative group
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -329,6 +333,8 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
         group_id=admins.id,
         member_id=me.id)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

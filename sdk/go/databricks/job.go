@@ -13,9 +13,9 @@ import (
 
 // ## Import
 //
-// The resource job can be imported using the id of the job
+// # The resource job can be imported using the id of the job
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/job:Job this <job-id>
@@ -33,6 +33,7 @@ type Job struct {
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -46,6 +47,7 @@ type Job struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrOutput `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
@@ -155,6 +157,7 @@ type jobState struct {
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -168,6 +171,7 @@ type jobState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	ControlRunState *bool `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
@@ -248,6 +252,7 @@ type JobState struct {
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -261,6 +266,7 @@ type JobState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrInput
@@ -345,6 +351,7 @@ type jobArgs struct {
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -358,6 +365,7 @@ type jobArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	ControlRunState *bool `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
@@ -437,6 +445,7 @@ type JobArgs struct {
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -450,6 +459,7 @@ type JobArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrInput
@@ -623,6 +633,7 @@ func (o JobOutput) Continuous() JobContinuousPtrOutput {
 //
 // When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -639,6 +650,7 @@ func (o JobOutput) Continuous() JobContinuousPtrOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o JobOutput) ControlRunState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.ControlRunState }).(pulumi.BoolPtrOutput)
 }

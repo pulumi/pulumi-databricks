@@ -298,7 +298,6 @@ class ClusterPolicy(pulumi.CustomResource):
         * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
         * A user that has access to only cluster policies, can select the policies they have access to.
 
-        ## Example Usage
         ### Overriding the built-in cluster policies
 
         You can override built-in cluster policies by creating a `ClusterPolicy` resource with following attributes:
@@ -309,6 +308,7 @@ class ClusterPolicy(pulumi.CustomResource):
 
         You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -329,6 +329,8 @@ class ClusterPolicy(pulumi.CustomResource):
             policy_family_id="personal-vm",
             policy_family_definition_overrides=json.dumps(personal_vm_override))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -353,7 +355,7 @@ class ClusterPolicy(pulumi.CustomResource):
 
         The resource cluster policy can be imported using the policy id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>
@@ -391,7 +393,6 @@ class ClusterPolicy(pulumi.CustomResource):
         * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
         * A user that has access to only cluster policies, can select the policies they have access to.
 
-        ## Example Usage
         ### Overriding the built-in cluster policies
 
         You can override built-in cluster policies by creating a `ClusterPolicy` resource with following attributes:
@@ -402,6 +403,7 @@ class ClusterPolicy(pulumi.CustomResource):
 
         You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -422,6 +424,8 @@ class ClusterPolicy(pulumi.CustomResource):
             policy_family_id="personal-vm",
             policy_family_definition_overrides=json.dumps(personal_vm_override))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -446,7 +450,7 @@ class ClusterPolicy(pulumi.CustomResource):
 
         The resource cluster policy can be imported using the policy id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/clusterPolicy:ClusterPolicy this <cluster-policy-id>

@@ -281,6 +281,7 @@ class Entitlements(pulumi.CustomResource):
 
         Setting entitlements for a regular user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -291,9 +292,11 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Setting entitlements for a service principal:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -304,9 +307,11 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Setting entitlements to all users in a workspace - referencing special `users` Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -317,6 +322,8 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -333,13 +340,13 @@ class Entitlements(pulumi.CustomResource):
 
         The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
 
-         * `user/user_id` - user `user_id`.
+        * `user/user_id` - user `user_id`.
 
-         * `group/group_id` - group `group_id`.
+        * `group/group_id` - group `group_id`.
 
-         * `spn/spn_id` - service principal `spn_id`.
+        * `spn/spn_id` - service principal `spn_id`.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>
@@ -372,6 +379,7 @@ class Entitlements(pulumi.CustomResource):
 
         Setting entitlements for a regular user:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -382,9 +390,11 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Setting entitlements for a service principal:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -395,9 +405,11 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         Setting entitlements to all users in a workspace - referencing special `users` Group
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -408,6 +420,8 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -424,13 +438,13 @@ class Entitlements(pulumi.CustomResource):
 
         The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
 
-         * `user/user_id` - user `user_id`.
+        * `user/user_id` - user `user_id`.
 
-         * `group/group_id` - group `group_id`.
+        * `group/group_id` - group `group_id`.
 
-         * `spn/spn_id` - service principal `spn_id`.
+        * `spn/spn_id` - service principal `spn_id`.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/entitlements:Entitlements me user/<user-id>

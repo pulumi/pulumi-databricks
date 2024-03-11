@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * A widget is always tied to a dashboard. Every dashboard may have one or more widgets.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,6 +74,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -86,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_widget` resource with ID like the following:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/sqlWidget:SqlWidget this &lt;dashboard-id&gt;/&lt;widget-id&gt;

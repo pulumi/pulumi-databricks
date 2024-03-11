@@ -16,12 +16,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about databricks_instance_pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Referring to an instance pool by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.Databricks
         ///     // ...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancePoolResult> InvokeAsync(GetInstancePoolArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancePoolResult>("databricks:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolArgs(), options.WithDefaults());
@@ -54,12 +52,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about databricks_instance_pool.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Referring to an instance pool by name:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.Databricks
         ///     // ...
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancePoolResult> Invoke(GetInstancePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancePoolResult>("databricks:index/getInstancePool:getInstancePool", args ?? new GetInstancePoolInvokeArgs(), options.WithDefaults());

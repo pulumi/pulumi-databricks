@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -40,13 +41,15 @@ import * as utilities from "./utilities";
  *     provider: databricks.mws,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
  *
  * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
  * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+ * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
  */
 export function getAwsAssumeRolePolicy(args: GetAwsAssumeRolePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAssumeRolePolicyResult> {
 
@@ -96,6 +99,7 @@ export interface GetAwsAssumeRolePolicyResult {
  *
  * End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -125,13 +129,15 @@ export interface GetAwsAssumeRolePolicyResult {
  *     provider: databricks.mws,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
  *
  * * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
  * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
- * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+ * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
  */
 export function getAwsAssumeRolePolicyOutput(args: GetAwsAssumeRolePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAssumeRolePolicyResult> {
     return pulumi.output(args).apply((a: any) => getAwsAssumeRolePolicy(a, opts))

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * * `enableDeprecatedClusterNamedInitScripts` - (boolean) Enable or disable [legacy cluster-named init scripts](https://docs.databricks.com/clusters/init-scripts.html#disable-legacy-cluster-named-init-scripts-for-a-workspace) for this workspace.
  * * `enableDeprecatedGlobalInitScripts` - (boolean) Enable or disable [legacy global init scripts](https://docs.databricks.com/clusters/init-scripts.html#migrate-legacy-scripts) for this workspace.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,6 +24,7 @@ import * as utilities from "./utilities";
  *     enableIpAccessLists: true,
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

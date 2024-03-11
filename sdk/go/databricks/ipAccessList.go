@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +58,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -72,7 +75,7 @@ import (
 //
 // The databricks_ip_access_list can be imported using id:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>
