@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,6 +85,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

@@ -16,39 +16,35 @@ import (
 //
 // ### Import Example
 //
-//	Configuration file:
+// Configuration file:
 //
-//	hcl
+// hcl
 //
-//	resource "databricks_mlflow_model" "model" {
+// resource "databricks_mlflow_model" "model" {
 //
-//	name
-//
-// = "example_model"
+//	name        = "example_model"
 //
 //	description = "MLflow registered model"
 //
-//	}
+// }
 //
-//	resource "databricks_permissions" "model_usage" {
+// resource "databricks_permissions" "model_usage" {
 //
 //	registered_model_id = databricks_mlflow_model.model.registered_model_id
 //
 //	access_control {
 //
-//	group_name
+//	  group_name       = "users"
 //
-//	= "users"
-//
-//	permission_level = "CAN_READ"
+//	  permission_level = "CAN_READ"
 //
 //	}
 //
-//	}
+// }
 //
-//	Import command:
+// Import command:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/permissions:Permissions model_usage /registered-models/<registered_model_id>

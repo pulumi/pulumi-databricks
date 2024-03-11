@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using combination of securable type (`table`, `catalog`, `foreign_connection`, ...), it&#39;s name and `principal`:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/grant:Grant this catalog/abc/user_name

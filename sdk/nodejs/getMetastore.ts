@@ -7,13 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.getMetastores to get mapping of name to id of all metastores.
- * * databricks.Metastore to manage Metastores within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
+ * MetastoreInfo response for a given metastore id
  */
 export function getMetastore(args: GetMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreResult> {
 
@@ -53,13 +49,9 @@ export interface GetMetastoreResult {
     readonly metastoreInfo: outputs.GetMetastoreMetastoreInfo;
 }
 /**
- * ## Related Resources
+ * ## Example Usage
  *
- * The following resources are used in the same context:
- *
- * * databricks.getMetastores to get mapping of name to id of all metastores.
- * * databricks.Metastore to manage Metastores within Unity Catalog.
- * * databricks.Catalog to manage catalogs within Unity Catalog.
+ * MetastoreInfo response for a given metastore id
  */
 export function getMetastoreOutput(args: GetMetastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreResult> {
     return pulumi.output(args).apply((a: any) => getMetastore(a, opts))

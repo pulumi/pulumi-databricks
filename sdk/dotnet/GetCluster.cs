@@ -16,12 +16,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Retrieve attributes of each SQL warehouses in a workspace
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,8 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:
@@ -64,12 +63,11 @@ namespace Pulumi.Databricks
         /// 
         /// Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Retrieve attributes of each SQL warehouses in a workspace
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,8 +88,8 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Related Resources
         /// 
         /// The following resources are often used in the same context:

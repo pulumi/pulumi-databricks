@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * The resource job can be imported using the id of the job
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/job:Job this <job-id>
@@ -58,9 +58,11 @@ export class Job extends pulumi.CustomResource {
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     public readonly controlRunState!: pulumi.Output<boolean | undefined>;
     /**
@@ -296,9 +298,11 @@ export interface JobState {
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     controlRunState?: pulumi.Input<boolean>;
     /**
@@ -436,9 +440,11 @@ export interface JobArgs {
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     controlRunState?: pulumi.Input<boolean>;
     /**

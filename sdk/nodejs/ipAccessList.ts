@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -30,6 +31,8 @@ import * as utilities from "./utilities";
  *     dependsOn: [_this],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -45,7 +48,7 @@ import * as utilities from "./utilities";
  *
  * The databricks_ip_access_list can be imported using id:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/ipAccessList:IpAccessList this <list-id>

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,6 +54,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -68,7 +71,7 @@ import (
 //
 // The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`

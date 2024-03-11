@@ -19,6 +19,7 @@ import (
 //
 // * Retrieve attributes of each SQL warehouses in a workspace:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,9 +42,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // * Search for a specific SQL Warehouse by name:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,6 +70,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related resources
 //
 // The following resources are often used in the same context:

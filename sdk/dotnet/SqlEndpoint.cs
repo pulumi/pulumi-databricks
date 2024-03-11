@@ -14,6 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,6 +44,8 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Access control
     /// 
     /// * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -62,7 +65,7 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_sql_endpoint` resource with ID like the following:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this &lt;endpoint-id&gt;

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Referring to an instance pool by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  * const myCluster = new databricks.Cluster("myCluster", {instancePoolId: data.databricks_instance_pool.pool.id});
  * // ...
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstancePool(args: GetInstancePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancePoolResult> {
 
@@ -72,6 +74,7 @@ export interface GetInstancePoolResult {
  *
  * Referring to an instance pool by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -82,6 +85,7 @@ export interface GetInstancePoolResult {
  * const myCluster = new databricks.Cluster("myCluster", {instancePoolId: data.databricks_instance_pool.pool.id});
  * // ...
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstancePoolOutput(args: GetInstancePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancePoolResult> {
     return pulumi.output(args).apply((a: any) => getInstancePool(a, opts))

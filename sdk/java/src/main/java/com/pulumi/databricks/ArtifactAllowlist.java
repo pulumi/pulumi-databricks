@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,6 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -62,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * This resource can be imported by name:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this &#39;&lt;metastore_id&gt;|&lt;artifact_type&gt;&#39;

@@ -122,18 +122,20 @@ class SystemSchema(pulumi.CustomResource):
 
         Enable the system schema `access`
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SystemSchema("this", schema="access")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by the metastore id and schema name
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>
@@ -161,18 +163,20 @@ class SystemSchema(pulumi.CustomResource):
 
         Enable the system schema `access`
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         this = databricks.SystemSchema("this", schema="access")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by the metastore id and schema name
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/systemSchema:SystemSchema this <metastore_id>|<schema_name>

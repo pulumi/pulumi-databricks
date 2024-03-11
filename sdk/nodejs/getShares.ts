@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Getting all existing shares in the metastore
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -16,6 +17,8 @@ import * as utilities from "./utilities";
  * const this = databricks.getShares({});
  * export const shareName = _this.then(_this => _this.shares);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -61,6 +64,7 @@ export interface GetSharesResult {
  *
  * Getting all existing shares in the metastore
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -68,6 +72,8 @@ export interface GetSharesResult {
  * const this = databricks.getShares({});
  * export const shareName = _this.then(_this => _this.shares);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

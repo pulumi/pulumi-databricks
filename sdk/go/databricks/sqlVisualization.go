@@ -16,7 +16,7 @@ import (
 //
 // You can import a `databricks_sql_visualization` resource with ID like the following:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/sqlVisualization:SqlVisualization this <query-id>/<visualization-id>

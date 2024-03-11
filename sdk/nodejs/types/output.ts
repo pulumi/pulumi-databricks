@@ -49,6 +49,7 @@ export interface ClusterAutoscale {
      *
      * The following example demonstrates how to create an single node cluster:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -73,6 +74,7 @@ export interface ClusterAutoscale {
      *     },
      * });
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     maxWorkers?: number;
     /**
@@ -185,6 +187,7 @@ export interface ClusterClusterMountInfo {
      *
      * For example, you can mount Azure Data Lake Storage container using the following code:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -200,6 +203,7 @@ export interface ClusterClusterMountInfo {
      *     remoteMountDirPath: `${storageAccount}/${storageContainer}`,
      * }]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     localMountDirPath: string;
     /**
@@ -229,6 +233,7 @@ export interface ClusterDockerImage {
      *
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -246,6 +251,7 @@ export interface ClusterDockerImage {
      *     },
      * }});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     basicAuth?: outputs.ClusterDockerImageBasicAuth;
     /**
@@ -430,6 +436,7 @@ export interface ClusterWorkloadTypeClients {
     /**
      * boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -441,6 +448,7 @@ export interface ClusterWorkloadTypeClients {
      *     },
      * }});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     jobs?: boolean;
     /**
@@ -2543,6 +2551,7 @@ export interface InstancePoolPreloadedDockerImage {
      *
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -2560,6 +2569,7 @@ export interface InstancePoolPreloadedDockerImage {
      *     },
      * }]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     basicAuth?: outputs.InstancePoolPreloadedDockerImageBasicAuth;
     /**
@@ -3156,6 +3166,7 @@ export interface JobRunAs {
      *
      * Example:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -3164,6 +3175,7 @@ export interface JobRunAs {
      *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
      * }});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     servicePrincipalName?: string;
     /**
@@ -3966,6 +3978,7 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
      *
      * Example
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -4006,6 +4019,7 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
      *     },
      * ]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     path: string;
     /**
@@ -4026,9 +4040,11 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      *
      * Example
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**
@@ -4486,6 +4502,7 @@ export interface JobTaskSqlTaskFile {
      *
      * Example
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -4526,6 +4543,7 @@ export interface JobTaskSqlTaskFile {
      *     },
      * ]});
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     path: string;
     /**
@@ -4546,9 +4564,11 @@ export interface JobTaskWebhookNotifications {
      *
      * Example
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**
@@ -4635,9 +4655,11 @@ export interface JobWebhookNotifications {
      *
      * Example
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**

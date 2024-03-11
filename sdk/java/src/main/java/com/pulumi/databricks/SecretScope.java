@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Sometimes accessing data requires that you authenticate to external data sources through JDBC. Instead of directly entering your credentials into a notebook, use Databricks secrets to store your credentials and reference them in notebooks and jobs. Please consult [Secrets User Guide](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) for more details.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -44,6 +46,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -58,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won&#39;t be imported, because the underlying API doesn&#39;t include it in the response.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/secretScope:SecretScope object &lt;scopeName&gt;

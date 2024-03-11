@@ -83,6 +83,7 @@ def get_volumes(catalog_name: Optional[str] = None,
 
     Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -91,6 +92,8 @@ def get_volumes(catalog_name: Optional[str] = None,
         schema_name="things")
     pulumi.export("allVolumes", this)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -128,6 +131,7 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[str]] = None,
 
     Listing all volumes in a _things_ Schema of a  _sandbox_ databricks_catalog:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -136,6 +140,8 @@ def get_volumes_output(catalog_name: Optional[pulumi.Input[str]] = None,
         schema_name="things")
     pulumi.export("allVolumes", this)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

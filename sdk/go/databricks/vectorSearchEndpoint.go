@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,12 +42,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// The resource can be imported using the name of the Vector Search Endpoint
+// # The resource can be imported using the name of the Vector Search Endpoint
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this <endpoint-name>

@@ -18,6 +18,7 @@ import (
 //
 // # Adding AWS instance profile to a user
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,9 +55,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // # Adding user as administrator to Databricks Account
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,6 +90,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:

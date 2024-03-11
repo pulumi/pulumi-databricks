@@ -13,6 +13,8 @@ import javax.annotation.Nullable;
 public final class ClusterWorkloadTypeClients {
     /**
      * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -48,6 +50,7 @@ public final class ClusterWorkloadTypeClients {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean jobs;
@@ -60,6 +63,8 @@ public final class ClusterWorkloadTypeClients {
     private ClusterWorkloadTypeClients() {}
     /**
      * @return boolean flag defining if it&#39;s possible to run Databricks Jobs on this cluster. Default: `true`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -95,6 +100,7 @@ public final class ClusterWorkloadTypeClients {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> jobs() {

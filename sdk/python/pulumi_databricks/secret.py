@@ -166,6 +166,7 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -179,6 +180,8 @@ class Secret(pulumi.CustomResource):
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
         })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -194,7 +197,7 @@ class Secret(pulumi.CustomResource):
 
         The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`
@@ -217,6 +220,7 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -230,6 +234,8 @@ class Secret(pulumi.CustomResource):
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
         })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -245,7 +251,7 @@ class Secret(pulumi.CustomResource):
 
         The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`

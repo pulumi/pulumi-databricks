@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// You can import a `databricks_sql_visualization` resource with ID like the following:
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import databricks:index/sqlVisualization:SqlVisualization this &lt;query-id&gt;/&lt;visualization-id&gt;

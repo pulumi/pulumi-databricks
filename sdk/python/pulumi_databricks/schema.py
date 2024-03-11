@@ -297,6 +297,7 @@ class Schema(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -313,6 +314,8 @@ class Schema(pulumi.CustomResource):
                 "kind": "various",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -325,7 +328,7 @@ class Schema(pulumi.CustomResource):
 
         This resource can be imported by its full name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>
@@ -356,6 +359,7 @@ class Schema(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -372,6 +376,8 @@ class Schema(pulumi.CustomResource):
                 "kind": "various",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -384,7 +390,7 @@ class Schema(pulumi.CustomResource):
 
         This resource can be imported by its full name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/schema:Schema this <catalog_name>.<name>

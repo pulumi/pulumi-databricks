@@ -104,6 +104,7 @@ class UserInstanceProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -114,6 +115,8 @@ class UserInstanceProfile(pulumi.CustomResource):
             user_id=my_user.id,
             instance_profile_id=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -147,6 +150,7 @@ class UserInstanceProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -157,6 +161,8 @@ class UserInstanceProfile(pulumi.CustomResource):
             user_id=my_user.id,
             instance_profile_id=instance_profile.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are often used in the same context:

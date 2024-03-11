@@ -11,12 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Related Resources
+// ## Example Usage
 //
-// The following resources are used in the same context:
-//
-// * getStorageCredentials to get names of all credentials
-// * StorageCredential to manage Storage Credentials within Unity Catalog.
+// Getting details of an existing storage credential in the metastore
 func LookupStorageCredential(ctx *pulumi.Context, args *LookupStorageCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageCredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageCredentialResult

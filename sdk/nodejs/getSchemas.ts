@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Listing all schemas in a _sandbox_ databricks_catalog:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -18,6 +19,8 @@ import * as utilities from "./utilities";
  * });
  * export const allSandboxSchemas = sandbox;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -67,6 +70,7 @@ export interface GetSchemasResult {
  *
  * Listing all schemas in a _sandbox_ databricks_catalog:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -76,6 +80,8 @@ export interface GetSchemasResult {
  * });
  * export const allSandboxSchemas = sandbox;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

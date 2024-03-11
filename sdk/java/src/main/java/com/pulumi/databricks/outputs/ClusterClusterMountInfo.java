@@ -17,6 +17,8 @@ public final class ClusterClusterMountInfo {
      * @return path inside the Spark container.
      * 
      * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class ClusterClusterMountInfo {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String localMountDirPath;
@@ -77,6 +80,8 @@ public final class ClusterClusterMountInfo {
      * @return path inside the Spark container.
      * 
      * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -118,6 +123,7 @@ public final class ClusterClusterMountInfo {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String localMountDirPath() {

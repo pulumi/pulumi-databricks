@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -38,6 +39,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Access Control
  *
  * * databricks.Group and databricks.User can control which groups or individual users can create instance pools.
@@ -47,7 +50,7 @@ import * as utilities from "./utilities";
  *
  * The resource instance pool can be imported using it's id:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/instancePool:InstancePool this <instance-pool-id>

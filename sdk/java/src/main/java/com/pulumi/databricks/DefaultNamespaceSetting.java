@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * This setting requires a restart of clusters and SQL warehouses to take effect. Additionally, the default namespace only applies when using Unity Catalog-enabled compute.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -56,12 +58,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by predefined name `global`:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/defaultNamespaceSetting:DefaultNamespaceSetting this global

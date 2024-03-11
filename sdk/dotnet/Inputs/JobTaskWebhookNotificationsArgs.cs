@@ -22,6 +22,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.Databricks.Inputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs> OnDurationWarningThresholdExceededs
         {

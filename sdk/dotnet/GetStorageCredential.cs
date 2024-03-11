@@ -12,23 +12,17 @@ namespace Pulumi.Databricks
     public static class GetStorageCredential
     {
         /// <summary>
-        /// ## Related Resources
+        /// ## Example Usage
         /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.getStorageCredentials to get names of all credentials
-        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+        /// Getting details of an existing storage credential in the metastore
         /// </summary>
         public static Task<GetStorageCredentialResult> InvokeAsync(GetStorageCredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Related Resources
+        /// ## Example Usage
         /// 
-        /// The following resources are used in the same context:
-        /// 
-        /// * databricks.getStorageCredentials to get names of all credentials
-        /// * databricks.StorageCredential to manage Storage Credentials within Unity Catalog.
+        /// Getting details of an existing storage credential in the metastore
         /// </summary>
         public static Output<GetStorageCredentialResult> Invoke(GetStorageCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageCredentialResult>("databricks:index/getStorageCredential:getStorageCredential", args ?? new GetStorageCredentialInvokeArgs(), options.WithDefaults());

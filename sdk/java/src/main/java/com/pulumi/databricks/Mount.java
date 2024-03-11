@@ -43,6 +43,8 @@ import javax.annotation.Nullable;
  * * `encryption_type` - (Optional, String) encryption type. Currently used only for [AWS S3 mounts](https://docs.databricks.com/data/data-sources/aws/amazon-s3.html#encrypt-data-in-s3-buckets)
  * 
  * ### Example mounting ADLS Gen2 using uri and extra_configs
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,6 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example mounting ADLS Gen2 with AAD passthrough
  * 
@@ -99,6 +102,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Mounts using AAD passthrough cannot be created using a service principal.
  * 
  * To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough &amp; provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -170,6 +175,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## s3 block
  * 
@@ -179,6 +185,8 @@ import javax.annotation.Nullable;
  * * `bucket_name` - (Required) (String) S3 bucket name to be mounted.
  * 
  * ### Example of mounting S3
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -211,6 +219,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## abfs block
  * 
@@ -228,6 +237,8 @@ import javax.annotation.Nullable;
  * ### Creating mount for ADLS Gen2 using abfs block
  * 
  * In this example, we&#39;re using Azure authentication, so we can omit some parameters (`tenant_id`, `storage_account_name`, and `container_name`) that will be detected automatically.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -303,6 +314,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## gs block
  * 
@@ -312,6 +324,8 @@ import javax.annotation.Nullable;
  * * `bucket_name` - (Required) (String) GCS bucket name to be mounted.
  * 
  * ### Example mounting Google Cloud Storage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -344,6 +358,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## adl block
  * 
@@ -359,6 +374,8 @@ import javax.annotation.Nullable;
  * * `directory` - (Computed) (String) This is optional if you don&#39;t want to add an additional directory that you wish to mount. This must start with a &#34;/&#34;.
  * 
  * ### Example mounting ADLS Gen1
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -395,6 +412,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## wasb block
  * 
@@ -408,6 +426,8 @@ import javax.annotation.Nullable;
  * * `directory` - (Computed) (String) This is optional if you don&#39;t want to add an additional directory that you wish to mount. This must start with a &#34;/&#34;.
  * 
  * ### Example mounting Azure Blob Storage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -474,6 +494,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Migration from other mount resources
  * 

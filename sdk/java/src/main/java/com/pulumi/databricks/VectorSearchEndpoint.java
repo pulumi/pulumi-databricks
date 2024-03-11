@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * This resource allows you to create [Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Vector Search Endpoint is used to create and access vector search indexes.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,12 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * The resource can be imported using the name of the Vector Search Endpoint
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/vectorSearchEndpoint:VectorSearchEndpoint this &lt;endpoint-name&gt;

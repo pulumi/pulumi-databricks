@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Granting view databricks.Permissions to all databricks.Job within the workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -27,9 +28,11 @@ import * as utilities from "./utilities";
  *     }
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Getting ID of specific databricks.Job by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -40,6 +43,8 @@ import * as utilities from "./utilities";
  *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
  * };
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
@@ -83,6 +88,7 @@ export interface GetJobsResult {
  *
  * Granting view databricks.Permissions to all databricks.Job within the workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -101,9 +107,11 @@ export interface GetJobsResult {
  *     }
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Getting ID of specific databricks.Job by name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -114,6 +122,8 @@ export interface GetJobsResult {
  *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
  * };
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -31,6 +32,8 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Access Control
  *
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, *Manage Staging Versions*, *Manage Production Versions*, and *Manage* individual models.
@@ -52,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * The model resource can be imported using the name
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/mlflowModel:MlflowModel this <name>

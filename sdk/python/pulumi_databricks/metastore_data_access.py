@@ -398,11 +398,36 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_metastore = databricks.Metastore("thisMetastore",
+            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("thisMetastoreDataAccess",
+            metastore_id=this_metastore.id,
+            aws_iam_role=databricks.MetastoreDataAccessAwsIamRoleArgs(
+                role_arn=aws_iam_role["metastore_data_access"]["arn"],
+            ),
+            is_default=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure using managed identity as credential (recommended)
+
         ## Import
 
         This resource can be imported by combination of metastore id and the data access name.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'
@@ -423,11 +448,36 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this_metastore = databricks.Metastore("thisMetastore",
+            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+            owner="uc admins",
+            region="us-east-1",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("thisMetastoreDataAccess",
+            metastore_id=this_metastore.id,
+            aws_iam_role=databricks.MetastoreDataAccessAwsIamRoleArgs(
+                role_arn=aws_iam_role["metastore_data_access"]["arn"],
+            ),
+            is_default=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure using managed identity as credential (recommended)
+
         ## Import
 
         This resource can be imported by combination of metastore id and the data access name.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastoreDataAccess:MetastoreDataAccess this '<metastore_id>|<name>'

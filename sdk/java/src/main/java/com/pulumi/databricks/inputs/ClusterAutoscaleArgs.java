@@ -28,6 +28,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
      * 
      * The following example demonstrates how to create an single node cluster:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -75,6 +77,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="maxWorkers")
@@ -93,6 +96,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
      * 
      * The following example demonstrates how to create an single node cluster:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -140,6 +145,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Integer>> maxWorkers() {
@@ -199,6 +205,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
          * 
          * The following example demonstrates how to create an single node cluster:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -246,6 +254,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -268,6 +277,8 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          * * `&#34;ResourceClass&#34; = &#34;SingleNode&#34;`
          * 
          * The following example demonstrates how to create an single node cluster:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -315,6 +326,7 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

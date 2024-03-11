@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Setting entitlements for a regular user:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,8 +61,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Setting entitlements for a service principal:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -97,8 +102,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -135,6 +143,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -151,13 +161,13 @@ import javax.annotation.Nullable;
  * 
  * The resource can be imported using a synthetic identifier. Examples of valid synthetic identifiers are:
  * 
- *  * `user/user_id` - user `user_id`.
+ * * `user/user_id` - user `user_id`.
  * 
- *  * `group/group_id` - group `group_id`.
+ * * `group/group_id` - group `group_id`.
  * 
- *  * `spn/spn_id` - service principal `spn_id`.
+ * * `spn/spn_id` - service principal `spn_id`.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/entitlements:Entitlements me user/&lt;user-id&gt;

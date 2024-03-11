@@ -61,9 +61,11 @@ class JobArgs:
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
@@ -235,9 +237,11 @@ class JobArgs:
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 
@@ -682,9 +686,11 @@ class _JobState:
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
@@ -859,9 +865,11 @@ class _JobState:
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 
@@ -1318,7 +1326,7 @@ class Job(pulumi.CustomResource):
 
         The resource job can be imported using the id of the job
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/job:Job this <job-id>
@@ -1331,9 +1339,11 @@ class Job(pulumi.CustomResource):
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
@@ -1362,7 +1372,7 @@ class Job(pulumi.CustomResource):
 
         The resource job can be imported using the id of the job
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/job:Job this <job-id>
@@ -1530,9 +1540,11 @@ class Job(pulumi.CustomResource):
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
@@ -1625,9 +1637,11 @@ class Job(pulumi.CustomResource):
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 

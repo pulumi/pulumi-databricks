@@ -6,25 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
- *
- * ## Exported attributes
- *
- * Data source exposes the following attributes:
- *
- * * `isAccount` - Whether the provider is configured at account-level
- * * `accountId` - Account Id if provider is configured at account-level
- * * `host` - Host of the Databricks workspace or account console
- * * `cloudType` - Cloud type specified in the provider
- * * `authType` - Auth type used by the provider
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * End to end workspace management guide
- * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  */
 export function getCurrentConfig(args?: GetCurrentConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentConfigResult> {
     args = args || {};
@@ -66,25 +47,6 @@ export interface GetCurrentConfigResult {
 }
 /**
  * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
- *
- * ## Exported attributes
- *
- * Data source exposes the following attributes:
- *
- * * `isAccount` - Whether the provider is configured at account-level
- * * `accountId` - Account Id if provider is configured at account-level
- * * `host` - Host of the Databricks workspace or account console
- * * `cloudType` - Cloud type specified in the provider
- * * `authType` - Auth type used by the provider
- *
- * ## Related Resources
- *
- * The following resources are used in the same context:
- *
- * * End to end workspace management guide
- * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
- * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
- * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
  */
 export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentConfigResult> {
     return pulumi.output(args).apply((a: any) => getCurrentConfig(a, opts))

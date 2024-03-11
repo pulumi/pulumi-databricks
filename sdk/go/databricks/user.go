@@ -24,6 +24,7 @@ import (
 //
 // Creating regular user:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,9 +48,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,9 +89,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating user with cluster create permissions:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,9 +119,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating user in AWS Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,9 +158,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Creating user in Azure Databricks account:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -187,6 +196,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -203,7 +214,7 @@ import (
 //
 // The resource scim user can be imported using id:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/user:User me <user-id>

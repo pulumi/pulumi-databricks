@@ -72,21 +72,26 @@ def get_clusters(cluster_name_contains: Optional[str] = None,
 
     Retrieve all clusters on this workspace on AWS or GCP:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
     ```
+    <!--End PulumiCodeChooser -->
 
     Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all_shared = databricks.get_clusters(cluster_name_contains="shared")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -121,21 +126,26 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[st
 
     Retrieve all clusters on this workspace on AWS or GCP:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
     ```
+    <!--End PulumiCodeChooser -->
 
     Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all_shared = databricks.get_clusters(cluster_name_contains="shared")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

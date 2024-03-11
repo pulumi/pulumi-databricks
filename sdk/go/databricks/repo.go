@@ -16,7 +16,7 @@ import (
 //
 // The resource Repo can be imported using the Repo ID (obtained via UI or using API)
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/repo:Repo this repo_id

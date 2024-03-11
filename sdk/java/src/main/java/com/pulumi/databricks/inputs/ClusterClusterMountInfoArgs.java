@@ -21,6 +21,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * path inside the Spark container.
      * 
      * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -62,6 +64,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="localMountDirPath", required=true)
@@ -71,6 +74,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * @return path inside the Spark container.
      * 
      * For example, you can mount Azure Data Lake Storage container using the following code:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -112,6 +117,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> localMountDirPath() {
@@ -178,6 +184,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * @param localMountDirPath path inside the Spark container.
          * 
          * For example, you can mount Azure Data Lake Storage container using the following code:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -219,6 +227,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -232,6 +241,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * @param localMountDirPath path inside the Spark container.
          * 
          * For example, you can mount Azure Data Lake Storage container using the following code:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -273,6 +284,7 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

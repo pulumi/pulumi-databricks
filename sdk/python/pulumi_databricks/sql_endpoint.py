@@ -588,6 +588,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -603,6 +604,8 @@ class SqlEndpoint(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -622,7 +625,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         You can import a `databricks_sql_endpoint` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>
@@ -658,6 +661,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -673,6 +677,8 @@ class SqlEndpoint(pulumi.CustomResource):
                 )],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Access control
 
         * Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -692,7 +698,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         You can import a `databricks_sql_endpoint` resource with ID like the following:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>

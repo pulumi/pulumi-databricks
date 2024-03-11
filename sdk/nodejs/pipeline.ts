@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -68,6 +69,8 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -82,7 +85,7 @@ import * as utilities from "./utilities";
  *
  * The resource job can be imported using the id of the pipeline
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/pipeline:Pipeline this <pipeline-id>

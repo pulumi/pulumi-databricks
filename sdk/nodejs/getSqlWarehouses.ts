@@ -9,15 +9,18 @@ import * as utilities from "./utilities";
  *
  * Retrieve all SQL warehouses on this workspace on AWS or GCP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -26,6 +29,8 @@ import * as utilities from "./utilities";
  *     warehouseNameContains: "shared",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -79,15 +84,18 @@ export interface GetSqlWarehousesResult {
  *
  * Retrieve all SQL warehouses on this workspace on AWS or GCP:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -96,6 +104,8 @@ export interface GetSqlWarehousesResult {
  *     warehouseNameContains: "shared",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:

@@ -429,11 +429,43 @@ class ExternalLocation(pulumi.CustomResource):
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=aws_iam_role["external_data_access"]["arn"],
+            ),
+            comment="Managed by TF")
+        some_external_location = databricks.ExternalLocation("someExternalLocation",
+            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+            credential_name=external.id,
+            comment="Managed by TF")
+        some_grants = databricks.Grants("someGrants",
+            external_location=some_external_location.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure
+
         ## Import
 
         This resource can be imported by `name`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>
@@ -467,11 +499,43 @@ class ExternalLocation(pulumi.CustomResource):
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
         - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 
+        ## Example Usage
+
+        For AWS
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        external = databricks.StorageCredential("external",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=aws_iam_role["external_data_access"]["arn"],
+            ),
+            comment="Managed by TF")
+        some_external_location = databricks.ExternalLocation("someExternalLocation",
+            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+            credential_name=external.id,
+            comment="Managed by TF")
+        some_grants = databricks.Grants("someGrants",
+            external_location=some_external_location.id,
+            grants=[databricks.GrantsGrantArgs(
+                principal="Data Engineers",
+                privileges=[
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        For Azure
+
         ## Import
 
         This resource can be imported by `name`:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>

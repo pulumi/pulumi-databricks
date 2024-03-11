@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -79,6 +81,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Manage*, *Query* or *View* individual serving endpoints.
@@ -99,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  * The model serving resource can be imported using the name of the endpoint.
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/modelServing:ModelServing this &lt;model-serving-endpoint-name&gt;

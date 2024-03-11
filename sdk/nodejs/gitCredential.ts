@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * The resource cluster can be imported using ID of Git credential that could be obtained via REST API:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/gitCredential:GitCredential this <git-credential-id>

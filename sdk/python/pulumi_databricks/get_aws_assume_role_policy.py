@@ -94,6 +94,7 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
 
     End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -117,13 +118,15 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
         role_arn=cross_account_role.arn,
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
 
 
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -156,6 +159,7 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
 
     End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -179,13 +183,15 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
         role_arn=cross_account_role.arn,
         opts=pulumi.ResourceOptions(provider=databricks["mws"]))
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
 
 
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).

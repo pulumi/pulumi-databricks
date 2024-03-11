@@ -193,6 +193,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -204,6 +205,8 @@ class ArtifactAllowlist(pulumi.CustomResource):
             )],
             artifact_type="INIT_SCRIPT")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -215,7 +218,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         This resource can be imported by name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'
@@ -237,6 +240,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -248,6 +252,8 @@ class ArtifactAllowlist(pulumi.CustomResource):
             )],
             artifact_type="INIT_SCRIPT")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -259,7 +265,7 @@ class ArtifactAllowlist(pulumi.CustomResource):
 
         This resource can be imported by name:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/artifactAllowlist:ArtifactAllowlist this '<metastore_id>|<artifact_type>'

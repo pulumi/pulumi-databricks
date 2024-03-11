@@ -137,6 +137,7 @@ class MetastoreAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -150,12 +151,13 @@ class MetastoreAssignment(pulumi.CustomResource):
             metastore_id=this_metastore.id,
             workspace_id=local["workspace_id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by combination of workspace id and metastore id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'
@@ -180,6 +182,7 @@ class MetastoreAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -193,12 +196,13 @@ class MetastoreAssignment(pulumi.CustomResource):
             metastore_id=this_metastore.id,
             workspace_id=local["workspace_id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by combination of workspace id and metastore id:
 
-         bash
+        bash
 
         ```sh
         $ pulumi import databricks:index/metastoreAssignment:MetastoreAssignment this '<workspace_id>|<metastore_id>'

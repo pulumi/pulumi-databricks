@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -27,6 +28,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Access control
  *
  * * databricks.Permissions can control which groups or individual users can *Can Use* or *Can Manage* SQL warehouses.
@@ -46,7 +49,7 @@ import * as utilities from "./utilities";
  *
  * You can import a `databricks_sql_endpoint` resource with ID like the following:
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/sqlEndpoint:SqlEndpoint this <endpoint-id>

@@ -69,6 +69,7 @@ def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
 
     Listing all workspaces in
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -76,6 +77,8 @@ def get_mws_workspaces(ids: Optional[Mapping[str, Any]] = None,
     all = databricks.get_mws_workspaces()
     pulumi.export("allMwsWorkspaces", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:
@@ -110,6 +113,7 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, A
 
     Listing all workspaces in
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -117,6 +121,8 @@ def get_mws_workspaces_output(ids: Optional[pulumi.Input[Optional[Mapping[str, A
     all = databricks.get_mws_workspaces()
     pulumi.export("allMwsWorkspaces", all.ids)
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Related Resources
 
     The following resources are used in the same context:

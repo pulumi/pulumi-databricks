@@ -14,12 +14,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Lists all available databricks_instance_profiles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get all instance profiles:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceProfilesResult> InvokeAsync(GetInstanceProfilesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesArgs(), options.WithDefaults());
@@ -45,12 +43,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Lists all available databricks_instance_profiles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Get all instance profiles:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceProfilesResult> Invoke(GetInstanceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesInvokeArgs(), options.WithDefaults());

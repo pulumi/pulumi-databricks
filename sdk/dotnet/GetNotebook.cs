@@ -16,10 +16,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows to export a notebook from Databricks Workspace.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNotebookResult> InvokeAsync(GetNotebookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotebookResult>("databricks:index/getNotebook:getNotebook", args ?? new GetNotebookArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.Databricks
         /// 
         /// This data source allows to export a notebook from Databricks Workspace.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNotebookResult> Invoke(GetNotebookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotebookResult>("databricks:index/getNotebook:getNotebook", args ?? new GetNotebookInvokeArgs(), options.WithDefaults());

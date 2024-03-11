@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * The workspace file resource can be imported using workspace file path
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/workspaceFile:WorkspaceFile this /path/to/file

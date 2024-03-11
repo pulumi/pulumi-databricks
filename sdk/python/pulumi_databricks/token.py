@@ -195,6 +195,7 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -208,9 +209,11 @@ class Token(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
         pulumi.export("databricksToken", pat.token_value)
         ```
+        <!--End PulumiCodeChooser -->
 
         A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -221,6 +224,7 @@ class Token(pulumi.CustomResource):
             comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
             lifetime_seconds=60 * 24 * 60 * 60)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -242,6 +246,7 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -255,9 +260,11 @@ class Token(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
         pulumi.export("databricksToken", pat.token_value)
         ```
+        <!--End PulumiCodeChooser -->
 
         A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -268,6 +275,7 @@ class Token(pulumi.CustomResource):
             comment=this.rfc3339.apply(lambda rfc3339: f"Terraform (created: {rfc3339})"),
             lifetime_seconds=60 * 24 * 60 * 60)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

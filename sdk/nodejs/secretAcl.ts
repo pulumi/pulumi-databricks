@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -28,6 +29,8 @@ import * as utilities from "./utilities";
  *     scope: app.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -43,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * The resource secret acl can be imported using `scopeName|||principalName` combination.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/secretAcl:SecretAcl object `scopeName|||principalName`

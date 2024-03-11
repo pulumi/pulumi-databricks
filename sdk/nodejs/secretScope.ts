@@ -11,12 +11,15 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.SecretScope("this", {});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -31,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * The secret resource scope can be imported using the scope name. `initial_manage_principal` state won't be imported, because the underlying API doesn't include it in the response.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/secretScope:SecretScope object <scopeName>

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,6 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Access Control
  * 
  * * databricks.Permissions can control which groups or individual users can *Read*, *Edit*, or *Manage* individual experiments.
@@ -71,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * The experiment resource can be imported using the id of the experiment
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/mlflowExperiment:MlflowExperiment this &lt;experiment-id&gt;

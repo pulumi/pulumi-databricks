@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,6 +24,8 @@ import * as utilities from "./utilities";
  *     "fs.azure.account.oauth2.client.secret": publishingApi.configReference,
  * }});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -38,7 +41,7 @@ import * as utilities from "./utilities";
  *
  * The resource secret can be imported using `scopeName|||secretKey` combination. **This may change in future versions.**
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import databricks:index/secret:Secret app `scopeName|||secretKey`

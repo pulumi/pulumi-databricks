@@ -18,9 +18,11 @@ import (
 //
 // ### Customer-managed key for managed services
 //
-// You must configure this during workspace creation
+// # You must configure this during workspace creation
+//
 // ### For AWS
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,8 +118,11 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### For GCP
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -151,9 +156,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Customer-managed key for workspace storage
+//
 // ### For AWS
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -307,8 +316,11 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### For GCP
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -342,6 +354,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

@@ -19,11 +19,71 @@ import (
 // - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
 // - `ExternalLocation` are objects that combine a cloud storage path with a Storage Credential that can be used to access the location.
 //
+// ## Example Usage
+//
+// # For AWS
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
+//					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
+//				},
+//				Comment: pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			someExternalLocation, err := databricks.NewExternalLocation(ctx, "someExternalLocation", &databricks.ExternalLocationArgs{
+//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", aws_s3_bucket.External.Id)),
+//				CredentialName: external.ID(),
+//				Comment:        pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "someGrants", &databricks.GrantsArgs{
+//				ExternalLocation: someExternalLocation.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// # For Azure
+//
 // ## Import
 //
 // This resource can be imported by `name`:
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import databricks:index/externalLocation:ExternalLocation this <name>

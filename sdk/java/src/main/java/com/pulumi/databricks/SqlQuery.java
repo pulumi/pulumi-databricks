@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * A query may have one or more visualizations.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -106,8 +108,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Example permission to share query with all users:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -146,6 +151,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Troubleshooting
  * 
  * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
@@ -167,7 +174,7 @@ import javax.annotation.Nullable;
  * 
  * You can import a `databricks_sql_query` resource with ID like the following:
  * 
- *  bash
+ * bash
  * 
  * ```sh
  * $ pulumi import databricks:index/sqlQuery:SqlQuery this &lt;query-id&gt;
