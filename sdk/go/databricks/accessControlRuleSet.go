@@ -53,7 +53,7 @@ import (
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							*pulumi.String(ds.AclPrincipalId),
+//							pulumi.String(ds.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/servicePrincipal.user"),
 //					},
@@ -245,7 +245,7 @@ import (
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							*pulumi.String(john.AclPrincipalId),
+//							pulumi.String(john.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/group.manager"),
 //					},
@@ -301,19 +301,19 @@ import (
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							*pulumi.String(john.AclPrincipalId),
+//							pulumi.String(john.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/group.manager"),
 //					},
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							*pulumi.String(ds.AclPrincipalId),
+//							pulumi.String(ds.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/servicePrincipal.manager"),
 //					},
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
-//							*pulumi.String(marketplaceAdmins.AclPrincipalId),
+//							pulumi.String(marketplaceAdmins.AclPrincipalId),
 //						},
 //						Role: pulumi.String("roles/marketplace.admin"),
 //					},

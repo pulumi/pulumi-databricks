@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewEntitlements(ctx, "meEntitlements", &databricks.EntitlementsArgs{
-//				UserId:                  *pulumi.String(meUser.Id),
+//				UserId:                  pulumi.String(meUser.Id),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewEntitlements(ctx, "thisEntitlements", &databricks.EntitlementsArgs{
-//				ServicePrincipalId:      *pulumi.String(thisServicePrincipal.SpId),
+//				ServicePrincipalId:      pulumi.String(thisServicePrincipal.SpId),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})
@@ -111,7 +111,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewEntitlements(ctx, "workspace-users", &databricks.EntitlementsArgs{
-//				GroupId:                 *pulumi.String(users.Id),
+//				GroupId:                 pulumi.String(users.Id),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})

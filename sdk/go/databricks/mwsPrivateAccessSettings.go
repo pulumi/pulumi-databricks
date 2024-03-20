@@ -154,7 +154,7 @@ type MwsPrivateAccessSettings struct {
 
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
-	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds pulumi.StringArrayOutput `pulumi:"allowedVpcEndpointIds"`
@@ -208,7 +208,7 @@ func GetMwsPrivateAccessSettings(ctx *pulumi.Context,
 type mwsPrivateAccessSettingsState struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
-	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId *string `pulumi:"accountId"`
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds []string `pulumi:"allowedVpcEndpointIds"`
@@ -227,7 +227,7 @@ type mwsPrivateAccessSettingsState struct {
 type MwsPrivateAccessSettingsState struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
-	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId pulumi.StringPtrInput
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds pulumi.StringArrayInput
@@ -250,7 +250,7 @@ func (MwsPrivateAccessSettingsState) ElementType() reflect.Type {
 type mwsPrivateAccessSettingsArgs struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
-	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId *string `pulumi:"accountId"`
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds []string `pulumi:"allowedVpcEndpointIds"`
@@ -270,7 +270,7 @@ type mwsPrivateAccessSettingsArgs struct {
 type MwsPrivateAccessSettingsArgs struct {
 	// Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 	//
-	// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+	// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 	AccountId pulumi.StringPtrInput
 	// An array of MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
 	AllowedVpcEndpointIds pulumi.StringArrayInput
@@ -375,7 +375,7 @@ func (o MwsPrivateAccessSettingsOutput) ToMwsPrivateAccessSettingsOutputWithCont
 
 // Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
 //
-// Deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+// Deprecated: Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
 func (o MwsPrivateAccessSettingsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsPrivateAccessSettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -43,7 +43,7 @@ import (
 type MwsCredentials struct {
 	pulumi.CustomResourceState
 
-	// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
@@ -90,7 +90,7 @@ func GetMwsCredentials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MwsCredentials resources.
 type mwsCredentialsState struct {
-	// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime *int `pulumi:"creationTime"`
@@ -102,7 +102,7 @@ type mwsCredentialsState struct {
 }
 
 type MwsCredentialsState struct {
-	// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntPtrInput
@@ -118,7 +118,7 @@ func (MwsCredentialsState) ElementType() reflect.Type {
 }
 
 type mwsCredentialsArgs struct {
-	// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId *string `pulumi:"accountId"`
 	// (Integer) time of credentials registration
 	CreationTime *int `pulumi:"creationTime"`
@@ -131,7 +131,7 @@ type mwsCredentialsArgs struct {
 
 // The set of arguments for constructing a MwsCredentials resource.
 type MwsCredentialsArgs struct {
-	// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+	// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 	AccountId pulumi.StringPtrInput
 	// (Integer) time of credentials registration
 	CreationTime pulumi.IntPtrInput
@@ -229,7 +229,7 @@ func (o MwsCredentialsOutput) ToMwsCredentialsOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Deprecated: `account_id` should be set as part of the Databricks Config, not in the resource.
+// Deprecated: `accountId` should be set as part of the Databricks Config, not in the resource.
 func (o MwsCredentialsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsCredentials) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
