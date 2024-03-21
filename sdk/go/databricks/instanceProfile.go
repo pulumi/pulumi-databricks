@@ -56,7 +56,7 @@ import (
 //			}
 //			roleForS3Access, err := iam.NewRole(ctx, "roleForS3Access", &iam.RoleArgs{
 //				Description:      pulumi.String("Role for shared access"),
-//				AssumeRolePolicy: *pulumi.String(assumeRoleForEc2.Json),
+//				AssumeRolePolicy: pulumi.String(assumeRoleForEc2.Json),
 //			})
 //			if err != nil {
 //				return err
@@ -114,8 +114,8 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           *pulumi.String(latest.Id),
-//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(latest.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
@@ -211,7 +211,7 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
-//				GroupId:           *pulumi.String(users.Id),
+//				GroupId:           pulumi.String(users.Id),
 //				InstanceProfileId: this.ID(),
 //			})
 //			if err != nil {
@@ -273,7 +273,7 @@ import (
 //				return err
 //			}
 //			thisRole, err := iam.NewRole(ctx, "thisRole", &iam.RoleArgs{
-//				AssumeRolePolicy: *pulumi.String(sqlServerlessAssumeRole.Json),
+//				AssumeRolePolicy: pulumi.String(sqlServerlessAssumeRole.Json),
 //			})
 //			if err != nil {
 //				return err

@@ -48,7 +48,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      *
-     * @deprecated always_running will be replaced by control_run_state in the next major release.
+     * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
     public readonly computes!: pulumi.Output<outputs.JobCompute[] | undefined>;
@@ -288,7 +288,7 @@ export interface JobState {
     /**
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      *
-     * @deprecated always_running will be replaced by control_run_state in the next major release.
+     * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
     computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;
@@ -430,7 +430,7 @@ export interface JobArgs {
     /**
      * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      *
-     * @deprecated always_running will be replaced by control_run_state in the next major release.
+     * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
     computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;

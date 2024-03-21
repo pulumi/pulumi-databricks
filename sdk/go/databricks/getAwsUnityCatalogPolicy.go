@@ -96,13 +96,13 @@ import (
 // return err
 // }
 // unityMetastore, err := iam.NewPolicy(ctx, "unityMetastore", &iam.PolicyArgs{
-// Policy: *pulumi.String(this.Json),
+// Policy: pulumi.String(this.Json),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = iam.NewRole(ctx, "metastoreDataAccess", &iam.RoleArgs{
-// AssumeRolePolicy: *pulumi.String(passroleForUc.Json),
+// AssumeRolePolicy: pulumi.String(passroleForUc.Json),
 // ManagedPolicyArns: pulumi.StringArray{
 // unityMetastore.Arn,
 // },

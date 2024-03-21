@@ -50,8 +50,8 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "research", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Research Cluster"),
-//				SparkVersion:           *pulumi.String(gpuMl.Id),
-//				NodeTypeId:             *pulumi.String(withGpu.Id),
+//				SparkVersion:           pulumi.String(gpuMl.Id),
+//				NodeTypeId:             pulumi.String(withGpu.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),

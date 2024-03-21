@@ -90,7 +90,7 @@ import (
 // return err
 // }
 // managedServicesCustomerManagedKey, err := kms.NewKey(ctx, "managedServicesCustomerManagedKey", &kms.KeyArgs{
-// Policy: *pulumi.String(databricksManagedServicesCmk.Json),
+// Policy: pulumi.String(databricksManagedServicesCmk.Json),
 // })
 // if err != nil {
 // return err
@@ -288,7 +288,7 @@ import (
 // return err
 // }
 // storageCustomerManagedKey, err := kms.NewKey(ctx, "storageCustomerManagedKey", &kms.KeyArgs{
-// Policy: *pulumi.String(databricksStorageCmk.Json),
+// Policy: pulumi.String(databricksStorageCmk.Json),
 // })
 // if err != nil {
 // return err

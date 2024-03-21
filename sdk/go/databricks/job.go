@@ -25,7 +25,7 @@ type Job struct {
 
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
-	// Deprecated: always_running will be replaced by control_run_state in the next major release.
+	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
 	Computes      JobComputeArrayOutput  `pulumi:"computes"`
 	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
@@ -149,7 +149,7 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
-	// Deprecated: always_running will be replaced by control_run_state in the next major release.
+	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
 	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
@@ -244,7 +244,7 @@ type jobState struct {
 type JobState struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
-	// Deprecated: always_running will be replaced by control_run_state in the next major release.
+	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
 	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
@@ -343,7 +343,7 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
-	// Deprecated: always_running will be replaced by control_run_state in the next major release.
+	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
 	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
@@ -437,7 +437,7 @@ type jobArgs struct {
 type JobArgs struct {
 	// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 	//
-	// Deprecated: always_running will be replaced by control_run_state in the next major release.
+	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
 	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
@@ -616,7 +616,7 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 
 // (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
 //
-// Deprecated: always_running will be replaced by control_run_state in the next major release.
+// Deprecated: always_running will be replaced by controlRunState in the next major release.
 func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
 }

@@ -43,8 +43,8 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           *pulumi.String(latestLts.Id),
-//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(latestLts.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),
@@ -199,8 +199,8 @@ type Cluster struct {
 	// 		}
 	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           *pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			SparkVersion:           pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
 	// 				MinWorkers: pulumi.Int(1),
@@ -379,8 +379,8 @@ type clusterState struct {
 	// 		}
 	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           *pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			SparkVersion:           pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
 	// 				MinWorkers: pulumi.Int(1),
@@ -527,8 +527,8 @@ type ClusterState struct {
 	// 		}
 	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           *pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			SparkVersion:           pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
 	// 				MinWorkers: pulumi.Int(1),
@@ -676,8 +676,8 @@ type clusterArgs struct {
 	// 		}
 	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           *pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			SparkVersion:           pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
 	// 				MinWorkers: pulumi.Int(1),
@@ -818,8 +818,8 @@ type ClusterArgs struct {
 	// 		}
 	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           *pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             *pulumi.String(smallest.Id),
+	// 			SparkVersion:           pulumi.String(latestLts.Id),
+	// 			NodeTypeId:             pulumi.String(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
 	// 				MinWorkers: pulumi.Int(1),
@@ -1119,8 +1119,8 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //			}
 //			_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           *pulumi.String(latestLts.Id),
-//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(latestLts.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),

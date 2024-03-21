@@ -123,8 +123,8 @@ import (
 //			}
 //			sharedPassthrough, err := databricks.NewCluster(ctx, "sharedPassthrough", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Passthrough for mount"),
-//				SparkVersion:           *pulumi.String(latest.Id),
-//				NodeTypeId:             *pulumi.String(smallest.Id),
+//				SparkVersion:           pulumi.String(latest.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(10),
 //				NumWorkers:             pulumi.Int(1),
 //				SparkConf: pulumi.Map{

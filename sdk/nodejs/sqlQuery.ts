@@ -176,7 +176,7 @@ export class SqlQuery extends pulumi.CustomResource {
      */
     public readonly runAsRole!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
     public readonly schedule!: pulumi.Output<outputs.SqlQuerySchedule | undefined>;
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -262,7 +262,7 @@ export interface SqlQueryState {
      */
     runAsRole?: pulumi.Input<string>;
     /**
-     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -300,7 +300,7 @@ export interface SqlQueryArgs {
      */
     runAsRole?: pulumi.Input<string>;
     /**
-     * @deprecated Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
+     * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
     schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
