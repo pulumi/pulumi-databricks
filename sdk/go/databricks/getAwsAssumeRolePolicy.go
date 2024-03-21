@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			crossAccountPolicy, err := iam.NewPolicy(ctx, "crossAccountPolicy", &iam.PolicyArgs{
-//				Policy: *pulumi.String(thisAwsCrossAccountPolicy.Json),
+//				Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
-//				AssumeRolePolicy: *pulumi.String(thisAwsAssumeRolePolicy.Json),
+//				AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
 //				Description:      pulumi.String("Grants Databricks full access to VPC resources"),
 //			})
 //			if err != nil {
