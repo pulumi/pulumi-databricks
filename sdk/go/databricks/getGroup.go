@@ -97,7 +97,7 @@ type LookupGroupArgs struct {
 	Groups []string `pulumi:"groups"`
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
-	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
+	// Deprecated: Please use `users`, `service_principals`, and `child_groups` instead
 	Members []string `pulumi:"members"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive *bool `pulumi:"recursive"`
@@ -128,7 +128,7 @@ type LookupGroupResult struct {
 	Id string `pulumi:"id"`
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
-	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
+	// Deprecated: Please use `users`, `service_principals`, and `child_groups` instead
 	Members   []string `pulumi:"members"`
 	Recursive *bool    `pulumi:"recursive"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
@@ -170,7 +170,7 @@ type LookupGroupOutputArgs struct {
 	Groups pulumi.StringArrayInput `pulumi:"groups"`
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles pulumi.StringArrayInput `pulumi:"instanceProfiles"`
-	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
+	// Deprecated: Please use `users`, `service_principals`, and `child_groups` instead
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Collect information for all nested groups. *Defaults to true.*
 	Recursive pulumi.BoolPtrInput `pulumi:"recursive"`
@@ -248,7 +248,7 @@ func (o LookupGroupResultOutput) InstanceProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.InstanceProfiles }).(pulumi.StringArrayOutput)
 }
 
-// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
+// Deprecated: Please use `users`, `service_principals`, and `child_groups` instead
 func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }

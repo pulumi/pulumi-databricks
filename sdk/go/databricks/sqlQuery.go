@@ -177,7 +177,7 @@ type SqlQuery struct {
 	Query pulumi.StringOutput `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
 	RunAsRole pulumi.StringPtrOutput `pulumi:"runAsRole"`
-	// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrOutput `pulumi:"schedule"`
 	Tags      pulumi.StringArrayOutput  `pulumi:"tags"`
 	UpdatedAt pulumi.StringOutput       `pulumi:"updatedAt"`
@@ -233,7 +233,7 @@ type sqlQueryState struct {
 	Query *string `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
 	RunAsRole *string `pulumi:"runAsRole"`
-	// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
 	Tags      []string          `pulumi:"tags"`
 	UpdatedAt *string           `pulumi:"updatedAt"`
@@ -254,7 +254,7 @@ type SqlQueryState struct {
 	Query pulumi.StringPtrInput
 	// Run as role. Possible values are `viewer`, `owner`.
 	RunAsRole pulumi.StringPtrInput
-	// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrInput
 	Tags      pulumi.StringArrayInput
 	UpdatedAt pulumi.StringPtrInput
@@ -279,7 +279,7 @@ type sqlQueryArgs struct {
 	Query string `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
 	RunAsRole *string `pulumi:"runAsRole"`
-	// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  *SqlQuerySchedule `pulumi:"schedule"`
 	Tags      []string          `pulumi:"tags"`
 	UpdatedAt *string           `pulumi:"updatedAt"`
@@ -301,7 +301,7 @@ type SqlQueryArgs struct {
 	Query pulumi.StringInput
 	// Run as role. Possible values are `viewer`, `owner`.
 	RunAsRole pulumi.StringPtrInput
-	// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+	// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 	Schedule  SqlQuerySchedulePtrInput
 	Tags      pulumi.StringArrayInput
 	UpdatedAt pulumi.StringPtrInput
@@ -432,7 +432,7 @@ func (o SqlQueryOutput) RunAsRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.RunAsRole }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sqlTask`.
+// Deprecated: Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
 func (o SqlQueryOutput) Schedule() SqlQuerySchedulePtrOutput {
 	return o.ApplyT(func(v *SqlQuery) SqlQuerySchedulePtrOutput { return v.Schedule }).(SqlQuerySchedulePtrOutput)
 }

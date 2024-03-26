@@ -21081,7 +21081,7 @@
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
-                    "deprecationMessage": "Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`."
+                    "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                 },
                 "tags": {
                     "type": "array",
@@ -21137,7 +21137,7 @@
                 },
                 "schedule": {
                     "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
-                    "deprecationMessage": "Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`."
+                    "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                 },
                 "tags": {
                     "type": "array",
@@ -21192,7 +21192,7 @@
                     },
                     "schedule": {
                         "$ref": "#/types/databricks:index/SqlQuerySchedule:SqlQuerySchedule",
-                        "deprecationMessage": "Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`."
+                        "deprecationMessage": "Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`."
                     },
                     "tags": {
                         "type": "array",

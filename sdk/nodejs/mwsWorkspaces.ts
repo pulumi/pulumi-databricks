@@ -276,7 +276,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     public readonly customTags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * @deprecated Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managed_services_customer_managed_key_id instead
      */
     public readonly customerManagedKeyId!: pulumi.Output<string | undefined>;
     /**
@@ -445,7 +445,7 @@ export interface MwsWorkspacesState {
      */
     customTags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * @deprecated Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managed_services_customer_managed_key_id instead
      */
     customerManagedKeyId?: pulumi.Input<string>;
     /**
@@ -534,7 +534,7 @@ export interface MwsWorkspacesArgs {
      */
     customTags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * @deprecated Use managedServicesCustomerManagedKeyId instead
+     * @deprecated Use managed_services_customer_managed_key_id instead
      */
     customerManagedKeyId?: pulumi.Input<string>;
     /**
