@@ -63,7 +63,7 @@ export class MwsCredentials extends pulumi.CustomResource {
     }
 
     /**
-     * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -122,7 +122,7 @@ export class MwsCredentials extends pulumi.CustomResource {
  */
 export interface MwsCredentialsState {
     /**
-     * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -143,7 +143,7 @@ export interface MwsCredentialsState {
  */
 export interface MwsCredentialsArgs {
     /**
-     * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
+     * @deprecated `account_id` should be set as part of the Databricks Config, not in the resource.
      */
     accountId?: pulumi.Input<string>;
     /**

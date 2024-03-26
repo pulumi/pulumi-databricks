@@ -99,7 +99,7 @@ export interface GetGroupArgs {
      */
     instanceProfiles?: string[];
     /**
-     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `service_principals`, and `child_groups` instead
      */
     members?: string[];
     /**
@@ -156,7 +156,7 @@ export interface GetGroupResult {
      */
     readonly instanceProfiles: string[];
     /**
-     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `service_principals`, and `child_groups` instead
      */
     readonly members: string[];
     readonly recursive?: boolean;
@@ -248,7 +248,7 @@ export interface GetGroupOutputArgs {
      */
     instanceProfiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
+     * @deprecated Please use `users`, `service_principals`, and `child_groups` instead
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

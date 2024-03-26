@@ -281,10 +281,10 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`.
+     * Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`.
      * 
      */
-    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`. */
+    @Deprecated /* Operations on `databricks_sql_query` schedules are deprecated. Please use `databricks_job` resource to schedule a `sql_task`. */
     @Export(name="schedule", refs={SqlQuerySchedule.class}, tree="[0]")
     private Output</* @Nullable */ SqlQuerySchedule> schedule;
 

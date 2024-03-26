@@ -131,7 +131,7 @@ export class MwsPrivateAccessSettings extends pulumi.CustomResource {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      *
-     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -207,7 +207,7 @@ export interface MwsPrivateAccessSettingsState {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      *
-     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface MwsPrivateAccessSettingsArgs {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      *
-     * @deprecated Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * @deprecated Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      */
     accountId?: pulumi.Input<string>;
     /**
