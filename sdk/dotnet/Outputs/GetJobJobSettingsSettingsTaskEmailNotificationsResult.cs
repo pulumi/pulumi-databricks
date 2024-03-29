@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskEmailNotificationsResult
     {
+        public readonly bool? NoAlertForSkippedRuns;
         public readonly ImmutableArray<string> OnDurationWarningThresholdExceededs;
         public readonly ImmutableArray<string> OnFailures;
         public readonly ImmutableArray<string> OnStarts;
@@ -20,6 +21,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskEmailNotificationsResult(
+            bool? noAlertForSkippedRuns,
+
             ImmutableArray<string> onDurationWarningThresholdExceededs,
 
             ImmutableArray<string> onFailures,
@@ -28,6 +31,7 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> onSuccesses)
         {
+            NoAlertForSkippedRuns = noAlertForSkippedRuns;
             OnDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             OnFailures = onFailures;
             OnStarts = onStarts;

@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.ModelServingConfigTrafficConfigRouteGetArgs>? _routes;
 
         /// <summary>
-        /// Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        /// Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
         /// </summary>
         public InputList<Inputs.ModelServingConfigTrafficConfigRouteGetArgs> Routes
         {

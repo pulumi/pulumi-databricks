@@ -24,6 +24,8 @@ class ModelServingArgs:
         The set of arguments for constructing a ModelServing resource.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         pulumi.set(__self__, "config", config)
         if name is not None:
@@ -60,6 +62,9 @@ class ModelServingArgs:
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
+        """
+        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
         return pulumi.get(self, "rate_limits")
 
     @rate_limits.setter
@@ -69,6 +74,9 @@ class ModelServingArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
+        """
+        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -88,7 +96,9 @@ class _ModelServingState:
         Input properties used for looking up and filtering ModelServing resources.
         :param pulumi.Input['ModelServingConfigArgs'] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -128,6 +138,9 @@ class _ModelServingState:
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]]:
+        """
+        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
         return pulumi.get(self, "rate_limits")
 
     @rate_limits.setter
@@ -149,6 +162,9 @@ class _ModelServingState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingTagArgs']]]]:
+        """
+        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -169,6 +185,8 @@ class ModelServing(pulumi.CustomResource):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 
+        **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+
         ## Example Usage
 
         <!--Start PulumiCodeChooser -->
@@ -177,17 +195,17 @@ class ModelServing(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.ModelServing("this", config=databricks.ModelServingConfigArgs(
-            served_models=[
-                databricks.ModelServingConfigServedModelArgs(
-                    model_name="ads-model",
-                    model_version="2",
+            served_entities=[
+                databricks.ModelServingConfigServedEntityArgs(
+                    entity_name="ads-model",
+                    entity_version="2",
                     name="prod_model",
                     scale_to_zero_enabled=True,
                     workload_size="Small",
                 ),
-                databricks.ModelServingConfigServedModelArgs(
-                    model_name="ads-model",
-                    model_version="4",
+                databricks.ModelServingConfigServedEntityArgs(
+                    entity_name="ads-model",
+                    entity_version="4",
                     name="candidate_model",
                     scale_to_zero_enabled=False,
                     workload_size="Small",
@@ -239,6 +257,8 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         ...
     @overload
@@ -249,6 +269,8 @@ class ModelServing(pulumi.CustomResource):
         """
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 
+        **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+
         ## Example Usage
 
         <!--Start PulumiCodeChooser -->
@@ -257,17 +279,17 @@ class ModelServing(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.ModelServing("this", config=databricks.ModelServingConfigArgs(
-            served_models=[
-                databricks.ModelServingConfigServedModelArgs(
-                    model_name="ads-model",
-                    model_version="2",
+            served_entities=[
+                databricks.ModelServingConfigServedEntityArgs(
+                    entity_name="ads-model",
+                    entity_version="2",
                     name="prod_model",
                     scale_to_zero_enabled=True,
                     workload_size="Small",
                 ),
-                databricks.ModelServingConfigServedModelArgs(
-                    model_name="ads-model",
-                    model_version="4",
+                databricks.ModelServingConfigServedEntityArgs(
+                    entity_name="ads-model",
+                    entity_version="4",
                     name="candidate_model",
                     scale_to_zero_enabled=False,
                     workload_size="Small",
@@ -374,7 +396,9 @@ class ModelServing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ModelServingConfigArgs']] config: The model serving endpoint configuration.
         :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingRateLimitArgs']]]] rate_limits: A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
         :param pulumi.Input[str] serving_endpoint_id: Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ModelServingTagArgs']]]] tags: Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,6 +430,9 @@ class ModelServing(pulumi.CustomResource):
     @property
     @pulumi.getter(name="rateLimits")
     def rate_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingRateLimit']]]:
+        """
+        A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        """
         return pulumi.get(self, "rate_limits")
 
     @property
@@ -419,5 +446,8 @@ class ModelServing(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ModelServingTag']]]:
+        """
+        Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        """
         return pulumi.get(self, "tags")
 

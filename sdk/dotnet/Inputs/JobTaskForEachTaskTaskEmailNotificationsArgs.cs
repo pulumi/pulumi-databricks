@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTaskForEachTaskTaskEmailNotificationsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        /// </summary>
+        [Input("noAlertForSkippedRuns")]
+        public Input<bool>? NoAlertForSkippedRuns { get; set; }
+
         [Input("onDurationWarningThresholdExceededs")]
         private InputList<string>? _onDurationWarningThresholdExceededs;
 

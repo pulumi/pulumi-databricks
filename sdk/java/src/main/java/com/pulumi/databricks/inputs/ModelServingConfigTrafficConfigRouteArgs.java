@@ -15,17 +15,9 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
 
     public static final ModelServingConfigTrafficConfigRouteArgs Empty = new ModelServingConfigTrafficConfigRouteArgs();
 
-    /**
-     * The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-     * 
-     */
     @Import(name="servedModelName", required=true)
     private Output<String> servedModelName;
 
-    /**
-     * @return The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-     * 
-     */
     public Output<String> servedModelName() {
         return this.servedModelName;
     }
@@ -70,23 +62,11 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
             $ = new ModelServingConfigTrafficConfigRouteArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param servedModelName The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-         * 
-         * @return builder
-         * 
-         */
         public Builder servedModelName(Output<String> servedModelName) {
             $.servedModelName = servedModelName;
             return this;
         }
 
-        /**
-         * @param servedModelName The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-         * 
-         * @return builder
-         * 
-         */
         public Builder servedModelName(String servedModelName) {
             return servedModelName(Output.of(servedModelName));
         }

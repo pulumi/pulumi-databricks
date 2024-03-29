@@ -18,10 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
 
         [OutputConstructor]
-        private JobWebhookNotificationsOnSuccess(string? id)
+        private JobWebhookNotificationsOnSuccess(string id)
         {
             Id = id;
         }

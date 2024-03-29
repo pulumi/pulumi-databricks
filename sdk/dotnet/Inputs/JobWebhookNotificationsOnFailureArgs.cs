@@ -17,8 +17,8 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public JobWebhookNotificationsOnFailureArgs()
         {

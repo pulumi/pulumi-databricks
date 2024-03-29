@@ -1455,9 +1455,9 @@ export interface GetJobJobSettingsSettingsTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTask {
-    left?: string;
-    op?: string;
-    right?: string;
+    left: string;
+    op: string;
+    right: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
@@ -1476,6 +1476,7 @@ export interface GetJobJobSettingsSettingsTaskDependsOn {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
+    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -1519,9 +1520,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
-    left?: string;
-    op?: string;
-    right?: string;
+    left: string;
+    op: string;
+    right: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
@@ -1540,6 +1541,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -1835,28 +1837,28 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskHealth {
@@ -2148,38 +2150,46 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarn
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTrigger {
-    fileArrival: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
+    fileArrival?: outputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
+    tableUpdate?: outputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
     minTimeBetweenTriggersSeconds?: number;
     url: string;
+    waitAfterLastChangeSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsTriggerTableUpdate {
+    condition?: string;
+    minTimeBetweenTriggersSeconds?: number;
+    tableNames: string[];
     waitAfterLastChangeSeconds?: number;
 }
 
@@ -2194,28 +2204,28 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningT
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -3271,7 +3281,7 @@ export interface JobTask {
      */
     jobClusterKey?: string;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
     libraries?: outputs.JobTaskLibrary[];
     /**
@@ -3325,17 +3335,17 @@ export interface JobTaskConditionTask {
     /**
      * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      */
-    left?: string;
+    left: string;
     /**
      * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      *
      * This task does not require a cluster to execute and does not support retries or notifications.
      */
-    op?: string;
+    op: string;
     /**
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
-    right?: string;
+    right: string;
 }
 
 export interface JobTaskDbtTask {
@@ -3385,6 +3395,10 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: boolean;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -3444,7 +3458,7 @@ export interface JobTaskForEachTaskTask {
      */
     jobClusterKey?: string;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
     libraries?: outputs.JobTaskForEachTaskTaskLibrary[];
     /**
@@ -3498,17 +3512,17 @@ export interface JobTaskForEachTaskTaskConditionTask {
     /**
      * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      */
-    left?: string;
+    left: string;
     /**
      * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      *
      * This task does not require a cluster to execute and does not support retries or notifications.
      */
-    op?: string;
+    op: string;
     /**
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
-    right?: string;
+    right: string;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -3558,6 +3572,10 @@ export interface JobTaskForEachTaskTaskDependsOn {
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: boolean;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -4067,7 +4085,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThre
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
@@ -4076,7 +4094,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
@@ -4085,7 +4103,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
@@ -4094,7 +4112,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskHealth {
@@ -4591,7 +4609,7 @@ export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
@@ -4600,7 +4618,7 @@ export interface JobTaskWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnStart {
@@ -4609,7 +4627,7 @@ export interface JobTaskWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnSuccess {
@@ -4618,18 +4636,22 @@ export interface JobTaskWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobTrigger {
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
-    fileArrival: outputs.JobTriggerFileArrival;
+    fileArrival?: outputs.JobTriggerFileArrival;
     /**
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: string;
+    /**
+     * configuration block to define a trigger for Table Update events consisting of following attributes:
+     */
+    tableUpdate?: outputs.JobTriggerTableUpdate;
 }
 
 export interface JobTriggerFileArrival {
@@ -4641,6 +4663,25 @@ export interface JobTriggerFileArrival {
      * URL of the Git repository to use.
      */
     url: string;
+    /**
+     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     */
+    waitAfterLastChangeSeconds?: number;
+}
+
+export interface JobTriggerTableUpdate {
+    /**
+     * The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
+     */
+    condition?: string;
+    /**
+     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     */
+    minTimeBetweenTriggersSeconds?: number;
+    /**
+     * A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     */
+    tableNames: string[];
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
@@ -4682,7 +4723,7 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobWebhookNotificationsOnFailure {
@@ -4691,7 +4732,7 @@ export interface JobWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobWebhookNotificationsOnStart {
@@ -4700,7 +4741,7 @@ export interface JobWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
@@ -4709,7 +4750,93 @@ export interface JobWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: string;
+    id: string;
+}
+
+export interface LakehouseMonitorCustomMetric {
+    /**
+     * [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     */
+    definition?: string;
+    /**
+     * Columns on the monitored table to apply the custom metrics to.
+     */
+    inputColumns?: string[];
+    /**
+     * Name of the custom metric.
+     */
+    name?: string;
+    /**
+     * The output type of the custom metric.
+     */
+    outputDataType?: string;
+    /**
+     * The type of the custom metric.
+     */
+    type?: string;
+}
+
+export interface LakehouseMonitorDataClassificationConfig {
+    enabled?: boolean;
+}
+
+export interface LakehouseMonitorInferenceLog {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities?: string[];
+    /**
+     * Column of the model label
+     */
+    labelCol?: string;
+    /**
+     * Column of the model id or version
+     */
+    modelIdCol?: string;
+    /**
+     * Column of the model prediction
+     */
+    predictionCol?: string;
+    /**
+     * Column of the model prediction probabilities
+     */
+    predictionProbaCol?: string;
+    /**
+     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     */
+    problemType?: string;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol?: string;
+}
+
+export interface LakehouseMonitorNotifications {
+    onFailure?: outputs.LakehouseMonitorNotificationsOnFailure;
+}
+
+export interface LakehouseMonitorNotificationsOnFailure {
+    emailAddresses?: string[];
+}
+
+export interface LakehouseMonitorSchedule {
+    pauseStatus?: string;
+    quartzCronExpression?: string;
+    timezoneId?: string;
+}
+
+export interface LakehouseMonitorSnapshot {
+}
+
+export interface LakehouseMonitorTimeSeries {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities?: string[];
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol?: string;
 }
 
 export interface LibraryCran {
@@ -4797,9 +4924,18 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingConfig {
+    /**
+     * Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     */
     autoCaptureConfig?: outputs.ModelServingConfigAutoCaptureConfig;
     /**
+     * A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+     */
+    servedEntities?: outputs.ModelServingConfigServedEntity[];
+    /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     *
+     * @deprecated Please use 'config.served_entities' instead of 'config.served_models'.
      */
     servedModels?: outputs.ModelServingConfigServedModel[];
     /**
@@ -4809,10 +4945,198 @@ export interface ModelServingConfig {
 }
 
 export interface ModelServingConfigAutoCaptureConfig {
+    /**
+     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     */
     catalogName?: string;
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
     enabled?: boolean;
+    /**
+     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     */
     schemaName?: string;
+    /**
+     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     */
     tableNamePrefix?: string;
+}
+
+export interface ModelServingConfigServedEntity {
+    /**
+     * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
+     */
+    entityName?: string;
+    /**
+     * The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
+     */
+    entityVersion?: string;
+    /**
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+     */
+    environmentVars?: {[key: string]: any};
+    /**
+     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+     */
+    externalModel?: outputs.ModelServingConfigServedEntityExternalModel;
+    /**
+     * ARN of the instance profile that the served entity uses to access AWS resources.
+     */
+    instanceProfileArn?: string;
+    /**
+     * The maximum tokens per second that the endpoint can scale up to.
+     */
+    maxProvisionedThroughput?: number;
+    /**
+     * The minimum tokens per second that the endpoint can scale down to.
+     */
+    minProvisionedThroughput?: number;
+    /**
+     * The name of the external model.
+     */
+    name: string;
+    /**
+     * Whether the compute resources for the served entity should scale down to zero.
+     */
+    scaleToZeroEnabled?: boolean;
+    /**
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     */
+    workloadSize?: string;
+    /**
+     * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
+     */
+    workloadType?: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModel {
+    /**
+     * AI21Labs Config
+     */
+    ai21labsConfig?: outputs.ModelServingConfigServedEntityExternalModelAi21labsConfig;
+    /**
+     * Amazon Bedrock Config
+     */
+    amazonBedrockConfig?: outputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig;
+    /**
+     * Anthropic Config
+     */
+    anthropicConfig?: outputs.ModelServingConfigServedEntityExternalModelAnthropicConfig;
+    /**
+     * Cohere Config
+     */
+    cohereConfig?: outputs.ModelServingConfigServedEntityExternalModelCohereConfig;
+    /**
+     * Databricks Model Serving Config
+     */
+    databricksModelServingConfig?: outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
+    /**
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     */
+    name: string;
+    /**
+     * OpenAI Config
+     */
+    openaiConfig?: outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig;
+    /**
+     * PaLM Config
+     */
+    palmConfig?: outputs.ModelServingConfigServedEntityExternalModelPalmConfig;
+    /**
+     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+     */
+    provider: string;
+    /**
+     * The task type of the external model.
+     */
+    task: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
+    /**
+     * The Databricks secret key reference for an AI21Labs API key.
+     */
+    ai21labsApiKey: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
+    /**
+     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+     */
+    awsAccessKeyId: string;
+    /**
+     * The AWS region to use. Bedrock has to be enabled there.
+     */
+    awsRegion: string;
+    /**
+     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+     */
+    awsSecretAccessKey: string;
+    /**
+     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+     */
+    bedrockProvider: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
+    /**
+     * The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     */
+    anthropicApiKey: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCohereConfig {
+    /**
+     * The Databricks secret key reference for a Cohere API key.
+     */
+    cohereApiKey: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
+    /**
+     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     */
+    databricksApiToken: string;
+    /**
+     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     */
+    databricksWorkspaceUrl: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    /**
+     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     */
+    openaiApiBase?: string;
+    /**
+     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+     */
+    openaiApiKey: string;
+    /**
+     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     */
+    openaiApiType?: string;
+    /**
+     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     */
+    openaiApiVersion?: string;
+    /**
+     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+     */
+    openaiDeploymentName?: string;
+    /**
+     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+     */
+    openaiOrganization?: string;
+}
+
+export interface ModelServingConfigServedEntityExternalModelPalmConfig {
+    /**
+     * The Databricks secret key reference for a PaLM API key.
+     */
+    palmApiKey: string;
 }
 
 export interface ModelServingConfigServedModel {
@@ -4837,11 +5161,11 @@ export interface ModelServingConfigServedModel {
      */
     name: string;
     /**
-     * Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      */
     scaleToZeroEnabled?: boolean;
     /**
-     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      */
     workloadSize: string;
     /**
@@ -4852,15 +5176,12 @@ export interface ModelServingConfigServedModel {
 
 export interface ModelServingConfigTrafficConfig {
     /**
-     * Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      */
     routes?: outputs.ModelServingConfigTrafficConfigRoute[];
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
-    /**
-     * The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
-     */
     servedModelName: string;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
@@ -4869,13 +5190,28 @@ export interface ModelServingConfigTrafficConfigRoute {
 }
 
 export interface ModelServingRateLimit {
+    /**
+     * Used to specify how many calls are allowed for a key within the renewal_period.
+     */
     calls: number;
+    /**
+     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     */
     key?: string;
+    /**
+     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     */
     renewalPeriod: string;
 }
 
 export interface ModelServingTag {
+    /**
+     * The key field for a tag.
+     */
     key: string;
+    /**
+     * The value field for a tag.
+     */
     value?: string;
 }
 
@@ -5046,6 +5382,103 @@ export interface MwsWorkspacesToken {
     lifetimeSeconds?: number;
     tokenId: string;
     tokenValue: string;
+}
+
+export interface OnlineTableSpec {
+    /**
+     * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+     */
+    performFullCopy?: boolean;
+    /**
+     * ID of the associated Delta Live Table pipeline.
+     */
+    pipelineId: string;
+    /**
+     * list of the columns comprising the primary key.
+     */
+    primaryKeyColumns?: string[];
+    /**
+     * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
+     */
+    runContinuously?: outputs.OnlineTableSpecRunContinuously;
+    /**
+     * empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+     */
+    runTriggered?: outputs.OnlineTableSpecRunTriggered;
+    /**
+     * full name of the source table.
+     */
+    sourceTableFullName?: string;
+    /**
+     * Time series key to deduplicate (tie-break) rows with the same primary key.
+     */
+    timeseriesKey?: string;
+}
+
+export interface OnlineTableSpecRunContinuously {
+}
+
+export interface OnlineTableSpecRunTriggered {
+}
+
+export interface OnlineTableStatus {
+    continuousUpdateStatus?: outputs.OnlineTableStatusContinuousUpdateStatus;
+    /**
+     * The state of the online table.
+     */
+    detailedState?: string;
+    failedStatus?: outputs.OnlineTableStatusFailedStatus;
+    /**
+     * A text description of the current state of the online table.
+     */
+    message?: string;
+    provisioningStatus?: outputs.OnlineTableStatusProvisioningStatus;
+    triggeredUpdateStatus?: outputs.OnlineTableStatusTriggeredUpdateStatus;
+}
+
+export interface OnlineTableStatusContinuousUpdateStatus {
+    initialPipelineSyncProgress?: outputs.OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress;
+    lastProcessedCommitVersion?: number;
+    timestamp?: string;
+}
+
+export interface OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress {
+    estimatedCompletionTimeSeconds?: number;
+    latestVersionCurrentlyProcessing?: number;
+    syncProgressCompletion?: number;
+    syncedRowCount?: number;
+    totalRowCount?: number;
+}
+
+export interface OnlineTableStatusFailedStatus {
+    lastProcessedCommitVersion?: number;
+    timestamp?: string;
+}
+
+export interface OnlineTableStatusProvisioningStatus {
+    initialPipelineSyncProgress?: outputs.OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress;
+}
+
+export interface OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress {
+    estimatedCompletionTimeSeconds?: number;
+    latestVersionCurrentlyProcessing?: number;
+    syncProgressCompletion?: number;
+    syncedRowCount?: number;
+    totalRowCount?: number;
+}
+
+export interface OnlineTableStatusTriggeredUpdateStatus {
+    lastProcessedCommitVersion?: number;
+    timestamp?: string;
+    triggeredUpdateProgress?: outputs.OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress;
+}
+
+export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
+    estimatedCompletionTimeSeconds?: number;
+    latestVersionCurrentlyProcessing?: number;
+    syncProgressCompletion?: number;
+    syncedRowCount?: number;
+    totalRowCount?: number;
 }
 
 export interface PermissionsAccessControl {
@@ -5300,7 +5733,7 @@ export interface ShareObject {
      */
     comment?: string;
     /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
+     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: string;
     /**
@@ -5310,7 +5743,7 @@ export interface ShareObject {
      */
     historyDataSharingStatus?: string;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
      */
     name: string;
     partitions?: outputs.ShareObjectPartition[];
@@ -5630,19 +6063,13 @@ export interface SqlWidgetPosition {
 }
 
 export interface StorageCredentialAwsIamRole {
-    /**
-     * The external ID used in role assumption to prevent confused deputy problem.
-     */
     externalId: string;
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     */
-    roleArn: string;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
+    roleArn: string;
     unityCatalogIamArn: string;
 }
 
@@ -5716,8 +6143,109 @@ export interface VectorSearchEndpointEndpointStatus {
      */
     message?: string;
     /**
-     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
     state?: string;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpec {
+    /**
+     * array of objects representing columns that contain the embedding source.  Each entry consists of:
+     */
+    embeddingSourceColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
+    embeddingVectorColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * ID of the associated Delta Live Table pipeline.
+     */
+    pipelineId: string;
+    /**
+     * Pipeline execution mode. Possible values are:
+     */
+    pipelineType?: string;
+    /**
+     * The name of the source table.
+     */
+    sourceTable?: string;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
+    embeddingModelEndpointName?: string;
+    /**
+     * The name of the column.
+     */
+    name?: string;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
+    embeddingDimension?: number;
+    /**
+     * The name of the column.
+     */
+    name?: string;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpec {
+    /**
+     * array of objects representing columns that contain the embedding source.  Each entry consists of:
+     */
+    embeddingSourceColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
+    embeddingVectorColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
+    /**
+     * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     */
+    schemaJson?: string;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
+    embeddingModelEndpointName?: string;
+    /**
+     * The name of the column.
+     */
+    name?: string;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
+    embeddingDimension?: number;
+    /**
+     * The name of the column.
+     */
+    name?: string;
+}
+
+export interface VectorSearchIndexStatus {
+    /**
+     * Index API Url to be used to perform operations on the index
+     */
+    indexUrl?: string;
+    /**
+     * Number of rows indexed
+     */
+    indexedRowCount?: number;
+    /**
+     * Message associated with the index status
+     */
+    message?: string;
+    /**
+     * Whether the index is ready for search
+     */
+    ready?: boolean;
 }
 

@@ -38,7 +38,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// -&gt; **Note** Importing this resource is not currently supported.
+    /// This resource can be imported by using combination of workspace ID, securable type and name:
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding this "&lt;workspace_id&gt;|&lt;securable_type&gt;|&lt;securable_name&gt;"
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding")]
     public partial class CatalogWorkspaceBinding : global::Pulumi.CustomResource

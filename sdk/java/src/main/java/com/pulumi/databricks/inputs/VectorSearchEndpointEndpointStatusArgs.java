@@ -31,14 +31,14 @@ public final class VectorSearchEndpointEndpointStatusArgs extends com.pulumi.res
     }
 
     /**
-     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -92,7 +92,7 @@ public final class VectorSearchEndpointEndpointStatusArgs extends com.pulumi.res
         }
 
         /**
-         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class VectorSearchEndpointEndpointStatusArgs extends com.pulumi.res
         }
 
         /**
-         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+         * @param state Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
          * 
          * @return builder
          * 

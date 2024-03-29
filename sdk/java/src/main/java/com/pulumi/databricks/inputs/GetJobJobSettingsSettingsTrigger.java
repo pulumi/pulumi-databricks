@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerFileArrival;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +16,11 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
 
     public static final GetJobJobSettingsSettingsTrigger Empty = new GetJobJobSettingsSettingsTrigger();
 
-    @Import(name="fileArrival", required=true)
-    private GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
+    @Import(name="fileArrival")
+    private @Nullable GetJobJobSettingsSettingsTriggerFileArrival fileArrival;
 
-    public GetJobJobSettingsSettingsTriggerFileArrival fileArrival() {
-        return this.fileArrival;
+    public Optional<GetJobJobSettingsSettingsTriggerFileArrival> fileArrival() {
+        return Optional.ofNullable(this.fileArrival);
     }
 
     @Import(name="pauseStatus")
@@ -30,11 +30,19 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    @Import(name="tableUpdate")
+    private @Nullable GetJobJobSettingsSettingsTriggerTableUpdate tableUpdate;
+
+    public Optional<GetJobJobSettingsSettingsTriggerTableUpdate> tableUpdate() {
+        return Optional.ofNullable(this.tableUpdate);
+    }
+
     private GetJobJobSettingsSettingsTrigger() {}
 
     private GetJobJobSettingsSettingsTrigger(GetJobJobSettingsSettingsTrigger $) {
         this.fileArrival = $.fileArrival;
         this.pauseStatus = $.pauseStatus;
+        this.tableUpdate = $.tableUpdate;
     }
 
     public static Builder builder() {
@@ -55,7 +63,7 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
             $ = new GetJobJobSettingsSettingsTrigger(Objects.requireNonNull(defaults));
         }
 
-        public Builder fileArrival(GetJobJobSettingsSettingsTriggerFileArrival fileArrival) {
+        public Builder fileArrival(@Nullable GetJobJobSettingsSettingsTriggerFileArrival fileArrival) {
             $.fileArrival = fileArrival;
             return this;
         }
@@ -65,10 +73,12 @@ public final class GetJobJobSettingsSettingsTrigger extends com.pulumi.resources
             return this;
         }
 
+        public Builder tableUpdate(@Nullable GetJobJobSettingsSettingsTriggerTableUpdate tableUpdate) {
+            $.tableUpdate = tableUpdate;
+            return this;
+        }
+
         public GetJobJobSettingsSettingsTrigger build() {
-            if ($.fileArrival == null) {
-                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTrigger", "fileArrival");
-            }
             return $;
         }
     }

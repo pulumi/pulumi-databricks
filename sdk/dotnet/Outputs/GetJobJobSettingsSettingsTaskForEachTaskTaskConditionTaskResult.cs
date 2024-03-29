@@ -13,17 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult
     {
-        public readonly string? Left;
-        public readonly string? Op;
-        public readonly string? Right;
+        public readonly string Left;
+        public readonly string Op;
+        public readonly string Right;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult(
-            string? left,
+            string left,
 
-            string? op,
+            string op,
 
-            string? right)
+            string right)
         {
             Left = left;
             Op = op;

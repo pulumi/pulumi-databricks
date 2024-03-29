@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? JobClusterKey;
         /// <summary>
-        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskLibrary> Libraries;
         /// <summary>

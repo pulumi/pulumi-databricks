@@ -4,10 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskWebhookNotificationsOnFailure {
@@ -17,7 +16,7 @@ public final class JobTaskWebhookNotificationsOnFailure {
      * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
-    private @Nullable String id;
+    private String id;
 
     private JobTaskWebhookNotificationsOnFailure() {}
     /**
@@ -26,8 +25,8 @@ public final class JobTaskWebhookNotificationsOnFailure {
      * &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
 
     public static Builder builder() {
@@ -39,7 +38,7 @@ public final class JobTaskWebhookNotificationsOnFailure {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
+        private String id;
         public Builder() {}
         public Builder(JobTaskWebhookNotificationsOnFailure defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,8 +46,10 @@ public final class JobTaskWebhookNotificationsOnFailure {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("JobTaskWebhookNotificationsOnFailure", "id");
+            }
             this.id = id;
             return this;
         }

@@ -12,11 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTriggerInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("fileArrival", required: true)]
-        public Input<Inputs.GetJobJobSettingsSettingsTriggerFileArrivalInputArgs> FileArrival { get; set; } = null!;
+        [Input("fileArrival")]
+        public Input<Inputs.GetJobJobSettingsSettingsTriggerFileArrivalInputArgs>? FileArrival { get; set; }
 
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
+
+        [Input("tableUpdate")]
+        public Input<Inputs.GetJobJobSettingsSettingsTriggerTableUpdateInputArgs>? TableUpdate { get; set; }
 
         public GetJobJobSettingsSettingsTriggerInputArgs()
         {

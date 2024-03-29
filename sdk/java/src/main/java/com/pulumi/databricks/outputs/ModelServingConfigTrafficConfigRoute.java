@@ -11,10 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigTrafficConfigRoute {
-    /**
-     * @return The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-     * 
-     */
     private String servedModelName;
     /**
      * @return The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
@@ -23,10 +19,6 @@ public final class ModelServingConfigTrafficConfigRoute {
     private Integer trafficPercentage;
 
     private ModelServingConfigTrafficConfigRoute() {}
-    /**
-     * @return The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-     * 
-     */
     public String servedModelName() {
         return this.servedModelName;
     }

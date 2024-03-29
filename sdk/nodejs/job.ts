@@ -91,7 +91,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly jobClusters!: pulumi.Output<outputs.JobJobCluster[] | undefined>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     public readonly libraries!: pulumi.Output<outputs.JobLibrary[] | undefined>;
     /**
@@ -331,7 +331,7 @@ export interface JobState {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**
@@ -473,7 +473,7 @@ export interface JobArgs {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**

@@ -10738,7 +10738,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```
@@ -10784,7 +10784,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```
@@ -10830,7 +10830,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```
@@ -10876,7 +10876,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```
@@ -10922,7 +10922,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```
@@ -10968,7 +10968,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = DatabricksFunctions.getStorageCredentials();
      * 
-     *         ctx.export(&#34;allMetastores&#34;, data.databricks_metastores().all().names());
+     *         ctx.export(&#34;allStorageCredentials&#34;, all.applyValue(getStorageCredentialsResult -&gt; getStorageCredentialsResult.names()));
      *     }
      * }
      * ```

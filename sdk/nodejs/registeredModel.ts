@@ -88,6 +88,10 @@ export class RegisteredModel extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Name of the registered model owner.
+     */
+    public readonly owner!: pulumi.Output<string>;
+    /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
     public readonly schemaName!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class RegisteredModel extends pulumi.CustomResource {
             resourceInputs["catalogName"] = state ? state.catalogName : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["schemaName"] = state ? state.schemaName : undefined;
             resourceInputs["storageLocation"] = state ? state.storageLocation : undefined;
         } else {
@@ -125,6 +130,7 @@ export class RegisteredModel extends pulumi.CustomResource {
             resourceInputs["catalogName"] = args ? args.catalogName : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["schemaName"] = args ? args.schemaName : undefined;
             resourceInputs["storageLocation"] = args ? args.storageLocation : undefined;
         }
@@ -149,6 +155,10 @@ export interface RegisteredModelState {
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
     name?: pulumi.Input<string>;
+    /**
+     * Name of the registered model owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
@@ -175,6 +185,10 @@ export interface RegisteredModelArgs {
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
     name?: pulumi.Input<string>;
+    /**
+     * Name of the registered model owner.
+     */
+    owner?: pulumi.Input<string>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */

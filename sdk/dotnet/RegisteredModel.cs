@@ -81,6 +81,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the registered model owner.
+        /// </summary>
+        [Output("owner")]
+        public Output<string> Owner { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Output("schemaName")]
@@ -157,6 +163,12 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Name of the registered model owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Input("schemaName", required: true)]
@@ -193,6 +205,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Name of the registered model owner.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
 
         /// <summary>
         /// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

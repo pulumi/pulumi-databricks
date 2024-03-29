@@ -13,7 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfig
     {
+        /// <summary>
+        /// Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+        /// </summary>
         public readonly Outputs.ModelServingConfigAutoCaptureConfig? AutoCaptureConfig;
+        /// <summary>
+        /// A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ModelServingConfigServedEntity> ServedEntities;
         /// <summary>
         /// Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         /// </summary>
@@ -27,11 +34,14 @@ namespace Pulumi.Databricks.Outputs
         private ModelServingConfig(
             Outputs.ModelServingConfigAutoCaptureConfig? autoCaptureConfig,
 
+            ImmutableArray<Outputs.ModelServingConfigServedEntity> servedEntities,
+
             ImmutableArray<Outputs.ModelServingConfigServedModel> servedModels,
 
             Outputs.ModelServingConfigTrafficConfig? trafficConfig)
         {
             AutoCaptureConfig = autoCaptureConfig;
+            ServedEntities = servedEntities;
             ServedModels = servedModels;
             TrafficConfig = trafficConfig;
         }

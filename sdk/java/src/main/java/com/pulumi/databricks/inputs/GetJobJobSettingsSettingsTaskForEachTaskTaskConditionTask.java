@@ -4,35 +4,34 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask();
 
-    @Import(name="left")
-    private @Nullable String left;
+    @Import(name="left", required=true)
+    private String left;
 
-    public Optional<String> left() {
-        return Optional.ofNullable(this.left);
+    public String left() {
+        return this.left;
     }
 
-    @Import(name="op")
-    private @Nullable String op;
+    @Import(name="op", required=true)
+    private String op;
 
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
 
-    @Import(name="right")
-    private @Nullable String right;
+    @Import(name="right", required=true)
+    private String right;
 
-    public Optional<String> right() {
-        return Optional.ofNullable(this.right);
+    public String right() {
+        return this.right;
     }
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask() {}
@@ -61,22 +60,31 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask ext
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask(Objects.requireNonNull(defaults));
         }
 
-        public Builder left(@Nullable String left) {
+        public Builder left(String left) {
             $.left = left;
             return this;
         }
 
-        public Builder op(@Nullable String op) {
+        public Builder op(String op) {
             $.op = op;
             return this;
         }
 
-        public Builder right(@Nullable String right) {
+        public Builder right(String right) {
             $.right = right;
             return this;
         }
 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask build() {
+            if ($.left == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "left");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "op");
+            }
+            if ($.right == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "right");
+            }
             return $;
         }
     }

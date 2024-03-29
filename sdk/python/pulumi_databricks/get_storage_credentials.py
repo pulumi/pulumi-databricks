@@ -40,6 +40,9 @@ class GetStorageCredentialsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        List of names of StorageCredential in the metastore
+        """
         return pulumi.get(self, "names")
 
 
@@ -66,7 +69,7 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_storage_credentials()
-    pulumi.export("allMetastores", data["databricks_metastores"]["all"]["names"])
+    pulumi.export("allStorageCredentials", all.names)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -76,6 +79,9 @@ def get_storage_credentials(names: Optional[Sequence[str]] = None,
 
     * StorageCredential to get information about a single credential
     * StorageCredential to manage Storage Credentials within Unity Catalog.
+
+
+    :param Sequence[str] names: List of names of StorageCredential in the metastore
     """
     __args__ = dict()
     __args__['names'] = names
@@ -101,7 +107,7 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
     import pulumi_databricks as databricks
 
     all = databricks.get_storage_credentials()
-    pulumi.export("allMetastores", data["databricks_metastores"]["all"]["names"])
+    pulumi.export("allStorageCredentials", all.names)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -111,5 +117,8 @@ def get_storage_credentials_output(names: Optional[pulumi.Input[Optional[Sequenc
 
     * StorageCredential to get information about a single credential
     * StorageCredential to manage Storage Credentials within Unity Catalog.
+
+
+    :param Sequence[str] names: List of names of StorageCredential in the metastore
     """
     ...

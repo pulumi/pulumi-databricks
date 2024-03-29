@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs();
+
+    @Import(name="noAlertForSkippedRuns")
+    private @Nullable Output<Boolean> noAlertForSkippedRuns;
+
+    public Optional<Output<Boolean>> noAlertForSkippedRuns() {
+        return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
 
     @Import(name="onDurationWarningThresholdExceededs")
     private @Nullable Output<List<String>> onDurationWarningThresholdExceededs;
@@ -47,6 +55,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs() {}
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs $) {
+        this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
@@ -69,6 +78,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
 
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder noAlertForSkippedRuns(@Nullable Output<Boolean> noAlertForSkippedRuns) {
+            $.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return this;
+        }
+
+        public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
+            return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
         }
 
         public Builder onDurationWarningThresholdExceededs(@Nullable Output<List<String>> onDurationWarningThresholdExceededs) {

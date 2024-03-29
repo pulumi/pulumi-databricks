@@ -77,14 +77,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+     * @return This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -107,14 +107,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
      * 
      */
     @Import(name="disableAsUserDeletion")
     private @Nullable Output<Boolean> disableAsUserDeletion;
 
     /**
-     * @return When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+     * @return Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
      * 
      */
     public Optional<Output<Boolean>> disableAsUserDeletion() {
@@ -356,7 +356,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. On other clouds than Azure this value is auto-generated.
+         * @param applicationId This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableAsUserDeletion When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableAsUserDeletion When deleting a user, set the user&#39;s active flag to false instead of actually deleting the user. This flag is exclusive to force_delete_repos and force_delete_home_dir flags. True by default for accounts SCIM API, false otherwise.
+         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
          * 
          * @return builder
          * 

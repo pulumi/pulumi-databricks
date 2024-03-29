@@ -4,10 +4,9 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded extends com.pulumi.resources.InvokeArgs {
@@ -18,15 +17,15 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWa
      * the id of databricks.Job if the resource was matched by name.
      * 
      */
-    @Import(name="id")
-    private @Nullable String id;
+    @Import(name="id", required=true)
+    private String id;
 
     /**
      * @return the id of databricks.Job if the resource was matched by name.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
 
     private GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded() {}
@@ -59,12 +58,15 @@ public final class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWa
          * @return builder
          * 
          */
-        public Builder id(@Nullable String id) {
+        public Builder id(String id) {
             $.id = id;
             return this;
         }
 
         public GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded", "id");
+            }
             return $;
         }
     }

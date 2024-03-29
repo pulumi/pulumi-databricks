@@ -237,11 +237,20 @@ __all__ = [
     'JobTaskWebhookNotificationsOnSuccessArgs',
     'JobTriggerArgs',
     'JobTriggerFileArrivalArgs',
+    'JobTriggerTableUpdateArgs',
     'JobWebhookNotificationsArgs',
     'JobWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'JobWebhookNotificationsOnFailureArgs',
     'JobWebhookNotificationsOnStartArgs',
     'JobWebhookNotificationsOnSuccessArgs',
+    'LakehouseMonitorCustomMetricArgs',
+    'LakehouseMonitorDataClassificationConfigArgs',
+    'LakehouseMonitorInferenceLogArgs',
+    'LakehouseMonitorNotificationsArgs',
+    'LakehouseMonitorNotificationsOnFailureArgs',
+    'LakehouseMonitorScheduleArgs',
+    'LakehouseMonitorSnapshotArgs',
+    'LakehouseMonitorTimeSeriesArgs',
     'LibraryCranArgs',
     'LibraryMavenArgs',
     'LibraryPypiArgs',
@@ -255,6 +264,15 @@ __all__ = [
     'MlflowWebhookJobSpecArgs',
     'ModelServingConfigArgs',
     'ModelServingConfigAutoCaptureConfigArgs',
+    'ModelServingConfigServedEntityArgs',
+    'ModelServingConfigServedEntityExternalModelArgs',
+    'ModelServingConfigServedEntityExternalModelAi21labsConfigArgs',
+    'ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs',
+    'ModelServingConfigServedEntityExternalModelAnthropicConfigArgs',
+    'ModelServingConfigServedEntityExternalModelCohereConfigArgs',
+    'ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs',
+    'ModelServingConfigServedEntityExternalModelOpenaiConfigArgs',
+    'ModelServingConfigServedEntityExternalModelPalmConfigArgs',
     'ModelServingConfigServedModelArgs',
     'ModelServingConfigTrafficConfigArgs',
     'ModelServingConfigTrafficConfigRouteArgs',
@@ -277,6 +295,17 @@ __all__ = [
     'MwsWorkspacesGcpManagedNetworkConfigArgs',
     'MwsWorkspacesGkeConfigArgs',
     'MwsWorkspacesTokenArgs',
+    'OnlineTableSpecArgs',
+    'OnlineTableSpecRunContinuouslyArgs',
+    'OnlineTableSpecRunTriggeredArgs',
+    'OnlineTableStatusArgs',
+    'OnlineTableStatusContinuousUpdateStatusArgs',
+    'OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs',
+    'OnlineTableStatusFailedStatusArgs',
+    'OnlineTableStatusProvisioningStatusArgs',
+    'OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs',
+    'OnlineTableStatusTriggeredUpdateStatusArgs',
+    'OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs',
     'PermissionsAccessControlArgs',
     'PipelineClusterArgs',
     'PipelineClusterAutoscaleArgs',
@@ -346,6 +375,13 @@ __all__ = [
     'StorageCredentialGcpServiceAccountKeyArgs',
     'TableColumnArgs',
     'VectorSearchEndpointEndpointStatusArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs',
+    'VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs',
+    'VectorSearchIndexDirectAccessIndexSpecArgs',
+    'VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs',
+    'VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs',
+    'VectorSearchIndexStatusArgs',
     'GetClusterClusterInfoArgs',
     'GetClusterClusterInfoAutoscaleArgs',
     'GetClusterClusterInfoAwsAttributesArgs',
@@ -567,6 +603,7 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsTriggerArgs',
     'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
+    'GetJobJobSettingsSettingsTriggerTableUpdateArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs',
@@ -6593,7 +6630,7 @@ class JobTaskArgs:
         :param pulumi.Input['JobTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
         :param pulumi.Input[str] job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input['JobTaskNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
@@ -6771,7 +6808,7 @@ class JobTaskArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskLibraryArgs']]]]:
         """
-        (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
+        (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         """
         return pulumi.get(self, "libraries")
 
@@ -6964,9 +7001,9 @@ class JobTaskArgs:
 @pulumi.input_type
 class JobTaskConditionTaskArgs:
     def __init__(__self__, *,
-                 left: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 right: Optional[pulumi.Input[str]] = None):
+                 left: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 right: pulumi.Input[str]):
         """
         :param pulumi.Input[str] left: The left operand of the condition task. It could be a string value, job state, or a parameter reference.
         :param pulumi.Input[str] op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
@@ -6974,28 +7011,25 @@ class JobTaskConditionTaskArgs:
                This task does not require a cluster to execute and does not support retries or notifications.
         :param pulumi.Input[str] right: The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
-        if left is not None:
-            pulumi.set(__self__, "left", left)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if right is not None:
-            pulumi.set(__self__, "right", right)
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "right", right)
 
     @property
     @pulumi.getter
-    def left(self) -> Optional[pulumi.Input[str]]:
+    def left(self) -> pulumi.Input[str]:
         """
         The left operand of the condition task. It could be a string value, job state, or a parameter reference.
         """
         return pulumi.get(self, "left")
 
     @left.setter
-    def left(self, value: Optional[pulumi.Input[str]]):
+    def left(self, value: pulumi.Input[str]):
         pulumi.set(self, "left", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> pulumi.Input[str]:
         """
         The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 
@@ -7004,19 +7038,19 @@ class JobTaskConditionTaskArgs:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: pulumi.Input[str]):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def right(self) -> Optional[pulumi.Input[str]]:
+    def right(self) -> pulumi.Input[str]:
         """
         The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
         return pulumi.get(self, "right")
 
     @right.setter
-    def right(self, value: Optional[pulumi.Input[str]]):
+    def right(self, value: pulumi.Input[str]):
         pulumi.set(self, "right", value)
 
 
@@ -7187,16 +7221,20 @@ class JobTaskDependsOnArgs:
 @pulumi.input_type
 class JobTaskEmailNotificationsArgs:
     def __init__(__self__, *,
+                 no_alert_for_skipped_runs: Optional[pulumi.Input[bool]] = None,
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_failures: (List) list of emails to notify when the run fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify when the run starts.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify when the run completes successfully.
         """
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -7205,6 +7243,18 @@ class JobTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -7344,7 +7394,7 @@ class JobTaskForEachTaskTaskArgs:
         :param pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobTaskForEachTaskTaskHealthArgs'] health: block described below that specifies health conditions for a given task.
         :param pulumi.Input[str] job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input['JobTaskForEachTaskTaskNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
@@ -7511,7 +7561,7 @@ class JobTaskForEachTaskTaskArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskLibraryArgs']]]]:
         """
-        (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for Cluster resource.
+        (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         """
         return pulumi.get(self, "libraries")
 
@@ -7704,9 +7754,9 @@ class JobTaskForEachTaskTaskArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskConditionTaskArgs:
     def __init__(__self__, *,
-                 left: Optional[pulumi.Input[str]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 right: Optional[pulumi.Input[str]] = None):
+                 left: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 right: pulumi.Input[str]):
         """
         :param pulumi.Input[str] left: The left operand of the condition task. It could be a string value, job state, or a parameter reference.
         :param pulumi.Input[str] op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
@@ -7714,28 +7764,25 @@ class JobTaskForEachTaskTaskConditionTaskArgs:
                This task does not require a cluster to execute and does not support retries or notifications.
         :param pulumi.Input[str] right: The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
-        if left is not None:
-            pulumi.set(__self__, "left", left)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if right is not None:
-            pulumi.set(__self__, "right", right)
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "right", right)
 
     @property
     @pulumi.getter
-    def left(self) -> Optional[pulumi.Input[str]]:
+    def left(self) -> pulumi.Input[str]:
         """
         The left operand of the condition task. It could be a string value, job state, or a parameter reference.
         """
         return pulumi.get(self, "left")
 
     @left.setter
-    def left(self, value: Optional[pulumi.Input[str]]):
+    def left(self, value: pulumi.Input[str]):
         pulumi.set(self, "left", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
+    def op(self) -> pulumi.Input[str]:
         """
         The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
 
@@ -7744,19 +7791,19 @@ class JobTaskForEachTaskTaskConditionTaskArgs:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
+    def op(self, value: pulumi.Input[str]):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def right(self) -> Optional[pulumi.Input[str]]:
+    def right(self) -> pulumi.Input[str]:
         """
         The right operand of the condition task. It could be a string value, job state, or parameter reference.
         """
         return pulumi.get(self, "right")
 
     @right.setter
-    def right(self, value: Optional[pulumi.Input[str]]):
+    def right(self, value: pulumi.Input[str]):
         pulumi.set(self, "right", value)
 
 
@@ -7927,16 +7974,20 @@ class JobTaskForEachTaskTaskDependsOnArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskEmailNotificationsArgs:
     def __init__(__self__, *,
+                 no_alert_for_skipped_runs: Optional[pulumi.Input[bool]] = None,
                  on_duration_warning_threshold_exceededs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_failures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_starts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  on_successes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[bool] no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_failures: (List) list of emails to notify when the run fails.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_starts: (List) list of emails to notify when the run starts.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_successes: (List) list of emails to notify when the run completes successfully.
         """
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -7945,6 +7996,18 @@ class JobTaskForEachTaskTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
+        """
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -10367,18 +10430,17 @@ class JobTaskForEachTaskTaskWebhookNotificationsArgs:
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -10387,25 +10449,24 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceed
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -10414,25 +10475,24 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -10441,25 +10501,24 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -10468,7 +10527,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
@@ -12851,18 +12910,17 @@ class JobTaskWebhookNotificationsArgs:
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -12871,25 +12929,24 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -12898,25 +12955,24 @@ class JobTaskWebhookNotificationsOnFailureArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -12925,25 +12981,24 @@ class JobTaskWebhookNotificationsOnStartArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -12952,33 +13007,38 @@ class JobTaskWebhookNotificationsOnSuccessArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobTriggerArgs:
     def __init__(__self__, *,
-                 file_arrival: pulumi.Input['JobTriggerFileArrivalArgs'],
-                 pause_status: Optional[pulumi.Input[str]] = None):
+                 file_arrival: Optional[pulumi.Input['JobTriggerFileArrivalArgs']] = None,
+                 pause_status: Optional[pulumi.Input[str]] = None,
+                 table_update: Optional[pulumi.Input['JobTriggerTableUpdateArgs']] = None):
         """
         :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         :param pulumi.Input[str] pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        :param pulumi.Input['JobTriggerTableUpdateArgs'] table_update: configuration block to define a trigger for Table Update events consisting of following attributes:
         """
-        pulumi.set(__self__, "file_arrival", file_arrival)
+        if file_arrival is not None:
+            pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if table_update is not None:
+            pulumi.set(__self__, "table_update", table_update)
 
     @property
     @pulumi.getter(name="fileArrival")
-    def file_arrival(self) -> pulumi.Input['JobTriggerFileArrivalArgs']:
+    def file_arrival(self) -> Optional[pulumi.Input['JobTriggerFileArrivalArgs']]:
         """
         configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         """
         return pulumi.get(self, "file_arrival")
 
     @file_arrival.setter
-    def file_arrival(self, value: pulumi.Input['JobTriggerFileArrivalArgs']):
+    def file_arrival(self, value: Optional[pulumi.Input['JobTriggerFileArrivalArgs']]):
         pulumi.set(self, "file_arrival", value)
 
     @property
@@ -12992,6 +13052,18 @@ class JobTriggerArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter(name="tableUpdate")
+    def table_update(self) -> Optional[pulumi.Input['JobTriggerTableUpdateArgs']]:
+        """
+        configuration block to define a trigger for Table Update events consisting of following attributes:
+        """
+        return pulumi.get(self, "table_update")
+
+    @table_update.setter
+    def table_update(self, value: Optional[pulumi.Input['JobTriggerTableUpdateArgs']]):
+        pulumi.set(self, "table_update", value)
 
 
 @pulumi.input_type
@@ -13022,6 +13094,76 @@ class JobTriggerFileArrivalArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        """
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+@pulumi.input_type
+class JobTriggerTableUpdateArgs:
+    def __init__(__self__, *,
+                 table_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 condition: Optional[pulumi.Input[str]] = None,
+                 min_time_between_triggers_seconds: Optional[pulumi.Input[int]] = None,
+                 wait_after_last_change_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] table_names: A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        :param pulumi.Input[str] condition: The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
+        :param pulumi.Input[int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+        :param pulumi.Input[int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+        """
+        pulumi.set(__self__, "table_names", table_names)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        """
+        return pulumi.get(self, "table_names")
+
+    @table_names.setter
+    def table_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "table_names", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="minTimeBetweenTriggersSeconds")
@@ -13142,18 +13284,17 @@ class JobWebhookNotificationsArgs:
 @pulumi.input_type
 class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -13162,25 +13303,24 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceededArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -13189,25 +13329,24 @@ class JobWebhookNotificationsOnFailureArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -13216,25 +13355,24 @@ class JobWebhookNotificationsOnStartArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class JobWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
                
                > **Note** The following configuration blocks can be standalone or nested inside a `task` block
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    def id(self) -> pulumi.Input[str]:
         """
         ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
 
@@ -13243,8 +13381,351 @@ class JobWebhookNotificationsOnSuccessArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorCustomMetricArgs:
+    def __init__(__self__, *,
+                 definition: Optional[pulumi.Input[str]] = None,
+                 input_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_data_type: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] definition: [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_columns: Columns on the monitored table to apply the custom metrics to.
+        :param pulumi.Input[str] name: Name of the custom metric.
+        :param pulumi.Input[str] output_data_type: The output type of the custom metric.
+        :param pulumi.Input[str] type: The type of the custom metric.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if input_columns is not None:
+            pulumi.set(__self__, "input_columns", input_columns)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if output_data_type is not None:
+            pulumi.set(__self__, "output_data_type", output_data_type)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def definition(self) -> Optional[pulumi.Input[str]]:
+        """
+        [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "definition", value)
+
+    @property
+    @pulumi.getter(name="inputColumns")
+    def input_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Columns on the monitored table to apply the custom metrics to.
+        """
+        return pulumi.get(self, "input_columns")
+
+    @input_columns.setter
+    def input_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "input_columns", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the custom metric.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputDataType")
+    def output_data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output type of the custom metric.
+        """
+        return pulumi.get(self, "output_data_type")
+
+    @output_data_type.setter
+    def output_data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_data_type", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the custom metric.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorDataClassificationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorInferenceLogArgs:
+    def __init__(__self__, *,
+                 granularities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 label_col: Optional[pulumi.Input[str]] = None,
+                 model_id_col: Optional[pulumi.Input[str]] = None,
+                 prediction_col: Optional[pulumi.Input[str]] = None,
+                 prediction_proba_col: Optional[pulumi.Input[str]] = None,
+                 problem_type: Optional[pulumi.Input[str]] = None,
+                 timestamp_col: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
+        :param pulumi.Input[str] label_col: Column of the model label
+        :param pulumi.Input[str] model_id_col: Column of the model id or version
+        :param pulumi.Input[str] prediction_col: Column of the model prediction
+        :param pulumi.Input[str] prediction_proba_col: Column of the model prediction probabilities
+        :param pulumi.Input[str] problem_type: Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        :param pulumi.Input[str] timestamp_col: Column of the timestamp of predictions
+        """
+        if granularities is not None:
+            pulumi.set(__self__, "granularities", granularities)
+        if label_col is not None:
+            pulumi.set(__self__, "label_col", label_col)
+        if model_id_col is not None:
+            pulumi.set(__self__, "model_id_col", model_id_col)
+        if prediction_col is not None:
+            pulumi.set(__self__, "prediction_col", prediction_col)
+        if prediction_proba_col is not None:
+            pulumi.set(__self__, "prediction_proba_col", prediction_proba_col)
+        if problem_type is not None:
+            pulumi.set(__self__, "problem_type", problem_type)
+        if timestamp_col is not None:
+            pulumi.set(__self__, "timestamp_col", timestamp_col)
+
+    @property
+    @pulumi.getter
+    def granularities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "granularities", value)
+
+    @property
+    @pulumi.getter(name="labelCol")
+    def label_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model label
+        """
+        return pulumi.get(self, "label_col")
+
+    @label_col.setter
+    def label_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_col", value)
+
+    @property
+    @pulumi.getter(name="modelIdCol")
+    def model_id_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model id or version
+        """
+        return pulumi.get(self, "model_id_col")
+
+    @model_id_col.setter
+    def model_id_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_id_col", value)
+
+    @property
+    @pulumi.getter(name="predictionCol")
+    def prediction_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model prediction
+        """
+        return pulumi.get(self, "prediction_col")
+
+    @prediction_col.setter
+    def prediction_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prediction_col", value)
+
+    @property
+    @pulumi.getter(name="predictionProbaCol")
+    def prediction_proba_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the model prediction probabilities
+        """
+        return pulumi.get(self, "prediction_proba_col")
+
+    @prediction_proba_col.setter
+    def prediction_proba_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prediction_proba_col", value)
+
+    @property
+    @pulumi.getter(name="problemType")
+    def problem_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        """
+        return pulumi.get(self, "problem_type")
+
+    @problem_type.setter
+    def problem_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "problem_type", value)
+
+    @property
+    @pulumi.getter(name="timestampCol")
+    def timestamp_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the timestamp of predictions
+        """
+        return pulumi.get(self, "timestamp_col")
+
+    @timestamp_col.setter
+    def timestamp_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp_col", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorNotificationsArgs:
+    def __init__(__self__, *,
+                 on_failure: Optional[pulumi.Input['LakehouseMonitorNotificationsOnFailureArgs']] = None):
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input['LakehouseMonitorNotificationsOnFailureArgs']]:
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input['LakehouseMonitorNotificationsOnFailureArgs']]):
+        pulumi.set(self, "on_failure", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorNotificationsOnFailureArgs:
+    def __init__(__self__, *,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorScheduleArgs:
+    def __init__(__self__, *,
+                 pause_status: Optional[pulumi.Input[str]] = None,
+                 quartz_cron_expression: Optional[pulumi.Input[str]] = None,
+                 timezone_id: Optional[pulumi.Input[str]] = None):
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+        if quartz_cron_expression is not None:
+            pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
+        if timezone_id is not None:
+            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter(name="quartzCronExpression")
+    def quartz_cron_expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "quartz_cron_expression")
+
+    @quartz_cron_expression.setter
+    def quartz_cron_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quartz_cron_expression", value)
+
+    @property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone_id", value)
+
+
+@pulumi.input_type
+class LakehouseMonitorSnapshotArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class LakehouseMonitorTimeSeriesArgs:
+    def __init__(__self__, *,
+                 granularities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timestamp_col: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
+        :param pulumi.Input[str] timestamp_col: Column of the timestamp of predictions
+        """
+        if granularities is not None:
+            pulumi.set(__self__, "granularities", granularities)
+        if timestamp_col is not None:
+            pulumi.set(__self__, "timestamp_col", timestamp_col)
+
+    @property
+    @pulumi.getter
+    def granularities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of granularities to use when aggregating data into time windows based on their timestamp.
+        """
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "granularities", value)
+
+    @property
+    @pulumi.getter(name="timestampCol")
+    def timestamp_col(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column of the timestamp of predictions
+        """
+        return pulumi.get(self, "timestamp_col")
+
+    @timestamp_col.setter
+    def timestamp_col(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp_col", value)
 
 
 @pulumi.input_type
@@ -13684,14 +14165,22 @@ class MlflowWebhookJobSpecArgs:
 class ModelServingConfigArgs:
     def __init__(__self__, *,
                  auto_capture_config: Optional[pulumi.Input['ModelServingConfigAutoCaptureConfigArgs']] = None,
+                 served_entities: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedEntityArgs']]]] = None,
                  served_models: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]] = None,
                  traffic_config: Optional[pulumi.Input['ModelServingConfigTrafficConfigArgs']] = None):
         """
+        :param pulumi.Input['ModelServingConfigAutoCaptureConfigArgs'] auto_capture_config: Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedEntityArgs']]] served_entities: A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
         :param pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]] served_models: Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         :param pulumi.Input['ModelServingConfigTrafficConfigArgs'] traffic_config: A single block represents the traffic split configuration amongst the served models.
         """
         if auto_capture_config is not None:
             pulumi.set(__self__, "auto_capture_config", auto_capture_config)
+        if served_entities is not None:
+            pulumi.set(__self__, "served_entities", served_entities)
+        if served_models is not None:
+            warnings.warn("""Please use 'config.served_entities' instead of 'config.served_models'.""", DeprecationWarning)
+            pulumi.log.warn("""served_models is deprecated: Please use 'config.served_entities' instead of 'config.served_models'.""")
         if served_models is not None:
             pulumi.set(__self__, "served_models", served_models)
         if traffic_config is not None:
@@ -13700,6 +14189,9 @@ class ModelServingConfigArgs:
     @property
     @pulumi.getter(name="autoCaptureConfig")
     def auto_capture_config(self) -> Optional[pulumi.Input['ModelServingConfigAutoCaptureConfigArgs']]:
+        """
+        Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+        """
         return pulumi.get(self, "auto_capture_config")
 
     @auto_capture_config.setter
@@ -13707,11 +14199,26 @@ class ModelServingConfigArgs:
         pulumi.set(self, "auto_capture_config", value)
 
     @property
+    @pulumi.getter(name="servedEntities")
+    def served_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedEntityArgs']]]]:
+        """
+        A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+        """
+        return pulumi.get(self, "served_entities")
+
+    @served_entities.setter
+    def served_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedEntityArgs']]]]):
+        pulumi.set(self, "served_entities", value)
+
+    @property
     @pulumi.getter(name="servedModels")
     def served_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigServedModelArgs']]]]:
         """
         Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
         """
+        warnings.warn("""Please use 'config.served_entities' instead of 'config.served_models'.""", DeprecationWarning)
+        pulumi.log.warn("""served_models is deprecated: Please use 'config.served_entities' instead of 'config.served_models'.""")
+
         return pulumi.get(self, "served_models")
 
     @served_models.setter
@@ -13738,6 +14245,12 @@ class ModelServingConfigAutoCaptureConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  table_name_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] catalog_name: The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        :param pulumi.Input[bool] enabled: If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        :param pulumi.Input[str] schema_name: The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        :param pulumi.Input[str] table_name_prefix: The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if enabled is not None:
@@ -13750,6 +14263,9 @@ class ModelServingConfigAutoCaptureConfigArgs:
     @property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -13759,6 +14275,9 @@ class ModelServingConfigAutoCaptureConfigArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -13768,6 +14287,9 @@ class ModelServingConfigAutoCaptureConfigArgs:
     @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -13777,11 +14299,657 @@ class ModelServingConfigAutoCaptureConfigArgs:
     @property
     @pulumi.getter(name="tableNamePrefix")
     def table_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+        """
         return pulumi.get(self, "table_name_prefix")
 
     @table_name_prefix.setter
     def table_name_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "table_name_prefix", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityArgs:
+    def __init__(__self__, *,
+                 entity_name: Optional[pulumi.Input[str]] = None,
+                 entity_version: Optional[pulumi.Input[str]] = None,
+                 environment_vars: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 external_model: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelArgs']] = None,
+                 instance_profile_arn: Optional[pulumi.Input[str]] = None,
+                 max_provisioned_throughput: Optional[pulumi.Input[int]] = None,
+                 min_provisioned_throughput: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 scale_to_zero_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_size: Optional[pulumi.Input[str]] = None,
+                 workload_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] entity_name: The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
+        :param pulumi.Input[str] entity_version: The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
+        :param pulumi.Input[Mapping[str, Any]] environment_vars: An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelArgs'] external_model: The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
+        :param pulumi.Input[int] max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
+        :param pulumi.Input[int] min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
+        :param pulumi.Input[str] name: The name of the external model.
+        :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served entity should scale down to zero.
+        :param pulumi.Input[str] workload_size: The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        :param pulumi.Input[str] workload_type: The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
+        """
+        if entity_name is not None:
+            pulumi.set(__self__, "entity_name", entity_name)
+        if entity_version is not None:
+            pulumi.set(__self__, "entity_version", entity_version)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if external_model is not None:
+            pulumi.set(__self__, "external_model", external_model)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
+        if max_provisioned_throughput is not None:
+            pulumi.set(__self__, "max_provisioned_throughput", max_provisioned_throughput)
+        if min_provisioned_throughput is not None:
+            pulumi.set(__self__, "min_provisioned_throughput", min_provisioned_throughput)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if scale_to_zero_enabled is not None:
+            pulumi.set(__self__, "scale_to_zero_enabled", scale_to_zero_enabled)
+        if workload_size is not None:
+            pulumi.set(__self__, "workload_size", workload_size)
+        if workload_type is not None:
+            pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="entityName")
+    def entity_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
+        """
+        return pulumi.get(self, "entity_name")
+
+    @entity_name.setter
+    def entity_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_name", value)
+
+    @property
+    @pulumi.getter(name="entityVersion")
+    def entity_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
+        """
+        return pulumi.get(self, "entity_version")
+
+    @entity_version.setter
+    def entity_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_version", value)
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @environment_vars.setter
+    def environment_vars(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "environment_vars", value)
+
+    @property
+    @pulumi.getter(name="externalModel")
+    def external_model(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelArgs']]:
+        """
+        The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. For an existing endpoint with `external_model`, it can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        """
+        return pulumi.get(self, "external_model")
+
+    @external_model.setter
+    def external_model(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelArgs']]):
+        pulumi.set(self, "external_model", value)
+
+    @property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARN of the instance profile that the served entity uses to access AWS resources.
+        """
+        return pulumi.get(self, "instance_profile_arn")
+
+    @instance_profile_arn.setter
+    def instance_profile_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_profile_arn", value)
+
+    @property
+    @pulumi.getter(name="maxProvisionedThroughput")
+    def max_provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum tokens per second that the endpoint can scale up to.
+        """
+        return pulumi.get(self, "max_provisioned_throughput")
+
+    @max_provisioned_throughput.setter
+    def max_provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_provisioned_throughput", value)
+
+    @property
+    @pulumi.getter(name="minProvisionedThroughput")
+    def min_provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum tokens per second that the endpoint can scale down to.
+        """
+        return pulumi.get(self, "min_provisioned_throughput")
+
+    @min_provisioned_throughput.setter
+    def min_provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_provisioned_throughput", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the external model.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="scaleToZeroEnabled")
+    def scale_to_zero_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the compute resources for the served entity should scale down to zero.
+        """
+        return pulumi.get(self, "scale_to_zero_enabled")
+
+    @scale_to_zero_enabled.setter
+    def scale_to_zero_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scale_to_zero_enabled", value)
+
+    @property
+    @pulumi.getter(name="workloadSize")
+    def workload_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+        """
+        return pulumi.get(self, "workload_size")
+
+    @workload_size.setter
+    def workload_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_size", value)
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
+        """
+        return pulumi.get(self, "workload_type")
+
+    @workload_type.setter
+    def workload_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workload_type", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 provider: pulumi.Input[str],
+                 task: pulumi.Input[str],
+                 ai21labs_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs']] = None,
+                 amazon_bedrock_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs']] = None,
+                 anthropic_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']] = None,
+                 cohere_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']] = None,
+                 databricks_model_serving_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']] = None,
+                 openai_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']] = None,
+                 palm_config: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param pulumi.Input[str] provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        :param pulumi.Input[str] task: The task type of the external model.
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs'] ai21labs_config: AI21Labs Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs'] amazon_bedrock_config: Amazon Bedrock Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs'] anthropic_config: Anthropic Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs'] cohere_config: Cohere Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs'] databricks_model_serving_config: Databricks Model Serving Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs'] openai_config: OpenAI Config
+        :param pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs'] palm_config: PaLM Config
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "provider", provider)
+        pulumi.set(__self__, "task", task)
+        if ai21labs_config is not None:
+            pulumi.set(__self__, "ai21labs_config", ai21labs_config)
+        if amazon_bedrock_config is not None:
+            pulumi.set(__self__, "amazon_bedrock_config", amazon_bedrock_config)
+        if anthropic_config is not None:
+            pulumi.set(__self__, "anthropic_config", anthropic_config)
+        if cohere_config is not None:
+            pulumi.set(__self__, "cohere_config", cohere_config)
+        if databricks_model_serving_config is not None:
+            pulumi.set(__self__, "databricks_model_serving_config", databricks_model_serving_config)
+        if openai_config is not None:
+            pulumi.set(__self__, "openai_config", openai_config)
+        if palm_config is not None:
+            pulumi.set(__self__, "palm_config", palm_config)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def provider(self) -> pulumi.Input[str]:
+        """
+        The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider", value)
+
+    @property
+    @pulumi.getter
+    def task(self) -> pulumi.Input[str]:
+        """
+        The task type of the external model.
+        """
+        return pulumi.get(self, "task")
+
+    @task.setter
+    def task(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task", value)
+
+    @property
+    @pulumi.getter(name="ai21labsConfig")
+    def ai21labs_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs']]:
+        """
+        AI21Labs Config
+        """
+        return pulumi.get(self, "ai21labs_config")
+
+    @ai21labs_config.setter
+    def ai21labs_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAi21labsConfigArgs']]):
+        pulumi.set(self, "ai21labs_config", value)
+
+    @property
+    @pulumi.getter(name="amazonBedrockConfig")
+    def amazon_bedrock_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs']]:
+        """
+        Amazon Bedrock Config
+        """
+        return pulumi.get(self, "amazon_bedrock_config")
+
+    @amazon_bedrock_config.setter
+    def amazon_bedrock_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs']]):
+        pulumi.set(self, "amazon_bedrock_config", value)
+
+    @property
+    @pulumi.getter(name="anthropicConfig")
+    def anthropic_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']]:
+        """
+        Anthropic Config
+        """
+        return pulumi.get(self, "anthropic_config")
+
+    @anthropic_config.setter
+    def anthropic_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelAnthropicConfigArgs']]):
+        pulumi.set(self, "anthropic_config", value)
+
+    @property
+    @pulumi.getter(name="cohereConfig")
+    def cohere_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']]:
+        """
+        Cohere Config
+        """
+        return pulumi.get(self, "cohere_config")
+
+    @cohere_config.setter
+    def cohere_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelCohereConfigArgs']]):
+        pulumi.set(self, "cohere_config", value)
+
+    @property
+    @pulumi.getter(name="databricksModelServingConfig")
+    def databricks_model_serving_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']]:
+        """
+        Databricks Model Serving Config
+        """
+        return pulumi.get(self, "databricks_model_serving_config")
+
+    @databricks_model_serving_config.setter
+    def databricks_model_serving_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs']]):
+        pulumi.set(self, "databricks_model_serving_config", value)
+
+    @property
+    @pulumi.getter(name="openaiConfig")
+    def openai_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']]:
+        """
+        OpenAI Config
+        """
+        return pulumi.get(self, "openai_config")
+
+    @openai_config.setter
+    def openai_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelOpenaiConfigArgs']]):
+        pulumi.set(self, "openai_config", value)
+
+    @property
+    @pulumi.getter(name="palmConfig")
+    def palm_config(self) -> Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs']]:
+        """
+        PaLM Config
+        """
+        return pulumi.get(self, "palm_config")
+
+    @palm_config.setter
+    def palm_config(self, value: Optional[pulumi.Input['ModelServingConfigServedEntityExternalModelPalmConfigArgs']]):
+        pulumi.set(self, "palm_config", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelAi21labsConfigArgs:
+    def __init__(__self__, *,
+                 ai21labs_api_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
+        """
+        pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
+
+    @property
+    @pulumi.getter(name="ai21labsApiKey")
+    def ai21labs_api_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for an AI21Labs API key.
+        """
+        return pulumi.get(self, "ai21labs_api_key")
+
+    @ai21labs_api_key.setter
+    def ai21labs_api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ai21labs_api_key", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs:
+    def __init__(__self__, *,
+                 aws_access_key_id: pulumi.Input[str],
+                 aws_region: pulumi.Input[str],
+                 aws_secret_access_key: pulumi.Input[str],
+                 bedrock_provider: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        :param pulumi.Input[str] aws_region: The AWS region to use. Bedrock has to be enabled there.
+        :param pulumi.Input[str] aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        :param pulumi.Input[str] bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        """
+        pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        pulumi.set(__self__, "aws_region", aws_region)
+        pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        pulumi.set(__self__, "bedrock_provider", bedrock_provider)
+
+    @property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @aws_access_key_id.setter
+    def aws_access_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aws_access_key_id", value)
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to use. Bedrock has to be enabled there.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @aws_region.setter
+    def aws_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aws_region", value)
+
+    @property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @aws_secret_access_key.setter
+    def aws_secret_access_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "aws_secret_access_key", value)
+
+    @property
+    @pulumi.getter(name="bedrockProvider")
+    def bedrock_provider(self) -> pulumi.Input[str]:
+        """
+        The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+        """
+        return pulumi.get(self, "bedrock_provider")
+
+    @bedrock_provider.setter
+    def bedrock_provider(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bedrock_provider", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelAnthropicConfigArgs:
+    def __init__(__self__, *,
+                 anthropic_api_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
+               The Databricks secret key reference for an Anthropic API key.
+        """
+        pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
+
+    @property
+    @pulumi.getter(name="anthropicApiKey")
+    def anthropic_api_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for an Anthropic API key.
+        The Databricks secret key reference for an Anthropic API key.
+        """
+        return pulumi.get(self, "anthropic_api_key")
+
+    @anthropic_api_key.setter
+    def anthropic_api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "anthropic_api_key", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelCohereConfigArgs:
+    def __init__(__self__, *,
+                 cohere_api_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cohere_api_key: The Databricks secret key reference for a Cohere API key.
+        """
+        pulumi.set(__self__, "cohere_api_key", cohere_api_key)
+
+    @property
+    @pulumi.getter(name="cohereApiKey")
+    def cohere_api_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for a Cohere API key.
+        """
+        return pulumi.get(self, "cohere_api_key")
+
+    @cohere_api_key.setter
+    def cohere_api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cohere_api_key", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigArgs:
+    def __init__(__self__, *,
+                 databricks_api_token: pulumi.Input[str],
+                 databricks_workspace_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        :param pulumi.Input[str] databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        """
+        pulumi.set(__self__, "databricks_api_token", databricks_api_token)
+        pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
+
+    @property
+    @pulumi.getter(name="databricksApiToken")
+    def databricks_api_token(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+        """
+        return pulumi.get(self, "databricks_api_token")
+
+    @databricks_api_token.setter
+    def databricks_api_token(self, value: pulumi.Input[str]):
+        pulumi.set(self, "databricks_api_token", value)
+
+    @property
+    @pulumi.getter(name="databricksWorkspaceUrl")
+    def databricks_workspace_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+        """
+        return pulumi.get(self, "databricks_workspace_url")
+
+    @databricks_workspace_url.setter
+    def databricks_workspace_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "databricks_workspace_url", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs:
+    def __init__(__self__, *,
+                 openai_api_key: pulumi.Input[str],
+                 openai_api_base: Optional[pulumi.Input[str]] = None,
+                 openai_api_type: Optional[pulumi.Input[str]] = None,
+                 openai_api_version: Optional[pulumi.Input[str]] = None,
+                 openai_deployment_name: Optional[pulumi.Input[str]] = None,
+                 openai_organization: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] openai_api_key: The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+        :param pulumi.Input[str] openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        :param pulumi.Input[str] openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        :param pulumi.Input[str] openai_api_version: This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        :param pulumi.Input[str] openai_deployment_name: This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+        :param pulumi.Input[str] openai_organization: This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+        """
+        pulumi.set(__self__, "openai_api_key", openai_api_key)
+        if openai_api_base is not None:
+            pulumi.set(__self__, "openai_api_base", openai_api_base)
+        if openai_api_type is not None:
+            pulumi.set(__self__, "openai_api_type", openai_api_type)
+        if openai_api_version is not None:
+            pulumi.set(__self__, "openai_api_version", openai_api_version)
+        if openai_deployment_name is not None:
+            pulumi.set(__self__, "openai_deployment_name", openai_deployment_name)
+        if openai_organization is not None:
+            pulumi.set(__self__, "openai_organization", openai_organization)
+
+    @property
+    @pulumi.getter(name="openaiApiKey")
+    def openai_api_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+        """
+        return pulumi.get(self, "openai_api_key")
+
+    @openai_api_key.setter
+    def openai_api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "openai_api_key", value)
+
+    @property
+    @pulumi.getter(name="openaiApiBase")
+    def openai_api_base(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+        """
+        return pulumi.get(self, "openai_api_base")
+
+    @openai_api_base.setter
+    def openai_api_base(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_api_base", value)
+
+    @property
+    @pulumi.getter(name="openaiApiType")
+    def openai_api_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+        """
+        return pulumi.get(self, "openai_api_type")
+
+    @openai_api_type.setter
+    def openai_api_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_api_type", value)
+
+    @property
+    @pulumi.getter(name="openaiApiVersion")
+    def openai_api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+        """
+        return pulumi.get(self, "openai_api_version")
+
+    @openai_api_version.setter
+    def openai_api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_api_version", value)
+
+    @property
+    @pulumi.getter(name="openaiDeploymentName")
+    def openai_deployment_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+        """
+        return pulumi.get(self, "openai_deployment_name")
+
+    @openai_deployment_name.setter
+    def openai_deployment_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_deployment_name", value)
+
+    @property
+    @pulumi.getter(name="openaiOrganization")
+    def openai_organization(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+        """
+        return pulumi.get(self, "openai_organization")
+
+    @openai_organization.setter
+    def openai_organization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "openai_organization", value)
+
+
+@pulumi.input_type
+class ModelServingConfigServedEntityExternalModelPalmConfigArgs:
+    def __init__(__self__, *,
+                 palm_api_key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] palm_api_key: The Databricks secret key reference for a PaLM API key.
+        """
+        pulumi.set(__self__, "palm_api_key", palm_api_key)
+
+    @property
+    @pulumi.getter(name="palmApiKey")
+    def palm_api_key(self) -> pulumi.Input[str]:
+        """
+        The Databricks secret key reference for a PaLM API key.
+        """
+        return pulumi.get(self, "palm_api_key")
+
+    @palm_api_key.setter
+    def palm_api_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "palm_api_key", value)
 
 
 @pulumi.input_type
@@ -13798,11 +14966,11 @@ class ModelServingConfigServedModelArgs:
         """
         :param pulumi.Input[str] model_name: The name of the model in Databricks Model Registry to be served.
         :param pulumi.Input[str] model_version: The version of the model in Databricks Model Registry to be served.
-        :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        :param pulumi.Input[str] workload_size: The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         :param pulumi.Input[Mapping[str, Any]] environment_vars: a map of environment variable name/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
         :param pulumi.Input[str] instance_profile_arn: ARN of the instance profile that the served model will use to access AWS resources.
         :param pulumi.Input[str] name: The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
-        :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        :param pulumi.Input[bool] scale_to_zero_enabled: Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         :param pulumi.Input[str] workload_type: The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See documentation for all options. The default value is `CPU`.
         """
         pulumi.set(__self__, "model_name", model_name)
@@ -13847,7 +15015,7 @@ class ModelServingConfigServedModelArgs:
     @pulumi.getter(name="workloadSize")
     def workload_size(self) -> pulumi.Input[str]:
         """
-        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         """
         return pulumi.get(self, "workload_size")
 
@@ -13895,7 +15063,7 @@ class ModelServingConfigServedModelArgs:
     @pulumi.getter(name="scaleToZeroEnabled")
     def scale_to_zero_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         """
         return pulumi.get(self, "scale_to_zero_enabled")
 
@@ -13921,7 +15089,7 @@ class ModelServingConfigTrafficConfigArgs:
     def __init__(__self__, *,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgs']]] routes: Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        :param pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgs']]] routes: Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
         """
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
@@ -13930,7 +15098,7 @@ class ModelServingConfigTrafficConfigArgs:
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ModelServingConfigTrafficConfigRouteArgs']]]]:
         """
-        Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
         """
         return pulumi.get(self, "routes")
 
@@ -13945,7 +15113,6 @@ class ModelServingConfigTrafficConfigRouteArgs:
                  served_model_name: pulumi.Input[str],
                  traffic_percentage: pulumi.Input[int]):
         """
-        :param pulumi.Input[str] served_model_name: The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
         :param pulumi.Input[int] traffic_percentage: The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
         """
         pulumi.set(__self__, "served_model_name", served_model_name)
@@ -13954,9 +15121,6 @@ class ModelServingConfigTrafficConfigRouteArgs:
     @property
     @pulumi.getter(name="servedModelName")
     def served_model_name(self) -> pulumi.Input[str]:
-        """
-        The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-        """
         return pulumi.get(self, "served_model_name")
 
     @served_model_name.setter
@@ -13982,6 +15146,11 @@ class ModelServingRateLimitArgs:
                  calls: pulumi.Input[int],
                  renewal_period: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] calls: Used to specify how many calls are allowed for a key within the renewal_period.
+        :param pulumi.Input[str] renewal_period: Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        :param pulumi.Input[str] key: Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
         pulumi.set(__self__, "calls", calls)
         pulumi.set(__self__, "renewal_period", renewal_period)
         if key is not None:
@@ -13990,6 +15159,9 @@ class ModelServingRateLimitArgs:
     @property
     @pulumi.getter
     def calls(self) -> pulumi.Input[int]:
+        """
+        Used to specify how many calls are allowed for a key within the renewal_period.
+        """
         return pulumi.get(self, "calls")
 
     @calls.setter
@@ -13999,6 +15171,9 @@ class ModelServingRateLimitArgs:
     @property
     @pulumi.getter(name="renewalPeriod")
     def renewal_period(self) -> pulumi.Input[str]:
+        """
+        Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        """
         return pulumi.get(self, "renewal_period")
 
     @renewal_period.setter
@@ -14008,6 +15183,9 @@ class ModelServingRateLimitArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -14020,6 +15198,10 @@ class ModelServingTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The key field for a tag.
+        :param pulumi.Input[str] value: The value field for a tag.
+        """
         pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -14027,6 +15209,9 @@ class ModelServingTagArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The key field for a tag.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -14036,6 +15221,9 @@ class ModelServingTagArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value field for a tag.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -14883,6 +16071,547 @@ class MwsWorkspacesTokenArgs:
     @token_value.setter
     def token_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_value", value)
+
+
+@pulumi.input_type
+class OnlineTableSpecArgs:
+    def __init__(__self__, *,
+                 perform_full_copy: Optional[pulumi.Input[bool]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
+                 primary_key_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 run_continuously: Optional[pulumi.Input['OnlineTableSpecRunContinuouslyArgs']] = None,
+                 run_triggered: Optional[pulumi.Input['OnlineTableSpecRunTriggeredArgs']] = None,
+                 source_table_full_name: Optional[pulumi.Input[str]] = None,
+                 timeseries_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] perform_full_copy: Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+        :param pulumi.Input[str] pipeline_id: ID of the associated Delta Live Table pipeline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_key_columns: list of the columns comprising the primary key.
+        :param pulumi.Input['OnlineTableSpecRunContinuouslyArgs'] run_continuously: empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        :param pulumi.Input['OnlineTableSpecRunTriggeredArgs'] run_triggered: empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+        :param pulumi.Input[str] source_table_full_name: full name of the source table.
+        :param pulumi.Input[str] timeseries_key: Time series key to deduplicate (tie-break) rows with the same primary key.
+        """
+        if perform_full_copy is not None:
+            pulumi.set(__self__, "perform_full_copy", perform_full_copy)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if primary_key_columns is not None:
+            pulumi.set(__self__, "primary_key_columns", primary_key_columns)
+        if run_continuously is not None:
+            pulumi.set(__self__, "run_continuously", run_continuously)
+        if run_triggered is not None:
+            pulumi.set(__self__, "run_triggered", run_triggered)
+        if source_table_full_name is not None:
+            pulumi.set(__self__, "source_table_full_name", source_table_full_name)
+        if timeseries_key is not None:
+            pulumi.set(__self__, "timeseries_key", timeseries_key)
+
+    @property
+    @pulumi.getter(name="performFullCopy")
+    def perform_full_copy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+        """
+        return pulumi.get(self, "perform_full_copy")
+
+    @perform_full_copy.setter
+    def perform_full_copy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "perform_full_copy", value)
+
+    @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the associated Delta Live Table pipeline.
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @property
+    @pulumi.getter(name="primaryKeyColumns")
+    def primary_key_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        list of the columns comprising the primary key.
+        """
+        return pulumi.get(self, "primary_key_columns")
+
+    @primary_key_columns.setter
+    def primary_key_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "primary_key_columns", value)
+
+    @property
+    @pulumi.getter(name="runContinuously")
+    def run_continuously(self) -> Optional[pulumi.Input['OnlineTableSpecRunContinuouslyArgs']]:
+        """
+        empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        """
+        return pulumi.get(self, "run_continuously")
+
+    @run_continuously.setter
+    def run_continuously(self, value: Optional[pulumi.Input['OnlineTableSpecRunContinuouslyArgs']]):
+        pulumi.set(self, "run_continuously", value)
+
+    @property
+    @pulumi.getter(name="runTriggered")
+    def run_triggered(self) -> Optional[pulumi.Input['OnlineTableSpecRunTriggeredArgs']]:
+        """
+        empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+        """
+        return pulumi.get(self, "run_triggered")
+
+    @run_triggered.setter
+    def run_triggered(self, value: Optional[pulumi.Input['OnlineTableSpecRunTriggeredArgs']]):
+        pulumi.set(self, "run_triggered", value)
+
+    @property
+    @pulumi.getter(name="sourceTableFullName")
+    def source_table_full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        full name of the source table.
+        """
+        return pulumi.get(self, "source_table_full_name")
+
+    @source_table_full_name.setter
+    def source_table_full_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_table_full_name", value)
+
+    @property
+    @pulumi.getter(name="timeseriesKey")
+    def timeseries_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time series key to deduplicate (tie-break) rows with the same primary key.
+        """
+        return pulumi.get(self, "timeseries_key")
+
+    @timeseries_key.setter
+    def timeseries_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeseries_key", value)
+
+
+@pulumi.input_type
+class OnlineTableSpecRunContinuouslyArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class OnlineTableSpecRunTriggeredArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class OnlineTableStatusArgs:
+    def __init__(__self__, *,
+                 continuous_update_status: Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusArgs']] = None,
+                 detailed_state: Optional[pulumi.Input[str]] = None,
+                 failed_status: Optional[pulumi.Input['OnlineTableStatusFailedStatusArgs']] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 provisioning_status: Optional[pulumi.Input['OnlineTableStatusProvisioningStatusArgs']] = None,
+                 triggered_update_status: Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusArgs']] = None):
+        """
+        :param pulumi.Input[str] detailed_state: The state of the online table.
+        :param pulumi.Input[str] message: A text description of the current state of the online table.
+        """
+        if continuous_update_status is not None:
+            pulumi.set(__self__, "continuous_update_status", continuous_update_status)
+        if detailed_state is not None:
+            pulumi.set(__self__, "detailed_state", detailed_state)
+        if failed_status is not None:
+            pulumi.set(__self__, "failed_status", failed_status)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if triggered_update_status is not None:
+            pulumi.set(__self__, "triggered_update_status", triggered_update_status)
+
+    @property
+    @pulumi.getter(name="continuousUpdateStatus")
+    def continuous_update_status(self) -> Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusArgs']]:
+        return pulumi.get(self, "continuous_update_status")
+
+    @continuous_update_status.setter
+    def continuous_update_status(self, value: Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusArgs']]):
+        pulumi.set(self, "continuous_update_status", value)
+
+    @property
+    @pulumi.getter(name="detailedState")
+    def detailed_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the online table.
+        """
+        return pulumi.get(self, "detailed_state")
+
+    @detailed_state.setter
+    def detailed_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detailed_state", value)
+
+    @property
+    @pulumi.getter(name="failedStatus")
+    def failed_status(self) -> Optional[pulumi.Input['OnlineTableStatusFailedStatusArgs']]:
+        return pulumi.get(self, "failed_status")
+
+    @failed_status.setter
+    def failed_status(self, value: Optional[pulumi.Input['OnlineTableStatusFailedStatusArgs']]):
+        pulumi.set(self, "failed_status", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A text description of the current state of the online table.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input['OnlineTableStatusProvisioningStatusArgs']]:
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input['OnlineTableStatusProvisioningStatusArgs']]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @property
+    @pulumi.getter(name="triggeredUpdateStatus")
+    def triggered_update_status(self) -> Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusArgs']]:
+        return pulumi.get(self, "triggered_update_status")
+
+    @triggered_update_status.setter
+    def triggered_update_status(self, value: Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusArgs']]):
+        pulumi.set(self, "triggered_update_status", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusContinuousUpdateStatusArgs:
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs']] = None,
+                 last_processed_commit_version: Optional[pulumi.Input[int]] = None,
+                 timestamp: Optional[pulumi.Input[str]] = None):
+        if initial_pipeline_sync_progress is not None:
+            pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs']]:
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+    @initial_pipeline_sync_progress.setter
+    def initial_pipeline_sync_progress(self, value: Optional[pulumi.Input['OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs']]):
+        pulumi.set(self, "initial_pipeline_sync_progress", value)
+
+    @property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @last_processed_commit_version.setter
+    def last_processed_commit_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last_processed_commit_version", value)
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "timestamp")
+
+    @timestamp.setter
+    def timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgressArgs:
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[pulumi.Input[float]] = None,
+                 latest_version_currently_processing: Optional[pulumi.Input[int]] = None,
+                 sync_progress_completion: Optional[pulumi.Input[float]] = None,
+                 synced_row_count: Optional[pulumi.Input[int]] = None,
+                 total_row_count: Optional[pulumi.Input[int]] = None):
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @estimated_completion_time_seconds.setter
+    def estimated_completion_time_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "estimated_completion_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @latest_version_currently_processing.setter
+    def latest_version_currently_processing(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "latest_version_currently_processing", value)
+
+    @property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sync_progress_completion")
+
+    @sync_progress_completion.setter
+    def sync_progress_completion(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sync_progress_completion", value)
+
+    @property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "synced_row_count")
+
+    @synced_row_count.setter
+    def synced_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "synced_row_count", value)
+
+    @property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "total_row_count")
+
+    @total_row_count.setter
+    def total_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_row_count", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusFailedStatusArgs:
+    def __init__(__self__, *,
+                 last_processed_commit_version: Optional[pulumi.Input[int]] = None,
+                 timestamp: Optional[pulumi.Input[str]] = None):
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @last_processed_commit_version.setter
+    def last_processed_commit_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last_processed_commit_version", value)
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "timestamp")
+
+    @timestamp.setter
+    def timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusProvisioningStatusArgs:
+    def __init__(__self__, *,
+                 initial_pipeline_sync_progress: Optional[pulumi.Input['OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs']] = None):
+        if initial_pipeline_sync_progress is not None:
+            pulumi.set(__self__, "initial_pipeline_sync_progress", initial_pipeline_sync_progress)
+
+    @property
+    @pulumi.getter(name="initialPipelineSyncProgress")
+    def initial_pipeline_sync_progress(self) -> Optional[pulumi.Input['OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs']]:
+        return pulumi.get(self, "initial_pipeline_sync_progress")
+
+    @initial_pipeline_sync_progress.setter
+    def initial_pipeline_sync_progress(self, value: Optional[pulumi.Input['OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs']]):
+        pulumi.set(self, "initial_pipeline_sync_progress", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusProvisioningStatusInitialPipelineSyncProgressArgs:
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[pulumi.Input[float]] = None,
+                 latest_version_currently_processing: Optional[pulumi.Input[int]] = None,
+                 sync_progress_completion: Optional[pulumi.Input[float]] = None,
+                 synced_row_count: Optional[pulumi.Input[int]] = None,
+                 total_row_count: Optional[pulumi.Input[int]] = None):
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @estimated_completion_time_seconds.setter
+    def estimated_completion_time_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "estimated_completion_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @latest_version_currently_processing.setter
+    def latest_version_currently_processing(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "latest_version_currently_processing", value)
+
+    @property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sync_progress_completion")
+
+    @sync_progress_completion.setter
+    def sync_progress_completion(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sync_progress_completion", value)
+
+    @property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "synced_row_count")
+
+    @synced_row_count.setter
+    def synced_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "synced_row_count", value)
+
+    @property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "total_row_count")
+
+    @total_row_count.setter
+    def total_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_row_count", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusTriggeredUpdateStatusArgs:
+    def __init__(__self__, *,
+                 last_processed_commit_version: Optional[pulumi.Input[int]] = None,
+                 timestamp: Optional[pulumi.Input[str]] = None,
+                 triggered_update_progress: Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs']] = None):
+        if last_processed_commit_version is not None:
+            pulumi.set(__self__, "last_processed_commit_version", last_processed_commit_version)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+        if triggered_update_progress is not None:
+            pulumi.set(__self__, "triggered_update_progress", triggered_update_progress)
+
+    @property
+    @pulumi.getter(name="lastProcessedCommitVersion")
+    def last_processed_commit_version(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "last_processed_commit_version")
+
+    @last_processed_commit_version.setter
+    def last_processed_commit_version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last_processed_commit_version", value)
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "timestamp")
+
+    @timestamp.setter
+    def timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp", value)
+
+    @property
+    @pulumi.getter(name="triggeredUpdateProgress")
+    def triggered_update_progress(self) -> Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs']]:
+        return pulumi.get(self, "triggered_update_progress")
+
+    @triggered_update_progress.setter
+    def triggered_update_progress(self, value: Optional[pulumi.Input['OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs']]):
+        pulumi.set(self, "triggered_update_progress", value)
+
+
+@pulumi.input_type
+class OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs:
+    def __init__(__self__, *,
+                 estimated_completion_time_seconds: Optional[pulumi.Input[float]] = None,
+                 latest_version_currently_processing: Optional[pulumi.Input[int]] = None,
+                 sync_progress_completion: Optional[pulumi.Input[float]] = None,
+                 synced_row_count: Optional[pulumi.Input[int]] = None,
+                 total_row_count: Optional[pulumi.Input[int]] = None):
+        if estimated_completion_time_seconds is not None:
+            pulumi.set(__self__, "estimated_completion_time_seconds", estimated_completion_time_seconds)
+        if latest_version_currently_processing is not None:
+            pulumi.set(__self__, "latest_version_currently_processing", latest_version_currently_processing)
+        if sync_progress_completion is not None:
+            pulumi.set(__self__, "sync_progress_completion", sync_progress_completion)
+        if synced_row_count is not None:
+            pulumi.set(__self__, "synced_row_count", synced_row_count)
+        if total_row_count is not None:
+            pulumi.set(__self__, "total_row_count", total_row_count)
+
+    @property
+    @pulumi.getter(name="estimatedCompletionTimeSeconds")
+    def estimated_completion_time_seconds(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "estimated_completion_time_seconds")
+
+    @estimated_completion_time_seconds.setter
+    def estimated_completion_time_seconds(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "estimated_completion_time_seconds", value)
+
+    @property
+    @pulumi.getter(name="latestVersionCurrentlyProcessing")
+    def latest_version_currently_processing(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "latest_version_currently_processing")
+
+    @latest_version_currently_processing.setter
+    def latest_version_currently_processing(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "latest_version_currently_processing", value)
+
+    @property
+    @pulumi.getter(name="syncProgressCompletion")
+    def sync_progress_completion(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sync_progress_completion")
+
+    @sync_progress_completion.setter
+    def sync_progress_completion(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sync_progress_completion", value)
+
+    @property
+    @pulumi.getter(name="syncedRowCount")
+    def synced_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "synced_row_count")
+
+    @synced_row_count.setter
+    def synced_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "synced_row_count", value)
+
+    @property
+    @pulumi.getter(name="totalRowCount")
+    def total_row_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "total_row_count")
+
+    @total_row_count.setter
+    def total_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_row_count", value)
 
 
 @pulumi.input_type
@@ -16282,8 +18011,8 @@ class ShareObjectArgs:
                  start_version: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] data_object_type: Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
-        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a table.
+        :param pulumi.Input[str] data_object_type: Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        :param pulumi.Input[str] name: Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
         :param pulumi.Input[bool] cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param pulumi.Input[str] comment: Description about the object.
         :param pulumi.Input[str] history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
@@ -16318,7 +18047,7 @@ class ShareObjectArgs:
     @pulumi.getter(name="dataObjectType")
     def data_object_type(self) -> pulumi.Input[str]:
         """
-        Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
+        Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         """
         return pulumi.get(self, "data_object_type")
 
@@ -16330,7 +18059,7 @@ class ShareObjectArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full name of the object, e.g. `catalog.schema.name` for a table.
+        Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
         """
         return pulumi.get(self, "name")
 
@@ -17960,8 +19689,6 @@ class StorageCredentialAwsIamRoleArgs:
                  unity_catalog_iam_arn: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-        :param pulumi.Input[str] external_id: The external ID used in role assumption to prevent confused deputy problem.
-        :param pulumi.Input[str] unity_catalog_iam_arn: The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
                
                `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
@@ -17976,6 +19703,8 @@ class StorageCredentialAwsIamRoleArgs:
     def role_arn(self) -> pulumi.Input[str]:
         """
         The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+
+        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
         return pulumi.get(self, "role_arn")
 
@@ -17986,9 +19715,6 @@ class StorageCredentialAwsIamRoleArgs:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The external ID used in role assumption to prevent confused deputy problem.
-        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -17998,11 +19724,6 @@ class StorageCredentialAwsIamRoleArgs:
     @property
     @pulumi.getter(name="unityCatalogIamArn")
     def unity_catalog_iam_arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-
-        `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-        """
         return pulumi.get(self, "unity_catalog_iam_arn")
 
     @unity_catalog_iam_arn.setter
@@ -18343,7 +20064,7 @@ class VectorSearchEndpointEndpointStatusArgs:
                  state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] message: Additional status message.
-        :param pulumi.Input[str] state: Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+        :param pulumi.Input[str] state: Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
         """
         if message is not None:
             pulumi.set(__self__, "message", message)
@@ -18366,13 +20087,382 @@ class VectorSearchEndpointEndpointStatusArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+        Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDeltaSyncIndexSpecArgs:
+    def __init__(__self__, *,
+                 embedding_source_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]]] = None,
+                 embedding_vector_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]] = None,
+                 pipeline_id: Optional[pulumi.Input[str]] = None,
+                 pipeline_type: Optional[pulumi.Input[str]] = None,
+                 source_table: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        :param pulumi.Input[str] pipeline_id: ID of the associated Delta Live Table pipeline.
+        :param pulumi.Input[str] pipeline_type: Pipeline execution mode. Possible values are:
+        :param pulumi.Input[str] source_table: The name of the source table.
+        """
+        if embedding_source_columns is not None:
+            pulumi.set(__self__, "embedding_source_columns", embedding_source_columns)
+        if embedding_vector_columns is not None:
+            pulumi.set(__self__, "embedding_vector_columns", embedding_vector_columns)
+        if pipeline_id is not None:
+            pulumi.set(__self__, "pipeline_id", pipeline_id)
+        if pipeline_type is not None:
+            pulumi.set(__self__, "pipeline_type", pipeline_type)
+        if source_table is not None:
+            pulumi.set(__self__, "source_table", source_table)
+
+    @property
+    @pulumi.getter(name="embeddingSourceColumns")
+    def embedding_source_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding source.  Each entry consists of:
+        """
+        return pulumi.get(self, "embedding_source_columns")
+
+    @embedding_source_columns.setter
+    def embedding_source_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs']]]]):
+        pulumi.set(self, "embedding_source_columns", value)
+
+    @property
+    @pulumi.getter(name="embeddingVectorColumns")
+    def embedding_vector_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
+        return pulumi.get(self, "embedding_vector_columns")
+
+    @embedding_vector_columns.setter
+    def embedding_vector_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs']]]]):
+        pulumi.set(self, "embedding_vector_columns", value)
+
+    @property
+    @pulumi.getter(name="pipelineId")
+    def pipeline_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the associated Delta Live Table pipeline.
+        """
+        return pulumi.get(self, "pipeline_id")
+
+    @pipeline_id.setter
+    def pipeline_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_id", value)
+
+    @property
+    @pulumi.getter(name="pipelineType")
+    def pipeline_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pipeline execution mode. Possible values are:
+        """
+        return pulumi.get(self, "pipeline_type")
+
+    @pipeline_type.setter
+    def pipeline_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_type", value)
+
+    @property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the source table.
+        """
+        return pulumi.get(self, "source_table")
+
+    @source_table.setter
+    def source_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_table", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs:
+    def __init__(__self__, *,
+                 embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param pulumi.Input[str] name: The name of the column.
+        """
+        if embedding_model_endpoint_name is not None:
+            pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="embeddingModelEndpointName")
+    def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the embedding model endpoint
+        """
+        return pulumi.get(self, "embedding_model_endpoint_name")
+
+    @embedding_model_endpoint_name.setter
+    def embedding_model_endpoint_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "embedding_model_endpoint_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs:
+    def __init__(__self__, *,
+                 embedding_dimension: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
+        :param pulumi.Input[str] name: The name of the column.
+        """
+        if embedding_dimension is not None:
+            pulumi.set(__self__, "embedding_dimension", embedding_dimension)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="embeddingDimension")
+    def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
+        """
+        Dimension of the embedding vector.
+        """
+        return pulumi.get(self, "embedding_dimension")
+
+    @embedding_dimension.setter
+    def embedding_dimension(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "embedding_dimension", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDirectAccessIndexSpecArgs:
+    def __init__(__self__, *,
+                 embedding_source_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs']]]] = None,
+                 embedding_vector_columns: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]]] = None,
+                 schema_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs']]] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        :param pulumi.Input[str] schema_json: The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+        """
+        if embedding_source_columns is not None:
+            pulumi.set(__self__, "embedding_source_columns", embedding_source_columns)
+        if embedding_vector_columns is not None:
+            pulumi.set(__self__, "embedding_vector_columns", embedding_vector_columns)
+        if schema_json is not None:
+            pulumi.set(__self__, "schema_json", schema_json)
+
+    @property
+    @pulumi.getter(name="embeddingSourceColumns")
+    def embedding_source_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding source.  Each entry consists of:
+        """
+        return pulumi.get(self, "embedding_source_columns")
+
+    @embedding_source_columns.setter
+    def embedding_source_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs']]]]):
+        pulumi.set(self, "embedding_source_columns", value)
+
+    @property
+    @pulumi.getter(name="embeddingVectorColumns")
+    def embedding_vector_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]]]:
+        """
+        array of objects representing columns that contain the embedding vectors. Each entry consists of:
+        """
+        return pulumi.get(self, "embedding_vector_columns")
+
+    @embedding_vector_columns.setter
+    def embedding_vector_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs']]]]):
+        pulumi.set(self, "embedding_vector_columns", value)
+
+    @property
+    @pulumi.getter(name="schemaJson")
+    def schema_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+        """
+        return pulumi.get(self, "schema_json")
+
+    @schema_json.setter
+    def schema_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_json", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs:
+    def __init__(__self__, *,
+                 embedding_model_endpoint_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] embedding_model_endpoint_name: The name of the embedding model endpoint
+        :param pulumi.Input[str] name: The name of the column.
+        """
+        if embedding_model_endpoint_name is not None:
+            pulumi.set(__self__, "embedding_model_endpoint_name", embedding_model_endpoint_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="embeddingModelEndpointName")
+    def embedding_model_endpoint_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the embedding model endpoint
+        """
+        return pulumi.get(self, "embedding_model_endpoint_name")
+
+    @embedding_model_endpoint_name.setter
+    def embedding_model_endpoint_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "embedding_model_endpoint_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs:
+    def __init__(__self__, *,
+                 embedding_dimension: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] embedding_dimension: Dimension of the embedding vector.
+        :param pulumi.Input[str] name: The name of the column.
+        """
+        if embedding_dimension is not None:
+            pulumi.set(__self__, "embedding_dimension", embedding_dimension)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="embeddingDimension")
+    def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
+        """
+        Dimension of the embedding vector.
+        """
+        return pulumi.get(self, "embedding_dimension")
+
+    @embedding_dimension.setter
+    def embedding_dimension(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "embedding_dimension", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class VectorSearchIndexStatusArgs:
+    def __init__(__self__, *,
+                 index_url: Optional[pulumi.Input[str]] = None,
+                 indexed_row_count: Optional[pulumi.Input[int]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 ready: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] index_url: Index API Url to be used to perform operations on the index
+        :param pulumi.Input[int] indexed_row_count: Number of rows indexed
+        :param pulumi.Input[str] message: Message associated with the index status
+        :param pulumi.Input[bool] ready: Whether the index is ready for search
+        """
+        if index_url is not None:
+            pulumi.set(__self__, "index_url", index_url)
+        if indexed_row_count is not None:
+            pulumi.set(__self__, "indexed_row_count", indexed_row_count)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if ready is not None:
+            pulumi.set(__self__, "ready", ready)
+
+    @property
+    @pulumi.getter(name="indexUrl")
+    def index_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Index API Url to be used to perform operations on the index
+        """
+        return pulumi.get(self, "index_url")
+
+    @index_url.setter
+    def index_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_url", value)
+
+    @property
+    @pulumi.getter(name="indexedRowCount")
+    def indexed_row_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of rows indexed
+        """
+        return pulumi.get(self, "indexed_row_count")
+
+    @indexed_row_count.setter
+    def indexed_row_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "indexed_row_count", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Message associated with the index status
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def ready(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the index is ready for search
+        """
+        return pulumi.get(self, "ready")
+
+    @ready.setter
+    def ready(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ready", value)
 
 
 @pulumi.input_type
@@ -25147,41 +27237,38 @@ class GetJobJobSettingsSettingsTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskConditionTaskArgs:
     def __init__(__self__, *,
-                 left: Optional[str] = None,
-                 op: Optional[str] = None,
-                 right: Optional[str] = None):
-        if left is not None:
-            pulumi.set(__self__, "left", left)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if right is not None:
-            pulumi.set(__self__, "right", right)
+                 left: str,
+                 op: str,
+                 right: str):
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "right", right)
 
     @property
     @pulumi.getter
-    def left(self) -> Optional[str]:
+    def left(self) -> str:
         return pulumi.get(self, "left")
 
     @left.setter
-    def left(self, value: Optional[str]):
+    def left(self, value: str):
         pulumi.set(self, "left", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[str]:
+    def op(self) -> str:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[str]):
+    def op(self, value: str):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def right(self) -> Optional[str]:
+    def right(self) -> str:
         return pulumi.get(self, "right")
 
     @right.setter
-    def right(self, value: Optional[str]):
+    def right(self, value: str):
         pulumi.set(self, "right", value)
 
 
@@ -25304,10 +27391,13 @@ class GetJobJobSettingsSettingsTaskDependsOnArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
     def __init__(__self__, *,
+                 no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -25316,6 +27406,15 @@ class GetJobJobSettingsSettingsTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[bool]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -25724,41 +27823,38 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs:
     def __init__(__self__, *,
-                 left: Optional[str] = None,
-                 op: Optional[str] = None,
-                 right: Optional[str] = None):
-        if left is not None:
-            pulumi.set(__self__, "left", left)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if right is not None:
-            pulumi.set(__self__, "right", right)
+                 left: str,
+                 op: str,
+                 right: str):
+        pulumi.set(__self__, "left", left)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "right", right)
 
     @property
     @pulumi.getter
-    def left(self) -> Optional[str]:
+    def left(self) -> str:
         return pulumi.get(self, "left")
 
     @left.setter
-    def left(self, value: Optional[str]):
+    def left(self, value: str):
         pulumi.set(self, "left", value)
 
     @property
     @pulumi.getter
-    def op(self) -> Optional[str]:
+    def op(self) -> str:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: Optional[str]):
+    def op(self, value: str):
         pulumi.set(self, "op", value)
 
     @property
     @pulumi.getter
-    def right(self) -> Optional[str]:
+    def right(self) -> str:
         return pulumi.get(self, "right")
 
     @right.setter
-    def right(self, value: Optional[str]):
+    def right(self, value: str):
         pulumi.set(self, "right", value)
 
 
@@ -25881,10 +27977,13 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
     def __init__(__self__, *,
+                 no_alert_for_skipped_runs: Optional[bool] = None,
                  on_duration_warning_threshold_exceededs: Optional[Sequence[str]] = None,
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
+        if no_alert_for_skipped_runs is not None:
+            pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
             pulumi.set(__self__, "on_duration_warning_threshold_exceededs", on_duration_warning_threshold_exceededs)
         if on_failures is not None:
@@ -25893,6 +27992,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs:
             pulumi.set(__self__, "on_starts", on_starts)
         if on_successes is not None:
             pulumi.set(__self__, "on_successes", on_successes)
+
+    @property
+    @pulumi.getter(name="noAlertForSkippedRuns")
+    def no_alert_for_skipped_runs(self) -> Optional[bool]:
+        return pulumi.get(self, "no_alert_for_skipped_runs")
+
+    @no_alert_for_skipped_runs.setter
+    def no_alert_for_skipped_runs(self, value: Optional[bool]):
+        pulumi.set(self, "no_alert_for_skipped_runs", value)
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
@@ -27954,92 +30062,88 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
@@ -30066,111 +32170,111 @@ class GetJobJobSettingsSettingsTaskWebhookNotificationsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsTriggerArgs:
     def __init__(__self__, *,
-                 file_arrival: 'GetJobJobSettingsSettingsTriggerFileArrivalArgs',
-                 pause_status: Optional[str] = None):
-        pulumi.set(__self__, "file_arrival", file_arrival)
+                 file_arrival: Optional['GetJobJobSettingsSettingsTriggerFileArrivalArgs'] = None,
+                 pause_status: Optional[str] = None,
+                 table_update: Optional['GetJobJobSettingsSettingsTriggerTableUpdateArgs'] = None):
+        if file_arrival is not None:
+            pulumi.set(__self__, "file_arrival", file_arrival)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
+        if table_update is not None:
+            pulumi.set(__self__, "table_update", table_update)
 
     @property
     @pulumi.getter(name="fileArrival")
-    def file_arrival(self) -> 'GetJobJobSettingsSettingsTriggerFileArrivalArgs':
+    def file_arrival(self) -> Optional['GetJobJobSettingsSettingsTriggerFileArrivalArgs']:
         return pulumi.get(self, "file_arrival")
 
     @file_arrival.setter
-    def file_arrival(self, value: 'GetJobJobSettingsSettingsTriggerFileArrivalArgs'):
+    def file_arrival(self, value: Optional['GetJobJobSettingsSettingsTriggerFileArrivalArgs']):
         pulumi.set(self, "file_arrival", value)
 
     @property
@@ -30181,6 +32285,15 @@ class GetJobJobSettingsSettingsTriggerArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[str]):
         pulumi.set(self, "pause_status", value)
+
+    @property
+    @pulumi.getter(name="tableUpdate")
+    def table_update(self) -> Optional['GetJobJobSettingsSettingsTriggerTableUpdateArgs']:
+        return pulumi.get(self, "table_update")
+
+    @table_update.setter
+    def table_update(self, value: Optional['GetJobJobSettingsSettingsTriggerTableUpdateArgs']):
+        pulumi.set(self, "table_update", value)
 
 
 @pulumi.input_type
@@ -30203,6 +32316,58 @@ class GetJobJobSettingsSettingsTriggerFileArrivalArgs:
     @url.setter
     def url(self, value: str):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[int]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
+
+    @property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[int]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTriggerTableUpdateArgs:
+    def __init__(__self__, *,
+                 table_names: Sequence[str],
+                 condition: Optional[str] = None,
+                 min_time_between_triggers_seconds: Optional[int] = None,
+                 wait_after_last_change_seconds: Optional[int] = None):
+        pulumi.set(__self__, "table_names", table_names)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @property
+    @pulumi.getter(name="tableNames")
+    def table_names(self) -> Sequence[str]:
+        return pulumi.get(self, "table_names")
+
+    @table_names.setter
+    def table_names(self, value: Sequence[str]):
+        pulumi.set(self, "table_names", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[str]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="minTimeBetweenTriggersSeconds")
@@ -30279,92 +32444,88 @@ class GetJobJobSettingsSettingsWebhookNotificationsArgs:
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
 class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
     def __init__(__self__, *,
-                 id: Optional[str] = None):
+                 id: str):
         """
         :param str id: the id of Job if the resource was matched by name.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[str]:
+    def id(self) -> str:
         """
         the id of Job if the resource was matched by name.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[str]):
+    def id(self, value: str):
         pulumi.set(self, "id", value)
 
 

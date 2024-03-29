@@ -1252,6 +1252,16 @@
                             "fields": {
                                 "file_arrival": {
                                     "maxItemsOne": true
+                                },
+                                "table_update": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "table_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1270,6 +1280,71 @@
                                     "maxItemsOne": false
                                 },
                                 "on_success": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_lakehouse_monitor": {
+                "current": "databricks:index/lakehouseMonitor:LakehouseMonitor",
+                "majorVersion": 1,
+                "fields": {
+                    "custom_metrics": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "input_columns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "data_classification_config": {
+                        "maxItemsOne": true
+                    },
+                    "inference_log": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "granularities": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notifications": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "on_failure": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "schedule": {
+                        "maxItemsOne": true
+                    },
+                    "slicing_exprs": {
+                        "maxItemsOne": false
+                    },
+                    "snapshot": {
+                        "maxItemsOne": true
+                    },
+                    "time_series": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "granularities": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1366,6 +1441,41 @@
                             "fields": {
                                 "auto_capture_config": {
                                     "maxItemsOne": true
+                                },
+                                "served_entities": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "external_model": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ai21labs_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "amazon_bedrock_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "anthropic_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "cohere_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "databricks_model_serving_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "openai_config": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "palm_config": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "served_models": {
                                     "maxItemsOne": false
@@ -1537,6 +1647,68 @@
             "databricks_obo_token": {
                 "current": "databricks:index/oboToken:OboToken",
                 "majorVersion": 1
+            },
+            "databricks_online_table": {
+                "current": "databricks:index/onlineTable:OnlineTable",
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "primary_key_columns": {
+                                    "maxItemsOne": false
+                                },
+                                "run_continuously": {
+                                    "maxItemsOne": true
+                                },
+                                "run_triggered": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "continuous_update_status": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "initial_pipeline_sync_progress": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "failed_status": {
+                                    "maxItemsOne": true
+                                },
+                                "provisioning_status": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "initial_pipeline_sync_progress": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "triggered_update_status": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "triggered_update_progress": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "databricks_permission_assignment": {
                 "current": "databricks:index/permissionAssignment:PermissionAssignment",
@@ -2051,6 +2223,41 @@
                 "majorVersion": 1,
                 "fields": {
                     "endpoint_status": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_vector_search_index": {
+                "current": "databricks:index/vectorSearchIndex:VectorSearchIndex",
+                "majorVersion": 1,
+                "fields": {
+                    "delta_sync_index_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "embedding_source_columns": {
+                                    "maxItemsOne": false
+                                },
+                                "embedding_vector_columns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "direct_access_index_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "embedding_source_columns": {
+                                    "maxItemsOne": false
+                                },
+                                "embedding_vector_columns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "status": {
                         "maxItemsOne": false
                     }
                 }
@@ -3262,6 +3469,16 @@
                                                     "fields": {
                                                         "file_arrival": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "table_update": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "table_names": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }

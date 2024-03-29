@@ -61,17 +61,33 @@ func GetAwsCrossAccountPolicy(ctx *pulumi.Context, args *GetAwsCrossAccountPolic
 
 // A collection of arguments for invoking getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyArgs struct {
+	// — Your AWS account ID, which is a number.
+	AwsAccountId *string `pulumi:"awsAccountId"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+	// The below arguments are only valid for `restricted` policy type
 	PassRoles []string `pulumi:"passRoles"`
+	// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+	PolicyType *string `pulumi:"policyType"`
+	// — AWS Region name for your VPC deployment, for example `us-west-2`.
+	Region *string `pulumi:"region"`
+	// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// — ID of the AWS VPC where you want to launch workspaces.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyResult struct {
+	AwsAccountId *string `pulumi:"awsAccountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// AWS IAM Policy JSON document
-	Json      string   `pulumi:"json"`
-	PassRoles []string `pulumi:"passRoles"`
+	Json            string   `pulumi:"json"`
+	PassRoles       []string `pulumi:"passRoles"`
+	PolicyType      *string  `pulumi:"policyType"`
+	Region          *string  `pulumi:"region"`
+	SecurityGroupId *string  `pulumi:"securityGroupId"`
+	VpcId           *string  `pulumi:"vpcId"`
 }
 
 func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccountPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAwsCrossAccountPolicyResultOutput {
@@ -89,8 +105,19 @@ func GetAwsCrossAccountPolicyOutput(ctx *pulumi.Context, args GetAwsCrossAccount
 
 // A collection of arguments for invoking getAwsCrossAccountPolicy.
 type GetAwsCrossAccountPolicyOutputArgs struct {
+	// — Your AWS account ID, which is a number.
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
 	// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+	// The below arguments are only valid for `restricted` policy type
 	PassRoles pulumi.StringArrayInput `pulumi:"passRoles"`
+	// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+	// — AWS Region name for your VPC deployment, for example `us-west-2`.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// — ID of the AWS VPC where you want to launch workspaces.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetAwsCrossAccountPolicyOutputArgs) ElementType() reflect.Type {
@@ -112,6 +139,10 @@ func (o GetAwsCrossAccountPolicyResultOutput) ToGetAwsCrossAccountPolicyResultOu
 	return o
 }
 
+func (o GetAwsCrossAccountPolicyResultOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetAwsCrossAccountPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -124,6 +155,22 @@ func (o GetAwsCrossAccountPolicyResultOutput) Json() pulumi.StringOutput {
 
 func (o GetAwsCrossAccountPolicyResultOutput) PassRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) []string { return v.PassRoles }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAwsCrossAccountPolicyResultOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAwsCrossAccountPolicyResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAwsCrossAccountPolicyResultOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAwsCrossAccountPolicyResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsCrossAccountPolicyResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// the id of databricks.Job if the resource was matched by name.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public GetJobJobSettingsSettingsWebhookNotificationsOnFailureInputArgs()
         {

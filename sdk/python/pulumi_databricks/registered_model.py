@@ -18,6 +18,7 @@ class RegisteredModelArgs:
                  schema_name: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegisteredModel resource.
@@ -25,6 +26,7 @@ class RegisteredModelArgs:
         :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
         :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
         :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -33,6 +35,8 @@ class RegisteredModelArgs:
             pulumi.set(__self__, "comment", comment)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if storage_location is not None:
             pulumi.set(__self__, "storage_location", storage_location)
 
@@ -85,6 +89,18 @@ class RegisteredModelArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the registered model owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[str]]:
         """
@@ -103,6 +119,7 @@ class _RegisteredModelState:
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None):
         """
@@ -110,6 +127,7 @@ class _RegisteredModelState:
         :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
         :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
         :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
@@ -119,6 +137,8 @@ class _RegisteredModelState:
             pulumi.set(__self__, "comment", comment)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
         if schema_name is not None:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_location is not None:
@@ -161,6 +181,18 @@ class _RegisteredModelState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the registered model owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "owner", value)
+
+    @property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -193,6 +225,7 @@ class RegisteredModel(pulumi.CustomResource):
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -243,6 +276,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
         :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
         :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
@@ -312,6 +346,7 @@ class RegisteredModel(pulumi.CustomResource):
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 owner: Optional[pulumi.Input[str]] = None,
                  schema_name: Optional[pulumi.Input[str]] = None,
                  storage_location: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -328,6 +363,7 @@ class RegisteredModel(pulumi.CustomResource):
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["comment"] = comment
             __props__.__dict__["name"] = name
+            __props__.__dict__["owner"] = owner
             if schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'schema_name'")
             __props__.__dict__["schema_name"] = schema_name
@@ -345,6 +381,7 @@ class RegisteredModel(pulumi.CustomResource):
             catalog_name: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            owner: Optional[pulumi.Input[str]] = None,
             schema_name: Optional[pulumi.Input[str]] = None,
             storage_location: Optional[pulumi.Input[str]] = None) -> 'RegisteredModel':
         """
@@ -357,6 +394,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] comment: The comment attached to the registered model.
         :param pulumi.Input[str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[str] owner: Name of the registered model owner.
         :param pulumi.Input[str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
@@ -367,6 +405,7 @@ class RegisteredModel(pulumi.CustomResource):
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["comment"] = comment
         __props__.__dict__["name"] = name
+        __props__.__dict__["owner"] = owner
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_location"] = storage_location
         return RegisteredModel(resource_name, opts=opts, __props__=__props__)
@@ -394,6 +433,14 @@ class RegisteredModel(pulumi.CustomResource):
         The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[str]:
+        """
+        Name of the registered model owner.
+        """
+        return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter(name="schemaName")

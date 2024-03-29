@@ -77,6 +77,8 @@ type RegisteredModel struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner pulumi.StringOutput `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -125,6 +127,8 @@ type registeredModelState struct {
 	Comment *string `pulumi:"comment"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner *string `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName *string `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -138,6 +142,8 @@ type RegisteredModelState struct {
 	Comment pulumi.StringPtrInput
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
+	// Name of the registered model owner.
+	Owner pulumi.StringPtrInput
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringPtrInput
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -155,6 +161,8 @@ type registeredModelArgs struct {
 	Comment *string `pulumi:"comment"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner *string `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName string `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -169,6 +177,8 @@ type RegisteredModelArgs struct {
 	Comment pulumi.StringPtrInput
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
+	// Name of the registered model owner.
+	Owner pulumi.StringPtrInput
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringInput
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -275,6 +285,11 @@ func (o RegisteredModelOutput) Comment() pulumi.StringPtrOutput {
 // The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the registered model owner.
+func (o RegisteredModelOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
 // The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

@@ -66,19 +66,19 @@ namespace Pulumi.Databricks
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// Object describing the current status of the endpoint consisting of following fields:
+        /// Object describing the current status of the endpoint consisting of the following fields:
         /// </summary>
         [Output("endpointStatuses")]
         public Output<ImmutableArray<Outputs.VectorSearchEndpointEndpointStatus>> EndpointStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of last update to the endpoint (milliseconds).
+        /// Timestamp of the last update to the endpoint (milliseconds).
         /// </summary>
         [Output("lastUpdatedTimestamp")]
         public Output<int> LastUpdatedTimestamp { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         public Output<string> LastUpdatedUser { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        /// Name of the Vector Search Endpoint to create.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -148,13 +148,13 @@ namespace Pulumi.Databricks
     public sealed class VectorSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        /// Name of the Vector Search Endpoint to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.VectorSearchEndpointEndpointStatusGetArgs>? _endpointStatuses;
 
         /// <summary>
-        /// Object describing the current status of the endpoint consisting of following fields:
+        /// Object describing the current status of the endpoint consisting of the following fields:
         /// </summary>
         public InputList<Inputs.VectorSearchEndpointEndpointStatusGetArgs> EndpointStatuses
         {
@@ -198,13 +198,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        /// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// Timestamp of last update to the endpoint (milliseconds).
+        /// Timestamp of the last update to the endpoint (milliseconds).
         /// </summary>
         [Input("lastUpdatedTimestamp")]
         public Input<int>? LastUpdatedTimestamp { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.Databricks
         public Input<string>? LastUpdatedUser { get; set; }
 
         /// <summary>
-        /// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        /// Name of the Vector Search Endpoint to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

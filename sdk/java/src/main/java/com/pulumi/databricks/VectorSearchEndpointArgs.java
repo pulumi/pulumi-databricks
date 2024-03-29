@@ -17,14 +17,14 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
     public static final VectorSearchEndpointArgs Empty = new VectorSearchEndpointArgs();
 
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * @return Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     public Output<String> endpointType() {
@@ -32,14 +32,14 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * @return Name of the Vector Search Endpoint to create.
      * 
      */
     public Optional<Output<String>> name() {
@@ -72,7 +72,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+         * @param name Name of the Vector Search Endpoint to create.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class VectorSearchEndpointArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+         * @param name Name of the Vector Search Endpoint to create.
          * 
          * @return builder
          * 

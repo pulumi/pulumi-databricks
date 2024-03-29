@@ -63,7 +63,7 @@ public final class JobTask {
      */
     private @Nullable String jobClusterKey;
     /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      * 
      */
     private @Nullable List<JobTaskLibrary> libraries;
@@ -174,7 +174,7 @@ public final class JobTask {
         return Optional.ofNullable(this.jobClusterKey);
     }
     /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      * 
      */
     public List<JobTaskLibrary> libraries() {

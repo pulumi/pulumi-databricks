@@ -49,13 +49,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        /// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
         /// </summary>
         [Input("scaleToZeroEnabled")]
         public Input<bool>? ScaleToZeroEnabled { get; set; }
 
         /// <summary>
-        /// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+        /// The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
         /// </summary>
         [Input("workloadSize", required: true)]
         public Input<string> WorkloadSize { get; set; } = null!;

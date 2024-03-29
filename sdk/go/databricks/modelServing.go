@@ -14,6 +14,8 @@ import (
 
 // This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
 //
+// **Note** If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+//
 // ## Example Usage
 //
 // <!--Start PulumiCodeChooser -->
@@ -31,17 +33,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewModelServing(ctx, "this", &databricks.ModelServingArgs{
 //				Config: &databricks.ModelServingConfigArgs{
-//					ServedModels: databricks.ModelServingConfigServedModelArray{
-//						&databricks.ModelServingConfigServedModelArgs{
-//							ModelName:          pulumi.String("ads-model"),
-//							ModelVersion:       pulumi.String("2"),
+//					ServedEntities: databricks.ModelServingConfigServedEntityArray{
+//						&databricks.ModelServingConfigServedEntityArgs{
+//							EntityName:         pulumi.String("ads-model"),
+//							EntityVersion:      pulumi.String("2"),
 //							Name:               pulumi.String("prod_model"),
 //							ScaleToZeroEnabled: pulumi.Bool(true),
 //							WorkloadSize:       pulumi.String("Small"),
 //						},
-//						&databricks.ModelServingConfigServedModelArgs{
-//							ModelName:          pulumi.String("ads-model"),
-//							ModelVersion:       pulumi.String("4"),
+//						&databricks.ModelServingConfigServedEntityArgs{
+//							EntityName:         pulumi.String("ads-model"),
+//							EntityVersion:      pulumi.String("4"),
 //							Name:               pulumi.String("candidate_model"),
 //							ScaleToZeroEnabled: pulumi.Bool(false),
 //							WorkloadSize:       pulumi.String("Small"),
@@ -102,11 +104,13 @@ type ModelServing struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigOutput `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name       pulumi.StringOutput              `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayOutput `pulumi:"rateLimits"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-	ServingEndpointId pulumi.StringOutput        `pulumi:"servingEndpointId"`
-	Tags              ModelServingTagArrayOutput `pulumi:"tags"`
+	ServingEndpointId pulumi.StringOutput `pulumi:"servingEndpointId"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags ModelServingTagArrayOutput `pulumi:"tags"`
 }
 
 // NewModelServing registers a new resource with the given unique name, arguments, and options.
@@ -145,22 +149,26 @@ type modelServingState struct {
 	// The model serving endpoint configuration.
 	Config *ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name       *string                 `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
-	ServingEndpointId *string           `pulumi:"servingEndpointId"`
-	Tags              []ModelServingTag `pulumi:"tags"`
+	ServingEndpointId *string `pulumi:"servingEndpointId"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags []ModelServingTag `pulumi:"tags"`
 }
 
 type ModelServingState struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigPtrInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayInput
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringPtrInput
-	Tags              ModelServingTagArrayInput
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags ModelServingTagArrayInput
 }
 
 func (ModelServingState) ElementType() reflect.Type {
@@ -171,9 +179,11 @@ type modelServingArgs struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfig `pulumi:"config"`
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name       *string                 `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits []ModelServingRateLimit `pulumi:"rateLimits"`
-	Tags       []ModelServingTag       `pulumi:"tags"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags []ModelServingTag `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ModelServing resource.
@@ -181,9 +191,11 @@ type ModelServingArgs struct {
 	// The model serving endpoint configuration.
 	Config ModelServingConfigInput
 	// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 	RateLimits ModelServingRateLimitArrayInput
-	Tags       ModelServingTagArrayInput
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags ModelServingTagArrayInput
 }
 
 func (ModelServingArgs) ElementType() reflect.Type {
@@ -283,6 +295,7 @@ func (o ModelServingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
 func (o ModelServingOutput) RateLimits() ModelServingRateLimitArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingRateLimitArrayOutput { return v.RateLimits }).(ModelServingRateLimitArrayOutput)
 }
@@ -292,6 +305,7 @@ func (o ModelServingOutput) ServingEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelServing) pulumi.StringOutput { return v.ServingEndpointId }).(pulumi.StringOutput)
 }
 
+// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 func (o ModelServingOutput) Tags() ModelServingTagArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingTagArrayOutput { return v.Tags }).(ModelServingTagArrayOutput)
 }

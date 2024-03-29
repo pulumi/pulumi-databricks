@@ -73,6 +73,7 @@ from .instance_pool import *
 from .instance_profile import *
 from .ip_access_list import *
 from .job import *
+from .lakehouse_monitor import *
 from .library import *
 from .metastore import *
 from .metastore_assignment import *
@@ -94,6 +95,7 @@ from .mws_vpc_endpoint import *
 from .mws_workspaces import *
 from .notebook import *
 from .obo_token import *
+from .online_table import *
 from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
@@ -127,6 +129,7 @@ from .user import *
 from .user_instance_profile import *
 from .user_role import *
 from .vector_search_endpoint import *
+from .vector_search_index import *
 from .volume import *
 from .workspace_conf import *
 from .workspace_file import *
@@ -345,6 +348,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/lakehouseMonitor",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakehouseMonitor:LakehouseMonitor": "LakehouseMonitor"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/library",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -509,6 +520,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/oboToken:OboToken": "OboToken"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/onlineTable",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/onlineTable:OnlineTable": "OnlineTable"
   }
  },
  {
@@ -765,6 +784,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint": "VectorSearchEndpoint"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/vectorSearchIndex",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/vectorSearchIndex:VectorSearchIndex": "VectorSearchIndex"
   }
  },
  {

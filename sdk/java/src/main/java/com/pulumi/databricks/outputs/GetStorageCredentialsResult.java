@@ -16,6 +16,10 @@ public final class GetStorageCredentialsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of names of databricks.StorageCredential in the metastore
+     * 
+     */
     private List<String> names;
 
     private GetStorageCredentialsResult() {}
@@ -26,6 +30,10 @@ public final class GetStorageCredentialsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of names of databricks.StorageCredential in the metastore
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
