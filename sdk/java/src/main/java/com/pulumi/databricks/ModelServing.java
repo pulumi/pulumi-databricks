@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 /**
  * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
  * 
+ * **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -49,17 +51,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new ModelServing(&#34;this&#34;, ModelServingArgs.builder()        
  *             .config(ModelServingConfigArgs.builder()
- *                 .servedModels(                
- *                     ModelServingConfigServedModelArgs.builder()
- *                         .modelName(&#34;ads-model&#34;)
- *                         .modelVersion(&#34;2&#34;)
+ *                 .servedEntities(                
+ *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .entityName(&#34;ads-model&#34;)
+ *                         .entityVersion(&#34;2&#34;)
  *                         .name(&#34;prod_model&#34;)
  *                         .scaleToZeroEnabled(true)
  *                         .workloadSize(&#34;Small&#34;)
  *                         .build(),
- *                     ModelServingConfigServedModelArgs.builder()
- *                         .modelName(&#34;ads-model&#34;)
- *                         .modelVersion(&#34;4&#34;)
+ *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .entityName(&#34;ads-model&#34;)
+ *                         .entityVersion(&#34;4&#34;)
  *                         .name(&#34;candidate_model&#34;)
  *                         .scaleToZeroEnabled(false)
  *                         .workloadSize(&#34;Small&#34;)
@@ -140,9 +142,17 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * 
+     */
     @Export(name="rateLimits", refs={List.class,ModelServingRateLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingRateLimit>> rateLimits;
 
+    /**
+     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * 
+     */
     public Output<Optional<List<ModelServingRateLimit>>> rateLimits() {
         return Codegen.optional(this.rateLimits);
     }
@@ -160,9 +170,17 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
     public Output<String> servingEndpointId() {
         return this.servingEndpointId;
     }
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     @Export(name="tags", refs={List.class,ModelServingTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ModelServingTag>> tags;
 
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public Output<Optional<List<ModelServingTag>>> tags() {
         return Codegen.optional(this.tags);
     }

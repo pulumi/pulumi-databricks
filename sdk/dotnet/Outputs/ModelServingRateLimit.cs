@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingRateLimit
     {
+        /// <summary>
+        /// Used to specify how many calls are allowed for a key within the renewal_period.
+        /// </summary>
         public readonly int Calls;
+        /// <summary>
+        /// Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        /// </summary>
         public readonly string RenewalPeriod;
 
         [OutputConstructor]

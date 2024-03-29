@@ -6,7 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,15 +21,15 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
      */
-    @Import(name="fileArrival", required=true)
-    private Output<JobTriggerFileArrivalArgs> fileArrival;
+    @Import(name="fileArrival")
+    private @Nullable Output<JobTriggerFileArrivalArgs> fileArrival;
 
     /**
      * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
      */
-    public Output<JobTriggerFileArrivalArgs> fileArrival() {
-        return this.fileArrival;
+    public Optional<Output<JobTriggerFileArrivalArgs>> fileArrival() {
+        return Optional.ofNullable(this.fileArrival);
     }
 
     /**
@@ -47,11 +47,27 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    /**
+     * configuration block to define a trigger for Table Update events consisting of following attributes:
+     * 
+     */
+    @Import(name="tableUpdate")
+    private @Nullable Output<JobTriggerTableUpdateArgs> tableUpdate;
+
+    /**
+     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
+     * 
+     */
+    public Optional<Output<JobTriggerTableUpdateArgs>> tableUpdate() {
+        return Optional.ofNullable(this.tableUpdate);
+    }
+
     private JobTriggerArgs() {}
 
     private JobTriggerArgs(JobTriggerArgs $) {
         this.fileArrival = $.fileArrival;
         this.pauseStatus = $.pauseStatus;
+        this.tableUpdate = $.tableUpdate;
     }
 
     public static Builder builder() {
@@ -78,7 +94,7 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder fileArrival(Output<JobTriggerFileArrivalArgs> fileArrival) {
+        public Builder fileArrival(@Nullable Output<JobTriggerFileArrivalArgs> fileArrival) {
             $.fileArrival = fileArrival;
             return this;
         }
@@ -114,10 +130,28 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             return pauseStatus(Output.of(pauseStatus));
         }
 
+        /**
+         * @param tableUpdate configuration block to define a trigger for Table Update events consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableUpdate(@Nullable Output<JobTriggerTableUpdateArgs> tableUpdate) {
+            $.tableUpdate = tableUpdate;
+            return this;
+        }
+
+        /**
+         * @param tableUpdate configuration block to define a trigger for Table Update events consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableUpdate(JobTriggerTableUpdateArgs tableUpdate) {
+            return tableUpdate(Output.of(tableUpdate));
+        }
+
         public JobTriggerArgs build() {
-            if ($.fileArrival == null) {
-                throw new MissingRequiredPropertyException("JobTriggerArgs", "fileArrival");
-            }
             return $;
         }
     }

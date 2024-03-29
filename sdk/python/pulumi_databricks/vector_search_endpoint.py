@@ -20,8 +20,8 @@ class VectorSearchEndpointArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
-        :param pulumi.Input[str] endpoint_type: type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
         """
         pulumi.set(__self__, "endpoint_type", endpoint_type)
         if name is not None:
@@ -31,7 +31,7 @@ class VectorSearchEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[str]:
         """
-        type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -43,7 +43,7 @@ class VectorSearchEndpointArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        Name of the Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 
@@ -69,11 +69,11 @@ class _VectorSearchEndpointState:
         :param pulumi.Input[int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[str] creator: Creator of the endpoint.
         :param pulumi.Input[str] endpoint_id: Unique internal identifier of the endpoint (UUID).
-        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]] endpoint_statuses: Object describing the current status of the endpoint consisting of following fields:
-        :param pulumi.Input[str] endpoint_type: type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
-        :param pulumi.Input[int] last_updated_timestamp: Timestamp of last update to the endpoint (milliseconds).
+        :param pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
+        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
         :param pulumi.Input[int] num_indexes: Number of indexes on the endpoint.
         """
         if creation_timestamp is not None:
@@ -135,7 +135,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter(name="endpointStatuses")
     def endpoint_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]]:
         """
-        Object describing the current status of the endpoint consisting of following fields:
+        Object describing the current status of the endpoint consisting of the following fields:
         """
         return pulumi.get(self, "endpoint_statuses")
 
@@ -147,7 +147,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
-        type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -159,7 +159,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter(name="lastUpdatedTimestamp")
     def last_updated_timestamp(self) -> Optional[pulumi.Input[int]]:
         """
-        Timestamp of last update to the endpoint (milliseconds).
+        Timestamp of the last update to the endpoint (milliseconds).
         """
         return pulumi.get(self, "last_updated_timestamp")
 
@@ -183,7 +183,7 @@ class _VectorSearchEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        Name of the Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 
@@ -240,8 +240,8 @@ class VectorSearchEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_type: type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
         """
         ...
     @overload
@@ -341,11 +341,11 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         :param pulumi.Input[int] creation_timestamp: Timestamp of endpoint creation (milliseconds).
         :param pulumi.Input[str] creator: Creator of the endpoint.
         :param pulumi.Input[str] endpoint_id: Unique internal identifier of the endpoint (UUID).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchEndpointEndpointStatusArgs']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of following fields:
-        :param pulumi.Input[str] endpoint_type: type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
-        :param pulumi.Input[int] last_updated_timestamp: Timestamp of last update to the endpoint (milliseconds).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VectorSearchEndpointEndpointStatusArgs']]]] endpoint_statuses: Object describing the current status of the endpoint consisting of the following fields:
+        :param pulumi.Input[str] endpoint_type: Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
+        :param pulumi.Input[int] last_updated_timestamp: Timestamp of the last update to the endpoint (milliseconds).
         :param pulumi.Input[str] last_updated_user: User who last updated the endpoint.
-        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        :param pulumi.Input[str] name: Name of the Vector Search Endpoint to create.
         :param pulumi.Input[int] num_indexes: Number of indexes on the endpoint.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -391,7 +391,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointStatuses")
     def endpoint_statuses(self) -> pulumi.Output[Sequence['outputs.VectorSearchEndpointEndpointStatus']]:
         """
-        Object describing the current status of the endpoint consisting of following fields:
+        Object describing the current status of the endpoint consisting of the following fields:
         """
         return pulumi.get(self, "endpoint_statuses")
 
@@ -399,7 +399,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
         """
-        type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+        Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -407,7 +407,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="lastUpdatedTimestamp")
     def last_updated_timestamp(self) -> pulumi.Output[int]:
         """
-        Timestamp of last update to the endpoint (milliseconds).
+        Timestamp of the last update to the endpoint (milliseconds).
         """
         return pulumi.get(self, "last_updated_timestamp")
 
@@ -423,7 +423,7 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+        Name of the Vector Search Endpoint to create.
         """
         return pulumi.get(self, "name")
 

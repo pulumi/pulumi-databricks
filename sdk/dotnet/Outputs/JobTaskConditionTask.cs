@@ -16,25 +16,25 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The left operand of the condition task. It could be a string value, job state, or a parameter reference.
         /// </summary>
-        public readonly string? Left;
+        public readonly string Left;
         /// <summary>
         /// The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
         /// 
         /// This task does not require a cluster to execute and does not support retries or notifications.
         /// </summary>
-        public readonly string? Op;
+        public readonly string Op;
         /// <summary>
         /// The right operand of the condition task. It could be a string value, job state, or parameter reference.
         /// </summary>
-        public readonly string? Right;
+        public readonly string Right;
 
         [OutputConstructor]
         private JobTaskConditionTask(
-            string? left,
+            string left,
 
-            string? op,
+            string op,
 
-            string? right)
+            string right)
         {
             Left = left;
             Op = op;

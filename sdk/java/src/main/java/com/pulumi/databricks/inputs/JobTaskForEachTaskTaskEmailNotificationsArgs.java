@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskForEachTaskTaskEmailNotificationsArgs Empty = new JobTaskForEachTaskTaskEmailNotificationsArgs();
+
+    /**
+     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
+    @Import(name="noAlertForSkippedRuns")
+    private @Nullable Output<Boolean> noAlertForSkippedRuns;
+
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
+    public Optional<Output<Boolean>> noAlertForSkippedRuns() {
+        return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
 
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
@@ -79,6 +95,7 @@ public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulu
     private JobTaskForEachTaskTaskEmailNotificationsArgs() {}
 
     private JobTaskForEachTaskTaskEmailNotificationsArgs(JobTaskForEachTaskTaskEmailNotificationsArgs $) {
+        this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
@@ -101,6 +118,27 @@ public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulu
 
         public Builder(JobTaskForEachTaskTaskEmailNotificationsArgs defaults) {
             $ = new JobTaskForEachTaskTaskEmailNotificationsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAlertForSkippedRuns(@Nullable Output<Boolean> noAlertForSkippedRuns) {
+            $.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return this;
+        }
+
+        /**
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAlertForSkippedRuns(Boolean noAlertForSkippedRuns) {
+            return noAlertForSkippedRuns(Output.of(noAlertForSkippedRuns));
         }
 
         /**

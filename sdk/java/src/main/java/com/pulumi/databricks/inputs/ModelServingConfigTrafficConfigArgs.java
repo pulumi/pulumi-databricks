@@ -17,14 +17,14 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
     public static final ModelServingConfigTrafficConfigArgs Empty = new ModelServingConfigTrafficConfigArgs();
 
     /**
-     * Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+     * Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
      * 
      */
     @Import(name="routes")
     private @Nullable Output<List<ModelServingConfigTrafficConfigRouteArgs>> routes;
 
     /**
-     * @return Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+     * @return Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
      * 
      */
     public Optional<Output<List<ModelServingConfigTrafficConfigRouteArgs>>> routes() {
@@ -56,7 +56,7 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ModelServingConfigTrafficConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 

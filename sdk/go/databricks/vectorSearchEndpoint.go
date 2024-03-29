@@ -62,15 +62,15 @@ type VectorSearchEndpoint struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
-	// Object describing the current status of the endpoint consisting of following fields:
+	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses VectorSearchEndpointEndpointStatusArrayOutput `pulumi:"endpointStatuses"`
-	// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
-	// Timestamp of last update to the endpoint (milliseconds).
+	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp pulumi.IntOutput `pulumi:"lastUpdatedTimestamp"`
 	// User who last updated the endpoint.
 	LastUpdatedUser pulumi.StringOutput `pulumi:"lastUpdatedUser"`
-	// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+	// Name of the Vector Search Endpoint to create.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntOutput `pulumi:"numIndexes"`
@@ -115,15 +115,15 @@ type vectorSearchEndpointState struct {
 	Creator *string `pulumi:"creator"`
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId *string `pulumi:"endpointId"`
-	// Object describing the current status of the endpoint consisting of following fields:
+	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses []VectorSearchEndpointEndpointStatus `pulumi:"endpointStatuses"`
-	// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType *string `pulumi:"endpointType"`
-	// Timestamp of last update to the endpoint (milliseconds).
+	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp *int `pulumi:"lastUpdatedTimestamp"`
 	// User who last updated the endpoint.
 	LastUpdatedUser *string `pulumi:"lastUpdatedUser"`
-	// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+	// Name of the Vector Search Endpoint to create.
 	Name *string `pulumi:"name"`
 	// Number of indexes on the endpoint.
 	NumIndexes *int `pulumi:"numIndexes"`
@@ -136,15 +136,15 @@ type VectorSearchEndpointState struct {
 	Creator pulumi.StringPtrInput
 	// Unique internal identifier of the endpoint (UUID).
 	EndpointId pulumi.StringPtrInput
-	// Object describing the current status of the endpoint consisting of following fields:
+	// Object describing the current status of the endpoint consisting of the following fields:
 	EndpointStatuses VectorSearchEndpointEndpointStatusArrayInput
-	// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringPtrInput
-	// Timestamp of last update to the endpoint (milliseconds).
+	// Timestamp of the last update to the endpoint (milliseconds).
 	LastUpdatedTimestamp pulumi.IntPtrInput
 	// User who last updated the endpoint.
 	LastUpdatedUser pulumi.StringPtrInput
-	// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+	// Name of the Vector Search Endpoint to create.
 	Name pulumi.StringPtrInput
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntPtrInput
@@ -155,17 +155,17 @@ func (VectorSearchEndpointState) ElementType() reflect.Type {
 }
 
 type vectorSearchEndpointArgs struct {
-	// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType string `pulumi:"endpointType"`
-	// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+	// Name of the Vector Search Endpoint to create.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a VectorSearchEndpoint resource.
 type VectorSearchEndpointArgs struct {
-	// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+	// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 	EndpointType pulumi.StringInput
-	// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+	// Name of the Vector Search Endpoint to create.
 	Name pulumi.StringPtrInput
 }
 
@@ -271,17 +271,17 @@ func (o VectorSearchEndpointOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
 
-// Object describing the current status of the endpoint consisting of following fields:
+// Object describing the current status of the endpoint consisting of the following fields:
 func (o VectorSearchEndpointOutput) EndpointStatuses() VectorSearchEndpointEndpointStatusArrayOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointEndpointStatusArrayOutput { return v.EndpointStatuses }).(VectorSearchEndpointEndpointStatusArrayOutput)
 }
 
-// type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+// Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
 func (o VectorSearchEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// Timestamp of last update to the endpoint (milliseconds).
+// Timestamp of the last update to the endpoint (milliseconds).
 func (o VectorSearchEndpointOutput) LastUpdatedTimestamp() pulumi.IntOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.IntOutput { return v.LastUpdatedTimestamp }).(pulumi.IntOutput)
 }
@@ -291,7 +291,7 @@ func (o VectorSearchEndpointOutput) LastUpdatedUser() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.LastUpdatedUser }).(pulumi.StringOutput)
 }
 
-// Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+// Name of the Vector Search Endpoint to create.
 func (o VectorSearchEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VectorSearchEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

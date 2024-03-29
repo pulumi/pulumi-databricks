@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigTrafficConfigRouteArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the served model this route configures traffic for. This needs to match the name of a `served_models` block
-        /// </summary>
         [Input("servedModelName", required: true)]
         public Input<string> ServedModelName { get; set; } = null!;
 

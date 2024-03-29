@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
     /// 
+    /// **Note** If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+    /// 
     /// ## Example Usage
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,20 +29,20 @@ namespace Pulumi.Databricks
     ///     {
     ///         Config = new Databricks.Inputs.ModelServingConfigArgs
     ///         {
-    ///             ServedModels = new[]
+    ///             ServedEntities = new[]
     ///             {
-    ///                 new Databricks.Inputs.ModelServingConfigServedModelArgs
+    ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
     ///                 {
-    ///                     ModelName = "ads-model",
-    ///                     ModelVersion = "2",
+    ///                     EntityName = "ads-model",
+    ///                     EntityVersion = "2",
     ///                     Name = "prod_model",
     ///                     ScaleToZeroEnabled = true,
     ///                     WorkloadSize = "Small",
     ///                 },
-    ///                 new Databricks.Inputs.ModelServingConfigServedModelArgs
+    ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
     ///                 {
-    ///                     ModelName = "ads-model",
-    ///                     ModelVersion = "4",
+    ///                     EntityName = "ads-model",
+    ///                     EntityVersion = "4",
     ///                     Name = "candidate_model",
     ///                     ScaleToZeroEnabled = false,
     ///                     WorkloadSize = "Small",
@@ -110,6 +112,9 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// </summary>
         [Output("rateLimits")]
         public Output<ImmutableArray<Outputs.ModelServingRateLimit>> RateLimits { get; private set; } = null!;
 
@@ -119,6 +124,9 @@ namespace Pulumi.Databricks
         [Output("servingEndpointId")]
         public Output<string> ServingEndpointId { get; private set; } = null!;
 
+        /// <summary>
+        /// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.ModelServingTag>> Tags { get; private set; } = null!;
 
@@ -182,6 +190,10 @@ namespace Pulumi.Databricks
 
         [Input("rateLimits")]
         private InputList<Inputs.ModelServingRateLimitArgs>? _rateLimits;
+
+        /// <summary>
+        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// </summary>
         public InputList<Inputs.ModelServingRateLimitArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitArgs>());
@@ -190,6 +202,10 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputList<Inputs.ModelServingTagArgs>? _tags;
+
+        /// <summary>
+        /// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        /// </summary>
         public InputList<Inputs.ModelServingTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.ModelServingTagArgs>());
@@ -218,6 +234,10 @@ namespace Pulumi.Databricks
 
         [Input("rateLimits")]
         private InputList<Inputs.ModelServingRateLimitGetArgs>? _rateLimits;
+
+        /// <summary>
+        /// A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+        /// </summary>
         public InputList<Inputs.ModelServingRateLimitGetArgs> RateLimits
         {
             get => _rateLimits ?? (_rateLimits = new InputList<Inputs.ModelServingRateLimitGetArgs>());
@@ -232,6 +252,10 @@ namespace Pulumi.Databricks
 
         [Input("tags")]
         private InputList<Inputs.ModelServingTagGetArgs>? _tags;
+
+        /// <summary>
+        /// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+        /// </summary>
         public InputList<Inputs.ModelServingTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.ModelServingTagGetArgs>());

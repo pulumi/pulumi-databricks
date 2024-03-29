@@ -41,12 +41,12 @@ public final class ModelServingConfigServedModel {
      */
     private @Nullable String name;
     /**
-     * @return Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
      */
     private @Nullable Boolean scaleToZeroEnabled;
     /**
-     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
     private String workloadSize;
@@ -93,14 +93,14 @@ public final class ModelServingConfigServedModel {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
      */
     public Optional<Boolean> scaleToZeroEnabled() {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
     /**
-     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
     public String workloadSize() {

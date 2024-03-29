@@ -110,42 +110,42 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.endpointId;
     }
     /**
-     * Object describing the current status of the endpoint consisting of following fields:
+     * Object describing the current status of the endpoint consisting of the following fields:
      * 
      */
     @Export(name="endpointStatuses", refs={List.class,VectorSearchEndpointEndpointStatus.class}, tree="[0,1]")
     private Output<List<VectorSearchEndpointEndpointStatus>> endpointStatuses;
 
     /**
-     * @return Object describing the current status of the endpoint consisting of following fields:
+     * @return Object describing the current status of the endpoint consisting of the following fields:
      * 
      */
     public Output<List<VectorSearchEndpointEndpointStatus>> endpointStatuses() {
         return this.endpointStatuses;
     }
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * @return Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     public Output<String> endpointType() {
         return this.endpointType;
     }
     /**
-     * Timestamp of last update to the endpoint (milliseconds).
+     * Timestamp of the last update to the endpoint (milliseconds).
      * 
      */
     @Export(name="lastUpdatedTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastUpdatedTimestamp;
 
     /**
-     * @return Timestamp of last update to the endpoint (milliseconds).
+     * @return Timestamp of the last update to the endpoint (milliseconds).
      * 
      */
     public Output<Integer> lastUpdatedTimestamp() {
@@ -166,14 +166,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
         return this.lastUpdatedUser;
     }
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * @return Name of the Vector Search Endpoint to create.
      * 
      */
     public Output<String> name() {

@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ModelServingConfigAutoCaptureConfig;
+import com.pulumi.databricks.outputs.ModelServingConfigServedEntity;
 import com.pulumi.databricks.outputs.ModelServingConfigServedModel;
 import com.pulumi.databricks.outputs.ModelServingConfigTrafficConfig;
 import java.util.List;
@@ -14,11 +15,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingConfig {
+    /**
+     * @return Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     * 
+     */
     private @Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig;
+    /**
+     * @return A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+     * 
+     */
+    private @Nullable List<ModelServingConfigServedEntity> servedEntities;
     /**
      * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      * 
+     * @deprecated
+     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * 
      */
+    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
     private @Nullable List<ModelServingConfigServedModel> servedModels;
     /**
      * @return A single block represents the traffic split configuration amongst the served models.
@@ -27,13 +41,28 @@ public final class ModelServingConfig {
     private @Nullable ModelServingConfigTrafficConfig trafficConfig;
 
     private ModelServingConfig() {}
+    /**
+     * @return Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     * 
+     */
     public Optional<ModelServingConfigAutoCaptureConfig> autoCaptureConfig() {
         return Optional.ofNullable(this.autoCaptureConfig);
     }
     /**
-     * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     * @return A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
      * 
      */
+    public List<ModelServingConfigServedEntity> servedEntities() {
+        return this.servedEntities == null ? List.of() : this.servedEntities;
+    }
+    /**
+     * @return Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     * 
+     * @deprecated
+     * Please use &#39;config.served_entities&#39; instead of &#39;config.served_models&#39;.
+     * 
+     */
+    @Deprecated /* Please use 'config.served_entities' instead of 'config.served_models'. */
     public List<ModelServingConfigServedModel> servedModels() {
         return this.servedModels == null ? List.of() : this.servedModels;
     }
@@ -55,12 +84,14 @@ public final class ModelServingConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ModelServingConfigAutoCaptureConfig autoCaptureConfig;
+        private @Nullable List<ModelServingConfigServedEntity> servedEntities;
         private @Nullable List<ModelServingConfigServedModel> servedModels;
         private @Nullable ModelServingConfigTrafficConfig trafficConfig;
         public Builder() {}
         public Builder(ModelServingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCaptureConfig = defaults.autoCaptureConfig;
+    	      this.servedEntities = defaults.servedEntities;
     	      this.servedModels = defaults.servedModels;
     	      this.trafficConfig = defaults.trafficConfig;
         }
@@ -70,6 +101,15 @@ public final class ModelServingConfig {
 
             this.autoCaptureConfig = autoCaptureConfig;
             return this;
+        }
+        @CustomType.Setter
+        public Builder servedEntities(@Nullable List<ModelServingConfigServedEntity> servedEntities) {
+
+            this.servedEntities = servedEntities;
+            return this;
+        }
+        public Builder servedEntities(ModelServingConfigServedEntity... servedEntities) {
+            return servedEntities(List.of(servedEntities));
         }
         @CustomType.Setter
         public Builder servedModels(@Nullable List<ModelServingConfigServedModel> servedModels) {
@@ -89,6 +129,7 @@ public final class ModelServingConfig {
         public ModelServingConfig build() {
             final var _resultValue = new ModelServingConfig();
             _resultValue.autoCaptureConfig = autoCaptureConfig;
+            _resultValue.servedEntities = servedEntities;
             _resultValue.servedModels = servedModels;
             _resultValue.trafficConfig = trafficConfig;
             return _resultValue;

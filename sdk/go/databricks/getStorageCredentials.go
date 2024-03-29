@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetStorageCredentials(ctx, nil, nil)
+//			all, err := databricks.GetStorageCredentials(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("allMetastores", data.Databricks_metastores.All.Names)
+//			ctx.Export("allStorageCredentials", all.Names)
 //			return nil
 //		})
 //	}
@@ -58,13 +58,15 @@ func GetStorageCredentials(ctx *pulumi.Context, args *GetStorageCredentialsArgs,
 
 // A collection of arguments for invoking getStorageCredentials.
 type GetStorageCredentialsArgs struct {
+	// List of names of StorageCredential in the metastore
 	Names []string `pulumi:"names"`
 }
 
 // A collection of values returned by getStorageCredentials.
 type GetStorageCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id    string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of names of StorageCredential in the metastore
 	Names []string `pulumi:"names"`
 }
 
@@ -83,6 +85,7 @@ func GetStorageCredentialsOutput(ctx *pulumi.Context, args GetStorageCredentials
 
 // A collection of arguments for invoking getStorageCredentials.
 type GetStorageCredentialsOutputArgs struct {
+	// List of names of StorageCredential in the metastore
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
@@ -110,6 +113,7 @@ func (o GetStorageCredentialsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of names of StorageCredential in the metastore
 func (o GetStorageCredentialsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStorageCredentialsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

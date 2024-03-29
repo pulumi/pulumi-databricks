@@ -123,6 +123,20 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Name of the registered model owner.
+     * 
+     */
+    @Export(name="owner", refs={String.class}, tree="[0]")
+    private Output<String> owner;
+
+    /**
+     * @return Name of the registered model owner.
+     * 
+     */
+    public Output<String> owner() {
+        return this.owner;
+    }
+    /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */

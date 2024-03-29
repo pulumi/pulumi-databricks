@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getStorageCredentials({});
- * export const allMetastores = data.databricks_metastores.all.names;
+ * export const allStorageCredentials = all.then(all => all.names);
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -39,6 +39,9 @@ export function getStorageCredentials(args?: GetStorageCredentialsArgs, opts?: p
  * A collection of arguments for invoking getStorageCredentials.
  */
 export interface GetStorageCredentialsArgs {
+    /**
+     * List of names of databricks.StorageCredential in the metastore
+     */
     names?: string[];
 }
 
@@ -50,6 +53,9 @@ export interface GetStorageCredentialsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of names of databricks.StorageCredential in the metastore
+     */
     readonly names: string[];
 }
 /**
@@ -63,7 +69,7 @@ export interface GetStorageCredentialsResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getStorageCredentials({});
- * export const allMetastores = data.databricks_metastores.all.names;
+ * export const allStorageCredentials = all.then(all => all.names);
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -82,5 +88,8 @@ export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputAr
  * A collection of arguments for invoking getStorageCredentials.
  */
 export interface GetStorageCredentialsOutputArgs {
+    /**
+     * List of names of databricks.StorageCredential in the metastore
+     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }

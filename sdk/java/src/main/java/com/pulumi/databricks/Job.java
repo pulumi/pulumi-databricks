@@ -255,14 +255,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jobClusters);
     }
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     @Export(name="libraries", refs={List.class,JobLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobLibrary>> libraries;
 
     /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     public Output<Optional<List<JobLibrary>>> libraries() {

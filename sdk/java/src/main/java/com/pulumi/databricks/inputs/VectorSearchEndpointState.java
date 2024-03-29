@@ -64,14 +64,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Object describing the current status of the endpoint consisting of following fields:
+     * Object describing the current status of the endpoint consisting of the following fields:
      * 
      */
     @Import(name="endpointStatuses")
     private @Nullable Output<List<VectorSearchEndpointEndpointStatusArgs>> endpointStatuses;
 
     /**
-     * @return Object describing the current status of the endpoint consisting of following fields:
+     * @return Object describing the current status of the endpoint consisting of the following fields:
      * 
      */
     public Optional<Output<List<VectorSearchEndpointEndpointStatusArgs>>> endpointStatuses() {
@@ -79,14 +79,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+     * @return Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -94,14 +94,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Timestamp of last update to the endpoint (milliseconds).
+     * Timestamp of the last update to the endpoint (milliseconds).
      * 
      */
     @Import(name="lastUpdatedTimestamp")
     private @Nullable Output<Integer> lastUpdatedTimestamp;
 
     /**
-     * @return Timestamp of last update to the endpoint (milliseconds).
+     * @return Timestamp of the last update to the endpoint (milliseconds).
      * 
      */
     public Optional<Output<Integer>> lastUpdatedTimestamp() {
@@ -124,14 +124,14 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * @return Name of the Vector Search Endpoint to create.
      * 
      */
     public Optional<Output<String>> name() {
@@ -249,7 +249,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of following fields:
+         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of following fields:
+         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointStatuses Object describing the current status of the endpoint consisting of following fields:
+         * @param endpointStatuses Object describing the current status of the endpoint consisting of the following fields:
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param endpointType type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it&#39;s changed, Vector Search Endpoint is recreated.
+         * @param endpointType Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastUpdatedTimestamp Timestamp of last update to the endpoint (milliseconds).
+         * @param lastUpdatedTimestamp Timestamp of the last update to the endpoint (milliseconds).
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param lastUpdatedTimestamp Timestamp of last update to the endpoint (milliseconds).
+         * @param lastUpdatedTimestamp Timestamp of the last update to the endpoint (milliseconds).
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+         * @param name Name of the Vector Search Endpoint to create.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class VectorSearchEndpointState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+         * @param name Name of the Vector Search Endpoint to create.
          * 
          * @return builder
          * 

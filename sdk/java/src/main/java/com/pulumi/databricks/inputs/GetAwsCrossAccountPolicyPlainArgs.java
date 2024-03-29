@@ -16,7 +16,23 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
     public static final GetAwsCrossAccountPolicyPlainArgs Empty = new GetAwsCrossAccountPolicyPlainArgs();
 
     /**
+     * — Your AWS account ID, which is a number.
+     * 
+     */
+    @Import(name="awsAccountId")
+    private @Nullable String awsAccountId;
+
+    /**
+     * @return — Your AWS account ID, which is a number.
+     * 
+     */
+    public Optional<String> awsAccountId() {
+        return Optional.ofNullable(this.awsAccountId);
+    }
+
+    /**
      * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * The below arguments are only valid for `restricted` policy type
      * 
      */
     @Import(name="passRoles")
@@ -24,16 +40,82 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
 
     /**
      * @return List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+     * The below arguments are only valid for `restricted` policy type
      * 
      */
     public Optional<List<String>> passRoles() {
         return Optional.ofNullable(this.passRoles);
     }
 
+    /**
+     * The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+     * 
+     */
+    @Import(name="policyType")
+    private @Nullable String policyType;
+
+    /**
+     * @return The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+     * 
+     */
+    public Optional<String> policyType() {
+        return Optional.ofNullable(this.policyType);
+    }
+
+    /**
+     * — AWS Region name for your VPC deployment, for example `us-west-2`.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return — AWS Region name for your VPC deployment, for example `us-west-2`.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+     * 
+     */
+    @Import(name="securityGroupId")
+    private @Nullable String securityGroupId;
+
+    /**
+     * @return — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+     * 
+     */
+    public Optional<String> securityGroupId() {
+        return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
+     * — ID of the AWS VPC where you want to launch workspaces.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable String vpcId;
+
+    /**
+     * @return — ID of the AWS VPC where you want to launch workspaces.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
     private GetAwsCrossAccountPolicyPlainArgs() {}
 
     private GetAwsCrossAccountPolicyPlainArgs(GetAwsCrossAccountPolicyPlainArgs $) {
+        this.awsAccountId = $.awsAccountId;
         this.passRoles = $.passRoles;
+        this.policyType = $.policyType;
+        this.region = $.region;
+        this.securityGroupId = $.securityGroupId;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -55,7 +137,19 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
+         * @param awsAccountId — Your AWS account ID, which is a number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder awsAccountId(@Nullable String awsAccountId) {
+            $.awsAccountId = awsAccountId;
+            return this;
+        }
+
+        /**
          * @param passRoles List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+         * The below arguments are only valid for `restricted` policy type
          * 
          * @return builder
          * 
@@ -67,12 +161,57 @@ public final class GetAwsCrossAccountPolicyPlainArgs extends com.pulumi.resource
 
         /**
          * @param passRoles List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+         * The below arguments are only valid for `restricted` policy type
          * 
          * @return builder
          * 
          */
         public Builder passRoles(String... passRoles) {
             return passRoles(List.of(passRoles));
+        }
+
+        /**
+         * @param policyType The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(@Nullable String policyType) {
+            $.policyType = policyType;
+            return this;
+        }
+
+        /**
+         * @param region — AWS Region name for your VPC deployment, for example `us-west-2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param securityGroupId — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(@Nullable String securityGroupId) {
+            $.securityGroupId = securityGroupId;
+            return this;
+        }
+
+        /**
+         * @param vpcId — ID of the AWS VPC where you want to launch workspaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable String vpcId) {
+            $.vpcId = vpcId;
+            return this;
         }
 
         public GetAwsCrossAccountPolicyPlainArgs build() {

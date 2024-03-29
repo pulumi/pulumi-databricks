@@ -83,17 +83,48 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsCrossAccountPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// — Your AWS account ID, which is a number.
+        /// </summary>
+        [Input("awsAccountId")]
+        public string? AwsAccountId { get; set; }
+
         [Input("passRoles")]
         private List<string>? _passRoles;
 
         /// <summary>
         /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+        /// The below arguments are only valid for `restricted` policy type
         /// </summary>
         public List<string> PassRoles
         {
             get => _passRoles ?? (_passRoles = new List<string>());
             set => _passRoles = value;
         }
+
+        /// <summary>
+        /// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+        /// </summary>
+        [Input("policyType")]
+        public string? PolicyType { get; set; }
+
+        /// <summary>
+        /// — AWS Region name for your VPC deployment, for example `us-west-2`.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
+        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+        /// </summary>
+        [Input("securityGroupId")]
+        public string? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// — ID of the AWS VPC where you want to launch workspaces.
+        /// </summary>
+        [Input("vpcId")]
+        public string? VpcId { get; set; }
 
         public GetAwsCrossAccountPolicyArgs()
         {
@@ -103,17 +134,48 @@ namespace Pulumi.Databricks
 
     public sealed class GetAwsCrossAccountPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// — Your AWS account ID, which is a number.
+        /// </summary>
+        [Input("awsAccountId")]
+        public Input<string>? AwsAccountId { get; set; }
+
         [Input("passRoles")]
         private InputList<string>? _passRoles;
 
         /// <summary>
         /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
+        /// The below arguments are only valid for `restricted` policy type
         /// </summary>
         public InputList<string> PassRoles
         {
             get => _passRoles ?? (_passRoles = new InputList<string>());
             set => _passRoles = value;
         }
+
+        /// <summary>
+        /// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
+        /// <summary>
+        /// — AWS Region name for your VPC deployment, for example `us-west-2`.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// — ID of the AWS VPC where you want to launch workspaces.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public GetAwsCrossAccountPolicyInvokeArgs()
         {
@@ -125,6 +187,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAwsCrossAccountPolicyResult
     {
+        public readonly string? AwsAccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -134,18 +197,37 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Json;
         public readonly ImmutableArray<string> PassRoles;
+        public readonly string? PolicyType;
+        public readonly string? Region;
+        public readonly string? SecurityGroupId;
+        public readonly string? VpcId;
 
         [OutputConstructor]
         private GetAwsCrossAccountPolicyResult(
+            string? awsAccountId,
+
             string id,
 
             string json,
 
-            ImmutableArray<string> passRoles)
+            ImmutableArray<string> passRoles,
+
+            string? policyType,
+
+            string? region,
+
+            string? securityGroupId,
+
+            string? vpcId)
         {
+            AwsAccountId = awsAccountId;
             Id = id;
             Json = json;
             PassRoles = passRoles;
+            PolicyType = policyType;
+            Region = region;
+            SecurityGroupId = securityGroupId;
+            VpcId = vpcId;
         }
     }
 }

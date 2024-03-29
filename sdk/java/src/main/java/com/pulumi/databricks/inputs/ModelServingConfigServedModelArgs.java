@@ -95,14 +95,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
-     * Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
      */
     @Import(name="scaleToZeroEnabled")
     private @Nullable Output<Boolean> scaleToZeroEnabled;
 
     /**
-     * @return Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * @return Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> scaleToZeroEnabled() {
@@ -110,14 +110,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
-     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
     @Import(name="workloadSize", required=true)
     private Output<String> workloadSize;
 
     /**
-     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+     * @return The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      * 
      */
     public Output<String> workloadSize() {
@@ -276,7 +276,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+         * @param scaleToZeroEnabled Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are &#34;Small&#34; (4 - 4 provisioned concurrency), &#34;Medium&#34; (8 - 16 provisioned concurrency), and &#34;Large&#34; (16 - 64 provisioned concurrency).
+         * @param workloadSize The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
          * 
          * @return builder
          * 

@@ -71,6 +71,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpAccessList{}
 	case "databricks:index/job:Job":
 		r = &Job{}
+	case "databricks:index/lakehouseMonitor:LakehouseMonitor":
+		r = &LakehouseMonitor{}
 	case "databricks:index/library:Library":
 		r = &Library{}
 	case "databricks:index/metastore:Metastore":
@@ -113,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Notebook{}
 	case "databricks:index/oboToken:OboToken":
 		r = &OboToken{}
+	case "databricks:index/onlineTable:OnlineTable":
+		r = &OnlineTable{}
 	case "databricks:index/permissionAssignment:PermissionAssignment":
 		r = &PermissionAssignment{}
 	case "databricks:index/permissions:Permissions":
@@ -177,6 +181,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserRole{}
 	case "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint":
 		r = &VectorSearchEndpoint{}
+	case "databricks:index/vectorSearchIndex:VectorSearchIndex":
+		r = &VectorSearchIndex{}
 	case "databricks:index/volume:Volume":
 		r = &Volume{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
@@ -341,6 +347,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/lakehouseMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/library",
 		&module{version},
 	)
@@ -442,6 +453,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/oboToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/onlineTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -602,6 +618,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/vectorSearchEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/vectorSearchIndex",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

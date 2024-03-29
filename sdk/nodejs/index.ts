@@ -345,6 +345,11 @@ export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
+export { LakehouseMonitorArgs, LakehouseMonitorState } from "./lakehouseMonitor";
+export type LakehouseMonitor = import("./lakehouseMonitor").LakehouseMonitor;
+export const LakehouseMonitor: typeof import("./lakehouseMonitor").LakehouseMonitor = null as any;
+utilities.lazyLoad(exports, ["LakehouseMonitor"], () => require("./lakehouseMonitor"));
+
 export { LibraryArgs, LibraryState } from "./library";
 export type Library = import("./library").Library;
 export const Library: typeof import("./library").Library = null as any;
@@ -449,6 +454,11 @@ export { OboTokenArgs, OboTokenState } from "./oboToken";
 export type OboToken = import("./oboToken").OboToken;
 export const OboToken: typeof import("./oboToken").OboToken = null as any;
 utilities.lazyLoad(exports, ["OboToken"], () => require("./oboToken"));
+
+export { OnlineTableArgs, OnlineTableState } from "./onlineTable";
+export type OnlineTable = import("./onlineTable").OnlineTable;
+export const OnlineTable: typeof import("./onlineTable").OnlineTable = null as any;
+utilities.lazyLoad(exports, ["OnlineTable"], () => require("./onlineTable"));
 
 export { PermissionAssignmentArgs, PermissionAssignmentState } from "./permissionAssignment";
 export type PermissionAssignment = import("./permissionAssignment").PermissionAssignment;
@@ -615,6 +625,11 @@ export type VectorSearchEndpoint = import("./vectorSearchEndpoint").VectorSearch
 export const VectorSearchEndpoint: typeof import("./vectorSearchEndpoint").VectorSearchEndpoint = null as any;
 utilities.lazyLoad(exports, ["VectorSearchEndpoint"], () => require("./vectorSearchEndpoint"));
 
+export { VectorSearchIndexArgs, VectorSearchIndexState } from "./vectorSearchIndex";
+export type VectorSearchIndex = import("./vectorSearchIndex").VectorSearchIndex;
+export const VectorSearchIndex: typeof import("./vectorSearchIndex").VectorSearchIndex = null as any;
+utilities.lazyLoad(exports, ["VectorSearchIndex"], () => require("./vectorSearchIndex"));
+
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
@@ -694,6 +709,8 @@ const _module = {
                 return new IpAccessList(name, <any>undefined, { urn })
             case "databricks:index/job:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "databricks:index/lakehouseMonitor:LakehouseMonitor":
+                return new LakehouseMonitor(name, <any>undefined, { urn })
             case "databricks:index/library:Library":
                 return new Library(name, <any>undefined, { urn })
             case "databricks:index/metastore:Metastore":
@@ -736,6 +753,8 @@ const _module = {
                 return new Notebook(name, <any>undefined, { urn })
             case "databricks:index/oboToken:OboToken":
                 return new OboToken(name, <any>undefined, { urn })
+            case "databricks:index/onlineTable:OnlineTable":
+                return new OnlineTable(name, <any>undefined, { urn })
             case "databricks:index/permissionAssignment:PermissionAssignment":
                 return new PermissionAssignment(name, <any>undefined, { urn })
             case "databricks:index/permissions:Permissions":
@@ -800,6 +819,8 @@ const _module = {
                 return new UserRole(name, <any>undefined, { urn })
             case "databricks:index/vectorSearchEndpoint:VectorSearchEndpoint":
                 return new VectorSearchEndpoint(name, <any>undefined, { urn })
+            case "databricks:index/vectorSearchIndex:VectorSearchIndex":
+                return new VectorSearchIndex(name, <any>undefined, { urn })
             case "databricks:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
@@ -836,6 +857,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/instancePool", _modul
 pulumi.runtime.registerResourceModule("databricks", "index/instanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/ipAccessList", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/job", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/lakehouseMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/library", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastore", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/metastoreAssignment", _module)
@@ -857,6 +879,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/mwsVpcEndpoint", _mod
 pulumi.runtime.registerResourceModule("databricks", "index/mwsWorkspaces", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/notebook", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/oboToken", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/onlineTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
@@ -889,6 +912,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/user", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userInstanceProfile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchEndpoint", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchIndex", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)

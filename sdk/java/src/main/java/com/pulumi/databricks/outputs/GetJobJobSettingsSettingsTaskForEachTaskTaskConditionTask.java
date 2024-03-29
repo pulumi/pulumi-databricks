@@ -4,26 +4,25 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
-    private @Nullable String left;
-    private @Nullable String op;
-    private @Nullable String right;
+    private String left;
+    private String op;
+    private String right;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask() {}
-    public Optional<String> left() {
-        return Optional.ofNullable(this.left);
+    public String left() {
+        return this.left;
     }
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
-    public Optional<String> right() {
-        return Optional.ofNullable(this.right);
+    public String right() {
+        return this.right;
     }
 
     public static Builder builder() {
@@ -35,9 +34,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String left;
-        private @Nullable String op;
-        private @Nullable String right;
+        private String left;
+        private String op;
+        private String right;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,20 +46,26 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
         }
 
         @CustomType.Setter
-        public Builder left(@Nullable String left) {
-
+        public Builder left(String left) {
+            if (left == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "left");
+            }
             this.left = left;
             return this;
         }
         @CustomType.Setter
-        public Builder op(@Nullable String op) {
-
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "op");
+            }
             this.op = op;
             return this;
         }
         @CustomType.Setter
-        public Builder right(@Nullable String right) {
-
+        public Builder right(String right) {
+            if (right == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask", "right");
+            }
             this.right = right;
             return this;
         }

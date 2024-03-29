@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
  *
+ * **Note** If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ *
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
@@ -17,17 +19,17 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.ModelServing("this", {config: {
- *     servedModels: [
+ *     servedEntities: [
  *         {
- *             modelName: "ads-model",
- *             modelVersion: "2",
+ *             entityName: "ads-model",
+ *             entityVersion: "2",
  *             name: "prod_model",
  *             scaleToZeroEnabled: true,
  *             workloadSize: "Small",
  *         },
  *         {
- *             modelName: "ads-model",
- *             modelVersion: "4",
+ *             entityName: "ads-model",
+ *             entityVersion: "4",
  *             name: "candidate_model",
  *             scaleToZeroEnabled: false,
  *             workloadSize: "Small",
@@ -111,11 +113,17 @@ export class ModelServing extends pulumi.CustomResource {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     */
     public readonly rateLimits!: pulumi.Output<outputs.ModelServingRateLimit[] | undefined>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     public /*out*/ readonly servingEndpointId!: pulumi.Output<string>;
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
     public readonly tags!: pulumi.Output<outputs.ModelServingTag[] | undefined>;
 
     /**
@@ -164,11 +172,17 @@ export interface ModelServingState {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
     servingEndpointId?: pulumi.Input<string>;
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
 }
 
@@ -184,6 +198,12 @@ export interface ModelServingArgs {
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     */
     tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
 }

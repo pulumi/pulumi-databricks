@@ -2420,15 +2420,15 @@ export interface GetJobJobSettingsSettingsTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTask {
-    left?: string;
-    op?: string;
-    right?: string;
+    left: string;
+    op: string;
+    right: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTaskArgs {
-    left?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    right?: pulumi.Input<string>;
+    left: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    right: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
@@ -2462,6 +2462,7 @@ export interface GetJobJobSettingsSettingsTaskDependsOnArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotifications {
+    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -2469,6 +2470,7 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2548,15 +2550,15 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
-    left?: string;
-    op?: string;
-    right?: string;
+    left: string;
+    op: string;
+    right: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs {
-    left?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    right?: pulumi.Input<string>;
+    left: pulumi.Input<string>;
+    op: pulumi.Input<string>;
+    right: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
@@ -2590,6 +2592,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+    noAlertForSkippedRuns?: boolean;
     onDurationWarningThresholdExceededs?: string[];
     onFailures?: string[];
     onStarts?: string[];
@@ -2597,6 +2600,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs {
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3177,56 +3181,56 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskHealth {
@@ -3803,66 +3807,68 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarn
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTrigger {
-    fileArrival: inputs.GetJobJobSettingsSettingsTriggerFileArrival;
+    fileArrival?: inputs.GetJobJobSettingsSettingsTriggerFileArrival;
     pauseStatus?: string;
+    tableUpdate?: inputs.GetJobJobSettingsSettingsTriggerTableUpdate;
 }
 
 export interface GetJobJobSettingsSettingsTriggerArgs {
-    fileArrival: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs>;
+    fileArrival?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs>;
     pauseStatus?: pulumi.Input<string>;
+    tableUpdate?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs>;
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
@@ -3874,6 +3880,20 @@ export interface GetJobJobSettingsSettingsTriggerFileArrival {
 export interface GetJobJobSettingsSettingsTriggerFileArrivalArgs {
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
     url: pulumi.Input<string>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+}
+
+export interface GetJobJobSettingsSettingsTriggerTableUpdate {
+    condition?: string;
+    minTimeBetweenTriggersSeconds?: number;
+    tableNames: string[];
+    waitAfterLastChangeSeconds?: number;
+}
+
+export interface GetJobJobSettingsSettingsTriggerTableUpdateArgs {
+    condition?: pulumi.Input<string>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    tableNames: pulumi.Input<pulumi.Input<string>[]>;
     waitAfterLastChangeSeconds?: pulumi.Input<number>;
 }
 
@@ -3895,56 +3915,56 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningT
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailure {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStart {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: string;
+    id: string;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -5231,7 +5251,7 @@ export interface JobTask {
      */
     jobClusterKey?: pulumi.Input<string>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[]>;
     /**
@@ -5285,17 +5305,17 @@ export interface JobTaskConditionTask {
     /**
      * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      */
-    left?: pulumi.Input<string>;
+    left: pulumi.Input<string>;
     /**
      * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      *
      * This task does not require a cluster to execute and does not support retries or notifications.
      */
-    op?: pulumi.Input<string>;
+    op: pulumi.Input<string>;
     /**
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
-    right?: pulumi.Input<string>;
+    right: pulumi.Input<string>;
 }
 
 export interface JobTaskDbtTask {
@@ -5345,6 +5365,10 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -5404,7 +5428,7 @@ export interface JobTaskForEachTaskTask {
      */
     jobClusterKey?: pulumi.Input<string>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section for databricks.Cluster resource.
+     * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskLibrary>[]>;
     /**
@@ -5458,17 +5482,17 @@ export interface JobTaskForEachTaskTaskConditionTask {
     /**
      * The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      */
-    left?: pulumi.Input<string>;
+    left: pulumi.Input<string>;
     /**
      * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      *
      * This task does not require a cluster to execute and does not support retries or notifications.
      */
-    op?: pulumi.Input<string>;
+    op: pulumi.Input<string>;
     /**
      * The right operand of the condition task. It could be a string value, job state, or parameter reference.
      */
-    right?: pulumi.Input<string>;
+    right: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
@@ -5518,6 +5542,10 @@ export interface JobTaskForEachTaskTaskDependsOn {
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
+    /**
+     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
+     */
+    noAlertForSkippedRuns?: pulumi.Input<boolean>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
@@ -6027,7 +6055,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThre
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
@@ -6036,7 +6064,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
@@ -6045,7 +6073,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
@@ -6054,7 +6082,7 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskHealth {
@@ -6551,7 +6579,7 @@ export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
@@ -6560,7 +6588,7 @@ export interface JobTaskWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnStart {
@@ -6569,7 +6597,7 @@ export interface JobTaskWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTaskWebhookNotificationsOnSuccess {
@@ -6578,18 +6606,22 @@ export interface JobTaskWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobTrigger {
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
-    fileArrival: pulumi.Input<inputs.JobTriggerFileArrival>;
+    fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival>;
     /**
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
+    /**
+     * configuration block to define a trigger for Table Update events consisting of following attributes:
+     */
+    tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
 }
 
 export interface JobTriggerFileArrival {
@@ -6601,6 +6633,25 @@ export interface JobTriggerFileArrival {
      * URL of the Git repository to use.
      */
     url: pulumi.Input<string>;
+    /**
+     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
+     */
+    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+}
+
+export interface JobTriggerTableUpdate {
+    /**
+     * The table(s) condition based on which to trigger a job run. Valid values are `ANY_UPDATED` or `ALL_UPDATED`.
+     */
+    condition?: pulumi.Input<string>;
+    /**
+     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
+     */
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    /**
+     * A list of Delta tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     */
+    tableNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
@@ -6642,7 +6693,7 @@ export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnFailure {
@@ -6651,7 +6702,7 @@ export interface JobWebhookNotificationsOnFailure {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnStart {
@@ -6660,7 +6711,7 @@ export interface JobWebhookNotificationsOnStart {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
@@ -6669,7 +6720,93 @@ export interface JobWebhookNotificationsOnSuccess {
      *
      * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
+}
+
+export interface LakehouseMonitorCustomMetric {
+    /**
+     * [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     */
+    definition?: pulumi.Input<string>;
+    /**
+     * Columns on the monitored table to apply the custom metrics to.
+     */
+    inputColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the custom metric.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The output type of the custom metric.
+     */
+    outputDataType?: pulumi.Input<string>;
+    /**
+     * The type of the custom metric.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface LakehouseMonitorDataClassificationConfig {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface LakehouseMonitorInferenceLog {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Column of the model label
+     */
+    labelCol?: pulumi.Input<string>;
+    /**
+     * Column of the model id or version
+     */
+    modelIdCol?: pulumi.Input<string>;
+    /**
+     * Column of the model prediction
+     */
+    predictionCol?: pulumi.Input<string>;
+    /**
+     * Column of the model prediction probabilities
+     */
+    predictionProbaCol?: pulumi.Input<string>;
+    /**
+     * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+     */
+    problemType?: pulumi.Input<string>;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol?: pulumi.Input<string>;
+}
+
+export interface LakehouseMonitorNotifications {
+    onFailure?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnFailure>;
+}
+
+export interface LakehouseMonitorNotificationsOnFailure {
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface LakehouseMonitorSchedule {
+    pauseStatus?: pulumi.Input<string>;
+    quartzCronExpression?: pulumi.Input<string>;
+    timezoneId?: pulumi.Input<string>;
+}
+
+export interface LakehouseMonitorSnapshot {
+}
+
+export interface LakehouseMonitorTimeSeries {
+    /**
+     * List of granularities to use when aggregating data into time windows based on their timestamp.
+     */
+    granularities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Column of the timestamp of predictions
+     */
+    timestampCol?: pulumi.Input<string>;
 }
 
 export interface LibraryCran {
@@ -6757,9 +6894,18 @@ export interface MlflowWebhookJobSpec {
 }
 
 export interface ModelServingConfig {
+    /**
+     * Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
+     */
     autoCaptureConfig?: pulumi.Input<inputs.ModelServingConfigAutoCaptureConfig>;
     /**
+     * A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
+     */
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedEntity>[]>;
+    /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
+     *
+     * @deprecated Please use 'config.served_entities' instead of 'config.served_models'.
      */
     servedModels?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[]>;
     /**
@@ -6769,10 +6915,198 @@ export interface ModelServingConfig {
 }
 
 export interface ModelServingConfigAutoCaptureConfig {
+    /**
+     * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
+     */
     catalogName?: pulumi.Input<string>;
+    /**
+     * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable again.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
+     */
     schemaName?: pulumi.Input<string>;
+    /**
+     * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
+     */
     tableNamePrefix?: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntity {
+    /**
+     * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
+     */
+    entityName?: pulumi.Input<string>;
+    /**
+     * The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
+     */
+    entityVersion?: pulumi.Input<string>;
+    /**
+     * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
+     */
+    environmentVars?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. For an existing endpoint with `externalModel`, it can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
+     */
+    externalModel?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModel>;
+    /**
+     * ARN of the instance profile that the served entity uses to access AWS resources.
+     */
+    instanceProfileArn?: pulumi.Input<string>;
+    /**
+     * The maximum tokens per second that the endpoint can scale up to.
+     */
+    maxProvisionedThroughput?: pulumi.Input<number>;
+    /**
+     * The minimum tokens per second that the endpoint can scale down to.
+     */
+    minProvisionedThroughput?: pulumi.Input<number>;
+    /**
+     * The name of the external model.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Whether the compute resources for the served entity should scale down to zero.
+     */
+    scaleToZeroEnabled?: pulumi.Input<boolean>;
+    /**
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
+     */
+    workloadSize?: pulumi.Input<string>;
+    /**
+     * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
+     */
+    workloadType?: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModel {
+    /**
+     * AI21Labs Config
+     */
+    ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig>;
+    /**
+     * Amazon Bedrock Config
+     */
+    amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig>;
+    /**
+     * Anthropic Config
+     */
+    anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig>;
+    /**
+     * Cohere Config
+     */
+    cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
+    /**
+     * Databricks Model Serving Config
+     */
+    databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
+    /**
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * OpenAI Config
+     */
+    openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig>;
+    /**
+     * PaLM Config
+     */
+    palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig>;
+    /**
+     * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
+     */
+    provider: pulumi.Input<string>;
+    /**
+     * The task type of the external model.
+     */
+    task: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
+    /**
+     * The Databricks secret key reference for an AI21Labs API key.
+     */
+    ai21labsApiKey: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
+    /**
+     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
+     */
+    awsAccessKeyId: pulumi.Input<string>;
+    /**
+     * The AWS region to use. Bedrock has to be enabled there.
+     */
+    awsRegion: pulumi.Input<string>;
+    /**
+     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
+     */
+    awsSecretAccessKey: pulumi.Input<string>;
+    /**
+     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
+     */
+    bedrockProvider: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
+    /**
+     * The Databricks secret key reference for an Anthropic API key.
+     * The Databricks secret key reference for an Anthropic API key.
+     */
+    anthropicApiKey: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelCohereConfig {
+    /**
+     * The Databricks secret key reference for a Cohere API key.
+     */
+    cohereApiKey: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
+    /**
+     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
+     */
+    databricksApiToken: pulumi.Input<string>;
+    /**
+     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
+     */
+    databricksWorkspaceUrl: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
+    /**
+     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
+     */
+    openaiApiBase?: pulumi.Input<string>;
+    /**
+     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
+     */
+    openaiApiKey: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
+     */
+    openaiApiType?: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
+     */
+    openaiApiVersion?: pulumi.Input<string>;
+    /**
+     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
+     */
+    openaiDeploymentName?: pulumi.Input<string>;
+    /**
+     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
+     */
+    openaiOrganization?: pulumi.Input<string>;
+}
+
+export interface ModelServingConfigServedEntityExternalModelPalmConfig {
+    /**
+     * The Databricks secret key reference for a PaLM API key.
+     */
+    palmApiKey: pulumi.Input<string>;
 }
 
 export interface ModelServingConfigServedModel {
@@ -6797,11 +7131,11 @@ export interface ModelServingConfigServedModel {
      */
     name?: pulumi.Input<string>;
     /**
-     * Whether the compute resources for the served model should scale down to zero. If scale-to-zero is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+     * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      */
     scaleToZeroEnabled?: pulumi.Input<boolean>;
     /**
-     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are "Small" (4 - 4 provisioned concurrency), "Medium" (8 - 16 provisioned concurrency), and "Large" (16 - 64 provisioned concurrency).
+     * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      */
     workloadSize: pulumi.Input<string>;
     /**
@@ -6812,15 +7146,12 @@ export interface ModelServingConfigServedModel {
 
 export interface ModelServingConfigTrafficConfig {
     /**
-     * Each block represents a route that defines traffic to each served model. Each `servedModels` block needs to have a corresponding `routes` block
+     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      */
     routes?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigTrafficConfigRoute>[]>;
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
-    /**
-     * The name of the served model this route configures traffic for. This needs to match the name of a `servedModels` block
-     */
     servedModelName: pulumi.Input<string>;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
@@ -6829,13 +7160,28 @@ export interface ModelServingConfigTrafficConfigRoute {
 }
 
 export interface ModelServingRateLimit {
+    /**
+     * Used to specify how many calls are allowed for a key within the renewal_period.
+     */
     calls: pulumi.Input<number>;
+    /**
+     * Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     */
     key?: pulumi.Input<string>;
+    /**
+     * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     */
     renewalPeriod: pulumi.Input<string>;
 }
 
 export interface ModelServingTag {
+    /**
+     * The key field for a tag.
+     */
     key: pulumi.Input<string>;
+    /**
+     * The value field for a tag.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -7006,6 +7352,103 @@ export interface MwsWorkspacesToken {
     lifetimeSeconds?: pulumi.Input<number>;
     tokenId?: pulumi.Input<string>;
     tokenValue?: pulumi.Input<string>;
+}
+
+export interface OnlineTableSpec {
+    /**
+     * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
+     */
+    performFullCopy?: pulumi.Input<boolean>;
+    /**
+     * ID of the associated Delta Live Table pipeline.
+     */
+    pipelineId?: pulumi.Input<string>;
+    /**
+     * list of the columns comprising the primary key.
+     */
+    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
+     */
+    runContinuously?: pulumi.Input<inputs.OnlineTableSpecRunContinuously>;
+    /**
+     * empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
+     */
+    runTriggered?: pulumi.Input<inputs.OnlineTableSpecRunTriggered>;
+    /**
+     * full name of the source table.
+     */
+    sourceTableFullName?: pulumi.Input<string>;
+    /**
+     * Time series key to deduplicate (tie-break) rows with the same primary key.
+     */
+    timeseriesKey?: pulumi.Input<string>;
+}
+
+export interface OnlineTableSpecRunContinuously {
+}
+
+export interface OnlineTableSpecRunTriggered {
+}
+
+export interface OnlineTableStatus {
+    continuousUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatus>;
+    /**
+     * The state of the online table.
+     */
+    detailedState?: pulumi.Input<string>;
+    failedStatus?: pulumi.Input<inputs.OnlineTableStatusFailedStatus>;
+    /**
+     * A text description of the current state of the online table.
+     */
+    message?: pulumi.Input<string>;
+    provisioningStatus?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatus>;
+    triggeredUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatus>;
+}
+
+export interface OnlineTableStatusContinuousUpdateStatus {
+    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress>;
+    lastProcessedCommitVersion?: pulumi.Input<number>;
+    timestamp?: pulumi.Input<string>;
+}
+
+export interface OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress {
+    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number>;
+}
+
+export interface OnlineTableStatusFailedStatus {
+    lastProcessedCommitVersion?: pulumi.Input<number>;
+    timestamp?: pulumi.Input<string>;
+}
+
+export interface OnlineTableStatusProvisioningStatus {
+    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress>;
+}
+
+export interface OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress {
+    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number>;
+}
+
+export interface OnlineTableStatusTriggeredUpdateStatus {
+    lastProcessedCommitVersion?: pulumi.Input<number>;
+    timestamp?: pulumi.Input<string>;
+    triggeredUpdateProgress?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress>;
+}
+
+export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
+    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number>;
 }
 
 export interface PermissionsAccessControl {
@@ -7260,7 +7703,7 @@ export interface ShareObject {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
+     * Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: pulumi.Input<string>;
     /**
@@ -7270,7 +7713,7 @@ export interface ShareObject {
      */
     historyDataSharingStatus?: pulumi.Input<string>;
     /**
-     * Full name of the object, e.g. `catalog.schema.name` for a table.
+     * Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
      */
     name: pulumi.Input<string>;
     partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
@@ -7590,19 +8033,13 @@ export interface SqlWidgetPosition {
 }
 
 export interface StorageCredentialAwsIamRole {
-    /**
-     * The external ID used in role assumption to prevent confused deputy problem.
-     */
     externalId?: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
-     */
-    roleArn: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
+    roleArn: pulumi.Input<string>;
     unityCatalogIamArn?: pulumi.Input<string>;
 }
 
@@ -7676,7 +8113,108 @@ export interface VectorSearchEndpointEndpointStatus {
      */
     message?: pulumi.Input<string>;
     /**
-     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
     state?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpec {
+    /**
+     * array of objects representing columns that contain the embedding source.  Each entry consists of:
+     */
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
+    /**
+     * ID of the associated Delta Live Table pipeline.
+     */
+    pipelineId?: pulumi.Input<string>;
+    /**
+     * Pipeline execution mode. Possible values are:
+     */
+    pipelineType?: pulumi.Input<string>;
+    /**
+     * The name of the source table.
+     */
+    sourceTable?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
+    embeddingModelEndpointName?: pulumi.Input<string>;
+    /**
+     * The name of the column.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
+    embeddingDimension?: pulumi.Input<number>;
+    /**
+     * The name of the column.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpec {
+    /**
+     * array of objects representing columns that contain the embedding source.  Each entry consists of:
+     */
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[]>;
+    /**
+     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
+     */
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[]>;
+    /**
+     * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
+     */
+    schemaJson?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * The name of the embedding model endpoint
+     */
+    embeddingModelEndpointName?: pulumi.Input<string>;
+    /**
+     * The name of the column.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector.
+     */
+    embeddingDimension?: pulumi.Input<number>;
+    /**
+     * The name of the column.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface VectorSearchIndexStatus {
+    /**
+     * Index API Url to be used to perform operations on the index
+     */
+    indexUrl?: pulumi.Input<string>;
+    /**
+     * Number of rows indexed
+     */
+    indexedRowCount?: pulumi.Input<number>;
+    /**
+     * Message associated with the index status
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * Whether the index is ready for search
+     */
+    ready?: pulumi.Input<boolean>;
 }

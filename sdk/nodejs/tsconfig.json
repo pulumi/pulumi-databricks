@@ -84,6 +84,7 @@
         "instanceProfile.ts",
         "ipAccessList.ts",
         "job.ts",
+        "lakehouseMonitor.ts",
         "library.ts",
         "metastore.ts",
         "metastoreAssignment.ts",
@@ -105,6 +106,7 @@
         "mwsWorkspaces.ts",
         "notebook.ts",
         "oboToken.ts",
+        "onlineTable.ts",
         "permissionAssignment.ts",
         "permissions.ts",
         "pipeline.ts",
@@ -142,6 +144,7 @@
         "userRole.ts",
         "utilities.ts",
         "vectorSearchEndpoint.ts",
+        "vectorSearchIndex.ts",
         "volume.ts",
         "workspaceConf.ts",
         "workspaceFile.ts"

@@ -73,15 +73,15 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpointId!: pulumi.Output<string>;
     /**
-     * Object describing the current status of the endpoint consisting of following fields:
+     * Object describing the current status of the endpoint consisting of the following fields:
      */
     public /*out*/ readonly endpointStatuses!: pulumi.Output<outputs.VectorSearchEndpointEndpointStatus[]>;
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
-     * Timestamp of last update to the endpoint (milliseconds).
+     * Timestamp of the last update to the endpoint (milliseconds).
      */
     public /*out*/ readonly lastUpdatedTimestamp!: pulumi.Output<number>;
     /**
@@ -89,7 +89,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastUpdatedUser!: pulumi.Output<string>;
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -156,15 +156,15 @@ export interface VectorSearchEndpointState {
      */
     endpointId?: pulumi.Input<string>;
     /**
-     * Object describing the current status of the endpoint consisting of following fields:
+     * Object describing the current status of the endpoint consisting of the following fields:
      */
     endpointStatuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointEndpointStatus>[]>;
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * Timestamp of last update to the endpoint (milliseconds).
+     * Timestamp of the last update to the endpoint (milliseconds).
      */
     lastUpdatedTimestamp?: pulumi.Input<number>;
     /**
@@ -172,7 +172,7 @@ export interface VectorSearchEndpointState {
      */
     lastUpdatedUser?: pulumi.Input<string>;
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      */
     name?: pulumi.Input<string>;
     /**
@@ -186,11 +186,11 @@ export interface VectorSearchEndpointState {
  */
 export interface VectorSearchEndpointArgs {
     /**
-     * type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).  If it's changed, Vector Search Endpoint is recreated.
+     * Type of Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values).
      */
     endpointType: pulumi.Input<string>;
     /**
-     * Name of the Vector Search Endpoint to create.  If name is changed, Vector Search Endpoint is recreated.
+     * Name of the Vector Search Endpoint to create.
      */
     name?: pulumi.Input<string>;
 }

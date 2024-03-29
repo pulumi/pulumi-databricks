@@ -5,35 +5,34 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetJobJobSettingsSettingsTaskConditionTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsTaskConditionTaskArgs Empty = new GetJobJobSettingsSettingsTaskConditionTaskArgs();
 
-    @Import(name="left")
-    private @Nullable Output<String> left;
+    @Import(name="left", required=true)
+    private Output<String> left;
 
-    public Optional<Output<String>> left() {
-        return Optional.ofNullable(this.left);
+    public Output<String> left() {
+        return this.left;
     }
 
-    @Import(name="op")
-    private @Nullable Output<String> op;
+    @Import(name="op", required=true)
+    private Output<String> op;
 
-    public Optional<Output<String>> op() {
-        return Optional.ofNullable(this.op);
+    public Output<String> op() {
+        return this.op;
     }
 
-    @Import(name="right")
-    private @Nullable Output<String> right;
+    @Import(name="right", required=true)
+    private Output<String> right;
 
-    public Optional<Output<String>> right() {
-        return Optional.ofNullable(this.right);
+    public Output<String> right() {
+        return this.right;
     }
 
     private GetJobJobSettingsSettingsTaskConditionTaskArgs() {}
@@ -62,7 +61,7 @@ public final class GetJobJobSettingsSettingsTaskConditionTaskArgs extends com.pu
             $ = new GetJobJobSettingsSettingsTaskConditionTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder left(@Nullable Output<String> left) {
+        public Builder left(Output<String> left) {
             $.left = left;
             return this;
         }
@@ -71,7 +70,7 @@ public final class GetJobJobSettingsSettingsTaskConditionTaskArgs extends com.pu
             return left(Output.of(left));
         }
 
-        public Builder op(@Nullable Output<String> op) {
+        public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
@@ -80,7 +79,7 @@ public final class GetJobJobSettingsSettingsTaskConditionTaskArgs extends com.pu
             return op(Output.of(op));
         }
 
-        public Builder right(@Nullable Output<String> right) {
+        public Builder right(Output<String> right) {
             $.right = right;
             return this;
         }
@@ -90,6 +89,15 @@ public final class GetJobJobSettingsSettingsTaskConditionTaskArgs extends com.pu
         }
 
         public GetJobJobSettingsSettingsTaskConditionTaskArgs build() {
+            if ($.left == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskConditionTaskArgs", "left");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskConditionTaskArgs", "op");
+            }
+            if ($.right == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskConditionTaskArgs", "right");
+            }
             return $;
         }
     }

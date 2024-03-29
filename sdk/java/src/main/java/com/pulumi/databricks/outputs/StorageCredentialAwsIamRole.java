@@ -12,45 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StorageCredentialAwsIamRole {
-    /**
-     * @return The external ID used in role assumption to prevent confused deputy problem.
-     * 
-     */
     private @Nullable String externalId;
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
-     */
-    private String roleArn;
-    /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     * 
      * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
      */
+    private String roleArn;
     private @Nullable String unityCatalogIamArn;
 
     private StorageCredentialAwsIamRole() {}
-    /**
-     * @return The external ID used in role assumption to prevent confused deputy problem.
-     * 
-     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
+     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+     * 
      */
     public String roleArn() {
         return this.roleArn;
     }
-    /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
-     * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
-     * 
-     */
     public Optional<String> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }

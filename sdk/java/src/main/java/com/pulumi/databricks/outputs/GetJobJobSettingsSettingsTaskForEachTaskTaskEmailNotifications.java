@@ -4,19 +4,25 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+    private @Nullable Boolean noAlertForSkippedRuns;
     private @Nullable List<String> onDurationWarningThresholdExceededs;
     private @Nullable List<String> onFailures;
     private @Nullable List<String> onStarts;
     private @Nullable List<String> onSuccesses;
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications() {}
+    public Optional<Boolean> noAlertForSkippedRuns() {
+        return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
     public List<String> onDurationWarningThresholdExceededs() {
         return this.onDurationWarningThresholdExceededs == null ? List.of() : this.onDurationWarningThresholdExceededs;
     }
@@ -39,6 +45,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
@@ -46,12 +53,19 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
+        @CustomType.Setter
+        public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
+
+            this.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return this;
+        }
         @CustomType.Setter
         public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
 
@@ -90,6 +104,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
         }
         public GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications build() {
             final var _resultValue = new GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications();
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;

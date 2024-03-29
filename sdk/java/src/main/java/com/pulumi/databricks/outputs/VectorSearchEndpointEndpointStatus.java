@@ -17,7 +17,7 @@ public final class VectorSearchEndpointEndpointStatus {
      */
     private @Nullable String message;
     /**
-     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
      */
     private @Nullable String state;
@@ -31,7 +31,7 @@ public final class VectorSearchEndpointEndpointStatus {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, `OFFLINE`.
+     * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
      */
     public Optional<String> state() {

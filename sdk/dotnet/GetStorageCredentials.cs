@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allMetastores"] = data.Databricks_metastores.All.Names,
+        ///         ["allStorageCredentials"] = all.Apply(getStorageCredentialsResult =&gt; getStorageCredentialsResult.Names),
         ///     };
         /// });
         /// ```
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["allMetastores"] = data.Databricks_metastores.All.Names,
+        ///         ["allStorageCredentials"] = all.Apply(getStorageCredentialsResult =&gt; getStorageCredentialsResult.Names),
         ///     };
         /// });
         /// ```
@@ -85,6 +85,10 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private List<string>? _names;
+
+        /// <summary>
+        /// List of names of databricks.StorageCredential in the metastore
+        /// </summary>
         public List<string> Names
         {
             get => _names ?? (_names = new List<string>());
@@ -101,6 +105,10 @@ namespace Pulumi.Databricks
     {
         [Input("names")]
         private InputList<string>? _names;
+
+        /// <summary>
+        /// List of names of databricks.StorageCredential in the metastore
+        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());
@@ -121,6 +129,9 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of names of databricks.StorageCredential in the metastore
+        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

@@ -49,9 +49,17 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * 
+     */
     @Import(name="rateLimits")
     private @Nullable Output<List<ModelServingRateLimitArgs>> rateLimits;
 
+    /**
+     * @return A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+     * 
+     */
     public Optional<Output<List<ModelServingRateLimitArgs>>> rateLimits() {
         return Optional.ofNullable(this.rateLimits);
     }
@@ -71,9 +79,17 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.servingEndpointId);
     }
 
+    /**
+     * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<ModelServingTagArgs>> tags;
 
+    /**
+     * @return Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+     * 
+     */
     public Optional<Output<List<ModelServingTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -148,15 +164,33 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(@Nullable Output<List<ModelServingRateLimitArgs>> rateLimits) {
             $.rateLimits = rateLimits;
             return this;
         }
 
+        /**
+         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(List<ModelServingRateLimitArgs> rateLimits) {
             return rateLimits(Output.of(rateLimits));
         }
 
+        /**
+         * @param rateLimits A list of rate limits to be applied to the serving endpoint. NOTE: only external and foundation model endpoints are supported as of now.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rateLimits(ModelServingRateLimitArgs... rateLimits) {
             return rateLimits(List.of(rateLimits));
         }
@@ -182,15 +216,33 @@ public final class ModelServingState extends com.pulumi.resources.ResourceArgs {
             return servingEndpointId(Output.of(servingEndpointId));
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<ModelServingTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<ModelServingTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(ModelServingTagArgs... tags) {
             return tags(List.of(tags));
         }

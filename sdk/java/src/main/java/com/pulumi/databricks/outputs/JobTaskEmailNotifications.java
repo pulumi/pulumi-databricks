@@ -4,13 +4,20 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskEmailNotifications {
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
+    private @Nullable Boolean noAlertForSkippedRuns;
     /**
      * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
@@ -33,6 +40,13 @@ public final class JobTaskEmailNotifications {
     private @Nullable List<String> onSuccesses;
 
     private JobTaskEmailNotifications() {}
+    /**
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * 
+     */
+    public Optional<Boolean> noAlertForSkippedRuns() {
+        return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
     /**
      * @return (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      * 
@@ -71,6 +85,7 @@ public final class JobTaskEmailNotifications {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean noAlertForSkippedRuns;
         private @Nullable List<String> onDurationWarningThresholdExceededs;
         private @Nullable List<String> onFailures;
         private @Nullable List<String> onStarts;
@@ -78,12 +93,19 @@ public final class JobTaskEmailNotifications {
         public Builder() {}
         public Builder(JobTaskEmailNotifications defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.noAlertForSkippedRuns = defaults.noAlertForSkippedRuns;
     	      this.onDurationWarningThresholdExceededs = defaults.onDurationWarningThresholdExceededs;
     	      this.onFailures = defaults.onFailures;
     	      this.onStarts = defaults.onStarts;
     	      this.onSuccesses = defaults.onSuccesses;
         }
 
+        @CustomType.Setter
+        public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
+
+            this.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return this;
+        }
         @CustomType.Setter
         public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
 
@@ -122,6 +144,7 @@ public final class JobTaskEmailNotifications {
         }
         public JobTaskEmailNotifications build() {
             final var _resultValue = new JobTaskEmailNotifications();
+            _resultValue.noAlertForSkippedRuns = noAlertForSkippedRuns;
             _resultValue.onDurationWarningThresholdExceededs = onDurationWarningThresholdExceededs;
             _resultValue.onFailures = onFailures;
             _resultValue.onStarts = onStarts;

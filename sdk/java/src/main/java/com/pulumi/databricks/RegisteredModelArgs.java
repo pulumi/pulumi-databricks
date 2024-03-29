@@ -62,6 +62,21 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Name of the registered model owner.
+     * 
+     */
+    @Import(name="owner")
+    private @Nullable Output<String> owner;
+
+    /**
+     * @return Name of the registered model owner.
+     * 
+     */
+    public Optional<Output<String>> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
@@ -97,6 +112,7 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
         this.catalogName = $.catalogName;
         this.comment = $.comment;
         this.name = $.name;
+        this.owner = $.owner;
         this.schemaName = $.schemaName;
         this.storageLocation = $.storageLocation;
     }
@@ -180,6 +196,27 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param owner Name of the registered model owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(@Nullable Output<String> owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param owner Name of the registered model owner.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder owner(String owner) {
+            return owner(Output.of(owner));
         }
 
         /**

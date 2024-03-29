@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, `NOTEBOOK_FILE` are supported.
+        /// Type of the data object, currently `TABLE`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         /// </summary>
         [Input("dataObjectType", required: true)]
         public Input<string> DataObjectType { get; set; } = null!;
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? HistoryDataSharingStatus { get; set; }
 
         /// <summary>
-        /// Full name of the object, e.g. `catalog.schema.name` for a table.
+        /// Full name of the object, e.g. `catalog.schema.name` for a tables, volumes and models, or `catalog.schema` for schemas.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

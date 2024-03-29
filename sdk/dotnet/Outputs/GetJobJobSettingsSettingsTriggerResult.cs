@@ -13,17 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTriggerResult
     {
-        public readonly Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult FileArrival;
+        public readonly Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult? FileArrival;
         public readonly string? PauseStatus;
+        public readonly Outputs.GetJobJobSettingsSettingsTriggerTableUpdateResult? TableUpdate;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTriggerResult(
-            Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult fileArrival,
+            Outputs.GetJobJobSettingsSettingsTriggerFileArrivalResult? fileArrival,
 
-            string? pauseStatus)
+            string? pauseStatus,
+
+            Outputs.GetJobJobSettingsSettingsTriggerTableUpdateResult? tableUpdate)
         {
             FileArrival = fileArrival;
             PauseStatus = pauseStatus;
+            TableUpdate = tableUpdate;
         }
     }
 }

@@ -18,10 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// &gt; **Note** The following configuration blocks can be standalone or nested inside a `task` block
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
 
         [OutputConstructor]
-        private JobWebhookNotificationsOnDurationWarningThresholdExceeded(string? id)
+        private JobWebhookNotificationsOnDurationWarningThresholdExceeded(string id)
         {
             Id = id;
         }

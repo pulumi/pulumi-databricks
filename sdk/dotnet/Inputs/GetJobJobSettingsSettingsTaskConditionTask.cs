@@ -12,14 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskConditionTaskArgs : global::Pulumi.InvokeArgs
     {
-        [Input("left")]
-        public string? Left { get; set; }
+        [Input("left", required: true)]
+        public string Left { get; set; } = null!;
 
-        [Input("op")]
-        public string? Op { get; set; }
+        [Input("op", required: true)]
+        public string Op { get; set; } = null!;
 
-        [Input("right")]
-        public string? Right { get; set; }
+        [Input("right", required: true)]
+        public string Right { get; set; } = null!;
 
         public GetJobJobSettingsSettingsTaskConditionTaskArgs()
         {

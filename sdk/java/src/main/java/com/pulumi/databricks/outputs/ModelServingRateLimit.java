@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ModelServingRateLimit {
+    /**
+     * @return Used to specify how many calls are allowed for a key within the renewal_period.
+     * 
+     */
     private Integer calls;
+    /**
+     * @return Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     * 
+     */
     private String renewalPeriod;
 
     private ModelServingRateLimit() {}
+    /**
+     * @return Used to specify how many calls are allowed for a key within the renewal_period.
+     * 
+     */
     public Integer calls() {
         return this.calls;
     }
+    /**
+     * @return Key field for a serving endpoint rate limit. Currently, only `user` and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+     * 
+     */
     public String renewalPeriod() {
         return this.renewalPeriod;
     }

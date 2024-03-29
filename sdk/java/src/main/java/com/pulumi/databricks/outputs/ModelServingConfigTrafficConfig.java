@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigTrafficConfig {
     /**
-     * @return Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+     * @return Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
      * 
      */
     private @Nullable List<ModelServingConfigTrafficConfigRoute> routes;
 
     private ModelServingConfigTrafficConfig() {}
     /**
-     * @return Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+     * @return Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
      * 
      */
     public List<ModelServingConfigTrafficConfigRoute> routes() {

@@ -4,10 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskConditionTask {
@@ -15,27 +14,27 @@ public final class JobTaskConditionTask {
      * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      * 
      */
-    private @Nullable String left;
+    private String left;
     /**
      * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
      * 
      * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
-    private @Nullable String op;
+    private String op;
     /**
      * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
      * 
      */
-    private @Nullable String right;
+    private String right;
 
     private JobTaskConditionTask() {}
     /**
      * @return The left operand of the condition task. It could be a string value, job state, or a parameter reference.
      * 
      */
-    public Optional<String> left() {
-        return Optional.ofNullable(this.left);
+    public String left() {
+        return this.left;
     }
     /**
      * @return The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
@@ -43,15 +42,15 @@ public final class JobTaskConditionTask {
      * This task does not require a cluster to execute and does not support retries or notifications.
      * 
      */
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
     /**
      * @return The right operand of the condition task. It could be a string value, job state, or parameter reference.
      * 
      */
-    public Optional<String> right() {
-        return Optional.ofNullable(this.right);
+    public String right() {
+        return this.right;
     }
 
     public static Builder builder() {
@@ -63,9 +62,9 @@ public final class JobTaskConditionTask {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String left;
-        private @Nullable String op;
-        private @Nullable String right;
+        private String left;
+        private String op;
+        private String right;
         public Builder() {}
         public Builder(JobTaskConditionTask defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,20 +74,26 @@ public final class JobTaskConditionTask {
         }
 
         @CustomType.Setter
-        public Builder left(@Nullable String left) {
-
+        public Builder left(String left) {
+            if (left == null) {
+              throw new MissingRequiredPropertyException("JobTaskConditionTask", "left");
+            }
             this.left = left;
             return this;
         }
         @CustomType.Setter
-        public Builder op(@Nullable String op) {
-
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("JobTaskConditionTask", "op");
+            }
             this.op = op;
             return this;
         }
         @CustomType.Setter
-        public Builder right(@Nullable String right) {
-
+        public Builder right(String right) {
+            if (right == null) {
+              throw new MissingRequiredPropertyException("JobTaskConditionTask", "right");
+            }
             this.right = right;
             return this;
         }

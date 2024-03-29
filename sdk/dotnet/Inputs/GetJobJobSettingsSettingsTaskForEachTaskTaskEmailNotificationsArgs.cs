@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("noAlertForSkippedRuns")]
+        public Input<bool>? NoAlertForSkippedRuns { get; set; }
+
         [Input("onDurationWarningThresholdExceededs")]
         private InputList<string>? _onDurationWarningThresholdExceededs;
         public InputList<string> OnDurationWarningThresholdExceededs

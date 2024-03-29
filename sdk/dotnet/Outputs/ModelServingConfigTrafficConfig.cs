@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigTrafficConfig
     {
         /// <summary>
-        /// Each block represents a route that defines traffic to each served model. Each `served_models` block needs to have a corresponding `routes` block
+        /// Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
         /// </summary>
         public readonly ImmutableArray<Outputs.ModelServingConfigTrafficConfigRoute> Routes;
 

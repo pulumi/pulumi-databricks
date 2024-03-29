@@ -5,7 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,20 +17,25 @@ public final class JobTrigger {
      * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
      */
-    private JobTriggerFileArrival fileArrival;
+    private @Nullable JobTriggerFileArrival fileArrival;
     /**
      * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
      * 
      */
     private @Nullable String pauseStatus;
+    /**
+     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
+     * 
+     */
+    private @Nullable JobTriggerTableUpdate tableUpdate;
 
     private JobTrigger() {}
     /**
      * @return configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      * 
      */
-    public JobTriggerFileArrival fileArrival() {
-        return this.fileArrival;
+    public Optional<JobTriggerFileArrival> fileArrival() {
+        return Optional.ofNullable(this.fileArrival);
     }
     /**
      * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
@@ -38,6 +43,13 @@ public final class JobTrigger {
      */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
+    }
+    /**
+     * @return configuration block to define a trigger for Table Update events consisting of following attributes:
+     * 
+     */
+    public Optional<JobTriggerTableUpdate> tableUpdate() {
+        return Optional.ofNullable(this.tableUpdate);
     }
 
     public static Builder builder() {
@@ -49,20 +61,20 @@ public final class JobTrigger {
     }
     @CustomType.Builder
     public static final class Builder {
-        private JobTriggerFileArrival fileArrival;
+        private @Nullable JobTriggerFileArrival fileArrival;
         private @Nullable String pauseStatus;
+        private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(JobTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileArrival = defaults.fileArrival;
     	      this.pauseStatus = defaults.pauseStatus;
+    	      this.tableUpdate = defaults.tableUpdate;
         }
 
         @CustomType.Setter
-        public Builder fileArrival(JobTriggerFileArrival fileArrival) {
-            if (fileArrival == null) {
-              throw new MissingRequiredPropertyException("JobTrigger", "fileArrival");
-            }
+        public Builder fileArrival(@Nullable JobTriggerFileArrival fileArrival) {
+
             this.fileArrival = fileArrival;
             return this;
         }
@@ -72,10 +84,17 @@ public final class JobTrigger {
             this.pauseStatus = pauseStatus;
             return this;
         }
+        @CustomType.Setter
+        public Builder tableUpdate(@Nullable JobTriggerTableUpdate tableUpdate) {
+
+            this.tableUpdate = tableUpdate;
+            return this;
+        }
         public JobTrigger build() {
             final var _resultValue = new JobTrigger();
             _resultValue.fileArrival = fileArrival;
             _resultValue.pauseStatus = pauseStatus;
+            _resultValue.tableUpdate = tableUpdate;
             return _resultValue;
         }
     }

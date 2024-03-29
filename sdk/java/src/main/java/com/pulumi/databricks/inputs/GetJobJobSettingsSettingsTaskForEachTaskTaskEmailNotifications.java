@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications();
+
+    @Import(name="noAlertForSkippedRuns")
+    private @Nullable Boolean noAlertForSkippedRuns;
+
+    public Optional<Boolean> noAlertForSkippedRuns() {
+        return Optional.ofNullable(this.noAlertForSkippedRuns);
+    }
 
     @Import(name="onDurationWarningThresholdExceededs")
     private @Nullable List<String> onDurationWarningThresholdExceededs;
@@ -46,6 +54,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications() {}
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications $) {
+        this.noAlertForSkippedRuns = $.noAlertForSkippedRuns;
         this.onDurationWarningThresholdExceededs = $.onDurationWarningThresholdExceededs;
         this.onFailures = $.onFailures;
         this.onStarts = $.onStarts;
@@ -68,6 +77,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotification
 
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications defaults) {
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications(Objects.requireNonNull(defaults));
+        }
+
+        public Builder noAlertForSkippedRuns(@Nullable Boolean noAlertForSkippedRuns) {
+            $.noAlertForSkippedRuns = noAlertForSkippedRuns;
+            return this;
         }
 
         public Builder onDurationWarningThresholdExceededs(@Nullable List<String> onDurationWarningThresholdExceededs) {
