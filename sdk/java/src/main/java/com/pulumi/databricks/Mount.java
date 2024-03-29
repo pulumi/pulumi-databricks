@@ -209,6 +209,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // now you can do `%fs ls /mnt/experiments` in notebooks
  *         var this_ = new Mount(&#34;this&#34;, MountArgs.builder()        
  *             .s3(MountS3Args.builder()
  *                 .instanceProfile(databricks_instance_profile.ds().id())

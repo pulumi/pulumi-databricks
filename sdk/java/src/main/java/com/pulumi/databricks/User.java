@@ -169,6 +169,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // initialize provider at account-level
  *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
  *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
  *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
@@ -215,6 +216,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // initialize provider at Azure account-level
  *         var azureAccount = new Provider(&#34;azureAccount&#34;, ProviderArgs.builder()        
  *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
  *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)

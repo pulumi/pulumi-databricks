@@ -66,9 +66,9 @@ namespace Pulumi.Databricks
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = databricks.Mws,
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             databricks_mws_networks.This,
+    ///             databricks_mws_networks.This, 
     ///         },
     ///     });
     /// 
@@ -112,9 +112,9 @@ namespace Pulumi.Databricks
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = databricks.Mws,
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             databricks_mws_networks.This,
+    ///             databricks_mws_networks.This, 
     ///         },
     ///     });
     /// 

@@ -58,8 +58,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dltDemoNotebook = new Notebook(&#34;dltDemoNotebook&#34;);
  * 
+ *         //...
  *         var dltDemoRepo = new Repo(&#34;dltDemoRepo&#34;);
  * 
+ *         //...
  *         var this_ = new Pipeline(&#34;this&#34;, PipelineArgs.builder()        
  *             .storage(&#34;/test/first-pipeline&#34;)
  *             .configuration(Map.ofEntries(
