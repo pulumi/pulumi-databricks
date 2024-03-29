@@ -197,9 +197,9 @@ namespace Pulumi.Databricks
     ///         RestrictPublicBuckets = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketV2,
+    ///             rootStorageBucketBucketV2, 
     ///         },
     ///     });
     /// 
@@ -214,9 +214,9 @@ namespace Pulumi.Databricks
     ///         Policy = thisAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketPublicAccessBlock,
+    ///             rootStorageBucketBucketPublicAccessBlock, 
     ///         },
     ///     });
     /// 

@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group creation
  *         var ds = new Group(&#34;ds&#34;);
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        
@@ -156,6 +157,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group creation
  *         var ds = new Group(&#34;ds&#34;);
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        
@@ -205,6 +207,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group creation
  *         var ds = new Group(&#34;ds&#34;);
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        

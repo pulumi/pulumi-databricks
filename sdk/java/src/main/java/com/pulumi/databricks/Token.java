@@ -46,10 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // initialize provider in normal mode
  *         var createdWorkspace = new Provider(&#34;createdWorkspace&#34;, ProviderArgs.builder()        
  *             .host(databricks_mws_workspaces.this().workspace_url())
  *             .build());
  * 
+ *         // create PAT token to provision entities within workspace
  *         var pat = new Token(&#34;pat&#34;, TokenArgs.builder()        
  *             .comment(&#34;Terraform Provisioning&#34;)
  *             .lifetimeSeconds(8640000)
