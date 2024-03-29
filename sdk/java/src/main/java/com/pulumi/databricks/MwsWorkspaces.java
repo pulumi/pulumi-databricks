@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
  *             .build());
  * 
+ *         // register cross-account ARN
  *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
@@ -84,6 +85,7 @@ import javax.annotation.Nullable;
  *                 .provider(databricks.mws())
  *                 .build());
  * 
+ *         // register root bucket
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, var_.prefix()))
@@ -92,6 +94,7 @@ import javax.annotation.Nullable;
  *                 .provider(databricks.mws())
  *                 .build());
  * 
+ *         // register VPC
  *         var thisMwsNetworks = new MwsNetworks(&#34;thisMwsNetworks&#34;, MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .networkName(String.format(&#34;%s-network&#34;, var_.prefix()))
@@ -102,6 +105,7 @@ import javax.annotation.Nullable;
  *                 .provider(databricks.mws())
  *                 .build());
  * 
+ *         // create workspace in given VPC with DBFS on root bucket
  *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .workspaceName(var_.prefix())
@@ -327,6 +331,7 @@ import javax.annotation.Nullable;
  *             .host(&#34;https://accounts.gcp.databricks.com&#34;)
  *             .build());
  * 
+ *         // register VPC
  *         var thisMwsNetworks = new MwsNetworks(&#34;thisMwsNetworks&#34;, MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .networkName(String.format(&#34;%s-network&#34;, var_.prefix()))
@@ -340,6 +345,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // create workspace in given VPC
  *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .workspaceName(var_.prefix())

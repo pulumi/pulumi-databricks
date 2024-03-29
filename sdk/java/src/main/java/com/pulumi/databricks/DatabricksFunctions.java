@@ -198,6 +198,7 @@ public final class DatabricksFunctions {
      *             .role(crossAccountRole.name())
      *             .build());
      * 
+     *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
@@ -284,6 +285,7 @@ public final class DatabricksFunctions {
      *             .role(crossAccountRole.name())
      *             .build());
      * 
+     *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
@@ -370,6 +372,7 @@ public final class DatabricksFunctions {
      *             .role(crossAccountRole.name())
      *             .build());
      * 
+     *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
@@ -456,6 +459,7 @@ public final class DatabricksFunctions {
      *             .role(crossAccountRole.name())
      *             .build());
      * 
+     *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
      *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
@@ -1649,6 +1653,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1677,6 +1709,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1705,6 +1765,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1733,6 +1821,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1761,6 +1877,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1789,6 +1933,34 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allClusters = DatabricksFunctions.getClusters();
+     * 
+     *         final var allCluster = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1848,6 +2020,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1898,6 +2071,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1948,6 +2122,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1998,6 +2173,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2048,6 +2224,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2098,6 +2275,7 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -4302,6 +4480,7 @@ public final class DatabricksFunctions {
      *             .instancePoolId(data.databricks_instance_pool().pool().id())
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -4352,6 +4531,7 @@ public final class DatabricksFunctions {
      *             .instancePoolId(data.databricks_instance_pool().pool().id())
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -4402,6 +4582,7 @@ public final class DatabricksFunctions {
      *             .instancePoolId(data.databricks_instance_pool().pool().id())
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -4452,6 +4633,7 @@ public final class DatabricksFunctions {
      *             .instancePoolId(data.databricks_instance_pool().pool().id())
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -9843,6 +10025,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -9902,6 +10112,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -9961,6 +10199,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10020,6 +10286,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10079,6 +10373,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10138,6 +10460,34 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
+     * 
+     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
+     * 
+     *     }
+     * }
+     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
