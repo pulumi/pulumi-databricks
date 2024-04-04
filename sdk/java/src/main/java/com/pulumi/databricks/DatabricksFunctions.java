@@ -218,7 +218,7 @@ public final class DatabricksFunctions {
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args) {
@@ -305,7 +305,7 @@ public final class DatabricksFunctions {
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args) {
@@ -392,7 +392,7 @@ public final class DatabricksFunctions {
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      */
     public static Output<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs args, InvokeOptions options) {
@@ -479,7 +479,7 @@ public final class DatabricksFunctions {
      * 
      * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
      * * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      */
     public static CompletableFuture<GetAwsAssumeRolePolicyResult> getAwsAssumeRolePolicyPlain(GetAwsAssumeRolePolicyPlainArgs args, InvokeOptions options) {
@@ -710,7 +710,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", TypeShape.of(GetAwsBucketPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -759,7 +759,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -808,7 +808,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(GetAwsCrossAccountPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -857,7 +857,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -906,7 +906,7 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -955,7 +955,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;).
+     * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
      * 
@@ -1004,7 +1004,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
@@ -1095,7 +1095,7 @@ public final class DatabricksFunctions {
         return getAwsUnityCatalogPolicy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
@@ -1186,7 +1186,7 @@ public final class DatabricksFunctions {
         return getAwsUnityCatalogPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
@@ -1277,7 +1277,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](&lt;https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default&gt;) in case of any questions.
+     * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 

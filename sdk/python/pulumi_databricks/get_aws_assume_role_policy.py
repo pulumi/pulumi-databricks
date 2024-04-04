@@ -126,7 +126,7 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
@@ -191,7 +191,7 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
 
     * Provisioning AWS Databricks E2 with a Hub & Spoke firewall for data exfiltration protection guide
     * get_aws_bucket_policy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](<https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default>).
+    * get_aws_cross_account_policy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
 
 
     :param str external_id: Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).

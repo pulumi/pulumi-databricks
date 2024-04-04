@@ -123,7 +123,7 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -196,6 +196,6 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
 
     :param Sequence[str] ids: List of ids for [Delta Live Tables](https://docs.databricks.com/data-engineering/delta-live-tables/index.html) pipelines matching the provided search criteria.
-    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+    :param str pipeline_name: Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
     """
     ...
