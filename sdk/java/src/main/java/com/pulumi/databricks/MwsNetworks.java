@@ -65,6 +65,35 @@ import javax.annotation.Nullable;
  *   vpc_id             = module.vpc.vpc_id
  * }
  * 
+ * ### Creating a Databricks on GCP workspace
+ * 
+ * In order to create a VPC [that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) you would need to add the `vpc_endpoint_id` Attributes from mws_vpc_endpoint resources into the databricks.MwsNetworks resource. For example:
+ * 
+ * ## Modifying networks on running workspaces (AWS only)
+ * 
+ * Due to specifics of platform APIs, changing any attribute of network configuration would cause `databricks.MwsNetworks` to be re-created - deleted &amp; added again with special case for running workspaces. Once network configuration is attached to a running databricks_mws_workspaces, you cannot delete it and `pulumi up` would result in `INVALID_STATE: Unable to delete, Network is being used by active workspace X` error. In order to modify any attributes of a network, you have to perform three different `pulumi up` steps:
+ * 
+ * 1. Create a new `databricks.MwsNetworks` resource.
+ * 2. Update the `databricks.MwsWorkspaces` to point to the new `network_id`.
+ * 3. Delete the old `databricks.MwsNetworks` resource.
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * Provisioning Databricks on AWS guide.
+ * * Provisioning Databricks on AWS with PrivateLink guide.
+ * * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide.
+ * * Provisioning Databricks on GCP guide.
+ * * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
+ * * databricks.MwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * * databricks.MwsPrivateAccessSettings to create a Private Access Setting that can be used as part of a databricks.MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html).
+ * * databricks.MwsWorkspaces to set up [workspaces in E2 architecture on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
+ * 
+ * ## Import
+ * 
+ * -&gt; **Note** Importing this resource is not currently supported.
+ * 
  */
 @ResourceType(type="databricks:index/mwsNetworks:MwsNetworks")
 public class MwsNetworks extends com.pulumi.resources.CustomResource {
