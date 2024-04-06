@@ -206,7 +206,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public string? PipelineName { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+        /// Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
         /// </summary>
         [Input("pipelineName")]
         public Input<string>? PipelineName { get; set; }

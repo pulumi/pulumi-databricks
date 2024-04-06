@@ -80,7 +80,7 @@ export interface GetPipelinesArgs {
      */
     ids?: string[];
     /**
-     * Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
      */
     pipelineName?: string;
 }
@@ -169,7 +169,7 @@ export interface GetPipelinesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Filter Delta Live Tables pipelines by name for a given search term. `%!`(MISSING) is the supported wildcard operator.
+     * Filter Delta Live Tables pipelines by name for a given search term. `%` is the supported wildcard operator.
      */
     pipelineName?: pulumi.Input<string>;
 }

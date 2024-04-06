@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
         /// 
         /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default).
+        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// </summary>
         public static Task<GetAwsAssumeRolePolicyResult> InvokeAsync(GetAwsAssumeRolePolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyArgs(), options.WithDefaults());
@@ -144,7 +144,7 @@ namespace Pulumi.Databricks
         /// 
         /// * Provisioning AWS Databricks E2 with a Hub &amp; Spoke firewall for data exfiltration protection guide
         /// * databricks.getAwsBucketPolicy data to configure a simple access policy for AWS S3 buckets, so that Databricks can access data in it.
-        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%!C(MISSING)2%!A(MISSING)0VPC,%!C(MISSING)2%!A(MISSING)0default).
+        /// * databricks.getAwsCrossAccountPolicy data to construct the necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
         /// </summary>
         public static Output<GetAwsAssumeRolePolicyResult> Invoke(GetAwsAssumeRolePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAssumeRolePolicyResult>("databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy", args ?? new GetAwsAssumeRolePolicyInvokeArgs(), options.WithDefaults());
