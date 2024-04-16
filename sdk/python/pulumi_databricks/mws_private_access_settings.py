@@ -289,11 +289,10 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         pas = databricks.MwsPrivateAccessSettings("pas",
-            account_id=var["databricks_account_id"],
-            private_access_settings_name=f"Private Access Settings for {local['prefix']}",
-            region=var["region"],
-            public_access_enabled=True,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            account_id=databricks_account_id,
+            private_access_settings_name=f"Private Access Settings for {prefix}",
+            region=region,
+            public_access_enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -305,16 +304,15 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=var["databricks_account_id"],
-            aws_region=var["region"],
-            workspace_name=local["prefix"],
-            credentials_id=databricks_mws_credentials["this"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["this"]["storage_configuration_id"],
-            network_id=databricks_mws_networks["this"]["network_id"],
-            private_access_settings_id=databricks_mws_private_access_settings["pas"]["private_access_settings_id"],
+            account_id=databricks_account_id,
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="ENTERPRISE",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"],
-                depends_on=[databricks_mws_networks["this"]]))
+            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -328,23 +326,22 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=var["databricks_account_id"],
+            account_id=databricks_account_id,
             workspace_name="gcp-workspace",
-            location=var["subnet_region"],
+            location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=var["google_project"],
+                    project_id=google_project,
                 ),
             ),
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(
                 connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
                 master_ip_range="10.3.0.0/28",
             ),
-            network_id=databricks_mws_networks["this"]["network_id"],
-            private_access_settings_id=databricks_mws_private_access_settings["pas"]["private_access_settings_id"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"],
-                depends_on=[databricks_mws_networks["this"]]))
+            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -395,11 +392,10 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         pas = databricks.MwsPrivateAccessSettings("pas",
-            account_id=var["databricks_account_id"],
-            private_access_settings_name=f"Private Access Settings for {local['prefix']}",
-            region=var["region"],
-            public_access_enabled=True,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            account_id=databricks_account_id,
+            private_access_settings_name=f"Private Access Settings for {prefix}",
+            region=region,
+            public_access_enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -411,16 +407,15 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=var["databricks_account_id"],
-            aws_region=var["region"],
-            workspace_name=local["prefix"],
-            credentials_id=databricks_mws_credentials["this"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["this"]["storage_configuration_id"],
-            network_id=databricks_mws_networks["this"]["network_id"],
-            private_access_settings_id=databricks_mws_private_access_settings["pas"]["private_access_settings_id"],
+            account_id=databricks_account_id,
+            aws_region=region,
+            workspace_name=prefix,
+            credentials_id=this_databricks_mws_credentials["credentialsId"],
+            storage_configuration_id=this_databricks_mws_storage_configurations["storageConfigurationId"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="ENTERPRISE",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"],
-                depends_on=[databricks_mws_networks["this"]]))
+            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -434,23 +429,22 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=var["databricks_account_id"],
+            account_id=databricks_account_id,
             workspace_name="gcp-workspace",
-            location=var["subnet_region"],
+            location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
-                    project_id=var["google_project"],
+                    project_id=google_project,
                 ),
             ),
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(
                 connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
                 master_ip_range="10.3.0.0/28",
             ),
-            network_id=databricks_mws_networks["this"]["network_id"],
-            private_access_settings_id=databricks_mws_private_access_settings["pas"]["private_access_settings_id"],
+            network_id=this_databricks_mws_networks["networkId"],
+            private_access_settings_id=pas["privateAccessSettingsId"],
             pricing_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"],
-                depends_on=[databricks_mws_networks["this"]]))
+            opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
         <!--End PulumiCodeChooser -->
 

@@ -29,8 +29,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.docker.docker_registry_image;
-     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.docker.registryImage;
+     * import com.pulumi.docker.RegistryImageArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -48,17 +48,17 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
-     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
      *             .build()
+     *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
      *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
      *             .dockerImage(ClusterDockerImageArgs.builder()
-     *                 .url(thisdocker_registry_image.name())
+     *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
-     *                     .username(azurerm_container_registry.this().admin_username())
-     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .username(thisAzurermContainerRegistry.adminUsername())
+     *                     .password(thisAzurermContainerRegistry.adminPassword())
      *                     .build())
      *                 .build())
      *             .build());
@@ -84,8 +84,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.docker.docker_registry_image;
-     * import com.pulumi.docker.Docker_registry_imageArgs;
+     * import com.pulumi.docker.registryImage;
+     * import com.pulumi.docker.RegistryImageArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -103,17 +103,17 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
-     *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+     *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
      *             .build()
+     *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
      *             .build());
      * 
      *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
      *             .dockerImage(ClusterDockerImageArgs.builder()
-     *                 .url(thisdocker_registry_image.name())
+     *                 .url(this_.name())
      *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
-     *                     .username(azurerm_container_registry.this().admin_username())
-     *                     .password(azurerm_container_registry.this().admin_password())
+     *                     .username(thisAzurermContainerRegistry.adminUsername())
+     *                     .password(thisAzurermContainerRegistry.adminPassword())
      *                     .build())
      *                 .build())
      *             .build());
@@ -180,8 +180,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * import com.pulumi.Context;
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
-         * import com.pulumi.docker.docker_registry_image;
-         * import com.pulumi.docker.Docker_registry_imageArgs;
+         * import com.pulumi.docker.registryImage;
+         * import com.pulumi.docker.RegistryImageArgs;
          * import com.pulumi.databricks.Cluster;
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -199,17 +199,17 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
-         *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+         *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
          *             .build()
+         *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
          *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
          *             .dockerImage(ClusterDockerImageArgs.builder()
-         *                 .url(thisdocker_registry_image.name())
+         *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
-         *                     .username(azurerm_container_registry.this().admin_username())
-         *                     .password(azurerm_container_registry.this().admin_password())
+         *                     .username(thisAzurermContainerRegistry.adminUsername())
+         *                     .password(thisAzurermContainerRegistry.adminPassword())
          *                     .build())
          *                 .build())
          *             .build());
@@ -239,8 +239,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * import com.pulumi.Context;
          * import com.pulumi.Pulumi;
          * import com.pulumi.core.Output;
-         * import com.pulumi.docker.docker_registry_image;
-         * import com.pulumi.docker.Docker_registry_imageArgs;
+         * import com.pulumi.docker.registryImage;
+         * import com.pulumi.docker.RegistryImageArgs;
          * import com.pulumi.databricks.Cluster;
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
@@ -258,17 +258,17 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          *     }
          * 
          *     public static void stack(Context ctx) {
-         *         var thisdocker_registry_image = new Docker_registry_image(&#34;thisdocker_registry_image&#34;, Docker_registry_imageArgs.builder()        
-         *             .name(String.format(&#34;%s/sample:latest&#34;, azurerm_container_registry.this().login_server()))
+         *         var this_ = new RegistryImage(&#34;this&#34;, RegistryImageArgs.builder()        
          *             .build()
+         *             .name(String.format(&#34;%s/sample:latest&#34;, thisAzurermContainerRegistry.loginServer()))
          *             .build());
          * 
          *         var thisCluster = new Cluster(&#34;thisCluster&#34;, ClusterArgs.builder()        
          *             .dockerImage(ClusterDockerImageArgs.builder()
-         *                 .url(thisdocker_registry_image.name())
+         *                 .url(this_.name())
          *                 .basicAuth(ClusterDockerImageBasicAuthArgs.builder()
-         *                     .username(azurerm_container_registry.this().admin_username())
-         *                     .password(azurerm_container_registry.this().admin_password())
+         *                     .username(thisAzurermContainerRegistry.adminUsername())
+         *                     .password(thisAzurermContainerRegistry.adminPassword())
          *                     .build())
          *                 .build())
          *             .build());

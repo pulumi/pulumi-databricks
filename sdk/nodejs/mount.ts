@@ -41,6 +41,7 @@ import * as utilities from "./utilities";
  * const container = "test";
  * const storageAcc = "lrs";
  * const _this = new databricks.Mount("this", {
+ *     name: "tf-abfss",
  *     uri: `abfss://${container}@${storageAcc}.dfs.core.windows.net`,
  *     extraConfigs: {
  *         "fs.azure.account.auth.type": "OAuth",
@@ -69,7 +70,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Resource group for Databricks Workspace
  * const resourceGroup = config.require("resourceGroup");
+ * // Name of the Databricks Workspace
  * const workspaceName = config.require("workspaceName");
  * const this = azure.databricks.getWorkspace({
  *     name: workspaceName,
@@ -79,7 +82,7 @@ import * as utilities from "./utilities";
  *     localDisk: true,
  * });
  * const latest = databricks.getSparkVersion({});
- * const sharedPassthrough = new databricks.Cluster("sharedPassthrough", {
+ * const sharedPassthrough = new databricks.Cluster("shared_passthrough", {
  *     clusterName: "Shared Passthrough for mount",
  *     sparkVersion: latest.then(latest => latest.id),
  *     nodeTypeId: smallest.then(smallest => smallest.id),
@@ -95,9 +98,12 @@ import * as utilities from "./utilities";
  *         ResourceClass: "Serverless",
  *     },
  * });
+ * // Name of the ADLS Gen2 storage container
  * const storageAcc = config.require("storageAcc");
+ * // Name of container inside storage account
  * const container = config.require("container");
  * const passthrough = new databricks.Mount("passthrough", {
+ *     name: "passthrough-test",
  *     clusterId: sharedPassthrough.id,
  *     uri: `abfss://${container}@${storageAcc}.dfs.core.windows.net`,
  *     extraConfigs: {
@@ -123,10 +129,13 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * // now you can do `%fs ls /mnt/experiments` in notebooks
- * const _this = new databricks.Mount("this", {s3: {
- *     instanceProfile: databricks_instance_profile.ds.id,
- *     bucketName: aws_s3_bucket["this"].bucket,
- * }});
+ * const _this = new databricks.Mount("this", {
+ *     name: "experiments",
+ *     s3: {
+ *         instanceProfile: ds.id,
+ *         bucketName: thisAwsS3Bucket.bucket,
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -153,33 +162,39 @@ import * as utilities from "./utilities";
  * import * as azure from "@pulumi/azure";
  * import * as databricks from "@pulumi/databricks";
  *
- * const terraform = new databricks.SecretScope("terraform", {initialManagePrincipal: "users"});
- * const servicePrincipalKey = new databricks.Secret("servicePrincipalKey", {
+ * const terraform = new databricks.SecretScope("terraform", {
+ *     name: "application",
+ *     initialManagePrincipal: "users",
+ * });
+ * const servicePrincipalKey = new databricks.Secret("service_principal_key", {
  *     key: "service_principal_key",
- *     stringValue: _var.ARM_CLIENT_SECRET,
+ *     stringValue: ARM_CLIENT_SECRET,
  *     scope: terraform.name,
  * });
- * const thisAccount = new azure.storage.Account("thisAccount", {
- *     resourceGroupName: _var.resource_group_name,
- *     location: _var.resource_group_location,
+ * const _this = new azure.storage.Account("this", {
+ *     name: `${prefix}datalake`,
+ *     resourceGroupName: resourceGroupName,
+ *     location: resourceGroupLocation,
  *     accountTier: "Standard",
  *     accountReplicationType: "GRS",
  *     accountKind: "StorageV2",
  *     isHnsEnabled: true,
  * });
- * const thisAssignment = new azure.authorization.Assignment("thisAssignment", {
- *     scope: thisAccount.id,
+ * const thisAssignment = new azure.authorization.Assignment("this", {
+ *     scope: _this.id,
  *     roleDefinitionName: "Storage Blob Data Contributor",
- *     principalId: data.azurerm_client_config.current.object_id,
+ *     principalId: current.objectId,
  * });
- * const thisContainer = new azure.storage.Container("thisContainer", {
- *     storageAccountName: thisAccount.name,
+ * const thisContainer = new azure.storage.Container("this", {
+ *     name: "marketing",
+ *     storageAccountName: _this.name,
  *     containerAccessType: "private",
  * });
  * const marketing = new databricks.Mount("marketing", {
+ *     name: "marketing",
  *     resourceId: thisContainer.resourceManagerId,
  *     abfs: {
- *         clientId: data.azurerm_client_config.current.client_id,
+ *         clientId: current.clientId,
  *         clientSecretScope: terraform.name,
  *         clientSecretKey: servicePrincipalKey.key,
  *         initializeFileSystem: true,
@@ -202,10 +217,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisGs = new databricks.Mount("thisGs", {gs: {
- *     bucketName: "mybucket",
- *     serviceAccount: "acc@company.iam.gserviceaccount.com",
- * }});
+ * const thisGs = new databricks.Mount("this_gs", {
+ *     name: "gs-mount",
+ *     gs: {
+ *         serviceAccount: "acc@company.iam.gserviceaccount.com",
+ *         bucketName: "mybucket",
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -229,14 +247,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const mount = new databricks.Mount("mount", {adl: {
- *     storageResourceName: "{env.TEST_STORAGE_ACCOUNT_NAME}",
- *     tenantId: data.azurerm_client_config.current.tenant_id,
- *     clientId: data.azurerm_client_config.current.client_id,
- *     clientSecretScope: databricks_secret_scope.terraform.name,
- *     clientSecretKey: databricks_secret.service_principal_key.key,
- *     sparkConfPrefix: "fs.adl",
- * }});
+ * const mount = new databricks.Mount("mount", {
+ *     name: "{var.RANDOM}",
+ *     adl: {
+ *         storageResourceName: "{env.TEST_STORAGE_ACCOUNT_NAME}",
+ *         tenantId: current.tenantId,
+ *         clientId: current.clientId,
+ *         clientSecretScope: terraform.name,
+ *         clientSecretKey: servicePrincipalKey.key,
+ *         sparkConfPrefix: "fs.adl",
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -260,29 +281,37 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const blobaccount = new azure.storage.Account("blobaccount", {
- *     resourceGroupName: _var.resource_group_name,
- *     location: _var.resource_group_location,
+ *     name: `${prefix}blob`,
+ *     resourceGroupName: resourceGroupName,
+ *     location: resourceGroupLocation,
  *     accountTier: "Standard",
  *     accountReplicationType: "LRS",
  *     accountKind: "StorageV2",
  * });
- * const marketingContainer = new azure.storage.Container("marketingContainer", {
+ * const marketing = new azure.storage.Container("marketing", {
+ *     name: "marketing",
  *     storageAccountName: blobaccount.name,
  *     containerAccessType: "private",
  * });
- * const terraform = new databricks.SecretScope("terraform", {initialManagePrincipal: "users"});
- * const storageKey = new databricks.Secret("storageKey", {
+ * const terraform = new databricks.SecretScope("terraform", {
+ *     name: "application",
+ *     initialManagePrincipal: "users",
+ * });
+ * const storageKey = new databricks.Secret("storage_key", {
  *     key: "blob_storage_key",
  *     stringValue: blobaccount.primaryAccessKey,
  *     scope: terraform.name,
  * });
- * const marketingMount = new databricks.Mount("marketingMount", {wasb: {
- *     containerName: marketingContainer.name,
- *     storageAccountName: blobaccount.name,
- *     authType: "ACCESS_KEY",
- *     tokenSecretScope: terraform.name,
- *     tokenSecretKey: storageKey.key,
- * }});
+ * const marketingMount = new databricks.Mount("marketing", {
+ *     name: "marketing",
+ *     wasb: {
+ *         containerName: marketing.name,
+ *         storageAccountName: blobaccount.name,
+ *         authType: "ACCESS_KEY",
+ *         tokenSecretScope: terraform.name,
+ *         tokenSecretKey: storageKey.key,
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

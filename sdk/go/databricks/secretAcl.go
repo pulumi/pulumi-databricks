@@ -31,15 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("data-scientists"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			app, err := databricks.NewSecretScope(ctx, "app", nil)
+//			app, err := databricks.NewSecretScope(ctx, "app", &databricks.SecretScopeArgs{
+//				Name: pulumi.String("app-secret-scope"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewSecretAcl(ctx, "mySecretAcl", &databricks.SecretAclArgs{
+//			_, err = databricks.NewSecretAcl(ctx, "my_secret_acl", &databricks.SecretAclArgs{
 //				Principal:  ds.DisplayName,
 //				Permission: pulumi.String("READ"),
 //				Scope:      app.Name,
@@ -47,9 +51,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewSecret(ctx, "publishingApi", &databricks.SecretArgs{
+//			_, err = databricks.NewSecret(ctx, "publishing_api", &databricks.SecretArgs{
 //				Key:         pulumi.String("publishing_api"),
-//				StringValue: pulumi.Any(data.Azurerm_key_vault_secret.Example.Value),
+//				StringValue: pulumi.Any(example.Value),
 //				Scope:       app.Name,
 //			})
 //			if err != nil {

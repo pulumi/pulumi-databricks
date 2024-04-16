@@ -86,9 +86,9 @@ namespace Pulumi.Databricks
     /// {
     ///     var me = new Databricks.User("me", new()
     ///     {
-    ///         AllowClusterCreate = true,
-    ///         DisplayName = "Example user",
     ///         UserName = "me@example.com",
+    ///         DisplayName = "Example user",
+    ///         AllowClusterCreate = true,
     ///     });
     /// 
     /// });
@@ -106,22 +106,10 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at account-level
-    ///     var mws = new Databricks.Provider("mws", new()
-    ///     {
-    ///         Host = "https://accounts.cloud.databricks.com",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         ClientId = @var.Client_id,
-    ///         ClientSecret = @var.Client_secret,
-    ///     });
-    /// 
-    ///     var accountUser = new Databricks.User("accountUser", new()
+    ///     var accountUser = new Databricks.User("account_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         DisplayName = "Example user",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
     /// });
@@ -139,21 +127,10 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at Azure account-level
-    ///     var azureAccount = new Databricks.Provider("azureAccount", new()
-    ///     {
-    ///         Host = "https://accounts.azuredatabricks.net",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         AuthType = "azure-cli",
-    ///     });
-    /// 
-    ///     var accountUser = new Databricks.User("accountUser", new()
+    ///     var accountUser = new Databricks.User("account_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///         DisplayName = "Example user",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Azure_account,
     ///     });
     /// 
     /// });

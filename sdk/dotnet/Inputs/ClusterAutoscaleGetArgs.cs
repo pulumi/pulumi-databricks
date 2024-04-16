@@ -45,7 +45,7 @@ namespace Pulumi.Databricks.Inputs
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var singleNode = new Databricks.Cluster("singleNode", new()
+        ///     var singleNode = new Databricks.Cluster("single_node", new()
         ///     {
         ///         ClusterName = "Single Node",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),

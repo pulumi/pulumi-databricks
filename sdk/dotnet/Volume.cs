@@ -53,6 +53,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
+    ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 
     ///         {
@@ -63,6 +64,7 @@ namespace Pulumi.Databricks
     ///     var things = new Databricks.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Name,
+    ///         Name = "things",
     ///         Comment = "this schema is managed by terraform",
     ///         Properties = 
     ///         {
@@ -72,20 +74,23 @@ namespace Pulumi.Databricks
     /// 
     ///     var external = new Databricks.StorageCredential("external", new()
     ///     {
+    ///         Name = "creds",
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
     ///         {
-    ///             RoleArn = aws_iam_role.External_data_access.Arn,
+    ///             RoleArn = externalDataAccess.Arn,
     ///         },
     ///     });
     /// 
     ///     var some = new Databricks.ExternalLocation("some", new()
     ///     {
-    ///         Url = $"s3://{aws_s3_bucket.External.Id}/some",
+    ///         Name = "external-location",
+    ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
     ///         CredentialName = external.Name,
     ///     });
     /// 
     ///     var @this = new Databricks.Volume("this", new()
     ///     {
+    ///         Name = "quickstart_volume",
     ///         CatalogName = sandbox.Name,
     ///         SchemaName = things.Name,
     ///         VolumeType = "EXTERNAL",

@@ -29,15 +29,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allClusters = Databricks.GetClusters.Invoke();
+        ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allCluster = .Select(__value =&gt; 
-        ///     {
+        ///     var allGetCluster = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key;
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
         ///         return Databricks.GetCluster.Invoke(new()
         ///         {
         ///             ClusterId = __value,
         ///         });
-        ///     }).ToList();
+        ///     });
         /// 
         /// });
         /// ```
@@ -76,15 +79,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allClusters = Databricks.GetClusters.Invoke();
+        ///     var all = Databricks.GetClusters.Invoke();
         /// 
-        ///     var allCluster = .Select(__value =&gt; 
-        ///     {
+        ///     var allGetCluster = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key;
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
         ///         return Databricks.GetCluster.Invoke(new()
         ///         {
         ///             ClusterId = __value,
         ///         });
-        ///     }).ToList();
+        ///     });
         /// 
         /// });
         /// ```

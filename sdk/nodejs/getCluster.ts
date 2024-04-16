@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const allClusters = databricks.getClusters({});
- * const allCluster = .map(([, ]) => (databricks.getCluster({
+ * const all = databricks.getClusters({});
+ * const allGetCluster = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * })));
+ * }) }));
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -105,10 +105,10 @@ export interface GetClusterResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const allClusters = databricks.getClusters({});
- * const allCluster = .map(([, ]) => (databricks.getCluster({
+ * const all = databricks.getClusters({});
+ * const allGetCluster = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getCluster({
  *     clusterId: __value,
- * })));
+ * }) }));
  * ```
  * <!--End PulumiCodeChooser -->
  *

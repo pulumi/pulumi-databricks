@@ -137,9 +137,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
- *             .allowClusterCreate(true)
  *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
  *             .displayName(&#34;Example service principal&#34;)
+ *             .allowClusterCreate(true)
  *             .build());
  * 
  *     }
@@ -156,11 +156,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.ServicePrincipal;
  * import com.pulumi.databricks.ServicePrincipalArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -174,19 +171,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at account-level
- *         var account = new Provider(&#34;account&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .clientId(var_.client_id())
- *             .clientSecret(var_.client_secret())
- *             .build());
- * 
  *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
  *             .displayName(&#34;Automation-only SP&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.account())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -202,11 +189,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.ServicePrincipal;
  * import com.pulumi.databricks.ServicePrincipalArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -220,18 +204,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at Azure account-level
- *         var account = new Provider(&#34;account&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .authType(&#34;azure-cli&#34;)
- *             .build());
- * 
  *         var sp = new ServicePrincipal(&#34;sp&#34;, ServicePrincipalArgs.builder()        
  *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.account())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

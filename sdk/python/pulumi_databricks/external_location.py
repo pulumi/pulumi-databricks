@@ -439,16 +439,18 @@ class ExternalLocation(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=external_data_access["arn"],
             ),
             comment="Managed by TF")
-        some_external_location = databricks.ExternalLocation("someExternalLocation",
-            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.id,
             comment="Managed by TF")
-        some_grants = databricks.Grants("someGrants",
-            external_location=some_external_location.id,
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=[
@@ -509,16 +511,18 @@ class ExternalLocation(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=external_data_access["arn"],
             ),
             comment="Managed by TF")
-        some_external_location = databricks.ExternalLocation("someExternalLocation",
-            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.id,
             comment="Managed by TF")
-        some_grants = databricks.Grants("someGrants",
-            external_location=some_external_location.id,
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=[

@@ -49,10 +49,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new OnlineTable(&#34;this&#34;, OnlineTableArgs.builder()        
+ *             .name(&#34;main.default.online_table&#34;)
  *             .spec(OnlineTableSpecArgs.builder()
+ *                 .sourceTableFullName(&#34;main.default.source_table&#34;)
  *                 .primaryKeyColumns(&#34;id&#34;)
  *                 .runTriggered()
- *                 .sourceTableFullName(&#34;main.default.source_table&#34;)
  *                 .build())
  *             .build());
  * 

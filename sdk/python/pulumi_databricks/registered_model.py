@@ -242,6 +242,7 @@ class RegisteredModel(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.RegisteredModel("this",
+            name="my_model",
             catalog_name="main",
             schema_name="default")
         ```
@@ -299,6 +300,7 @@ class RegisteredModel(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.RegisteredModel("this",
+            name="my_model",
             catalog_name="main",
             schema_name="default")
         ```

@@ -33,7 +33,7 @@ namespace Pulumi.Databricks
     ///         LongTermSupport = true,
     ///     });
     /// 
-    ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+    ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
     ///     {
     ///         ClusterName = "Shared Autoscaling",
     ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -144,11 +144,11 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("cluster_with_table_access_control", new()
         ///     {
         ///         ClusterName = "Shared High-Concurrency",
-        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
-        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         SparkVersion = latestLts.Id,
+        ///         NodeTypeId = smallest.Id,
         ///         AutoterminationMinutes = 20,
         ///         SparkConf = 
         ///         {
@@ -249,7 +249,7 @@ namespace Pulumi.Databricks
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
         ///     {
         ///         ClusterName = "Shared Autoscaling",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -450,11 +450,11 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("cluster_with_table_access_control", new()
         ///     {
         ///         ClusterName = "Shared High-Concurrency",
-        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
-        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         SparkVersion = latestLts.Id,
+        ///         NodeTypeId = smallest.Id,
         ///         AutoterminationMinutes = 20,
         ///         SparkConf = 
         ///         {
@@ -557,7 +557,7 @@ namespace Pulumi.Databricks
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
         ///     {
         ///         ClusterName = "Shared Autoscaling",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -734,11 +734,11 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var clusterWithTableAccessControl = new Databricks.Cluster("clusterWithTableAccessControl", new()
+        ///     var clusterWithTableAccessControl = new Databricks.Cluster("cluster_with_table_access_control", new()
         ///     {
         ///         ClusterName = "Shared High-Concurrency",
-        ///         SparkVersion = data.Databricks_spark_version.Latest_lts.Id,
-        ///         NodeTypeId = data.Databricks_node_type.Smallest.Id,
+        ///         SparkVersion = latestLts.Id,
+        ///         NodeTypeId = smallest.Id,
         ///         AutoterminationMinutes = 20,
         ///         SparkConf = 
         ///         {
@@ -853,7 +853,7 @@ namespace Pulumi.Databricks
         ///         LongTermSupport = true,
         ///     });
         /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("sharedAutoscaling", new()
+        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
         ///     {
         ///         ClusterName = "Shared Autoscaling",
         ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),

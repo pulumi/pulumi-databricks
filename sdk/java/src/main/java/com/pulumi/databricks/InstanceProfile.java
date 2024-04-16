@@ -20,118 +20,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note** Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aws.iam.IamFunctions;
- * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
- * import com.pulumi.aws.iam.Policy;
- * import com.pulumi.aws.iam.PolicyArgs;
- * import com.pulumi.aws.iam.RolePolicyAttachment;
- * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
- * import com.pulumi.aws.iam.InstanceProfile;
- * import com.pulumi.aws.iam.InstanceProfileArgs;
- * import com.pulumi.databricks.InstanceProfile;
- * import com.pulumi.databricks.InstanceProfileArgs;
- * import com.pulumi.databricks.DatabricksFunctions;
- * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
- * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
- * import com.pulumi.databricks.Cluster;
- * import com.pulumi.databricks.ClusterArgs;
- * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
- * import com.pulumi.databricks.inputs.ClusterAwsAttributesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var crossaccountRoleName = config.get(&#34;crossaccountRoleName&#34;);
- *         final var assumeRoleForEc2 = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
- *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .effect(&#34;Allow&#34;)
- *                 .actions(&#34;sts:AssumeRole&#34;)
- *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                     .identifiers(&#34;ec2.amazonaws.com&#34;)
- *                     .type(&#34;Service&#34;)
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var roleForS3Access = new Role(&#34;roleForS3Access&#34;, RoleArgs.builder()        
- *             .description(&#34;Role for shared access&#34;)
- *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
- *             .build());
- * 
- *         final var passRoleForS3AccessPolicyDocument = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
- *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .effect(&#34;Allow&#34;)
- *                 .actions(&#34;iam:PassRole&#34;)
- *                 .resources(roleForS3Access.arn())
- *                 .build())
- *             .build());
- * 
- *         var passRoleForS3AccessPolicy = new Policy(&#34;passRoleForS3AccessPolicy&#34;, PolicyArgs.builder()        
- *             .path(&#34;/&#34;)
- *             .policy(passRoleForS3AccessPolicyDocument.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult).applyValue(passRoleForS3AccessPolicyDocument -&gt; passRoleForS3AccessPolicyDocument.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json())))
- *             .build());
- * 
- *         var crossAccount = new RolePolicyAttachment(&#34;crossAccount&#34;, RolePolicyAttachmentArgs.builder()        
- *             .policyArn(passRoleForS3AccessPolicy.arn())
- *             .role(crossaccountRoleName)
- *             .build());
- * 
- *         var sharedInstanceProfile = new InstanceProfile(&#34;sharedInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .role(roleForS3Access.name())
- *             .build());
- * 
- *         var sharedIndex_instanceProfileInstanceProfile = new InstanceProfile(&#34;sharedIndex/instanceProfileInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(sharedInstanceProfile.arn())
- *             .build());
- * 
- *         final var latest = DatabricksFunctions.getSparkVersion();
- * 
- *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
- *             .localDisk(true)
- *             .build());
- * 
- *         var this_ = new Cluster(&#34;this&#34;, ClusterArgs.builder()        
- *             .clusterName(&#34;Shared Autoscaling&#34;)
- *             .sparkVersion(latest.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
- *             .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
- *             .autoterminationMinutes(20)
- *             .autoscale(ClusterAutoscaleArgs.builder()
- *                 .minWorkers(1)
- *                 .maxWorkers(50)
- *                 .build())
- *             .awsAttributes(ClusterAwsAttributesArgs.builder()
- *                 .instanceProfileArn(sharedIndex / instanceProfileInstanceProfile.id())
- *                 .availability(&#34;SPOT&#34;)
- *                 .zoneId(&#34;us-east-1&#34;)
- *                 .firstOnDemand(1)
- *                 .spotBidPricePercent(100)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Usage with Cluster Policies
  * 
  * It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
@@ -160,11 +48,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new ClusterPolicy(&#34;this&#34;, ClusterPolicyArgs.builder()        
+ *             .name(&#34;Policy with predefined instance profile&#34;)
  *             .definition(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;aws_attributes.instance_profile_arn&#34;, jsonObject(
  *                         jsonProperty(&#34;type&#34;, &#34;fixed&#34;),
- *                         jsonProperty(&#34;value&#34;, databricks_instance_profile.shared().arn())
+ *                         jsonProperty(&#34;value&#34;, shared.arn())
  *                     ))
  *                 )))
  *             .build());
@@ -205,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new InstanceProfile(&#34;this&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(aws_iam_instance_profile.shared().arn())
+ *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
  *         final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()
@@ -215,73 +104,6 @@ import javax.annotation.Nullable;
  *         var all = new GroupInstanceProfile(&#34;all&#34;, GroupInstanceProfileArgs.builder()        
  *             .groupId(users.applyValue(getGroupResult -&gt; getGroupResult.id()))
  *             .instanceProfileId(this_.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Usage with Databricks SQL serverless
- * 
- * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aws.iam.IamFunctions;
- * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
- * import com.pulumi.aws.iam.InstanceProfile;
- * import com.pulumi.aws.iam.InstanceProfileArgs;
- * import com.pulumi.databricks.InstanceProfile;
- * import com.pulumi.databricks.InstanceProfileArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var sqlServerlessAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
- *             .statements(GetPolicyDocumentStatementArgs.builder()
- *                 .actions(&#34;sts:AssumeRole&#34;)
- *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
- *                     .type(&#34;AWS&#34;)
- *                     .identifiers(&#34;arn:aws:iam::790110701330:role/serverless-customer-resource-role&#34;)
- *                     .build())
- *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
- *                     .test(&#34;StringEquals&#34;)
- *                     .variable(&#34;sts:ExternalID&#34;)
- *                     .values(                    
- *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;&#34;,
- *                         &#34;databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;&#34;)
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var thisRole = new Role(&#34;thisRole&#34;, RoleArgs.builder()        
- *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
- *             .build());
- * 
- *         var thisInstanceProfile = new InstanceProfile(&#34;thisInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .role(thisRole.name())
- *             .build());
- * 
- *         var thisIndex_instanceProfileInstanceProfile = new InstanceProfile(&#34;thisIndex/instanceProfileInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(thisInstanceProfile.arn())
- *             .iamRoleArn(thisRole.arn())
  *             .build());
  * 
  *     }

@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const initScripts = new databricks.ArtifactAllowlist("initScripts", {
+ * const initScripts = new databricks.ArtifactAllowlist("init_scripts", {
+ *     artifactType: "INIT_SCRIPT",
  *     artifactMatchers: [{
  *         artifact: "/Volumes/inits",
  *         matchType: "PREFIX_MATCH",
  *     }],
- *     artifactType: "INIT_SCRIPT",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

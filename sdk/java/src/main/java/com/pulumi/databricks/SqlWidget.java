@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var d1w1 = new SqlWidget(&#34;d1w1&#34;, SqlWidgetArgs.builder()        
- *             .dashboardId(databricks_sql_dashboard.d1().id())
+ *             .dashboardId(d1.id())
  *             .text(&#34;Hello! I&#39;m a **text widget**!&#34;)
  *             .position(SqlWidgetPositionArgs.builder()
  *                 .sizeX(3)
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var d1w2 = new SqlWidget(&#34;d1w2&#34;, SqlWidgetArgs.builder()        
- *             .dashboardId(databricks_sql_dashboard.d1().id())
- *             .visualizationId(databricks_sql_visualization.q1v1().id())
+ *             .dashboardId(d1.id())
+ *             .visualizationId(q1v1.id())
  *             .position(SqlWidgetPositionArgs.builder()
  *                 .sizeX(3)
  *                 .sizeY(4)

@@ -21,8 +21,7 @@ import * as utilities from "./utilities";
  * const personal = databricks.getClusterPolicy({
  *     name: "Personal Compute",
  * });
- * const myCluster = new databricks.Cluster("myCluster", {policyId: personal.then(personal => personal.id)});
- * // ...
+ * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -131,8 +130,7 @@ export interface GetClusterPolicyResult {
  * const personal = databricks.getClusterPolicy({
  *     name: "Personal Compute",
  * });
- * const myCluster = new databricks.Cluster("myCluster", {policyId: personal.then(personal => personal.id)});
- * // ...
+ * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
  * ```
  * <!--End PulumiCodeChooser -->
  */

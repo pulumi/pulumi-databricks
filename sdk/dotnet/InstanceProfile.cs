@@ -14,123 +14,6 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; **Note** Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var crossaccountRoleName = config.Require("crossaccountRoleName");
-    ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
-    ///     {
-    ///         Statements = new[]
-    ///         {
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Effect = "Allow",
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "sts:AssumeRole",
-    ///                 },
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             "ec2.amazonaws.com",
-    ///                         },
-    ///                         Type = "Service",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var roleForS3Access = new Aws.Iam.Role("roleForS3Access", new()
-    ///     {
-    ///         Description = "Role for shared access",
-    ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
-    ///     });
-    /// 
-    ///     var passRoleForS3AccessPolicyDocument = Aws.Iam.GetPolicyDocument.Invoke(new()
-    ///     {
-    ///         Statements = new[]
-    ///         {
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Effect = "Allow",
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "iam:PassRole",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     roleForS3Access.Arn,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var passRoleForS3AccessPolicy = new Aws.Iam.Policy("passRoleForS3AccessPolicy", new()
-    ///     {
-    ///         Path = "/",
-    ///         PolicyDocument = passRoleForS3AccessPolicyDocument.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
-    ///     });
-    /// 
-    ///     var crossAccount = new Aws.Iam.RolePolicyAttachment("crossAccount", new()
-    ///     {
-    ///         PolicyArn = passRoleForS3AccessPolicy.Arn,
-    ///         Role = crossaccountRoleName,
-    ///     });
-    /// 
-    ///     var sharedInstanceProfile = new Aws.Iam.InstanceProfile("sharedInstanceProfile", new()
-    ///     {
-    ///         Role = roleForS3Access.Name,
-    ///     });
-    /// 
-    ///     var sharedIndex_instanceProfileInstanceProfile = new Databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", new()
-    ///     {
-    ///         InstanceProfileArn = sharedInstanceProfile.Arn,
-    ///     });
-    /// 
-    ///     var latest = Databricks.GetSparkVersion.Invoke();
-    /// 
-    ///     var smallest = Databricks.GetNodeType.Invoke(new()
-    ///     {
-    ///         LocalDisk = true,
-    ///     });
-    /// 
-    ///     var @this = new Databricks.Cluster("this", new()
-    ///     {
-    ///         ClusterName = "Shared Autoscaling",
-    ///         SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
-    ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
-    ///         AutoterminationMinutes = 20,
-    ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-    ///         {
-    ///             MinWorkers = 1,
-    ///             MaxWorkers = 50,
-    ///         },
-    ///         AwsAttributes = new Databricks.Inputs.ClusterAwsAttributesArgs
-    ///         {
-    ///             InstanceProfileArn = sharedIndex / instanceProfileInstanceProfile.Id,
-    ///             Availability = "SPOT",
-    ///             ZoneId = "us-east-1",
-    ///             FirstOnDemand = 1,
-    ///             SpotBidPricePercent = 100,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Usage with Cluster Policies
     /// 
     /// It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
@@ -147,12 +30,13 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.ClusterPolicy("this", new()
     ///     {
+    ///         Name = "Policy with predefined instance profile",
     ///         Definition = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["aws_attributes.instance_profile_arn"] = new Dictionary&lt;string, object?&gt;
     ///             {
     ///                 ["type"] = "fixed",
-    ///                 ["value"] = databricks_instance_profile.Shared.Arn,
+    ///                 ["value"] = shared.Arn,
     ///             },
     ///         }),
     ///     });
@@ -176,7 +60,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.InstanceProfile("this", new()
     ///     {
-    ///         InstanceProfileArn = aws_iam_instance_profile.Shared.Arn,
+    ///         InstanceProfileArn = shared.Arn,
     ///     });
     /// 
     ///     var users = Databricks.GetGroup.Invoke(new()
@@ -188,78 +72,6 @@ namespace Pulumi.Databricks
     ///     {
     ///         GroupId = users.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         InstanceProfileId = @this.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ## Usage with Databricks SQL serverless
-    /// 
-    /// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var sqlServerlessAssumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
-    ///     {
-    ///         Statements = new[]
-    ///         {
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "sts:AssumeRole",
-    ///                 },
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             "arn:aws:iam::790110701330:role/serverless-customer-resource-role",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Conditions = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-    ///                     {
-    ///                         Test = "StringEquals",
-    ///                         Variable = "sts:ExternalID",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID1&gt;",
-    ///                             "databricks-serverless-&lt;YOUR_WORKSPACE_ID2&gt;",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var thisRole = new Aws.Iam.Role("thisRole", new()
-    ///     {
-    ///         AssumeRolePolicy = sqlServerlessAssumeRole.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
-    ///     });
-    /// 
-    ///     var thisInstanceProfile = new Aws.Iam.InstanceProfile("thisInstanceProfile", new()
-    ///     {
-    ///         Role = thisRole.Name,
-    ///     });
-    /// 
-    ///     var thisIndex_instanceProfileInstanceProfile = new Databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", new()
-    ///     {
-    ///         InstanceProfileArn = thisInstanceProfile.Arn,
-    ///         IamRoleArn = thisRole.Arn,
     ///     });
     /// 
     /// });

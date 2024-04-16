@@ -32,23 +32,25 @@ namespace Pulumi.Databricks
     /// {
     ///     var external = new Databricks.StorageCredential("external", new()
     ///     {
+    ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
     ///         {
-    ///             RoleArn = aws_iam_role.External_data_access.Arn,
+    ///             RoleArn = externalDataAccess.Arn,
     ///         },
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var someExternalLocation = new Databricks.ExternalLocation("someExternalLocation", new()
+    ///     var some = new Databricks.ExternalLocation("some", new()
     ///     {
-    ///         Url = $"s3://{aws_s3_bucket.External.Id}/some",
+    ///         Name = "external",
+    ///         Url = $"s3://{externalAwsS3Bucket.Id}/some",
     ///         CredentialName = external.Id,
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var someGrants = new Databricks.Grants("someGrants", new()
+    ///     var someGrants = new Databricks.Grants("some", new()
     ///     {
-    ///         ExternalLocation = someExternalLocation.Id,
+    ///         ExternalLocation = some.Id,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs

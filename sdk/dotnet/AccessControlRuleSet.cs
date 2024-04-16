@@ -33,18 +33,20 @@ namespace Pulumi.Databricks
     /// {
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
+    ///     // account level group
     ///     var ds = Databricks.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
+    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -76,15 +78,19 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds");
+    ///     var ds = new Databricks.Group("ds", new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
+    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -116,16 +122,20 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds");
+    ///     var ds = new Databricks.Group("ds", new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
     ///     {
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
+    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -157,15 +167,19 @@ namespace Pulumi.Databricks
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
     ///     // account level group creation
-    ///     var ds = new Databricks.Group("ds");
+    ///     var ds = new Databricks.Group("ds", new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
     /// 
-    ///     var automationSp = new Databricks.ServicePrincipal("automationSp", new()
+    ///     var automationSp = new Databricks.ServicePrincipal("automation_sp", new()
     ///     {
     ///         DisplayName = "SP_FOR_AUTOMATION",
     ///     });
     /// 
-    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automationSpRuleSet", new()
+    ///     var automationSpRuleSet = new Databricks.AccessControlRuleSet("automation_sp_rule_set", new()
     ///     {
+    ///         Name = automationSp.ApplicationId.Apply(applicationId =&gt; $"accounts/{accountId}/servicePrincipals/{applicationId}/ruleSets/default"),
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -198,6 +212,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
+    ///     // account level group
     ///     var ds = Databricks.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
@@ -208,8 +223,9 @@ namespace Pulumi.Databricks
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("dsGroupRuleSet", new()
+    ///     var dsGroupRuleSet = new Databricks.AccessControlRuleSet("ds_group_rule_set", new()
     ///     {
+    ///         Name = $"accounts/{accountId}/groups/{dsDatabricksGroup.Id}/ruleSets/default",
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
@@ -242,11 +258,13 @@ namespace Pulumi.Databricks
     /// {
     ///     var accountId = "00000000-0000-0000-0000-000000000000";
     /// 
+    ///     // account level group
     ///     var ds = Databricks.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Data Science",
     ///     });
     /// 
+    ///     // account level group
     ///     var marketplaceAdmins = Databricks.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "Marketplace Admins",
@@ -257,8 +275,9 @@ namespace Pulumi.Databricks
     ///         UserName = "john.doe@example.com",
     ///     });
     /// 
-    ///     var accountRuleSet = new Databricks.AccessControlRuleSet("accountRuleSet", new()
+    ///     var accountRuleSet = new Databricks.AccessControlRuleSet("account_rule_set", new()
     ///     {
+    ///         Name = $"accounts/{accountId}/ruleSets/default",
     ///         GrantRules = new[]
     ///         {
     ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs

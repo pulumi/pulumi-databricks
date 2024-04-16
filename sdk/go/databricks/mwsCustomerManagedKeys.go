@@ -20,106 +20,6 @@ import (
 //
 // # You must configure this during workspace creation
 //
-// ### For AWS
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// databricksAccountId := cfg.RequireObject("databricksAccountId")
-// current, err := aws.GetCallerIdentity(ctx, nil, nil);
-// if err != nil {
-// return err
-// }
-// databricksManagedServicesCmk, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// Version: pulumi.StringRef("2012-10-17"),
-// Statements: []iam.GetPolicyDocumentStatement{
-// {
-// Sid: pulumi.StringRef("Enable IAM User Permissions"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: interface{}{
-// current.AccountId,
-// },
-// },
-// },
-// Actions: []string{
-// "kms:*",
-// },
-// Resources: []string{
-// "*",
-// },
-// },
-// {
-// Sid: pulumi.StringRef("Allow Databricks to use KMS key for control plane managed services"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: []string{
-// "arn:aws:iam::414351767826:root",
-// },
-// },
-// },
-// Actions: []string{
-// "kms:Encrypt",
-// "kms:Decrypt",
-// },
-// Resources: []string{
-// "*",
-// },
-// },
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// managedServicesCustomerManagedKey, err := kms.NewKey(ctx, "managedServicesCustomerManagedKey", &kms.KeyArgs{
-// Policy: pulumi.String(databricksManagedServicesCmk.Json),
-// })
-// if err != nil {
-// return err
-// }
-// managedServicesCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "managedServicesCustomerManagedKeyAlias", &kms.AliasArgs{
-// TargetKeyId: managedServicesCustomerManagedKey.KeyId,
-// })
-// if err != nil {
-// return err
-// }
-// _, err = databricks.NewMwsCustomerManagedKeys(ctx, "managedServices", &databricks.MwsCustomerManagedKeysArgs{
-// AccountId: pulumi.Any(databricksAccountId),
-// AwsKeyInfo: &databricks.MwsCustomerManagedKeysAwsKeyInfoArgs{
-// KeyArn: managedServicesCustomerManagedKey.Arn,
-// KeyAlias: managedServicesCustomerManagedKeyAlias.Name,
-// },
-// UseCases: pulumi.StringArray{
-// pulumi.String("MANAGED_SERVICES"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ### For GCP
 //
 // <!--Start PulumiCodeChooser -->
@@ -137,9 +37,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// Id of a google_kms_crypto_key
 //			cmekResourceId := cfg.RequireObject("cmekResourceId")
-//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "managedServices", &databricks.MwsCustomerManagedKeysArgs{
+//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "managed_services", &databricks.MwsCustomerManagedKeysArgs{
 //				AccountId: pulumi.Any(databricksAccountId),
 //				GcpKeyInfo: &databricks.MwsCustomerManagedKeysGcpKeyInfoArgs{
 //					KmsKeyId: pulumi.Any(cmekResourceId),
@@ -160,164 +62,6 @@ import (
 //
 // ### Customer-managed key for workspace storage
 //
-// ### For AWS
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// databricksAccountId := cfg.RequireObject("databricksAccountId")
-// databricksCrossAccountRole := cfg.RequireObject("databricksCrossAccountRole")
-// databricksStorageCmk, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// Version: pulumi.StringRef("2012-10-17"),
-// Statements: []iam.GetPolicyDocumentStatement{
-// {
-// Sid: pulumi.StringRef("Enable IAM User Permissions"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: interface{}{
-// data.Aws_caller_identity.Current.Account_id,
-// },
-// },
-// },
-// Actions: []string{
-// "kms:*",
-// },
-// Resources: []string{
-// "*",
-// },
-// },
-// {
-// Sid: pulumi.StringRef("Allow Databricks to use KMS key for DBFS"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: []string{
-// "arn:aws:iam::414351767826:root",
-// },
-// },
-// },
-// Actions: []string{
-// "kms:Encrypt",
-// "kms:Decrypt",
-// "kms:ReEncrypt*",
-// "kms:GenerateDataKey*",
-// "kms:DescribeKey",
-// },
-// Resources: []string{
-// "*",
-// },
-// },
-// {
-// Sid: pulumi.StringRef("Allow Databricks to use KMS key for DBFS (Grants)"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: []string{
-// "arn:aws:iam::414351767826:root",
-// },
-// },
-// },
-// Actions: []string{
-// "kms:CreateGrant",
-// "kms:ListGrants",
-// "kms:RevokeGrant",
-// },
-// Resources: []string{
-// "*",
-// },
-// Conditions: []iam.GetPolicyDocumentStatementCondition{
-// {
-// Test: "Bool",
-// Variable: "kms:GrantIsForAWSResource",
-// Values: []string{
-// "true",
-// },
-// },
-// },
-// },
-// {
-// Sid: pulumi.StringRef("Allow Databricks to use KMS key for EBS"),
-// Effect: pulumi.StringRef("Allow"),
-// Principals: []iam.GetPolicyDocumentStatementPrincipal{
-// {
-// Type: "AWS",
-// Identifiers: interface{}{
-// databricksCrossAccountRole,
-// },
-// },
-// },
-// Actions: []string{
-// "kms:Decrypt",
-// "kms:GenerateDataKey*",
-// "kms:CreateGrant",
-// "kms:DescribeKey",
-// },
-// Resources: []string{
-// "*",
-// },
-// Conditions: []iam.GetPolicyDocumentStatementCondition{
-// {
-// Test: "ForAnyValue:StringLike",
-// Variable: "kms:ViaService",
-// Values: []string{
-// "ec2.*.amazonaws.com",
-// },
-// },
-// },
-// },
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// storageCustomerManagedKey, err := kms.NewKey(ctx, "storageCustomerManagedKey", &kms.KeyArgs{
-// Policy: pulumi.String(databricksStorageCmk.Json),
-// })
-// if err != nil {
-// return err
-// }
-// storageCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "storageCustomerManagedKeyAlias", &kms.AliasArgs{
-// TargetKeyId: storageCustomerManagedKey.KeyId,
-// })
-// if err != nil {
-// return err
-// }
-// _, err = databricks.NewMwsCustomerManagedKeys(ctx, "storage", &databricks.MwsCustomerManagedKeysArgs{
-// AccountId: pulumi.Any(databricksAccountId),
-// AwsKeyInfo: &databricks.MwsCustomerManagedKeysAwsKeyInfoArgs{
-// KeyArn: storageCustomerManagedKey.Arn,
-// KeyAlias: storageCustomerManagedKeyAlias.Name,
-// },
-// UseCases: pulumi.StringArray{
-// pulumi.String("STORAGE"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ### For GCP
 //
 // <!--Start PulumiCodeChooser -->
@@ -335,7 +79,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// Id of a google_kms_crypto_key
 //			cmekResourceId := cfg.RequireObject("cmekResourceId")
 //			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "storage", &databricks.MwsCustomerManagedKeysArgs{
 //				AccountId: pulumi.Any(databricksAccountId),

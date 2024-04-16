@@ -27,13 +27,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("sharedDir", new()
+    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Dashboards",
     ///     });
     /// 
     ///     var d1 = new Databricks.SqlDashboard("d1", new()
     ///     {
+    ///         Name = "My Dashboard Name",
     ///         Parent = sharedDir.ObjectId.Apply(objectId =&gt; $"folders/{objectId}"),
     ///         Tags = new[]
     ///         {
@@ -59,12 +60,12 @@ namespace Pulumi.Databricks
     /// {
     ///     var d1 = new Databricks.Permissions("d1", new()
     ///     {
-    ///         SqlDashboardId = databricks_sql_dashboard.D1.Id,
+    ///         SqlDashboardId = d1DatabricksSqlDashboard.Id,
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
-    ///                 GroupName = data.Databricks_group.Users.Display_name,
+    ///                 GroupName = users.DisplayName,
     ///                 PermissionLevel = "CAN_RUN",
     ///             },
     ///         },

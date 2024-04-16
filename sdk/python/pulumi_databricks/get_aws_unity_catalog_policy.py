@@ -102,54 +102,6 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
     This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    this = databricks.get_aws_unity_catalog_policy(aws_account_id=var["aws_account_id"],
-        bucket_name="databricks-bucket",
-        role_name="databricks-role",
-        kms_name="databricks-kms")
-    passrole_for_uc = aws.iam.get_policy_document(statements=[
-        aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL"],
-                type="AWS",
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalId",
-                values=[var["databricks_account_id"]],
-            )],
-        ),
-        aws.iam.GetPolicyDocumentStatementArgs(
-            sid="ExplicitSelfRoleAssumption",
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=[f"arn:aws:iam::{var['aws_account_id']}:root"],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="ArnLike",
-                variable="aws:PrincipalArn",
-                values=[f"arn:aws:iam::{var['aws_account_id']}:role/{var['prefix']}-uc-access"],
-            )],
-        ),
-    ])
-    unity_metastore = aws.iam.Policy("unityMetastore", policy=this.json)
-    metastore_data_access = aws.iam.Role("metastoreDataAccess",
-        assume_role_policy=passrole_for_uc.json,
-        managed_policy_arns=[unity_metastore.arn])
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
     :param str bucket_name: The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.
@@ -183,54 +135,6 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     > **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
 
     This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_databricks as databricks
-
-    this = databricks.get_aws_unity_catalog_policy(aws_account_id=var["aws_account_id"],
-        bucket_name="databricks-bucket",
-        role_name="databricks-role",
-        kms_name="databricks-kms")
-    passrole_for_uc = aws.iam.get_policy_document(statements=[
-        aws.iam.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                identifiers=["arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL"],
-                type="AWS",
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalId",
-                values=[var["databricks_account_id"]],
-            )],
-        ),
-        aws.iam.GetPolicyDocumentStatementArgs(
-            sid="ExplicitSelfRoleAssumption",
-            effect="Allow",
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=[f"arn:aws:iam::{var['aws_account_id']}:root"],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="ArnLike",
-                variable="aws:PrincipalArn",
-                values=[f"arn:aws:iam::{var['aws_account_id']}:role/{var['prefix']}-uc-access"],
-            )],
-        ),
-    ])
-    unity_metastore = aws.iam.Policy("unityMetastore", policy=this.json)
-    metastore_data_access = aws.iam.Role("metastoreDataAccess",
-        assume_role_policy=passrole_for_uc.json,
-        managed_policy_arns=[unity_metastore.arn])
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).

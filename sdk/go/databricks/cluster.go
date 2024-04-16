@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
@@ -129,10 +129,10 @@ type Cluster struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared High-Concurrency"),
-	// 			SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-	// 			NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+	// 			SparkVersion:           pulumi.Any(latestLts.Id),
+	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -197,7 +197,7 @@ type Cluster struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -309,10 +309,10 @@ type clusterState struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared High-Concurrency"),
-	// 			SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-	// 			NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+	// 			SparkVersion:           pulumi.Any(latestLts.Id),
+	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -377,7 +377,7 @@ type clusterState struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -457,10 +457,10 @@ type ClusterState struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared High-Concurrency"),
-	// 			SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-	// 			NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+	// 			SparkVersion:           pulumi.Any(latestLts.Id),
+	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -525,7 +525,7 @@ type ClusterState struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -608,10 +608,10 @@ type clusterArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared High-Concurrency"),
-	// 			SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-	// 			NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+	// 			SparkVersion:           pulumi.Any(latestLts.Id),
+	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -674,7 +674,7 @@ type clusterArgs struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -750,10 +750,10 @@ type ClusterArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared High-Concurrency"),
-	// 			SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-	// 			NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+	// 			SparkVersion:           pulumi.Any(latestLts.Id),
+	// 			NodeTypeId:             pulumi.Any(smallest.Id),
 	// 			AutoterminationMinutes: pulumi.Int(20),
 	// 			SparkConf: pulumi.Map{
 	// 				"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -816,7 +816,7 @@ type ClusterArgs struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -1010,10 +1010,10 @@ func (o ClusterOutput) ClusterSource() pulumi.StringOutput {
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewCluster(ctx, "clusterWithTableAccessControl", &databricks.ClusterArgs{
+//			_, err := databricks.NewCluster(ctx, "cluster_with_table_access_control", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared High-Concurrency"),
-//				SparkVersion:           pulumi.Any(data.Databricks_spark_version.Latest_lts.Id),
-//				NodeTypeId:             pulumi.Any(data.Databricks_node_type.Smallest.Id),
+//				SparkVersion:           pulumi.Any(latestLts.Id),
+//				NodeTypeId:             pulumi.Any(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				SparkConf: pulumi.Map{
 //					"spark.databricks.repl.allowedLanguages": pulumi.Any("python,sql"),
@@ -1117,7 +1117,7 @@ func (o ClusterOutput) InstancePoolId() pulumi.StringPtrOutput {
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "sharedAutoscaling", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),

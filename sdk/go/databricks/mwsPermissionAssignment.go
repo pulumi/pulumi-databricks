@@ -31,12 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dataEng, err := databricks.NewGroup(ctx, "dataEng", nil)
+//			dataEng, err := databricks.NewGroup(ctx, "data_eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Data Engineering"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewMwsPermissionAssignment(ctx, "addAdminGroup", &databricks.MwsPermissionAssignmentArgs{
-//				WorkspaceId: pulumi.Any(databricks_mws_workspaces.This.Workspace_id),
+//			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_admin_group", &databricks.MwsPermissionAssignmentArgs{
+//				WorkspaceId: pulumi.Any(this.WorkspaceId),
 //				PrincipalId: dataEng.ID(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("ADMIN"),
@@ -73,8 +75,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewMwsPermissionAssignment(ctx, "addUser", &databricks.MwsPermissionAssignmentArgs{
-//				WorkspaceId: pulumi.Any(databricks_mws_workspaces.This.Workspace_id),
+//			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_user", &databricks.MwsPermissionAssignmentArgs{
+//				WorkspaceId: pulumi.Any(this.WorkspaceId),
 //				PrincipalId: me.ID(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("USER"),
@@ -111,8 +113,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewMwsPermissionAssignment(ctx, "addAdminSpn", &databricks.MwsPermissionAssignmentArgs{
-//				WorkspaceId: pulumi.Any(databricks_mws_workspaces.This.Workspace_id),
+//			_, err = databricks.NewMwsPermissionAssignment(ctx, "add_admin_spn", &databricks.MwsPermissionAssignmentArgs{
+//				WorkspaceId: pulumi.Any(this.WorkspaceId),
 //				PrincipalId: sp.ID(),
 //				Permissions: pulumi.StringArray{
 //					pulumi.String("ADMIN"),

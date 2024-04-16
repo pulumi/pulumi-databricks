@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var smallest = Databricks.GetNodeType.Invoke();
     /// 
-    ///     var smallestNodes = new Databricks.InstancePool("smallestNodes", new()
+    ///     var smallestNodes = new Databricks.InstancePool("smallest_nodes", new()
     ///     {
     ///         InstancePoolName = "Smallest Nodes",
     ///         MinIdleInstances = 0,

@@ -322,12 +322,13 @@ class ClusterPolicy(pulumi.CustomResource):
             },
             "custom_tags.Team": {
                 "type": "fixed",
-                "value": var["team"],
+                "value": team,
             },
         }
-        personal_vm = databricks.ClusterPolicy("personalVm",
+        personal_vm = databricks.ClusterPolicy("personal_vm",
             policy_family_id="personal-vm",
-            policy_family_definition_overrides=json.dumps(personal_vm_override))
+            policy_family_definition_overrides=json.dumps(personal_vm_override),
+            name="Personal Compute")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -417,12 +418,13 @@ class ClusterPolicy(pulumi.CustomResource):
             },
             "custom_tags.Team": {
                 "type": "fixed",
-                "value": var["team"],
+                "value": team,
             },
         }
-        personal_vm = databricks.ClusterPolicy("personalVm",
+        personal_vm = databricks.ClusterPolicy("personal_vm",
             policy_family_id="personal-vm",
-            policy_family_definition_overrides=json.dumps(personal_vm_override))
+            policy_family_definition_overrides=json.dumps(personal_vm_override),
+            name="Personal Compute")
         ```
         <!--End PulumiCodeChooser -->
 

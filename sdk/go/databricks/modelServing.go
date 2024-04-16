@@ -32,21 +32,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewModelServing(ctx, "this", &databricks.ModelServingArgs{
+//				Name: pulumi.String("ads-serving-endpoint"),
 //				Config: &databricks.ModelServingConfigArgs{
 //					ServedEntities: databricks.ModelServingConfigServedEntityArray{
 //						&databricks.ModelServingConfigServedEntityArgs{
+//							Name:               pulumi.String("prod_model"),
 //							EntityName:         pulumi.String("ads-model"),
 //							EntityVersion:      pulumi.String("2"),
-//							Name:               pulumi.String("prod_model"),
-//							ScaleToZeroEnabled: pulumi.Bool(true),
 //							WorkloadSize:       pulumi.String("Small"),
+//							ScaleToZeroEnabled: pulumi.Bool(true),
 //						},
 //						&databricks.ModelServingConfigServedEntityArgs{
+//							Name:               pulumi.String("candidate_model"),
 //							EntityName:         pulumi.String("ads-model"),
 //							EntityVersion:      pulumi.String("4"),
-//							Name:               pulumi.String("candidate_model"),
-//							ScaleToZeroEnabled: pulumi.Bool(false),
 //							WorkloadSize:       pulumi.String("Small"),
+//							ScaleToZeroEnabled: pulumi.Bool(false),
 //						},
 //					},
 //					TrafficConfig: &databricks.ModelServingConfigTrafficConfigArgs{

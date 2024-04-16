@@ -51,7 +51,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := map[string]interface{}{
+//			personalVmOverride := map[string]interface{}{
 //				"autotermination_minutes": map[string]interface{}{
 //					"type":   "fixed",
 //					"value":  220,
@@ -59,17 +59,18 @@ import (
 //				},
 //				"custom_tags.Team": map[string]interface{}{
 //					"type":  "fixed",
-//					"value": _var.Team,
+//					"value": team,
 //				},
 //			}
-//			tmpJSON0, err := json.Marshal(personal_vm_override)
+//			tmpJSON0, err := json.Marshal(personalVmOverride)
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = databricks.NewClusterPolicy(ctx, "personalVm", &databricks.ClusterPolicyArgs{
+//			_, err = databricks.NewClusterPolicy(ctx, "personal_vm", &databricks.ClusterPolicyArgs{
 //				PolicyFamilyId:                  pulumi.String("personal-vm"),
 //				PolicyFamilyDefinitionOverrides: pulumi.String(json0),
+//				Name:                            pulumi.String("Personal Compute"),
 //			})
 //			if err != nil {
 //				return err

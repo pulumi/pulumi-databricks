@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.InstanceProfile;
  * import com.pulumi.databricks.InstanceProfileArgs;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.GroupRole;
  * import com.pulumi.databricks.GroupRoleArgs;
  * import java.util.List;
@@ -49,7 +50,9 @@ import javax.annotation.Nullable;
  *             .instanceProfileArn(&#34;my_instance_profile_arn&#34;)
  *             .build());
  * 
- *         var myGroup = new Group(&#34;myGroup&#34;);
+ *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;my_group_name&#34;)
+ *             .build());
  * 
  *         var myGroupInstanceProfile = new GroupRole(&#34;myGroupInstanceProfile&#34;, GroupRoleArgs.builder()        
  *             .groupId(myGroup.id())
@@ -71,6 +74,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.GroupRole;
  * import com.pulumi.databricks.GroupRoleArgs;
  * import java.util.List;
@@ -86,7 +90,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myGroup = new Group(&#34;myGroup&#34;);
+ *         var myGroup = new Group(&#34;myGroup&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;my_group_name&#34;)
+ *             .build());
  * 
  *         var myGroupAccountAdmin = new GroupRole(&#34;myGroupAccountAdmin&#34;, GroupRoleArgs.builder()        
  *             .groupId(myGroup.id())

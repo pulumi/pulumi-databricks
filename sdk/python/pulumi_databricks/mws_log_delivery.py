@@ -409,10 +409,10 @@ class MwsLogDelivery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        usage_logs = databricks.MwsLogDelivery("usageLogs",
-            account_id=var["databricks_account_id"],
-            credentials_id=databricks_mws_credentials["log_writer"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["log_bucket"]["storage_configuration_id"],
+        usage_logs = databricks.MwsLogDelivery("usage_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer["credentialsId"],
+            storage_configuration_id=log_bucket["storageConfigurationId"],
             delivery_path_prefix="billable-usage",
             config_name="Usage Logs",
             log_type="BILLABLE_USAGE",
@@ -429,10 +429,10 @@ class MwsLogDelivery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        audit_logs = databricks.MwsLogDelivery("auditLogs",
-            account_id=var["databricks_account_id"],
-            credentials_id=databricks_mws_credentials["log_writer"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["log_bucket"]["storage_configuration_id"],
+        audit_logs = databricks.MwsLogDelivery("audit_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer["credentialsId"],
+            storage_configuration_id=log_bucket["storageConfigurationId"],
             delivery_path_prefix="audit-logs",
             config_name="Audit Logs",
             log_type="AUDIT_LOGS",
@@ -493,10 +493,10 @@ class MwsLogDelivery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        usage_logs = databricks.MwsLogDelivery("usageLogs",
-            account_id=var["databricks_account_id"],
-            credentials_id=databricks_mws_credentials["log_writer"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["log_bucket"]["storage_configuration_id"],
+        usage_logs = databricks.MwsLogDelivery("usage_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer["credentialsId"],
+            storage_configuration_id=log_bucket["storageConfigurationId"],
             delivery_path_prefix="billable-usage",
             config_name="Usage Logs",
             log_type="BILLABLE_USAGE",
@@ -513,10 +513,10 @@ class MwsLogDelivery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        audit_logs = databricks.MwsLogDelivery("auditLogs",
-            account_id=var["databricks_account_id"],
-            credentials_id=databricks_mws_credentials["log_writer"]["credentials_id"],
-            storage_configuration_id=databricks_mws_storage_configurations["log_bucket"]["storage_configuration_id"],
+        audit_logs = databricks.MwsLogDelivery("audit_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer["credentialsId"],
+            storage_configuration_id=log_bucket["storageConfigurationId"],
             delivery_path_prefix="audit-logs",
             config_name="Audit Logs",
             log_type="AUDIT_LOGS",

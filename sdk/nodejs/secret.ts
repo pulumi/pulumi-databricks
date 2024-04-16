@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const app = new databricks.SecretScope("app", {});
- * const publishingApi = new databricks.Secret("publishingApi", {
+ * const app = new databricks.SecretScope("app", {name: "application-secret-scope"});
+ * const publishingApi = new databricks.Secret("publishing_api", {
  *     key: "publishing_api",
- *     stringValue: data.azurerm_key_vault_secret.example.value,
+ *     stringValue: example.value,
  *     scope: app.id,
  * });
  * const _this = new databricks.Cluster("this", {sparkConf: {

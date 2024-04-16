@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myGroup = new databricks.Group("myGroup", {});
- * const myGroupInstanceProfile = new databricks.GroupRole("myGroupInstanceProfile", {
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
+ * const myGroupInstanceProfile = new databricks.GroupRole("my_group_instance_profile", {
  *     groupId: myGroup.id,
  *     role: instanceProfile.id,
  * });
@@ -32,8 +32,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const myGroup = new databricks.Group("myGroup", {});
- * const myGroupAccountAdmin = new databricks.GroupRole("myGroupAccountAdmin", {
+ * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
+ * const myGroupAccountAdmin = new databricks.GroupRole("my_group_account_admin", {
  *     groupId: myGroup.id,
  *     role: "account_admin",
  * });

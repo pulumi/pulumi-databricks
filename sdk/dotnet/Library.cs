@@ -46,33 +46,6 @@ namespace Pulumi.Databricks
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// ## Java/Scala JAR
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
-    ///     {
-    ///         Source = $"{path.Module}/app-0.0.1.jar",
-    ///         Path = "/FileStore/app-0.0.1.jar",
-    ///     });
-    /// 
-    ///     var appLibrary = new Databricks.Library("appLibrary", new()
-    ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
-    ///         Jar = appDbfsFile.DbfsPath,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Java/Scala Maven
     /// 
     /// Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -88,7 +61,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var deequ = new Databricks.Library("deequ", new()
     ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
+    ///         ClusterId = @this.Id,
     ///         Maven = new Databricks.Inputs.LibraryMavenArgs
     ///         {
     ///             Coordinates = "com.amazon.deequ:deequ:1.0.4",
@@ -97,33 +70,6 @@ namespace Pulumi.Databricks
     ///                 "org.apache.avro:avro",
     ///             },
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ## Python Wheel
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
-    ///     {
-    ///         Source = $"{path.Module}/baz.whl",
-    ///         Path = "/FileStore/baz.whl",
-    ///     });
-    /// 
-    ///     var appLibrary = new Databricks.Library("appLibrary", new()
-    ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
-    ///         Whl = appDbfsFile.DbfsPath,
     ///     });
     /// 
     /// });
@@ -147,38 +93,11 @@ namespace Pulumi.Databricks
     /// {
     ///     var fbprophet = new Databricks.Library("fbprophet", new()
     ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
+    ///         ClusterId = @this.Id,
     ///         Pypi = new Databricks.Inputs.LibraryPypiArgs
     ///         {
     ///             Package = "fbprophet==0.6",
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ## Python EGG
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var appDbfsFile = new Databricks.DbfsFile("appDbfsFile", new()
-    ///     {
-    ///         Source = $"{path.Module}/foo.egg",
-    ///         Path = "/FileStore/foo.egg",
-    ///     });
-    /// 
-    ///     var appLibrary = new Databricks.Library("appLibrary", new()
-    ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
-    ///         Egg = appDbfsFile.DbfsPath,
     ///     });
     /// 
     /// });
@@ -200,7 +119,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var rkeops = new Databricks.Library("rkeops", new()
     ///     {
-    ///         ClusterId = databricks_cluster.This.Id,
+    ///         ClusterId = @this.Id,
     ///         Cran = new Databricks.Inputs.LibraryCranArgs
     ///         {
     ///             Package = "rkeops",

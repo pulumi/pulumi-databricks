@@ -52,9 +52,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var usageLogs = new MwsLogDelivery(&#34;usageLogs&#34;, MwsLogDeliveryArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .credentialsId(databricks_mws_credentials.log_writer().credentials_id())
- *             .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())
+ *             .accountId(databricksAccountId)
+ *             .credentialsId(logWriter.credentialsId())
+ *             .storageConfigurationId(logBucket.storageConfigurationId())
  *             .deliveryPathPrefix(&#34;billable-usage&#34;)
  *             .configName(&#34;Usage Logs&#34;)
  *             .logType(&#34;BILLABLE_USAGE&#34;)
@@ -93,9 +93,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var auditLogs = new MwsLogDelivery(&#34;auditLogs&#34;, MwsLogDeliveryArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .credentialsId(databricks_mws_credentials.log_writer().credentials_id())
- *             .storageConfigurationId(databricks_mws_storage_configurations.log_bucket().storage_configuration_id())
+ *             .accountId(databricksAccountId)
+ *             .credentialsId(logWriter.credentialsId())
+ *             .storageConfigurationId(logBucket.storageConfigurationId())
  *             .deliveryPathPrefix(&#34;audit-logs&#34;)
  *             .configName(&#34;Audit Logs&#34;)
  *             .logType(&#34;AUDIT_LOGS&#34;)

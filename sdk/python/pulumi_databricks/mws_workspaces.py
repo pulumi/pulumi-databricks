@@ -859,38 +859,34 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        mws = databricks.Provider("mws", host="https://accounts.cloud.databricks.com")
         # register cross-account ARN
-        this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+        this = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
-            credentials_name=f"{var['prefix']}-creds",
-            role_arn=var["crossaccount_arn"],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            credentials_name=f"{prefix}-creds",
+            role_arn=crossaccount_arn)
         # register root bucket
-        this_mws_storage_configurations = databricks.MwsStorageConfigurations("thisMwsStorageConfigurations",
+        this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
-            storage_configuration_name=f"{var['prefix']}-storage",
-            bucket_name=var["root_bucket"],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            storage_configuration_name=f"{prefix}-storage",
+            bucket_name=root_bucket)
         # register VPC
-        this_mws_networks = databricks.MwsNetworks("thisMwsNetworks",
+        this_mws_networks = databricks.MwsNetworks("this",
             account_id=databricks_account_id,
-            network_name=f"{var['prefix']}-network",
-            vpc_id=var["vpc_id"],
-            subnet_ids=var["subnets_private"],
-            security_group_ids=[var["security_group"]],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            network_name=f"{prefix}-network",
+            vpc_id=vpc_id,
+            subnet_ids=subnets_private,
+            security_group_ids=[security_group])
         # create workspace in given VPC with DBFS on root bucket
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
-            workspace_name=var["prefix"],
-            aws_region=var["region"],
-            credentials_id=this_mws_credentials.credentials_id,
+            workspace_name=prefix,
+            aws_region=region,
+            credentials_id=this.credentials_id,
             storage_configuration_id=this_mws_storage_configurations.storage_configuration_id,
             network_id=this_mws_networks.network_id,
-            token=databricks.MwsWorkspacesTokenArgs(),
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            token=databricks.MwsWorkspacesTokenArgs())
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
         <!--End PulumiCodeChooser -->
@@ -909,59 +905,61 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_random as random
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.RandomString("naming",
+        naming = random.index.String("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = naming.result.apply(lambda result: f"dltp{result}")
-        this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("crossAccountRole",
-            assume_role_policy=this_aws_assume_role_policy.json,
-            tags=var["tags"])
-        this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("thisRolePolicy",
+        prefix = f"dltp{naming['result']}"
+        this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+        cross_account_role = aws.index.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
+            assume_role_policy=this.json,
+            tags=tags)
+        this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+        this_iam_role_policy = aws.index.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
-            policy=this_aws_cross_account_policy.json)
-        this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+            policy=this_get_aws_cross_account_policy.json)
+        this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
-        root_storage_bucket_bucket_v2 = aws.s3.BucketV2("rootStorageBucketBucketV2",
-            acl="private",
+            role_arn=cross_account_role["arn"])
+        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private,
             force_destroy=True,
-            tags=var["tags"])
-        root_versioning = aws.s3.BucketVersioningV2("rootVersioning",
-            bucket=root_storage_bucket_bucket_v2.id,
-            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
-                status="Disabled",
-            ))
-        root_storage_bucket_bucket_server_side_encryption_configuration_v2 = aws.s3.BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2",
-            bucket=root_storage_bucket_bucket_v2.bucket,
-            rules=[aws.s3.BucketServerSideEncryptionConfigurationV2RuleArgs(
-                apply_server_side_encryption_by_default=aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs(
-                    sse_algorithm="AES256",
-                ),
-            )])
-        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock",
-            bucket=root_storage_bucket_bucket_v2.id,
+            tags=tags)
+        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+            bucket=root_storage_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            bucket=root_storage_bucket.bucket,
+            rule=[{
+                applyServerSideEncryptionByDefault: [{
+                    sseAlgorithm: AES256,
+                }],
+            }])
+        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+            bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_v2]))
-        this_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket_bucket_v2.bucket)
-        root_bucket_policy = aws.s3.BucketPolicy("rootBucketPolicy",
-            bucket=root_storage_bucket_bucket_v2.id,
-            policy=this_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
-        this_mws_storage_configurations = databricks.MwsStorageConfigurations("thisMwsStorageConfigurations",
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
+        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+            bucket=root_storage_bucket.id,
+            policy=this_get_aws_bucket_policy.json,
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+        this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket_bucket_v2.bucket,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+            bucket_name=root_storage_bucket["bucket"])
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
             aws_region="us-east-1",
@@ -970,8 +968,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             token=databricks.MwsWorkspacesTokenArgs(),
             custom_tags={
                 "SoldToCode": "1234",
-            },
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            })
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
         <!--End PulumiCodeChooser -->
@@ -990,33 +987,33 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
         databricks_google_service_account = config.require_object("databricksGoogleServiceAccount")
         google_project = config.require_object("googleProject")
-        mws = databricks.Provider("mws", host="https://accounts.gcp.databricks.com")
         # register VPC
-        this_mws_networks = databricks.MwsNetworks("thisMwsNetworks",
+        this = databricks.MwsNetworks("this",
             account_id=databricks_account_id,
-            network_name=f"{var['prefix']}-network",
+            network_name=f"{prefix}-network",
             gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
                 network_project_id=google_project,
-                vpc_id=var["vpc_id"],
-                subnet_id=var["subnet_id"],
-                subnet_region=var["subnet_region"],
+                vpc_id=vpc_id,
+                subnet_id=subnet_id,
+                subnet_region=subnet_region,
                 pod_ip_range_name="pods",
                 service_ip_range_name="svc",
             ))
         # create workspace in given VPC
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
-            workspace_name=var["prefix"],
-            location=var["subnet_region"],
+            workspace_name=prefix,
+            location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
                     project_id=google_project,
                 ),
             ),
-            network_id=this_mws_networks.network_id,
+            network_id=this.network_id,
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(
                 connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
                 master_ip_range="10.3.0.0/28",
@@ -1075,38 +1072,34 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        mws = databricks.Provider("mws", host="https://accounts.cloud.databricks.com")
         # register cross-account ARN
-        this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+        this = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
-            credentials_name=f"{var['prefix']}-creds",
-            role_arn=var["crossaccount_arn"],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            credentials_name=f"{prefix}-creds",
+            role_arn=crossaccount_arn)
         # register root bucket
-        this_mws_storage_configurations = databricks.MwsStorageConfigurations("thisMwsStorageConfigurations",
+        this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
-            storage_configuration_name=f"{var['prefix']}-storage",
-            bucket_name=var["root_bucket"],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            storage_configuration_name=f"{prefix}-storage",
+            bucket_name=root_bucket)
         # register VPC
-        this_mws_networks = databricks.MwsNetworks("thisMwsNetworks",
+        this_mws_networks = databricks.MwsNetworks("this",
             account_id=databricks_account_id,
-            network_name=f"{var['prefix']}-network",
-            vpc_id=var["vpc_id"],
-            subnet_ids=var["subnets_private"],
-            security_group_ids=[var["security_group"]],
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            network_name=f"{prefix}-network",
+            vpc_id=vpc_id,
+            subnet_ids=subnets_private,
+            security_group_ids=[security_group])
         # create workspace in given VPC with DBFS on root bucket
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
-            workspace_name=var["prefix"],
-            aws_region=var["region"],
-            credentials_id=this_mws_credentials.credentials_id,
+            workspace_name=prefix,
+            aws_region=region,
+            credentials_id=this.credentials_id,
             storage_configuration_id=this_mws_storage_configurations.storage_configuration_id,
             network_id=this_mws_networks.network_id,
-            token=databricks.MwsWorkspacesTokenArgs(),
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            token=databricks.MwsWorkspacesTokenArgs())
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
         <!--End PulumiCodeChooser -->
@@ -1125,59 +1118,61 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_random as random
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        naming = random.RandomString("naming",
+        naming = random.index.String("naming",
             special=False,
             upper=False,
             length=6)
-        prefix = naming.result.apply(lambda result: f"dltp{result}")
-        this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("crossAccountRole",
-            assume_role_policy=this_aws_assume_role_policy.json,
-            tags=var["tags"])
-        this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("thisRolePolicy",
+        prefix = f"dltp{naming['result']}"
+        this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+        cross_account_role = aws.index.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
+            assume_role_policy=this.json,
+            tags=tags)
+        this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
+        this_iam_role_policy = aws.index.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
-            policy=this_aws_cross_account_policy.json)
-        this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+            policy=this_get_aws_cross_account_policy.json)
+        this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
-        root_storage_bucket_bucket_v2 = aws.s3.BucketV2("rootStorageBucketBucketV2",
-            acl="private",
+            role_arn=cross_account_role["arn"])
+        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private,
             force_destroy=True,
-            tags=var["tags"])
-        root_versioning = aws.s3.BucketVersioningV2("rootVersioning",
-            bucket=root_storage_bucket_bucket_v2.id,
-            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
-                status="Disabled",
-            ))
-        root_storage_bucket_bucket_server_side_encryption_configuration_v2 = aws.s3.BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2",
-            bucket=root_storage_bucket_bucket_v2.bucket,
-            rules=[aws.s3.BucketServerSideEncryptionConfigurationV2RuleArgs(
-                apply_server_side_encryption_by_default=aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs(
-                    sse_algorithm="AES256",
-                ),
-            )])
-        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock",
-            bucket=root_storage_bucket_bucket_v2.id,
+            tags=tags)
+        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+            bucket=root_storage_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            bucket=root_storage_bucket.bucket,
+            rule=[{
+                applyServerSideEncryptionByDefault: [{
+                    sseAlgorithm: AES256,
+                }],
+            }])
+        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+            bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_v2]))
-        this_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket_bucket_v2.bucket)
-        root_bucket_policy = aws.s3.BucketPolicy("rootBucketPolicy",
-            bucket=root_storage_bucket_bucket_v2.id,
-            policy=this_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
-        this_mws_storage_configurations = databricks.MwsStorageConfigurations("thisMwsStorageConfigurations",
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
+        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+            bucket=root_storage_bucket.id,
+            policy=this_get_aws_bucket_policy.json,
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+        this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket_bucket_v2.bucket,
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+            bucket_name=root_storage_bucket["bucket"])
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
             aws_region="us-east-1",
@@ -1186,8 +1181,7 @@ class MwsWorkspaces(pulumi.CustomResource):
             token=databricks.MwsWorkspacesTokenArgs(),
             custom_tags={
                 "SoldToCode": "1234",
-            },
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            })
         pulumi.export("databricksToken", this_mws_workspaces.token.token_value)
         ```
         <!--End PulumiCodeChooser -->
@@ -1206,33 +1200,33 @@ class MwsWorkspaces(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
         databricks_google_service_account = config.require_object("databricksGoogleServiceAccount")
         google_project = config.require_object("googleProject")
-        mws = databricks.Provider("mws", host="https://accounts.gcp.databricks.com")
         # register VPC
-        this_mws_networks = databricks.MwsNetworks("thisMwsNetworks",
+        this = databricks.MwsNetworks("this",
             account_id=databricks_account_id,
-            network_name=f"{var['prefix']}-network",
+            network_name=f"{prefix}-network",
             gcp_network_info=databricks.MwsNetworksGcpNetworkInfoArgs(
                 network_project_id=google_project,
-                vpc_id=var["vpc_id"],
-                subnet_id=var["subnet_id"],
-                subnet_region=var["subnet_region"],
+                vpc_id=vpc_id,
+                subnet_id=subnet_id,
+                subnet_region=subnet_region,
                 pod_ip_range_name="pods",
                 service_ip_range_name="svc",
             ))
         # create workspace in given VPC
-        this_mws_workspaces = databricks.MwsWorkspaces("thisMwsWorkspaces",
+        this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
-            workspace_name=var["prefix"],
-            location=var["subnet_region"],
+            workspace_name=prefix,
+            location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
                 gcp=databricks.MwsWorkspacesCloudResourceContainerGcpArgs(
                     project_id=google_project,
                 ),
             ),
-            network_id=this_mws_networks.network_id,
+            network_id=this.network_id,
             gke_config=databricks.MwsWorkspacesGkeConfigArgs(
                 connectivity_type="PRIVATE_NODE_PUBLIC_MASTER",
                 master_ip_range="10.3.0.0/28",

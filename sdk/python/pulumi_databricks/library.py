@@ -234,22 +234,6 @@ class Library(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        ## Java/Scala JAR
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/app-0.0.1.jar",
-            path="/FileStore/app-0.0.1.jar")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            jar=app_dbfs_file.dbfs_path)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Java/Scala Maven
 
         Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -260,27 +244,11 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         deequ = databricks.Library("deequ",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             maven=databricks.LibraryMavenArgs(
                 coordinates="com.amazon.deequ:deequ:1.0.4",
                 exclusions=["org.apache.avro:avro"],
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Python Wheel
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/baz.whl",
-            path="/FileStore/baz.whl")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            whl=app_dbfs_file.dbfs_path)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -296,26 +264,10 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         fbprophet = databricks.Library("fbprophet",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             pypi=databricks.LibraryPypiArgs(
                 package="fbprophet==0.6",
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Python EGG
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/foo.egg",
-            path="/FileStore/foo.egg")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            egg=app_dbfs_file.dbfs_path)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -329,7 +281,7 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         rkeops = databricks.Library("rkeops",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             cran=databricks.LibraryCranArgs(
                 package="rkeops",
             ))
@@ -391,22 +343,6 @@ class Library(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        ## Java/Scala JAR
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/app-0.0.1.jar",
-            path="/FileStore/app-0.0.1.jar")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            jar=app_dbfs_file.dbfs_path)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Java/Scala Maven
 
         Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -417,27 +353,11 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         deequ = databricks.Library("deequ",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             maven=databricks.LibraryMavenArgs(
                 coordinates="com.amazon.deequ:deequ:1.0.4",
                 exclusions=["org.apache.avro:avro"],
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Python Wheel
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/baz.whl",
-            path="/FileStore/baz.whl")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            whl=app_dbfs_file.dbfs_path)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -453,26 +373,10 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         fbprophet = databricks.Library("fbprophet",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             pypi=databricks.LibraryPypiArgs(
                 package="fbprophet==0.6",
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Python EGG
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        app_dbfs_file = databricks.DbfsFile("appDbfsFile",
-            source=f"{path['module']}/foo.egg",
-            path="/FileStore/foo.egg")
-        app_library = databricks.Library("appLibrary",
-            cluster_id=databricks_cluster["this"]["id"],
-            egg=app_dbfs_file.dbfs_path)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -486,7 +390,7 @@ class Library(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         rkeops = databricks.Library("rkeops",
-            cluster_id=databricks_cluster["this"]["id"],
+            cluster_id=this["id"],
             cran=databricks.LibraryCranArgs(
                 package="rkeops",
             ))

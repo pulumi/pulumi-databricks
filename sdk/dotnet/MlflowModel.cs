@@ -27,6 +27,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var test = new Databricks.MlflowModel("test", new()
     ///     {
+    ///         Name = "My MLflow Model",
     ///         Description = "My MLflow model description",
     ///         Tags = new[]
     ///         {

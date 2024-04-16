@@ -27,14 +27,15 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.OnlineTable("this", new()
     ///     {
+    ///         Name = "main.default.online_table",
     ///         Spec = new Databricks.Inputs.OnlineTableSpecArgs
     ///         {
+    ///             SourceTableFullName = "main.default.source_table",
     ///             PrimaryKeyColumns = new[]
     ///             {
     ///                 "id",
     ///             },
     ///             RunTriggered = null,
-    ///             SourceTableFullName = "main.default.source_table",
     ///         },
     ///     });
     /// 

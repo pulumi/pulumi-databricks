@@ -222,8 +222,9 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        shared_dir = databricks.Directory("sharedDir", path="/Shared/Dashboards")
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Dashboards")
         d1 = databricks.SqlDashboard("d1",
+            name="My Dashboard Name",
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             tags=[
                 "some-tag",
@@ -240,9 +241,9 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         d1 = databricks.Permissions("d1",
-            sql_dashboard_id=databricks_sql_dashboard["d1"]["id"],
+            sql_dashboard_id=d1_databricks_sql_dashboard["id"],
             access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=data["databricks_group"]["users"]["display_name"],
+                group_name=users["displayName"],
                 permission_level="CAN_RUN",
             )])
         ```
@@ -290,8 +291,9 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        shared_dir = databricks.Directory("sharedDir", path="/Shared/Dashboards")
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Dashboards")
         d1 = databricks.SqlDashboard("d1",
+            name="My Dashboard Name",
             parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
             tags=[
                 "some-tag",
@@ -308,9 +310,9 @@ class SqlDashboard(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         d1 = databricks.Permissions("d1",
-            sql_dashboard_id=databricks_sql_dashboard["d1"]["id"],
+            sql_dashboard_id=d1_databricks_sql_dashboard["id"],
             access_controls=[databricks.PermissionsAccessControlArgs(
-                group_name=data["databricks_group"]["users"]["display_name"],
+                group_name=users["displayName"],
                 permission_level="CAN_RUN",
             )])
         ```

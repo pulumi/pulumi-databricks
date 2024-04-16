@@ -25,14 +25,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
     ///     {
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
     /// 
-    ///     var myGroup = new Databricks.Group("myGroup");
+    ///     var myGroup = new Databricks.Group("my_group", new()
+    ///     {
+    ///         DisplayName = "my_group_name",
+    ///     });
     /// 
-    ///     var myGroupInstanceProfile = new Databricks.GroupRole("myGroupInstanceProfile", new()
+    ///     var myGroupInstanceProfile = new Databricks.GroupRole("my_group_instance_profile", new()
     ///     {
     ///         GroupId = myGroup.Id,
     ///         Role = instanceProfile.Id,
@@ -53,9 +56,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGroup = new Databricks.Group("myGroup");
+    ///     var myGroup = new Databricks.Group("my_group", new()
+    ///     {
+    ///         DisplayName = "my_group_name",
+    ///     });
     /// 
-    ///     var myGroupAccountAdmin = new Databricks.GroupRole("myGroupAccountAdmin", new()
+    ///     var myGroupAccountAdmin = new Databricks.GroupRole("my_group_account_admin", new()
     ///     {
     ///         GroupId = myGroup.Id,
     ///         Role = "account_admin",

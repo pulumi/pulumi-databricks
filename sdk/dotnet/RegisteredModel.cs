@@ -27,6 +27,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.RegisteredModel("this", new()
     ///     {
+    ///         Name = "my_model",
     ///         CatalogName = "main",
     ///         SchemaName = "default",
     ///     });

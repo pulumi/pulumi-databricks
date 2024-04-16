@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new MlflowModel(&#34;test&#34;, MlflowModelArgs.builder()        
+ *             .name(&#34;My MLflow Model&#34;)
  *             .description(&#34;My MLflow model description&#34;)
  *             .tags(            
  *                 MlflowModelTagArgs.builder()

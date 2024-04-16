@@ -27,6 +27,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var @this = new Databricks.SqlEndpoint("this", new()
     ///     {
+    ///         Name = $"Endpoint of {me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}",
     ///         ClusterSize = "Small",
     ///         MaxNumClusters = 1,
     ///         Tags = new Databricks.Inputs.SqlEndpointTagsArgs

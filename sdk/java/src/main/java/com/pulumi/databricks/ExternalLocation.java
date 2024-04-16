@@ -57,20 +57,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(aws_iam_role.external_data_access().arn())
+ *                 .roleArn(externalDataAccess.arn())
  *                 .build())
  *             .comment(&#34;Managed by TF&#34;)
  *             .build());
  * 
- *         var someExternalLocation = new ExternalLocation(&#34;someExternalLocation&#34;, ExternalLocationArgs.builder()        
- *             .url(String.format(&#34;s3://%s/some&#34;, aws_s3_bucket.external().id()))
+ *         var some = new ExternalLocation(&#34;some&#34;, ExternalLocationArgs.builder()        
+ *             .name(&#34;external&#34;)
+ *             .url(String.format(&#34;s3://%s/some&#34;, externalAwsS3Bucket.id()))
  *             .credentialName(external.id())
  *             .comment(&#34;Managed by TF&#34;)
  *             .build());
  * 
  *         var someGrants = new Grants(&#34;someGrants&#34;, GrantsArgs.builder()        
- *             .externalLocation(someExternalLocation.id())
+ *             .externalLocation(some.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
  *                 .privileges(                

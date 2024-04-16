@@ -23,6 +23,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
+    ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 
     ///         {

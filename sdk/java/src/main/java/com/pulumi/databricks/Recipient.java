@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomPassword;
- * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.random.password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.Recipient;
  * import com.pulumi.databricks.RecipientArgs;
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var db2opensharecode = new RandomPassword(&#34;db2opensharecode&#34;, RandomPasswordArgs.builder()        
+ *         var db2opensharecode = new Password(&#34;db2opensharecode&#34;, PasswordArgs.builder()        
  *             .length(16)
  *             .special(true)
  *             .build());
@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  *         final var current = DatabricksFunctions.getCurrentUser();
  * 
  *         var db2open = new Recipient(&#34;db2open&#34;, RecipientArgs.builder()        
+ *             .name(String.format(&#34;%s-recipient&#34;, current.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
  *             .comment(&#34;made by terraform&#34;)
  *             .authenticationType(&#34;TOKEN&#34;)
  *             .sharingCode(db2opensharecode.result())

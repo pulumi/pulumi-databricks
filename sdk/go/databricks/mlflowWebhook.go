@@ -32,10 +32,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMlflowWebhook(ctx, "url", &databricks.MlflowWebhookArgs{
-//				Description: pulumi.String("URL webhook trigger"),
 //				Events: pulumi.StringArray{
 //					pulumi.String("TRANSITION_REQUEST_CREATED"),
 //				},
+//				Description: pulumi.String("URL webhook trigger"),
 //				HttpUrlSpec: &databricks.MlflowWebhookHttpUrlSpecArgs{
 //					Url: pulumi.String("https://my_cool_host/webhook"),
 //				},

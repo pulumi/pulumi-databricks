@@ -407,15 +407,17 @@ class MetastoreDataAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_metastore = databricks.Metastore("thisMetastore",
-            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
             owner="uc admins",
             region="us-east-1",
             force_destroy=True)
-        this_metastore_data_access = databricks.MetastoreDataAccess("thisMetastoreDataAccess",
-            metastore_id=this_metastore.id,
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name=metastore_data_access["name"],
             aws_iam_role=databricks.MetastoreDataAccessAwsIamRoleArgs(
-                role_arn=aws_iam_role["metastore_data_access"]["arn"],
+                role_arn=metastore_data_access["arn"],
             ),
             is_default=True)
         ```
@@ -457,15 +459,17 @@ class MetastoreDataAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_metastore = databricks.Metastore("thisMetastore",
-            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
             owner="uc admins",
             region="us-east-1",
             force_destroy=True)
-        this_metastore_data_access = databricks.MetastoreDataAccess("thisMetastoreDataAccess",
-            metastore_id=this_metastore.id,
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name=metastore_data_access["name"],
             aws_iam_role=databricks.MetastoreDataAccessAwsIamRoleArgs(
-                role_arn=aws_iam_role["metastore_data_access"]["arn"],
+                role_arn=metastore_data_access["arn"],
             ),
             is_default=True)
         ```

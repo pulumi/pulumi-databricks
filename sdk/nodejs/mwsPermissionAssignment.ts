@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const dataEng = new databricks.Group("dataEng", {});
- * const addAdminGroup = new databricks.MwsPermissionAssignment("addAdminGroup", {
- *     workspaceId: databricks_mws_workspaces["this"].workspace_id,
+ * const dataEng = new databricks.Group("data_eng", {displayName: "Data Engineering"});
+ * const addAdminGroup = new databricks.MwsPermissionAssignment("add_admin_group", {
+ *     workspaceId: _this.workspaceId,
  *     principalId: dataEng.id,
  *     permissions: ["ADMIN"],
  * });
@@ -33,8 +33,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const me = new databricks.User("me", {userName: "me@example.com"});
- * const addUser = new databricks.MwsPermissionAssignment("addUser", {
- *     workspaceId: databricks_mws_workspaces["this"].workspace_id,
+ * const addUser = new databricks.MwsPermissionAssignment("add_user", {
+ *     workspaceId: _this.workspaceId,
  *     principalId: me.id,
  *     permissions: ["USER"],
  * });
@@ -49,8 +49,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"});
- * const addAdminSpn = new databricks.MwsPermissionAssignment("addAdminSpn", {
- *     workspaceId: databricks_mws_workspaces["this"].workspace_id,
+ * const addAdminSpn = new databricks.MwsPermissionAssignment("add_admin_spn", {
+ *     workspaceId: _this.workspaceId,
  *     principalId: sp.id,
  *     permissions: ["ADMIN"],
  * });

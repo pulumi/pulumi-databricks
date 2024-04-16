@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * export = async () => {
- *     const thingsTables = await databricks.getTables({
+ *     const things = await databricks.getTables({
  *         catalogName: "sandbox",
  *         schemaName: "things",
  *     });
  *     const thingsGrants: databricks.Grants[] = [];
- *     for (const range of thingsTables.ids.map((v, k) => ({key: k, value: v}))) {
- *         thingsGrants.push(new databricks.Grants(`thingsGrants-${range.key}`, {
+ *     for (const range of things.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`things-${range.key}`, {
  *             table: range.value,
  *             grants: [{
  *                 principal: "sensitive",
@@ -97,13 +97,13 @@ export interface GetTablesResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * export = async () => {
- *     const thingsTables = await databricks.getTables({
+ *     const things = await databricks.getTables({
  *         catalogName: "sandbox",
  *         schemaName: "things",
  *     });
  *     const thingsGrants: databricks.Grants[] = [];
- *     for (const range of thingsTables.ids.map((v, k) => ({key: k, value: v}))) {
- *         thingsGrants.push(new databricks.Grants(`thingsGrants-${range.key}`, {
+ *     for (const range of things.ids.map((v, k) => ({key: k, value: v}))) {
+ *         thingsGrants.push(new databricks.Grants(`things-${range.key}`, {
  *             table: range.value,
  *             grants: [{
  *                 principal: "sensitive",

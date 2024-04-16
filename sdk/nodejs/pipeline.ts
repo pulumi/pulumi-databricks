@@ -16,11 +16,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const dltDemoNotebook = new databricks.Notebook("dltDemoNotebook", {});
- * //...
- * const dltDemoRepo = new databricks.Repo("dltDemoRepo", {});
- * //...
+ * const dltDemo = new databricks.Notebook("dlt_demo", {});
+ * const dltDemoRepo = new databricks.Repo("dlt_demo", {});
  * const _this = new databricks.Pipeline("this", {
+ *     name: "Pipeline Name",
  *     storage: "/test/first-pipeline",
  *     configuration: {
  *         key1: "value1",
@@ -45,7 +44,7 @@ import * as utilities from "./utilities";
  *     libraries: [
  *         {
  *             notebook: {
- *                 path: dltDemoNotebook.id,
+ *                 path: dltDemo.id,
  *             },
  *         },
  *         {

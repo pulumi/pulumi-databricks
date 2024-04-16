@@ -231,7 +231,7 @@ def get_group(acl_principal_id: Optional[str] = None,
 
     admins = databricks.get_group(display_name="admins")
     me = databricks.User("me", user_name="me@example.com")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=me.id)
     ```
@@ -329,7 +329,7 @@ def get_group_output(acl_principal_id: Optional[pulumi.Input[Optional[str]]] = N
 
     admins = databricks.get_group(display_name="admins")
     me = databricks.User("me", user_name="me@example.com")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=me.id)
     ```

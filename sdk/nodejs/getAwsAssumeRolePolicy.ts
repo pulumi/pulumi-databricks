@@ -18,27 +18,30 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const crossAccountPolicy = new aws.iam.Policy("crossAccountPolicy", {policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json)});
- * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
+ * const this = databricks.getAwsCrossAccountPolicy({});
+ * const crossAccountPolicy = new aws.index.IamPolicy("cross_account_policy", {
+ *     name: `${prefix}-crossaccount-iam-policy`,
+ *     policy: _this.json,
+ * });
+ * const thisGetAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
- *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
+ * const crossAccount = new aws.index.IamRole("cross_account", {
+ *     name: `${prefix}-crossaccount-iam-role`,
+ *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.json,
  *     description: "Grants Databricks full access to VPC resources",
  * });
- * const crossAccountRolePolicyAttachment = new aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment", {
+ * const crossAccountIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("cross_account", {
  *     policyArn: crossAccountPolicy.arn,
- *     role: crossAccountRole.name,
+ *     role: crossAccount.name,
  * });
  * // required only in case of multi-workspace setup
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
- *     credentialsName: `${_var.prefix}-creds`,
- *     roleArn: crossAccountRole.arn,
- * }, {
- *     provider: databricks.mws,
+ *     credentialsName: `${prefix}-creds`,
+ *     roleArn: crossAccount.arn,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -106,27 +109,30 @@ export interface GetAwsAssumeRolePolicyResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const crossAccountPolicy = new aws.iam.Policy("crossAccountPolicy", {policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json)});
- * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
+ * const this = databricks.getAwsCrossAccountPolicy({});
+ * const crossAccountPolicy = new aws.index.IamPolicy("cross_account_policy", {
+ *     name: `${prefix}-crossaccount-iam-policy`,
+ *     policy: _this.json,
+ * });
+ * const thisGetAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
- *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
+ * const crossAccount = new aws.index.IamRole("cross_account", {
+ *     name: `${prefix}-crossaccount-iam-role`,
+ *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.json,
  *     description: "Grants Databricks full access to VPC resources",
  * });
- * const crossAccountRolePolicyAttachment = new aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment", {
+ * const crossAccountIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("cross_account", {
  *     policyArn: crossAccountPolicy.arn,
- *     role: crossAccountRole.name,
+ *     role: crossAccount.name,
  * });
  * // required only in case of multi-workspace setup
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
- *     credentialsName: `${_var.prefix}-creds`,
- *     roleArn: crossAccountRole.arn,
- * }, {
- *     provider: databricks.mws,
+ *     credentialsName: `${prefix}-creds`,
+ *     roleArn: crossAccount.arn,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

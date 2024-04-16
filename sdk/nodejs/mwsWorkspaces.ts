@@ -26,45 +26,37 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const mws = new databricks.Provider("mws", {host: "https://accounts.cloud.databricks.com"});
  * // register cross-account ARN
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ * const _this = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
- *     credentialsName: `${_var.prefix}-creds`,
- *     roleArn: _var.crossaccount_arn,
- * }, {
- *     provider: databricks.mws,
+ *     credentialsName: `${prefix}-creds`,
+ *     roleArn: crossaccountArn,
  * });
  * // register root bucket
- * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", {
+ * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,
- *     storageConfigurationName: `${_var.prefix}-storage`,
- *     bucketName: _var.root_bucket,
- * }, {
- *     provider: databricks.mws,
+ *     storageConfigurationName: `${prefix}-storage`,
+ *     bucketName: rootBucket,
  * });
  * // register VPC
- * const thisMwsNetworks = new databricks.MwsNetworks("thisMwsNetworks", {
+ * const thisMwsNetworks = new databricks.MwsNetworks("this", {
  *     accountId: databricksAccountId,
- *     networkName: `${_var.prefix}-network`,
- *     vpcId: _var.vpc_id,
- *     subnetIds: _var.subnets_private,
- *     securityGroupIds: [_var.security_group],
- * }, {
- *     provider: databricks.mws,
+ *     networkName: `${prefix}-network`,
+ *     vpcId: vpcId,
+ *     subnetIds: subnetsPrivate,
+ *     securityGroupIds: [securityGroup],
  * });
  * // create workspace in given VPC with DBFS on root bucket
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
  *     accountId: databricksAccountId,
- *     workspaceName: _var.prefix,
- *     awsRegion: _var.region,
- *     credentialsId: thisMwsCredentials.credentialsId,
+ *     workspaceName: prefix,
+ *     awsRegion: region,
+ *     credentialsId: _this.credentialsId,
  *     storageConfigurationId: thisMwsStorageConfigurations.storageConfigurationId,
  *     networkId: thisMwsNetworks.networkId,
  *     token: {},
- * }, {
- *     provider: databricks.mws,
  * });
  * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
  * ```
@@ -84,77 +76,77 @@ import * as utilities from "./utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
- * const naming = new random.RandomString("naming", {
+ * const naming = new random.index.String("naming", {
  *     special: false,
  *     upper: false,
  *     length: 6,
  * });
- * const prefix = pulumi.interpolate`dltp${naming.result}`;
- * const thisAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
+ * const prefix = `dltp${naming.result}`;
+ * const this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.iam.Role("crossAccountRole", {
- *     assumeRolePolicy: thisAwsAssumeRolePolicy.then(thisAwsAssumeRolePolicy => thisAwsAssumeRolePolicy.json),
- *     tags: _var.tags,
+ * const crossAccountRole = new aws.index.IamRole("cross_account_role", {
+ *     name: `${prefix}-crossaccount`,
+ *     assumeRolePolicy: _this.json,
+ *     tags: tags,
  * });
- * const thisAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisRolePolicy = new aws.iam.RolePolicy("thisRolePolicy", {
+ * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
+ * const thisIamRolePolicy = new aws.index.IamRolePolicy("this", {
+ *     name: `${prefix}-policy`,
  *     role: crossAccountRole.id,
- *     policy: thisAwsCrossAccountPolicy.then(thisAwsCrossAccountPolicy => thisAwsCrossAccountPolicy.json),
+ *     policy: thisGetAwsCrossAccountPolicy.json,
  * });
- * const thisMwsCredentials = new databricks.MwsCredentials("thisMwsCredentials", {
+ * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
  *     credentialsName: `${prefix}-creds`,
  *     roleArn: crossAccountRole.arn,
- * }, {
- *     provider: databricks.mws,
  * });
- * const rootStorageBucketBucketV2 = new aws.s3.BucketV2("rootStorageBucketBucketV2", {
+ * const rootStorageBucket = new aws.index.S3Bucket("root_storage_bucket", {
+ *     bucket: `${prefix}-rootbucket`,
  *     acl: "private",
  *     forceDestroy: true,
- *     tags: _var.tags,
+ *     tags: tags,
  * });
- * const rootVersioning = new aws.s3.BucketVersioningV2("rootVersioning", {
- *     bucket: rootStorageBucketBucketV2.id,
- *     versioningConfiguration: {
+ * const rootVersioning = new aws.index.S3BucketVersioning("root_versioning", {
+ *     bucket: rootStorageBucket.id,
+ *     versioningConfiguration: [{
  *         status: "Disabled",
- *     },
- * });
- * const rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new aws.s3.BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", {
- *     bucket: rootStorageBucketBucketV2.bucket,
- *     rules: [{
- *         applyServerSideEncryptionByDefault: {
- *             sseAlgorithm: "AES256",
- *         },
  *     }],
  * });
- * const rootStorageBucketBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", {
- *     bucket: rootStorageBucketBucketV2.id,
+ * const rootStorageBucketS3BucketServerSideEncryptionConfiguration = new aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", {
+ *     bucket: rootStorageBucket.bucket,
+ *     rule: [{
+ *         applyServerSideEncryptionByDefault: [{
+ *             sseAlgorithm: "AES256",
+ *         }],
+ *     }],
+ * });
+ * const rootStorageBucketS3BucketPublicAccessBlock = new aws.index.S3BucketPublicAccessBlock("root_storage_bucket", {
+ *     bucket: rootStorageBucket.id,
  *     blockPublicAcls: true,
  *     blockPublicPolicy: true,
  *     ignorePublicAcls: true,
  *     restrictPublicBuckets: true,
  * }, {
- *     dependsOn: [rootStorageBucketBucketV2],
+ *     dependsOn: [rootStorageBucket],
  * });
- * const thisAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
- *     bucket: rootStorageBucketBucketV2.bucket,
+ * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicy({
+ *     bucket: rootStorageBucket.bucket,
  * });
- * const rootBucketPolicy = new aws.s3.BucketPolicy("rootBucketPolicy", {
- *     bucket: rootStorageBucketBucketV2.id,
- *     policy: thisAwsBucketPolicy.apply(thisAwsBucketPolicy => thisAwsBucketPolicy.json),
+ * const rootBucketPolicy = new aws.index.S3BucketPolicy("root_bucket_policy", {
+ *     bucket: rootStorageBucket.id,
+ *     policy: thisGetAwsBucketPolicy.json,
  * }, {
- *     dependsOn: [rootStorageBucketBucketPublicAccessBlock],
+ *     dependsOn: [rootStorageBucketS3BucketPublicAccessBlock],
  * });
- * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", {
+ * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,
  *     storageConfigurationName: `${prefix}-storage`,
- *     bucketName: rootStorageBucketBucketV2.bucket,
- * }, {
- *     provider: databricks.mws,
+ *     bucketName: rootStorageBucket.bucket,
  * });
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
  *     accountId: databricksAccountId,
  *     workspaceName: prefix,
  *     awsRegion: "us-east-1",
@@ -164,8 +156,6 @@ import * as utilities from "./utilities";
  *     customTags: {
  *         SoldToCode: "1234",
  *     },
- * }, {
- *     provider: databricks.mws,
  * });
  * export const databricksToken = thisMwsWorkspaces.token.apply(token => token?.tokenValue);
  * ```
@@ -185,34 +175,34 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * const databricksGoogleServiceAccount = config.requireObject("databricksGoogleServiceAccount");
  * const googleProject = config.requireObject("googleProject");
- * const mws = new databricks.Provider("mws", {host: "https://accounts.gcp.databricks.com"});
  * // register VPC
- * const thisMwsNetworks = new databricks.MwsNetworks("thisMwsNetworks", {
+ * const _this = new databricks.MwsNetworks("this", {
  *     accountId: databricksAccountId,
- *     networkName: `${_var.prefix}-network`,
+ *     networkName: `${prefix}-network`,
  *     gcpNetworkInfo: {
  *         networkProjectId: googleProject,
- *         vpcId: _var.vpc_id,
- *         subnetId: _var.subnet_id,
- *         subnetRegion: _var.subnet_region,
+ *         vpcId: vpcId,
+ *         subnetId: subnetId,
+ *         subnetRegion: subnetRegion,
  *         podIpRangeName: "pods",
  *         serviceIpRangeName: "svc",
  *     },
  * });
  * // create workspace in given VPC
- * const thisMwsWorkspaces = new databricks.MwsWorkspaces("thisMwsWorkspaces", {
+ * const thisMwsWorkspaces = new databricks.MwsWorkspaces("this", {
  *     accountId: databricksAccountId,
- *     workspaceName: _var.prefix,
- *     location: _var.subnet_region,
+ *     workspaceName: prefix,
+ *     location: subnetRegion,
  *     cloudResourceContainer: {
  *         gcp: {
  *             projectId: googleProject,
  *         },
  *     },
- *     networkId: thisMwsNetworks.networkId,
+ *     networkId: _this.networkId,
  *     gkeConfig: {
  *         connectivityType: "PRIVATE_NODE_PUBLIC_MASTER",
  *         masterIpRange: "10.3.0.0/28",

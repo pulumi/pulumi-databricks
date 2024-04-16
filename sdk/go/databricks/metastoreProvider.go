@@ -48,6 +48,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = databricks.NewMetastoreProvider(ctx, "dbprovider", &databricks.MetastoreProviderArgs{
+//				Name:                pulumi.String("terraform-test-provider"),
 //				Comment:             pulumi.String("made by terraform 2"),
 //				AuthenticationType:  pulumi.String("TOKEN"),
 //				RecipientProfileStr: pulumi.String(json0),

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.SecretScope("this", {});
+ * const _this = new databricks.SecretScope("this", {name: "terraform-demo-scope"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

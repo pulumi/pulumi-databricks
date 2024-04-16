@@ -20,16 +20,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisMetastore = new databricks.Metastore("thisMetastore", {
- *     storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,
+ * const _this = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: `s3://${metastore.id}/metastore`,
  *     owner: "uc admins",
  *     region: "us-east-1",
  *     forceDestroy: true,
  * });
- * const thisMetastoreDataAccess = new databricks.MetastoreDataAccess("thisMetastoreDataAccess", {
- *     metastoreId: thisMetastore.id,
+ * const thisMetastoreDataAccess = new databricks.MetastoreDataAccess("this", {
+ *     metastoreId: _this.id,
+ *     name: metastoreDataAccess.name,
  *     awsIamRole: {
- *         roleArn: aws_iam_role.metastore_data_access.arn,
+ *         roleArn: metastoreDataAccess.arn,
  *     },
  *     isDefault: true,
  * });

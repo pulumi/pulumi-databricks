@@ -36,15 +36,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
 //				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
-//					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
 //				},
 //				Comment: pulumi.String("Managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
 //				StorageCredential: external.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
@@ -80,17 +81,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewStorageCredential(ctx, "externalMi", &databricks.StorageCredentialArgs{
+//			_, err := databricks.NewStorageCredential(ctx, "external_mi", &databricks.StorageCredentialArgs{
+//				Name: pulumi.String("mi_credential"),
 //				AzureManagedIdentity: &databricks.StorageCredentialAzureManagedIdentityArgs{
-//					AccessConnectorId: pulumi.Any(azurerm_databricks_access_connector.Example.Id),
+//					AccessConnectorId: pulumi.Any(example.Id),
 //				},
 //				Comment: pulumi.String("Managed identity credential managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
-//				StorageCredential: pulumi.Any(databricks_storage_credential.External.Id),
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
+//				StorageCredential: pulumi.Any(external.Id),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),
@@ -126,12 +128,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name:                        pulumi.String("the-creds"),
 //				DatabricksGcpServiceAccount: nil,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGrants(ctx, "externalCreds", &databricks.GrantsArgs{
+//			_, err = databricks.NewGrants(ctx, "external_creds", &databricks.GrantsArgs{
 //				StorageCredential: external.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{

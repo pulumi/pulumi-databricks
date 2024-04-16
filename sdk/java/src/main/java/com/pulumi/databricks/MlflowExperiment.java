@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *         final var me = DatabricksFunctions.getCurrentUser();
  * 
  *         var this_ = new MlflowExperiment(&#34;this&#34;, MlflowExperimentArgs.builder()        
+ *             .name(String.format(&#34;%s/Sample&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.home())))
  *             .artifactLocation(&#34;dbfs:/tmp/my-experiment&#34;)
  *             .description(&#34;My MLflow experiment description&#34;)
  *             .build());

@@ -32,14 +32,15 @@ namespace Pulumi.Databricks
     /// {
     ///     var external = new Databricks.StorageCredential("external", new()
     ///     {
+    ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.StorageCredentialAwsIamRoleArgs
     ///         {
-    ///             RoleArn = aws_iam_role.External_data_access.Arn,
+    ///             RoleArn = externalDataAccess.Arn,
     ///         },
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
     ///         StorageCredential = external.Id,
     ///         GrantDetails = new[]
@@ -70,18 +71,19 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalMi = new Databricks.StorageCredential("externalMi", new()
+    ///     var externalMi = new Databricks.StorageCredential("external_mi", new()
     ///     {
+    ///         Name = "mi_credential",
     ///         AzureManagedIdentity = new Databricks.Inputs.StorageCredentialAzureManagedIdentityArgs
     ///         {
-    ///             AccessConnectorId = azurerm_databricks_access_connector.Example.Id,
+    ///             AccessConnectorId = example.Id,
     ///         },
     ///         Comment = "Managed identity credential managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
-    ///         StorageCredential = databricks_storage_credential.External.Id,
+    ///         StorageCredential = external.Id,
     ///         GrantDetails = new[]
     ///         {
     ///             new Databricks.Inputs.GrantsGrantArgs
@@ -112,10 +114,11 @@ namespace Pulumi.Databricks
     /// {
     ///     var external = new Databricks.StorageCredential("external", new()
     ///     {
+    ///         Name = "the-creds",
     ///         DatabricksGcpServiceAccount = null,
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Grants("externalCreds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
     ///         StorageCredential = external.Id,
     ///         GrantDetails = new[]

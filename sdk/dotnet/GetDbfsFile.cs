@@ -29,8 +29,8 @@ namespace Pulumi.Databricks
         /// {
         ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         LimitFileSize = true,
         ///         Path = "dbfs:/reports/some.csv",
+        ///         LimitFileSize = true,
         ///     });
         /// 
         /// });
@@ -67,8 +67,8 @@ namespace Pulumi.Databricks
         /// {
         ///     var report = Databricks.GetDbfsFile.Invoke(new()
         ///     {
-        ///         LimitFileSize = true,
         ///         Path = "dbfs:/reports/some.csv",
+        ///         LimitFileSize = true,
         ///     });
         /// 
         /// });

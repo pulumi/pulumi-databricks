@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const url = new databricks.MlflowWebhook("url", {
- *     description: "URL webhook trigger",
  *     events: ["TRANSITION_REQUEST_CREATED"],
+ *     description: "URL webhook trigger",
  *     httpUrlSpec: {
  *         url: "https://my_cool_host/webhook",
  *     },

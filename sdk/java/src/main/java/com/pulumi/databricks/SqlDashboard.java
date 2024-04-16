@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var d1 = new SqlDashboard(&#34;d1&#34;, SqlDashboardArgs.builder()        
+ *             .name(&#34;My Dashboard Name&#34;)
  *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
  *             .tags(            
  *                 &#34;some-tag&#34;,
@@ -91,9 +92,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var d1 = new Permissions(&#34;d1&#34;, PermissionsArgs.builder()        
- *             .sqlDashboardId(databricks_sql_dashboard.d1().id())
+ *             .sqlDashboardId(d1DatabricksSqlDashboard.id())
  *             .accessControls(PermissionsAccessControlArgs.builder()
- *                 .groupName(data.databricks_group().users().display_name())
+ *                 .groupName(users.displayName())
  *                 .permissionLevel(&#34;CAN_RUN&#34;)
  *                 .build())
  *             .build());

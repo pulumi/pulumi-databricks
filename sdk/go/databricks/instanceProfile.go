@@ -16,129 +16,6 @@ import (
 //
 // > **Note** Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 //
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			crossaccountRoleName := cfg.Require("crossaccountRoleName")
-//			assumeRoleForEc2, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-//				Statements: []iam.GetPolicyDocumentStatement{
-//					{
-//						Effect: pulumi.StringRef("Allow"),
-//						Actions: []string{
-//							"sts:AssumeRole",
-//						},
-//						Principals: []iam.GetPolicyDocumentStatementPrincipal{
-//							{
-//								Identifiers: []string{
-//									"ec2.amazonaws.com",
-//								},
-//								Type: "Service",
-//							},
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			roleForS3Access, err := iam.NewRole(ctx, "roleForS3Access", &iam.RoleArgs{
-//				Description:      pulumi.String("Role for shared access"),
-//				AssumeRolePolicy: pulumi.String(assumeRoleForEc2.Json),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			passRoleForS3AccessPolicyDocument := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
-//				Statements: iam.GetPolicyDocumentStatementArray{
-//					&iam.GetPolicyDocumentStatementArgs{
-//						Effect: pulumi.String("Allow"),
-//						Actions: pulumi.StringArray{
-//							pulumi.String("iam:PassRole"),
-//						},
-//						Resources: pulumi.StringArray{
-//							roleForS3Access.Arn,
-//						},
-//					},
-//				},
-//			}, nil)
-//			passRoleForS3AccessPolicy, err := iam.NewPolicy(ctx, "passRoleForS3AccessPolicy", &iam.PolicyArgs{
-//				Path: pulumi.String("/"),
-//				Policy: passRoleForS3AccessPolicyDocument.ApplyT(func(passRoleForS3AccessPolicyDocument iam.GetPolicyDocumentResult) (*string, error) {
-//					return &passRoleForS3AccessPolicyDocument.Json, nil
-//				}).(pulumi.StringPtrOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewRolePolicyAttachment(ctx, "crossAccount", &iam.RolePolicyAttachmentArgs{
-//				PolicyArn: passRoleForS3AccessPolicy.Arn,
-//				Role:      pulumi.String(crossaccountRoleName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sharedInstanceProfile, err := iam.NewInstanceProfile(ctx, "sharedInstanceProfile", &iam.InstanceProfileArgs{
-//				Role: roleForS3Access.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewInstanceProfile(ctx, "sharedIndex/instanceProfileInstanceProfile", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: sharedInstanceProfile.Arn,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			latest, err := databricks.GetSparkVersion(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-//				LocalDisk: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
-//				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(latest.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
-//				AutoterminationMinutes: pulumi.Int(20),
-//				Autoscale: &databricks.ClusterAutoscaleArgs{
-//					MinWorkers: pulumi.Int(1),
-//					MaxWorkers: pulumi.Int(50),
-//				},
-//				AwsAttributes: &databricks.ClusterAwsAttributesArgs{
-//					InstanceProfileArn:  sharedIndex / instanceProfileInstanceProfile.Id,
-//					Availability:        pulumi.String("SPOT"),
-//					ZoneId:              pulumi.String("us-east-1"),
-//					FirstOnDemand:       pulumi.Int(1),
-//					SpotBidPricePercent: pulumi.Int(100),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Usage with Cluster Policies
 //
 // It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
@@ -161,7 +38,7 @@ import (
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"aws_attributes.instance_profile_arn": map[string]interface{}{
 //					"type":  "fixed",
-//					"value": databricks_instance_profile.Shared.Arn,
+//					"value": shared.Arn,
 //				},
 //			})
 //			if err != nil {
@@ -169,6 +46,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = databricks.NewClusterPolicy(ctx, "this", &databricks.ClusterPolicyArgs{
+//				Name:       pulumi.String("Policy with predefined instance profile"),
 //				Definition: pulumi.String(json0),
 //			})
 //			if err != nil {
@@ -199,7 +77,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			this, err := databricks.NewInstanceProfile(ctx, "this", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Shared.Arn),
+//				InstanceProfileArn: pulumi.Any(shared.Arn),
 //			})
 //			if err != nil {
 //				return err
@@ -213,80 +91,6 @@ import (
 //			_, err = databricks.NewGroupInstanceProfile(ctx, "all", &databricks.GroupInstanceProfileArgs{
 //				GroupId:           pulumi.String(users.Id),
 //				InstanceProfileId: this.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ## Usage with Databricks SQL serverless
-//
-// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sqlServerlessAssumeRole, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-//				Statements: []iam.GetPolicyDocumentStatement{
-//					{
-//						Actions: []string{
-//							"sts:AssumeRole",
-//						},
-//						Principals: []iam.GetPolicyDocumentStatementPrincipal{
-//							{
-//								Type: "AWS",
-//								Identifiers: []string{
-//									"arn:aws:iam::790110701330:role/serverless-customer-resource-role",
-//								},
-//							},
-//						},
-//						Conditions: []iam.GetPolicyDocumentStatementCondition{
-//							{
-//								Test:     "StringEquals",
-//								Variable: "sts:ExternalID",
-//								Values: []string{
-//									"databricks-serverless-<YOUR_WORKSPACE_ID1>",
-//									"databricks-serverless-<YOUR_WORKSPACE_ID2>",
-//								},
-//							},
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			thisRole, err := iam.NewRole(ctx, "thisRole", &iam.RoleArgs{
-//				AssumeRolePolicy: pulumi.String(sqlServerlessAssumeRole.Json),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			thisInstanceProfile, err := iam.NewInstanceProfile(ctx, "thisInstanceProfile", &iam.InstanceProfileArgs{
-//				Role: thisRole.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewInstanceProfile(ctx, "thisIndex/instanceProfileInstanceProfile", &databricks.InstanceProfileArgs{
-//				InstanceProfileArn: thisInstanceProfile.Arn,
-//				IamRoleArn:         thisRole.Arn,
 //			})
 //			if err != nil {
 //				return err

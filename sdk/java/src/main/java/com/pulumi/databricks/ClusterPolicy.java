@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  *         var personalVm = new ClusterPolicy(&#34;personalVm&#34;, ClusterPolicyArgs.builder()        
  *             .policyFamilyId(&#34;personal-vm&#34;)
  *             .policyFamilyDefinitionOverrides(serializeJson(
- *                 personal_vm_override))
+ *                 personalVmOverride))
+ *             .name(&#34;Personal Compute&#34;)
  *             .build());
  * 
  *     }

@@ -275,7 +275,8 @@ class VectorSearchIndex(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sync = databricks.VectorSearchIndex("sync",
-            endpoint_name=databricks_vector_search_endpoint["this"]["name"],
+            name="main.default.vector_search_index",
+            endpoint_name=this_databricks_vector_search_endpoint["name"],
             primary_key="id",
             index_type="DELTA_SYNC",
             delta_sync_index_spec=databricks.VectorSearchIndexDeltaSyncIndexSpecArgs(
@@ -283,7 +284,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                 pipeline_type="TRIGGERED",
                 embedding_source_columns=[databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(
                     name="text",
-                    embedding_model_endpoint_name=databricks_model_serving["this"]["name"],
+                    embedding_model_endpoint_name=this["name"],
                 )],
             ))
         ```
@@ -327,7 +328,8 @@ class VectorSearchIndex(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sync = databricks.VectorSearchIndex("sync",
-            endpoint_name=databricks_vector_search_endpoint["this"]["name"],
+            name="main.default.vector_search_index",
+            endpoint_name=this_databricks_vector_search_endpoint["name"],
             primary_key="id",
             index_type="DELTA_SYNC",
             delta_sync_index_spec=databricks.VectorSearchIndexDeltaSyncIndexSpecArgs(
@@ -335,7 +337,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                 pipeline_type="TRIGGERED",
                 embedding_source_columns=[databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(
                     name="text",
-                    embedding_model_endpoint_name=databricks_model_serving["this"]["name"],
+                    embedding_model_endpoint_name=this["name"],
                 )],
             ))
         ```

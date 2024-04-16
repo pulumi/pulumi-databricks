@@ -32,6 +32,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var dbprovider = new Databricks.MetastoreProvider("dbprovider", new()
     ///     {
+    ///         Name = "terraform-test-provider",
     ///         Comment = "made by terraform 2",
     ///         AuthenticationType = "TOKEN",
     ///         RecipientProfileStr = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;

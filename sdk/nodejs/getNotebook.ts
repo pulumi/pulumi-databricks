@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const features = databricks.getNotebook({
- *     format: "SOURCE",
  *     path: "/Production/Features",
+ *     format: "SOURCE",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -101,8 +101,8 @@ export interface GetNotebookResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const features = databricks.getNotebook({
- *     format: "SOURCE",
  *     path: "/Production/Features",
+ *     format: "SOURCE",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

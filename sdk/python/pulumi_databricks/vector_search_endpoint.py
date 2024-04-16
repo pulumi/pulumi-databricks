@@ -224,7 +224,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.VectorSearchEndpoint("this", endpoint_type="STANDARD")
+        this = databricks.VectorSearchEndpoint("this",
+            name="vector-search-test",
+            endpoint_type="STANDARD")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -261,7 +263,9 @@ class VectorSearchEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.VectorSearchEndpoint("this", endpoint_type="STANDARD")
+        this = databricks.VectorSearchEndpoint("this",
+            name="vector-search-test",
+            endpoint_type="STANDARD")
         ```
         <!--End PulumiCodeChooser -->
 

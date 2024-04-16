@@ -18,7 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.VectorSearchEndpoint("this", {endpointType: "STANDARD"});
+ * const _this = new databricks.VectorSearchEndpoint("this", {
+ *     name: "vector-search-test",
+ *     endpointType: "STANDARD",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

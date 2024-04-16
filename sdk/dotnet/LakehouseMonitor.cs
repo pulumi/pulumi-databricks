@@ -27,20 +27,20 @@ namespace Pulumi.Databricks
     /// {
     ///     var testMonitorInference = new Databricks.LakehouseMonitor("testMonitorInference", new()
     ///     {
-    ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table.MyTestTable.Name}",
+    ///         TableName = $"{sandbox.Name}.{things.Name}.{myTestTable.Name}",
+    ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{myTestTable.Name}",
+    ///         OutputSchemaName = $"{sandbox.Name}.{things.Name}",
     ///         InferenceLog = new Databricks.Inputs.LakehouseMonitorInferenceLogArgs
     ///         {
     ///             Granularities = new[]
     ///             {
     ///                 "1 hour",
     ///             },
-    ///             ModelIdCol = "model_id",
-    ///             PredictionCol = "prediction",
-    ///             ProblemType = "PROBLEM_TYPE_REGRESSION",
     ///             TimestampCol = "timestamp",
+    ///             PredictionCol = "prediction",
+    ///             ModelIdCol = "model_id",
+    ///             ProblemType = "PROBLEM_TYPE_REGRESSION",
     ///         },
-    ///         OutputSchemaName = $"{databricks_catalog.Sandbox.Name}.{databricks_schema.Things.Name}",
-    ///         TableName = $"{databricks_catalog.Sandbox.Name}.{databricks_schema.Things.Name}.{databricks_table.MyTestTable.Name}",
     ///     });
     /// 
     /// });
@@ -58,10 +58,10 @@ namespace Pulumi.Databricks
     /// {
     ///     var testMonitorInference = new Databricks.LakehouseMonitor("testMonitorInference", new()
     ///     {
-    ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table.MyTestTable.Name}",
-    ///         OutputSchemaName = $"{databricks_catalog.Sandbox.Name}.{databricks_schema.Things.Name}",
+    ///         TableName = $"{sandbox.Name}.{things.Name}.{myTestTable.Name}",
+    ///         AssetsDir = $"/Shared/provider-test/databricks_lakehouse_monitoring/{myTestTable.Name}",
+    ///         OutputSchemaName = $"{sandbox.Name}.{things.Name}",
     ///         Snapshot = null,
-    ///         TableName = $"{databricks_catalog.Sandbox.Name}.{databricks_schema.Things.Name}.{databricks_table.MyTestTable.Name}",
     ///     });
     /// 
     /// });

@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sync = new VectorSearchIndex(&#34;sync&#34;, VectorSearchIndexArgs.builder()        
- *             .endpointName(databricks_vector_search_endpoint.this().name())
+ *             .name(&#34;main.default.vector_search_index&#34;)
+ *             .endpointName(thisDatabricksVectorSearchEndpoint.name())
  *             .primaryKey(&#34;id&#34;)
  *             .indexType(&#34;DELTA_SYNC&#34;)
  *             .deltaSyncIndexSpec(VectorSearchIndexDeltaSyncIndexSpecArgs.builder()
@@ -57,7 +58,7 @@ import javax.annotation.Nullable;
  *                 .pipelineType(&#34;TRIGGERED&#34;)
  *                 .embeddingSourceColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs.builder()
  *                     .name(&#34;text&#34;)
- *                     .embeddingModelEndpointName(databricks_model_serving.this().name())
+ *                     .embeddingModelEndpointName(this_.name())
  *                     .build())
  *                 .build())
  *             .build());

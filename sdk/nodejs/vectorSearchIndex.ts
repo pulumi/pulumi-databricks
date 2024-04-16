@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sync = new databricks.VectorSearchIndex("sync", {
- *     endpointName: databricks_vector_search_endpoint["this"].name,
+ *     name: "main.default.vector_search_index",
+ *     endpointName: thisDatabricksVectorSearchEndpoint.name,
  *     primaryKey: "id",
  *     indexType: "DELTA_SYNC",
  *     deltaSyncIndexSpec: {
@@ -27,7 +28,7 @@ import * as utilities from "./utilities";
  *         pipelineType: "TRIGGERED",
  *         embeddingSourceColumns: [{
  *             name: "text",
- *             embeddingModelEndpointName: databricks_model_serving["this"].name,
+ *             embeddingModelEndpointName: _this.name,
  *         }],
  *     },
  * });

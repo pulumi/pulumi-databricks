@@ -25,21 +25,27 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ds = new Databricks.Group("ds");
+    ///     var ds = new Databricks.Group("ds", new()
+    ///     {
+    ///         DisplayName = "data-scientists",
+    ///     });
     /// 
-    ///     var app = new Databricks.SecretScope("app");
+    ///     var app = new Databricks.SecretScope("app", new()
+    ///     {
+    ///         Name = "app-secret-scope",
+    ///     });
     /// 
-    ///     var mySecretAcl = new Databricks.SecretAcl("mySecretAcl", new()
+    ///     var mySecretAcl = new Databricks.SecretAcl("my_secret_acl", new()
     ///     {
     ///         Principal = ds.DisplayName,
     ///         Permission = "READ",
     ///         Scope = app.Name,
     ///     });
     /// 
-    ///     var publishingApi = new Databricks.Secret("publishingApi", new()
+    ///     var publishingApi = new Databricks.Secret("publishing_api", new()
     ///     {
     ///         Key = "publishing_api",
-    ///         StringValue = data.Azurerm_key_vault_secret.Example.Value,
+    ///         StringValue = example.Value,
     ///         Scope = app.Name,
     ///     });
     /// 

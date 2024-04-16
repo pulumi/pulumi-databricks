@@ -21,6 +21,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -28,11 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			me, err := databricks.GetCurrentUser(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewMlflowExperiment(ctx, "this", &databricks.MlflowExperimentArgs{
+//				Name:             pulumi.String(fmt.Sprintf("%v/Sample", me.Home)),
 //				ArtifactLocation: pulumi.String("dbfs:/tmp/my-experiment"),
 //				Description:      pulumi.String("My MLflow experiment description"),
 //			})

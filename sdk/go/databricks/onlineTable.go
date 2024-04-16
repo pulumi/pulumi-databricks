@@ -31,12 +31,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewOnlineTable(ctx, "this", &databricks.OnlineTableArgs{
+//				Name: pulumi.String("main.default.online_table"),
 //				Spec: &databricks.OnlineTableSpecArgs{
+//					SourceTableFullName: pulumi.String("main.default.source_table"),
 //					PrimaryKeyColumns: pulumi.StringArray{
 //						pulumi.String("id"),
 //					},
-//					RunTriggered:        nil,
-//					SourceTableFullName: pulumi.String("main.default.source_table"),
+//					RunTriggered: nil,
 //				},
 //			})
 //			if err != nil {

@@ -39,6 +39,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.Group("this", new()
     ///     {
+    ///         DisplayName = "Some Group",
     ///         AllowClusterCreate = true,
     ///         AllowInstancePoolCreate = true,
     ///     });
@@ -58,20 +59,21 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisGroup = new Databricks.Group("thisGroup", new()
+    ///     var @this = new Databricks.Group("this", new()
     ///     {
+    ///         DisplayName = "Some Group",
     ///         AllowClusterCreate = true,
     ///         AllowInstancePoolCreate = true,
     ///     });
     /// 
-    ///     var thisUser = new Databricks.User("thisUser", new()
+    ///     var thisUser = new Databricks.User("this", new()
     ///     {
     ///         UserName = "someone@example.com",
     ///     });
     /// 
-    ///     var vipMember = new Databricks.GroupMember("vipMember", new()
+    ///     var vipMember = new Databricks.GroupMember("vip_member", new()
     ///     {
-    ///         GroupId = thisGroup.Id,
+    ///         GroupId = @this.Id,
     ///         MemberId = thisUser.Id,
     ///     });
     /// 
@@ -90,20 +92,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at account-level
-    ///     var mws = new Databricks.Provider("mws", new()
-    ///     {
-    ///         Host = "https://accounts.cloud.databricks.com",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         ClientId = @var.Client_id,
-    ///         ClientSecret = @var.Client_secret,
-    ///     });
-    /// 
     ///     var @this = new Databricks.Group("this", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
+    ///         DisplayName = "Some Group",
     ///     });
     /// 
     /// });
@@ -121,19 +112,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at Azure account-level
-    ///     var azureAccount = new Databricks.Provider("azureAccount", new()
-    ///     {
-    ///         Host = "https://accounts.azuredatabricks.net",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         AuthType = "azure-cli",
-    ///     });
-    /// 
     ///     var @this = new Databricks.Group("this", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Azure_account,
+    ///         DisplayName = "Some Group",
     ///     });
     /// 
     /// });

@@ -29,13 +29,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			app, err := databricks.NewSecretScope(ctx, "app", nil)
+//			app, err := databricks.NewSecretScope(ctx, "app", &databricks.SecretScopeArgs{
+//				Name: pulumi.String("application-secret-scope"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			publishingApi, err := databricks.NewSecret(ctx, "publishingApi", &databricks.SecretArgs{
+//			publishingApi, err := databricks.NewSecret(ctx, "publishing_api", &databricks.SecretArgs{
 //				Key:         pulumi.String("publishing_api"),
-//				StringValue: pulumi.Any(data.Azurerm_key_vault_secret.Example.Value),
+//				StringValue: pulumi.Any(example.Value),
 //				Scope:       app.ID(),
 //			})
 //			if err != nil {

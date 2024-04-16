@@ -361,6 +361,7 @@ class Mount(pulumi.CustomResource):
         container = "test"
         storage_acc = "lrs"
         this = databricks.Mount("this",
+            name="tf-abfss",
             uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
             extra_configs={
                 "fs.azure.account.auth.type": "OAuth",
@@ -388,13 +389,15 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Resource group for Databricks Workspace
         resource_group = config.require("resourceGroup")
+        # Name of the Databricks Workspace
         workspace_name = config.require("workspaceName")
         this = azure.databricks.get_workspace(name=workspace_name,
             resource_group_name=resource_group)
         smallest = databricks.get_node_type(local_disk=True)
         latest = databricks.get_spark_version()
-        shared_passthrough = databricks.Cluster("sharedPassthrough",
+        shared_passthrough = databricks.Cluster("shared_passthrough",
             cluster_name="Shared Passthrough for mount",
             spark_version=latest.id,
             node_type_id=smallest.id,
@@ -409,9 +412,12 @@ class Mount(pulumi.CustomResource):
             custom_tags={
                 "ResourceClass": "Serverless",
             })
+        # Name of the ADLS Gen2 storage container
         storage_acc = config.require("storageAcc")
+        # Name of container inside storage account
         container = config.require("container")
         passthrough = databricks.Mount("passthrough",
+            name="passthrough-test",
             cluster_id=shared_passthrough.id,
             uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
             extra_configs={
@@ -436,10 +442,12 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         # now you can do `%fs ls /mnt/experiments` in notebooks
-        this = databricks.Mount("this", s3=databricks.MountS3Args(
-            instance_profile=databricks_instance_profile["ds"]["id"],
-            bucket_name=aws_s3_bucket["this"]["bucket"],
-        ))
+        this = databricks.Mount("this",
+            name="experiments",
+            s3=databricks.MountS3Args(
+                instance_profile=ds["id"],
+                bucket_name=this_aws_s3_bucket["bucket"],
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -466,29 +474,34 @@ class Mount(pulumi.CustomResource):
         import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
-        service_principal_key = databricks.Secret("servicePrincipalKey",
+        terraform = databricks.SecretScope("terraform",
+            name="application",
+            initial_manage_principal="users")
+        service_principal_key = databricks.Secret("service_principal_key",
             key="service_principal_key",
-            string_value=var["ARM_CLIENT_SECRET"],
+            string_value=ar_m__clien_t__secret,
             scope=terraform.name)
-        this_account = azure.storage.Account("thisAccount",
-            resource_group_name=var["resource_group_name"],
-            location=var["resource_group_location"],
+        this = azure.storage.Account("this",
+            name=f"{prefix}datalake",
+            resource_group_name=resource_group_name,
+            location=resource_group_location,
             account_tier="Standard",
             account_replication_type="GRS",
             account_kind="StorageV2",
             is_hns_enabled=True)
-        this_assignment = azure.authorization.Assignment("thisAssignment",
-            scope=this_account.id,
+        this_assignment = azure.authorization.Assignment("this",
+            scope=this.id,
             role_definition_name="Storage Blob Data Contributor",
-            principal_id=data["azurerm_client_config"]["current"]["object_id"])
-        this_container = azure.storage.Container("thisContainer",
-            storage_account_name=this_account.name,
+            principal_id=current["objectId"])
+        this_container = azure.storage.Container("this",
+            name="marketing",
+            storage_account_name=this.name,
             container_access_type="private")
         marketing = databricks.Mount("marketing",
+            name="marketing",
             resource_id=this_container.resource_manager_id,
             abfs=databricks.MountAbfsArgs(
-                client_id=data["azurerm_client_config"]["current"]["client_id"],
+                client_id=current["clientId"],
                 client_secret_scope=terraform.name,
                 client_secret_key=service_principal_key.key,
                 initialize_file_system=True,
@@ -510,10 +523,12 @@ class Mount(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_gs = databricks.Mount("thisGs", gs=databricks.MountGsArgs(
-            bucket_name="mybucket",
-            service_account="acc@company.iam.gserviceaccount.com",
-        ))
+        this_gs = databricks.Mount("this_gs",
+            name="gs-mount",
+            gs=databricks.MountGsArgs(
+                service_account="acc@company.iam.gserviceaccount.com",
+                bucket_name="mybucket",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -537,14 +552,16 @@ class Mount(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        mount = databricks.Mount("mount", adl=databricks.MountAdlArgs(
-            storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
-            tenant_id=data["azurerm_client_config"]["current"]["tenant_id"],
-            client_id=data["azurerm_client_config"]["current"]["client_id"],
-            client_secret_scope=databricks_secret_scope["terraform"]["name"],
-            client_secret_key=databricks_secret["service_principal_key"]["key"],
-            spark_conf_prefix="fs.adl",
-        ))
+        mount = databricks.Mount("mount",
+            name="{var.RANDOM}",
+            adl=databricks.MountAdlArgs(
+                storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
+                tenant_id=current["tenantId"],
+                client_id=current["clientId"],
+                client_secret_scope=terraform["name"],
+                client_secret_key=service_principal_key["key"],
+                spark_conf_prefix="fs.adl",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -568,26 +585,32 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         blobaccount = azure.storage.Account("blobaccount",
-            resource_group_name=var["resource_group_name"],
-            location=var["resource_group_location"],
+            name=f"{prefix}blob",
+            resource_group_name=resource_group_name,
+            location=resource_group_location,
             account_tier="Standard",
             account_replication_type="LRS",
             account_kind="StorageV2")
-        marketing_container = azure.storage.Container("marketingContainer",
+        marketing = azure.storage.Container("marketing",
+            name="marketing",
             storage_account_name=blobaccount.name,
             container_access_type="private")
-        terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
-        storage_key = databricks.Secret("storageKey",
+        terraform = databricks.SecretScope("terraform",
+            name="application",
+            initial_manage_principal="users")
+        storage_key = databricks.Secret("storage_key",
             key="blob_storage_key",
             string_value=blobaccount.primary_access_key,
             scope=terraform.name)
-        marketing_mount = databricks.Mount("marketingMount", wasb=databricks.MountWasbArgs(
-            container_name=marketing_container.name,
-            storage_account_name=blobaccount.name,
-            auth_type="ACCESS_KEY",
-            token_secret_scope=terraform.name,
-            token_secret_key=storage_key.key,
-        ))
+        marketing_mount = databricks.Mount("marketing",
+            name="marketing",
+            wasb=databricks.MountWasbArgs(
+                container_name=marketing.name,
+                storage_account_name=blobaccount.name,
+                auth_type="ACCESS_KEY",
+                token_secret_scope=terraform.name,
+                token_secret_key=storage_key.key,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -660,6 +683,7 @@ class Mount(pulumi.CustomResource):
         container = "test"
         storage_acc = "lrs"
         this = databricks.Mount("this",
+            name="tf-abfss",
             uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
             extra_configs={
                 "fs.azure.account.auth.type": "OAuth",
@@ -687,13 +711,15 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Resource group for Databricks Workspace
         resource_group = config.require("resourceGroup")
+        # Name of the Databricks Workspace
         workspace_name = config.require("workspaceName")
         this = azure.databricks.get_workspace(name=workspace_name,
             resource_group_name=resource_group)
         smallest = databricks.get_node_type(local_disk=True)
         latest = databricks.get_spark_version()
-        shared_passthrough = databricks.Cluster("sharedPassthrough",
+        shared_passthrough = databricks.Cluster("shared_passthrough",
             cluster_name="Shared Passthrough for mount",
             spark_version=latest.id,
             node_type_id=smallest.id,
@@ -708,9 +734,12 @@ class Mount(pulumi.CustomResource):
             custom_tags={
                 "ResourceClass": "Serverless",
             })
+        # Name of the ADLS Gen2 storage container
         storage_acc = config.require("storageAcc")
+        # Name of container inside storage account
         container = config.require("container")
         passthrough = databricks.Mount("passthrough",
+            name="passthrough-test",
             cluster_id=shared_passthrough.id,
             uri=f"abfss://{container}@{storage_acc}.dfs.core.windows.net",
             extra_configs={
@@ -735,10 +764,12 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         # now you can do `%fs ls /mnt/experiments` in notebooks
-        this = databricks.Mount("this", s3=databricks.MountS3Args(
-            instance_profile=databricks_instance_profile["ds"]["id"],
-            bucket_name=aws_s3_bucket["this"]["bucket"],
-        ))
+        this = databricks.Mount("this",
+            name="experiments",
+            s3=databricks.MountS3Args(
+                instance_profile=ds["id"],
+                bucket_name=this_aws_s3_bucket["bucket"],
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -765,29 +796,34 @@ class Mount(pulumi.CustomResource):
         import pulumi_azure as azure
         import pulumi_databricks as databricks
 
-        terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
-        service_principal_key = databricks.Secret("servicePrincipalKey",
+        terraform = databricks.SecretScope("terraform",
+            name="application",
+            initial_manage_principal="users")
+        service_principal_key = databricks.Secret("service_principal_key",
             key="service_principal_key",
-            string_value=var["ARM_CLIENT_SECRET"],
+            string_value=ar_m__clien_t__secret,
             scope=terraform.name)
-        this_account = azure.storage.Account("thisAccount",
-            resource_group_name=var["resource_group_name"],
-            location=var["resource_group_location"],
+        this = azure.storage.Account("this",
+            name=f"{prefix}datalake",
+            resource_group_name=resource_group_name,
+            location=resource_group_location,
             account_tier="Standard",
             account_replication_type="GRS",
             account_kind="StorageV2",
             is_hns_enabled=True)
-        this_assignment = azure.authorization.Assignment("thisAssignment",
-            scope=this_account.id,
+        this_assignment = azure.authorization.Assignment("this",
+            scope=this.id,
             role_definition_name="Storage Blob Data Contributor",
-            principal_id=data["azurerm_client_config"]["current"]["object_id"])
-        this_container = azure.storage.Container("thisContainer",
-            storage_account_name=this_account.name,
+            principal_id=current["objectId"])
+        this_container = azure.storage.Container("this",
+            name="marketing",
+            storage_account_name=this.name,
             container_access_type="private")
         marketing = databricks.Mount("marketing",
+            name="marketing",
             resource_id=this_container.resource_manager_id,
             abfs=databricks.MountAbfsArgs(
-                client_id=data["azurerm_client_config"]["current"]["client_id"],
+                client_id=current["clientId"],
                 client_secret_scope=terraform.name,
                 client_secret_key=service_principal_key.key,
                 initialize_file_system=True,
@@ -809,10 +845,12 @@ class Mount(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_gs = databricks.Mount("thisGs", gs=databricks.MountGsArgs(
-            bucket_name="mybucket",
-            service_account="acc@company.iam.gserviceaccount.com",
-        ))
+        this_gs = databricks.Mount("this_gs",
+            name="gs-mount",
+            gs=databricks.MountGsArgs(
+                service_account="acc@company.iam.gserviceaccount.com",
+                bucket_name="mybucket",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -836,14 +874,16 @@ class Mount(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        mount = databricks.Mount("mount", adl=databricks.MountAdlArgs(
-            storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
-            tenant_id=data["azurerm_client_config"]["current"]["tenant_id"],
-            client_id=data["azurerm_client_config"]["current"]["client_id"],
-            client_secret_scope=databricks_secret_scope["terraform"]["name"],
-            client_secret_key=databricks_secret["service_principal_key"]["key"],
-            spark_conf_prefix="fs.adl",
-        ))
+        mount = databricks.Mount("mount",
+            name="{var.RANDOM}",
+            adl=databricks.MountAdlArgs(
+                storage_resource_name="{env.TEST_STORAGE_ACCOUNT_NAME}",
+                tenant_id=current["tenantId"],
+                client_id=current["clientId"],
+                client_secret_scope=terraform["name"],
+                client_secret_key=service_principal_key["key"],
+                spark_conf_prefix="fs.adl",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -867,26 +907,32 @@ class Mount(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         blobaccount = azure.storage.Account("blobaccount",
-            resource_group_name=var["resource_group_name"],
-            location=var["resource_group_location"],
+            name=f"{prefix}blob",
+            resource_group_name=resource_group_name,
+            location=resource_group_location,
             account_tier="Standard",
             account_replication_type="LRS",
             account_kind="StorageV2")
-        marketing_container = azure.storage.Container("marketingContainer",
+        marketing = azure.storage.Container("marketing",
+            name="marketing",
             storage_account_name=blobaccount.name,
             container_access_type="private")
-        terraform = databricks.SecretScope("terraform", initial_manage_principal="users")
-        storage_key = databricks.Secret("storageKey",
+        terraform = databricks.SecretScope("terraform",
+            name="application",
+            initial_manage_principal="users")
+        storage_key = databricks.Secret("storage_key",
             key="blob_storage_key",
             string_value=blobaccount.primary_access_key,
             scope=terraform.name)
-        marketing_mount = databricks.Mount("marketingMount", wasb=databricks.MountWasbArgs(
-            container_name=marketing_container.name,
-            storage_account_name=blobaccount.name,
-            auth_type="ACCESS_KEY",
-            token_secret_scope=terraform.name,
-            token_secret_key=storage_key.key,
-        ))
+        marketing_mount = databricks.Mount("marketing",
+            name="marketing",
+            wasb=databricks.MountWasbArgs(
+                container_name=marketing.name,
+                storage_account_name=blobaccount.name,
+                auth_type="ACCESS_KEY",
+                token_secret_scope=terraform.name,
+                token_secret_key=storage_key.key,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

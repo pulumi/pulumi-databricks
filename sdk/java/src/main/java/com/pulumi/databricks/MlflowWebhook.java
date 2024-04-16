@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var url = new MlflowWebhook(&#34;url&#34;, MlflowWebhookArgs.builder()        
- *             .description(&#34;URL webhook trigger&#34;)
  *             .events(&#34;TRANSITION_REQUEST_CREATED&#34;)
+ *             .description(&#34;URL webhook trigger&#34;)
  *             .httpUrlSpec(MlflowWebhookHttpUrlSpecArgs.builder()
  *                 .url(&#34;https://my_cool_host/webhook&#34;)
  *                 .build())

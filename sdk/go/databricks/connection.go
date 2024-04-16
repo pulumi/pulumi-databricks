@@ -39,13 +39,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewConnection(ctx, "mysql", &databricks.ConnectionArgs{
-//				Comment:        pulumi.String("this is a connection to mysql db"),
+//				Name:           pulumi.String("mysql_connection"),
 //				ConnectionType: pulumi.String("MYSQL"),
+//				Comment:        pulumi.String("this is a connection to mysql db"),
 //				Options: pulumi.Map{
 //					"host":     pulumi.Any("test.mysql.database.azure.com"),
-//					"password": pulumi.Any("password"),
 //					"port":     pulumi.Any("3306"),
 //					"user":     pulumi.Any("user"),
+//					"password": pulumi.Any("password"),
 //				},
 //				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
@@ -96,6 +97,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = databricks.NewConnection(ctx, "bigquery", &databricks.ConnectionArgs{
+//				Name:           pulumi.String("bq_connection"),
 //				ConnectionType: pulumi.String("BIGQUERY"),
 //				Comment:        pulumi.String("this is a connection to BQ"),
 //				Options: pulumi.Map{

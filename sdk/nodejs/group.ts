@@ -29,6 +29,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.Group("this", {
+ *     displayName: "Some Group",
  *     allowClusterCreate: true,
  *     allowInstancePoolCreate: true,
  * });
@@ -42,13 +43,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisGroup = new databricks.Group("thisGroup", {
+ * const _this = new databricks.Group("this", {
+ *     displayName: "Some Group",
  *     allowClusterCreate: true,
  *     allowInstancePoolCreate: true,
  * });
- * const thisUser = new databricks.User("thisUser", {userName: "someone@example.com"});
- * const vipMember = new databricks.GroupMember("vipMember", {
- *     groupId: thisGroup.id,
+ * const thisUser = new databricks.User("this", {userName: "someone@example.com"});
+ * const vipMember = new databricks.GroupMember("vip_member", {
+ *     groupId: _this.id,
  *     memberId: thisUser.id,
  * });
  * ```
@@ -61,16 +63,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at account-level
- * const mws = new databricks.Provider("mws", {
- *     host: "https://accounts.cloud.databricks.com",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     clientId: _var.client_id,
- *     clientSecret: _var.client_secret,
- * });
- * const _this = new databricks.Group("this", {}, {
- *     provider: databricks.mws,
- * });
+ * const _this = new databricks.Group("this", {displayName: "Some Group"});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -81,15 +74,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at Azure account-level
- * const azureAccount = new databricks.Provider("azureAccount", {
- *     host: "https://accounts.azuredatabricks.net",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     authType: "azure-cli",
- * });
- * const _this = new databricks.Group("this", {}, {
- *     provider: databricks.azure_account,
- * });
+ * const _this = new databricks.Group("this", {displayName: "Some Group"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

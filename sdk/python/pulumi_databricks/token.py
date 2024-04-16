@@ -200,13 +200,10 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider in normal mode
-        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
             comment="Terraform Provisioning",
-            lifetime_seconds=8640000,
-            opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
+            lifetime_seconds=8640000)
         pulumi.export("databricksToken", pat.token_value)
         ```
         <!--End PulumiCodeChooser -->
@@ -251,13 +248,10 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider in normal mode
-        created_workspace = databricks.Provider("createdWorkspace", host=databricks_mws_workspaces["this"]["workspace_url"])
         # create PAT token to provision entities within workspace
         pat = databricks.Token("pat",
             comment="Terraform Provisioning",
-            lifetime_seconds=8640000,
-            opts=pulumi.ResourceOptions(provider=databricks["created_workspace"]))
+            lifetime_seconds=8640000)
         pulumi.export("databricksToken", pat.token_value)
         ```
         <!--End PulumiCodeChooser -->

@@ -159,6 +159,7 @@ class MlflowModel(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test = databricks.MlflowModel("test",
+            name="My MLflow Model",
             description="My MLflow model description",
             tags=[
                 databricks.MlflowModelTagArgs(
@@ -225,6 +226,7 @@ class MlflowModel(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test = databricks.MlflowModel("test",
+            name="My MLflow Model",
             description="My MLflow model description",
             tags=[
                 databricks.MlflowModelTagArgs(

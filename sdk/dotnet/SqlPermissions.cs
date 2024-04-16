@@ -28,8 +28,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooTable = new Databricks.SqlPermissions("fooTable", new()
+    ///     var fooTable = new Databricks.SqlPermissions("foo_table", new()
     ///     {
+    ///         Table = "foo",
     ///         PrivilegeAssignments = new[]
     ///         {
     ///             new Databricks.Inputs.SqlPermissionsPrivilegeAssignmentArgs
@@ -50,7 +51,6 @@ namespace Pulumi.Databricks
     ///                 },
     ///             },
     ///         },
-    ///         Table = "foo",
     ///     });
     /// 
     /// });

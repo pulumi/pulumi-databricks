@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const ds = new databricks.Group("ds", {});
- * const app = new databricks.SecretScope("app", {});
- * const mySecretAcl = new databricks.SecretAcl("mySecretAcl", {
+ * const ds = new databricks.Group("ds", {displayName: "data-scientists"});
+ * const app = new databricks.SecretScope("app", {name: "app-secret-scope"});
+ * const mySecretAcl = new databricks.SecretAcl("my_secret_acl", {
  *     principal: ds.displayName,
  *     permission: "READ",
  *     scope: app.name,
  * });
- * const publishingApi = new databricks.Secret("publishingApi", {
+ * const publishingApi = new databricks.Secret("publishing_api", {
  *     key: "publishing_api",
- *     stringValue: data.azurerm_key_vault_secret.example.value,
+ *     stringValue: example.value,
  *     scope: app.name,
  * });
  * ```

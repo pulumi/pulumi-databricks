@@ -27,7 +27,8 @@ namespace Pulumi.Databricks
     /// {
     ///     var sync = new Databricks.VectorSearchIndex("sync", new()
     ///     {
-    ///         EndpointName = databricks_vector_search_endpoint.This.Name,
+    ///         Name = "main.default.vector_search_index",
+    ///         EndpointName = thisDatabricksVectorSearchEndpoint.Name,
     ///         PrimaryKey = "id",
     ///         IndexType = "DELTA_SYNC",
     ///         DeltaSyncIndexSpec = new Databricks.Inputs.VectorSearchIndexDeltaSyncIndexSpecArgs
@@ -39,7 +40,7 @@ namespace Pulumi.Databricks
     ///                 new Databricks.Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs
     ///                 {
     ///                     Name = "text",
-    ///                     EmbeddingModelEndpointName = databricks_model_serving.This.Name,
+    ///                     EmbeddingModelEndpointName = @this.Name,
     ///                 },
     ///             },
     ///         },

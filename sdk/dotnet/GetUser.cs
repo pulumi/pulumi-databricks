@@ -39,7 +39,7 @@ namespace Pulumi.Databricks
         ///         UserName = "me@example.com",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("myMemberA", new()
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = me.Apply(getUserResult =&gt; getUserResult.Id),
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
         ///         UserName = "me@example.com",
         ///     });
         /// 
-        ///     var myMemberA = new Databricks.GroupMember("myMemberA", new()
+        ///     var myMemberA = new Databricks.GroupMember("my_member_a", new()
         ///     {
         ///         GroupId = admins.Apply(getGroupResult =&gt; getGroupResult.Id),
         ///         MemberId = me.Apply(getUserResult =&gt; getUserResult.Id),

@@ -26,12 +26,13 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  * import * as random from "@pulumi/random";
  *
- * const db2opensharecode = new random.RandomPassword("db2opensharecode", {
+ * const db2opensharecode = new random.index.Password("db2opensharecode", {
  *     length: 16,
  *     special: true,
  * });
  * const current = databricks.getCurrentUser({});
  * const db2open = new databricks.Recipient("db2open", {
+ *     name: current.then(current => `${current.alphanumeric}-recipient`),
  *     comment: "made by terraform",
  *     authenticationType: "TOKEN",
  *     sharingCode: db2opensharecode.result,

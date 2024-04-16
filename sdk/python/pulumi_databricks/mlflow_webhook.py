@@ -237,8 +237,8 @@ class MlflowWebhook(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         url = databricks.MlflowWebhook("url",
-            description="URL webhook trigger",
             events=["TRANSITION_REQUEST_CREATED"],
+            description="URL webhook trigger",
             http_url_spec=databricks.MlflowWebhookHttpUrlSpecArgs(
                 url="https://my_cool_host/webhook",
             ))
@@ -293,8 +293,8 @@ class MlflowWebhook(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         url = databricks.MlflowWebhook("url",
-            description="URL webhook trigger",
             events=["TRANSITION_REQUEST_CREATED"],
+            description="URL webhook trigger",
             http_url_spec=databricks.MlflowWebhookHttpUrlSpecArgs(
                 url="https://my_cool_host/webhook",
             ))

@@ -253,6 +253,42 @@ class SqlAlert(pulumi.CustomResource):
 
         **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        this = databricks.SqlQuery("this",
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
+            query="SELECT 1 AS p1, 2 as p2",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"))
+        alert = databricks.SqlAlert("alert",
+            query_id=this.id,
+            name="My Alert",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            rearm=1,
+            options=databricks.SqlAlertOptionsArgs(
+                column="p1",
+                op="==",
+                value="2",
+                muted=False,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the alert.
@@ -271,6 +307,42 @@ class SqlAlert(pulumi.CustomResource):
         This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
 
         **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
+        this = databricks.SqlQuery("this",
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
+            query="SELECT 1 AS p1, 2 as p2",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"))
+        alert = databricks.SqlAlert("alert",
+            query_id=this.id,
+            name="My Alert",
+            parent=shared_dir.object_id.apply(lambda object_id: f"folders/{object_id}"),
+            rearm=1,
+            options=databricks.SqlAlertOptionsArgs(
+                column="p1",
+                op="==",
+                value="2",
+                muted=False,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * End to end workspace management guide.
+        * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         :param str resource_name: The name of the resource.
         :param SqlAlertArgs args: The arguments to use to populate this resource's properties.

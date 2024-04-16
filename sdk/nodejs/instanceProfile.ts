@@ -9,69 +9,6 @@ import * as utilities from "./utilities";
  *
  * > **Note** Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
  *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * const crossaccountRoleName = config.require("crossaccountRoleName");
- * const assumeRoleForEc2 = aws.iam.getPolicyDocument({
- *     statements: [{
- *         effect: "Allow",
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             identifiers: ["ec2.amazonaws.com"],
- *             type: "Service",
- *         }],
- *     }],
- * });
- * const roleForS3Access = new aws.iam.Role("roleForS3Access", {
- *     description: "Role for shared access",
- *     assumeRolePolicy: assumeRoleForEc2.then(assumeRoleForEc2 => assumeRoleForEc2.json),
- * });
- * const passRoleForS3AccessPolicyDocument = aws.iam.getPolicyDocumentOutput({
- *     statements: [{
- *         effect: "Allow",
- *         actions: ["iam:PassRole"],
- *         resources: [roleForS3Access.arn],
- *     }],
- * });
- * const passRoleForS3AccessPolicy = new aws.iam.Policy("passRoleForS3AccessPolicy", {
- *     path: "/",
- *     policy: passRoleForS3AccessPolicyDocument.apply(passRoleForS3AccessPolicyDocument => passRoleForS3AccessPolicyDocument.json),
- * });
- * const crossAccount = new aws.iam.RolePolicyAttachment("crossAccount", {
- *     policyArn: passRoleForS3AccessPolicy.arn,
- *     role: crossaccountRoleName,
- * });
- * const sharedInstanceProfile = new aws.iam.InstanceProfile("sharedInstanceProfile", {role: roleForS3Access.name});
- * const sharedIndex_instanceProfileInstanceProfile = new databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", {instanceProfileArn: sharedInstanceProfile.arn});
- * const latest = databricks.getSparkVersion({});
- * const smallest = databricks.getNodeType({
- *     localDisk: true,
- * });
- * const _this = new databricks.Cluster("this", {
- *     clusterName: "Shared Autoscaling",
- *     sparkVersion: latest.then(latest => latest.id),
- *     nodeTypeId: smallest.then(smallest => smallest.id),
- *     autoterminationMinutes: 20,
- *     autoscale: {
- *         minWorkers: 1,
- *         maxWorkers: 50,
- *     },
- *     awsAttributes: {
- *         instanceProfileArn: sharedIndex / instanceProfileInstanceProfile.id,
- *         availability: "SPOT",
- *         zoneId: "us-east-1",
- *         firstOnDemand: 1,
- *         spotBidPricePercent: 100,
- *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Usage with Cluster Policies
  *
  * It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
@@ -81,12 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.ClusterPolicy("this", {definition: JSON.stringify({
- *     "aws_attributes.instance_profile_arn": {
- *         type: "fixed",
- *         value: databricks_instance_profile.shared.arn,
- *     },
- * })});
+ * const _this = new databricks.ClusterPolicy("this", {
+ *     name: "Policy with predefined instance profile",
+ *     definition: JSON.stringify({
+ *         "aws_attributes.instance_profile_arn": {
+ *             type: "fixed",
+ *             value: shared.arn,
+ *         },
+ *     }),
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -99,49 +39,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: aws_iam_instance_profile.shared.arn});
+ * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: shared.arn});
  * const users = databricks.getGroup({
  *     displayName: "users",
  * });
  * const all = new databricks.GroupInstanceProfile("all", {
  *     groupId: users.then(users => users.id),
  *     instanceProfileId: _this.id,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ## Usage with Databricks SQL serverless
- *
- * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sqlServerlessAssumeRole = aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             type: "AWS",
- *             identifiers: ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
- *         }],
- *         conditions: [{
- *             test: "StringEquals",
- *             variable: "sts:ExternalID",
- *             values: [
- *                 "databricks-serverless-<YOUR_WORKSPACE_ID1>",
- *                 "databricks-serverless-<YOUR_WORKSPACE_ID2>",
- *             ],
- *         }],
- *     }],
- * });
- * const thisRole = new aws.iam.Role("thisRole", {assumeRolePolicy: sqlServerlessAssumeRole.then(sqlServerlessAssumeRole => sqlServerlessAssumeRole.json)});
- * const thisInstanceProfile = new aws.iam.InstanceProfile("thisInstanceProfile", {role: thisRole.name});
- * const thisIndex_instanceProfileInstanceProfile = new databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", {
- *     instanceProfileArn: thisInstanceProfile.arn,
- *     iamRoleArn: thisRole.arn,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

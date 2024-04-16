@@ -27,25 +27,26 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.ModelServing("this", new()
     ///     {
+    ///         Name = "ads-serving-endpoint",
     ///         Config = new Databricks.Inputs.ModelServingConfigArgs
     ///         {
     ///             ServedEntities = new[]
     ///             {
     ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
     ///                 {
+    ///                     Name = "prod_model",
     ///                     EntityName = "ads-model",
     ///                     EntityVersion = "2",
-    ///                     Name = "prod_model",
-    ///                     ScaleToZeroEnabled = true,
     ///                     WorkloadSize = "Small",
+    ///                     ScaleToZeroEnabled = true,
     ///                 },
     ///                 new Databricks.Inputs.ModelServingConfigServedEntityArgs
     ///                 {
+    ///                     Name = "candidate_model",
     ///                     EntityName = "ads-model",
     ///                     EntityVersion = "4",
-    ///                     Name = "candidate_model",
-    ///                     ScaleToZeroEnabled = false,
     ///                     WorkloadSize = "Small",
+    ///                     ScaleToZeroEnabled = false,
     ///                 },
     ///             },
     ///             TrafficConfig = new Databricks.Inputs.ModelServingConfigTrafficConfigArgs

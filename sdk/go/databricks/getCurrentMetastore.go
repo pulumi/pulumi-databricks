@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("someMetastore", data.Databricks_metastore.This.Metastore_info[0])
+//			ctx.Export("someMetastore", thisDatabricksMetastore.MetastoreInfo[0])
 //			return nil
 //		})
 //	}

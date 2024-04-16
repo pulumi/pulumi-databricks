@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewRegisteredModel(ctx, "this", &databricks.RegisteredModelArgs{
+//				Name:        pulumi.String("my_model"),
 //				CatalogName: pulumi.String("main"),
 //				SchemaName:  pulumi.String("default"),
 //			})

@@ -18,11 +18,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const meUser = databricks.getUser({
+ * const me = databricks.getUser({
  *     userName: "me@example.com",
  * });
- * const meEntitlements = new databricks.Entitlements("meEntitlements", {
- *     userId: meUser.then(meUser => meUser.id),
+ * const meEntitlements = new databricks.Entitlements("me", {
+ *     userId: me.then(me => me.id),
  *     allowClusterCreate: true,
  *     allowInstancePoolCreate: true,
  * });
@@ -36,11 +36,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisServicePrincipal = databricks.getServicePrincipal({
+ * const this = databricks.getServicePrincipal({
  *     applicationId: "11111111-2222-3333-4444-555666777888",
  * });
- * const thisEntitlements = new databricks.Entitlements("thisEntitlements", {
- *     servicePrincipalId: thisServicePrincipal.then(thisServicePrincipal => thisServicePrincipal.spId),
+ * const thisEntitlements = new databricks.Entitlements("this", {
+ *     servicePrincipalId: _this.then(_this => _this.spId),
  *     allowClusterCreate: true,
  *     allowInstancePoolCreate: true,
  * });

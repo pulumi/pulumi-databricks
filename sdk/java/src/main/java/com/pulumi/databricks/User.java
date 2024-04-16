@@ -132,9 +132,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var me = new User(&#34;me&#34;, UserArgs.builder()        
- *             .allowClusterCreate(true)
- *             .displayName(&#34;Example user&#34;)
  *             .userName(&#34;me@example.com&#34;)
+ *             .displayName(&#34;Example user&#34;)
+ *             .allowClusterCreate(true)
  *             .build());
  * 
  *     }
@@ -151,11 +151,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.User;
  * import com.pulumi.databricks.UserArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -169,20 +166,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at account-level
- *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .clientId(var_.client_id())
- *             .clientSecret(var_.client_secret())
- *             .build());
- * 
  *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
  *             .userName(&#34;me@example.com&#34;)
  *             .displayName(&#34;Example user&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -198,11 +185,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.User;
  * import com.pulumi.databricks.UserArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -216,19 +200,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at Azure account-level
- *         var azureAccount = new Provider(&#34;azureAccount&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .authType(&#34;azure-cli&#34;)
- *             .build());
- * 
  *         var accountUser = new User(&#34;accountUser&#34;, UserArgs.builder()        
  *             .userName(&#34;me@example.com&#34;)
  *             .displayName(&#34;Example user&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.azure_account())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

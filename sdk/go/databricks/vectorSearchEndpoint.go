@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewVectorSearchEndpoint(ctx, "this", &databricks.VectorSearchEndpointArgs{
+//				Name:         pulumi.String("vector-search-test"),
 //				EndpointType: pulumi.String("STANDARD"),
 //			})
 //			if err != nil {

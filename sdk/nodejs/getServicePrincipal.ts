@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const spn = databricks.getServicePrincipal({
  *     applicationId: "11111111-2222-3333-4444-555666777888",
  * });
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: spn.then(spn => spn.id),
  * });
@@ -155,7 +155,7 @@ export interface GetServicePrincipalResult {
  * const spn = databricks.getServicePrincipal({
  *     applicationId: "11111111-2222-3333-4444-555666777888",
  * });
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: spn.then(spn => spn.id),
  * });

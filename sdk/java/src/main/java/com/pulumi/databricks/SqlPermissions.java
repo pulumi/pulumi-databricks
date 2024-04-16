@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fooTable = new SqlPermissions(&#34;fooTable&#34;, SqlPermissionsArgs.builder()        
+ *             .table(&#34;foo&#34;)
  *             .privilegeAssignments(            
  *                 SqlPermissionsPrivilegeAssignmentArgs.builder()
  *                     .principal(&#34;serge@example.com&#34;)
@@ -62,7 +63,6 @@ import javax.annotation.Nullable;
  *                     .principal(&#34;special group&#34;)
  *                     .privileges(&#34;SELECT&#34;)
  *                     .build())
- *             .table(&#34;foo&#34;)
  *             .build());
  * 
  *     }

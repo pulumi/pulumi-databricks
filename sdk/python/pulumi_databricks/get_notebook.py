@@ -128,8 +128,8 @@ def get_notebook(format: Optional[str] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    features = databricks.get_notebook(format="SOURCE",
-        path="/Production/Features")
+    features = databricks.get_notebook(path="/Production/Features",
+        format="SOURCE")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -178,8 +178,8 @@ def get_notebook_output(format: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    features = databricks.get_notebook(format="SOURCE",
-        path="/Production/Features")
+    features = databricks.get_notebook(path="/Production/Features",
+        format="SOURCE")
     ```
     <!--End PulumiCodeChooser -->
 

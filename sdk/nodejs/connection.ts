@@ -24,13 +24,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const mysql = new databricks.Connection("mysql", {
- *     comment: "this is a connection to mysql db",
+ *     name: "mysql_connection",
  *     connectionType: "MYSQL",
+ *     comment: "this is a connection to mysql db",
  *     options: {
  *         host: "test.mysql.database.azure.com",
- *         password: "password",
  *         port: "3306",
  *         user: "user",
+ *         password: "password",
  *     },
  *     properties: {
  *         purpose: "testing",
@@ -47,6 +48,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const bigquery = new databricks.Connection("bigquery", {
+ *     name: "bq_connection",
  *     connectionType: "BIGQUERY",
  *     comment: "this is a connection to BQ",
  *     options: {

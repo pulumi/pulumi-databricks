@@ -149,9 +149,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        data_eng = databricks.Group("dataEng")
-        add_admin_group = databricks.MwsPermissionAssignment("addAdminGroup",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        data_eng = databricks.Group("data_eng", display_name="Data Engineering")
+        add_admin_group = databricks.MwsPermissionAssignment("add_admin_group",
+            workspace_id=this["workspaceId"],
             principal_id=data_eng.id,
             permissions=["ADMIN"])
         ```
@@ -165,8 +165,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
-        add_user = databricks.MwsPermissionAssignment("addUser",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        add_user = databricks.MwsPermissionAssignment("add_user",
+            workspace_id=this["workspaceId"],
             principal_id=me.id,
             permissions=["USER"])
         ```
@@ -180,8 +180,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
-        add_admin_spn = databricks.MwsPermissionAssignment("addAdminSpn",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        add_admin_spn = databricks.MwsPermissionAssignment("add_admin_spn",
+            workspace_id=this["workspaceId"],
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```
@@ -232,9 +232,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        data_eng = databricks.Group("dataEng")
-        add_admin_group = databricks.MwsPermissionAssignment("addAdminGroup",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        data_eng = databricks.Group("data_eng", display_name="Data Engineering")
+        add_admin_group = databricks.MwsPermissionAssignment("add_admin_group",
+            workspace_id=this["workspaceId"],
             principal_id=data_eng.id,
             permissions=["ADMIN"])
         ```
@@ -248,8 +248,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
-        add_user = databricks.MwsPermissionAssignment("addUser",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        add_user = databricks.MwsPermissionAssignment("add_user",
+            workspace_id=this["workspaceId"],
             principal_id=me.id,
             permissions=["USER"])
         ```
@@ -263,8 +263,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
-        add_admin_spn = databricks.MwsPermissionAssignment("addAdminSpn",
-            workspace_id=databricks_mws_workspaces["this"]["workspace_id"],
+        add_admin_spn = databricks.MwsPermissionAssignment("add_admin_spn",
+            workspace_id=this["workspaceId"],
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```

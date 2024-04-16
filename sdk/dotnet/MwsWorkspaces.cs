@@ -33,63 +33,47 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var mws = new Databricks.Provider("mws", new()
-    ///     {
-    ///         Host = "https://accounts.cloud.databricks.com",
-    ///     });
-    /// 
     ///     // register cross-account ARN
-    ///     var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new()
+    ///     var @this = new Databricks.MwsCredentials("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         CredentialsName = $"{@var.Prefix}-creds",
-    ///         RoleArn = @var.Crossaccount_arn,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
+    ///         CredentialsName = $"{prefix}-creds",
+    ///         RoleArn = crossaccountArn,
     ///     });
     /// 
     ///     // register root bucket
-    ///     var thisMwsStorageConfigurations = new Databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", new()
+    ///     var thisMwsStorageConfigurations = new Databricks.MwsStorageConfigurations("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         StorageConfigurationName = $"{@var.Prefix}-storage",
-    ///         BucketName = @var.Root_bucket,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
+    ///         StorageConfigurationName = $"{prefix}-storage",
+    ///         BucketName = rootBucket,
     ///     });
     /// 
     ///     // register VPC
-    ///     var thisMwsNetworks = new Databricks.MwsNetworks("thisMwsNetworks", new()
+    ///     var thisMwsNetworks = new Databricks.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         NetworkName = $"{@var.Prefix}-network",
-    ///         VpcId = @var.Vpc_id,
-    ///         SubnetIds = @var.Subnets_private,
+    ///         NetworkName = $"{prefix}-network",
+    ///         VpcId = vpcId,
+    ///         SubnetIds = subnetsPrivate,
     ///         SecurityGroupIds = new[]
     ///         {
-    ///             @var.Security_group,
+    ///             securityGroup,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
     ///     // create workspace in given VPC with DBFS on root bucket
-    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("thisMwsWorkspaces", new()
+    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         WorkspaceName = @var.Prefix,
-    ///         AwsRegion = @var.Region,
-    ///         CredentialsId = thisMwsCredentials.CredentialsId,
+    ///         WorkspaceName = prefix,
+    ///         AwsRegion = region,
+    ///         CredentialsId = @this.CredentialsId,
     ///         StorageConfigurationId = thisMwsStorageConfigurations.StorageConfigurationId,
     ///         NetworkId = thisMwsNetworks.NetworkId,
     ///         Token = null,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -118,79 +102,86 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var naming = new Random.RandomString("naming", new()
+    ///     var naming = new Random.Index.String("naming", new()
     ///     {
     ///         Special = false,
     ///         Upper = false,
     ///         Length = 6,
     ///     });
     /// 
-    ///     var prefix = naming.Result.Apply(result =&gt; $"dltp{result}");
+    ///     var prefix = $"dltp{naming.Result}";
     /// 
-    ///     var thisAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     var @this = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Iam.Role("crossAccountRole", new()
+    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
     ///     {
-    ///         AssumeRolePolicy = thisAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
-    ///         Tags = @var.Tags,
+    ///         Name = $"{prefix}-crossaccount",
+    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+    ///         Tags = tags,
     ///     });
     /// 
-    ///     var thisAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
+    ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("thisRolePolicy", new()
+    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
     ///     {
+    ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,
-    ///         Policy = thisAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+    ///         Policy = thisGetAwsCrossAccountPolicy.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
     ///     });
     /// 
-    ///     var thisMwsCredentials = new Databricks.MwsCredentials("thisMwsCredentials", new()
+    ///     var thisMwsCredentials = new Databricks.MwsCredentials("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsName = $"{prefix}-creds",
     ///         RoleArn = crossAccountRole.Arn,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
-    ///     var rootStorageBucketBucketV2 = new Aws.S3.BucketV2("rootStorageBucketBucketV2", new()
+    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
     ///     {
+    ///         Bucket = $"{prefix}-rootbucket",
     ///         Acl = "private",
     ///         ForceDestroy = true,
-    ///         Tags = @var.Tags,
+    ///         Tags = tags,
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.S3.BucketVersioningV2("rootVersioning", new()
+    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
     ///     {
-    ///         Bucket = rootStorageBucketBucketV2.Id,
-    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningV2VersioningConfigurationArgs
+    ///         Bucket = rootStorageBucket.Id,
+    ///         VersioningConfiguration = new[]
     ///         {
-    ///             Status = "Disabled",
-    ///         },
-    ///     });
-    /// 
-    ///     var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new Aws.S3.BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", new()
-    ///     {
-    ///         Bucket = rootStorageBucketBucketV2.Bucket,
-    ///         Rules = new[]
-    ///         {
-    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleArgs
+    ///             
     ///             {
-    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs
-    ///                 {
-    ///                     SseAlgorithm = "AES256",
-    ///                 },
+    ///                 { "status", "Disabled" },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", new()
+    ///     var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new Aws.Index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
     ///     {
-    ///         Bucket = rootStorageBucketBucketV2.Id,
+    ///         Bucket = rootStorageBucket.Bucket,
+    ///         Rule = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "applyServerSideEncryptionByDefault", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "sseAlgorithm", "AES256" },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var rootStorageBucketS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("root_storage_bucket", new()
+    ///     {
+    ///         Bucket = rootStorageBucket.Id,
     ///         BlockPublicAcls = true,
     ///         BlockPublicPolicy = true,
     ///         IgnorePublicAcls = true,
@@ -199,38 +190,35 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketV2, 
+    ///             rootStorageBucket, 
     ///         },
     ///     });
     /// 
-    ///     var thisAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
+    ///     var thisGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
-    ///         Bucket = rootStorageBucketBucketV2.Bucket,
+    ///         Bucket = rootStorageBucket.Bucket,
     ///     });
     /// 
-    ///     var rootBucketPolicy = new Aws.S3.BucketPolicy("rootBucketPolicy", new()
+    ///     var rootBucketPolicy = new Aws.Index.S3BucketPolicy("root_bucket_policy", new()
     ///     {
-    ///         Bucket = rootStorageBucketBucketV2.Id,
-    ///         Policy = thisAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+    ///         Bucket = rootStorageBucket.Id,
+    ///         Policy = thisGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketPublicAccessBlock, 
+    ///             rootStorageBucketS3BucketPublicAccessBlock, 
     ///         },
     ///     });
     /// 
-    ///     var thisMwsStorageConfigurations = new Databricks.MwsStorageConfigurations("thisMwsStorageConfigurations", new()
+    ///     var thisMwsStorageConfigurations = new Databricks.MwsStorageConfigurations("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
-    ///         BucketName = rootStorageBucketBucketV2.Bucket,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
+    ///         BucketName = rootStorageBucket.Bucket,
     ///     });
     /// 
-    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("thisMwsWorkspaces", new()
+    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         WorkspaceName = prefix,
@@ -242,9 +230,6 @@ namespace Pulumi.Databricks
     ///         {
     ///             { "SoldToCode", "1234" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -273,36 +258,32 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     var databricksGoogleServiceAccount = config.RequireObject&lt;dynamic&gt;("databricksGoogleServiceAccount");
     ///     var googleProject = config.RequireObject&lt;dynamic&gt;("googleProject");
-    ///     var mws = new Databricks.Provider("mws", new()
-    ///     {
-    ///         Host = "https://accounts.gcp.databricks.com",
-    ///     });
-    /// 
     ///     // register VPC
-    ///     var thisMwsNetworks = new Databricks.MwsNetworks("thisMwsNetworks", new()
+    ///     var @this = new Databricks.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         NetworkName = $"{@var.Prefix}-network",
+    ///         NetworkName = $"{prefix}-network",
     ///         GcpNetworkInfo = new Databricks.Inputs.MwsNetworksGcpNetworkInfoArgs
     ///         {
     ///             NetworkProjectId = googleProject,
-    ///             VpcId = @var.Vpc_id,
-    ///             SubnetId = @var.Subnet_id,
-    ///             SubnetRegion = @var.Subnet_region,
+    ///             VpcId = vpcId,
+    ///             SubnetId = subnetId,
+    ///             SubnetRegion = subnetRegion,
     ///             PodIpRangeName = "pods",
     ///             ServiceIpRangeName = "svc",
     ///         },
     ///     });
     /// 
     ///     // create workspace in given VPC
-    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("thisMwsWorkspaces", new()
+    ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
-    ///         WorkspaceName = @var.Prefix,
-    ///         Location = @var.Subnet_region,
+    ///         WorkspaceName = prefix,
+    ///         Location = subnetRegion,
     ///         CloudResourceContainer = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerArgs
     ///         {
     ///             Gcp = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerGcpArgs
@@ -310,7 +291,7 @@ namespace Pulumi.Databricks
     ///                 ProjectId = googleProject,
     ///             },
     ///         },
-    ///         NetworkId = thisMwsNetworks.NetworkId,
+    ///         NetworkId = @this.NetworkId,
     ///         GkeConfig = new Databricks.Inputs.MwsWorkspacesGkeConfigArgs
     ///         {
     ///             ConnectivityType = "PRIVATE_NODE_PUBLIC_MASTER",

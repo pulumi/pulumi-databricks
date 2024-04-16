@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const usageLogs = new databricks.MwsLogDelivery("usageLogs", {
- *     accountId: _var.databricks_account_id,
- *     credentialsId: databricks_mws_credentials.log_writer.credentials_id,
- *     storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,
+ * const usageLogs = new databricks.MwsLogDelivery("usage_logs", {
+ *     accountId: databricksAccountId,
+ *     credentialsId: logWriter.credentialsId,
+ *     storageConfigurationId: logBucket.storageConfigurationId,
  *     deliveryPathPrefix: "billable-usage",
  *     configName: "Usage Logs",
  *     logType: "BILLABLE_USAGE",
@@ -43,10 +43,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const auditLogs = new databricks.MwsLogDelivery("auditLogs", {
- *     accountId: _var.databricks_account_id,
- *     credentialsId: databricks_mws_credentials.log_writer.credentials_id,
- *     storageConfigurationId: databricks_mws_storage_configurations.log_bucket.storage_configuration_id,
+ * const auditLogs = new databricks.MwsLogDelivery("audit_logs", {
+ *     accountId: databricksAccountId,
+ *     credentialsId: logWriter.credentialsId,
+ *     storageConfigurationId: logBucket.storageConfigurationId,
  *     deliveryPathPrefix: "audit-logs",
  *     configName: "Audit Logs",
  *     logType: "AUDIT_LOGS",

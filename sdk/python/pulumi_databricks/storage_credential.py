@@ -442,11 +442,12 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=external_data_access["arn"],
             ),
             comment="Managed by TF")
-        external_creds = databricks.Grants("externalCreds",
+        external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
@@ -462,13 +463,14 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        external_mi = databricks.StorageCredential("externalMi",
+        external_mi = databricks.StorageCredential("external_mi",
+            name="mi_credential",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
+                access_connector_id=example["id"],
             ),
             comment="Managed identity credential managed by TF")
-        external_creds = databricks.Grants("externalCreds",
-            storage_credential=databricks_storage_credential["external"]["id"],
+        external_creds = databricks.Grants("external_creds",
+            storage_credential=external["id"],
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=["CREATE_EXTERNAL_TABLE"],
@@ -483,8 +485,10 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        external = databricks.StorageCredential("external", databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
-        external_creds = databricks.Grants("externalCreds",
+        external = databricks.StorageCredential("external",
+            name="the-creds",
+            databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+        external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
@@ -539,11 +543,12 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         external = databricks.StorageCredential("external",
+            name=external_data_access["name"],
             aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-                role_arn=aws_iam_role["external_data_access"]["arn"],
+                role_arn=external_data_access["arn"],
             ),
             comment="Managed by TF")
-        external_creds = databricks.Grants("externalCreds",
+        external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
@@ -559,13 +564,14 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        external_mi = databricks.StorageCredential("externalMi",
+        external_mi = databricks.StorageCredential("external_mi",
+            name="mi_credential",
             azure_managed_identity=databricks.StorageCredentialAzureManagedIdentityArgs(
-                access_connector_id=azurerm_databricks_access_connector["example"]["id"],
+                access_connector_id=example["id"],
             ),
             comment="Managed identity credential managed by TF")
-        external_creds = databricks.Grants("externalCreds",
-            storage_credential=databricks_storage_credential["external"]["id"],
+        external_creds = databricks.Grants("external_creds",
+            storage_credential=external["id"],
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",
                 privileges=["CREATE_EXTERNAL_TABLE"],
@@ -580,8 +586,10 @@ class StorageCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        external = databricks.StorageCredential("external", databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
-        external_creds = databricks.Grants("externalCreds",
+        external = databricks.StorageCredential("external",
+            name="the-creds",
+            databricks_gcp_service_account=databricks.StorageCredentialDatabricksGcpServiceAccountArgs())
+        external_creds = databricks.Grants("external_creds",
             storage_credential=external.id,
             grants=[databricks.GrantsGrantArgs(
                 principal="Data Engineers",

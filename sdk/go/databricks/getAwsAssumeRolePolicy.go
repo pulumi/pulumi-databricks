@@ -25,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -35,43 +35,46 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			thisAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			this, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountPolicy, err := iam.NewPolicy(ctx, "crossAccountPolicy", &iam.PolicyArgs{
-//				Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
+//			crossAccountPolicy, err := aws.NewIamPolicy(ctx, "cross_account_policy", &aws.IamPolicyArgs{
+//				Name:   fmt.Sprintf("%v-crossaccount-iam-policy", prefix),
+//				Policy: this.Json,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//			thisGetAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
-//				AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
-//				Description:      pulumi.String("Grants Databricks full access to VPC resources"),
+//			crossAccount, err := aws.NewIamRole(ctx, "cross_account", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-crossaccount-iam-role", prefix),
+//				AssumeRolePolicy: thisGetAwsAssumeRolePolicy.Json,
+//				Description:      "Grants Databricks full access to VPC resources",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicyAttachment(ctx, "crossAccountRolePolicyAttachment", &iam.RolePolicyAttachmentArgs{
+//			_, err = aws.NewIamRolePolicyAttachment(ctx, "cross_account", &aws.IamRolePolicyAttachmentArgs{
 //				PolicyArn: crossAccountPolicy.Arn,
-//				Role:      crossAccountRole.Name,
+//				Role:      crossAccount.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// required only in case of multi-workspace setup
-//			_, err = databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
+//			_, err = databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", _var.Prefix)),
-//				RoleArn:         crossAccountRole.Arn,
-//			}, pulumi.Provider(databricks.Mws))
+//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				RoleArn:         crossAccount.Arn,
+//			})
 //			if err != nil {
 //				return err
 //			}

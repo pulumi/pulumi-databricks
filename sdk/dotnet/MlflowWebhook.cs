@@ -27,11 +27,11 @@ namespace Pulumi.Databricks
     /// {
     ///     var url = new Databricks.MlflowWebhook("url", new()
     ///     {
-    ///         Description = "URL webhook trigger",
     ///         Events = new[]
     ///         {
     ///             "TRANSITION_REQUEST_CREATED",
     ///         },
+    ///         Description = "URL webhook trigger",
     ///         HttpUrlSpec = new Databricks.Inputs.MlflowWebhookHttpUrlSpecArgs
     ///         {
     ///             Url = "https://my_cool_host/webhook",

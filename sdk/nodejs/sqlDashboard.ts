@@ -18,8 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const sharedDir = new databricks.Directory("sharedDir", {path: "/Shared/Dashboards"});
+ * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Dashboards"});
  * const d1 = new databricks.SqlDashboard("d1", {
+ *     name: "My Dashboard Name",
  *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
  *     tags: [
  *         "some-tag",
@@ -37,9 +38,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const d1 = new databricks.Permissions("d1", {
- *     sqlDashboardId: databricks_sql_dashboard.d1.id,
+ *     sqlDashboardId: d1DatabricksSqlDashboard.id,
  *     accessControls: [{
- *         groupName: data.databricks_group.users.display_name,
+ *         groupName: users.displayName,
  *         permissionLevel: "CAN_RUN",
  *     }],
  * });

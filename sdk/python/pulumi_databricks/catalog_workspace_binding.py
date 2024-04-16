@@ -210,10 +210,12 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        sandbox_catalog = databricks.Catalog("sandboxCatalog", isolation_mode="ISOLATED")
-        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding",
-            securable_name=sandbox_catalog.name,
-            workspace_id=databricks_mws_workspaces["other"]["workspace_id"])
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            isolation_mode="ISOLATED")
+        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandbox",
+            securable_name=sandbox.name,
+            workspace_id=other["workspaceId"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -246,10 +248,12 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        sandbox_catalog = databricks.Catalog("sandboxCatalog", isolation_mode="ISOLATED")
-        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding",
-            securable_name=sandbox_catalog.name,
-            workspace_id=databricks_mws_workspaces["other"]["workspace_id"])
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            isolation_mode="ISOLATED")
+        sandbox_catalog_workspace_binding = databricks.CatalogWorkspaceBinding("sandbox",
+            securable_name=sandbox.name,
+            workspace_id=other["workspaceId"])
         ```
         <!--End PulumiCodeChooser -->
 

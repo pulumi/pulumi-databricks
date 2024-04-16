@@ -13,7 +13,52 @@ import (
 
 // ## Example Usage
 //
-// MetastoreInfo response for a given metastore id
+// # MetastoreInfo response for a given metastore id
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			thisMetastore, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", metastore.Id)),
+//				Owner:        pulumi.Any(unityAdminGroup),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this := databricks.LookupMetastoreOutput(ctx, databricks.GetMetastoreOutputArgs{
+//				MetastoreId: thisMetastore.ID(),
+//			}, nil)
+//			ctx.Export("someMetastore", this.ApplyT(func(this databricks.GetMetastoreResult) (databricks.GetMetastoreMetastoreInfo, error) {
+//				return this.MetastoreInfo, nil
+//			}).(databricks.GetMetastoreMetastoreInfoOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * getMetastores to get mapping of name to id of all metastores.
+// * Metastore to manage Metastores within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreResult

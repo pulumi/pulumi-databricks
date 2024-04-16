@@ -54,9 +54,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const me = new databricks.User("me", {
- *     allowClusterCreate: true,
- *     displayName: "Example user",
  *     userName: "me@example.com",
+ *     displayName: "Example user",
+ *     allowClusterCreate: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -68,18 +68,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at account-level
- * const mws = new databricks.Provider("mws", {
- *     host: "https://accounts.cloud.databricks.com",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     clientId: _var.client_id,
- *     clientSecret: _var.client_secret,
- * });
- * const accountUser = new databricks.User("accountUser", {
+ * const accountUser = new databricks.User("account_user", {
  *     userName: "me@example.com",
  *     displayName: "Example user",
- * }, {
- *     provider: databricks.mws,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -91,17 +82,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at Azure account-level
- * const azureAccount = new databricks.Provider("azureAccount", {
- *     host: "https://accounts.azuredatabricks.net",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     authType: "azure-cli",
- * });
- * const accountUser = new databricks.User("accountUser", {
+ * const accountUser = new databricks.User("account_user", {
  *     userName: "me@example.com",
  *     displayName: "Example user",
- * }, {
- *     provider: databricks.azure_account,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

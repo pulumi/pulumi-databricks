@@ -88,9 +88,9 @@ import javax.annotation.Nullable;
  *             .dataAccessConfig(Map.ofEntries(
  *                 Map.entry(&#34;spark.hadoop.fs.azure.account.auth.type&#34;, &#34;OAuth&#34;),
  *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth.provider.type&#34;, &#34;org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider&#34;),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.id&#34;, var_.application_id()),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.secret&#34;, String.format(&#34;{{{{secrets/%s/%s}}}}&#34;, local.secret_scope(),local.secret_key())),
- *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.endpoint&#34;, String.format(&#34;https://login.microsoftonline.com/%s/oauth2/token&#34;, var_.tenant_id()))
+ *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.id&#34;, applicationId),
+ *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.secret&#34;, String.format(&#34;{{{{secrets/%s/%s}}}}&#34;, secretScope,secretKey)),
+ *                 Map.entry(&#34;spark.hadoop.fs.azure.account.oauth2.client.endpoint&#34;, String.format(&#34;https://login.microsoftonline.com/%s/oauth2/token&#34;, tenantId))
  *             ))
  *             .sqlConfigParams(Map.of(&#34;ANSI_MODE&#34;, &#34;true&#34;))
  *             .build());

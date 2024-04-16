@@ -36,11 +36,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMwsPrivateAccessSettings(ctx, "pas", &databricks.MwsPrivateAccessSettingsArgs{
-//				AccountId:                 pulumi.Any(_var.Databricks_account_id),
-//				PrivateAccessSettingsName: pulumi.String(fmt.Sprintf("Private Access Settings for %v", local.Prefix)),
-//				Region:                    pulumi.Any(_var.Region),
+//				AccountId:                 pulumi.Any(databricksAccountId),
+//				PrivateAccessSettingsName: pulumi.String(fmt.Sprintf("Private Access Settings for %v", prefix)),
+//				Region:                    pulumi.Any(region),
 //				PublicAccessEnabled:       pulumi.Bool(true),
-//			}, pulumi.Provider(databricks.Mws))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -67,16 +67,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
-//				AccountId:               pulumi.Any(_var.Databricks_account_id),
-//				AwsRegion:               pulumi.Any(_var.Region),
-//				WorkspaceName:           pulumi.Any(local.Prefix),
-//				CredentialsId:           pulumi.Any(databricks_mws_credentials.This.Credentials_id),
-//				StorageConfigurationId:  pulumi.Any(databricks_mws_storage_configurations.This.Storage_configuration_id),
-//				NetworkId:               pulumi.Any(databricks_mws_networks.This.Network_id),
-//				PrivateAccessSettingsId: pulumi.Any(databricks_mws_private_access_settings.Pas.Private_access_settings_id),
+//				AccountId:               pulumi.Any(databricksAccountId),
+//				AwsRegion:               pulumi.Any(region),
+//				WorkspaceName:           pulumi.Any(prefix),
+//				CredentialsId:           pulumi.Any(thisDatabricksMwsCredentials.CredentialsId),
+//				StorageConfigurationId:  pulumi.Any(thisDatabricksMwsStorageConfigurations.StorageConfigurationId),
+//				NetworkId:               pulumi.Any(thisDatabricksMwsNetworks.NetworkId),
+//				PrivateAccessSettingsId: pulumi.Any(pas.PrivateAccessSettingsId),
 //				PricingTier:             pulumi.String("ENTERPRISE"),
-//			}, pulumi.Provider(databricks.Mws), pulumi.DependsOn([]pulumi.Resource{
-//				databricks_mws_networks.This,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisDatabricksMwsNetworks,
 //			}))
 //			if err != nil {
 //				return err
@@ -106,23 +106,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
-//				AccountId:     pulumi.Any(_var.Databricks_account_id),
+//				AccountId:     pulumi.Any(databricksAccountId),
 //				WorkspaceName: pulumi.String("gcp-workspace"),
-//				Location:      pulumi.Any(_var.Subnet_region),
+//				Location:      pulumi.Any(subnetRegion),
 //				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
 //					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
-//						ProjectId: pulumi.Any(_var.Google_project),
+//						ProjectId: pulumi.Any(googleProject),
 //					},
 //				},
 //				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
 //					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
 //					MasterIpRange:    pulumi.String("10.3.0.0/28"),
 //				},
-//				NetworkId:               pulumi.Any(databricks_mws_networks.This.Network_id),
-//				PrivateAccessSettingsId: pulumi.Any(databricks_mws_private_access_settings.Pas.Private_access_settings_id),
+//				NetworkId:               pulumi.Any(thisDatabricksMwsNetworks.NetworkId),
+//				PrivateAccessSettingsId: pulumi.Any(pas.PrivateAccessSettingsId),
 //				PricingTier:             pulumi.String("PREMIUM"),
-//			}, pulumi.Provider(databricks.Mws), pulumi.DependsOn([]pulumi.Resource{
-//				databricks_mws_networks.This,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				thisDatabricksMwsNetworks,
 //			}))
 //			if err != nil {
 //				return err

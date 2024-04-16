@@ -28,26 +28,26 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisdocker_registry_image = new Docker.Index.Docker_registry_image("thisdocker_registry_image", new()
+        ///     var @this = new Docker.Index.RegistryImage("this", new()
         ///     {
-        ///         Name = $"{azurerm_container_registry.This.Login_server}/sample:latest",
         ///         Build = new[]
         ///         {
         ///             null,
         ///         },
+        ///         Name = $"{thisAzurermContainerRegistry.LoginServer}/sample:latest",
         ///     });
         /// 
-        ///     var thisInstancePool = new Databricks.InstancePool("thisInstancePool", new()
+        ///     var thisInstancePool = new Databricks.InstancePool("this", new()
         ///     {
         ///         PreloadedDockerImages = new[]
         ///         {
         ///             new Databricks.Inputs.InstancePoolPreloadedDockerImageArgs
         ///             {
-        ///                 Url = thisdocker_registry_image.Name,
+        ///                 Url = @this.Name,
         ///                 BasicAuth = new Databricks.Inputs.InstancePoolPreloadedDockerImageBasicAuthArgs
         ///                 {
-        ///                     Username = azurerm_container_registry.This.Admin_username,
-        ///                     Password = azurerm_container_registry.This.Admin_password,
+        ///                     Username = thisAzurermContainerRegistry.AdminUsername,
+        ///                     Password = thisAzurermContainerRegistry.AdminPassword,
         ///                 },
         ///             },
         ///         },

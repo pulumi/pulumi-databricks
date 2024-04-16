@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * const me = databricks.getCurrentUser({});
  * const _this = new databricks.SqlEndpoint("this", {
+ *     name: me.then(me => `Endpoint of ${me.alphanumeric}`),
  *     clusterSize: "Small",
  *     maxNumClusters: 1,
  *     tags: {

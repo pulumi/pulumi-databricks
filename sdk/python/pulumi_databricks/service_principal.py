@@ -572,9 +572,9 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp",
-            allow_cluster_create=True,
             application_id="00000000-0000-0000-0000-000000000000",
-            display_name="Example service principal")
+            display_name="Example service principal",
+            allow_cluster_create=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -585,14 +585,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        account = databricks.Provider("account",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
-        opts=pulumi.ResourceOptions(provider=databricks["account"]))
+        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -603,13 +596,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        account = databricks.Provider("account",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
-        opts=pulumi.ResourceOptions(provider=databricks["account"]))
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -709,9 +696,9 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp",
-            allow_cluster_create=True,
             application_id="00000000-0000-0000-0000-000000000000",
-            display_name="Example service principal")
+            display_name="Example service principal",
+            allow_cluster_create=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -722,14 +709,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        account = databricks.Provider("account",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP",
-        opts=pulumi.ResourceOptions(provider=databricks["account"]))
+        sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -740,13 +720,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        account = databricks.Provider("account",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000",
-        opts=pulumi.ResourceOptions(provider=databricks["account"]))
+        sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
         <!--End PulumiCodeChooser -->
 

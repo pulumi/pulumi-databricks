@@ -55,13 +55,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mysql = new Connection(&#34;mysql&#34;, ConnectionArgs.builder()        
- *             .comment(&#34;this is a connection to mysql db&#34;)
+ *             .name(&#34;mysql_connection&#34;)
  *             .connectionType(&#34;MYSQL&#34;)
+ *             .comment(&#34;this is a connection to mysql db&#34;)
  *             .options(Map.ofEntries(
  *                 Map.entry(&#34;host&#34;, &#34;test.mysql.database.azure.com&#34;),
- *                 Map.entry(&#34;password&#34;, &#34;password&#34;),
  *                 Map.entry(&#34;port&#34;, &#34;3306&#34;),
- *                 Map.entry(&#34;user&#34;, &#34;user&#34;)
+ *                 Map.entry(&#34;user&#34;, &#34;user&#34;),
+ *                 Map.entry(&#34;password&#34;, &#34;password&#34;)
  *             ))
  *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
  *             .build());
@@ -97,6 +98,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bigquery = new Connection(&#34;bigquery&#34;, ConnectionArgs.builder()        
+ *             .name(&#34;bq_connection&#34;)
  *             .connectionType(&#34;BIGQUERY&#34;)
  *             .comment(&#34;this is a connection to BQ&#34;)
  *             .options(Map.of(&#34;GoogleServiceAccountKeyJson&#34;, serializeJson(

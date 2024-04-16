@@ -169,7 +169,7 @@ class SecretScope(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.SecretScope("this")
+        this = databricks.SecretScope("this", name="terraform-demo-scope")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -215,7 +215,7 @@ class SecretScope(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.SecretScope("this")
+        this = databricks.SecretScope("this", name="terraform-demo-scope")
         ```
         <!--End PulumiCodeChooser -->
 

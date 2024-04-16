@@ -153,16 +153,15 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.iamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -178,34 +177,34 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
-     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
      *             .build());
      * 
-     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *         final var thisGetAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccountRole.name())
+     *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
-     *             .roleArn(crossAccountRole.arn())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .provider(databricks.mws())
-     *                 .build());
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .roleArn(crossAccount.arn())
+     *             .build());
      * 
      *     }
      * }
@@ -240,16 +239,15 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.iamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -265,34 +263,34 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
-     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
      *             .build());
      * 
-     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *         final var thisGetAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccountRole.name())
+     *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
-     *             .roleArn(crossAccountRole.arn())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .provider(databricks.mws())
-     *                 .build());
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .roleArn(crossAccount.arn())
+     *             .build());
      * 
      *     }
      * }
@@ -327,16 +325,15 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.iamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -352,34 +349,34 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
-     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
      *             .build());
      * 
-     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *         final var thisGetAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccountRole.name())
+     *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
-     *             .roleArn(crossAccountRole.arn())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .provider(databricks.mws())
-     *                 .build());
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .roleArn(crossAccount.arn())
+     *             .build());
      * 
      *     }
      * }
@@ -414,16 +411,15 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iamPolicy;
+     * import com.pulumi.aws.IamPolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import com.pulumi.aws.iam.RolePolicyAttachment;
-     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iamRole;
+     * import com.pulumi.aws.IamRoleArgs;
+     * import com.pulumi.aws.iamRolePolicyAttachment;
+     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import com.pulumi.resources.CustomResourceOptions;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -439,34 +435,34 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
-     *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+     *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
-     *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
      *             .build());
      * 
-     *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+     *         final var thisGetAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
+     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
+     *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
-     *             .role(crossAccountRole.name())
+     *             .role(crossAccount.name())
      *             .build());
      * 
      *         // required only in case of multi-workspace setup
      *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
      *             .accountId(databricksAccountId)
-     *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
-     *             .roleArn(crossAccountRole.arn())
-     *             .build(), CustomResourceOptions.builder()
-     *                 .provider(databricks.mws())
-     *                 .build());
+     *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+     *             .roleArn(crossAccount.arn())
+     *             .build());
      * 
      *     }
      * }
@@ -497,12 +493,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.s3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -516,18 +512,19 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(thisBucketV2.bucket())
+     *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
-     *             .bucket(thisBucketV2.id())
-     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *             .bucket(this_.id())
+     *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
@@ -553,12 +550,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.s3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -572,18 +569,19 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(thisBucketV2.bucket())
+     *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
-     *             .bucket(thisBucketV2.id())
-     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *             .bucket(this_.id())
+     *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
@@ -609,12 +607,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.s3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -628,18 +626,19 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(thisBucketV2.bucket())
+     *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
-     *             .bucket(thisBucketV2.id())
-     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *             .bucket(this_.id())
+     *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
@@ -665,12 +664,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3Bucket;
+     * import com.pulumi.aws.S3BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3.BucketPolicy;
-     * import com.pulumi.aws.s3.BucketPolicyArgs;
+     * import com.pulumi.aws.s3BucketPolicy;
+     * import com.pulumi.aws.S3BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -684,18 +683,19 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2(&#34;thisBucketV2&#34;, BucketV2Args.builder()        
+     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var stuff = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucketName(thisBucketV2.bucket())
+     *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
-     *             .bucket(thisBucketV2.id())
-     *             .policy(data.databricks_aws_bucket_policy().this().json())
+     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *             .bucket(this_.id())
+     *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
      * 
      *     }
@@ -1008,88 +1008,6 @@ public final class DatabricksFunctions {
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
-     *             .awsAccountId(var_.aws_account_id())
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
-     *             .build());
-     * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
-     *                         .values(var_.databricks_account_id())
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, var_.aws_account_id()))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, var_.aws_account_id(),var_.prefix()))
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .policy(this_.json())
-     *             .build());
-     * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
-     *             .managedPolicyArns(unityMetastore.arn())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args) {
         return getAwsUnityCatalogPolicy(args, InvokeOptions.Empty);
@@ -1098,88 +1016,6 @@ public final class DatabricksFunctions {
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
-     *             .awsAccountId(var_.aws_account_id())
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
-     *             .build());
-     * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
-     *                         .values(var_.databricks_account_id())
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, var_.aws_account_id()))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, var_.aws_account_id(),var_.prefix()))
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .policy(this_.json())
-     *             .build());
-     * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
-     *             .managedPolicyArns(unityMetastore.arn())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args) {
@@ -1190,88 +1026,6 @@ public final class DatabricksFunctions {
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
-     *             .awsAccountId(var_.aws_account_id())
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
-     *             .build());
-     * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
-     *                         .values(var_.databricks_account_id())
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, var_.aws_account_id()))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, var_.aws_account_id(),var_.prefix()))
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .policy(this_.json())
-     *             .build());
-     * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
-     *             .managedPolicyArns(unityMetastore.arn())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
@@ -1280,88 +1034,6 @@ public final class DatabricksFunctions {
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
-     * import com.pulumi.aws.iam.IamFunctions;
-     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
-     * import com.pulumi.aws.iam.Policy;
-     * import com.pulumi.aws.iam.PolicyArgs;
-     * import com.pulumi.aws.iam.Role;
-     * import com.pulumi.aws.iam.RoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
-     *             .awsAccountId(var_.aws_account_id())
-     *             .bucketName(&#34;databricks-bucket&#34;)
-     *             .roleName(&#34;databricks-role&#34;)
-     *             .kmsName(&#34;databricks-kms&#34;)
-     *             .build());
-     * 
-     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .statements(            
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
-     *                         .type(&#34;AWS&#34;)
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringEquals&#34;)
-     *                         .variable(&#34;sts:ExternalId&#34;)
-     *                         .values(var_.databricks_account_id())
-     *                         .build())
-     *                     .build(),
-     *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;sts:AssumeRole&#34;)
-     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                         .type(&#34;AWS&#34;)
-     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, var_.aws_account_id()))
-     *                         .build())
-     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;ArnLike&#34;)
-     *                         .variable(&#34;aws:PrincipalArn&#34;)
-     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, var_.aws_account_id(),var_.prefix()))
-     *                         .build())
-     *                     .build())
-     *             .build());
-     * 
-     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
-     *             .policy(this_.json())
-     *             .build());
-     * 
-     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
-     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
-     *             .managedPolicyArns(unityMetastore.arn())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args, InvokeOptions options) {
@@ -1653,34 +1325,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1709,34 +1353,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1765,34 +1381,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1821,34 +1409,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1877,34 +1437,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -1933,34 +1465,6 @@ public final class DatabricksFunctions {
      * Retrieve attributes of each SQL warehouses in a workspace
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allClusters = DatabricksFunctions.getClusters();
-     * 
-     *         final var allCluster = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Related Resources
@@ -2020,7 +1524,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2071,7 +1574,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2122,7 +1624,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2173,7 +1674,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2224,7 +1724,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2275,7 +1774,6 @@ public final class DatabricksFunctions {
      *             .policyId(personal.applyValue(getClusterPolicyResult -&gt; getClusterPolicyResult.id()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2791,42 +2289,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -2860,42 +2322,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -2929,42 +2355,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -2998,42 +2388,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -3067,42 +2421,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -3136,42 +2454,6 @@ public final class DatabricksFunctions {
      * Create cloud-specific databricks_storage_credential:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCurrentConfigArgs;
-     * import com.pulumi.databricks.StorageCredential;
-     * import com.pulumi.databricks.StorageCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getCurrentConfig();
-     * 
-     *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
-     *             .dynamic(            
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-     *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
-     *             .comment(&#34;Managed by TF&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Exported attributes
@@ -3232,7 +2514,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3286,7 +2568,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3340,7 +2622,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3394,7 +2676,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3448,7 +2730,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3502,7 +2784,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getCurrentMetastore();
      * 
-     *         ctx.export(&#34;someMetastore&#34;, data.databricks_metastore().this().metastore_info()[0]);
+     *         ctx.export(&#34;someMetastore&#34;, thisDatabricksMetastore.metastoreInfo()[0]);
      *     }
      * }
      * ```
@@ -3605,8 +2887,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
+     *             .limitFileSize(&#34;true&#34;)
      *             .build());
      * 
      *     }
@@ -3657,8 +2939,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
+     *             .limitFileSize(&#34;true&#34;)
      *             .build());
      * 
      *     }
@@ -3709,8 +2991,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
+     *             .limitFileSize(&#34;true&#34;)
      *             .build());
      * 
      *     }
@@ -3761,8 +3043,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var report = DatabricksFunctions.getDbfsFile(GetDbfsFileArgs.builder()
-     *             .limitFileSize(&#34;true&#34;)
      *             .path(&#34;dbfs:/reports/some.csv&#34;)
+     *             .limitFileSize(&#34;true&#34;)
      *             .build());
      * 
      *     }
@@ -4477,10 +3759,9 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -4528,10 +3809,9 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -4579,10 +3859,9 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -4630,10 +3909,9 @@ public final class DatabricksFunctions {
      *             .build());
      * 
      *         var myCluster = new Cluster(&#34;myCluster&#34;, ClusterArgs.builder()        
-     *             .instancePoolId(data.databricks_instance_pool().pool().id())
+     *             .instancePoolId(poolDatabricksInstancePool.id())
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -5282,7 +4560,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5379,7 +4657,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5476,7 +4754,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5573,7 +4851,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5670,7 +4948,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5767,7 +5045,7 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getJobs();
      * 
-     *         ctx.export(&#34;x&#34;, %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
+     *         ctx.export(&#34;x&#34;, String.format(&#34;ID of `x` job is %s&#34;, this_.ids().x()));
      *     }
      * }
      * ```
@@ -5788,6 +5066,55 @@ public final class DatabricksFunctions {
      * 
      * MetastoreInfo response for a given metastore id
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args) {
         return getMetastore(args, InvokeOptions.Empty);
@@ -5796,6 +5123,55 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args) {
@@ -5806,6 +5182,55 @@ public final class DatabricksFunctions {
      * 
      * MetastoreInfo response for a given metastore id
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
      */
     public static Output<GetMetastoreResult> getMetastore(GetMetastoreArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMetastore:getMetastore", TypeShape.of(GetMetastoreResult.class), args, Utilities.withVersion(options));
@@ -5814,6 +5239,55 @@ public final class DatabricksFunctions {
      * ## Example Usage
      * 
      * MetastoreInfo response for a given metastore id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetMetastoreResult> getMetastorePlain(GetMetastorePlainArgs args, InvokeOptions options) {
@@ -6106,6 +5580,104 @@ public final class DatabricksFunctions {
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.MlflowModel;
+     * import com.pulumi.databricks.MlflowModelArgs;
+     * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .description(&#34;My MLflow model description&#34;)
+     *             .tags(            
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key1&#34;)
+     *                     .value(&#34;value1&#34;)
+     *                     .build(),
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key2&#34;)
+     *                     .value(&#34;value2&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;model&#34;, this_);
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import com.pulumi.databricks.ModelServing;
+     * import com.pulumi.databricks.ModelServingArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .build());
+     * 
+     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
+     *             .name(&#34;model-serving-endpoint&#34;)
+     *             .config(ModelServingConfigArgs.builder()
+     *                 .servedModels(ModelServingConfigServedModelArgs.builder()
+     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .modelName(this_.name())
+     *                     .modelVersion(this_.latestVersions()[0].version())
+     *                     .workloadSize(&#34;Small&#34;)
+     *                     .scaleToZeroEnabled(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMlflowModelResult> getMlflowModel(GetMlflowModelArgs args) {
         return getMlflowModel(args, InvokeOptions.Empty);
@@ -6114,6 +5686,104 @@ public final class DatabricksFunctions {
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.MlflowModel;
+     * import com.pulumi.databricks.MlflowModelArgs;
+     * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .description(&#34;My MLflow model description&#34;)
+     *             .tags(            
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key1&#34;)
+     *                     .value(&#34;value1&#34;)
+     *                     .build(),
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key2&#34;)
+     *                     .value(&#34;value2&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;model&#34;, this_);
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import com.pulumi.databricks.ModelServing;
+     * import com.pulumi.databricks.ModelServingArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .build());
+     * 
+     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
+     *             .name(&#34;model-serving-endpoint&#34;)
+     *             .config(ModelServingConfigArgs.builder()
+     *                 .servedModels(ModelServingConfigServedModelArgs.builder()
+     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .modelName(this_.name())
+     *                     .modelVersion(this_.latestVersions()[0].version())
+     *                     .workloadSize(&#34;Small&#34;)
+     *                     .scaleToZeroEnabled(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMlflowModelResult> getMlflowModelPlain(GetMlflowModelPlainArgs args) {
@@ -6124,6 +5794,104 @@ public final class DatabricksFunctions {
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.MlflowModel;
+     * import com.pulumi.databricks.MlflowModelArgs;
+     * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .description(&#34;My MLflow model description&#34;)
+     *             .tags(            
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key1&#34;)
+     *                     .value(&#34;value1&#34;)
+     *                     .build(),
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key2&#34;)
+     *                     .value(&#34;value2&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;model&#34;, this_);
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import com.pulumi.databricks.ModelServing;
+     * import com.pulumi.databricks.ModelServingArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .build());
+     * 
+     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
+     *             .name(&#34;model-serving-endpoint&#34;)
+     *             .config(ModelServingConfigArgs.builder()
+     *                 .servedModels(ModelServingConfigServedModelArgs.builder()
+     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .modelName(this_.name())
+     *                     .modelVersion(this_.latestVersions()[0].version())
+     *                     .workloadSize(&#34;Small&#34;)
+     *                     .scaleToZeroEnabled(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMlflowModelResult> getMlflowModel(GetMlflowModelArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMlflowModel:getMlflowModel", TypeShape.of(GetMlflowModelResult.class), args, Utilities.withVersion(options));
@@ -6132,6 +5900,104 @@ public final class DatabricksFunctions {
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves the settings of databricks.MlflowModel by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.MlflowModel;
+     * import com.pulumi.databricks.MlflowModelArgs;
+     * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMlflowModel = new MlflowModel(&#34;thisMlflowModel&#34;, MlflowModelArgs.builder()        
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .description(&#34;My MLflow model description&#34;)
+     *             .tags(            
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key1&#34;)
+     *                     .value(&#34;value1&#34;)
+     *                     .build(),
+     *                 MlflowModelTagArgs.builder()
+     *                     .key(&#34;key2&#34;)
+     *                     .value(&#34;value2&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;model&#34;, this_);
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
+     * import com.pulumi.databricks.ModelServing;
+     * import com.pulumi.databricks.ModelServingArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getMlflowModel(GetMlflowModelArgs.builder()
+     *             .name(&#34;My MLflow Model with multiple versions&#34;)
+     *             .build());
+     * 
+     *         var thisModelServing = new ModelServing(&#34;thisModelServing&#34;, ModelServingArgs.builder()        
+     *             .name(&#34;model-serving-endpoint&#34;)
+     *             .config(ModelServingConfigArgs.builder()
+     *                 .servedModels(ModelServingConfigServedModelArgs.builder()
+     *                     .name(&#34;model_serving_prod&#34;)
+     *                     .modelName(this_.name())
+     *                     .modelVersion(this_.latestVersions()[0].version())
+     *                     .workloadSize(&#34;Small&#34;)
+     *                     .scaleToZeroEnabled(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMlflowModelResult> getMlflowModelPlain(GetMlflowModelPlainArgs args, InvokeOptions options) {
@@ -7277,8 +7143,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .format(&#34;SOURCE&#34;)
      *             .path(&#34;/Production/Features&#34;)
+     *             .format(&#34;SOURCE&#34;)
      *             .build());
      * 
      *     }
@@ -7320,8 +7186,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .format(&#34;SOURCE&#34;)
      *             .path(&#34;/Production/Features&#34;)
+     *             .format(&#34;SOURCE&#34;)
      *             .build());
      * 
      *     }
@@ -7363,8 +7229,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .format(&#34;SOURCE&#34;)
      *             .path(&#34;/Production/Features&#34;)
+     *             .format(&#34;SOURCE&#34;)
      *             .build());
      * 
      *     }
@@ -7406,8 +7272,8 @@ public final class DatabricksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var features = DatabricksFunctions.getNotebook(GetNotebookArgs.builder()
-     *             .format(&#34;SOURCE&#34;)
      *             .path(&#34;/Production/Features&#34;)
+     *             .format(&#34;SOURCE&#34;)
      *             .build());
      * 
      *     }
@@ -10025,34 +9891,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10112,34 +9950,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10199,34 +10009,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10286,34 +10068,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10373,34 +10127,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -10460,34 +10186,6 @@ public final class DatabricksFunctions {
      * * Retrieve attributes of each SQL warehouses in a workspace:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var allSqlWarehouses = DatabricksFunctions.getSqlWarehouses();
-     * 
-     *         final var allSqlWarehouse = &#34;TODO: ForExpression&#34;;
-     * 
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * * Search for a specific SQL Warehouse by name:
@@ -11366,12 +11064,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -11437,12 +11135,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -11508,12 +11206,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -11579,12 +11277,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsTables = DatabricksFunctions.getTables(GetTablesArgs.builder()
+     *         final var things = DatabricksFunctions.getTables(GetTablesArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsTables.applyValue(getTablesResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getTablesResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getTablesResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -12070,12 +11768,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -12141,12 +11839,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -12212,12 +11910,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                
@@ -12283,12 +11981,12 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var thingsViews = DatabricksFunctions.getViews(GetViewsArgs.builder()
+     *         final var things = DatabricksFunctions.getViews(GetViewsArgs.builder()
      *             .catalogName(&#34;sandbox&#34;)
      *             .schemaName(&#34;things&#34;)
      *             .build());
      * 
-     *         final var thingsGrants = thingsViews.applyValue(getViewsResult -&gt; {
+     *         final var thingsGrants = things.applyValue(getViewsResult -&gt; {
      *             final var resources = new ArrayList&lt;Grants&gt;();
      *             for (var range : KeyedValue.of(getViewsResult.ids()) {
      *                 var resource = new Grants(&#34;thingsGrants-&#34; + range.key(), GrantsArgs.builder()                

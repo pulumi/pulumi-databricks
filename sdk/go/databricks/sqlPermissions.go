@@ -33,7 +33,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSqlPermissions(ctx, "fooTable", &databricks.SqlPermissionsArgs{
+//			_, err := databricks.NewSqlPermissions(ctx, "foo_table", &databricks.SqlPermissionsArgs{
+//				Table: pulumi.String("foo"),
 //				PrivilegeAssignments: databricks.SqlPermissionsPrivilegeAssignmentArray{
 //					&databricks.SqlPermissionsPrivilegeAssignmentArgs{
 //						Principal: pulumi.String("serge@example.com"),
@@ -49,7 +50,6 @@ import (
 //						},
 //					},
 //				},
-//				Table: pulumi.String("foo"),
 //			})
 //			if err != nil {
 //				return err

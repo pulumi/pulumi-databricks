@@ -15,6 +15,44 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// MetastoreInfo response for a given metastore id
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisMetastore = new Databricks.Metastore("this", new()
+        ///     {
+        ///         Name = "primary",
+        ///         StorageRoot = $"s3://{metastore.Id}/metastore",
+        ///         Owner = unityAdminGroup,
+        ///         ForceDestroy = true,
+        ///     });
+        /// 
+        ///     var @this = Databricks.GetMetastore.Invoke(new()
+        ///     {
+        ///         MetastoreId = thisMetastore.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getMetastoreResult =&gt; getMetastoreResult.MetastoreInfo)),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getMetastores to get mapping of name to id of all metastores.
+        /// * databricks.Metastore to manage Metastores within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Task<GetMetastoreResult> InvokeAsync(GetMetastoreArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreArgs(), options.WithDefaults());
@@ -23,6 +61,44 @@ namespace Pulumi.Databricks
         /// ## Example Usage
         /// 
         /// MetastoreInfo response for a given metastore id
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var thisMetastore = new Databricks.Metastore("this", new()
+        ///     {
+        ///         Name = "primary",
+        ///         StorageRoot = $"s3://{metastore.Id}/metastore",
+        ///         Owner = unityAdminGroup,
+        ///         ForceDestroy = true,
+        ///     });
+        /// 
+        ///     var @this = Databricks.GetMetastore.Invoke(new()
+        ///     {
+        ///         MetastoreId = thisMetastore.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["someMetastore"] = @this.Apply(@this =&gt; @this.Apply(getMetastoreResult =&gt; getMetastoreResult.MetastoreInfo)),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// * databricks.getMetastores to get mapping of name to id of all metastores.
+        /// * databricks.Metastore to manage Metastores within Unity Catalog.
+        /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
         public static Output<GetMetastoreResult> Invoke(GetMetastoreInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreInvokeArgs(), options.WithDefaults());

@@ -339,6 +339,7 @@ class Group(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.Group("this",
+            display_name="Some Group",
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
@@ -351,12 +352,13 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_group = databricks.Group("thisGroup",
+        this = databricks.Group("this",
+            display_name="Some Group",
             allow_cluster_create=True,
             allow_instance_pool_create=True)
-        this_user = databricks.User("thisUser", user_name="someone@example.com")
-        vip_member = databricks.GroupMember("vipMember",
-            group_id=this_group.id,
+        this_user = databricks.User("this", user_name="someone@example.com")
+        vip_member = databricks.GroupMember("vip_member",
+            group_id=this.id,
             member_id=this_user.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -368,13 +370,7 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        mws = databricks.Provider("mws",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        this = databricks.Group("this", display_name="Some Group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -385,12 +381,7 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        azure_account = databricks.Provider("azureAccount",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        this = databricks.Group("this", display_name="Some Group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -445,6 +436,7 @@ class Group(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.Group("this",
+            display_name="Some Group",
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
@@ -457,12 +449,13 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_group = databricks.Group("thisGroup",
+        this = databricks.Group("this",
+            display_name="Some Group",
             allow_cluster_create=True,
             allow_instance_pool_create=True)
-        this_user = databricks.User("thisUser", user_name="someone@example.com")
-        vip_member = databricks.GroupMember("vipMember",
-            group_id=this_group.id,
+        this_user = databricks.User("this", user_name="someone@example.com")
+        vip_member = databricks.GroupMember("vip_member",
+            group_id=this.id,
             member_id=this_user.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -474,13 +467,7 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        mws = databricks.Provider("mws",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        this = databricks.Group("this", display_name="Some Group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -491,12 +478,7 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        azure_account = databricks.Provider("azureAccount",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        this = databricks.Group("this", opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+        this = databricks.Group("this", display_name="Some Group")
         ```
         <!--End PulumiCodeChooser -->
 

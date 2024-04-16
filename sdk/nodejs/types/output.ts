@@ -60,7 +60,7 @@ export interface ClusterAutoscale {
      * const latestLts = databricks.getSparkVersion({
      *     longTermSupport: true,
      * });
-     * const singleNode = new databricks.Cluster("singleNode", {
+     * const singleNode = new databricks.Cluster("single_node", {
      *     clusterName: "Single Node",
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),
@@ -194,13 +194,13 @@ export interface ClusterClusterMountInfo {
      *
      * const storageAccount = "ewfw3ggwegwg";
      * const storageContainer = "test";
-     * const withNfs = new databricks.Cluster("withNfs", {clusterMountInfos: [{
-     *     localMountDirPath: "/mnt/nfs-test",
+     * const withNfs = new databricks.Cluster("with_nfs", {clusterMountInfos: [{
      *     networkFilesystemInfo: {
-     *         mountOptions: "sec=sys,vers=3,nolock,proto=tcp",
      *         serverAddress: `${storageAccount}.blob.core.windows.net`,
+     *         mountOptions: "sec=sys,vers=3,nolock,proto=tcp",
      *     },
      *     remoteMountDirPath: `${storageAccount}/${storageContainer}`,
+     *     localMountDirPath: "/mnt/nfs-test",
      * }]});
      * ```
      * <!--End PulumiCodeChooser -->
@@ -239,15 +239,15 @@ export interface ClusterDockerImage {
      * import * as databricks from "@pulumi/databricks";
      * import * as docker from "@pulumi/docker";
      *
-     * const thisdocker_registry_image = new docker.index.Docker_registry_image("thisdocker_registry_image", {
-     *     name: `${azurerm_container_registry["this"].login_server}/sample:latest`,
+     * const _this = new docker.index.RegistryImage("this", {
      *     build: [{}],
+     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
      * });
-     * const thisCluster = new databricks.Cluster("thisCluster", {dockerImage: {
-     *     url: thisdocker_registry_image.name,
+     * const thisCluster = new databricks.Cluster("this", {dockerImage: {
+     *     url: _this.name,
      *     basicAuth: {
-     *         username: azurerm_container_registry["this"].admin_username,
-     *         password: azurerm_container_registry["this"].admin_password,
+     *         username: thisAzurermContainerRegistry.adminUsername,
+     *         password: thisAzurermContainerRegistry.adminPassword,
      *     },
      * }});
      * ```
@@ -441,7 +441,7 @@ export interface ClusterWorkloadTypeClients {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const withNfs = new databricks.Cluster("withNfs", {workloadType: {
+     * const withNfs = new databricks.Cluster("with_nfs", {workloadType: {
      *     clients: {
      *         jobs: false,
      *         notebooks: true,
@@ -2567,15 +2567,15 @@ export interface InstancePoolPreloadedDockerImage {
      * import * as databricks from "@pulumi/databricks";
      * import * as docker from "@pulumi/docker";
      *
-     * const thisdocker_registry_image = new docker.index.Docker_registry_image("thisdocker_registry_image", {
-     *     name: `${azurerm_container_registry["this"].login_server}/sample:latest`,
+     * const _this = new docker.index.RegistryImage("this", {
      *     build: [{}],
+     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
      * });
-     * const thisInstancePool = new databricks.InstancePool("thisInstancePool", {preloadedDockerImages: [{
-     *     url: thisdocker_registry_image.name,
+     * const thisInstancePool = new databricks.InstancePool("this", {preloadedDockerImages: [{
+     *     url: _this.name,
      *     basicAuth: {
-     *         username: azurerm_container_registry["this"].admin_username,
-     *         password: azurerm_container_registry["this"].admin_password,
+     *         username: thisAzurermContainerRegistry.adminUsername,
+     *         password: thisAzurermContainerRegistry.adminPassword,
      *     },
      * }]});
      * ```
@@ -4001,41 +4001,44 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sql_aggregation_job", {
+     *     name: "Example SQL Job",
+     *     tasks: [
+     *         {
+     *             taskKey: "run_agg_query",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 query: {
+     *                     queryId: aggQuery.id,
+     *                 },
      *             },
      *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
+     *         {
+     *             taskKey: "run_dashboard",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 dashboard: {
+     *                     dashboardId: dash.id,
+     *                     subscriptions: [{
+     *                         userName: "user@domain.com",
+     *                     }],
+     *                 },
      *             },
      *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
+     *         {
+     *             taskKey: "run_alert",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 alert: {
+     *                     alertId: alert.id,
+     *                     subscriptions: [{
+     *                         userName: "user@domain.com",
+     *                     }],
+     *                 },
      *             },
      *         },
-     *     },
-     * ]});
+     *     ],
+     * });
      * ```
      * <!--End PulumiCodeChooser -->
      */
@@ -4057,12 +4060,6 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
      *
      * Example
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**
@@ -4525,41 +4522,44 @@ export interface JobTaskSqlTaskFile {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const sqlAggregationJob = new databricks.Job("sqlAggregationJob", {tasks: [
-     *     {
-     *         taskKey: "run_agg_query",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             query: {
-     *                 queryId: databricks_sql_query.agg_query.id,
+     * const sqlAggregationJob = new databricks.Job("sql_aggregation_job", {
+     *     name: "Example SQL Job",
+     *     tasks: [
+     *         {
+     *             taskKey: "run_agg_query",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 query: {
+     *                     queryId: aggQuery.id,
+     *                 },
      *             },
      *         },
-     *     },
-     *     {
-     *         taskKey: "run_dashboard",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             dashboard: {
-     *                 dashboardId: databricks_sql_dashboard.dash.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
+     *         {
+     *             taskKey: "run_dashboard",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 dashboard: {
+     *                     dashboardId: dash.id,
+     *                     subscriptions: [{
+     *                         userName: "user@domain.com",
+     *                     }],
+     *                 },
      *             },
      *         },
-     *     },
-     *     {
-     *         taskKey: "run_alert",
-     *         sqlTask: {
-     *             warehouseId: databricks_sql_endpoint.sql_job_warehouse.id,
-     *             alert: {
-     *                 alertId: databricks_sql_alert.alert.id,
-     *                 subscriptions: [{
-     *                     userName: "user@domain.com",
-     *                 }],
+     *         {
+     *             taskKey: "run_alert",
+     *             sqlTask: {
+     *                 warehouseId: sqlJobWarehouse.id,
+     *                 alert: {
+     *                     alertId: alert.id,
+     *                     subscriptions: [{
+     *                         userName: "user@domain.com",
+     *                     }],
+     *                 },
      *             },
      *         },
-     *     },
-     * ]});
+     *     ],
+     * });
      * ```
      * <!--End PulumiCodeChooser -->
      */
@@ -4581,12 +4581,6 @@ export interface JobTaskWebhookNotifications {
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
      *
      * Example
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**
@@ -4695,12 +4689,6 @@ export interface JobWebhookNotifications {
      * Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
      *
      * Example
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     onDurationWarningThresholdExceededs?: outputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded[];
     /**

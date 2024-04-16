@@ -142,14 +142,15 @@ class MetastoreAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_metastore = databricks.Metastore("thisMetastore",
-            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
             owner="uc admins",
             region="us-east-1",
             force_destroy=True)
-        this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
-            metastore_id=this_metastore.id,
-            workspace_id=local["workspace_id"])
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -187,14 +188,15 @@ class MetastoreAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_metastore = databricks.Metastore("thisMetastore",
-            storage_root=f"s3://{aws_s3_bucket['metastore']['id']}/metastore",
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"s3://{metastore['id']}/metastore",
             owner="uc admins",
             region="us-east-1",
             force_destroy=True)
-        this_metastore_assignment = databricks.MetastoreAssignment("thisMetastoreAssignment",
-            metastore_id=this_metastore.id,
-            workspace_id=local["workspace_id"])
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
         ```
         <!--End PulumiCodeChooser -->
 

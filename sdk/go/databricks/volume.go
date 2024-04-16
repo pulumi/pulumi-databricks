@@ -60,6 +60,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
 //				Comment: pulumi.String("this catalog is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
@@ -70,6 +71,7 @@ import (
 //			}
 //			things, err := databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
 //				CatalogName: sandbox.Name,
+//				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this schema is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"kind": pulumi.Any("various"),
@@ -79,21 +81,24 @@ import (
 //				return err
 //			}
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.String("creds"),
 //				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
-//					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
-//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", aws_s3_bucket.External.Id)),
+//				Name:           pulumi.String("external-location"),
+//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", externalAwsS3Bucket.Id)),
 //				CredentialName: external.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewVolume(ctx, "this", &databricks.VolumeArgs{
+//				Name:            pulumi.String("quickstart_volume"),
 //				CatalogName:     sandbox.Name,
 //				SchemaName:      things.Name,
 //				VolumeType:      pulumi.String("EXTERNAL"),

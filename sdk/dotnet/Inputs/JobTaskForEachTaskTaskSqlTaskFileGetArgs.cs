@@ -26,8 +26,9 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sqlAggregationJob = new Databricks.Job("sqlAggregationJob", new()
+        ///     var sqlAggregationJob = new Databricks.Job("sql_aggregation_job", new()
         ///     {
+        ///         Name = "Example SQL Job",
         ///         Tasks = new[]
         ///         {
         ///             new Databricks.Inputs.JobTaskArgs
@@ -35,10 +36,10 @@ namespace Pulumi.Databricks.Inputs
         ///                 TaskKey = "run_agg_query",
         ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
         ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     WarehouseId = sqlJobWarehouse.Id,
         ///                     Query = new Databricks.Inputs.JobTaskSqlTaskQueryArgs
         ///                     {
-        ///                         QueryId = databricks_sql_query.Agg_query.Id,
+        ///                         QueryId = aggQuery.Id,
         ///                     },
         ///                 },
         ///             },
@@ -47,10 +48,10 @@ namespace Pulumi.Databricks.Inputs
         ///                 TaskKey = "run_dashboard",
         ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
         ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     WarehouseId = sqlJobWarehouse.Id,
         ///                     Dashboard = new Databricks.Inputs.JobTaskSqlTaskDashboardArgs
         ///                     {
-        ///                         DashboardId = databricks_sql_dashboard.Dash.Id,
+        ///                         DashboardId = dash.Id,
         ///                         Subscriptions = new[]
         ///                         {
         ///                             new Databricks.Inputs.JobTaskSqlTaskDashboardSubscriptionArgs
@@ -66,10 +67,10 @@ namespace Pulumi.Databricks.Inputs
         ///                 TaskKey = "run_alert",
         ///                 SqlTask = new Databricks.Inputs.JobTaskSqlTaskArgs
         ///                 {
-        ///                     WarehouseId = databricks_sql_endpoint.Sql_job_warehouse.Id,
+        ///                     WarehouseId = sqlJobWarehouse.Id,
         ///                     Alert = new Databricks.Inputs.JobTaskSqlTaskAlertArgs
         ///                     {
-        ///                         AlertId = databricks_sql_alert.Alert.Id,
+        ///                         AlertId = alert.Id,
         ///                         Subscriptions = new[]
         ///                         {
         ///                             new Databricks.Inputs.JobTaskSqlTaskAlertSubscriptionArgs

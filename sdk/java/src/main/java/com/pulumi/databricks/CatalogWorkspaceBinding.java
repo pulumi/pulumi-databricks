@@ -42,13 +42,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sandboxCatalog = new Catalog(&#34;sandboxCatalog&#34;, CatalogArgs.builder()        
+ *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
+ *             .name(&#34;sandbox&#34;)
  *             .isolationMode(&#34;ISOLATED&#34;)
  *             .build());
  * 
  *         var sandboxCatalogWorkspaceBinding = new CatalogWorkspaceBinding(&#34;sandboxCatalogWorkspaceBinding&#34;, CatalogWorkspaceBindingArgs.builder()        
- *             .securableName(sandboxCatalog.name())
- *             .workspaceId(databricks_mws_workspaces.other().workspace_id())
+ *             .securableName(sandbox.name())
+ *             .workspaceId(other.workspaceId())
  *             .build());
  * 
  *     }

@@ -34,14 +34,15 @@ namespace Pulumi.Databricks
     /// {
     ///     var mysql = new Databricks.Connection("mysql", new()
     ///     {
-    ///         Comment = "this is a connection to mysql db",
+    ///         Name = "mysql_connection",
     ///         ConnectionType = "MYSQL",
+    ///         Comment = "this is a connection to mysql db",
     ///         Options = 
     ///         {
     ///             { "host", "test.mysql.database.azure.com" },
-    ///             { "password", "password" },
     ///             { "port", "3306" },
     ///             { "user", "user" },
+    ///             { "password", "password" },
     ///         },
     ///         Properties = 
     ///         {
@@ -67,6 +68,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var bigquery = new Databricks.Connection("bigquery", new()
     ///     {
+    ///         Name = "bq_connection",
     ///         ConnectionType = "BIGQUERY",
     ///         Comment = "this is a connection to BQ",
     ///         Options = 

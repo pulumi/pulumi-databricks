@@ -75,47 +75,6 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Java/Scala JAR
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DbfsFile;
- * import com.pulumi.databricks.DbfsFileArgs;
- * import com.pulumi.databricks.Library;
- * import com.pulumi.databricks.LibraryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var appDbfsFile = new DbfsFile(&#34;appDbfsFile&#34;, DbfsFileArgs.builder()        
- *             .source(String.format(&#34;%s/app-0.0.1.jar&#34;, path.module()))
- *             .path(&#34;/FileStore/app-0.0.1.jar&#34;)
- *             .build());
- * 
- *         var appLibrary = new Library(&#34;appLibrary&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
- *             .jar(appDbfsFile.dbfsPath())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Java/Scala Maven
  * 
  * Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -144,52 +103,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var deequ = new Library(&#34;deequ&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
+ *             .clusterId(this_.id())
  *             .maven(LibraryMavenArgs.builder()
  *                 .coordinates(&#34;com.amazon.deequ:deequ:1.0.4&#34;)
  *                 .exclusions(&#34;org.apache.avro:avro&#34;)
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Python Wheel
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DbfsFile;
- * import com.pulumi.databricks.DbfsFileArgs;
- * import com.pulumi.databricks.Library;
- * import com.pulumi.databricks.LibraryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var appDbfsFile = new DbfsFile(&#34;appDbfsFile&#34;, DbfsFileArgs.builder()        
- *             .source(String.format(&#34;%s/baz.whl&#34;, path.module()))
- *             .path(&#34;/FileStore/baz.whl&#34;)
- *             .build());
- * 
- *         var appLibrary = new Library(&#34;appLibrary&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
- *             .whl(appDbfsFile.dbfsPath())
  *             .build());
  * 
  *     }
@@ -227,51 +145,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fbprophet = new Library(&#34;fbprophet&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
+ *             .clusterId(this_.id())
  *             .pypi(LibraryPypiArgs.builder()
  *                 .package_(&#34;fbprophet==0.6&#34;)
  *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Python EGG
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.databricks.DbfsFile;
- * import com.pulumi.databricks.DbfsFileArgs;
- * import com.pulumi.databricks.Library;
- * import com.pulumi.databricks.LibraryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var appDbfsFile = new DbfsFile(&#34;appDbfsFile&#34;, DbfsFileArgs.builder()        
- *             .source(String.format(&#34;%s/foo.egg&#34;, path.module()))
- *             .path(&#34;/FileStore/foo.egg&#34;)
- *             .build());
- * 
- *         var appLibrary = new Library(&#34;appLibrary&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
- *             .egg(appDbfsFile.dbfsPath())
  *             .build());
  * 
  *     }
@@ -307,7 +184,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rkeops = new Library(&#34;rkeops&#34;, LibraryArgs.builder()        
- *             .clusterId(databricks_cluster.this().id())
+ *             .clusterId(this_.id())
  *             .cran(LibraryCranArgs.builder()
  *                 .package_(&#34;rkeops&#34;)
  *                 .build())

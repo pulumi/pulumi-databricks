@@ -244,6 +244,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         this = databricks.MlflowExperiment("this",
+            name=f"{me.home}/Sample",
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```
@@ -299,6 +300,7 @@ class MlflowExperiment(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         this = databricks.MlflowExperiment("this",
+            name=f"{me.home}/Sample",
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```

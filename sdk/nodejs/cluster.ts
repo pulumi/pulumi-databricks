@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const latestLts = databricks.getSparkVersion({
  *     longTermSupport: true,
  * });
- * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+ * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
  *     clusterName: "Shared Autoscaling",
  *     sparkVersion: latestLts.then(latestLts => latestLts.id),
  *     nodeTypeId: smallest.then(smallest => smallest.id),
@@ -130,10 +130,10 @@ export class Cluster extends pulumi.CustomResource {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const clusterWithTableAccessControl = new databricks.Cluster("clusterWithTableAccessControl", {
+     * const clusterWithTableAccessControl = new databricks.Cluster("cluster_with_table_access_control", {
      *     clusterName: "Shared High-Concurrency",
-     *     sparkVersion: data.databricks_spark_version.latest_lts.id,
-     *     nodeTypeId: data.databricks_node_type.smallest.id,
+     *     sparkVersion: latestLts.id,
+     *     nodeTypeId: smallest.id,
      *     autoterminationMinutes: 20,
      *     sparkConf: {
      *         "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -198,7 +198,7 @@ export class Cluster extends pulumi.CustomResource {
      * const latestLts = databricks.getSparkVersion({
      *     longTermSupport: true,
      * });
-     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
      *     clusterName: "Shared Autoscaling",
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),
@@ -392,10 +392,10 @@ export interface ClusterState {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const clusterWithTableAccessControl = new databricks.Cluster("clusterWithTableAccessControl", {
+     * const clusterWithTableAccessControl = new databricks.Cluster("cluster_with_table_access_control", {
      *     clusterName: "Shared High-Concurrency",
-     *     sparkVersion: data.databricks_spark_version.latest_lts.id,
-     *     nodeTypeId: data.databricks_node_type.smallest.id,
+     *     sparkVersion: latestLts.id,
+     *     nodeTypeId: smallest.id,
      *     autoterminationMinutes: 20,
      *     sparkConf: {
      *         "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -460,7 +460,7 @@ export interface ClusterState {
      * const latestLts = databricks.getSparkVersion({
      *     longTermSupport: true,
      * });
-     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
      *     clusterName: "Shared Autoscaling",
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),
@@ -558,10 +558,10 @@ export interface ClusterArgs {
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
      *
-     * const clusterWithTableAccessControl = new databricks.Cluster("clusterWithTableAccessControl", {
+     * const clusterWithTableAccessControl = new databricks.Cluster("cluster_with_table_access_control", {
      *     clusterName: "Shared High-Concurrency",
-     *     sparkVersion: data.databricks_spark_version.latest_lts.id,
-     *     nodeTypeId: data.databricks_node_type.smallest.id,
+     *     sparkVersion: latestLts.id,
+     *     nodeTypeId: smallest.id,
      *     autoterminationMinutes: 20,
      *     sparkConf: {
      *         "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -622,7 +622,7 @@ export interface ClusterArgs {
      * const latestLts = databricks.getSparkVersion({
      *     longTermSupport: true,
      * });
-     * const sharedAutoscaling = new databricks.Cluster("sharedAutoscaling", {
+     * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
      *     clusterName: "Shared Autoscaling",
      *     sparkVersion: latestLts.then(latestLts => latestLts.id),
      *     nodeTypeId: smallest.then(smallest => smallest.id),

@@ -34,12 +34,11 @@ namespace Pulumi.Databricks
         ///         Name = "Personal Compute",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("myCluster", new()
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
         ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -70,12 +69,11 @@ namespace Pulumi.Databricks
         ///         Name = "Personal Compute",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("myCluster", new()
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
         ///         PolicyId = personal.Apply(getClusterPolicyResult =&gt; getClusterPolicyResult.Id),
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

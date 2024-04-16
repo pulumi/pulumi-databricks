@@ -14,6 +14,95 @@ import (
 // > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 //
 // Retrieves the settings of MlflowModel by name.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewMlflowModel(ctx, "this", &databricks.MlflowModelArgs{
+//				Name:        pulumi.String("My MLflow Model"),
+//				Description: pulumi.String("My MLflow model description"),
+//				Tags: databricks.MlflowModelTagArray{
+//					&databricks.MlflowModelTagArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//					&databricks.MlflowModelTagArgs{
+//						Key:   pulumi.String("key2"),
+//						Value: pulumi.String("value2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.LookupMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
+//				Name: "My MLflow Model",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("model", this)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.LookupMlflowModel(ctx, &databricks.LookupMlflowModelArgs{
+//				Name: "My MLflow Model with multiple versions",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewModelServing(ctx, "this", &databricks.ModelServingArgs{
+//				Name: pulumi.String("model-serving-endpoint"),
+//				Config: &databricks.ModelServingConfigArgs{
+//					ServedModels: databricks.ModelServingConfigServedModelArray{
+//						&databricks.ModelServingConfigServedModelArgs{
+//							Name:               pulumi.String("model_serving_prod"),
+//							ModelName:          pulumi.String(this.Name),
+//							ModelVersion:       pulumi.String(this.LatestVersions[0].Version),
+//							WorkloadSize:       pulumi.String("Small"),
+//							ScaleToZeroEnabled: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func LookupMlflowModel(ctx *pulumi.Context, args *LookupMlflowModelArgs, opts ...pulumi.InvokeOption) (*LookupMlflowModelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMlflowModelResult

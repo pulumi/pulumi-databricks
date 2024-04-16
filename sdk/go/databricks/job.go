@@ -32,22 +32,6 @@ type Job struct {
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrOutput `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrOutput    `pulumi:"dbtTask"`
@@ -156,22 +140,6 @@ type jobState struct {
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ControlRunState *bool `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
@@ -251,22 +219,6 @@ type JobState struct {
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrInput
@@ -350,22 +302,6 @@ type jobArgs struct {
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ControlRunState *bool `pulumi:"controlRunState"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    *JobDbtTask    `pulumi:"dbtTask"`
@@ -444,22 +380,6 @@ type JobArgs struct {
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
 	// When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ControlRunState pulumi.BoolPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	DbtTask    JobDbtTaskPtrInput
@@ -632,25 +552,6 @@ func (o JobOutput) Continuous() JobContinuousPtrOutput {
 // (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 //
 // When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o JobOutput) ControlRunState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.ControlRunState }).(pulumi.BoolPtrOutput)
 }

@@ -23,12 +23,15 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new Databricks.SecretScope("app");
+    ///     var app = new Databricks.SecretScope("app", new()
+    ///     {
+    ///         Name = "application-secret-scope",
+    ///     });
     /// 
-    ///     var publishingApi = new Databricks.Secret("publishingApi", new()
+    ///     var publishingApi = new Databricks.Secret("publishing_api", new()
     ///     {
     ///         Key = "publishing_api",
-    ///         StringValue = data.Azurerm_key_vault_secret.Example.Value,
+    ///         StringValue = example.Value,
     ///         Scope = app.Id,
     ///     });
     /// 

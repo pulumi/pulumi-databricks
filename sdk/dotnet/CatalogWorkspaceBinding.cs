@@ -21,15 +21,16 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sandboxCatalog = new Databricks.Catalog("sandboxCatalog", new()
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
+    ///         Name = "sandbox",
     ///         IsolationMode = "ISOLATED",
     ///     });
     /// 
-    ///     var sandboxCatalogWorkspaceBinding = new Databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", new()
+    ///     var sandboxCatalogWorkspaceBinding = new Databricks.CatalogWorkspaceBinding("sandbox", new()
     ///     {
-    ///         SecurableName = sandboxCatalog.Name,
-    ///         WorkspaceId = databricks_mws_workspaces.Other.Workspace_id,
+    ///         SecurableName = sandbox.Name,
+    ///         WorkspaceId = other.WorkspaceId,
     ///     });
     /// 
     /// });

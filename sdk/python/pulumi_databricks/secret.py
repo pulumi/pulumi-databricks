@@ -171,10 +171,10 @@ class Secret(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        app = databricks.SecretScope("app")
-        publishing_api = databricks.Secret("publishingApi",
+        app = databricks.SecretScope("app", name="application-secret-scope")
+        publishing_api = databricks.Secret("publishing_api",
             key="publishing_api",
-            string_value=data["azurerm_key_vault_secret"]["example"]["value"],
+            string_value=example["value"],
             scope=app.id)
         this = databricks.Cluster("this", spark_conf={
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
@@ -225,10 +225,10 @@ class Secret(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        app = databricks.SecretScope("app")
-        publishing_api = databricks.Secret("publishingApi",
+        app = databricks.SecretScope("app", name="application-secret-scope")
+        publishing_api = databricks.Secret("publishing_api",
             key="publishing_api",
-            string_value=data["azurerm_key_vault_secret"]["example"]["value"],
+            string_value=example["value"],
             scope=app.id)
         this = databricks.Cluster("this", spark_conf={
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,

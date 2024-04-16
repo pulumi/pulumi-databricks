@@ -23,20 +23,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider in normal mode
-    ///     var createdWorkspace = new Databricks.Provider("createdWorkspace", new()
-    ///     {
-    ///         Host = databricks_mws_workspaces.This.Workspace_url,
-    ///     });
-    /// 
     ///     // create PAT token to provision entities within workspace
     ///     var pat = new Databricks.Token("pat", new()
     ///     {
     ///         Comment = "Terraform Provisioning",
     ///         LifetimeSeconds = 8640000,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Created_workspace,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;

@@ -283,7 +283,7 @@ type ClusterAutoscale struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "single_node", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Single Node"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -357,7 +357,7 @@ type ClusterAutoscaleArgs struct {
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "single_node", &databricks.ClusterArgs{
 	// 			ClusterName:            pulumi.String("Single Node"),
 	// 			SparkVersion:           pulumi.String(latestLts.Id),
 	// 			NodeTypeId:             pulumi.String(smallest.Id),
@@ -498,7 +498,7 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "single_node", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Single Node"),
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
@@ -591,7 +591,7 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "singleNode", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "single_node", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Single Node"),
 //				SparkVersion:           pulumi.String(latestLts.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
@@ -1822,15 +1822,15 @@ type ClusterClusterMountInfo struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		storageAccount := "ewfw3ggwegwg"
 	// 		storageContainer := "test"
-	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 	// 				&databricks.ClusterClusterMountInfoArgs{
-	// 					LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
 	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 					},
 	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 					LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 	// 				},
 	// 			},
 	// 		})
@@ -1880,15 +1880,15 @@ type ClusterClusterMountInfoArgs struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		storageAccount := "ewfw3ggwegwg"
 	// 		storageContainer := "test"
-	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 	// 			ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 	// 				&databricks.ClusterClusterMountInfoArgs{
-	// 					LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
 	// 					NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 						ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+	// 						MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 	// 					},
 	// 					RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+	// 					LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 	// 				},
 	// 			},
 	// 		})
@@ -1979,15 +1979,15 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			storageAccount := "ewfw3ggwegwg"
 //			storageContainer := "test"
-//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//			_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 //				ClusterMountInfos: databricks.ClusterClusterMountInfoArray{
 //					&databricks.ClusterClusterMountInfoArgs{
-//						LocalMountDirPath: pulumi.String("/mnt/nfs-test"),
 //						NetworkFilesystemInfo: &databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs{
-//							MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 //							ServerAddress: pulumi.String(fmt.Sprintf("%v.blob.core.windows.net", storageAccount)),
+//							MountOptions:  pulumi.String("sec=sys,vers=3,nolock,proto=tcp"),
 //						},
 //						RemoteMountDirPath: pulumi.String(fmt.Sprintf("%v/%v", storageAccount, storageContainer)),
+//						LocalMountDirPath:  pulumi.String("/mnt/nfs-test"),
 //					},
 //				},
 //			})
@@ -2116,21 +2116,21 @@ type ClusterDockerImage struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
 	// 				nil,
 	// 			},
+	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 	// 			DockerImage: &databricks.ClusterDockerImageArgs{
-	// 				Url: thisdocker_registry_image.Name,
+	// 				Url: this.Name,
 	// 				BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
-	// 					Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-	// 					Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 					Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+	// 					Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 	// 				},
 	// 			},
 	// 		})
@@ -2177,21 +2177,21 @@ type ClusterDockerImageArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
 	// 				nil,
 	// 			},
+	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+	// 		_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 	// 			DockerImage: &databricks.ClusterDockerImageArgs{
-	// 				Url: thisdocker_registry_image.Name,
+	// 				Url: this.Name,
 	// 				BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
-	// 					Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-	// 					Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 					Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+	// 					Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 	// 				},
 	// 			},
 	// 		})
@@ -2305,21 +2305,21 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
 //					nil,
 //				},
+//				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 //				DockerImage: &databricks.ClusterDockerImageArgs{
-//					Url: thisdocker_registry_image.Name,
+//					Url: this.Name,
 //					BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
-//						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-//						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//						Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+//						Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 //					},
 //				},
 //			})
@@ -2385,21 +2385,21 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
 //					nil,
 //				},
+//				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "thisCluster", &databricks.ClusterArgs{
+//			_, err = databricks.NewCluster(ctx, "this", &databricks.ClusterArgs{
 //				DockerImage: &databricks.ClusterDockerImageArgs{
-//					Url: thisdocker_registry_image.Name,
+//					Url: this.Name,
 //					BasicAuth: &databricks.ClusterDockerImageBasicAuthArgs{
-//						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-//						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//						Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+//						Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 //					},
 //				},
 //			})
@@ -5330,7 +5330,7 @@ type ClusterWorkloadTypeClients struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 	// 			WorkloadType: &databricks.ClusterWorkloadTypeArgs{
 	// 				Clients: &databricks.ClusterWorkloadTypeClientsArgs{
 	// 					Jobs:      pulumi.Bool(false),
@@ -5376,7 +5376,7 @@ type ClusterWorkloadTypeClientsArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+	// 		_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 	// 			WorkloadType: &databricks.ClusterWorkloadTypeArgs{
 	// 				Clients: &databricks.ClusterWorkloadTypeClientsArgs{
 	// 					Jobs:      pulumi.Bool(false),
@@ -5489,7 +5489,7 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//			_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 //				WorkloadType: &databricks.ClusterWorkloadTypeArgs{
 //					Clients: &databricks.ClusterWorkloadTypeClientsArgs{
 //						Jobs:      pulumi.Bool(false),
@@ -5554,7 +5554,7 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewCluster(ctx, "withNfs", &databricks.ClusterArgs{
+//			_, err := databricks.NewCluster(ctx, "with_nfs", &databricks.ClusterArgs{
 //				WorkloadType: &databricks.ClusterWorkloadTypeArgs{
 //					Clients: &databricks.ClusterWorkloadTypeClientsArgs{
 //						Jobs:      pulumi.Bool(false),
@@ -7504,22 +7504,22 @@ type InstancePoolPreloadedDockerImage struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
 	// 				nil,
 	// 			},
+	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+	// 		_, err = databricks.NewInstancePool(ctx, "this", &databricks.InstancePoolArgs{
 	// 			PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
 	// 				&databricks.InstancePoolPreloadedDockerImageArgs{
-	// 					Url: thisdocker_registry_image.Name,
+	// 					Url: this.Name,
 	// 					BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
-	// 						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-	// 						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 						Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+	// 						Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 	// 					},
 	// 				},
 	// 			},
@@ -7567,22 +7567,22 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-	// 			Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+	// 		this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 	// 			Build: []map[string]interface{}{
 	// 				nil,
 	// 			},
+	// 			Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 	// 		})
 	// 		if err != nil {
 	// 			return err
 	// 		}
-	// 		_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+	// 		_, err = databricks.NewInstancePool(ctx, "this", &databricks.InstancePoolArgs{
 	// 			PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
 	// 				&databricks.InstancePoolPreloadedDockerImageArgs{
-	// 					Url: thisdocker_registry_image.Name,
+	// 					Url: this.Name,
 	// 					BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
-	// 						Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-	// 						Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+	// 						Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+	// 						Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 	// 					},
 	// 				},
 	// 			},
@@ -7671,22 +7671,22 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisdocker_registry_image, err := docker.NewDocker_registry_image(ctx, "thisdocker_registry_image", &docker.Docker_registry_imageArgs{
-//				Name: fmt.Sprintf("%v/sample:latest", azurerm_container_registry.This.Login_server),
+//			this, err := docker.NewRegistryImage(ctx, "this", &docker.RegistryImageArgs{
 //				Build: []map[string]interface{}{
 //					nil,
 //				},
+//				Name: fmt.Sprintf("%v/sample:latest", thisAzurermContainerRegistry.LoginServer),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewInstancePool(ctx, "thisInstancePool", &databricks.InstancePoolArgs{
+//			_, err = databricks.NewInstancePool(ctx, "this", &databricks.InstancePoolArgs{
 //				PreloadedDockerImages: databricks.InstancePoolPreloadedDockerImageArray{
 //					&databricks.InstancePoolPreloadedDockerImageArgs{
-//						Url: thisdocker_registry_image.Name,
+//						Url: this.Name,
 //						BasicAuth: &databricks.InstancePoolPreloadedDockerImageBasicAuthArgs{
-//							Username: pulumi.Any(azurerm_container_registry.This.Admin_username),
-//							Password: pulumi.Any(azurerm_container_registry.This.Admin_password),
+//							Username: pulumi.Any(thisAzurermContainerRegistry.AdminUsername),
+//							Password: pulumi.Any(thisAzurermContainerRegistry.AdminPassword),
 //						},
 //					},
 //				},
@@ -29095,23 +29095,24 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 		_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+	// 			Name: pulumi.String("Example SQL Job"),
 	// 			Tasks: databricks.JobTaskArray{
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_agg_query"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
-	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 							QueryId: pulumi.Any(aggQuery.Id),
 	// 						},
 	// 					},
 	// 				},
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_dashboard"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							DashboardId: pulumi.Any(dash.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -29123,9 +29124,9 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_alert"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
-	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							AlertId: pulumi.Any(alert.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -29176,23 +29177,24 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 		_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+	// 			Name: pulumi.String("Example SQL Job"),
 	// 			Tasks: databricks.JobTaskArray{
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_agg_query"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
-	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 							QueryId: pulumi.Any(aggQuery.Id),
 	// 						},
 	// 					},
 	// 				},
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_dashboard"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							DashboardId: pulumi.Any(dash.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -29204,9 +29206,9 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_alert"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
-	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							AlertId: pulumi.Any(alert.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -29324,23 +29326,24 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//			_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+//				Name: pulumi.String("Example SQL Job"),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_agg_query"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
-//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//								QueryId: pulumi.Any(aggQuery.Id),
 //							},
 //						},
 //					},
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_dashboard"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								DashboardId: pulumi.Any(dash.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 //									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -29352,9 +29355,9 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_alert"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Alert: &databricks.JobTaskSqlTaskAlertArgs{
-//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								AlertId: pulumi.Any(alert.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 //									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -29424,23 +29427,24 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//			_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+//				Name: pulumi.String("Example SQL Job"),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_agg_query"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
-//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//								QueryId: pulumi.Any(aggQuery.Id),
 //							},
 //						},
 //					},
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_dashboard"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								DashboardId: pulumi.Any(dash.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 //									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -29452,9 +29456,9 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_alert"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Alert: &databricks.JobTaskSqlTaskAlertArgs{
-//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								AlertId: pulumi.Any(alert.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 //									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -29632,22 +29636,6 @@ type JobTaskForEachTaskTaskWebhookNotifications struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobTaskForEachTaskTaskWebhookNotificationsOnFailure `pulumi:"onFailures"`
@@ -29674,22 +29662,6 @@ type JobTaskForEachTaskTaskWebhookNotificationsArgs struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobTaskForEachTaskTaskWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
@@ -29780,26 +29752,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) ToJobTaskForEachTaskTa
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -29855,26 +29808,7 @@ func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) Elem() JobTaskForEa
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobTaskForEachTaskTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskWebhookNotifications) []JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {
@@ -37069,23 +37003,24 @@ type JobTaskSqlTaskFile struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 		_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+	// 			Name: pulumi.String("Example SQL Job"),
 	// 			Tasks: databricks.JobTaskArray{
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_agg_query"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
-	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 							QueryId: pulumi.Any(aggQuery.Id),
 	// 						},
 	// 					},
 	// 				},
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_dashboard"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							DashboardId: pulumi.Any(dash.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -37097,9 +37032,9 @@ type JobTaskSqlTaskFile struct {
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_alert"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
-	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							AlertId: pulumi.Any(alert.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -37150,23 +37085,24 @@ type JobTaskSqlTaskFileArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+	// 		_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+	// 			Name: pulumi.String("Example SQL Job"),
 	// 			Tasks: databricks.JobTaskArray{
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_agg_query"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Query: &databricks.JobTaskSqlTaskQueryArgs{
-	// 							QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+	// 							QueryId: pulumi.Any(aggQuery.Id),
 	// 						},
 	// 					},
 	// 				},
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_dashboard"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-	// 							DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+	// 							DashboardId: pulumi.Any(dash.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -37178,9 +37114,9 @@ type JobTaskSqlTaskFileArgs struct {
 	// 				&databricks.JobTaskArgs{
 	// 					TaskKey: pulumi.String("run_alert"),
 	// 					SqlTask: &databricks.JobTaskSqlTaskArgs{
-	// 						WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+	// 						WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 	// 						Alert: &databricks.JobTaskSqlTaskAlertArgs{
-	// 							AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+	// 							AlertId: pulumi.Any(alert.Id),
 	// 							Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 	// 								&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 	// 									UserName: pulumi.String("user@domain.com"),
@@ -37298,23 +37234,24 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//			_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+//				Name: pulumi.String("Example SQL Job"),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_agg_query"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
-//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//								QueryId: pulumi.Any(aggQuery.Id),
 //							},
 //						},
 //					},
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_dashboard"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								DashboardId: pulumi.Any(dash.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 //									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -37326,9 +37263,9 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_alert"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Alert: &databricks.JobTaskSqlTaskAlertArgs{
-//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								AlertId: pulumi.Any(alert.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 //									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -37398,23 +37335,24 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewJob(ctx, "sqlAggregationJob", &databricks.JobArgs{
+//			_, err := databricks.NewJob(ctx, "sql_aggregation_job", &databricks.JobArgs{
+//				Name: pulumi.String("Example SQL Job"),
 //				Tasks: databricks.JobTaskArray{
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_agg_query"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Query: &databricks.JobTaskSqlTaskQueryArgs{
-//								QueryId: pulumi.Any(databricks_sql_query.Agg_query.Id),
+//								QueryId: pulumi.Any(aggQuery.Id),
 //							},
 //						},
 //					},
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_dashboard"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Dashboard: &databricks.JobTaskSqlTaskDashboardArgs{
-//								DashboardId: pulumi.Any(databricks_sql_dashboard.Dash.Id),
+//								DashboardId: pulumi.Any(dash.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskDashboardSubscriptionArray{
 //									&databricks.JobTaskSqlTaskDashboardSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -37426,9 +37364,9 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //					&databricks.JobTaskArgs{
 //						TaskKey: pulumi.String("run_alert"),
 //						SqlTask: &databricks.JobTaskSqlTaskArgs{
-//							WarehouseId: pulumi.Any(databricks_sql_endpoint.Sql_job_warehouse.Id),
+//							WarehouseId: pulumi.Any(sqlJobWarehouse.Id),
 //							Alert: &databricks.JobTaskSqlTaskAlertArgs{
-//								AlertId: pulumi.Any(databricks_sql_alert.Alert.Id),
+//								AlertId: pulumi.Any(alert.Id),
 //								Subscriptions: databricks.JobTaskSqlTaskAlertSubscriptionArray{
 //									&databricks.JobTaskSqlTaskAlertSubscriptionArgs{
 //										UserName: pulumi.String("user@domain.com"),
@@ -37606,22 +37544,6 @@ type JobTaskWebhookNotifications struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobTaskWebhookNotificationsOnFailure `pulumi:"onFailures"`
@@ -37648,22 +37570,6 @@ type JobTaskWebhookNotificationsArgs struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobTaskWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
@@ -37754,26 +37660,7 @@ func (o JobTaskWebhookNotificationsOutput) ToJobTaskWebhookNotificationsPtrOutpu
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobTaskWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -37823,26 +37710,7 @@ func (o JobTaskWebhookNotificationsPtrOutput) Elem() JobTaskWebhookNotifications
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobTaskWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobTaskWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobTaskWebhookNotifications) []JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {
@@ -38844,22 +38712,6 @@ type JobWebhookNotifications struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs []JobWebhookNotificationsOnDurationWarningThresholdExceeded `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures []JobWebhookNotificationsOnFailure `pulumi:"onFailures"`
@@ -38886,22 +38738,6 @@ type JobWebhookNotificationsArgs struct {
 	// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 	//
 	// Example
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	OnDurationWarningThresholdExceededs JobWebhookNotificationsOnDurationWarningThresholdExceededArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
 	// (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
 	OnFailures JobWebhookNotificationsOnFailureArrayInput `pulumi:"onFailures"`
@@ -38992,26 +38828,7 @@ func (o JobWebhookNotificationsOutput) ToJobWebhookNotificationsPtrOutputWithCon
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobWebhookNotificationsOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 		return v.OnDurationWarningThresholdExceededs
@@ -39061,26 +38878,7 @@ func (o JobWebhookNotificationsPtrOutput) Elem() JobWebhookNotificationsOutput {
 //
 // Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 //
-// # Example
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// Example
 func (o JobWebhookNotificationsPtrOutput) OnDurationWarningThresholdExceededs() JobWebhookNotificationsOnDurationWarningThresholdExceededArrayOutput {
 	return o.ApplyT(func(v *JobWebhookNotifications) []JobWebhookNotificationsOnDurationWarningThresholdExceeded {
 		if v == nil {

@@ -29,8 +29,8 @@ namespace Pulumi.Databricks
         /// {
         ///     var features = Databricks.GetNotebook.Invoke(new()
         ///     {
-        ///         Format = "SOURCE",
         ///         Path = "/Production/Features",
+        ///         Format = "SOURCE",
         ///     });
         /// 
         /// });
@@ -58,8 +58,8 @@ namespace Pulumi.Databricks
         /// {
         ///     var features = Databricks.GetNotebook.Invoke(new()
         ///     {
-        ///         Format = "SOURCE",
         ///         Path = "/Production/Features",
+        ///         Format = "SOURCE",
         ///     });
         /// 
         /// });

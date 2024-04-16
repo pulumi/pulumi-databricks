@@ -18,107 +18,6 @@ namespace Pulumi.Databricks
     /// 
     /// You must configure this during workspace creation
     /// 
-    /// ### For AWS
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var current = Aws.GetCallerIdentity.Invoke();
-    /// 
-    ///     var databricksManagedServicesCmk = Aws.Iam.GetPolicyDocument.Invoke(new()
-    ///     {
-    ///         Version = "2012-10-17",
-    ///         Statements = new[]
-    ///         {
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Enable IAM User Permissions",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             current.Apply(getCallerIdentityResult =&gt; getCallerIdentityResult.AccountId),
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:*",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///             },
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Allow Databricks to use KMS key for control plane managed services",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             "arn:aws:iam::414351767826:root",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:Encrypt",
-    ///                     "kms:Decrypt",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var managedServicesCustomerManagedKey = new Aws.Kms.Key("managedServicesCustomerManagedKey", new()
-    ///     {
-    ///         Policy = databricksManagedServicesCmk.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
-    ///     });
-    /// 
-    ///     var managedServicesCustomerManagedKeyAlias = new Aws.Kms.Alias("managedServicesCustomerManagedKeyAlias", new()
-    ///     {
-    ///         TargetKeyId = managedServicesCustomerManagedKey.KeyId,
-    ///     });
-    /// 
-    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
-    ///     {
-    ///         AccountId = databricksAccountId,
-    ///         AwsKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs
-    ///         {
-    ///             KeyArn = managedServicesCustomerManagedKey.Arn,
-    ///             KeyAlias = managedServicesCustomerManagedKeyAlias.Name,
-    ///         },
-    ///         UseCases = new[]
-    ///         {
-    ///             "MANAGED_SERVICES",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ### For GCP
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -131,9 +30,11 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
-    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managed_services", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs
@@ -152,186 +53,6 @@ namespace Pulumi.Databricks
     /// 
     /// ### Customer-managed key for workspace storage
     /// 
-    /// ### For AWS
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
-    /// using Databricks = Pulumi.Databricks;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var databricksCrossAccountRole = config.RequireObject&lt;dynamic&gt;("databricksCrossAccountRole");
-    ///     var databricksStorageCmk = Aws.Iam.GetPolicyDocument.Invoke(new()
-    ///     {
-    ///         Version = "2012-10-17",
-    ///         Statements = new[]
-    ///         {
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Enable IAM User Permissions",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             data.Aws_caller_identity.Current.Account_id,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:*",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///             },
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Allow Databricks to use KMS key for DBFS",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             "arn:aws:iam::414351767826:root",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:Encrypt",
-    ///                     "kms:Decrypt",
-    ///                     "kms:ReEncrypt*",
-    ///                     "kms:GenerateDataKey*",
-    ///                     "kms:DescribeKey",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///             },
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Allow Databricks to use KMS key for DBFS (Grants)",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             "arn:aws:iam::414351767826:root",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:CreateGrant",
-    ///                     "kms:ListGrants",
-    ///                     "kms:RevokeGrant",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///                 Conditions = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-    ///                     {
-    ///                         Test = "Bool",
-    ///                         Variable = "kms:GrantIsForAWSResource",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "true",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
-    ///             {
-    ///                 Sid = "Allow Databricks to use KMS key for EBS",
-    ///                 Effect = "Allow",
-    ///                 Principals = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
-    ///                     {
-    ///                         Type = "AWS",
-    ///                         Identifiers = new[]
-    ///                         {
-    ///                             databricksCrossAccountRole,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Actions = new[]
-    ///                 {
-    ///                     "kms:Decrypt",
-    ///                     "kms:GenerateDataKey*",
-    ///                     "kms:CreateGrant",
-    ///                     "kms:DescribeKey",
-    ///                 },
-    ///                 Resources = new[]
-    ///                 {
-    ///                     "*",
-    ///                 },
-    ///                 Conditions = new[]
-    ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
-    ///                     {
-    ///                         Test = "ForAnyValue:StringLike",
-    ///                         Variable = "kms:ViaService",
-    ///                         Values = new[]
-    ///                         {
-    ///                             "ec2.*.amazonaws.com",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var storageCustomerManagedKey = new Aws.Kms.Key("storageCustomerManagedKey", new()
-    ///     {
-    ///         Policy = databricksStorageCmk.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
-    ///     });
-    /// 
-    ///     var storageCustomerManagedKeyAlias = new Aws.Kms.Alias("storageCustomerManagedKeyAlias", new()
-    ///     {
-    ///         TargetKeyId = storageCustomerManagedKey.KeyId,
-    ///     });
-    /// 
-    ///     var storage = new Databricks.MwsCustomerManagedKeys("storage", new()
-    ///     {
-    ///         AccountId = databricksAccountId,
-    ///         AwsKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs
-    ///         {
-    ///             KeyArn = storageCustomerManagedKey.Arn,
-    ///             KeyAlias = storageCustomerManagedKeyAlias.Name,
-    ///         },
-    ///         UseCases = new[]
-    ///         {
-    ///             "STORAGE",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ### For GCP
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -344,7 +65,9 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
     ///     var storage = new Databricks.MwsCustomerManagedKeys("storage", new()
     ///     {

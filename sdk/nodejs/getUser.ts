@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const me = databricks.getUser({
  *     userName: "me@example.com",
  * });
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: me.then(me => me.id),
  * });
@@ -128,7 +128,7 @@ export interface GetUserResult {
  * const me = databricks.getUser({
  *     userName: "me@example.com",
  * });
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: me.then(me => me.id),
  * });

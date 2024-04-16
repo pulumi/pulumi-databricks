@@ -34,7 +34,7 @@ import (
 //			}
 //			var everyoneCanViewAllJobs []*databricks.Permissions
 //			for key0, val0 := range this.Ids {
-//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyoneCanViewAllJobs-%v", key0), &databricks.PermissionsArgs{
+//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("everyone_can_view_all_jobs-%v", key0), &databricks.PermissionsArgs{
 //					JobId: pulumi.Any(val0),
 //					AccessControls: databricks.PermissionsAccessControlArray{
 //						&databricks.PermissionsAccessControlArgs{
@@ -76,10 +76,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("x", map[string]interface{}{
-//				"sensitive": false,
-//				"value":     fmt.Sprintf("ID of `x` job is %v", this.Ids.X),
-//			})
+//			ctx.Export("x", fmt.Sprintf("ID of `x` job is %v", this.Ids.X))
 //			return nil
 //		})
 //	}

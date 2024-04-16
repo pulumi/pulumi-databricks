@@ -34,18 +34,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
-//				AssetsDir: pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", databricks_table.MyTestTable.Name)),
+//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name)),
+//				AssetsDir:        pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name)),
+//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", sandbox.Name, things.Name)),
 //				InferenceLog: &databricks.LakehouseMonitorInferenceLogArgs{
 //					Granularities: pulumi.StringArray{
 //						pulumi.String("1 hour"),
 //					},
-//					ModelIdCol:    pulumi.String("model_id"),
-//					PredictionCol: pulumi.String("prediction"),
-//					ProblemType:   pulumi.String("PROBLEM_TYPE_REGRESSION"),
 //					TimestampCol:  pulumi.String("timestamp"),
+//					PredictionCol: pulumi.String("prediction"),
+//					ModelIdCol:    pulumi.String("model_id"),
+//					ProblemType:   pulumi.String("PROBLEM_TYPE_REGRESSION"),
 //				},
-//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", databricks_catalog.Sandbox.Name, databricks_schema.Things.Name)),
-//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", databricks_catalog.Sandbox.Name, databricks_schema.Things.Name, databricks_table.MyTestTable.Name)),
 //			})
 //			if err != nil {
 //				return err
@@ -73,10 +73,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLakehouseMonitor(ctx, "testMonitorInference", &databricks.LakehouseMonitorArgs{
-//				AssetsDir:        pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", databricks_table.MyTestTable.Name)),
-//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", databricks_catalog.Sandbox.Name, databricks_schema.Things.Name)),
+//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", sandbox.Name, things.Name, myTestTable.Name)),
+//				AssetsDir:        pulumi.String(fmt.Sprintf("/Shared/provider-test/databricks_lakehouse_monitoring/%v", myTestTable.Name)),
+//				OutputSchemaName: pulumi.String(fmt.Sprintf("%v.%v", sandbox.Name, things.Name)),
 //				Snapshot:         nil,
-//				TableName:        pulumi.String(fmt.Sprintf("%v.%v.%v", databricks_catalog.Sandbox.Name, databricks_schema.Things.Name, databricks_table.MyTestTable.Name)),
 //			})
 //			if err != nil {
 //				return err

@@ -165,7 +165,7 @@ def get_user(user_id: Optional[str] = None,
 
     admins = databricks.get_group(display_name="admins")
     me = databricks.get_user(user_name="me@example.com")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=me.id)
     ```
@@ -228,7 +228,7 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     admins = databricks.get_group(display_name="admins")
     me = databricks.get_user(user_name="me@example.com")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=me.id)
     ```

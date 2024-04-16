@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myGroup = new databricks.Group("myGroup", {});
- * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("myGroupInstanceProfile", {
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myGroup = new databricks.Group("my_group", {displayName: "my_group_name"});
+ * const myGroupInstanceProfile = new databricks.GroupInstanceProfile("my_group_instance_profile", {
  *     groupId: myGroup.id,
  *     instanceProfileId: instanceProfile.id,
  * });

@@ -37,10 +37,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewMwsLogDelivery(ctx, "usageLogs", &databricks.MwsLogDeliveryArgs{
-//				AccountId:              pulumi.Any(_var.Databricks_account_id),
-//				CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
-//				StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
+//			_, err := databricks.NewMwsLogDelivery(ctx, "usage_logs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				CredentialsId:          pulumi.Any(logWriter.CredentialsId),
+//				StorageConfigurationId: pulumi.Any(logBucket.StorageConfigurationId),
 //				DeliveryPathPrefix:     pulumi.String("billable-usage"),
 //				ConfigName:             pulumi.String("Usage Logs"),
 //				LogType:                pulumi.String("BILLABLE_USAGE"),
@@ -73,10 +73,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewMwsLogDelivery(ctx, "auditLogs", &databricks.MwsLogDeliveryArgs{
-//				AccountId:              pulumi.Any(_var.Databricks_account_id),
-//				CredentialsId:          pulumi.Any(databricks_mws_credentials.Log_writer.Credentials_id),
-//				StorageConfigurationId: pulumi.Any(databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id),
+//			_, err := databricks.NewMwsLogDelivery(ctx, "audit_logs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				CredentialsId:          pulumi.Any(logWriter.CredentialsId),
+//				StorageConfigurationId: pulumi.Any(logBucket.StorageConfigurationId),
 //				DeliveryPathPrefix:     pulumi.String("audit-logs"),
 //				ConfigName:             pulumi.String("Audit Logs"),
 //				LogType:                pulumi.String("AUDIT_LOGS"),
