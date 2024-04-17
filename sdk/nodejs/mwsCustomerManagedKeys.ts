@@ -15,6 +15,62 @@ import * as utilities from "./utilities";
  *
  * You must configure this during workspace creation
  *
+ * ### For AWS
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * const current = aws.getCallerIdentity({});
+ * const databricksManagedServicesCmk = current.then(current => aws.iam.getPolicyDocument({
+ *     version: "2012-10-17",
+ *     statements: [
+ *         {
+ *             sid: "Enable IAM User Permissions",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: [current.accountId],
+ *             }],
+ *             actions: ["kms:*"],
+ *             resources: ["*"],
+ *         },
+ *         {
+ *             sid: "Allow Databricks to use KMS key for control plane managed services",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: ["arn:aws:iam::414351767826:root"],
+ *             }],
+ *             actions: [
+ *                 "kms:Encrypt",
+ *                 "kms:Decrypt",
+ *             ],
+ *             resources: ["*"],
+ *         },
+ *     ],
+ * }));
+ * const managedServicesCustomerManagedKey = new aws.kms.Key("managed_services_customer_managed_key", {policy: databricksManagedServicesCmk.then(databricksManagedServicesCmk => databricksManagedServicesCmk.json)});
+ * const managedServicesCustomerManagedKeyAlias = new aws.kms.Alias("managed_services_customer_managed_key_alias", {
+ *     name: "alias/managed-services-customer-managed-key-alias",
+ *     targetKeyId: managedServicesCustomerManagedKey.keyId,
+ * });
+ * const managedServices = new databricks.MwsCustomerManagedKeys("managed_services", {
+ *     accountId: databricksAccountId,
+ *     awsKeyInfo: {
+ *         keyArn: managedServicesCustomerManagedKey.arn,
+ *         keyAlias: managedServicesCustomerManagedKeyAlias.name,
+ *     },
+ *     useCases: ["MANAGED_SERVICES"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### For GCP
  *
  * <!--Start PulumiCodeChooser -->
@@ -38,6 +94,105 @@ import * as utilities from "./utilities";
  * <!--End PulumiCodeChooser -->
  *
  * ### Customer-managed key for workspace storage
+ *
+ * ### For AWS
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject("databricksAccountId");
+ * // AWS ARN for the Databricks cross account role
+ * const databricksCrossAccountRole = config.requireObject("databricksCrossAccountRole");
+ * const databricksStorageCmk = aws.iam.getPolicyDocument({
+ *     version: "2012-10-17",
+ *     statements: [
+ *         {
+ *             sid: "Enable IAM User Permissions",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: [current.accountId],
+ *             }],
+ *             actions: ["kms:*"],
+ *             resources: ["*"],
+ *         },
+ *         {
+ *             sid: "Allow Databricks to use KMS key for DBFS",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: ["arn:aws:iam::414351767826:root"],
+ *             }],
+ *             actions: [
+ *                 "kms:Encrypt",
+ *                 "kms:Decrypt",
+ *                 "kms:ReEncrypt*",
+ *                 "kms:GenerateDataKey*",
+ *                 "kms:DescribeKey",
+ *             ],
+ *             resources: ["*"],
+ *         },
+ *         {
+ *             sid: "Allow Databricks to use KMS key for DBFS (Grants)",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: ["arn:aws:iam::414351767826:root"],
+ *             }],
+ *             actions: [
+ *                 "kms:CreateGrant",
+ *                 "kms:ListGrants",
+ *                 "kms:RevokeGrant",
+ *             ],
+ *             resources: ["*"],
+ *             conditions: [{
+ *                 test: "Bool",
+ *                 variable: "kms:GrantIsForAWSResource",
+ *                 values: ["true"],
+ *             }],
+ *         },
+ *         {
+ *             sid: "Allow Databricks to use KMS key for EBS",
+ *             effect: "Allow",
+ *             principals: [{
+ *                 type: "AWS",
+ *                 identifiers: [databricksCrossAccountRole],
+ *             }],
+ *             actions: [
+ *                 "kms:Decrypt",
+ *                 "kms:GenerateDataKey*",
+ *                 "kms:CreateGrant",
+ *                 "kms:DescribeKey",
+ *             ],
+ *             resources: ["*"],
+ *             conditions: [{
+ *                 test: "ForAnyValue:StringLike",
+ *                 variable: "kms:ViaService",
+ *                 values: ["ec2.*.amazonaws.com"],
+ *             }],
+ *         },
+ *     ],
+ * });
+ * const storageCustomerManagedKey = new aws.kms.Key("storage_customer_managed_key", {policy: databricksStorageCmk.then(databricksStorageCmk => databricksStorageCmk.json)});
+ * const storageCustomerManagedKeyAlias = new aws.kms.Alias("storage_customer_managed_key_alias", {
+ *     name: "alias/storage-customer-managed-key-alias",
+ *     targetKeyId: storageCustomerManagedKey.keyId,
+ * });
+ * const storage = new databricks.MwsCustomerManagedKeys("storage", {
+ *     accountId: databricksAccountId,
+ *     awsKeyInfo: {
+ *         keyArn: storageCustomerManagedKey.arn,
+ *         keyAlias: storageCustomerManagedKeyAlias.name,
+ *     },
+ *     useCases: ["STORAGE"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### For GCP
  *

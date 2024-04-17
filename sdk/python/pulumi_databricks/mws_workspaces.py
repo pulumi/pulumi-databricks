@@ -913,52 +913,52 @@ class MwsWorkspaces(pulumi.CustomResource):
             length=6)
         prefix = f"dltp{naming['result']}"
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.index.IamRole("cross_account_role",
-            name=f{prefix}-crossaccount,
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_iam_role_policy = aws.index.IamRolePolicy("this",
-            name=f{prefix}-policy,
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role["arn"])
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private,
+            role_arn=cross_account_role.arn)
+        root_storage_bucket = aws.s3.BucketV2("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl="private",
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_versioning = aws.s3.BucketVersioningV2("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
-        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
+                status="Disabled",
+            ))
+        root_storage_bucket_bucket_server_side_encryption_configuration_v2 = aws.s3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket",
             bucket=root_storage_bucket.bucket,
-            rule=[{
-                applyServerSideEncryptionByDefault: [{
-                    sseAlgorithm: AES256,
-                }],
-            }])
-        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+            rules=[aws.s3.BucketServerSideEncryptionConfigurationV2RuleArgs(
+                apply_server_side_encryption_by_default=aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs(
+                    sse_algorithm="AES256",
+                ),
+            )])
+        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
-        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
+        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,
@@ -1126,52 +1126,52 @@ class MwsWorkspaces(pulumi.CustomResource):
             length=6)
         prefix = f"dltp{naming['result']}"
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.index.IamRole("cross_account_role",
-            name=f{prefix}-crossaccount,
+        cross_account_role = aws.iam.Role("cross_account_role",
+            name=f"{prefix}-crossaccount",
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_iam_role_policy = aws.index.IamRolePolicy("this",
-            name=f{prefix}-policy,
+        this_role_policy = aws.iam.RolePolicy("this",
+            name=f"{prefix}-policy",
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             account_id=databricks_account_id,
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role["arn"])
-        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
-            bucket=f{prefix}-rootbucket,
-            acl=private,
+            role_arn=cross_account_role.arn)
+        root_storage_bucket = aws.s3.BucketV2("root_storage_bucket",
+            bucket=f"{prefix}-rootbucket",
+            acl="private",
             force_destroy=True,
             tags=tags)
-        root_versioning = aws.index.S3BucketVersioning("root_versioning",
+        root_versioning = aws.s3.BucketVersioningV2("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration=[{
-                status: Disabled,
-            }])
-        root_storage_bucket_s3_bucket_server_side_encryption_configuration = aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket",
+            versioning_configuration=aws.s3.BucketVersioningV2VersioningConfigurationArgs(
+                status="Disabled",
+            ))
+        root_storage_bucket_bucket_server_side_encryption_configuration_v2 = aws.s3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket",
             bucket=root_storage_bucket.bucket,
-            rule=[{
-                applyServerSideEncryptionByDefault: [{
-                    sseAlgorithm: AES256,
-                }],
-            }])
-        root_storage_bucket_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("root_storage_bucket",
+            rules=[aws.s3.BucketServerSideEncryptionConfigurationV2RuleArgs(
+                apply_server_side_encryption_by_default=aws.s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs(
+                    sse_algorithm="AES256",
+                ),
+            )])
+        root_storage_bucket_bucket_public_access_block = aws.s3.BucketPublicAccessBlock("root_storage_bucket",
             bucket=root_storage_bucket.id,
             block_public_acls=True,
             block_public_policy=True,
             ignore_public_acls=True,
             restrict_public_buckets=True,
             opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket]))
-        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy(bucket=root_storage_bucket["bucket"])
-        root_bucket_policy = aws.index.S3BucketPolicy("root_bucket_policy",
+        this_get_aws_bucket_policy = databricks.get_aws_bucket_policy_output(bucket=root_storage_bucket.bucket)
+        root_bucket_policy = aws.s3.BucketPolicy("root_bucket_policy",
             bucket=root_storage_bucket.id,
             policy=this_get_aws_bucket_policy.json,
-            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_s3_bucket_public_access_block]))
+            opts=pulumi.ResourceOptions(depends_on=[root_storage_bucket_bucket_public_access_block]))
         this_mws_storage_configurations = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket["bucket"])
+            bucket_name=root_storage_bucket.bucket)
         this_mws_workspaces = databricks.MwsWorkspaces("this",
             account_id=databricks_account_id,
             workspace_name=prefix,

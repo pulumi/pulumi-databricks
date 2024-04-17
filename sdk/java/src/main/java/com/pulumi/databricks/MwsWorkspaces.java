@@ -126,24 +126,27 @@ import javax.annotation.Nullable;
  * import com.pulumi.random.StringArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
- * import com.pulumi.aws.iamRole;
- * import com.pulumi.aws.IamRoleArgs;
+ * import com.pulumi.aws.iam.Role;
+ * import com.pulumi.aws.iam.RoleArgs;
  * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
- * import com.pulumi.aws.iamRolePolicy;
- * import com.pulumi.aws.IamRolePolicyArgs;
+ * import com.pulumi.aws.iam.RolePolicy;
+ * import com.pulumi.aws.iam.RolePolicyArgs;
  * import com.pulumi.databricks.MwsCredentials;
  * import com.pulumi.databricks.MwsCredentialsArgs;
- * import com.pulumi.aws.s3Bucket;
- * import com.pulumi.aws.S3BucketArgs;
- * import com.pulumi.aws.s3BucketVersioning;
- * import com.pulumi.aws.S3BucketVersioningArgs;
- * import com.pulumi.aws.s3BucketServerSideEncryptionConfiguration;
- * import com.pulumi.aws.S3BucketServerSideEncryptionConfigurationArgs;
- * import com.pulumi.aws.s3BucketPublicAccessBlock;
- * import com.pulumi.aws.S3BucketPublicAccessBlockArgs;
+ * import com.pulumi.aws.s3.BucketV2;
+ * import com.pulumi.aws.s3.BucketV2Args;
+ * import com.pulumi.aws.s3.BucketVersioningV2;
+ * import com.pulumi.aws.s3.BucketVersioningV2Args;
+ * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
+ * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2;
+ * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2Args;
+ * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleArgs;
+ * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs;
+ * import com.pulumi.aws.s3.BucketPublicAccessBlock;
+ * import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
  * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
- * import com.pulumi.aws.s3BucketPolicy;
- * import com.pulumi.aws.S3BucketPolicyArgs;
+ * import com.pulumi.aws.s3.BucketPolicy;
+ * import com.pulumi.aws.s3.BucketPolicyArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import com.pulumi.databricks.MwsWorkspaces;
@@ -177,7 +180,7 @@ import javax.annotation.Nullable;
  *             .externalId(databricksAccountId)
  *             .build());
  * 
- *         var crossAccountRole = new IamRole(&#34;crossAccountRole&#34;, IamRoleArgs.builder()        
+ *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
  *             .name(String.format(&#34;%s-crossaccount&#34;, prefix))
  *             .assumeRolePolicy(this_.json())
  *             .tags(tags)
@@ -185,7 +188,7 @@ import javax.annotation.Nullable;
  * 
  *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
  * 
- *         var thisIamRolePolicy = new IamRolePolicy(&#34;thisIamRolePolicy&#34;, IamRolePolicyArgs.builder()        
+ *         var thisRolePolicy = new RolePolicy(&#34;thisRolePolicy&#34;, RolePolicyArgs.builder()        
  *             .name(String.format(&#34;%s-policy&#34;, prefix))
  *             .role(crossAccountRole.id())
  *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
@@ -197,24 +200,30 @@ import javax.annotation.Nullable;
  *             .roleArn(crossAccountRole.arn())
  *             .build());
  * 
- *         var rootStorageBucket = new S3Bucket(&#34;rootStorageBucket&#34;, S3BucketArgs.builder()        
+ *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
  *             .bucket(String.format(&#34;%s-rootbucket&#34;, prefix))
  *             .acl(&#34;private&#34;)
  *             .forceDestroy(true)
  *             .tags(tags)
  *             .build());
  * 
- *         var rootVersioning = new S3BucketVersioning(&#34;rootVersioning&#34;, S3BucketVersioningArgs.builder()        
+ *         var rootVersioning = new BucketVersioningV2(&#34;rootVersioning&#34;, BucketVersioningV2Args.builder()        
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
+ *                 .status(&#34;Disabled&#34;)
+ *                 .build())
  *             .build());
  * 
- *         var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new S3BucketServerSideEncryptionConfiguration(&#34;rootStorageBucketS3BucketServerSideEncryptionConfiguration&#34;, S3BucketServerSideEncryptionConfigurationArgs.builder()        
+ *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2(&#34;rootStorageBucketBucketServerSideEncryptionConfigurationV2&#34;, BucketServerSideEncryptionConfigurationV2Args.builder()        
  *             .bucket(rootStorageBucket.bucket())
- *             .rule(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .rules(BucketServerSideEncryptionConfigurationV2RuleArgs.builder()
+ *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs.builder()
+ *                     .sseAlgorithm(&#34;AES256&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
- *         var rootStorageBucketS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock(&#34;rootStorageBucketS3BucketPublicAccessBlock&#34;, S3BucketPublicAccessBlockArgs.builder()        
+ *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock(&#34;rootStorageBucketBucketPublicAccessBlock&#34;, BucketPublicAccessBlockArgs.builder()        
  *             .bucket(rootStorageBucket.id())
  *             .blockPublicAcls(true)
  *             .blockPublicPolicy(true)
@@ -228,11 +237,11 @@ import javax.annotation.Nullable;
  *             .bucket(rootStorageBucket.bucket())
  *             .build());
  * 
- *         var rootBucketPolicy = new S3BucketPolicy(&#34;rootBucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+ *         var rootBucketPolicy = new BucketPolicy(&#34;rootBucketPolicy&#34;, BucketPolicyArgs.builder()        
  *             .bucket(rootStorageBucket.id())
- *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult.json()))
+ *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -&gt; thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult.json())))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucketS3BucketPublicAccessBlock)
+ *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
  *                 .build());
  * 
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        

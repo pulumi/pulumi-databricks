@@ -118,16 +118,16 @@ namespace Pulumi.Databricks
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
+    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
     ///     {
     ///         Name = $"{prefix}-crossaccount",
-    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
     ///         Tags = tags,
     ///     });
     /// 
     ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
+    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
     ///     {
     ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,
@@ -141,7 +141,7 @@ namespace Pulumi.Databricks
     ///         RoleArn = crossAccountRole.Arn,
     ///     });
     /// 
-    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.S3.BucketV2("root_storage_bucket", new()
     ///     {
     ///         Bucket = $"{prefix}-rootbucket",
     ///         Acl = "private",
@@ -149,37 +149,31 @@ namespace Pulumi.Databricks
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
+    ///     var rootVersioning = new Aws.S3.BucketVersioningV2("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new[]
+    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningV2VersioningConfigurationArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "status", "Disabled" },
-    ///             },
+    ///             Status = "Disabled",
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new Aws.Index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
+    ///     var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new Aws.S3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket", new()
     ///     {
     ///         Bucket = rootStorageBucket.Bucket,
-    ///         Rule = new[]
+    ///         Rules = new[]
     ///         {
-    ///             
+    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleArgs
     ///             {
-    ///                 { "applyServerSideEncryptionByDefault", new[]
+    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs
     ///                 {
-    ///                     
-    ///                     {
-    ///                         { "sseAlgorithm", "AES256" },
-    ///                     },
-    ///                 } },
+    ///                     SseAlgorithm = "AES256",
+    ///                 },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("root_storage_bucket", new()
+    ///     var rootStorageBucketBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("root_storage_bucket", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         BlockPublicAcls = true,
@@ -199,7 +193,7 @@ namespace Pulumi.Databricks
     ///         Bucket = rootStorageBucket.Bucket,
     ///     });
     /// 
-    ///     var rootBucketPolicy = new Aws.Index.S3BucketPolicy("root_bucket_policy", new()
+    ///     var rootBucketPolicy = new Aws.S3.BucketPolicy("root_bucket_policy", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         Policy = thisGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
@@ -207,7 +201,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketS3BucketPublicAccessBlock, 
+    ///             rootStorageBucketBucketPublicAccessBlock, 
     ///         },
     ///     });
     /// 

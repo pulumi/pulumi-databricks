@@ -87,43 +87,43 @@ import * as utilities from "./utilities";
  * const this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.index.IamRole("cross_account_role", {
+ * const crossAccountRole = new aws.iam.Role("cross_account_role", {
  *     name: `${prefix}-crossaccount`,
- *     assumeRolePolicy: _this.json,
+ *     assumeRolePolicy: _this.then(_this => _this.json),
  *     tags: tags,
  * });
  * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisIamRolePolicy = new aws.index.IamRolePolicy("this", {
+ * const thisRolePolicy = new aws.iam.RolePolicy("this", {
  *     name: `${prefix}-policy`,
  *     role: crossAccountRole.id,
- *     policy: thisGetAwsCrossAccountPolicy.json,
+ *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
  * });
  * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
  *     credentialsName: `${prefix}-creds`,
  *     roleArn: crossAccountRole.arn,
  * });
- * const rootStorageBucket = new aws.index.S3Bucket("root_storage_bucket", {
+ * const rootStorageBucket = new aws.s3.BucketV2("root_storage_bucket", {
  *     bucket: `${prefix}-rootbucket`,
  *     acl: "private",
  *     forceDestroy: true,
  *     tags: tags,
  * });
- * const rootVersioning = new aws.index.S3BucketVersioning("root_versioning", {
+ * const rootVersioning = new aws.s3.BucketVersioningV2("root_versioning", {
  *     bucket: rootStorageBucket.id,
- *     versioningConfiguration: [{
+ *     versioningConfiguration: {
  *         status: "Disabled",
- *     }],
+ *     },
  * });
- * const rootStorageBucketS3BucketServerSideEncryptionConfiguration = new aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", {
+ * const rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new aws.s3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket", {
  *     bucket: rootStorageBucket.bucket,
- *     rule: [{
- *         applyServerSideEncryptionByDefault: [{
+ *     rules: [{
+ *         applyServerSideEncryptionByDefault: {
  *             sseAlgorithm: "AES256",
- *         }],
+ *         },
  *     }],
  * });
- * const rootStorageBucketS3BucketPublicAccessBlock = new aws.index.S3BucketPublicAccessBlock("root_storage_bucket", {
+ * const rootStorageBucketBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("root_storage_bucket", {
  *     bucket: rootStorageBucket.id,
  *     blockPublicAcls: true,
  *     blockPublicPolicy: true,
@@ -132,14 +132,14 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [rootStorageBucket],
  * });
- * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicy({
+ * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
  *     bucket: rootStorageBucket.bucket,
  * });
- * const rootBucketPolicy = new aws.index.S3BucketPolicy("root_bucket_policy", {
+ * const rootBucketPolicy = new aws.s3.BucketPolicy("root_bucket_policy", {
  *     bucket: rootStorageBucket.id,
- *     policy: thisGetAwsBucketPolicy.json,
+ *     policy: thisGetAwsBucketPolicy.apply(thisGetAwsBucketPolicy => thisGetAwsBucketPolicy.json),
  * }, {
- *     dependsOn: [rootStorageBucketS3BucketPublicAccessBlock],
+ *     dependsOn: [rootStorageBucketBucketPublicAccessBlock],
  * });
  * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,

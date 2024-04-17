@@ -229,6 +229,54 @@ class MlflowWebhook(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Triggering Databricks job
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        me = databricks.get_current_user()
+        latest = databricks.get_spark_version()
+        smallest = databricks.get_node_type(local_disk=True)
+        this = databricks.Notebook("this",
+            path=f"{me.home}/MLFlowWebhook",
+            language="PYTHON",
+            content_base64=std.base64encode(input=\"\"\"import json
+         
+        event_message = dbutils.widgets.get("event_message")
+        event_message_dict = json.loads(event_message)
+        print(f"event data={event_message_dict}")
+        \"\"\").result)
+        this_job = databricks.Job("this",
+            name=f"Terraform MLflowWebhook Demo ({me.alphanumeric})",
+            tasks=[databricks.JobTaskArgs(
+                task_key="task1",
+                new_cluster=databricks.JobTaskNewClusterArgs(
+                    num_workers=1,
+                    spark_version=latest.id,
+                    node_type_id=smallest.id,
+                ),
+                notebook_task=databricks.JobTaskNotebookTaskArgs(
+                    notebook_path=this.path,
+                ),
+            )])
+        pat_for_webhook = databricks.Token("pat_for_webhook",
+            comment="MLflow Webhook",
+            lifetime_seconds=86400000)
+        job = databricks.MlflowWebhook("job",
+            events=["TRANSITION_REQUEST_CREATED"],
+            description="Databricks Job webhook trigger",
+            status="ACTIVE",
+            job_spec=databricks.MlflowWebhookJobSpecArgs(
+                job_id=this_job.id,
+                workspace_url=me.workspace_url,
+                access_token=pat_for_webhook.token_value,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ### POSTing to URL
 
         <!--Start PulumiCodeChooser -->
@@ -284,6 +332,54 @@ class MlflowWebhook(pulumi.CustomResource):
         This resource allows you to create [MLflow Model Registry Webhooks](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) in Databricks.  Webhooks enable you to listen for Model Registry events so your integrations can automatically trigger actions. You can use webhooks to automate and integrate your machine learning pipeline with existing CI/CD tools and workflows. Webhooks allow trigger execution of a Databricks job or call a web service on specific event(s) that is generated in the MLflow Registry - stage transitioning, creation of registered model, creation of transition request, etc.
 
         ## Example Usage
+
+        ### Triggering Databricks job
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        me = databricks.get_current_user()
+        latest = databricks.get_spark_version()
+        smallest = databricks.get_node_type(local_disk=True)
+        this = databricks.Notebook("this",
+            path=f"{me.home}/MLFlowWebhook",
+            language="PYTHON",
+            content_base64=std.base64encode(input=\"\"\"import json
+         
+        event_message = dbutils.widgets.get("event_message")
+        event_message_dict = json.loads(event_message)
+        print(f"event data={event_message_dict}")
+        \"\"\").result)
+        this_job = databricks.Job("this",
+            name=f"Terraform MLflowWebhook Demo ({me.alphanumeric})",
+            tasks=[databricks.JobTaskArgs(
+                task_key="task1",
+                new_cluster=databricks.JobTaskNewClusterArgs(
+                    num_workers=1,
+                    spark_version=latest.id,
+                    node_type_id=smallest.id,
+                ),
+                notebook_task=databricks.JobTaskNotebookTaskArgs(
+                    notebook_path=this.path,
+                ),
+            )])
+        pat_for_webhook = databricks.Token("pat_for_webhook",
+            comment="MLflow Webhook",
+            lifetime_seconds=86400000)
+        job = databricks.MlflowWebhook("job",
+            events=["TRANSITION_REQUEST_CREATED"],
+            description="Databricks Job webhook trigger",
+            status="ACTIVE",
+            job_spec=databricks.MlflowWebhookJobSpecArgs(
+                job_id=this_job.id,
+                workspace_url=me.workspace_url,
+                access_token=pat_for_webhook.token_value,
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ### POSTing to URL
 

@@ -33,10 +33,10 @@ namespace Pulumi.Databricks
         ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
         ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        ///     var crossAccountPolicy = new Aws.Index.IamPolicy("cross_account_policy", new()
+        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-policy",
-        ///         Policy = @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
         ///     });
         /// 
         ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
@@ -44,14 +44,14 @@ namespace Pulumi.Databricks
         ///         ExternalId = databricksAccountId,
         ///     });
         /// 
-        ///     var crossAccount = new Aws.Index.IamRole("cross_account", new()
+        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-role",
         ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
         ///         Description = "Grants Databricks full access to VPC resources",
         ///     });
         /// 
-        ///     var crossAccountIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("cross_account", new()
+        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
         ///     {
         ///         PolicyArn = crossAccountPolicy.Arn,
         ///         Role = crossAccount.Name,
@@ -102,10 +102,10 @@ namespace Pulumi.Databricks
         ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
         ///     var @this = Databricks.GetAwsCrossAccountPolicy.Invoke();
         /// 
-        ///     var crossAccountPolicy = new Aws.Index.IamPolicy("cross_account_policy", new()
+        ///     var crossAccountPolicy = new Aws.Iam.Policy("cross_account_policy", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-policy",
-        ///         Policy = @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json),
+        ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsCrossAccountPolicyResult =&gt; getAwsCrossAccountPolicyResult.Json)),
         ///     });
         /// 
         ///     var thisGetAwsAssumeRolePolicy = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
@@ -113,14 +113,14 @@ namespace Pulumi.Databricks
         ///         ExternalId = databricksAccountId,
         ///     });
         /// 
-        ///     var crossAccount = new Aws.Index.IamRole("cross_account", new()
+        ///     var crossAccount = new Aws.Iam.Role("cross_account", new()
         ///     {
         ///         Name = $"{prefix}-crossaccount-iam-role",
         ///         AssumeRolePolicy = thisGetAwsAssumeRolePolicy.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
         ///         Description = "Grants Databricks full access to VPC resources",
         ///     });
         /// 
-        ///     var crossAccountIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("cross_account", new()
+        ///     var crossAccountRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("cross_account", new()
         ///     {
         ///         PolicyArn = crossAccountPolicy.Arn,
         ///         Role = crossAccount.Name,

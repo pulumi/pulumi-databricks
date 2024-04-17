@@ -21,19 +21,19 @@ import * as utilities from "./utilities";
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * const this = databricks.getAwsCrossAccountPolicy({});
- * const crossAccountPolicy = new aws.index.IamPolicy("cross_account_policy", {
+ * const crossAccountPolicy = new aws.iam.Policy("cross_account_policy", {
  *     name: `${prefix}-crossaccount-iam-policy`,
- *     policy: _this.json,
+ *     policy: _this.then(_this => _this.json),
  * });
  * const thisGetAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccount = new aws.index.IamRole("cross_account", {
+ * const crossAccount = new aws.iam.Role("cross_account", {
  *     name: `${prefix}-crossaccount-iam-role`,
- *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.json,
+ *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.then(thisGetAwsAssumeRolePolicy => thisGetAwsAssumeRolePolicy.json),
  *     description: "Grants Databricks full access to VPC resources",
  * });
- * const crossAccountIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("cross_account", {
+ * const crossAccountRolePolicyAttachment = new aws.iam.RolePolicyAttachment("cross_account", {
  *     policyArn: crossAccountPolicy.arn,
  *     role: crossAccount.name,
  * });
@@ -112,19 +112,19 @@ export interface GetAwsAssumeRolePolicyResult {
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * const this = databricks.getAwsCrossAccountPolicy({});
- * const crossAccountPolicy = new aws.index.IamPolicy("cross_account_policy", {
+ * const crossAccountPolicy = new aws.iam.Policy("cross_account_policy", {
  *     name: `${prefix}-crossaccount-iam-policy`,
- *     policy: _this.json,
+ *     policy: _this.then(_this => _this.json),
  * });
  * const thisGetAwsAssumeRolePolicy = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccount = new aws.index.IamRole("cross_account", {
+ * const crossAccount = new aws.iam.Role("cross_account", {
  *     name: `${prefix}-crossaccount-iam-role`,
- *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.json,
+ *     assumeRolePolicy: thisGetAwsAssumeRolePolicy.then(thisGetAwsAssumeRolePolicy => thisGetAwsAssumeRolePolicy.json),
  *     description: "Grants Databricks full access to VPC resources",
  * });
- * const crossAccountIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("cross_account", {
+ * const crossAccountRolePolicyAttachment = new aws.iam.RolePolicyAttachment("cross_account", {
  *     policyArn: crossAccountPolicy.arn,
  *     role: crossAccount.name,
  * });

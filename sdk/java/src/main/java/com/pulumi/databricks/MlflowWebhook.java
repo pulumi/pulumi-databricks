@@ -22,6 +22,101 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Triggering Databricks job
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
+ * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
+ * import com.pulumi.databricks.Notebook;
+ * import com.pulumi.databricks.NotebookArgs;
+ * import com.pulumi.databricks.Job;
+ * import com.pulumi.databricks.JobArgs;
+ * import com.pulumi.databricks.inputs.JobTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
+ * import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
+ * import com.pulumi.databricks.Token;
+ * import com.pulumi.databricks.TokenArgs;
+ * import com.pulumi.databricks.MlflowWebhook;
+ * import com.pulumi.databricks.MlflowWebhookArgs;
+ * import com.pulumi.databricks.inputs.MlflowWebhookJobSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = DatabricksFunctions.getCurrentUser();
+ * 
+ *         final var latest = DatabricksFunctions.getSparkVersion();
+ * 
+ *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
+ *             .localDisk(true)
+ *             .build());
+ * 
+ *         var this_ = new Notebook(&#34;this&#34;, NotebookArgs.builder()        
+ *             .path(String.format(&#34;%s/MLFlowWebhook&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.home())))
+ *             .language(&#34;PYTHON&#34;)
+ *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input(&#34;&#34;&#34;
+ * import json
+ *  
+ * event_message = dbutils.widgets.get(&#34;event_message&#34;)
+ * event_message_dict = json.loads(event_message)
+ * print(f&#34;event data={event_message_dict}&#34;)
+ *                 &#34;&#34;&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var thisJob = new Job(&#34;thisJob&#34;, JobArgs.builder()        
+ *             .name(String.format(&#34;Terraform MLflowWebhook Demo (%s)&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
+ *             .tasks(JobTaskArgs.builder()
+ *                 .taskKey(&#34;task1&#34;)
+ *                 .newCluster(JobTaskNewClusterArgs.builder()
+ *                     .numWorkers(1)
+ *                     .sparkVersion(latest.applyValue(getSparkVersionResult -&gt; getSparkVersionResult.id()))
+ *                     .nodeTypeId(smallest.applyValue(getNodeTypeResult -&gt; getNodeTypeResult.id()))
+ *                     .build())
+ *                 .notebookTask(JobTaskNotebookTaskArgs.builder()
+ *                     .notebookPath(this_.path())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var patForWebhook = new Token(&#34;patForWebhook&#34;, TokenArgs.builder()        
+ *             .comment(&#34;MLflow Webhook&#34;)
+ *             .lifetimeSeconds(86400000)
+ *             .build());
+ * 
+ *         var job = new MlflowWebhook(&#34;job&#34;, MlflowWebhookArgs.builder()        
+ *             .events(&#34;TRANSITION_REQUEST_CREATED&#34;)
+ *             .description(&#34;Databricks Job webhook trigger&#34;)
+ *             .status(&#34;ACTIVE&#34;)
+ *             .jobSpec(MlflowWebhookJobSpecArgs.builder()
+ *                 .jobId(thisJob.id())
+ *                 .workspaceUrl(me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.workspaceUrl()))
+ *                 .accessToken(patForWebhook.tokenValue())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### POSTing to URL
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

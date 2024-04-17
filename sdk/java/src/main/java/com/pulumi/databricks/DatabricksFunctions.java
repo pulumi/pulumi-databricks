@@ -153,13 +153,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iamPolicy;
-     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iamRole;
-     * import com.pulumi.aws.IamRoleArgs;
-     * import com.pulumi.aws.iamRolePolicyAttachment;
-     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -179,7 +179,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
      *             .policy(this_.json())
      *             .build());
@@ -188,13 +188,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -239,13 +239,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iamPolicy;
-     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iamRole;
-     * import com.pulumi.aws.IamRoleArgs;
-     * import com.pulumi.aws.iamRolePolicyAttachment;
-     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -265,7 +265,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
      *             .policy(this_.json())
      *             .build());
@@ -274,13 +274,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -325,13 +325,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iamPolicy;
-     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iamRole;
-     * import com.pulumi.aws.IamRoleArgs;
-     * import com.pulumi.aws.iamRolePolicyAttachment;
-     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -351,7 +351,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
      *             .policy(this_.json())
      *             .build());
@@ -360,13 +360,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -411,13 +411,13 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import com.pulumi.aws.iamPolicy;
-     * import com.pulumi.aws.IamPolicyArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
      * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
-     * import com.pulumi.aws.iamRole;
-     * import com.pulumi.aws.IamRoleArgs;
-     * import com.pulumi.aws.iamRolePolicyAttachment;
-     * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import com.pulumi.aws.iam.RolePolicyAttachment;
+     * import com.pulumi.aws.iam.RolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
      * import java.util.List;
@@ -437,7 +437,7 @@ public final class DatabricksFunctions {
      *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
      *         final var this = DatabricksFunctions.getAwsCrossAccountPolicy();
      * 
-     *         var crossAccountPolicy = new IamPolicy(&#34;crossAccountPolicy&#34;, IamPolicyArgs.builder()        
+     *         var crossAccountPolicy = new Policy(&#34;crossAccountPolicy&#34;, PolicyArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-policy&#34;, prefix))
      *             .policy(this_.json())
      *             .build());
@@ -446,13 +446,13 @@ public final class DatabricksFunctions {
      *             .externalId(databricksAccountId)
      *             .build());
      * 
-     *         var crossAccount = new IamRole(&#34;crossAccount&#34;, IamRoleArgs.builder()        
+     *         var crossAccount = new Role(&#34;crossAccount&#34;, RoleArgs.builder()        
      *             .name(String.format(&#34;%s-crossaccount-iam-role&#34;, prefix))
      *             .assumeRolePolicy(thisGetAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
      *             .description(&#34;Grants Databricks full access to VPC resources&#34;)
      *             .build());
      * 
-     *         var crossAccountIamRolePolicyAttachment = new IamRolePolicyAttachment(&#34;crossAccountIamRolePolicyAttachment&#34;, IamRolePolicyAttachmentArgs.builder()        
+     *         var crossAccountRolePolicyAttachment = new RolePolicyAttachment(&#34;crossAccountRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
      *             .policyArn(crossAccountPolicy.arn())
      *             .role(crossAccount.name())
      *             .build());
@@ -493,12 +493,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3Bucket;
-     * import com.pulumi.aws.S3BucketArgs;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3BucketPolicy;
-     * import com.pulumi.aws.S3BucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -512,7 +512,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
      *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
@@ -522,7 +522,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -550,12 +550,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3Bucket;
-     * import com.pulumi.aws.S3BucketArgs;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3BucketPolicy;
-     * import com.pulumi.aws.S3BucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -569,7 +569,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
      *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
@@ -579,7 +579,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -607,12 +607,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3Bucket;
-     * import com.pulumi.aws.S3BucketArgs;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3BucketPolicy;
-     * import com.pulumi.aws.S3BucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -626,7 +626,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
      *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
@@ -636,7 +636,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -664,12 +664,12 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3Bucket;
-     * import com.pulumi.aws.S3BucketArgs;
+     * import com.pulumi.aws.s3.BucketV2;
+     * import com.pulumi.aws.s3.BucketV2Args;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
-     * import com.pulumi.aws.s3BucketPolicy;
-     * import com.pulumi.aws.S3BucketPolicyArgs;
+     * import com.pulumi.aws.s3.BucketPolicy;
+     * import com.pulumi.aws.s3.BucketPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -683,7 +683,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var this_ = new S3Bucket(&#34;this&#34;, S3BucketArgs.builder()        
+     *         var this_ = new BucketV2(&#34;this&#34;, BucketV2Args.builder()        
      *             .bucket(&#34;&lt;unique_bucket_name&gt;&#34;)
      *             .acl(&#34;private&#34;)
      *             .forceDestroy(true)
@@ -693,7 +693,7 @@ public final class DatabricksFunctions {
      *             .bucketName(this_.bucket())
      *             .build());
      * 
-     *         var thisS3BucketPolicy = new S3BucketPolicy(&#34;thisS3BucketPolicy&#34;, S3BucketPolicyArgs.builder()        
+     *         var thisBucketPolicy = new BucketPolicy(&#34;thisBucketPolicy&#34;, BucketPolicyArgs.builder()        
      *             .bucket(this_.id())
      *             .policy(thisDatabricksAwsBucketPolicy.json())
      *             .build());
@@ -1008,6 +1008,90 @@ public final class DatabricksFunctions {
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.aws.iam.IamFunctions;
+     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName(&#34;databricks-bucket&#34;)
+     *             .roleName(&#34;databricks-role&#34;)
+     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .build());
+     * 
+     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
+     *                         .type(&#34;AWS&#34;)
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;StringEquals&#34;)
+     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .values(databricksAccountId)
+     *                         .build())
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;ArnLike&#34;)
+     *                         .variable(&#34;aws:PrincipalArn&#34;)
+     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
+     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args) {
         return getAwsUnityCatalogPolicy(args, InvokeOptions.Empty);
@@ -1016,6 +1100,90 @@ public final class DatabricksFunctions {
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.aws.iam.IamFunctions;
+     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName(&#34;databricks-bucket&#34;)
+     *             .roleName(&#34;databricks-role&#34;)
+     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .build());
+     * 
+     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
+     *                         .type(&#34;AWS&#34;)
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;StringEquals&#34;)
+     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .values(databricksAccountId)
+     *                         .build())
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;ArnLike&#34;)
+     *                         .variable(&#34;aws:PrincipalArn&#34;)
+     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
+     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args) {
@@ -1026,6 +1194,90 @@ public final class DatabricksFunctions {
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.aws.iam.IamFunctions;
+     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName(&#34;databricks-bucket&#34;)
+     *             .roleName(&#34;databricks-role&#34;)
+     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .build());
+     * 
+     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
+     *                         .type(&#34;AWS&#34;)
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;StringEquals&#34;)
+     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .values(databricksAccountId)
+     *                         .build())
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;ArnLike&#34;)
+     *                         .variable(&#34;aws:PrincipalArn&#34;)
+     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
+     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
@@ -1034,6 +1286,90 @@ public final class DatabricksFunctions {
      * &gt; **Note** This resource has an evolving API, which may change in future versions of the provider. Please always consult [latest documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default) in case of any questions.
      * 
      * This data source constructs necessary AWS Unity Catalog policy for you, which is based on [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
+     * import com.pulumi.aws.iam.IamFunctions;
+     * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.aws.iam.Policy;
+     * import com.pulumi.aws.iam.PolicyArgs;
+     * import com.pulumi.aws.iam.Role;
+     * import com.pulumi.aws.iam.RoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAwsUnityCatalogPolicy(GetAwsUnityCatalogPolicyArgs.builder()
+     *             .awsAccountId(awsAccountId)
+     *             .bucketName(&#34;databricks-bucket&#34;)
+     *             .roleName(&#34;databricks-role&#34;)
+     *             .kmsName(&#34;databricks-kms&#34;)
+     *             .build());
+     * 
+     *         final var passroleForUc = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+     *             .statements(            
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .identifiers(&#34;arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL&#34;)
+     *                         .type(&#34;AWS&#34;)
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;StringEquals&#34;)
+     *                         .variable(&#34;sts:ExternalId&#34;)
+     *                         .values(databricksAccountId)
+     *                         .build())
+     *                     .build(),
+     *                 GetPolicyDocumentStatementArgs.builder()
+     *                     .sid(&#34;ExplicitSelfRoleAssumption&#34;)
+     *                     .effect(&#34;Allow&#34;)
+     *                     .actions(&#34;sts:AssumeRole&#34;)
+     *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
+     *                         .type(&#34;AWS&#34;)
+     *                         .identifiers(String.format(&#34;arn:aws:iam::%s:root&#34;, awsAccountId))
+     *                         .build())
+     *                     .conditions(GetPolicyDocumentStatementConditionArgs.builder()
+     *                         .test(&#34;ArnLike&#34;)
+     *                         .variable(&#34;aws:PrincipalArn&#34;)
+     *                         .values(String.format(&#34;arn:aws:iam::%s:role/%s-uc-access&#34;, awsAccountId,prefix))
+     *                         .build())
+     *                     .build())
+     *             .build());
+     * 
+     *         var unityMetastore = new Policy(&#34;unityMetastore&#34;, PolicyArgs.builder()        
+     *             .name(String.format(&#34;%s-unity-catalog-metastore-access-iam-policy&#34;, prefix))
+     *             .policy(this_.json())
+     *             .build());
+     * 
+     *         var metastoreDataAccess = new Role(&#34;metastoreDataAccess&#34;, RoleArgs.builder()        
+     *             .name(String.format(&#34;%s-uc-access&#34;, prefix))
+     *             .assumeRolePolicy(passroleForUc.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
+     *             .managedPolicyArns(unityMetastore.arn())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsUnityCatalogPolicyResult> getAwsUnityCatalogPolicyPlain(GetAwsUnityCatalogPolicyPlainArgs args, InvokeOptions options) {

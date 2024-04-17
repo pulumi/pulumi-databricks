@@ -11,6 +11,62 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Triggering Databricks job
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const me = databricks.getCurrentUser({});
+ * const latest = databricks.getSparkVersion({});
+ * const smallest = databricks.getNodeType({
+ *     localDisk: true,
+ * });
+ * const _this = new databricks.Notebook("this", {
+ *     path: me.then(me => `${me.home}/MLFlowWebhook`),
+ *     language: "PYTHON",
+ *     contentBase64: std.base64encode({
+ *         input: `import json
+ *  
+ * event_message = dbutils.widgets.get("event_message")
+ * event_message_dict = json.loads(event_message)
+ * print(f"event data={event_message_dict}")
+ * `,
+ *     }).then(invoke => invoke.result),
+ * });
+ * const thisJob = new databricks.Job("this", {
+ *     name: me.then(me => `Terraform MLflowWebhook Demo (${me.alphanumeric})`),
+ *     tasks: [{
+ *         taskKey: "task1",
+ *         newCluster: {
+ *             numWorkers: 1,
+ *             sparkVersion: latest.then(latest => latest.id),
+ *             nodeTypeId: smallest.then(smallest => smallest.id),
+ *         },
+ *         notebookTask: {
+ *             notebookPath: _this.path,
+ *         },
+ *     }],
+ * });
+ * const patForWebhook = new databricks.Token("pat_for_webhook", {
+ *     comment: "MLflow Webhook",
+ *     lifetimeSeconds: 86400000,
+ * });
+ * const job = new databricks.MlflowWebhook("job", {
+ *     events: ["TRANSITION_REQUEST_CREATED"],
+ *     description: "Databricks Job webhook trigger",
+ *     status: "ACTIVE",
+ *     jobSpec: {
+ *         jobId: thisJob.id,
+ *         workspaceUrl: me.then(me => me.workspaceUrl),
+ *         accessToken: patForWebhook.tokenValue,
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### POSTing to URL
  *
  * <!--Start PulumiCodeChooser -->
