@@ -14,7 +14,7 @@ plugins:
   - name: random
     version: "4.8.2"
   - name: aws
-    version: "5.18.0"
+    version: "6.31.0"
   - name: time
     version: "0.0.13"
   - name: azure

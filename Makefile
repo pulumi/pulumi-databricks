@@ -113,7 +113,7 @@ install_plugins: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install converter terraform 1.0.16
 	.pulumi/bin/pulumi plugin install resource random 4.8.2
-	.pulumi/bin/pulumi plugin install resource aws 5.18.0
+	.pulumi/bin/pulumi plugin install resource aws 6.31.0
 	.pulumi/bin/pulumi plugin install resource time 0.0.13
 	.pulumi/bin/pulumi plugin install resource azure 5.66.1
 	.pulumi/bin/pulumi plugin install resource docker 4.5.1
