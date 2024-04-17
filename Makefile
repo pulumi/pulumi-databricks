@@ -117,6 +117,7 @@ install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource time 0.0.13
 	.pulumi/bin/pulumi plugin install resource azure 5.66.1
 	.pulumi/bin/pulumi plugin install resource docker 4.5.1
+	.pulumi/bin/pulumi plugin install resource std 1.6.2
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
