@@ -27,6 +27,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var @this = new Databricks.MlflowExperiment("this", new()
     ///     {
+    ///         Name = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/Sample",
     ///         ArtifactLocation = "dbfs:/tmp/my-experiment",
     ///         Description = "My MLflow experiment description",
     ///     });

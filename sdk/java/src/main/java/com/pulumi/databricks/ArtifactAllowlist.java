@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var initScripts = new ArtifactAllowlist(&#34;initScripts&#34;, ArtifactAllowlistArgs.builder()        
+ *             .artifactType(&#34;INIT_SCRIPT&#34;)
  *             .artifactMatchers(ArtifactAllowlistArtifactMatcherArgs.builder()
  *                 .artifact(&#34;/Volumes/inits&#34;)
  *                 .matchType(&#34;PREFIX_MATCH&#34;)
  *                 .build())
- *             .artifactType(&#34;INIT_SCRIPT&#34;)
  *             .build());
  * 
  *     }

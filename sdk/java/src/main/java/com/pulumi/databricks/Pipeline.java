@@ -56,13 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dltDemoNotebook = new Notebook(&#34;dltDemoNotebook&#34;);
+ *         var dltDemo = new Notebook(&#34;dltDemo&#34;);
  * 
- *         //...
  *         var dltDemoRepo = new Repo(&#34;dltDemoRepo&#34;);
  * 
- *         //...
  *         var this_ = new Pipeline(&#34;this&#34;, PipelineArgs.builder()        
+ *             .name(&#34;Pipeline Name&#34;)
  *             .storage(&#34;/test/first-pipeline&#34;)
  *             .configuration(Map.ofEntries(
  *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -82,7 +81,7 @@ import javax.annotation.Nullable;
  *             .libraries(            
  *                 PipelineLibraryArgs.builder()
  *                     .notebook(PipelineLibraryNotebookArgs.builder()
- *                         .path(dltDemoNotebook.id())
+ *                         .path(dltDemo.id())
  *                         .build())
  *                     .build(),
  *                 PipelineLibraryArgs.builder()

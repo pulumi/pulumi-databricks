@@ -27,14 +27,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var meUser = Databricks.GetUser.Invoke(new()
+    ///     var me = Databricks.GetUser.Invoke(new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var meEntitlements = new Databricks.Entitlements("meEntitlements", new()
+    ///     var meEntitlements = new Databricks.Entitlements("me", new()
     ///     {
-    ///         UserId = meUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         UserId = me.Apply(getUserResult =&gt; getUserResult.Id),
     ///         AllowClusterCreate = true,
     ///         AllowInstancePoolCreate = true,
     ///     });
@@ -54,14 +54,14 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisServicePrincipal = Databricks.GetServicePrincipal.Invoke(new()
+    ///     var @this = Databricks.GetServicePrincipal.Invoke(new()
     ///     {
     ///         ApplicationId = "11111111-2222-3333-4444-555666777888",
     ///     });
     /// 
-    ///     var thisEntitlements = new Databricks.Entitlements("thisEntitlements", new()
+    ///     var thisEntitlements = new Databricks.Entitlements("this", new()
     ///     {
-    ///         ServicePrincipalId = thisServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.SpId),
+    ///         ServicePrincipalId = @this.Apply(@this =&gt; @this.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.SpId)),
     ///         AllowClusterCreate = true,
     ///         AllowInstancePoolCreate = true,
     ///     });

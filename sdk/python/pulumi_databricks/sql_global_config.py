@@ -270,9 +270,9 @@ class SqlGlobalConfig(pulumi.CustomResource):
             data_access_config={
                 "spark.hadoop.fs.azure.account.auth.type": "OAuth",
                 "spark.hadoop.fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-                "spark.hadoop.fs.azure.account.oauth2.client.id": var["application_id"],
-                "spark.hadoop.fs.azure.account.oauth2.client.secret": f"{{{{secrets/{local['secret_scope']}/{local['secret_key']}}}}}",
-                "spark.hadoop.fs.azure.account.oauth2.client.endpoint": f"https://login.microsoftonline.com/{var['tenant_id']}/oauth2/token",
+                "spark.hadoop.fs.azure.account.oauth2.client.id": application_id,
+                "spark.hadoop.fs.azure.account.oauth2.client.secret": f"{{{{secrets/{secret_scope}/{secret_key}}}}}",
+                "spark.hadoop.fs.azure.account.oauth2.client.endpoint": f"https://login.microsoftonline.com/{tenant_id}/oauth2/token",
             },
             sql_config_params={
                 "ANSI_MODE": "true",
@@ -349,9 +349,9 @@ class SqlGlobalConfig(pulumi.CustomResource):
             data_access_config={
                 "spark.hadoop.fs.azure.account.auth.type": "OAuth",
                 "spark.hadoop.fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-                "spark.hadoop.fs.azure.account.oauth2.client.id": var["application_id"],
-                "spark.hadoop.fs.azure.account.oauth2.client.secret": f"{{{{secrets/{local['secret_scope']}/{local['secret_key']}}}}}",
-                "spark.hadoop.fs.azure.account.oauth2.client.endpoint": f"https://login.microsoftonline.com/{var['tenant_id']}/oauth2/token",
+                "spark.hadoop.fs.azure.account.oauth2.client.id": application_id,
+                "spark.hadoop.fs.azure.account.oauth2.client.secret": f"{{{{secrets/{secret_scope}/{secret_key}}}}}",
+                "spark.hadoop.fs.azure.account.oauth2.client.endpoint": f"https://login.microsoftonline.com/{tenant_id}/oauth2/token",
             },
             sql_config_params={
                 "ANSI_MODE": "true",

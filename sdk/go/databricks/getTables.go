@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thingsTables, err := databricks.GetTables(ctx, &databricks.GetTablesArgs{
+//			things, err := databricks.GetTables(ctx, &databricks.GetTablesArgs{
 //				CatalogName: "sandbox",
 //				SchemaName:  "things",
 //			}, nil)
@@ -36,8 +36,8 @@ import (
 //				return err
 //			}
 //			var thingsGrants []*databricks.Grants
-//			for key0, val0 := range thingsTables.Ids {
-//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("thingsGrants-%v", key0), &databricks.GrantsArgs{
+//			for key0, val0 := range things.Ids {
+//				__res, err := databricks.NewGrants(ctx, fmt.Sprintf("things-%v", key0), &databricks.GrantsArgs{
 //					Table: pulumi.String(val0),
 //					Grants: databricks.GrantsGrantArray{
 //						&databricks.GrantsGrantArgs{

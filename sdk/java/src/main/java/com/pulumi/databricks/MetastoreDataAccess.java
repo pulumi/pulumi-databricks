@@ -54,17 +54,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
- *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, aws_s3_bucket.metastore().id()))
+ *         var this_ = new Metastore(&#34;this&#34;, MetastoreArgs.builder()        
+ *             .name(&#34;primary&#34;)
+ *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
  *             .owner(&#34;uc admins&#34;)
  *             .region(&#34;us-east-1&#34;)
  *             .forceDestroy(true)
  *             .build());
  * 
  *         var thisMetastoreDataAccess = new MetastoreDataAccess(&#34;thisMetastoreDataAccess&#34;, MetastoreDataAccessArgs.builder()        
- *             .metastoreId(thisMetastore.id())
+ *             .metastoreId(this_.id())
+ *             .name(metastoreDataAccess.name())
  *             .awsIamRole(MetastoreDataAccessAwsIamRoleArgs.builder()
- *                 .roleArn(aws_iam_role.metastore_data_access().arn())
+ *                 .roleArn(metastoreDataAccess.arn())
  *                 .build())
  *             .isDefault(true)
  *             .build());

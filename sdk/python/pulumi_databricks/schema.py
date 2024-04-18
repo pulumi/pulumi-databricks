@@ -303,12 +303,14 @@ class Schema(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
             })
         things = databricks.Schema("things",
             catalog_name=sandbox.id,
+            name="things",
             comment="this database is managed by terraform",
             properties={
                 "kind": "various",
@@ -365,12 +367,14 @@ class Schema(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
             })
         things = databricks.Schema("things",
             catalog_name=sandbox.id,
+            name="things",
             comment="this database is managed by terraform",
             properties={
                 "kind": "various",

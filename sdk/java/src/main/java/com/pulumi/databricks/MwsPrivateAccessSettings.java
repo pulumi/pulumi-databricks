@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsPrivateAccessSettings;
  * import com.pulumi.databricks.MwsPrivateAccessSettingsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,13 +48,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pas = new MwsPrivateAccessSettings(&#34;pas&#34;, MwsPrivateAccessSettingsArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .privateAccessSettingsName(String.format(&#34;Private Access Settings for %s&#34;, local.prefix()))
- *             .region(var_.region())
+ *             .accountId(databricksAccountId)
+ *             .privateAccessSettingsName(String.format(&#34;Private Access Settings for %s&#34;, prefix))
+ *             .region(region)
  *             .publicAccessEnabled(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -88,17 +85,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
- *             .accountId(var_.databricks_account_id())
- *             .awsRegion(var_.region())
- *             .workspaceName(local.prefix())
- *             .credentialsId(databricks_mws_credentials.this().credentials_id())
- *             .storageConfigurationId(databricks_mws_storage_configurations.this().storage_configuration_id())
- *             .networkId(databricks_mws_networks.this().network_id())
- *             .privateAccessSettingsId(databricks_mws_private_access_settings.pas().private_access_settings_id())
+ *             .accountId(databricksAccountId)
+ *             .awsRegion(region)
+ *             .workspaceName(prefix)
+ *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
+ *             .storageConfigurationId(thisDatabricksMwsStorageConfigurations.storageConfigurationId())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
  *             .pricingTier(&#34;ENTERPRISE&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .dependsOn(databricks_mws_networks.this())
+ *                 .dependsOn(thisDatabricksMwsNetworks)
  *                 .build());
  * 
  *     }
@@ -137,24 +133,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
- *             .accountId(var_.databricks_account_id())
+ *             .accountId(databricksAccountId)
  *             .workspaceName(&#34;gcp-workspace&#34;)
- *             .location(var_.subnet_region())
+ *             .location(subnetRegion)
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
  *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
- *                     .projectId(var_.google_project())
+ *                     .projectId(googleProject)
  *                     .build())
  *                 .build())
  *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
  *                 .connectivityType(&#34;PRIVATE_NODE_PUBLIC_MASTER&#34;)
  *                 .masterIpRange(&#34;10.3.0.0/28&#34;)
  *                 .build())
- *             .networkId(databricks_mws_networks.this().network_id())
- *             .privateAccessSettingsId(databricks_mws_private_access_settings.pas().private_access_settings_id())
+ *             .networkId(thisDatabricksMwsNetworks.networkId())
+ *             .privateAccessSettingsId(pas.privateAccessSettingsId())
  *             .pricingTier(&#34;PREMIUM&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .dependsOn(databricks_mws_networks.this())
+ *                 .dependsOn(thisDatabricksMwsNetworks)
  *                 .build());
  * 
  *     }

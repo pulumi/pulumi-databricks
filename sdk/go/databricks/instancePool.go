@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewInstancePool(ctx, "smallestNodes", &databricks.InstancePoolArgs{
+//			_, err = databricks.NewInstancePool(ctx, "smallest_nodes", &databricks.InstancePoolArgs{
 //				InstancePoolName: pulumi.String("Smallest Nodes"),
 //				MinIdleInstances: pulumi.Int(0),
 //				MaxCapacity:      pulumi.Int(300),

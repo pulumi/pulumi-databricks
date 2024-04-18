@@ -78,7 +78,7 @@ def get_current_metastore(id: Optional[str] = None,
     import pulumi_databricks as databricks
 
     this = databricks.get_current_metastore()
-    pulumi.export("someMetastore", data["databricks_metastore"]["this"]["metastore_info"])
+    pulumi.export("someMetastore", this_databricks_metastore["metastoreInfo"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -127,7 +127,7 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     import pulumi_databricks as databricks
 
     this = databricks.get_current_metastore()
-    pulumi.export("someMetastore", data["databricks_metastore"]["this"]["metastore_info"])
+    pulumi.export("someMetastore", this_databricks_metastore["metastoreInfo"])
     ```
     <!--End PulumiCodeChooser -->
 

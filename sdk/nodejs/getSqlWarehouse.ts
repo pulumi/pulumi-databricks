@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const allSqlWarehouses = databricks.getSqlWarehouses({});
- * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
+ * const all = databricks.getSqlWarehouses({});
+ * const allGetSqlWarehouse = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
  *     id: __value,
- * })));
+ * }) }));
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -266,10 +266,10 @@ export interface GetSqlWarehouseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const allSqlWarehouses = databricks.getSqlWarehouses({});
- * const allSqlWarehouse = .map(([, ]) => (databricks.getSqlWarehouse({
+ * const all = databricks.getSqlWarehouses({});
+ * const allGetSqlWarehouse = .reduce((__obj, [, ]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
  *     id: __value,
- * })));
+ * }) }));
  * ```
  * <!--End PulumiCodeChooser -->
  *

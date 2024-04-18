@@ -149,8 +149,7 @@ def get_cluster_policy(definition: Optional[str] = None,
     import pulumi_databricks as databricks
 
     personal = databricks.get_cluster_policy(name="Personal Compute")
-    my_cluster = databricks.Cluster("myCluster", policy_id=personal.id)
-    # ...
+    my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -212,8 +211,7 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] 
     import pulumi_databricks as databricks
 
     personal = databricks.get_cluster_policy(name="Personal Compute")
-    my_cluster = databricks.Cluster("myCluster", policy_id=personal.id)
-    # ...
+    my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
     ```
     <!--End PulumiCodeChooser -->
 

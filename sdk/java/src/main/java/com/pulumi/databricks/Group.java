@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Some Group&#34;)
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
@@ -94,7 +95,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thisGroup = new Group(&#34;thisGroup&#34;, GroupArgs.builder()        
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Some Group&#34;)
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
@@ -104,7 +106,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var vipMember = new GroupMember(&#34;vipMember&#34;, GroupMemberArgs.builder()        
- *             .groupId(thisGroup.id())
+ *             .groupId(this_.id())
  *             .memberId(thisUser.id())
  *             .build());
  * 
@@ -122,11 +124,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.Group;
  * import com.pulumi.databricks.GroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -140,16 +139,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at account-level
- *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .clientId(var_.client_id())
- *             .clientSecret(var_.client_secret())
- *             .build());
- * 
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.Empty, CustomResourceOptions.builder()
- *             .provider(databricks.mws())
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Some Group&#34;)
  *             .build());
  * 
  *     }
@@ -166,11 +157,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.Group;
  * import com.pulumi.databricks.GroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -184,15 +172,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // initialize provider at Azure account-level
- *         var azureAccount = new Provider(&#34;azureAccount&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.azuredatabricks.net&#34;)
- *             .accountId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .authType(&#34;azure-cli&#34;)
- *             .build());
- * 
- *         var this_ = new Group(&#34;this&#34;, GroupArgs.Empty, CustomResourceOptions.builder()
- *             .provider(databricks.azure_account())
+ *         var this_ = new Group(&#34;this&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Some Group&#34;)
  *             .build());
  * 
  *     }

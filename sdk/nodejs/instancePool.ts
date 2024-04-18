@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const smallest = databricks.getNodeType({});
- * const smallestNodes = new databricks.InstancePool("smallestNodes", {
+ * const smallestNodes = new databricks.InstancePool("smallest_nodes", {
  *     instancePoolName: "Smallest Nodes",
  *     minIdleInstances: 0,
  *     maxCapacity: 300,

@@ -25,6 +25,7 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Role that you've specified on https://accounts.cloud.databricks.com/#aws
     ///     var crossaccountRoleName = config.Require("crossaccountRoleName");
     ///     var assumeRoleForEc2 = Aws.Iam.GetPolicyDocument.Invoke(new()
     ///     {
@@ -52,13 +53,14 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var roleForS3Access = new Aws.Iam.Role("roleForS3Access", new()
+    ///     var roleForS3Access = new Aws.Iam.Role("role_for_s3_access", new()
     ///     {
+    ///         Name = "shared-ec2-role-for-s3",
     ///         Description = "Role for shared access",
     ///         AssumeRolePolicy = assumeRoleForEc2.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
     ///     });
     /// 
-    ///     var passRoleForS3AccessPolicyDocument = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     var passRoleForS3Access = Aws.Iam.GetPolicyDocument.Invoke(new()
     ///     {
     ///         Statements = new[]
     ///         {
@@ -77,26 +79,28 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var passRoleForS3AccessPolicy = new Aws.Iam.Policy("passRoleForS3AccessPolicy", new()
+    ///     var passRoleForS3AccessPolicy = new Aws.Iam.Policy("pass_role_for_s3_access", new()
     ///     {
+    ///         Name = "shared-pass-role-for-s3-access",
     ///         Path = "/",
-    ///         PolicyDocument = passRoleForS3AccessPolicyDocument.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///         PolicyDocument = passRoleForS3Access.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
     ///     });
     /// 
-    ///     var crossAccount = new Aws.Iam.RolePolicyAttachment("crossAccount", new()
+    ///     var crossAccount = new Aws.Iam.RolePolicyAttachment("cross_account", new()
     ///     {
     ///         PolicyArn = passRoleForS3AccessPolicy.Arn,
     ///         Role = crossaccountRoleName,
     ///     });
     /// 
-    ///     var sharedInstanceProfile = new Aws.Iam.InstanceProfile("sharedInstanceProfile", new()
+    ///     var shared = new Aws.Iam.InstanceProfile("shared", new()
     ///     {
+    ///         Name = "shared-instance-profile",
     ///         Role = roleForS3Access.Name,
     ///     });
     /// 
-    ///     var sharedIndex_instanceProfileInstanceProfile = new Databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", new()
+    ///     var sharedInstanceProfile = new Databricks.InstanceProfile("shared", new()
     ///     {
-    ///         InstanceProfileArn = sharedInstanceProfile.Arn,
+    ///         InstanceProfileArn = shared.Arn,
     ///     });
     /// 
     ///     var latest = Databricks.GetSparkVersion.Invoke();
@@ -119,7 +123,7 @@ namespace Pulumi.Databricks
     ///         },
     ///         AwsAttributes = new Databricks.Inputs.ClusterAwsAttributesArgs
     ///         {
-    ///             InstanceProfileArn = sharedIndex / instanceProfileInstanceProfile.Id,
+    ///             InstanceProfileArn = sharedInstanceProfile.Id,
     ///             Availability = "SPOT",
     ///             ZoneId = "us-east-1",
     ///             FirstOnDemand = 1,
@@ -147,12 +151,13 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.ClusterPolicy("this", new()
     ///     {
+    ///         Name = "Policy with predefined instance profile",
     ///         Definition = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["aws_attributes.instance_profile_arn"] = new Dictionary&lt;string, object?&gt;
     ///             {
     ///                 ["type"] = "fixed",
-    ///                 ["value"] = databricks_instance_profile.Shared.Arn,
+    ///                 ["value"] = shared.Arn,
     ///             },
     ///         }),
     ///     });
@@ -176,7 +181,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.InstanceProfile("this", new()
     ///     {
-    ///         InstanceProfileArn = aws_iam_instance_profile.Shared.Arn,
+    ///         InstanceProfileArn = shared.Arn,
     ///     });
     /// 
     ///     var users = Databricks.GetGroup.Invoke(new()
@@ -246,20 +251,22 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var thisRole = new Aws.Iam.Role("thisRole", new()
+    ///     var @this = new Aws.Iam.Role("this", new()
     ///     {
+    ///         Name = "my-databricks-sql-serverless-role",
     ///         AssumeRolePolicy = sqlServerlessAssumeRole.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
     ///     });
     /// 
-    ///     var thisInstanceProfile = new Aws.Iam.InstanceProfile("thisInstanceProfile", new()
+    ///     var thisInstanceProfile = new Aws.Iam.InstanceProfile("this", new()
     ///     {
-    ///         Role = thisRole.Name,
+    ///         Name = "my-databricks-sql-serverless-instance-profile",
+    ///         Role = @this.Name,
     ///     });
     /// 
-    ///     var thisIndex_instanceProfileInstanceProfile = new Databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", new()
+    ///     var thisInstanceProfile2 = new Databricks.InstanceProfile("this", new()
     ///     {
     ///         InstanceProfileArn = thisInstanceProfile.Arn,
-    ///         IamRoleArn = thisRole.Arn,
+    ///         IamRoleArn = @this.Arn,
     ///     });
     /// 
     /// });

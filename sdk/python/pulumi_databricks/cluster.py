@@ -63,10 +63,10 @@ class ClusterArgs:
                import pulumi
                import pulumi_databricks as databricks
                
-               cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+               cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
                    cluster_name="Shared High-Concurrency",
-                   spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-                   node_type_id=data["databricks_node_type"]["smallest"]["id"],
+                   spark_version=latest_lts["id"],
+                   node_type_id=smallest["id"],
                    autotermination_minutes=20,
                    spark_conf={
                        "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -95,7 +95,7 @@ class ClusterArgs:
                
                smallest = databricks.get_node_type(local_disk=True)
                latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+               shared_autoscaling = databricks.Cluster("shared_autoscaling",
                    cluster_name="Shared Autoscaling",
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
@@ -300,10 +300,10 @@ class ClusterArgs:
         import pulumi
         import pulumi_databricks as databricks
 
-        cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+        cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
             cluster_name="Shared High-Concurrency",
-            spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-            node_type_id=data["databricks_node_type"]["smallest"]["id"],
+            spark_version=latest_lts["id"],
+            node_type_id=smallest["id"],
             autotermination_minutes=20,
             spark_conf={
                 "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -447,7 +447,7 @@ class ClusterArgs:
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
             cluster_name="Shared Autoscaling",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
@@ -637,10 +637,10 @@ class _ClusterState:
                import pulumi
                import pulumi_databricks as databricks
                
-               cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+               cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
                    cluster_name="Shared High-Concurrency",
-                   spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-                   node_type_id=data["databricks_node_type"]["smallest"]["id"],
+                   spark_version=latest_lts["id"],
+                   node_type_id=smallest["id"],
                    autotermination_minutes=20,
                    spark_conf={
                        "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -670,7 +670,7 @@ class _ClusterState:
                
                smallest = databricks.get_node_type(local_disk=True)
                latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+               shared_autoscaling = databricks.Cluster("shared_autoscaling",
                    cluster_name="Shared Autoscaling",
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
@@ -884,10 +884,10 @@ class _ClusterState:
         import pulumi
         import pulumi_databricks as databricks
 
-        cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+        cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
             cluster_name="Shared High-Concurrency",
-            spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-            node_type_id=data["databricks_node_type"]["smallest"]["id"],
+            spark_version=latest_lts["id"],
+            node_type_id=smallest["id"],
             autotermination_minutes=20,
             spark_conf={
                 "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -1043,7 +1043,7 @@ class _ClusterState:
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
             cluster_name="Shared Autoscaling",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
@@ -1266,7 +1266,7 @@ class Cluster(pulumi.CustomResource):
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
             cluster_name="Shared Autoscaling",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
@@ -1330,10 +1330,10 @@ class Cluster(pulumi.CustomResource):
                import pulumi
                import pulumi_databricks as databricks
                
-               cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+               cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
                    cluster_name="Shared High-Concurrency",
-                   spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-                   node_type_id=data["databricks_node_type"]["smallest"]["id"],
+                   spark_version=latest_lts["id"],
+                   node_type_id=smallest["id"],
                    autotermination_minutes=20,
                    spark_conf={
                        "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -1362,7 +1362,7 @@ class Cluster(pulumi.CustomResource):
                
                smallest = databricks.get_node_type(local_disk=True)
                latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+               shared_autoscaling = databricks.Cluster("shared_autoscaling",
                    cluster_name="Shared Autoscaling",
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
@@ -1407,7 +1407,7 @@ class Cluster(pulumi.CustomResource):
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
             cluster_name="Shared Autoscaling",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
@@ -1616,10 +1616,10 @@ class Cluster(pulumi.CustomResource):
                import pulumi
                import pulumi_databricks as databricks
                
-               cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+               cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
                    cluster_name="Shared High-Concurrency",
-                   spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-                   node_type_id=data["databricks_node_type"]["smallest"]["id"],
+                   spark_version=latest_lts["id"],
+                   node_type_id=smallest["id"],
                    autotermination_minutes=20,
                    spark_conf={
                        "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -1649,7 +1649,7 @@ class Cluster(pulumi.CustomResource):
                
                smallest = databricks.get_node_type(local_disk=True)
                latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+               shared_autoscaling = databricks.Cluster("shared_autoscaling",
                    cluster_name="Shared Autoscaling",
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
@@ -1792,10 +1792,10 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        cluster_with_table_access_control = databricks.Cluster("clusterWithTableAccessControl",
+        cluster_with_table_access_control = databricks.Cluster("cluster_with_table_access_control",
             cluster_name="Shared High-Concurrency",
-            spark_version=data["databricks_spark_version"]["latest_lts"]["id"],
-            node_type_id=data["databricks_node_type"]["smallest"]["id"],
+            spark_version=latest_lts["id"],
+            node_type_id=smallest["id"],
             autotermination_minutes=20,
             spark_conf={
                 "spark.databricks.repl.allowedLanguages": "python,sql",
@@ -1903,7 +1903,7 @@ class Cluster(pulumi.CustomResource):
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("sharedAutoscaling",
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
             cluster_name="Shared Autoscaling",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,

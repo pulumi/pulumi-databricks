@@ -32,7 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewVectorSearchIndex(ctx, "sync", &databricks.VectorSearchIndexArgs{
-//				EndpointName: pulumi.Any(databricks_vector_search_endpoint.This.Name),
+//				Name:         pulumi.String("main.default.vector_search_index"),
+//				EndpointName: pulumi.Any(thisDatabricksVectorSearchEndpoint.Name),
 //				PrimaryKey:   pulumi.String("id"),
 //				IndexType:    pulumi.String("DELTA_SYNC"),
 //				DeltaSyncIndexSpec: &databricks.VectorSearchIndexDeltaSyncIndexSpecArgs{
@@ -41,7 +42,7 @@ import (
 //					EmbeddingSourceColumns: databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArray{
 //						&databricks.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs{
 //							Name:                       pulumi.String("text"),
-//							EmbeddingModelEndpointName: pulumi.Any(databricks_model_serving.This.Name),
+//							EmbeddingModelEndpointName: pulumi.Any(this.Name),
 //						},
 //					},
 //				},

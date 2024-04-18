@@ -768,7 +768,7 @@ class ClusterAutoscale(dict):
                
                smallest = databricks.get_node_type(local_disk=True)
                latest_lts = databricks.get_spark_version(long_term_support=True)
-               single_node = databricks.Cluster("singleNode",
+               single_node = databricks.Cluster("single_node",
                    cluster_name="Single Node",
                    spark_version=latest_lts.id,
                    node_type_id=smallest.id,
@@ -813,7 +813,7 @@ class ClusterAutoscale(dict):
 
         smallest = databricks.get_node_type(local_disk=True)
         latest_lts = databricks.get_spark_version(long_term_support=True)
-        single_node = databricks.Cluster("singleNode",
+        single_node = databricks.Cluster("single_node",
             cluster_name="Single Node",
             spark_version=latest_lts.id,
             node_type_id=smallest.id,
@@ -1290,13 +1290,13 @@ class ClusterClusterMountInfo(dict):
                
                storage_account = "ewfw3ggwegwg"
                storage_container = "test"
-               with_nfs = databricks.Cluster("withNfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
-                   local_mount_dir_path="/mnt/nfs-test",
+               with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
                    network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
-                       mount_options="sec=sys,vers=3,nolock,proto=tcp",
                        server_address=f"{storage_account}.blob.core.windows.net",
+                       mount_options="sec=sys,vers=3,nolock,proto=tcp",
                    ),
                    remote_mount_dir_path=f"{storage_account}/{storage_container}",
+                   local_mount_dir_path="/mnt/nfs-test",
                )])
                ```
                <!--End PulumiCodeChooser -->
@@ -1323,13 +1323,13 @@ class ClusterClusterMountInfo(dict):
 
         storage_account = "ewfw3ggwegwg"
         storage_container = "test"
-        with_nfs = databricks.Cluster("withNfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
-            local_mount_dir_path="/mnt/nfs-test",
+        with_nfs = databricks.Cluster("with_nfs", cluster_mount_infos=[databricks.ClusterClusterMountInfoArgs(
             network_filesystem_info=databricks.ClusterClusterMountInfoNetworkFilesystemInfoArgs(
-                mount_options="sec=sys,vers=3,nolock,proto=tcp",
                 server_address=f"{storage_account}.blob.core.windows.net",
+                mount_options="sec=sys,vers=3,nolock,proto=tcp",
             ),
             remote_mount_dir_path=f"{storage_account}/{storage_container}",
+            local_mount_dir_path="/mnt/nfs-test",
         )])
         ```
         <!--End PulumiCodeChooser -->
@@ -1436,14 +1436,14 @@ class ClusterDockerImage(dict):
                import pulumi_databricks as databricks
                import pulumi_docker as docker
                
-               thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
-                   name=f{azurerm_container_registry.this.login_server}/sample:latest,
-                   build=[{}])
-               this_cluster = databricks.Cluster("thisCluster", docker_image=databricks.ClusterDockerImageArgs(
-                   url=thisdocker_registry_image["name"],
+               this = docker.index.RegistryImage("this",
+                   build=[{}],
+                   name=f{this_azurerm_container_registry.login_server}/sample:latest)
+               this_cluster = databricks.Cluster("this", docker_image=databricks.ClusterDockerImageArgs(
+                   url=this["name"],
                    basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
-                       username=azurerm_container_registry["this"]["admin_username"],
-                       password=azurerm_container_registry["this"]["admin_password"],
+                       username=this_azurerm_container_registry["adminUsername"],
+                       password=this_azurerm_container_registry["adminPassword"],
                    ),
                ))
                ```
@@ -1475,14 +1475,14 @@ class ClusterDockerImage(dict):
         import pulumi_databricks as databricks
         import pulumi_docker as docker
 
-        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
-            name=f{azurerm_container_registry.this.login_server}/sample:latest,
-            build=[{}])
-        this_cluster = databricks.Cluster("thisCluster", docker_image=databricks.ClusterDockerImageArgs(
-            url=thisdocker_registry_image["name"],
+        this = docker.index.RegistryImage("this",
+            build=[{}],
+            name=f{this_azurerm_container_registry.login_server}/sample:latest)
+        this_cluster = databricks.Cluster("this", docker_image=databricks.ClusterDockerImageArgs(
+            url=this["name"],
             basic_auth=databricks.ClusterDockerImageBasicAuthArgs(
-                username=azurerm_container_registry["this"]["admin_username"],
-                password=azurerm_container_registry["this"]["admin_password"],
+                username=this_azurerm_container_registry["adminUsername"],
+                password=this_azurerm_container_registry["adminPassword"],
             ),
         ))
         ```
@@ -2166,7 +2166,7 @@ class ClusterWorkloadTypeClients(dict):
                import pulumi
                import pulumi_databricks as databricks
                
-               with_nfs = databricks.Cluster("withNfs", workload_type=databricks.ClusterWorkloadTypeArgs(
+               with_nfs = databricks.Cluster("with_nfs", workload_type=databricks.ClusterWorkloadTypeArgs(
                    clients=databricks.ClusterWorkloadTypeClientsArgs(
                        jobs=False,
                        notebooks=True,
@@ -2192,7 +2192,7 @@ class ClusterWorkloadTypeClients(dict):
         import pulumi
         import pulumi_databricks as databricks
 
-        with_nfs = databricks.Cluster("withNfs", workload_type=databricks.ClusterWorkloadTypeArgs(
+        with_nfs = databricks.Cluster("with_nfs", workload_type=databricks.ClusterWorkloadTypeArgs(
             clients=databricks.ClusterWorkloadTypeClientsArgs(
                 jobs=False,
                 notebooks=True,
@@ -2777,14 +2777,14 @@ class InstancePoolPreloadedDockerImage(dict):
                import pulumi_databricks as databricks
                import pulumi_docker as docker
                
-               thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
-                   name=f{azurerm_container_registry.this.login_server}/sample:latest,
-                   build=[{}])
-               this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
-                   url=thisdocker_registry_image["name"],
+               this = docker.index.RegistryImage("this",
+                   build=[{}],
+                   name=f{this_azurerm_container_registry.login_server}/sample:latest)
+               this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+                   url=this["name"],
                    basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
-                       username=azurerm_container_registry["this"]["admin_username"],
-                       password=azurerm_container_registry["this"]["admin_password"],
+                       username=this_azurerm_container_registry["adminUsername"],
+                       password=this_azurerm_container_registry["adminPassword"],
                    ),
                )])
                ```
@@ -2816,14 +2816,14 @@ class InstancePoolPreloadedDockerImage(dict):
         import pulumi_databricks as databricks
         import pulumi_docker as docker
 
-        thisdocker_registry_image = docker.index.Docker_registry_image("thisdocker_registry_image",
-            name=f{azurerm_container_registry.this.login_server}/sample:latest,
-            build=[{}])
-        this_instance_pool = databricks.InstancePool("thisInstancePool", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
-            url=thisdocker_registry_image["name"],
+        this = docker.index.RegistryImage("this",
+            build=[{}],
+            name=f{this_azurerm_container_registry.login_server}/sample:latest)
+        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[databricks.InstancePoolPreloadedDockerImageArgs(
+            url=this["name"],
             basic_auth=databricks.InstancePoolPreloadedDockerImageBasicAuthArgs(
-                username=azurerm_container_registry["this"]["admin_username"],
-                password=azurerm_container_registry["this"]["admin_password"],
+                username=this_azurerm_container_registry["adminUsername"],
+                password=this_azurerm_container_registry["adminPassword"],
             ),
         )])
         ```
@@ -9793,41 +9793,43 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
-                   databricks.JobTaskArgs(
-                       task_key="run_agg_query",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           query=databricks.JobTaskSqlTaskQueryArgs(
-                               query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sql_aggregation_job",
+                   name="Example SQL Job",
+                   tasks=[
+                       databricks.JobTaskArgs(
+                           task_key="run_agg_query",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               query=databricks.JobTaskSqlTaskQueryArgs(
+                                   query_id=agg_query["id"],
+                               ),
                            ),
                        ),
-                   ),
-                   databricks.JobTaskArgs(
-                       task_key="run_dashboard",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
-                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                   user_name="user@domain.com",
-                               )],
+                       databricks.JobTaskArgs(
+                           task_key="run_dashboard",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                                   dashboard_id=dash["id"],
+                                   subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                       user_name="user@domain.com",
+                                   )],
+                               ),
                            ),
                        ),
-                   ),
-                   databricks.JobTaskArgs(
-                       task_key="run_alert",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           alert=databricks.JobTaskSqlTaskAlertArgs(
-                               alert_id=databricks_sql_alert["alert"]["id"],
-                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                   user_name="user@domain.com",
-                               )],
+                       databricks.JobTaskArgs(
+                           task_key="run_alert",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               alert=databricks.JobTaskSqlTaskAlertArgs(
+                                   alert_id=alert["id"],
+                                   subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                       user_name="user@domain.com",
+                                   )],
+                               ),
                            ),
                        ),
-                   ),
-               ])
+                   ])
                ```
                <!--End PulumiCodeChooser -->
         :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
@@ -9849,41 +9851,43 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
-            databricks.JobTaskArgs(
-                task_key="run_agg_query",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    query=databricks.JobTaskSqlTaskQueryArgs(
-                        query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sql_aggregation_job",
+            name="Example SQL Job",
+            tasks=[
+                databricks.JobTaskArgs(
+                    task_key="run_agg_query",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        query=databricks.JobTaskSqlTaskQueryArgs(
+                            query_id=agg_query["id"],
+                        ),
                     ),
                 ),
-            ),
-            databricks.JobTaskArgs(
-                task_key="run_dashboard",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
-                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                            user_name="user@domain.com",
-                        )],
+                databricks.JobTaskArgs(
+                    task_key="run_dashboard",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                            dashboard_id=dash["id"],
+                            subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                user_name="user@domain.com",
+                            )],
+                        ),
                     ),
                 ),
-            ),
-            databricks.JobTaskArgs(
-                task_key="run_alert",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    alert=databricks.JobTaskSqlTaskAlertArgs(
-                        alert_id=databricks_sql_alert["alert"]["id"],
-                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                            user_name="user@domain.com",
-                        )],
+                databricks.JobTaskArgs(
+                    task_key="run_alert",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        alert=databricks.JobTaskSqlTaskAlertArgs(
+                            alert_id=alert["id"],
+                            subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                user_name="user@domain.com",
+                            )],
+                        ),
                     ),
                 ),
-            ),
-        ])
+            ])
         ```
         <!--End PulumiCodeChooser -->
         """
@@ -9963,12 +9967,6 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -9991,12 +9989,6 @@ class JobTaskForEachTaskTaskWebhookNotifications(dict):
         Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 
         Example
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -12180,41 +12172,43 @@ class JobTaskSqlTaskFile(dict):
                import pulumi
                import pulumi_databricks as databricks
                
-               sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
-                   databricks.JobTaskArgs(
-                       task_key="run_agg_query",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           query=databricks.JobTaskSqlTaskQueryArgs(
-                               query_id=databricks_sql_query["agg_query"]["id"],
+               sql_aggregation_job = databricks.Job("sql_aggregation_job",
+                   name="Example SQL Job",
+                   tasks=[
+                       databricks.JobTaskArgs(
+                           task_key="run_agg_query",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               query=databricks.JobTaskSqlTaskQueryArgs(
+                                   query_id=agg_query["id"],
+                               ),
                            ),
                        ),
-                   ),
-                   databricks.JobTaskArgs(
-                       task_key="run_dashboard",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                               dashboard_id=databricks_sql_dashboard["dash"]["id"],
-                               subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                                   user_name="user@domain.com",
-                               )],
+                       databricks.JobTaskArgs(
+                           task_key="run_dashboard",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                                   dashboard_id=dash["id"],
+                                   subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                       user_name="user@domain.com",
+                                   )],
+                               ),
                            ),
                        ),
-                   ),
-                   databricks.JobTaskArgs(
-                       task_key="run_alert",
-                       sql_task=databricks.JobTaskSqlTaskArgs(
-                           warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                           alert=databricks.JobTaskSqlTaskAlertArgs(
-                               alert_id=databricks_sql_alert["alert"]["id"],
-                               subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                                   user_name="user@domain.com",
-                               )],
+                       databricks.JobTaskArgs(
+                           task_key="run_alert",
+                           sql_task=databricks.JobTaskSqlTaskArgs(
+                               warehouse_id=sql_job_warehouse["id"],
+                               alert=databricks.JobTaskSqlTaskAlertArgs(
+                                   alert_id=alert["id"],
+                                   subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                       user_name="user@domain.com",
+                                   )],
+                               ),
                            ),
                        ),
-                   ),
-               ])
+                   ])
                ```
                <!--End PulumiCodeChooser -->
         :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
@@ -12236,41 +12230,43 @@ class JobTaskSqlTaskFile(dict):
         import pulumi
         import pulumi_databricks as databricks
 
-        sql_aggregation_job = databricks.Job("sqlAggregationJob", tasks=[
-            databricks.JobTaskArgs(
-                task_key="run_agg_query",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    query=databricks.JobTaskSqlTaskQueryArgs(
-                        query_id=databricks_sql_query["agg_query"]["id"],
+        sql_aggregation_job = databricks.Job("sql_aggregation_job",
+            name="Example SQL Job",
+            tasks=[
+                databricks.JobTaskArgs(
+                    task_key="run_agg_query",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        query=databricks.JobTaskSqlTaskQueryArgs(
+                            query_id=agg_query["id"],
+                        ),
                     ),
                 ),
-            ),
-            databricks.JobTaskArgs(
-                task_key="run_dashboard",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    dashboard=databricks.JobTaskSqlTaskDashboardArgs(
-                        dashboard_id=databricks_sql_dashboard["dash"]["id"],
-                        subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
-                            user_name="user@domain.com",
-                        )],
+                databricks.JobTaskArgs(
+                    task_key="run_dashboard",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        dashboard=databricks.JobTaskSqlTaskDashboardArgs(
+                            dashboard_id=dash["id"],
+                            subscriptions=[databricks.JobTaskSqlTaskDashboardSubscriptionArgs(
+                                user_name="user@domain.com",
+                            )],
+                        ),
                     ),
                 ),
-            ),
-            databricks.JobTaskArgs(
-                task_key="run_alert",
-                sql_task=databricks.JobTaskSqlTaskArgs(
-                    warehouse_id=databricks_sql_endpoint["sql_job_warehouse"]["id"],
-                    alert=databricks.JobTaskSqlTaskAlertArgs(
-                        alert_id=databricks_sql_alert["alert"]["id"],
-                        subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
-                            user_name="user@domain.com",
-                        )],
+                databricks.JobTaskArgs(
+                    task_key="run_alert",
+                    sql_task=databricks.JobTaskSqlTaskArgs(
+                        warehouse_id=sql_job_warehouse["id"],
+                        alert=databricks.JobTaskSqlTaskAlertArgs(
+                            alert_id=alert["id"],
+                            subscriptions=[databricks.JobTaskSqlTaskAlertSubscriptionArgs(
+                                user_name="user@domain.com",
+                            )],
+                        ),
                     ),
                 ),
-            ),
-        ])
+            ])
         ```
         <!--End PulumiCodeChooser -->
         """
@@ -12350,12 +12346,6 @@ class JobTaskWebhookNotifications(dict):
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param Sequence['JobTaskWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobTaskWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -12378,12 +12368,6 @@ class JobTaskWebhookNotifications(dict):
         Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 
         Example
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
@@ -12736,12 +12720,6 @@ class JobWebhookNotifications(dict):
                Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
                
                Example
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param Sequence['JobWebhookNotificationsOnFailureArgs'] on_failures: (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
         :param Sequence['JobWebhookNotificationsOnStartArgs'] on_starts: (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
         :param Sequence['JobWebhookNotificationsOnSuccessArgs'] on_successes: (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
@@ -12764,12 +12742,6 @@ class JobWebhookNotifications(dict):
         Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://<workspace host>/sql/destinations/<notification id>?o=<workspace id>`
 
         Example
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 

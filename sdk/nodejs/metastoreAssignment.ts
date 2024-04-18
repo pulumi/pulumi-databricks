@@ -16,15 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisMetastore = new databricks.Metastore("thisMetastore", {
- *     storageRoot: `s3://${aws_s3_bucket.metastore.id}/metastore`,
+ * const _this = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: `s3://${metastore.id}/metastore`,
  *     owner: "uc admins",
  *     region: "us-east-1",
  *     forceDestroy: true,
  * });
- * const thisMetastoreAssignment = new databricks.MetastoreAssignment("thisMetastoreAssignment", {
- *     metastoreId: thisMetastore.id,
- *     workspaceId: local.workspace_id,
+ * const thisMetastoreAssignment = new databricks.MetastoreAssignment("this", {
+ *     metastoreId: _this.id,
+ *     workspaceId: workspaceId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

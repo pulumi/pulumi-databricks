@@ -382,9 +382,10 @@ class SqlQuery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        shared_dir = databricks.Directory("sharedDir", path="/Shared/Queries")
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
         q1 = databricks.SqlQuery("q1",
-            data_source_id=databricks_sql_endpoint["example"]["data_source_id"],
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
             query=\"\"\"                        SELECT {{ p1 }} AS p1
                                 WHERE 1=1
                                 AND p2 in ({{ p2 }})
@@ -440,14 +441,14 @@ class SqlQuery(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         q1 = databricks.Permissions("q1",
-            sql_query_id=databricks_sql_query["q1"]["id"],
+            sql_query_id=q1_databricks_sql_query["id"],
             access_controls=[
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
+                    group_name=users["displayName"],
                     permission_level="CAN_RUN",
                 ),
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
+                    group_name=team["displayName"],
                     permission_level="CAN_EDIT",
                 ),
             ])
@@ -510,9 +511,10 @@ class SqlQuery(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        shared_dir = databricks.Directory("sharedDir", path="/Shared/Queries")
+        shared_dir = databricks.Directory("shared_dir", path="/Shared/Queries")
         q1 = databricks.SqlQuery("q1",
-            data_source_id=databricks_sql_endpoint["example"]["data_source_id"],
+            data_source_id=example["dataSourceId"],
+            name="My Query Name",
             query=\"\"\"                        SELECT {{ p1 }} AS p1
                                 WHERE 1=1
                                 AND p2 in ({{ p2 }})
@@ -568,14 +570,14 @@ class SqlQuery(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         q1 = databricks.Permissions("q1",
-            sql_query_id=databricks_sql_query["q1"]["id"],
+            sql_query_id=q1_databricks_sql_query["id"],
             access_controls=[
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["users"]["display_name"],
+                    group_name=users["displayName"],
                     permission_level="CAN_RUN",
                 ),
                 databricks.PermissionsAccessControlArgs(
-                    group_name=data["databricks_group"]["team"]["display_name"],
+                    group_name=team["displayName"],
                     permission_level="CAN_EDIT",
                 ),
             ])

@@ -25,17 +25,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
     ///     {
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
     /// 
-    ///     var myUser = new Databricks.User("myUser", new()
+    ///     var myUser = new Databricks.User("my_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var myUserInstanceProfile = new Databricks.UserInstanceProfile("myUserInstanceProfile", new()
+    ///     var myUserInstanceProfile = new Databricks.UserInstanceProfile("my_user_instance_profile", new()
     ///     {
     ///         UserId = myUser.Id,
     ///         InstanceProfileId = instanceProfile.Id,

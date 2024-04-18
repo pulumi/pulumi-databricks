@@ -14,6 +14,90 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ### Triggering Databricks job
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var latest = Databricks.GetSparkVersion.Invoke();
+    /// 
+    ///     var smallest = Databricks.GetNodeType.Invoke(new()
+    ///     {
+    ///         LocalDisk = true,
+    ///     });
+    /// 
+    ///     var @this = new Databricks.Notebook("this", new()
+    ///     {
+    ///         Path = $"{me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Home)}/MLFlowWebhook",
+    ///         Language = "PYTHON",
+    ///         ContentBase64 = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = @"import json
+    ///  
+    /// event_message = dbutils.widgets.get(""event_message"")
+    /// event_message_dict = json.loads(event_message)
+    /// print(f""event data={event_message_dict}"")
+    /// ",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var thisJob = new Databricks.Job("this", new()
+    ///     {
+    ///         Name = $"Terraform MLflowWebhook Demo ({me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)})",
+    ///         Tasks = new[]
+    ///         {
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "task1",
+    ///                 NewCluster = new Databricks.Inputs.JobTaskNewClusterArgs
+    ///                 {
+    ///                     NumWorkers = 1,
+    ///                     SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
+    ///                     NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
+    ///                 },
+    ///                 NotebookTask = new Databricks.Inputs.JobTaskNotebookTaskArgs
+    ///                 {
+    ///                     NotebookPath = @this.Path,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var patForWebhook = new Databricks.Token("pat_for_webhook", new()
+    ///     {
+    ///         Comment = "MLflow Webhook",
+    ///         LifetimeSeconds = 86400000,
+    ///     });
+    /// 
+    ///     var job = new Databricks.MlflowWebhook("job", new()
+    ///     {
+    ///         Events = new[]
+    ///         {
+    ///             "TRANSITION_REQUEST_CREATED",
+    ///         },
+    ///         Description = "Databricks Job webhook trigger",
+    ///         Status = "ACTIVE",
+    ///         JobSpec = new Databricks.Inputs.MlflowWebhookJobSpecArgs
+    ///         {
+    ///             JobId = thisJob.Id,
+    ///             WorkspaceUrl = me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.WorkspaceUrl),
+    ///             AccessToken = patForWebhook.TokenValue,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### POSTing to URL
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,11 +111,11 @@ namespace Pulumi.Databricks
     /// {
     ///     var url = new Databricks.MlflowWebhook("url", new()
     ///     {
-    ///         Description = "URL webhook trigger",
     ///         Events = new[]
     ///         {
     ///             "TRANSITION_REQUEST_CREATED",
     ///         },
+    ///         Description = "URL webhook trigger",
     ///         HttpUrlSpec = new Databricks.Inputs.MlflowWebhookHttpUrlSpecArgs
     ///         {
     ///             Url = "https://my_cool_host/webhook",

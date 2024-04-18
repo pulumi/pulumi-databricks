@@ -29,13 +29,10 @@ namespace Pulumi.Databricks
     /// {
     ///     var pas = new Databricks.MwsPrivateAccessSettings("pas", new()
     ///     {
-    ///         AccountId = @var.Databricks_account_id,
-    ///         PrivateAccessSettingsName = $"Private Access Settings for {local.Prefix}",
-    ///         Region = @var.Region,
+    ///         AccountId = databricksAccountId,
+    ///         PrivateAccessSettingsName = $"Private Access Settings for {prefix}",
+    ///         Region = region,
     ///         PublicAccessEnabled = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Mws,
     ///     });
     /// 
     /// });
@@ -55,20 +52,19 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.MwsWorkspaces("this", new()
     ///     {
-    ///         AccountId = @var.Databricks_account_id,
-    ///         AwsRegion = @var.Region,
-    ///         WorkspaceName = local.Prefix,
-    ///         CredentialsId = databricks_mws_credentials.This.Credentials_id,
-    ///         StorageConfigurationId = databricks_mws_storage_configurations.This.Storage_configuration_id,
-    ///         NetworkId = databricks_mws_networks.This.Network_id,
-    ///         PrivateAccessSettingsId = databricks_mws_private_access_settings.Pas.Private_access_settings_id,
+    ///         AccountId = databricksAccountId,
+    ///         AwsRegion = region,
+    ///         WorkspaceName = prefix,
+    ///         CredentialsId = thisDatabricksMwsCredentials.CredentialsId,
+    ///         StorageConfigurationId = thisDatabricksMwsStorageConfigurations.StorageConfigurationId,
+    ///         NetworkId = thisDatabricksMwsNetworks.NetworkId,
+    ///         PrivateAccessSettingsId = pas.PrivateAccessSettingsId,
     ///         PricingTier = "ENTERPRISE",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = databricks.Mws,
     ///         DependsOn =
     ///         {
-    ///             databricks_mws_networks.This, 
+    ///             thisDatabricksMwsNetworks, 
     ///         },
     ///     });
     /// 
@@ -91,14 +87,14 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.MwsWorkspaces("this", new()
     ///     {
-    ///         AccountId = @var.Databricks_account_id,
+    ///         AccountId = databricksAccountId,
     ///         WorkspaceName = "gcp-workspace",
-    ///         Location = @var.Subnet_region,
+    ///         Location = subnetRegion,
     ///         CloudResourceContainer = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerArgs
     ///         {
     ///             Gcp = new Databricks.Inputs.MwsWorkspacesCloudResourceContainerGcpArgs
     ///             {
-    ///                 ProjectId = @var.Google_project,
+    ///                 ProjectId = googleProject,
     ///             },
     ///         },
     ///         GkeConfig = new Databricks.Inputs.MwsWorkspacesGkeConfigArgs
@@ -106,15 +102,14 @@ namespace Pulumi.Databricks
     ///             ConnectivityType = "PRIVATE_NODE_PUBLIC_MASTER",
     ///             MasterIpRange = "10.3.0.0/28",
     ///         },
-    ///         NetworkId = databricks_mws_networks.This.Network_id,
-    ///         PrivateAccessSettingsId = databricks_mws_private_access_settings.Pas.Private_access_settings_id,
+    ///         NetworkId = thisDatabricksMwsNetworks.NetworkId,
+    ///         PrivateAccessSettingsId = pas.PrivateAccessSettingsId,
     ///         PricingTier = "PREMIUM",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = databricks.Mws,
     ///         DependsOn =
     ///         {
-    ///             databricks_mws_networks.This, 
+    ///             thisDatabricksMwsNetworks, 
     ///         },
     ///     });
     /// 

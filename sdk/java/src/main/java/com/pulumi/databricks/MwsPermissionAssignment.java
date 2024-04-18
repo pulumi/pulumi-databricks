@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.MwsPermissionAssignment;
  * import com.pulumi.databricks.MwsPermissionAssignmentArgs;
  * import java.util.List;
@@ -45,10 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dataEng = new Group(&#34;dataEng&#34;);
+ *         var dataEng = new Group(&#34;dataEng&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Data Engineering&#34;)
+ *             .build());
  * 
  *         var addAdminGroup = new MwsPermissionAssignment(&#34;addAdminGroup&#34;, MwsPermissionAssignmentArgs.builder()        
- *             .workspaceId(databricks_mws_workspaces.this().workspace_id())
+ *             .workspaceId(this_.workspaceId())
  *             .principalId(dataEng.id())
  *             .permissions(&#34;ADMIN&#34;)
  *             .build());
@@ -89,7 +92,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addUser = new MwsPermissionAssignment(&#34;addUser&#34;, MwsPermissionAssignmentArgs.builder()        
- *             .workspaceId(databricks_mws_workspaces.this().workspace_id())
+ *             .workspaceId(this_.workspaceId())
  *             .principalId(me.id())
  *             .permissions(&#34;USER&#34;)
  *             .build());
@@ -130,7 +133,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var addAdminSpn = new MwsPermissionAssignment(&#34;addAdminSpn&#34;, MwsPermissionAssignmentArgs.builder()        
- *             .workspaceId(databricks_mws_workspaces.this().workspace_id())
+ *             .workspaceId(this_.workspaceId())
  *             .principalId(sp.id())
  *             .permissions(&#34;ADMIN&#34;)
  *             .build());

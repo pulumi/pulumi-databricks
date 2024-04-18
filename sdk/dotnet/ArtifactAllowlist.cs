@@ -21,8 +21,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var initScripts = new Databricks.ArtifactAllowlist("initScripts", new()
+    ///     var initScripts = new Databricks.ArtifactAllowlist("init_scripts", new()
     ///     {
+    ///         ArtifactType = "INIT_SCRIPT",
     ///         ArtifactMatchers = new[]
     ///         {
     ///             new Databricks.Inputs.ArtifactAllowlistArtifactMatcherArgs
@@ -31,7 +32,6 @@ namespace Pulumi.Databricks
     ///                 MatchType = "PREFIX_MATCH",
     ///             },
     ///         },
-    ///         ArtifactType = "INIT_SCRIPT",
     ///     });
     /// 
     /// });

@@ -286,9 +286,9 @@ class Entitlements(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        me_user = databricks.get_user(user_name="me@example.com")
-        me_entitlements = databricks.Entitlements("meEntitlements",
-            user_id=me_user.id,
+        me = databricks.get_user(user_name="me@example.com")
+        me_entitlements = databricks.Entitlements("me",
+            user_id=me.id,
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
@@ -301,9 +301,9 @@ class Entitlements(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_service_principal = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("thisEntitlements",
-            service_principal_id=this_service_principal.sp_id,
+        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+        this_entitlements = databricks.Entitlements("this",
+            service_principal_id=this.sp_id,
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
@@ -384,9 +384,9 @@ class Entitlements(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        me_user = databricks.get_user(user_name="me@example.com")
-        me_entitlements = databricks.Entitlements("meEntitlements",
-            user_id=me_user.id,
+        me = databricks.get_user(user_name="me@example.com")
+        me_entitlements = databricks.Entitlements("me",
+            user_id=me.id,
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
@@ -399,9 +399,9 @@ class Entitlements(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this_service_principal = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-        this_entitlements = databricks.Entitlements("thisEntitlements",
-            service_principal_id=this_service_principal.sp_id,
+        this = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
+        this_entitlements = databricks.Entitlements("this",
+            service_principal_id=this.sp_id,
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```

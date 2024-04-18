@@ -59,8 +59,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .name(externalDataAccess.name())
  *             .awsIamRole(StorageCredentialAwsIamRoleArgs.builder()
- *                 .roleArn(aws_iam_role.external_data_access().arn())
+ *                 .roleArn(externalDataAccess.arn())
  *                 .build())
  *             .comment(&#34;Managed by TF&#34;)
  *             .build());
@@ -107,14 +108,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var externalMi = new StorageCredential(&#34;externalMi&#34;, StorageCredentialArgs.builder()        
+ *             .name(&#34;mi_credential&#34;)
  *             .azureManagedIdentity(StorageCredentialAzureManagedIdentityArgs.builder()
- *                 .accessConnectorId(azurerm_databricks_access_connector.example().id())
+ *                 .accessConnectorId(example.id())
  *                 .build())
  *             .comment(&#34;Managed identity credential managed by TF&#34;)
  *             .build());
  * 
  *         var externalCreds = new Grants(&#34;externalCreds&#34;, GrantsArgs.builder()        
- *             .storageCredential(databricks_storage_credential.external().id())
+ *             .storageCredential(external.id())
  *             .grants(GrantsGrantArgs.builder()
  *                 .principal(&#34;Data Engineers&#34;)
  *                 .privileges(&#34;CREATE_EXTERNAL_TABLE&#34;)
@@ -155,6 +157,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var external = new StorageCredential(&#34;external&#34;, StorageCredentialArgs.builder()        
+ *             .name(&#34;the-creds&#34;)
  *             .databricksGcpServiceAccount()
  *             .build());
  * 

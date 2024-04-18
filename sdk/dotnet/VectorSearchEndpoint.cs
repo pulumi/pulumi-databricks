@@ -27,6 +27,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var @this = new Databricks.VectorSearchEndpoint("this", new()
     ///     {
+    ///         Name = "vector-search-test",
     ///         EndpointType = "STANDARD",
     ///     });
     /// 

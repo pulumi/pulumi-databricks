@@ -19,12 +19,10 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const pas = new databricks.MwsPrivateAccessSettings("pas", {
- *     accountId: _var.databricks_account_id,
- *     privateAccessSettingsName: `Private Access Settings for ${local.prefix}`,
- *     region: _var.region,
+ *     accountId: databricksAccountId,
+ *     privateAccessSettingsName: `Private Access Settings for ${prefix}`,
+ *     region: region,
  *     publicAccessEnabled: true,
- * }, {
- *     provider: databricks.mws,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,17 +35,16 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.MwsWorkspaces("this", {
- *     accountId: _var.databricks_account_id,
- *     awsRegion: _var.region,
- *     workspaceName: local.prefix,
- *     credentialsId: databricks_mws_credentials["this"].credentials_id,
- *     storageConfigurationId: databricks_mws_storage_configurations["this"].storage_configuration_id,
- *     networkId: databricks_mws_networks["this"].network_id,
- *     privateAccessSettingsId: databricks_mws_private_access_settings.pas.private_access_settings_id,
+ *     accountId: databricksAccountId,
+ *     awsRegion: region,
+ *     workspaceName: prefix,
+ *     credentialsId: thisDatabricksMwsCredentials.credentialsId,
+ *     storageConfigurationId: thisDatabricksMwsStorageConfigurations.storageConfigurationId,
+ *     networkId: thisDatabricksMwsNetworks.networkId,
+ *     privateAccessSettingsId: pas.privateAccessSettingsId,
  *     pricingTier: "ENTERPRISE",
  * }, {
- *     provider: databricks.mws,
- *     dependsOn: [databricks_mws_networks["this"]],
+ *     dependsOn: [thisDatabricksMwsNetworks],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -62,24 +59,23 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.MwsWorkspaces("this", {
- *     accountId: _var.databricks_account_id,
+ *     accountId: databricksAccountId,
  *     workspaceName: "gcp-workspace",
- *     location: _var.subnet_region,
+ *     location: subnetRegion,
  *     cloudResourceContainer: {
  *         gcp: {
- *             projectId: _var.google_project,
+ *             projectId: googleProject,
  *         },
  *     },
  *     gkeConfig: {
  *         connectivityType: "PRIVATE_NODE_PUBLIC_MASTER",
  *         masterIpRange: "10.3.0.0/28",
  *     },
- *     networkId: databricks_mws_networks["this"].network_id,
- *     privateAccessSettingsId: databricks_mws_private_access_settings.pas.private_access_settings_id,
+ *     networkId: thisDatabricksMwsNetworks.networkId,
+ *     privateAccessSettingsId: pas.privateAccessSettingsId,
  *     pricingTier: "PREMIUM",
  * }, {
- *     provider: databricks.mws,
- *     dependsOn: [databricks_mws_networks["this"]],
+ *     dependsOn: [thisDatabricksMwsNetworks],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

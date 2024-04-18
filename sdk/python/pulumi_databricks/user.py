@@ -558,9 +558,9 @@ class User(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         me = databricks.User("me",
-            allow_cluster_create=True,
+            user_name="me@example.com",
             display_name="Example user",
-            user_name="me@example.com")
+            allow_cluster_create=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -571,16 +571,9 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        mws = databricks.Provider("mws",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        account_user = databricks.User("accountUser",
+        account_user = databricks.User("account_user",
             user_name="me@example.com",
-            display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            display_name="Example user")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -591,15 +584,9 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        azure_account = databricks.Provider("azureAccount",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        account_user = databricks.User("accountUser",
+        account_user = databricks.User("account_user",
             user_name="me@example.com",
-            display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+            display_name="Example user")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -694,9 +681,9 @@ class User(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         me = databricks.User("me",
-            allow_cluster_create=True,
+            user_name="me@example.com",
             display_name="Example user",
-            user_name="me@example.com")
+            allow_cluster_create=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -707,16 +694,9 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at account-level
-        mws = databricks.Provider("mws",
-            host="https://accounts.cloud.databricks.com",
-            account_id="00000000-0000-0000-0000-000000000000",
-            client_id=var["client_id"],
-            client_secret=var["client_secret"])
-        account_user = databricks.User("accountUser",
+        account_user = databricks.User("account_user",
             user_name="me@example.com",
-            display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+            display_name="Example user")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -727,15 +707,9 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        # initialize provider at Azure account-level
-        azure_account = databricks.Provider("azureAccount",
-            host="https://accounts.azuredatabricks.net",
-            account_id="00000000-0000-0000-0000-000000000000",
-            auth_type="azure-cli")
-        account_user = databricks.User("accountUser",
+        account_user = databricks.User("account_user",
             user_name="me@example.com",
-            display_name="Example user",
-            opts=pulumi.ResourceOptions(provider=databricks["azure_account"]))
+            display_name="Example user")
         ```
         <!--End PulumiCodeChooser -->
 

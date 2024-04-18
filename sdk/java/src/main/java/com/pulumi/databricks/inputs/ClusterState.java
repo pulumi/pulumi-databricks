@@ -153,8 +153,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *     public static void stack(Context ctx) {
      *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
      *             .clusterName(&#34;Shared High-Concurrency&#34;)
-     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
-     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
      *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
@@ -201,8 +201,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      *     public static void stack(Context ctx) {
      *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
      *             .clusterName(&#34;Shared High-Concurrency&#34;)
-     *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
-     *             .nodeTypeId(data.databricks_node_type().smallest().id())
+     *             .sparkVersion(latestLts.id())
+     *             .nodeTypeId(smallest.id())
      *             .autoterminationMinutes(20)
      *             .sparkConf(Map.ofEntries(
      *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
@@ -884,8 +884,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *     public static void stack(Context ctx) {
          *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
          *             .clusterName(&#34;Shared High-Concurrency&#34;)
-         *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
-         *             .nodeTypeId(data.databricks_node_type().smallest().id())
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
          *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),
@@ -936,8 +936,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          *     public static void stack(Context ctx) {
          *         var clusterWithTableAccessControl = new Cluster(&#34;clusterWithTableAccessControl&#34;, ClusterArgs.builder()        
          *             .clusterName(&#34;Shared High-Concurrency&#34;)
-         *             .sparkVersion(data.databricks_spark_version().latest_lts().id())
-         *             .nodeTypeId(data.databricks_node_type().smallest().id())
+         *             .sparkVersion(latestLts.id())
+         *             .nodeTypeId(smallest.id())
          *             .autoterminationMinutes(20)
          *             .sparkConf(Map.ofEntries(
          *                 Map.entry(&#34;spark.databricks.repl.allowedLanguages&#34;, &#34;python,sql&#34;),

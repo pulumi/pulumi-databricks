@@ -43,6 +43,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewGroup(ctx, "this", &databricks.GroupArgs{
+//				DisplayName:             pulumi.String("Some Group"),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})
@@ -71,21 +72,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisGroup, err := databricks.NewGroup(ctx, "thisGroup", &databricks.GroupArgs{
+//			this, err := databricks.NewGroup(ctx, "this", &databricks.GroupArgs{
+//				DisplayName:             pulumi.String("Some Group"),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisUser, err := databricks.NewUser(ctx, "thisUser", &databricks.UserArgs{
+//			thisUser, err := databricks.NewUser(ctx, "this", &databricks.UserArgs{
 //				UserName: pulumi.String("someone@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGroupMember(ctx, "vipMember", &databricks.GroupMemberArgs{
-//				GroupId:  thisGroup.ID(),
+//			_, err = databricks.NewGroupMember(ctx, "vip_member", &databricks.GroupMemberArgs{
+//				GroupId:  this.ID(),
 //				MemberId: thisUser.ID(),
 //			})
 //			if err != nil {
@@ -113,17 +115,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at account-level
-//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
-//				Host:         pulumi.String("https://accounts.cloud.databricks.com"),
-//				AccountId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				ClientId:     pulumi.Any(_var.Client_id),
-//				ClientSecret: pulumi.Any(_var.Client_secret),
+//			_, err := databricks.NewGroup(ctx, "this", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Some Group"),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroup(ctx, "this", nil, pulumi.Provider(databricks.Mws))
 //			if err != nil {
 //				return err
 //			}
@@ -149,16 +143,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at Azure account-level
-//			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
-//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
-//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				AuthType:  pulumi.String("azure-cli"),
+//			_, err := databricks.NewGroup(ctx, "this", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Some Group"),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewGroup(ctx, "this", nil, pulumi.Provider(databricks.Azure_account))
 //			if err != nil {
 //				return err
 //			}

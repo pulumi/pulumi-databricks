@@ -130,6 +130,51 @@ def get_mlflow_model(description: Optional[str] = None,
 
     Retrieves the settings of MlflowModel by name.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_mlflow_model = databricks.MlflowModel("this",
+        name="My MLflow Model",
+        description="My MLflow model description",
+        tags=[
+            databricks.MlflowModelTagArgs(
+                key="key1",
+                value="value1",
+            ),
+            databricks.MlflowModelTagArgs(
+                key="key2",
+                value="value2",
+            ),
+        ])
+    this = databricks.get_mlflow_model(name="My MLflow Model")
+    pulumi.export("model", this)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
+    this_model_serving = databricks.ModelServing("this",
+        name="model-serving-endpoint",
+        config=databricks.ModelServingConfigArgs(
+            served_models=[databricks.ModelServingConfigServedModelArgs(
+                name="model_serving_prod",
+                model_name=this.name,
+                model_version=this.latest_versions[0].version,
+                workload_size="Small",
+                scale_to_zero_enabled=True,
+            )],
+        ))
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str description: User-specified description for the object.
     :param Sequence[pulumi.InputType['GetMlflowModelLatestVersionArgs']] latest_versions: Array of model versions, each the latest version for its stage.
@@ -170,6 +215,51 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[str]]] =
     > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
 
     Retrieves the settings of MlflowModel by name.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_mlflow_model = databricks.MlflowModel("this",
+        name="My MLflow Model",
+        description="My MLflow model description",
+        tags=[
+            databricks.MlflowModelTagArgs(
+                key="key1",
+                value="value1",
+            ),
+            databricks.MlflowModelTagArgs(
+                key="key2",
+                value="value2",
+            ),
+        ])
+    this = databricks.get_mlflow_model(name="My MLflow Model")
+    pulumi.export("model", this)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_mlflow_model(name="My MLflow Model with multiple versions")
+    this_model_serving = databricks.ModelServing("this",
+        name="model-serving-endpoint",
+        config=databricks.ModelServingConfigArgs(
+            served_models=[databricks.ModelServingConfigServedModelArgs(
+                name="model_serving_prod",
+                model_name=this.name,
+                model_version=this.latest_versions[0].version,
+                workload_size="Small",
+                scale_to_zero_enabled=True,
+            )],
+        ))
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: User-specified description for the object.

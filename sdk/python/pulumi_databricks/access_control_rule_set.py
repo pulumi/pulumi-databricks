@@ -152,12 +152,15 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -170,12 +173,14 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -188,14 +193,16 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp",
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp",
             application_id="00000000-0000-0000-0000-000000000000",
             display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -208,12 +215,14 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -227,12 +236,15 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
         john = databricks.get_user(user_name="john.doe@example.com")
-        ds_group_rule_set = databricks.AccessControlRuleSet("dsGroupRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[john.acl_principal_id],
-            role="roles/group.manager",
-        )])
+        ds_group_rule_set = databricks.AccessControlRuleSet("ds_group_rule_set",
+            name=f"accounts/{account_id}/groups/{ds_databricks_group['id']}/ruleSets/default",
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[john.acl_principal_id],
+                role="roles/group.manager",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -246,23 +258,27 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
+        # account level group
         marketplace_admins = databricks.get_group(display_name="Marketplace Admins")
         john = databricks.get_user(user_name="john.doe@example.com")
-        account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[john.acl_principal_id],
-                role="roles/group.manager",
-            ),
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[ds.acl_principal_id],
-                role="roles/servicePrincipal.manager",
-            ),
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[marketplace_admins.acl_principal_id],
-                role="roles/marketplace.admin",
-            ),
-        ])
+        account_rule_set = databricks.AccessControlRuleSet("account_rule_set",
+            name=f"accounts/{account_id}/ruleSets/default",
+            grant_rules=[
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[john.acl_principal_id],
+                    role="roles/group.manager",
+                ),
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[ds.acl_principal_id],
+                    role="roles/servicePrincipal.manager",
+                ),
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[marketplace_admins.acl_principal_id],
+                    role="roles/marketplace.admin",
+                ),
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -309,12 +325,15 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -327,12 +346,14 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -345,14 +366,16 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp",
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp",
             application_id="00000000-0000-0000-0000-000000000000",
             display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -365,12 +388,14 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         account_id = "00000000-0000-0000-0000-000000000000"
         # account level group creation
-        ds = databricks.Group("ds")
-        automation_sp = databricks.ServicePrincipal("automationSp", display_name="SP_FOR_AUTOMATION")
-        automation_sp_rule_set = databricks.AccessControlRuleSet("automationSpRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[ds.acl_principal_id],
-            role="roles/servicePrincipal.user",
-        )])
+        ds = databricks.Group("ds", display_name="Data Science")
+        automation_sp = databricks.ServicePrincipal("automation_sp", display_name="SP_FOR_AUTOMATION")
+        automation_sp_rule_set = databricks.AccessControlRuleSet("automation_sp_rule_set",
+            name=automation_sp.application_id.apply(lambda application_id: f"accounts/{account_id}/servicePrincipals/{application_id}/ruleSets/default"),
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[ds.acl_principal_id],
+                role="roles/servicePrincipal.user",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -384,12 +409,15 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
         john = databricks.get_user(user_name="john.doe@example.com")
-        ds_group_rule_set = databricks.AccessControlRuleSet("dsGroupRuleSet", grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
-            principals=[john.acl_principal_id],
-            role="roles/group.manager",
-        )])
+        ds_group_rule_set = databricks.AccessControlRuleSet("ds_group_rule_set",
+            name=f"accounts/{account_id}/groups/{ds_databricks_group['id']}/ruleSets/default",
+            grant_rules=[databricks.AccessControlRuleSetGrantRuleArgs(
+                principals=[john.acl_principal_id],
+                role="roles/group.manager",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -403,23 +431,27 @@ class AccessControlRuleSet(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
         ds = databricks.get_group(display_name="Data Science")
+        # account level group
         marketplace_admins = databricks.get_group(display_name="Marketplace Admins")
         john = databricks.get_user(user_name="john.doe@example.com")
-        account_rule_set = databricks.AccessControlRuleSet("accountRuleSet", grant_rules=[
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[john.acl_principal_id],
-                role="roles/group.manager",
-            ),
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[ds.acl_principal_id],
-                role="roles/servicePrincipal.manager",
-            ),
-            databricks.AccessControlRuleSetGrantRuleArgs(
-                principals=[marketplace_admins.acl_principal_id],
-                role="roles/marketplace.admin",
-            ),
-        ])
+        account_rule_set = databricks.AccessControlRuleSet("account_rule_set",
+            name=f"accounts/{account_id}/ruleSets/default",
+            grant_rules=[
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[john.acl_principal_id],
+                    role="roles/group.manager",
+                ),
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[ds.acl_principal_id],
+                    role="roles/servicePrincipal.manager",
+                ),
+                databricks.AccessControlRuleSetGrantRuleArgs(
+                    principals=[marketplace_admins.acl_principal_id],
+                    role="roles/marketplace.admin",
+                ),
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

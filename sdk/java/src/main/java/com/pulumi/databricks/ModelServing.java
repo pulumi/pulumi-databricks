@@ -50,21 +50,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new ModelServing(&#34;this&#34;, ModelServingArgs.builder()        
+ *             .name(&#34;ads-serving-endpoint&#34;)
  *             .config(ModelServingConfigArgs.builder()
  *                 .servedEntities(                
  *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .name(&#34;prod_model&#34;)
  *                         .entityName(&#34;ads-model&#34;)
  *                         .entityVersion(&#34;2&#34;)
- *                         .name(&#34;prod_model&#34;)
- *                         .scaleToZeroEnabled(true)
  *                         .workloadSize(&#34;Small&#34;)
+ *                         .scaleToZeroEnabled(true)
  *                         .build(),
  *                     ModelServingConfigServedEntityArgs.builder()
+ *                         .name(&#34;candidate_model&#34;)
  *                         .entityName(&#34;ads-model&#34;)
  *                         .entityVersion(&#34;4&#34;)
- *                         .name(&#34;candidate_model&#34;)
- *                         .scaleToZeroEnabled(false)
  *                         .workloadSize(&#34;Small&#34;)
+ *                         .scaleToZeroEnabled(false)
  *                         .build())
  *                 .trafficConfig(ModelServingConfigTrafficConfigArgs.builder()
  *                     .routes(                    

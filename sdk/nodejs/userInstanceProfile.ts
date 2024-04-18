@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserInstanceProfile = new databricks.UserInstanceProfile("myUserInstanceProfile", {
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myUser = new databricks.User("my_user", {userName: "me@example.com"});
+ * const myUserInstanceProfile = new databricks.UserInstanceProfile("my_user_instance_profile", {
  *     userId: myUser.id,
  *     instanceProfileId: instanceProfile.id,
  * });

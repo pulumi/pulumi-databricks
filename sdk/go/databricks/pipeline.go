@@ -30,15 +30,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dltDemoNotebook, err := databricks.NewNotebook(ctx, "dltDemoNotebook", nil)
+//			dltDemo, err := databricks.NewNotebook(ctx, "dlt_demo", nil)
 //			if err != nil {
 //				return err
 //			}
-//			dltDemoRepo, err := databricks.NewRepo(ctx, "dltDemoRepo", nil)
+//			dltDemoRepo, err := databricks.NewRepo(ctx, "dlt_demo", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewPipeline(ctx, "this", &databricks.PipelineArgs{
+//				Name:    pulumi.String("Pipeline Name"),
 //				Storage: pulumi.String("/test/first-pipeline"),
 //				Configuration: pulumi.Map{
 //					"key1": pulumi.Any("value1"),
@@ -63,7 +64,7 @@ import (
 //				Libraries: databricks.PipelineLibraryArray{
 //					&databricks.PipelineLibraryArgs{
 //						Notebook: &databricks.PipelineLibraryNotebookArgs{
-//							Path: dltDemoNotebook.ID(),
+//							Path: dltDemo.ID(),
 //						},
 //					},
 //					&databricks.PipelineLibraryArgs{

@@ -31,19 +31,19 @@ namespace Pulumi.Databricks.Outputs
         /// 
         ///     var storageContainer = "test";
         /// 
-        ///     var withNfs = new Databricks.Cluster("withNfs", new()
+        ///     var withNfs = new Databricks.Cluster("with_nfs", new()
         ///     {
         ///         ClusterMountInfos = new[]
         ///         {
         ///             new Databricks.Inputs.ClusterClusterMountInfoArgs
         ///             {
-        ///                 LocalMountDirPath = "/mnt/nfs-test",
         ///                 NetworkFilesystemInfo = new Databricks.Inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs
         ///                 {
-        ///                     MountOptions = "sec=sys,vers=3,nolock,proto=tcp",
         ///                     ServerAddress = $"{storageAccount}.blob.core.windows.net",
+        ///                     MountOptions = "sec=sys,vers=3,nolock,proto=tcp",
         ///                 },
         ///                 RemoteMountDirPath = $"{storageAccount}/{storageContainer}",
+        ///                 LocalMountDirPath = "/mnt/nfs-test",
         ///             },
         ///         },
         ///     });

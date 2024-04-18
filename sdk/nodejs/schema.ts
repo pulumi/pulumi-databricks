@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
  *     comment: "this catalog is managed by terraform",
  *     properties: {
  *         purpose: "testing",
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * });
  * const things = new databricks.Schema("things", {
  *     catalogName: sandbox.id,
+ *     name: "things",
  *     comment: "this database is managed by terraform",
  *     properties: {
  *         kind: "various",

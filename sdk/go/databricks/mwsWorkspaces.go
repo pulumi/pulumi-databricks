@@ -42,54 +42,49 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account ID that can be found in the dropdown under the email address in the upper-right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
-//				Host: pulumi.String("https://accounts.cloud.databricks.com"),
+//			// register cross-account ARN
+//			this, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
+//				RoleArn:         pulumi.Any(crossaccountArn),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			// register cross-account ARN
-//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
-//				AccountId:       pulumi.Any(databricksAccountId),
-//				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", _var.Prefix)),
-//				RoleArn:         pulumi.Any(_var.Crossaccount_arn),
-//			}, pulumi.Provider(databricks.Mws))
-//			if err != nil {
-//				return err
-//			}
 //			// register root bucket
-//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "thisMwsStorageConfigurations", &databricks.MwsStorageConfigurationsArgs{
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
-//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", _var.Prefix)),
-//				BucketName:               pulumi.Any(_var.Root_bucket),
-//			}, pulumi.Provider(databricks.Mws))
+//				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", prefix)),
+//				BucketName:               pulumi.Any(rootBucket),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// register VPC
-//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
+//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
-//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
-//				VpcId:       pulumi.Any(_var.Vpc_id),
-//				SubnetIds:   pulumi.Any(_var.Subnets_private),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", prefix)),
+//				VpcId:       pulumi.Any(vpcId),
+//				SubnetIds:   pulumi.Any(subnetsPrivate),
 //				SecurityGroupIds: pulumi.StringArray{
-//					_var.Security_group,
+//					securityGroup,
 //				},
-//			}, pulumi.Provider(databricks.Mws))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			// create workspace in given VPC with DBFS on root bucket
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
-//				WorkspaceName:          pulumi.Any(_var.Prefix),
-//				AwsRegion:              pulumi.Any(_var.Region),
-//				CredentialsId:          thisMwsCredentials.CredentialsId,
+//				WorkspaceName:          pulumi.Any(prefix),
+//				AwsRegion:              pulumi.Any(region),
+//				CredentialsId:          this.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
 //				NetworkId:              thisMwsNetworks.NetworkId,
 //				Token:                  nil,
-//			}, pulumi.Provider(databricks.Mws))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -117,8 +112,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -129,60 +124,62 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
-//			naming, err := random.NewRandomString(ctx, "naming", &random.RandomStringArgs{
-//				Special: pulumi.Bool(false),
-//				Upper:   pulumi.Bool(false),
-//				Length:  pulumi.Int(6),
+//			naming, err := random.NewString(ctx, "naming", &random.StringArgs{
+//				Special: false,
+//				Upper:   false,
+//				Length:  6,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			prefix := naming.Result.ApplyT(func(result string) (string, error) {
-//				return fmt.Sprintf("dltp%v", result), nil
-//			}).(pulumi.StringOutput)
-//			thisAwsAssumeRolePolicy, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//			prefix := fmt.Sprintf("dltp%v", naming.Result)
+//			this, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
 //				ExternalId: databricksAccountId,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountRole, err := iam.NewRole(ctx, "crossAccountRole", &iam.RoleArgs{
-//				AssumeRolePolicy: pulumi.String(thisAwsAssumeRolePolicy.Json),
-//				Tags:             pulumi.Any(_var.Tags),
+//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
+//				Name:             pulumi.String(fmt.Sprintf("%v-crossaccount", prefix)),
+//				AssumeRolePolicy: pulumi.String(this.Json),
+//				Tags:             pulumi.Any(tags),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
+//			thisGetAwsCrossAccountPolicy, err := databricks.GetAwsCrossAccountPolicy(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicy(ctx, "thisRolePolicy", &iam.RolePolicyArgs{
+//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
+//				Name:   pulumi.String(fmt.Sprintf("%v-policy", prefix)),
 //				Role:   crossAccountRole.ID(),
-//				Policy: pulumi.String(thisAwsCrossAccountPolicy.Json),
+//				Policy: pulumi.String(thisGetAwsCrossAccountPolicy.Json),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "thisMwsCredentials", &databricks.MwsCredentialsArgs{
+//			thisMwsCredentials, err := databricks.NewMwsCredentials(ctx, "this", &databricks.MwsCredentialsArgs{
 //				AccountId:       pulumi.Any(databricksAccountId),
 //				CredentialsName: pulumi.String(fmt.Sprintf("%v-creds", prefix)),
 //				RoleArn:         crossAccountRole.Arn,
-//			}, pulumi.Provider(databricks.Mws))
-//			if err != nil {
-//				return err
-//			}
-//			rootStorageBucketBucketV2, err := s3.NewBucketV2(ctx, "rootStorageBucketBucketV2", &s3.BucketV2Args{
-//				Acl:          pulumi.String("private"),
-//				ForceDestroy: pulumi.Bool(true),
-//				Tags:         pulumi.Any(_var.Tags),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = s3.NewBucketVersioningV2(ctx, "rootVersioning", &s3.BucketVersioningV2Args{
-//				Bucket: rootStorageBucketBucketV2.ID(),
+//			rootStorageBucket, err := s3.NewBucketV2(ctx, "root_storage_bucket", &s3.BucketV2Args{
+//				Bucket:       pulumi.String(fmt.Sprintf("%v-rootbucket", prefix)),
+//				Acl:          pulumi.String("private"),
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags:         pulumi.Any(tags),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = s3.NewBucketVersioningV2(ctx, "root_versioning", &s3.BucketVersioningV2Args{
+//				Bucket: rootStorageBucket.ID(),
 //				VersioningConfiguration: &s3.BucketVersioningV2VersioningConfigurationArgs{
 //					Status: pulumi.String("Disabled"),
 //				},
@@ -190,8 +187,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = s3.NewBucketServerSideEncryptionConfigurationV2(ctx, "rootStorageBucketBucketServerSideEncryptionConfigurationV2", &s3.BucketServerSideEncryptionConfigurationV2Args{
-//				Bucket: rootStorageBucketBucketV2.Bucket,
+//			_, err = s3.NewBucketServerSideEncryptionConfigurationV2(ctx, "root_storage_bucket", &s3.BucketServerSideEncryptionConfigurationV2Args{
+//				Bucket: rootStorageBucket.Bucket,
 //				Rules: s3.BucketServerSideEncryptionConfigurationV2RuleArray{
 //					&s3.BucketServerSideEncryptionConfigurationV2RuleArgs{
 //						ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs{
@@ -203,25 +200,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "rootStorageBucketBucketPublicAccessBlock", &s3.BucketPublicAccessBlockArgs{
-//				Bucket:                rootStorageBucketBucketV2.ID(),
+//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "root_storage_bucket", &s3.BucketPublicAccessBlockArgs{
+//				Bucket:                rootStorageBucket.ID(),
 //				BlockPublicAcls:       pulumi.Bool(true),
 //				BlockPublicPolicy:     pulumi.Bool(true),
 //				IgnorePublicAcls:      pulumi.Bool(true),
 //				RestrictPublicBuckets: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				rootStorageBucketBucketV2,
+//				rootStorageBucket,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			thisAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				Bucket: rootStorageBucketBucketV2.Bucket,
+//			thisGetAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//				Bucket: rootStorageBucket.Bucket,
 //			}, nil)
-//			_, err = s3.NewBucketPolicy(ctx, "rootBucketPolicy", &s3.BucketPolicyArgs{
-//				Bucket: rootStorageBucketBucketV2.ID(),
-//				Policy: thisAwsBucketPolicy.ApplyT(func(thisAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &thisAwsBucketPolicy.Json, nil
+//			_, err = s3.NewBucketPolicy(ctx, "root_bucket_policy", &s3.BucketPolicyArgs{
+//				Bucket: rootStorageBucket.ID(),
+//				Policy: thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
+//					return &thisGetAwsBucketPolicy.Json, nil
 //				}).(pulumi.StringPtrOutput),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootStorageBucketBucketPublicAccessBlock,
@@ -229,15 +226,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "thisMwsStorageConfigurations", &databricks.MwsStorageConfigurationsArgs{
+//			thisMwsStorageConfigurations, err := databricks.NewMwsStorageConfigurations(ctx, "this", &databricks.MwsStorageConfigurationsArgs{
 //				AccountId:                pulumi.Any(databricksAccountId),
 //				StorageConfigurationName: pulumi.String(fmt.Sprintf("%v-storage", prefix)),
-//				BucketName:               rootStorageBucketBucketV2.Bucket,
-//			}, pulumi.Provider(databricks.Mws))
+//				BucketName:               rootStorageBucket.Bucket,
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
 //				WorkspaceName:          pulumi.String(prefix),
 //				AwsRegion:              pulumi.String("us-east-1"),
@@ -247,7 +244,7 @@ import (
 //				CustomTags: pulumi.Map{
 //					"SoldToCode": pulumi.Any("1234"),
 //				},
-//			}, pulumi.Provider(databricks.Mws))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -286,24 +283,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
 //			databricksGoogleServiceAccount := cfg.RequireObject("databricksGoogleServiceAccount")
 //			googleProject := cfg.RequireObject("googleProject")
-//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
-//				Host: pulumi.String("https://accounts.gcp.databricks.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			// register VPC
-//			thisMwsNetworks, err := databricks.NewMwsNetworks(ctx, "thisMwsNetworks", &databricks.MwsNetworksArgs{
+//			this, err := databricks.NewMwsNetworks(ctx, "this", &databricks.MwsNetworksArgs{
 //				AccountId:   pulumi.Any(databricksAccountId),
-//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", _var.Prefix)),
+//				NetworkName: pulumi.String(fmt.Sprintf("%v-network", prefix)),
 //				GcpNetworkInfo: &databricks.MwsNetworksGcpNetworkInfoArgs{
 //					NetworkProjectId:   pulumi.Any(googleProject),
-//					VpcId:              pulumi.Any(_var.Vpc_id),
-//					SubnetId:           pulumi.Any(_var.Subnet_id),
-//					SubnetRegion:       pulumi.Any(_var.Subnet_region),
+//					VpcId:              pulumi.Any(vpcId),
+//					SubnetId:           pulumi.Any(subnetId),
+//					SubnetRegion:       pulumi.Any(subnetRegion),
 //					PodIpRangeName:     pulumi.String("pods"),
 //					ServiceIpRangeName: pulumi.String("svc"),
 //				},
@@ -312,16 +304,16 @@ import (
 //				return err
 //			}
 //			// create workspace in given VPC
-//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "thisMwsWorkspaces", &databricks.MwsWorkspacesArgs{
+//			thisMwsWorkspaces, err := databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:     pulumi.Any(databricksAccountId),
-//				WorkspaceName: pulumi.Any(_var.Prefix),
-//				Location:      pulumi.Any(_var.Subnet_region),
+//				WorkspaceName: pulumi.Any(prefix),
+//				Location:      pulumi.Any(subnetRegion),
 //				CloudResourceContainer: &databricks.MwsWorkspacesCloudResourceContainerArgs{
 //					Gcp: &databricks.MwsWorkspacesCloudResourceContainerGcpArgs{
 //						ProjectId: pulumi.Any(googleProject),
 //					},
 //				},
-//				NetworkId: thisMwsNetworks.NetworkId,
+//				NetworkId: this.NetworkId,
 //				GkeConfig: &databricks.MwsWorkspacesGkeConfigArgs{
 //					ConnectivityType: pulumi.String("PRIVATE_NODE_PUBLIC_MASTER"),
 //					MasterIpRange:    pulumi.String("10.3.0.0/28"),

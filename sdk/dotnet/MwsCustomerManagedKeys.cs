@@ -31,6 +31,7 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     var current = Aws.GetCallerIdentity.Invoke();
     /// 
@@ -91,17 +92,18 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var managedServicesCustomerManagedKey = new Aws.Kms.Key("managedServicesCustomerManagedKey", new()
+    ///     var managedServicesCustomerManagedKey = new Aws.Kms.Key("managed_services_customer_managed_key", new()
     ///     {
     ///         Policy = databricksManagedServicesCmk.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
     ///     });
     /// 
-    ///     var managedServicesCustomerManagedKeyAlias = new Aws.Kms.Alias("managedServicesCustomerManagedKeyAlias", new()
+    ///     var managedServicesCustomerManagedKeyAlias = new Aws.Kms.Alias("managed_services_customer_managed_key_alias", new()
     ///     {
+    ///         Name = "alias/managed-services-customer-managed-key-alias",
     ///         TargetKeyId = managedServicesCustomerManagedKey.KeyId,
     ///     });
     /// 
-    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managed_services", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         AwsKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs
@@ -131,9 +133,11 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
-    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managedServices", new()
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managed_services", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs
@@ -165,7 +169,9 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // AWS ARN for the Databricks cross account role
     ///     var databricksCrossAccountRole = config.RequireObject&lt;dynamic&gt;("databricksCrossAccountRole");
     ///     var databricksStorageCmk = Aws.Iam.GetPolicyDocument.Invoke(new()
     ///     {
@@ -183,7 +189,7 @@ namespace Pulumi.Databricks
     ///                         Type = "AWS",
     ///                         Identifiers = new[]
     ///                         {
-    ///                             data.Aws_caller_identity.Current.Account_id,
+    ///                             current.AccountId,
     ///                         },
     ///                     },
     ///                 },
@@ -304,13 +310,14 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var storageCustomerManagedKey = new Aws.Kms.Key("storageCustomerManagedKey", new()
+    ///     var storageCustomerManagedKey = new Aws.Kms.Key("storage_customer_managed_key", new()
     ///     {
     ///         Policy = databricksStorageCmk.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
     ///     });
     /// 
-    ///     var storageCustomerManagedKeyAlias = new Aws.Kms.Alias("storageCustomerManagedKeyAlias", new()
+    ///     var storageCustomerManagedKeyAlias = new Aws.Kms.Alias("storage_customer_managed_key_alias", new()
     ///     {
+    ///         Name = "alias/storage-customer-managed-key-alias",
     ///         TargetKeyId = storageCustomerManagedKey.KeyId,
     ///     });
     /// 
@@ -344,7 +351,9 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
     ///     var storage = new Databricks.MwsCustomerManagedKeys("storage", new()
     ///     {

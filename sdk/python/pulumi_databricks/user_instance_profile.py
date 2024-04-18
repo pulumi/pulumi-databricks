@@ -109,9 +109,9 @@ class UserInstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_instance_profile = databricks.UserInstanceProfile("myUserInstanceProfile",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_instance_profile = databricks.UserInstanceProfile("my_user_instance_profile",
             user_id=my_user.id,
             instance_profile_id=instance_profile.id)
         ```
@@ -155,9 +155,9 @@ class UserInstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_instance_profile = databricks.UserInstanceProfile("myUserInstanceProfile",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_instance_profile = databricks.UserInstanceProfile("my_user_instance_profile",
             user_id=my_user.id,
             instance_profile_id=instance_profile.id)
         ```

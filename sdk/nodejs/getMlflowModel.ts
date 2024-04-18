@@ -10,6 +10,57 @@ import * as utilities from "./utilities";
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves the settings of databricks.MlflowModel by name.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMlflowModel = new databricks.MlflowModel("this", {
+ *     name: "My MLflow Model",
+ *     description: "My MLflow model description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ * });
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model",
+ * });
+ * export const model = _this;
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model with multiple versions",
+ * });
+ * const thisModelServing = new databricks.ModelServing("this", {
+ *     name: "model-serving-endpoint",
+ *     config: {
+ *         servedModels: [{
+ *             name: "model_serving_prod",
+ *             modelName: _this.then(_this => _this.name),
+ *             modelVersion: _this.then(_this => _this.latestVersions?.[0]?.version),
+ *             workloadSize: "Small",
+ *             scaleToZeroEnabled: true,
+ *         }],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOptions): Promise<GetMlflowModelResult> {
 
@@ -91,6 +142,57 @@ export interface GetMlflowModelResult {
  * > **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add dependsOn attribute in order to prevent _default auth: cannot configure default credentials_ errors.
  *
  * Retrieves the settings of databricks.MlflowModel by name.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMlflowModel = new databricks.MlflowModel("this", {
+ *     name: "My MLflow Model",
+ *     description: "My MLflow model description",
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ * });
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model",
+ * });
+ * export const model = _this;
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const this = databricks.getMlflowModel({
+ *     name: "My MLflow Model with multiple versions",
+ * });
+ * const thisModelServing = new databricks.ModelServing("this", {
+ *     name: "model-serving-endpoint",
+ *     config: {
+ *         servedModels: [{
+ *             name: "model_serving_prod",
+ *             modelName: _this.then(_this => _this.name),
+ *             modelVersion: _this.then(_this => _this.latestVersions?.[0]?.version),
+ *             workloadSize: "Small",
+ *             scaleToZeroEnabled: true,
+ *         }],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMlflowModelResult> {
     return pulumi.output(args).apply((a: any) => getMlflowModel(a, opts))

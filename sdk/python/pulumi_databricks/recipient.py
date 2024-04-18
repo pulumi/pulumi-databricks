@@ -318,14 +318,15 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.RandomPassword("db2opensharecode",
+        db2opensharecode = random.index.Password("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
         db2open = databricks.Recipient("db2open",
+            name=f"{current.alphanumeric}-recipient",
             comment="made by terraform",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
+            sharing_code=db2opensharecode["result"],
             ip_access_list=databricks.RecipientIpAccessListArgs(
                 allowed_ip_addresses=[],
             ))
@@ -369,14 +370,15 @@ class Recipient(pulumi.CustomResource):
         import pulumi_databricks as databricks
         import pulumi_random as random
 
-        db2opensharecode = random.RandomPassword("db2opensharecode",
+        db2opensharecode = random.index.Password("db2opensharecode",
             length=16,
             special=True)
         current = databricks.get_current_user()
         db2open = databricks.Recipient("db2open",
+            name=f"{current.alphanumeric}-recipient",
             comment="made by terraform",
             authentication_type="TOKEN",
-            sharing_code=db2opensharecode.result,
+            sharing_code=db2opensharecode["result"],
             ip_access_list=databricks.RecipientIpAccessListArgs(
                 allowed_ip_addresses=[],
             ))

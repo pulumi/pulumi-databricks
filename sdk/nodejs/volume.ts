@@ -43,6 +43,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
  *     comment: "this catalog is managed by terraform",
  *     properties: {
  *         purpose: "testing",
@@ -50,19 +51,25 @@ import * as utilities from "./utilities";
  * });
  * const things = new databricks.Schema("things", {
  *     catalogName: sandbox.name,
+ *     name: "things",
  *     comment: "this schema is managed by terraform",
  *     properties: {
  *         kind: "various",
  *     },
  * });
- * const external = new databricks.StorageCredential("external", {awsIamRole: {
- *     roleArn: aws_iam_role.external_data_access.arn,
- * }});
+ * const external = new databricks.StorageCredential("external", {
+ *     name: "creds",
+ *     awsIamRole: {
+ *         roleArn: externalDataAccess.arn,
+ *     },
+ * });
  * const some = new databricks.ExternalLocation("some", {
- *     url: `s3://${aws_s3_bucket.external.id}/some`,
+ *     name: "external-location",
+ *     url: `s3://${externalAwsS3Bucket.id}/some`,
  *     credentialName: external.name,
  * });
  * const _this = new databricks.Volume("this", {
+ *     name: "quickstart_volume",
  *     catalogName: sandbox.name,
  *     schemaName: things.name,
  *     volumeType: "EXTERNAL",

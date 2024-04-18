@@ -24,18 +24,20 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const external = new databricks.StorageCredential("external", {
+ *     name: externalDataAccess.name,
  *     awsIamRole: {
- *         roleArn: aws_iam_role.external_data_access.arn,
+ *         roleArn: externalDataAccess.arn,
  *     },
  *     comment: "Managed by TF",
  * });
- * const someExternalLocation = new databricks.ExternalLocation("someExternalLocation", {
- *     url: `s3://${aws_s3_bucket.external.id}/some`,
+ * const some = new databricks.ExternalLocation("some", {
+ *     name: "external",
+ *     url: `s3://${externalAwsS3Bucket.id}/some`,
  *     credentialName: external.id,
  *     comment: "Managed by TF",
  * });
- * const someGrants = new databricks.Grants("someGrants", {
- *     externalLocation: someExternalLocation.id,
+ * const someGrants = new databricks.Grants("some", {
+ *     externalLocation: some.id,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: [

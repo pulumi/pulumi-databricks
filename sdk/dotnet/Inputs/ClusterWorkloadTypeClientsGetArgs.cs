@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var withNfs = new Databricks.Cluster("withNfs", new()
+        ///     var withNfs = new Databricks.Cluster("with_nfs", new()
         ///     {
         ///         WorkloadType = new Databricks.Inputs.ClusterWorkloadTypeArgs
         ///         {

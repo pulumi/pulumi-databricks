@@ -18,36 +18,39 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.ModelServing("this", {config: {
- *     servedEntities: [
- *         {
- *             entityName: "ads-model",
- *             entityVersion: "2",
- *             name: "prod_model",
- *             scaleToZeroEnabled: true,
- *             workloadSize: "Small",
- *         },
- *         {
- *             entityName: "ads-model",
- *             entityVersion: "4",
- *             name: "candidate_model",
- *             scaleToZeroEnabled: false,
- *             workloadSize: "Small",
- *         },
- *     ],
- *     trafficConfig: {
- *         routes: [
+ * const _this = new databricks.ModelServing("this", {
+ *     name: "ads-serving-endpoint",
+ *     config: {
+ *         servedEntities: [
  *             {
- *                 servedModelName: "prod_model",
- *                 trafficPercentage: 90,
+ *                 name: "prod_model",
+ *                 entityName: "ads-model",
+ *                 entityVersion: "2",
+ *                 workloadSize: "Small",
+ *                 scaleToZeroEnabled: true,
  *             },
  *             {
- *                 servedModelName: "candidate_model",
- *                 trafficPercentage: 10,
+ *                 name: "candidate_model",
+ *                 entityName: "ads-model",
+ *                 entityVersion: "4",
+ *                 workloadSize: "Small",
+ *                 scaleToZeroEnabled: false,
  *             },
  *         ],
+ *         trafficConfig: {
+ *             routes: [
+ *                 {
+ *                     servedModelName: "prod_model",
+ *                     trafficPercentage: 90,
+ *                 },
+ *                 {
+ *                     servedModelName: "candidate_model",
+ *                     trafficPercentage: 10,
+ *                 },
+ *             ],
+ *         },
  *     },
- * }});
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

@@ -34,13 +34,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sharedDir, err := databricks.NewDirectory(ctx, "sharedDir", &databricks.DirectoryArgs{
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
 //				Path: pulumi.String("/Shared/Dashboards"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewSqlDashboard(ctx, "d1", &databricks.SqlDashboardArgs{
+//				Name: pulumi.String("My Dashboard Name"),
 //				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
 //					return fmt.Sprintf("folders/%v", objectId), nil
 //				}).(pulumi.StringOutput),
@@ -75,10 +76,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPermissions(ctx, "d1", &databricks.PermissionsArgs{
-//				SqlDashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
+//				SqlDashboardId: pulumi.Any(d1DatabricksSqlDashboard.Id),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
+//						GroupName:       pulumi.Any(users.DisplayName),
 //						PermissionLevel: pulumi.String("CAN_RUN"),
 //					},
 //				},

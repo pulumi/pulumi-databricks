@@ -29,15 +29,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allSqlWarehouses = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        ///     var allSqlWarehouse = .Select(__value =&gt; 
-        ///     {
+        ///     var allGetSqlWarehouse = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key;
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
         ///         return Databricks.GetSqlWarehouse.Invoke(new()
         ///         {
         ///             Id = __value,
         ///         });
-        ///     }).ToList();
+        ///     });
         /// 
         /// });
         /// ```
@@ -94,15 +97,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var allSqlWarehouses = Databricks.GetSqlWarehouses.Invoke();
+        ///     var all = Databricks.GetSqlWarehouses.Invoke();
         /// 
-        ///     var allSqlWarehouse = .Select(__value =&gt; 
-        ///     {
+        ///     var allGetSqlWarehouse = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key;
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
         ///         return Databricks.GetSqlWarehouse.Invoke(new()
         ///         {
         ///             Id = __value,
         ///         });
-        ///     }).ToList();
+        ///     });
         /// 
         /// });
         /// ```

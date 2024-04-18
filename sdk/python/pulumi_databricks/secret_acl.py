@@ -141,15 +141,15 @@ class SecretAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        ds = databricks.Group("ds")
-        app = databricks.SecretScope("app")
-        my_secret_acl = databricks.SecretAcl("mySecretAcl",
+        ds = databricks.Group("ds", display_name="data-scientists")
+        app = databricks.SecretScope("app", name="app-secret-scope")
+        my_secret_acl = databricks.SecretAcl("my_secret_acl",
             principal=ds.display_name,
             permission="READ",
             scope=app.name)
-        publishing_api = databricks.Secret("publishingApi",
+        publishing_api = databricks.Secret("publishing_api",
             key="publishing_api",
-            string_value=data["azurerm_key_vault_secret"]["example"]["value"],
+            string_value=example["value"],
             scope=app.name)
         ```
         <!--End PulumiCodeChooser -->
@@ -199,15 +199,15 @@ class SecretAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        ds = databricks.Group("ds")
-        app = databricks.SecretScope("app")
-        my_secret_acl = databricks.SecretAcl("mySecretAcl",
+        ds = databricks.Group("ds", display_name="data-scientists")
+        app = databricks.SecretScope("app", name="app-secret-scope")
+        my_secret_acl = databricks.SecretAcl("my_secret_acl",
             principal=ds.display_name,
             permission="READ",
             scope=app.name)
-        publishing_api = databricks.Secret("publishingApi",
+        publishing_api = databricks.Secret("publishing_api",
             key="publishing_api",
-            string_value=data["azurerm_key_vault_secret"]["example"]["value"],
+            string_value=example["value"],
             scope=app.name)
         ```
         <!--End PulumiCodeChooser -->

@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const dbprovider = new databricks.MetastoreProvider("dbprovider", {
+ *     name: "terraform-test-provider",
  *     comment: "made by terraform 2",
  *     authenticationType: "TOKEN",
  *     recipientProfileStr: JSON.stringify({

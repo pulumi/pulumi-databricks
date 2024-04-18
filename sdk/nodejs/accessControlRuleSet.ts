@@ -25,14 +25,18 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
  * const ds = databricks.getGroup({
  *     displayName: "Data Science",
  * });
- * const automationSp = new databricks.ServicePrincipal("automationSp", {displayName: "SP_FOR_AUTOMATION"});
- * const automationSpRuleSet = new databricks.AccessControlRuleSet("automationSpRuleSet", {grantRules: [{
- *     principals: [ds.then(ds => ds.aclPrincipalId)],
- *     role: "roles/servicePrincipal.user",
- * }]});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.then(ds => ds.aclPrincipalId)],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -45,12 +49,15 @@ import * as utilities from "./utilities";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
  * // account level group creation
- * const ds = new databricks.Group("ds", {});
- * const automationSp = new databricks.ServicePrincipal("automationSp", {displayName: "SP_FOR_AUTOMATION"});
- * const automationSpRuleSet = new databricks.AccessControlRuleSet("automationSpRuleSet", {grantRules: [{
- *     principals: [ds.aclPrincipalId],
- *     role: "roles/servicePrincipal.user",
- * }]});
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -63,15 +70,18 @@ import * as utilities from "./utilities";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
  * // account level group creation
- * const ds = new databricks.Group("ds", {});
- * const automationSp = new databricks.ServicePrincipal("automationSp", {
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {
  *     applicationId: "00000000-0000-0000-0000-000000000000",
  *     displayName: "SP_FOR_AUTOMATION",
  * });
- * const automationSpRuleSet = new databricks.AccessControlRuleSet("automationSpRuleSet", {grantRules: [{
- *     principals: [ds.aclPrincipalId],
- *     role: "roles/servicePrincipal.user",
- * }]});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -84,12 +94,15 @@ import * as utilities from "./utilities";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
  * // account level group creation
- * const ds = new databricks.Group("ds", {});
- * const automationSp = new databricks.ServicePrincipal("automationSp", {displayName: "SP_FOR_AUTOMATION"});
- * const automationSpRuleSet = new databricks.AccessControlRuleSet("automationSpRuleSet", {grantRules: [{
- *     principals: [ds.aclPrincipalId],
- *     role: "roles/servicePrincipal.user",
- * }]});
+ * const ds = new databricks.Group("ds", {displayName: "Data Science"});
+ * const automationSp = new databricks.ServicePrincipal("automation_sp", {displayName: "SP_FOR_AUTOMATION"});
+ * const automationSpRuleSet = new databricks.AccessControlRuleSet("automation_sp_rule_set", {
+ *     name: pulumi.interpolate`accounts/${accountId}/servicePrincipals/${automationSp.applicationId}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [ds.aclPrincipalId],
+ *         role: "roles/servicePrincipal.user",
+ *     }],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -103,16 +116,20 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
  * const ds = databricks.getGroup({
  *     displayName: "Data Science",
  * });
  * const john = databricks.getUser({
  *     userName: "john.doe@example.com",
  * });
- * const dsGroupRuleSet = new databricks.AccessControlRuleSet("dsGroupRuleSet", {grantRules: [{
- *     principals: [john.then(john => john.aclPrincipalId)],
- *     role: "roles/group.manager",
- * }]});
+ * const dsGroupRuleSet = new databricks.AccessControlRuleSet("ds_group_rule_set", {
+ *     name: `accounts/${accountId}/groups/${dsDatabricksGroup.id}/ruleSets/default`,
+ *     grantRules: [{
+ *         principals: [john.then(john => john.aclPrincipalId)],
+ *         role: "roles/group.manager",
+ *     }],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -126,29 +143,34 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
  * const ds = databricks.getGroup({
  *     displayName: "Data Science",
  * });
+ * // account level group
  * const marketplaceAdmins = databricks.getGroup({
  *     displayName: "Marketplace Admins",
  * });
  * const john = databricks.getUser({
  *     userName: "john.doe@example.com",
  * });
- * const accountRuleSet = new databricks.AccessControlRuleSet("accountRuleSet", {grantRules: [
- *     {
- *         principals: [john.then(john => john.aclPrincipalId)],
- *         role: "roles/group.manager",
- *     },
- *     {
- *         principals: [ds.then(ds => ds.aclPrincipalId)],
- *         role: "roles/servicePrincipal.manager",
- *     },
- *     {
- *         principals: [marketplaceAdmins.then(marketplaceAdmins => marketplaceAdmins.aclPrincipalId)],
- *         role: "roles/marketplace.admin",
- *     },
- * ]});
+ * const accountRuleSet = new databricks.AccessControlRuleSet("account_rule_set", {
+ *     name: `accounts/${accountId}/ruleSets/default`,
+ *     grantRules: [
+ *         {
+ *             principals: [john.then(john => john.aclPrincipalId)],
+ *             role: "roles/group.manager",
+ *         },
+ *         {
+ *             principals: [ds.then(ds => ds.aclPrincipalId)],
+ *             role: "roles/servicePrincipal.manager",
+ *         },
+ *         {
+ *             principals: [marketplaceAdmins.then(marketplaceAdmins => marketplaceAdmins.aclPrincipalId)],
+ *             role: "roles/marketplace.admin",
+ *         },
+ *     ],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

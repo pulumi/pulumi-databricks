@@ -59,9 +59,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {
- *     allowClusterCreate: true,
  *     applicationId: "00000000-0000-0000-0000-000000000000",
  *     displayName: "Example service principal",
+ *     allowClusterCreate: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -73,16 +73,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at account-level
- * const account = new databricks.Provider("account", {
- *     host: "https://accounts.cloud.databricks.com",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     clientId: _var.client_id,
- *     clientSecret: _var.client_secret,
- * });
- * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"}, {
- *     provider: databricks.account,
- * });
+ * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -93,15 +84,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider at Azure account-level
- * const account = new databricks.Provider("account", {
- *     host: "https://accounts.azuredatabricks.net",
- *     accountId: "00000000-0000-0000-0000-000000000000",
- *     authType: "azure-cli",
- * });
- * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"}, {
- *     provider: databricks.account,
- * });
+ * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

@@ -249,7 +249,7 @@ class SqlWidget(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         d1w1 = databricks.SqlWidget("d1w1",
-            dashboard_id=databricks_sql_dashboard["d1"]["id"],
+            dashboard_id=d1["id"],
             text="Hello! I'm a **text widget**!",
             position=databricks.SqlWidgetPositionArgs(
                 size_x=3,
@@ -258,8 +258,8 @@ class SqlWidget(pulumi.CustomResource):
                 pos_y=0,
             ))
         d1w2 = databricks.SqlWidget("d1w2",
-            dashboard_id=databricks_sql_dashboard["d1"]["id"],
-            visualization_id=databricks_sql_visualization["q1v1"]["id"],
+            dashboard_id=d1["id"],
+            visualization_id=q1v1["id"],
             position=databricks.SqlWidgetPositionArgs(
                 size_x=3,
                 size_y=4,
@@ -313,7 +313,7 @@ class SqlWidget(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         d1w1 = databricks.SqlWidget("d1w1",
-            dashboard_id=databricks_sql_dashboard["d1"]["id"],
+            dashboard_id=d1["id"],
             text="Hello! I'm a **text widget**!",
             position=databricks.SqlWidgetPositionArgs(
                 size_x=3,
@@ -322,8 +322,8 @@ class SqlWidget(pulumi.CustomResource):
                 pos_y=0,
             ))
         d1w2 = databricks.SqlWidget("d1w2",
-            dashboard_id=databricks_sql_dashboard["d1"]["id"],
-            visualization_id=databricks_sql_visualization["q1v1"]["id"],
+            dashboard_id=d1["id"],
+            visualization_id=q1v1["id"],
             position=databricks.SqlWidgetPositionArgs(
                 size_x=3,
                 size_y=4,

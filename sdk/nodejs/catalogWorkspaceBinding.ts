@@ -12,10 +12,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const sandboxCatalog = new databricks.Catalog("sandboxCatalog", {isolationMode: "ISOLATED"});
- * const sandboxCatalogWorkspaceBinding = new databricks.CatalogWorkspaceBinding("sandboxCatalogWorkspaceBinding", {
- *     securableName: sandboxCatalog.name,
- *     workspaceId: databricks_mws_workspaces.other.workspace_id,
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     isolationMode: "ISOLATED",
+ * });
+ * const sandboxCatalogWorkspaceBinding = new databricks.CatalogWorkspaceBinding("sandbox", {
+ *     securableName: sandbox.name,
+ *     workspaceId: other.workspaceId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

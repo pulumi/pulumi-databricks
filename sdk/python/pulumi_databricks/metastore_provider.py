@@ -181,6 +181,7 @@ class MetastoreProvider(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         dbprovider = databricks.MetastoreProvider("dbprovider",
+            name="terraform-test-provider",
             comment="made by terraform 2",
             authentication_type="TOKEN",
             recipient_profile_str=json.dumps({
@@ -231,6 +232,7 @@ class MetastoreProvider(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         dbprovider = databricks.MetastoreProvider("dbprovider",
+            name="terraform-test-provider",
             comment="made by terraform 2",
             authentication_type="TOKEN",
             recipient_profile_str=json.dumps({

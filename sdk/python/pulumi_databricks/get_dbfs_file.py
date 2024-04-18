@@ -101,8 +101,8 @@ def get_dbfs_file(limit_file_size: Optional[bool] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    report = databricks.get_dbfs_file(limit_file_size=True,
-        path="dbfs:/reports/some.csv")
+    report = databricks.get_dbfs_file(path="dbfs:/reports/some.csv",
+        limit_file_size=True)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -149,8 +149,8 @@ def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[bool]] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    report = databricks.get_dbfs_file(limit_file_size=True,
-        path="dbfs:/reports/some.csv")
+    report = databricks.get_dbfs_file(path="dbfs:/reports/some.csv",
+        limit_file_size=True)
     ```
     <!--End PulumiCodeChooser -->
 

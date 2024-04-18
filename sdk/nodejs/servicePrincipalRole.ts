@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
  * const _this = new databricks.ServicePrincipal("this", {displayName: "My Service Principal"});
- * const myServicePrincipalInstanceProfile = new databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile", {
+ * const myServicePrincipalInstanceProfile = new databricks.ServicePrincipalRole("my_service_principal_instance_profile", {
  *     servicePrincipalId: _this.id,
  *     role: instanceProfile.id,
  * });

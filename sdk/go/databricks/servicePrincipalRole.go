@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
 //				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
 //			})
 //			if err != nil {
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewServicePrincipalRole(ctx, "myServicePrincipalInstanceProfile", &databricks.ServicePrincipalRoleArgs{
+//			_, err = databricks.NewServicePrincipalRole(ctx, "my_service_principal_instance_profile", &databricks.ServicePrincipalRoleArgs{
 //				ServicePrincipalId: this.ID(),
 //				Role:               instanceProfile.ID(),
 //			})

@@ -198,12 +198,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        init_scripts = databricks.ArtifactAllowlist("initScripts",
+        init_scripts = databricks.ArtifactAllowlist("init_scripts",
+            artifact_type="INIT_SCRIPT",
             artifact_matchers=[databricks.ArtifactAllowlistArtifactMatcherArgs(
                 artifact="/Volumes/inits",
                 match_type="PREFIX_MATCH",
-            )],
-            artifact_type="INIT_SCRIPT")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -245,12 +245,12 @@ class ArtifactAllowlist(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        init_scripts = databricks.ArtifactAllowlist("initScripts",
+        init_scripts = databricks.ArtifactAllowlist("init_scripts",
+            artifact_type="INIT_SCRIPT",
             artifact_matchers=[databricks.ArtifactAllowlistArtifactMatcherArgs(
                 artifact="/Volumes/inits",
                 match_type="PREFIX_MATCH",
-            )],
-            artifact_type="INIT_SCRIPT")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

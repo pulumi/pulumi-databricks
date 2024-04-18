@@ -22,6 +22,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -29,11 +31,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			me, err := databricks.GetCurrentUser(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewSqlEndpoint(ctx, "this", &databricks.SqlEndpointArgs{
+//				Name:           pulumi.String(fmt.Sprintf("Endpoint of %v", me.Alphanumeric)),
 //				ClusterSize:    pulumi.String("Small"),
 //				MaxNumClusters: pulumi.Int(1),
 //				Tags: &databricks.SqlEndpointTagsArgs{

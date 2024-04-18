@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var thingsTables = await Databricks.GetTables.InvokeAsync(new()
+        ///     var things = await Databricks.GetTables.InvokeAsync(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
         ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         thingsGrants.Add(new Databricks.Grants($"thingsGrants-{range.Key}", new()
+        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
         ///         {
         ///             Table = range.Value,
         ///             GrantDetails = new[]
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var thingsTables = await Databricks.GetTables.InvokeAsync(new()
+        ///     var things = await Databricks.GetTables.InvokeAsync(new()
         ///     {
         ///         CatalogName = "sandbox",
         ///         SchemaName = "things",
@@ -90,7 +90,7 @@ namespace Pulumi.Databricks
         ///     var thingsGrants = new List&lt;Databricks.Grants&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         thingsGrants.Add(new Databricks.Grants($"thingsGrants-{range.Key}", new()
+        ///         thingsGrants.Add(new Databricks.Grants($"things-{range.Key}", new()
         ///         {
         ///             Table = range.Value,
         ///             GrantDetails = new[]

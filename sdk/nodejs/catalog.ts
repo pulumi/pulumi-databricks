@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
  *     comment: "this catalog is managed by terraform",
  *     properties: {
  *         purpose: "testing",

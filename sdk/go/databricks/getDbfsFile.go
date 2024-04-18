@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.LookupDbfsFile(ctx, &databricks.LookupDbfsFileArgs{
-//				LimitFileSize: true,
 //				Path:          "dbfs:/reports/some.csv",
+//				LimitFileSize: true,
 //			}, nil)
 //			if err != nil {
 //				return err

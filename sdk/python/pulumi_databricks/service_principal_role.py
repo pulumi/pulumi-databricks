@@ -109,9 +109,9 @@ class ServicePrincipalRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
         this = databricks.ServicePrincipal("this", display_name="My Service Principal")
-        my_service_principal_instance_profile = databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile",
+        my_service_principal_instance_profile = databricks.ServicePrincipalRole("my_service_principal_instance_profile",
             service_principal_id=this.id,
             role=instance_profile.id)
         ```
@@ -154,9 +154,9 @@ class ServicePrincipalRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
         this = databricks.ServicePrincipal("this", display_name="My Service Principal")
-        my_service_principal_instance_profile = databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile",
+        my_service_principal_instance_profile = databricks.ServicePrincipalRole("my_service_principal_instance_profile",
             service_principal_id=this.id,
             role=instance_profile.id)
         ```

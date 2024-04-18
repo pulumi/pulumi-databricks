@@ -15,6 +15,73 @@ import (
 // This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
 //
 // **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
+//				Path: pulumi.String("/Shared/Queries"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewSqlQuery(ctx, "this", &databricks.SqlQueryArgs{
+//				DataSourceId: pulumi.Any(example.DataSourceId),
+//				Name:         pulumi.String("My Query Name"),
+//				Query:        pulumi.String("SELECT 1 AS p1, 2 as p2"),
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewSqlAlert(ctx, "alert", &databricks.SqlAlertArgs{
+//				QueryId: this.ID(),
+//				Name:    pulumi.String("My Alert"),
+//				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
+//					return fmt.Sprintf("folders/%v", objectId), nil
+//				}).(pulumi.StringOutput),
+//				Rearm: pulumi.Int(1),
+//				Options: &databricks.SqlAlertOptionsArgs{
+//					Column: pulumi.String("p1"),
+//					Op:     pulumi.String("=="),
+//					Value:  pulumi.String("2"),
+//					Muted:  pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 type SqlAlert struct {
 	pulumi.CustomResourceState
 

@@ -25,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,7 +33,7 @@ import (
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // this, err := databricks.GetAwsUnityCatalogPolicy(ctx, &databricks.GetAwsUnityCatalogPolicyArgs{
-// AwsAccountId: _var.Aws_account_id,
+// AwsAccountId: awsAccountId,
 // BucketName: "databricks-bucket",
 // RoleName: "databricks-role",
 // KmsName: pulumi.StringRef("databricks-kms"),
@@ -61,7 +61,7 @@ import (
 // Test: "StringEquals",
 // Variable: "sts:ExternalId",
 // Values: interface{}{
-// _var.Databricks_account_id,
+// databricksAccountId,
 // },
 // },
 // },
@@ -76,7 +76,7 @@ import (
 // {
 // Type: "AWS",
 // Identifiers: []string{
-// fmt.Sprintf("arn:aws:iam::%v:root", _var.Aws_account_id),
+// fmt.Sprintf("arn:aws:iam::%v:root", awsAccountId),
 // },
 // },
 // },
@@ -85,7 +85,7 @@ import (
 // Test: "ArnLike",
 // Variable: "aws:PrincipalArn",
 // Values: []string{
-// fmt.Sprintf("arn:aws:iam::%v:role/%v-uc-access", _var.Aws_account_id, _var.Prefix),
+// fmt.Sprintf("arn:aws:iam::%v:role/%v-uc-access", awsAccountId, prefix),
 // },
 // },
 // },
@@ -95,13 +95,15 @@ import (
 // if err != nil {
 // return err
 // }
-// unityMetastore, err := iam.NewPolicy(ctx, "unityMetastore", &iam.PolicyArgs{
+// unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
+// Name: pulumi.String(fmt.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix)),
 // Policy: pulumi.String(this.Json),
 // })
 // if err != nil {
 // return err
 // }
-// _, err = iam.NewRole(ctx, "metastoreDataAccess", &iam.RoleArgs{
+// _, err = iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
+// Name: pulumi.String(fmt.Sprintf("%v-uc-access", prefix)),
 // AssumeRolePolicy: pulumi.String(passroleForUc.Json),
 // ManagedPolicyArns: pulumi.StringArray{
 // unityMetastore.Arn,

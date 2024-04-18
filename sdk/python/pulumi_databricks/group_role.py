@@ -109,9 +109,9 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_group = databricks.Group("myGroup")
-        my_group_instance_profile = databricks.GroupRole("myGroupInstanceProfile",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_instance_profile = databricks.GroupRole("my_group_instance_profile",
             group_id=my_group.id,
             role=instance_profile.id)
         ```
@@ -124,8 +124,8 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        my_group = databricks.Group("myGroup")
-        my_group_account_admin = databricks.GroupRole("myGroupAccountAdmin",
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_account_admin = databricks.GroupRole("my_group_account_admin",
             group_id=my_group.id,
             role="account_admin")
         ```
@@ -172,9 +172,9 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_group = databricks.Group("myGroup")
-        my_group_instance_profile = databricks.GroupRole("myGroupInstanceProfile",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_instance_profile = databricks.GroupRole("my_group_instance_profile",
             group_id=my_group.id,
             role=instance_profile.id)
         ```
@@ -187,8 +187,8 @@ class GroupRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        my_group = databricks.Group("myGroup")
-        my_group_account_admin = databricks.GroupRole("myGroupAccountAdmin",
+        my_group = databricks.Group("my_group", display_name="my_group_name")
+        my_group_account_admin = databricks.GroupRole("my_group_account_admin",
             group_id=my_group.id,
             role="account_admin")
         ```

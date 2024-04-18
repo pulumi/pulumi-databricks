@@ -56,7 +56,8 @@ import (
 //			container := "test"
 //			storageAcc := "lrs"
 //			_, err := databricks.NewMount(ctx, "this", &databricks.MountArgs{
-//				Uri: pulumi.String(fmt.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc)),
+//				Name: pulumi.String("tf-abfss"),
+//				Uri:  pulumi.String(fmt.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc)),
 //				ExtraConfigs: pulumi.Map{
 //					"fs.azure.account.auth.type":                          pulumi.Any("OAuth"),
 //					"fs.azure.account.oauth.provider.type":                pulumi.Any("org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider"),
@@ -102,7 +103,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Resource group for Databricks Workspace
 //			resourceGroup := cfg.Require("resourceGroup")
+//			// Name of the Databricks Workspace
 //			workspaceName := cfg.Require("workspaceName")
 //			_, err := azuredatabricks.LookupWorkspace(ctx, &databricks.LookupWorkspaceArgs{
 //				Name:              workspaceName,
@@ -121,7 +124,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sharedPassthrough, err := databricks.NewCluster(ctx, "sharedPassthrough", &databricks.ClusterArgs{
+//			sharedPassthrough, err := databricks.NewCluster(ctx, "shared_passthrough", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Passthrough for mount"),
 //				SparkVersion:           pulumi.String(latest.Id),
 //				NodeTypeId:             pulumi.String(smallest.Id),
@@ -140,9 +143,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Name of the ADLS Gen2 storage container
 //			storageAcc := cfg.Require("storageAcc")
+//			// Name of container inside storage account
 //			container := cfg.Require("container")
 //			_, err = databricks.NewMount(ctx, "passthrough", &databricks.MountArgs{
+//				Name:      pulumi.String("passthrough-test"),
 //				ClusterId: sharedPassthrough.ID(),
 //				Uri:       pulumi.String(fmt.Sprintf("abfss://%v@%v.dfs.core.windows.net", container, storageAcc)),
 //				ExtraConfigs: pulumi.Map{
@@ -184,9 +190,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// now you can do `%fs ls /mnt/experiments` in notebooks
 //			_, err := databricks.NewMount(ctx, "this", &databricks.MountArgs{
+//				Name: pulumi.String("experiments"),
 //				S3: &databricks.MountS3Args{
-//					InstanceProfile: pulumi.Any(databricks_instance_profile.Ds.Id),
-//					BucketName:      pulumi.Any(aws_s3_bucket.This.Bucket),
+//					InstanceProfile: pulumi.Any(ds.Id),
+//					BucketName:      pulumi.Any(thisAwsS3Bucket.Bucket),
 //				},
 //			})
 //			if err != nil {
@@ -222,6 +229,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/authorization"
 //	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/storage"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
@@ -232,22 +241,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			terraform, err := databricks.NewSecretScope(ctx, "terraform", &databricks.SecretScopeArgs{
+//				Name:                   pulumi.String("application"),
 //				InitialManagePrincipal: pulumi.String("users"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			servicePrincipalKey, err := databricks.NewSecret(ctx, "servicePrincipalKey", &databricks.SecretArgs{
+//			servicePrincipalKey, err := databricks.NewSecret(ctx, "service_principal_key", &databricks.SecretArgs{
 //				Key:         pulumi.String("service_principal_key"),
-//				StringValue: pulumi.Any(_var.ARM_CLIENT_SECRET),
+//				StringValue: pulumi.Any(ARM_CLIENT_SECRET),
 //				Scope:       terraform.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisAccount, err := storage.NewAccount(ctx, "thisAccount", &storage.AccountArgs{
-//				ResourceGroupName:      pulumi.Any(_var.Resource_group_name),
-//				Location:               pulumi.Any(_var.Resource_group_location),
+//			this, err := storage.NewAccount(ctx, "this", &storage.AccountArgs{
+//				Name:                   pulumi.String(fmt.Sprintf("%vdatalake", prefix)),
+//				ResourceGroupName:      pulumi.Any(resourceGroupName),
+//				Location:               pulumi.Any(resourceGroupLocation),
 //				AccountTier:            pulumi.String("Standard"),
 //				AccountReplicationType: pulumi.String("GRS"),
 //				AccountKind:            pulumi.String("StorageV2"),
@@ -256,25 +267,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = authorization.NewAssignment(ctx, "thisAssignment", &authorization.AssignmentArgs{
-//				Scope:              thisAccount.ID(),
+//			_, err = authorization.NewAssignment(ctx, "this", &authorization.AssignmentArgs{
+//				Scope:              this.ID(),
 //				RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
-//				PrincipalId:        pulumi.Any(data.Azurerm_client_config.Current.Object_id),
+//				PrincipalId:        pulumi.Any(current.ObjectId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			thisContainer, err := storage.NewContainer(ctx, "thisContainer", &storage.ContainerArgs{
-//				StorageAccountName:  thisAccount.Name,
+//			thisContainer, err := storage.NewContainer(ctx, "this", &storage.ContainerArgs{
+//				Name:                pulumi.String("marketing"),
+//				StorageAccountName:  this.Name,
 //				ContainerAccessType: pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewMount(ctx, "marketing", &databricks.MountArgs{
+//				Name:       pulumi.String("marketing"),
 //				ResourceId: thisContainer.ResourceManagerId,
 //				Abfs: &databricks.MountAbfsArgs{
-//					ClientId:             pulumi.Any(data.Azurerm_client_config.Current.Client_id),
+//					ClientId:             pulumi.Any(current.ClientId),
 //					ClientSecretScope:    terraform.Name,
 //					ClientSecretKey:      servicePrincipalKey.Key,
 //					InitializeFileSystem: pulumi.Bool(true),
@@ -312,10 +325,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewMount(ctx, "thisGs", &databricks.MountArgs{
+//			_, err := databricks.NewMount(ctx, "this_gs", &databricks.MountArgs{
+//				Name: pulumi.String("gs-mount"),
 //				Gs: &databricks.MountGsArgs{
-//					BucketName:     pulumi.String("mybucket"),
 //					ServiceAccount: pulumi.String("acc@company.iam.gserviceaccount.com"),
+//					BucketName:     pulumi.String("mybucket"),
 //				},
 //			})
 //			if err != nil {
@@ -357,12 +371,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMount(ctx, "mount", &databricks.MountArgs{
+//				Name: pulumi.String("{var.RANDOM}"),
 //				Adl: &databricks.MountAdlArgs{
 //					StorageResourceName: pulumi.String("{env.TEST_STORAGE_ACCOUNT_NAME}"),
-//					TenantId:            pulumi.Any(data.Azurerm_client_config.Current.Tenant_id),
-//					ClientId:            pulumi.Any(data.Azurerm_client_config.Current.Client_id),
-//					ClientSecretScope:   pulumi.Any(databricks_secret_scope.Terraform.Name),
-//					ClientSecretKey:     pulumi.Any(databricks_secret.Service_principal_key.Key),
+//					TenantId:            pulumi.Any(current.TenantId),
+//					ClientId:            pulumi.Any(current.ClientId),
+//					ClientSecretScope:   pulumi.Any(terraform.Name),
+//					ClientSecretKey:     pulumi.Any(servicePrincipalKey.Key),
 //					SparkConfPrefix:     pulumi.String("fs.adl"),
 //				},
 //			})
@@ -395,6 +410,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/storage"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -404,8 +421,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			blobaccount, err := storage.NewAccount(ctx, "blobaccount", &storage.AccountArgs{
-//				ResourceGroupName:      pulumi.Any(_var.Resource_group_name),
-//				Location:               pulumi.Any(_var.Resource_group_location),
+//				Name:                   pulumi.String(fmt.Sprintf("%vblob", prefix)),
+//				ResourceGroupName:      pulumi.Any(resourceGroupName),
+//				Location:               pulumi.Any(resourceGroupLocation),
 //				AccountTier:            pulumi.String("Standard"),
 //				AccountReplicationType: pulumi.String("LRS"),
 //				AccountKind:            pulumi.String("StorageV2"),
@@ -413,7 +431,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			marketingContainer, err := storage.NewContainer(ctx, "marketingContainer", &storage.ContainerArgs{
+//			marketing, err := storage.NewContainer(ctx, "marketing", &storage.ContainerArgs{
+//				Name:                pulumi.String("marketing"),
 //				StorageAccountName:  blobaccount.Name,
 //				ContainerAccessType: pulumi.String("private"),
 //			})
@@ -421,12 +440,13 @@ import (
 //				return err
 //			}
 //			terraform, err := databricks.NewSecretScope(ctx, "terraform", &databricks.SecretScopeArgs{
+//				Name:                   pulumi.String("application"),
 //				InitialManagePrincipal: pulumi.String("users"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			storageKey, err := databricks.NewSecret(ctx, "storageKey", &databricks.SecretArgs{
+//			storageKey, err := databricks.NewSecret(ctx, "storage_key", &databricks.SecretArgs{
 //				Key:         pulumi.String("blob_storage_key"),
 //				StringValue: blobaccount.PrimaryAccessKey,
 //				Scope:       terraform.Name,
@@ -434,9 +454,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewMount(ctx, "marketingMount", &databricks.MountArgs{
+//			_, err = databricks.NewMount(ctx, "marketing", &databricks.MountArgs{
+//				Name: pulumi.String("marketing"),
 //				Wasb: &databricks.MountWasbArgs{
-//					ContainerName:      marketingContainer.Name,
+//					ContainerName:      marketing.Name,
 //					StorageAccountName: blobaccount.Name,
 //					AuthType:           pulumi.String("ACCESS_KEY"),
 //					TokenSecretScope:   terraform.Name,

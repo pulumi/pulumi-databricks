@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new VectorSearchEndpoint(&#34;this&#34;, VectorSearchEndpointArgs.builder()        
+ *             .name(&#34;vector-search-test&#34;)
  *             .endpointType(&#34;STANDARD&#34;)
  *             .build());
  * 

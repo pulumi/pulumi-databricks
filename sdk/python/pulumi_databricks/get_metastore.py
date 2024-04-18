@@ -75,6 +75,29 @@ def get_metastore(metastore_id: Optional[str] = None,
 
     MetastoreInfo response for a given metastore id
 
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_metastore = databricks.Metastore("this",
+        name="primary",
+        storage_root=f"s3://{metastore['id']}/metastore",
+        owner=unity_admin_group,
+        force_destroy=True)
+    this = databricks.get_metastore_output(metastore_id=this_metastore.id)
+    pulumi.export("someMetastore", this.metastore_info)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_metastores to get mapping of name to id of all metastores.
+    * Metastore to manage Metastores within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
+
 
     :param str metastore_id: Id of the metastore to be fetched
     :param pulumi.InputType['GetMetastoreMetastoreInfoArgs'] metastore_info: MetastoreInfo object for a databricks_metastore. This contains the following attributes:
@@ -99,6 +122,29 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
     MetastoreInfo response for a given metastore id
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this_metastore = databricks.Metastore("this",
+        name="primary",
+        storage_root=f"s3://{metastore['id']}/metastore",
+        owner=unity_admin_group,
+        force_destroy=True)
+    this = databricks.get_metastore_output(metastore_id=this_metastore.id)
+    pulumi.export("someMetastore", this.metastore_info)
+    ```
+    <!--End PulumiCodeChooser -->
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * get_metastores to get mapping of name to id of all metastores.
+    * Metastore to manage Metastores within Unity Catalog.
+    * Catalog to manage catalogs within Unity Catalog.
 
 
     :param str metastore_id: Id of the metastore to be fetched

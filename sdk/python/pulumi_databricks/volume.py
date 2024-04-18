@@ -316,23 +316,29 @@ class Volume(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
             })
         things = databricks.Schema("things",
             catalog_name=sandbox.name,
+            name="things",
             comment="this schema is managed by terraform",
             properties={
                 "kind": "various",
             })
-        external = databricks.StorageCredential("external", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-            role_arn=aws_iam_role["external_data_access"]["arn"],
-        ))
+        external = databricks.StorageCredential("external",
+            name="creds",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=external_data_access["arn"],
+            ))
         some = databricks.ExternalLocation("some",
-            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+            name="external-location",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.name)
         this = databricks.Volume("this",
+            name="quickstart_volume",
             catalog_name=sandbox.name,
             schema_name=things.name,
             volume_type="EXTERNAL",
@@ -406,23 +412,29 @@ class Volume(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
             })
         things = databricks.Schema("things",
             catalog_name=sandbox.name,
+            name="things",
             comment="this schema is managed by terraform",
             properties={
                 "kind": "various",
             })
-        external = databricks.StorageCredential("external", aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
-            role_arn=aws_iam_role["external_data_access"]["arn"],
-        ))
+        external = databricks.StorageCredential("external",
+            name="creds",
+            aws_iam_role=databricks.StorageCredentialAwsIamRoleArgs(
+                role_arn=external_data_access["arn"],
+            ))
         some = databricks.ExternalLocation("some",
-            url=f"s3://{aws_s3_bucket['external']['id']}/some",
+            name="external-location",
+            url=f"s3://{external_aws_s3_bucket['id']}/some",
             credential_name=external.name)
         this = databricks.Volume("this",
+            name="quickstart_volume",
             catalog_name=sandbox.name,
             schema_name=things.name,
             volume_type="EXTERNAL",

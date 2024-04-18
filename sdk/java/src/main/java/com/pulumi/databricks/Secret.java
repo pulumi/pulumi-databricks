@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.SecretScope;
+ * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.Secret;
  * import com.pulumi.databricks.SecretArgs;
  * import com.pulumi.databricks.Cluster;
@@ -45,11 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new SecretScope(&#34;app&#34;);
+ *         var app = new SecretScope(&#34;app&#34;, SecretScopeArgs.builder()        
+ *             .name(&#34;application-secret-scope&#34;)
+ *             .build());
  * 
  *         var publishingApi = new Secret(&#34;publishingApi&#34;, SecretArgs.builder()        
  *             .key(&#34;publishing_api&#34;)
- *             .stringValue(data.azurerm_key_vault_secret().example().value())
+ *             .stringValue(example.value())
  *             .scope(app.id())
  *             .build());
  * 

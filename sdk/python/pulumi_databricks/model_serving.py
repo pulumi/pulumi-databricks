@@ -194,36 +194,38 @@ class ModelServing(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.ModelServing("this", config=databricks.ModelServingConfigArgs(
-            served_entities=[
-                databricks.ModelServingConfigServedEntityArgs(
-                    entity_name="ads-model",
-                    entity_version="2",
-                    name="prod_model",
-                    scale_to_zero_enabled=True,
-                    workload_size="Small",
-                ),
-                databricks.ModelServingConfigServedEntityArgs(
-                    entity_name="ads-model",
-                    entity_version="4",
-                    name="candidate_model",
-                    scale_to_zero_enabled=False,
-                    workload_size="Small",
-                ),
-            ],
-            traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
-                routes=[
-                    databricks.ModelServingConfigTrafficConfigRouteArgs(
-                        served_model_name="prod_model",
-                        traffic_percentage=90,
+        this = databricks.ModelServing("this",
+            name="ads-serving-endpoint",
+            config=databricks.ModelServingConfigArgs(
+                served_entities=[
+                    databricks.ModelServingConfigServedEntityArgs(
+                        name="prod_model",
+                        entity_name="ads-model",
+                        entity_version="2",
+                        workload_size="Small",
+                        scale_to_zero_enabled=True,
                     ),
-                    databricks.ModelServingConfigTrafficConfigRouteArgs(
-                        served_model_name="candidate_model",
-                        traffic_percentage=10,
+                    databricks.ModelServingConfigServedEntityArgs(
+                        name="candidate_model",
+                        entity_name="ads-model",
+                        entity_version="4",
+                        workload_size="Small",
+                        scale_to_zero_enabled=False,
                     ),
                 ],
-            ),
-        ))
+                traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
+                    routes=[
+                        databricks.ModelServingConfigTrafficConfigRouteArgs(
+                            served_model_name="prod_model",
+                            traffic_percentage=90,
+                        ),
+                        databricks.ModelServingConfigTrafficConfigRouteArgs(
+                            served_model_name="candidate_model",
+                            traffic_percentage=10,
+                        ),
+                    ],
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -278,36 +280,38 @@ class ModelServing(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.ModelServing("this", config=databricks.ModelServingConfigArgs(
-            served_entities=[
-                databricks.ModelServingConfigServedEntityArgs(
-                    entity_name="ads-model",
-                    entity_version="2",
-                    name="prod_model",
-                    scale_to_zero_enabled=True,
-                    workload_size="Small",
-                ),
-                databricks.ModelServingConfigServedEntityArgs(
-                    entity_name="ads-model",
-                    entity_version="4",
-                    name="candidate_model",
-                    scale_to_zero_enabled=False,
-                    workload_size="Small",
-                ),
-            ],
-            traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
-                routes=[
-                    databricks.ModelServingConfigTrafficConfigRouteArgs(
-                        served_model_name="prod_model",
-                        traffic_percentage=90,
+        this = databricks.ModelServing("this",
+            name="ads-serving-endpoint",
+            config=databricks.ModelServingConfigArgs(
+                served_entities=[
+                    databricks.ModelServingConfigServedEntityArgs(
+                        name="prod_model",
+                        entity_name="ads-model",
+                        entity_version="2",
+                        workload_size="Small",
+                        scale_to_zero_enabled=True,
                     ),
-                    databricks.ModelServingConfigTrafficConfigRouteArgs(
-                        served_model_name="candidate_model",
-                        traffic_percentage=10,
+                    databricks.ModelServingConfigServedEntityArgs(
+                        name="candidate_model",
+                        entity_name="ads-model",
+                        entity_version="4",
+                        workload_size="Small",
+                        scale_to_zero_enabled=False,
                     ),
                 ],
-            ),
-        ))
+                traffic_config=databricks.ModelServingConfigTrafficConfigArgs(
+                    routes=[
+                        databricks.ModelServingConfigTrafficConfigRouteArgs(
+                            served_model_name="prod_model",
+                            traffic_percentage=90,
+                        ),
+                        databricks.ModelServingConfigTrafficConfigRouteArgs(
+                            served_model_name="candidate_model",
+                            traffic_percentage=10,
+                        ),
+                    ],
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

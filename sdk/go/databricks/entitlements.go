@@ -32,14 +32,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			meUser, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
 //				UserName: pulumi.StringRef("me@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewEntitlements(ctx, "meEntitlements", &databricks.EntitlementsArgs{
-//				UserId:                  pulumi.String(meUser.Id),
+//			_, err = databricks.NewEntitlements(ctx, "me", &databricks.EntitlementsArgs{
+//				UserId:                  pulumi.String(me.Id),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})
@@ -68,14 +68,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisServicePrincipal, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//			this, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
 //				ApplicationId: pulumi.StringRef("11111111-2222-3333-4444-555666777888"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewEntitlements(ctx, "thisEntitlements", &databricks.EntitlementsArgs{
-//				ServicePrincipalId:      pulumi.String(thisServicePrincipal.SpId),
+//			_, err = databricks.NewEntitlements(ctx, "this", &databricks.EntitlementsArgs{
+//				ServicePrincipalId:      pulumi.String(this.SpId),
 //				AllowClusterCreate:      pulumi.Bool(true),
 //				AllowInstancePoolCreate: pulumi.Bool(true),
 //			})

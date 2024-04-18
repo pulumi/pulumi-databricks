@@ -109,9 +109,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewUser(ctx, "me", &databricks.UserArgs{
-//				AllowClusterCreate: pulumi.Bool(true),
-//				DisplayName:        pulumi.String("Example user"),
 //				UserName:           pulumi.String("me@example.com"),
+//				DisplayName:        pulumi.String("Example user"),
+//				AllowClusterCreate: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -138,20 +138,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at account-level
-//			_, err := databricks.NewProvider(ctx, "mws", &databricks.ProviderArgs{
-//				Host:         pulumi.String("https://accounts.cloud.databricks.com"),
-//				AccountId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				ClientId:     pulumi.Any(_var.Client_id),
-//				ClientSecret: pulumi.Any(_var.Client_secret),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewUser(ctx, "accountUser", &databricks.UserArgs{
+//			_, err := databricks.NewUser(ctx, "account_user", &databricks.UserArgs{
 //				UserName:    pulumi.String("me@example.com"),
 //				DisplayName: pulumi.String("Example user"),
-//			}, pulumi.Provider(databricks.Mws))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -177,19 +167,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at Azure account-level
-//			_, err := databricks.NewProvider(ctx, "azureAccount", &databricks.ProviderArgs{
-//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
-//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				AuthType:  pulumi.String("azure-cli"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewUser(ctx, "accountUser", &databricks.UserArgs{
+//			_, err := databricks.NewUser(ctx, "account_user", &databricks.UserArgs{
 //				UserName:    pulumi.String("me@example.com"),
 //				DisplayName: pulumi.String("Example user"),
-//			}, pulumi.Provider(databricks.Azure_account))
+//			})
 //			if err != nil {
 //				return err
 //			}

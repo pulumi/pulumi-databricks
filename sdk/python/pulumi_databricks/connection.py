@@ -299,13 +299,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         mysql = databricks.Connection("mysql",
-            comment="this is a connection to mysql db",
+            name="mysql_connection",
             connection_type="MYSQL",
+            comment="this is a connection to mysql db",
             options={
                 "host": "test.mysql.database.azure.com",
-                "password": "password",
                 "port": "3306",
                 "user": "user",
+                "password": "password",
             },
             properties={
                 "purpose": "testing",
@@ -322,6 +323,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         bigquery = databricks.Connection("bigquery",
+            name="bq_connection",
             connection_type="BIGQUERY",
             comment="this is a connection to BQ",
             options={
@@ -393,13 +395,14 @@ class Connection(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         mysql = databricks.Connection("mysql",
-            comment="this is a connection to mysql db",
+            name="mysql_connection",
             connection_type="MYSQL",
+            comment="this is a connection to mysql db",
             options={
                 "host": "test.mysql.database.azure.com",
-                "password": "password",
                 "port": "3306",
                 "user": "user",
+                "password": "password",
             },
             properties={
                 "purpose": "testing",
@@ -416,6 +419,7 @@ class Connection(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         bigquery = databricks.Connection("bigquery",
+            name="bq_connection",
             connection_type="BIGQUERY",
             comment="this is a connection to BQ",
             options={

@@ -73,11 +73,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var roleForS3Access = new Role(&#34;roleForS3Access&#34;, RoleArgs.builder()        
+ *             .name(&#34;shared-ec2-role-for-s3&#34;)
  *             .description(&#34;Role for shared access&#34;)
  *             .assumeRolePolicy(assumeRoleForEc2.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
  *             .build());
  * 
- *         final var passRoleForS3AccessPolicyDocument = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
+ *         final var passRoleForS3Access = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
  *             .statements(GetPolicyDocumentStatementArgs.builder()
  *                 .effect(&#34;Allow&#34;)
  *                 .actions(&#34;iam:PassRole&#34;)
@@ -86,8 +87,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var passRoleForS3AccessPolicy = new Policy(&#34;passRoleForS3AccessPolicy&#34;, PolicyArgs.builder()        
+ *             .name(&#34;shared-pass-role-for-s3-access&#34;)
  *             .path(&#34;/&#34;)
- *             .policy(passRoleForS3AccessPolicyDocument.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult).applyValue(passRoleForS3AccessPolicyDocument -&gt; passRoleForS3AccessPolicyDocument.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json())))
+ *             .policy(passRoleForS3Access.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult).applyValue(passRoleForS3Access -&gt; passRoleForS3Access.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json())))
  *             .build());
  * 
  *         var crossAccount = new RolePolicyAttachment(&#34;crossAccount&#34;, RolePolicyAttachmentArgs.builder()        
@@ -95,12 +97,13 @@ import javax.annotation.Nullable;
  *             .role(crossaccountRoleName)
  *             .build());
  * 
- *         var sharedInstanceProfile = new InstanceProfile(&#34;sharedInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *         var shared = new InstanceProfile(&#34;shared&#34;, InstanceProfileArgs.builder()        
+ *             .name(&#34;shared-instance-profile&#34;)
  *             .role(roleForS3Access.name())
  *             .build());
  * 
- *         var sharedIndex_instanceProfileInstanceProfile = new InstanceProfile(&#34;sharedIndex/instanceProfileInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(sharedInstanceProfile.arn())
+ *         var sharedInstanceProfile = new InstanceProfile(&#34;sharedInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
  *         final var latest = DatabricksFunctions.getSparkVersion();
@@ -119,7 +122,7 @@ import javax.annotation.Nullable;
  *                 .maxWorkers(50)
  *                 .build())
  *             .awsAttributes(ClusterAwsAttributesArgs.builder()
- *                 .instanceProfileArn(sharedIndex / instanceProfileInstanceProfile.id())
+ *                 .instanceProfileArn(sharedInstanceProfile.id())
  *                 .availability(&#34;SPOT&#34;)
  *                 .zoneId(&#34;us-east-1&#34;)
  *                 .firstOnDemand(1)
@@ -160,11 +163,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new ClusterPolicy(&#34;this&#34;, ClusterPolicyArgs.builder()        
+ *             .name(&#34;Policy with predefined instance profile&#34;)
  *             .definition(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;aws_attributes.instance_profile_arn&#34;, jsonObject(
  *                         jsonProperty(&#34;type&#34;, &#34;fixed&#34;),
- *                         jsonProperty(&#34;value&#34;, databricks_instance_profile.shared().arn())
+ *                         jsonProperty(&#34;value&#34;, shared.arn())
  *                     ))
  *                 )))
  *             .build());
@@ -205,7 +209,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new InstanceProfile(&#34;this&#34;, InstanceProfileArgs.builder()        
- *             .instanceProfileArn(aws_iam_instance_profile.shared().arn())
+ *             .instanceProfileArn(shared.arn())
  *             .build());
  * 
  *         final var users = DatabricksFunctions.getGroup(GetGroupArgs.builder()
@@ -271,17 +275,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var thisRole = new Role(&#34;thisRole&#34;, RoleArgs.builder()        
+ *         var this_ = new Role(&#34;this&#34;, RoleArgs.builder()        
+ *             .name(&#34;my-databricks-sql-serverless-role&#34;)
  *             .assumeRolePolicy(sqlServerlessAssumeRole.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.json()))
  *             .build());
  * 
  *         var thisInstanceProfile = new InstanceProfile(&#34;thisInstanceProfile&#34;, InstanceProfileArgs.builder()        
- *             .role(thisRole.name())
+ *             .name(&#34;my-databricks-sql-serverless-instance-profile&#34;)
+ *             .role(this_.name())
  *             .build());
  * 
- *         var thisIndex_instanceProfileInstanceProfile = new InstanceProfile(&#34;thisIndex/instanceProfileInstanceProfile&#34;, InstanceProfileArgs.builder()        
+ *         var thisInstanceProfile2 = new InstanceProfile(&#34;thisInstanceProfile2&#34;, InstanceProfileArgs.builder()        
  *             .instanceProfileArn(thisInstanceProfile.arn())
- *             .iamRoleArn(thisRole.arn())
+ *             .iamRoleArn(this_.arn())
  *             .build());
  * 
  *     }

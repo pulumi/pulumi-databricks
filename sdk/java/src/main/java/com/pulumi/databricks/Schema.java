@@ -51,12 +51,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
+ *             .name(&#34;sandbox&#34;)
  *             .comment(&#34;this catalog is managed by terraform&#34;)
  *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
  *             .build());
  * 
  *         var things = new Schema(&#34;things&#34;, SchemaArgs.builder()        
  *             .catalogName(sandbox.id())
+ *             .name(&#34;things&#34;)
  *             .comment(&#34;this database is managed by terraform&#34;)
  *             .properties(Map.of(&#34;kind&#34;, &#34;various&#34;))
  *             .build());

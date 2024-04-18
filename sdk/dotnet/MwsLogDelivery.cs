@@ -31,11 +31,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var usageLogs = new Databricks.MwsLogDelivery("usageLogs", new()
+    ///     var usageLogs = new Databricks.MwsLogDelivery("usage_logs", new()
     ///     {
-    ///         AccountId = @var.Databricks_account_id,
-    ///         CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
-    ///         StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsId = logWriter.CredentialsId,
+    ///         StorageConfigurationId = logBucket.StorageConfigurationId,
     ///         DeliveryPathPrefix = "billable-usage",
     ///         ConfigName = "Usage Logs",
     ///         LogType = "BILLABLE_USAGE",
@@ -59,11 +59,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auditLogs = new Databricks.MwsLogDelivery("auditLogs", new()
+    ///     var auditLogs = new Databricks.MwsLogDelivery("audit_logs", new()
     ///     {
-    ///         AccountId = @var.Databricks_account_id,
-    ///         CredentialsId = databricks_mws_credentials.Log_writer.Credentials_id,
-    ///         StorageConfigurationId = databricks_mws_storage_configurations.Log_bucket.Storage_configuration_id,
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsId = logWriter.CredentialsId,
+    ///         StorageConfigurationId = logBucket.StorageConfigurationId,
     ///         DeliveryPathPrefix = "audit-logs",
     ///         ConfigName = "Audit Logs",
     ///         LogType = "AUDIT_LOGS",

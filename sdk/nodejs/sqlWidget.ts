@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const d1w1 = new databricks.SqlWidget("d1w1", {
- *     dashboardId: databricks_sql_dashboard.d1.id,
+ *     dashboardId: d1.id,
  *     text: "Hello! I'm a **text widget**!",
  *     position: {
  *         sizeX: 3,
@@ -31,8 +31,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const d1w2 = new databricks.SqlWidget("d1w2", {
- *     dashboardId: databricks_sql_dashboard.d1.id,
- *     visualizationId: databricks_sql_visualization.q1v1.id,
+ *     dashboardId: d1.id,
+ *     visualizationId: q1v1.id,
  *     position: {
  *         sizeX: 3,
  *         sizeY: 4,

@@ -10,6 +10,44 @@ import * as utilities from "./utilities";
  * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
  *
  * **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Queries"});
+ * const _this = new databricks.SqlQuery("this", {
+ *     dataSourceId: example.dataSourceId,
+ *     name: "My Query Name",
+ *     query: "SELECT 1 AS p1, 2 as p2",
+ *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
+ * });
+ * const alert = new databricks.SqlAlert("alert", {
+ *     queryId: _this.id,
+ *     name: "My Alert",
+ *     parent: pulumi.interpolate`folders/${sharedDir.objectId}`,
+ *     rearm: 1,
+ *     options: {
+ *         column: "p1",
+ *         op: "==",
+ *         value: "2",
+ *         muted: false,
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
  */
 export class SqlAlert extends pulumi.CustomResource {
     /**

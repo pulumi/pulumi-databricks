@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewSqlWidget(ctx, "d1w1", &databricks.SqlWidgetArgs{
-//				DashboardId: pulumi.Any(databricks_sql_dashboard.D1.Id),
+//				DashboardId: pulumi.Any(d1.Id),
 //				Text:        pulumi.String("Hello! I'm a **text widget**!"),
 //				Position: &databricks.SqlWidgetPositionArgs{
 //					SizeX: pulumi.Int(3),
@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = databricks.NewSqlWidget(ctx, "d1w2", &databricks.SqlWidgetArgs{
-//				DashboardId:     pulumi.Any(databricks_sql_dashboard.D1.Id),
-//				VisualizationId: pulumi.Any(databricks_sql_visualization.Q1v1.Id),
+//				DashboardId:     pulumi.Any(d1.Id),
+//				VisualizationId: pulumi.Any(q1v1.Id),
 //				Position: &databricks.SqlWidgetPositionArgs{
 //					SizeX: pulumi.Int(3),
 //					SizeY: pulumi.Int(4),

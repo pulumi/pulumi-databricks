@@ -23,8 +23,7 @@ import * as utilities from "./utilities";
  * const pool = databricks.getInstancePool({
  *     name: "All spot",
  * });
- * const myCluster = new databricks.Cluster("myCluster", {instancePoolId: data.databricks_instance_pool.pool.id});
- * // ...
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: poolDatabricksInstancePool.id});
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -82,8 +81,7 @@ export interface GetInstancePoolResult {
  * const pool = databricks.getInstancePool({
  *     name: "All spot",
  * });
- * const myCluster = new databricks.Cluster("myCluster", {instancePoolId: data.databricks_instance_pool.pool.id});
- * // ...
+ * const myCluster = new databricks.Cluster("my_cluster", {instancePoolId: poolDatabricksInstancePool.id});
  * ```
  * <!--End PulumiCodeChooser -->
  */

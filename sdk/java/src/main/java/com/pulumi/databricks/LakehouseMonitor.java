@@ -61,12 +61,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sandbox = new Catalog(&#34;sandbox&#34;, CatalogArgs.builder()        
+ *             .name(&#34;sandbox&#34;)
  *             .comment(&#34;this catalog is managed by terraform&#34;)
  *             .properties(Map.of(&#34;purpose&#34;, &#34;testing&#34;))
  *             .build());
  * 
  *         var things = new Schema(&#34;things&#34;, SchemaArgs.builder()        
  *             .catalogName(sandbox.id())
+ *             .name(&#34;things&#34;)
  *             .comment(&#34;this database is managed by terraform&#34;)
  *             .properties(Map.of(&#34;kind&#34;, &#34;various&#34;))
  *             .build());
@@ -74,6 +76,7 @@ import javax.annotation.Nullable;
  *         var myTestTable = new SqlTable(&#34;myTestTable&#34;, SqlTableArgs.builder()        
  *             .catalogName(&#34;main&#34;)
  *             .schemaName(things.name())
+ *             .name(&#34;bar&#34;)
  *             .tableType(&#34;MANAGED&#34;)
  *             .dataSourceFormat(&#34;DELTA&#34;)
  *             .columns(SqlTableColumnArgs.builder()
@@ -133,16 +136,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testMonitorInference = new LakehouseMonitor(&#34;testMonitorInference&#34;, LakehouseMonitorArgs.builder()        
- *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, databricks_table.myTestTable().name()))
+ *             .tableName(String.format(&#34;%s.%s.%s&#34;, sandbox.name(),things.name(),myTestTable.name()))
+ *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, myTestTable.name()))
+ *             .outputSchemaName(String.format(&#34;%s.%s&#34;, sandbox.name(),things.name()))
  *             .inferenceLog(LakehouseMonitorInferenceLogArgs.builder()
  *                 .granularities(&#34;1 hour&#34;)
- *                 .modelIdCol(&#34;model_id&#34;)
- *                 .predictionCol(&#34;prediction&#34;)
- *                 .problemType(&#34;PROBLEM_TYPE_REGRESSION&#34;)
  *                 .timestampCol(&#34;timestamp&#34;)
+ *                 .predictionCol(&#34;prediction&#34;)
+ *                 .modelIdCol(&#34;model_id&#34;)
+ *                 .problemType(&#34;PROBLEM_TYPE_REGRESSION&#34;)
  *                 .build())
- *             .outputSchemaName(String.format(&#34;%s.%s&#34;, databricks_catalog.sandbox().name(),databricks_schema.things().name()))
- *             .tableName(String.format(&#34;%s.%s.%s&#34;, databricks_catalog.sandbox().name(),databricks_schema.things().name(),databricks_table.myTestTable().name()))
  *             .build());
  * 
  *     }
@@ -174,10 +177,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testMonitorInference = new LakehouseMonitor(&#34;testMonitorInference&#34;, LakehouseMonitorArgs.builder()        
- *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, databricks_table.myTestTable().name()))
- *             .outputSchemaName(String.format(&#34;%s.%s&#34;, databricks_catalog.sandbox().name(),databricks_schema.things().name()))
+ *             .tableName(String.format(&#34;%s.%s.%s&#34;, sandbox.name(),things.name(),myTestTable.name()))
+ *             .assetsDir(String.format(&#34;/Shared/provider-test/databricks_lakehouse_monitoring/%s&#34;, myTestTable.name()))
+ *             .outputSchemaName(String.format(&#34;%s.%s&#34;, sandbox.name(),things.name()))
  *             .snapshot()
- *             .tableName(String.format(&#34;%s.%s.%s&#34;, databricks_catalog.sandbox().name(),databricks_schema.things().name(),databricks_table.myTestTable().name()))
  *             .build());
  * 
  *     }

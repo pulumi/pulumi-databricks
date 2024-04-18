@@ -31,19 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
 //				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myUser, err := databricks.NewUser(ctx, "myUser", &databricks.UserArgs{
+//			myUser, err := databricks.NewUser(ctx, "my_user", &databricks.UserArgs{
 //				UserName: pulumi.String("me@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewUserInstanceProfile(ctx, "myUserInstanceProfile", &databricks.UserInstanceProfileArgs{
+//			_, err = databricks.NewUserInstanceProfile(ctx, "my_user_instance_profile", &databricks.UserInstanceProfileArgs{
 //				UserId:            myUser.ID(),
 //				InstanceProfileId: instanceProfile.ID(),
 //			})

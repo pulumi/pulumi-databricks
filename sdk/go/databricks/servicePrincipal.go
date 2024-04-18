@@ -113,9 +113,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
-//				AllowClusterCreate: pulumi.Bool(true),
 //				ApplicationId:      pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				DisplayName:        pulumi.String("Example service principal"),
+//				AllowClusterCreate: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -142,19 +142,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at account-level
-//			_, err := databricks.NewProvider(ctx, "account", &databricks.ProviderArgs{
-//				Host:         pulumi.String("https://accounts.cloud.databricks.com"),
-//				AccountId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				ClientId:     pulumi.Any(_var.Client_id),
-//				ClientSecret: pulumi.Any(_var.Client_secret),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//			_, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
 //				DisplayName: pulumi.String("Automation-only SP"),
-//			}, pulumi.Provider(databricks.Account))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -180,18 +170,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// initialize provider at Azure account-level
-//			_, err := databricks.NewProvider(ctx, "account", &databricks.ProviderArgs{
-//				Host:      pulumi.String("https://accounts.azuredatabricks.net"),
-//				AccountId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				AuthType:  pulumi.String("azure-cli"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
+//			_, err := databricks.NewServicePrincipal(ctx, "sp", &databricks.ServicePrincipalArgs{
 //				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//			}, pulumi.Provider(databricks.Account))
+//			})
 //			if err != nil {
 //				return err
 //			}

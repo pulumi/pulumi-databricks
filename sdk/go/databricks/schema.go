@@ -34,6 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
 //				Comment: pulumi.String("this catalog is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"purpose": pulumi.Any("testing"),
@@ -44,6 +45,7 @@ import (
 //			}
 //			_, err = databricks.NewSchema(ctx, "things", &databricks.SchemaArgs{
 //				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("things"),
 //				Comment:     pulumi.String("this database is managed by terraform"),
 //				Properties: pulumi.Map{
 //					"kind": pulumi.Any("various"),

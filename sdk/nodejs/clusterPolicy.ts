@@ -45,12 +45,13 @@ import * as utilities from "./utilities";
  *     },
  *     "custom_tags.Team": {
  *         type: "fixed",
- *         value: _var.team,
+ *         value: team,
  *     },
  * };
- * const personalVm = new databricks.ClusterPolicy("personalVm", {
+ * const personalVm = new databricks.ClusterPolicy("personal_vm", {
  *     policyFamilyId: "personal-vm",
- *     policyFamilyDefinitionOverrides: JSON.stringify(personal_vm_override),
+ *     policyFamilyDefinitionOverrides: JSON.stringify(personalVmOverride),
+ *     name: "Personal Compute",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

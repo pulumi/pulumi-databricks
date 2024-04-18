@@ -557,11 +557,10 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo_notebook = databricks.Notebook("dltDemoNotebook")
-        #...
-        dlt_demo_repo = databricks.Repo("dltDemoRepo")
-        #...
+        dlt_demo = databricks.Notebook("dlt_demo")
+        dlt_demo_repo = databricks.Repo("dlt_demo")
         this = databricks.Pipeline("this",
+            name="Pipeline Name",
             storage="/test/first-pipeline",
             configuration={
                 "key1": "value1",
@@ -586,7 +585,7 @@ class Pipeline(pulumi.CustomResource):
             libraries=[
                 databricks.PipelineLibraryArgs(
                     notebook=databricks.PipelineLibraryNotebookArgs(
-                        path=dlt_demo_notebook.id,
+                        path=dlt_demo.id,
                     ),
                 ),
                 databricks.PipelineLibraryArgs(
@@ -662,11 +661,10 @@ class Pipeline(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        dlt_demo_notebook = databricks.Notebook("dltDemoNotebook")
-        #...
-        dlt_demo_repo = databricks.Repo("dltDemoRepo")
-        #...
+        dlt_demo = databricks.Notebook("dlt_demo")
+        dlt_demo_repo = databricks.Repo("dlt_demo")
         this = databricks.Pipeline("this",
+            name="Pipeline Name",
             storage="/test/first-pipeline",
             configuration={
                 "key1": "value1",
@@ -691,7 +689,7 @@ class Pipeline(pulumi.CustomResource):
             libraries=[
                 databricks.PipelineLibraryArgs(
                     notebook=databricks.PipelineLibraryNotebookArgs(
-                        path=dlt_demo_notebook.id,
+                        path=dlt_demo.id,
                     ),
                 ),
                 databricks.PipelineLibraryArgs(

@@ -19,16 +19,16 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const testMonitorInference = new databricks.LakehouseMonitor("testMonitorInference", {
- *     assetsDir: `/Shared/provider-test/databricks_lakehouse_monitoring/${databricks_table.myTestTable.name}`,
+ *     tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,
+ *     assetsDir: `/Shared/provider-test/databricks_lakehouse_monitoring/${myTestTable.name}`,
+ *     outputSchemaName: `${sandbox.name}.${things.name}`,
  *     inferenceLog: {
  *         granularities: ["1 hour"],
- *         modelIdCol: "model_id",
- *         predictionCol: "prediction",
- *         problemType: "PROBLEM_TYPE_REGRESSION",
  *         timestampCol: "timestamp",
+ *         predictionCol: "prediction",
+ *         modelIdCol: "model_id",
+ *         problemType: "PROBLEM_TYPE_REGRESSION",
  *     },
- *     outputSchemaName: `${databricks_catalog.sandbox.name}.${databricks_schema.things.name}`,
- *     tableName: `${databricks_catalog.sandbox.name}.${databricks_schema.things.name}.${databricks_table.myTestTable.name}`,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -39,10 +39,10 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const testMonitorInference = new databricks.LakehouseMonitor("testMonitorInference", {
- *     assetsDir: `/Shared/provider-test/databricks_lakehouse_monitoring/${databricks_table.myTestTable.name}`,
- *     outputSchemaName: `${databricks_catalog.sandbox.name}.${databricks_schema.things.name}`,
+ *     tableName: `${sandbox.name}.${things.name}.${myTestTable.name}`,
+ *     assetsDir: `/Shared/provider-test/databricks_lakehouse_monitoring/${myTestTable.name}`,
+ *     outputSchemaName: `${sandbox.name}.${things.name}`,
  *     snapshot: {},
- *     tableName: `${databricks_catalog.sandbox.name}.${databricks_schema.things.name}.${databricks_table.myTestTable.name}`,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

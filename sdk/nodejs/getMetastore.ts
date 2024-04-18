@@ -10,6 +10,32 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * MetastoreInfo response for a given metastore id
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMetastore = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: `s3://${metastore.id}/metastore`,
+ *     owner: unityAdminGroup,
+ *     forceDestroy: true,
+ * });
+ * const this = databricks.getMetastoreOutput({
+ *     metastoreId: thisMetastore.id,
+ * });
+ * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getMetastores to get mapping of name to id of all metastores.
+ * * databricks.Metastore to manage Metastores within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getMetastore(args: GetMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreResult> {
 
@@ -52,6 +78,32 @@ export interface GetMetastoreResult {
  * ## Example Usage
  *
  * MetastoreInfo response for a given metastore id
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const thisMetastore = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: `s3://${metastore.id}/metastore`,
+ *     owner: unityAdminGroup,
+ *     forceDestroy: true,
+ * });
+ * const this = databricks.getMetastoreOutput({
+ *     metastoreId: thisMetastore.id,
+ * });
+ * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.getMetastores to get mapping of name to id of all metastores.
+ * * databricks.Metastore to manage Metastores within Unity Catalog.
+ * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
 export function getMetastoreOutput(args: GetMetastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreResult> {
     return pulumi.output(args).apply((a: any) => getMetastore(a, opts))

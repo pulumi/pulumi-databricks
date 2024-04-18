@@ -21,7 +21,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const fooTable = new databricks.SqlPermissions("fooTable", {
+ * const fooTable = new databricks.SqlPermissions("foo_table", {
+ *     table: "foo",
  *     privilegeAssignments: [
  *         {
  *             principal: "serge@example.com",
@@ -35,7 +36,6 @@ import * as utilities from "./utilities";
  *             privileges: ["SELECT"],
  *         },
  *     ],
- *     table: "foo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

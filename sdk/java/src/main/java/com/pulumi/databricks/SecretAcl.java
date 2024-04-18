@@ -28,7 +28,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.SecretScope;
+ * import com.pulumi.databricks.SecretScopeArgs;
  * import com.pulumi.databricks.SecretAcl;
  * import com.pulumi.databricks.SecretAclArgs;
  * import com.pulumi.databricks.Secret;
@@ -46,9 +48,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ds = new Group(&#34;ds&#34;);
+ *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;data-scientists&#34;)
+ *             .build());
  * 
- *         var app = new SecretScope(&#34;app&#34;);
+ *         var app = new SecretScope(&#34;app&#34;, SecretScopeArgs.builder()        
+ *             .name(&#34;app-secret-scope&#34;)
+ *             .build());
  * 
  *         var mySecretAcl = new SecretAcl(&#34;mySecretAcl&#34;, SecretAclArgs.builder()        
  *             .principal(ds.displayName())
@@ -58,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         var publishingApi = new Secret(&#34;publishingApi&#34;, SecretArgs.builder()        
  *             .key(&#34;publishing_api&#34;)
- *             .stringValue(data.azurerm_key_vault_secret().example().value())
+ *             .stringValue(example.value())
  *             .scope(app.name())
  *             .build());
  * 

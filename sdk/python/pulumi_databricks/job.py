@@ -60,12 +60,6 @@ class JobArgs:
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
@@ -236,12 +230,6 @@ class JobArgs:
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 
@@ -685,12 +673,6 @@ class _JobState:
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
@@ -864,12 +846,6 @@ class _JobState:
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 
@@ -1338,12 +1314,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
@@ -1539,12 +1509,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] control_run_state: (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
                
                When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
@@ -1636,12 +1600,6 @@ class Job(pulumi.CustomResource):
         (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 
         When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "control_run_state")
 

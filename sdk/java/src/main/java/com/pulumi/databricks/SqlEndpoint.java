@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *         final var me = DatabricksFunctions.getCurrentUser();
  * 
  *         var this_ = new SqlEndpoint(&#34;this&#34;, SqlEndpointArgs.builder()        
+ *             .name(String.format(&#34;Endpoint of %s&#34;, me.applyValue(getCurrentUserResult -&gt; getCurrentUserResult.alphanumeric())))
  *             .clusterSize(&#34;Small&#34;)
  *             .maxNumClusters(1)
  *             .tags(SqlEndpointTagsArgs.builder()

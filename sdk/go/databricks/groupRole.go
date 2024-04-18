@@ -31,17 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instanceProfile", &databricks.InstanceProfileArgs{
+//			instanceProfile, err := databricks.NewInstanceProfile(ctx, "instance_profile", &databricks.InstanceProfileArgs{
 //				InstanceProfileArn: pulumi.String("my_instance_profile_arn"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myGroup, err := databricks.NewGroup(ctx, "myGroup", nil)
+//			myGroup, err := databricks.NewGroup(ctx, "my_group", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("my_group_name"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGroupRole(ctx, "myGroupInstanceProfile", &databricks.GroupRoleArgs{
+//			_, err = databricks.NewGroupRole(ctx, "my_group_instance_profile", &databricks.GroupRoleArgs{
 //				GroupId: myGroup.ID(),
 //				Role:    instanceProfile.ID(),
 //			})
@@ -70,11 +72,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myGroup, err := databricks.NewGroup(ctx, "myGroup", nil)
+//			myGroup, err := databricks.NewGroup(ctx, "my_group", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("my_group_name"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGroupRole(ctx, "myGroupAccountAdmin", &databricks.GroupRoleArgs{
+//			_, err = databricks.NewGroupRole(ctx, "my_group_account_admin", &databricks.GroupRoleArgs{
 //				GroupId: myGroup.ID(),
 //				Role:    pulumi.String("account_admin"),
 //			})

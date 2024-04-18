@@ -20,9 +20,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const sharedDir = new databricks.Directory("sharedDir", {path: "/Shared/Queries"});
+ * const sharedDir = new databricks.Directory("shared_dir", {path: "/Shared/Queries"});
  * const q1 = new databricks.SqlQuery("q1", {
- *     dataSourceId: databricks_sql_endpoint.example.data_source_id,
+ *     dataSourceId: example.dataSourceId,
+ *     name: "My Query Name",
  *     query: `                        SELECT {{ p1 }} AS p1
  *                         WHERE 1=1
  *                         AND p2 in ({{ p2 }})
@@ -79,14 +80,14 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const q1 = new databricks.Permissions("q1", {
- *     sqlQueryId: databricks_sql_query.q1.id,
+ *     sqlQueryId: q1DatabricksSqlQuery.id,
  *     accessControls: [
  *         {
- *             groupName: data.databricks_group.users.display_name,
+ *             groupName: users.displayName,
  *             permissionLevel: "CAN_RUN",
  *         },
  *         {
- *             groupName: data.databricks_group.team.display_name,
+ *             groupName: team.displayName,
  *             permissionLevel: "CAN_EDIT",
  *         },
  *     ],

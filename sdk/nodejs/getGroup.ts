@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     displayName: "admins",
  * });
  * const me = new databricks.User("me", {userName: "me@example.com"});
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: me.id,
  * });
@@ -188,7 +188,7 @@ export interface GetGroupResult {
  *     displayName: "admins",
  * });
  * const me = new databricks.User("me", {userName: "me@example.com"});
- * const myMemberA = new databricks.GroupMember("myMemberA", {
+ * const myMemberA = new databricks.GroupMember("my_member_a", {
  *     groupId: admins.then(admins => admins.id),
  *     memberId: me.id,
  * });

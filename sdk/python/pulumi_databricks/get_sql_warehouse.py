@@ -319,8 +319,8 @@ def get_sql_warehouse(auto_stop_mins: Optional[int] = None,
     import pulumi
     import pulumi_databricks as databricks
 
-    all_sql_warehouses = databricks.get_sql_warehouses()
-    all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
+    all = databricks.get_sql_warehouses()
+    all_get_sql_warehouse = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in warehouses["ids"]}
     ```
     <!--End PulumiCodeChooser -->
 
@@ -453,8 +453,8 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[int]
     import pulumi
     import pulumi_databricks as databricks
 
-    all_sql_warehouses = databricks.get_sql_warehouses()
-    all_sql_warehouse = [databricks.get_sql_warehouse(id=__value) for __key, __value in data["databricks_sql"]["warehouses"]["ids"]]
+    all = databricks.get_sql_warehouses()
+    all_get_sql_warehouse = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in warehouses["ids"]}
     ```
     <!--End PulumiCodeChooser -->
 

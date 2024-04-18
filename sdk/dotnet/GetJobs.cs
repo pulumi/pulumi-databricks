@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyoneCanViewAllJobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -63,11 +63,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["x"] = 
-        ///         {
-        ///             { "sensitive", false },
-        ///             { "value", @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}") },
-        ///         },
+        ///         ["x"] = @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}"),
         ///     };
         /// });
         /// ```
@@ -102,7 +98,7 @@ namespace Pulumi.Databricks
         ///     var everyoneCanViewAllJobs = new List&lt;Databricks.Permissions&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyoneCanViewAllJobs-{range.Key}", new()
+        ///         everyoneCanViewAllJobs.Add(new Databricks.Permissions($"everyone_can_view_all_jobs-{range.Key}", new()
         ///         {
         ///             JobId = range.Value,
         ///             AccessControls = new[]
@@ -134,11 +130,7 @@ namespace Pulumi.Databricks
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["x"] = 
-        ///         {
-        ///             { "sensitive", false },
-        ///             { "value", @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}") },
-        ///         },
+        ///         ["x"] = @this.Apply(@this =&gt; $"ID of `x` job is {@this.Apply(getJobsResult =&gt; getJobsResult.Ids?.X)}"),
         ///     };
         /// });
         /// ```

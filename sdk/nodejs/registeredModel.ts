@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.RegisteredModel("this", {
+ *     name: "my_model",
  *     catalogName: "main",
  *     schemaName: "default",
  * });

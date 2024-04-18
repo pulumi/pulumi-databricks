@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const report = databricks.getDbfsFile({
- *     limitFileSize: true,
  *     path: "dbfs:/reports/some.csv",
+ *     limitFileSize: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -87,8 +87,8 @@ export interface GetDbfsFileResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const report = databricks.getDbfsFile({
- *     limitFileSize: true,
  *     path: "dbfs:/reports/some.csv",
+ *     limitFileSize: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

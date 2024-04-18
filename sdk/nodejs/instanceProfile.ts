@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Role that you've specified on https://accounts.cloud.databricks.com/#aws
  * const crossaccountRoleName = config.require("crossaccountRoleName");
  * const assumeRoleForEc2 = aws.iam.getPolicyDocument({
  *     statements: [{
@@ -27,27 +28,32 @@ import * as utilities from "./utilities";
  *         }],
  *     }],
  * });
- * const roleForS3Access = new aws.iam.Role("roleForS3Access", {
+ * const roleForS3Access = new aws.iam.Role("role_for_s3_access", {
+ *     name: "shared-ec2-role-for-s3",
  *     description: "Role for shared access",
  *     assumeRolePolicy: assumeRoleForEc2.then(assumeRoleForEc2 => assumeRoleForEc2.json),
  * });
- * const passRoleForS3AccessPolicyDocument = aws.iam.getPolicyDocumentOutput({
+ * const passRoleForS3Access = aws.iam.getPolicyDocumentOutput({
  *     statements: [{
  *         effect: "Allow",
  *         actions: ["iam:PassRole"],
  *         resources: [roleForS3Access.arn],
  *     }],
  * });
- * const passRoleForS3AccessPolicy = new aws.iam.Policy("passRoleForS3AccessPolicy", {
+ * const passRoleForS3AccessPolicy = new aws.iam.Policy("pass_role_for_s3_access", {
+ *     name: "shared-pass-role-for-s3-access",
  *     path: "/",
- *     policy: passRoleForS3AccessPolicyDocument.apply(passRoleForS3AccessPolicyDocument => passRoleForS3AccessPolicyDocument.json),
+ *     policy: passRoleForS3Access.apply(passRoleForS3Access => passRoleForS3Access.json),
  * });
- * const crossAccount = new aws.iam.RolePolicyAttachment("crossAccount", {
+ * const crossAccount = new aws.iam.RolePolicyAttachment("cross_account", {
  *     policyArn: passRoleForS3AccessPolicy.arn,
  *     role: crossaccountRoleName,
  * });
- * const sharedInstanceProfile = new aws.iam.InstanceProfile("sharedInstanceProfile", {role: roleForS3Access.name});
- * const sharedIndex_instanceProfileInstanceProfile = new databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", {instanceProfileArn: sharedInstanceProfile.arn});
+ * const shared = new aws.iam.InstanceProfile("shared", {
+ *     name: "shared-instance-profile",
+ *     role: roleForS3Access.name,
+ * });
+ * const sharedInstanceProfile = new databricks.InstanceProfile("shared", {instanceProfileArn: shared.arn});
  * const latest = databricks.getSparkVersion({});
  * const smallest = databricks.getNodeType({
  *     localDisk: true,
@@ -62,7 +68,7 @@ import * as utilities from "./utilities";
  *         maxWorkers: 50,
  *     },
  *     awsAttributes: {
- *         instanceProfileArn: sharedIndex / instanceProfileInstanceProfile.id,
+ *         instanceProfileArn: sharedInstanceProfile.id,
  *         availability: "SPOT",
  *         zoneId: "us-east-1",
  *         firstOnDemand: 1,
@@ -81,12 +87,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.ClusterPolicy("this", {definition: JSON.stringify({
- *     "aws_attributes.instance_profile_arn": {
- *         type: "fixed",
- *         value: databricks_instance_profile.shared.arn,
- *     },
- * })});
+ * const _this = new databricks.ClusterPolicy("this", {
+ *     name: "Policy with predefined instance profile",
+ *     definition: JSON.stringify({
+ *         "aws_attributes.instance_profile_arn": {
+ *             type: "fixed",
+ *             value: shared.arn,
+ *         },
+ *     }),
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -99,7 +108,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: aws_iam_instance_profile.shared.arn});
+ * const _this = new databricks.InstanceProfile("this", {instanceProfileArn: shared.arn});
  * const users = databricks.getGroup({
  *     displayName: "users",
  * });
@@ -137,11 +146,17 @@ import * as utilities from "./utilities";
  *         }],
  *     }],
  * });
- * const thisRole = new aws.iam.Role("thisRole", {assumeRolePolicy: sqlServerlessAssumeRole.then(sqlServerlessAssumeRole => sqlServerlessAssumeRole.json)});
- * const thisInstanceProfile = new aws.iam.InstanceProfile("thisInstanceProfile", {role: thisRole.name});
- * const thisIndex_instanceProfileInstanceProfile = new databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile", {
+ * const _this = new aws.iam.Role("this", {
+ *     name: "my-databricks-sql-serverless-role",
+ *     assumeRolePolicy: sqlServerlessAssumeRole.then(sqlServerlessAssumeRole => sqlServerlessAssumeRole.json),
+ * });
+ * const thisInstanceProfile = new aws.iam.InstanceProfile("this", {
+ *     name: "my-databricks-sql-serverless-instance-profile",
+ *     role: _this.name,
+ * });
+ * const thisInstanceProfile2 = new databricks.InstanceProfile("this", {
  *     instanceProfileArn: thisInstanceProfile.arn,
- *     iamRoleArn: thisRole.arn,
+ *     iamRoleArn: _this.arn,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

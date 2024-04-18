@@ -59,9 +59,9 @@ namespace Pulumi.Databricks
     ///         {
     ///             { "spark.hadoop.fs.azure.account.auth.type", "OAuth" },
     ///             { "spark.hadoop.fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider" },
-    ///             { "spark.hadoop.fs.azure.account.oauth2.client.id", @var.Application_id },
-    ///             { "spark.hadoop.fs.azure.account.oauth2.client.secret", $"{{{{secrets/{local.Secret_scope}/{local.Secret_key}}}}}" },
-    ///             { "spark.hadoop.fs.azure.account.oauth2.client.endpoint", $"https://login.microsoftonline.com/{@var.Tenant_id}/oauth2/token" },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.id", applicationId },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.secret", $"{{{{secrets/{secretScope}/{secretKey}}}}}" },
+    ///             { "spark.hadoop.fs.azure.account.oauth2.client.endpoint", $"https://login.microsoftonline.com/{tenantId}/oauth2/token" },
     ///         },
     ///         SqlConfigParams = 
     ///         {

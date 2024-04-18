@@ -595,6 +595,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         this = databricks.SqlEndpoint("this",
+            name=f"Endpoint of {me.alphanumeric}",
             cluster_size="Small",
             max_num_clusters=1,
             tags=databricks.SqlEndpointTagsArgs(
@@ -668,6 +669,7 @@ class SqlEndpoint(pulumi.CustomResource):
 
         me = databricks.get_current_user()
         this = databricks.SqlEndpoint("this",
+            name=f"Endpoint of {me.alphanumeric}",
             cluster_size="Small",
             max_num_clusters=1,
             tags=databricks.SqlEndpointTagsArgs(

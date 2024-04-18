@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
         ///     {
-        ///         AwsAccountId = @var.Aws_account_id,
+        ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = "databricks-role",
         ///         KmsName = "databricks-kms",
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
         ///                         Variable = "sts:ExternalId",
         ///                         Values = new[]
         ///                         {
-        ///                             @var.Databricks_account_id,
+        ///                             databricksAccountId,
         ///                         },
         ///                     },
         ///                 },
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         ///                         Type = "AWS",
         ///                         Identifiers = new[]
         ///                         {
-        ///                             $"arn:aws:iam::{@var.Aws_account_id}:root",
+        ///                             $"arn:aws:iam::{awsAccountId}:root",
         ///                         },
         ///                     },
         ///                 },
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         ///                         Variable = "aws:PrincipalArn",
         ///                         Values = new[]
         ///                         {
-        ///                             $"arn:aws:iam::{@var.Aws_account_id}:role/{@var.Prefix}-uc-access",
+        ///                             $"arn:aws:iam::{awsAccountId}:role/{prefix}-uc-access",
         ///                         },
         ///                     },
         ///                 },
@@ -106,13 +106,15 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var unityMetastore = new Aws.Iam.Policy("unityMetastore", new()
+        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
         ///     {
+        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
         ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
         ///     });
         /// 
-        ///     var metastoreDataAccess = new Aws.Iam.Role("metastoreDataAccess", new()
+        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
+        ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = passroleForUc.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
         ///         ManagedPolicyArns = new[]
         ///         {
@@ -146,7 +148,7 @@ namespace Pulumi.Databricks
         /// {
         ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
         ///     {
-        ///         AwsAccountId = @var.Aws_account_id,
+        ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
         ///         RoleName = "databricks-role",
         ///         KmsName = "databricks-kms",
@@ -182,7 +184,7 @@ namespace Pulumi.Databricks
         ///                         Variable = "sts:ExternalId",
         ///                         Values = new[]
         ///                         {
-        ///                             @var.Databricks_account_id,
+        ///                             databricksAccountId,
         ///                         },
         ///                     },
         ///                 },
@@ -202,7 +204,7 @@ namespace Pulumi.Databricks
         ///                         Type = "AWS",
         ///                         Identifiers = new[]
         ///                         {
-        ///                             $"arn:aws:iam::{@var.Aws_account_id}:root",
+        ///                             $"arn:aws:iam::{awsAccountId}:root",
         ///                         },
         ///                     },
         ///                 },
@@ -214,7 +216,7 @@ namespace Pulumi.Databricks
         ///                         Variable = "aws:PrincipalArn",
         ///                         Values = new[]
         ///                         {
-        ///                             $"arn:aws:iam::{@var.Aws_account_id}:role/{@var.Prefix}-uc-access",
+        ///                             $"arn:aws:iam::{awsAccountId}:role/{prefix}-uc-access",
         ///                         },
         ///                     },
         ///                 },
@@ -222,13 +224,15 @@ namespace Pulumi.Databricks
         ///         },
         ///     });
         /// 
-        ///     var unityMetastore = new Aws.Iam.Policy("unityMetastore", new()
+        ///     var unityMetastore = new Aws.Iam.Policy("unity_metastore", new()
         ///     {
+        ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
         ///         PolicyDocument = @this.Apply(@this =&gt; @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json)),
         ///     });
         /// 
-        ///     var metastoreDataAccess = new Aws.Iam.Role("metastoreDataAccess", new()
+        ///     var metastoreDataAccess = new Aws.Iam.Role("metastore_data_access", new()
         ///     {
+        ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = passroleForUc.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
         ///         ManagedPolicyArns = new[]
         ///         {

@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * const me = databricks.getCurrentUser({});
  * const _this = new databricks.MlflowExperiment("this", {
+ *     name: me.then(me => `${me.home}/Sample`),
  *     artifactLocation: "dbfs:/tmp/my-experiment",
  *     description: "My MLflow experiment description",
  * });

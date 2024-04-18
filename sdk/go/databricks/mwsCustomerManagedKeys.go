@@ -28,9 +28,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/kms"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -39,6 +39,7 @@ import (
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // cfg := config.New(ctx, "")
+// // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 // databricksAccountId := cfg.RequireObject("databricksAccountId")
 // current, err := aws.GetCallerIdentity(ctx, nil, nil);
 // if err != nil {
@@ -89,19 +90,20 @@ import (
 // if err != nil {
 // return err
 // }
-// managedServicesCustomerManagedKey, err := kms.NewKey(ctx, "managedServicesCustomerManagedKey", &kms.KeyArgs{
+// managedServicesCustomerManagedKey, err := kms.NewKey(ctx, "managed_services_customer_managed_key", &kms.KeyArgs{
 // Policy: pulumi.String(databricksManagedServicesCmk.Json),
 // })
 // if err != nil {
 // return err
 // }
-// managedServicesCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "managedServicesCustomerManagedKeyAlias", &kms.AliasArgs{
+// managedServicesCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "managed_services_customer_managed_key_alias", &kms.AliasArgs{
+// Name: pulumi.String("alias/managed-services-customer-managed-key-alias"),
 // TargetKeyId: managedServicesCustomerManagedKey.KeyId,
 // })
 // if err != nil {
 // return err
 // }
-// _, err = databricks.NewMwsCustomerManagedKeys(ctx, "managedServices", &databricks.MwsCustomerManagedKeysArgs{
+// _, err = databricks.NewMwsCustomerManagedKeys(ctx, "managed_services", &databricks.MwsCustomerManagedKeysArgs{
 // AccountId: pulumi.Any(databricksAccountId),
 // AwsKeyInfo: &databricks.MwsCustomerManagedKeysAwsKeyInfoArgs{
 // KeyArn: managedServicesCustomerManagedKey.Arn,
@@ -137,9 +139,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// Id of a google_kms_crypto_key
 //			cmekResourceId := cfg.RequireObject("cmekResourceId")
-//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "managedServices", &databricks.MwsCustomerManagedKeysArgs{
+//			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "managed_services", &databricks.MwsCustomerManagedKeysArgs{
 //				AccountId: pulumi.Any(databricksAccountId),
 //				GcpKeyInfo: &databricks.MwsCustomerManagedKeysGcpKeyInfoArgs{
 //					KmsKeyId: pulumi.Any(cmekResourceId),
@@ -168,8 +172,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v5/go/aws/kms"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/kms"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -178,7 +182,9 @@ import (
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // cfg := config.New(ctx, "")
+// // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
 // databricksAccountId := cfg.RequireObject("databricksAccountId")
+// // AWS ARN for the Databricks cross account role
 // databricksCrossAccountRole := cfg.RequireObject("databricksCrossAccountRole")
 // databricksStorageCmk, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 // Version: pulumi.StringRef("2012-10-17"),
@@ -190,7 +196,7 @@ import (
 // {
 // Type: "AWS",
 // Identifiers: interface{}{
-// data.Aws_caller_identity.Current.Account_id,
+// current.AccountId,
 // },
 // },
 // },
@@ -287,13 +293,14 @@ import (
 // if err != nil {
 // return err
 // }
-// storageCustomerManagedKey, err := kms.NewKey(ctx, "storageCustomerManagedKey", &kms.KeyArgs{
+// storageCustomerManagedKey, err := kms.NewKey(ctx, "storage_customer_managed_key", &kms.KeyArgs{
 // Policy: pulumi.String(databricksStorageCmk.Json),
 // })
 // if err != nil {
 // return err
 // }
-// storageCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "storageCustomerManagedKeyAlias", &kms.AliasArgs{
+// storageCustomerManagedKeyAlias, err := kms.NewAlias(ctx, "storage_customer_managed_key_alias", &kms.AliasArgs{
+// Name: pulumi.String("alias/storage-customer-managed-key-alias"),
 // TargetKeyId: storageCustomerManagedKey.KeyId,
 // })
 // if err != nil {
@@ -335,7 +342,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
 //			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			// Id of a google_kms_crypto_key
 //			cmekResourceId := cfg.RequireObject("cmekResourceId")
 //			_, err := databricks.NewMwsCustomerManagedKeys(ctx, "storage", &databricks.MwsCustomerManagedKeysArgs{
 //				AccountId: pulumi.Any(databricksAccountId),

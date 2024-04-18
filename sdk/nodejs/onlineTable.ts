@@ -18,11 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const _this = new databricks.OnlineTable("this", {spec: {
- *     primaryKeyColumns: ["id"],
- *     runTriggered: {},
- *     sourceTableFullName: "main.default.source_table",
- * }});
+ * const _this = new databricks.OnlineTable("this", {
+ *     name: "main.default.online_table",
+ *     spec: {
+ *         sourceTableFullName: "main.default.source_table",
+ *         primaryKeyColumns: ["id"],
+ *         runTriggered: {},
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

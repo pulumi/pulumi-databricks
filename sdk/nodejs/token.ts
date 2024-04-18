@@ -14,14 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * // initialize provider in normal mode
- * const createdWorkspace = new databricks.Provider("createdWorkspace", {host: databricks_mws_workspaces["this"].workspace_url});
  * // create PAT token to provision entities within workspace
  * const pat = new databricks.Token("pat", {
  *     comment: "Terraform Provisioning",
  *     lifetimeSeconds: 8640000,
- * }, {
- *     provider: databricks.created_workspace,
  * });
  * export const databricksToken = pat.tokenValue;
  * ```

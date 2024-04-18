@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewArtifactAllowlist(ctx, "initScripts", &databricks.ArtifactAllowlistArgs{
+//			_, err := databricks.NewArtifactAllowlist(ctx, "init_scripts", &databricks.ArtifactAllowlistArgs{
+//				ArtifactType: pulumi.String("INIT_SCRIPT"),
 //				ArtifactMatchers: databricks.ArtifactAllowlistArtifactMatcherArray{
 //					&databricks.ArtifactAllowlistArtifactMatcherArgs{
 //						Artifact:  pulumi.String("/Volumes/inits"),
 //						MatchType: pulumi.String("PREFIX_MATCH"),
 //					},
 //				},
-//				ArtifactType: pulumi.String("INIT_SCRIPT"),
 //			})
 //			if err != nil {
 //				return err

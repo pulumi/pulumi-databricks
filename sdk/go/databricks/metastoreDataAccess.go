@@ -34,8 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisMetastore, err := databricks.NewMetastore(ctx, "thisMetastore", &databricks.MetastoreArgs{
-//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", aws_s3_bucket.Metastore.Id)),
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.String(fmt.Sprintf("s3://%v/metastore", metastore.Id)),
 //				Owner:        pulumi.String("uc admins"),
 //				Region:       pulumi.String("us-east-1"),
 //				ForceDestroy: pulumi.Bool(true),
@@ -43,10 +44,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewMetastoreDataAccess(ctx, "thisMetastoreDataAccess", &databricks.MetastoreDataAccessArgs{
-//				MetastoreId: thisMetastore.ID(),
+//			_, err = databricks.NewMetastoreDataAccess(ctx, "this", &databricks.MetastoreDataAccessArgs{
+//				MetastoreId: this.ID(),
+//				Name:        pulumi.Any(metastoreDataAccess.Name),
 //				AwsIamRole: &databricks.MetastoreDataAccessAwsIamRoleArgs{
-//					RoleArn: pulumi.Any(aws_iam_role.Metastore_data_access.Arn),
+//					RoleArn: pulumi.Any(metastoreDataAccess.Arn),
 //				},
 //				IsDefault: pulumi.Bool(true),
 //			})

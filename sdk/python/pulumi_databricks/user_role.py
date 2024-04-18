@@ -109,9 +109,9 @@ class UserRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_role = databricks.UserRole("myUserRole",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_role = databricks.UserRole("my_user_role",
             user_id=my_user.id,
             role=instance_profile.id)
         ```
@@ -124,8 +124,8 @@ class UserRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_account_admin = databricks.UserRole("myUserAccountAdmin",
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_account_admin = databricks.UserRole("my_user_account_admin",
             user_id=my_user.id,
             role="account_admin")
         ```
@@ -169,9 +169,9 @@ class UserRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        instance_profile = databricks.InstanceProfile("instanceProfile", instance_profile_arn="my_instance_profile_arn")
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_role = databricks.UserRole("myUserRole",
+        instance_profile = databricks.InstanceProfile("instance_profile", instance_profile_arn="my_instance_profile_arn")
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_role = databricks.UserRole("my_user_role",
             user_id=my_user.id,
             role=instance_profile.id)
         ```
@@ -184,8 +184,8 @@ class UserRole(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        my_user = databricks.User("myUser", user_name="me@example.com")
-        my_user_account_admin = databricks.UserRole("myUserAccountAdmin",
+        my_user = databricks.User("my_user", user_name="me@example.com")
+        my_user_account_admin = databricks.UserRole("my_user_account_admin",
             user_id=my_user.id,
             role="account_admin")
         ```

@@ -52,12 +52,12 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * 
      *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
-     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
      *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
+     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
      *                     .build())
      *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
+     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
      *                 .build())
      *             .build());
      * 
@@ -105,12 +105,12 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * 
      *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
      *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
-     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
      *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
      *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
+     *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
      *                     .build())
      *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
+     *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
      *                 .build())
      *             .build());
      * 
@@ -215,12 +215,12 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * 
          *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
          *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
-         *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
          *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-         *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
          *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
+         *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
          *                     .build())
          *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
+         *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
          *                 .build())
          *             .build());
          * 
@@ -272,12 +272,12 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * 
          *         var withNfs = new Cluster(&#34;withNfs&#34;, ClusterArgs.builder()        
          *             .clusterMountInfos(ClusterClusterMountInfoArgs.builder()
-         *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
          *                 .networkFilesystemInfo(ClusterClusterMountInfoNetworkFilesystemInfoArgs.builder()
-         *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
          *                     .serverAddress(String.format(&#34;%s.blob.core.windows.net&#34;, storageAccount))
+         *                     .mountOptions(&#34;sec=sys,vers=3,nolock,proto=tcp&#34;)
          *                     .build())
          *                 .remoteMountDirPath(String.format(&#34;%s/%s&#34;, storageAccount,storageContainer))
+         *                 .localMountDirPath(&#34;/mnt/nfs-test&#34;)
          *                 .build())
          *             .build());
          * 

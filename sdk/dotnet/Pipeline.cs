@@ -23,14 +23,13 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dltDemoNotebook = new Databricks.Notebook("dltDemoNotebook");
+    ///     var dltDemo = new Databricks.Notebook("dlt_demo");
     /// 
-    ///     //...
-    ///     var dltDemoRepo = new Databricks.Repo("dltDemoRepo");
+    ///     var dltDemoRepo = new Databricks.Repo("dlt_demo");
     /// 
-    ///     //...
     ///     var @this = new Databricks.Pipeline("this", new()
     ///     {
+    ///         Name = "Pipeline Name",
     ///         Storage = "/test/first-pipeline",
     ///         Configuration = 
     ///         {
@@ -64,7 +63,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 Notebook = new Databricks.Inputs.PipelineLibraryNotebookArgs
     ///                 {
-    ///                     Path = dltDemoNotebook.Id,
+    ///                     Path = dltDemo.Id,
     ///                 },
     ///             },
     ///             new Databricks.Inputs.PipelineLibraryArgs

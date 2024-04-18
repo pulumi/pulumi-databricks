@@ -438,6 +438,7 @@ class Catalog(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",
@@ -493,6 +494,7 @@ class Catalog(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
             comment="this catalog is managed by terraform",
             properties={
                 "purpose": "testing",

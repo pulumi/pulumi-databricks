@@ -57,44 +57,6 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
-// ## Java/Scala JAR
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-//				Source: pulumi.String(fmt.Sprintf("%v/app-0.0.1.jar", path.Module)),
-//				Path:   pulumi.String("/FileStore/app-0.0.1.jar"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Jar:       appDbfsFile.DbfsPath,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Java/Scala Maven
 //
 // Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -113,51 +75,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "deequ", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				ClusterId: pulumi.Any(this.Id),
 //				Maven: &databricks.LibraryMavenArgs{
 //					Coordinates: pulumi.String("com.amazon.deequ:deequ:1.0.4"),
 //					Exclusions: pulumi.StringArray{
 //						pulumi.String("org.apache.avro:avro"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ## Python Wheel
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-//				Source: pulumi.String(fmt.Sprintf("%v/baz.whl", path.Module)),
-//				Path:   pulumi.String("/FileStore/baz.whl"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Whl:       appDbfsFile.DbfsPath,
 //			})
 //			if err != nil {
 //				return err
@@ -189,48 +113,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "fbprophet", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				ClusterId: pulumi.Any(this.Id),
 //				Pypi: &databricks.LibraryPypiArgs{
 //					Package: pulumi.String("fbprophet==0.6"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ## Python EGG
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appDbfsFile, err := databricks.NewDbfsFile(ctx, "appDbfsFile", &databricks.DbfsFileArgs{
-//				Source: pulumi.String(fmt.Sprintf("%v/foo.egg", path.Module)),
-//				Path:   pulumi.String("/FileStore/foo.egg"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewLibrary(ctx, "appLibrary", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
-//				Egg:       appDbfsFile.DbfsPath,
 //			})
 //			if err != nil {
 //				return err
@@ -260,7 +146,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewLibrary(ctx, "rkeops", &databricks.LibraryArgs{
-//				ClusterId: pulumi.Any(databricks_cluster.This.Id),
+//				ClusterId: pulumi.Any(this.Id),
 //				Cran: &databricks.LibraryCranArgs{
 //					Package: pulumi.String("rkeops"),
 //				},

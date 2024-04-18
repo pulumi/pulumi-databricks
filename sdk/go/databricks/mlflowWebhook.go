@@ -16,6 +16,106 @@ import (
 //
 // ## Example Usage
 //
+// ### Triggering Databricks job
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := databricks.GetCurrentUser(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			latest, err := databricks.GetSparkVersion(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
+//				LocalDisk: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `import json
+//
+// event_message = dbutils.widgets.get("event_message")
+// event_message_dict = json.loads(event_message)
+// print(f"event data={event_message_dict}")
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewNotebook(ctx, "this", &databricks.NotebookArgs{
+//				Path:          pulumi.String(fmt.Sprintf("%v/MLFlowWebhook", me.Home)),
+//				Language:      pulumi.String("PYTHON"),
+//				ContentBase64: invokeBase64encode.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			thisJob, err := databricks.NewJob(ctx, "this", &databricks.JobArgs{
+//				Name: pulumi.String(fmt.Sprintf("Terraform MLflowWebhook Demo (%v)", me.Alphanumeric)),
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("task1"),
+//						NewCluster: &databricks.JobTaskNewClusterArgs{
+//							NumWorkers:   pulumi.Int(1),
+//							SparkVersion: pulumi.String(latest.Id),
+//							NodeTypeId:   pulumi.String(smallest.Id),
+//						},
+//						NotebookTask: &databricks.JobTaskNotebookTaskArgs{
+//							NotebookPath: this.Path,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			patForWebhook, err := databricks.NewToken(ctx, "pat_for_webhook", &databricks.TokenArgs{
+//				Comment:         pulumi.String("MLflow Webhook"),
+//				LifetimeSeconds: pulumi.Int(86400000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMlflowWebhook(ctx, "job", &databricks.MlflowWebhookArgs{
+//				Events: pulumi.StringArray{
+//					pulumi.String("TRANSITION_REQUEST_CREATED"),
+//				},
+//				Description: pulumi.String("Databricks Job webhook trigger"),
+//				Status:      pulumi.String("ACTIVE"),
+//				JobSpec: &databricks.MlflowWebhookJobSpecArgs{
+//					JobId:        thisJob.ID(),
+//					WorkspaceUrl: pulumi.String(me.WorkspaceUrl),
+//					AccessToken:  patForWebhook.TokenValue,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### POSTing to URL
 //
 // <!--Start PulumiCodeChooser -->
@@ -32,10 +132,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMlflowWebhook(ctx, "url", &databricks.MlflowWebhookArgs{
-//				Description: pulumi.String("URL webhook trigger"),
 //				Events: pulumi.StringArray{
 //					pulumi.String("TRANSITION_REQUEST_CREATED"),
 //				},
+//				Description: pulumi.String("URL webhook trigger"),
 //				HttpUrlSpec: &databricks.MlflowWebhookHttpUrlSpecArgs{
 //					Url: pulumi.String("https://my_cool_host/webhook"),
 //				},

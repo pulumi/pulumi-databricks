@@ -298,7 +298,8 @@ class SqlPermissions(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        foo_table = databricks.SqlPermissions("fooTable",
+        foo_table = databricks.SqlPermissions("foo_table",
+            table="foo",
             privilege_assignments=[
                 databricks.SqlPermissionsPrivilegeAssignmentArgs(
                     principal="serge@example.com",
@@ -311,8 +312,7 @@ class SqlPermissions(pulumi.CustomResource):
                     principal="special group",
                     privileges=["SELECT"],
                 ),
-            ],
-            table="foo")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -378,7 +378,8 @@ class SqlPermissions(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        foo_table = databricks.SqlPermissions("fooTable",
+        foo_table = databricks.SqlPermissions("foo_table",
+            table="foo",
             privilege_assignments=[
                 databricks.SqlPermissionsPrivilegeAssignmentArgs(
                     principal="serge@example.com",
@@ -391,8 +392,7 @@ class SqlPermissions(pulumi.CustomResource):
                     principal="special group",
                     privileges=["SELECT"],
                 ),
-            ],
-            table="foo")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var meUser = DatabricksFunctions.getUser(GetUserArgs.builder()
+ *         final var me = DatabricksFunctions.getUser(GetUserArgs.builder()
  *             .userName(&#34;me@example.com&#34;)
  *             .build());
  * 
  *         var meEntitlements = new Entitlements(&#34;meEntitlements&#34;, EntitlementsArgs.builder()        
- *             .userId(meUser.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .userId(me.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());
@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var thisServicePrincipal = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+ *         final var this = DatabricksFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
  *             .applicationId(&#34;11111111-2222-3333-4444-555666777888&#34;)
  *             .build());
  * 
  *         var thisEntitlements = new Entitlements(&#34;thisEntitlements&#34;, EntitlementsArgs.builder()        
- *             .servicePrincipalId(thisServicePrincipal.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.spId()))
+ *             .servicePrincipalId(this_.spId())
  *             .allowClusterCreate(true)
  *             .allowInstancePoolCreate(true)
  *             .build());

@@ -91,9 +91,9 @@ namespace Pulumi.Databricks
     /// {
     ///     var sp = new Databricks.ServicePrincipal("sp", new()
     ///     {
-    ///         AllowClusterCreate = true,
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
     ///         DisplayName = "Example service principal",
+    ///         AllowClusterCreate = true,
     ///     });
     /// 
     /// });
@@ -111,21 +111,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at account-level
-    ///     var account = new Databricks.Provider("account", new()
-    ///     {
-    ///         Host = "https://accounts.cloud.databricks.com",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         ClientId = @var.Client_id,
-    ///         ClientSecret = @var.Client_secret,
-    ///     });
-    /// 
     ///     var sp = new Databricks.ServicePrincipal("sp", new()
     ///     {
     ///         DisplayName = "Automation-only SP",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Account,
     ///     });
     /// 
     /// });
@@ -143,20 +131,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // initialize provider at Azure account-level
-    ///     var account = new Databricks.Provider("account", new()
-    ///     {
-    ///         Host = "https://accounts.azuredatabricks.net",
-    ///         AccountId = "00000000-0000-0000-0000-000000000000",
-    ///         AuthType = "azure-cli",
-    ///     });
-    /// 
     ///     var sp = new Databricks.ServicePrincipal("sp", new()
     ///     {
     ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = databricks.Account,
     ///     });
     /// 
     /// });

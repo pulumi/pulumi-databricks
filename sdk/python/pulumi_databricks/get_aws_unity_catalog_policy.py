@@ -110,7 +110,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this = databricks.get_aws_unity_catalog_policy(aws_account_id=var["aws_account_id"],
+    this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name="databricks-role",
         kms_name="databricks-kms")
@@ -125,7 +125,7 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
             conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
                 test="StringEquals",
                 variable="sts:ExternalId",
-                values=[var["databricks_account_id"]],
+                values=[databricks_account_id],
             )],
         ),
         aws.iam.GetPolicyDocumentStatementArgs(
@@ -134,17 +134,20 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
             actions=["sts:AssumeRole"],
             principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                 type="AWS",
-                identifiers=[f"arn:aws:iam::{var['aws_account_id']}:root"],
+                identifiers=[f"arn:aws:iam::{aws_account_id}:root"],
             )],
             conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
                 test="ArnLike",
                 variable="aws:PrincipalArn",
-                values=[f"arn:aws:iam::{var['aws_account_id']}:role/{var['prefix']}-uc-access"],
+                values=[f"arn:aws:iam::{aws_account_id}:role/{prefix}-uc-access"],
             )],
         ),
     ])
-    unity_metastore = aws.iam.Policy("unityMetastore", policy=this.json)
-    metastore_data_access = aws.iam.Role("metastoreDataAccess",
+    unity_metastore = aws.iam.Policy("unity_metastore",
+        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+        policy=this.json)
+    metastore_data_access = aws.iam.Role("metastore_data_access",
+        name=f"{prefix}-uc-access",
         assume_role_policy=passrole_for_uc.json,
         managed_policy_arns=[unity_metastore.arn])
     ```
@@ -192,7 +195,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this = databricks.get_aws_unity_catalog_policy(aws_account_id=var["aws_account_id"],
+    this = databricks.get_aws_unity_catalog_policy(aws_account_id=aws_account_id,
         bucket_name="databricks-bucket",
         role_name="databricks-role",
         kms_name="databricks-kms")
@@ -207,7 +210,7 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
             conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
                 test="StringEquals",
                 variable="sts:ExternalId",
-                values=[var["databricks_account_id"]],
+                values=[databricks_account_id],
             )],
         ),
         aws.iam.GetPolicyDocumentStatementArgs(
@@ -216,17 +219,20 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
             actions=["sts:AssumeRole"],
             principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                 type="AWS",
-                identifiers=[f"arn:aws:iam::{var['aws_account_id']}:root"],
+                identifiers=[f"arn:aws:iam::{aws_account_id}:root"],
             )],
             conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
                 test="ArnLike",
                 variable="aws:PrincipalArn",
-                values=[f"arn:aws:iam::{var['aws_account_id']}:role/{var['prefix']}-uc-access"],
+                values=[f"arn:aws:iam::{aws_account_id}:role/{prefix}-uc-access"],
             )],
         ),
     ])
-    unity_metastore = aws.iam.Policy("unityMetastore", policy=this.json)
-    metastore_data_access = aws.iam.Role("metastoreDataAccess",
+    unity_metastore = aws.iam.Policy("unity_metastore",
+        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+        policy=this.json)
+    metastore_data_access = aws.iam.Role("metastore_data_access",
+        name=f"{prefix}-uc-access",
         assume_role_policy=passrole_for_uc.json,
         managed_policy_arns=[unity_metastore.arn])
     ```

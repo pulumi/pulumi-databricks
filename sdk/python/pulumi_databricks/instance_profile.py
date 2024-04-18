@@ -176,6 +176,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Role that you've specified on https://accounts.cloud.databricks.com/#aws
         crossaccount_role_name = config.require("crossaccountRoleName")
         assume_role_for_ec2 = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
             effect="Allow",
@@ -185,22 +186,26 @@ class InstanceProfile(pulumi.CustomResource):
                 type="Service",
             )],
         )])
-        role_for_s3_access = aws.iam.Role("roleForS3Access",
+        role_for_s3_access = aws.iam.Role("role_for_s3_access",
+            name="shared-ec2-role-for-s3",
             description="Role for shared access",
             assume_role_policy=assume_role_for_ec2.json)
-        pass_role_for_s3_access_policy_document = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
             effect="Allow",
             actions=["iam:PassRole"],
             resources=[role_for_s3_access.arn],
         )])
-        pass_role_for_s3_access_policy = aws.iam.Policy("passRoleForS3AccessPolicy",
+        pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
+            name="shared-pass-role-for-s3-access",
             path="/",
-            policy=pass_role_for_s3_access_policy_document.json)
-        cross_account = aws.iam.RolePolicyAttachment("crossAccount",
+            policy=pass_role_for_s3_access.json)
+        cross_account = aws.iam.RolePolicyAttachment("cross_account",
             policy_arn=pass_role_for_s3_access_policy.arn,
             role=crossaccount_role_name)
-        shared_instance_profile = aws.iam.InstanceProfile("sharedInstanceProfile", role=role_for_s3_access.name)
-        shared_index_instance_profile_instance_profile = databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", instance_profile_arn=shared_instance_profile.arn)
+        shared = aws.iam.InstanceProfile("shared",
+            name="shared-instance-profile",
+            role=role_for_s3_access.name)
+        shared_instance_profile = databricks.InstanceProfile("shared", instance_profile_arn=shared.arn)
         latest = databricks.get_spark_version()
         smallest = databricks.get_node_type(local_disk=True)
         this = databricks.Cluster("this",
@@ -213,7 +218,7 @@ class InstanceProfile(pulumi.CustomResource):
                 max_workers=50,
             ),
             aws_attributes=databricks.ClusterAwsAttributesArgs(
-                instance_profile_arn=shared_index / instance_profile_instance_profile["id"],
+                instance_profile_arn=shared_instance_profile.id,
                 availability="SPOT",
                 zone_id="us-east-1",
                 first_on_demand=1,
@@ -232,12 +237,14 @@ class InstanceProfile(pulumi.CustomResource):
         import json
         import pulumi_databricks as databricks
 
-        this = databricks.ClusterPolicy("this", definition=json.dumps({
-            "aws_attributes.instance_profile_arn": {
-                "type": "fixed",
-                "value": databricks_instance_profile["shared"]["arn"],
-            },
-        }))
+        this = databricks.ClusterPolicy("this",
+            name="Policy with predefined instance profile",
+            definition=json.dumps({
+                "aws_attributes.instance_profile_arn": {
+                    "type": "fixed",
+                    "value": shared["arn"],
+                },
+            }))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -250,7 +257,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.InstanceProfile("this", instance_profile_arn=aws_iam_instance_profile["shared"]["arn"])
+        this = databricks.InstanceProfile("this", instance_profile_arn=shared["arn"])
         users = databricks.get_group(display_name="users")
         all = databricks.GroupInstanceProfile("all",
             group_id=users.id,
@@ -283,11 +290,15 @@ class InstanceProfile(pulumi.CustomResource):
                 ],
             )],
         )])
-        this_role = aws.iam.Role("thisRole", assume_role_policy=sql_serverless_assume_role.json)
-        this_instance_profile = aws.iam.InstanceProfile("thisInstanceProfile", role=this_role.name)
-        this_index_instance_profile_instance_profile = databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile",
+        this = aws.iam.Role("this",
+            name="my-databricks-sql-serverless-role",
+            assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("this",
+            name="my-databricks-sql-serverless-instance-profile",
+            role=this.name)
+        this_instance_profile2 = databricks.InstanceProfile("this",
             instance_profile_arn=this_instance_profile.arn,
-            iam_role_arn=this_role.arn)
+            iam_role_arn=this.arn)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -326,6 +337,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Role that you've specified on https://accounts.cloud.databricks.com/#aws
         crossaccount_role_name = config.require("crossaccountRoleName")
         assume_role_for_ec2 = aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
             effect="Allow",
@@ -335,22 +347,26 @@ class InstanceProfile(pulumi.CustomResource):
                 type="Service",
             )],
         )])
-        role_for_s3_access = aws.iam.Role("roleForS3Access",
+        role_for_s3_access = aws.iam.Role("role_for_s3_access",
+            name="shared-ec2-role-for-s3",
             description="Role for shared access",
             assume_role_policy=assume_role_for_ec2.json)
-        pass_role_for_s3_access_policy_document = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+        pass_role_for_s3_access = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
             effect="Allow",
             actions=["iam:PassRole"],
             resources=[role_for_s3_access.arn],
         )])
-        pass_role_for_s3_access_policy = aws.iam.Policy("passRoleForS3AccessPolicy",
+        pass_role_for_s3_access_policy = aws.iam.Policy("pass_role_for_s3_access",
+            name="shared-pass-role-for-s3-access",
             path="/",
-            policy=pass_role_for_s3_access_policy_document.json)
-        cross_account = aws.iam.RolePolicyAttachment("crossAccount",
+            policy=pass_role_for_s3_access.json)
+        cross_account = aws.iam.RolePolicyAttachment("cross_account",
             policy_arn=pass_role_for_s3_access_policy.arn,
             role=crossaccount_role_name)
-        shared_instance_profile = aws.iam.InstanceProfile("sharedInstanceProfile", role=role_for_s3_access.name)
-        shared_index_instance_profile_instance_profile = databricks.InstanceProfile("sharedIndex/instanceProfileInstanceProfile", instance_profile_arn=shared_instance_profile.arn)
+        shared = aws.iam.InstanceProfile("shared",
+            name="shared-instance-profile",
+            role=role_for_s3_access.name)
+        shared_instance_profile = databricks.InstanceProfile("shared", instance_profile_arn=shared.arn)
         latest = databricks.get_spark_version()
         smallest = databricks.get_node_type(local_disk=True)
         this = databricks.Cluster("this",
@@ -363,7 +379,7 @@ class InstanceProfile(pulumi.CustomResource):
                 max_workers=50,
             ),
             aws_attributes=databricks.ClusterAwsAttributesArgs(
-                instance_profile_arn=shared_index / instance_profile_instance_profile["id"],
+                instance_profile_arn=shared_instance_profile.id,
                 availability="SPOT",
                 zone_id="us-east-1",
                 first_on_demand=1,
@@ -382,12 +398,14 @@ class InstanceProfile(pulumi.CustomResource):
         import json
         import pulumi_databricks as databricks
 
-        this = databricks.ClusterPolicy("this", definition=json.dumps({
-            "aws_attributes.instance_profile_arn": {
-                "type": "fixed",
-                "value": databricks_instance_profile["shared"]["arn"],
-            },
-        }))
+        this = databricks.ClusterPolicy("this",
+            name="Policy with predefined instance profile",
+            definition=json.dumps({
+                "aws_attributes.instance_profile_arn": {
+                    "type": "fixed",
+                    "value": shared["arn"],
+                },
+            }))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -400,7 +418,7 @@ class InstanceProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.InstanceProfile("this", instance_profile_arn=aws_iam_instance_profile["shared"]["arn"])
+        this = databricks.InstanceProfile("this", instance_profile_arn=shared["arn"])
         users = databricks.get_group(display_name="users")
         all = databricks.GroupInstanceProfile("all",
             group_id=users.id,
@@ -433,11 +451,15 @@ class InstanceProfile(pulumi.CustomResource):
                 ],
             )],
         )])
-        this_role = aws.iam.Role("thisRole", assume_role_policy=sql_serverless_assume_role.json)
-        this_instance_profile = aws.iam.InstanceProfile("thisInstanceProfile", role=this_role.name)
-        this_index_instance_profile_instance_profile = databricks.InstanceProfile("thisIndex/instanceProfileInstanceProfile",
+        this = aws.iam.Role("this",
+            name="my-databricks-sql-serverless-role",
+            assume_role_policy=sql_serverless_assume_role.json)
+        this_instance_profile = aws.iam.InstanceProfile("this",
+            name="my-databricks-sql-serverless-instance-profile",
+            role=this.name)
+        this_instance_profile2 = databricks.InstanceProfile("this",
             instance_profile_arn=this_instance_profile.arn,
-            iam_role_arn=this_role.arn)
+            iam_role_arn=this.arn)
         ```
         <!--End PulumiCodeChooser -->
 

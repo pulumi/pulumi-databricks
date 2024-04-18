@@ -616,16 +616,16 @@ class LakehouseMonitor(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test_monitor_inference = databricks.LakehouseMonitor("testMonitorInference",
-            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table['myTestTable']['name']}",
+            table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
+            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
+            output_schema_name=f"{sandbox['name']}.{things['name']}",
             inference_log=databricks.LakehouseMonitorInferenceLogArgs(
                 granularities=["1 hour"],
-                model_id_col="model_id",
-                prediction_col="prediction",
-                problem_type="PROBLEM_TYPE_REGRESSION",
                 timestamp_col="timestamp",
-            ),
-            output_schema_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}",
-            table_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}.{databricks_table['myTestTable']['name']}")
+                prediction_col="prediction",
+                model_id_col="model_id",
+                problem_type="PROBLEM_TYPE_REGRESSION",
+            ))
         ```
         <!--End PulumiCodeChooser -->
         ### Snapshot Monitor
@@ -635,10 +635,10 @@ class LakehouseMonitor(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test_monitor_inference = databricks.LakehouseMonitor("testMonitorInference",
-            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table['myTestTable']['name']}",
-            output_schema_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}",
-            snapshot=databricks.LakehouseMonitorSnapshotArgs(),
-            table_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}.{databricks_table['myTestTable']['name']}")
+            table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
+            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
+            output_schema_name=f"{sandbox['name']}.{things['name']}",
+            snapshot=databricks.LakehouseMonitorSnapshotArgs())
         ```
         <!--End PulumiCodeChooser -->
 
@@ -687,16 +687,16 @@ class LakehouseMonitor(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test_monitor_inference = databricks.LakehouseMonitor("testMonitorInference",
-            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table['myTestTable']['name']}",
+            table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
+            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
+            output_schema_name=f"{sandbox['name']}.{things['name']}",
             inference_log=databricks.LakehouseMonitorInferenceLogArgs(
                 granularities=["1 hour"],
-                model_id_col="model_id",
-                prediction_col="prediction",
-                problem_type="PROBLEM_TYPE_REGRESSION",
                 timestamp_col="timestamp",
-            ),
-            output_schema_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}",
-            table_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}.{databricks_table['myTestTable']['name']}")
+                prediction_col="prediction",
+                model_id_col="model_id",
+                problem_type="PROBLEM_TYPE_REGRESSION",
+            ))
         ```
         <!--End PulumiCodeChooser -->
         ### Snapshot Monitor
@@ -706,10 +706,10 @@ class LakehouseMonitor(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         test_monitor_inference = databricks.LakehouseMonitor("testMonitorInference",
-            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{databricks_table['myTestTable']['name']}",
-            output_schema_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}",
-            snapshot=databricks.LakehouseMonitorSnapshotArgs(),
-            table_name=f"{databricks_catalog['sandbox']['name']}.{databricks_schema['things']['name']}.{databricks_table['myTestTable']['name']}")
+            table_name=f"{sandbox['name']}.{things['name']}.{my_test_table['name']}",
+            assets_dir=f"/Shared/provider-test/databricks_lakehouse_monitoring/{my_test_table['name']}",
+            output_schema_name=f"{sandbox['name']}.{things['name']}",
+            snapshot=databricks.LakehouseMonitorSnapshotArgs())
         ```
         <!--End PulumiCodeChooser -->
 

@@ -11,7 +11,7 @@ VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
-PULUMI_CONVERT := 0
+PULUMI_CONVERT := 1
 
 development: install_plugins provider build_sdks install_sdks
 
@@ -111,11 +111,13 @@ install_nodejs_sdk:
 install_plugins: export PULUMI_HOME := $(WORKING_DIR)/.pulumi
 install_plugins: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 install_plugins: .pulumi/bin/pulumi
+	.pulumi/bin/pulumi plugin install converter terraform 1.0.16
 	.pulumi/bin/pulumi plugin install resource random 4.8.2
-	.pulumi/bin/pulumi plugin install resource aws 5.18.0
+	.pulumi/bin/pulumi plugin install resource aws 6.31.0
 	.pulumi/bin/pulumi plugin install resource time 0.0.13
 	.pulumi/bin/pulumi plugin install resource azure 5.66.1
 	.pulumi/bin/pulumi plugin install resource docker 4.5.1
+	.pulumi/bin/pulumi plugin install resource std 1.6.2
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml

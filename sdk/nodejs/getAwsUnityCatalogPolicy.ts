@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getAwsUnityCatalogPolicy({
- *     awsAccountId: _var.aws_account_id,
+ *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: "databricks-role",
  *     kmsName: "databricks-kms",
@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *             conditions: [{
  *                 test: "StringEquals",
  *                 variable: "sts:ExternalId",
- *                 values: [_var.databricks_account_id],
+ *                 values: [databricksAccountId],
  *             }],
  *         },
  *         {
@@ -44,18 +44,22 @@ import * as utilities from "./utilities";
  *             actions: ["sts:AssumeRole"],
  *             principals: [{
  *                 type: "AWS",
- *                 identifiers: [`arn:aws:iam::${_var.aws_account_id}:root`],
+ *                 identifiers: [`arn:aws:iam::${awsAccountId}:root`],
  *             }],
  *             conditions: [{
  *                 test: "ArnLike",
  *                 variable: "aws:PrincipalArn",
- *                 values: [`arn:aws:iam::${_var.aws_account_id}:role/${_var.prefix}-uc-access`],
+ *                 values: [`arn:aws:iam::${awsAccountId}:role/${prefix}-uc-access`],
  *             }],
  *         },
  *     ],
  * });
- * const unityMetastore = new aws.iam.Policy("unityMetastore", {policy: _this.then(_this => _this.json)});
- * const metastoreDataAccess = new aws.iam.Role("metastoreDataAccess", {
+ * const unityMetastore = new aws.iam.Policy("unity_metastore", {
+ *     name: `${prefix}-unity-catalog-metastore-access-iam-policy`,
+ *     policy: _this.then(_this => _this.json),
+ * });
+ * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
+ *     name: `${prefix}-uc-access`,
  *     assumeRolePolicy: passroleForUc.then(passroleForUc => passroleForUc.json),
  *     managedPolicyArns: [unityMetastore.arn],
  * });
@@ -126,7 +130,7 @@ export interface GetAwsUnityCatalogPolicyResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getAwsUnityCatalogPolicy({
- *     awsAccountId: _var.aws_account_id,
+ *     awsAccountId: awsAccountId,
  *     bucketName: "databricks-bucket",
  *     roleName: "databricks-role",
  *     kmsName: "databricks-kms",
@@ -143,7 +147,7 @@ export interface GetAwsUnityCatalogPolicyResult {
  *             conditions: [{
  *                 test: "StringEquals",
  *                 variable: "sts:ExternalId",
- *                 values: [_var.databricks_account_id],
+ *                 values: [databricksAccountId],
  *             }],
  *         },
  *         {
@@ -152,18 +156,22 @@ export interface GetAwsUnityCatalogPolicyResult {
  *             actions: ["sts:AssumeRole"],
  *             principals: [{
  *                 type: "AWS",
- *                 identifiers: [`arn:aws:iam::${_var.aws_account_id}:root`],
+ *                 identifiers: [`arn:aws:iam::${awsAccountId}:root`],
  *             }],
  *             conditions: [{
  *                 test: "ArnLike",
  *                 variable: "aws:PrincipalArn",
- *                 values: [`arn:aws:iam::${_var.aws_account_id}:role/${_var.prefix}-uc-access`],
+ *                 values: [`arn:aws:iam::${awsAccountId}:role/${prefix}-uc-access`],
  *             }],
  *         },
  *     ],
  * });
- * const unityMetastore = new aws.iam.Policy("unityMetastore", {policy: _this.then(_this => _this.json)});
- * const metastoreDataAccess = new aws.iam.Role("metastoreDataAccess", {
+ * const unityMetastore = new aws.iam.Policy("unity_metastore", {
+ *     name: `${prefix}-unity-catalog-metastore-access-iam-policy`,
+ *     policy: _this.then(_this => _this.json),
+ * });
+ * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
+ *     name: `${prefix}-uc-access`,
  *     assumeRolePolicy: passroleForUc.then(passroleForUc => passroleForUc.json),
  *     managedPolicyArns: [unityMetastore.arn],
  * });

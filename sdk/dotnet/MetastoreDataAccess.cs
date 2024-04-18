@@ -27,20 +27,22 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisMetastore = new Databricks.Metastore("thisMetastore", new()
+    ///     var @this = new Databricks.Metastore("this", new()
     ///     {
-    ///         StorageRoot = $"s3://{aws_s3_bucket.Metastore.Id}/metastore",
+    ///         Name = "primary",
+    ///         StorageRoot = $"s3://{metastore.Id}/metastore",
     ///         Owner = "uc admins",
     ///         Region = "us-east-1",
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("thisMetastoreDataAccess", new()
+    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("this", new()
     ///     {
-    ///         MetastoreId = thisMetastore.Id,
+    ///         MetastoreId = @this.Id,
+    ///         Name = metastoreDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.MetastoreDataAccessAwsIamRoleArgs
     ///         {
-    ///             RoleArn = aws_iam_role.Metastore_data_access.Arn,
+    ///             RoleArn = metastoreDataAccess.Arn,
     ///         },
     ///         IsDefault = true,
     ///     });

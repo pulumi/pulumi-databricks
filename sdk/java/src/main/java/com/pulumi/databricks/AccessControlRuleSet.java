@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group
  *         final var ds = DatabricksFunctions.getGroup(GetGroupArgs.builder()
  *             .displayName(&#34;Data Science&#34;)
  *             .build());
@@ -67,6 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet(&#34;automationSpRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(automationSp.applicationId().applyValue(applicationId -&gt; String.format(&#34;accounts/%s/servicePrincipals/%s/ruleSets/default&#34;, accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.applyValue(getGroupResult -&gt; getGroupResult.aclPrincipalId()))
  *                 .role(&#34;roles/servicePrincipal.user&#34;)
@@ -88,6 +90,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.ServicePrincipal;
  * import com.pulumi.databricks.ServicePrincipalArgs;
  * import com.pulumi.databricks.AccessControlRuleSet;
@@ -109,13 +112,16 @@ import javax.annotation.Nullable;
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
  *         // account level group creation
- *         var ds = new Group(&#34;ds&#34;);
+ *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Data Science&#34;)
+ *             .build());
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        
  *             .displayName(&#34;SP_FOR_AUTOMATION&#34;)
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet(&#34;automationSpRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(automationSp.applicationId().applyValue(applicationId -&gt; String.format(&#34;accounts/%s/servicePrincipals/%s/ruleSets/default&#34;, accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role(&#34;roles/servicePrincipal.user&#34;)
@@ -137,6 +143,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.ServicePrincipal;
  * import com.pulumi.databricks.ServicePrincipalArgs;
  * import com.pulumi.databricks.AccessControlRuleSet;
@@ -158,7 +165,9 @@ import javax.annotation.Nullable;
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
  *         // account level group creation
- *         var ds = new Group(&#34;ds&#34;);
+ *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Data Science&#34;)
+ *             .build());
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        
  *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
@@ -166,6 +175,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet(&#34;automationSpRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(automationSp.applicationId().applyValue(applicationId -&gt; String.format(&#34;accounts/%s/servicePrincipals/%s/ruleSets/default&#34;, accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role(&#34;roles/servicePrincipal.user&#34;)
@@ -187,6 +197,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
  * import com.pulumi.databricks.ServicePrincipal;
  * import com.pulumi.databricks.ServicePrincipalArgs;
  * import com.pulumi.databricks.AccessControlRuleSet;
@@ -208,13 +219,16 @@ import javax.annotation.Nullable;
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
  *         // account level group creation
- *         var ds = new Group(&#34;ds&#34;);
+ *         var ds = new Group(&#34;ds&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;Data Science&#34;)
+ *             .build());
  * 
  *         var automationSp = new ServicePrincipal(&#34;automationSp&#34;, ServicePrincipalArgs.builder()        
  *             .displayName(&#34;SP_FOR_AUTOMATION&#34;)
  *             .build());
  * 
  *         var automationSpRuleSet = new AccessControlRuleSet(&#34;automationSpRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(automationSp.applicationId().applyValue(applicationId -&gt; String.format(&#34;accounts/%s/servicePrincipals/%s/ruleSets/default&#34;, accountId,applicationId)))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(ds.aclPrincipalId())
  *                 .role(&#34;roles/servicePrincipal.user&#34;)
@@ -258,6 +272,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group
  *         final var ds = DatabricksFunctions.getGroup(GetGroupArgs.builder()
  *             .displayName(&#34;Data Science&#34;)
  *             .build());
@@ -267,6 +282,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dsGroupRuleSet = new AccessControlRuleSet(&#34;dsGroupRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(String.format(&#34;accounts/%s/groups/%s/ruleSets/default&#34;, accountId,dsDatabricksGroup.id()))
  *             .grantRules(AccessControlRuleSetGrantRuleArgs.builder()
  *                 .principals(john.applyValue(getUserResult -&gt; getUserResult.aclPrincipalId()))
  *                 .role(&#34;roles/group.manager&#34;)
@@ -310,10 +326,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var accountId = &#34;00000000-0000-0000-0000-000000000000&#34;;
  * 
+ *         // account level group
  *         final var ds = DatabricksFunctions.getGroup(GetGroupArgs.builder()
  *             .displayName(&#34;Data Science&#34;)
  *             .build());
  * 
+ *         // account level group
  *         final var marketplaceAdmins = DatabricksFunctions.getGroup(GetGroupArgs.builder()
  *             .displayName(&#34;Marketplace Admins&#34;)
  *             .build());
@@ -323,6 +341,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var accountRuleSet = new AccessControlRuleSet(&#34;accountRuleSet&#34;, AccessControlRuleSetArgs.builder()        
+ *             .name(String.format(&#34;accounts/%s/ruleSets/default&#34;, accountId))
  *             .grantRules(            
  *                 AccessControlRuleSetGrantRuleArgs.builder()
  *                     .principals(john.applyValue(getUserResult -&gt; getUserResult.aclPrincipalId()))

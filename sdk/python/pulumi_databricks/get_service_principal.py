@@ -160,7 +160,7 @@ def get_service_principal(acl_principal_id: Optional[str] = None,
 
     admins = databricks.get_group(display_name="admins")
     spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=spn.id)
     ```
@@ -241,7 +241,7 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
 
     admins = databricks.get_group(display_name="admins")
     spn = databricks.get_service_principal(application_id="11111111-2222-3333-4444-555666777888")
-    my_member_a = databricks.GroupMember("myMemberA",
+    my_member_a = databricks.GroupMember("my_member_a",
         group_id=admins.id,
         member_id=spn.id)
     ```

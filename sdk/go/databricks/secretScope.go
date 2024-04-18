@@ -28,7 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewSecretScope(ctx, "this", nil)
+//			_, err := databricks.NewSecretScope(ctx, "this", &databricks.SecretScopeArgs{
+//				Name: pulumi.String("terraform-demo-scope"),
+//			})
 //			if err != nil {
 //				return err
 //			}

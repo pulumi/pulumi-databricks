@@ -35,14 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sharedDir, err := databricks.NewDirectory(ctx, "sharedDir", &databricks.DirectoryArgs{
+//			sharedDir, err := databricks.NewDirectory(ctx, "shared_dir", &databricks.DirectoryArgs{
 //				Path: pulumi.String("/Shared/Queries"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databricks.NewSqlQuery(ctx, "q1", &databricks.SqlQueryArgs{
-//				DataSourceId: pulumi.Any(databricks_sql_endpoint.Example.Data_source_id),
+//				DataSourceId: pulumi.Any(example.DataSourceId),
+//				Name:         pulumi.String("My Query Name"),
 //				Query:        pulumi.String("                        SELECT {{ p1 }} AS p1\n                        WHERE 1=1\n                        AND p2 in ({{ p2 }})\n                        AND event_date > date '{{ p3 }}'\n"),
 //				Parent: sharedDir.ObjectId.ApplyT(func(objectId int) (string, error) {
 //					return fmt.Sprintf("folders/%v", objectId), nil
@@ -112,14 +113,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPermissions(ctx, "q1", &databricks.PermissionsArgs{
-//				SqlQueryId: pulumi.Any(databricks_sql_query.Q1.Id),
+//				SqlQueryId: pulumi.Any(q1DatabricksSqlQuery.Id),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.Any(data.Databricks_group.Users.Display_name),
+//						GroupName:       pulumi.Any(users.DisplayName),
 //						PermissionLevel: pulumi.String("CAN_RUN"),
 //					},
 //					&databricks.PermissionsAccessControlArgs{
-//						GroupName:       pulumi.Any(data.Databricks_group.Team.Display_name),
+//						GroupName:       pulumi.Any(team.DisplayName),
 //						PermissionLevel: pulumi.String("CAN_EDIT"),
 //					},
 //				},

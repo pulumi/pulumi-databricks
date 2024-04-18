@@ -27,14 +27,15 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sharedDir = new Databricks.Directory("sharedDir", new()
+    ///     var sharedDir = new Databricks.Directory("shared_dir", new()
     ///     {
     ///         Path = "/Shared/Queries",
     ///     });
     /// 
     ///     var q1 = new Databricks.SqlQuery("q1", new()
     ///     {
-    ///         DataSourceId = databricks_sql_endpoint.Example.Data_source_id,
+    ///         DataSourceId = example.DataSourceId,
+    ///         Name = "My Query Name",
     ///         Query = @"                        SELECT {{ p1 }} AS p1
     ///                         WHERE 1=1
     ///                         AND p2 in ({{ p2 }})
@@ -108,17 +109,17 @@ namespace Pulumi.Databricks
     /// {
     ///     var q1 = new Databricks.Permissions("q1", new()
     ///     {
-    ///         SqlQueryId = databricks_sql_query.Q1.Id,
+    ///         SqlQueryId = q1DatabricksSqlQuery.Id,
     ///         AccessControls = new[]
     ///         {
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
-    ///                 GroupName = data.Databricks_group.Users.Display_name,
+    ///                 GroupName = users.DisplayName,
     ///                 PermissionLevel = "CAN_RUN",
     ///             },
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
-    ///                 GroupName = data.Databricks_group.Team.Display_name,
+    ///                 GroupName = team.DisplayName,
     ///                 PermissionLevel = "CAN_EDIT",
     ///             },
     ///         },

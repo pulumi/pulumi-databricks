@@ -34,12 +34,11 @@ namespace Pulumi.Databricks
         ///         Name = "All spot",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("myCluster", new()
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
-        ///         InstancePoolId = data.Databricks_instance_pool.Pool.Id,
+        ///         InstancePoolId = poolDatabricksInstancePool.Id,
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -70,12 +69,11 @@ namespace Pulumi.Databricks
         ///         Name = "All spot",
         ///     });
         /// 
-        ///     var myCluster = new Databricks.Cluster("myCluster", new()
+        ///     var myCluster = new Databricks.Cluster("my_cluster", new()
         ///     {
-        ///         InstancePoolId = data.Databricks_instance_pool.Pool.Id,
+        ///         InstancePoolId = poolDatabricksInstancePool.Id,
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

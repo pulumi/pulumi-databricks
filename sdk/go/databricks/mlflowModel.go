@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewMlflowModel(ctx, "test", &databricks.MlflowModelArgs{
+//				Name:        pulumi.String("My MLflow Model"),
 //				Description: pulumi.String("My MLflow model description"),
 //				Tags: databricks.MlflowModelTagArray{
 //					&databricks.MlflowModelTagArgs{

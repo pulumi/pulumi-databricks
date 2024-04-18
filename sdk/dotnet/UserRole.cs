@@ -25,17 +25,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
     ///     {
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
     /// 
-    ///     var myUser = new Databricks.User("myUser", new()
+    ///     var myUser = new Databricks.User("my_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var myUserRole = new Databricks.UserRole("myUserRole", new()
+    ///     var myUserRole = new Databricks.UserRole("my_user_role", new()
     ///     {
     ///         UserId = myUser.Id,
     ///         Role = instanceProfile.Id,
@@ -56,12 +56,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myUser = new Databricks.User("myUser", new()
+    ///     var myUser = new Databricks.User("my_user", new()
     ///     {
     ///         UserName = "me@example.com",
     ///     });
     /// 
-    ///     var myUserAccountAdmin = new Databricks.UserRole("myUserAccountAdmin", new()
+    ///     var myUserAccountAdmin = new Databricks.UserRole("my_user_account_admin", new()
     ///     {
     ///         UserId = myUser.Id,
     ///         Role = "account_admin",

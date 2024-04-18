@@ -485,7 +485,7 @@ class InstancePool(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         smallest = databricks.get_node_type()
-        smallest_nodes = databricks.InstancePool("smallestNodes",
+        smallest_nodes = databricks.InstancePool("smallest_nodes",
             instance_pool_name="Smallest Nodes",
             min_idle_instances=0,
             max_capacity=300,
@@ -551,7 +551,7 @@ class InstancePool(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         smallest = databricks.get_node_type()
-        smallest_nodes = databricks.InstancePool("smallestNodes",
+        smallest_nodes = databricks.InstancePool("smallest_nodes",
             instance_pool_name="Smallest Nodes",
             min_idle_instances=0,
             max_capacity=300,

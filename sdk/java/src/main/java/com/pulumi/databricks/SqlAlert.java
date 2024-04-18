@@ -21,6 +21,73 @@ import javax.annotation.Nullable;
  * 
  * **Note:** To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Directory;
+ * import com.pulumi.databricks.DirectoryArgs;
+ * import com.pulumi.databricks.SqlQuery;
+ * import com.pulumi.databricks.SqlQueryArgs;
+ * import com.pulumi.databricks.SqlAlert;
+ * import com.pulumi.databricks.SqlAlertArgs;
+ * import com.pulumi.databricks.inputs.SqlAlertOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sharedDir = new Directory(&#34;sharedDir&#34;, DirectoryArgs.builder()        
+ *             .path(&#34;/Shared/Queries&#34;)
+ *             .build());
+ * 
+ *         var this_ = new SqlQuery(&#34;this&#34;, SqlQueryArgs.builder()        
+ *             .dataSourceId(example.dataSourceId())
+ *             .name(&#34;My Query Name&#34;)
+ *             .query(&#34;SELECT 1 AS p1, 2 as p2&#34;)
+ *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *             .build());
+ * 
+ *         var alert = new SqlAlert(&#34;alert&#34;, SqlAlertArgs.builder()        
+ *             .queryId(this_.id())
+ *             .name(&#34;My Alert&#34;)
+ *             .parent(sharedDir.objectId().applyValue(objectId -&gt; String.format(&#34;folders/%s&#34;, objectId)))
+ *             .rearm(1)
+ *             .options(SqlAlertOptionsArgs.builder()
+ *                 .column(&#34;p1&#34;)
+ *                 .op(&#34;==&#34;)
+ *                 .value(&#34;2&#34;)
+ *                 .muted(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * End to end workspace management guide.
+ * * databricks.SqlQuery to manage Databricks SQL [Queries](https://docs.databricks.com/sql/user/queries/index.html).
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+ * 
  */
 @ResourceType(type="databricks:index/sqlAlert:SqlAlert")
 public class SqlAlert extends com.pulumi.resources.CustomResource {

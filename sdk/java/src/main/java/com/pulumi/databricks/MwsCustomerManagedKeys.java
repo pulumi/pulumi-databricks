@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.aws.AwsFunctions;
+ * import com.pulumi.aws.inputs.GetCallerIdentityArgs;
  * import com.pulumi.aws.iam.IamFunctions;
  * import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
  * import com.pulumi.aws.kms.Key;
@@ -95,6 +96,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var managedServicesCustomerManagedKeyAlias = new Alias(&#34;managedServicesCustomerManagedKeyAlias&#34;, AliasArgs.builder()        
+ *             .name(&#34;alias/managed-services-customer-managed-key-alias&#34;)
  *             .targetKeyId(managedServicesCustomerManagedKey.keyId())
  *             .build());
  * 
@@ -197,7 +199,7 @@ import javax.annotation.Nullable;
  *                     .effect(&#34;Allow&#34;)
  *                     .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
  *                         .type(&#34;AWS&#34;)
- *                         .identifiers(data.aws_caller_identity().current().account_id())
+ *                         .identifiers(current.accountId())
  *                         .build())
  *                     .actions(&#34;kms:*&#34;)
  *                     .resources(&#34;*&#34;)
@@ -261,6 +263,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var storageCustomerManagedKeyAlias = new Alias(&#34;storageCustomerManagedKeyAlias&#34;, AliasArgs.builder()        
+ *             .name(&#34;alias/storage-customer-managed-key-alias&#34;)
  *             .targetKeyId(storageCustomerManagedKey.keyId())
  *             .build());
  * 

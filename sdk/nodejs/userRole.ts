@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const instanceProfile = new databricks.InstanceProfile("instanceProfile", {instanceProfileArn: "my_instance_profile_arn"});
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserRole = new databricks.UserRole("myUserRole", {
+ * const instanceProfile = new databricks.InstanceProfile("instance_profile", {instanceProfileArn: "my_instance_profile_arn"});
+ * const myUser = new databricks.User("my_user", {userName: "me@example.com"});
+ * const myUserRole = new databricks.UserRole("my_user_role", {
  *     userId: myUser.id,
  *     role: instanceProfile.id,
  * });
@@ -32,8 +32,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const myUser = new databricks.User("myUser", {userName: "me@example.com"});
- * const myUserAccountAdmin = new databricks.UserRole("myUserAccountAdmin", {
+ * const myUser = new databricks.User("my_user", {userName: "me@example.com"});
+ * const myUserAccountAdmin = new databricks.UserRole("my_user_account_admin", {
  *     userId: myUser.id,
  *     role: "account_admin",
  * });

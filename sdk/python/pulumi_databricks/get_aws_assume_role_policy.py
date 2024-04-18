@@ -101,22 +101,25 @@ def get_aws_assume_role_policy(databricks_account_id: Optional[str] = None,
     import pulumi_databricks as databricks
 
     config = pulumi.Config()
+    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     databricks_account_id = config.require_object("databricksAccountId")
-    this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("crossAccountPolicy", policy=this_aws_cross_account_policy.json)
-    this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account_role = aws.iam.Role("crossAccountRole",
-        assume_role_policy=this_aws_assume_role_policy.json,
+    this = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("cross_account_policy",
+        name=f"{prefix}-crossaccount-iam-policy",
+        policy=this.json)
+    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account = aws.iam.Role("cross_account",
+        name=f"{prefix}-crossaccount-iam-role",
+        assume_role_policy=this_get_aws_assume_role_policy.json,
         description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment",
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
         policy_arn=cross_account_policy.arn,
-        role=cross_account_role.name)
+        role=cross_account.name)
     # required only in case of multi-workspace setup
-    this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+    this_mws_credentials = databricks.MwsCredentials("this",
         account_id=databricks_account_id,
-        credentials_name=f"{var['prefix']}-creds",
-        role_arn=cross_account_role.arn,
-        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        credentials_name=f"{prefix}-creds",
+        role_arn=cross_account.arn)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -166,22 +169,25 @@ def get_aws_assume_role_policy_output(databricks_account_id: Optional[pulumi.Inp
     import pulumi_databricks as databricks
 
     config = pulumi.Config()
+    # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     databricks_account_id = config.require_object("databricksAccountId")
-    this_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("crossAccountPolicy", policy=this_aws_cross_account_policy.json)
-    this_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account_role = aws.iam.Role("crossAccountRole",
-        assume_role_policy=this_aws_assume_role_policy.json,
+    this = databricks.get_aws_cross_account_policy()
+    cross_account_policy = aws.iam.Policy("cross_account_policy",
+        name=f"{prefix}-crossaccount-iam-policy",
+        policy=this.json)
+    this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
+    cross_account = aws.iam.Role("cross_account",
+        name=f"{prefix}-crossaccount-iam-role",
+        assume_role_policy=this_get_aws_assume_role_policy.json,
         description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("crossAccountRolePolicyAttachment",
+    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
         policy_arn=cross_account_policy.arn,
-        role=cross_account_role.name)
+        role=cross_account.name)
     # required only in case of multi-workspace setup
-    this_mws_credentials = databricks.MwsCredentials("thisMwsCredentials",
+    this_mws_credentials = databricks.MwsCredentials("this",
         account_id=databricks_account_id,
-        credentials_name=f"{var['prefix']}-creds",
-        role_arn=cross_account_role.arn,
-        opts=pulumi.ResourceOptions(provider=databricks["mws"]))
+        credentials_name=f"{prefix}-creds",
+        role_arn=cross_account.arn)
     ```
     <!--End PulumiCodeChooser -->
 

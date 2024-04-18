@@ -45,8 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.MwsCredentials;
  * import com.pulumi.databricks.MwsCredentialsArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
@@ -56,7 +54,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesTokenArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,51 +69,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.cloud.databricks.com&#34;)
- *             .build());
- * 
  *         // register cross-account ARN
- *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
+ *         var this_ = new MwsCredentials(&#34;this&#34;, MwsCredentialsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .credentialsName(String.format(&#34;%s-creds&#34;, var_.prefix()))
- *             .roleArn(var_.crossaccount_arn())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
+ *             .roleArn(crossaccountArn)
+ *             .build());
  * 
  *         // register root bucket
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, var_.prefix()))
- *             .bucketName(var_.root_bucket())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, prefix))
+ *             .bucketName(rootBucket)
+ *             .build());
  * 
  *         // register VPC
  *         var thisMwsNetworks = new MwsNetworks(&#34;thisMwsNetworks&#34;, MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;%s-network&#34;, var_.prefix()))
- *             .vpcId(var_.vpc_id())
- *             .subnetIds(var_.subnets_private())
- *             .securityGroupIds(var_.security_group())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .networkName(String.format(&#34;%s-network&#34;, prefix))
+ *             .vpcId(vpcId)
+ *             .subnetIds(subnetsPrivate)
+ *             .securityGroupIds(securityGroup)
+ *             .build());
  * 
  *         // create workspace in given VPC with DBFS on root bucket
  *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .workspaceName(var_.prefix())
- *             .awsRegion(var_.region())
- *             .credentialsId(thisMwsCredentials.credentialsId())
+ *             .workspaceName(prefix)
+ *             .awsRegion(region)
+ *             .credentialsId(this_.credentialsId())
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
  *             .networkId(thisMwsNetworks.networkId())
  *             .token()
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .build());
  * 
  *         ctx.export(&#34;databricksToken&#34;, thisMwsWorkspaces.token().applyValue(token -&gt; token.tokenValue()));
  *     }
@@ -137,8 +122,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomString;
- * import com.pulumi.random.RandomStringArgs;
+ * import com.pulumi.random.string;
+ * import com.pulumi.random.StringArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
  * import com.pulumi.aws.iam.Role;
@@ -183,53 +168,54 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
- *         var naming = new RandomString(&#34;naming&#34;, RandomStringArgs.builder()        
+ *         var naming = new String(&#34;naming&#34;, StringArgs.builder()        
  *             .special(false)
  *             .upper(false)
  *             .length(6)
  *             .build());
  * 
- *         final var prefix = naming.result().applyValue(result -&gt; String.format(&#34;dltp%s&#34;, result));
+ *         final var prefix = String.format(&#34;dltp%s&#34;, naming.result());
  * 
- *         final var thisAwsAssumeRolePolicy = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+ *         final var this = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
  *             .externalId(databricksAccountId)
  *             .build());
  * 
  *         var crossAccountRole = new Role(&#34;crossAccountRole&#34;, RoleArgs.builder()        
- *             .assumeRolePolicy(thisAwsAssumeRolePolicy.applyValue(getAwsAssumeRolePolicyResult -&gt; getAwsAssumeRolePolicyResult.json()))
- *             .tags(var_.tags())
+ *             .name(String.format(&#34;%s-crossaccount&#34;, prefix))
+ *             .assumeRolePolicy(this_.json())
+ *             .tags(tags)
  *             .build());
  * 
- *         final var thisAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
+ *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy();
  * 
  *         var thisRolePolicy = new RolePolicy(&#34;thisRolePolicy&#34;, RolePolicyArgs.builder()        
+ *             .name(String.format(&#34;%s-policy&#34;, prefix))
  *             .role(crossAccountRole.id())
- *             .policy(thisAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
+ *             .policy(thisGetAwsCrossAccountPolicy.applyValue(getAwsCrossAccountPolicyResult -&gt; getAwsCrossAccountPolicyResult.json()))
  *             .build());
  * 
  *         var thisMwsCredentials = new MwsCredentials(&#34;thisMwsCredentials&#34;, MwsCredentialsArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .credentialsName(String.format(&#34;%s-creds&#34;, prefix))
  *             .roleArn(crossAccountRole.arn())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .build());
  * 
- *         var rootStorageBucketBucketV2 = new BucketV2(&#34;rootStorageBucketBucketV2&#34;, BucketV2Args.builder()        
+ *         var rootStorageBucket = new BucketV2(&#34;rootStorageBucket&#34;, BucketV2Args.builder()        
+ *             .bucket(String.format(&#34;%s-rootbucket&#34;, prefix))
  *             .acl(&#34;private&#34;)
  *             .forceDestroy(true)
- *             .tags(var_.tags())
+ *             .tags(tags)
  *             .build());
  * 
  *         var rootVersioning = new BucketVersioningV2(&#34;rootVersioning&#34;, BucketVersioningV2Args.builder()        
- *             .bucket(rootStorageBucketBucketV2.id())
+ *             .bucket(rootStorageBucket.id())
  *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
  *                 .status(&#34;Disabled&#34;)
  *                 .build())
  *             .build());
  * 
  *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2(&#34;rootStorageBucketBucketServerSideEncryptionConfigurationV2&#34;, BucketServerSideEncryptionConfigurationV2Args.builder()        
- *             .bucket(rootStorageBucketBucketV2.bucket())
+ *             .bucket(rootStorageBucket.bucket())
  *             .rules(BucketServerSideEncryptionConfigurationV2RuleArgs.builder()
  *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs.builder()
  *                     .sseAlgorithm(&#34;AES256&#34;)
@@ -238,22 +224,22 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock(&#34;rootStorageBucketBucketPublicAccessBlock&#34;, BucketPublicAccessBlockArgs.builder()        
- *             .bucket(rootStorageBucketBucketV2.id())
+ *             .bucket(rootStorageBucket.id())
  *             .blockPublicAcls(true)
  *             .blockPublicPolicy(true)
  *             .ignorePublicAcls(true)
  *             .restrictPublicBuckets(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucketBucketV2)
+ *                 .dependsOn(rootStorageBucket)
  *                 .build());
  * 
- *         final var thisAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
- *             .bucket(rootStorageBucketBucketV2.bucket())
+ *         final var thisGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+ *             .bucket(rootStorageBucket.bucket())
  *             .build());
  * 
  *         var rootBucketPolicy = new BucketPolicy(&#34;rootBucketPolicy&#34;, BucketPolicyArgs.builder()        
- *             .bucket(rootStorageBucketBucketV2.id())
- *             .policy(thisAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult).applyValue(thisAwsBucketPolicy -&gt; thisAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult.json())))
+ *             .bucket(rootStorageBucket.id())
+ *             .policy(thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult).applyValue(thisGetAwsBucketPolicy -&gt; thisGetAwsBucketPolicy.applyValue(getAwsBucketPolicyResult -&gt; getAwsBucketPolicyResult.json())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
  *                 .build());
@@ -261,10 +247,8 @@ import javax.annotation.Nullable;
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations(&#34;thisMwsStorageConfigurations&#34;, MwsStorageConfigurationsArgs.builder()        
  *             .accountId(databricksAccountId)
  *             .storageConfigurationName(String.format(&#34;%s-storage&#34;, prefix))
- *             .bucketName(rootStorageBucketBucketV2.bucket())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .bucketName(rootStorageBucket.bucket())
+ *             .build());
  * 
  *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
@@ -274,9 +258,7 @@ import javax.annotation.Nullable;
  *             .storageConfigurationId(thisMwsStorageConfigurations.storageConfigurationId())
  *             .token()
  *             .customTags(Map.of(&#34;SoldToCode&#34;, &#34;1234&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(databricks.mws())
- *                 .build());
+ *             .build());
  * 
  *         ctx.export(&#34;databricksToken&#34;, thisMwsWorkspaces.token().applyValue(token -&gt; token.tokenValue()));
  *     }
@@ -299,8 +281,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.databricks.Provider;
- * import com.pulumi.databricks.ProviderArgs;
  * import com.pulumi.databricks.MwsNetworks;
  * import com.pulumi.databricks.MwsNetworksArgs;
  * import com.pulumi.databricks.inputs.MwsNetworksGcpNetworkInfoArgs;
@@ -327,19 +307,15 @@ import javax.annotation.Nullable;
  *         final var databricksAccountId = config.get(&#34;databricksAccountId&#34;);
  *         final var databricksGoogleServiceAccount = config.get(&#34;databricksGoogleServiceAccount&#34;);
  *         final var googleProject = config.get(&#34;googleProject&#34;);
- *         var mws = new Provider(&#34;mws&#34;, ProviderArgs.builder()        
- *             .host(&#34;https://accounts.gcp.databricks.com&#34;)
- *             .build());
- * 
  *         // register VPC
- *         var thisMwsNetworks = new MwsNetworks(&#34;thisMwsNetworks&#34;, MwsNetworksArgs.builder()        
+ *         var this_ = new MwsNetworks(&#34;this&#34;, MwsNetworksArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .networkName(String.format(&#34;%s-network&#34;, var_.prefix()))
+ *             .networkName(String.format(&#34;%s-network&#34;, prefix))
  *             .gcpNetworkInfo(MwsNetworksGcpNetworkInfoArgs.builder()
  *                 .networkProjectId(googleProject)
- *                 .vpcId(var_.vpc_id())
- *                 .subnetId(var_.subnet_id())
- *                 .subnetRegion(var_.subnet_region())
+ *                 .vpcId(vpcId)
+ *                 .subnetId(subnetId)
+ *                 .subnetRegion(subnetRegion)
  *                 .podIpRangeName(&#34;pods&#34;)
  *                 .serviceIpRangeName(&#34;svc&#34;)
  *                 .build())
@@ -348,14 +324,14 @@ import javax.annotation.Nullable;
  *         // create workspace in given VPC
  *         var thisMwsWorkspaces = new MwsWorkspaces(&#34;thisMwsWorkspaces&#34;, MwsWorkspacesArgs.builder()        
  *             .accountId(databricksAccountId)
- *             .workspaceName(var_.prefix())
- *             .location(var_.subnet_region())
+ *             .workspaceName(prefix)
+ *             .location(subnetRegion)
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
  *                 .gcp(MwsWorkspacesCloudResourceContainerGcpArgs.builder()
  *                     .projectId(googleProject)
  *                     .build())
  *                 .build())
- *             .networkId(thisMwsNetworks.networkId())
+ *             .networkId(this_.networkId())
  *             .gkeConfig(MwsWorkspacesGkeConfigArgs.builder()
  *                 .connectivityType(&#34;PRIVATE_NODE_PUBLIC_MASTER&#34;)
  *                 .masterIpRange(&#34;10.3.0.0/28&#34;)

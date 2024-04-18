@@ -39,24 +39,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.Any(externalDataAccess.Name),
 //				AwsIamRole: &databricks.StorageCredentialAwsIamRoleArgs{
-//					RoleArn: pulumi.Any(aws_iam_role.External_data_access.Arn),
+//					RoleArn: pulumi.Any(externalDataAccess.Arn),
 //				},
 //				Comment: pulumi.String("Managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			someExternalLocation, err := databricks.NewExternalLocation(ctx, "someExternalLocation", &databricks.ExternalLocationArgs{
-//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", aws_s3_bucket.External.Id)),
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("external"),
+//				Url:            pulumi.String(fmt.Sprintf("s3://%v/some", externalAwsS3Bucket.Id)),
 //				CredentialName: external.ID(),
 //				Comment:        pulumi.String("Managed by TF"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewGrants(ctx, "someGrants", &databricks.GrantsArgs{
-//				ExternalLocation: someExternalLocation.ID(),
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ExternalLocation: some.ID(),
 //				Grants: databricks.GrantsGrantArray{
 //					&databricks.GrantsGrantArgs{
 //						Principal: pulumi.String("Data Engineers"),

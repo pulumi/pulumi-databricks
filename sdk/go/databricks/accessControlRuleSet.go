@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,20 +38,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
+//			// account level group
 //			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//			automationSp, err := databricks.NewServicePrincipal(ctx, "automation_sp", &databricks.ServicePrincipalArgs{
 //				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automation_sp_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: automationSp.ApplicationId.ApplyT(func(applicationId string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/servicePrincipals/%v/ruleSets/default", accountId, applicationId), nil
+//				}).(pulumi.StringOutput),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -77,6 +83,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -84,19 +92,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group creation
-//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Data Science"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//			automationSp, err := databricks.NewServicePrincipal(ctx, "automation_sp", &databricks.ServicePrincipalArgs{
 //				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automation_sp_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: automationSp.ApplicationId.ApplyT(func(applicationId string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/servicePrincipals/%v/ruleSets/default", accountId, applicationId), nil
+//				}).(pulumi.StringOutput),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -124,6 +137,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -131,20 +146,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group creation
-//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Data Science"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//			automationSp, err := databricks.NewServicePrincipal(ctx, "automation_sp", &databricks.ServicePrincipalArgs{
 //				ApplicationId: pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				DisplayName:   pulumi.String("SP_FOR_AUTOMATION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automation_sp_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: automationSp.ApplicationId.ApplyT(func(applicationId string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/servicePrincipals/%v/ruleSets/default", accountId, applicationId), nil
+//				}).(pulumi.StringOutput),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -172,6 +192,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -179,19 +201,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
 //			// account level group creation
-//			ds, err := databricks.NewGroup(ctx, "ds", nil)
+//			ds, err := databricks.NewGroup(ctx, "ds", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Data Science"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewServicePrincipal(ctx, "automationSp", &databricks.ServicePrincipalArgs{
+//			automationSp, err := databricks.NewServicePrincipal(ctx, "automation_sp", &databricks.ServicePrincipalArgs{
 //				DisplayName: pulumi.String("SP_FOR_AUTOMATION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "automationSpRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "automation_sp_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: automationSp.ApplicationId.ApplyT(func(applicationId string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/servicePrincipals/%v/ruleSets/default", accountId, applicationId), nil
+//				}).(pulumi.StringOutput),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -221,6 +248,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -228,7 +257,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
+//			// account level group
 //			_, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
@@ -241,7 +271,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "dsGroupRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "ds_group_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: pulumi.String(fmt.Sprintf("accounts/%v/groups/%v/ruleSets/default", accountId, dsDatabricksGroup.Id)),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{
@@ -271,6 +302,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -278,13 +311,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_ := "00000000-0000-0000-0000-000000000000"
+//			accountId := "00000000-0000-0000-0000-000000000000"
+//			// account level group
 //			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Data Science",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// account level group
 //			marketplaceAdmins, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
 //				DisplayName: "Marketplace Admins",
 //			}, nil)
@@ -297,7 +332,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewAccessControlRuleSet(ctx, "accountRuleSet", &databricks.AccessControlRuleSetArgs{
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "account_rule_set", &databricks.AccessControlRuleSetArgs{
+//				Name: pulumi.String(fmt.Sprintf("accounts/%v/ruleSets/default", accountId)),
 //				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
 //					&databricks.AccessControlRuleSetGrantRuleArgs{
 //						Principals: pulumi.StringArray{

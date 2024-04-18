@@ -35,24 +35,6 @@ import * as utilities from "./utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
- * ## Java/Scala JAR
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const appDbfsFile = new databricks.DbfsFile("appDbfsFile", {
- *     source: `${path.module}/app-0.0.1.jar`,
- *     path: "/FileStore/app-0.0.1.jar",
- * });
- * const appLibrary = new databricks.Library("appLibrary", {
- *     clusterId: databricks_cluster["this"].id,
- *     jar: appDbfsFile.dbfsPath,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Java/Scala Maven
  *
  * Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
@@ -63,29 +45,11 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const deequ = new databricks.Library("deequ", {
- *     clusterId: databricks_cluster["this"].id,
+ *     clusterId: _this.id,
  *     maven: {
  *         coordinates: "com.amazon.deequ:deequ:1.0.4",
  *         exclusions: ["org.apache.avro:avro"],
  *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ## Python Wheel
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const appDbfsFile = new databricks.DbfsFile("appDbfsFile", {
- *     source: `${path.module}/baz.whl`,
- *     path: "/FileStore/baz.whl",
- * });
- * const appLibrary = new databricks.Library("appLibrary", {
- *     clusterId: databricks_cluster["this"].id,
- *     whl: appDbfsFile.dbfsPath,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -102,28 +66,10 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const fbprophet = new databricks.Library("fbprophet", {
- *     clusterId: databricks_cluster["this"].id,
+ *     clusterId: _this.id,
  *     pypi: {
  *         "package": "fbprophet==0.6",
  *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ## Python EGG
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const appDbfsFile = new databricks.DbfsFile("appDbfsFile", {
- *     source: `${path.module}/foo.egg`,
- *     path: "/FileStore/foo.egg",
- * });
- * const appLibrary = new databricks.Library("appLibrary", {
- *     clusterId: databricks_cluster["this"].id,
- *     egg: appDbfsFile.dbfsPath,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -138,7 +84,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const rkeops = new databricks.Library("rkeops", {
- *     clusterId: databricks_cluster["this"].id,
+ *     clusterId: _this.id,
  *     cran: {
  *         "package": "rkeops",
  *     },

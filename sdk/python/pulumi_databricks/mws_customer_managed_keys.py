@@ -249,6 +249,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
         current = aws.get_caller_identity()
         databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
@@ -277,9 +278,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     resources=["*"],
                 ),
             ])
-        managed_services_customer_managed_key = aws.kms.Key("managedServicesCustomerManagedKey", policy=databricks_managed_services_cmk.json)
-        managed_services_customer_managed_key_alias = aws.kms.Alias("managedServicesCustomerManagedKeyAlias", target_key_id=managed_services_customer_managed_key.key_id)
-        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+        managed_services_customer_managed_key = aws.kms.Key("managed_services_customer_managed_key", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managed_services_customer_managed_key_alias",
+            name="alias/managed-services-customer-managed-key-alias",
+            target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
             account_id=databricks_account_id,
             aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
                 key_arn=managed_services_customer_managed_key.arn,
@@ -297,9 +300,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Id of a google_kms_crypto_key
         cmek_resource_id = config.require_object("cmekResourceId")
-        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
             account_id=databricks_account_id,
             gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
                 kms_key_id=cmek_resource_id,
@@ -319,7 +324,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # AWS ARN for the Databricks cross account role
         databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
         databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
@@ -328,7 +335,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=[data["aws_caller_identity"]["current"]["account_id"]],
+                        identifiers=[current["accountId"]],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
@@ -389,8 +396,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     )],
                 ),
             ])
-        storage_customer_managed_key = aws.kms.Key("storageCustomerManagedKey", policy=databricks_storage_cmk.json)
-        storage_customer_managed_key_alias = aws.kms.Alias("storageCustomerManagedKeyAlias", target_key_id=storage_customer_managed_key.key_id)
+        storage_customer_managed_key = aws.kms.Key("storage_customer_managed_key", policy=databricks_storage_cmk.json)
+        storage_customer_managed_key_alias = aws.kms.Alias("storage_customer_managed_key_alias",
+            name="alias/storage-customer-managed-key-alias",
+            target_key_id=storage_customer_managed_key.key_id)
         storage = databricks.MwsCustomerManagedKeys("storage",
             account_id=databricks_account_id,
             aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
@@ -409,7 +418,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Id of a google_kms_crypto_key
         cmek_resource_id = config.require_object("cmekResourceId")
         storage = databricks.MwsCustomerManagedKeys("storage",
             account_id=databricks_account_id,
@@ -468,6 +479,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
         current = aws.get_caller_identity()
         databricks_managed_services_cmk = aws.iam.get_policy_document(version="2012-10-17",
@@ -496,9 +508,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     resources=["*"],
                 ),
             ])
-        managed_services_customer_managed_key = aws.kms.Key("managedServicesCustomerManagedKey", policy=databricks_managed_services_cmk.json)
-        managed_services_customer_managed_key_alias = aws.kms.Alias("managedServicesCustomerManagedKeyAlias", target_key_id=managed_services_customer_managed_key.key_id)
-        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+        managed_services_customer_managed_key = aws.kms.Key("managed_services_customer_managed_key", policy=databricks_managed_services_cmk.json)
+        managed_services_customer_managed_key_alias = aws.kms.Alias("managed_services_customer_managed_key_alias",
+            name="alias/managed-services-customer-managed-key-alias",
+            target_key_id=managed_services_customer_managed_key.key_id)
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
             account_id=databricks_account_id,
             aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
                 key_arn=managed_services_customer_managed_key.arn,
@@ -516,9 +530,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Id of a google_kms_crypto_key
         cmek_resource_id = config.require_object("cmekResourceId")
-        managed_services = databricks.MwsCustomerManagedKeys("managedServices",
+        managed_services = databricks.MwsCustomerManagedKeys("managed_services",
             account_id=databricks_account_id,
             gcp_key_info=databricks.MwsCustomerManagedKeysGcpKeyInfoArgs(
                 kms_key_id=cmek_resource_id,
@@ -538,7 +554,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # AWS ARN for the Databricks cross account role
         databricks_cross_account_role = config.require_object("databricksCrossAccountRole")
         databricks_storage_cmk = aws.iam.get_policy_document(version="2012-10-17",
             statements=[
@@ -547,7 +565,7 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     effect="Allow",
                     principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
                         type="AWS",
-                        identifiers=[data["aws_caller_identity"]["current"]["account_id"]],
+                        identifiers=[current["accountId"]],
                     )],
                     actions=["kms:*"],
                     resources=["*"],
@@ -608,8 +626,10 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
                     )],
                 ),
             ])
-        storage_customer_managed_key = aws.kms.Key("storageCustomerManagedKey", policy=databricks_storage_cmk.json)
-        storage_customer_managed_key_alias = aws.kms.Alias("storageCustomerManagedKeyAlias", target_key_id=storage_customer_managed_key.key_id)
+        storage_customer_managed_key = aws.kms.Key("storage_customer_managed_key", policy=databricks_storage_cmk.json)
+        storage_customer_managed_key_alias = aws.kms.Alias("storage_customer_managed_key_alias",
+            name="alias/storage-customer-managed-key-alias",
+            target_key_id=storage_customer_managed_key.key_id)
         storage = databricks.MwsCustomerManagedKeys("storage",
             account_id=databricks_account_id,
             aws_key_info=databricks.MwsCustomerManagedKeysAwsKeyInfoArgs(
@@ -628,7 +648,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
+        # Id of a google_kms_crypto_key
         cmek_resource_id = config.require_object("cmekResourceId")
         storage = databricks.MwsCustomerManagedKeys("storage",
             account_id=databricks_account_id,

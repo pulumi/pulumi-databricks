@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const test = new databricks.MlflowModel("test", {
+ *     name: "My MLflow Model",
  *     description: "My MLflow model description",
  *     tags: [
  *         {

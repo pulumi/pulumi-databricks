@@ -24,12 +24,13 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const external = new databricks.StorageCredential("external", {
+ *     name: externalDataAccess.name,
  *     awsIamRole: {
- *         roleArn: aws_iam_role.external_data_access.arn,
+ *         roleArn: externalDataAccess.arn,
  *     },
  *     comment: "Managed by TF",
  * });
- * const externalCreds = new databricks.Grants("externalCreds", {
+ * const externalCreds = new databricks.Grants("external_creds", {
  *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",
@@ -46,14 +47,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const externalMi = new databricks.StorageCredential("externalMi", {
+ * const externalMi = new databricks.StorageCredential("external_mi", {
+ *     name: "mi_credential",
  *     azureManagedIdentity: {
- *         accessConnectorId: azurerm_databricks_access_connector.example.id,
+ *         accessConnectorId: example.id,
  *     },
  *     comment: "Managed identity credential managed by TF",
  * });
- * const externalCreds = new databricks.Grants("externalCreds", {
- *     storageCredential: databricks_storage_credential.external.id,
+ * const externalCreds = new databricks.Grants("external_creds", {
+ *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",
  *         privileges: ["CREATE_EXTERNAL_TABLE"],
@@ -69,8 +71,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const external = new databricks.StorageCredential("external", {databricksGcpServiceAccount: {}});
- * const externalCreds = new databricks.Grants("externalCreds", {
+ * const external = new databricks.StorageCredential("external", {
+ *     name: "the-creds",
+ *     databricksGcpServiceAccount: {},
+ * });
+ * const externalCreds = new databricks.Grants("external_creds", {
  *     storageCredential: external.id,
  *     grants: [{
  *         principal: "Data Engineers",

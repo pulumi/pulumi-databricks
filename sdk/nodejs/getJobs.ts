@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *     const this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
- *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyoneCanViewAllJobs-${range.key}`, {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
  *                 groupName: "users",
@@ -38,10 +38,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getJobs({});
- * export const x = {
- *     sensitive: false,
- *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
- * };
+ * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -97,7 +94,7 @@ export interface GetJobsResult {
  *     const this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
  *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
- *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyoneCanViewAllJobs-${range.key}`, {
+ *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
  *                 groupName: "users",
@@ -117,10 +114,7 @@ export interface GetJobsResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getJobs({});
- * export const x = {
- *     sensitive: false,
- *     value: _this.then(_this => `ID of `x` job is ${_this.ids?.x}`),
- * };
+ * export const x = _this.then(_this => `ID of `x` job is ${_this.ids?.x}`);
  * ```
  * <!--End PulumiCodeChooser -->
  *

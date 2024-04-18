@@ -97,6 +97,60 @@ def get_current_config(account_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentConfigResult:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+
+    ## Example Usage
+
+    Create cloud-specific databricks_storage_credential:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    def single_or_none(elements):
+        if len(elements) != 1:
+            raise Exception("single_or_none expected input list to have a single element")
+        return elements[0]
+
+
+    this = databricks.get_current_config()
+    external = databricks.StorageCredential("external",
+        aws_iam_role=single_or_none([{
+            "roleArn": cloud_credential_id,
+        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+            "aws": True,
+        }]]),
+        azure_managed_identity=single_or_none([{
+            "accessConnectorId": cloud_credential_id,
+        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+            "azure": True,
+        }]]),
+        databricks_gcp_service_account=single_or_none([{} for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+            "gcp": True,
+        }]]),
+        name="storage_cred",
+        comment="Managed by TF")
+    ```
+    <!--End PulumiCodeChooser -->
+
+    ## Exported attributes
+
+    Data source exposes the following attributes:
+
+    * `is_account` - Whether the provider is configured at account-level
+    * `account_id` - Account Id if provider is configured at account-level
+    * `host` - Host of the Databricks workspace or account console
+    * `cloud_type` - Cloud type specified in the provider
+    * `auth_type` - Auth type used by the provider
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide
+    * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+    * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -125,5 +179,59 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[str]]] 
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
+
+    ## Example Usage
+
+    Create cloud-specific databricks_storage_credential:
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    def single_or_none(elements):
+        if len(elements) != 1:
+            raise Exception("single_or_none expected input list to have a single element")
+        return elements[0]
+
+
+    this = databricks.get_current_config()
+    external = databricks.StorageCredential("external",
+        aws_iam_role=single_or_none([{
+            "roleArn": cloud_credential_id,
+        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+            "aws": True,
+        }]]),
+        azure_managed_identity=single_or_none([{
+            "accessConnectorId": cloud_credential_id,
+        } for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+            "azure": True,
+        }]]),
+        databricks_gcp_service_account=single_or_none([{} for entry in [{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+            "gcp": True,
+        }]]),
+        name="storage_cred",
+        comment="Managed by TF")
+    ```
+    <!--End PulumiCodeChooser -->
+
+    ## Exported attributes
+
+    Data source exposes the following attributes:
+
+    * `is_account` - Whether the provider is configured at account-level
+    * `account_id` - Account Id if provider is configured at account-level
+    * `host` - Host of the Databricks workspace or account console
+    * `cloud_type` - Cloud type specified in the provider
+    * `auth_type` - Auth type used by the provider
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    * End to end workspace management guide
+    * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+    * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+    * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
     """
     ...

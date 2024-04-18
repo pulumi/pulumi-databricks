@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.SecretScope;
+ * import com.pulumi.databricks.SecretScopeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,7 +42,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new SecretScope(&#34;this&#34;);
+ *         var this_ = new SecretScope(&#34;this&#34;, SecretScopeArgs.builder()        
+ *             .name(&#34;terraform-demo-scope&#34;)
+ *             .build());
  * 
  *     }
  * }

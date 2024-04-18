@@ -56,14 +56,15 @@ namespace Pulumi.Databricks
     ///         { "custom_tags.Team", 
     ///         {
     ///             { "type", "fixed" },
-    ///             { "value", @var.Team },
+    ///             { "value", team },
     ///         } },
     ///     };
     /// 
-    ///     var personalVm = new Databricks.ClusterPolicy("personalVm", new()
+    ///     var personalVm = new Databricks.ClusterPolicy("personal_vm", new()
     ///     {
     ///         PolicyFamilyId = "personal-vm",
-    ///         PolicyFamilyDefinitionOverrides = JsonSerializer.Serialize(personal_vm_override),
+    ///         PolicyFamilyDefinitionOverrides = JsonSerializer.Serialize(personalVmOverride),
+    ///         Name = "Personal Compute",
     ///     });
     /// 
     /// });

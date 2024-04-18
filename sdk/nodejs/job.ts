@@ -57,12 +57,6 @@ export class Job extends pulumi.CustomResource {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly controlRunState!: pulumi.Output<boolean | undefined>;
     /**
@@ -297,12 +291,6 @@ export interface JobState {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     controlRunState?: pulumi.Input<boolean>;
     /**
@@ -439,12 +427,6 @@ export interface JobArgs {
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      *
      * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     controlRunState?: pulumi.Input<boolean>;
     /**

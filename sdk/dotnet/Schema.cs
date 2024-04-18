@@ -29,6 +29,7 @@ namespace Pulumi.Databricks
     /// {
     ///     var sandbox = new Databricks.Catalog("sandbox", new()
     ///     {
+    ///         Name = "sandbox",
     ///         Comment = "this catalog is managed by terraform",
     ///         Properties = 
     ///         {
@@ -39,6 +40,7 @@ namespace Pulumi.Databricks
     ///     var things = new Databricks.Schema("things", new()
     ///     {
     ///         CatalogName = sandbox.Id,
+    ///         Name = "things",
     ///         Comment = "this database is managed by terraform",
     ///         Properties = 
     ///         {

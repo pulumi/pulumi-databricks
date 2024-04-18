@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
  * const current = aws.getCallerIdentity({});
  * const databricksManagedServicesCmk = current.then(current => aws.iam.getPolicyDocument({
@@ -54,9 +55,12 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * }));
- * const managedServicesCustomerManagedKey = new aws.kms.Key("managedServicesCustomerManagedKey", {policy: databricksManagedServicesCmk.then(databricksManagedServicesCmk => databricksManagedServicesCmk.json)});
- * const managedServicesCustomerManagedKeyAlias = new aws.kms.Alias("managedServicesCustomerManagedKeyAlias", {targetKeyId: managedServicesCustomerManagedKey.keyId});
- * const managedServices = new databricks.MwsCustomerManagedKeys("managedServices", {
+ * const managedServicesCustomerManagedKey = new aws.kms.Key("managed_services_customer_managed_key", {policy: databricksManagedServicesCmk.then(databricksManagedServicesCmk => databricksManagedServicesCmk.json)});
+ * const managedServicesCustomerManagedKeyAlias = new aws.kms.Alias("managed_services_customer_managed_key_alias", {
+ *     name: "alias/managed-services-customer-managed-key-alias",
+ *     targetKeyId: managedServicesCustomerManagedKey.keyId,
+ * });
+ * const managedServices = new databricks.MwsCustomerManagedKeys("managed_services", {
  *     accountId: databricksAccountId,
  *     awsKeyInfo: {
  *         keyArn: managedServicesCustomerManagedKey.arn,
@@ -75,9 +79,11 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
+ * // Id of a google_kms_crypto_key
  * const cmekResourceId = config.requireObject("cmekResourceId");
- * const managedServices = new databricks.MwsCustomerManagedKeys("managedServices", {
+ * const managedServices = new databricks.MwsCustomerManagedKeys("managed_services", {
  *     accountId: databricksAccountId,
  *     gcpKeyInfo: {
  *         kmsKeyId: cmekResourceId,
@@ -98,7 +104,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
+ * // AWS ARN for the Databricks cross account role
  * const databricksCrossAccountRole = config.requireObject("databricksCrossAccountRole");
  * const databricksStorageCmk = aws.iam.getPolicyDocument({
  *     version: "2012-10-17",
@@ -108,7 +116,7 @@ import * as utilities from "./utilities";
  *             effect: "Allow",
  *             principals: [{
  *                 type: "AWS",
- *                 identifiers: [data.aws_caller_identity.current.account_id],
+ *                 identifiers: [current.accountId],
  *             }],
  *             actions: ["kms:*"],
  *             resources: ["*"],
@@ -170,8 +178,11 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const storageCustomerManagedKey = new aws.kms.Key("storageCustomerManagedKey", {policy: databricksStorageCmk.then(databricksStorageCmk => databricksStorageCmk.json)});
- * const storageCustomerManagedKeyAlias = new aws.kms.Alias("storageCustomerManagedKeyAlias", {targetKeyId: storageCustomerManagedKey.keyId});
+ * const storageCustomerManagedKey = new aws.kms.Key("storage_customer_managed_key", {policy: databricksStorageCmk.then(databricksStorageCmk => databricksStorageCmk.json)});
+ * const storageCustomerManagedKeyAlias = new aws.kms.Alias("storage_customer_managed_key_alias", {
+ *     name: "alias/storage-customer-managed-key-alias",
+ *     targetKeyId: storageCustomerManagedKey.keyId,
+ * });
  * const storage = new databricks.MwsCustomerManagedKeys("storage", {
  *     accountId: databricksAccountId,
  *     awsKeyInfo: {
@@ -191,7 +202,9 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.gcp.databricks.com/
  * const databricksAccountId = config.requireObject("databricksAccountId");
+ * // Id of a google_kms_crypto_key
  * const cmekResourceId = config.requireObject("cmekResourceId");
  * const storage = new databricks.MwsCustomerManagedKeys("storage", {
  *     accountId: databricksAccountId,

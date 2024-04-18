@@ -26,15 +26,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sandboxCatalog, err := databricks.NewCatalog(ctx, "sandboxCatalog", &databricks.CatalogArgs{
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:          pulumi.String("sandbox"),
 //				IsolationMode: pulumi.String("ISOLATED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCatalogWorkspaceBinding(ctx, "sandboxCatalogWorkspaceBinding", &databricks.CatalogWorkspaceBindingArgs{
-//				SecurableName: sandboxCatalog.Name,
-//				WorkspaceId:   pulumi.Any(databricks_mws_workspaces.Other.Workspace_id),
+//			_, err = databricks.NewCatalogWorkspaceBinding(ctx, "sandbox", &databricks.CatalogWorkspaceBindingArgs{
+//				SecurableName: sandbox.Name,
+//				WorkspaceId:   pulumi.Any(other.WorkspaceId),
 //			})
 //			if err != nil {
 //				return err

@@ -25,7 +25,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instanceProfile = new Databricks.InstanceProfile("instanceProfile", new()
+    ///     var instanceProfile = new Databricks.InstanceProfile("instance_profile", new()
     ///     {
     ///         InstanceProfileArn = "my_instance_profile_arn",
     ///     });
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     ///         DisplayName = "My Service Principal",
     ///     });
     /// 
-    ///     var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("myServicePrincipalInstanceProfile", new()
+    ///     var myServicePrincipalInstanceProfile = new Databricks.ServicePrincipalRole("my_service_principal_instance_profile", new()
     ///     {
     ///         ServicePrincipalId = @this.Id,
     ///         Role = instanceProfile.Id,

@@ -129,11 +129,13 @@ class OnlineTable(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.OnlineTable("this", spec=databricks.OnlineTableSpecArgs(
-            primary_key_columns=["id"],
-            run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
-            source_table_full_name="main.default.source_table",
-        ))
+        this = databricks.OnlineTable("this",
+            name="main.default.online_table",
+            spec=databricks.OnlineTableSpecArgs(
+                source_table_full_name="main.default.source_table",
+                primary_key_columns=["id"],
+                run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -170,11 +172,13 @@ class OnlineTable(pulumi.CustomResource):
         import pulumi
         import pulumi_databricks as databricks
 
-        this = databricks.OnlineTable("this", spec=databricks.OnlineTableSpecArgs(
-            primary_key_columns=["id"],
-            run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
-            source_table_full_name="main.default.source_table",
-        ))
+        this = databricks.OnlineTable("this",
+            name="main.default.online_table",
+            spec=databricks.OnlineTableSpecArgs(
+                source_table_full_name="main.default.source_table",
+                primary_key_columns=["id"],
+                run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

@@ -38,8 +38,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewCluster(ctx, "myCluster", &databricks.ClusterArgs{
-//				InstancePoolId: pulumi.Any(data.Databricks_instance_pool.Pool.Id),
+//			_, err = databricks.NewCluster(ctx, "my_cluster", &databricks.ClusterArgs{
+//				InstancePoolId: pulumi.Any(poolDatabricksInstancePool.Id),
 //			})
 //			if err != nil {
 //				return err
