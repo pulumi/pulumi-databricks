@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     recursive: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -81,7 +79,6 @@ export interface GetDbfsFilePathsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -91,7 +88,6 @@ export interface GetDbfsFilePathsResult {
  *     recursive: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

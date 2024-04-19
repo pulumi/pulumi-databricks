@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * > **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -33,7 +32,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Access Control
  *
@@ -126,7 +124,6 @@ export class Cluster extends pulumi.CustomResource {
      *
      * For example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -145,7 +142,6 @@ export class Cluster extends pulumi.CustomResource {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly customTags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -188,7 +184,6 @@ export class Cluster extends pulumi.CustomResource {
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -215,7 +210,6 @@ export class Cluster extends pulumi.CustomResource {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly isPinned!: pulumi.Output<boolean | undefined>;
     public readonly libraries!: pulumi.Output<outputs.ClusterLibrary[] | undefined>;
@@ -391,7 +385,6 @@ export interface ClusterState {
      *
      * For example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -410,7 +403,6 @@ export interface ClusterState {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     customTags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -453,7 +445,6 @@ export interface ClusterState {
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -480,7 +471,6 @@ export interface ClusterState {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     isPinned?: pulumi.Input<boolean>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;
@@ -557,7 +547,6 @@ export interface ClusterArgs {
      *
      * For example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -576,7 +565,6 @@ export interface ClusterArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     customTags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -615,7 +603,6 @@ export interface ClusterArgs {
      *
      * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -642,7 +629,6 @@ export interface ClusterArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     isPinned?: pulumi.Input<boolean>;
     libraries?: pulumi.Input<pulumi.Input<inputs.ClusterLibrary>[]>;

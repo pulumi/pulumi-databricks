@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     "fs.azure.account.oauth2.client.secret": publishingApi.configReference,
  * }});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

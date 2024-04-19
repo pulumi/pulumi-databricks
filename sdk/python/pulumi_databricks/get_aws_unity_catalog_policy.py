@@ -104,7 +104,6 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -151,7 +150,6 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[str] = None,
         assume_role_policy=passrole_for_uc.json,
         managed_policy_arns=[unity_metastore.arn])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).
@@ -189,7 +187,6 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -236,7 +233,6 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[st
         assume_role_policy=passrole_for_uc.json,
         managed_policy_arns=[unity_metastore.arn])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: The Account ID of the current AWS account (not your Databricks account).

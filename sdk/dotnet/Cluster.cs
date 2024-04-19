@@ -14,7 +14,6 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; **Note** In case of `Cannot access cluster ####-######-####### that was terminated or unpinned more than 30 days ago` command.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,7 +47,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Access Control
     /// 
@@ -138,7 +136,6 @@ namespace Pulumi.Databricks
         /// 
         /// For example:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -166,7 +163,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableDictionary<string, object>?> CustomTags { get; private set; } = null!;
@@ -233,7 +229,6 @@ namespace Pulumi.Databricks
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -273,7 +268,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
@@ -444,7 +438,6 @@ namespace Pulumi.Databricks
         /// 
         /// For example:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -472,7 +465,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -541,7 +533,6 @@ namespace Pulumi.Databricks
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -581,7 +572,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
@@ -731,7 +721,6 @@ namespace Pulumi.Databricks
         /// 
         /// For example:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -759,7 +748,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputMap<object> CustomTags
         {
@@ -840,7 +828,6 @@ namespace Pulumi.Databricks
         /// 
         /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -880,7 +867,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }

@@ -281,7 +281,6 @@ class Entitlements(pulumi.CustomResource):
 
         Setting entitlements for a regular user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -292,11 +291,9 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Setting entitlements for a service principal:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -307,11 +304,9 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Setting entitlements to all users in a workspace - referencing special `users` Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -322,7 +317,6 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -379,7 +373,6 @@ class Entitlements(pulumi.CustomResource):
 
         Setting entitlements for a regular user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -390,11 +383,9 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Setting entitlements for a service principal:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -405,11 +396,9 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Setting entitlements to all users in a workspace - referencing special `users` Group
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -420,7 +409,6 @@ class Entitlements(pulumi.CustomResource):
             allow_cluster_create=True,
             allow_instance_pool_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
         /// 
         /// Getting details of an existing share in the metastore
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 
@@ -54,7 +52,6 @@ namespace Pulumi.Databricks
         /// 
         /// Getting details of an existing share in the metastore
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 

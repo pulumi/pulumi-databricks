@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -31,7 +30,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [_this],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

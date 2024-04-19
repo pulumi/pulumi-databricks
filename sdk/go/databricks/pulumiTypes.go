@@ -260,7 +260,6 @@ type ClusterAutoscale struct {
 	//
 	// The following example demonstrates how to create an single node cluster:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -303,7 +302,6 @@ type ClusterAutoscale struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers *int `pulumi:"minWorkers"`
@@ -334,7 +332,6 @@ type ClusterAutoscaleArgs struct {
 	//
 	// The following example demonstrates how to create an single node cluster:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -377,7 +374,6 @@ type ClusterAutoscaleArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
 	// The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
 	MinWorkers pulumi.IntPtrInput `pulumi:"minWorkers"`
@@ -473,7 +469,6 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //
 // The following example demonstrates how to create an single node cluster:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -519,7 +514,6 @@ func (o ClusterAutoscaleOutput) ToClusterAutoscalePtrOutputWithContext(ctx conte
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterAutoscaleOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutoscale) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
 }
@@ -566,7 +560,6 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //
 // The following example demonstrates how to create an single node cluster:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -612,7 +605,6 @@ func (o ClusterAutoscalePtrOutput) Elem() ClusterAutoscaleOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterAutoscalePtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterAutoscale) *int {
 		if v == nil {
@@ -1940,7 +1932,6 @@ type ClusterClusterMountInfo struct {
 	//
 	// For example, you can mount Azure Data Lake Storage container using the following code:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1974,7 +1965,6 @@ type ClusterClusterMountInfo struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	LocalMountDirPath string `pulumi:"localMountDirPath"`
 	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfo `pulumi:"networkFilesystemInfo"`
@@ -1998,7 +1988,6 @@ type ClusterClusterMountInfoArgs struct {
 	//
 	// For example, you can mount Azure Data Lake Storage container using the following code:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2032,7 +2021,6 @@ type ClusterClusterMountInfoArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	LocalMountDirPath pulumi.StringInput `pulumi:"localMountDirPath"`
 	// block specifying connection. It consists of:
 	NetworkFilesystemInfo ClusterClusterMountInfoNetworkFilesystemInfoInput `pulumi:"networkFilesystemInfo"`
@@ -2095,7 +2083,6 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //
 // For example, you can mount Azure Data Lake Storage container using the following code:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2132,7 +2119,6 @@ func (o ClusterClusterMountInfoOutput) ToClusterClusterMountInfoOutputWithContex
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterClusterMountInfoOutput) LocalMountDirPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterClusterMountInfo) string { return v.LocalMountDirPath }).(pulumi.StringOutput)
 }
@@ -2235,7 +2221,6 @@ type ClusterDockerImage struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2274,7 +2259,6 @@ type ClusterDockerImage struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth *ClusterDockerImageBasicAuth `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url string `pulumi:"url"`
@@ -2296,7 +2280,6 @@ type ClusterDockerImageArgs struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2335,7 +2318,6 @@ type ClusterDockerImageArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth ClusterDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url pulumi.StringInput `pulumi:"url"`
@@ -2422,7 +2404,6 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2464,7 +2445,6 @@ func (o ClusterDockerImageOutput) ToClusterDockerImagePtrOutputWithContext(ctx c
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterDockerImageOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v ClusterDockerImage) *ClusterDockerImageBasicAuth { return v.BasicAuth }).(ClusterDockerImageBasicAuthPtrOutput)
 }
@@ -2502,7 +2482,6 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2544,7 +2523,6 @@ func (o ClusterDockerImagePtrOutput) Elem() ClusterDockerImageOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterDockerImagePtrOutput) BasicAuth() ClusterDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v *ClusterDockerImage) *ClusterDockerImageBasicAuth {
 		if v == nil {
@@ -5452,7 +5430,6 @@ func (o ClusterWorkloadTypePtrOutput) Clients() ClusterWorkloadTypeClientsPtrOut
 type ClusterWorkloadTypeClients struct {
 	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -5478,7 +5455,6 @@ type ClusterWorkloadTypeClients struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Jobs *bool `pulumi:"jobs"`
 	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks *bool `pulumi:"notebooks"`
@@ -5498,7 +5474,6 @@ type ClusterWorkloadTypeClientsInput interface {
 type ClusterWorkloadTypeClientsArgs struct {
 	// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -5524,7 +5499,6 @@ type ClusterWorkloadTypeClientsArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Jobs pulumi.BoolPtrInput `pulumi:"jobs"`
 	// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
 	Notebooks pulumi.BoolPtrInput `pulumi:"notebooks"`
@@ -5609,7 +5583,6 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 
 // boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5638,7 +5611,6 @@ func (o ClusterWorkloadTypeClientsOutput) ToClusterWorkloadTypeClientsPtrOutputW
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterWorkloadTypeClientsOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadTypeClients) *bool { return v.Jobs }).(pulumi.BoolPtrOutput)
 }
@@ -5674,7 +5646,6 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 
 // boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5703,7 +5674,6 @@ func (o ClusterWorkloadTypeClientsPtrOutput) Elem() ClusterWorkloadTypeClientsOu
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ClusterWorkloadTypeClientsPtrOutput) Jobs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadTypeClients) *bool {
 		if v == nil {
@@ -7642,7 +7612,6 @@ type InstancePoolPreloadedDockerImage struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -7683,7 +7652,6 @@ type InstancePoolPreloadedDockerImage struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth *InstancePoolPreloadedDockerImageBasicAuth `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url string `pulumi:"url"`
@@ -7705,7 +7673,6 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	//
 	// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -7746,7 +7713,6 @@ type InstancePoolPreloadedDockerImageArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	BasicAuth InstancePoolPreloadedDockerImageBasicAuthPtrInput `pulumi:"basicAuth"`
 	// URL for the Docker image
 	Url pulumi.StringInput `pulumi:"url"`
@@ -7807,7 +7773,6 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //
 // Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -7851,7 +7816,6 @@ func (o InstancePoolPreloadedDockerImageOutput) ToInstancePoolPreloadedDockerIma
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o InstancePoolPreloadedDockerImageOutput) BasicAuth() InstancePoolPreloadedDockerImageBasicAuthPtrOutput {
 	return o.ApplyT(func(v InstancePoolPreloadedDockerImage) *InstancePoolPreloadedDockerImageBasicAuth {
 		return v.BasicAuth
@@ -18806,7 +18770,6 @@ type JobRunAs struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -18829,7 +18792,6 @@ type JobRunAs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
 	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName *string `pulumi:"userName"`
@@ -18851,7 +18813,6 @@ type JobRunAsArgs struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -18874,7 +18835,6 @@ type JobRunAsArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	ServicePrincipalName pulumi.StringPtrInput `pulumi:"servicePrincipalName"`
 	// The email of an active workspace user. Non-admin users can only set this field to their own email.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
@@ -18961,7 +18921,6 @@ func (o JobRunAsOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobR
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -18987,7 +18946,6 @@ func (o JobRunAsOutput) ToJobRunAsPtrOutputWithContext(ctx context.Context) JobR
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobRunAsOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobRunAs) *string { return v.ServicePrincipalName }).(pulumi.StringPtrOutput)
 }
@@ -19025,7 +18983,6 @@ func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -19051,7 +19008,6 @@ func (o JobRunAsPtrOutput) Elem() JobRunAsOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobRunAsPtrOutput) ServicePrincipalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobRunAs) *string {
 		if v == nil {
@@ -29289,7 +29245,6 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -29349,7 +29304,6 @@ type JobTaskForEachTaskTaskSqlTaskFile struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path string `pulumi:"path"`
 	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
 	Source *string `pulumi:"source"`
@@ -29371,7 +29325,6 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -29431,7 +29384,6 @@ type JobTaskForEachTaskTaskSqlTaskFileArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path pulumi.StringInput `pulumi:"path"`
 	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -29518,7 +29470,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29581,7 +29532,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFileOutput) ToJobTaskForEachTaskTaskSqlTask
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskForEachTaskTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskForEachTaskTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -29619,7 +29569,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -29682,7 +29631,6 @@ func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Elem() JobTaskForEachTaskTas
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskForEachTaskTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskForEachTaskTaskSqlTaskFile) *string {
 		if v == nil {
@@ -37216,7 +37164,6 @@ type JobTaskSqlTaskFile struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -37276,7 +37223,6 @@ type JobTaskSqlTaskFile struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path string `pulumi:"path"`
 	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
 	Source *string `pulumi:"source"`
@@ -37298,7 +37244,6 @@ type JobTaskSqlTaskFileArgs struct {
 	//
 	// Example
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -37358,7 +37303,6 @@ type JobTaskSqlTaskFileArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Path pulumi.StringInput `pulumi:"path"`
 	// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -37445,7 +37389,6 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37508,7 +37451,6 @@ func (o JobTaskSqlTaskFileOutput) ToJobTaskSqlTaskFilePtrOutputWithContext(ctx c
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskSqlTaskFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTaskSqlTaskFile) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -37546,7 +37488,6 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //
 // # Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37609,7 +37550,6 @@ func (o JobTaskSqlTaskFilePtrOutput) Elem() JobTaskSqlTaskFileOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o JobTaskSqlTaskFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTaskSqlTaskFile) *string {
 		if v == nil {

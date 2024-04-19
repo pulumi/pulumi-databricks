@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * Create cloud-specific databricks_storage_credential:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     comment: "Managed by TF",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Exported attributes
  *
@@ -102,7 +100,6 @@ export interface GetCurrentConfigResult {
  *
  * Create cloud-specific databricks_storage_credential:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -127,7 +124,6 @@ export interface GetCurrentConfigResult {
  *     comment: "Managed by TF",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Exported attributes
  *

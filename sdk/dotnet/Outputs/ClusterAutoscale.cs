@@ -27,7 +27,6 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// The following example demonstrates how to create an single node cluster:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,7 +64,6 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly int? MaxWorkers;
         /// <summary>

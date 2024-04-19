@@ -24,18 +24,15 @@ import * as utilities from "./utilities";
  *
  * Creating regular Databricks-managed service principal:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {displayName: "Admin SP"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -49,11 +46,9 @@ import * as utilities from "./utilities";
  *     memberId: sp.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating Azure-managed service principal with cluster create permissions:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -64,29 +59,24 @@ import * as utilities from "./utilities";
  *     allowClusterCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating Databricks-managed service principal in AWS Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {displayName: "Automation-only SP"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating Azure-managed service principal in Azure Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const sp = new databricks.ServicePrincipal("sp", {applicationId: "00000000-0000-0000-0000-000000000000"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

@@ -146,7 +146,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         Through a Databricks workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -162,11 +161,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -182,11 +179,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -204,11 +199,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through GCP Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -224,13 +217,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Group rule set usage
 
         Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -246,13 +237,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/group.manager",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Account rule set usage
 
         Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -280,7 +269,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -319,7 +307,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
         Through a Databricks workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -335,11 +322,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -355,11 +340,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -377,11 +360,9 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         Through GCP Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -397,13 +378,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/servicePrincipal.user",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Group rule set usage
 
         Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -419,13 +398,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 role="roles/group.manager",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Account rule set usage
 
         Refer to the appropriate provider configuration as shown in the examples for service principal rule set.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -453,7 +430,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * ### For AWS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -69,11 +68,9 @@ import * as utilities from "./utilities";
  *     useCases: ["MANAGED_SERVICES"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### For GCP
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -91,13 +88,11 @@ import * as utilities from "./utilities";
  *     useCases: ["MANAGED_SERVICES"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Customer-managed key for workspace storage
  *
  * ### For AWS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -192,11 +187,9 @@ import * as utilities from "./utilities";
  *     useCases: ["STORAGE"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### For GCP
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -214,7 +207,6 @@ import * as utilities from "./utilities";
  *     useCases: ["STORAGE"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

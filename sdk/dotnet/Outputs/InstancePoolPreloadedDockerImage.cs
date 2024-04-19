@@ -18,7 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly Outputs.InstancePoolPreloadedDockerImageBasicAuth? BasicAuth;
         /// <summary>

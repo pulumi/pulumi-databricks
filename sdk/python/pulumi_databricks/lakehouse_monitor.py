@@ -610,7 +610,6 @@ class LakehouseMonitor(pulumi.CustomResource):
 
         ### Inference Monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -627,9 +626,7 @@ class LakehouseMonitor(pulumi.CustomResource):
                 problem_type="PROBLEM_TYPE_REGRESSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Snapshot Monitor
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -640,7 +637,6 @@ class LakehouseMonitor(pulumi.CustomResource):
             output_schema_name=f"{sandbox['name']}.{things['name']}",
             snapshot=databricks.LakehouseMonitorSnapshotArgs())
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -681,7 +677,6 @@ class LakehouseMonitor(pulumi.CustomResource):
 
         ### Inference Monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -698,9 +693,7 @@ class LakehouseMonitor(pulumi.CustomResource):
                 problem_type="PROBLEM_TYPE_REGRESSION",
             ))
         ```
-        <!--End PulumiCodeChooser -->
         ### Snapshot Monitor
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -711,7 +704,6 @@ class LakehouseMonitor(pulumi.CustomResource):
             output_schema_name=f"{sandbox['name']}.{things['name']}",
             snapshot=databricks.LakehouseMonitorSnapshotArgs())
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

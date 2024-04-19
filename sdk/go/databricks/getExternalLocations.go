@@ -15,7 +15,6 @@ import (
 //
 // # List all external locations in the metastore
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,7 +37,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

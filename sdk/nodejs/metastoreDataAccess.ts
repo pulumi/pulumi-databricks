@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * For AWS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     isDefault: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * For Azure using managed identity as credential (recommended)
  *

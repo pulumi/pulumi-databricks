@@ -103,7 +103,6 @@ def get_job(id: Optional[str] = None,
 
     Getting the existing cluster id of specific Job by name or by id:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -111,7 +110,6 @@ def get_job(id: Optional[str] = None,
     this = databricks.get_job(job_name="My job")
     pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -158,7 +156,6 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Getting the existing cluster id of specific Job by name or by id:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -166,7 +163,6 @@ def get_job_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     this = databricks.get_job(job_name="My job")
     pulumi.export("jobNumWorkers", this.job_settings.settings.new_cluster.num_workers)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

@@ -308,7 +308,6 @@ class ClusterPolicy(pulumi.CustomResource):
 
         You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -330,7 +329,6 @@ class ClusterPolicy(pulumi.CustomResource):
             policy_family_definition_overrides=json.dumps(personal_vm_override),
             name="Personal Compute")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -404,7 +402,6 @@ class ClusterPolicy(pulumi.CustomResource):
 
         You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -426,7 +423,6 @@ class ClusterPolicy(pulumi.CustomResource):
             policy_family_definition_overrides=json.dumps(personal_vm_override),
             name="Personal Compute")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

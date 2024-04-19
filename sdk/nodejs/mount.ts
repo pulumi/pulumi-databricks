@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  *
  * ### Example mounting ADLS Gen2 using uri and extraConfigs
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -53,7 +52,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Example mounting ADLS Gen2 with AAD passthrough
  *
@@ -63,7 +61,6 @@ import * as utilities from "./utilities";
  *
  * To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azure from "@pulumi/azure";
@@ -112,7 +109,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## s3 block
  *
@@ -123,7 +119,6 @@ import * as utilities from "./utilities";
  *
  * ### Example of mounting S3
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -137,7 +132,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## abfs block
  *
@@ -156,7 +150,6 @@ import * as utilities from "./utilities";
  *
  * In this example, we're using Azure authentication, so we can omit some parameters (`tenantId`, `storageAccountName`, and `containerName`) that will be detected automatically.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azure from "@pulumi/azure";
@@ -201,7 +194,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## gs block
  *
@@ -212,7 +204,6 @@ import * as utilities from "./utilities";
  *
  * ### Example mounting Google Cloud Storage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -225,7 +216,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## adl block
  *
@@ -242,7 +232,6 @@ import * as utilities from "./utilities";
  *
  * ### Example mounting ADLS Gen1
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -259,7 +248,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## wasb block
  *
@@ -274,7 +262,6 @@ import * as utilities from "./utilities";
  *
  * ### Example mounting Azure Blob Storage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azure from "@pulumi/azure";
@@ -313,7 +300,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Migration from other mount resources
  *

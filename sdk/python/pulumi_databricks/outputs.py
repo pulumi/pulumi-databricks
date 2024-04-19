@@ -768,7 +768,6 @@ class ClusterAutoscale(dict):
                
                The following example demonstrates how to create an single node cluster:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -788,7 +787,6 @@ class ClusterAutoscale(dict):
                        "ResourceClass": "SingleNode",
                    })
                ```
-               <!--End PulumiCodeChooser -->
         :param int min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
         """
         if max_workers is not None:
@@ -813,7 +811,6 @@ class ClusterAutoscale(dict):
 
         The following example demonstrates how to create an single node cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -833,7 +830,6 @@ class ClusterAutoscale(dict):
                 "ResourceClass": "SingleNode",
             })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "max_workers")
 
@@ -1319,7 +1315,6 @@ class ClusterClusterMountInfo(dict):
                
                For example, you can mount Azure Data Lake Storage container using the following code:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1335,7 +1330,6 @@ class ClusterClusterMountInfo(dict):
                    local_mount_dir_path="/mnt/nfs-test",
                )])
                ```
-               <!--End PulumiCodeChooser -->
         :param 'ClusterClusterMountInfoNetworkFilesystemInfoArgs' network_filesystem_info: block specifying connection. It consists of:
         :param str remote_mount_dir_path: string specifying path to mount on the remote service.
         """
@@ -1352,7 +1346,6 @@ class ClusterClusterMountInfo(dict):
 
         For example, you can mount Azure Data Lake Storage container using the following code:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1368,7 +1361,6 @@ class ClusterClusterMountInfo(dict):
             local_mount_dir_path="/mnt/nfs-test",
         )])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "local_mount_dir_path")
 
@@ -1466,7 +1458,6 @@ class ClusterDockerImage(dict):
                
                Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1483,7 +1474,6 @@ class ClusterDockerImage(dict):
                    ),
                ))
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -1505,7 +1495,6 @@ class ClusterDockerImage(dict):
 
         Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1522,7 +1511,6 @@ class ClusterDockerImage(dict):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "basic_auth")
 
@@ -2197,7 +2185,6 @@ class ClusterWorkloadTypeClients(dict):
         """
         :param bool jobs: boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -2209,7 +2196,6 @@ class ClusterWorkloadTypeClients(dict):
                    ),
                ))
                ```
-               <!--End PulumiCodeChooser -->
         :param bool notebooks: boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
         """
         if jobs is not None:
@@ -2223,7 +2209,6 @@ class ClusterWorkloadTypeClients(dict):
         """
         boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -2235,7 +2220,6 @@ class ClusterWorkloadTypeClients(dict):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "jobs")
 
@@ -2821,7 +2805,6 @@ class InstancePoolPreloadedDockerImage(dict):
                
                Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -2838,7 +2821,6 @@ class InstancePoolPreloadedDockerImage(dict):
                    ),
                )])
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -2860,7 +2842,6 @@ class InstancePoolPreloadedDockerImage(dict):
 
         Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -2877,7 +2858,6 @@ class InstancePoolPreloadedDockerImage(dict):
             ),
         )])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "basic_auth")
 
@@ -6155,7 +6135,6 @@ class JobRunAs(dict):
                
                Example:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -6164,7 +6143,6 @@ class JobRunAs(dict):
                    service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
                ))
                ```
-               <!--End PulumiCodeChooser -->
         :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
         """
         if service_principal_name is not None:
@@ -6180,7 +6158,6 @@ class JobRunAs(dict):
 
         Example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -6189,7 +6166,6 @@ class JobRunAs(dict):
             service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "service_principal_name")
 
@@ -9872,7 +9848,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                
                Example
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -9915,7 +9890,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                        ),
                    ])
                ```
-               <!--End PulumiCodeChooser -->
         :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
         """
         pulumi.set(__self__, "path", path)
@@ -9930,7 +9904,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
 
         Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -9973,7 +9946,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "path")
 
@@ -12265,7 +12237,6 @@ class JobTaskSqlTaskFile(dict):
                
                Example
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -12308,7 +12279,6 @@ class JobTaskSqlTaskFile(dict):
                        ),
                    ])
                ```
-               <!--End PulumiCodeChooser -->
         :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
         """
         pulumi.set(__self__, "path", path)
@@ -12323,7 +12293,6 @@ class JobTaskSqlTaskFile(dict):
 
         Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -12366,7 +12335,6 @@ class JobTaskSqlTaskFile(dict):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "path")
 

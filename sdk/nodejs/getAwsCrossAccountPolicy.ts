@@ -13,14 +13,12 @@ import * as utilities from "./utilities";
  *
  * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getAwsCrossAccountPolicy({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -104,14 +102,12 @@ export interface GetAwsCrossAccountPolicyResult {
  *
  * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const this = databricks.getAwsCrossAccountPolicy({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

@@ -93,7 +93,6 @@ def get_cluster(cluster_id: Optional[str] = None,
 
     Retrieve attributes of each SQL warehouses in a workspace
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -101,7 +100,6 @@ def get_cluster(cluster_id: Optional[str] = None,
     all = databricks.get_clusters()
     all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in ids}
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -151,7 +149,6 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Retrieve attributes of each SQL warehouses in a workspace
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -159,7 +156,6 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
     all = databricks.get_clusters()
     all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in ids}
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

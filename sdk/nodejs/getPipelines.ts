@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Get all Delta Live Tables pipelines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -21,11 +20,9 @@ import * as utilities from "./utilities";
  * const all = databricks.getPipelines({});
  * export const allPipelines = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Filter Delta Live Tables pipelines by name (exact match):
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -35,11 +32,9 @@ import * as utilities from "./utilities";
  * });
  * export const myPipeline = _this.then(_this => _this.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Filter Delta Live Tables pipelines by name (wildcard search):
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -49,7 +44,6 @@ import * as utilities from "./utilities";
  * });
  * export const wildcardPipelines = _this.then(_this => _this.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -108,7 +102,6 @@ export interface GetPipelinesResult {
  *
  * Get all Delta Live Tables pipelines:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -116,11 +109,9 @@ export interface GetPipelinesResult {
  * const all = databricks.getPipelines({});
  * export const allPipelines = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Filter Delta Live Tables pipelines by name (exact match):
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -130,11 +121,9 @@ export interface GetPipelinesResult {
  * });
  * export const myPipeline = _this.then(_this => _this.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Filter Delta Live Tables pipelines by name (wildcard search):
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -144,7 +133,6 @@ export interface GetPipelinesResult {
  * });
  * export const wildcardPipelines = _this.then(_this => _this.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

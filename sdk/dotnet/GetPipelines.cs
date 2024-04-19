@@ -20,7 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// Get all Delta Live Tables pipelines:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,11 +36,9 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (exact match):
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,11 +58,9 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (wildcard search):
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +80,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 
@@ -109,7 +103,6 @@ namespace Pulumi.Databricks
         /// 
         /// Get all Delta Live Tables pipelines:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -126,11 +119,9 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (exact match):
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -150,11 +141,9 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// Filter Delta Live Tables pipelines by name (wildcard search):
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -174,7 +163,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related Resources
         /// 

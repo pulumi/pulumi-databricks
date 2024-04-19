@@ -20,7 +20,6 @@ namespace Pulumi.Databricks
         /// 
         /// * Retrieve attributes of each SQL warehouses in a workspace:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,11 +43,9 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// * Search for a specific SQL Warehouse by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related resources
         /// 
@@ -88,7 +84,6 @@ namespace Pulumi.Databricks
         /// 
         /// * Retrieve attributes of each SQL warehouses in a workspace:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -112,11 +107,9 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// * Search for a specific SQL Warehouse by name:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,7 +125,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Related resources
         /// 

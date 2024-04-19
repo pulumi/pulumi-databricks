@@ -433,7 +433,6 @@ class ExternalLocation(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -459,7 +458,6 @@ class ExternalLocation(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 
@@ -505,7 +503,6 @@ class ExternalLocation(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -531,7 +528,6 @@ class ExternalLocation(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 

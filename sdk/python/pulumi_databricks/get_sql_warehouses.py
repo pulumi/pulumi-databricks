@@ -73,25 +73,21 @@ def get_sql_warehouses(ids: Optional[Sequence[str]] = None,
 
     Retrieve all SQL warehouses on this workspace on AWS or GCP:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
     ```
-    <!--End PulumiCodeChooser -->
 
     Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all_shared = databricks.get_sql_warehouses(warehouse_name_contains="shared")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -128,25 +124,21 @@ def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Retrieve all SQL warehouses on this workspace on AWS or GCP:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
     ```
-    <!--End PulumiCodeChooser -->
 
     Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     all_shared = databricks.get_sql_warehouses(warehouse_name_contains="shared")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

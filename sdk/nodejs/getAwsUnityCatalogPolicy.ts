@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -64,7 +63,6 @@ import * as utilities from "./utilities";
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAwsUnityCatalogPolicy(args: GetAwsUnityCatalogPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsUnityCatalogPolicyResult> {
 
@@ -123,7 +121,6 @@ export interface GetAwsUnityCatalogPolicyResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -176,7 +173,6 @@ export interface GetAwsUnityCatalogPolicyResult {
  *     managedPolicyArns: [unityMetastore.arn],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAwsUnityCatalogPolicyOutput(args: GetAwsUnityCatalogPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsUnityCatalogPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAwsUnityCatalogPolicy(a, opts))

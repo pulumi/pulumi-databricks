@@ -98,7 +98,6 @@ def get_metastore(metastore_id: Optional[str] = None,
 
     MetastoreInfo response for a given metastore id
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -111,7 +110,6 @@ def get_metastore(metastore_id: Optional[str] = None,
     this = databricks.get_metastore_output(metastore_id=this_metastore.id)
     pulumi.export("someMetastore", this.metastore_info)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -154,7 +152,6 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[Optional[str]]] = N
 
     MetastoreInfo response for a given metastore id
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -167,7 +164,6 @@ def get_metastore_output(metastore_id: Optional[pulumi.Input[Optional[str]]] = N
     this = databricks.get_metastore_output(metastore_id=this_metastore.id)
     pulumi.export("someMetastore", this.metastore_info)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

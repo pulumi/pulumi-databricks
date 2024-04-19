@@ -104,7 +104,6 @@ class UserRole(pulumi.CustomResource):
 
         Adding AWS instance profile to a user
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -115,11 +114,9 @@ class UserRole(pulumi.CustomResource):
             user_id=my_user.id,
             role=instance_profile.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Adding user as administrator to Databricks Account
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -129,7 +126,6 @@ class UserRole(pulumi.CustomResource):
             user_id=my_user.id,
             role="account_admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -164,7 +160,6 @@ class UserRole(pulumi.CustomResource):
 
         Adding AWS instance profile to a user
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -175,11 +170,9 @@ class UserRole(pulumi.CustomResource):
             user_id=my_user.id,
             role=instance_profile.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Adding user as administrator to Databricks Account
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -189,7 +182,6 @@ class UserRole(pulumi.CustomResource):
             user_id=my_user.id,
             role="account_admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -25,11 +24,9 @@ import * as utilities from "./utilities";
  *     publicAccessEnabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a databricks.MwsWorkspaces resource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -46,13 +43,11 @@ import * as utilities from "./utilities";
  *     dependsOn: [thisDatabricksMwsNetworks],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Databricks on GCP usage
  *
  * > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -76,7 +71,6 @@ import * as utilities from "./utilities";
  *     dependsOn: [thisDatabricksMwsNetworks],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

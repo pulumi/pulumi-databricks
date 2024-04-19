@@ -104,7 +104,6 @@ def get_share(created_at: Optional[int] = None,
 
     Getting details of an existing share in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -112,7 +111,6 @@ def get_share(created_at: Optional[int] = None,
     this = databricks.get_share(name="this")
     pulumi.export("createdBy", this.created_by)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -155,7 +153,6 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
 
     Getting details of an existing share in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -163,7 +160,6 @@ def get_share_output(created_at: Optional[pulumi.Input[Optional[int]]] = None,
     this = databricks.get_share(name="this")
     pulumi.export("createdBy", this.created_by)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

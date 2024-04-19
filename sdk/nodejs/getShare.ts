@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * Getting details of an existing share in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * });
  * export const createdBy = _this.then(_this => _this.createdBy);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -95,7 +93,6 @@ export interface GetShareResult {
  *
  * Getting details of an existing share in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -105,7 +102,6 @@ export interface GetShareResult {
  * });
  * export const createdBy = _this.then(_this => _this.createdBy);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

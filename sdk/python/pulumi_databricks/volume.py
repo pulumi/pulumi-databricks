@@ -310,7 +310,6 @@ class Volume(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -345,7 +344,6 @@ class Volume(pulumi.CustomResource):
             storage_location=some.url,
             comment="this volume is managed by terraform")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -406,7 +404,6 @@ class Volume(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -441,7 +438,6 @@ class Volume(pulumi.CustomResource):
             storage_location=some.url,
             comment="this volume is managed by terraform")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

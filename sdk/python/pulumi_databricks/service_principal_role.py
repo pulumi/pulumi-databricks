@@ -104,7 +104,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         Granting a service principal access to an instance profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -115,7 +114,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
             service_principal_id=this.id,
             role=instance_profile.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -149,7 +147,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
 
         Granting a service principal access to an instance profile
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -160,7 +157,6 @@ class ServicePrincipalRole(pulumi.CustomResource):
             service_principal_id=this.id,
             role=instance_profile.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

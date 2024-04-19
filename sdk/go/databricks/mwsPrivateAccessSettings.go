@@ -20,7 +20,6 @@ import (
 //
 // > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,11 +48,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,13 +82,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Databricks on GCP usage
 //
 // > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,7 +125,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

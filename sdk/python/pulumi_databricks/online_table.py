@@ -124,7 +124,6 @@ class OnlineTable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -137,7 +136,6 @@ class OnlineTable(pulumi.CustomResource):
                 run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -167,7 +165,6 @@ class OnlineTable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -180,7 +177,6 @@ class OnlineTable(pulumi.CustomResource):
                 run_triggered=databricks.OnlineTableSpecRunTriggeredArgs(),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -526,18 +526,15 @@ class User(pulumi.CustomResource):
 
         Creating regular user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -548,11 +545,9 @@ class User(pulumi.CustomResource):
             group_id=admins.id,
             member_id=me.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user with cluster create permissions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -562,11 +557,9 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             allow_cluster_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -575,11 +568,9 @@ class User(pulumi.CustomResource):
             user_name="me@example.com",
             display_name="Example user")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -588,7 +579,6 @@ class User(pulumi.CustomResource):
             user_name="me@example.com",
             display_name="Example user")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -649,18 +639,15 @@ class User(pulumi.CustomResource):
 
         Creating regular user:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         me = databricks.User("me", user_name="me@example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -671,11 +658,9 @@ class User(pulumi.CustomResource):
             group_id=admins.id,
             member_id=me.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user with cluster create permissions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -685,11 +670,9 @@ class User(pulumi.CustomResource):
             display_name="Example user",
             allow_cluster_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -698,11 +681,9 @@ class User(pulumi.CustomResource):
             user_name="me@example.com",
             display_name="Example user")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating user in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -711,7 +692,6 @@ class User(pulumi.CustomResource):
             user_name="me@example.com",
             display_name="Example user")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

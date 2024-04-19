@@ -102,7 +102,6 @@ def get_current_config(account_id: Optional[str] = None,
 
     Create cloud-specific databricks_storage_credential:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -131,7 +130,6 @@ def get_current_config(account_id: Optional[str] = None,
         name="storage_cred",
         comment="Managed by TF")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Exported attributes
 
@@ -184,7 +182,6 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[str]]] 
 
     Create cloud-specific databricks_storage_credential:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -213,7 +210,6 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[str]]] 
         name="storage_cred",
         comment="Managed by TF")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Exported attributes
 

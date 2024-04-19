@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const zones = databricks.getZones({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZones(opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
 
@@ -51,14 +49,12 @@ export interface GetZonesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const zones = databricks.getZones({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZonesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(getZones(opts))

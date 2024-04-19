@@ -231,7 +231,6 @@ class MlflowWebhook(pulumi.CustomResource):
 
         ### Triggering Databricks job
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -275,11 +274,9 @@ class MlflowWebhook(pulumi.CustomResource):
                 access_token=pat_for_webhook.token_value,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### POSTing to URL
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -291,7 +288,6 @@ class MlflowWebhook(pulumi.CustomResource):
                 url="https://my_cool_host/webhook",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 
@@ -335,7 +331,6 @@ class MlflowWebhook(pulumi.CustomResource):
 
         ### Triggering Databricks job
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -379,11 +374,9 @@ class MlflowWebhook(pulumi.CustomResource):
                 access_token=pat_for_webhook.token_value,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### POSTing to URL
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -395,7 +388,6 @@ class MlflowWebhook(pulumi.CustomResource):
                 url="https://my_cool_host/webhook",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 

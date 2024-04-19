@@ -9,18 +9,15 @@ import * as utilities from "./utilities";
  *
  * Retrieve all clusters on this workspace on AWS or GCP:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -29,7 +26,6 @@ import * as utilities from "./utilities";
  *     clusterNameContains: "shared",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -81,18 +77,15 @@ export interface GetClustersResult {
  *
  * Retrieve all clusters on this workspace on AWS or GCP:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Retrieve all clusters with "Shared" in their cluster name on this Azure Databricks workspace:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -101,7 +94,6 @@ export interface GetClustersResult {
  *     clusterNameContains: "shared",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

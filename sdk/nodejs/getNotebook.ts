@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     format: "SOURCE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookResult> {
 
@@ -95,7 +93,6 @@ export interface GetNotebookResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -105,7 +102,6 @@ export interface GetNotebookResult {
  *     format: "SOURCE",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookResult> {
     return pulumi.output(args).apply((a: any) => getNotebook(a, opts))
