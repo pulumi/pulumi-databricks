@@ -17,6 +17,7 @@ __all__ = [
     'ClusterAwsAttributes',
     'ClusterAzureAttributes',
     'ClusterAzureAttributesLogAnalyticsInfo',
+    'ClusterCloneFrom',
     'ClusterClusterLogConf',
     'ClusterClusterLogConfDbfs',
     'ClusterClusterLogConfS3',
@@ -58,12 +59,12 @@ __all__ = [
     'InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride',
     'InstancePoolPreloadedDockerImage',
     'InstancePoolPreloadedDockerImageBasicAuth',
-    'JobCompute',
-    'JobComputeSpec',
     'JobContinuous',
     'JobDbtTask',
     'JobDeployment',
     'JobEmailNotifications',
+    'JobEnvironment',
+    'JobEnvironmentSpec',
     'JobGitSource',
     'JobGitSourceJobSource',
     'JobHealth',
@@ -249,6 +250,7 @@ __all__ = [
     'LakehouseMonitorInferenceLog',
     'LakehouseMonitorNotifications',
     'LakehouseMonitorNotificationsOnFailure',
+    'LakehouseMonitorNotificationsOnNewClassificationTagDetected',
     'LakehouseMonitorSchedule',
     'LakehouseMonitorSnapshot',
     'LakehouseMonitorTimeSeries',
@@ -324,6 +326,7 @@ __all__ = [
     'PipelineClusterInitScriptS3',
     'PipelineClusterInitScriptVolumes',
     'PipelineClusterInitScriptWorkspace',
+    'PipelineDeployment',
     'PipelineFilters',
     'PipelineLibrary',
     'PipelineLibraryFile',
@@ -331,6 +334,7 @@ __all__ = [
     'PipelineLibraryNotebook',
     'PipelineNotification',
     'RecipientIpAccessList',
+    'RecipientPropertiesKvpairs',
     'RecipientToken',
     'RepoSparseCheckout',
     'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins',
@@ -409,6 +413,9 @@ __all__ = [
     'GetClusterClusterInfoTerminationReasonResult',
     'GetCurrentMetastoreMetastoreInfoResult',
     'GetDbfsFilePathsPathListResult',
+    'GetExternalLocationExternalLocationInfoResult',
+    'GetExternalLocationExternalLocationInfoEncryptionDetailsResult',
+    'GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetInstancePoolPoolInfoResult',
     'GetInstancePoolPoolInfoAwsAttributesResult',
     'GetInstancePoolPoolInfoAzureAttributesResult',
@@ -425,12 +432,12 @@ __all__ = [
     'GetInstanceProfilesInstanceProfileResult',
     'GetJobJobSettingsResult',
     'GetJobJobSettingsSettingsResult',
-    'GetJobJobSettingsSettingsComputeResult',
-    'GetJobJobSettingsSettingsComputeSpecResult',
     'GetJobJobSettingsSettingsContinuousResult',
     'GetJobJobSettingsSettingsDbtTaskResult',
     'GetJobJobSettingsSettingsDeploymentResult',
     'GetJobJobSettingsSettingsEmailNotificationsResult',
+    'GetJobJobSettingsSettingsEnvironmentResult',
+    'GetJobJobSettingsSettingsEnvironmentSpecResult',
     'GetJobJobSettingsSettingsGitSourceResult',
     'GetJobJobSettingsSettingsGitSourceJobSourceResult',
     'GetJobJobSettingsSettingsHealthResult',
@@ -1097,6 +1104,35 @@ class ClusterAzureAttributesLogAnalyticsInfo(dict):
     @pulumi.getter(name="logAnalyticsWorkspaceId")
     def log_analytics_workspace_id(self) -> Optional[str]:
         return pulumi.get(self, "log_analytics_workspace_id")
+
+
+@pulumi.output_type
+class ClusterCloneFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceClusterId":
+            suggest = "source_cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterCloneFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterCloneFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterCloneFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_cluster_id: str):
+        pulumi.set(__self__, "source_cluster_id", source_cluster_id)
+
+    @property
+    @pulumi.getter(name="sourceClusterId")
+    def source_cluster_id(self) -> str:
+        return pulumi.get(self, "source_cluster_id")
 
 
 @pulumi.output_type
@@ -2537,6 +2573,8 @@ class InstancePoolGcpAttributes(dict):
             suggest = "gcp_availability"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "zoneId":
+            suggest = "zone_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstancePoolGcpAttributes. Access the value via the '{suggest}' property getter instead.")
@@ -2551,15 +2589,19 @@ class InstancePoolGcpAttributes(dict):
 
     def __init__(__self__, *,
                  gcp_availability: Optional[str] = None,
-                 local_ssd_count: Optional[int] = None):
+                 local_ssd_count: Optional[int] = None,
+                 zone_id: Optional[str] = None):
         """
         :param str gcp_availability: Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
         :param int local_ssd_count: Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
+        :param str zone_id: Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
         """
         if gcp_availability is not None:
             pulumi.set(__self__, "gcp_availability", gcp_availability)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="gcpAvailability")
@@ -2576,6 +2618,14 @@ class InstancePoolGcpAttributes(dict):
         Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        """
+        Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type
@@ -2849,57 +2899,6 @@ class InstancePoolPreloadedDockerImageBasicAuth(dict):
     @pulumi.getter
     def username(self) -> str:
         return pulumi.get(self, "username")
-
-
-@pulumi.output_type
-class JobCompute(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "computeKey":
-            suggest = "compute_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobCompute. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobCompute.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobCompute.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 compute_key: Optional[str] = None,
-                 spec: Optional['outputs.JobComputeSpec'] = None):
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
-        if spec is not None:
-            pulumi.set(__self__, "spec", spec)
-
-    @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
-    @pulumi.getter
-    def spec(self) -> Optional['outputs.JobComputeSpec']:
-        return pulumi.get(self, "spec")
-
-
-@pulumi.output_type
-class JobComputeSpec(dict):
-    def __init__(__self__, *,
-                 kind: Optional[str] = None):
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[str]:
-        return pulumi.get(self, "kind")
 
 
 @pulumi.output_type
@@ -3184,6 +3183,63 @@ class JobEmailNotifications(dict):
         (List) list of emails to notify when the run completes successfully.
         """
         return pulumi.get(self, "on_successes")
+
+
+@pulumi.output_type
+class JobEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentKey":
+            suggest = "environment_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobEnvironment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 environment_key: str,
+                 spec: Optional['outputs.JobEnvironmentSpec'] = None):
+        pulumi.set(__self__, "environment_key", environment_key)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> str:
+        return pulumi.get(self, "environment_key")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional['outputs.JobEnvironmentSpec']:
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class JobEnvironmentSpec(dict):
+    def __init__(__self__, *,
+                 client: str,
+                 dependencies: Optional[Sequence[str]] = None):
+        pulumi.set(__self__, "client", client)
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def client(self) -> str:
+        return pulumi.get(self, "client")
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "dependencies")
 
 
 @pulumi.output_type
@@ -5778,6 +5834,8 @@ class JobNotebookTask(dict):
             suggest = "notebook_path"
         elif key == "baseParameters":
             suggest = "base_parameters"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobNotebookTask. Access the value via the '{suggest}' property getter instead.")
@@ -5793,17 +5851,21 @@ class JobNotebookTask(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         """
         :param str notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param Mapping[str, Any] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param str source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -5828,6 +5890,14 @@ class JobNotebookTask(dict):
         Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -6384,9 +6454,7 @@ class JobTask(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "computeKey":
-            suggest = "compute_key"
-        elif key == "conditionTask":
+        if key == "conditionTask":
             suggest = "condition_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
@@ -6394,6 +6462,8 @@ class JobTask(dict):
             suggest = "depends_ons"
         elif key == "emailNotifications":
             suggest = "email_notifications"
+        elif key == "environmentKey":
+            suggest = "environment_key"
         elif key == "existingClusterId":
             suggest = "existing_cluster_id"
         elif key == "forEachTask":
@@ -6447,12 +6517,12 @@ class JobTask(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 compute_key: Optional[str] = None,
                  condition_task: Optional['outputs.JobTaskConditionTask'] = None,
                  dbt_task: Optional['outputs.JobTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskDependsOn']] = None,
                  description: Optional[str] = None,
                  email_notifications: Optional['outputs.JobTaskEmailNotifications'] = None,
+                 environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
                  for_each_task: Optional['outputs.JobTaskForEachTask'] = None,
                  health: Optional['outputs.JobTaskHealth'] = None,
@@ -6493,8 +6563,6 @@ class JobTask(dict):
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -6505,6 +6573,8 @@ class JobTask(dict):
             pulumi.set(__self__, "description", description)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_key is not None:
+            pulumi.set(__self__, "environment_key", environment_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if for_each_task is not None:
@@ -6551,11 +6621,6 @@ class JobTask(dict):
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.JobTaskConditionTask']:
         return pulumi.get(self, "condition_task")
@@ -6588,6 +6653,11 @@ class JobTask(dict):
         (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> Optional[str]:
+        return pulumi.get(self, "environment_key")
 
     @property
     @pulumi.getter(name="existingClusterId")
@@ -7085,9 +7155,7 @@ class JobTaskForEachTaskTask(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "computeKey":
-            suggest = "compute_key"
-        elif key == "conditionTask":
+        if key == "conditionTask":
             suggest = "condition_task"
         elif key == "dbtTask":
             suggest = "dbt_task"
@@ -7095,6 +7163,8 @@ class JobTaskForEachTaskTask(dict):
             suggest = "depends_ons"
         elif key == "emailNotifications":
             suggest = "email_notifications"
+        elif key == "environmentKey":
+            suggest = "environment_key"
         elif key == "existingClusterId":
             suggest = "existing_cluster_id"
         elif key == "jobClusterKey":
@@ -7146,12 +7216,12 @@ class JobTaskForEachTaskTask(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 compute_key: Optional[str] = None,
                  condition_task: Optional['outputs.JobTaskForEachTaskTaskConditionTask'] = None,
                  dbt_task: Optional['outputs.JobTaskForEachTaskTaskDbtTask'] = None,
                  depends_ons: Optional[Sequence['outputs.JobTaskForEachTaskTaskDependsOn']] = None,
                  description: Optional[str] = None,
                  email_notifications: Optional['outputs.JobTaskForEachTaskTaskEmailNotifications'] = None,
+                 environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
                  health: Optional['outputs.JobTaskForEachTaskTaskHealth'] = None,
                  job_cluster_key: Optional[str] = None,
@@ -7191,8 +7261,6 @@ class JobTaskForEachTaskTask(dict):
         :param int timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param 'JobTaskForEachTaskTaskWebhookNotificationsArgs' webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -7203,6 +7271,8 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "description", description)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_key is not None:
+            pulumi.set(__self__, "environment_key", environment_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if health is not None:
@@ -7247,11 +7317,6 @@ class JobTaskForEachTaskTask(dict):
             pulumi.set(__self__, "webhook_notifications", webhook_notifications)
 
     @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.JobTaskForEachTaskTaskConditionTask']:
         return pulumi.get(self, "condition_task")
@@ -7284,6 +7349,11 @@ class JobTaskForEachTaskTask(dict):
         (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         """
         return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> Optional[str]:
+        return pulumi.get(self, "environment_key")
 
     @property
     @pulumi.getter(name="existingClusterId")
@@ -9025,6 +9095,8 @@ class JobTaskForEachTaskTaskNotebookTask(dict):
             suggest = "notebook_path"
         elif key == "baseParameters":
             suggest = "base_parameters"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskForEachTaskTaskNotebookTask. Access the value via the '{suggest}' property getter instead.")
@@ -9040,17 +9112,21 @@ class JobTaskForEachTaskTaskNotebookTask(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         """
         :param str notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param Mapping[str, Any] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param str source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -9075,6 +9151,14 @@ class JobTaskForEachTaskTaskNotebookTask(dict):
         Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -11404,6 +11488,8 @@ class JobTaskNotebookTask(dict):
             suggest = "notebook_path"
         elif key == "baseParameters":
             suggest = "base_parameters"
+        elif key == "warehouseId":
+            suggest = "warehouse_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTaskNotebookTask. Access the value via the '{suggest}' property getter instead.")
@@ -11419,17 +11505,21 @@ class JobTaskNotebookTask(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         """
         :param str notebook_path: The path of the Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
         :param Mapping[str, Any] base_parameters: (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job’s base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         :param str source: Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        :param str warehouse_id: ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
         """
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -11454,6 +11544,14 @@ class JobTaskNotebookTask(dict):
         Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        """
+        ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        """
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -12880,40 +12978,35 @@ class LakehouseMonitorCustomMetric(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 definition: Optional[str] = None,
-                 input_columns: Optional[Sequence[str]] = None,
-                 name: Optional[str] = None,
-                 output_data_type: Optional[str] = None,
-                 type: Optional[str] = None):
+                 definition: str,
+                 input_columns: Sequence[str],
+                 name: str,
+                 output_data_type: str,
+                 type: str):
         """
-        :param str definition: [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        :param str definition: [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
         :param Sequence[str] input_columns: Columns on the monitored table to apply the custom metrics to.
         :param str name: Name of the custom metric.
         :param str output_data_type: The output type of the custom metric.
         :param str type: The type of the custom metric.
         """
-        if definition is not None:
-            pulumi.set(__self__, "definition", definition)
-        if input_columns is not None:
-            pulumi.set(__self__, "input_columns", input_columns)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if output_data_type is not None:
-            pulumi.set(__self__, "output_data_type", output_data_type)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "input_columns", input_columns)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "output_data_type", output_data_type)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def definition(self) -> Optional[str]:
+    def definition(self) -> str:
         """
-        [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
         """
         return pulumi.get(self, "definition")
 
     @property
     @pulumi.getter(name="inputColumns")
-    def input_columns(self) -> Optional[Sequence[str]]:
+    def input_columns(self) -> Sequence[str]:
         """
         Columns on the monitored table to apply the custom metrics to.
         """
@@ -12921,7 +13014,7 @@ class LakehouseMonitorCustomMetric(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         """
         Name of the custom metric.
         """
@@ -12929,7 +13022,7 @@ class LakehouseMonitorCustomMetric(dict):
 
     @property
     @pulumi.getter(name="outputDataType")
-    def output_data_type(self) -> Optional[str]:
+    def output_data_type(self) -> str:
         """
         The output type of the custom metric.
         """
@@ -12937,7 +13030,7 @@ class LakehouseMonitorCustomMetric(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         The type of the custom metric.
         """
@@ -12962,18 +13055,18 @@ class LakehouseMonitorInferenceLog(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "labelCol":
-            suggest = "label_col"
-        elif key == "modelIdCol":
+        if key == "modelIdCol":
             suggest = "model_id_col"
         elif key == "predictionCol":
             suggest = "prediction_col"
-        elif key == "predictionProbaCol":
-            suggest = "prediction_proba_col"
         elif key == "problemType":
             suggest = "problem_type"
         elif key == "timestampCol":
             suggest = "timestamp_col"
+        elif key == "labelCol":
+            suggest = "label_col"
+        elif key == "predictionProbaCol":
+            suggest = "prediction_proba_col"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LakehouseMonitorInferenceLog. Access the value via the '{suggest}' property getter instead.")
@@ -12987,44 +13080,71 @@ class LakehouseMonitorInferenceLog(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 granularities: Optional[Sequence[str]] = None,
+                 granularities: Sequence[str],
+                 model_id_col: str,
+                 prediction_col: str,
+                 problem_type: str,
+                 timestamp_col: str,
                  label_col: Optional[str] = None,
-                 model_id_col: Optional[str] = None,
-                 prediction_col: Optional[str] = None,
-                 prediction_proba_col: Optional[str] = None,
-                 problem_type: Optional[str] = None,
-                 timestamp_col: Optional[str] = None):
+                 prediction_proba_col: Optional[str] = None):
         """
         :param Sequence[str] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
-        :param str label_col: Column of the model label
         :param str model_id_col: Column of the model id or version
         :param str prediction_col: Column of the model prediction
-        :param str prediction_proba_col: Column of the model prediction probabilities
         :param str problem_type: Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
         :param str timestamp_col: Column of the timestamp of predictions
+        :param str label_col: Column of the model label
+        :param str prediction_proba_col: Column of the model prediction probabilities
         """
-        if granularities is not None:
-            pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "model_id_col", model_id_col)
+        pulumi.set(__self__, "prediction_col", prediction_col)
+        pulumi.set(__self__, "problem_type", problem_type)
+        pulumi.set(__self__, "timestamp_col", timestamp_col)
         if label_col is not None:
             pulumi.set(__self__, "label_col", label_col)
-        if model_id_col is not None:
-            pulumi.set(__self__, "model_id_col", model_id_col)
-        if prediction_col is not None:
-            pulumi.set(__self__, "prediction_col", prediction_col)
         if prediction_proba_col is not None:
             pulumi.set(__self__, "prediction_proba_col", prediction_proba_col)
-        if problem_type is not None:
-            pulumi.set(__self__, "problem_type", problem_type)
-        if timestamp_col is not None:
-            pulumi.set(__self__, "timestamp_col", timestamp_col)
 
     @property
     @pulumi.getter
-    def granularities(self) -> Optional[Sequence[str]]:
+    def granularities(self) -> Sequence[str]:
         """
         List of granularities to use when aggregating data into time windows based on their timestamp.
         """
         return pulumi.get(self, "granularities")
+
+    @property
+    @pulumi.getter(name="modelIdCol")
+    def model_id_col(self) -> str:
+        """
+        Column of the model id or version
+        """
+        return pulumi.get(self, "model_id_col")
+
+    @property
+    @pulumi.getter(name="predictionCol")
+    def prediction_col(self) -> str:
+        """
+        Column of the model prediction
+        """
+        return pulumi.get(self, "prediction_col")
+
+    @property
+    @pulumi.getter(name="problemType")
+    def problem_type(self) -> str:
+        """
+        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
+        """
+        return pulumi.get(self, "problem_type")
+
+    @property
+    @pulumi.getter(name="timestampCol")
+    def timestamp_col(self) -> str:
+        """
+        Column of the timestamp of predictions
+        """
+        return pulumi.get(self, "timestamp_col")
 
     @property
     @pulumi.getter(name="labelCol")
@@ -13035,44 +13155,12 @@ class LakehouseMonitorInferenceLog(dict):
         return pulumi.get(self, "label_col")
 
     @property
-    @pulumi.getter(name="modelIdCol")
-    def model_id_col(self) -> Optional[str]:
-        """
-        Column of the model id or version
-        """
-        return pulumi.get(self, "model_id_col")
-
-    @property
-    @pulumi.getter(name="predictionCol")
-    def prediction_col(self) -> Optional[str]:
-        """
-        Column of the model prediction
-        """
-        return pulumi.get(self, "prediction_col")
-
-    @property
     @pulumi.getter(name="predictionProbaCol")
     def prediction_proba_col(self) -> Optional[str]:
         """
         Column of the model prediction probabilities
         """
         return pulumi.get(self, "prediction_proba_col")
-
-    @property
-    @pulumi.getter(name="problemType")
-    def problem_type(self) -> Optional[str]:
-        """
-        Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
-        """
-        return pulumi.get(self, "problem_type")
-
-    @property
-    @pulumi.getter(name="timestampCol")
-    def timestamp_col(self) -> Optional[str]:
-        """
-        Column of the timestamp of predictions
-        """
-        return pulumi.get(self, "timestamp_col")
 
 
 @pulumi.output_type
@@ -13082,6 +13170,8 @@ class LakehouseMonitorNotifications(dict):
         suggest = None
         if key == "onFailure":
             suggest = "on_failure"
+        elif key == "onNewClassificationTagDetected":
+            suggest = "on_new_classification_tag_detected"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LakehouseMonitorNotifications. Access the value via the '{suggest}' property getter instead.")
@@ -13095,14 +13185,32 @@ class LakehouseMonitorNotifications(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 on_failure: Optional['outputs.LakehouseMonitorNotificationsOnFailure'] = None):
+                 on_failure: Optional['outputs.LakehouseMonitorNotificationsOnFailure'] = None,
+                 on_new_classification_tag_detected: Optional['outputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected'] = None):
+        """
+        :param 'LakehouseMonitorNotificationsOnFailureArgs' on_failure: who to send notifications to on monitor failure.
+        :param 'LakehouseMonitorNotificationsOnNewClassificationTagDetectedArgs' on_new_classification_tag_detected: Who to send notifications to when new data classification tags are detected.
+        """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if on_new_classification_tag_detected is not None:
+            pulumi.set(__self__, "on_new_classification_tag_detected", on_new_classification_tag_detected)
 
     @property
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional['outputs.LakehouseMonitorNotificationsOnFailure']:
+        """
+        who to send notifications to on monitor failure.
+        """
         return pulumi.get(self, "on_failure")
+
+    @property
+    @pulumi.getter(name="onNewClassificationTagDetected")
+    def on_new_classification_tag_detected(self) -> Optional['outputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected']:
+        """
+        Who to send notifications to when new data classification tags are detected.
+        """
+        return pulumi.get(self, "on_new_classification_tag_detected")
 
 
 @pulumi.output_type
@@ -13136,16 +13244,46 @@ class LakehouseMonitorNotificationsOnFailure(dict):
 
 
 @pulumi.output_type
+class LakehouseMonitorNotificationsOnNewClassificationTagDetected(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddresses":
+            suggest = "email_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LakehouseMonitorNotificationsOnNewClassificationTagDetected. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LakehouseMonitorNotificationsOnNewClassificationTagDetected.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LakehouseMonitorNotificationsOnNewClassificationTagDetected.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_addresses: Optional[Sequence[str]] = None):
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "email_addresses")
+
+
+@pulumi.output_type
 class LakehouseMonitorSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pauseStatus":
-            suggest = "pause_status"
-        elif key == "quartzCronExpression":
+        if key == "quartzCronExpression":
             suggest = "quartz_cron_expression"
         elif key == "timezoneId":
             suggest = "timezone_id"
+        elif key == "pauseStatus":
+            suggest = "pause_status"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LakehouseMonitorSchedule. Access the value via the '{suggest}' property getter instead.")
@@ -13159,30 +13297,42 @@ class LakehouseMonitorSchedule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pause_status: Optional[str] = None,
-                 quartz_cron_expression: Optional[str] = None,
-                 timezone_id: Optional[str] = None):
+                 quartz_cron_expression: str,
+                 timezone_id: str,
+                 pause_status: Optional[str] = None):
+        """
+        :param str quartz_cron_expression: string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        :param str timezone_id: string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        :param str pause_status: optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        """
+        pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
+        pulumi.set(__self__, "timezone_id", timezone_id)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
-        if quartz_cron_expression is not None:
-            pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
-        if timezone_id is not None:
-            pulumi.set(__self__, "timezone_id", timezone_id)
-
-    @property
-    @pulumi.getter(name="pauseStatus")
-    def pause_status(self) -> Optional[str]:
-        return pulumi.get(self, "pause_status")
 
     @property
     @pulumi.getter(name="quartzCronExpression")
-    def quartz_cron_expression(self) -> Optional[str]:
+    def quartz_cron_expression(self) -> str:
+        """
+        string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        """
         return pulumi.get(self, "quartz_cron_expression")
 
     @property
     @pulumi.getter(name="timezoneId")
-    def timezone_id(self) -> Optional[str]:
+    def timezone_id(self) -> str:
+        """
+        string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        """
         return pulumi.get(self, "timezone_id")
+
+    @property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[str]:
+        """
+        optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        """
+        return pulumi.get(self, "pause_status")
 
 
 @pulumi.output_type
@@ -13211,20 +13361,18 @@ class LakehouseMonitorTimeSeries(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 granularities: Optional[Sequence[str]] = None,
-                 timestamp_col: Optional[str] = None):
+                 granularities: Sequence[str],
+                 timestamp_col: str):
         """
         :param Sequence[str] granularities: List of granularities to use when aggregating data into time windows based on their timestamp.
         :param str timestamp_col: Column of the timestamp of predictions
         """
-        if granularities is not None:
-            pulumi.set(__self__, "granularities", granularities)
-        if timestamp_col is not None:
-            pulumi.set(__self__, "timestamp_col", timestamp_col)
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "timestamp_col", timestamp_col)
 
     @property
     @pulumi.getter
-    def granularities(self) -> Optional[Sequence[str]]:
+    def granularities(self) -> Sequence[str]:
         """
         List of granularities to use when aggregating data into time windows based on their timestamp.
         """
@@ -13232,7 +13380,7 @@ class LakehouseMonitorTimeSeries(dict):
 
     @property
     @pulumi.getter(name="timestampCol")
-    def timestamp_col(self) -> Optional[str]:
+    def timestamp_col(self) -> str:
         """
         Column of the timestamp of predictions
         """
@@ -17247,6 +17395,44 @@ class PipelineClusterInitScriptWorkspace(dict):
 
 
 @pulumi.output_type
+class PipelineDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataFilePath":
+            suggest = "metadata_file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kind: Optional[str] = None,
+                 metadata_file_path: Optional[str] = None):
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if metadata_file_path is not None:
+            pulumi.set(__self__, "metadata_file_path", metadata_file_path)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="metadataFilePath")
+    def metadata_file_path(self) -> Optional[str]:
+        return pulumi.get(self, "metadata_file_path")
+
+
+@pulumi.output_type
 class PipelineFilters(dict):
     def __init__(__self__, *,
                  excludes: Optional[Sequence[str]] = None,
@@ -17438,19 +17624,38 @@ class RecipientIpAccessList(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 allowed_ip_addresses: Sequence[str]):
+                 allowed_ip_addresses: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] allowed_ip_addresses: Allowed IP Addresses in CIDR notation. Limit of 100.
         """
-        pulumi.set(__self__, "allowed_ip_addresses", allowed_ip_addresses)
+        if allowed_ip_addresses is not None:
+            pulumi.set(__self__, "allowed_ip_addresses", allowed_ip_addresses)
 
     @property
     @pulumi.getter(name="allowedIpAddresses")
-    def allowed_ip_addresses(self) -> Sequence[str]:
+    def allowed_ip_addresses(self) -> Optional[Sequence[str]]:
         """
         Allowed IP Addresses in CIDR notation. Limit of 100.
         """
         return pulumi.get(self, "allowed_ip_addresses")
+
+
+@pulumi.output_type
+class RecipientPropertiesKvpairs(dict):
+    def __init__(__self__, *,
+                 properties: Mapping[str, Any]):
+        """
+        :param Mapping[str, Any] properties: a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+        """
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, Any]:
+        """
+        a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+        """
+        return pulumi.get(self, "properties")
 
 
 @pulumi.output_type
@@ -17492,11 +17697,11 @@ class RecipientToken(dict):
                  updated_by: Optional[str] = None):
         """
         :param str activation_url: Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
-        :param int created_at: Time at which this recipient Token was created, in epoch milliseconds.
-        :param str created_by: Username of recipient token creator.
+        :param int created_at: Time at which this recipient was created, in epoch milliseconds.
+        :param str created_by: Username of recipient creator.
         :param int expiration_time: Expiration timestamp of the token in epoch milliseconds.
-        :param str id: ID of this recipient - same as the `name`.
-        :param int updated_at: Time at which this recipient Token was updated, in epoch milliseconds.
+        :param str id: Unique ID of the recipient token.
+        :param int updated_at: Time at which this recipient was updated, in epoch milliseconds.
         :param str updated_by: Username of recipient Token updater.
         """
         if activation_url is not None:
@@ -17526,7 +17731,7 @@ class RecipientToken(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[int]:
         """
-        Time at which this recipient Token was created, in epoch milliseconds.
+        Time at which this recipient was created, in epoch milliseconds.
         """
         return pulumi.get(self, "created_at")
 
@@ -17534,7 +17739,7 @@ class RecipientToken(dict):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
         """
-        Username of recipient token creator.
+        Username of recipient creator.
         """
         return pulumi.get(self, "created_by")
 
@@ -17550,7 +17755,7 @@ class RecipientToken(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        ID of this recipient - same as the `name`.
+        Unique ID of the recipient token.
         """
         return pulumi.get(self, "id")
 
@@ -17558,7 +17763,7 @@ class RecipientToken(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[int]:
         """
-        Time at which this recipient Token was updated, in epoch milliseconds.
+        Time at which this recipient was updated, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
@@ -21364,6 +21569,199 @@ class GetDbfsFilePathsPathListResult(dict):
 
 
 @pulumi.output_type
+class GetExternalLocationExternalLocationInfoResult(dict):
+    def __init__(__self__, *,
+                 access_point: Optional[str] = None,
+                 browse_only: Optional[bool] = None,
+                 comment: Optional[str] = None,
+                 created_at: Optional[int] = None,
+                 created_by: Optional[str] = None,
+                 credential_id: Optional[str] = None,
+                 credential_name: Optional[str] = None,
+                 encryption_details: Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult'] = None,
+                 metastore_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 owner: Optional[str] = None,
+                 read_only: Optional[bool] = None,
+                 updated_at: Optional[int] = None,
+                 updated_by: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str access_point: The ARN of the s3 access point to use with the external location (AWS).
+        :param str comment: User-supplied comment.
+        :param str credential_name: Name of the StorageCredential to use with this external location.
+        :param 'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs' encryption_details: The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        :param str name: The name of the storage credential
+        :param str owner: Username/groupname/sp application_id of the external location owner.
+        :param bool read_only: Indicates whether the external location is read-only.
+        :param str url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        """
+        if access_point is not None:
+            pulumi.set(__self__, "access_point", access_point)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if credential_id is not None:
+            pulumi.set(__self__, "credential_id", credential_id)
+        if credential_name is not None:
+            pulumi.set(__self__, "credential_name", credential_name)
+        if encryption_details is not None:
+            pulumi.set(__self__, "encryption_details", encryption_details)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="accessPoint")
+    def access_point(self) -> Optional[str]:
+        """
+        The ARN of the s3 access point to use with the external location (AWS).
+        """
+        return pulumi.get(self, "access_point")
+
+    @property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[bool]:
+        return pulumi.get(self, "browse_only")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        """
+        User-supplied comment.
+        """
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[int]:
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[str]:
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="credentialId")
+    def credential_id(self) -> Optional[str]:
+        return pulumi.get(self, "credential_id")
+
+    @property
+    @pulumi.getter(name="credentialName")
+    def credential_name(self) -> Optional[str]:
+        """
+        Name of the StorageCredential to use with this external location.
+        """
+        return pulumi.get(self, "credential_name")
+
+    @property
+    @pulumi.getter(name="encryptionDetails")
+    def encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsResult']:
+        """
+        The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+        """
+        return pulumi.get(self, "encryption_details")
+
+    @property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[str]:
+        return pulumi.get(self, "metastore_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the storage credential
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> Optional[str]:
+        """
+        Username/groupname/sp application_id of the external location owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Indicates whether the external location is read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[int]:
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[str]:
+        return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetExternalLocationExternalLocationInfoEncryptionDetailsResult(dict):
+    def __init__(__self__, *,
+                 sse_encryption_details: Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult'] = None):
+        if sse_encryption_details is not None:
+            pulumi.set(__self__, "sse_encryption_details", sse_encryption_details)
+
+    @property
+    @pulumi.getter(name="sseEncryptionDetails")
+    def sse_encryption_details(self) -> Optional['outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult']:
+        return pulumi.get(self, "sse_encryption_details")
+
+
+@pulumi.output_type
+class GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsResult(dict):
+    def __init__(__self__, *,
+                 algorithm: Optional[str] = None,
+                 aws_kms_key_arn: Optional[str] = None):
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if aws_kms_key_arn is not None:
+            pulumi.set(__self__, "aws_kms_key_arn", aws_kms_key_arn)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="awsKmsKeyArn")
+    def aws_kms_key_arn(self) -> Optional[str]:
+        return pulumi.get(self, "aws_kms_key_arn")
+
+
+@pulumi.output_type
 class GetInstancePoolPoolInfoResult(dict):
     def __init__(__self__, *,
                  default_tags: Mapping[str, Any],
@@ -21610,22 +22008,28 @@ class GetInstancePoolPoolInfoDiskSpecDiskTypeResult(dict):
 @pulumi.output_type
 class GetInstancePoolPoolInfoGcpAttributesResult(dict):
     def __init__(__self__, *,
-                 gcp_availability: Optional[str] = None,
-                 local_ssd_count: Optional[int] = None):
+                 local_ssd_count: int,
+                 zone_id: str,
+                 gcp_availability: Optional[str] = None):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        pulumi.set(__self__, "zone_id", zone_id)
         if gcp_availability is not None:
             pulumi.set(__self__, "gcp_availability", gcp_availability)
-        if local_ssd_count is not None:
-            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        return pulumi.get(self, "zone_id")
 
     @property
     @pulumi.getter(name="gcpAvailability")
     def gcp_availability(self) -> Optional[str]:
         return pulumi.get(self, "gcp_availability")
-
-    @property
-    @pulumi.getter(name="localSsdCount")
-    def local_ssd_count(self) -> Optional[int]:
-        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -21891,13 +22295,13 @@ class GetJobJobSettingsSettingsResult(dict):
     def __init__(__self__, *,
                  format: str,
                  run_as: 'outputs.GetJobJobSettingsSettingsRunAsResult',
-                 computes: Optional[Sequence['outputs.GetJobJobSettingsSettingsComputeResult']] = None,
                  continuous: Optional['outputs.GetJobJobSettingsSettingsContinuousResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsDbtTaskResult'] = None,
                  deployment: Optional['outputs.GetJobJobSettingsSettingsDeploymentResult'] = None,
                  description: Optional[str] = None,
                  edit_mode: Optional[str] = None,
                  email_notifications: Optional['outputs.GetJobJobSettingsSettingsEmailNotificationsResult'] = None,
+                 environments: Optional[Sequence['outputs.GetJobJobSettingsSettingsEnvironmentResult']] = None,
                  existing_cluster_id: Optional[str] = None,
                  git_source: Optional['outputs.GetJobJobSettingsSettingsGitSourceResult'] = None,
                  health: Optional['outputs.GetJobJobSettingsSettingsHealthResult'] = None,
@@ -21930,8 +22334,6 @@ class GetJobJobSettingsSettingsResult(dict):
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "run_as", run_as)
-        if computes is not None:
-            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if dbt_task is not None:
@@ -21944,6 +22346,8 @@ class GetJobJobSettingsSettingsResult(dict):
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if git_source is not None:
@@ -22011,11 +22415,6 @@ class GetJobJobSettingsSettingsResult(dict):
 
     @property
     @pulumi.getter
-    def computes(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsComputeResult']]:
-        return pulumi.get(self, "computes")
-
-    @property
-    @pulumi.getter
     def continuous(self) -> Optional['outputs.GetJobJobSettingsSettingsContinuousResult']:
         return pulumi.get(self, "continuous")
 
@@ -22043,6 +22442,11 @@ class GetJobJobSettingsSettingsResult(dict):
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.GetJobJobSettingsSettingsEmailNotificationsResult']:
         return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter
+    def environments(self) -> Optional[Sequence['outputs.GetJobJobSettingsSettingsEnvironmentResult']]:
+        return pulumi.get(self, "environments")
 
     @property
     @pulumi.getter(name="existingClusterId")
@@ -22184,40 +22588,6 @@ class GetJobJobSettingsSettingsResult(dict):
 
 
 @pulumi.output_type
-class GetJobJobSettingsSettingsComputeResult(dict):
-    def __init__(__self__, *,
-                 compute_key: Optional[str] = None,
-                 spec: Optional['outputs.GetJobJobSettingsSettingsComputeSpecResult'] = None):
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
-        if spec is not None:
-            pulumi.set(__self__, "spec", spec)
-
-    @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
-    @pulumi.getter
-    def spec(self) -> Optional['outputs.GetJobJobSettingsSettingsComputeSpecResult']:
-        return pulumi.get(self, "spec")
-
-
-@pulumi.output_type
-class GetJobJobSettingsSettingsComputeSpecResult(dict):
-    def __init__(__self__, *,
-                 kind: Optional[str] = None):
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[str]:
-        return pulumi.get(self, "kind")
-
-
-@pulumi.output_type
 class GetJobJobSettingsSettingsContinuousResult(dict):
     def __init__(__self__, *,
                  pause_status: Optional[str] = None):
@@ -22353,6 +22723,46 @@ class GetJobJobSettingsSettingsEmailNotificationsResult(dict):
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "on_successes")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 environment_key: str,
+                 spec: Optional['outputs.GetJobJobSettingsSettingsEnvironmentSpecResult'] = None):
+        pulumi.set(__self__, "environment_key", environment_key)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> str:
+        return pulumi.get(self, "environment_key")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional['outputs.GetJobJobSettingsSettingsEnvironmentSpecResult']:
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class GetJobJobSettingsSettingsEnvironmentSpecResult(dict):
+    def __init__(__self__, *,
+                 client: str,
+                 dependencies: Optional[Sequence[str]] = None):
+        pulumi.set(__self__, "client", client)
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+
+    @property
+    @pulumi.getter
+    def client(self) -> str:
+        return pulumi.get(self, "client")
+
+    @property
+    @pulumi.getter
+    def dependencies(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "dependencies")
 
 
 @pulumi.output_type
@@ -24252,12 +24662,15 @@ class GetJobJobSettingsSettingsNotebookTaskResult(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -24273,6 +24686,11 @@ class GetJobJobSettingsSettingsNotebookTaskResult(dict):
     @pulumi.getter
     def source(self) -> Optional[str]:
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -24532,12 +24950,12 @@ class GetJobJobSettingsSettingsSparkSubmitTaskResult(dict):
 class GetJobJobSettingsSettingsTaskResult(dict):
     def __init__(__self__, *,
                  retry_on_timeout: bool,
-                 compute_key: Optional[str] = None,
                  condition_task: Optional['outputs.GetJobJobSettingsSettingsTaskConditionTaskResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsTaskDbtTaskResult'] = None,
                  depends_ons: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskDependsOnResult']] = None,
                  description: Optional[str] = None,
                  email_notifications: Optional['outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult'] = None,
+                 environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
                  for_each_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskResult'] = None,
                  health: Optional['outputs.GetJobJobSettingsSettingsTaskHealthResult'] = None,
@@ -24560,8 +24978,6 @@ class GetJobJobSettingsSettingsTaskResult(dict):
                  timeout_seconds: Optional[int] = None,
                  webhook_notifications: Optional['outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult'] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -24572,6 +24988,8 @@ class GetJobJobSettingsSettingsTaskResult(dict):
             pulumi.set(__self__, "description", description)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_key is not None:
+            pulumi.set(__self__, "environment_key", environment_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if for_each_task is not None:
@@ -24621,11 +25039,6 @@ class GetJobJobSettingsSettingsTaskResult(dict):
         return pulumi.get(self, "retry_on_timeout")
 
     @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskConditionTaskResult']:
         return pulumi.get(self, "condition_task")
@@ -24649,6 +25062,11 @@ class GetJobJobSettingsSettingsTaskResult(dict):
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult']:
         return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> Optional[str]:
+        return pulumi.get(self, "environment_key")
 
     @property
     @pulumi.getter(name="existingClusterId")
@@ -24938,12 +25356,12 @@ class GetJobJobSettingsSettingsTaskForEachTaskResult(dict):
 class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
     def __init__(__self__, *,
                  retry_on_timeout: bool,
-                 compute_key: Optional[str] = None,
                  condition_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult'] = None,
                  dbt_task: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult'] = None,
                  depends_ons: Optional[Sequence['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnResult']] = None,
                  description: Optional[str] = None,
                  email_notifications: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult'] = None,
+                 environment_key: Optional[str] = None,
                  existing_cluster_id: Optional[str] = None,
                  health: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthResult'] = None,
                  job_cluster_key: Optional[str] = None,
@@ -24965,8 +25383,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
                  timeout_seconds: Optional[int] = None,
                  webhook_notifications: Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult'] = None):
         pulumi.set(__self__, "retry_on_timeout", retry_on_timeout)
-        if compute_key is not None:
-            pulumi.set(__self__, "compute_key", compute_key)
         if condition_task is not None:
             pulumi.set(__self__, "condition_task", condition_task)
         if dbt_task is not None:
@@ -24977,6 +25393,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
             pulumi.set(__self__, "description", description)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environment_key is not None:
+            pulumi.set(__self__, "environment_key", environment_key)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if health is not None:
@@ -25024,11 +25442,6 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
         return pulumi.get(self, "retry_on_timeout")
 
     @property
-    @pulumi.getter(name="computeKey")
-    def compute_key(self) -> Optional[str]:
-        return pulumi.get(self, "compute_key")
-
-    @property
     @pulumi.getter(name="conditionTask")
     def condition_task(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult']:
         return pulumi.get(self, "condition_task")
@@ -25052,6 +25465,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskResult(dict):
     @pulumi.getter(name="emailNotifications")
     def email_notifications(self) -> Optional['outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult']:
         return pulumi.get(self, "email_notifications")
+
+    @property
+    @pulumi.getter(name="environmentKey")
+    def environment_key(self) -> Optional[str]:
+        return pulumi.get(self, "environment_key")
 
     @property
     @pulumi.getter(name="existingClusterId")
@@ -26287,12 +26705,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskResult(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -26308,6 +26729,11 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskResult(dict):
     @pulumi.getter
     def source(self) -> Optional[str]:
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -27767,12 +28193,15 @@ class GetJobJobSettingsSettingsTaskNotebookTaskResult(dict):
     def __init__(__self__, *,
                  notebook_path: str,
                  base_parameters: Optional[Mapping[str, Any]] = None,
-                 source: Optional[str] = None):
+                 source: Optional[str] = None,
+                 warehouse_id: Optional[str] = None):
         pulumi.set(__self__, "notebook_path", notebook_path)
         if base_parameters is not None:
             pulumi.set(__self__, "base_parameters", base_parameters)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
 
     @property
     @pulumi.getter(name="notebookPath")
@@ -27788,6 +28217,11 @@ class GetJobJobSettingsSettingsTaskNotebookTaskResult(dict):
     @pulumi.getter
     def source(self) -> Optional[str]:
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[str]:
+        return pulumi.get(self, "warehouse_id")
 
 
 @pulumi.output_type
@@ -28492,9 +28926,10 @@ class GetMetastoreMetastoreInfoResult(dict):
         :param str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
         :param int delta_sharing_recipient_token_lifetime_in_seconds: Used to set expiration duration in seconds on recipient data access tokens.
         :param str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-        :param str metastore_id: Id of the metastore to be fetched
-        :param str name: Name of metastore.
+        :param str metastore_id: Id of the metastore
+        :param str name: Name of the metastore
         :param str owner: Username/groupname/sp application_id of the metastore owner.
+        :param str region: Region of the metastore
         :param str storage_root: Path on cloud storage account, where managed `Table` are stored.
         """
         if cloud is not None:
@@ -28587,7 +29022,7 @@ class GetMetastoreMetastoreInfoResult(dict):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> Optional[str]:
         """
-        Id of the metastore to be fetched
+        Id of the metastore
         """
         return pulumi.get(self, "metastore_id")
 
@@ -28595,7 +29030,7 @@ class GetMetastoreMetastoreInfoResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of metastore.
+        Name of the metastore
         """
         return pulumi.get(self, "name")
 
@@ -28615,6 +29050,9 @@ class GetMetastoreMetastoreInfoResult(dict):
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Region of the metastore
+        """
         return pulumi.get(self, "region")
 
     @property

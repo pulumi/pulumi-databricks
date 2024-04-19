@@ -41,8 +41,8 @@ class LakehouseMonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LakehouseMonitorCustomMetricArgs']]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input['LakehouseMonitorDataClassificationConfigArgs'] data_classification_config: The data classification config for the monitor
         :param pulumi.Input['LakehouseMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
-        :param pulumi.Input['LakehouseMonitorNotificationsArgs'] notifications: The notification settings for the monitor
-        :param pulumi.Input['LakehouseMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.
+        :param pulumi.Input['LakehouseMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input['LakehouseMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input['LakehouseMonitorSnapshotArgs'] snapshot: Configuration for monitoring snapshot tables.
@@ -175,7 +175,7 @@ class LakehouseMonitorArgs:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input['LakehouseMonitorNotificationsArgs']]:
         """
-        The notification settings for the monitor
+        The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         """
         return pulumi.get(self, "notifications")
 
@@ -187,7 +187,7 @@ class LakehouseMonitorArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LakehouseMonitorScheduleArgs']]:
         """
-        The schedule for automatically updating and refreshing metric tables.
+        The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         """
         return pulumi.get(self, "schedule")
 
@@ -290,10 +290,10 @@ class _LakehouseMonitorState:
         :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input['LakehouseMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-        :param pulumi.Input['LakehouseMonitorNotificationsArgs'] notifications: The notification settings for the monitor
+        :param pulumi.Input['LakehouseMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input['LakehouseMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.
+        :param pulumi.Input['LakehouseMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input['LakehouseMonitorSnapshotArgs'] snapshot: Configuration for monitoring snapshot tables.
@@ -453,7 +453,7 @@ class _LakehouseMonitorState:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input['LakehouseMonitorNotificationsArgs']]:
         """
-        The notification settings for the monitor
+        The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         """
         return pulumi.get(self, "notifications")
 
@@ -489,7 +489,7 @@ class _LakehouseMonitorState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LakehouseMonitorScheduleArgs']]:
         """
-        The schedule for automatically updating and refreshing metric tables.
+        The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         """
         return pulumi.get(self, "schedule")
 
@@ -658,9 +658,9 @@ class LakehouseMonitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakehouseMonitorCustomMetricArgs']]]] custom_metrics: Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         :param pulumi.Input[pulumi.InputType['LakehouseMonitorDataClassificationConfigArgs']] data_classification_config: The data classification config for the monitor
         :param pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']] inference_log: Configuration for the inference log monitor
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor
+        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.
+        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']] snapshot: Configuration for monitoring snapshot tables.
@@ -832,10 +832,10 @@ class LakehouseMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] drift_metrics_table_name: The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         :param pulumi.Input[pulumi.InputType['LakehouseMonitorInferenceLogArgs']] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[str] monitor_version: The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor
+        :param pulumi.Input[pulumi.InputType['LakehouseMonitorNotificationsArgs']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.
+        :param pulumi.Input[pulumi.InputType['LakehouseMonitorScheduleArgs']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         :param pulumi.Input[pulumi.InputType['LakehouseMonitorSnapshotArgs']] snapshot: Configuration for monitoring snapshot tables.
@@ -944,7 +944,7 @@ class LakehouseMonitor(pulumi.CustomResource):
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Optional['outputs.LakehouseMonitorNotifications']]:
         """
-        The notification settings for the monitor
+        The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         """
         return pulumi.get(self, "notifications")
 
@@ -968,7 +968,7 @@ class LakehouseMonitor(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.LakehouseMonitorSchedule']]:
         """
-        The schedule for automatically updating and refreshing metric tables.
+        The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         """
         return pulumi.get(self, "schedule")
 

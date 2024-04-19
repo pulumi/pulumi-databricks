@@ -24,11 +24,11 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Column of the model id or version
         /// </summary>
-        public readonly string? ModelIdCol;
+        public readonly string ModelIdCol;
         /// <summary>
         /// Column of the model prediction
         /// </summary>
-        public readonly string? PredictionCol;
+        public readonly string PredictionCol;
         /// <summary>
         /// Column of the model prediction probabilities
         /// </summary>
@@ -36,11 +36,11 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
         /// </summary>
-        public readonly string? ProblemType;
+        public readonly string ProblemType;
         /// <summary>
         /// Column of the timestamp of predictions
         /// </summary>
-        public readonly string? TimestampCol;
+        public readonly string TimestampCol;
 
         [OutputConstructor]
         private LakehouseMonitorInferenceLog(
@@ -48,15 +48,15 @@ namespace Pulumi.Databricks.Outputs
 
             string? labelCol,
 
-            string? modelIdCol,
+            string modelIdCol,
 
-            string? predictionCol,
+            string predictionCol,
 
             string? predictionProbaCol,
 
-            string? problemType,
+            string problemType,
 
-            string? timestampCol)
+            string timestampCol)
         {
             Granularities = granularities;
             LabelCol = labelCol;

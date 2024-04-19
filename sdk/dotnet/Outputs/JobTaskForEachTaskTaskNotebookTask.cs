@@ -25,6 +25,10 @@ namespace Pulumi.Databricks.Outputs
         /// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
         /// </summary>
         public readonly string? Source;
+        /// <summary>
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        /// </summary>
+        public readonly string? WarehouseId;
 
         [OutputConstructor]
         private JobTaskForEachTaskTaskNotebookTask(
@@ -32,11 +36,14 @@ namespace Pulumi.Databricks.Outputs
 
             string notebookPath,
 
-            string? source)
+            string? source,
+
+            string? warehouseId)
         {
             BaseParameters = baseParameters;
             NotebookPath = notebookPath;
             Source = source;
+            WarehouseId = warehouseId;
         }
     }
 }

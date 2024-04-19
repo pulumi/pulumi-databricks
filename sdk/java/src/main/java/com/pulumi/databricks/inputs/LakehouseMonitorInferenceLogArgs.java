@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,15 +21,15 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    @Import(name="granularities")
-    private @Nullable Output<List<String>> granularities;
+    @Import(name="granularities", required=true)
+    private Output<List<String>> granularities;
 
     /**
      * @return List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    public Optional<Output<List<String>>> granularities() {
-        return Optional.ofNullable(this.granularities);
+    public Output<List<String>> granularities() {
+        return this.granularities;
     }
 
     /**
@@ -50,30 +51,30 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
      * Column of the model id or version
      * 
      */
-    @Import(name="modelIdCol")
-    private @Nullable Output<String> modelIdCol;
+    @Import(name="modelIdCol", required=true)
+    private Output<String> modelIdCol;
 
     /**
      * @return Column of the model id or version
      * 
      */
-    public Optional<Output<String>> modelIdCol() {
-        return Optional.ofNullable(this.modelIdCol);
+    public Output<String> modelIdCol() {
+        return this.modelIdCol;
     }
 
     /**
      * Column of the model prediction
      * 
      */
-    @Import(name="predictionCol")
-    private @Nullable Output<String> predictionCol;
+    @Import(name="predictionCol", required=true)
+    private Output<String> predictionCol;
 
     /**
      * @return Column of the model prediction
      * 
      */
-    public Optional<Output<String>> predictionCol() {
-        return Optional.ofNullable(this.predictionCol);
+    public Output<String> predictionCol() {
+        return this.predictionCol;
     }
 
     /**
@@ -95,30 +96,30 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
      * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      * 
      */
-    @Import(name="problemType")
-    private @Nullable Output<String> problemType;
+    @Import(name="problemType", required=true)
+    private Output<String> problemType;
 
     /**
      * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      * 
      */
-    public Optional<Output<String>> problemType() {
-        return Optional.ofNullable(this.problemType);
+    public Output<String> problemType() {
+        return this.problemType;
     }
 
     /**
      * Column of the timestamp of predictions
      * 
      */
-    @Import(name="timestampCol")
-    private @Nullable Output<String> timestampCol;
+    @Import(name="timestampCol", required=true)
+    private Output<String> timestampCol;
 
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    public Optional<Output<String>> timestampCol() {
-        return Optional.ofNullable(this.timestampCol);
+    public Output<String> timestampCol() {
+        return this.timestampCol;
     }
 
     private LakehouseMonitorInferenceLogArgs() {}
@@ -157,7 +158,7 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder granularities(@Nullable Output<List<String>> granularities) {
+        public Builder granularities(Output<List<String>> granularities) {
             $.granularities = granularities;
             return this;
         }
@@ -209,7 +210,7 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder modelIdCol(@Nullable Output<String> modelIdCol) {
+        public Builder modelIdCol(Output<String> modelIdCol) {
             $.modelIdCol = modelIdCol;
             return this;
         }
@@ -230,7 +231,7 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder predictionCol(@Nullable Output<String> predictionCol) {
+        public Builder predictionCol(Output<String> predictionCol) {
             $.predictionCol = predictionCol;
             return this;
         }
@@ -272,7 +273,7 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder problemType(@Nullable Output<String> problemType) {
+        public Builder problemType(Output<String> problemType) {
             $.problemType = problemType;
             return this;
         }
@@ -293,7 +294,7 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder timestampCol(@Nullable Output<String> timestampCol) {
+        public Builder timestampCol(Output<String> timestampCol) {
             $.timestampCol = timestampCol;
             return this;
         }
@@ -309,6 +310,21 @@ public final class LakehouseMonitorInferenceLogArgs extends com.pulumi.resources
         }
 
         public LakehouseMonitorInferenceLogArgs build() {
+            if ($.granularities == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLogArgs", "granularities");
+            }
+            if ($.modelIdCol == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLogArgs", "modelIdCol");
+            }
+            if ($.predictionCol == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLogArgs", "predictionCol");
+            }
+            if ($.problemType == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLogArgs", "problemType");
+            }
+            if ($.timestampCol == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLogArgs", "timestampCol");
+            }
             return $;
         }
     }

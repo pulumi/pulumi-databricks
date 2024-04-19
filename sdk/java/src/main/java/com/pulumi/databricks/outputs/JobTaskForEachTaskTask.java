@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTaskForEachTaskTask {
-    private @Nullable String computeKey;
     private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
     private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
     /**
@@ -49,6 +48,7 @@ public final class JobTaskForEachTaskTask {
      * 
      */
     private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
+    private @Nullable String environmentKey;
     private @Nullable String existingClusterId;
     /**
      * @return block described below that specifies health conditions for a given task.
@@ -121,9 +121,6 @@ public final class JobTaskForEachTaskTask {
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
 
     private JobTaskForEachTaskTask() {}
-    public Optional<String> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
     public Optional<JobTaskForEachTaskTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
     }
@@ -150,6 +147,9 @@ public final class JobTaskForEachTaskTask {
      */
     public Optional<JobTaskForEachTaskTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+    public Optional<String> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
@@ -273,12 +273,12 @@ public final class JobTaskForEachTaskTask {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String computeKey;
         private @Nullable JobTaskForEachTaskTaskConditionTask conditionTask;
         private @Nullable JobTaskForEachTaskTaskDbtTask dbtTask;
         private @Nullable List<JobTaskForEachTaskTaskDependsOn> dependsOns;
         private @Nullable String description;
         private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
+        private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
         private @Nullable JobTaskForEachTaskTaskHealth health;
         private @Nullable String jobClusterKey;
@@ -303,12 +303,12 @@ public final class JobTaskForEachTaskTask {
         public Builder() {}
         public Builder(JobTaskForEachTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.computeKey = defaults.computeKey;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
+    	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.health = defaults.health;
     	      this.jobClusterKey = defaults.jobClusterKey;
@@ -332,12 +332,6 @@ public final class JobTaskForEachTaskTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
-        @CustomType.Setter
-        public Builder computeKey(@Nullable String computeKey) {
-
-            this.computeKey = computeKey;
-            return this;
-        }
         @CustomType.Setter
         public Builder conditionTask(@Nullable JobTaskForEachTaskTaskConditionTask conditionTask) {
 
@@ -369,6 +363,12 @@ public final class JobTaskForEachTaskTask {
         public Builder emailNotifications(@Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications) {
 
             this.emailNotifications = emailNotifications;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder environmentKey(@Nullable String environmentKey) {
+
+            this.environmentKey = environmentKey;
             return this;
         }
         @CustomType.Setter
@@ -502,12 +502,12 @@ public final class JobTaskForEachTaskTask {
         }
         public JobTaskForEachTaskTask build() {
             final var _resultValue = new JobTaskForEachTaskTask();
-            _resultValue.computeKey = computeKey;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
             _resultValue.emailNotifications = emailNotifications;
+            _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.health = health;
             _resultValue.jobClusterKey = jobClusterKey;

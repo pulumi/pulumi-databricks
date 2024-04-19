@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -22,11 +23,18 @@ public final class GetInstancePoolPoolInfoGcpAttributes extends com.pulumi.resou
         return Optional.ofNullable(this.gcpAvailability);
     }
 
-    @Import(name="localSsdCount")
-    private @Nullable Integer localSsdCount;
+    @Import(name="localSsdCount", required=true)
+    private Integer localSsdCount;
 
-    public Optional<Integer> localSsdCount() {
-        return Optional.ofNullable(this.localSsdCount);
+    public Integer localSsdCount() {
+        return this.localSsdCount;
+    }
+
+    @Import(name="zoneId", required=true)
+    private String zoneId;
+
+    public String zoneId() {
+        return this.zoneId;
     }
 
     private GetInstancePoolPoolInfoGcpAttributes() {}
@@ -34,6 +42,7 @@ public final class GetInstancePoolPoolInfoGcpAttributes extends com.pulumi.resou
     private GetInstancePoolPoolInfoGcpAttributes(GetInstancePoolPoolInfoGcpAttributes $) {
         this.gcpAvailability = $.gcpAvailability;
         this.localSsdCount = $.localSsdCount;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -59,12 +68,23 @@ public final class GetInstancePoolPoolInfoGcpAttributes extends com.pulumi.resou
             return this;
         }
 
-        public Builder localSsdCount(@Nullable Integer localSsdCount) {
+        public Builder localSsdCount(Integer localSsdCount) {
             $.localSsdCount = localSsdCount;
             return this;
         }
 
+        public Builder zoneId(String zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
         public GetInstancePoolPoolInfoGcpAttributes build() {
+            if ($.localSsdCount == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributes", "localSsdCount");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributes", "zoneId");
+            }
             return $;
         }
     }

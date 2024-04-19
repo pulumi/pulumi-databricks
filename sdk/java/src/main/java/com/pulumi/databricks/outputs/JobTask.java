@@ -32,7 +32,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTask {
-    private @Nullable String computeKey;
     private @Nullable JobTaskConditionTask conditionTask;
     private @Nullable JobTaskDbtTask dbtTask;
     /**
@@ -50,6 +49,7 @@ public final class JobTask {
      * 
      */
     private @Nullable JobTaskEmailNotifications emailNotifications;
+    private @Nullable String environmentKey;
     private @Nullable String existingClusterId;
     private @Nullable JobTaskForEachTask forEachTask;
     /**
@@ -123,9 +123,6 @@ public final class JobTask {
     private @Nullable JobTaskWebhookNotifications webhookNotifications;
 
     private JobTask() {}
-    public Optional<String> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
     public Optional<JobTaskConditionTask> conditionTask() {
         return Optional.ofNullable(this.conditionTask);
     }
@@ -152,6 +149,9 @@ public final class JobTask {
      */
     public Optional<JobTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+    public Optional<String> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
@@ -278,12 +278,12 @@ public final class JobTask {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String computeKey;
         private @Nullable JobTaskConditionTask conditionTask;
         private @Nullable JobTaskDbtTask dbtTask;
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
         private @Nullable JobTaskEmailNotifications emailNotifications;
+        private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
         private @Nullable JobTaskForEachTask forEachTask;
         private @Nullable JobTaskHealth health;
@@ -309,12 +309,12 @@ public final class JobTask {
         public Builder() {}
         public Builder(JobTask defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.computeKey = defaults.computeKey;
     	      this.conditionTask = defaults.conditionTask;
     	      this.dbtTask = defaults.dbtTask;
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
     	      this.emailNotifications = defaults.emailNotifications;
+    	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.forEachTask = defaults.forEachTask;
     	      this.health = defaults.health;
@@ -339,12 +339,6 @@ public final class JobTask {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
-        @CustomType.Setter
-        public Builder computeKey(@Nullable String computeKey) {
-
-            this.computeKey = computeKey;
-            return this;
-        }
         @CustomType.Setter
         public Builder conditionTask(@Nullable JobTaskConditionTask conditionTask) {
 
@@ -376,6 +370,12 @@ public final class JobTask {
         public Builder emailNotifications(@Nullable JobTaskEmailNotifications emailNotifications) {
 
             this.emailNotifications = emailNotifications;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder environmentKey(@Nullable String environmentKey) {
+
+            this.environmentKey = environmentKey;
             return this;
         }
         @CustomType.Setter
@@ -515,12 +515,12 @@ public final class JobTask {
         }
         public JobTask build() {
             final var _resultValue = new JobTask();
-            _resultValue.computeKey = computeKey;
             _resultValue.conditionTask = conditionTask;
             _resultValue.dbtTask = dbtTask;
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
             _resultValue.emailNotifications = emailNotifications;
+            _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.forEachTask = forEachTask;
             _resultValue.health = health;

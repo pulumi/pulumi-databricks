@@ -42,6 +42,8 @@
         "getDbfsFile.ts",
         "getDbfsFilePaths.ts",
         "getDirectory.ts",
+        "getExternalLocation.ts",
+        "getExternalLocations.ts",
         "getGroup.ts",
         "getInstancePool.ts",
         "getInstanceProfiles.ts",

@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
+        /// <summary>
+        /// Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public InstancePoolGcpAttributesArgs()
         {
         }

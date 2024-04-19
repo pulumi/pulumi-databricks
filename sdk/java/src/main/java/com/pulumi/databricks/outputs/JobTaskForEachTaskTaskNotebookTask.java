@@ -29,6 +29,11 @@ public final class JobTaskForEachTaskTaskNotebookTask {
      * 
      */
     private @Nullable String source;
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     * 
+     */
+    private @Nullable String warehouseId;
 
     private JobTaskForEachTaskTaskNotebookTask() {}
     /**
@@ -52,6 +57,13 @@ public final class JobTaskForEachTaskTaskNotebookTask {
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     * 
+     */
+    public Optional<String> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +77,14 @@ public final class JobTaskForEachTaskTaskNotebookTask {
         private @Nullable Map<String,Object> baseParameters;
         private String notebookPath;
         private @Nullable String source;
+        private @Nullable String warehouseId;
         public Builder() {}
         public Builder(JobTaskForEachTaskTaskNotebookTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseParameters = defaults.baseParameters;
     	      this.notebookPath = defaults.notebookPath;
     	      this.source = defaults.source;
+    	      this.warehouseId = defaults.warehouseId;
         }
 
         @CustomType.Setter
@@ -93,11 +107,18 @@ public final class JobTaskForEachTaskTaskNotebookTask {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
+        public Builder warehouseId(@Nullable String warehouseId) {
+
+            this.warehouseId = warehouseId;
+            return this;
+        }
         public JobTaskForEachTaskTaskNotebookTask build() {
             final var _resultValue = new JobTaskForEachTaskTaskNotebookTask();
             _resultValue.baseParameters = baseParameters;
             _resultValue.notebookPath = notebookPath;
             _resultValue.source = source;
+            _resultValue.warehouseId = warehouseId;
             return _resultValue;
         }
     }

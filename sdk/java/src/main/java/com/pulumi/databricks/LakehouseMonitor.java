@@ -320,14 +320,14 @@ public class LakehouseMonitor extends com.pulumi.resources.CustomResource {
         return this.monitorVersion;
     }
     /**
-     * The notification settings for the monitor
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
      * 
      */
     @Export(name="notifications", refs={LakehouseMonitorNotifications.class}, tree="[0]")
     private Output</* @Nullable */ LakehouseMonitorNotifications> notifications;
 
     /**
-     * @return The notification settings for the monitor
+     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
      * 
      */
     public Output<Optional<LakehouseMonitorNotifications>> notifications() {
@@ -362,14 +362,14 @@ public class LakehouseMonitor extends com.pulumi.resources.CustomResource {
         return this.profileMetricsTableName;
     }
     /**
-     * The schedule for automatically updating and refreshing metric tables.
+     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
      */
     @Export(name="schedule", refs={LakehouseMonitorSchedule.class}, tree="[0]")
     private Output</* @Nullable */ LakehouseMonitorSchedule> schedule;
 
     /**
-     * @return The schedule for automatically updating and refreshing metric tables.
+     * @return The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
      */
     public Output<Optional<LakehouseMonitorSchedule>> schedule() {

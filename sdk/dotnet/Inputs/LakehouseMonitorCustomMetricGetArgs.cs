@@ -13,12 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class LakehouseMonitorCustomMetricGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        /// [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
         /// </summary>
-        [Input("definition")]
-        public Input<string>? Definition { get; set; }
+        [Input("definition", required: true)]
+        public Input<string> Definition { get; set; } = null!;
 
-        [Input("inputColumns")]
+        [Input("inputColumns", required: true)]
         private InputList<string>? _inputColumns;
 
         /// <summary>
@@ -33,20 +33,20 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Name of the custom metric.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The output type of the custom metric.
         /// </summary>
-        [Input("outputDataType")]
-        public Input<string>? OutputDataType { get; set; }
+        [Input("outputDataType", required: true)]
+        public Input<string> OutputDataType { get; set; } = null!;
 
         /// <summary>
         /// The type of the custom metric.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public LakehouseMonitorCustomMetricGetArgs()
         {

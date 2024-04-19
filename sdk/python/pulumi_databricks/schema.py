@@ -16,6 +16,7 @@ class SchemaArgs:
     def __init__(__self__, *,
                  catalog_name: pulumi.Input[str],
                  comment: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,7 @@ class SchemaArgs:
         The set of arguments for constructing a Schema resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
@@ -35,6 +37,8 @@ class SchemaArgs:
         pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
@@ -71,6 +75,18 @@ class SchemaArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_predictive_optimization", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -147,6 +163,7 @@ class _SchemaState:
     def __init__(__self__, *,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -157,6 +174,7 @@ class _SchemaState:
         Input properties used for looking up and filtering Schema resources.
         :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
@@ -167,6 +185,8 @@ class _SchemaState:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if metastore_id is not None:
@@ -203,6 +223,18 @@ class _SchemaState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_predictive_optimization", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -281,6 +313,7 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -340,6 +373,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
@@ -417,6 +451,7 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_name: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -436,6 +471,7 @@ class Schema(pulumi.CustomResource):
                 raise TypeError("Missing required property 'catalog_name'")
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
@@ -454,6 +490,7 @@ class Schema(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog_name: Optional[pulumi.Input[str]] = None,
             comment: Optional[pulumi.Input[str]] = None,
+            enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -469,6 +506,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_name: Name of parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete schema regardless of its contents.
         :param pulumi.Input[str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[str] owner: Username/groupname/sp application_id of the schema owner.
@@ -481,6 +519,7 @@ class Schema(pulumi.CustomResource):
 
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -504,6 +543,14 @@ class Schema(pulumi.CustomResource):
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> pulumi.Output[str]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
 
     @property
     @pulumi.getter(name="forceDestroy")

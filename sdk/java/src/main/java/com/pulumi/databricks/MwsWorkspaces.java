@@ -532,9 +532,17 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> networkId() {
         return Codegen.optional(this.networkId);
     }
+    /**
+     * The pricing tier of the workspace.
+     * 
+     */
     @Export(name="pricingTier", refs={String.class}, tree="[0]")
     private Output<String> pricingTier;
 
+    /**
+     * @return The pricing tier of the workspace.
+     * 
+     */
     public Output<String> pricingTier() {
         return this.pricingTier;
     }

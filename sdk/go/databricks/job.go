@@ -27,7 +27,6 @@ type Job struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrOutput   `pulumi:"alwaysRunning"`
-	Computes      JobComputeArrayOutput  `pulumi:"computes"`
 	Continuous    JobContinuousPtrOutput `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
@@ -41,6 +40,7 @@ type Job struct {
 	EditMode    pulumi.StringPtrOutput `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrOutput `pulumi:"emailNotifications"`
+	Environments       JobEnvironmentArrayOutput      `pulumi:"environments"`
 	ExistingClusterId  pulumi.StringPtrOutput         `pulumi:"existingClusterId"`
 	Format             pulumi.StringOutput            `pulumi:"format"`
 	GitSource          JobGitSourcePtrOutput          `pulumi:"gitSource"`
@@ -48,7 +48,7 @@ type Job struct {
 	Health JobHealthPtrOutput `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayOutput `pulumi:"jobClusters"`
-	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 	Libraries JobLibraryArrayOutput `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrOutput `pulumi:"maxConcurrentRuns"`
@@ -135,7 +135,6 @@ type jobState struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
-	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
@@ -149,6 +148,7 @@ type jobState struct {
 	EditMode    *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
+	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
@@ -156,7 +156,7 @@ type jobState struct {
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
-	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
@@ -214,7 +214,6 @@ type JobState struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
-	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
@@ -228,6 +227,7 @@ type JobState struct {
 	EditMode    pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
+	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
@@ -235,7 +235,7 @@ type JobState struct {
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
-	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
@@ -297,7 +297,6 @@ type jobArgs struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning *bool          `pulumi:"alwaysRunning"`
-	Computes      []JobCompute   `pulumi:"computes"`
 	Continuous    *JobContinuous `pulumi:"continuous"`
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
@@ -311,6 +310,7 @@ type jobArgs struct {
 	EditMode    *string `pulumi:"editMode"`
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications *JobEmailNotifications `pulumi:"emailNotifications"`
+	Environments       []JobEnvironment       `pulumi:"environments"`
 	ExistingClusterId  *string                `pulumi:"existingClusterId"`
 	Format             *string                `pulumi:"format"`
 	GitSource          *JobGitSource          `pulumi:"gitSource"`
@@ -318,7 +318,7 @@ type jobArgs struct {
 	Health *JobHealth `pulumi:"health"`
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters []JobJobCluster `pulumi:"jobClusters"`
-	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 	Libraries []JobLibrary `pulumi:"libraries"`
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
@@ -375,7 +375,6 @@ type JobArgs struct {
 	//
 	// Deprecated: always_running will be replaced by controlRunState in the next major release.
 	AlwaysRunning pulumi.BoolPtrInput
-	Computes      JobComputeArrayInput
 	Continuous    JobContinuousPtrInput
 	// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
 	//
@@ -389,6 +388,7 @@ type JobArgs struct {
 	EditMode    pulumi.StringPtrInput
 	// (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
 	EmailNotifications JobEmailNotificationsPtrInput
+	Environments       JobEnvironmentArrayInput
 	ExistingClusterId  pulumi.StringPtrInput
 	Format             pulumi.StringPtrInput
 	GitSource          JobGitSourcePtrInput
@@ -396,7 +396,7 @@ type JobArgs struct {
 	Health JobHealthPtrInput
 	// A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
 	JobClusters JobJobClusterArrayInput
-	// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+	// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 	Libraries JobLibraryArrayInput
 	// (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
 	MaxConcurrentRuns pulumi.IntPtrInput
@@ -541,10 +541,6 @@ func (o JobOutput) AlwaysRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.AlwaysRunning }).(pulumi.BoolPtrOutput)
 }
 
-func (o JobOutput) Computes() JobComputeArrayOutput {
-	return o.ApplyT(func(v *Job) JobComputeArrayOutput { return v.Computes }).(JobComputeArrayOutput)
-}
-
 func (o JobOutput) Continuous() JobContinuousPtrOutput {
 	return o.ApplyT(func(v *Job) JobContinuousPtrOutput { return v.Continuous }).(JobContinuousPtrOutput)
 }
@@ -579,6 +575,10 @@ func (o JobOutput) EmailNotifications() JobEmailNotificationsPtrOutput {
 	return o.ApplyT(func(v *Job) JobEmailNotificationsPtrOutput { return v.EmailNotifications }).(JobEmailNotificationsPtrOutput)
 }
 
+func (o JobOutput) Environments() JobEnvironmentArrayOutput {
+	return o.ApplyT(func(v *Job) JobEnvironmentArrayOutput { return v.Environments }).(JobEnvironmentArrayOutput)
+}
+
 func (o JobOutput) ExistingClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ExistingClusterId }).(pulumi.StringPtrOutput)
 }
@@ -601,7 +601,7 @@ func (o JobOutput) JobClusters() JobJobClusterArrayOutput {
 	return o.ApplyT(func(v *Job) JobJobClusterArrayOutput { return v.JobClusters }).(JobJobClusterArrayOutput)
 }
 
-// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
 func (o JobOutput) Libraries() JobLibraryArrayOutput {
 	return o.ApplyT(func(v *Job) JobLibraryArrayOutput { return v.Libraries }).(JobLibraryArrayOutput)
 }

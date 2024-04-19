@@ -292,6 +292,9 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      * `networkId` from networks.
      */
     public readonly networkId!: pulumi.Output<string | undefined>;
+    /**
+     * The pricing tier of the workspace.
+     */
     public readonly pricingTier!: pulumi.Output<string>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
@@ -461,6 +464,9 @@ export interface MwsWorkspacesState {
      * `networkId` from networks.
      */
     networkId?: pulumi.Input<string>;
+    /**
+     * The pricing tier of the workspace.
+     */
     pricingTier?: pulumi.Input<string>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
@@ -550,6 +556,9 @@ export interface MwsWorkspacesArgs {
      * `networkId` from networks.
      */
     networkId?: pulumi.Input<string>;
+    /**
+     * The pricing tier of the workspace.
+     */
     pricingTier?: pulumi.Input<string>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.

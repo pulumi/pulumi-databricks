@@ -25,7 +25,6 @@ class MwsPrivateAccessSettingsArgs:
         The set of arguments for constructing a MwsPrivateAccessSettings resource.
         :param pulumi.Input[str] private_access_settings_name: Name of Private Access Settings in Databricks Account
         :param pulumi.Input[str] region: Region of AWS VPC or the Google Cloud VPC network
-        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
@@ -74,9 +73,6 @@ class MwsPrivateAccessSettingsArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-        """
         warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
 
@@ -147,7 +143,6 @@ class _MwsPrivateAccessSettingsState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MwsPrivateAccessSettings resources.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
@@ -176,9 +171,6 @@ class _MwsPrivateAccessSettingsState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-        """
         warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
 
@@ -304,7 +296,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=databricks_account_id,
             aws_region=region,
             workspace_name=prefix,
             credentials_id=this_databricks_mws_credentials["credentialsId"],
@@ -326,7 +317,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=databricks_account_id,
             workspace_name="gcp-workspace",
             location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
@@ -363,7 +353,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
@@ -407,7 +396,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=databricks_account_id,
             aws_region=region,
             workspace_name=prefix,
             credentials_id=this_databricks_mws_credentials["credentialsId"],
@@ -429,7 +417,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         this = databricks.MwsWorkspaces("this",
-            account_id=databricks_account_id,
             workspace_name="gcp-workspace",
             location=subnet_region,
             cloud_resource_container=databricks.MwsWorkspacesCloudResourceContainerArgs(
@@ -530,7 +517,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpc_endpoint_ids: An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         :param pulumi.Input[str] private_access_level: The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of Private Access Settings in Databricks Account
@@ -554,9 +540,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
-        """
-        Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-        """
         warnings.warn("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
 

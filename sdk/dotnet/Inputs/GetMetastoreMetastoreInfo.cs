@@ -46,13 +46,13 @@ namespace Pulumi.Databricks.Inputs
         public string? GlobalMetastoreId { get; set; }
 
         /// <summary>
-        /// Id of the metastore to be fetched
+        /// Id of the metastore
         /// </summary>
         [Input("metastoreId")]
         public string? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of metastore.
+        /// Name of the metastore
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -66,6 +66,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("privilegeModelVersion")]
         public string? PrivilegeModelVersion { get; set; }
 
+        /// <summary>
+        /// Region of the metastore
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 

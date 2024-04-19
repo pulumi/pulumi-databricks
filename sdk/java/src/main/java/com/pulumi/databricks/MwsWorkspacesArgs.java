@@ -229,9 +229,17 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkId);
     }
 
+    /**
+     * The pricing tier of the workspace.
+     * 
+     */
     @Import(name="pricingTier")
     private @Nullable Output<String> pricingTier;
 
+    /**
+     * @return The pricing tier of the workspace.
+     * 
+     */
     public Optional<Output<String>> pricingTier() {
         return Optional.ofNullable(this.pricingTier);
     }
@@ -692,11 +700,23 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
             return networkId(Output.of(networkId));
         }
 
+        /**
+         * @param pricingTier The pricing tier of the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingTier(@Nullable Output<String> pricingTier) {
             $.pricingTier = pricingTier;
             return this;
         }
 
+        /**
+         * @param pricingTier The pricing tier of the workspace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingTier(String pricingTier) {
             return pricingTier(Output.of(pricingTier));
         }

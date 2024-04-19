@@ -133,7 +133,8 @@ type Pipeline struct {
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration pulumi.MapOutput `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
-	Continuous pulumi.BoolPtrOutput `pulumi:"continuous"`
+	Continuous pulumi.BoolPtrOutput        `pulumi:"continuous"`
+	Deployment PipelineDeploymentPtrOutput `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrOutput `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
@@ -195,7 +196,8 @@ type pipelineState struct {
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]interface{} `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
-	Continuous *bool `pulumi:"continuous"`
+	Continuous *bool               `pulumi:"continuous"`
+	Deployment *PipelineDeployment `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
@@ -229,6 +231,7 @@ type PipelineState struct {
 	Configuration pulumi.MapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
+	Deployment PipelineDeploymentPtrInput
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
@@ -265,7 +268,8 @@ type pipelineArgs struct {
 	// An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
 	Configuration map[string]interface{} `pulumi:"configuration"`
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
-	Continuous *bool `pulumi:"continuous"`
+	Continuous *bool               `pulumi:"continuous"`
+	Deployment *PipelineDeployment `pulumi:"deployment"`
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development *bool `pulumi:"development"`
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
@@ -298,6 +302,7 @@ type PipelineArgs struct {
 	Configuration pulumi.MapInput
 	// A flag indicating whether to run the pipeline continuously. The default value is `false`.
 	Continuous pulumi.BoolPtrInput
+	Deployment PipelineDeploymentPtrInput
 	// A flag indicating whether to run the pipeline in development mode. The default value is `true`.
 	Development pulumi.BoolPtrInput
 	// optional name of the [product edition](https://docs.databricks.com/data-engineering/delta-live-tables/delta-live-tables-concepts.html#editions). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).
@@ -431,6 +436,10 @@ func (o PipelineOutput) Configuration() pulumi.MapOutput {
 // A flag indicating whether to run the pipeline continuously. The default value is `false`.
 func (o PipelineOutput) Continuous() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Continuous }).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineOutput) Deployment() PipelineDeploymentPtrOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineDeploymentPtrOutput { return v.Deployment }).(PipelineDeploymentPtrOutput)
 }
 
 // A flag indicating whether to run the pipeline in development mode. The default value is `true`.

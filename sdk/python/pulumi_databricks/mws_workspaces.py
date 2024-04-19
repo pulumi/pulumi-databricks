@@ -55,6 +55,7 @@ class MwsWorkspacesArgs:
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
@@ -309,6 +310,9 @@ class MwsWorkspacesArgs:
     @property
     @pulumi.getter(name="pricingTier")
     def pricing_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pricing tier of the workspace.
+        """
         return pulumi.get(self, "pricing_tier")
 
     @pricing_tier.setter
@@ -450,6 +454,7 @@ class _MwsWorkspacesState:
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
@@ -695,6 +700,9 @@ class _MwsWorkspacesState:
     @property
     @pulumi.getter(name="pricingTier")
     def pricing_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pricing tier of the workspace.
+        """
         return pulumi.get(self, "pricing_tier")
 
     @pricing_tier.setter
@@ -1037,6 +1045,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
@@ -1373,6 +1382,7 @@ class MwsWorkspaces(pulumi.CustomResource):
         :param pulumi.Input[str] location: region of the subnet.
         :param pulumi.Input[str] managed_services_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         :param pulumi.Input[str] network_id: `network_id` from networks.
+        :param pulumi.Input[str] pricing_tier: The pricing tier of the workspace.
         :param pulumi.Input[str] private_access_settings_id: Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         :param pulumi.Input[str] storage_configuration_id: `storage_configuration_id` from storage configuration.
         :param pulumi.Input[str] storage_customer_managed_key_id: `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
@@ -1530,6 +1540,9 @@ class MwsWorkspaces(pulumi.CustomResource):
     @property
     @pulumi.getter(name="pricingTier")
     def pricing_tier(self) -> pulumi.Output[str]:
+        """
+        The pricing tier of the workspace.
+        """
         return pulumi.get(self, "pricing_tier")
 
     @property

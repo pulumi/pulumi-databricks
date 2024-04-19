@@ -4,10 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RecipientIpAccessList {
@@ -15,7 +15,7 @@ public final class RecipientIpAccessList {
      * @return Allowed IP Addresses in CIDR notation. Limit of 100.
      * 
      */
-    private List<String> allowedIpAddresses;
+    private @Nullable List<String> allowedIpAddresses;
 
     private RecipientIpAccessList() {}
     /**
@@ -23,7 +23,7 @@ public final class RecipientIpAccessList {
      * 
      */
     public List<String> allowedIpAddresses() {
-        return this.allowedIpAddresses;
+        return this.allowedIpAddresses == null ? List.of() : this.allowedIpAddresses;
     }
 
     public static Builder builder() {
@@ -35,7 +35,7 @@ public final class RecipientIpAccessList {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> allowedIpAddresses;
+        private @Nullable List<String> allowedIpAddresses;
         public Builder() {}
         public Builder(RecipientIpAccessList defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,10 +43,8 @@ public final class RecipientIpAccessList {
         }
 
         @CustomType.Setter
-        public Builder allowedIpAddresses(List<String> allowedIpAddresses) {
-            if (allowedIpAddresses == null) {
-              throw new MissingRequiredPropertyException("RecipientIpAccessList", "allowedIpAddresses");
-            }
+        public Builder allowedIpAddresses(@Nullable List<String> allowedIpAddresses) {
+
             this.allowedIpAddresses = allowedIpAddresses;
             return this;
         }

@@ -18,12 +18,12 @@ public final class RecipientToken {
      */
     private @Nullable String activationUrl;
     /**
-     * @return Time at which this recipient Token was created, in epoch milliseconds.
+     * @return Time at which this recipient was created, in epoch milliseconds.
      * 
      */
     private @Nullable Integer createdAt;
     /**
-     * @return Username of recipient token creator.
+     * @return Username of recipient creator.
      * 
      */
     private @Nullable String createdBy;
@@ -33,12 +33,12 @@ public final class RecipientToken {
      */
     private @Nullable Integer expirationTime;
     /**
-     * @return ID of this recipient - same as the `name`.
+     * @return Unique ID of the recipient token.
      * 
      */
     private @Nullable String id;
     /**
-     * @return Time at which this recipient Token was updated, in epoch milliseconds.
+     * @return Time at which this recipient was updated, in epoch milliseconds.
      * 
      */
     private @Nullable Integer updatedAt;
@@ -57,14 +57,14 @@ public final class RecipientToken {
         return Optional.ofNullable(this.activationUrl);
     }
     /**
-     * @return Time at which this recipient Token was created, in epoch milliseconds.
+     * @return Time at which this recipient was created, in epoch milliseconds.
      * 
      */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Username of recipient token creator.
+     * @return Username of recipient creator.
      * 
      */
     public Optional<String> createdBy() {
@@ -78,14 +78,14 @@ public final class RecipientToken {
         return Optional.ofNullable(this.expirationTime);
     }
     /**
-     * @return ID of this recipient - same as the `name`.
+     * @return Unique ID of the recipient token.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Time at which this recipient Token was updated, in epoch milliseconds.
+     * @return Time at which this recipient was updated, in epoch milliseconds.
      * 
      */
     public Optional<Integer> updatedAt() {

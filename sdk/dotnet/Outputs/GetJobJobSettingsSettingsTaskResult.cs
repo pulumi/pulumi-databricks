@@ -13,12 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskResult
     {
-        public readonly string? ComputeKey;
         public readonly Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? ConditionTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? DbtTask;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskDependsOnResult> DependsOns;
         public readonly string? Description;
         public readonly Outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult? EmailNotifications;
+        public readonly string? EnvironmentKey;
         public readonly string? ExistingClusterId;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskResult? ForEachTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskHealthResult? Health;
@@ -44,8 +44,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskResult(
-            string? computeKey,
-
             Outputs.GetJobJobSettingsSettingsTaskConditionTaskResult? conditionTask,
 
             Outputs.GetJobJobSettingsSettingsTaskDbtTaskResult? dbtTask,
@@ -55,6 +53,8 @@ namespace Pulumi.Databricks.Outputs
             string? description,
 
             Outputs.GetJobJobSettingsSettingsTaskEmailNotificationsResult? emailNotifications,
+
+            string? environmentKey,
 
             string? existingClusterId,
 
@@ -100,12 +100,12 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskWebhookNotificationsResult? webhookNotifications)
         {
-            ComputeKey = computeKey;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
             EmailNotifications = emailNotifications;
+            EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
             ForEachTask = forEachTask;
             Health = health;

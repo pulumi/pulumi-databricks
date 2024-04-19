@@ -85,6 +85,8 @@ type Schema struct {
 	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringOutput `pulumi:"enablePredictiveOptimization"`
 	// Delete schema regardless of its contents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	MetastoreId  pulumi.StringOutput  `pulumi:"metastoreId"`
@@ -135,6 +137,8 @@ type schemaState struct {
 	CatalogName *string `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
 	// Delete schema regardless of its contents.
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	MetastoreId  *string `pulumi:"metastoreId"`
@@ -153,6 +157,8 @@ type SchemaState struct {
 	CatalogName pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringPtrInput
 	// Delete schema regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	MetastoreId  pulumi.StringPtrInput
@@ -175,6 +181,8 @@ type schemaArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
 	// Delete schema regardless of its contents.
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	MetastoreId  *string `pulumi:"metastoreId"`
@@ -194,6 +202,8 @@ type SchemaArgs struct {
 	CatalogName pulumi.StringInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringPtrInput
 	// Delete schema regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	MetastoreId  pulumi.StringPtrInput
@@ -302,6 +312,11 @@ func (o SchemaOutput) CatalogName() pulumi.StringOutput {
 // User-supplied free-form text.
 func (o SchemaOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+func (o SchemaOutput) EnablePredictiveOptimization() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.EnablePredictiveOptimization }).(pulumi.StringOutput)
 }
 
 // Delete schema regardless of its contents.

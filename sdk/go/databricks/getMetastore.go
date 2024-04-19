@@ -71,10 +71,14 @@ func LookupMetastore(ctx *pulumi.Context, args *LookupMetastoreArgs, opts ...pul
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreArgs struct {
-	// Id of the metastore to be fetched
-	MetastoreId string `pulumi:"metastoreId"`
+	// Id of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo *GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
+	// Name of the metastore
+	Name *string `pulumi:"name"`
+	// Region of the metastore
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getMetastore.
@@ -84,6 +88,9 @@ type LookupMetastoreResult struct {
 	MetastoreId string `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
+	// Name of metastore.
+	Name   string `pulumi:"name"`
+	Region string `pulumi:"region"`
 }
 
 func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreResultOutput {
@@ -101,10 +108,14 @@ func LookupMetastoreOutput(ctx *pulumi.Context, args LookupMetastoreOutputArgs, 
 
 // A collection of arguments for invoking getMetastore.
 type LookupMetastoreOutputArgs struct {
-	// Id of the metastore to be fetched
-	MetastoreId pulumi.StringInput `pulumi:"metastoreId"`
+	// Id of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfoPtrInput `pulumi:"metastoreInfo"`
+	// Name of the metastore
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Region of the metastore
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupMetastoreOutputArgs) ElementType() reflect.Type {
@@ -138,6 +149,15 @@ func (o LookupMetastoreResultOutput) MetastoreId() pulumi.StringOutput {
 // MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 func (o LookupMetastoreResultOutput) MetastoreInfo() GetMetastoreMetastoreInfoOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) GetMetastoreMetastoreInfo { return v.MetastoreInfo }).(GetMetastoreMetastoreInfoOutput)
+}
+
+// Name of metastore.
+func (o LookupMetastoreResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupMetastoreResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func init() {

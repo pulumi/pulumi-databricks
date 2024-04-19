@@ -139,6 +139,7 @@ export class Pipeline extends pulumi.CustomResource {
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
     public readonly continuous!: pulumi.Output<boolean | undefined>;
+    public readonly deployment!: pulumi.Output<outputs.PipelineDeployment | undefined>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */
@@ -194,6 +195,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["clusters"] = state ? state.clusters : undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
             resourceInputs["continuous"] = state ? state.continuous : undefined;
+            resourceInputs["deployment"] = state ? state.deployment : undefined;
             resourceInputs["development"] = state ? state.development : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
@@ -213,6 +215,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["clusters"] = args ? args.clusters : undefined;
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["continuous"] = args ? args.continuous : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
             resourceInputs["development"] = args ? args.development : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
@@ -255,6 +258,7 @@ export interface PipelineState {
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
     continuous?: pulumi.Input<boolean>;
+    deployment?: pulumi.Input<inputs.PipelineDeployment>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */
@@ -317,6 +321,7 @@ export interface PipelineArgs {
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
     continuous?: pulumi.Input<boolean>;
+    deployment?: pulumi.Input<inputs.PipelineDeployment>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `true`.
      */

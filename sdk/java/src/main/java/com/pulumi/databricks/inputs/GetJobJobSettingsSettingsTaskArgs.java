@@ -37,13 +37,6 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
     public static final GetJobJobSettingsSettingsTaskArgs Empty = new GetJobJobSettingsSettingsTaskArgs();
 
-    @Import(name="computeKey")
-    private @Nullable Output<String> computeKey;
-
-    public Optional<Output<String>> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
-
     @Import(name="conditionTask")
     private @Nullable Output<GetJobJobSettingsSettingsTaskConditionTaskArgs> conditionTask;
 
@@ -77,6 +70,13 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
     public Optional<Output<GetJobJobSettingsSettingsTaskEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environmentKey")
+    private @Nullable Output<String> environmentKey;
+
+    public Optional<Output<String>> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
 
     @Import(name="existingClusterId")
@@ -236,12 +236,12 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
     private GetJobJobSettingsSettingsTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskArgs(GetJobJobSettingsSettingsTaskArgs $) {
-        this.computeKey = $.computeKey;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
+        this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
         this.forEachTask = $.forEachTask;
         this.health = $.health;
@@ -282,15 +282,6 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder(GetJobJobSettingsSettingsTaskArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder computeKey(@Nullable Output<String> computeKey) {
-            $.computeKey = computeKey;
-            return this;
-        }
-
-        public Builder computeKey(String computeKey) {
-            return computeKey(Output.of(computeKey));
         }
 
         public Builder conditionTask(@Nullable Output<GetJobJobSettingsSettingsTaskConditionTaskArgs> conditionTask) {
@@ -340,6 +331,15 @@ public final class GetJobJobSettingsSettingsTaskArgs extends com.pulumi.resource
 
         public Builder emailNotifications(GetJobJobSettingsSettingsTaskEmailNotificationsArgs emailNotifications) {
             return emailNotifications(Output.of(emailNotifications));
+        }
+
+        public Builder environmentKey(@Nullable Output<String> environmentKey) {
+            $.environmentKey = environmentKey;
+            return this;
+        }
+
+        public Builder environmentKey(String environmentKey) {
+            return environmentKey(Output.of(environmentKey));
         }
 
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {

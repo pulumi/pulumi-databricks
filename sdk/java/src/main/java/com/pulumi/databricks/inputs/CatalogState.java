@@ -49,6 +49,21 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     * 
+     */
+    @Import(name="enablePredictiveOptimization")
+    private @Nullable Output<String> enablePredictiveOptimization;
+
+    /**
+     * @return Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     * 
+     */
+    public Optional<Output<String>> enablePredictiveOptimization() {
+        return Optional.ofNullable(this.enablePredictiveOptimization);
+    }
+
+    /**
      * Delete catalog regardless of its contents.
      * 
      */
@@ -203,6 +218,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
     private CatalogState(CatalogState $) {
         this.comment = $.comment;
         this.connectionName = $.connectionName;
+        this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
@@ -273,6 +289,27 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        /**
+         * @param enablePredictiveOptimization Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePredictiveOptimization(@Nullable Output<String> enablePredictiveOptimization) {
+            $.enablePredictiveOptimization = enablePredictiveOptimization;
+            return this;
+        }
+
+        /**
+         * @param enablePredictiveOptimization Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePredictiveOptimization(String enablePredictiveOptimization) {
+            return enablePredictiveOptimization(Output.of(enablePredictiveOptimization));
         }
 
         /**

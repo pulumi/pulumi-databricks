@@ -10,11 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.JobArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.JobState;
-import com.pulumi.databricks.outputs.JobCompute;
 import com.pulumi.databricks.outputs.JobContinuous;
 import com.pulumi.databricks.outputs.JobDbtTask;
 import com.pulumi.databricks.outputs.JobDeployment;
 import com.pulumi.databricks.outputs.JobEmailNotifications;
+import com.pulumi.databricks.outputs.JobEnvironment;
 import com.pulumi.databricks.outputs.JobGitSource;
 import com.pulumi.databricks.outputs.JobHealth;
 import com.pulumi.databricks.outputs.JobJobCluster;
@@ -75,12 +75,6 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> alwaysRunning() {
         return Codegen.optional(this.alwaysRunning);
-    }
-    @Export(name="computes", refs={List.class,JobCompute.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<JobCompute>> computes;
-
-    public Output<Optional<List<JobCompute>>> computes() {
-        return Codegen.optional(this.computes);
     }
     @Export(name="continuous", refs={JobContinuous.class}, tree="[0]")
     private Output</* @Nullable */ JobContinuous> continuous;
@@ -158,6 +152,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<JobEmailNotifications>> emailNotifications() {
         return Codegen.optional(this.emailNotifications);
     }
+    @Export(name="environments", refs={List.class,JobEnvironment.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<JobEnvironment>> environments;
+
+    public Output<Optional<List<JobEnvironment>>> environments() {
+        return Codegen.optional(this.environments);
+    }
     @Export(name="existingClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> existingClusterId;
 
@@ -205,14 +205,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.jobClusters);
     }
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     @Export(name="libraries", refs={List.class,JobLibrary.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobLibrary>> libraries;
 
     /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     public Output<Optional<List<JobLibrary>>> libraries() {

@@ -19,8 +19,6 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
     public static final MwsPrivateAccessSettingsArgs Empty = new MwsPrivateAccessSettingsArgs();
 
     /**
-     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-     * 
      * @deprecated
      * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
@@ -30,8 +28,6 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-     * 
      * @deprecated
      * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
@@ -162,8 +158,6 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accountId Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-         * 
          * @return builder
          * 
          * @deprecated
@@ -177,8 +171,6 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accountId Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-         * 
          * @return builder
          * 
          * @deprecated

@@ -67,6 +67,8 @@ type Catalog struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName pulumi.StringPtrOutput `pulumi:"connectionName"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringOutput `pulumi:"enablePredictiveOptimization"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -123,6 +125,8 @@ type catalogState struct {
 	Comment *string `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName *string `pulumi:"connectionName"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -150,6 +154,8 @@ type CatalogState struct {
 	Comment pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -181,6 +187,8 @@ type catalogArgs struct {
 	Comment *string `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName *string `pulumi:"connectionName"`
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
 	// Delete catalog regardless of its contents.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -209,6 +217,8 @@ type CatalogArgs struct {
 	Comment pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName pulumi.StringPtrInput
+	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+	EnablePredictiveOptimization pulumi.StringPtrInput
 	// Delete catalog regardless of its contents.
 	ForceDestroy pulumi.BoolPtrInput
 	// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -326,6 +336,11 @@ func (o CatalogOutput) Comment() pulumi.StringPtrOutput {
 // For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 func (o CatalogOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+func (o CatalogOutput) EnablePredictiveOptimization() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.EnablePredictiveOptimization }).(pulumi.StringOutput)
 }
 
 // Delete catalog regardless of its contents.

@@ -19,13 +19,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? ActivationUrl { get; set; }
 
         /// <summary>
-        /// Time at which this recipient Token was created, in epoch milliseconds.
+        /// Time at which this recipient was created, in epoch milliseconds.
         /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Username of recipient token creator.
+        /// Username of recipient creator.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// ID of this recipient - same as the `name`.
+        /// Unique ID of the recipient token.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Time at which this recipient Token was updated, in epoch milliseconds.
+        /// Time at which this recipient was updated, in epoch milliseconds.
         /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }

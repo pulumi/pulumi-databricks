@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class RecipientIpAccessListArgs : global::Pulumi.ResourceArgs
     {
-        [Input("allowedIpAddresses", required: true)]
+        [Input("allowedIpAddresses")]
         private InputList<string>? _allowedIpAddresses;
 
         /// <summary>

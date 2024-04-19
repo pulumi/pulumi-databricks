@@ -108,6 +108,7 @@ type Cluster struct {
 	AutoterminationMinutes pulumi.IntPtrOutput                `pulumi:"autoterminationMinutes"`
 	AwsAttributes          ClusterAwsAttributesPtrOutput      `pulumi:"awsAttributes"`
 	AzureAttributes        ClusterAzureAttributesPtrOutput    `pulumi:"azureAttributes"`
+	CloneFrom              ClusterCloneFromPtrOutput          `pulumi:"cloneFrom"`
 	ClusterId              pulumi.StringOutput                `pulumi:"clusterId"`
 	ClusterLogConf         ClusterClusterLogConfPtrOutput     `pulumi:"clusterLogConf"`
 	ClusterMountInfos      ClusterClusterMountInfoArrayOutput `pulumi:"clusterMountInfos"`
@@ -288,6 +289,7 @@ type clusterState struct {
 	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
+	CloneFrom              *ClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterId              *string                   `pulumi:"clusterId"`
 	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
@@ -436,6 +438,7 @@ type ClusterState struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
+	CloneFrom              ClusterCloneFromPtrInput
 	ClusterId              pulumi.StringPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
 	ClusterMountInfos      ClusterClusterMountInfoArrayInput
@@ -588,7 +591,7 @@ type clusterArgs struct {
 	AutoterminationMinutes *int                      `pulumi:"autoterminationMinutes"`
 	AwsAttributes          *ClusterAwsAttributes     `pulumi:"awsAttributes"`
 	AzureAttributes        *ClusterAzureAttributes   `pulumi:"azureAttributes"`
-	ClusterId              *string                   `pulumi:"clusterId"`
+	CloneFrom              *ClusterCloneFrom         `pulumi:"cloneFrom"`
 	ClusterLogConf         *ClusterClusterLogConf    `pulumi:"clusterLogConf"`
 	ClusterMountInfos      []ClusterClusterMountInfo `pulumi:"clusterMountInfos"`
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -730,7 +733,7 @@ type ClusterArgs struct {
 	AutoterminationMinutes pulumi.IntPtrInput
 	AwsAttributes          ClusterAwsAttributesPtrInput
 	AzureAttributes        ClusterAzureAttributesPtrInput
-	ClusterId              pulumi.StringPtrInput
+	CloneFrom              ClusterCloneFromPtrInput
 	ClusterLogConf         ClusterClusterLogConfPtrInput
 	ClusterMountInfos      ClusterClusterMountInfoArrayInput
 	// Cluster name, which doesn’t have to be unique. If not specified at creation, the cluster name will be an empty string.
@@ -970,6 +973,10 @@ func (o ClusterOutput) AwsAttributes() ClusterAwsAttributesPtrOutput {
 
 func (o ClusterOutput) AzureAttributes() ClusterAzureAttributesPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAzureAttributesPtrOutput { return v.AzureAttributes }).(ClusterAzureAttributesPtrOutput)
+}
+
+func (o ClusterOutput) CloneFrom() ClusterCloneFromPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterCloneFromPtrOutput { return v.CloneFrom }).(ClusterCloneFromPtrOutput)
 }
 
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {

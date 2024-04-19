@@ -13,7 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTask
     {
-        public readonly string? ComputeKey;
         public readonly Outputs.JobTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskDbtTask? DbtTask;
         /// <summary>
@@ -28,6 +27,7 @@ namespace Pulumi.Databricks.Outputs
         /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
+        public readonly string? EnvironmentKey;
         public readonly string? ExistingClusterId;
         public readonly Outputs.JobTaskForEachTask? ForEachTask;
         /// <summary>
@@ -90,8 +90,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTask(
-            string? computeKey,
-
             Outputs.JobTaskConditionTask? conditionTask,
 
             Outputs.JobTaskDbtTask? dbtTask,
@@ -101,6 +99,8 @@ namespace Pulumi.Databricks.Outputs
             string? description,
 
             Outputs.JobTaskEmailNotifications? emailNotifications,
+
+            string? environmentKey,
 
             string? existingClusterId,
 
@@ -146,12 +146,12 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskWebhookNotifications? webhookNotifications)
         {
-            ComputeKey = computeKey;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
             EmailNotifications = emailNotifications;
+            EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
             ForEachTask = forEachTask;
             Health = health;

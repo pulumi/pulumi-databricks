@@ -140,6 +140,16 @@ export const getDirectory: typeof import("./getDirectory").getDirectory = null a
 export const getDirectoryOutput: typeof import("./getDirectory").getDirectoryOutput = null as any;
 utilities.lazyLoad(exports, ["getDirectory","getDirectoryOutput"], () => require("./getDirectory"));
 
+export { GetExternalLocationArgs, GetExternalLocationResult, GetExternalLocationOutputArgs } from "./getExternalLocation";
+export const getExternalLocation: typeof import("./getExternalLocation").getExternalLocation = null as any;
+export const getExternalLocationOutput: typeof import("./getExternalLocation").getExternalLocationOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalLocation","getExternalLocationOutput"], () => require("./getExternalLocation"));
+
+export { GetExternalLocationsArgs, GetExternalLocationsResult, GetExternalLocationsOutputArgs } from "./getExternalLocations";
+export const getExternalLocations: typeof import("./getExternalLocations").getExternalLocations = null as any;
+export const getExternalLocationsOutput: typeof import("./getExternalLocations").getExternalLocationsOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalLocations","getExternalLocationsOutput"], () => require("./getExternalLocations"));
+
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;

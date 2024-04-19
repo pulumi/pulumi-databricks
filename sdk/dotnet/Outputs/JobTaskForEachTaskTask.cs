@@ -13,7 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskForEachTaskTask
     {
-        public readonly string? ComputeKey;
         public readonly Outputs.JobTaskForEachTaskTaskConditionTask? ConditionTask;
         public readonly Outputs.JobTaskForEachTaskTaskDbtTask? DbtTask;
         /// <summary>
@@ -28,6 +27,7 @@ namespace Pulumi.Databricks.Outputs
         /// (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTaskEmailNotifications? EmailNotifications;
+        public readonly string? EnvironmentKey;
         public readonly string? ExistingClusterId;
         /// <summary>
         /// block described below that specifies health conditions for a given task.
@@ -89,8 +89,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTaskForEachTaskTask(
-            string? computeKey,
-
             Outputs.JobTaskForEachTaskTaskConditionTask? conditionTask,
 
             Outputs.JobTaskForEachTaskTaskDbtTask? dbtTask,
@@ -100,6 +98,8 @@ namespace Pulumi.Databricks.Outputs
             string? description,
 
             Outputs.JobTaskForEachTaskTaskEmailNotifications? emailNotifications,
+
+            string? environmentKey,
 
             string? existingClusterId,
 
@@ -143,12 +143,12 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskWebhookNotifications? webhookNotifications)
         {
-            ComputeKey = computeKey;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
             EmailNotifications = emailNotifications;
+            EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
             Health = health;
             JobClusterKey = jobClusterKey;

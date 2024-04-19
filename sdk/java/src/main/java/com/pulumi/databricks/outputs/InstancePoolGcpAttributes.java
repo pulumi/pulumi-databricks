@@ -22,6 +22,11 @@ public final class InstancePoolGcpAttributes {
      * 
      */
     private @Nullable Integer localSsdCount;
+    /**
+     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     * 
+     */
+    private @Nullable String zoneId;
 
     private InstancePoolGcpAttributes() {}
     /**
@@ -38,6 +43,13 @@ public final class InstancePoolGcpAttributes {
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
+    /**
+     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     * 
+     */
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class InstancePoolGcpAttributes {
     public static final class Builder {
         private @Nullable String gcpAvailability;
         private @Nullable Integer localSsdCount;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(InstancePoolGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpAvailability = defaults.gcpAvailability;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -69,10 +83,17 @@ public final class InstancePoolGcpAttributes {
             this.localSsdCount = localSsdCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder zoneId(@Nullable String zoneId) {
+
+            this.zoneId = zoneId;
+            return this;
+        }
         public InstancePoolGcpAttributes build() {
             final var _resultValue = new InstancePoolGcpAttributes();
             _resultValue.gcpAvailability = gcpAvailability;
             _resultValue.localSsdCount = localSsdCount;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

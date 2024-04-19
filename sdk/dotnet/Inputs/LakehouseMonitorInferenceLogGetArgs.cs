@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class LakehouseMonitorInferenceLogGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("granularities")]
+        [Input("granularities", required: true)]
         private InputList<string>? _granularities;
 
         /// <summary>
@@ -33,14 +33,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Column of the model id or version
         /// </summary>
-        [Input("modelIdCol")]
-        public Input<string>? ModelIdCol { get; set; }
+        [Input("modelIdCol", required: true)]
+        public Input<string> ModelIdCol { get; set; } = null!;
 
         /// <summary>
         /// Column of the model prediction
         /// </summary>
-        [Input("predictionCol")]
-        public Input<string>? PredictionCol { get; set; }
+        [Input("predictionCol", required: true)]
+        public Input<string> PredictionCol { get; set; } = null!;
 
         /// <summary>
         /// Column of the model prediction probabilities
@@ -51,14 +51,14 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
         /// </summary>
-        [Input("problemType")]
-        public Input<string>? ProblemType { get; set; }
+        [Input("problemType", required: true)]
+        public Input<string> ProblemType { get; set; } = null!;
 
         /// <summary>
         /// Column of the timestamp of predictions
         /// </summary>
-        [Input("timestampCol")]
-        public Input<string>? TimestampCol { get; set; }
+        [Input("timestampCol", required: true)]
+        public Input<string> TimestampCol { get; set; } = null!;
 
         public LakehouseMonitorInferenceLogGetArgs()
         {

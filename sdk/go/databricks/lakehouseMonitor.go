@@ -116,13 +116,13 @@ type LakehouseMonitor struct {
 	LatestMonitorFailureMsg pulumi.StringPtrOutput                `pulumi:"latestMonitorFailureMsg"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion pulumi.StringOutput `pulumi:"monitorVersion"`
-	// The notification settings for the monitor
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications LakehouseMonitorNotificationsPtrOutput `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
-	// The schedule for automatically updating and refreshing metric tables.
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrOutput `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
 	SkipBuiltinDashboard pulumi.BoolPtrOutput `pulumi:"skipBuiltinDashboard"`
@@ -197,13 +197,13 @@ type lakehouseMonitorState struct {
 	LatestMonitorFailureMsg *string                       `pulumi:"latestMonitorFailureMsg"`
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion *string `pulumi:"monitorVersion"`
-	// The notification settings for the monitor
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName *string `pulumi:"outputSchemaName"`
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
-	// The schedule for automatically updating and refreshing metric tables.
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *LakehouseMonitorSchedule `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
 	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
@@ -240,13 +240,13 @@ type LakehouseMonitorState struct {
 	LatestMonitorFailureMsg pulumi.StringPtrInput
 	// The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
 	MonitorVersion pulumi.StringPtrInput
-	// The notification settings for the monitor
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications LakehouseMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringPtrInput
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName pulumi.StringPtrInput
-	// The schedule for automatically updating and refreshing metric tables.
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrInput
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
 	SkipBuiltinDashboard pulumi.BoolPtrInput
@@ -281,11 +281,11 @@ type lakehouseMonitorArgs struct {
 	// Configuration for the inference log monitor
 	InferenceLog            *LakehouseMonitorInferenceLog `pulumi:"inferenceLog"`
 	LatestMonitorFailureMsg *string                       `pulumi:"latestMonitorFailureMsg"`
-	// The notification settings for the monitor
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications *LakehouseMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName string `pulumi:"outputSchemaName"`
-	// The schedule for automatically updating and refreshing metric tables.
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *LakehouseMonitorSchedule `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
 	SkipBuiltinDashboard *bool `pulumi:"skipBuiltinDashboard"`
@@ -315,11 +315,11 @@ type LakehouseMonitorArgs struct {
 	// Configuration for the inference log monitor
 	InferenceLog            LakehouseMonitorInferenceLogPtrInput
 	LatestMonitorFailureMsg pulumi.StringPtrInput
-	// The notification settings for the monitor
+	// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 	Notifications LakehouseMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringInput
-	// The schedule for automatically updating and refreshing metric tables.
+	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrInput
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
 	SkipBuiltinDashboard pulumi.BoolPtrInput
@@ -469,7 +469,7 @@ func (o LakehouseMonitorOutput) MonitorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.MonitorVersion }).(pulumi.StringOutput)
 }
 
-// The notification settings for the monitor
+// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
 func (o LakehouseMonitorOutput) Notifications() LakehouseMonitorNotificationsPtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorNotificationsPtrOutput { return v.Notifications }).(LakehouseMonitorNotificationsPtrOutput)
 }
@@ -484,7 +484,7 @@ func (o LakehouseMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }
 
-// The schedule for automatically updating and refreshing metric tables.
+// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 func (o LakehouseMonitorOutput) Schedule() LakehouseMonitorSchedulePtrOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorSchedulePtrOutput { return v.Schedule }).(LakehouseMonitorSchedulePtrOutput)
 }

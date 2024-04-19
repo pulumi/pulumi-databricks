@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -23,11 +24,18 @@ public final class GetInstancePoolPoolInfoGcpAttributesArgs extends com.pulumi.r
         return Optional.ofNullable(this.gcpAvailability);
     }
 
-    @Import(name="localSsdCount")
-    private @Nullable Output<Integer> localSsdCount;
+    @Import(name="localSsdCount", required=true)
+    private Output<Integer> localSsdCount;
 
-    public Optional<Output<Integer>> localSsdCount() {
-        return Optional.ofNullable(this.localSsdCount);
+    public Output<Integer> localSsdCount() {
+        return this.localSsdCount;
+    }
+
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
+
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private GetInstancePoolPoolInfoGcpAttributesArgs() {}
@@ -35,6 +43,7 @@ public final class GetInstancePoolPoolInfoGcpAttributesArgs extends com.pulumi.r
     private GetInstancePoolPoolInfoGcpAttributesArgs(GetInstancePoolPoolInfoGcpAttributesArgs $) {
         this.gcpAvailability = $.gcpAvailability;
         this.localSsdCount = $.localSsdCount;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -64,7 +73,7 @@ public final class GetInstancePoolPoolInfoGcpAttributesArgs extends com.pulumi.r
             return gcpAvailability(Output.of(gcpAvailability));
         }
 
-        public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {
+        public Builder localSsdCount(Output<Integer> localSsdCount) {
             $.localSsdCount = localSsdCount;
             return this;
         }
@@ -73,7 +82,22 @@ public final class GetInstancePoolPoolInfoGcpAttributesArgs extends com.pulumi.r
             return localSsdCount(Output.of(localSsdCount));
         }
 
+        public Builder zoneId(Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
+        }
+
         public GetInstancePoolPoolInfoGcpAttributesArgs build() {
+            if ($.localSsdCount == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributesArgs", "localSsdCount");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributesArgs", "zoneId");
+            }
             return $;
         }
     }

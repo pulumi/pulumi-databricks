@@ -5,10 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RecipientIpAccessListArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +20,15 @@ public final class RecipientIpAccessListArgs extends com.pulumi.resources.Resour
      * Allowed IP Addresses in CIDR notation. Limit of 100.
      * 
      */
-    @Import(name="allowedIpAddresses", required=true)
-    private Output<List<String>> allowedIpAddresses;
+    @Import(name="allowedIpAddresses")
+    private @Nullable Output<List<String>> allowedIpAddresses;
 
     /**
      * @return Allowed IP Addresses in CIDR notation. Limit of 100.
      * 
      */
-    public Output<List<String>> allowedIpAddresses() {
-        return this.allowedIpAddresses;
+    public Optional<Output<List<String>>> allowedIpAddresses() {
+        return Optional.ofNullable(this.allowedIpAddresses);
     }
 
     private RecipientIpAccessListArgs() {}
@@ -60,7 +61,7 @@ public final class RecipientIpAccessListArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder allowedIpAddresses(Output<List<String>> allowedIpAddresses) {
+        public Builder allowedIpAddresses(@Nullable Output<List<String>> allowedIpAddresses) {
             $.allowedIpAddresses = allowedIpAddresses;
             return this;
         }
@@ -86,9 +87,6 @@ public final class RecipientIpAccessListArgs extends com.pulumi.resources.Resour
         }
 
         public RecipientIpAccessListArgs build() {
-            if ($.allowedIpAddresses == null) {
-                throw new MissingRequiredPropertyException("RecipientIpAccessListArgs", "allowedIpAddresses");
-            }
             return $;
         }
     }

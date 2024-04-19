@@ -5,11 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsComputeArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuousArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTaskArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDeploymentArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEnvironmentArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSourceArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealthArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobClusterArgs;
@@ -45,13 +45,6 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetJobJobSettingsSettingsArgs Empty = new GetJobJobSettingsSettingsArgs();
-
-    @Import(name="computes")
-    private @Nullable Output<List<GetJobJobSettingsSettingsComputeArgs>> computes;
-
-    public Optional<Output<List<GetJobJobSettingsSettingsComputeArgs>>> computes() {
-        return Optional.ofNullable(this.computes);
-    }
 
     @Import(name="continuous")
     private @Nullable Output<GetJobJobSettingsSettingsContinuousArgs> continuous;
@@ -93,6 +86,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
     public Optional<Output<GetJobJobSettingsSettingsEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environments")
+    private @Nullable Output<List<GetJobJobSettingsSettingsEnvironmentArgs>> environments;
+
+    public Optional<Output<List<GetJobJobSettingsSettingsEnvironmentArgs>>> environments() {
+        return Optional.ofNullable(this.environments);
     }
 
     @Import(name="existingClusterId")
@@ -309,13 +309,13 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
     private GetJobJobSettingsSettingsArgs() {}
 
     private GetJobJobSettingsSettingsArgs(GetJobJobSettingsSettingsArgs $) {
-        this.computes = $.computes;
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.deployment = $.deployment;
         this.description = $.description;
         this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
+        this.environments = $.environments;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
         this.gitSource = $.gitSource;
@@ -363,19 +363,6 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder(GetJobJobSettingsSettingsArgs defaults) {
             $ = new GetJobJobSettingsSettingsArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder computes(@Nullable Output<List<GetJobJobSettingsSettingsComputeArgs>> computes) {
-            $.computes = computes;
-            return this;
-        }
-
-        public Builder computes(List<GetJobJobSettingsSettingsComputeArgs> computes) {
-            return computes(Output.of(computes));
-        }
-
-        public Builder computes(GetJobJobSettingsSettingsComputeArgs... computes) {
-            return computes(List.of(computes));
         }
 
         public Builder continuous(@Nullable Output<GetJobJobSettingsSettingsContinuousArgs> continuous) {
@@ -430,6 +417,19 @@ public final class GetJobJobSettingsSettingsArgs extends com.pulumi.resources.Re
 
         public Builder emailNotifications(GetJobJobSettingsSettingsEmailNotificationsArgs emailNotifications) {
             return emailNotifications(Output.of(emailNotifications));
+        }
+
+        public Builder environments(@Nullable Output<List<GetJobJobSettingsSettingsEnvironmentArgs>> environments) {
+            $.environments = environments;
+            return this;
+        }
+
+        public Builder environments(List<GetJobJobSettingsSettingsEnvironmentArgs> environments) {
+            return environments(Output.of(environments));
+        }
+
+        public Builder environments(GetJobJobSettingsSettingsEnvironmentArgs... environments) {
+            return environments(List.of(environments));
         }
 
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {

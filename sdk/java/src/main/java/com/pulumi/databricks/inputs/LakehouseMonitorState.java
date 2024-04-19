@@ -154,14 +154,14 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The notification settings for the monitor
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<LakehouseMonitorNotificationsArgs> notifications;
 
     /**
-     * @return The notification settings for the monitor
+     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
      * 
      */
     public Optional<Output<LakehouseMonitorNotificationsArgs>> notifications() {
@@ -199,14 +199,14 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The schedule for automatically updating and refreshing metric tables.
+     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<LakehouseMonitorScheduleArgs> schedule;
 
     /**
-     * @return The schedule for automatically updating and refreshing metric tables.
+     * @return The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
      */
     public Optional<Output<LakehouseMonitorScheduleArgs>> schedule() {
@@ -551,7 +551,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param notifications The notification settings for the monitor
+         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param notifications The notification settings for the monitor
+         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule The schedule for automatically updating and refreshing metric tables.
+         * @param schedule The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class LakehouseMonitorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param schedule The schedule for automatically updating and refreshing metric tables.
+         * @param schedule The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
          * 
          * @return builder
          * 

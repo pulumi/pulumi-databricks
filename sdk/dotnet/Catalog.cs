@@ -69,6 +69,12 @@ namespace Pulumi.Databricks
         public Output<string?> ConnectionName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Output("enablePredictiveOptimization")]
+        public Output<string> EnablePredictiveOptimization { get; private set; } = null!;
+
+        /// <summary>
         /// Delete catalog regardless of its contents.
         /// </summary>
         [Output("forceDestroy")]
@@ -187,6 +193,12 @@ namespace Pulumi.Databricks
         public Input<string>? ConnectionName { get; set; }
 
         /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Input("enablePredictiveOptimization")]
+        public Input<string>? EnablePredictiveOptimization { get; set; }
+
+        /// <summary>
         /// Delete catalog regardless of its contents.
         /// </summary>
         [Input("forceDestroy")]
@@ -277,6 +289,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
+
+        /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Input("enablePredictiveOptimization")]
+        public Input<string>? EnablePredictiveOptimization { get; set; }
 
         /// <summary>
         /// Delete catalog regardless of its contents.

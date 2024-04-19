@@ -13,12 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsTaskForEachTaskTaskResult
     {
-        public readonly string? ComputeKey;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult? ConditionTask;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult? DbtTask;
         public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnResult> DependsOns;
         public readonly string? Description;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult? EmailNotifications;
+        public readonly string? EnvironmentKey;
         public readonly string? ExistingClusterId;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthResult? Health;
         public readonly string? JobClusterKey;
@@ -43,8 +43,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsTaskForEachTaskTaskResult(
-            string? computeKey,
-
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskResult? conditionTask,
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskResult? dbtTask,
@@ -54,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
             string? description,
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsResult? emailNotifications,
+
+            string? environmentKey,
 
             string? existingClusterId,
 
@@ -97,12 +97,12 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsResult? webhookNotifications)
         {
-            ComputeKey = computeKey;
             ConditionTask = conditionTask;
             DbtTask = dbtTask;
             DependsOns = dependsOns;
             Description = description;
             EmailNotifications = emailNotifications;
+            EnvironmentKey = environmentKey;
             ExistingClusterId = existingClusterId;
             Health = health;
             JobClusterKey = jobClusterKey;

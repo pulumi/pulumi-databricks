@@ -33,12 +33,12 @@ public final class GetMetastoreMetastoreInfo {
     private @Nullable String deltaSharingScope;
     private @Nullable String globalMetastoreId;
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
     private @Nullable String metastoreId;
     /**
-     * @return Name of metastore.
+     * @return Name of the metastore
      * 
      */
     private @Nullable String name;
@@ -48,6 +48,10 @@ public final class GetMetastoreMetastoreInfo {
      */
     private @Nullable String owner;
     private @Nullable String privilegeModelVersion;
+    /**
+     * @return Region of the metastore
+     * 
+     */
     private @Nullable String region;
     /**
      * @return Path on cloud storage account, where managed `databricks.Table` are stored.
@@ -97,14 +101,14 @@ public final class GetMetastoreMetastoreInfo {
         return Optional.ofNullable(this.globalMetastoreId);
     }
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
     public Optional<String> metastoreId() {
         return Optional.ofNullable(this.metastoreId);
     }
     /**
-     * @return Name of metastore.
+     * @return Name of the metastore
      * 
      */
     public Optional<String> name() {
@@ -120,6 +124,10 @@ public final class GetMetastoreMetastoreInfo {
     public Optional<String> privilegeModelVersion() {
         return Optional.ofNullable(this.privilegeModelVersion);
     }
+    /**
+     * @return Region of the metastore
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

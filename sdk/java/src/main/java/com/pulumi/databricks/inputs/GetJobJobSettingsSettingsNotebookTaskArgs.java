@@ -39,12 +39,20 @@ public final class GetJobJobSettingsSettingsNotebookTaskArgs extends com.pulumi.
         return Optional.ofNullable(this.source);
     }
 
+    @Import(name="warehouseId")
+    private @Nullable Output<String> warehouseId;
+
+    public Optional<Output<String>> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
+    }
+
     private GetJobJobSettingsSettingsNotebookTaskArgs() {}
 
     private GetJobJobSettingsSettingsNotebookTaskArgs(GetJobJobSettingsSettingsNotebookTaskArgs $) {
         this.baseParameters = $.baseParameters;
         this.notebookPath = $.notebookPath;
         this.source = $.source;
+        this.warehouseId = $.warehouseId;
     }
 
     public static Builder builder() {
@@ -90,6 +98,15 @@ public final class GetJobJobSettingsSettingsNotebookTaskArgs extends com.pulumi.
 
         public Builder source(String source) {
             return source(Output.of(source));
+        }
+
+        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+            $.warehouseId = warehouseId;
+            return this;
+        }
+
+        public Builder warehouseId(String warehouseId) {
+            return warehouseId(Output.of(warehouseId));
         }
 
         public GetJobJobSettingsSettingsNotebookTaskArgs build() {

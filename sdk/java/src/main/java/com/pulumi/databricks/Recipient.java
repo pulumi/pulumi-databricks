@@ -11,7 +11,10 @@ import com.pulumi.databricks.RecipientArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RecipientState;
 import com.pulumi.databricks.outputs.RecipientIpAccessList;
+import com.pulumi.databricks.outputs.RecipientPropertiesKvpairs;
 import com.pulumi.databricks.outputs.RecipientToken;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +23,9 @@ import javax.annotation.Nullable;
 /**
  * &gt; **Note** This resource could be only used with workspace-level provider!
  * 
- * Within a metastore, Unity Catalog provides the ability to create a recipient to attach delta shares to.
+ * In Delta Sharing, a recipient is an entity that receives shares from a provider. In Unity Catalog, a share is a securable object that represents an organization and associates it with a credential or secure sharing identifier that allows that organization to access one or more shares.
+ * 
+ * As a data provider (sharer), you can define multiple recipients for any given Unity Catalog metastore, but if you want to share data from multiple metastores with a particular user or group of users, you must define the recipient separately for each metastore. A recipient can have access to multiple shares.
  * 
  * A `databricks.Recipient` is contained within databricks.Metastore and can have permissions to `SELECT` from a list of shares.
  * 
@@ -82,6 +87,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/recipient:Recipient")
 public class Recipient extends com.pulumi.resources.CustomResource {
+    @Export(name="activated", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> activated;
+
+    public Output<Boolean> activated() {
+        return this.activated;
+    }
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
+    @Export(name="activationUrl", refs={String.class}, tree="[0]")
+    private Output<String> activationUrl;
+
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
+    public Output<String> activationUrl() {
+        return this.activationUrl;
+    }
     /**
      * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
      * 
@@ -97,6 +122,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return this.authenticationType;
     }
     /**
+     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Export(name="cloud", refs={String.class}, tree="[0]")
+    private Output<String> cloud;
+
+    /**
+     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Output<String> cloud() {
+        return this.cloud;
+    }
+    /**
      * Description about the recipient.
      * 
      */
@@ -109,6 +148,34 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    /**
+     * Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Username of recipient creator.
+     * 
+     */
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
+    public Output<String> createdBy() {
+        return this.createdBy;
     }
     /**
      * Required when `authentication_type` is `DATABRICKS`.
@@ -139,6 +206,20 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipAccessList);
     }
     /**
+     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
+    private Output<String> metastoreId;
+
+    /**
+     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Output<String> metastoreId() {
+        return this.metastoreId;
+    }
+    /**
      * Name of recipient. Change forces creation of a new resource.
      * 
      */
@@ -167,6 +248,34 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.owner);
     }
     /**
+     * Recipient properties - object consisting of following fields:
+     * 
+     */
+    @Export(name="propertiesKvpairs", refs={RecipientPropertiesKvpairs.class}, tree="[0]")
+    private Output</* @Nullable */ RecipientPropertiesKvpairs> propertiesKvpairs;
+
+    /**
+     * @return Recipient properties - object consisting of following fields:
+     * 
+     */
+    public Output<Optional<RecipientPropertiesKvpairs>> propertiesKvpairs() {
+        return Codegen.optional(this.propertiesKvpairs);
+    }
+    /**
+     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
      * The one-time sharing code provided by the data recipient.
      * 
      */
@@ -193,6 +302,34 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      */
     public Output<List<RecipientToken>> tokens() {
         return this.tokens;
+    }
+    /**
+     * Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * Username of recipient Token updater.
+     * 
+     */
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
+    public Output<String> updatedBy() {
+        return this.updatedBy;
     }
 
     /**

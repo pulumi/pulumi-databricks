@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
         /// * databricks.Metastore to manage Metastores within Unity Catalog.
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
-        public static Task<GetMetastoreResult> InvokeAsync(GetMetastoreArgs args, InvokeOptions? options = null)
+        public static Task<GetMetastoreResult> InvokeAsync(GetMetastoreArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreArgs(), options.WithDefaults());
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// * databricks.Metastore to manage Metastores within Unity Catalog.
         /// * databricks.Catalog to manage catalogs within Unity Catalog.
         /// </summary>
-        public static Output<GetMetastoreResult> Invoke(GetMetastoreInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMetastoreResult> Invoke(GetMetastoreInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreResult>("databricks:index/getMetastore:getMetastore", args ?? new GetMetastoreInvokeArgs(), options.WithDefaults());
     }
 
@@ -108,16 +108,28 @@ namespace Pulumi.Databricks
     public sealed class GetMetastoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the metastore to be fetched
+        /// Id of the metastore
         /// </summary>
-        [Input("metastoreId", required: true)]
-        public string MetastoreId { get; set; } = null!;
+        [Input("metastoreId")]
+        public string? MetastoreId { get; set; }
 
         /// <summary>
         /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
         /// </summary>
         [Input("metastoreInfo")]
         public Inputs.GetMetastoreMetastoreInfoArgs? MetastoreInfo { get; set; }
+
+        /// <summary>
+        /// Name of the metastore
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Region of the metastore
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
 
         public GetMetastoreArgs()
         {
@@ -128,16 +140,28 @@ namespace Pulumi.Databricks
     public sealed class GetMetastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the metastore to be fetched
+        /// Id of the metastore
         /// </summary>
-        [Input("metastoreId", required: true)]
-        public Input<string> MetastoreId { get; set; } = null!;
+        [Input("metastoreId")]
+        public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
         /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
         /// </summary>
         [Input("metastoreInfo")]
         public Input<Inputs.GetMetastoreMetastoreInfoInputArgs>? MetastoreInfo { get; set; }
+
+        /// <summary>
+        /// Name of the metastore
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Region of the metastore
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetMetastoreInvokeArgs()
         {
@@ -158,6 +182,11 @@ namespace Pulumi.Databricks
         /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
         /// </summary>
         public readonly Outputs.GetMetastoreMetastoreInfoResult MetastoreInfo;
+        /// <summary>
+        /// Name of metastore.
+        /// </summary>
+        public readonly string Name;
+        public readonly string Region;
 
         [OutputConstructor]
         private GetMetastoreResult(
@@ -165,11 +194,17 @@ namespace Pulumi.Databricks
 
             string metastoreId,
 
-            Outputs.GetMetastoreMetastoreInfoResult metastoreInfo)
+            Outputs.GetMetastoreMetastoreInfoResult metastoreInfo,
+
+            string name,
+
+            string region)
         {
             Id = id;
             MetastoreId = metastoreId;
             MetastoreInfo = metastoreInfo;
+            Name = name;
+            Region = region;
         }
     }
 }

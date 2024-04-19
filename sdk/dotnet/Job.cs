@@ -29,9 +29,6 @@ namespace Pulumi.Databricks
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
 
-        [Output("computes")]
-        public Output<ImmutableArray<Outputs.JobCompute>> Computes { get; private set; } = null!;
-
         [Output("continuous")]
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
@@ -64,6 +61,9 @@ namespace Pulumi.Databricks
         [Output("emailNotifications")]
         public Output<Outputs.JobEmailNotifications?> EmailNotifications { get; private set; } = null!;
 
+        [Output("environments")]
+        public Output<ImmutableArray<Outputs.JobEnvironment>> Environments { get; private set; } = null!;
+
         [Output("existingClusterId")]
         public Output<string?> ExistingClusterId { get; private set; } = null!;
 
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.JobJobCluster>> JobClusters { get; private set; } = null!;
 
         /// <summary>
-        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.JobLibrary>> Libraries { get; private set; } = null!;
@@ -251,14 +251,6 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
-        [Input("computes")]
-        private InputList<Inputs.JobComputeArgs>? _computes;
-        public InputList<Inputs.JobComputeArgs> Computes
-        {
-            get => _computes ?? (_computes = new InputList<Inputs.JobComputeArgs>());
-            set => _computes = value;
-        }
-
         [Input("continuous")]
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
@@ -291,6 +283,14 @@ namespace Pulumi.Databricks
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsArgs>? EmailNotifications { get; set; }
 
+        [Input("environments")]
+        private InputList<Inputs.JobEnvironmentArgs>? _environments;
+        public InputList<Inputs.JobEnvironmentArgs> Environments
+        {
+            get => _environments ?? (_environments = new InputList<Inputs.JobEnvironmentArgs>());
+            set => _environments = value;
+        }
+
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
@@ -322,7 +322,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobLibraryArgs>? _libraries;
 
         /// <summary>
-        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
         /// </summary>
         public InputList<Inputs.JobLibraryArgs> Libraries
         {
@@ -462,14 +462,6 @@ namespace Pulumi.Databricks
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
 
-        [Input("computes")]
-        private InputList<Inputs.JobComputeGetArgs>? _computes;
-        public InputList<Inputs.JobComputeGetArgs> Computes
-        {
-            get => _computes ?? (_computes = new InputList<Inputs.JobComputeGetArgs>());
-            set => _computes = value;
-        }
-
         [Input("continuous")]
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
 
@@ -502,6 +494,14 @@ namespace Pulumi.Databricks
         [Input("emailNotifications")]
         public Input<Inputs.JobEmailNotificationsGetArgs>? EmailNotifications { get; set; }
 
+        [Input("environments")]
+        private InputList<Inputs.JobEnvironmentGetArgs>? _environments;
+        public InputList<Inputs.JobEnvironmentGetArgs> Environments
+        {
+            get => _environments ?? (_environments = new InputList<Inputs.JobEnvironmentGetArgs>());
+            set => _environments = value;
+        }
+
         [Input("existingClusterId")]
         public Input<string>? ExistingClusterId { get; set; }
 
@@ -533,7 +533,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.JobLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+        /// (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
         /// </summary>
         public InputList<Inputs.JobLibraryGetArgs> Libraries
         {

@@ -5,11 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,78 +16,78 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
     public static final LakehouseMonitorCustomMetricArgs Empty = new LakehouseMonitorCustomMetricArgs();
 
     /**
-     * [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      * 
      */
-    @Import(name="definition")
-    private @Nullable Output<String> definition;
+    @Import(name="definition", required=true)
+    private Output<String> definition;
 
     /**
-     * @return [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * @return [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      * 
      */
-    public Optional<Output<String>> definition() {
-        return Optional.ofNullable(this.definition);
+    public Output<String> definition() {
+        return this.definition;
     }
 
     /**
      * Columns on the monitored table to apply the custom metrics to.
      * 
      */
-    @Import(name="inputColumns")
-    private @Nullable Output<List<String>> inputColumns;
+    @Import(name="inputColumns", required=true)
+    private Output<List<String>> inputColumns;
 
     /**
      * @return Columns on the monitored table to apply the custom metrics to.
      * 
      */
-    public Optional<Output<List<String>>> inputColumns() {
-        return Optional.ofNullable(this.inputColumns);
+    public Output<List<String>> inputColumns() {
+        return this.inputColumns;
     }
 
     /**
      * Name of the custom metric.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Name of the custom metric.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
      * The output type of the custom metric.
      * 
      */
-    @Import(name="outputDataType")
-    private @Nullable Output<String> outputDataType;
+    @Import(name="outputDataType", required=true)
+    private Output<String> outputDataType;
 
     /**
      * @return The output type of the custom metric.
      * 
      */
-    public Optional<Output<String>> outputDataType() {
-        return Optional.ofNullable(this.outputDataType);
+    public Output<String> outputDataType() {
+        return this.outputDataType;
     }
 
     /**
      * The type of the custom metric.
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="type", required=true)
+    private Output<String> type;
 
     /**
      * @return The type of the custom metric.
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     private LakehouseMonitorCustomMetricArgs() {}
@@ -120,18 +119,18 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
         }
 
         /**
-         * @param definition [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+         * @param definition [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
          * 
          * @return builder
          * 
          */
-        public Builder definition(@Nullable Output<String> definition) {
+        public Builder definition(Output<String> definition) {
             $.definition = definition;
             return this;
         }
 
         /**
-         * @param definition [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+         * @param definition [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
          * 
          * @return builder
          * 
@@ -146,7 +145,7 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder inputColumns(@Nullable Output<List<String>> inputColumns) {
+        public Builder inputColumns(Output<List<String>> inputColumns) {
             $.inputColumns = inputColumns;
             return this;
         }
@@ -177,7 +176,7 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -198,7 +197,7 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder outputDataType(@Nullable Output<String> outputDataType) {
+        public Builder outputDataType(Output<String> outputDataType) {
             $.outputDataType = outputDataType;
             return this;
         }
@@ -219,7 +218,7 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
+        public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
@@ -235,6 +234,21 @@ public final class LakehouseMonitorCustomMetricArgs extends com.pulumi.resources
         }
 
         public LakehouseMonitorCustomMetricArgs build() {
+            if ($.definition == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetricArgs", "definition");
+            }
+            if ($.inputColumns == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetricArgs", "inputColumns");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetricArgs", "name");
+            }
+            if ($.outputDataType == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetricArgs", "outputDataType");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetricArgs", "type");
+            }
             return $;
         }
     }

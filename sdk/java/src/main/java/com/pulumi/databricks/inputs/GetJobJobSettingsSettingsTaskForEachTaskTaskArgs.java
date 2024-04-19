@@ -36,13 +36,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTaskArgs Empty = new GetJobJobSettingsSettingsTaskForEachTaskTaskArgs();
 
-    @Import(name="computeKey")
-    private @Nullable Output<String> computeKey;
-
-    public Optional<Output<String>> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
-
     @Import(name="conditionTask")
     private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs> conditionTask;
 
@@ -76,6 +69,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
 
     public Optional<Output<GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs>> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environmentKey")
+    private @Nullable Output<String> environmentKey;
+
+    public Optional<Output<String>> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
 
     @Import(name="existingClusterId")
@@ -228,12 +228,12 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
     private GetJobJobSettingsSettingsTaskForEachTaskTaskArgs() {}
 
     private GetJobJobSettingsSettingsTaskForEachTaskTaskArgs(GetJobJobSettingsSettingsTaskForEachTaskTaskArgs $) {
-        this.computeKey = $.computeKey;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
+        this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
@@ -273,15 +273,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
 
         public Builder(GetJobJobSettingsSettingsTaskForEachTaskTaskArgs defaults) {
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTaskArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder computeKey(@Nullable Output<String> computeKey) {
-            $.computeKey = computeKey;
-            return this;
-        }
-
-        public Builder computeKey(String computeKey) {
-            return computeKey(Output.of(computeKey));
         }
 
         public Builder conditionTask(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs> conditionTask) {
@@ -331,6 +322,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskArgs extends com.
 
         public Builder emailNotifications(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs emailNotifications) {
             return emailNotifications(Output.of(emailNotifications));
+        }
+
+        public Builder environmentKey(@Nullable Output<String> environmentKey) {
+            $.environmentKey = environmentKey;
+            return this;
+        }
+
+        public Builder environmentKey(String environmentKey) {
+            return environmentKey(Output.of(environmentKey));
         }
 
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {

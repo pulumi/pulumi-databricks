@@ -32,14 +32,14 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Time at which this recipient Token was created, in epoch milliseconds.
+     * Time at which this recipient was created, in epoch milliseconds.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
     /**
-     * @return Time at which this recipient Token was created, in epoch milliseconds.
+     * @return Time at which this recipient was created, in epoch milliseconds.
      * 
      */
     public Optional<Output<Integer>> createdAt() {
@@ -47,14 +47,14 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Username of recipient token creator.
+     * Username of recipient creator.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return Username of recipient token creator.
+     * @return Username of recipient creator.
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -77,14 +77,14 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ID of this recipient - same as the `name`.
+     * Unique ID of the recipient token.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of this recipient - same as the `name`.
+     * @return Unique ID of the recipient token.
      * 
      */
     public Optional<Output<String>> id() {
@@ -92,14 +92,14 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Time at which this recipient Token was updated, in epoch milliseconds.
+     * Time at which this recipient was updated, in epoch milliseconds.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
     /**
-     * @return Time at which this recipient Token was updated, in epoch milliseconds.
+     * @return Time at which this recipient was updated, in epoch milliseconds.
      * 
      */
     public Optional<Output<Integer>> updatedAt() {
@@ -173,7 +173,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createdAt Time at which this recipient Token was created, in epoch milliseconds.
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createdAt Time at which this recipient Token was created, in epoch milliseconds.
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createdBy Username of recipient token creator.
+         * @param createdBy Username of recipient creator.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createdBy Username of recipient token creator.
+         * @param createdBy Username of recipient creator.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param id ID of this recipient - same as the `name`.
+         * @param id Unique ID of the recipient token.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param id ID of this recipient - same as the `name`.
+         * @param id Unique ID of the recipient token.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updatedAt Time at which this recipient Token was updated, in epoch milliseconds.
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class RecipientTokenArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updatedAt Time at which this recipient Token was updated, in epoch milliseconds.
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
          * 
          * @return builder
          * 

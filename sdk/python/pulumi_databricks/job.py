@@ -17,7 +17,6 @@ __all__ = ['JobArgs', 'Job']
 class JobArgs:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
-                 computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
@@ -25,6 +24,7 @@ class JobArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  git_source: Optional[pulumi.Input['JobGitSourceArgs']] = None,
@@ -64,7 +64,7 @@ class JobArgs:
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -82,8 +82,6 @@ class JobArgs:
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
-        if computes is not None:
-            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
@@ -101,6 +99,8 @@ class JobArgs:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if format is not None:
@@ -207,15 +207,6 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def computes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]:
-        return pulumi.get(self, "computes")
-
-    @computes.setter
-    def computes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]):
-        pulumi.set(self, "computes", value)
-
-    @property
-    @pulumi.getter
     def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
         return pulumi.get(self, "continuous")
 
@@ -292,6 +283,15 @@ class JobArgs:
         pulumi.set(self, "email_notifications", value)
 
     @property
+    @pulumi.getter
+    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]]:
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]]):
+        pulumi.set(self, "environments", value)
+
+    @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "existing_cluster_id")
@@ -346,7 +346,7 @@ class JobArgs:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]]:
         """
-        (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         """
         return pulumi.get(self, "libraries")
 
@@ -629,7 +629,6 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  always_running: Optional[pulumi.Input[bool]] = None,
-                 computes: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]] = None,
                  continuous: Optional[pulumi.Input['JobContinuousArgs']] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input['JobDbtTaskArgs']] = None,
@@ -637,6 +636,7 @@ class _JobState:
                  description: Optional[pulumi.Input[str]] = None,
                  edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input['JobEmailNotificationsArgs']] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  git_source: Optional[pulumi.Input['JobGitSourceArgs']] = None,
@@ -677,7 +677,7 @@ class _JobState:
         :param pulumi.Input['JobEmailNotificationsArgs'] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input['JobHealthArgs'] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -696,8 +696,6 @@ class _JobState:
             pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
         if always_running is not None:
             pulumi.set(__self__, "always_running", always_running)
-        if computes is not None:
-            pulumi.set(__self__, "computes", computes)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
         if control_run_state is not None:
@@ -715,6 +713,8 @@ class _JobState:
             pulumi.set(__self__, "edit_mode", edit_mode)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if existing_cluster_id is not None:
             pulumi.set(__self__, "existing_cluster_id", existing_cluster_id)
         if format is not None:
@@ -823,15 +823,6 @@ class _JobState:
 
     @property
     @pulumi.getter
-    def computes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]:
-        return pulumi.get(self, "computes")
-
-    @computes.setter
-    def computes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobComputeArgs']]]]):
-        pulumi.set(self, "computes", value)
-
-    @property
-    @pulumi.getter
     def continuous(self) -> Optional[pulumi.Input['JobContinuousArgs']]:
         return pulumi.get(self, "continuous")
 
@@ -908,6 +899,15 @@ class _JobState:
         pulumi.set(self, "email_notifications", value)
 
     @property
+    @pulumi.getter
+    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]]:
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobEnvironmentArgs']]]]):
+        pulumi.set(self, "environments", value)
+
+    @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "existing_cluster_id")
@@ -962,7 +962,7 @@ class _JobState:
     @pulumi.getter
     def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]]]:
         """
-        (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         """
         return pulumi.get(self, "libraries")
 
@@ -1259,7 +1259,6 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
-                 computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
@@ -1267,6 +1266,7 @@ class Job(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobEnvironmentArgs']]]]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  git_source: Optional[pulumi.Input[pulumi.InputType['JobGitSourceArgs']]] = None,
@@ -1318,7 +1318,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -1364,7 +1364,6 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  always_running: Optional[pulumi.Input[bool]] = None,
-                 computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
                  continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
                  control_run_state: Optional[pulumi.Input[bool]] = None,
                  dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
@@ -1372,6 +1371,7 @@ class Job(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  edit_mode: Optional[pulumi.Input[str]] = None,
                  email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobEnvironmentArgs']]]]] = None,
                  existing_cluster_id: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  git_source: Optional[pulumi.Input[pulumi.InputType['JobGitSourceArgs']]] = None,
@@ -1411,7 +1411,6 @@ class Job(pulumi.CustomResource):
             __props__ = JobArgs.__new__(JobArgs)
 
             __props__.__dict__["always_running"] = always_running
-            __props__.__dict__["computes"] = computes
             __props__.__dict__["continuous"] = continuous
             __props__.__dict__["control_run_state"] = control_run_state
             __props__.__dict__["dbt_task"] = dbt_task
@@ -1419,6 +1418,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["edit_mode"] = edit_mode
             __props__.__dict__["email_notifications"] = email_notifications
+            __props__.__dict__["environments"] = environments
             __props__.__dict__["existing_cluster_id"] = existing_cluster_id
             __props__.__dict__["format"] = format
             __props__.__dict__["git_source"] = git_source
@@ -1460,7 +1460,6 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             always_running: Optional[pulumi.Input[bool]] = None,
-            computes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobComputeArgs']]]]] = None,
             continuous: Optional[pulumi.Input[pulumi.InputType['JobContinuousArgs']]] = None,
             control_run_state: Optional[pulumi.Input[bool]] = None,
             dbt_task: Optional[pulumi.Input[pulumi.InputType['JobDbtTaskArgs']]] = None,
@@ -1468,6 +1467,7 @@ class Job(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             edit_mode: Optional[pulumi.Input[str]] = None,
             email_notifications: Optional[pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']]] = None,
+            environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobEnvironmentArgs']]]]] = None,
             existing_cluster_id: Optional[pulumi.Input[str]] = None,
             format: Optional[pulumi.Input[str]] = None,
             git_source: Optional[pulumi.Input[pulumi.InputType['JobGitSourceArgs']]] = None,
@@ -1513,7 +1513,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobEmailNotificationsArgs']] email_notifications: (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param pulumi.Input[pulumi.InputType['JobHealthArgs']] health: An optional block that specifies the health conditions for the job (described below).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
         :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
@@ -1532,7 +1532,6 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["always_running"] = always_running
-        __props__.__dict__["computes"] = computes
         __props__.__dict__["continuous"] = continuous
         __props__.__dict__["control_run_state"] = control_run_state
         __props__.__dict__["dbt_task"] = dbt_task
@@ -1540,6 +1539,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["edit_mode"] = edit_mode
         __props__.__dict__["email_notifications"] = email_notifications
+        __props__.__dict__["environments"] = environments
         __props__.__dict__["existing_cluster_id"] = existing_cluster_id
         __props__.__dict__["format"] = format
         __props__.__dict__["git_source"] = git_source
@@ -1582,11 +1582,6 @@ class Job(pulumi.CustomResource):
         pulumi.log.warn("""always_running is deprecated: always_running will be replaced by control_run_state in the next major release.""")
 
         return pulumi.get(self, "always_running")
-
-    @property
-    @pulumi.getter
-    def computes(self) -> pulumi.Output[Optional[Sequence['outputs.JobCompute']]]:
-        return pulumi.get(self, "computes")
 
     @property
     @pulumi.getter
@@ -1638,6 +1633,11 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "email_notifications")
 
     @property
+    @pulumi.getter
+    def environments(self) -> pulumi.Output[Optional[Sequence['outputs.JobEnvironment']]]:
+        return pulumi.get(self, "environments")
+
+    @property
     @pulumi.getter(name="existingClusterId")
     def existing_cluster_id(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "existing_cluster_id")
@@ -1672,7 +1672,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def libraries(self) -> pulumi.Output[Optional[Sequence['outputs.JobLibrary']]]:
         """
-        (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
+        (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         """
         return pulumi.get(self, "libraries")
 

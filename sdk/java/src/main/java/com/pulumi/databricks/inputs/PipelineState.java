@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineClusterArgs;
+import com.pulumi.databricks.inputs.PipelineDeploymentArgs;
 import com.pulumi.databricks.inputs.PipelineFiltersArgs;
 import com.pulumi.databricks.inputs.PipelineLibraryArgs;
 import com.pulumi.databricks.inputs.PipelineNotificationArgs;
@@ -103,6 +104,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    @Import(name="deployment")
+    private @Nullable Output<PipelineDeploymentArgs> deployment;
+
+    public Optional<Output<PipelineDeploymentArgs>> deployment() {
+        return Optional.ofNullable(this.deployment);
     }
 
     /**
@@ -255,6 +263,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.clusters = $.clusters;
         this.configuration = $.configuration;
         this.continuous = $.continuous;
+        this.deployment = $.deployment;
         this.development = $.development;
         this.edition = $.edition;
         this.filters = $.filters;
@@ -408,6 +417,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder continuous(Boolean continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        public Builder deployment(@Nullable Output<PipelineDeploymentArgs> deployment) {
+            $.deployment = deployment;
+            return this;
+        }
+
+        public Builder deployment(PipelineDeploymentArgs deployment) {
+            return deployment(Output.of(deployment));
         }
 
         /**

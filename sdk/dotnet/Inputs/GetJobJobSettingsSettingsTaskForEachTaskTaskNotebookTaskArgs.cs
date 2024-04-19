@@ -26,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
+
         public GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskInputArgs()
         {
         }

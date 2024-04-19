@@ -6,7 +6,6 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetMetastoreMetastoreInfoArgs;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,18 +17,18 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetMetastoreArgs Empty = new GetMetastoreArgs();
 
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      * 
      */
-    @Import(name="metastoreId", required=true)
-    private Output<String> metastoreId;
+    @Import(name="metastoreId")
+    private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
-    public Output<String> metastoreId() {
-        return this.metastoreId;
+    public Optional<Output<String>> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
     }
 
     /**
@@ -47,11 +46,43 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.metastoreInfo);
     }
 
+    /**
+     * Name of the metastore
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the metastore
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Region of the metastore
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Region of the metastore
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetMetastoreArgs() {}
 
     private GetMetastoreArgs(GetMetastoreArgs $) {
         this.metastoreId = $.metastoreId;
         this.metastoreInfo = $.metastoreInfo;
+        this.name = $.name;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -73,18 +104,18 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
          */
-        public Builder metastoreId(Output<String> metastoreId) {
+        public Builder metastoreId(@Nullable Output<String> metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
@@ -114,10 +145,49 @@ public final class GetMetastoreArgs extends com.pulumi.resources.InvokeArgs {
             return metastoreInfo(Output.of(metastoreInfo));
         }
 
+        /**
+         * @param name Name of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
         public GetMetastoreArgs build() {
-            if ($.metastoreId == null) {
-                throw new MissingRequiredPropertyException("GetMetastoreArgs", "metastoreId");
-            }
             return $;
         }
     }

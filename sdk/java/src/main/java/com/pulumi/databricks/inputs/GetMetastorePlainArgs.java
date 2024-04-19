@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetMetastoreMetastoreInfo;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +16,18 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetMetastorePlainArgs Empty = new GetMetastorePlainArgs();
 
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      * 
      */
-    @Import(name="metastoreId", required=true)
-    private String metastoreId;
+    @Import(name="metastoreId")
+    private @Nullable String metastoreId;
 
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
-    public String metastoreId() {
-        return this.metastoreId;
+    public Optional<String> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
     }
 
     /**
@@ -46,11 +45,43 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.metastoreInfo);
     }
 
+    /**
+     * Name of the metastore
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return Name of the metastore
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Region of the metastore
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return Region of the metastore
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetMetastorePlainArgs() {}
 
     private GetMetastorePlainArgs(GetMetastorePlainArgs $) {
         this.metastoreId = $.metastoreId;
         this.metastoreInfo = $.metastoreInfo;
+        this.name = $.name;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -72,12 +103,12 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
          */
-        public Builder metastoreId(String metastoreId) {
+        public Builder metastoreId(@Nullable String metastoreId) {
             $.metastoreId = metastoreId;
             return this;
         }
@@ -93,10 +124,29 @@ public final class GetMetastorePlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param name Name of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
+            return this;
+        }
+
         public GetMetastorePlainArgs build() {
-            if ($.metastoreId == null) {
-                throw new MissingRequiredPropertyException("GetMetastorePlainArgs", "metastoreId");
-            }
             return $;
         }
     }

@@ -4,11 +4,11 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsCompute;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsDeployment;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEmailNotifications;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsEnvironment;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsGitSource;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsHealth;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsJobCluster;
@@ -44,13 +44,6 @@ import javax.annotation.Nullable;
 public final class GetJobJobSettingsSettings extends com.pulumi.resources.InvokeArgs {
 
     public static final GetJobJobSettingsSettings Empty = new GetJobJobSettingsSettings();
-
-    @Import(name="computes")
-    private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
-
-    public Optional<List<GetJobJobSettingsSettingsCompute>> computes() {
-        return Optional.ofNullable(this.computes);
-    }
 
     @Import(name="continuous")
     private @Nullable GetJobJobSettingsSettingsContinuous continuous;
@@ -92,6 +85,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
 
     public Optional<GetJobJobSettingsSettingsEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environments")
+    private @Nullable List<GetJobJobSettingsSettingsEnvironment> environments;
+
+    public Optional<List<GetJobJobSettingsSettingsEnvironment>> environments() {
+        return Optional.ofNullable(this.environments);
     }
 
     @Import(name="existingClusterId")
@@ -308,13 +308,13 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
     private GetJobJobSettingsSettings() {}
 
     private GetJobJobSettingsSettings(GetJobJobSettingsSettings $) {
-        this.computes = $.computes;
         this.continuous = $.continuous;
         this.dbtTask = $.dbtTask;
         this.deployment = $.deployment;
         this.description = $.description;
         this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
+        this.environments = $.environments;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
         this.gitSource = $.gitSource;
@@ -364,15 +364,6 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
             $ = new GetJobJobSettingsSettings(Objects.requireNonNull(defaults));
         }
 
-        public Builder computes(@Nullable List<GetJobJobSettingsSettingsCompute> computes) {
-            $.computes = computes;
-            return this;
-        }
-
-        public Builder computes(GetJobJobSettingsSettingsCompute... computes) {
-            return computes(List.of(computes));
-        }
-
         public Builder continuous(@Nullable GetJobJobSettingsSettingsContinuous continuous) {
             $.continuous = continuous;
             return this;
@@ -401,6 +392,15 @@ public final class GetJobJobSettingsSettings extends com.pulumi.resources.Invoke
         public Builder emailNotifications(@Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications) {
             $.emailNotifications = emailNotifications;
             return this;
+        }
+
+        public Builder environments(@Nullable List<GetJobJobSettingsSettingsEnvironment> environments) {
+            $.environments = environments;
+            return this;
+        }
+
+        public Builder environments(GetJobJobSettingsSettingsEnvironment... environments) {
+            return environments(List.of(environments));
         }
 
         public Builder existingClusterId(@Nullable String existingClusterId) {

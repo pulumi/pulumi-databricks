@@ -37,12 +37,15 @@ import * as utilities from "./utilities";
  * * databricks.Metastore to manage Metastores within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
-export function getMetastore(args: GetMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreResult> {
+export function getMetastore(args?: GetMetastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMetastore:getMetastore", {
         "metastoreId": args.metastoreId,
         "metastoreInfo": args.metastoreInfo,
+        "name": args.name,
+        "region": args.region,
     }, opts);
 }
 
@@ -51,13 +54,21 @@ export function getMetastore(args: GetMetastoreArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetMetastoreArgs {
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      */
-    metastoreId: string;
+    metastoreId?: string;
     /**
      * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
      */
     metastoreInfo?: inputs.GetMetastoreMetastoreInfo;
+    /**
+     * Name of the metastore
+     */
+    name?: string;
+    /**
+     * Region of the metastore
+     */
+    region?: string;
 }
 
 /**
@@ -73,6 +84,11 @@ export interface GetMetastoreResult {
      * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
      */
     readonly metastoreInfo: outputs.GetMetastoreMetastoreInfo;
+    /**
+     * Name of metastore.
+     */
+    readonly name: string;
+    readonly region: string;
 }
 /**
  * ## Example Usage
@@ -105,7 +121,7 @@ export interface GetMetastoreResult {
  * * databricks.Metastore to manage Metastores within Unity Catalog.
  * * databricks.Catalog to manage catalogs within Unity Catalog.
  */
-export function getMetastoreOutput(args: GetMetastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreResult> {
+export function getMetastoreOutput(args?: GetMetastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreResult> {
     return pulumi.output(args).apply((a: any) => getMetastore(a, opts))
 }
 
@@ -114,11 +130,19 @@ export function getMetastoreOutput(args: GetMetastoreOutputArgs, opts?: pulumi.I
  */
 export interface GetMetastoreOutputArgs {
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      */
-    metastoreId: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
     /**
      * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
      */
     metastoreInfo?: pulumi.Input<inputs.GetMetastoreMetastoreInfoArgs>;
+    /**
+     * Name of the metastore
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Region of the metastore
+     */
+    region?: pulumi.Input<string>;
 }

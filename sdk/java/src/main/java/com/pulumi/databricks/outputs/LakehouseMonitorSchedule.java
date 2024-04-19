@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,19 +12,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakehouseMonitorSchedule {
+    /**
+     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     * 
+     */
     private @Nullable String pauseStatus;
-    private @Nullable String quartzCronExpression;
-    private @Nullable String timezoneId;
+    /**
+     * @return string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     * 
+     */
+    private String quartzCronExpression;
+    /**
+     * @return string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     * 
+     */
+    private String timezoneId;
 
     private LakehouseMonitorSchedule() {}
+    /**
+     * @return optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     * 
+     */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
-    public Optional<String> quartzCronExpression() {
-        return Optional.ofNullable(this.quartzCronExpression);
+    /**
+     * @return string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     * 
+     */
+    public String quartzCronExpression() {
+        return this.quartzCronExpression;
     }
-    public Optional<String> timezoneId() {
-        return Optional.ofNullable(this.timezoneId);
+    /**
+     * @return string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     * 
+     */
+    public String timezoneId() {
+        return this.timezoneId;
     }
 
     public static Builder builder() {
@@ -36,8 +61,8 @@ public final class LakehouseMonitorSchedule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String pauseStatus;
-        private @Nullable String quartzCronExpression;
-        private @Nullable String timezoneId;
+        private String quartzCronExpression;
+        private String timezoneId;
         public Builder() {}
         public Builder(LakehouseMonitorSchedule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -53,14 +78,18 @@ public final class LakehouseMonitorSchedule {
             return this;
         }
         @CustomType.Setter
-        public Builder quartzCronExpression(@Nullable String quartzCronExpression) {
-
+        public Builder quartzCronExpression(String quartzCronExpression) {
+            if (quartzCronExpression == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorSchedule", "quartzCronExpression");
+            }
             this.quartzCronExpression = quartzCronExpression;
             return this;
         }
         @CustomType.Setter
-        public Builder timezoneId(@Nullable String timezoneId) {
-
+        public Builder timezoneId(String timezoneId) {
+            if (timezoneId == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorSchedule", "timezoneId");
+            }
             this.timezoneId = timezoneId;
             return this;
         }

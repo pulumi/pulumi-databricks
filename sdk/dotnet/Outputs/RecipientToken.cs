@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? ActivationUrl;
         /// <summary>
-        /// Time at which this recipient Token was created, in epoch milliseconds.
+        /// Time at which this recipient was created, in epoch milliseconds.
         /// </summary>
         public readonly int? CreatedAt;
         /// <summary>
-        /// Username of recipient token creator.
+        /// Username of recipient creator.
         /// </summary>
         public readonly string? CreatedBy;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? ExpirationTime;
         /// <summary>
-        /// ID of this recipient - same as the `name`.
+        /// Unique ID of the recipient token.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Time at which this recipient Token was updated, in epoch milliseconds.
+        /// Time at which this recipient was updated, in epoch milliseconds.
         /// </summary>
         public readonly int? UpdatedAt;
         /// <summary>

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * &gt; **Note** This resource could be only used with workspace-level provider!
  * 
- * Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
+ * In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
  * 
  * A `databricks.MetastoreProvider` is contained within databricks.Metastore and can contain a list of shares that have been shared with you.
  * 

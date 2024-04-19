@@ -85,7 +85,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
- *             .accountId(databricksAccountId)
  *             .awsRegion(region)
  *             .workspaceName(prefix)
  *             .credentialsId(thisDatabricksMwsCredentials.credentialsId())
@@ -133,7 +132,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new MwsWorkspaces(&#34;this&#34;, MwsWorkspacesArgs.builder()        
- *             .accountId(databricksAccountId)
  *             .workspaceName(&#34;gcp-workspace&#34;)
  *             .location(subnetRegion)
  *             .cloudResourceContainer(MwsWorkspacesCloudResourceContainerArgs.builder()
@@ -177,8 +175,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsPrivateAccessSettings:MwsPrivateAccessSettings")
 public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResource {
     /**
-     * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-     * 
      * @deprecated
      * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
@@ -187,10 +183,6 @@ public class MwsPrivateAccessSettings extends com.pulumi.resources.CustomResourc
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }

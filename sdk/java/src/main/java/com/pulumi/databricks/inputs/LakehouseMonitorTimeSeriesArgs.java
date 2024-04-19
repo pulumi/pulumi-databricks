@@ -5,11 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class LakehouseMonitorTimeSeriesArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,30 +19,30 @@ public final class LakehouseMonitorTimeSeriesArgs extends com.pulumi.resources.R
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    @Import(name="granularities")
-    private @Nullable Output<List<String>> granularities;
+    @Import(name="granularities", required=true)
+    private Output<List<String>> granularities;
 
     /**
      * @return List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    public Optional<Output<List<String>>> granularities() {
-        return Optional.ofNullable(this.granularities);
+    public Output<List<String>> granularities() {
+        return this.granularities;
     }
 
     /**
      * Column of the timestamp of predictions
      * 
      */
-    @Import(name="timestampCol")
-    private @Nullable Output<String> timestampCol;
+    @Import(name="timestampCol", required=true)
+    private Output<String> timestampCol;
 
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    public Optional<Output<String>> timestampCol() {
-        return Optional.ofNullable(this.timestampCol);
+    public Output<String> timestampCol() {
+        return this.timestampCol;
     }
 
     private LakehouseMonitorTimeSeriesArgs() {}
@@ -77,7 +76,7 @@ public final class LakehouseMonitorTimeSeriesArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder granularities(@Nullable Output<List<String>> granularities) {
+        public Builder granularities(Output<List<String>> granularities) {
             $.granularities = granularities;
             return this;
         }
@@ -108,7 +107,7 @@ public final class LakehouseMonitorTimeSeriesArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder timestampCol(@Nullable Output<String> timestampCol) {
+        public Builder timestampCol(Output<String> timestampCol) {
             $.timestampCol = timestampCol;
             return this;
         }
@@ -124,6 +123,12 @@ public final class LakehouseMonitorTimeSeriesArgs extends com.pulumi.resources.R
         }
 
         public LakehouseMonitorTimeSeriesArgs build() {
+            if ($.granularities == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorTimeSeriesArgs", "granularities");
+            }
+            if ($.timestampCol == null) {
+                throw new MissingRequiredPropertyException("LakehouseMonitorTimeSeriesArgs", "timestampCol");
+            }
             return $;
         }
     }
