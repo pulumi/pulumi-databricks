@@ -5,11 +5,11 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.JobComputeArgs;
 import com.pulumi.databricks.inputs.JobContinuousArgs;
 import com.pulumi.databricks.inputs.JobDbtTaskArgs;
 import com.pulumi.databricks.inputs.JobDeploymentArgs;
 import com.pulumi.databricks.inputs.JobEmailNotificationsArgs;
+import com.pulumi.databricks.inputs.JobEnvironmentArgs;
 import com.pulumi.databricks.inputs.JobGitSourceArgs;
 import com.pulumi.databricks.inputs.JobHealthArgs;
 import com.pulumi.databricks.inputs.JobJobClusterArgs;
@@ -66,13 +66,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
     public Optional<Output<Boolean>> alwaysRunning() {
         return Optional.ofNullable(this.alwaysRunning);
-    }
-
-    @Import(name="computes")
-    private @Nullable Output<List<JobComputeArgs>> computes;
-
-    public Optional<Output<List<JobComputeArgs>>> computes() {
-        return Optional.ofNullable(this.computes);
     }
 
     @Import(name="continuous")
@@ -164,6 +157,13 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.emailNotifications);
     }
 
+    @Import(name="environments")
+    private @Nullable Output<List<JobEnvironmentArgs>> environments;
+
+    public Optional<Output<List<JobEnvironmentArgs>>> environments() {
+        return Optional.ofNullable(this.environments);
+    }
+
     @Import(name="existingClusterId")
     private @Nullable Output<String> existingClusterId;
 
@@ -216,14 +216,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     @Import(name="libraries")
     private @Nullable Output<List<JobLibraryArgs>> libraries;
 
     /**
-     * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * @return (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      * 
      */
     public Optional<Output<List<JobLibraryArgs>>> libraries() {
@@ -591,7 +591,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobArgs(JobArgs $) {
         this.alwaysRunning = $.alwaysRunning;
-        this.computes = $.computes;
         this.continuous = $.continuous;
         this.controlRunState = $.controlRunState;
         this.dbtTask = $.dbtTask;
@@ -599,6 +598,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.editMode = $.editMode;
         this.emailNotifications = $.emailNotifications;
+        this.environments = $.environments;
         this.existingClusterId = $.existingClusterId;
         this.format = $.format;
         this.gitSource = $.gitSource;
@@ -675,19 +675,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
-        }
-
-        public Builder computes(@Nullable Output<List<JobComputeArgs>> computes) {
-            $.computes = computes;
-            return this;
-        }
-
-        public Builder computes(List<JobComputeArgs> computes) {
-            return computes(Output.of(computes));
-        }
-
-        public Builder computes(JobComputeArgs... computes) {
-            return computes(List.of(computes));
         }
 
         public Builder continuous(@Nullable Output<JobContinuousArgs> continuous) {
@@ -809,6 +796,19 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
             return emailNotifications(Output.of(emailNotifications));
         }
 
+        public Builder environments(@Nullable Output<List<JobEnvironmentArgs>> environments) {
+            $.environments = environments;
+            return this;
+        }
+
+        public Builder environments(List<JobEnvironmentArgs> environments) {
+            return environments(Output.of(environments));
+        }
+
+        public Builder environments(JobEnvironmentArgs... environments) {
+            return environments(List.of(environments));
+        }
+
         public Builder existingClusterId(@Nullable Output<String> existingClusterId) {
             $.existingClusterId = existingClusterId;
             return this;
@@ -889,7 +889,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
          * 
          * @return builder
          * 
@@ -900,7 +900,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param libraries (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+         * @param libraries (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
          * 
          * @return builder
          * 

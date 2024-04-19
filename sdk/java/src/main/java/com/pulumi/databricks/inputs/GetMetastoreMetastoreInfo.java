@@ -96,14 +96,14 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      * 
      */
     @Import(name="metastoreId")
     private @Nullable String metastoreId;
 
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
     public Optional<String> metastoreId() {
@@ -111,14 +111,14 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Name of metastore.
+     * Name of the metastore
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of metastore.
+     * @return Name of the metastore
      * 
      */
     public Optional<String> name() {
@@ -147,9 +147,17 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.privilegeModelVersion);
     }
 
+    /**
+     * Region of the metastore
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return Region of the metastore
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -297,7 +305,7 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
@@ -308,7 +316,7 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name Name of metastore.
+         * @param name Name of the metastore
          * 
          * @return builder
          * 
@@ -334,6 +342,12 @@ public final class GetMetastoreMetastoreInfo extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

@@ -11,6 +11,7 @@ import com.pulumi.databricks.PipelineArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PipelineState;
 import com.pulumi.databricks.outputs.PipelineCluster;
+import com.pulumi.databricks.outputs.PipelineDeployment;
 import com.pulumi.databricks.outputs.PipelineFilters;
 import com.pulumi.databricks.outputs.PipelineLibrary;
 import com.pulumi.databricks.outputs.PipelineNotification;
@@ -205,6 +206,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> continuous() {
         return Codegen.optional(this.continuous);
+    }
+    @Export(name="deployment", refs={PipelineDeployment.class}, tree="[0]")
+    private Output</* @Nullable */ PipelineDeployment> deployment;
+
+    public Output<Optional<PipelineDeployment>> deployment() {
+        return Codegen.optional(this.deployment);
     }
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `true`.

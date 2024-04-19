@@ -63,12 +63,28 @@ public final class JobNotebookTaskArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.source);
     }
 
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     * 
+     */
+    @Import(name="warehouseId")
+    private @Nullable Output<String> warehouseId;
+
+    /**
+     * @return ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     * 
+     */
+    public Optional<Output<String>> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
+    }
+
     private JobNotebookTaskArgs() {}
 
     private JobNotebookTaskArgs(JobNotebookTaskArgs $) {
         this.baseParameters = $.baseParameters;
         this.notebookPath = $.notebookPath;
         this.source = $.source;
+        this.warehouseId = $.warehouseId;
     }
 
     public static Builder builder() {
@@ -150,6 +166,27 @@ public final class JobNotebookTaskArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder source(String source) {
             return source(Output.of(source));
+        }
+
+        /**
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+            $.warehouseId = warehouseId;
+            return this;
+        }
+
+        /**
+         * @param warehouseId ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warehouseId(String warehouseId) {
+            return warehouseId(Output.of(warehouseId));
         }
 
         public JobNotebookTaskArgs build() {

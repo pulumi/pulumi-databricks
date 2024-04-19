@@ -32,6 +32,8 @@ from .get_current_user import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
+from .get_external_location import *
+from .get_external_locations import *
 from .get_group import *
 from .get_instance_pool import *
 from .get_instance_profiles import *

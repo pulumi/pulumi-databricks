@@ -32,6 +32,10 @@ import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
 import com.pulumi.databricks.inputs.GetDirectoryArgs;
 import com.pulumi.databricks.inputs.GetDirectoryPlainArgs;
+import com.pulumi.databricks.inputs.GetExternalLocationArgs;
+import com.pulumi.databricks.inputs.GetExternalLocationPlainArgs;
+import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+import com.pulumi.databricks.inputs.GetExternalLocationsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
 import com.pulumi.databricks.inputs.GetGroupPlainArgs;
 import com.pulumi.databricks.inputs.GetInstancePoolArgs;
@@ -102,6 +106,8 @@ import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
+import com.pulumi.databricks.outputs.GetExternalLocationResult;
+import com.pulumi.databricks.outputs.GetExternalLocationsResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
 import com.pulumi.databricks.outputs.GetInstanceProfilesResult;
@@ -710,6 +716,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsBucketPolicy:getAwsBucketPolicy", TypeShape.of(GetAwsBucketPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -759,6 +767,8 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -808,6 +818,8 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(GetAwsCrossAccountPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -857,6 +869,8 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -906,6 +920,8 @@ public final class DatabricksFunctions {
         return getAwsCrossAccountPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -955,6 +971,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy", TypeShape.of(GetAwsCrossAccountPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Note** This data source could be only used with account-level provider!
+     * 
      * This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).
      * 
      * ## Example Usage
@@ -3786,6 +3804,318 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing external location in the metastore
+     * 
+     */
+    public static Output<GetExternalLocationResult> getExternalLocation(GetExternalLocationArgs args) {
+        return getExternalLocation(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing external location in the metastore
+     * 
+     */
+    public static CompletableFuture<GetExternalLocationResult> getExternalLocationPlain(GetExternalLocationPlainArgs args) {
+        return getExternalLocationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing external location in the metastore
+     * 
+     */
+    public static Output<GetExternalLocationResult> getExternalLocation(GetExternalLocationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Getting details of an existing external location in the metastore
+     * 
+     */
+    public static CompletableFuture<GetExternalLocationResult> getExternalLocationPlain(GetExternalLocationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocation:getExternalLocation", TypeShape.of(GetExternalLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static Output<GetExternalLocationsResult> getExternalLocations() {
+        return getExternalLocations(GetExternalLocationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetExternalLocationsResult> getExternalLocationsPlain() {
+        return getExternalLocationsPlain(GetExternalLocationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static Output<GetExternalLocationsResult> getExternalLocations(GetExternalLocationsArgs args) {
+        return getExternalLocations(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetExternalLocationsResult> getExternalLocationsPlain(GetExternalLocationsPlainArgs args) {
+        return getExternalLocationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static Output<GetExternalLocationsResult> getExternalLocations(GetExternalLocationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * List all external locations in the metastore
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalLocations();
+     * 
+     *         ctx.export(&#34;allExternalLocations&#34;, all.applyValue(getExternalLocationsResult -&gt; getExternalLocationsResult.names()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.ExternalLocation to get information about a single external location
+     * * databricks.ExternalLocation to manage external locations within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetExternalLocationsResult> getExternalLocationsPlain(GetExternalLocationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * &gt; **Note** If you have a fully automated setup with workspaces created by databricks_mws_workspaces, please make sure to add depends_on attribute in order to prevent _default auth: cannot configure default credentials_ errors.
      * 
      * Retrieves information about databricks.Group members, entitlements and instance profiles.
@@ -5396,6 +5726,122 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetJobsResult> getJobsPlain(GetJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * MetastoreInfo response for a given metastore id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static Output<GetMetastoreResult> getMetastore() {
+        return getMetastore(GetMetastoreArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * MetastoreInfo response for a given metastore id
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.Metastore;
+     * import com.pulumi.databricks.MetastoreArgs;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetMetastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var thisMetastore = new Metastore(&#34;thisMetastore&#34;, MetastoreArgs.builder()        
+     *             .name(&#34;primary&#34;)
+     *             .storageRoot(String.format(&#34;s3://%s/metastore&#34;, metastore.id()))
+     *             .owner(unityAdminGroup)
+     *             .forceDestroy(true)
+     *             .build());
+     * 
+     *         final var this = DatabricksFunctions.getMetastore(GetMetastoreArgs.builder()
+     *             .metastoreId(thisMetastore.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;someMetastore&#34;, this_.applyValue(this_ -&gt; this_.metastoreInfo()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.getMetastores to get mapping of name to id of all metastores.
+     * * databricks.Metastore to manage Metastores within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
+     * 
+     */
+    public static CompletableFuture<GetMetastoreResult> getMetastorePlain() {
+        return getMetastorePlain(GetMetastorePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage

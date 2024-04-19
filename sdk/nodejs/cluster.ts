@@ -112,7 +112,8 @@ export class Cluster extends pulumi.CustomResource {
     public readonly autoterminationMinutes!: pulumi.Output<number | undefined>;
     public readonly awsAttributes!: pulumi.Output<outputs.ClusterAwsAttributes | undefined>;
     public readonly azureAttributes!: pulumi.Output<outputs.ClusterAzureAttributes | undefined>;
-    public readonly clusterId!: pulumi.Output<string>;
+    public readonly cloneFrom!: pulumi.Output<outputs.ClusterCloneFrom | undefined>;
+    public /*out*/ readonly clusterId!: pulumi.Output<string>;
     public readonly clusterLogConf!: pulumi.Output<outputs.ClusterClusterLogConf | undefined>;
     public readonly clusterMountInfos!: pulumi.Output<outputs.ClusterClusterMountInfo[] | undefined>;
     /**
@@ -281,6 +282,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoterminationMinutes"] = state ? state.autoterminationMinutes : undefined;
             resourceInputs["awsAttributes"] = state ? state.awsAttributes : undefined;
             resourceInputs["azureAttributes"] = state ? state.azureAttributes : undefined;
+            resourceInputs["cloneFrom"] = state ? state.cloneFrom : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterLogConf"] = state ? state.clusterLogConf : undefined;
             resourceInputs["clusterMountInfos"] = state ? state.clusterMountInfos : undefined;
@@ -322,7 +324,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoterminationMinutes"] = args ? args.autoterminationMinutes : undefined;
             resourceInputs["awsAttributes"] = args ? args.awsAttributes : undefined;
             resourceInputs["azureAttributes"] = args ? args.azureAttributes : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["cloneFrom"] = args ? args.cloneFrom : undefined;
             resourceInputs["clusterLogConf"] = args ? args.clusterLogConf : undefined;
             resourceInputs["clusterMountInfos"] = args ? args.clusterMountInfos : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
@@ -349,6 +351,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
             resourceInputs["workloadType"] = args ? args.workloadType : undefined;
+            resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["clusterSource"] = undefined /*out*/;
             resourceInputs["defaultTags"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -374,6 +377,7 @@ export interface ClusterState {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes>;
+    cloneFrom?: pulumi.Input<inputs.ClusterCloneFrom>;
     clusterId?: pulumi.Input<string>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[]>;
@@ -541,7 +545,7 @@ export interface ClusterArgs {
     autoterminationMinutes?: pulumi.Input<number>;
     awsAttributes?: pulumi.Input<inputs.ClusterAwsAttributes>;
     azureAttributes?: pulumi.Input<inputs.ClusterAzureAttributes>;
-    clusterId?: pulumi.Input<string>;
+    cloneFrom?: pulumi.Input<inputs.ClusterCloneFrom>;
     clusterLogConf?: pulumi.Input<inputs.ClusterClusterLogConf>;
     clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.ClusterClusterMountInfo>[]>;
     /**

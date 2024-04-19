@@ -118,7 +118,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
      */
     public /*out*/ readonly monitorVersion!: pulumi.Output<string>;
     /**
-     * The notification settings for the monitor
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
     public readonly notifications!: pulumi.Output<outputs.LakehouseMonitorNotifications | undefined>;
     /**
@@ -130,7 +130,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
      */
     public /*out*/ readonly profileMetricsTableName!: pulumi.Output<string>;
     /**
-     * The schedule for automatically updating and refreshing metric tables.
+     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
     public readonly schedule!: pulumi.Output<outputs.LakehouseMonitorSchedule | undefined>;
     /**
@@ -271,7 +271,7 @@ export interface LakehouseMonitorState {
      */
     monitorVersion?: pulumi.Input<string>;
     /**
-     * The notification settings for the monitor
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
     notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications>;
     /**
@@ -283,7 +283,7 @@ export interface LakehouseMonitorState {
      */
     profileMetricsTableName?: pulumi.Input<string>;
     /**
-     * The schedule for automatically updating and refreshing metric tables.
+     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
     schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule>;
     /**
@@ -343,7 +343,7 @@ export interface LakehouseMonitorArgs {
     inferenceLog?: pulumi.Input<inputs.LakehouseMonitorInferenceLog>;
     latestMonitorFailureMsg?: pulumi.Input<string>;
     /**
-     * The notification settings for the monitor
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
     notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications>;
     /**
@@ -351,7 +351,7 @@ export interface LakehouseMonitorArgs {
      */
     outputSchemaName: pulumi.Input<string>;
     /**
-     * The schedule for automatically updating and refreshing metric tables.
+     * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
     schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule>;
     /**

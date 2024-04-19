@@ -15,8 +15,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("gcpAvailability")]
         public Input<string>? GcpAvailability { get; set; }
 
-        [Input("localSsdCount")]
-        public Input<int>? LocalSsdCount { get; set; }
+        [Input("localSsdCount", required: true)]
+        public Input<int> LocalSsdCount { get; set; } = null!;
+
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public GetInstancePoolPoolInfoGcpAttributesInputArgs()
         {

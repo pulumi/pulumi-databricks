@@ -6,7 +6,10 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
+import com.pulumi.databricks.inputs.RecipientPropertiesKvpairsArgs;
 import com.pulumi.databricks.inputs.RecipientTokenArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +20,28 @@ import javax.annotation.Nullable;
 public final class RecipientState extends com.pulumi.resources.ResourceArgs {
 
     public static final RecipientState Empty = new RecipientState();
+
+    @Import(name="activated")
+    private @Nullable Output<Boolean> activated;
+
+    public Optional<Output<Boolean>> activated() {
+        return Optional.ofNullable(this.activated);
+    }
+
+    /**
+     * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
+    @Import(name="activationUrl")
+    private @Nullable Output<String> activationUrl;
+
+    /**
+     * @return Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+     * 
+     */
+    public Optional<Output<String>> activationUrl() {
+        return Optional.ofNullable(this.activationUrl);
+    }
 
     /**
      * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
@@ -34,6 +59,21 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Import(name="cloud")
+    private @Nullable Output<String> cloud;
+
+    /**
+     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Optional<Output<String>> cloud() {
+        return Optional.ofNullable(this.cloud);
+    }
+
+    /**
      * Description about the recipient.
      * 
      */
@@ -46,6 +86,36 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    /**
+     * Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<Integer> createdAt;
+
+    /**
+     * @return Time at which this recipient was created, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Username of recipient creator.
+     * 
+     */
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    /**
+     * @return Username of recipient creator.
+     * 
+     */
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
     }
 
     /**
@@ -79,6 +149,21 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Import(name="metastoreId")
+    private @Nullable Output<String> metastoreId;
+
+    /**
+     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Optional<Output<String>> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
+    }
+
+    /**
      * Name of recipient. Change forces creation of a new resource.
      * 
      */
@@ -106,6 +191,36 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> owner() {
         return Optional.ofNullable(this.owner);
+    }
+
+    /**
+     * Recipient properties - object consisting of following fields:
+     * 
+     */
+    @Import(name="propertiesKvpairs")
+    private @Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs;
+
+    /**
+     * @return Recipient properties - object consisting of following fields:
+     * 
+     */
+    public Optional<Output<RecipientPropertiesKvpairsArgs>> propertiesKvpairs() {
+        return Optional.ofNullable(this.propertiesKvpairs);
+    }
+
+    /**
+     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     /**
@@ -138,17 +253,57 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tokens);
     }
 
+    /**
+     * Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
+    @Import(name="updatedAt")
+    private @Nullable Output<Integer> updatedAt;
+
+    /**
+     * @return Time at which this recipient was updated, in epoch milliseconds.
+     * 
+     */
+    public Optional<Output<Integer>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    /**
+     * Username of recipient Token updater.
+     * 
+     */
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    /**
+     * @return Username of recipient Token updater.
+     * 
+     */
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
     private RecipientState() {}
 
     private RecipientState(RecipientState $) {
+        this.activated = $.activated;
+        this.activationUrl = $.activationUrl;
         this.authenticationType = $.authenticationType;
+        this.cloud = $.cloud;
         this.comment = $.comment;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
         this.dataRecipientGlobalMetastoreId = $.dataRecipientGlobalMetastoreId;
         this.ipAccessList = $.ipAccessList;
+        this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.propertiesKvpairs = $.propertiesKvpairs;
+        this.region = $.region;
         this.sharingCode = $.sharingCode;
         this.tokens = $.tokens;
+        this.updatedAt = $.updatedAt;
+        this.updatedBy = $.updatedBy;
     }
 
     public static Builder builder() {
@@ -167,6 +322,36 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RecipientState defaults) {
             $ = new RecipientState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder activated(@Nullable Output<Boolean> activated) {
+            $.activated = activated;
+            return this;
+        }
+
+        public Builder activated(Boolean activated) {
+            return activated(Output.of(activated));
+        }
+
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activationUrl(@Nullable Output<String> activationUrl) {
+            $.activationUrl = activationUrl;
+            return this;
+        }
+
+        /**
+         * @param activationUrl Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activationUrl(String activationUrl) {
+            return activationUrl(Output.of(activationUrl));
         }
 
         /**
@@ -191,6 +376,27 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloud(@Nullable Output<String> cloud) {
+            $.cloud = cloud;
+            return this;
+        }
+
+        /**
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloud(String cloud) {
+            return cloud(Output.of(cloud));
+        }
+
+        /**
          * @param comment Description about the recipient.
          * 
          * @return builder
@@ -209,6 +415,48 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<Integer> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Time at which this recipient was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(Integer createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        /**
+         * @param createdBy Username of recipient creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
         }
 
         /**
@@ -254,6 +502,27 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metastoreId(@Nullable Output<String> metastoreId) {
+            $.metastoreId = metastoreId;
+            return this;
+        }
+
+        /**
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metastoreId(String metastoreId) {
+            return metastoreId(Output.of(metastoreId));
+        }
+
+        /**
          * @param name Name of recipient. Change forces creation of a new resource.
          * 
          * @return builder
@@ -293,6 +562,48 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesKvpairs(@Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs) {
+            $.propertiesKvpairs = propertiesKvpairs;
+            return this;
+        }
+
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesKvpairs(RecipientPropertiesKvpairsArgs propertiesKvpairs) {
+            return propertiesKvpairs(Output.of(propertiesKvpairs));
+        }
+
+        /**
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**
@@ -345,6 +656,48 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tokens(RecipientTokenArgs... tokens) {
             return tokens(List.of(tokens));
+        }
+
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        /**
+         * @param updatedAt Time at which this recipient was updated, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedAt(Integer updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        /**
+         * @param updatedBy Username of recipient Token updater.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
         }
 
         public RecipientState build() {

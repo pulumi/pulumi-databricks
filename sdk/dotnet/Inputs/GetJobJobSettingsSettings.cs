@@ -12,14 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("computes")]
-        private List<Inputs.GetJobJobSettingsSettingsComputeArgs>? _computes;
-        public List<Inputs.GetJobJobSettingsSettingsComputeArgs> Computes
-        {
-            get => _computes ?? (_computes = new List<Inputs.GetJobJobSettingsSettingsComputeArgs>());
-            set => _computes = value;
-        }
-
         [Input("continuous")]
         public Inputs.GetJobJobSettingsSettingsContinuousArgs? Continuous { get; set; }
 
@@ -37,6 +29,14 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("emailNotifications")]
         public Inputs.GetJobJobSettingsSettingsEmailNotificationsArgs? EmailNotifications { get; set; }
+
+        [Input("environments")]
+        private List<Inputs.GetJobJobSettingsSettingsEnvironmentArgs>? _environments;
+        public List<Inputs.GetJobJobSettingsSettingsEnvironmentArgs> Environments
+        {
+            get => _environments ?? (_environments = new List<Inputs.GetJobJobSettingsSettingsEnvironmentArgs>());
+            set => _environments = value;
+        }
 
         [Input("existingClusterId")]
         public string? ExistingClusterId { get; set; }

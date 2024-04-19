@@ -17,6 +17,7 @@ public final class GetJobJobSettingsSettingsNotebookTask {
     private @Nullable Map<String,Object> baseParameters;
     private String notebookPath;
     private @Nullable String source;
+    private @Nullable String warehouseId;
 
     private GetJobJobSettingsSettingsNotebookTask() {}
     public Map<String,Object> baseParameters() {
@@ -27,6 +28,9 @@ public final class GetJobJobSettingsSettingsNotebookTask {
     }
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
+    }
+    public Optional<String> warehouseId() {
+        return Optional.ofNullable(this.warehouseId);
     }
 
     public static Builder builder() {
@@ -41,12 +45,14 @@ public final class GetJobJobSettingsSettingsNotebookTask {
         private @Nullable Map<String,Object> baseParameters;
         private String notebookPath;
         private @Nullable String source;
+        private @Nullable String warehouseId;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsNotebookTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseParameters = defaults.baseParameters;
     	      this.notebookPath = defaults.notebookPath;
     	      this.source = defaults.source;
+    	      this.warehouseId = defaults.warehouseId;
         }
 
         @CustomType.Setter
@@ -69,11 +75,18 @@ public final class GetJobJobSettingsSettingsNotebookTask {
             this.source = source;
             return this;
         }
+        @CustomType.Setter
+        public Builder warehouseId(@Nullable String warehouseId) {
+
+            this.warehouseId = warehouseId;
+            return this;
+        }
         public GetJobJobSettingsSettingsNotebookTask build() {
             final var _resultValue = new GetJobJobSettingsSettingsNotebookTask();
             _resultValue.baseParameters = baseParameters;
             _resultValue.notebookPath = notebookPath;
             _resultValue.source = source;
+            _resultValue.warehouseId = warehouseId;
             return _resultValue;
         }
     }

@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
         public Output<string> MonitorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The notification settings for the monitor
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         /// </summary>
         [Output("notifications")]
         public Output<Outputs.LakehouseMonitorNotifications?> Notifications { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
         public Output<string> ProfileMetricsTableName { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule for automatically updating and refreshing metric tables.
+        /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.LakehouseMonitorSchedule?> Schedule { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.Databricks
         public Input<string>? LatestMonitorFailureMsg { get; set; }
 
         /// <summary>
-        /// The notification settings for the monitor
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         /// </summary>
         [Input("notifications")]
         public Input<Inputs.LakehouseMonitorNotificationsArgs>? Notifications { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Databricks
         public Input<string> OutputSchemaName { get; set; } = null!;
 
         /// <summary>
-        /// The schedule for automatically updating and refreshing metric tables.
+        /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.LakehouseMonitorScheduleArgs>? Schedule { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.Databricks
         public Input<string>? MonitorVersion { get; set; }
 
         /// <summary>
-        /// The notification settings for the monitor
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         /// </summary>
         [Input("notifications")]
         public Input<Inputs.LakehouseMonitorNotificationsGetArgs>? Notifications { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Databricks
         public Input<string>? ProfileMetricsTableName { get; set; }
 
         /// <summary>
-        /// The schedule for automatically updating and refreshing metric tables.
+        /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.LakehouseMonitorScheduleGetArgs>? Schedule { get; set; }

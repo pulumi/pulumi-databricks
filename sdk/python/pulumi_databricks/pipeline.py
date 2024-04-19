@@ -22,6 +22,7 @@ class PipelineArgs:
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
+                 deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
@@ -59,6 +60,8 @@ class PipelineArgs:
             pulumi.set(__self__, "configuration", configuration)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
         if development is not None:
             pulumi.set(__self__, "development", development)
         if edition is not None:
@@ -148,6 +151,15 @@ class PipelineArgs:
     @continuous.setter
     def continuous(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "continuous", value)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional[pulumi.Input['PipelineDeploymentArgs']]:
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: Optional[pulumi.Input['PipelineDeploymentArgs']]):
+        pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter
@@ -270,6 +282,7 @@ class _PipelineState:
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
+                 deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
@@ -309,6 +322,8 @@ class _PipelineState:
             pulumi.set(__self__, "configuration", configuration)
         if continuous is not None:
             pulumi.set(__self__, "continuous", continuous)
+        if deployment is not None:
+            pulumi.set(__self__, "deployment", deployment)
         if development is not None:
             pulumi.set(__self__, "development", development)
         if edition is not None:
@@ -400,6 +415,15 @@ class _PipelineState:
     @continuous.setter
     def continuous(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "continuous", value)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> Optional[pulumi.Input['PipelineDeploymentArgs']]:
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: Optional[pulumi.Input['PipelineDeploymentArgs']]):
+        pulumi.set(self, "deployment", value)
 
     @property
     @pulumi.getter
@@ -536,6 +560,7 @@ class Pipeline(pulumi.CustomResource):
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
@@ -755,6 +780,7 @@ class Pipeline(pulumi.CustomResource):
                  clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  continuous: Optional[pulumi.Input[bool]] = None,
+                 deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
                  development: Optional[pulumi.Input[bool]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
@@ -780,6 +806,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["clusters"] = clusters
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["continuous"] = continuous
+            __props__.__dict__["deployment"] = deployment
             __props__.__dict__["development"] = development
             __props__.__dict__["edition"] = edition
             __props__.__dict__["filters"] = filters
@@ -807,6 +834,7 @@ class Pipeline(pulumi.CustomResource):
             clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PipelineClusterArgs']]]]] = None,
             configuration: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             continuous: Optional[pulumi.Input[bool]] = None,
+            deployment: Optional[pulumi.Input[pulumi.InputType['PipelineDeploymentArgs']]] = None,
             development: Optional[pulumi.Input[bool]] = None,
             edition: Optional[pulumi.Input[str]] = None,
             filters: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersArgs']]] = None,
@@ -849,6 +877,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["clusters"] = clusters
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["continuous"] = continuous
+        __props__.__dict__["deployment"] = deployment
         __props__.__dict__["development"] = development
         __props__.__dict__["edition"] = edition
         __props__.__dict__["filters"] = filters
@@ -906,6 +935,11 @@ class Pipeline(pulumi.CustomResource):
         A flag indicating whether to run the pipeline continuously. The default value is `false`.
         """
         return pulumi.get(self, "continuous")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Output[Optional['outputs.PipelineDeployment']]:
+        return pulumi.get(self, "deployment")
 
     @property
     @pulumi.getter

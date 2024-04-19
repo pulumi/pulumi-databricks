@@ -385,6 +385,9 @@ namespace Pulumi.Databricks
         [Output("networkId")]
         public Output<string?> NetworkId { get; private set; } = null!;
 
+        /// <summary>
+        /// The pricing tier of the workspace.
+        /// </summary>
         [Output("pricingTier")]
         public Output<string> PricingTier { get; private set; } = null!;
 
@@ -583,6 +586,9 @@ namespace Pulumi.Databricks
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
+        /// <summary>
+        /// The pricing tier of the workspace.
+        /// </summary>
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 
@@ -739,6 +745,9 @@ namespace Pulumi.Databricks
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
+        /// <summary>
+        /// The pricing tier of the workspace.
+        /// </summary>
         [Input("pricingTier")]
         public Input<string>? PricingTier { get; set; }
 

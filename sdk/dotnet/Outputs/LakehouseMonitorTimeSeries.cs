@@ -20,13 +20,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Column of the timestamp of predictions
         /// </summary>
-        public readonly string? TimestampCol;
+        public readonly string TimestampCol;
 
         [OutputConstructor]
         private LakehouseMonitorTimeSeries(
             ImmutableArray<string> granularities,
 
-            string? timestampCol)
+            string timestampCol)
         {
             Granularities = granularities;
             TimestampCol = timestampCol;

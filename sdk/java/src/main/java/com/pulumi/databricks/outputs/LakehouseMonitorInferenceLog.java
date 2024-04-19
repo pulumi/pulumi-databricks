@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,7 @@ public final class LakehouseMonitorInferenceLog {
      * @return List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    private @Nullable List<String> granularities;
+    private List<String> granularities;
     /**
      * @return Column of the model label
      * 
@@ -26,12 +27,12 @@ public final class LakehouseMonitorInferenceLog {
      * @return Column of the model id or version
      * 
      */
-    private @Nullable String modelIdCol;
+    private String modelIdCol;
     /**
      * @return Column of the model prediction
      * 
      */
-    private @Nullable String predictionCol;
+    private String predictionCol;
     /**
      * @return Column of the model prediction probabilities
      * 
@@ -41,12 +42,12 @@ public final class LakehouseMonitorInferenceLog {
      * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      * 
      */
-    private @Nullable String problemType;
+    private String problemType;
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    private @Nullable String timestampCol;
+    private String timestampCol;
 
     private LakehouseMonitorInferenceLog() {}
     /**
@@ -54,7 +55,7 @@ public final class LakehouseMonitorInferenceLog {
      * 
      */
     public List<String> granularities() {
-        return this.granularities == null ? List.of() : this.granularities;
+        return this.granularities;
     }
     /**
      * @return Column of the model label
@@ -67,15 +68,15 @@ public final class LakehouseMonitorInferenceLog {
      * @return Column of the model id or version
      * 
      */
-    public Optional<String> modelIdCol() {
-        return Optional.ofNullable(this.modelIdCol);
+    public String modelIdCol() {
+        return this.modelIdCol;
     }
     /**
      * @return Column of the model prediction
      * 
      */
-    public Optional<String> predictionCol() {
-        return Optional.ofNullable(this.predictionCol);
+    public String predictionCol() {
+        return this.predictionCol;
     }
     /**
      * @return Column of the model prediction probabilities
@@ -88,15 +89,15 @@ public final class LakehouseMonitorInferenceLog {
      * @return Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      * 
      */
-    public Optional<String> problemType() {
-        return Optional.ofNullable(this.problemType);
+    public String problemType() {
+        return this.problemType;
     }
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    public Optional<String> timestampCol() {
-        return Optional.ofNullable(this.timestampCol);
+    public String timestampCol() {
+        return this.timestampCol;
     }
 
     public static Builder builder() {
@@ -108,13 +109,13 @@ public final class LakehouseMonitorInferenceLog {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> granularities;
+        private List<String> granularities;
         private @Nullable String labelCol;
-        private @Nullable String modelIdCol;
-        private @Nullable String predictionCol;
+        private String modelIdCol;
+        private String predictionCol;
         private @Nullable String predictionProbaCol;
-        private @Nullable String problemType;
-        private @Nullable String timestampCol;
+        private String problemType;
+        private String timestampCol;
         public Builder() {}
         public Builder(LakehouseMonitorInferenceLog defaults) {
     	      Objects.requireNonNull(defaults);
@@ -128,8 +129,10 @@ public final class LakehouseMonitorInferenceLog {
         }
 
         @CustomType.Setter
-        public Builder granularities(@Nullable List<String> granularities) {
-
+        public Builder granularities(List<String> granularities) {
+            if (granularities == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLog", "granularities");
+            }
             this.granularities = granularities;
             return this;
         }
@@ -143,14 +146,18 @@ public final class LakehouseMonitorInferenceLog {
             return this;
         }
         @CustomType.Setter
-        public Builder modelIdCol(@Nullable String modelIdCol) {
-
+        public Builder modelIdCol(String modelIdCol) {
+            if (modelIdCol == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLog", "modelIdCol");
+            }
             this.modelIdCol = modelIdCol;
             return this;
         }
         @CustomType.Setter
-        public Builder predictionCol(@Nullable String predictionCol) {
-
+        public Builder predictionCol(String predictionCol) {
+            if (predictionCol == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLog", "predictionCol");
+            }
             this.predictionCol = predictionCol;
             return this;
         }
@@ -161,14 +168,18 @@ public final class LakehouseMonitorInferenceLog {
             return this;
         }
         @CustomType.Setter
-        public Builder problemType(@Nullable String problemType) {
-
+        public Builder problemType(String problemType) {
+            if (problemType == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLog", "problemType");
+            }
             this.problemType = problemType;
             return this;
         }
         @CustomType.Setter
-        public Builder timestampCol(@Nullable String timestampCol) {
-
+        public Builder timestampCol(String timestampCol) {
+            if (timestampCol == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorInferenceLog", "timestampCol");
+            }
             this.timestampCol = timestampCol;
             return this;
         }

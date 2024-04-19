@@ -46,11 +46,27 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.localSsdCount);
     }
 
+    /**
+     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private InstancePoolGcpAttributesArgs() {}
 
     private InstancePoolGcpAttributesArgs(InstancePoolGcpAttributesArgs $) {
         this.gcpAvailability = $.gcpAvailability;
         this.localSsdCount = $.localSsdCount;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class InstancePoolGcpAttributesArgs extends com.pulumi.resources.Re
          */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @param zoneId Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public InstancePoolGcpAttributesArgs build() {

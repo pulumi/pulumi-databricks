@@ -363,8 +363,9 @@ type MwsWorkspaces struct {
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId   pulumi.StringPtrOutput `pulumi:"networkId"`
-	PricingTier pulumi.StringOutput    `pulumi:"pricingTier"`
+	NetworkId pulumi.StringPtrOutput `pulumi:"networkId"`
+	// The pricing tier of the workspace.
+	PricingTier pulumi.StringOutput `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrOutput `pulumi:"privateAccessSettingsId"`
 	// `storageConfigurationId` from storage configuration.
@@ -453,7 +454,8 @@ type mwsWorkspacesState struct {
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId   *string `pulumi:"networkId"`
+	NetworkId *string `pulumi:"networkId"`
+	// The pricing tier of the workspace.
 	PricingTier *string `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
@@ -501,7 +503,8 @@ type MwsWorkspacesState struct {
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
 	// `networkId` from networks.
-	NetworkId   pulumi.StringPtrInput
+	NetworkId pulumi.StringPtrInput
+	// The pricing tier of the workspace.
 	PricingTier pulumi.StringPtrInput
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
@@ -553,7 +556,8 @@ type mwsWorkspacesArgs struct {
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
 	// `networkId` from networks.
-	NetworkId   *string `pulumi:"networkId"`
+	NetworkId *string `pulumi:"networkId"`
+	// The pricing tier of the workspace.
 	PricingTier *string `pulumi:"pricingTier"`
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId *string `pulumi:"privateAccessSettingsId"`
@@ -602,7 +606,8 @@ type MwsWorkspacesArgs struct {
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
 	// `networkId` from networks.
-	NetworkId   pulumi.StringPtrInput
+	NetworkId pulumi.StringPtrInput
+	// The pricing tier of the workspace.
 	PricingTier pulumi.StringPtrInput
 	// Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
 	PrivateAccessSettingsId pulumi.StringPtrInput
@@ -785,6 +790,7 @@ func (o MwsWorkspacesOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
 
+// The pricing tier of the workspace.
 func (o MwsWorkspacesOutput) PricingTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.PricingTier }).(pulumi.StringOutput)
 }

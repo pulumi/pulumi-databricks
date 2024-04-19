@@ -36,13 +36,6 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
     public static final GetJobJobSettingsSettingsTask Empty = new GetJobJobSettingsSettingsTask();
 
-    @Import(name="computeKey")
-    private @Nullable String computeKey;
-
-    public Optional<String> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
-
     @Import(name="conditionTask")
     private @Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask;
 
@@ -76,6 +69,13 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
     public Optional<GetJobJobSettingsSettingsTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environmentKey")
+    private @Nullable String environmentKey;
+
+    public Optional<String> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
 
     @Import(name="existingClusterId")
@@ -235,12 +235,12 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
     private GetJobJobSettingsSettingsTask() {}
 
     private GetJobJobSettingsSettingsTask(GetJobJobSettingsSettingsTask $) {
-        this.computeKey = $.computeKey;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
+        this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
         this.forEachTask = $.forEachTask;
         this.health = $.health;
@@ -283,11 +283,6 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
             $ = new GetJobJobSettingsSettingsTask(Objects.requireNonNull(defaults));
         }
 
-        public Builder computeKey(@Nullable String computeKey) {
-            $.computeKey = computeKey;
-            return this;
-        }
-
         public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskConditionTask conditionTask) {
             $.conditionTask = conditionTask;
             return this;
@@ -314,6 +309,11 @@ public final class GetJobJobSettingsSettingsTask extends com.pulumi.resources.In
 
         public Builder emailNotifications(@Nullable GetJobJobSettingsSettingsTaskEmailNotifications emailNotifications) {
             $.emailNotifications = emailNotifications;
+            return this;
+        }
+
+        public Builder environmentKey(@Nullable String environmentKey) {
+            $.environmentKey = environmentKey;
             return this;
         }
 

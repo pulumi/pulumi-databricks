@@ -97,14 +97,14 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Id of the metastore to be fetched
+     * @return Id of the metastore
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -112,14 +112,14 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of metastore.
+     * Name of the metastore
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of metastore.
+     * @return Name of the metastore
      * 
      */
     public Optional<Output<String>> name() {
@@ -148,9 +148,17 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.privilegeModelVersion);
     }
 
+    /**
+     * Region of the metastore
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Region of the metastore
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -348,7 +356,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
@@ -359,7 +367,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param metastoreId Id of the metastore to be fetched
+         * @param metastoreId Id of the metastore
          * 
          * @return builder
          * 
@@ -369,7 +377,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of metastore.
+         * @param name Name of the metastore
          * 
          * @return builder
          * 
@@ -380,7 +388,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Name of metastore.
+         * @param name Name of the metastore
          * 
          * @return builder
          * 
@@ -419,11 +427,23 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return privilegeModelVersion(Output.of(privilegeModelVersion));
         }
 
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Region of the metastore
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

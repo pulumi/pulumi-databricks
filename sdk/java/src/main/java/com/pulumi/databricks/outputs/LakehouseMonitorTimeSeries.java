@@ -4,11 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class LakehouseMonitorTimeSeries {
@@ -16,12 +15,12 @@ public final class LakehouseMonitorTimeSeries {
      * @return List of granularities to use when aggregating data into time windows based on their timestamp.
      * 
      */
-    private @Nullable List<String> granularities;
+    private List<String> granularities;
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    private @Nullable String timestampCol;
+    private String timestampCol;
 
     private LakehouseMonitorTimeSeries() {}
     /**
@@ -29,14 +28,14 @@ public final class LakehouseMonitorTimeSeries {
      * 
      */
     public List<String> granularities() {
-        return this.granularities == null ? List.of() : this.granularities;
+        return this.granularities;
     }
     /**
      * @return Column of the timestamp of predictions
      * 
      */
-    public Optional<String> timestampCol() {
-        return Optional.ofNullable(this.timestampCol);
+    public String timestampCol() {
+        return this.timestampCol;
     }
 
     public static Builder builder() {
@@ -48,8 +47,8 @@ public final class LakehouseMonitorTimeSeries {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> granularities;
-        private @Nullable String timestampCol;
+        private List<String> granularities;
+        private String timestampCol;
         public Builder() {}
         public Builder(LakehouseMonitorTimeSeries defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,8 +57,10 @@ public final class LakehouseMonitorTimeSeries {
         }
 
         @CustomType.Setter
-        public Builder granularities(@Nullable List<String> granularities) {
-
+        public Builder granularities(List<String> granularities) {
+            if (granularities == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorTimeSeries", "granularities");
+            }
             this.granularities = granularities;
             return this;
         }
@@ -67,8 +68,10 @@ public final class LakehouseMonitorTimeSeries {
             return granularities(List.of(granularities));
         }
         @CustomType.Setter
-        public Builder timestampCol(@Nullable String timestampCol) {
-
+        public Builder timestampCol(String timestampCol) {
+            if (timestampCol == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorTimeSeries", "timestampCol");
+            }
             this.timestampCol = timestampCol;
             return this;
         }

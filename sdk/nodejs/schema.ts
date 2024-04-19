@@ -91,6 +91,10 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    public readonly enablePredictiveOptimization!: pulumi.Output<string>;
+    /**
      * Delete schema regardless of its contents.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -127,6 +131,7 @@ export class Schema extends pulumi.CustomResource {
             const state = argsOrState as SchemaState | undefined;
             resourceInputs["catalogName"] = state ? state.catalogName : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["enablePredictiveOptimization"] = state ? state.enablePredictiveOptimization : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -140,6 +145,7 @@ export class Schema extends pulumi.CustomResource {
             }
             resourceInputs["catalogName"] = args ? args.catalogName : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
+            resourceInputs["enablePredictiveOptimization"] = args ? args.enablePredictiveOptimization : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -164,6 +170,10 @@ export interface SchemaState {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
     /**
      * Delete schema regardless of its contents.
      */
@@ -199,6 +209,10 @@ export interface SchemaArgs {
      * User-supplied free-form text.
      */
     comment?: pulumi.Input<string>;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
     /**
      * Delete schema regardless of its contents.
      */

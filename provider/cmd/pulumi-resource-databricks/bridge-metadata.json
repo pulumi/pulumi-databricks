@@ -54,6 +54,9 @@
                             }
                         }
                     },
+                    "clone_from": {
+                        "maxItemsOne": true
+                    },
                     "cluster_log_conf": {
                         "maxItemsOne": true,
                         "elem": {
@@ -350,16 +353,6 @@
                 "current": "databricks:index/job:Job",
                 "majorVersion": 1,
                 "fields": {
-                    "compute": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "spec": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
                     "continuous": {
                         "maxItemsOne": true
                     },
@@ -391,6 +384,23 @@
                                 },
                                 "on_success": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "environment": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dependencies": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1327,6 +1337,16 @@
                                             }
                                         }
                                     }
+                                },
+                                "on_new_classification_tag_detected": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1795,6 +1815,9 @@
                             }
                         }
                     },
+                    "deployment": {
+                        "maxItemsOne": true
+                    },
                     "filters": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1863,6 +1886,9 @@
                                 }
                             }
                         }
+                    },
+                    "properties_kvpairs": {
+                        "maxItemsOne": true
                     },
                     "tokens": {
                         "maxItemsOne": false
@@ -2458,6 +2484,38 @@
                 "current": "databricks:index/getDirectory:getDirectory",
                 "majorVersion": 1
             },
+            "databricks_external_location": {
+                "current": "databricks:index/getExternalLocation:getExternalLocation",
+                "majorVersion": 1,
+                "fields": {
+                    "external_location_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "encryption_details": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "sse_encryption_details": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_external_locations": {
+                "current": "databricks:index/getExternalLocations:getExternalLocations",
+                "majorVersion": 1,
+                "fields": {
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_group": {
                 "current": "databricks:index/getGroup:getGroup",
                 "majorVersion": 1,
@@ -2567,16 +2625,6 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "compute": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "spec": {
-                                                            "maxItemsOne": true
-                                                        }
-                                                    }
-                                                }
-                                            },
                                             "continuous": {
                                                 "maxItemsOne": true
                                             },
@@ -2608,6 +2656,23 @@
                                                         },
                                                         "on_success": {
                                                             "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "environment": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "spec": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "dependencies": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }

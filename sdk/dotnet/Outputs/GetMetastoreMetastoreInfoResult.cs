@@ -31,11 +31,11 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DeltaSharingScope;
         public readonly string? GlobalMetastoreId;
         /// <summary>
-        /// Id of the metastore to be fetched
+        /// Id of the metastore
         /// </summary>
         public readonly string? MetastoreId;
         /// <summary>
-        /// Name of metastore.
+        /// Name of the metastore
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -43,6 +43,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Owner;
         public readonly string? PrivilegeModelVersion;
+        /// <summary>
+        /// Region of the metastore
+        /// </summary>
         public readonly string? Region;
         /// <summary>
         /// Path on cloud storage account, where managed `databricks.Table` are stored.

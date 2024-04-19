@@ -4,11 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsCompute;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsContinuous;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDbtTask;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsDeployment;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEmailNotifications;
+import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsEnvironment;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsGitSource;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsHealth;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsJobCluster;
@@ -42,13 +42,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobJobSettingsSettings {
-    private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
     private @Nullable GetJobJobSettingsSettingsContinuous continuous;
     private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
     private @Nullable GetJobJobSettingsSettingsDeployment deployment;
     private @Nullable String description;
     private @Nullable String editMode;
     private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
+    private @Nullable List<GetJobJobSettingsSettingsEnvironment> environments;
     private @Nullable String existingClusterId;
     private String format;
     private @Nullable GetJobJobSettingsSettingsGitSource gitSource;
@@ -84,9 +84,6 @@ public final class GetJobJobSettingsSettings {
     private @Nullable GetJobJobSettingsSettingsWebhookNotifications webhookNotifications;
 
     private GetJobJobSettingsSettings() {}
-    public List<GetJobJobSettingsSettingsCompute> computes() {
-        return this.computes == null ? List.of() : this.computes;
-    }
     public Optional<GetJobJobSettingsSettingsContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
     }
@@ -104,6 +101,9 @@ public final class GetJobJobSettingsSettings {
     }
     public Optional<GetJobJobSettingsSettingsEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+    public List<GetJobJobSettingsSettingsEnvironment> environments() {
+        return this.environments == null ? List.of() : this.environments;
     }
     public Optional<String> existingClusterId() {
         return Optional.ofNullable(this.existingClusterId);
@@ -206,13 +206,13 @@ public final class GetJobJobSettingsSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetJobJobSettingsSettingsCompute> computes;
         private @Nullable GetJobJobSettingsSettingsContinuous continuous;
         private @Nullable GetJobJobSettingsSettingsDbtTask dbtTask;
         private @Nullable GetJobJobSettingsSettingsDeployment deployment;
         private @Nullable String description;
         private @Nullable String editMode;
         private @Nullable GetJobJobSettingsSettingsEmailNotifications emailNotifications;
+        private @Nullable List<GetJobJobSettingsSettingsEnvironment> environments;
         private @Nullable String existingClusterId;
         private String format;
         private @Nullable GetJobJobSettingsSettingsGitSource gitSource;
@@ -245,13 +245,13 @@ public final class GetJobJobSettingsSettings {
         public Builder() {}
         public Builder(GetJobJobSettingsSettings defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.computes = defaults.computes;
     	      this.continuous = defaults.continuous;
     	      this.dbtTask = defaults.dbtTask;
     	      this.deployment = defaults.deployment;
     	      this.description = defaults.description;
     	      this.editMode = defaults.editMode;
     	      this.emailNotifications = defaults.emailNotifications;
+    	      this.environments = defaults.environments;
     	      this.existingClusterId = defaults.existingClusterId;
     	      this.format = defaults.format;
     	      this.gitSource = defaults.gitSource;
@@ -283,15 +283,6 @@ public final class GetJobJobSettingsSettings {
     	      this.webhookNotifications = defaults.webhookNotifications;
         }
 
-        @CustomType.Setter
-        public Builder computes(@Nullable List<GetJobJobSettingsSettingsCompute> computes) {
-
-            this.computes = computes;
-            return this;
-        }
-        public Builder computes(GetJobJobSettingsSettingsCompute... computes) {
-            return computes(List.of(computes));
-        }
         @CustomType.Setter
         public Builder continuous(@Nullable GetJobJobSettingsSettingsContinuous continuous) {
 
@@ -327,6 +318,15 @@ public final class GetJobJobSettingsSettings {
 
             this.emailNotifications = emailNotifications;
             return this;
+        }
+        @CustomType.Setter
+        public Builder environments(@Nullable List<GetJobJobSettingsSettingsEnvironment> environments) {
+
+            this.environments = environments;
+            return this;
+        }
+        public Builder environments(GetJobJobSettingsSettingsEnvironment... environments) {
+            return environments(List.of(environments));
         }
         @CustomType.Setter
         public Builder existingClusterId(@Nullable String existingClusterId) {
@@ -520,13 +520,13 @@ public final class GetJobJobSettingsSettings {
         }
         public GetJobJobSettingsSettings build() {
             final var _resultValue = new GetJobJobSettingsSettings();
-            _resultValue.computes = computes;
             _resultValue.continuous = continuous;
             _resultValue.dbtTask = dbtTask;
             _resultValue.deployment = deployment;
             _resultValue.description = description;
             _resultValue.editMode = editMode;
             _resultValue.emailNotifications = emailNotifications;
+            _resultValue.environments = environments;
             _resultValue.existingClusterId = existingClusterId;
             _resultValue.format = format;
             _resultValue.gitSource = gitSource;

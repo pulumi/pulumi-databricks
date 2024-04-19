@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetJobJobSettingsSettingsResult
     {
-        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsComputeResult> Computes;
         public readonly Outputs.GetJobJobSettingsSettingsContinuousResult? Continuous;
         public readonly Outputs.GetJobJobSettingsSettingsDbtTaskResult? DbtTask;
         public readonly Outputs.GetJobJobSettingsSettingsDeploymentResult? Deployment;
         public readonly string? Description;
         public readonly string? EditMode;
         public readonly Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? EmailNotifications;
+        public readonly ImmutableArray<Outputs.GetJobJobSettingsSettingsEnvironmentResult> Environments;
         public readonly string? ExistingClusterId;
         public readonly string Format;
         public readonly Outputs.GetJobJobSettingsSettingsGitSourceResult? GitSource;
@@ -55,8 +55,6 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsResult(
-            ImmutableArray<Outputs.GetJobJobSettingsSettingsComputeResult> computes,
-
             Outputs.GetJobJobSettingsSettingsContinuousResult? continuous,
 
             Outputs.GetJobJobSettingsSettingsDbtTaskResult? dbtTask,
@@ -68,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
             string? editMode,
 
             Outputs.GetJobJobSettingsSettingsEmailNotificationsResult? emailNotifications,
+
+            ImmutableArray<Outputs.GetJobJobSettingsSettingsEnvironmentResult> environments,
 
             string? existingClusterId,
 
@@ -127,13 +127,13 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsWebhookNotificationsResult? webhookNotifications)
         {
-            Computes = computes;
             Continuous = continuous;
             DbtTask = dbtTask;
             Deployment = deployment;
             Description = description;
             EditMode = editMode;
             EmailNotifications = emailNotifications;
+            Environments = environments;
             ExistingClusterId = existingClusterId;
             Format = format;
             GitSource = gitSource;

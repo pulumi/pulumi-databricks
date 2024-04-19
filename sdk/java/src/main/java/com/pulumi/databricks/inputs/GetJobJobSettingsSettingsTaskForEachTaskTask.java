@@ -35,13 +35,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
     public static final GetJobJobSettingsSettingsTaskForEachTaskTask Empty = new GetJobJobSettingsSettingsTaskForEachTaskTask();
 
-    @Import(name="computeKey")
-    private @Nullable String computeKey;
-
-    public Optional<String> computeKey() {
-        return Optional.ofNullable(this.computeKey);
-    }
-
     @Import(name="conditionTask")
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask conditionTask;
 
@@ -75,6 +68,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications> emailNotifications() {
         return Optional.ofNullable(this.emailNotifications);
+    }
+
+    @Import(name="environmentKey")
+    private @Nullable String environmentKey;
+
+    public Optional<String> environmentKey() {
+        return Optional.ofNullable(this.environmentKey);
     }
 
     @Import(name="existingClusterId")
@@ -227,12 +227,12 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
     private GetJobJobSettingsSettingsTaskForEachTaskTask() {}
 
     private GetJobJobSettingsSettingsTaskForEachTaskTask(GetJobJobSettingsSettingsTaskForEachTaskTask $) {
-        this.computeKey = $.computeKey;
         this.conditionTask = $.conditionTask;
         this.dbtTask = $.dbtTask;
         this.dependsOns = $.dependsOns;
         this.description = $.description;
         this.emailNotifications = $.emailNotifications;
+        this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
         this.health = $.health;
         this.jobClusterKey = $.jobClusterKey;
@@ -274,11 +274,6 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
             $ = new GetJobJobSettingsSettingsTaskForEachTaskTask(Objects.requireNonNull(defaults));
         }
 
-        public Builder computeKey(@Nullable String computeKey) {
-            $.computeKey = computeKey;
-            return this;
-        }
-
         public Builder conditionTask(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask conditionTask) {
             $.conditionTask = conditionTask;
             return this;
@@ -305,6 +300,11 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTask extends com.pulu
 
         public Builder emailNotifications(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications emailNotifications) {
             $.emailNotifications = emailNotifications;
+            return this;
+        }
+
+        public Builder environmentKey(@Nullable String environmentKey) {
+            $.environmentKey = environmentKey;
             return this;
         }
 

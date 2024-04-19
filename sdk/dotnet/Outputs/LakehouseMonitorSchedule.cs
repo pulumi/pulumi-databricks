@@ -13,17 +13,26 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LakehouseMonitorSchedule
     {
+        /// <summary>
+        /// optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+        /// </summary>
         public readonly string? PauseStatus;
-        public readonly string? QuartzCronExpression;
-        public readonly string? TimezoneId;
+        /// <summary>
+        /// string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+        /// </summary>
+        public readonly string QuartzCronExpression;
+        /// <summary>
+        /// string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+        /// </summary>
+        public readonly string TimezoneId;
 
         [OutputConstructor]
         private LakehouseMonitorSchedule(
             string? pauseStatus,
 
-            string? quartzCronExpression,
+            string quartzCronExpression,
 
-            string? timezoneId)
+            string timezoneId)
         {
             PauseStatus = pauseStatus;
             QuartzCronExpression = quartzCronExpression;

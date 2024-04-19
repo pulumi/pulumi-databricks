@@ -112,6 +112,9 @@ namespace Pulumi.Databricks
         [Output("azureAttributes")]
         public Output<Outputs.ClusterAzureAttributes?> AzureAttributes { get; private set; } = null!;
 
+        [Output("cloneFrom")]
+        public Output<Outputs.ClusterCloneFrom?> CloneFrom { get; private set; } = null!;
+
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -413,8 +416,8 @@ namespace Pulumi.Databricks
         [Input("azureAttributes")]
         public Input<Inputs.ClusterAzureAttributesArgs>? AzureAttributes { get; set; }
 
-        [Input("clusterId")]
-        public Input<string>? ClusterId { get; set; }
+        [Input("cloneFrom")]
+        public Input<Inputs.ClusterCloneFromArgs>? CloneFrom { get; set; }
 
         [Input("clusterLogConf")]
         public Input<Inputs.ClusterClusterLogConfArgs>? ClusterLogConf { get; set; }
@@ -693,6 +696,9 @@ namespace Pulumi.Databricks
 
         [Input("azureAttributes")]
         public Input<Inputs.ClusterAzureAttributesGetArgs>? AzureAttributes { get; set; }
+
+        [Input("cloneFrom")]
+        public Input<Inputs.ClusterCloneFromGetArgs>? CloneFrom { get; set; }
 
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }

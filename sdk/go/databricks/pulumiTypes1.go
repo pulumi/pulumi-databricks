@@ -13,6 +13,1045 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask struct {
+	Catalog           *string  `pulumi:"catalog"`
+	Commands          []string `pulumi:"commands"`
+	ProfilesDirectory *string  `pulumi:"profilesDirectory"`
+	ProjectDirectory  *string  `pulumi:"projectDirectory"`
+	Schema            *string  `pulumi:"schema"`
+	Source            *string  `pulumi:"source"`
+	WarehouseId       *string  `pulumi:"warehouseId"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs struct {
+	Catalog           pulumi.StringPtrInput   `pulumi:"catalog"`
+	Commands          pulumi.StringArrayInput `pulumi:"commands"`
+	ProfilesDirectory pulumi.StringPtrInput   `pulumi:"profilesDirectory"`
+	ProjectDirectory  pulumi.StringPtrInput   `pulumi:"projectDirectory"`
+	Schema            pulumi.StringPtrInput   `pulumi:"schema"`
+	Source            pulumi.StringPtrInput   `pulumi:"source"`
+	WarehouseId       pulumi.StringPtrInput   `pulumi:"warehouseId"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput).ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs, GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtr and GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrType GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs
+
+func GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtr(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrInput {
+	return (*getJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.ProfilesDirectory }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.ProjectDirectory }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) Elem() GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask
+		return ret
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) ProfilesDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProfilesDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) ProjectDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectDirectory
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn struct {
+	Outcome *string `pulumi:"outcome"`
+	TaskKey string  `pulumi:"taskKey"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs struct {
+	Outcome pulumi.StringPtrInput `pulumi:"outcome"`
+	TaskKey pulumi.StringInput    `pulumi:"taskKey"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray and GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray{ GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs{...} }
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray []GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnInput
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput) Outcome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn) *string { return v.Outcome }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput) TaskKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn) string { return v.TaskKey }).(pulumi.StringOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
+		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications struct {
+	NoAlertForSkippedRuns               *bool    `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs []string `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          []string `pulumi:"onFailures"`
+	OnStarts                            []string `pulumi:"onStarts"`
+	OnSuccesses                         []string `pulumi:"onSuccesses"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs struct {
+	NoAlertForSkippedRuns               pulumi.BoolPtrInput     `pulumi:"noAlertForSkippedRuns"`
+	OnDurationWarningThresholdExceededs pulumi.StringArrayInput `pulumi:"onDurationWarningThresholdExceededs"`
+	OnFailures                          pulumi.StringArrayInput `pulumi:"onFailures"`
+	OnStarts                            pulumi.StringArrayInput `pulumi:"onStarts"`
+	OnSuccesses                         pulumi.StringArrayInput `pulumi:"onSuccesses"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput).ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs, GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtr and GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrType GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs
+
+func GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtr(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrInput {
+	return (*getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) *bool {
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnFailures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string { return v.OnFailures }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnStarts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string { return v.OnStarts }).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput) OnSuccesses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string { return v.OnSuccesses }).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) Elem() GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications
+		return ret
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) NoAlertForSkippedRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoAlertForSkippedRuns
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) OnDurationWarningThresholdExceededs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnDurationWarningThresholdExceededs
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) OnFailures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailures
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) OnStarts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnStarts
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput) OnSuccesses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OnSuccesses
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealth struct {
+	Rules []GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule `pulumi:"rules"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskHealthInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskHealthInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs struct {
+	Rules GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealth)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput).ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs, GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtr and GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrType GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs
+
+func GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtr(v *GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrInput {
+	return (*getJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskHealth)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskForEachTaskTaskHealth) *GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput) Rules() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealth) []GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
+		return v.Rules
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskHealth)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) Elem() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskHealth) GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskForEachTaskTaskHealth
+		return ret
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput) Rules() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskHealth) []GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule struct {
+	Metric *string `pulumi:"metric"`
+	Op     *string `pulumi:"op"`
+	Value  *int    `pulumi:"value"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs struct {
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	Op     pulumi.StringPtrInput `pulumi:"op"`
+	Value  pulumi.IntPtrInput    `pulumi:"value"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray and GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray{ GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs{...} }
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray []GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule {
+		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRule)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary struct {
+	Cran  *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran  `pulumi:"cran"`
+	Egg   *string                                                   `pulumi:"egg"`
+	Jar   *string                                                   `pulumi:"jar"`
+	Maven *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven `pulumi:"maven"`
+	Pypi  *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi  `pulumi:"pypi"`
+	Whl   *string                                                   `pulumi:"whl"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs struct {
+	Cran  GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput  `pulumi:"cran"`
+	Egg   pulumi.StringPtrInput                                            `pulumi:"egg"`
+	Jar   pulumi.StringPtrInput                                            `pulumi:"jar"`
+	Maven GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrInput `pulumi:"maven"`
+	Pypi  GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrInput  `pulumi:"pypi"`
+	Whl   pulumi.StringPtrInput                                            `pulumi:"whl"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray and GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray{ GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs{...} }
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray []GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Cran() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
+		return v.Cran
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Egg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *string { return v.Egg }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Jar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *string { return v.Jar }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Maven() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
+		return v.Maven
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Pypi() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
+		return v.Pypi
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput) Whl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary) *string { return v.Whl }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput) Index(i pulumi.IntInput) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
+		return vs[0].([]GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary)[vs[1].(int)]
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran struct {
+	Package string  `pulumi:"package"`
+	Repo    *string `pulumi:"repo"`
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranInput` via:
+//
+//	GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs{...}
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs struct {
+	Package pulumi.StringInput    `pulumi:"package"`
+	Repo    pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran)(nil)).Elem()
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput)
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput).ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(ctx)
+}
+
+// GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs, GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtr and GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput values.
+// You can construct a concrete instance of `GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput` via:
+//
+//	        GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput interface {
+	pulumi.Input
+
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput
+	ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput
+}
+
+type getJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrType GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs
+
+func GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtr(v *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput {
+	return (*getJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrType)(v)
+}
+
+func (*getJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran)(nil)).Elem()
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return i.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (i *getJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrType) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return o.ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(context.Background())
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
+		return &v
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) string { return v.Package }).(pulumi.StringOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput struct{ *pulumi.OutputState }
+
+func (GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran)(nil)).Elem()
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) ToGetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutputWithContext(ctx context.Context) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput {
+	return o
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) Elem() GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
+		if v != nil {
+			return *v
+		}
+		var ret GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran
+		return ret
+	}).(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven struct {
 	Coordinates string   `pulumi:"coordinates"`
 	Exclusions  []string `pulumi:"exclusions"`
@@ -4176,6 +5215,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask struct {
 	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
 	NotebookPath   string                 `pulumi:"notebookPath"`
 	Source         *string                `pulumi:"source"`
+	WarehouseId    *string                `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs and GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput values.
@@ -4193,6 +5233,7 @@ type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs struct {
 	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
 	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
+	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs) ElementType() reflect.Type {
@@ -4286,6 +5327,10 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) Source()
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) ElementType() reflect.Type {
@@ -4334,6 +5379,15 @@ func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) Sourc
 			return nil
 		}
 		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11665,6 +12719,7 @@ type GetJobJobSettingsSettingsTaskNotebookTask struct {
 	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
 	NotebookPath   string                 `pulumi:"notebookPath"`
 	Source         *string                `pulumi:"source"`
+	WarehouseId    *string                `pulumi:"warehouseId"`
 }
 
 // GetJobJobSettingsSettingsTaskNotebookTaskInput is an input type that accepts GetJobJobSettingsSettingsTaskNotebookTaskArgs and GetJobJobSettingsSettingsTaskNotebookTaskOutput values.
@@ -11682,6 +12737,7 @@ type GetJobJobSettingsSettingsTaskNotebookTaskArgs struct {
 	BaseParameters pulumi.MapInput       `pulumi:"baseParameters"`
 	NotebookPath   pulumi.StringInput    `pulumi:"notebookPath"`
 	Source         pulumi.StringPtrInput `pulumi:"source"`
+	WarehouseId    pulumi.StringPtrInput `pulumi:"warehouseId"`
 }
 
 func (GetJobJobSettingsSettingsTaskNotebookTaskArgs) ElementType() reflect.Type {
@@ -11773,6 +12829,10 @@ func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) Source() pulumi.StringP
 	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+func (o GetJobJobSettingsSettingsTaskNotebookTaskOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetJobJobSettingsSettingsTaskNotebookTask) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
 type GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput struct{ *pulumi.OutputState }
 
 func (GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) ElementType() reflect.Type {
@@ -11821,6 +12881,15 @@ func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) Source() pulumi.Stri
 			return nil
 		}
 		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobJobSettingsSettingsTaskNotebookTaskPtrOutput) WarehouseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetJobJobSettingsSettingsTaskNotebookTask) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WarehouseId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15632,14 +16701,15 @@ type GetMetastoreMetastoreInfo struct {
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
-	// Id of the metastore to be fetched
+	// Id of the metastore
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Name of metastore.
+	// Name of the metastore
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner                 *string `pulumi:"owner"`
 	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
-	Region                *string `pulumi:"region"`
+	// Region of the metastore
+	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.
 	StorageRoot               *string `pulumi:"storageRoot"`
 	StorageRootCredentialId   *string `pulumi:"storageRootCredentialId"`
@@ -15671,14 +16741,15 @@ type GetMetastoreMetastoreInfoArgs struct {
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
 	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
 	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
-	// Id of the metastore to be fetched
+	// Id of the metastore
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
-	// Name of metastore.
+	// Name of the metastore
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
 	Owner                 pulumi.StringPtrInput `pulumi:"owner"`
 	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
-	Region                pulumi.StringPtrInput `pulumi:"region"`
+	// Region of the metastore
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.
 	StorageRoot               pulumi.StringPtrInput `pulumi:"storageRoot"`
 	StorageRootCredentialId   pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
@@ -15799,12 +16870,12 @@ func (o GetMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Id of the metastore to be fetched
+// Id of the metastore
 func (o GetMetastoreMetastoreInfoOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
 }
 
-// Name of metastore.
+// Name of the metastore
 func (o GetMetastoreMetastoreInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -15818,6 +16889,7 @@ func (o GetMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPt
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
 }
 
+// Region of the metastore
 func (o GetMetastoreMetastoreInfoOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -15942,7 +17014,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Id of the metastore to be fetched
+// Id of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -15952,7 +17024,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of metastore.
+// Name of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -15981,6 +17053,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Region of the metastore
 func (o GetMetastoreMetastoreInfoPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -19031,6 +20104,20 @@ func (o GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiInput)(nil)).Elem(), GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs{})
@@ -19269,6 +20356,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoCloudflareApiTokenPtrInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountPtrInput)(nil)).Elem(), GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthPtrOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskHealthRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArrayOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranOutput{})
+	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenPtrOutput{})
 	pulumi.RegisterOutputType(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiOutput{})

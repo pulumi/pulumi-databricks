@@ -86,6 +86,12 @@ namespace Pulumi.Databricks
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Output("enablePredictiveOptimization")]
+        public Output<string> EnablePredictiveOptimization { get; private set; } = null!;
+
+        /// <summary>
         /// Delete schema regardless of its contents.
         /// </summary>
         [Output("forceDestroy")]
@@ -177,6 +183,12 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Input("enablePredictiveOptimization")]
+        public Input<string>? EnablePredictiveOptimization { get; set; }
+
+        /// <summary>
         /// Delete schema regardless of its contents.
         /// </summary>
         [Input("forceDestroy")]
@@ -234,6 +246,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        /// </summary>
+        [Input("enablePredictiveOptimization")]
+        public Input<string>? EnablePredictiveOptimization { get; set; }
 
         /// <summary>
         /// Delete schema regardless of its contents.

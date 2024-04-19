@@ -5,8 +5,8 @@ go 1.21
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 
 require (
-	github.com/databricks/databricks-sdk-go v0.37.0
-	github.com/databricks/terraform-provider-databricks v1.39.0
+	github.com/databricks/databricks-sdk-go v0.38.0
+	github.com/databricks/terraform-provider-databricks v1.40.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
 )
 
@@ -225,7 +225,7 @@ require (
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
 	golang.org/x/crypto v0.21.0 // indirect
 	golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // indirect
-	golang.org/x/mod v0.16.0 // indirect
+	golang.org/x/mod v0.17.0 // indirect
 	golang.org/x/net v0.22.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect

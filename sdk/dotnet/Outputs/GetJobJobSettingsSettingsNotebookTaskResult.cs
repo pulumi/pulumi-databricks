@@ -16,6 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableDictionary<string, object>? BaseParameters;
         public readonly string NotebookPath;
         public readonly string? Source;
+        public readonly string? WarehouseId;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsNotebookTaskResult(
@@ -23,11 +24,14 @@ namespace Pulumi.Databricks.Outputs
 
             string notebookPath,
 
-            string? source)
+            string? source,
+
+            string? warehouseId)
         {
             BaseParameters = baseParameters;
             NotebookPath = notebookPath;
             Source = source;
+            WarehouseId = warehouseId;
         }
     }
 }

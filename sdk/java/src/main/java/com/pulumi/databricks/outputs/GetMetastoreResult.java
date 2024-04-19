@@ -22,6 +22,12 @@ public final class GetMetastoreResult {
      * 
      */
     private GetMetastoreMetastoreInfo metastoreInfo;
+    /**
+     * @return Name of metastore.
+     * 
+     */
+    private String name;
+    private String region;
 
     private GetMetastoreResult() {}
     /**
@@ -41,6 +47,16 @@ public final class GetMetastoreResult {
     public GetMetastoreMetastoreInfo metastoreInfo() {
         return this.metastoreInfo;
     }
+    /**
+     * @return Name of metastore.
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    public String region() {
+        return this.region;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,12 +70,16 @@ public final class GetMetastoreResult {
         private String id;
         private String metastoreId;
         private GetMetastoreMetastoreInfo metastoreInfo;
+        private String name;
+        private String region;
         public Builder() {}
         public Builder(GetMetastoreResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.metastoreId = defaults.metastoreId;
     	      this.metastoreInfo = defaults.metastoreInfo;
+    	      this.name = defaults.name;
+    	      this.region = defaults.region;
         }
 
         @CustomType.Setter
@@ -86,11 +106,29 @@ public final class GetMetastoreResult {
             this.metastoreInfo = metastoreInfo;
             return this;
         }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreResult", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
         public GetMetastoreResult build() {
             final var _resultValue = new GetMetastoreResult();
             _resultValue.id = id;
             _resultValue.metastoreId = metastoreId;
             _resultValue.metastoreInfo = metastoreInfo;
+            _resultValue.name = name;
+            _resultValue.region = region;
             return _resultValue;
         }
     }

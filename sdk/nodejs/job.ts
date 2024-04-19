@@ -51,7 +51,6 @@ export class Job extends pulumi.CustomResource {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     public readonly alwaysRunning!: pulumi.Output<boolean | undefined>;
-    public readonly computes!: pulumi.Output<outputs.JobCompute[] | undefined>;
     public readonly continuous!: pulumi.Output<outputs.JobContinuous | undefined>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -73,6 +72,7 @@ export class Job extends pulumi.CustomResource {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     public readonly emailNotifications!: pulumi.Output<outputs.JobEmailNotifications | undefined>;
+    public readonly environments!: pulumi.Output<outputs.JobEnvironment[] | undefined>;
     public readonly existingClusterId!: pulumi.Output<string | undefined>;
     public readonly format!: pulumi.Output<string>;
     public readonly gitSource!: pulumi.Output<outputs.JobGitSource | undefined>;
@@ -85,7 +85,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly jobClusters!: pulumi.Output<outputs.JobJobCluster[] | undefined>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     public readonly libraries!: pulumi.Output<outputs.JobLibrary[] | undefined>;
     /**
@@ -190,7 +190,6 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["alwaysRunning"] = state ? state.alwaysRunning : undefined;
-            resourceInputs["computes"] = state ? state.computes : undefined;
             resourceInputs["continuous"] = state ? state.continuous : undefined;
             resourceInputs["controlRunState"] = state ? state.controlRunState : undefined;
             resourceInputs["dbtTask"] = state ? state.dbtTask : undefined;
@@ -198,6 +197,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["editMode"] = state ? state.editMode : undefined;
             resourceInputs["emailNotifications"] = state ? state.emailNotifications : undefined;
+            resourceInputs["environments"] = state ? state.environments : undefined;
             resourceInputs["existingClusterId"] = state ? state.existingClusterId : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
             resourceInputs["gitSource"] = state ? state.gitSource : undefined;
@@ -231,7 +231,6 @@ export class Job extends pulumi.CustomResource {
         } else {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["alwaysRunning"] = args ? args.alwaysRunning : undefined;
-            resourceInputs["computes"] = args ? args.computes : undefined;
             resourceInputs["continuous"] = args ? args.continuous : undefined;
             resourceInputs["controlRunState"] = args ? args.controlRunState : undefined;
             resourceInputs["dbtTask"] = args ? args.dbtTask : undefined;
@@ -239,6 +238,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["editMode"] = args ? args.editMode : undefined;
             resourceInputs["emailNotifications"] = args ? args.emailNotifications : undefined;
+            resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["existingClusterId"] = args ? args.existingClusterId : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["gitSource"] = args ? args.gitSource : undefined;
@@ -285,7 +285,6 @@ export interface JobState {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
-    computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;
     continuous?: pulumi.Input<inputs.JobContinuous>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -307,6 +306,7 @@ export interface JobState {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
+    environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
@@ -319,7 +319,7 @@ export interface JobState {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**
@@ -421,7 +421,6 @@ export interface JobArgs {
      * @deprecated always_running will be replaced by controlRunState in the next major release.
      */
     alwaysRunning?: pulumi.Input<boolean>;
-    computes?: pulumi.Input<pulumi.Input<inputs.JobCompute>[]>;
     continuous?: pulumi.Input<inputs.JobContinuous>;
     /**
      * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
@@ -443,6 +442,7 @@ export interface JobArgs {
      * (List) An optional set of email addresses notified when runs of this job begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobEmailNotifications>;
+    environments?: pulumi.Input<pulumi.Input<inputs.JobEnvironment>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.JobGitSource>;
@@ -455,7 +455,7 @@ export interface JobArgs {
      */
     jobClusters?: pulumi.Input<pulumi.Input<inputs.JobJobCluster>[]>;
     /**
-     * (Set) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
+     * (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the databricks.Cluster resource for more information.
      */
     libraries?: pulumi.Input<pulumi.Input<inputs.JobLibrary>[]>;
     /**

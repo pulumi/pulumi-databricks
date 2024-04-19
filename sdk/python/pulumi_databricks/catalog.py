@@ -16,6 +16,7 @@ class CatalogArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,7 @@ class CatalogArgs:
         The set of arguments for constructing a Catalog resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
@@ -45,6 +47,8 @@ class CatalogArgs:
             pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
@@ -89,6 +93,18 @@ class CatalogArgs:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_predictive_optimization", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -216,6 +232,7 @@ class _CatalogState:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -230,6 +247,7 @@ class _CatalogState:
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
@@ -245,6 +263,8 @@ class _CatalogState:
             pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if enable_predictive_optimization is not None:
+            pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if isolation_mode is not None:
@@ -289,6 +309,18 @@ class _CatalogState:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
+
+    @enable_predictive_optimization.setter
+    def enable_predictive_optimization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_predictive_optimization", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -418,6 +450,7 @@ class Catalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -468,6 +501,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
@@ -537,6 +571,7 @@ class Catalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
+                 enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  isolation_mode: Optional[pulumi.Input[str]] = None,
                  metastore_id: Optional[pulumi.Input[str]] = None,
@@ -558,6 +593,7 @@ class Catalog(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["connection_name"] = connection_name
+            __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["isolation_mode"] = isolation_mode
             __props__.__dict__["metastore_id"] = metastore_id
@@ -580,6 +616,7 @@ class Catalog(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: Optional[pulumi.Input[str]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
+            enable_predictive_optimization: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             isolation_mode: Optional[pulumi.Input[str]] = None,
             metastore_id: Optional[pulumi.Input[str]] = None,
@@ -599,6 +636,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: User-supplied free-form text.
         :param pulumi.Input[str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         :param pulumi.Input[str] metastore_id: ID of the parent metastore.
@@ -616,6 +654,7 @@ class Catalog(pulumi.CustomResource):
 
         __props__.__dict__["comment"] = comment
         __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
@@ -643,6 +682,14 @@ class Catalog(pulumi.CustomResource):
         For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         """
         return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="enablePredictiveOptimization")
+    def enable_predictive_optimization(self) -> pulumi.Output[str]:
+        """
+        Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+        """
+        return pulumi.get(self, "enable_predictive_optimization")
 
     @property
     @pulumi.getter(name="forceDestroy")

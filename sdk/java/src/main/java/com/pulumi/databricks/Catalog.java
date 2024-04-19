@@ -103,6 +103,20 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionName);
     }
     /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     * 
+     */
+    @Export(name="enablePredictiveOptimization", refs={String.class}, tree="[0]")
+    private Output<String> enablePredictiveOptimization;
+
+    /**
+     * @return Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     * 
+     */
+    public Output<String> enablePredictiveOptimization() {
+        return this.enablePredictiveOptimization;
+    }
+    /**
      * Delete catalog regardless of its contents.
      * 
      */

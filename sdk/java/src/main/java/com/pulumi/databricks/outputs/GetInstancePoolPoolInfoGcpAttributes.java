@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -13,14 +14,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstancePoolPoolInfoGcpAttributes {
     private @Nullable String gcpAvailability;
-    private @Nullable Integer localSsdCount;
+    private Integer localSsdCount;
+    private String zoneId;
 
     private GetInstancePoolPoolInfoGcpAttributes() {}
     public Optional<String> gcpAvailability() {
         return Optional.ofNullable(this.gcpAvailability);
     }
-    public Optional<Integer> localSsdCount() {
-        return Optional.ofNullable(this.localSsdCount);
+    public Integer localSsdCount() {
+        return this.localSsdCount;
+    }
+    public String zoneId() {
+        return this.zoneId;
     }
 
     public static Builder builder() {
@@ -33,12 +38,14 @@ public final class GetInstancePoolPoolInfoGcpAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String gcpAvailability;
-        private @Nullable Integer localSsdCount;
+        private Integer localSsdCount;
+        private String zoneId;
         public Builder() {}
         public Builder(GetInstancePoolPoolInfoGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gcpAvailability = defaults.gcpAvailability;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.zoneId = defaults.zoneId;
         }
 
         @CustomType.Setter
@@ -48,15 +55,26 @@ public final class GetInstancePoolPoolInfoGcpAttributes {
             return this;
         }
         @CustomType.Setter
-        public Builder localSsdCount(@Nullable Integer localSsdCount) {
-
+        public Builder localSsdCount(Integer localSsdCount) {
+            if (localSsdCount == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributes", "localSsdCount");
+            }
             this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zoneId(String zoneId) {
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolPoolInfoGcpAttributes", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetInstancePoolPoolInfoGcpAttributes build() {
             final var _resultValue = new GetInstancePoolPoolInfoGcpAttributes();
             _resultValue.gcpAvailability = gcpAvailability;
             _resultValue.localSsdCount = localSsdCount;
+            _resultValue.zoneId = zoneId;
             return _resultValue;
         }
     }

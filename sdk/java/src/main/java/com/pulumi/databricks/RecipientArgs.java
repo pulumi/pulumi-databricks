@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RecipientIpAccessListArgs;
+import com.pulumi.databricks.inputs.RecipientPropertiesKvpairsArgs;
 import com.pulumi.databricks.inputs.RecipientTokenArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -110,6 +111,21 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Recipient properties - object consisting of following fields:
+     * 
+     */
+    @Import(name="propertiesKvpairs")
+    private @Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs;
+
+    /**
+     * @return Recipient properties - object consisting of following fields:
+     * 
+     */
+    public Optional<Output<RecipientPropertiesKvpairsArgs>> propertiesKvpairs() {
+        return Optional.ofNullable(this.propertiesKvpairs);
+    }
+
+    /**
      * The one-time sharing code provided by the data recipient.
      * 
      */
@@ -148,6 +164,7 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
         this.ipAccessList = $.ipAccessList;
         this.name = $.name;
         this.owner = $.owner;
+        this.propertiesKvpairs = $.propertiesKvpairs;
         this.sharingCode = $.sharingCode;
         this.tokens = $.tokens;
     }
@@ -294,6 +311,27 @@ public final class RecipientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesKvpairs(@Nullable Output<RecipientPropertiesKvpairsArgs> propertiesKvpairs) {
+            $.propertiesKvpairs = propertiesKvpairs;
+            return this;
+        }
+
+        /**
+         * @param propertiesKvpairs Recipient properties - object consisting of following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propertiesKvpairs(RecipientPropertiesKvpairsArgs propertiesKvpairs) {
+            return propertiesKvpairs(Output.of(propertiesKvpairs));
         }
 
         /**

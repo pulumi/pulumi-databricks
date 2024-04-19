@@ -12,7 +12,7 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class LakehouseMonitorTimeSeriesGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("granularities")]
+        [Input("granularities", required: true)]
         private InputList<string>? _granularities;
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Column of the timestamp of predictions
         /// </summary>
-        [Input("timestampCol")]
-        public Input<string>? TimestampCol { get; set; }
+        [Input("timestampCol", required: true)]
+        public Input<string> TimestampCol { get; set; } = null!;
 
         public LakehouseMonitorTimeSeriesGetArgs()
         {

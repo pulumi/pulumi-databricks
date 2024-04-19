@@ -138,6 +138,10 @@ export interface ClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsWorkspaceId?: pulumi.Input<string>;
 }
 
+export interface ClusterCloneFrom {
+    sourceClusterId: pulumi.Input<string>;
+}
+
 export interface ClusterClusterLogConf {
     dbfs?: pulumi.Input<inputs.ClusterClusterLogConfDbfs>;
     s3?: pulumi.Input<inputs.ClusterClusterLogConfS3>;
@@ -1103,6 +1107,108 @@ export interface GetCurrentMetastoreMetastoreInfoArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
+export interface GetExternalLocationExternalLocationInfo {
+    /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    accessPoint?: string;
+    browseOnly?: boolean;
+    /**
+     * User-supplied comment.
+     */
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    credentialId?: string;
+    /**
+     * Name of the databricks.StorageCredential to use with this external location.
+     */
+    credentialName?: string;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    encryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    metastoreId?: string;
+    /**
+     * The name of the storage credential
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the external location owner.
+     */
+    owner?: string;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    readOnly?: boolean;
+    updatedAt?: number;
+    updatedBy?: string;
+    /**
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     */
+    url?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoArgs {
+    /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    accessPoint?: pulumi.Input<string>;
+    browseOnly?: pulumi.Input<boolean>;
+    /**
+     * User-supplied comment.
+     */
+    comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string>;
+    /**
+     * Name of the databricks.StorageCredential to use with this external location.
+     */
+    credentialName?: pulumi.Input<string>;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
+    metastoreId?: pulumi.Input<string>;
+    /**
+     * The name of the storage credential
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Username/groupname/sp applicationId of the external location owner.
+     */
+    owner?: pulumi.Input<string>;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
+    /**
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
+    sseEncryptionDetails?: inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetailsArgs {
+    sseEncryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs {
+    algorithm?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string>;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -1192,11 +1298,13 @@ export interface GetInstancePoolPoolInfoDiskSpecDiskTypeArgs {
 export interface GetInstancePoolPoolInfoGcpAttributes {
     gcpAvailability?: string;
     localSsdCount?: number;
+    zoneId?: string;
 }
 
 export interface GetInstancePoolPoolInfoGcpAttributesArgs {
     gcpAvailability?: pulumi.Input<string>;
     localSsdCount?: pulumi.Input<number>;
+    zoneId?: pulumi.Input<string>;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
@@ -1330,13 +1438,13 @@ export interface GetJobJobSettingsArgs {
 }
 
 export interface GetJobJobSettingsSettings {
-    computes?: inputs.GetJobJobSettingsSettingsCompute[];
     continuous?: inputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: inputs.GetJobJobSettingsSettingsDbtTask;
     deployment?: inputs.GetJobJobSettingsSettingsDeployment;
     description?: string;
     editMode?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsEmailNotifications;
+    environments?: inputs.GetJobJobSettingsSettingsEnvironment[];
     existingClusterId?: string;
     format?: string;
     gitSource?: inputs.GetJobJobSettingsSettingsGitSource;
@@ -1372,13 +1480,13 @@ export interface GetJobJobSettingsSettings {
 }
 
 export interface GetJobJobSettingsSettingsArgs {
-    computes?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsComputeArgs>[]>;
     continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
     deployment?: pulumi.Input<inputs.GetJobJobSettingsSettingsDeploymentArgs>;
     description?: pulumi.Input<string>;
     editMode?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
+    environments?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentArgs>[]>;
     existingClusterId?: pulumi.Input<string>;
     format?: pulumi.Input<string>;
     gitSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceArgs>;
@@ -1411,24 +1519,6 @@ export interface GetJobJobSettingsSettingsArgs {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerArgs>;
     webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs>;
-}
-
-export interface GetJobJobSettingsSettingsCompute {
-    computeKey?: string;
-    spec?: inputs.GetJobJobSettingsSettingsComputeSpec;
-}
-
-export interface GetJobJobSettingsSettingsComputeArgs {
-    computeKey?: pulumi.Input<string>;
-    spec?: pulumi.Input<inputs.GetJobJobSettingsSettingsComputeSpecArgs>;
-}
-
-export interface GetJobJobSettingsSettingsComputeSpec {
-    kind?: string;
-}
-
-export interface GetJobJobSettingsSettingsComputeSpecArgs {
-    kind?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsContinuous {
@@ -1483,6 +1573,26 @@ export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
     onFailures?: pulumi.Input<pulumi.Input<string>[]>;
     onStarts?: pulumi.Input<pulumi.Input<string>[]>;
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetJobJobSettingsSettingsEnvironment {
+    environmentKey: string;
+    spec?: inputs.GetJobJobSettingsSettingsEnvironmentSpec;
+}
+
+export interface GetJobJobSettingsSettingsEnvironmentArgs {
+    environmentKey: pulumi.Input<string>;
+    spec?: pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentSpecArgs>;
+}
+
+export interface GetJobJobSettingsSettingsEnvironmentSpec {
+    client: string;
+    dependencies?: string[];
+}
+
+export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
+    client: pulumi.Input<string>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -2227,12 +2337,14 @@ export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsNotificationSettings {
@@ -2358,12 +2470,12 @@ export interface GetJobJobSettingsSettingsSparkSubmitTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTask {
-    computeKey?: string;
     conditionTask?: inputs.GetJobJobSettingsSettingsTaskConditionTask;
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskDependsOn[];
     description?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     forEachTask?: inputs.GetJobJobSettingsSettingsTaskForEachTask;
     health?: inputs.GetJobJobSettingsSettingsTaskHealth;
@@ -2389,12 +2501,12 @@ export interface GetJobJobSettingsSettingsTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskArgs {
-    computeKey?: pulumi.Input<string>;
     conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
     description?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
+    environmentKey?: pulumi.Input<string>;
     existingClusterId?: pulumi.Input<string>;
     forEachTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs>;
     health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthArgs>;
@@ -2490,12 +2602,12 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
-    computeKey?: string;
     conditionTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
     dbtTask?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
     dependsOns?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn[];
     description?: string;
     emailNotifications?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     health?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealth;
     jobClusterKey?: string;
@@ -2520,12 +2632,12 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
-    computeKey?: pulumi.Input<string>;
     conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs>;
     dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs>;
     dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs>[]>;
     description?: pulumi.Input<string>;
     emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs>;
+    environmentKey?: pulumi.Input<string>;
     existingClusterId?: pulumi.Input<string>;
     health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs>;
     jobClusterKey?: pulumi.Input<string>;
@@ -2995,12 +3107,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings {
@@ -3621,12 +3735,14 @@ export interface GetJobJobSettingsSettingsTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTaskArgs {
     baseParameters?: pulumi.Input<{[key: string]: any}>;
     notebookPath: pulumi.Input<string>;
     source?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotificationSettings {
@@ -3986,11 +4102,11 @@ export interface GetMetastoreMetastoreInfo {
     deltaSharingScope?: string;
     globalMetastoreId?: string;
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      */
     metastoreId?: string;
     /**
-     * Name of metastore.
+     * Name of the metastore
      */
     name?: string;
     /**
@@ -3998,6 +4114,9 @@ export interface GetMetastoreMetastoreInfo {
      */
     owner?: string;
     privilegeModelVersion?: string;
+    /**
+     * Region of the metastore
+     */
     region?: string;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.
@@ -4028,11 +4147,11 @@ export interface GetMetastoreMetastoreInfoArgs {
     deltaSharingScope?: pulumi.Input<string>;
     globalMetastoreId?: pulumi.Input<string>;
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      */
     metastoreId?: pulumi.Input<string>;
     /**
-     * Name of metastore.
+     * Name of the metastore
      */
     name?: pulumi.Input<string>;
     /**
@@ -4040,6 +4159,9 @@ export interface GetMetastoreMetastoreInfoArgs {
      */
     owner?: pulumi.Input<string>;
     privilegeModelVersion?: pulumi.Input<string>;
+    /**
+     * Region of the metastore
+     */
     region?: pulumi.Input<string>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.
@@ -4502,6 +4624,10 @@ export interface InstancePoolGcpAttributes {
      * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
      */
     localSsdCount?: pulumi.Input<number>;
+    /**
+     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     */
+    zoneId?: pulumi.Input<string>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -4561,15 +4687,6 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: pulumi.Input<string>;
     username: pulumi.Input<string>;
-}
-
-export interface JobCompute {
-    computeKey?: pulumi.Input<string>;
-    spec?: pulumi.Input<inputs.JobComputeSpec>;
-}
-
-export interface JobComputeSpec {
-    kind?: pulumi.Input<string>;
 }
 
 export interface JobContinuous {
@@ -4640,6 +4757,16 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface JobEnvironment {
+    environmentKey: pulumi.Input<string>;
+    spec?: pulumi.Input<inputs.JobEnvironmentSpec>;
+}
+
+export interface JobEnvironmentSpec {
+    client: pulumi.Input<string>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobGitSource {
@@ -5077,6 +5204,10 @@ export interface JobNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: pulumi.Input<string>;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobNotificationSettings {
@@ -5225,7 +5356,6 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
-    computeKey?: pulumi.Input<string>;
     conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
     /**
@@ -5240,6 +5370,7 @@ export interface JobTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
+    environmentKey?: pulumi.Input<string>;
     existingClusterId?: pulumi.Input<string>;
     forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
     /**
@@ -5403,7 +5534,6 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
-    computeKey?: pulumi.Input<string>;
     conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
     dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
     /**
@@ -5418,6 +5548,7 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
+    environmentKey?: pulumi.Input<string>;
     existingClusterId?: pulumi.Input<string>;
     /**
      * block described below that specifies health conditions for a given task.
@@ -5789,6 +5920,10 @@ export interface JobTaskForEachTaskTaskNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: pulumi.Input<string>;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNotificationSettings {
@@ -6310,6 +6445,10 @@ export interface JobTaskNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: pulumi.Input<string>;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: pulumi.Input<string>;
 }
 
 export interface JobTaskNotificationSettings {
@@ -6713,25 +6852,25 @@ export interface JobWebhookNotificationsOnSuccess {
 
 export interface LakehouseMonitorCustomMetric {
     /**
-     * [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      */
-    definition?: pulumi.Input<string>;
+    definition: pulumi.Input<string>;
     /**
      * Columns on the monitored table to apply the custom metrics to.
      */
-    inputColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    inputColumns: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the custom metric.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The output type of the custom metric.
      */
-    outputDataType?: pulumi.Input<string>;
+    outputDataType: pulumi.Input<string>;
     /**
      * The type of the custom metric.
      */
-    type?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }
 
 export interface LakehouseMonitorDataClassificationConfig {
@@ -6742,7 +6881,7 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      */
-    granularities?: pulumi.Input<pulumi.Input<string>[]>;
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Column of the model label
      */
@@ -6750,11 +6889,11 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Column of the model id or version
      */
-    modelIdCol?: pulumi.Input<string>;
+    modelIdCol: pulumi.Input<string>;
     /**
      * Column of the model prediction
      */
-    predictionCol?: pulumi.Input<string>;
+    predictionCol: pulumi.Input<string>;
     /**
      * Column of the model prediction probabilities
      */
@@ -6762,25 +6901,45 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      */
-    problemType?: pulumi.Input<string>;
+    problemType: pulumi.Input<string>;
     /**
      * Column of the timestamp of predictions
      */
-    timestampCol?: pulumi.Input<string>;
+    timestampCol: pulumi.Input<string>;
 }
 
 export interface LakehouseMonitorNotifications {
+    /**
+     * who to send notifications to on monitor failure.
+     */
     onFailure?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnFailure>;
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     */
+    onNewClassificationTagDetected?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected>;
 }
 
 export interface LakehouseMonitorNotificationsOnFailure {
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LakehouseMonitorSchedule {
+    /**
+     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     */
     pauseStatus?: pulumi.Input<string>;
-    quartzCronExpression?: pulumi.Input<string>;
-    timezoneId?: pulumi.Input<string>;
+    /**
+     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     */
+    quartzCronExpression: pulumi.Input<string>;
+    /**
+     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     */
+    timezoneId: pulumi.Input<string>;
 }
 
 export interface LakehouseMonitorSnapshot {
@@ -6790,11 +6949,11 @@ export interface LakehouseMonitorTimeSeries {
     /**
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      */
-    granularities?: pulumi.Input<pulumi.Input<string>[]>;
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Column of the timestamp of predictions
      */
-    timestampCol?: pulumi.Input<string>;
+    timestampCol: pulumi.Input<string>;
 }
 
 export interface LibraryCran {
@@ -7578,6 +7737,11 @@ export interface PipelineClusterInitScriptWorkspace {
     destination: pulumi.Input<string>;
 }
 
+export interface PipelineDeployment {
+    kind?: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string>;
+}
+
 export interface PipelineFilters {
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
     includes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7624,7 +7788,14 @@ export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
      */
-    allowedIpAddresses: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RecipientPropertiesKvpairs {
+    /**
+     * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+     */
+    properties: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface RecipientToken {
@@ -7633,11 +7804,11 @@ export interface RecipientToken {
      */
     activationUrl?: pulumi.Input<string>;
     /**
-     * Time at which this recipient Token was created, in epoch milliseconds.
+     * Time at which this recipient was created, in epoch milliseconds.
      */
     createdAt?: pulumi.Input<number>;
     /**
-     * Username of recipient token creator.
+     * Username of recipient creator.
      */
     createdBy?: pulumi.Input<string>;
     /**
@@ -7645,11 +7816,11 @@ export interface RecipientToken {
      */
     expirationTime?: pulumi.Input<number>;
     /**
-     * ID of this recipient - same as the `name`.
+     * Unique ID of the recipient token.
      */
     id?: pulumi.Input<string>;
     /**
-     * Time at which this recipient Token was updated, in epoch milliseconds.
+     * Time at which this recipient was updated, in epoch milliseconds.
      */
     updatedAt?: pulumi.Input<number>;
     /**

@@ -36,6 +36,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+        /// </summary>
+        [Input("warehouseId")]
+        public Input<string>? WarehouseId { get; set; }
+
         public JobNotebookTaskGetArgs()
         {
         }

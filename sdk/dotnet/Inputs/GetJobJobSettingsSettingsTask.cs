@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsTaskArgs : global::Pulumi.InvokeArgs
     {
-        [Input("computeKey")]
-        public string? ComputeKey { get; set; }
-
         [Input("conditionTask")]
         public Inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs? ConditionTask { get; set; }
 
@@ -34,6 +31,9 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("emailNotifications")]
         public Inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs? EmailNotifications { get; set; }
+
+        [Input("environmentKey")]
+        public string? EnvironmentKey { get; set; }
 
         [Input("existingClusterId")]
         public string? ExistingClusterId { get; set; }

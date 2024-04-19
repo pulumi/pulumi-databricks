@@ -14,9 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class LakehouseMonitorCustomMetric
     {
         /// <summary>
-        /// [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+        /// [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
         /// </summary>
-        public readonly string? Definition;
+        public readonly string Definition;
         /// <summary>
         /// Columns on the monitored table to apply the custom metrics to.
         /// </summary>
@@ -24,27 +24,27 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Name of the custom metric.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The output type of the custom metric.
         /// </summary>
-        public readonly string? OutputDataType;
+        public readonly string OutputDataType;
         /// <summary>
         /// The type of the custom metric.
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private LakehouseMonitorCustomMetric(
-            string? definition,
+            string definition,
 
             ImmutableArray<string> inputColumns,
 
-            string? name,
+            string name,
 
-            string? outputDataType,
+            string outputDataType,
 
-            string? type)
+            string type)
         {
             Definition = definition;
             InputColumns = inputColumns;

@@ -77,6 +77,10 @@ export class Catalog extends pulumi.CustomResource {
      */
     public readonly connectionName!: pulumi.Output<string | undefined>;
     /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    public readonly enablePredictiveOptimization!: pulumi.Output<string>;
+    /**
      * Delete catalog regardless of its contents.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -132,6 +136,7 @@ export class Catalog extends pulumi.CustomResource {
             const state = argsOrState as CatalogState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["connectionName"] = state ? state.connectionName : undefined;
+            resourceInputs["enablePredictiveOptimization"] = state ? state.enablePredictiveOptimization : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["isolationMode"] = state ? state.isolationMode : undefined;
             resourceInputs["metastoreId"] = state ? state.metastoreId : undefined;
@@ -146,6 +151,7 @@ export class Catalog extends pulumi.CustomResource {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
+            resourceInputs["enablePredictiveOptimization"] = args ? args.enablePredictiveOptimization : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["isolationMode"] = args ? args.isolationMode : undefined;
             resourceInputs["metastoreId"] = args ? args.metastoreId : undefined;
@@ -174,6 +180,10 @@ export interface CatalogState {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string>;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
     /**
      * Delete catalog regardless of its contents.
      */
@@ -228,6 +238,10 @@ export interface CatalogArgs {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string>;
+    /**
+     * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
+     */
+    enablePredictiveOptimization?: pulumi.Input<string>;
     /**
      * Delete catalog regardless of its contents.
      */

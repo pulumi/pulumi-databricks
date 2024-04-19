@@ -138,6 +138,10 @@ export interface ClusterAzureAttributesLogAnalyticsInfo {
     logAnalyticsWorkspaceId?: string;
 }
 
+export interface ClusterCloneFrom {
+    sourceClusterId: string;
+}
+
 export interface ClusterClusterLogConf {
     dbfs?: outputs.ClusterClusterLogConfDbfs;
     s3?: outputs.ClusterClusterLogConfS3;
@@ -796,6 +800,57 @@ export interface GetDbfsFilePathsPathList {
     path?: string;
 }
 
+export interface GetExternalLocationExternalLocationInfo {
+    /**
+     * The ARN of the s3 access point to use with the external location (AWS).
+     */
+    accessPoint?: string;
+    browseOnly?: boolean;
+    /**
+     * User-supplied comment.
+     */
+    comment?: string;
+    createdAt?: number;
+    createdBy?: string;
+    credentialId?: string;
+    /**
+     * Name of the databricks.StorageCredential to use with this external location.
+     */
+    credentialName?: string;
+    /**
+     * The options for Server-Side Encryption to be used by each Databricks s3 client when connecting to S3 cloud storage (AWS).
+     */
+    encryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetails;
+    metastoreId?: string;
+    /**
+     * The name of the storage credential
+     */
+    name?: string;
+    /**
+     * Username/groupname/sp applicationId of the external location owner.
+     */
+    owner?: string;
+    /**
+     * Indicates whether the external location is read-only.
+     */
+    readOnly?: boolean;
+    updatedAt?: number;
+    updatedBy?: string;
+    /**
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     */
+    url?: string;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
+    sseEncryptionDetails?: outputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails;
+}
+
+export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
+    algorithm?: string;
+    awsKmsKeyArn?: string;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -841,7 +896,8 @@ export interface GetInstancePoolPoolInfoDiskSpecDiskType {
 
 export interface GetInstancePoolPoolInfoGcpAttributes {
     gcpAvailability?: string;
-    localSsdCount?: number;
+    localSsdCount: number;
+    zoneId: string;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
@@ -910,13 +966,13 @@ export interface GetJobJobSettings {
 }
 
 export interface GetJobJobSettingsSettings {
-    computes?: outputs.GetJobJobSettingsSettingsCompute[];
     continuous?: outputs.GetJobJobSettingsSettingsContinuous;
     dbtTask?: outputs.GetJobJobSettingsSettingsDbtTask;
     deployment?: outputs.GetJobJobSettingsSettingsDeployment;
     description?: string;
     editMode?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsEmailNotifications;
+    environments?: outputs.GetJobJobSettingsSettingsEnvironment[];
     existingClusterId?: string;
     format: string;
     gitSource?: outputs.GetJobJobSettingsSettingsGitSource;
@@ -951,15 +1007,6 @@ export interface GetJobJobSettingsSettings {
     webhookNotifications?: outputs.GetJobJobSettingsSettingsWebhookNotifications;
 }
 
-export interface GetJobJobSettingsSettingsCompute {
-    computeKey?: string;
-    spec?: outputs.GetJobJobSettingsSettingsComputeSpec;
-}
-
-export interface GetJobJobSettingsSettingsComputeSpec {
-    kind?: string;
-}
-
 export interface GetJobJobSettingsSettingsContinuous {
     pauseStatus?: string;
 }
@@ -985,6 +1032,16 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
     onFailures?: string[];
     onStarts?: string[];
     onSuccesses?: string[];
+}
+
+export interface GetJobJobSettingsSettingsEnvironment {
+    environmentKey: string;
+    spec?: outputs.GetJobJobSettingsSettingsEnvironmentSpec;
+}
+
+export interface GetJobJobSettingsSettingsEnvironmentSpec {
+    client: string;
+    dependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -1360,6 +1417,7 @@ export interface GetJobJobSettingsSettingsNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsNotificationSettings {
@@ -1424,12 +1482,12 @@ export interface GetJobJobSettingsSettingsSparkSubmitTask {
 }
 
 export interface GetJobJobSettingsSettingsTask {
-    computeKey?: string;
     conditionTask?: outputs.GetJobJobSettingsSettingsTaskConditionTask;
     dbtTask?: outputs.GetJobJobSettingsSettingsTaskDbtTask;
     dependsOns?: outputs.GetJobJobSettingsSettingsTaskDependsOn[];
     description?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     forEachTask?: outputs.GetJobJobSettingsSettingsTaskForEachTask;
     health?: outputs.GetJobJobSettingsSettingsTaskHealth;
@@ -1490,12 +1548,12 @@ export interface GetJobJobSettingsSettingsTaskForEachTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
-    computeKey?: string;
     conditionTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask;
     dbtTask?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask;
     dependsOns?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn[];
     description?: string;
     emailNotifications?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     health?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealth;
     jobClusterKey?: string;
@@ -1744,6 +1802,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings {
@@ -2057,6 +2116,7 @@ export interface GetJobJobSettingsSettingsTaskNotebookTask {
     baseParameters?: {[key: string]: any};
     notebookPath: string;
     source?: string;
+    warehouseId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotificationSettings {
@@ -2247,11 +2307,11 @@ export interface GetMetastoreMetastoreInfo {
     deltaSharingScope?: string;
     globalMetastoreId?: string;
     /**
-     * Id of the metastore to be fetched
+     * Id of the metastore
      */
     metastoreId?: string;
     /**
-     * Name of metastore.
+     * Name of the metastore
      */
     name?: string;
     /**
@@ -2259,6 +2319,9 @@ export interface GetMetastoreMetastoreInfo {
      */
     owner?: string;
     privilegeModelVersion?: string;
+    /**
+     * Region of the metastore
+     */
     region?: string;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.
@@ -2531,7 +2594,11 @@ export interface InstancePoolGcpAttributes {
     /**
      * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
      */
-    localSsdCount?: number;
+    localSsdCount: number;
+    /**
+     * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
+     */
+    zoneId: string;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
@@ -2591,15 +2658,6 @@ export interface InstancePoolPreloadedDockerImage {
 export interface InstancePoolPreloadedDockerImageBasicAuth {
     password: string;
     username: string;
-}
-
-export interface JobCompute {
-    computeKey?: string;
-    spec?: outputs.JobComputeSpec;
-}
-
-export interface JobComputeSpec {
-    kind?: string;
 }
 
 export interface JobContinuous {
@@ -2670,6 +2728,16 @@ export interface JobEmailNotifications {
      * (List) list of emails to notify when the run completes successfully.
      */
     onSuccesses?: string[];
+}
+
+export interface JobEnvironment {
+    environmentKey: string;
+    spec?: outputs.JobEnvironmentSpec;
+}
+
+export interface JobEnvironmentSpec {
+    client: string;
+    dependencies?: string[];
 }
 
 export interface JobGitSource {
@@ -3107,6 +3175,10 @@ export interface JobNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: string;
 }
 
 export interface JobNotificationSettings {
@@ -3255,7 +3327,6 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
-    computeKey?: string;
     conditionTask?: outputs.JobTaskConditionTask;
     dbtTask?: outputs.JobTaskDbtTask;
     /**
@@ -3270,6 +3341,7 @@ export interface JobTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     forEachTask?: outputs.JobTaskForEachTask;
     /**
@@ -3433,7 +3505,6 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
-    computeKey?: string;
     conditionTask?: outputs.JobTaskForEachTaskTaskConditionTask;
     dbtTask?: outputs.JobTaskForEachTaskTaskDbtTask;
     /**
@@ -3448,6 +3519,7 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
      */
     emailNotifications?: outputs.JobTaskForEachTaskTaskEmailNotifications;
+    environmentKey?: string;
     existingClusterId?: string;
     /**
      * block described below that specifies health conditions for a given task.
@@ -3819,6 +3891,10 @@ export interface JobTaskForEachTaskTaskNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: string;
 }
 
 export interface JobTaskForEachTaskTaskNotificationSettings {
@@ -4340,6 +4416,10 @@ export interface JobTaskNotebookTask {
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
     source?: string;
+    /**
+     * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
+     */
+    warehouseId?: string;
 }
 
 export interface JobTaskNotificationSettings {
@@ -4743,25 +4823,25 @@ export interface JobWebhookNotificationsOnSuccess {
 
 export interface LakehouseMonitorCustomMetric {
     /**
-     * [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      */
-    definition?: string;
+    definition: string;
     /**
      * Columns on the monitored table to apply the custom metrics to.
      */
-    inputColumns?: string[];
+    inputColumns: string[];
     /**
      * Name of the custom metric.
      */
-    name?: string;
+    name: string;
     /**
      * The output type of the custom metric.
      */
-    outputDataType?: string;
+    outputDataType: string;
     /**
      * The type of the custom metric.
      */
-    type?: string;
+    type: string;
 }
 
 export interface LakehouseMonitorDataClassificationConfig {
@@ -4772,7 +4852,7 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      */
-    granularities?: string[];
+    granularities: string[];
     /**
      * Column of the model label
      */
@@ -4780,11 +4860,11 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Column of the model id or version
      */
-    modelIdCol?: string;
+    modelIdCol: string;
     /**
      * Column of the model prediction
      */
-    predictionCol?: string;
+    predictionCol: string;
     /**
      * Column of the model prediction probabilities
      */
@@ -4792,25 +4872,45 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      */
-    problemType?: string;
+    problemType: string;
     /**
      * Column of the timestamp of predictions
      */
-    timestampCol?: string;
+    timestampCol: string;
 }
 
 export interface LakehouseMonitorNotifications {
+    /**
+     * who to send notifications to on monitor failure.
+     */
     onFailure?: outputs.LakehouseMonitorNotificationsOnFailure;
+    /**
+     * Who to send notifications to when new data classification tags are detected.
+     */
+    onNewClassificationTagDetected?: outputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected;
 }
 
 export interface LakehouseMonitorNotificationsOnFailure {
     emailAddresses?: string[];
 }
 
+export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
+    emailAddresses?: string[];
+}
+
 export interface LakehouseMonitorSchedule {
+    /**
+     * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
+     */
     pauseStatus?: string;
-    quartzCronExpression?: string;
-    timezoneId?: string;
+    /**
+     * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
+     */
+    quartzCronExpression: string;
+    /**
+     * string with timezone id (e.g., `PST`) in which to evaluate the Quartz expression.
+     */
+    timezoneId: string;
 }
 
 export interface LakehouseMonitorSnapshot {
@@ -4820,11 +4920,11 @@ export interface LakehouseMonitorTimeSeries {
     /**
      * List of granularities to use when aggregating data into time windows based on their timestamp.
      */
-    granularities?: string[];
+    granularities: string[];
     /**
      * Column of the timestamp of predictions
      */
-    timestampCol?: string;
+    timestampCol: string;
 }
 
 export interface LibraryCran {
@@ -5608,6 +5708,11 @@ export interface PipelineClusterInitScriptWorkspace {
     destination: string;
 }
 
+export interface PipelineDeployment {
+    kind?: string;
+    metadataFilePath?: string;
+}
+
 export interface PipelineFilters {
     excludes?: string[];
     includes?: string[];
@@ -5654,7 +5759,14 @@ export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
      */
-    allowedIpAddresses: string[];
+    allowedIpAddresses?: string[];
+}
+
+export interface RecipientPropertiesKvpairs {
+    /**
+     * a map of string key-value pairs with recipient's properties.  Properties with name starting with `databricks.` are reserved.
+     */
+    properties: {[key: string]: any};
 }
 
 export interface RecipientToken {
@@ -5663,11 +5775,11 @@ export interface RecipientToken {
      */
     activationUrl: string;
     /**
-     * Time at which this recipient Token was created, in epoch milliseconds.
+     * Time at which this recipient was created, in epoch milliseconds.
      */
     createdAt: number;
     /**
-     * Username of recipient token creator.
+     * Username of recipient creator.
      */
     createdBy: string;
     /**
@@ -5675,11 +5787,11 @@ export interface RecipientToken {
      */
     expirationTime: number;
     /**
-     * ID of this recipient - same as the `name`.
+     * Unique ID of the recipient token.
      */
     id: string;
     /**
-     * Time at which this recipient Token was updated, in epoch milliseconds.
+     * Time at which this recipient was updated, in epoch milliseconds.
      */
     updatedAt: number;
     /**

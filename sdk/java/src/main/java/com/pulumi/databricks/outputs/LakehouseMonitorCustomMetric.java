@@ -4,75 +4,74 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class LakehouseMonitorCustomMetric {
     /**
-     * @return [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * @return [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      * 
      */
-    private @Nullable String definition;
+    private String definition;
     /**
      * @return Columns on the monitored table to apply the custom metrics to.
      * 
      */
-    private @Nullable List<String> inputColumns;
+    private List<String> inputColumns;
     /**
      * @return Name of the custom metric.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return The output type of the custom metric.
      * 
      */
-    private @Nullable String outputDataType;
+    private String outputDataType;
     /**
      * @return The type of the custom metric.
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private LakehouseMonitorCustomMetric() {}
     /**
-     * @return [create metric definition]: https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition
+     * @return [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
      * 
      */
-    public Optional<String> definition() {
-        return Optional.ofNullable(this.definition);
+    public String definition() {
+        return this.definition;
     }
     /**
      * @return Columns on the monitored table to apply the custom metrics to.
      * 
      */
     public List<String> inputColumns() {
-        return this.inputColumns == null ? List.of() : this.inputColumns;
+        return this.inputColumns;
     }
     /**
      * @return Name of the custom metric.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return The output type of the custom metric.
      * 
      */
-    public Optional<String> outputDataType() {
-        return Optional.ofNullable(this.outputDataType);
+    public String outputDataType() {
+        return this.outputDataType;
     }
     /**
      * @return The type of the custom metric.
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -84,11 +83,11 @@ public final class LakehouseMonitorCustomMetric {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String definition;
-        private @Nullable List<String> inputColumns;
-        private @Nullable String name;
-        private @Nullable String outputDataType;
-        private @Nullable String type;
+        private String definition;
+        private List<String> inputColumns;
+        private String name;
+        private String outputDataType;
+        private String type;
         public Builder() {}
         public Builder(LakehouseMonitorCustomMetric defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,14 +99,18 @@ public final class LakehouseMonitorCustomMetric {
         }
 
         @CustomType.Setter
-        public Builder definition(@Nullable String definition) {
-
+        public Builder definition(String definition) {
+            if (definition == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetric", "definition");
+            }
             this.definition = definition;
             return this;
         }
         @CustomType.Setter
-        public Builder inputColumns(@Nullable List<String> inputColumns) {
-
+        public Builder inputColumns(List<String> inputColumns) {
+            if (inputColumns == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetric", "inputColumns");
+            }
             this.inputColumns = inputColumns;
             return this;
         }
@@ -115,20 +118,26 @@ public final class LakehouseMonitorCustomMetric {
             return inputColumns(List.of(inputColumns));
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetric", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder outputDataType(@Nullable String outputDataType) {
-
+        public Builder outputDataType(String outputDataType) {
+            if (outputDataType == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetric", "outputDataType");
+            }
             this.outputDataType = outputDataType;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("LakehouseMonitorCustomMetric", "type");
+            }
             this.type = type;
             return this;
         }
