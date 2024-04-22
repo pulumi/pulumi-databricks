@@ -16,7 +16,7 @@ package databricks
 
 import (
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 
 	// embed package is not used directly
@@ -28,6 +28,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 
 	"github.com/pulumi/pulumi-databricks/provider/pkg/version"
 )
@@ -47,6 +48,25 @@ const (
 // Remove a preceding v from a version string to pass the regex checks on WithUserAgentExtra
 func userAgentValue(version string) string {
 	return strings.TrimPrefix(version, "v")
+}
+
+// Prevents issues like https://github.com/pulumi/pulumi-databricks/issues/55
+//
+// Because workspace_id is an ID (and thus fills the entire int64 space), it cannot be
+// represented in Pulumi's type system as a number (float64). We instead represent it as a
+// string.
+//
+// The bridge converts it back to an int at runtime.
+func setWorkspaceIdToString(p tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+	path := p.SchemaPath()
+	attr, ok := path[len(path)-1].(walk.GetAttrStep)
+	if !ok || attr.Name != "workspace_id" {
+		return tfbridge.PropertyVisitResult{}, nil
+	}
+
+	p.SchemaInfo().Type = "string"
+
+	return tfbridge.PropertyVisitResult{HasEffect: true}, nil
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -141,7 +161,7 @@ func Provider() tfbridge.ProviderInfo {
 			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -159,8 +179,10 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustComputeTokens(tokens.SingleModule("databricks_",
 		mainMod, tokens.MakeStandard(mainPkg)))
 
-	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
+	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIdToString)
+
+	prov.MustApplyAutoAliases()
 
 	return prov
 }
