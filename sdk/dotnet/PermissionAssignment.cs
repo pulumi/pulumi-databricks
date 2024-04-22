@@ -9,9 +9,138 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Databricks
 {
+    /// <summary>
+    /// These resources are invoked in the workspace context.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// In workspace context, adding account-level user to a workspace:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use the account provider
+    ///     var me = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///     });
+    /// 
+    ///     var addUser = new Databricks.PermissionAssignment("add_user", new()
+    ///     {
+    ///         PrincipalId = me.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         Permissions = new[]
+    ///         {
+    ///             "USER",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// In workspace context, adding account-level service principal to a workspace:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use the account provider
+    ///     var sp = Databricks.GetServicePrincipal.Invoke(new()
+    ///     {
+    ///         DisplayName = "Automation-only SP",
+    ///     });
+    /// 
+    ///     var addAdminSpn = new Databricks.PermissionAssignment("add_admin_spn", new()
+    ///     {
+    ///         PrincipalId = sp.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
+    ///         Permissions = new[]
+    ///         {
+    ///             "ADMIN",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// In workspace context, adding account-level group to a workspace:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use the account provider
+    ///     var accountLevel = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "example-group",
+    ///     });
+    /// 
+    ///     // Use the workspace provider
+    ///     var @this = new Databricks.PermissionAssignment("this", new()
+    ///     {
+    ///         PrincipalId = accountLevel.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///         Permissions = new[]
+    ///         {
+    ///             "USER",
+    ///         },
+    ///     });
+    /// 
+    ///     var workspaceLevel = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "example-group",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["databricksGroupId"] = workspaceLevel.Apply(getGroupResult =&gt; getGroupResult.Id),
+    ///     };
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the same context:
+    /// 
+    /// * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+    /// * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+    /// * databricks.GroupMember to attach users and groups as group members.
+    /// * databricks.MwsPermissionAssignment to manage permission assignment from an account context
+    /// 
+    /// ## Import
+    /// 
+    /// The resource `databricks_permission_assignment` can be imported using the principal id
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+    /// ```
+    /// </summary>
     [DatabricksResourceType("databricks:index/permissionAssignment:PermissionAssignment")]
     public partial class PermissionAssignment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The list of workspace permissions to assign to the principal:
+        /// * `"USER"` - Can access the workspace with basic privileges.
+        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
@@ -66,6 +195,12 @@ namespace Pulumi.Databricks
     {
         [Input("permissions", required: true)]
         private InputList<string>? _permissions;
+
+        /// <summary>
+        /// The list of workspace permissions to assign to the principal:
+        /// * `"USER"` - Can access the workspace with basic privileges.
+        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// </summary>
         public InputList<string> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<string>());
@@ -85,6 +220,12 @@ namespace Pulumi.Databricks
     {
         [Input("permissions")]
         private InputList<string>? _permissions;
+
+        /// <summary>
+        /// The list of workspace permissions to assign to the principal:
+        /// * `"USER"` - Can access the workspace with basic privileges.
+        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// </summary>
         public InputList<string> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<string>());

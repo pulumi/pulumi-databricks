@@ -18,8 +18,8 @@ class GroupMemberArgs:
                  member_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GroupMember resource.
-        :param pulumi.Input[str] group_id: This is the id of the `group` resource.
-        :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] member_id: This is the id of the group, service principal, or user.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "member_id", member_id)
@@ -28,7 +28,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[str]:
         """
-        This is the id of the `group` resource.
+        This is the id of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -40,7 +40,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Input[str]:
         """
-        This is the id of the `group`, `service principal`, or `user`.
+        This is the id of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 
@@ -56,8 +56,8 @@ class _GroupMemberState:
                  member_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
-        :param pulumi.Input[str] group_id: This is the id of the `group` resource.
-        :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] member_id: This is the id of the group, service principal, or user.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -68,7 +68,7 @@ class _GroupMemberState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the id of the `group` resource.
+        This is the id of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -80,7 +80,7 @@ class _GroupMemberState:
     @pulumi.getter(name="memberId")
     def member_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This is the id of the `group`, `service principal`, or `user`.
+        This is the id of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 
@@ -98,9 +98,30 @@ class GroupMember(pulumi.CustomResource):
                  member_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource allows you to attach `users`, `service principals`, and `groups` as group members.
+        This resource allows you to attach users, service_principal, and groups as group members.
 
-        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
+        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
+
+        ## Example Usage
+
+        After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        a = databricks.Group("a", display_name="A")
+        b = databricks.Group("b", display_name="B")
+        ab = databricks.GroupMember("ab",
+            group_id=a.id,
+            member_id=b.id)
+        bradley = databricks.User("bradley", user_name="bradley@example.com")
+        bb = databricks.GroupMember("bb",
+            group_id=b.id,
+            member_id=bradley.id)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -118,12 +139,18 @@ class GroupMember(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        You can import a `databricks_group_member` resource with name `my_group_member` like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/groupMember:GroupMember my_group_member "<group_id>|<member_id>"
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_id: This is the id of the `group` resource.
-        :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] member_id: This is the id of the group, service principal, or user.
         """
         ...
     @overload
@@ -132,9 +159,30 @@ class GroupMember(pulumi.CustomResource):
                  args: GroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource allows you to attach `users`, `service principals`, and `groups` as group members.
+        This resource allows you to attach users, service_principal, and groups as group members.
 
-        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
+        To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
+
+        ## Example Usage
+
+        After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        a = databricks.Group("a", display_name="A")
+        b = databricks.Group("b", display_name="B")
+        ab = databricks.GroupMember("ab",
+            group_id=a.id,
+            member_id=b.id)
+        bradley = databricks.User("bradley", user_name="bradley@example.com")
+        bb = databricks.GroupMember("bb",
+            group_id=b.id,
+            member_id=bradley.id)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -152,7 +200,13 @@ class GroupMember(pulumi.CustomResource):
 
         ## Import
 
-        -> **Note** Importing this resource is not currently supported.
+        You can import a `databricks_group_member` resource with name `my_group_member` like the following:
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/groupMember:GroupMember my_group_member "<group_id>|<member_id>"
+        ```
 
         :param str resource_name: The name of the resource.
         :param GroupMemberArgs args: The arguments to use to populate this resource's properties.
@@ -205,8 +259,8 @@ class GroupMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_id: This is the id of the `group` resource.
-        :param pulumi.Input[str] member_id: This is the id of the `group`, `service principal`, or `user`.
+        :param pulumi.Input[str] group_id: This is the id of the group resource.
+        :param pulumi.Input[str] member_id: This is the id of the group, service principal, or user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -220,7 +274,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[str]:
         """
-        This is the id of the `group` resource.
+        This is the id of the group resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -228,7 +282,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Output[str]:
         """
-        This is the id of the `group`, `service principal`, or `user`.
+        This is the id of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 

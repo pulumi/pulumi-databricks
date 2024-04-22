@@ -14,9 +14,66 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to attach `users`, `service principals`, and `groups` as group members.
+ * This resource allows you to attach users, service_principal, and groups as group members.
  * 
- * To attach members to groups in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments.
+ * To attach members to groups in the Databricks account, the provider must be configured with `host = &#34;https://accounts.cloud.databricks.com&#34;` on AWS deployments or `host = &#34;https://accounts.azuredatabricks.net&#34;` and authenticate using AAD tokens on Azure deployments
+ * 
+ * ## Example Usage
+ * 
+ * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.GroupMember;
+ * import com.pulumi.databricks.GroupMemberArgs;
+ * import com.pulumi.databricks.User;
+ * import com.pulumi.databricks.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var a = new Group(&#34;a&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;A&#34;)
+ *             .build());
+ * 
+ *         var b = new Group(&#34;b&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;B&#34;)
+ *             .build());
+ * 
+ *         var ab = new GroupMember(&#34;ab&#34;, GroupMemberArgs.builder()        
+ *             .groupId(a.id())
+ *             .memberId(b.id())
+ *             .build());
+ * 
+ *         var bradley = new User(&#34;bradley&#34;, UserArgs.builder()        
+ *             .userName(&#34;bradley@example.com&#34;)
+ *             .build());
+ * 
+ *         var bb = new GroupMember(&#34;bb&#34;, GroupMemberArgs.builder()        
+ *             .groupId(b.id())
+ *             .memberId(bradley.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Related Resources
  * 
@@ -34,34 +91,40 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * -&gt; **Note** Importing this resource is not currently supported.
+ * You can import a `databricks_group_member` resource with name `my_group_member` like the following:
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/groupMember:GroupMember my_group_member &#34;&lt;group_id&gt;|&lt;member_id&gt;&#34;
+ * ```
  * 
  */
 @ResourceType(type="databricks:index/groupMember:GroupMember")
 public class GroupMember extends com.pulumi.resources.CustomResource {
     /**
-     * This is the id of the `group` resource.
+     * This is the id of the group resource.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return This is the id of the `group` resource.
+     * @return This is the id of the group resource.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * This is the id of the `group`, `service principal`, or `user`.
+     * This is the id of the group, service principal, or user.
      * 
      */
     @Export(name="memberId", refs={String.class}, tree="[0]")
     private Output<String> memberId;
 
     /**
-     * @return This is the id of the `group`, `service principal`, or `user`.
+     * @return This is the id of the group, service principal, or user.
      * 
      */
     public Output<String> memberId() {

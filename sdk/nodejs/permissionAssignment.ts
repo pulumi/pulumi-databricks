@@ -4,6 +4,89 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * These resources are invoked in the workspace context.
+ *
+ * ## Example Usage
+ *
+ * In workspace context, adding account-level user to a workspace:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const me = databricks.getUser({
+ *     userName: "me@example.com",
+ * });
+ * const addUser = new databricks.PermissionAssignment("add_user", {
+ *     principalId: me.then(me => me.id),
+ *     permissions: ["USER"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * In workspace context, adding account-level service principal to a workspace:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const sp = databricks.getServicePrincipal({
+ *     displayName: "Automation-only SP",
+ * });
+ * const addAdminSpn = new databricks.PermissionAssignment("add_admin_spn", {
+ *     principalId: sp.then(sp => sp.id),
+ *     permissions: ["ADMIN"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * In workspace context, adding account-level group to a workspace:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * // Use the account provider
+ * const accountLevel = databricks.getGroup({
+ *     displayName: "example-group",
+ * });
+ * // Use the workspace provider
+ * const _this = new databricks.PermissionAssignment("this", {
+ *     principalId: accountLevel.then(accountLevel => accountLevel.id),
+ *     permissions: ["USER"],
+ * });
+ * const workspaceLevel = databricks.getGroup({
+ *     displayName: "example-group",
+ * });
+ * export const databricksGroupId = workspaceLevel.then(workspaceLevel => workspaceLevel.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+ * * databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * * databricks.GroupMember to attach users and groups as group members.
+ * * databricks.MwsPermissionAssignment to manage permission assignment from an account context
+ *
+ * ## Import
+ *
+ * The resource `databricks_permission_assignment` can be imported using the principal id
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+ * ```
+ */
 export class PermissionAssignment extends pulumi.CustomResource {
     /**
      * Get an existing PermissionAssignment resource's state with the given name, ID, and optional extra
@@ -32,6 +115,11 @@ export class PermissionAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PermissionAssignment.__pulumiType;
     }
 
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     public readonly permissions!: pulumi.Output<string[]>;
     public readonly principalId!: pulumi.Output<number>;
 
@@ -70,6 +158,11 @@ export class PermissionAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PermissionAssignment resources.
  */
 export interface PermissionAssignmentState {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     principalId?: pulumi.Input<number>;
 }
@@ -78,6 +171,11 @@ export interface PermissionAssignmentState {
  * The set of arguments for constructing a PermissionAssignment resource.
  */
 export interface PermissionAssignmentArgs {
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `"USER"` - Can access the workspace with basic privileges.
+     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     principalId: pulumi.Input<number>;
 }
