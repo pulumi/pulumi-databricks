@@ -5,9 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource allows you to attach `users`, `service principals`, and `groups` as group members.
+ * This resource allows you to attach users, service_principal, and groups as group members.
  *
- * To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
+ * To attach members to groups in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments
+ *
+ * ## Example Usage
+ *
+ * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const a = new databricks.Group("a", {displayName: "A"});
+ * const b = new databricks.Group("b", {displayName: "B"});
+ * const ab = new databricks.GroupMember("ab", {
+ *     groupId: a.id,
+ *     memberId: b.id,
+ * });
+ * const bradley = new databricks.User("bradley", {userName: "bradley@example.com"});
+ * const bb = new databricks.GroupMember("bb", {
+ *     groupId: b.id,
+ *     memberId: bradley.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -25,7 +48,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * -> **Note** Importing this resource is not currently supported.
+ * You can import a `databricks_group_member` resource with name `my_group_member` like the following:
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import databricks:index/groupMember:GroupMember my_group_member "<group_id>|<member_id>"
+ * ```
  */
 export class GroupMember extends pulumi.CustomResource {
     /**
@@ -56,11 +85,11 @@ export class GroupMember extends pulumi.CustomResource {
     }
 
     /**
-     * This is the id of the `group` resource.
+     * This is the id of the group resource.
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * This is the id of the `group`, `service principal`, or `user`.
+     * This is the id of the group, service principal, or user.
      */
     public readonly memberId!: pulumi.Output<string>;
 
@@ -100,11 +129,11 @@ export class GroupMember extends pulumi.CustomResource {
  */
 export interface GroupMemberState {
     /**
-     * This is the id of the `group` resource.
+     * This is the id of the group resource.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * This is the id of the `group`, `service principal`, or `user`.
+     * This is the id of the group, service principal, or user.
      */
     memberId?: pulumi.Input<string>;
 }
@@ -114,11 +143,11 @@ export interface GroupMemberState {
  */
 export interface GroupMemberArgs {
     /**
-     * This is the id of the `group` resource.
+     * This is the id of the group resource.
      */
     groupId: pulumi.Input<string>;
     /**
-     * This is the id of the `group`, `service principal`, or `user`.
+     * This is the id of the group, service principal, or user.
      */
     memberId: pulumi.Input<string>;
 }

@@ -109,7 +109,6 @@ func Provider() tfbridge.ProviderInfo {
 					"display_name": tfbridge.AutoName("displayName", 255, "-"),
 				},
 			},
-			"databricks_group_member": {Docs: &tfbridge.DocInfo{Markdown: docGroupMember}},
 
 			// The documentation for the `datastore_provider` resource describes:
 			//
