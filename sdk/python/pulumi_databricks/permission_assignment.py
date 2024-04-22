@@ -18,6 +18,9 @@ class PermissionAssignmentArgs:
                  principal_id: pulumi.Input[int]):
         """
         The set of arguments for constructing a PermissionAssignment resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
+               * `"USER"` - Can access the workspace with basic privileges.
+               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         pulumi.set(__self__, "permissions", permissions)
         pulumi.set(__self__, "principal_id", principal_id)
@@ -25,6 +28,11 @@ class PermissionAssignmentArgs:
     @property
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of workspace permissions to assign to the principal:
+        * `"USER"` - Can access the workspace with basic privileges.
+        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -48,6 +56,9 @@ class _PermissionAssignmentState:
                  principal_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering PermissionAssignment resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
+               * `"USER"` - Can access the workspace with basic privileges.
+               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
@@ -57,6 +68,11 @@ class _PermissionAssignmentState:
     @property
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of workspace permissions to assign to the principal:
+        * `"USER"` - Can access the workspace with basic privileges.
+        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -82,9 +98,82 @@ class PermissionAssignment(pulumi.CustomResource):
                  principal_id: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a PermissionAssignment resource with the given unique name, props, and options.
+        These resources are invoked in the workspace context.
+
+        ## Example Usage
+
+        In workspace context, adding account-level user to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        me = databricks.get_user(user_name="me@example.com")
+        add_user = databricks.PermissionAssignment("add_user",
+            principal_id=me.id,
+            permissions=["USER"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        In workspace context, adding account-level service principal to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        sp = databricks.get_service_principal(display_name="Automation-only SP")
+        add_admin_spn = databricks.PermissionAssignment("add_admin_spn",
+            principal_id=sp.id,
+            permissions=["ADMIN"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        In workspace context, adding account-level group to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        account_level = databricks.get_group(display_name="example-group")
+        # Use the workspace provider
+        this = databricks.PermissionAssignment("this",
+            principal_id=account_level.id,
+            permissions=["USER"])
+        workspace_level = databricks.get_group(display_name="example-group")
+        pulumi.export("databricksGroupId", workspace_level.id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * MwsPermissionAssignment to manage permission assignment from an account context
+
+        ## Import
+
+        The resource `databricks_permission_assignment` can be imported using the principal id
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
+               * `"USER"` - Can access the workspace with basic privileges.
+               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         ...
     @overload
@@ -93,7 +182,77 @@ class PermissionAssignment(pulumi.CustomResource):
                  args: PermissionAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PermissionAssignment resource with the given unique name, props, and options.
+        These resources are invoked in the workspace context.
+
+        ## Example Usage
+
+        In workspace context, adding account-level user to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        me = databricks.get_user(user_name="me@example.com")
+        add_user = databricks.PermissionAssignment("add_user",
+            principal_id=me.id,
+            permissions=["USER"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        In workspace context, adding account-level service principal to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        sp = databricks.get_service_principal(display_name="Automation-only SP")
+        add_admin_spn = databricks.PermissionAssignment("add_admin_spn",
+            principal_id=sp.id,
+            permissions=["ADMIN"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        In workspace context, adding account-level group to a workspace:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        # Use the account provider
+        account_level = databricks.get_group(display_name="example-group")
+        # Use the workspace provider
+        this = databricks.PermissionAssignment("this",
+            principal_id=account_level.id,
+            permissions=["USER"])
+        workspace_level = databricks.get_group(display_name="example-group")
+        pulumi.export("databricksGroupId", workspace_level.id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+        * Group data to retrieve information about Group members, entitlements and instance profiles.
+        * GroupMember to attach users and groups as group members.
+        * MwsPermissionAssignment to manage permission assignment from an account context
+
+        ## Import
+
+        The resource `databricks_permission_assignment` can be imported using the principal id
+
+        bash
+
+        ```sh
+        $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param PermissionAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -145,6 +304,9 @@ class PermissionAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The list of workspace permissions to assign to the principal:
+               * `"USER"` - Can access the workspace with basic privileges.
+               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -157,6 +319,11 @@ class PermissionAssignment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of workspace permissions to assign to the principal:
+        * `"USER"` - Can access the workspace with basic privileges.
+        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        """
         return pulumi.get(self, "permissions")
 
     @property

@@ -12,9 +12,156 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// These resources are invoked in the workspace context.
+//
+// ## Example Usage
+//
+// In workspace context, adding account-level user to a workspace:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use the account provider
+//			me, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("me@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissionAssignment(ctx, "add_user", &databricks.PermissionAssignmentArgs{
+//				PrincipalId: pulumi.String(me.Id),
+//				Permissions: pulumi.StringArray{
+//					pulumi.String("USER"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// In workspace context, adding account-level service principal to a workspace:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use the account provider
+//			sp, err := databricks.LookupServicePrincipal(ctx, &databricks.LookupServicePrincipalArgs{
+//				DisplayName: pulumi.StringRef("Automation-only SP"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissionAssignment(ctx, "add_admin_spn", &databricks.PermissionAssignmentArgs{
+//				PrincipalId: pulumi.String(sp.Id),
+//				Permissions: pulumi.StringArray{
+//					pulumi.String("ADMIN"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// In workspace context, adding account-level group to a workspace:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Use the account provider
+//			accountLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "example-group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Use the workspace provider
+//			_, err = databricks.NewPermissionAssignment(ctx, "this", &databricks.PermissionAssignmentArgs{
+//				PrincipalId: pulumi.String(accountLevel.Id),
+//				Permissions: pulumi.StringArray{
+//					pulumi.String("USER"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			workspaceLevel, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "example-group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("databricksGroupId", workspaceLevel.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Group to manage [groups in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/groups.html) or [Account Console](https://accounts.cloud.databricks.com/) (for AWS deployments).
+// * Group data to retrieve information about Group members, entitlements and instance profiles.
+// * GroupMember to attach users and groups as group members.
+// * MwsPermissionAssignment to manage permission assignment from an account context
+//
+// ## Import
+//
+// The resource `databricks_permission_assignment` can be imported using the principal id
+//
+// bash
+//
+// ```sh
+// $ pulumi import databricks:index/permissionAssignment:PermissionAssignment this principal_id
+// ```
 type PermissionAssignment struct {
 	pulumi.CustomResourceState
 
+	// The list of workspace permissions to assign to the principal:
+	// * `"USER"` - Can access the workspace with basic privileges.
+	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	PrincipalId pulumi.IntOutput         `pulumi:"principalId"`
 }
@@ -55,11 +202,17 @@ func GetPermissionAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PermissionAssignment resources.
 type permissionAssignmentState struct {
+	// The list of workspace permissions to assign to the principal:
+	// * `"USER"` - Can access the workspace with basic privileges.
+	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
 	PrincipalId *int     `pulumi:"principalId"`
 }
 
 type PermissionAssignmentState struct {
+	// The list of workspace permissions to assign to the principal:
+	// * `"USER"` - Can access the workspace with basic privileges.
+	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
 	PrincipalId pulumi.IntPtrInput
 }
@@ -69,12 +222,18 @@ func (PermissionAssignmentState) ElementType() reflect.Type {
 }
 
 type permissionAssignmentArgs struct {
+	// The list of workspace permissions to assign to the principal:
+	// * `"USER"` - Can access the workspace with basic privileges.
+	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
 	PrincipalId int      `pulumi:"principalId"`
 }
 
 // The set of arguments for constructing a PermissionAssignment resource.
 type PermissionAssignmentArgs struct {
+	// The list of workspace permissions to assign to the principal:
+	// * `"USER"` - Can access the workspace with basic privileges.
+	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
 	PrincipalId pulumi.IntInput
 }
@@ -166,6 +325,9 @@ func (o PermissionAssignmentOutput) ToPermissionAssignmentOutputWithContext(ctx 
 	return o
 }
 
+// The list of workspace permissions to assign to the principal:
+// * `"USER"` - Can access the workspace with basic privileges.
+// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
 func (o PermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }

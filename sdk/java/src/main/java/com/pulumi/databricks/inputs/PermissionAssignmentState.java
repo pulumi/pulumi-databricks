@@ -17,9 +17,21 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
 
     public static final PermissionAssignmentState Empty = new PermissionAssignmentState();
 
+    /**
+     * The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     @Import(name="permissions")
     private @Nullable Output<List<String>> permissions;
 
+    /**
+     * @return The list of workspace permissions to assign to the principal:
+     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * 
+     */
     public Optional<Output<List<String>>> permissions() {
         return Optional.ofNullable(this.permissions);
     }
@@ -56,15 +68,39 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
             $ = new PermissionAssignmentState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permissions The list of workspace permissions to assign to the principal:
+         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(@Nullable Output<List<String>> permissions) {
             $.permissions = permissions;
             return this;
         }
 
+        /**
+         * @param permissions The list of workspace permissions to assign to the principal:
+         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(List<String> permissions) {
             return permissions(Output.of(permissions));
         }
 
+        /**
+         * @param permissions The list of workspace permissions to assign to the principal:
+         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
+         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
         }

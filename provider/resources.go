@@ -119,15 +119,7 @@ func Provider() tfbridge.ProviderInfo {
 			// `databricks:index:Provider` is an illegal token, so `databricks_provider` is being mapped to `MetastoreProvider`.
 			"databricks_provider": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "MetastoreProvider")},
 
-			"databricks_permission_assignment": {
-				Docs: &tfbridge.DocInfo{Markdown: []byte(" ")},
-			},
-			"databricks_service_principal_secret": {
-				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
-			},
-			"databricks_table": {
-				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
-			},
+			"databricks_table": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"databricks_aws_crossaccount_policy": {

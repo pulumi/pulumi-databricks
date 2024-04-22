@@ -19,6 +19,8 @@ class ServicePrincipalSecretArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalSecret resource.
+        :param pulumi.Input[str] service_principal_id: ID of the ServicePrincipal (not application ID).
+        :param pulumi.Input[str] secret: Generated secret for the service principal
         """
         pulumi.set(__self__, "service_principal_id", service_principal_id)
         if secret is not None:
@@ -29,6 +31,9 @@ class ServicePrincipalSecretArgs:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
+        """
+        ID of the ServicePrincipal (not application ID).
+        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -38,6 +43,9 @@ class ServicePrincipalSecretArgs:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Generated secret for the service principal
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -62,6 +70,8 @@ class _ServicePrincipalSecretState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalSecret resources.
+        :param pulumi.Input[str] secret: Generated secret for the service principal
+        :param pulumi.Input[str] service_principal_id: ID of the ServicePrincipal (not application ID).
         """
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
@@ -73,6 +83,9 @@ class _ServicePrincipalSecretState:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Generated secret for the service principal
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -82,6 +95,9 @@ class _ServicePrincipalSecretState:
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the ServicePrincipal (not application ID).
+        """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
@@ -108,9 +124,29 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServicePrincipalSecret resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Create service principal secret
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] secret: Generated secret for the service principal
+        :param pulumi.Input[str] service_principal_id: ID of the ServicePrincipal (not application ID).
         """
         ...
     @overload
@@ -119,7 +155,25 @@ class ServicePrincipalSecret(pulumi.CustomResource):
                  args: ServicePrincipalSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServicePrincipalSecret resource with the given unique name, props, and options.
+        ## Example Usage
+
+        Create service principal secret
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        terraform_sp = databricks.ServicePrincipalSecret("terraform_sp", service_principal_id=this["id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * ServicePrincipal to manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) in Databricks
+
         :param str resource_name: The name of the resource.
         :param ServicePrincipalSecretArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,6 +228,8 @@ class ServicePrincipalSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] secret: Generated secret for the service principal
+        :param pulumi.Input[str] service_principal_id: ID of the ServicePrincipal (not application ID).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -187,11 +243,17 @@ class ServicePrincipalSecret(pulumi.CustomResource):
     @property
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
+        """
+        Generated secret for the service principal
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
+        """
+        ID of the ServicePrincipal (not application ID).
+        """
         return pulumi.get(self, "service_principal_id")
 
     @property
