@@ -184,7 +184,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucket, 
+    ///             rootStorageBucket,
     ///         },
     ///     });
     /// 
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketPublicAccessBlock, 
+    ///             rootStorageBucketBucketPublicAccessBlock,
     ///         },
     ///     });
     /// 

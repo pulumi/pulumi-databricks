@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             @this, 
+    ///             @this,
     ///         },
     ///     });
     /// 

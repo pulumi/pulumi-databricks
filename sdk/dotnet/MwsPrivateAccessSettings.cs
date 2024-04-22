@@ -63,7 +63,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             thisDatabricksMwsNetworks, 
+    ///             thisDatabricksMwsNetworks,
     ///         },
     ///     });
     /// 
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             thisDatabricksMwsNetworks, 
+    ///             thisDatabricksMwsNetworks,
     ///         },
     ///     });
     /// 
