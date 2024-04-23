@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ClusterInitScriptWorkspace
     {
-        /// <summary>
-        /// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        /// </summary>
         public readonly string Destination;
 
         [OutputConstructor]

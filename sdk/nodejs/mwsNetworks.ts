@@ -140,7 +140,7 @@ export class MwsNetworks extends pulumi.CustomResource {
      */
     public readonly vpcEndpoints!: pulumi.Output<outputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * aws_vpc id
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface MwsNetworksState {
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * aws_vpc id
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -288,7 +288,7 @@ export interface MwsNetworksArgs {
      */
     vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * aws_vpc id
      */
     vpcId?: pulumi.Input<string>;
     /**

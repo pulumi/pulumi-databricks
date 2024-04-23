@@ -49,7 +49,6 @@ export interface ClusterAutoscale {
      *
      * The following example demonstrates how to create an single node cluster:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -74,7 +73,6 @@ export interface ClusterAutoscale {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     maxWorkers?: number;
     /**
@@ -148,40 +146,16 @@ export interface ClusterClusterLogConf {
 }
 
 export interface ClusterClusterLogConfDbfs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterClusterLogConfS3 {
-    /**
-     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     */
     cannedAcl?: string;
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
-    /**
-     * Enable server-side encryption, false by default.
-     */
     enableEncryption?: boolean;
-    /**
-     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     */
     encryptionType?: string;
-    /**
-     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     */
     endpoint?: string;
-    /**
-     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     */
     kmsKey?: string;
-    /**
-     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     */
     region?: string;
 }
 
@@ -191,7 +165,6 @@ export interface ClusterClusterMountInfo {
      *
      * For example, you can mount Azure Data Lake Storage container using the following code:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -207,7 +180,6 @@ export interface ClusterClusterMountInfo {
      *     localMountDirPath: "/mnt/nfs-test",
      * }]});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     localMountDirPath: string;
     /**
@@ -237,7 +209,6 @@ export interface ClusterDockerImage {
      *
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -255,7 +226,6 @@ export interface ClusterDockerImage {
      *     },
      * }});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     basicAuth?: outputs.ClusterDockerImageBasicAuth;
     /**
@@ -310,75 +280,36 @@ export interface ClusterInitScript {
 }
 
 export interface ClusterInitScriptAbfss {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterInitScriptDbfs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterInitScriptFile {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterInitScriptGcs {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterInitScriptS3 {
-    /**
-     * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     */
     cannedAcl?: string;
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
-    /**
-     * Enable server-side encryption, false by default.
-     */
     enableEncryption?: boolean;
-    /**
-     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     */
     encryptionType?: string;
-    /**
-     * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     */
     endpoint?: string;
-    /**
-     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     */
     kmsKey?: string;
-    /**
-     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     */
     region?: string;
 }
 
 export interface ClusterInitScriptVolumes {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
 export interface ClusterInitScriptWorkspace {
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     */
     destination: string;
 }
 
@@ -440,7 +371,6 @@ export interface ClusterWorkloadTypeClients {
     /**
      * boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -452,7 +382,6 @@ export interface ClusterWorkloadTypeClients {
      *     },
      * }});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     jobs?: boolean;
     /**
@@ -2628,7 +2557,6 @@ export interface InstancePoolPreloadedDockerImage {
      *
      * Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -2646,7 +2574,6 @@ export interface InstancePoolPreloadedDockerImage {
      *     },
      * }]});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     basicAuth?: outputs.InstancePoolPreloadedDockerImageBasicAuth;
     /**
@@ -2708,25 +2635,10 @@ export interface JobDeployment {
 }
 
 export interface JobEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: boolean;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     */
     onDurationWarningThresholdExceededs?: string[];
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: string[];
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: string[];
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: string[];
 }
 
@@ -2783,9 +2695,7 @@ export interface JobHealthRule {
      */
     metric?: string;
     /**
-     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     *
-     * This task does not require a cluster to execute and does not support retries or notifications.
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
     op?: string;
     /**
@@ -2893,7 +2803,7 @@ export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobJobClusterNewClusterDockerImage {
     basicAuth?: outputs.JobJobClusterNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -2918,9 +2828,6 @@ export interface JobJobClusterNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: outputs.JobJobClusterNewClusterInitScriptDbfs;
-    /**
-     * block consisting of single string fields:
-     */
     file?: outputs.JobJobClusterNewClusterInitScriptFile;
     gcs?: outputs.JobJobClusterNewClusterInitScriptGcs;
     s3?: outputs.JobJobClusterNewClusterInitScriptS3;
@@ -3084,7 +2991,7 @@ export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobNewClusterDockerImage {
     basicAuth?: outputs.JobNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -3109,9 +3016,6 @@ export interface JobNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: outputs.JobNewClusterInitScriptDbfs;
-    /**
-     * block consisting of single string fields:
-     */
     file?: outputs.JobNewClusterInitScriptFile;
     gcs?: outputs.JobNewClusterInitScriptGcs;
     s3?: outputs.JobNewClusterInitScriptS3;
@@ -3248,7 +3152,6 @@ export interface JobRunAs {
      *
      * Example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -3257,7 +3160,6 @@ export interface JobRunAs {
      *     servicePrincipalName: "8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
      * }});
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     servicePrincipalName?: string;
     /**
@@ -3348,9 +3250,6 @@ export interface JobTask {
      * block described below that specifies health conditions for a given task.
      */
     health?: outputs.JobTaskHealth;
-    /**
-     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     */
     jobClusterKey?: string;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -3364,9 +3263,6 @@ export interface JobTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: number;
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     */
     newCluster?: outputs.JobTaskNewCluster;
     notebookTask?: outputs.JobTaskNotebookTask;
     /**
@@ -3467,25 +3363,10 @@ export interface JobTaskDependsOn {
 }
 
 export interface JobTaskEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: boolean;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     */
     onDurationWarningThresholdExceededs?: string[];
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: string[];
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: string[];
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: string[];
 }
 
@@ -3525,9 +3406,6 @@ export interface JobTaskForEachTaskTask {
      * block described below that specifies health conditions for a given task.
      */
     health?: outputs.JobTaskForEachTaskTaskHealth;
-    /**
-     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     */
     jobClusterKey?: string;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -3541,9 +3419,6 @@ export interface JobTaskForEachTaskTask {
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
     minRetryIntervalMillis?: number;
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     */
     newCluster?: outputs.JobTaskForEachTaskTaskNewCluster;
     notebookTask?: outputs.JobTaskForEachTaskTaskNotebookTask;
     /**
@@ -3644,25 +3519,10 @@ export interface JobTaskForEachTaskTaskDependsOn {
 }
 
 export interface JobTaskForEachTaskTaskEmailNotifications {
-    /**
-     * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
-     */
     noAlertForSkippedRuns?: boolean;
-    /**
-     * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-     */
     onDurationWarningThresholdExceededs?: string[];
-    /**
-     * (List) list of emails to notify when the run fails.
-     */
     onFailures?: string[];
-    /**
-     * (List) list of emails to notify when the run starts.
-     */
     onStarts?: string[];
-    /**
-     * (List) list of emails to notify when the run completes successfully.
-     */
     onSuccesses?: string[];
 }
 
@@ -3679,9 +3539,7 @@ export interface JobTaskForEachTaskTaskHealthRule {
      */
     metric?: string;
     /**
-     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     *
-     * This task does not require a cluster to execute and does not support retries or notifications.
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
     op?: string;
     /**
@@ -3803,7 +3661,7 @@ export interface JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesyst
 export interface JobTaskForEachTaskTaskNewClusterDockerImage {
     basicAuth?: outputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -3825,9 +3683,6 @@ export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
 export interface JobTaskForEachTaskTaskNewClusterInitScript {
     abfss?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss;
     dbfs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs;
-    /**
-     * block consisting of single string fields:
-     */
     file?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskForEachTaskTaskNewClusterInitScriptS3;
@@ -4033,9 +3888,6 @@ export interface JobTaskForEachTaskTaskSqlTaskAlert {
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
     destinationId?: string;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: string;
 }
 
@@ -4060,9 +3912,6 @@ export interface JobTaskForEachTaskTaskSqlTaskDashboard {
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
     destinationId?: string;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: string;
 }
 
@@ -4072,7 +3921,6 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
      *
      * Example
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -4116,11 +3964,10 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
      *     ],
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     path: string;
     /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.
      */
     source?: string;
 }
@@ -4154,36 +4001,28 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnFailure {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnStart {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
@@ -4201,9 +4040,7 @@ export interface JobTaskHealthRule {
      */
     metric?: string;
     /**
-     * The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-     *
-     * This task does not require a cluster to execute and does not support retries or notifications.
+     * string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
      */
     op?: string;
     /**
@@ -4325,7 +4162,7 @@ export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
 export interface JobTaskNewClusterDockerImage {
     basicAuth?: outputs.JobTaskNewClusterDockerImageBasicAuth;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     url: string;
 }
@@ -4350,9 +4187,6 @@ export interface JobTaskNewClusterInitScript {
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
     dbfs?: outputs.JobTaskNewClusterInitScriptDbfs;
-    /**
-     * block consisting of single string fields:
-     */
     file?: outputs.JobTaskNewClusterInitScriptFile;
     gcs?: outputs.JobTaskNewClusterInitScriptGcs;
     s3?: outputs.JobTaskNewClusterInitScriptS3;
@@ -4558,9 +4392,6 @@ export interface JobTaskSqlTaskAlert {
 
 export interface JobTaskSqlTaskAlertSubscription {
     destinationId?: string;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: string;
 }
 
@@ -4585,9 +4416,6 @@ export interface JobTaskSqlTaskDashboard {
 
 export interface JobTaskSqlTaskDashboardSubscription {
     destinationId?: string;
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     */
     userName?: string;
 }
 
@@ -4597,7 +4425,6 @@ export interface JobTaskSqlTaskFile {
      *
      * Example
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as databricks from "@pulumi/databricks";
@@ -4641,11 +4468,10 @@ export interface JobTaskSqlTaskFile {
      *     ],
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     path: string;
     /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.
      */
     source?: string;
 }
@@ -4679,36 +4505,28 @@ export interface JobTaskWebhookNotifications {
 
 export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnFailure {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnStart {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobTaskWebhookNotificationsOnSuccess {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
@@ -4734,7 +4552,7 @@ export interface JobTriggerFileArrival {
      */
     minTimeBetweenTriggersSeconds?: number;
     /**
-     * URL of the Git repository to use.
+     * string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      */
     url: string;
     /**
@@ -4787,36 +4605,28 @@ export interface JobWebhookNotifications {
 
 export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnFailure {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnStart {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
 
 export interface JobWebhookNotificationsOnSuccess {
     /**
-     * ID of the system notification that is notified when an event defined in `webhookNotifications` is triggered.
-     *
-     * > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+     * ID of the job
      */
     id: string;
 }
@@ -5081,7 +4891,7 @@ export interface ModelServingConfigServedEntity {
      */
     minProvisionedThroughput?: number;
     /**
-     * The name of the external model.
+     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
      */
     name: string;
     /**
@@ -5120,7 +4930,7 @@ export interface ModelServingConfigServedEntityExternalModel {
      */
     databricksModelServingConfig?: outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig;
     /**
-     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+     * The name of the external model.
      */
     name: string;
     /**
@@ -5142,88 +4952,39 @@ export interface ModelServingConfigServedEntityExternalModel {
 }
 
 export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
-    /**
-     * The Databricks secret key reference for an AI21Labs API key.
-     */
     ai21labsApiKey: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
-    /**
-     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     */
     awsAccessKeyId: string;
-    /**
-     * The AWS region to use. Bedrock has to be enabled there.
-     */
     awsRegion: string;
-    /**
-     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     */
     awsSecretAccessKey: string;
-    /**
-     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     */
     bedrockProvider: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
-    /**
-     * The Databricks secret key reference for an Anthropic API key.
-     * The Databricks secret key reference for an Anthropic API key.
-     */
     anthropicApiKey: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
-    /**
-     * The Databricks secret key reference for a Cohere API key.
-     */
     cohereApiKey: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-    /**
-     * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-     */
     databricksApiToken: string;
-    /**
-     * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-     */
     databricksWorkspaceUrl: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
-    /**
-     * This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-     */
     openaiApiBase?: string;
-    /**
-     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-     */
     openaiApiKey: string;
-    /**
-     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-     */
     openaiApiType?: string;
-    /**
-     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-     */
     openaiApiVersion?: string;
-    /**
-     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-     */
     openaiDeploymentName?: string;
-    /**
-     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-     */
     openaiOrganization?: string;
 }
 
 export interface ModelServingConfigServedEntityExternalModelPalmConfig {
-    /**
-     * The Databricks secret key reference for a PaLM API key.
-     */
     palmApiKey: string;
 }
 
@@ -5433,9 +5194,6 @@ export interface MwsWorkspacesCloudResourceContainer {
 }
 
 export interface MwsWorkspacesCloudResourceContainerGcp {
-    /**
-     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-     */
     projectId: string;
 }
 
@@ -5570,23 +5328,9 @@ export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
 }
 
 export interface PermissionsAccessControl {
-    /**
-     * name of the group. We recommend setting permissions on groups.
-     */
     groupName?: string;
-    /**
-     * permission level according to specific resource. See examples above for the reference.
-     *
-     * Exactly one of the below arguments is required:
-     */
     permissionLevel: string;
-    /**
-     * Application ID of the service_principal.
-     */
     servicePrincipalName?: string;
-    /**
-     * name of the user.
-     */
     userName?: string;
 }
 
@@ -5756,9 +5500,6 @@ export interface PipelineNotification {
 }
 
 export interface RecipientIpAccessList {
-    /**
-     * Allowed IP Addresses in CIDR notation. Limit of 100.
-     */
     allowedIpAddresses?: string[];
 }
 
@@ -5862,9 +5603,6 @@ export interface ShareObject {
 }
 
 export interface ShareObjectPartition {
-    /**
-     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
-     */
     values: outputs.ShareObjectPartitionValue[];
 }
 
@@ -5964,6 +5702,8 @@ export interface SqlPermissionsPrivilegeAssignment {
     /**
      * set of available privilege names in upper case.
      *
+     *
+     * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      * [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
      */
     privileges: string[];
@@ -5997,17 +5737,11 @@ export interface SqlQueryParameter {
 }
 
 export interface SqlQueryParameterDate {
-    /**
-     * The default value for this parameter.
-     */
     value: string;
 }
 
 export interface SqlQueryParameterDateRange {
     range?: outputs.SqlQueryParameterDateRangeRange;
-    /**
-     * The default value for this parameter.
-     */
     value?: string;
 }
 
@@ -6017,17 +5751,11 @@ export interface SqlQueryParameterDateRangeRange {
 }
 
 export interface SqlQueryParameterDatetime {
-    /**
-     * The default value for this parameter.
-     */
     value: string;
 }
 
 export interface SqlQueryParameterDatetimeRange {
     range?: outputs.SqlQueryParameterDatetimeRangeRange;
-    /**
-     * The default value for this parameter.
-     */
     value?: string;
 }
 
@@ -6037,17 +5765,11 @@ export interface SqlQueryParameterDatetimeRangeRange {
 }
 
 export interface SqlQueryParameterDatetimesec {
-    /**
-     * The default value for this parameter.
-     */
     value: string;
 }
 
 export interface SqlQueryParameterDatetimesecRange {
     range?: outputs.SqlQueryParameterDatetimesecRangeRange;
-    /**
-     * The default value for this parameter.
-     */
     value?: string;
 }
 
@@ -6059,9 +5781,6 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 export interface SqlQueryParameterEnum {
     multiple?: outputs.SqlQueryParameterEnumMultiple;
     options: string[];
-    /**
-     * The default value for this parameter.
-     */
     value?: string;
     values?: string[];
 }
@@ -6073,18 +5792,12 @@ export interface SqlQueryParameterEnumMultiple {
 }
 
 export interface SqlQueryParameterNumber {
-    /**
-     * The default value for this parameter.
-     */
     value: number;
 }
 
 export interface SqlQueryParameterQuery {
     multiple?: outputs.SqlQueryParameterQueryMultiple;
     queryId: string;
-    /**
-     * The default value for this parameter.
-     */
     value?: string;
     values?: string[];
 }
@@ -6096,9 +5809,6 @@ export interface SqlQueryParameterQueryMultiple {
 }
 
 export interface SqlQueryParameterText {
-    /**
-     * The default value for this parameter.
-     */
     value: string;
 }
 
@@ -6253,17 +5963,11 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
-    /**
-     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
     /**
      * ID of the associated Delta Live Table pipeline.
      */
     pipelineId: string;
-    /**
-     * Pipeline execution mode. Possible values are:
-     */
     pipelineType?: string;
     /**
      * The name of the source table.
@@ -6298,9 +6002,6 @@ export interface VectorSearchIndexDirectAccessIndexSpec {
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
     embeddingSourceColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
-    /**
-     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     */
     embeddingVectorColumns?: outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.

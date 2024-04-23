@@ -33,17 +33,9 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.embeddingSourceColumns);
     }
 
-    /**
-     * array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     * 
-     */
     @Import(name="embeddingVectorColumns")
     private @Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns;
 
-    /**
-     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     * 
-     */
     public Optional<Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>>> embeddingVectorColumns() {
         return Optional.ofNullable(this.embeddingVectorColumns);
     }
@@ -63,17 +55,9 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.pipelineId);
     }
 
-    /**
-     * Pipeline execution mode. Possible values are:
-     * 
-     */
     @Import(name="pipelineType")
     private @Nullable Output<String> pipelineType;
 
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * 
-     */
     public Optional<Output<String>> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }
@@ -152,33 +136,15 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return embeddingSourceColumns(List.of(embeddingSourceColumns));
         }
 
-        /**
-         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingVectorColumns(@Nullable Output<List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>> embeddingVectorColumns) {
             $.embeddingVectorColumns = embeddingVectorColumns;
             return this;
         }
 
-        /**
-         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingVectorColumns(List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs> embeddingVectorColumns) {
             return embeddingVectorColumns(Output.of(embeddingVectorColumns));
         }
 
-        /**
-         * @param embeddingVectorColumns array of objects representing columns that contain the embedding vectors. Each entry consists of:
-         * 
-         * @return builder
-         * 
-         */
         public Builder embeddingVectorColumns(VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs... embeddingVectorColumns) {
             return embeddingVectorColumns(List.of(embeddingVectorColumns));
         }
@@ -204,23 +170,11 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return pipelineId(Output.of(pipelineId));
         }
 
-        /**
-         * @param pipelineType Pipeline execution mode. Possible values are:
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineType(@Nullable Output<String> pipelineType) {
             $.pipelineType = pipelineType;
             return this;
         }
 
-        /**
-         * @param pipelineType Pipeline execution mode. Possible values are:
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineType(String pipelineType) {
             return pipelineType(Output.of(pipelineType));
         }

@@ -166,7 +166,6 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -180,7 +179,6 @@ class Secret(pulumi.CustomResource):
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -220,7 +218,6 @@ class Secret(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -234,7 +231,6 @@ class Secret(pulumi.CustomResource):
             "fs.azure.account.oauth2.client.secret": publishing_api.config_reference,
         })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

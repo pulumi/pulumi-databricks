@@ -18,7 +18,6 @@ import (
 //
 // ### Inference Monitor
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,9 +54,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Snapshot Monitor
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,7 +83,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

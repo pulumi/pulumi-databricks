@@ -123,17 +123,9 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.health);
     }
 
-    /**
-     * Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     @Import(name="jobClusterKey")
     private @Nullable Output<String> jobClusterKey;
 
-    /**
-     * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     public Optional<Output<String>> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
@@ -183,17 +175,9 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
 
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     @Import(name="newCluster")
     private @Nullable Output<JobTaskForEachTaskTaskNewClusterArgs> newCluster;
 
-    /**
-     * @return Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     public Optional<Output<JobTaskForEachTaskTaskNewClusterArgs>> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
@@ -526,23 +510,11 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return health(Output.of(health));
         }
 
-        /**
-         * @param jobClusterKey Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusterKey(@Nullable Output<String> jobClusterKey) {
             $.jobClusterKey = jobClusterKey;
             return this;
         }
 
-        /**
-         * @param jobClusterKey Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobClusterKey(String jobClusterKey) {
             return jobClusterKey(Output.of(jobClusterKey));
         }
@@ -620,23 +592,11 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
             return minRetryIntervalMillis(Output.of(minRetryIntervalMillis));
         }
 
-        /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(@Nullable Output<JobTaskForEachTaskTaskNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
 
-        /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(JobTaskForEachTaskTaskNewClusterArgs newCluster) {
             return newCluster(Output.of(newCluster));
         }

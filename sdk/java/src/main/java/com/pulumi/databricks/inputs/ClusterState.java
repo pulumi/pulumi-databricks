@@ -652,17 +652,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
-    /**
-     * URL for the Docker image
-     * 
-     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
-    /**
-     * @return URL for the Docker image
-     * 
-     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -1535,23 +1527,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return state(Output.of(state));
         }
 
-        /**
-         * @param url URL for the Docker image
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url URL for the Docker image
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

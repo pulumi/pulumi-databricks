@@ -20,7 +20,6 @@ import (
 // * ``` GRANT MODIFY, SELECT ON TABLE `default`.`foo` TO `serge@example.com`  ```
 // * ``` GRANT SELECT ON TABLE `default`.`foo` TO `special group`  ```
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

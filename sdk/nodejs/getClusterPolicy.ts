@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Referring to a cluster policy by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * });
  * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterPolicyResult> {
     args = args || {};
@@ -122,7 +120,6 @@ export interface GetClusterPolicyResult {
  *
  * Referring to a cluster policy by name:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -132,7 +129,6 @@ export interface GetClusterPolicyResult {
  * });
  * const myCluster = new databricks.Cluster("my_cluster", {policyId: personal.then(personal => personal.id)});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterPolicyResult> {
     return pulumi.output(args).apply((a: any) => getClusterPolicy(a, opts))

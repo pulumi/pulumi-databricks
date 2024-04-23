@@ -66,14 +66,10 @@ class JobArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level (described below).
-        :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -369,9 +365,6 @@ class JobArgs:
     @property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -411,9 +404,6 @@ class JobArgs:
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional[pulumi.Input['JobNewClusterArgs']]:
-        """
-        Same set of parameters as for Cluster resource.
-        """
         return pulumi.get(self, "new_cluster")
 
     @new_cluster.setter
@@ -489,9 +479,6 @@ class JobArgs:
     @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -582,9 +569,6 @@ class JobArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
-        """
-        Task to run against the `inputs` list.
-        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -679,16 +663,12 @@ class _JobState:
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterArgs']]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input['JobLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input['JobNewClusterArgs'] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input['JobNotificationSettingsArgs'] notification_settings: An optional block controlling the notification settings on the job level (described below).
-        :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input['JobScheduleArgs'] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: URL of the job on the given workspace
         :param pulumi.Input['JobWebhookNotificationsArgs'] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         if always_running is not None:
@@ -985,9 +965,6 @@ class _JobState:
     @property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -1027,9 +1004,6 @@ class _JobState:
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional[pulumi.Input['JobNewClusterArgs']]:
-        """
-        Same set of parameters as for Cluster resource.
-        """
         return pulumi.get(self, "new_cluster")
 
     @new_cluster.setter
@@ -1105,9 +1079,6 @@ class _JobState:
     @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -1198,9 +1169,6 @@ class _JobState:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskArgs']]]]:
-        """
-        Task to run against the `inputs` list.
-        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -1232,7 +1200,7 @@ class _JobState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 
@@ -1320,14 +1288,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']] notification_settings: An optional block controlling the notification settings on the job level (described below).
-        :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
@@ -1515,16 +1479,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobJobClusterArgs']]]] job_clusters: A list of job Cluster specifications that can be shared and reused by tasks of this job. Libraries cannot be declared in a shared job cluster. You must declare dependent libraries in task settings. *Multi-task syntax*
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLibraryArgs']]]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. Please consult libraries section of the Cluster resource for more information.
         :param pulumi.Input[int] max_concurrent_runs: (Integer) An optional maximum allowed number of concurrent runs of the job. Defaults to *1*.
-        :param pulumi.Input[int] max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param pulumi.Input[int] min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
         :param pulumi.Input[str] name: An optional name for the job. The default value is Untitled.
-        :param pulumi.Input[pulumi.InputType['JobNewClusterArgs']] new_cluster: Same set of parameters as for Cluster resource.
         :param pulumi.Input[pulumi.InputType['JobNotificationSettingsArgs']] notification_settings: An optional block controlling the notification settings on the job level (described below).
-        :param pulumi.Input[bool] retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param pulumi.Input[pulumi.InputType['JobScheduleArgs']] schedule: (List) An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. This field is a block and is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTaskArgs']]]] tasks: Task to run against the `inputs` list.
         :param pulumi.Input[int] timeout_seconds: (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
-        :param pulumi.Input[str] url: URL of the Git repository to use.
+        :param pulumi.Input[str] url: URL of the job on the given workspace
         :param pulumi.Input[pulumi.InputType['JobWebhookNotificationsArgs']] webhook_notifications: (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this job begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1687,9 +1647,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> pulumi.Output[Optional[int]]:
-        """
-        (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""max_retries is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -1717,9 +1674,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> pulumi.Output[Optional['outputs.JobNewCluster']]:
-        """
-        Same set of parameters as for Cluster resource.
-        """
         return pulumi.get(self, "new_cluster")
 
     @property
@@ -1767,9 +1721,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter(name="retryOnTimeout")
     def retry_on_timeout(self) -> pulumi.Output[Optional[bool]]:
-        """
-        (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        """
         warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
         pulumi.log.warn("""retry_on_timeout is deprecated: should be used inside a task block and not inside a job block""")
 
@@ -1828,9 +1779,6 @@ class Job(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tasks(self) -> pulumi.Output[Optional[Sequence['outputs.JobTask']]]:
-        """
-        Task to run against the `inputs` list.
-        """
         return pulumi.get(self, "tasks")
 
     @property
@@ -1850,7 +1798,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 

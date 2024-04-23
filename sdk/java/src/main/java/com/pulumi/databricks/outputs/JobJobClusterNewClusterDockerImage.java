@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class JobJobClusterNewClusterDockerImage {
     private @Nullable JobJobClusterNewClusterDockerImageBasicAuth basicAuth;
     /**
-     * @return URL of the Git repository to use.
+     * @return URL of the job on the given workspace
      * 
      */
     private String url;
@@ -25,7 +25,7 @@ public final class JobJobClusterNewClusterDockerImage {
         return Optional.ofNullable(this.basicAuth);
     }
     /**
-     * @return URL of the Git repository to use.
+     * @return URL of the job on the given workspace
      * 
      */
     public String url() {

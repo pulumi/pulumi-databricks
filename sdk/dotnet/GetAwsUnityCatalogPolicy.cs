@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -124,7 +123,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAwsUnityCatalogPolicyResult> InvokeAsync(GetAwsUnityCatalogPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyArgs(), options.WithDefaults());
@@ -136,7 +134,6 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -242,7 +239,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAwsUnityCatalogPolicyResult> Invoke(GetAwsUnityCatalogPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsUnityCatalogPolicyResult>("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", args ?? new GetAwsUnityCatalogPolicyInvokeArgs(), options.WithDefaults());

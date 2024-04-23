@@ -104,7 +104,6 @@ class PermissionAssignment(pulumi.CustomResource):
 
         In workspace context, adding account-level user to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -115,11 +114,9 @@ class PermissionAssignment(pulumi.CustomResource):
             principal_id=me.id,
             permissions=["USER"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In workspace context, adding account-level service principal to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -130,11 +127,9 @@ class PermissionAssignment(pulumi.CustomResource):
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In workspace context, adding account-level group to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -148,7 +143,6 @@ class PermissionAssignment(pulumi.CustomResource):
         workspace_level = databricks.get_group(display_name="example-group")
         pulumi.export("databricksGroupId", workspace_level.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -188,7 +182,6 @@ class PermissionAssignment(pulumi.CustomResource):
 
         In workspace context, adding account-level user to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -199,11 +192,9 @@ class PermissionAssignment(pulumi.CustomResource):
             principal_id=me.id,
             permissions=["USER"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In workspace context, adding account-level service principal to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -214,11 +205,9 @@ class PermissionAssignment(pulumi.CustomResource):
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In workspace context, adding account-level group to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -232,7 +221,6 @@ class PermissionAssignment(pulumi.CustomResource):
         workspace_level = databricks.get_group(display_name="example-group")
         pulumi.export("databricksGroupId", workspace_level.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

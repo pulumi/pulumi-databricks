@@ -34,7 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig? DatabricksModelServingConfig;
         /// <summary>
-        /// The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        /// The name of the external model.
         /// </summary>
         public readonly string Name;
         /// <summary>

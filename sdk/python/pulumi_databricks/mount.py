@@ -349,7 +349,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting ADLS Gen2 using uri and extra_configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -372,7 +371,6 @@ class Mount(pulumi.CustomResource):
                 "fs.azure.createRemoteFileSystemDuringInitialization": "false",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example mounting ADLS Gen2 with AAD passthrough
 
@@ -382,7 +380,6 @@ class Mount(pulumi.CustomResource):
 
         To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -425,7 +422,6 @@ class Mount(pulumi.CustomResource):
                 "fs.azure.account.custom.token.provider.class": "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## s3 block
 
@@ -436,7 +432,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example of mounting S3
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -449,7 +444,6 @@ class Mount(pulumi.CustomResource):
                 bucket_name=this_aws_s3_bucket["bucket"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## abfs block
 
@@ -468,7 +462,6 @@ class Mount(pulumi.CustomResource):
 
         In this example, we're using Azure authentication, so we can omit some parameters (`tenant_id`, `storage_account_name`, and `container_name`) that will be detected automatically.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -507,7 +500,6 @@ class Mount(pulumi.CustomResource):
                 initialize_file_system=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## gs block
 
@@ -518,7 +510,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting Google Cloud Storage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -530,7 +521,6 @@ class Mount(pulumi.CustomResource):
                 bucket_name="mybucket",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## adl block
 
@@ -547,7 +537,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting ADLS Gen1
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -563,7 +552,6 @@ class Mount(pulumi.CustomResource):
                 spark_conf_prefix="fs.adl",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## wasb block
 
@@ -578,7 +566,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting Azure Blob Storage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -612,7 +599,6 @@ class Mount(pulumi.CustomResource):
                 token_secret_key=storage_key.key,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Migration from other mount resources
 
@@ -671,7 +657,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting ADLS Gen2 using uri and extra_configs
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -694,7 +679,6 @@ class Mount(pulumi.CustomResource):
                 "fs.azure.createRemoteFileSystemDuringInitialization": "false",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example mounting ADLS Gen2 with AAD passthrough
 
@@ -704,7 +688,6 @@ class Mount(pulumi.CustomResource):
 
         To mount ALDS Gen2 with Azure Active Directory Credentials passthrough we need to execute the mount commands using the cluster configured with AAD Credentials passthrough & provide necessary configuration parameters (see [documentation](https://docs.microsoft.com/en-us/azure/databricks/security/credential-passthrough/adls-passthrough#--mount-azure-data-lake-storage-to-dbfs-using-credential-passthrough) for more details).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -747,7 +730,6 @@ class Mount(pulumi.CustomResource):
                 "fs.azure.account.custom.token.provider.class": "{{sparkconf/spark.databricks.passthrough.adls.gen2.tokenProviderClassName}}",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## s3 block
 
@@ -758,7 +740,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example of mounting S3
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -771,7 +752,6 @@ class Mount(pulumi.CustomResource):
                 bucket_name=this_aws_s3_bucket["bucket"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## abfs block
 
@@ -790,7 +770,6 @@ class Mount(pulumi.CustomResource):
 
         In this example, we're using Azure authentication, so we can omit some parameters (`tenant_id`, `storage_account_name`, and `container_name`) that will be detected automatically.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -829,7 +808,6 @@ class Mount(pulumi.CustomResource):
                 initialize_file_system=True,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## gs block
 
@@ -840,7 +818,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting Google Cloud Storage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -852,7 +829,6 @@ class Mount(pulumi.CustomResource):
                 bucket_name="mybucket",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## adl block
 
@@ -869,7 +845,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting ADLS Gen1
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -885,7 +860,6 @@ class Mount(pulumi.CustomResource):
                 spark_conf_prefix="fs.adl",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## wasb block
 
@@ -900,7 +874,6 @@ class Mount(pulumi.CustomResource):
 
         ### Example mounting Azure Blob Storage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -934,7 +907,6 @@ class Mount(pulumi.CustomResource):
                 token_secret_key=storage_key.key,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Migration from other mount resources
 

@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Get all instance profiles:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceProfilesResult> InvokeAsync(GetInstanceProfilesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Databricks
         /// 
         /// Get all instance profiles:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Databricks
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceProfilesResult> Invoke(GetInstanceProfilesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceProfilesResult>("databricks:index/getInstanceProfiles:getInstanceProfiles", args ?? new GetInstanceProfilesInvokeArgs(), options.WithDefaults());

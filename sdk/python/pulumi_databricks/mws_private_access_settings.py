@@ -275,7 +275,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
         > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -286,11 +285,9 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             region=region,
             public_access_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -305,13 +302,11 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             pricing_tier="ENTERPRISE",
             opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Databricks on GCP usage
 
         > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -333,7 +328,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             pricing_tier="PREMIUM",
             opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -375,7 +369,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
 
         > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.cloud.databricks.com"` and use `provider = databricks.mws`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -386,11 +379,9 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             region=region,
             public_access_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         The `databricks_mws_private_access_settings.pas.private_access_settings_id` can then be used as part of a MwsWorkspaces resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -405,13 +396,11 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             pricing_tier="ENTERPRISE",
             opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Databricks on GCP usage
 
         > **Note** Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -433,7 +422,6 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
             pricing_tier="PREMIUM",
             opts=pulumi.ResourceOptions(depends_on=[this_databricks_mws_networks]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

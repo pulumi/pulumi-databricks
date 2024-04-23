@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  * });
  * export const allVolumes = _this;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -78,7 +76,6 @@ export interface GetVolumesResult {
  *
  * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -89,7 +86,6 @@ export interface GetVolumesResult {
  * });
  * export const allVolumes = _this;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

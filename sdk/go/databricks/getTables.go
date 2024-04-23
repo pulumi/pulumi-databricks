@@ -15,7 +15,6 @@ import (
 //
 // Granting `SELECT` and `MODIFY` to `sensitive` group on all tables a _things_ Schema from _sandbox_ databricks_catalog:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

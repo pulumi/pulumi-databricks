@@ -16,10 +16,6 @@ import javax.annotation.Nullable;
 public final class SqlQueryParameterEnum {
     private @Nullable SqlQueryParameterEnumMultiple multiple;
     private List<String> options;
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     private @Nullable String value;
     private @Nullable List<String> values;
 
@@ -30,10 +26,6 @@ public final class SqlQueryParameterEnum {
     public List<String> options() {
         return this.options;
     }
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

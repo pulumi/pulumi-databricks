@@ -63,7 +63,6 @@ def get_external_locations(names: Optional[Sequence[str]] = None,
 
     List all external locations in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -71,7 +70,6 @@ def get_external_locations(names: Optional[Sequence[str]] = None,
     all = databricks.get_external_locations()
     pulumi.export("allExternalLocations", all.names)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -101,7 +99,6 @@ def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence
 
     List all external locations in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -109,7 +106,6 @@ def get_external_locations_output(names: Optional[pulumi.Input[Optional[Sequence
     all = databricks.get_external_locations()
     pulumi.export("allExternalLocations", all.names)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

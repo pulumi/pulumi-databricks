@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  *
  * Creating some group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -34,11 +33,9 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Adding databricks.User as databricks.GroupMember of some group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -54,29 +51,24 @@ import * as utilities from "./utilities";
  *     memberId: thisUser.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating group in AWS Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.Group("this", {displayName: "Some Group"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Creating group in Azure Databricks account:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const _this = new databricks.Group("this", {displayName: "Some Group"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

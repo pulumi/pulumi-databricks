@@ -54,63 +54,33 @@ namespace Pulumi.Databricks
         [Output("accessControls")]
         public Output<ImmutableArray<Outputs.PermissionsAccessControl>> AccessControls { get; private set; } = null!;
 
-        /// <summary>
-        /// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        /// </summary>
         [Output("authorization")]
         public Output<string?> Authorization { get; private set; } = null!;
 
-        /// <summary>
-        /// cluster id
-        /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// cluster policy id
-        /// </summary>
         [Output("clusterPolicyId")]
         public Output<string?> ClusterPolicyId { get; private set; } = null!;
 
-        /// <summary>
-        /// directory id
-        /// </summary>
         [Output("directoryId")]
         public Output<string?> DirectoryId { get; private set; } = null!;
 
-        /// <summary>
-        /// path of directory
-        /// </summary>
         [Output("directoryPath")]
         public Output<string?> DirectoryPath { get; private set; } = null!;
 
-        /// <summary>
-        /// MLflow experiment id
-        /// </summary>
         [Output("experimentId")]
         public Output<string?> ExperimentId { get; private set; } = null!;
 
-        /// <summary>
-        /// instance pool id
-        /// </summary>
         [Output("instancePoolId")]
         public Output<string?> InstancePoolId { get; private set; } = null!;
 
-        /// <summary>
-        /// job id
-        /// </summary>
         [Output("jobId")]
         public Output<string?> JobId { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of notebook within workspace
-        /// </summary>
         [Output("notebookId")]
         public Output<string?> NotebookId { get; private set; } = null!;
 
-        /// <summary>
-        /// path of notebook
-        /// </summary>
         [Output("notebookPath")]
         public Output<string?> NotebookPath { get; private set; } = null!;
 
@@ -120,57 +90,30 @@ namespace Pulumi.Databricks
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
 
-        /// <summary>
-        /// pipeline id
-        /// </summary>
         [Output("pipelineId")]
         public Output<string?> PipelineId { get; private set; } = null!;
 
-        /// <summary>
-        /// MLflow registered model id
-        /// </summary>
         [Output("registeredModelId")]
         public Output<string?> RegisteredModelId { get; private set; } = null!;
 
-        /// <summary>
-        /// repo id
-        /// </summary>
         [Output("repoId")]
         public Output<string?> RepoId { get; private set; } = null!;
 
-        /// <summary>
-        /// path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-        /// </summary>
         [Output("repoPath")]
         public Output<string?> RepoPath { get; private set; } = null!;
 
-        /// <summary>
-        /// Model Serving endpoint id.
-        /// </summary>
         [Output("servingEndpointId")]
         public Output<string?> ServingEndpointId { get; private set; } = null!;
 
-        /// <summary>
-        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        /// </summary>
         [Output("sqlAlertId")]
         public Output<string?> SqlAlertId { get; private set; } = null!;
 
-        /// <summary>
-        /// SQL dashboard id
-        /// </summary>
         [Output("sqlDashboardId")]
         public Output<string?> SqlDashboardId { get; private set; } = null!;
 
-        /// <summary>
-        /// SQL warehouse id
-        /// </summary>
         [Output("sqlEndpointId")]
         public Output<string?> SqlEndpointId { get; private set; } = null!;
 
-        /// <summary>
-        /// SQL query id
-        /// </summary>
         [Output("sqlQueryId")]
         public Output<string?> SqlQueryId { get; private set; } = null!;
 
@@ -234,63 +177,33 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
-        /// <summary>
-        /// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        /// </summary>
         [Input("authorization")]
         public Input<string>? Authorization { get; set; }
 
-        /// <summary>
-        /// cluster id
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// cluster policy id
-        /// </summary>
         [Input("clusterPolicyId")]
         public Input<string>? ClusterPolicyId { get; set; }
 
-        /// <summary>
-        /// directory id
-        /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
-        /// <summary>
-        /// path of directory
-        /// </summary>
         [Input("directoryPath")]
         public Input<string>? DirectoryPath { get; set; }
 
-        /// <summary>
-        /// MLflow experiment id
-        /// </summary>
         [Input("experimentId")]
         public Input<string>? ExperimentId { get; set; }
 
-        /// <summary>
-        /// instance pool id
-        /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
-        /// <summary>
-        /// job id
-        /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
-        /// <summary>
-        /// ID of notebook within workspace
-        /// </summary>
         [Input("notebookId")]
         public Input<string>? NotebookId { get; set; }
 
-        /// <summary>
-        /// path of notebook
-        /// </summary>
         [Input("notebookPath")]
         public Input<string>? NotebookPath { get; set; }
 
@@ -300,57 +213,30 @@ namespace Pulumi.Databricks
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
-        /// <summary>
-        /// pipeline id
-        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
-        /// <summary>
-        /// MLflow registered model id
-        /// </summary>
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
-        /// <summary>
-        /// repo id
-        /// </summary>
         [Input("repoId")]
         public Input<string>? RepoId { get; set; }
 
-        /// <summary>
-        /// path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-        /// </summary>
         [Input("repoPath")]
         public Input<string>? RepoPath { get; set; }
 
-        /// <summary>
-        /// Model Serving endpoint id.
-        /// </summary>
         [Input("servingEndpointId")]
         public Input<string>? ServingEndpointId { get; set; }
 
-        /// <summary>
-        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        /// </summary>
         [Input("sqlAlertId")]
         public Input<string>? SqlAlertId { get; set; }
 
-        /// <summary>
-        /// SQL dashboard id
-        /// </summary>
         [Input("sqlDashboardId")]
         public Input<string>? SqlDashboardId { get; set; }
 
-        /// <summary>
-        /// SQL warehouse id
-        /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
 
-        /// <summary>
-        /// SQL query id
-        /// </summary>
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
 
@@ -376,63 +262,33 @@ namespace Pulumi.Databricks
             set => _accessControls = value;
         }
 
-        /// <summary>
-        /// either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        /// </summary>
         [Input("authorization")]
         public Input<string>? Authorization { get; set; }
 
-        /// <summary>
-        /// cluster id
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// cluster policy id
-        /// </summary>
         [Input("clusterPolicyId")]
         public Input<string>? ClusterPolicyId { get; set; }
 
-        /// <summary>
-        /// directory id
-        /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
-        /// <summary>
-        /// path of directory
-        /// </summary>
         [Input("directoryPath")]
         public Input<string>? DirectoryPath { get; set; }
 
-        /// <summary>
-        /// MLflow experiment id
-        /// </summary>
         [Input("experimentId")]
         public Input<string>? ExperimentId { get; set; }
 
-        /// <summary>
-        /// instance pool id
-        /// </summary>
         [Input("instancePoolId")]
         public Input<string>? InstancePoolId { get; set; }
 
-        /// <summary>
-        /// job id
-        /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
-        /// <summary>
-        /// ID of notebook within workspace
-        /// </summary>
         [Input("notebookId")]
         public Input<string>? NotebookId { get; set; }
 
-        /// <summary>
-        /// path of notebook
-        /// </summary>
         [Input("notebookPath")]
         public Input<string>? NotebookPath { get; set; }
 
@@ -442,57 +298,30 @@ namespace Pulumi.Databricks
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
 
-        /// <summary>
-        /// pipeline id
-        /// </summary>
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
-        /// <summary>
-        /// MLflow registered model id
-        /// </summary>
         [Input("registeredModelId")]
         public Input<string>? RegisteredModelId { get; set; }
 
-        /// <summary>
-        /// repo id
-        /// </summary>
         [Input("repoId")]
         public Input<string>? RepoId { get; set; }
 
-        /// <summary>
-        /// path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-        /// </summary>
         [Input("repoPath")]
         public Input<string>? RepoPath { get; set; }
 
-        /// <summary>
-        /// Model Serving endpoint id.
-        /// </summary>
         [Input("servingEndpointId")]
         public Input<string>? ServingEndpointId { get; set; }
 
-        /// <summary>
-        /// [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        /// </summary>
         [Input("sqlAlertId")]
         public Input<string>? SqlAlertId { get; set; }
 
-        /// <summary>
-        /// SQL dashboard id
-        /// </summary>
         [Input("sqlDashboardId")]
         public Input<string>? SqlDashboardId { get; set; }
 
-        /// <summary>
-        /// SQL warehouse id
-        /// </summary>
         [Input("sqlEndpointId")]
         public Input<string>? SqlEndpointId { get; set; }
 
-        /// <summary>
-        /// SQL query id
-        /// </summary>
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
 

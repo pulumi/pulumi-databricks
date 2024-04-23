@@ -540,18 +540,15 @@ class ServicePrincipal(pulumi.CustomResource):
 
         Creating regular Databricks-managed service principal:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Admin SP")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -562,11 +559,9 @@ class ServicePrincipal(pulumi.CustomResource):
             group_id=admins.id,
             member_id=sp.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Azure-managed service principal with cluster create permissions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -576,29 +571,24 @@ class ServicePrincipal(pulumi.CustomResource):
             display_name="Example service principal",
             allow_cluster_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Databricks-managed service principal in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Azure-managed service principal in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -664,18 +654,15 @@ class ServicePrincipal(pulumi.CustomResource):
 
         Creating regular Databricks-managed service principal:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Admin SP")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -686,11 +673,9 @@ class ServicePrincipal(pulumi.CustomResource):
             group_id=admins.id,
             member_id=sp.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Azure-managed service principal with cluster create permissions:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -700,29 +685,24 @@ class ServicePrincipal(pulumi.CustomResource):
             display_name="Example service principal",
             allow_cluster_create=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Databricks-managed service principal in AWS Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", display_name="Automation-only SP")
         ```
-        <!--End PulumiCodeChooser -->
 
         Creating Azure-managed service principal in Azure Databricks account:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         sp = databricks.ServicePrincipal("sp", application_id="00000000-0000-0000-0000-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

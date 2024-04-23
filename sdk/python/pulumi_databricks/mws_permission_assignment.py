@@ -144,7 +144,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         In account context, adding account-level group to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -155,11 +154,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=data_eng.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In account context, adding account-level user to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -170,11 +167,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=me.id,
             permissions=["USER"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In account context, adding account-level service principal to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -185,7 +180,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -227,7 +221,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
 
         In account context, adding account-level group to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -238,11 +231,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=data_eng.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In account context, adding account-level user to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -253,11 +244,9 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=me.id,
             permissions=["USER"])
         ```
-        <!--End PulumiCodeChooser -->
 
         In account context, adding account-level service principal to a workspace:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -268,7 +257,6 @@ class MwsPermissionAssignment(pulumi.CustomResource):
             principal_id=sp.id,
             permissions=["ADMIN"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

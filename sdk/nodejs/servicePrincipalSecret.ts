@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * Create service principal secret
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
  * const terraformSp = new databricks.ServicePrincipalSecret("terraform_sp", {servicePrincipalId: _this.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

@@ -768,7 +768,6 @@ class ClusterAutoscale(dict):
                
                The following example demonstrates how to create an single node cluster:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -788,7 +787,6 @@ class ClusterAutoscale(dict):
                        "ResourceClass": "SingleNode",
                    })
                ```
-               <!--End PulumiCodeChooser -->
         :param int min_workers: The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
         """
         if max_workers is not None:
@@ -813,7 +811,6 @@ class ClusterAutoscale(dict):
 
         The following example demonstrates how to create an single node cluster:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -833,7 +830,6 @@ class ClusterAutoscale(dict):
                 "ResourceClass": "SingleNode",
             })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "max_workers")
 
@@ -1160,17 +1156,11 @@ class ClusterClusterLogConf(dict):
 class ClusterClusterLogConfDbfs(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1207,15 +1197,6 @@ class ClusterClusterLogConfS3(dict):
                  endpoint: Optional[str] = None,
                  kms_key: Optional[str] = None,
                  region: Optional[str] = None):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        :param str canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-        :param bool enable_encryption: Enable server-side encryption, false by default.
-        :param str encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-        :param str endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-        :param str kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-        :param str region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -1233,57 +1214,36 @@ class ClusterClusterLogConfS3(dict):
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[str]:
-        """
-        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-        """
         return pulumi.get(self, "canned_acl")
 
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[bool]:
-        """
-        Enable server-side encryption, false by default.
-        """
         return pulumi.get(self, "enable_encryption")
 
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[str]:
-        """
-        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-        """
         return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
-        """
-        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
-        """
-        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-        """
         return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-        """
         return pulumi.get(self, "region")
 
 
@@ -1319,7 +1279,6 @@ class ClusterClusterMountInfo(dict):
                
                For example, you can mount Azure Data Lake Storage container using the following code:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1335,7 +1294,6 @@ class ClusterClusterMountInfo(dict):
                    local_mount_dir_path="/mnt/nfs-test",
                )])
                ```
-               <!--End PulumiCodeChooser -->
         :param 'ClusterClusterMountInfoNetworkFilesystemInfoArgs' network_filesystem_info: block specifying connection. It consists of:
         :param str remote_mount_dir_path: string specifying path to mount on the remote service.
         """
@@ -1352,7 +1310,6 @@ class ClusterClusterMountInfo(dict):
 
         For example, you can mount Azure Data Lake Storage container using the following code:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1368,7 +1325,6 @@ class ClusterClusterMountInfo(dict):
             local_mount_dir_path="/mnt/nfs-test",
         )])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "local_mount_dir_path")
 
@@ -1466,7 +1422,6 @@ class ClusterDockerImage(dict):
                
                Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -1483,7 +1438,6 @@ class ClusterDockerImage(dict):
                    ),
                ))
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -1505,7 +1459,6 @@ class ClusterDockerImage(dict):
 
         Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -1522,7 +1475,6 @@ class ClusterDockerImage(dict):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "basic_auth")
 
@@ -1718,17 +1670,11 @@ class ClusterInitScript(dict):
 class ClusterInitScriptAbfss(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1736,17 +1682,11 @@ class ClusterInitScriptAbfss(dict):
 class ClusterInitScriptDbfs(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1754,17 +1694,11 @@ class ClusterInitScriptDbfs(dict):
 class ClusterInitScriptFile(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1772,17 +1706,11 @@ class ClusterInitScriptFile(dict):
 class ClusterInitScriptGcs(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1819,15 +1747,6 @@ class ClusterInitScriptS3(dict):
                  endpoint: Optional[str] = None,
                  kms_key: Optional[str] = None,
                  region: Optional[str] = None):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        :param str canned_acl: Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-        :param bool enable_encryption: Enable server-side encryption, false by default.
-        :param str encryption_type: The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-        :param str endpoint: S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-        :param str kms_key: KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-        :param str region: S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-        """
         pulumi.set(__self__, "destination", destination)
         if canned_acl is not None:
             pulumi.set(__self__, "canned_acl", canned_acl)
@@ -1845,57 +1764,36 @@ class ClusterInitScriptS3(dict):
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
     @property
     @pulumi.getter(name="cannedAcl")
     def canned_acl(self) -> Optional[str]:
-        """
-        Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-        """
         return pulumi.get(self, "canned_acl")
 
     @property
     @pulumi.getter(name="enableEncryption")
     def enable_encryption(self) -> Optional[bool]:
-        """
-        Enable server-side encryption, false by default.
-        """
         return pulumi.get(self, "enable_encryption")
 
     @property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[str]:
-        """
-        The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-        """
         return pulumi.get(self, "encryption_type")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
-        """
-        S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
-        """
-        KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-        """
         return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-        """
         return pulumi.get(self, "region")
 
 
@@ -1903,17 +1801,11 @@ class ClusterInitScriptS3(dict):
 class ClusterInitScriptVolumes(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -1921,17 +1813,11 @@ class ClusterInitScriptVolumes(dict):
 class ClusterInitScriptWorkspace(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -2197,7 +2083,6 @@ class ClusterWorkloadTypeClients(dict):
         """
         :param bool jobs: boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -2209,7 +2094,6 @@ class ClusterWorkloadTypeClients(dict):
                    ),
                ))
                ```
-               <!--End PulumiCodeChooser -->
         :param bool notebooks: boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
         """
         if jobs is not None:
@@ -2223,7 +2107,6 @@ class ClusterWorkloadTypeClients(dict):
         """
         boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -2235,7 +2118,6 @@ class ClusterWorkloadTypeClients(dict):
             ),
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "jobs")
 
@@ -2821,7 +2703,6 @@ class InstancePoolPreloadedDockerImage(dict):
                
                Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -2838,7 +2719,6 @@ class InstancePoolPreloadedDockerImage(dict):
                    ),
                )])
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -2860,7 +2740,6 @@ class InstancePoolPreloadedDockerImage(dict):
 
         Example usage with azurerm_container_registry, that you can adapt to your specific use-case:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -2877,7 +2756,6 @@ class InstancePoolPreloadedDockerImage(dict):
             ),
         )])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "basic_auth")
 
@@ -3126,13 +3004,6 @@ class JobEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
-        """
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
-        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
-        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
-        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -3147,41 +3018,26 @@ class JobEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
-        """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run fails.
-        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run starts.
-        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run completes successfully.
-        """
         return pulumi.get(self, "on_successes")
 
 
@@ -3407,9 +3263,7 @@ class JobHealthRule(dict):
                  value: Optional[int] = None):
         """
         :param str metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-               
-               This task does not require a cluster to execute and does not support retries or notifications.
+        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param int value: integer value used to compare to the given metric.
         """
         if metric is not None:
@@ -3431,9 +3285,7 @@ class JobHealthRule(dict):
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-
-        This task does not require a cluster to execute and does not support retries or notifications.
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
@@ -4225,7 +4077,7 @@ class JobJobClusterNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobJobClusterNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the Git repository to use.
+        :param str url: URL of the job on the given workspace
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -4235,7 +4087,7 @@ class JobJobClusterNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 
@@ -4352,9 +4204,6 @@ class JobJobClusterNewClusterInitScript(dict):
                  s3: Optional['outputs.JobJobClusterNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobJobClusterNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobJobClusterNewClusterInitScriptWorkspace'] = None):
-        """
-        :param 'JobJobClusterNewClusterInitScriptFileArgs' file: block consisting of single string fields:
-        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -4386,9 +4235,6 @@ class JobJobClusterNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobJobClusterNewClusterInitScriptFile']:
-        """
-        block consisting of single string fields:
-        """
         return pulumi.get(self, "file")
 
     @property
@@ -5450,7 +5296,7 @@ class JobNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the Git repository to use.
+        :param str url: URL of the job on the given workspace
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -5460,7 +5306,7 @@ class JobNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 
@@ -5577,9 +5423,6 @@ class JobNewClusterInitScript(dict):
                  s3: Optional['outputs.JobNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobNewClusterInitScriptWorkspace'] = None):
-        """
-        :param 'JobNewClusterInitScriptFileArgs' file: block consisting of single string fields:
-        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -5611,9 +5454,6 @@ class JobNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobNewClusterInitScriptFile']:
-        """
-        block consisting of single string fields:
-        """
         return pulumi.get(self, "file")
 
     @property
@@ -6155,7 +5995,6 @@ class JobRunAs(dict):
                
                Example:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -6164,7 +6003,6 @@ class JobRunAs(dict):
                    service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
                ))
                ```
-               <!--End PulumiCodeChooser -->
         :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
         """
         if service_principal_name is not None:
@@ -6180,7 +6018,6 @@ class JobRunAs(dict):
 
         Example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -6189,7 +6026,6 @@ class JobRunAs(dict):
             service_principal_name="8d23ae77-912e-4a19-81e4-b9c3f5cc9349",
         ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "service_principal_name")
 
@@ -6550,11 +6386,9 @@ class JobTask(dict):
         :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param 'JobTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param 'JobTaskHealthArgs' health: block described below that specifies health conditions for a given task.
-        :param str job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         :param Sequence['JobTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param int min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param 'JobTaskNewClusterArgs' new_cluster: Same set of parameters as for Cluster resource.
         :param 'JobTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
@@ -6680,9 +6514,6 @@ class JobTask(dict):
     @property
     @pulumi.getter(name="jobClusterKey")
     def job_cluster_key(self) -> Optional[str]:
-        """
-        Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        """
         return pulumi.get(self, "job_cluster_key")
 
     @property
@@ -6712,9 +6543,6 @@ class JobTask(dict):
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional['outputs.JobTaskNewCluster']:
-        """
-        Same set of parameters as for Cluster resource.
-        """
         return pulumi.get(self, "new_cluster")
 
     @property
@@ -7050,13 +6878,6 @@ class JobTaskEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
-        """
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
-        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
-        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
-        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -7071,41 +6892,26 @@ class JobTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
-        """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run fails.
-        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run starts.
-        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run completes successfully.
-        """
         return pulumi.get(self, "on_successes")
 
 
@@ -7248,11 +7054,9 @@ class JobTaskForEachTaskTask(dict):
         :param str description: An optional description for the job. The maximum length is 1024 characters in UTF-8 encoding.
         :param 'JobTaskForEachTaskTaskEmailNotificationsArgs' email_notifications: (List) An optional set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This field is a block and is documented below.
         :param 'JobTaskForEachTaskTaskHealthArgs' health: block described below that specifies health conditions for a given task.
-        :param str job_cluster_key: Identifier that can be referenced in `task` block, so that cluster is shared between tasks
         :param Sequence['JobTaskForEachTaskTaskLibraryArgs'] libraries: (Set) An optional list of libraries to be installed on the cluster that will execute the job.
         :param int max_retries: (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
         :param int min_retry_interval_millis: (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
-        :param 'JobTaskForEachTaskTaskNewClusterArgs' new_cluster: Same set of parameters as for Cluster resource.
         :param 'JobTaskForEachTaskTaskNotificationSettingsArgs' notification_settings: An optional block controlling the notification settings on the job level (described below).
         :param bool retry_on_timeout: (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
         :param str run_if: An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. When omitted, defaults to `ALL_SUCCESS`.
@@ -7371,9 +7175,6 @@ class JobTaskForEachTaskTask(dict):
     @property
     @pulumi.getter(name="jobClusterKey")
     def job_cluster_key(self) -> Optional[str]:
-        """
-        Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        """
         return pulumi.get(self, "job_cluster_key")
 
     @property
@@ -7403,9 +7204,6 @@ class JobTaskForEachTaskTask(dict):
     @property
     @pulumi.getter(name="newCluster")
     def new_cluster(self) -> Optional['outputs.JobTaskForEachTaskTaskNewCluster']:
-        """
-        Same set of parameters as for Cluster resource.
-        """
         return pulumi.get(self, "new_cluster")
 
     @property
@@ -7741,13 +7539,6 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
                  on_failures: Optional[Sequence[str]] = None,
                  on_starts: Optional[Sequence[str]] = None,
                  on_successes: Optional[Sequence[str]] = None):
-        """
-        :param bool no_alert_for_skipped_runs: (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        :param Sequence[str] on_duration_warning_threshold_exceededs: (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        :param Sequence[str] on_failures: (List) list of emails to notify when the run fails.
-        :param Sequence[str] on_starts: (List) list of emails to notify when the run starts.
-        :param Sequence[str] on_successes: (List) list of emails to notify when the run completes successfully.
-        """
         if no_alert_for_skipped_runs is not None:
             pulumi.set(__self__, "no_alert_for_skipped_runs", no_alert_for_skipped_runs)
         if on_duration_warning_threshold_exceededs is not None:
@@ -7762,41 +7553,26 @@ class JobTaskForEachTaskTaskEmailNotifications(dict):
     @property
     @pulumi.getter(name="noAlertForSkippedRuns")
     def no_alert_for_skipped_runs(self) -> Optional[bool]:
-        """
-        (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        """
         return pulumi.get(self, "no_alert_for_skipped_runs")
 
     @property
     @pulumi.getter(name="onDurationWarningThresholdExceededs")
     def on_duration_warning_threshold_exceededs(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        """
         return pulumi.get(self, "on_duration_warning_threshold_exceededs")
 
     @property
     @pulumi.getter(name="onFailures")
     def on_failures(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run fails.
-        """
         return pulumi.get(self, "on_failures")
 
     @property
     @pulumi.getter(name="onStarts")
     def on_starts(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run starts.
-        """
         return pulumi.get(self, "on_starts")
 
     @property
     @pulumi.getter(name="onSuccesses")
     def on_successes(self) -> Optional[Sequence[str]]:
-        """
-        (List) list of emails to notify when the run completes successfully.
-        """
         return pulumi.get(self, "on_successes")
 
 
@@ -7826,9 +7602,7 @@ class JobTaskForEachTaskTaskHealthRule(dict):
                  value: Optional[int] = None):
         """
         :param str metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-               
-               This task does not require a cluster to execute and does not support retries or notifications.
+        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param int value: integer value used to compare to the given metric.
         """
         if metric is not None:
@@ -7850,9 +7624,7 @@ class JobTaskForEachTaskTaskHealthRule(dict):
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-
-        This task does not require a cluster to execute and does not support retries or notifications.
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
@@ -8714,7 +8486,7 @@ class JobTaskForEachTaskTaskNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the Git repository to use.
+        :param str url: URL of the job on the given workspace
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -8724,7 +8496,7 @@ class JobTaskForEachTaskTaskNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 
@@ -8841,9 +8613,6 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
                  s3: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace'] = None):
-        """
-        :param 'JobTaskForEachTaskTaskNewClusterInitScriptFileArgs' file: block consisting of single string fields:
-        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -8872,9 +8641,6 @@ class JobTaskForEachTaskTaskNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobTaskForEachTaskTaskNewClusterInitScriptFile']:
-        """
-        block consisting of single string fields:
-        """
         return pulumi.get(self, "file")
 
     @property
@@ -9719,9 +9485,6 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
-        """
-        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -9735,9 +9498,6 @@ class JobTaskForEachTaskTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -9840,9 +9600,6 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
-        """
-        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -9856,9 +9613,6 @@ class JobTaskForEachTaskTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -9872,7 +9626,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                
                Example
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -9915,8 +9668,7 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                        ),
                    ])
                ```
-               <!--End PulumiCodeChooser -->
-        :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.
         """
         pulumi.set(__self__, "path", path)
         if source is not None:
@@ -9930,7 +9682,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
 
         Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -9973,7 +9724,6 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "path")
 
@@ -9981,7 +9731,7 @@ class JobTaskForEachTaskTaskSqlTaskFile(dict):
     @pulumi.getter
     def source(self) -> Optional[str]:
         """
-        The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.
         """
         return pulumi.get(self, "source")
 
@@ -10106,9 +9856,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceed
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -10116,9 +9864,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceed
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -10128,9 +9874,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnFailure(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -10138,9 +9882,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnFailure(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -10150,9 +9892,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnStart(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -10160,9 +9900,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnStart(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -10172,9 +9910,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnSuccess(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -10182,9 +9918,7 @@ class JobTaskForEachTaskTaskWebhookNotificationsOnSuccess(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -10215,9 +9949,7 @@ class JobTaskHealthRule(dict):
                  value: Optional[int] = None):
         """
         :param str metric: string specifying the metric to check.  The only supported metric is `RUN_DURATION_SECONDS` (check [Jobs REST API documentation](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-        :param str op: The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-               
-               This task does not require a cluster to execute and does not support retries or notifications.
+        :param str op: string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         :param int value: integer value used to compare to the given metric.
         """
         if metric is not None:
@@ -10239,9 +9971,7 @@ class JobTaskHealthRule(dict):
     @pulumi.getter
     def op(self) -> Optional[str]:
         """
-        The string specifying the operation used to compare operands.  Currently, following operators are supported: `EQUAL_TO`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`. (Check the [API docs](https://docs.databricks.com/api/workspace/jobs/create) for the latest information).
-
-        This task does not require a cluster to execute and does not support retries or notifications.
+        string specifying the operation used to evaluate the given metric. The only supported operation is `GREATER_THAN`.
         """
         return pulumi.get(self, "op")
 
@@ -11104,7 +10834,7 @@ class JobTaskNewClusterDockerImage(dict):
                  url: str,
                  basic_auth: Optional['outputs.JobTaskNewClusterDockerImageBasicAuth'] = None):
         """
-        :param str url: URL of the Git repository to use.
+        :param str url: URL of the job on the given workspace
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -11114,7 +10844,7 @@ class JobTaskNewClusterDockerImage(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the Git repository to use.
+        URL of the job on the given workspace
         """
         return pulumi.get(self, "url")
 
@@ -11231,9 +10961,6 @@ class JobTaskNewClusterInitScript(dict):
                  s3: Optional['outputs.JobTaskNewClusterInitScriptS3'] = None,
                  volumes: Optional['outputs.JobTaskNewClusterInitScriptVolumes'] = None,
                  workspace: Optional['outputs.JobTaskNewClusterInitScriptWorkspace'] = None):
-        """
-        :param 'JobTaskNewClusterInitScriptFileArgs' file: block consisting of single string fields:
-        """
         if abfss is not None:
             pulumi.set(__self__, "abfss", abfss)
         if dbfs is not None:
@@ -11265,9 +10992,6 @@ class JobTaskNewClusterInitScript(dict):
     @property
     @pulumi.getter
     def file(self) -> Optional['outputs.JobTaskNewClusterInitScriptFile']:
-        """
-        block consisting of single string fields:
-        """
         return pulumi.get(self, "file")
 
     @property
@@ -12112,9 +11836,6 @@ class JobTaskSqlTaskAlertSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
-        """
-        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -12128,9 +11849,6 @@ class JobTaskSqlTaskAlertSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -12233,9 +11951,6 @@ class JobTaskSqlTaskDashboardSubscription(dict):
     def __init__(__self__, *,
                  destination_id: Optional[str] = None,
                  user_name: Optional[str] = None):
-        """
-        :param str user_name: The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         if destination_id is not None:
             pulumi.set(__self__, "destination_id", destination_id)
         if user_name is not None:
@@ -12249,9 +11964,6 @@ class JobTaskSqlTaskDashboardSubscription(dict):
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
-        """
-        The email of an active workspace user. Non-admin users can only set this field to their own email.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -12265,7 +11977,6 @@ class JobTaskSqlTaskFile(dict):
                
                Example
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_databricks as databricks
@@ -12308,8 +12019,7 @@ class JobTaskSqlTaskFile(dict):
                        ),
                    ])
                ```
-               <!--End PulumiCodeChooser -->
-        :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        :param str source: The source of the project. Possible values are `WORKSPACE` and `GIT`.
         """
         pulumi.set(__self__, "path", path)
         if source is not None:
@@ -12323,7 +12033,6 @@ class JobTaskSqlTaskFile(dict):
 
         Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -12366,7 +12075,6 @@ class JobTaskSqlTaskFile(dict):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "path")
 
@@ -12374,7 +12082,7 @@ class JobTaskSqlTaskFile(dict):
     @pulumi.getter
     def source(self) -> Optional[str]:
         """
-        The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        The source of the project. Possible values are `WORKSPACE` and `GIT`.
         """
         return pulumi.get(self, "source")
 
@@ -12499,9 +12207,7 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12509,9 +12215,7 @@ class JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12521,9 +12225,7 @@ class JobTaskWebhookNotificationsOnFailure(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12531,9 +12233,7 @@ class JobTaskWebhookNotificationsOnFailure(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12543,9 +12243,7 @@ class JobTaskWebhookNotificationsOnStart(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12553,9 +12251,7 @@ class JobTaskWebhookNotificationsOnStart(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12565,9 +12261,7 @@ class JobTaskWebhookNotificationsOnSuccess(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12575,9 +12269,7 @@ class JobTaskWebhookNotificationsOnSuccess(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12672,7 +12364,7 @@ class JobTriggerFileArrival(dict):
                  min_time_between_triggers_seconds: Optional[int] = None,
                  wait_after_last_change_seconds: Optional[int] = None):
         """
-        :param str url: URL of the Git repository to use.
+        :param str url: string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         :param int min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         :param int wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
@@ -12686,7 +12378,7 @@ class JobTriggerFileArrival(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        URL of the Git repository to use.
+        string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
         """
         return pulumi.get(self, "url")
 
@@ -12873,9 +12565,7 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12883,9 +12573,7 @@ class JobWebhookNotificationsOnDurationWarningThresholdExceeded(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12895,9 +12583,7 @@ class JobWebhookNotificationsOnFailure(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12905,9 +12591,7 @@ class JobWebhookNotificationsOnFailure(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12917,9 +12601,7 @@ class JobWebhookNotificationsOnStart(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12927,9 +12609,7 @@ class JobWebhookNotificationsOnStart(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -12939,9 +12619,7 @@ class JobWebhookNotificationsOnSuccess(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-               
-               > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        :param str id: ID of the job
         """
         pulumi.set(__self__, "id", id)
 
@@ -12949,9 +12627,7 @@ class JobWebhookNotificationsOnSuccess(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the system notification that is notified when an event defined in `webhook_notifications` is triggered.
-
-        > **Note** The following configuration blocks can be standalone or nested inside a `task` block
+        ID of the job
         """
         return pulumi.get(self, "id")
 
@@ -14051,7 +13727,7 @@ class ModelServingConfigServedEntity(dict):
         :param str instance_profile_arn: ARN of the instance profile that the served entity uses to access AWS resources.
         :param int max_provisioned_throughput: The maximum tokens per second that the endpoint can scale up to.
         :param int min_provisioned_throughput: The minimum tokens per second that the endpoint can scale down to.
-        :param str name: The name of the external model.
+        :param str name: The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
         :param bool scale_to_zero_enabled: Whether the compute resources for the served entity should scale down to zero.
         :param str workload_size: The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0.
         :param str workload_type: The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
@@ -14139,7 +13815,7 @@ class ModelServingConfigServedEntity(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the external model.
+        The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
         """
         return pulumi.get(self, "name")
 
@@ -14211,7 +13887,7 @@ class ModelServingConfigServedEntityExternalModel(dict):
                  openai_config: Optional['outputs.ModelServingConfigServedEntityExternalModelOpenaiConfig'] = None,
                  palm_config: Optional['outputs.ModelServingConfigServedEntityExternalModelPalmConfig'] = None):
         """
-        :param str name: The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        :param str name: The name of the external model.
         :param str provider: The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `openai`, and `palm`.
         :param str task: The task type of the external model.
         :param 'ModelServingConfigServedEntityExternalModelAi21labsConfigArgs' ai21labs_config: AI21Labs Config
@@ -14244,7 +13920,7 @@ class ModelServingConfigServedEntityExternalModel(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the update name.
+        The name of the external model.
         """
         return pulumi.get(self, "name")
 
@@ -14342,17 +14018,11 @@ class ModelServingConfigServedEntityExternalModelAi21labsConfig(dict):
 
     def __init__(__self__, *,
                  ai21labs_api_key: str):
-        """
-        :param str ai21labs_api_key: The Databricks secret key reference for an AI21Labs API key.
-        """
         pulumi.set(__self__, "ai21labs_api_key", ai21labs_api_key)
 
     @property
     @pulumi.getter(name="ai21labsApiKey")
     def ai21labs_api_key(self) -> str:
-        """
-        The Databricks secret key reference for an AI21Labs API key.
-        """
         return pulumi.get(self, "ai21labs_api_key")
 
 
@@ -14386,12 +14056,6 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
                  aws_region: str,
                  aws_secret_access_key: str,
                  bedrock_provider: str):
-        """
-        :param str aws_access_key_id: The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-        :param str aws_region: The AWS region to use. Bedrock has to be enabled there.
-        :param str aws_secret_access_key: The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-        :param str bedrock_provider: The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-        """
         pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
         pulumi.set(__self__, "aws_region", aws_region)
         pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
@@ -14400,33 +14064,21 @@ class ModelServingConfigServedEntityExternalModelAmazonBedrockConfig(dict):
     @property
     @pulumi.getter(name="awsAccessKeyId")
     def aws_access_key_id(self) -> str:
-        """
-        The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-        """
         return pulumi.get(self, "aws_access_key_id")
 
     @property
     @pulumi.getter(name="awsRegion")
     def aws_region(self) -> str:
-        """
-        The AWS region to use. Bedrock has to be enabled there.
-        """
         return pulumi.get(self, "aws_region")
 
     @property
     @pulumi.getter(name="awsSecretAccessKey")
     def aws_secret_access_key(self) -> str:
-        """
-        The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-        """
         return pulumi.get(self, "aws_secret_access_key")
 
     @property
     @pulumi.getter(name="bedrockProvider")
     def bedrock_provider(self) -> str:
-        """
-        The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-        """
         return pulumi.get(self, "bedrock_provider")
 
 
@@ -14451,19 +14103,11 @@ class ModelServingConfigServedEntityExternalModelAnthropicConfig(dict):
 
     def __init__(__self__, *,
                  anthropic_api_key: str):
-        """
-        :param str anthropic_api_key: The Databricks secret key reference for an Anthropic API key.
-               The Databricks secret key reference for an Anthropic API key.
-        """
         pulumi.set(__self__, "anthropic_api_key", anthropic_api_key)
 
     @property
     @pulumi.getter(name="anthropicApiKey")
     def anthropic_api_key(self) -> str:
-        """
-        The Databricks secret key reference for an Anthropic API key.
-        The Databricks secret key reference for an Anthropic API key.
-        """
         return pulumi.get(self, "anthropic_api_key")
 
 
@@ -14488,17 +14132,11 @@ class ModelServingConfigServedEntityExternalModelCohereConfig(dict):
 
     def __init__(__self__, *,
                  cohere_api_key: str):
-        """
-        :param str cohere_api_key: The Databricks secret key reference for a Cohere API key.
-        """
         pulumi.set(__self__, "cohere_api_key", cohere_api_key)
 
     @property
     @pulumi.getter(name="cohereApiKey")
     def cohere_api_key(self) -> str:
-        """
-        The Databricks secret key reference for a Cohere API key.
-        """
         return pulumi.get(self, "cohere_api_key")
 
 
@@ -14526,27 +14164,17 @@ class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig(di
     def __init__(__self__, *,
                  databricks_api_token: str,
                  databricks_workspace_url: str):
-        """
-        :param str databricks_api_token: The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-        :param str databricks_workspace_url: The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-        """
         pulumi.set(__self__, "databricks_api_token", databricks_api_token)
         pulumi.set(__self__, "databricks_workspace_url", databricks_workspace_url)
 
     @property
     @pulumi.getter(name="databricksApiToken")
     def databricks_api_token(self) -> str:
-        """
-        The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-        """
         return pulumi.get(self, "databricks_api_token")
 
     @property
     @pulumi.getter(name="databricksWorkspaceUrl")
     def databricks_workspace_url(self) -> str:
-        """
-        The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-        """
         return pulumi.get(self, "databricks_workspace_url")
 
 
@@ -14586,14 +14214,6 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
                  openai_api_version: Optional[str] = None,
                  openai_deployment_name: Optional[str] = None,
                  openai_organization: Optional[str] = None):
-        """
-        :param str openai_api_key: The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-        :param str openai_api_base: This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-        :param str openai_api_type: This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-        :param str openai_api_version: This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-        :param str openai_deployment_name: This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-        :param str openai_organization: This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-        """
         pulumi.set(__self__, "openai_api_key", openai_api_key)
         if openai_api_base is not None:
             pulumi.set(__self__, "openai_api_base", openai_api_base)
@@ -14609,49 +14229,31 @@ class ModelServingConfigServedEntityExternalModelOpenaiConfig(dict):
     @property
     @pulumi.getter(name="openaiApiKey")
     def openai_api_key(self) -> str:
-        """
-        The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-        """
         return pulumi.get(self, "openai_api_key")
 
     @property
     @pulumi.getter(name="openaiApiBase")
     def openai_api_base(self) -> Optional[str]:
-        """
-        This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-        """
         return pulumi.get(self, "openai_api_base")
 
     @property
     @pulumi.getter(name="openaiApiType")
     def openai_api_type(self) -> Optional[str]:
-        """
-        This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-        """
         return pulumi.get(self, "openai_api_type")
 
     @property
     @pulumi.getter(name="openaiApiVersion")
     def openai_api_version(self) -> Optional[str]:
-        """
-        This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-        """
         return pulumi.get(self, "openai_api_version")
 
     @property
     @pulumi.getter(name="openaiDeploymentName")
     def openai_deployment_name(self) -> Optional[str]:
-        """
-        This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-        """
         return pulumi.get(self, "openai_deployment_name")
 
     @property
     @pulumi.getter(name="openaiOrganization")
     def openai_organization(self) -> Optional[str]:
-        """
-        This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-        """
         return pulumi.get(self, "openai_organization")
 
 
@@ -14676,17 +14278,11 @@ class ModelServingConfigServedEntityExternalModelPalmConfig(dict):
 
     def __init__(__self__, *,
                  palm_api_key: str):
-        """
-        :param str palm_api_key: The Databricks secret key reference for a PaLM API key.
-        """
         pulumi.set(__self__, "palm_api_key", palm_api_key)
 
     @property
     @pulumi.getter(name="palmApiKey")
     def palm_api_key(self) -> str:
-        """
-        The Databricks secret key reference for a PaLM API key.
-        """
         return pulumi.get(self, "palm_api_key")
 
 
@@ -15706,17 +15302,11 @@ class MwsWorkspacesCloudResourceContainerGcp(dict):
 
     def __init__(__self__, *,
                  project_id: str):
-        """
-        :param str project_id: The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-        """
         pulumi.set(__self__, "project_id", project_id)
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-        """
         return pulumi.get(self, "project_id")
 
 
@@ -16550,14 +16140,6 @@ class PermissionsAccessControl(dict):
                  group_name: Optional[str] = None,
                  service_principal_name: Optional[str] = None,
                  user_name: Optional[str] = None):
-        """
-        :param str permission_level: permission level according to specific resource. See examples above for the reference.
-               
-               Exactly one of the below arguments is required:
-        :param str group_name: name of the group. We recommend setting permissions on groups.
-        :param str service_principal_name: Application ID of the service_principal.
-        :param str user_name: name of the user.
-        """
         pulumi.set(__self__, "permission_level", permission_level)
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
@@ -16569,35 +16151,21 @@ class PermissionsAccessControl(dict):
     @property
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> str:
-        """
-        permission level according to specific resource. See examples above for the reference.
-
-        Exactly one of the below arguments is required:
-        """
         return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
-        """
-        name of the group. We recommend setting permissions on groups.
-        """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="servicePrincipalName")
     def service_principal_name(self) -> Optional[str]:
-        """
-        Application ID of the service_principal.
-        """
         return pulumi.get(self, "service_principal_name")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[str]:
-        """
-        name of the user.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -17625,18 +17193,12 @@ class RecipientIpAccessList(dict):
 
     def __init__(__self__, *,
                  allowed_ip_addresses: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] allowed_ip_addresses: Allowed IP Addresses in CIDR notation. Limit of 100.
-        """
         if allowed_ip_addresses is not None:
             pulumi.set(__self__, "allowed_ip_addresses", allowed_ip_addresses)
 
     @property
     @pulumi.getter(name="allowedIpAddresses")
     def allowed_ip_addresses(self) -> Optional[Sequence[str]]:
-        """
-        Allowed IP Addresses in CIDR notation. Limit of 100.
-        """
         return pulumi.get(self, "allowed_ip_addresses")
 
 
@@ -18016,17 +17578,11 @@ class ShareObject(dict):
 class ShareObjectPartition(dict):
     def __init__(__self__, *,
                  values: Sequence['outputs.ShareObjectPartitionValue']):
-        """
-        :param Sequence['ShareObjectPartitionValueArgs'] values: The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
-        """
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Sequence['outputs.ShareObjectPartitionValue']:
-        """
-        The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
-        """
         return pulumi.get(self, "values")
 
 
@@ -18439,6 +17995,8 @@ class SqlPermissionsPrivilegeAssignment(dict):
         :param str principal: `display_name` for a Group or databricks_user, `application_id` for a databricks_service_principal.
         :param Sequence[str] privileges: set of available privilege names in upper case.
                
+               
+               [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
                [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         pulumi.set(__self__, "principal", principal)
@@ -18458,6 +18016,8 @@ class SqlPermissionsPrivilegeAssignment(dict):
         """
         set of available privilege names in upper case.
 
+
+        [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         [Available](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html) privilege names are:
         """
         return pulumi.get(self, "privileges")
@@ -18608,17 +18168,11 @@ class SqlQueryParameter(dict):
 class SqlQueryParameterDate(dict):
     def __init__(__self__, *,
                  value: str):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18627,9 +18181,6 @@ class SqlQueryParameterDateRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDateRangeRange'] = None,
                  value: Optional[str] = None):
-        """
-        :param str value: The default value for this parameter.
-        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -18643,9 +18194,6 @@ class SqlQueryParameterDateRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18672,17 +18220,11 @@ class SqlQueryParameterDateRangeRange(dict):
 class SqlQueryParameterDatetime(dict):
     def __init__(__self__, *,
                  value: str):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18691,9 +18233,6 @@ class SqlQueryParameterDatetimeRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimeRangeRange'] = None,
                  value: Optional[str] = None):
-        """
-        :param str value: The default value for this parameter.
-        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -18707,9 +18246,6 @@ class SqlQueryParameterDatetimeRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18736,17 +18272,11 @@ class SqlQueryParameterDatetimeRangeRange(dict):
 class SqlQueryParameterDatetimesec(dict):
     def __init__(__self__, *,
                  value: str):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18755,9 +18285,6 @@ class SqlQueryParameterDatetimesecRange(dict):
     def __init__(__self__, *,
                  range: Optional['outputs.SqlQueryParameterDatetimesecRangeRange'] = None,
                  value: Optional[str] = None):
-        """
-        :param str value: The default value for this parameter.
-        """
         if range is not None:
             pulumi.set(__self__, "range", range)
         if value is not None:
@@ -18771,9 +18298,6 @@ class SqlQueryParameterDatetimesecRange(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18803,9 +18327,6 @@ class SqlQueryParameterEnum(dict):
                  multiple: Optional['outputs.SqlQueryParameterEnumMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "options", options)
         if multiple is not None:
             pulumi.set(__self__, "multiple", multiple)
@@ -18827,9 +18348,6 @@ class SqlQueryParameterEnum(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
     @property
@@ -18870,17 +18388,11 @@ class SqlQueryParameterEnumMultiple(dict):
 class SqlQueryParameterNumber(dict):
     def __init__(__self__, *,
                  value: float):
-        """
-        :param float value: The default value for this parameter.
-        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> float:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -18908,9 +18420,6 @@ class SqlQueryParameterQuery(dict):
                  multiple: Optional['outputs.SqlQueryParameterQueryMultiple'] = None,
                  value: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "query_id", query_id)
         if multiple is not None:
             pulumi.set(__self__, "multiple", multiple)
@@ -18932,9 +18441,6 @@ class SqlQueryParameterQuery(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
     @property
@@ -18975,17 +18481,11 @@ class SqlQueryParameterQueryMultiple(dict):
 class SqlQueryParameterText(dict):
     def __init__(__self__, *,
                  value: str):
-        """
-        :param str value: The default value for this parameter.
-        """
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The default value for this parameter.
-        """
         return pulumi.get(self, "value")
 
 
@@ -19822,9 +19322,7 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
                  source_table: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
-        :param Sequence['VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param str pipeline_id: ID of the associated Delta Live Table pipeline.
-        :param str pipeline_type: Pipeline execution mode. Possible values are:
         :param str source_table: The name of the source table.
         """
         if embedding_source_columns is not None:
@@ -19849,9 +19347,6 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn']]:
-        """
-        array of objects representing columns that contain the embedding vectors. Each entry consists of:
-        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property
@@ -19865,9 +19360,6 @@ class VectorSearchIndexDeltaSyncIndexSpec(dict):
     @property
     @pulumi.getter(name="pipelineType")
     def pipeline_type(self) -> Optional[str]:
-        """
-        Pipeline execution mode. Possible values are:
-        """
         return pulumi.get(self, "pipeline_type")
 
     @property
@@ -20004,7 +19496,6 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
                  schema_json: Optional[str] = None):
         """
         :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs'] embedding_source_columns: array of objects representing columns that contain the embedding source.  Each entry consists of:
-        :param Sequence['VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs'] embedding_vector_columns: array of objects representing columns that contain the embedding vectors. Each entry consists of:
         :param str schema_json: The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
         """
         if embedding_source_columns is not None:
@@ -20025,9 +19516,6 @@ class VectorSearchIndexDirectAccessIndexSpec(dict):
     @property
     @pulumi.getter(name="embeddingVectorColumns")
     def embedding_vector_columns(self) -> Optional[Sequence['outputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn']]:
-        """
-        array of objects representing columns that contain the embedding vectors. Each entry consists of:
-        """
         return pulumi.get(self, "embedding_vector_columns")
 
     @property

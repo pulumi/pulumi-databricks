@@ -74,85 +74,28 @@ export class Permissions extends pulumi.CustomResource {
     }
 
     public readonly accessControls!: pulumi.Output<outputs.PermissionsAccessControl[]>;
-    /**
-     * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     */
     public readonly authorization!: pulumi.Output<string | undefined>;
-    /**
-     * cluster id
-     */
     public readonly clusterId!: pulumi.Output<string | undefined>;
-    /**
-     * cluster policy id
-     */
     public readonly clusterPolicyId!: pulumi.Output<string | undefined>;
-    /**
-     * directory id
-     */
     public readonly directoryId!: pulumi.Output<string | undefined>;
-    /**
-     * path of directory
-     */
     public readonly directoryPath!: pulumi.Output<string | undefined>;
-    /**
-     * MLflow experiment id
-     */
     public readonly experimentId!: pulumi.Output<string | undefined>;
-    /**
-     * instance pool id
-     */
     public readonly instancePoolId!: pulumi.Output<string | undefined>;
-    /**
-     * job id
-     */
     public readonly jobId!: pulumi.Output<string | undefined>;
-    /**
-     * ID of notebook within workspace
-     */
     public readonly notebookId!: pulumi.Output<string | undefined>;
-    /**
-     * path of notebook
-     */
     public readonly notebookPath!: pulumi.Output<string | undefined>;
     /**
      * type of permissions.
      */
     public readonly objectType!: pulumi.Output<string>;
-    /**
-     * pipeline id
-     */
     public readonly pipelineId!: pulumi.Output<string | undefined>;
-    /**
-     * MLflow registered model id
-     */
     public readonly registeredModelId!: pulumi.Output<string | undefined>;
-    /**
-     * repo id
-     */
     public readonly repoId!: pulumi.Output<string | undefined>;
-    /**
-     * path of databricks repo directory(`/Repos/<username>/...`)
-     */
     public readonly repoPath!: pulumi.Output<string | undefined>;
-    /**
-     * Model Serving endpoint id.
-     */
     public readonly servingEndpointId!: pulumi.Output<string | undefined>;
-    /**
-     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     */
     public readonly sqlAlertId!: pulumi.Output<string | undefined>;
-    /**
-     * SQL dashboard id
-     */
     public readonly sqlDashboardId!: pulumi.Output<string | undefined>;
-    /**
-     * SQL warehouse id
-     */
     public readonly sqlEndpointId!: pulumi.Output<string | undefined>;
-    /**
-     * SQL query id
-     */
     public readonly sqlQueryId!: pulumi.Output<string | undefined>;
     public readonly workspaceFileId!: pulumi.Output<string | undefined>;
     public readonly workspaceFilePath!: pulumi.Output<string | undefined>;
@@ -232,85 +175,28 @@ export class Permissions extends pulumi.CustomResource {
  */
 export interface PermissionsState {
     accessControls?: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
-    /**
-     * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     */
     authorization?: pulumi.Input<string>;
-    /**
-     * cluster id
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * cluster policy id
-     */
     clusterPolicyId?: pulumi.Input<string>;
-    /**
-     * directory id
-     */
     directoryId?: pulumi.Input<string>;
-    /**
-     * path of directory
-     */
     directoryPath?: pulumi.Input<string>;
-    /**
-     * MLflow experiment id
-     */
     experimentId?: pulumi.Input<string>;
-    /**
-     * instance pool id
-     */
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * job id
-     */
     jobId?: pulumi.Input<string>;
-    /**
-     * ID of notebook within workspace
-     */
     notebookId?: pulumi.Input<string>;
-    /**
-     * path of notebook
-     */
     notebookPath?: pulumi.Input<string>;
     /**
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
-    /**
-     * pipeline id
-     */
     pipelineId?: pulumi.Input<string>;
-    /**
-     * MLflow registered model id
-     */
     registeredModelId?: pulumi.Input<string>;
-    /**
-     * repo id
-     */
     repoId?: pulumi.Input<string>;
-    /**
-     * path of databricks repo directory(`/Repos/<username>/...`)
-     */
     repoPath?: pulumi.Input<string>;
-    /**
-     * Model Serving endpoint id.
-     */
     servingEndpointId?: pulumi.Input<string>;
-    /**
-     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     */
     sqlAlertId?: pulumi.Input<string>;
-    /**
-     * SQL dashboard id
-     */
     sqlDashboardId?: pulumi.Input<string>;
-    /**
-     * SQL warehouse id
-     */
     sqlEndpointId?: pulumi.Input<string>;
-    /**
-     * SQL query id
-     */
     sqlQueryId?: pulumi.Input<string>;
     workspaceFileId?: pulumi.Input<string>;
     workspaceFilePath?: pulumi.Input<string>;
@@ -321,85 +207,28 @@ export interface PermissionsState {
  */
 export interface PermissionsArgs {
     accessControls: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
-    /**
-     * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     */
     authorization?: pulumi.Input<string>;
-    /**
-     * cluster id
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * cluster policy id
-     */
     clusterPolicyId?: pulumi.Input<string>;
-    /**
-     * directory id
-     */
     directoryId?: pulumi.Input<string>;
-    /**
-     * path of directory
-     */
     directoryPath?: pulumi.Input<string>;
-    /**
-     * MLflow experiment id
-     */
     experimentId?: pulumi.Input<string>;
-    /**
-     * instance pool id
-     */
     instancePoolId?: pulumi.Input<string>;
-    /**
-     * job id
-     */
     jobId?: pulumi.Input<string>;
-    /**
-     * ID of notebook within workspace
-     */
     notebookId?: pulumi.Input<string>;
-    /**
-     * path of notebook
-     */
     notebookPath?: pulumi.Input<string>;
     /**
      * type of permissions.
      */
     objectType?: pulumi.Input<string>;
-    /**
-     * pipeline id
-     */
     pipelineId?: pulumi.Input<string>;
-    /**
-     * MLflow registered model id
-     */
     registeredModelId?: pulumi.Input<string>;
-    /**
-     * repo id
-     */
     repoId?: pulumi.Input<string>;
-    /**
-     * path of databricks repo directory(`/Repos/<username>/...`)
-     */
     repoPath?: pulumi.Input<string>;
-    /**
-     * Model Serving endpoint id.
-     */
     servingEndpointId?: pulumi.Input<string>;
-    /**
-     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     */
     sqlAlertId?: pulumi.Input<string>;
-    /**
-     * SQL dashboard id
-     */
     sqlDashboardId?: pulumi.Input<string>;
-    /**
-     * SQL warehouse id
-     */
     sqlEndpointId?: pulumi.Input<string>;
-    /**
-     * SQL query id
-     */
     sqlQueryId?: pulumi.Input<string>;
     workspaceFileId?: pulumi.Input<string>;
     workspaceFilePath?: pulumi.Input<string>;

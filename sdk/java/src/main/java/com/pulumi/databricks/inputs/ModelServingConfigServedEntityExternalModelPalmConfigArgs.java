@@ -14,17 +14,9 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
 
     public static final ModelServingConfigServedEntityExternalModelPalmConfigArgs Empty = new ModelServingConfigServedEntityExternalModelPalmConfigArgs();
 
-    /**
-     * The Databricks secret key reference for a PaLM API key.
-     * 
-     */
     @Import(name="palmApiKey", required=true)
     private Output<String> palmApiKey;
 
-    /**
-     * @return The Databricks secret key reference for a PaLM API key.
-     * 
-     */
     public Output<String> palmApiKey() {
         return this.palmApiKey;
     }
@@ -53,23 +45,11 @@ public final class ModelServingConfigServedEntityExternalModelPalmConfigArgs ext
             $ = new ModelServingConfigServedEntityExternalModelPalmConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param palmApiKey The Databricks secret key reference for a PaLM API key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder palmApiKey(Output<String> palmApiKey) {
             $.palmApiKey = palmApiKey;
             return this;
         }
 
-        /**
-         * @param palmApiKey The Databricks secret key reference for a PaLM API key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder palmApiKey(String palmApiKey) {
             return palmApiKey(Output.of(palmApiKey));
         }

@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class RecipientIpAccessList
     {
-        /// <summary>
-        /// Allowed IP Addresses in CIDR notation. Limit of 100.
-        /// </summary>
         public readonly ImmutableArray<string> AllowedIpAddresses;
 
         [OutputConstructor]

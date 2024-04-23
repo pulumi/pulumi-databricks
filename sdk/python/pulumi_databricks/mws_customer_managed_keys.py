@@ -242,7 +242,6 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         ### For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -290,11 +289,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -311,13 +308,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Customer-managed key for workspace storage
 
         ### For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -408,11 +403,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["STORAGE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -429,7 +422,6 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["STORAGE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -472,7 +464,6 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
 
         ### For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -520,11 +511,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -541,13 +530,11 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["MANAGED_SERVICES"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Customer-managed key for workspace storage
 
         ### For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -638,11 +625,9 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["STORAGE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -659,7 +644,6 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
             ),
             use_cases=["STORAGE"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

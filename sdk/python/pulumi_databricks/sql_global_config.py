@@ -242,7 +242,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
 
         ### AWS example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -254,13 +253,11 @@ class SqlGlobalConfig(pulumi.CustomResource):
                 "spark.sql.session.timeZone": "UTC",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Azure example
 
         For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -278,7 +275,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
                 "ANSI_MODE": "true",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -321,7 +317,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
 
         ### AWS example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -333,13 +328,11 @@ class SqlGlobalConfig(pulumi.CustomResource):
                 "spark.sql.session.timeZone": "UTC",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Azure example
 
         For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -357,7 +350,6 @@ class SqlGlobalConfig(pulumi.CustomResource):
                 "ANSI_MODE": "true",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

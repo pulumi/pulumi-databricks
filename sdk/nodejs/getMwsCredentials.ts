@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * Listing all credentials in Databricks Account
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * const all = databricks.getMwsCredentials({});
  * export const allMwsCredentials = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -79,7 +77,6 @@ export interface GetMwsCredentialsResult {
  *
  * Listing all credentials in Databricks Account
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -87,7 +84,6 @@ export interface GetMwsCredentialsResult {
  * const all = databricks.getMwsCredentials({});
  * export const allMwsCredentials = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

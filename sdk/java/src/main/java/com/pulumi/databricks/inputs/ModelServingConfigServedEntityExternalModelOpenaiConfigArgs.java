@@ -16,92 +16,44 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
 
     public static final ModelServingConfigServedEntityExternalModelOpenaiConfigArgs Empty = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs();
 
-    /**
-     * This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-     * 
-     */
     @Import(name="openaiApiBase")
     private @Nullable Output<String> openaiApiBase;
 
-    /**
-     * @return This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-     * 
-     */
     public Optional<Output<String>> openaiApiBase() {
         return Optional.ofNullable(this.openaiApiBase);
     }
 
-    /**
-     * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-     * 
-     */
     @Import(name="openaiApiKey", required=true)
     private Output<String> openaiApiKey;
 
-    /**
-     * @return The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-     * 
-     */
     public Output<String> openaiApiKey() {
         return this.openaiApiKey;
     }
 
-    /**
-     * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-     * 
-     */
     @Import(name="openaiApiType")
     private @Nullable Output<String> openaiApiType;
 
-    /**
-     * @return This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-     * 
-     */
     public Optional<Output<String>> openaiApiType() {
         return Optional.ofNullable(this.openaiApiType);
     }
 
-    /**
-     * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-     * 
-     */
     @Import(name="openaiApiVersion")
     private @Nullable Output<String> openaiApiVersion;
 
-    /**
-     * @return This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-     * 
-     */
     public Optional<Output<String>> openaiApiVersion() {
         return Optional.ofNullable(this.openaiApiVersion);
     }
 
-    /**
-     * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-     * 
-     */
     @Import(name="openaiDeploymentName")
     private @Nullable Output<String> openaiDeploymentName;
 
-    /**
-     * @return This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-     * 
-     */
     public Optional<Output<String>> openaiDeploymentName() {
         return Optional.ofNullable(this.openaiDeploymentName);
     }
 
-    /**
-     * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-     * 
-     */
     @Import(name="openaiOrganization")
     private @Nullable Output<String> openaiOrganization;
 
-    /**
-     * @return This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-     * 
-     */
     public Optional<Output<String>> openaiOrganization() {
         return Optional.ofNullable(this.openaiOrganization);
     }
@@ -135,128 +87,56 @@ public final class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs e
             $ = new ModelServingConfigServedEntityExternalModelOpenaiConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiBase(@Nullable Output<String> openaiApiBase) {
             $.openaiApiBase = openaiApiBase;
             return this;
         }
 
-        /**
-         * @param openaiApiBase This is the base URL for the OpenAI API (default: &#34;https://api.openai.com/v1&#34;). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiBase(String openaiApiBase) {
             return openaiApiBase(Output.of(openaiApiBase));
         }
 
-        /**
-         * @param openaiApiKey The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiKey(Output<String> openaiApiKey) {
             $.openaiApiKey = openaiApiKey;
             return this;
         }
 
-        /**
-         * @param openaiApiKey The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiKey(String openaiApiKey) {
             return openaiApiKey(Output.of(openaiApiKey));
         }
 
-        /**
-         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiType(@Nullable Output<String> openaiApiType) {
             $.openaiApiType = openaiApiType;
             return this;
         }
 
-        /**
-         * @param openaiApiType This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiType(String openaiApiType) {
             return openaiApiType(Output.of(openaiApiType));
         }
 
-        /**
-         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiVersion(@Nullable Output<String> openaiApiVersion) {
             $.openaiApiVersion = openaiApiVersion;
             return this;
         }
 
-        /**
-         * @param openaiApiVersion This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiApiVersion(String openaiApiVersion) {
             return openaiApiVersion(Output.of(openaiApiVersion));
         }
 
-        /**
-         * @param openaiDeploymentName This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiDeploymentName(@Nullable Output<String> openaiDeploymentName) {
             $.openaiDeploymentName = openaiDeploymentName;
             return this;
         }
 
-        /**
-         * @param openaiDeploymentName This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiDeploymentName(String openaiDeploymentName) {
             return openaiDeploymentName(Output.of(openaiDeploymentName));
         }
 
-        /**
-         * @param openaiOrganization This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiOrganization(@Nullable Output<String> openaiOrganization) {
             $.openaiOrganization = openaiOrganization;
             return this;
         }
 
-        /**
-         * @param openaiOrganization This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder openaiOrganization(String openaiOrganization) {
             return openaiOrganization(Output.of(openaiOrganization));
         }

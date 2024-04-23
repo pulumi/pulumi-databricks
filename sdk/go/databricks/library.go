@@ -20,7 +20,6 @@ import (
 //
 // You can install libraries on all clusters with the help of getClusters data resource:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,13 +54,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Java/Scala Maven
 //
 // Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,7 +88,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Python PyPI
 //
@@ -99,7 +95,6 @@ import (
 //
 // > **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,13 +121,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## R CRan
 //
 // Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -159,7 +152,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

@@ -136,7 +136,6 @@ class SecretAcl(pulumi.CustomResource):
 
         This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -152,7 +151,6 @@ class SecretAcl(pulumi.CustomResource):
             string_value=example["value"],
             scope=app.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -194,7 +192,6 @@ class SecretAcl(pulumi.CustomResource):
 
         This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -210,7 +207,6 @@ class SecretAcl(pulumi.CustomResource):
             string_value=example["value"],
             scope=app.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * After the following example, Bradley would have direct membership in group B and transitive membership in group A.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -30,7 +29,6 @@ import * as utilities from "./utilities";
  *     memberId: bradley.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

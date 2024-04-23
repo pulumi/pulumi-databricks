@@ -97,9 +97,6 @@ namespace Pulumi.Databricks
         [Output("maxConcurrentRuns")]
         public Output<int?> MaxConcurrentRuns { get; private set; } = null!;
 
-        /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        /// </summary>
         [Output("maxRetries")]
         public Output<int?> MaxRetries { get; private set; } = null!;
 
@@ -115,9 +112,6 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
-        /// </summary>
         [Output("newCluster")]
         public Output<Outputs.JobNewCluster?> NewCluster { get; private set; } = null!;
 
@@ -142,9 +136,6 @@ namespace Pulumi.Databricks
         [Output("queue")]
         public Output<Outputs.JobQueue?> Queue { get; private set; } = null!;
 
-        /// <summary>
-        /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        /// </summary>
         [Output("retryOnTimeout")]
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
@@ -172,9 +163,6 @@ namespace Pulumi.Databricks
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Task to run against the `inputs` list.
-        /// </summary>
         [Output("tasks")]
         public Output<ImmutableArray<Outputs.JobTask>> Tasks { get; private set; } = null!;
 
@@ -188,7 +176,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobTrigger?> Trigger { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the Git repository to use.
+        /// URL of the job on the given workspace
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -336,9 +324,6 @@ namespace Pulumi.Databricks
         [Input("maxConcurrentRuns")]
         public Input<int>? MaxConcurrentRuns { get; set; }
 
-        /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
 
@@ -354,9 +339,6 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
-        /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobNewClusterArgs>? NewCluster { get; set; }
 
@@ -386,9 +368,6 @@ namespace Pulumi.Databricks
         [Input("queue")]
         public Input<Inputs.JobQueueArgs>? Queue { get; set; }
 
-        /// <summary>
-        /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        /// </summary>
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
@@ -423,10 +402,6 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskArgs>? _tasks;
-
-        /// <summary>
-        /// Task to run against the `inputs` list.
-        /// </summary>
         public InputList<Inputs.JobTaskArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskArgs>());
@@ -547,9 +522,6 @@ namespace Pulumi.Databricks
         [Input("maxConcurrentRuns")]
         public Input<int>? MaxConcurrentRuns { get; set; }
 
-        /// <summary>
-        /// (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-        /// </summary>
         [Input("maxRetries")]
         public Input<int>? MaxRetries { get; set; }
 
@@ -565,9 +537,6 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
-        /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobNewClusterGetArgs>? NewCluster { get; set; }
 
@@ -597,9 +566,6 @@ namespace Pulumi.Databricks
         [Input("queue")]
         public Input<Inputs.JobQueueGetArgs>? Queue { get; set; }
 
-        /// <summary>
-        /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-        /// </summary>
         [Input("retryOnTimeout")]
         public Input<bool>? RetryOnTimeout { get; set; }
 
@@ -634,10 +600,6 @@ namespace Pulumi.Databricks
 
         [Input("tasks")]
         private InputList<Inputs.JobTaskGetArgs>? _tasks;
-
-        /// <summary>
-        /// Task to run against the `inputs` list.
-        /// </summary>
         public InputList<Inputs.JobTaskGetArgs> Tasks
         {
             get => _tasks ?? (_tasks = new InputList<Inputs.JobTaskGetArgs>());
@@ -654,7 +616,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobTriggerGetArgs>? Trigger { get; set; }
 
         /// <summary>
-        /// URL of the Git repository to use.
+        /// URL of the job on the given workspace
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

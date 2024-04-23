@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ClusterClusterLogConfDbfsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-        /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 

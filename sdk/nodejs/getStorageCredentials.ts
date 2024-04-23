@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * List all storage credentials in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * const all = databricks.getStorageCredentials({});
  * export const allStorageCredentials = all.then(all => all.names);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -63,7 +61,6 @@ export interface GetStorageCredentialsResult {
  *
  * List all storage credentials in the metastore
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -71,7 +68,6 @@ export interface GetStorageCredentialsResult {
  * const all = databricks.getStorageCredentials({});
  * export const allStorageCredentials = all.then(all => all.names);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

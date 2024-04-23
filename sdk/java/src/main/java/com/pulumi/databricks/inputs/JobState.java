@@ -246,8 +246,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -257,8 +255,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> maxRetries;
 
     /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -306,17 +302,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     @Import(name="newCluster")
     private @Nullable Output<JobNewClusterArgs> newCluster;
 
-    /**
-     * @return Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     public Optional<Output<JobNewClusterArgs>> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }
@@ -408,8 +396,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -419,8 +405,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> retryOnTimeout;
 
     /**
-     * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -535,17 +519,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * Task to run against the `inputs` list.
-     * 
-     */
     @Import(name="tasks")
     private @Nullable Output<List<JobTaskArgs>> tasks;
 
-    /**
-     * @return Task to run against the `inputs` list.
-     * 
-     */
     public Optional<Output<List<JobTaskArgs>>> tasks() {
         return Optional.ofNullable(this.tasks);
     }
@@ -573,14 +549,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the Git repository to use.
+     * @return URL of the job on the given workspace
      * 
      */
     public Optional<Output<String>> url() {
@@ -957,8 +933,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -972,8 +946,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxRetries (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1035,23 +1007,11 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(@Nullable Output<JobNewClusterArgs> newCluster) {
             $.newCluster = newCluster;
             return this;
         }
 
-        /**
-         * @param newCluster Same set of parameters as for databricks.Cluster resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder newCluster(JobNewClusterArgs newCluster) {
             return newCluster(Output.of(newCluster));
         }
@@ -1175,8 +1135,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retryOnTimeout (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1190,8 +1148,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retryOnTimeout (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1342,33 +1298,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tasks Task to run against the `inputs` list.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(@Nullable Output<List<JobTaskArgs>> tasks) {
             $.tasks = tasks;
             return this;
         }
 
-        /**
-         * @param tasks Task to run against the `inputs` list.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(List<JobTaskArgs> tasks) {
             return tasks(Output.of(tasks));
         }
 
-        /**
-         * @param tasks Task to run against the `inputs` list.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(JobTaskArgs... tasks) {
             return tasks(List.of(tasks));
         }
@@ -1404,7 +1342,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the Git repository to use.
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 
@@ -1415,7 +1353,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the Git repository to use.
+         * @param url URL of the job on the given workspace
          * 
          * @return builder
          * 

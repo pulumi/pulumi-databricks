@@ -136,7 +136,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsNetworksVpcEndpoints> VpcEndpoints { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// aws_vpc id
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsNetworksVpcEndpointsArgs>? VpcEndpoints { get; set; }
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// aws_vpc id
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsNetworksVpcEndpointsGetArgs>? VpcEndpoints { get; set; }
 
         /// <summary>
-        /// The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        /// aws_vpc id
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

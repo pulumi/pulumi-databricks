@@ -712,17 +712,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
-    /**
-     * URL for the Docker image
-     * 
-     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
-    /**
-     * @return URL for the Docker image
-     * 
-     */
     public Output<String> url() {
         return this.url;
     }

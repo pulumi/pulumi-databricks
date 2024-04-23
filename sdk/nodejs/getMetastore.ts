@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * MetastoreInfo response for a given metastore id
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * });
  * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -95,7 +93,6 @@ export interface GetMetastoreResult {
  *
  * MetastoreInfo response for a given metastore id
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -111,7 +108,6 @@ export interface GetMetastoreResult {
  * });
  * export const someMetastore = _this.apply(_this => _this.metastoreInfo);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

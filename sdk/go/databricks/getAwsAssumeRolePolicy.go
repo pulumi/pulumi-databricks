@@ -17,7 +17,6 @@ import (
 //
 // End-to-end example of provisioning Cross-account IAM role with databricks_mws_credentials:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,7 +82,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

@@ -156,14 +156,14 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * Name of the SQL warehouse. Must be unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+     * @return Name of the SQL warehouse. Must be unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -437,7 +437,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+         * @param name Name of the SQL warehouse. Must be unique.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class SqlEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+         * @param name Name of the SQL warehouse. Must be unique.
          * 
          * @return builder
          * 

@@ -54,9 +54,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("health")]
         public Input<Inputs.JobTaskForEachTaskTaskHealthArgs>? Health { get; set; }
 
-        /// <summary>
-        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-        /// </summary>
         [Input("jobClusterKey")]
         public Input<string>? JobClusterKey { get; set; }
 
@@ -84,9 +81,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("minRetryIntervalMillis")]
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
-        /// <summary>
-        /// Same set of parameters as for databricks.Cluster resource.
-        /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterArgs>? NewCluster { get; set; }
 

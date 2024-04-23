@@ -17,17 +17,11 @@ namespace Pulumi.Databricks.Outputs
         /// array of objects representing columns that contain the embedding source.  Each entry consists of:
         /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> EmbeddingSourceColumns;
-        /// <summary>
-        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
-        /// </summary>
         public readonly ImmutableArray<Outputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> EmbeddingVectorColumns;
         /// <summary>
         /// ID of the associated Delta Live Table pipeline.
         /// </summary>
         public readonly string? PipelineId;
-        /// <summary>
-        /// Pipeline execution mode. Possible values are:
-        /// </summary>
         public readonly string? PipelineType;
         /// <summary>
         /// The name of the source table.

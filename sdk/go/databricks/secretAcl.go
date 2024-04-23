@@ -18,7 +18,6 @@ import (
 //
 // This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,7 +63,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

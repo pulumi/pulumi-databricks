@@ -22,7 +22,6 @@ import (
 //
 // ### For AWS
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,11 +119,9 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### For GCP
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,13 +157,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Customer-managed key for workspace storage
 //
 // ### For AWS
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -323,11 +318,9 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### For GCP
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -363,7 +356,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

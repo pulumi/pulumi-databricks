@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -29,7 +28,6 @@ import * as utilities from "./utilities";
  *     scope: app.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

@@ -26,10 +26,6 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("embeddingVectorColumns")]
         private InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>? _embeddingVectorColumns;
-
-        /// <summary>
-        /// array of objects representing columns that contain the embedding vectors. Each entry consists of:
-        /// </summary>
         public InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs> EmbeddingVectorColumns
         {
             get => _embeddingVectorColumns ?? (_embeddingVectorColumns = new InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumnArgs>());
@@ -42,9 +38,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("pipelineId")]
         public Input<string>? PipelineId { get; set; }
 
-        /// <summary>
-        /// Pipeline execution mode. Possible values are:
-        /// </summary>
         [Input("pipelineType")]
         public Input<string>? PipelineType { get; set; }
 

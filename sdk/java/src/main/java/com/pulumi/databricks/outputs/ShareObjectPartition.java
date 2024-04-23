@@ -11,17 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ShareObjectPartition {
-    /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
-     * 
-     */
     private List<ShareObjectPartitionValue> values;
 
     private ShareObjectPartition() {}
-    /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
-     * 
-     */
     public List<ShareObjectPartitionValue> values() {
         return this.values;
     }

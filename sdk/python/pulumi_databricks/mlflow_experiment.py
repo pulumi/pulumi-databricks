@@ -237,7 +237,6 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -248,7 +247,6 @@ class MlflowExperiment(pulumi.CustomResource):
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 
@@ -293,7 +291,6 @@ class MlflowExperiment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -304,7 +301,6 @@ class MlflowExperiment(pulumi.CustomResource):
             artifact_location="dbfs:/tmp/my-experiment",
             description="My MLflow experiment description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 

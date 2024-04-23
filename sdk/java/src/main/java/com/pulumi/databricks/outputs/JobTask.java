@@ -57,10 +57,6 @@ public final class JobTask {
      * 
      */
     private @Nullable JobTaskHealth health;
-    /**
-     * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     private @Nullable String jobClusterKey;
     /**
      * @return (Set) An optional list of libraries to be installed on the cluster that will execute the job.
@@ -77,10 +73,6 @@ public final class JobTask {
      * 
      */
     private @Nullable Integer minRetryIntervalMillis;
-    /**
-     * @return Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     private @Nullable JobTaskNewCluster newCluster;
     private @Nullable JobTaskNotebookTask notebookTask;
     /**
@@ -166,10 +158,6 @@ public final class JobTask {
     public Optional<JobTaskHealth> health() {
         return Optional.ofNullable(this.health);
     }
-    /**
-     * @return Identifier that can be referenced in `task` block, so that cluster is shared between tasks
-     * 
-     */
     public Optional<String> jobClusterKey() {
         return Optional.ofNullable(this.jobClusterKey);
     }
@@ -194,10 +182,6 @@ public final class JobTask {
     public Optional<Integer> minRetryIntervalMillis() {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
-    /**
-     * @return Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     public Optional<JobTaskNewCluster> newCluster() {
         return Optional.ofNullable(this.newCluster);
     }

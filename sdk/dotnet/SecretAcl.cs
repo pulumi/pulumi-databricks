@@ -16,7 +16,6 @@ namespace Pulumi.Databricks
     /// 
     /// This way, data scientists can read the Publishing API key that is synchronized from, for example, Azure Key Vault.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Related Resources
     /// 

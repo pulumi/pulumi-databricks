@@ -64,143 +64,63 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<List<PermissionsAccessControl>> accessControls() {
         return this.accessControls;
     }
-    /**
-     * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     * 
-     */
     @Export(name="authorization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authorization;
 
-    /**
-     * @return either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     * 
-     */
     public Output<Optional<String>> authorization() {
         return Codegen.optional(this.authorization);
     }
-    /**
-     * cluster id
-     * 
-     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
-    /**
-     * @return cluster id
-     * 
-     */
     public Output<Optional<String>> clusterId() {
         return Codegen.optional(this.clusterId);
     }
-    /**
-     * cluster policy id
-     * 
-     */
     @Export(name="clusterPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterPolicyId;
 
-    /**
-     * @return cluster policy id
-     * 
-     */
     public Output<Optional<String>> clusterPolicyId() {
         return Codegen.optional(this.clusterPolicyId);
     }
-    /**
-     * directory id
-     * 
-     */
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryId;
 
-    /**
-     * @return directory id
-     * 
-     */
     public Output<Optional<String>> directoryId() {
         return Codegen.optional(this.directoryId);
     }
-    /**
-     * path of directory
-     * 
-     */
     @Export(name="directoryPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> directoryPath;
 
-    /**
-     * @return path of directory
-     * 
-     */
     public Output<Optional<String>> directoryPath() {
         return Codegen.optional(this.directoryPath);
     }
-    /**
-     * MLflow experiment id
-     * 
-     */
     @Export(name="experimentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> experimentId;
 
-    /**
-     * @return MLflow experiment id
-     * 
-     */
     public Output<Optional<String>> experimentId() {
         return Codegen.optional(this.experimentId);
     }
-    /**
-     * instance pool id
-     * 
-     */
     @Export(name="instancePoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instancePoolId;
 
-    /**
-     * @return instance pool id
-     * 
-     */
     public Output<Optional<String>> instancePoolId() {
         return Codegen.optional(this.instancePoolId);
     }
-    /**
-     * job id
-     * 
-     */
     @Export(name="jobId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobId;
 
-    /**
-     * @return job id
-     * 
-     */
     public Output<Optional<String>> jobId() {
         return Codegen.optional(this.jobId);
     }
-    /**
-     * ID of notebook within workspace
-     * 
-     */
     @Export(name="notebookId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notebookId;
 
-    /**
-     * @return ID of notebook within workspace
-     * 
-     */
     public Output<Optional<String>> notebookId() {
         return Codegen.optional(this.notebookId);
     }
-    /**
-     * path of notebook
-     * 
-     */
     @Export(name="notebookPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notebookPath;
 
-    /**
-     * @return path of notebook
-     * 
-     */
     public Output<Optional<String>> notebookPath() {
         return Codegen.optional(this.notebookPath);
     }
@@ -218,129 +138,57 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<String> objectType() {
         return this.objectType;
     }
-    /**
-     * pipeline id
-     * 
-     */
     @Export(name="pipelineId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipelineId;
 
-    /**
-     * @return pipeline id
-     * 
-     */
     public Output<Optional<String>> pipelineId() {
         return Codegen.optional(this.pipelineId);
     }
-    /**
-     * MLflow registered model id
-     * 
-     */
     @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> registeredModelId;
 
-    /**
-     * @return MLflow registered model id
-     * 
-     */
     public Output<Optional<String>> registeredModelId() {
         return Codegen.optional(this.registeredModelId);
     }
-    /**
-     * repo id
-     * 
-     */
     @Export(name="repoId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoId;
 
-    /**
-     * @return repo id
-     * 
-     */
     public Output<Optional<String>> repoId() {
         return Codegen.optional(this.repoId);
     }
-    /**
-     * path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-     * 
-     */
     @Export(name="repoPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoPath;
 
-    /**
-     * @return path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-     * 
-     */
     public Output<Optional<String>> repoPath() {
         return Codegen.optional(this.repoPath);
     }
-    /**
-     * Model Serving endpoint id.
-     * 
-     */
     @Export(name="servingEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> servingEndpointId;
 
-    /**
-     * @return Model Serving endpoint id.
-     * 
-     */
     public Output<Optional<String>> servingEndpointId() {
         return Codegen.optional(this.servingEndpointId);
     }
-    /**
-     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     * 
-     */
     @Export(name="sqlAlertId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlAlertId;
 
-    /**
-     * @return [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     * 
-     */
     public Output<Optional<String>> sqlAlertId() {
         return Codegen.optional(this.sqlAlertId);
     }
-    /**
-     * SQL dashboard id
-     * 
-     */
     @Export(name="sqlDashboardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlDashboardId;
 
-    /**
-     * @return SQL dashboard id
-     * 
-     */
     public Output<Optional<String>> sqlDashboardId() {
         return Codegen.optional(this.sqlDashboardId);
     }
-    /**
-     * SQL warehouse id
-     * 
-     */
     @Export(name="sqlEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlEndpointId;
 
-    /**
-     * @return SQL warehouse id
-     * 
-     */
     public Output<Optional<String>> sqlEndpointId() {
         return Codegen.optional(this.sqlEndpointId);
     }
-    /**
-     * SQL query id
-     * 
-     */
     @Export(name="sqlQueryId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sqlQueryId;
 
-    /**
-     * @return SQL query id
-     * 
-     */
     public Output<Optional<String>> sqlQueryId() {
         return Codegen.optional(this.sqlQueryId);
     }

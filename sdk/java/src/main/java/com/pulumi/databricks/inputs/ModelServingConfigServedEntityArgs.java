@@ -126,14 +126,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the external model.
+     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the external model.
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
      * 
      */
     public Optional<Output<String>> name() {
@@ -367,7 +367,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the external model.
+         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the external model.
+         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
          * 
          * @return builder
          * 

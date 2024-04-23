@@ -77,7 +77,6 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
 
     Get all Delta Live Tables pipelines:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -85,11 +84,9 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
     all = databricks.get_pipelines()
     pulumi.export("allPipelines", all.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     Filter Delta Live Tables pipelines by name (exact match):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -97,11 +94,9 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
     this = databricks.get_pipelines(pipeline_name="my_pipeline")
     pulumi.export("myPipeline", this.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     Filter Delta Live Tables pipelines by name (wildcard search):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -109,7 +104,6 @@ def get_pipelines(ids: Optional[Sequence[str]] = None,
     this = databricks.get_pipelines(pipeline_name="%pipeline%")
     pulumi.export("wildcardPipelines", this.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -150,7 +144,6 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Get all Delta Live Tables pipelines:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -158,11 +151,9 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     all = databricks.get_pipelines()
     pulumi.export("allPipelines", all.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     Filter Delta Live Tables pipelines by name (exact match):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -170,11 +161,9 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     this = databricks.get_pipelines(pipeline_name="my_pipeline")
     pulumi.export("myPipeline", this.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     Filter Delta Live Tables pipelines by name (wildcard search):
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -182,7 +171,6 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     this = databricks.get_pipelines(pipeline_name="%pipeline%")
     pulumi.export("wildcardPipelines", this.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

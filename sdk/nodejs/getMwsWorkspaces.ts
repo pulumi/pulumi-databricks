@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * Listing all workspaces in
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * const all = databricks.getMwsWorkspaces({});
  * export const allMwsWorkspaces = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -75,7 +73,6 @@ export interface GetMwsWorkspacesResult {
  *
  * Listing all workspaces in
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -83,7 +80,6 @@ export interface GetMwsWorkspacesResult {
  * const all = databricks.getMwsWorkspaces({});
  * export const allMwsWorkspaces = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

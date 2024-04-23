@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
-    /**
-     * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-     * 
-     */
     private String databricksApiToken;
-    /**
-     * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-     * 
-     */
     private String databricksWorkspaceUrl;
 
     private ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig() {}
-    /**
-     * @return The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-     * 
-     */
     public String databricksApiToken() {
         return this.databricksApiToken;
     }
-    /**
-     * @return The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-     * 
-     */
     public String databricksWorkspaceUrl() {
         return this.databricksWorkspaceUrl;
     }

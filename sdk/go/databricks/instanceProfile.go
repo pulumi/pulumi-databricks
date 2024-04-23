@@ -16,7 +16,6 @@ import (
 //
 // > **Note** Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -141,13 +140,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Usage with Cluster Policies
 //
 // It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,13 +181,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Granting access to all users
 //
 // You can make instance profile available to all users by associating it with the special group called `users` through Group data source.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,13 +222,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Usage with Databricks SQL serverless
 //
 // When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -303,7 +296,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

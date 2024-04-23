@@ -402,7 +402,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -421,7 +420,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
             ),
             is_default=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure using managed identity as credential (recommended)
 
@@ -454,7 +452,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -473,7 +470,6 @@ class MetastoreDataAccess(pulumi.CustomResource):
             ),
             is_default=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure using managed identity as credential (recommended)
 

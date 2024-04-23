@@ -158,7 +158,6 @@ def get_user(user_id: Optional[str] = None,
 
     Adding user to administrative group
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -169,7 +168,6 @@ def get_user(user_id: Optional[str] = None,
         group_id=admins.id,
         member_id=me.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -221,7 +219,6 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Adding user to administrative group
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -232,7 +229,6 @@ def get_user_output(user_id: Optional[pulumi.Input[Optional[str]]] = None,
         group_id=admins.id,
         member_id=me.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

@@ -126,14 +126,12 @@ def get_aws_cross_account_policy(aws_account_id: Optional[str] = None,
 
     For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     this = databricks.get_aws_cross_account_policy()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -191,14 +189,12 @@ def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Op
 
     For more detailed usage please see get_aws_assume_role_policy or databricks_aws_s3_mount pages.
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
 
     this = databricks.get_aws_cross_account_policy()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
