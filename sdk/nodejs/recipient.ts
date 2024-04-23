@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
  * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -43,7 +42,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Recipient extends pulumi.CustomResource {
     /**

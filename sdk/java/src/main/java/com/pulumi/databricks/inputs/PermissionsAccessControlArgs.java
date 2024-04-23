@@ -16,66 +16,30 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
 
     public static final PermissionsAccessControlArgs Empty = new PermissionsAccessControlArgs();
 
-    /**
-     * name of the group. We recommend setting permissions on groups.
-     * 
-     */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
-    /**
-     * @return name of the group. We recommend setting permissions on groups.
-     * 
-     */
     public Optional<Output<String>> groupName() {
         return Optional.ofNullable(this.groupName);
     }
 
-    /**
-     * permission level according to specific resource. See examples above for the reference.
-     * 
-     * Exactly one of the below arguments is required:
-     * 
-     */
     @Import(name="permissionLevel", required=true)
     private Output<String> permissionLevel;
 
-    /**
-     * @return permission level according to specific resource. See examples above for the reference.
-     * 
-     * Exactly one of the below arguments is required:
-     * 
-     */
     public Output<String> permissionLevel() {
         return this.permissionLevel;
     }
 
-    /**
-     * Application ID of the service_principal.
-     * 
-     */
     @Import(name="servicePrincipalName")
     private @Nullable Output<String> servicePrincipalName;
 
-    /**
-     * @return Application ID of the service_principal.
-     * 
-     */
     public Optional<Output<String>> servicePrincipalName() {
         return Optional.ofNullable(this.servicePrincipalName);
     }
 
-    /**
-     * name of the user.
-     * 
-     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
-    /**
-     * @return name of the user.
-     * 
-     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -107,90 +71,38 @@ public final class PermissionsAccessControlArgs extends com.pulumi.resources.Res
             $ = new PermissionsAccessControlArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param groupName name of the group. We recommend setting permissions on groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupName(@Nullable Output<String> groupName) {
             $.groupName = groupName;
             return this;
         }
 
-        /**
-         * @param groupName name of the group. We recommend setting permissions on groups.
-         * 
-         * @return builder
-         * 
-         */
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
         }
 
-        /**
-         * @param permissionLevel permission level according to specific resource. See examples above for the reference.
-         * 
-         * Exactly one of the below arguments is required:
-         * 
-         * @return builder
-         * 
-         */
         public Builder permissionLevel(Output<String> permissionLevel) {
             $.permissionLevel = permissionLevel;
             return this;
         }
 
-        /**
-         * @param permissionLevel permission level according to specific resource. See examples above for the reference.
-         * 
-         * Exactly one of the below arguments is required:
-         * 
-         * @return builder
-         * 
-         */
         public Builder permissionLevel(String permissionLevel) {
             return permissionLevel(Output.of(permissionLevel));
         }
 
-        /**
-         * @param servicePrincipalName Application ID of the service_principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePrincipalName(@Nullable Output<String> servicePrincipalName) {
             $.servicePrincipalName = servicePrincipalName;
             return this;
         }
 
-        /**
-         * @param servicePrincipalName Application ID of the service_principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePrincipalName(String servicePrincipalName) {
             return servicePrincipalName(Output.of(servicePrincipalName));
         }
 
-        /**
-         * @param userName name of the user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
-        /**
-         * @param userName name of the user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

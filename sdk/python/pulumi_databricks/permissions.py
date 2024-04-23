@@ -41,26 +41,7 @@ class PermissionsArgs:
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Permissions resource.
-        :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        :param pulumi.Input[str] cluster_id: cluster id
-        :param pulumi.Input[str] cluster_policy_id: cluster policy id
-        :param pulumi.Input[str] directory_id: directory id
-        :param pulumi.Input[str] directory_path: path of directory
-        :param pulumi.Input[str] experiment_id: MLflow experiment id
-        :param pulumi.Input[str] instance_pool_id: instance pool id
-        :param pulumi.Input[str] job_id: job id
-        :param pulumi.Input[str] notebook_id: ID of notebook within workspace
-        :param pulumi.Input[str] notebook_path: path of notebook
         :param pulumi.Input[str] object_type: type of permissions.
-        :param pulumi.Input[str] pipeline_id: pipeline id
-        :param pulumi.Input[str] registered_model_id: MLflow registered model id
-        :param pulumi.Input[str] repo_id: repo id
-        :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
-        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
-        :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
-        :param pulumi.Input[str] sql_query_id: SQL query id
         """
         pulumi.set(__self__, "access_controls", access_controls)
         if authorization is not None:
@@ -120,9 +101,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter
     def authorization(self) -> Optional[pulumi.Input[str]]:
-        """
-        either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
@@ -132,9 +110,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        cluster id
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -144,9 +119,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="clusterPolicyId")
     def cluster_policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        cluster policy id
-        """
         return pulumi.get(self, "cluster_policy_id")
 
     @cluster_policy_id.setter
@@ -156,9 +128,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        directory id
-        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -168,9 +137,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="directoryPath")
     def directory_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of directory
-        """
         return pulumi.get(self, "directory_path")
 
     @directory_path.setter
@@ -180,9 +146,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="experimentId")
     def experiment_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        MLflow experiment id
-        """
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
@@ -192,9 +155,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        instance pool id
-        """
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
@@ -204,9 +164,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        job id
-        """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
@@ -216,9 +173,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of notebook within workspace
-        """
         return pulumi.get(self, "notebook_id")
 
     @notebook_id.setter
@@ -228,9 +182,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="notebookPath")
     def notebook_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of notebook
-        """
         return pulumi.get(self, "notebook_path")
 
     @notebook_path.setter
@@ -252,9 +203,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="pipelineId")
     def pipeline_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        pipeline id
-        """
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
@@ -264,9 +212,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="registeredModelId")
     def registered_model_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        MLflow registered model id
-        """
         return pulumi.get(self, "registered_model_id")
 
     @registered_model_id.setter
@@ -276,9 +221,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="repoId")
     def repo_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        repo id
-        """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
@@ -288,9 +230,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="repoPath")
     def repo_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of databricks repo directory(`/Repos/<username>/...`)
-        """
         return pulumi.get(self, "repo_path")
 
     @repo_path.setter
@@ -300,9 +239,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Model Serving endpoint id.
-        """
         return pulumi.get(self, "serving_endpoint_id")
 
     @serving_endpoint_id.setter
@@ -312,9 +248,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="sqlAlertId")
     def sql_alert_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        """
         return pulumi.get(self, "sql_alert_id")
 
     @sql_alert_id.setter
@@ -324,9 +257,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="sqlDashboardId")
     def sql_dashboard_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL dashboard id
-        """
         return pulumi.get(self, "sql_dashboard_id")
 
     @sql_dashboard_id.setter
@@ -336,9 +266,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL warehouse id
-        """
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
@@ -348,9 +275,6 @@ class PermissionsArgs:
     @property
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL query id
-        """
         return pulumi.get(self, "sql_query_id")
 
     @sql_query_id.setter
@@ -404,26 +328,7 @@ class _PermissionsState:
                  workspace_file_path: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Permissions resources.
-        :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        :param pulumi.Input[str] cluster_id: cluster id
-        :param pulumi.Input[str] cluster_policy_id: cluster policy id
-        :param pulumi.Input[str] directory_id: directory id
-        :param pulumi.Input[str] directory_path: path of directory
-        :param pulumi.Input[str] experiment_id: MLflow experiment id
-        :param pulumi.Input[str] instance_pool_id: instance pool id
-        :param pulumi.Input[str] job_id: job id
-        :param pulumi.Input[str] notebook_id: ID of notebook within workspace
-        :param pulumi.Input[str] notebook_path: path of notebook
         :param pulumi.Input[str] object_type: type of permissions.
-        :param pulumi.Input[str] pipeline_id: pipeline id
-        :param pulumi.Input[str] registered_model_id: MLflow registered model id
-        :param pulumi.Input[str] repo_id: repo id
-        :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
-        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
-        :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
-        :param pulumi.Input[str] sql_query_id: SQL query id
         """
         if access_controls is not None:
             pulumi.set(__self__, "access_controls", access_controls)
@@ -484,9 +389,6 @@ class _PermissionsState:
     @property
     @pulumi.getter
     def authorization(self) -> Optional[pulumi.Input[str]]:
-        """
-        either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        """
         return pulumi.get(self, "authorization")
 
     @authorization.setter
@@ -496,9 +398,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        cluster id
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -508,9 +407,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="clusterPolicyId")
     def cluster_policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        cluster policy id
-        """
         return pulumi.get(self, "cluster_policy_id")
 
     @cluster_policy_id.setter
@@ -520,9 +416,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        directory id
-        """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
@@ -532,9 +425,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="directoryPath")
     def directory_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of directory
-        """
         return pulumi.get(self, "directory_path")
 
     @directory_path.setter
@@ -544,9 +434,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="experimentId")
     def experiment_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        MLflow experiment id
-        """
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
@@ -556,9 +443,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        instance pool id
-        """
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
@@ -568,9 +452,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        job id
-        """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
@@ -580,9 +461,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of notebook within workspace
-        """
         return pulumi.get(self, "notebook_id")
 
     @notebook_id.setter
@@ -592,9 +470,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="notebookPath")
     def notebook_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of notebook
-        """
         return pulumi.get(self, "notebook_path")
 
     @notebook_path.setter
@@ -616,9 +491,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="pipelineId")
     def pipeline_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        pipeline id
-        """
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
@@ -628,9 +500,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="registeredModelId")
     def registered_model_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        MLflow registered model id
-        """
         return pulumi.get(self, "registered_model_id")
 
     @registered_model_id.setter
@@ -640,9 +509,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="repoId")
     def repo_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        repo id
-        """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
@@ -652,9 +518,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="repoPath")
     def repo_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        path of databricks repo directory(`/Repos/<username>/...`)
-        """
         return pulumi.get(self, "repo_path")
 
     @repo_path.setter
@@ -664,9 +527,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Model Serving endpoint id.
-        """
         return pulumi.get(self, "serving_endpoint_id")
 
     @serving_endpoint_id.setter
@@ -676,9 +536,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="sqlAlertId")
     def sql_alert_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        """
         return pulumi.get(self, "sql_alert_id")
 
     @sql_alert_id.setter
@@ -688,9 +545,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="sqlDashboardId")
     def sql_dashboard_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL dashboard id
-        """
         return pulumi.get(self, "sql_dashboard_id")
 
     @sql_dashboard_id.setter
@@ -700,9 +554,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL warehouse id
-        """
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
@@ -712,9 +563,6 @@ class _PermissionsState:
     @property
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        SQL query id
-        """
         return pulumi.get(self, "sql_query_id")
 
     @sql_query_id.setter
@@ -810,26 +658,7 @@ class Permissions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        :param pulumi.Input[str] cluster_id: cluster id
-        :param pulumi.Input[str] cluster_policy_id: cluster policy id
-        :param pulumi.Input[str] directory_id: directory id
-        :param pulumi.Input[str] directory_path: path of directory
-        :param pulumi.Input[str] experiment_id: MLflow experiment id
-        :param pulumi.Input[str] instance_pool_id: instance pool id
-        :param pulumi.Input[str] job_id: job id
-        :param pulumi.Input[str] notebook_id: ID of notebook within workspace
-        :param pulumi.Input[str] notebook_path: path of notebook
         :param pulumi.Input[str] object_type: type of permissions.
-        :param pulumi.Input[str] pipeline_id: pipeline id
-        :param pulumi.Input[str] registered_model_id: MLflow registered model id
-        :param pulumi.Input[str] repo_id: repo id
-        :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
-        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
-        :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
-        :param pulumi.Input[str] sql_query_id: SQL query id
         """
         ...
     @overload
@@ -988,26 +817,7 @@ class Permissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] authorization: either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        :param pulumi.Input[str] cluster_id: cluster id
-        :param pulumi.Input[str] cluster_policy_id: cluster policy id
-        :param pulumi.Input[str] directory_id: directory id
-        :param pulumi.Input[str] directory_path: path of directory
-        :param pulumi.Input[str] experiment_id: MLflow experiment id
-        :param pulumi.Input[str] instance_pool_id: instance pool id
-        :param pulumi.Input[str] job_id: job id
-        :param pulumi.Input[str] notebook_id: ID of notebook within workspace
-        :param pulumi.Input[str] notebook_path: path of notebook
         :param pulumi.Input[str] object_type: type of permissions.
-        :param pulumi.Input[str] pipeline_id: pipeline id
-        :param pulumi.Input[str] registered_model_id: MLflow registered model id
-        :param pulumi.Input[str] repo_id: repo id
-        :param pulumi.Input[str] repo_path: path of databricks repo directory(`/Repos/<username>/...`)
-        :param pulumi.Input[str] serving_endpoint_id: Model Serving endpoint id.
-        :param pulumi.Input[str] sql_alert_id: [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        :param pulumi.Input[str] sql_dashboard_id: SQL dashboard id
-        :param pulumi.Input[str] sql_endpoint_id: SQL warehouse id
-        :param pulumi.Input[str] sql_query_id: SQL query id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1046,81 +856,51 @@ class Permissions(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authorization(self) -> pulumi.Output[Optional[str]]:
-        """
-        either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-        """
         return pulumi.get(self, "authorization")
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        cluster id
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterPolicyId")
     def cluster_policy_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        cluster policy id
-        """
         return pulumi.get(self, "cluster_policy_id")
 
     @property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        directory id
-        """
         return pulumi.get(self, "directory_id")
 
     @property
     @pulumi.getter(name="directoryPath")
     def directory_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        path of directory
-        """
         return pulumi.get(self, "directory_path")
 
     @property
     @pulumi.getter(name="experimentId")
     def experiment_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        MLflow experiment id
-        """
         return pulumi.get(self, "experiment_id")
 
     @property
     @pulumi.getter(name="instancePoolId")
     def instance_pool_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        instance pool id
-        """
         return pulumi.get(self, "instance_pool_id")
 
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        job id
-        """
         return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        ID of notebook within workspace
-        """
         return pulumi.get(self, "notebook_id")
 
     @property
     @pulumi.getter(name="notebookPath")
     def notebook_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        path of notebook
-        """
         return pulumi.get(self, "notebook_path")
 
     @property
@@ -1134,73 +914,46 @@ class Permissions(pulumi.CustomResource):
     @property
     @pulumi.getter(name="pipelineId")
     def pipeline_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        pipeline id
-        """
         return pulumi.get(self, "pipeline_id")
 
     @property
     @pulumi.getter(name="registeredModelId")
     def registered_model_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        MLflow registered model id
-        """
         return pulumi.get(self, "registered_model_id")
 
     @property
     @pulumi.getter(name="repoId")
     def repo_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        repo id
-        """
         return pulumi.get(self, "repo_id")
 
     @property
     @pulumi.getter(name="repoPath")
     def repo_path(self) -> pulumi.Output[Optional[str]]:
-        """
-        path of databricks repo directory(`/Repos/<username>/...`)
-        """
         return pulumi.get(self, "repo_path")
 
     @property
     @pulumi.getter(name="servingEndpointId")
     def serving_endpoint_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Model Serving endpoint id.
-        """
         return pulumi.get(self, "serving_endpoint_id")
 
     @property
     @pulumi.getter(name="sqlAlertId")
     def sql_alert_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-        """
         return pulumi.get(self, "sql_alert_id")
 
     @property
     @pulumi.getter(name="sqlDashboardId")
     def sql_dashboard_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        SQL dashboard id
-        """
         return pulumi.get(self, "sql_dashboard_id")
 
     @property
     @pulumi.getter(name="sqlEndpointId")
     def sql_endpoint_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        SQL warehouse id
-        """
         return pulumi.get(self, "sql_endpoint_id")
 
     @property
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        SQL query id
-        """
         return pulumi.get(self, "sql_query_id")
 
     @property

@@ -16,10 +16,6 @@ import javax.annotation.Nullable;
 public final class SqlQueryParameterQuery {
     private @Nullable SqlQueryParameterQueryMultiple multiple;
     private String queryId;
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     private @Nullable String value;
     private @Nullable List<String> values;
 
@@ -30,10 +26,6 @@ public final class SqlQueryParameterQuery {
     public String queryId() {
         return this.queryId;
     }
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

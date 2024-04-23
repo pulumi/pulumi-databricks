@@ -236,7 +236,6 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -246,7 +245,6 @@ class RegisteredModel(pulumi.CustomResource):
             catalog_name="main",
             schema_name="default")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 
@@ -294,7 +292,6 @@ class RegisteredModel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -304,7 +301,6 @@ class RegisteredModel(pulumi.CustomResource):
             catalog_name="main",
             schema_name="default")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Access Control
 

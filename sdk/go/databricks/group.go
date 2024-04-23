@@ -29,7 +29,6 @@ import (
 //
 // # Creating some group
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,11 +54,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Adding User as GroupMember of some group
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,11 +95,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating group in AWS Databricks account:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,11 +121,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating group in Azure Databricks account:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -154,7 +147,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

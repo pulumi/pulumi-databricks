@@ -19,7 +19,7 @@ public final class JobTriggerFileArrival {
      */
     private @Nullable Integer minTimeBetweenTriggersSeconds;
     /**
-     * @return URL of the Git repository to use.
+     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     private String url;
@@ -38,7 +38,7 @@ public final class JobTriggerFileArrival {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
     /**
-     * @return URL of the Git repository to use.
+     * @return string with URL under the Unity Catalog external location that will be monitored for new files. Please note that have a trailing slash character (`/`).
      * 
      */
     public String url() {

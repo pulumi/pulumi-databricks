@@ -13,10 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ModelServingConfigServedEntityExternalModelAnthropicConfig
     {
-        /// <summary>
-        /// The Databricks secret key reference for an Anthropic API key.
-        /// The Databricks secret key reference for an Anthropic API key.
-        /// </summary>
         public readonly string AnthropicApiKey;
 
         [OutputConstructor]

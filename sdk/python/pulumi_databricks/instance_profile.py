@@ -169,7 +169,6 @@ class InstanceProfile(pulumi.CustomResource):
 
         > **Note** Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -225,13 +224,11 @@ class InstanceProfile(pulumi.CustomResource):
                 spot_bid_price_percent=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Usage with Cluster Policies
 
         It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -246,13 +243,11 @@ class InstanceProfile(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Granting access to all users
 
         You can make instance profile available to all users by associating it with the special group called `users` through Group data source.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -263,13 +258,11 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Usage with Databricks SQL serverless
 
         When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -300,7 +293,6 @@ class InstanceProfile(pulumi.CustomResource):
             instance_profile_arn=this_instance_profile.arn,
             iam_role_arn=this.arn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -330,7 +322,6 @@ class InstanceProfile(pulumi.CustomResource):
 
         > **Note** Please switch to StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -386,13 +377,11 @@ class InstanceProfile(pulumi.CustomResource):
                 spot_bid_price_percent=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Usage with Cluster Policies
 
         It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `Cluster` above could be replaced with `ClusterPolicy`:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -407,13 +396,11 @@ class InstanceProfile(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Granting access to all users
 
         You can make instance profile available to all users by associating it with the special group called `users` through Group data source.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -424,13 +411,11 @@ class InstanceProfile(pulumi.CustomResource):
             group_id=users.id,
             instance_profile_id=this.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Usage with Databricks SQL serverless
 
         When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -461,7 +446,6 @@ class InstanceProfile(pulumi.CustomResource):
             instance_profile_arn=this_instance_profile.arn,
             iam_role_arn=this.arn)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

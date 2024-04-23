@@ -14,62 +14,30 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
 
     public static final ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs Empty = new ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs();
 
-    /**
-     * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     * 
-     */
     @Import(name="awsAccessKeyId", required=true)
     private Output<String> awsAccessKeyId;
 
-    /**
-     * @return The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-     * 
-     */
     public Output<String> awsAccessKeyId() {
         return this.awsAccessKeyId;
     }
 
-    /**
-     * The AWS region to use. Bedrock has to be enabled there.
-     * 
-     */
     @Import(name="awsRegion", required=true)
     private Output<String> awsRegion;
 
-    /**
-     * @return The AWS region to use. Bedrock has to be enabled there.
-     * 
-     */
     public Output<String> awsRegion() {
         return this.awsRegion;
     }
 
-    /**
-     * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     * 
-     */
     @Import(name="awsSecretAccessKey", required=true)
     private Output<String> awsSecretAccessKey;
 
-    /**
-     * @return The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-     * 
-     */
     public Output<String> awsSecretAccessKey() {
         return this.awsSecretAccessKey;
     }
 
-    /**
-     * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     * 
-     */
     @Import(name="bedrockProvider", required=true)
     private Output<String> bedrockProvider;
 
-    /**
-     * @return The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-     * 
-     */
     public Output<String> bedrockProvider() {
         return this.bedrockProvider;
     }
@@ -101,86 +69,38 @@ public final class ModelServingConfigServedEntityExternalModelAmazonBedrockConfi
             $ = new ModelServingConfigServedEntityExternalModelAmazonBedrockConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param awsAccessKeyId The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(Output<String> awsAccessKeyId) {
             $.awsAccessKeyId = awsAccessKeyId;
             return this;
         }
 
-        /**
-         * @param awsAccessKeyId The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsAccessKeyId(String awsAccessKeyId) {
             return awsAccessKeyId(Output.of(awsAccessKeyId));
         }
 
-        /**
-         * @param awsRegion The AWS region to use. Bedrock has to be enabled there.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsRegion(Output<String> awsRegion) {
             $.awsRegion = awsRegion;
             return this;
         }
 
-        /**
-         * @param awsRegion The AWS region to use. Bedrock has to be enabled there.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsRegion(String awsRegion) {
             return awsRegion(Output.of(awsRegion));
         }
 
-        /**
-         * @param awsSecretAccessKey The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(Output<String> awsSecretAccessKey) {
             $.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
 
-        /**
-         * @param awsSecretAccessKey The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
-         * 
-         * @return builder
-         * 
-         */
         public Builder awsSecretAccessKey(String awsSecretAccessKey) {
             return awsSecretAccessKey(Output.of(awsSecretAccessKey));
         }
 
-        /**
-         * @param bedrockProvider The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bedrockProvider(Output<String> bedrockProvider) {
             $.bedrockProvider = bedrockProvider;
             return this;
         }
 
-        /**
-         * @param bedrockProvider The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bedrockProvider(String bedrockProvider) {
             return bedrockProvider(Output.of(bedrockProvider));
         }

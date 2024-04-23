@@ -129,7 +129,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -138,7 +137,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             value="namespace_value",
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -172,7 +170,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -181,7 +178,6 @@ class DefaultNamespaceSetting(pulumi.CustomResource):
             value="namespace_value",
         ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ import (
 //
 // In workspace context, adding account-level user to a workspace:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,11 +51,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // In workspace context, adding account-level service principal to a workspace:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,11 +87,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // In workspace context, adding account-level group to a workspace:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -136,7 +131,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

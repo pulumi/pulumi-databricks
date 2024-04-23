@@ -12,20 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskSqlTaskAlertSubscription {
     private @Nullable String destinationId;
-    /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     private @Nullable String userName;
 
     private JobTaskSqlTaskAlertSubscription() {}
     public Optional<String> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
-    /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }

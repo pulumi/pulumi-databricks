@@ -185,7 +185,6 @@ def get_node_type(category: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -206,7 +205,6 @@ def get_node_type(category: Optional[str] = None,
             max_workers=50,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -301,7 +299,6 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -322,7 +319,6 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[str]]] = None,
             max_workers=50,
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

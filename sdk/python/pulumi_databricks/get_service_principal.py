@@ -153,7 +153,6 @@ def get_service_principal(acl_principal_id: Optional[str] = None,
 
     Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -164,7 +163,6 @@ def get_service_principal(acl_principal_id: Optional[str] = None,
         group_id=admins.id,
         member_id=spn.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -234,7 +232,6 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
 
     Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -245,7 +242,6 @@ def get_service_principal_output(acl_principal_id: Optional[pulumi.Input[Optiona
         group_id=admins.id,
         member_id=spn.id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

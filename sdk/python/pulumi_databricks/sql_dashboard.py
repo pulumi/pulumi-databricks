@@ -217,7 +217,6 @@ class SqlDashboard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -231,11 +230,9 @@ class SqlDashboard(pulumi.CustomResource):
                 "another-tag",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Example permission to share dashboard with all users:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -247,7 +244,6 @@ class SqlDashboard(pulumi.CustomResource):
                 permission_level="CAN_RUN",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -286,7 +282,6 @@ class SqlDashboard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -300,11 +295,9 @@ class SqlDashboard(pulumi.CustomResource):
                 "another-tag",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         Example permission to share dashboard with all users:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -316,7 +309,6 @@ class SqlDashboard(pulumi.CustomResource):
                 permission_level="CAN_RUN",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

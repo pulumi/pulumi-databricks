@@ -22,17 +22,9 @@ public final class JobTaskSqlTaskDashboardSubscriptionArgs extends com.pulumi.re
         return Optional.ofNullable(this.destinationId);
     }
 
-    /**
-     * The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
-    /**
-     * @return The email of an active workspace user. Non-admin users can only set this field to their own email.
-     * 
-     */
     public Optional<Output<String>> userName() {
         return Optional.ofNullable(this.userName);
     }
@@ -71,23 +63,11 @@ public final class JobTaskSqlTaskDashboardSubscriptionArgs extends com.pulumi.re
             return destinationId(Output.of(destinationId));
         }
 
-        /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(@Nullable Output<String> userName) {
             $.userName = userName;
             return this;
         }
 
-        /**
-         * @param userName The email of an active workspace user. Non-admin users can only set this field to their own email.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userName(String userName) {
             return userName(Output.of(userName));
         }

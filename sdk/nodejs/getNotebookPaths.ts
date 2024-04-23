@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     recursive: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotebookPaths(args: GetNotebookPathsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookPathsResult> {
 
@@ -70,7 +68,6 @@ export interface GetNotebookPathsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -80,7 +77,6 @@ export interface GetNotebookPathsResult {
  *     recursive: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotebookPathsOutput(args: GetNotebookPathsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookPathsResult> {
     return pulumi.output(args).apply((a: any) => getNotebookPaths(a, opts))

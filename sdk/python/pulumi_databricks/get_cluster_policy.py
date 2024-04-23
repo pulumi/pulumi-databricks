@@ -143,7 +143,6 @@ def get_cluster_policy(definition: Optional[str] = None,
 
     Referring to a cluster policy by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -151,7 +150,6 @@ def get_cluster_policy(definition: Optional[str] = None,
     personal = databricks.get_cluster_policy(name="Personal Compute")
     my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
@@ -205,7 +203,6 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] 
 
     Referring to a cluster policy by name:
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -213,7 +210,6 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[str]]] 
     personal = databricks.get_cluster_policy(name="Personal Compute")
     my_cluster = databricks.Cluster("my_cluster", policy_id=personal.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str definition: Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).

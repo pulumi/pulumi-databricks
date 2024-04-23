@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Access control
 //
@@ -112,7 +110,7 @@ type SqlEndpoint struct {
 	MaxNumClusters pulumi.IntPtrOutput `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrOutput `pulumi:"minNumClusters"`
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions pulumi.IntOutput `pulumi:"numActiveSessions"`
@@ -190,7 +188,7 @@ type sqlEndpointState struct {
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters *int `pulumi:"minNumClusters"`
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse. Must be unique.
 	Name *string `pulumi:"name"`
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions *int `pulumi:"numActiveSessions"`
@@ -236,7 +234,7 @@ type SqlEndpointState struct {
 	MaxNumClusters pulumi.IntPtrInput
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrInput
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringPtrInput
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions pulumi.IntPtrInput
@@ -280,7 +278,7 @@ type sqlEndpointArgs struct {
 	MaxNumClusters *int `pulumi:"maxNumClusters"`
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters *int `pulumi:"minNumClusters"`
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse. Must be unique.
 	Name *string `pulumi:"name"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
@@ -313,7 +311,7 @@ type SqlEndpointArgs struct {
 	MaxNumClusters pulumi.IntPtrInput
 	// Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
 	MinNumClusters pulumi.IntPtrInput
-	// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
@@ -473,7 +471,7 @@ func (o SqlEndpointOutput) MinNumClusters() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.IntPtrOutput { return v.MinNumClusters }).(pulumi.IntPtrOutput)
 }
 
-// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+// Name of the SQL warehouse. Must be unique.
 func (o SqlEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

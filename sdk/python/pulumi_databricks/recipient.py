@@ -487,7 +487,6 @@ class Recipient(pulumi.CustomResource):
         Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
         authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -506,7 +505,6 @@ class Recipient(pulumi.CustomResource):
                 allowed_ip_addresses=[],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -542,7 +540,6 @@ class Recipient(pulumi.CustomResource):
         Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
         authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -561,7 +558,6 @@ class Recipient(pulumi.CustomResource):
                 allowed_ip_addresses=[],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param RecipientArgs args: The arguments to use to populate this resource's properties.

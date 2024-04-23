@@ -24,152 +24,72 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accessControls);
     }
 
-    /**
-     * either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     * 
-     */
     @Import(name="authorization")
     private @Nullable Output<String> authorization;
 
-    /**
-     * @return either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-     * 
-     */
     public Optional<Output<String>> authorization() {
         return Optional.ofNullable(this.authorization);
     }
 
-    /**
-     * cluster id
-     * 
-     */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
-    /**
-     * @return cluster id
-     * 
-     */
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
 
-    /**
-     * cluster policy id
-     * 
-     */
     @Import(name="clusterPolicyId")
     private @Nullable Output<String> clusterPolicyId;
 
-    /**
-     * @return cluster policy id
-     * 
-     */
     public Optional<Output<String>> clusterPolicyId() {
         return Optional.ofNullable(this.clusterPolicyId);
     }
 
-    /**
-     * directory id
-     * 
-     */
     @Import(name="directoryId")
     private @Nullable Output<String> directoryId;
 
-    /**
-     * @return directory id
-     * 
-     */
     public Optional<Output<String>> directoryId() {
         return Optional.ofNullable(this.directoryId);
     }
 
-    /**
-     * path of directory
-     * 
-     */
     @Import(name="directoryPath")
     private @Nullable Output<String> directoryPath;
 
-    /**
-     * @return path of directory
-     * 
-     */
     public Optional<Output<String>> directoryPath() {
         return Optional.ofNullable(this.directoryPath);
     }
 
-    /**
-     * MLflow experiment id
-     * 
-     */
     @Import(name="experimentId")
     private @Nullable Output<String> experimentId;
 
-    /**
-     * @return MLflow experiment id
-     * 
-     */
     public Optional<Output<String>> experimentId() {
         return Optional.ofNullable(this.experimentId);
     }
 
-    /**
-     * instance pool id
-     * 
-     */
     @Import(name="instancePoolId")
     private @Nullable Output<String> instancePoolId;
 
-    /**
-     * @return instance pool id
-     * 
-     */
     public Optional<Output<String>> instancePoolId() {
         return Optional.ofNullable(this.instancePoolId);
     }
 
-    /**
-     * job id
-     * 
-     */
     @Import(name="jobId")
     private @Nullable Output<String> jobId;
 
-    /**
-     * @return job id
-     * 
-     */
     public Optional<Output<String>> jobId() {
         return Optional.ofNullable(this.jobId);
     }
 
-    /**
-     * ID of notebook within workspace
-     * 
-     */
     @Import(name="notebookId")
     private @Nullable Output<String> notebookId;
 
-    /**
-     * @return ID of notebook within workspace
-     * 
-     */
     public Optional<Output<String>> notebookId() {
         return Optional.ofNullable(this.notebookId);
     }
 
-    /**
-     * path of notebook
-     * 
-     */
     @Import(name="notebookPath")
     private @Nullable Output<String> notebookPath;
 
-    /**
-     * @return path of notebook
-     * 
-     */
     public Optional<Output<String>> notebookPath() {
         return Optional.ofNullable(this.notebookPath);
     }
@@ -189,137 +109,65 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.objectType);
     }
 
-    /**
-     * pipeline id
-     * 
-     */
     @Import(name="pipelineId")
     private @Nullable Output<String> pipelineId;
 
-    /**
-     * @return pipeline id
-     * 
-     */
     public Optional<Output<String>> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
 
-    /**
-     * MLflow registered model id
-     * 
-     */
     @Import(name="registeredModelId")
     private @Nullable Output<String> registeredModelId;
 
-    /**
-     * @return MLflow registered model id
-     * 
-     */
     public Optional<Output<String>> registeredModelId() {
         return Optional.ofNullable(this.registeredModelId);
     }
 
-    /**
-     * repo id
-     * 
-     */
     @Import(name="repoId")
     private @Nullable Output<String> repoId;
 
-    /**
-     * @return repo id
-     * 
-     */
     public Optional<Output<String>> repoId() {
         return Optional.ofNullable(this.repoId);
     }
 
-    /**
-     * path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-     * 
-     */
     @Import(name="repoPath")
     private @Nullable Output<String> repoPath;
 
-    /**
-     * @return path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-     * 
-     */
     public Optional<Output<String>> repoPath() {
         return Optional.ofNullable(this.repoPath);
     }
 
-    /**
-     * Model Serving endpoint id.
-     * 
-     */
     @Import(name="servingEndpointId")
     private @Nullable Output<String> servingEndpointId;
 
-    /**
-     * @return Model Serving endpoint id.
-     * 
-     */
     public Optional<Output<String>> servingEndpointId() {
         return Optional.ofNullable(this.servingEndpointId);
     }
 
-    /**
-     * [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     * 
-     */
     @Import(name="sqlAlertId")
     private @Nullable Output<String> sqlAlertId;
 
-    /**
-     * @return [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-     * 
-     */
     public Optional<Output<String>> sqlAlertId() {
         return Optional.ofNullable(this.sqlAlertId);
     }
 
-    /**
-     * SQL dashboard id
-     * 
-     */
     @Import(name="sqlDashboardId")
     private @Nullable Output<String> sqlDashboardId;
 
-    /**
-     * @return SQL dashboard id
-     * 
-     */
     public Optional<Output<String>> sqlDashboardId() {
         return Optional.ofNullable(this.sqlDashboardId);
     }
 
-    /**
-     * SQL warehouse id
-     * 
-     */
     @Import(name="sqlEndpointId")
     private @Nullable Output<String> sqlEndpointId;
 
-    /**
-     * @return SQL warehouse id
-     * 
-     */
     public Optional<Output<String>> sqlEndpointId() {
         return Optional.ofNullable(this.sqlEndpointId);
     }
 
-    /**
-     * SQL query id
-     * 
-     */
     @Import(name="sqlQueryId")
     private @Nullable Output<String> sqlQueryId;
 
-    /**
-     * @return SQL query id
-     * 
-     */
     public Optional<Output<String>> sqlQueryId() {
         return Optional.ofNullable(this.sqlQueryId);
     }
@@ -397,212 +245,92 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
             return accessControls(List.of(accessControls));
         }
 
-        /**
-         * @param authorization either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-         * 
-         * @return builder
-         * 
-         */
         public Builder authorization(@Nullable Output<String> authorization) {
             $.authorization = authorization;
             return this;
         }
 
-        /**
-         * @param authorization either [`tokens`](https://docs.databricks.com/administration-guide/access-control/tokens.html) or [`passwords`](https://docs.databricks.com/administration-guide/users-groups/single-sign-on/index.html#configure-password-permission).
-         * 
-         * @return builder
-         * 
-         */
         public Builder authorization(String authorization) {
             return authorization(Output.of(authorization));
         }
 
-        /**
-         * @param clusterId cluster id
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
-        /**
-         * @param clusterId cluster id
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
         }
 
-        /**
-         * @param clusterPolicyId cluster policy id
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterPolicyId(@Nullable Output<String> clusterPolicyId) {
             $.clusterPolicyId = clusterPolicyId;
             return this;
         }
 
-        /**
-         * @param clusterPolicyId cluster policy id
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterPolicyId(String clusterPolicyId) {
             return clusterPolicyId(Output.of(clusterPolicyId));
         }
 
-        /**
-         * @param directoryId directory id
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryId(@Nullable Output<String> directoryId) {
             $.directoryId = directoryId;
             return this;
         }
 
-        /**
-         * @param directoryId directory id
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryId(String directoryId) {
             return directoryId(Output.of(directoryId));
         }
 
-        /**
-         * @param directoryPath path of directory
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryPath(@Nullable Output<String> directoryPath) {
             $.directoryPath = directoryPath;
             return this;
         }
 
-        /**
-         * @param directoryPath path of directory
-         * 
-         * @return builder
-         * 
-         */
         public Builder directoryPath(String directoryPath) {
             return directoryPath(Output.of(directoryPath));
         }
 
-        /**
-         * @param experimentId MLflow experiment id
-         * 
-         * @return builder
-         * 
-         */
         public Builder experimentId(@Nullable Output<String> experimentId) {
             $.experimentId = experimentId;
             return this;
         }
 
-        /**
-         * @param experimentId MLflow experiment id
-         * 
-         * @return builder
-         * 
-         */
         public Builder experimentId(String experimentId) {
             return experimentId(Output.of(experimentId));
         }
 
-        /**
-         * @param instancePoolId instance pool id
-         * 
-         * @return builder
-         * 
-         */
         public Builder instancePoolId(@Nullable Output<String> instancePoolId) {
             $.instancePoolId = instancePoolId;
             return this;
         }
 
-        /**
-         * @param instancePoolId instance pool id
-         * 
-         * @return builder
-         * 
-         */
         public Builder instancePoolId(String instancePoolId) {
             return instancePoolId(Output.of(instancePoolId));
         }
 
-        /**
-         * @param jobId job id
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobId(@Nullable Output<String> jobId) {
             $.jobId = jobId;
             return this;
         }
 
-        /**
-         * @param jobId job id
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobId(String jobId) {
             return jobId(Output.of(jobId));
         }
 
-        /**
-         * @param notebookId ID of notebook within workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebookId(@Nullable Output<String> notebookId) {
             $.notebookId = notebookId;
             return this;
         }
 
-        /**
-         * @param notebookId ID of notebook within workspace
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebookId(String notebookId) {
             return notebookId(Output.of(notebookId));
         }
 
-        /**
-         * @param notebookPath path of notebook
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebookPath(@Nullable Output<String> notebookPath) {
             $.notebookPath = notebookPath;
             return this;
         }
 
-        /**
-         * @param notebookPath path of notebook
-         * 
-         * @return builder
-         * 
-         */
         public Builder notebookPath(String notebookPath) {
             return notebookPath(Output.of(notebookPath));
         }
@@ -628,191 +356,83 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
             return objectType(Output.of(objectType));
         }
 
-        /**
-         * @param pipelineId pipeline id
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineId(@Nullable Output<String> pipelineId) {
             $.pipelineId = pipelineId;
             return this;
         }
 
-        /**
-         * @param pipelineId pipeline id
-         * 
-         * @return builder
-         * 
-         */
         public Builder pipelineId(String pipelineId) {
             return pipelineId(Output.of(pipelineId));
         }
 
-        /**
-         * @param registeredModelId MLflow registered model id
-         * 
-         * @return builder
-         * 
-         */
         public Builder registeredModelId(@Nullable Output<String> registeredModelId) {
             $.registeredModelId = registeredModelId;
             return this;
         }
 
-        /**
-         * @param registeredModelId MLflow registered model id
-         * 
-         * @return builder
-         * 
-         */
         public Builder registeredModelId(String registeredModelId) {
             return registeredModelId(Output.of(registeredModelId));
         }
 
-        /**
-         * @param repoId repo id
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoId(@Nullable Output<String> repoId) {
             $.repoId = repoId;
             return this;
         }
 
-        /**
-         * @param repoId repo id
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoId(String repoId) {
             return repoId(Output.of(repoId));
         }
 
-        /**
-         * @param repoPath path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoPath(@Nullable Output<String> repoPath) {
             $.repoPath = repoPath;
             return this;
         }
 
-        /**
-         * @param repoPath path of databricks repo directory(`/Repos/&lt;username&gt;/...`)
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoPath(String repoPath) {
             return repoPath(Output.of(repoPath));
         }
 
-        /**
-         * @param servingEndpointId Model Serving endpoint id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servingEndpointId(@Nullable Output<String> servingEndpointId) {
             $.servingEndpointId = servingEndpointId;
             return this;
         }
 
-        /**
-         * @param servingEndpointId Model Serving endpoint id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servingEndpointId(String servingEndpointId) {
             return servingEndpointId(Output.of(servingEndpointId));
         }
 
-        /**
-         * @param sqlAlertId [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlAlertId(@Nullable Output<String> sqlAlertId) {
             $.sqlAlertId = sqlAlertId;
             return this;
         }
 
-        /**
-         * @param sqlAlertId [SQL alert](https://docs.databricks.com/sql/user/security/access-control/alert-acl.html) id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlAlertId(String sqlAlertId) {
             return sqlAlertId(Output.of(sqlAlertId));
         }
 
-        /**
-         * @param sqlDashboardId SQL dashboard id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlDashboardId(@Nullable Output<String> sqlDashboardId) {
             $.sqlDashboardId = sqlDashboardId;
             return this;
         }
 
-        /**
-         * @param sqlDashboardId SQL dashboard id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlDashboardId(String sqlDashboardId) {
             return sqlDashboardId(Output.of(sqlDashboardId));
         }
 
-        /**
-         * @param sqlEndpointId SQL warehouse id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlEndpointId(@Nullable Output<String> sqlEndpointId) {
             $.sqlEndpointId = sqlEndpointId;
             return this;
         }
 
-        /**
-         * @param sqlEndpointId SQL warehouse id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlEndpointId(String sqlEndpointId) {
             return sqlEndpointId(Output.of(sqlEndpointId));
         }
 
-        /**
-         * @param sqlQueryId SQL query id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlQueryId(@Nullable Output<String> sqlQueryId) {
             $.sqlQueryId = sqlQueryId;
             return this;
         }
 
-        /**
-         * @param sqlQueryId SQL query id
-         * 
-         * @return builder
-         * 
-         */
         public Builder sqlQueryId(String sqlQueryId) {
             return sqlQueryId(Output.of(sqlQueryId));
         }

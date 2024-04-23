@@ -436,7 +436,6 @@ class StorageCredential(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -454,11 +453,9 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -476,11 +473,9 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -495,7 +490,6 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -537,7 +531,6 @@ class StorageCredential(pulumi.CustomResource):
 
         For AWS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -555,11 +548,9 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For Azure
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -577,11 +568,9 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         For GCP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -596,7 +585,6 @@ class StorageCredential(pulumi.CustomResource):
                 privileges=["CREATE_EXTERNAL_TABLE"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

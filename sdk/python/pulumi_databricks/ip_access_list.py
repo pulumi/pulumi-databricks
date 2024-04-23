@@ -169,7 +169,6 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -187,7 +186,6 @@ class IpAccessList(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[this]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -230,7 +228,6 @@ class IpAccessList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -248,7 +245,6 @@ class IpAccessList(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(depends_on=[this]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

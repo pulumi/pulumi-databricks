@@ -465,7 +465,6 @@ class Catalog(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -477,7 +476,6 @@ class Catalog(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -522,7 +520,6 @@ class Catalog(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -534,7 +531,6 @@ class Catalog(pulumi.CustomResource):
                 "purpose": "testing",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

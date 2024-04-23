@@ -63,7 +63,6 @@ def get_shares(shares: Optional[Sequence[str]] = None,
 
     Getting all existing shares in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -71,7 +70,6 @@ def get_shares(shares: Optional[Sequence[str]] = None,
     this = databricks.get_shares()
     pulumi.export("shareName", this.shares)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 
@@ -102,7 +100,6 @@ def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Getting all existing shares in the metastore
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_databricks as databricks
@@ -110,7 +107,6 @@ def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     this = databricks.get_shares()
     pulumi.export("shareName", this.shares)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Related Resources
 

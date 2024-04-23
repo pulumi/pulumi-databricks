@@ -18,7 +18,6 @@ namespace Pulumi.Databricks
         /// 
         /// Create cloud-specific databricks_storage_credential:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Exported attributes
         /// 
@@ -71,7 +69,6 @@ namespace Pulumi.Databricks
         /// 
         /// Create cloud-specific databricks_storage_credential:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -93,7 +90,6 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Exported attributes
         /// 

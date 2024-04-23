@@ -14,17 +14,9 @@ public final class MwsWorkspacesCloudResourceContainerGcpArgs extends com.pulumi
 
     public static final MwsWorkspacesCloudResourceContainerGcpArgs Empty = new MwsWorkspacesCloudResourceContainerGcpArgs();
 
-    /**
-     * The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-     * 
-     */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
-    /**
-     * @return The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-     * 
-     */
     public Output<String> projectId() {
         return this.projectId;
     }
@@ -53,23 +45,11 @@ public final class MwsWorkspacesCloudResourceContainerGcpArgs extends com.pulumi
             $ = new MwsWorkspacesCloudResourceContainerGcpArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param projectId The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
 
-        /**
-         * @param projectId The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
         }

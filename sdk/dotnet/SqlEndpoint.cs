@@ -14,7 +14,6 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.Databricks
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Access control
     /// 
@@ -149,7 +147,7 @@ namespace Pulumi.Databricks
         public Output<int?> MinNumClusters { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// Name of the SQL warehouse. Must be unique.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -298,7 +296,7 @@ namespace Pulumi.Databricks
         public Input<int>? MinNumClusters { get; set; }
 
         /// <summary>
-        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// Name of the SQL warehouse. Must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -409,7 +407,7 @@ namespace Pulumi.Databricks
         public Input<int>? MinNumClusters { get; set; }
 
         /// <summary>
-        /// Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
+        /// Name of the SQL warehouse. Must be unique.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

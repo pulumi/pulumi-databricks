@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -29,7 +28,6 @@ import * as utilities from "./utilities";
  *     memberId: spn.then(spn => spn.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -144,7 +142,6 @@ export interface GetServicePrincipalResult {
  *
  * Adding service principal `11111111-2222-3333-4444-555666777888` to administrative group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -160,7 +157,6 @@ export interface GetServicePrincipalResult {
  *     memberId: spn.then(spn => spn.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

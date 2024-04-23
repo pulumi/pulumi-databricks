@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * For AWS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -34,7 +33,6 @@ import * as utilities from "./utilities";
  *     workspaceId: workspaceId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * For Azure
  *

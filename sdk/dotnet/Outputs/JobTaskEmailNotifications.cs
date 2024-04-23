@@ -13,25 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTaskEmailNotifications
     {
-        /// <summary>
-        /// (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notification_settings` configuration block).
-        /// </summary>
         public readonly bool? NoAlertForSkippedRuns;
-        /// <summary>
-        /// (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
-        /// </summary>
         public readonly ImmutableArray<string> OnDurationWarningThresholdExceededs;
-        /// <summary>
-        /// (List) list of emails to notify when the run fails.
-        /// </summary>
         public readonly ImmutableArray<string> OnFailures;
-        /// <summary>
-        /// (List) list of emails to notify when the run starts.
-        /// </summary>
         public readonly ImmutableArray<string> OnStarts;
-        /// <summary>
-        /// (List) list of emails to notify when the run completes successfully.
-        /// </summary>
         public readonly ImmutableArray<string> OnSuccesses;
 
         [OutputConstructor]

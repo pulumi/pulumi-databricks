@@ -93,8 +93,6 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly maxConcurrentRuns!: pulumi.Output<number | undefined>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
@@ -108,9 +106,6 @@ export class Job extends pulumi.CustomResource {
      * An optional name for the job. The default value is Untitled.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     */
     public readonly newCluster!: pulumi.Output<outputs.JobNewCluster | undefined>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -131,8 +126,6 @@ export class Job extends pulumi.CustomResource {
     public readonly pythonWheelTask!: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
     public readonly queue!: pulumi.Output<outputs.JobQueue | undefined>;
     /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     public readonly retryOnTimeout!: pulumi.Output<boolean | undefined>;
@@ -158,9 +151,6 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly sparkSubmitTask!: pulumi.Output<outputs.JobSparkSubmitTask | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * Task to run against the `inputs` list.
-     */
     public readonly tasks!: pulumi.Output<outputs.JobTask[] | undefined>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -168,7 +158,7 @@ export class Job extends pulumi.CustomResource {
     public readonly timeoutSeconds!: pulumi.Output<number | undefined>;
     public readonly trigger!: pulumi.Output<outputs.JobTrigger | undefined>;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -327,8 +317,6 @@ export interface JobState {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
@@ -342,9 +330,6 @@ export interface JobState {
      * An optional name for the job. The default value is Untitled.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -365,8 +350,6 @@ export interface JobState {
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
@@ -392,9 +375,6 @@ export interface JobState {
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Task to run against the `inputs` list.
-     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
@@ -402,7 +382,7 @@ export interface JobState {
     timeoutSeconds?: pulumi.Input<number>;
     trigger?: pulumi.Input<inputs.JobTrigger>;
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      */
     url?: pulumi.Input<string>;
     /**
@@ -463,8 +443,6 @@ export interface JobArgs {
      */
     maxConcurrentRuns?: pulumi.Input<number>;
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     maxRetries?: pulumi.Input<number>;
@@ -478,9 +456,6 @@ export interface JobArgs {
      * An optional name for the job. The default value is Untitled.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     */
     newCluster?: pulumi.Input<inputs.JobNewCluster>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
@@ -501,8 +476,6 @@ export interface JobArgs {
     pythonWheelTask?: pulumi.Input<inputs.JobPythonWheelTask>;
     queue?: pulumi.Input<inputs.JobQueue>;
     /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     *
      * @deprecated should be used inside a task block and not inside a job block
      */
     retryOnTimeout?: pulumi.Input<boolean>;
@@ -528,9 +501,6 @@ export interface JobArgs {
      */
     sparkSubmitTask?: pulumi.Input<inputs.JobSparkSubmitTask>;
     tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Task to run against the `inputs` list.
-     */
     tasks?: pulumi.Input<pulumi.Input<inputs.JobTask>[]>;
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.

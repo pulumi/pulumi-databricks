@@ -52,7 +52,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable Integer minProvisionedThroughput;
     /**
-     * @return The name of the external model.
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
      * 
      */
     private @Nullable String name;
@@ -123,7 +123,7 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.minProvisionedThroughput);
     }
     /**
-     * @return The name of the external model.
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with &#39;.&#39; and &#39;:&#39; replaced with &#39;-&#39;, and if not specified for other entities, it defaults to -.
      * 
      */
     public Optional<String> name() {

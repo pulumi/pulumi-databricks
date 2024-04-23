@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RecipientIpAccessList {
-    /**
-     * @return Allowed IP Addresses in CIDR notation. Limit of 100.
-     * 
-     */
     private @Nullable List<String> allowedIpAddresses;
 
     private RecipientIpAccessList() {}
-    /**
-     * @return Allowed IP Addresses in CIDR notation. Limit of 100.
-     * 
-     */
     public List<String> allowedIpAddresses() {
         return this.allowedIpAddresses == null ? List.of() : this.allowedIpAddresses;
     }

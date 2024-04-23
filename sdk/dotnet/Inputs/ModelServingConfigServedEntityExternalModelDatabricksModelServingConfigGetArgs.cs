@@ -12,15 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelDatabricksModelServingConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
-        /// </summary>
         [Input("databricksApiToken", required: true)]
         public Input<string> DatabricksApiToken { get; set; } = null!;
 
-        /// <summary>
-        /// The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
-        /// </summary>
         [Input("databricksWorkspaceUrl", required: true)]
         public Input<string> DatabricksWorkspaceUrl { get; set; } = null!;
 

@@ -14,17 +14,9 @@ public final class SqlQueryParameterNumberArgs extends com.pulumi.resources.Reso
 
     public static final SqlQueryParameterNumberArgs Empty = new SqlQueryParameterNumberArgs();
 
-    /**
-     * The default value for this parameter.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<Double> value;
 
-    /**
-     * @return The default value for this parameter.
-     * 
-     */
     public Output<Double> value() {
         return this.value;
     }
@@ -53,23 +45,11 @@ public final class SqlQueryParameterNumberArgs extends com.pulumi.resources.Reso
             $ = new SqlQueryParameterNumberArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param value The default value for this parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<Double> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The default value for this parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Double value) {
             return value(Output.of(value));
         }

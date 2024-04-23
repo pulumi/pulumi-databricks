@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Setting entitlements for a regular user:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -27,11 +26,9 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Setting entitlements for a service principal:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -45,11 +42,9 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Setting entitlements to all users in a workspace - referencing special `users` databricks.Group
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -63,7 +58,6 @@ import * as utilities from "./utilities";
  *     allowInstancePoolCreate: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

@@ -17,107 +17,51 @@ public final class ClusterClusterLogConfS3Args extends com.pulumi.resources.Reso
 
     public static final ClusterClusterLogConfS3Args Empty = new ClusterClusterLogConfS3Args();
 
-    /**
-     * Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     * 
-     */
     @Import(name="cannedAcl")
     private @Nullable Output<String> cannedAcl;
 
-    /**
-     * @return Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-     * 
-     */
     public Optional<Output<String>> cannedAcl() {
         return Optional.ofNullable(this.cannedAcl);
     }
 
-    /**
-     * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
-    /**
-     * @return S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-     * 
-     */
     public Output<String> destination() {
         return this.destination;
     }
 
-    /**
-     * Enable server-side encryption, false by default.
-     * 
-     */
     @Import(name="enableEncryption")
     private @Nullable Output<Boolean> enableEncryption;
 
-    /**
-     * @return Enable server-side encryption, false by default.
-     * 
-     */
     public Optional<Output<Boolean>> enableEncryption() {
         return Optional.ofNullable(this.enableEncryption);
     }
 
-    /**
-     * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     * 
-     */
     @Import(name="encryptionType")
     private @Nullable Output<String> encryptionType;
 
-    /**
-     * @return The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-     * 
-     */
     public Optional<Output<String>> encryptionType() {
         return Optional.ofNullable(this.encryptionType);
     }
 
-    /**
-     * S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     * 
-     */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
-    /**
-     * @return S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-     * 
-     */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
-    /**
-     * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     * 
-     */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
-    /**
-     * @return KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-     * 
-     */
     public Optional<Output<String>> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
 
-    /**
-     * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -152,149 +96,65 @@ public final class ClusterClusterLogConfS3Args extends com.pulumi.resources.Reso
             $ = new ClusterClusterLogConfS3Args(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cannedAcl Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cannedAcl(@Nullable Output<String> cannedAcl) {
             $.cannedAcl = cannedAcl;
             return this;
         }
 
-        /**
-         * @param cannedAcl Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cannedAcl(String cannedAcl) {
             return cannedAcl(Output.of(cannedAcl));
         }
 
-        /**
-         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
-        /**
-         * @param destination S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }
 
-        /**
-         * @param enableEncryption Enable server-side encryption, false by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableEncryption(@Nullable Output<Boolean> enableEncryption) {
             $.enableEncryption = enableEncryption;
             return this;
         }
 
-        /**
-         * @param enableEncryption Enable server-side encryption, false by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableEncryption(Boolean enableEncryption) {
             return enableEncryption(Output.of(enableEncryption));
         }
 
-        /**
-         * @param encryptionType The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionType(@Nullable Output<String> encryptionType) {
             $.encryptionType = encryptionType;
             return this;
         }
 
-        /**
-         * @param encryptionType The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder encryptionType(String encryptionType) {
             return encryptionType(Output.of(encryptionType));
         }
 
-        /**
-         * @param endpoint S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
 
-        /**
-         * @param endpoint S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
-        /**
-         * @param kmsKey KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder kmsKey(@Nullable Output<String> kmsKey) {
             $.kmsKey = kmsKey;
             return this;
         }
 
-        /**
-         * @param kmsKey KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder kmsKey(String kmsKey) {
             return kmsKey(Output.of(kmsKey));
         }
 
-        /**
-         * @param region S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskSqlTaskAlertSubscription
     {
         public readonly string? DestinationId;
-        /// <summary>
-        /// The email of an active workspace user. Non-admin users can only set this field to their own email.
-        /// </summary>
         public readonly string? UserName;
 
         [OutputConstructor]

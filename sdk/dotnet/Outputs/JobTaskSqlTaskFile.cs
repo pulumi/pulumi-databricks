@@ -18,7 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// Example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,11 +86,10 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.
         /// </summary>
         public readonly string? Source;
 

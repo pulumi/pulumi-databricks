@@ -30,7 +30,6 @@ import (
 //
 // Creating regular Databricks-managed service principal:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,11 +53,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating service principal with administrative permissions - referencing special `admins` Group in GroupMember resource:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,11 +92,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating Azure-managed service principal with cluster create permissions:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,11 +120,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating Databricks-managed service principal in AWS Databricks account:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,11 +146,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Creating Azure-managed service principal in Azure Databricks account:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,7 +172,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Related Resources
 //

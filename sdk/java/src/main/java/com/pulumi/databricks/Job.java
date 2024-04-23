@@ -233,8 +233,6 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxConcurrentRuns);
     }
     /**
-     * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -243,10 +241,6 @@ public class Job extends com.pulumi.resources.CustomResource {
     @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxRetries;
 
-    /**
-     * @return (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
-     * 
-     */
     public Output<Optional<Integer>> maxRetries() {
         return Codegen.optional(this.maxRetries);
     }
@@ -282,17 +276,9 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     @Export(name="newCluster", refs={JobNewCluster.class}, tree="[0]")
     private Output</* @Nullable */ JobNewCluster> newCluster;
 
-    /**
-     * @return Same set of parameters as for databricks.Cluster resource.
-     * 
-     */
     public Output<Optional<JobNewCluster>> newCluster() {
         return Codegen.optional(this.newCluster);
     }
@@ -359,8 +345,6 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queue);
     }
     /**
-     * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -369,10 +353,6 @@ public class Job extends com.pulumi.resources.CustomResource {
     @Export(name="retryOnTimeout", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retryOnTimeout;
 
-    /**
-     * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
-     * 
-     */
     public Output<Optional<Boolean>> retryOnTimeout() {
         return Codegen.optional(this.retryOnTimeout);
     }
@@ -450,17 +430,9 @@ public class Job extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * Task to run against the `inputs` list.
-     * 
-     */
     @Export(name="tasks", refs={List.class,JobTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<JobTask>> tasks;
 
-    /**
-     * @return Task to run against the `inputs` list.
-     * 
-     */
     public Output<Optional<List<JobTask>>> tasks() {
         return Codegen.optional(this.tasks);
     }
@@ -485,14 +457,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trigger);
     }
     /**
-     * URL of the Git repository to use.
+     * URL of the job on the given workspace
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the Git repository to use.
+     * @return URL of the job on the given workspace
      * 
      */
     public Output<String> url() {

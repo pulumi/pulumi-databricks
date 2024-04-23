@@ -218,7 +218,6 @@ class Library(pulumi.CustomResource):
 
         You can install libraries on all clusters with the help of get_clusters data resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -232,13 +231,11 @@ class Library(pulumi.CustomResource):
                     package="databricks-cli",
                 )))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Java/Scala Maven
 
         Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -250,7 +247,6 @@ class Library(pulumi.CustomResource):
                 exclusions=["org.apache.avro:avro"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Python PyPI
 
@@ -258,7 +254,6 @@ class Library(pulumi.CustomResource):
 
         > **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -269,13 +264,11 @@ class Library(pulumi.CustomResource):
                 package="fbprophet==0.6",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## R CRan
 
         Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -286,7 +279,6 @@ class Library(pulumi.CustomResource):
                 package="rkeops",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 
@@ -327,7 +319,6 @@ class Library(pulumi.CustomResource):
 
         You can install libraries on all clusters with the help of get_clusters data resource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -341,13 +332,11 @@ class Library(pulumi.CustomResource):
                     package="databricks-cli",
                 )))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Java/Scala Maven
 
         Installing artifacts from Maven repository. You can also optionally specify a `repo` parameter for a custom Maven-style repository, that should be accessible without any authentication. Maven libraries are resolved in Databricks Control Plane, so repo should be accessible from it. It can even be properly configured [maven s3 wagon](https://github.com/seahen/maven-s3-wagon), [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) or [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/).
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -359,7 +348,6 @@ class Library(pulumi.CustomResource):
                 exclusions=["org.apache.avro:avro"],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Python PyPI
 
@@ -367,7 +355,6 @@ class Library(pulumi.CustomResource):
 
         > **Note** `repo` host should be accessible from the Internet by Databricks control plane. If connectivity to custom PyPI repositories is required, please modify cluster-node `/etc/pip.conf` through databricks_global_init_script.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -378,13 +365,11 @@ class Library(pulumi.CustomResource):
                 package="fbprophet==0.6",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## R CRan
 
         Installing artifacts from CRan. You can also optionally specify a `repo` parameter for a custom cran mirror.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_databricks as databricks
@@ -395,7 +380,6 @@ class Library(pulumi.CustomResource):
                 package="rkeops",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Related Resources
 

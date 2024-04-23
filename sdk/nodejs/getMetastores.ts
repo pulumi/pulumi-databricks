@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * Mapping of name to id of all metastores:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * const all = databricks.getMetastores({});
  * export const allMetastores = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *
@@ -64,7 +62,6 @@ export interface GetMetastoresResult {
  *
  * Mapping of name to id of all metastores:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
@@ -72,7 +69,6 @@ export interface GetMetastoresResult {
  * const all = databricks.getMetastores({});
  * export const allMetastores = all.then(all => all.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Related Resources
  *

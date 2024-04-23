@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class MwsWorkspacesCloudResourceContainerGcpArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Google Cloud project ID, which the workspace uses to instantiate cloud resources for your workspace.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 

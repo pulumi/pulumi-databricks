@@ -42,7 +42,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MinProvisionedThroughput;
         /// <summary>
-        /// The name of the external model.
+        /// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
         /// </summary>
         public readonly string? Name;
         /// <summary>

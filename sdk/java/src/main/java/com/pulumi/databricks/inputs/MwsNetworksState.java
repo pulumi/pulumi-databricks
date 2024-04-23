@@ -140,14 +140,14 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * aws_vpc id
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+     * @return aws_vpc id
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -409,7 +409,7 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * @param vpcId aws_vpc id
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class MwsNetworksState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+         * @param vpcId aws_vpc id
          * 
          * @return builder
          * 

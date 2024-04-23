@@ -37,7 +37,7 @@ class MwsNetworksArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -170,7 +170,7 @@ class MwsNetworksArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -227,7 +227,7 @@ class _MwsNetworksState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input['MwsNetworksVpcEndpointsArgs'] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -362,7 +362,7 @@ class _MwsNetworksState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
@@ -497,7 +497,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -672,7 +672,7 @@ class MwsNetworks(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ids of aws_security_group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: ids of aws_subnet
         :param pulumi.Input[pulumi.InputType['MwsNetworksVpcEndpointsArgs']] vpc_endpoints: mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
-        :param pulumi.Input[str] vpc_id: The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        :param pulumi.Input[str] vpc_id: aws_vpc id
         :param pulumi.Input[str] vpc_status: (String) VPC attachment status
         :param pulumi.Input[int] workspace_id: (Integer) id of associated workspace
         """
@@ -764,7 +764,7 @@ class MwsNetworks(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the VPC associated with this network. VPC IDs can be used in multiple network configurations.
+        aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 

@@ -19,20 +19,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
      * 
      */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
-    /**
-     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     * 
-     */
     private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
      * @return ID of the associated Delta Live Table pipeline.
      * 
      */
     private @Nullable String pipelineId;
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * 
-     */
     private @Nullable String pipelineType;
     /**
      * @return The name of the source table.
@@ -48,10 +40,6 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
-    /**
-     * @return array of objects representing columns that contain the embedding vectors. Each entry consists of:
-     * 
-     */
     public List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
@@ -62,10 +50,6 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
-    /**
-     * @return Pipeline execution mode. Possible values are:
-     * 
-     */
     public Optional<String> pipelineType() {
         return Optional.ofNullable(this.pipelineType);
     }

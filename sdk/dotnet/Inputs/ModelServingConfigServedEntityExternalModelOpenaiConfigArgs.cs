@@ -12,39 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ModelServingConfigServedEntityExternalModelOpenaiConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This is the base URL for the OpenAI API (default: "https://api.openai.com/v1"). For Azure OpenAI, this field is required, and is the base URL for the Azure OpenAI API service provided by Azure.
-        /// </summary>
         [Input("openaiApiBase")]
         public Input<string>? OpenaiApiBase { get; set; }
 
-        /// <summary>
-        /// The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
-        /// </summary>
         [Input("openaiApiKey", required: true)]
         public Input<string> OpenaiApiKey { get; set; } = null!;
 
-        /// <summary>
-        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and adjust this parameter to represent the preferred security access validation protocol. For access token validation, use azure. For authentication using Azure Active Directory (Azure AD) use, azuread.
-        /// </summary>
         [Input("openaiApiType")]
         public Input<string>? OpenaiApiType { get; set; }
 
-        /// <summary>
-        /// This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required, and is the version of the Azure OpenAI service to utilize, specified by a date.
-        /// </summary>
         [Input("openaiApiVersion")]
         public Input<string>? OpenaiApiVersion { get; set; }
 
-        /// <summary>
-        /// This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
-        /// </summary>
         [Input("openaiDeploymentName")]
         public Input<string>? OpenaiDeploymentName { get; set; }
 
-        /// <summary>
-        /// This is an optional field to specify the organization in OpenAI or Azure OpenAI.
-        /// </summary>
         [Input("openaiOrganization")]
         public Input<string>? OpenaiOrganization { get; set; }
 
